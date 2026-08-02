@@ -720,8 +720,7 @@
   - [Ad Click Aggregation](./interview/system-design/ads.md)
   - [Stock Exchange](./interview/system-design/stock-exchange.md)
   - [Google Maps](./interview/system-design/google-maps.md)
-  - Real-World Architectures
-    - [Netflix](./interview/system-design/real-world/netflix.md)
+  - [Netflix](./interview/system-design/real-world/netflix.md)
     - [Twitter](./interview/system-design/real-world/twitter.md)
     - [Uber](./interview/system-design/real-world/uber.md)
     - [WhatsApp](./interview/system-design/real-world/whatsapp.md)

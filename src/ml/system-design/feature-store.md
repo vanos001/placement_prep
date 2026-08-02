@@ -2,156 +2,61 @@
 
 ## Overview
 
-A Feature Store is a centralized system for storing, managing, and serving ML features. It solves the critical problem of feature consistency between training and serving, enables feature reuse, and provides point-in-time correct feature retrieval.
+A feature store is a centralized system for storing, managing, and serving ML features. It solves training-serving skew, enables feature reuse, and ensures point-in-time correctness. Designing a feature store involves trade-offs between latency, consistency, cost, and complexity.
 
-## Feature Store Architecture
+## Architecture
 
 ```mermaid
-graph TB
-    subgraph "Ingestion Layer"
-        B[Batch Sources<br/>Data Warehouse] --> I[Feature Pipeline]
-        S[Streaming Sources<br/>Kafka, Kinesis] --> I
+graph TD
+    subgraph Offline
+        A[Batch Data Sources] --> B[Feature Engineering]
+        B --> C[Offline Store Parquet/DW]
+        C --> D[Training Data]
     end
-    
-    subgraph "Storage Layer"
-        I --> O[Offline Store<br/>Historical Features]
-        I --> N[Online Store<br/>Latest Features]
+    subgraph Online
+        E[Streaming Data] --> F[Feature Transformation]
+        F --> G[Online Store Redis/DynamoDB]
+        G --> H[Real-time Serving]
     end
-    
-    subgraph "Serving Layer"
-        O --> T[Training<br/>Point-in-time joins]
-        N --> P[Prediction<br/>Low-latency lookup]
-    end
-    
-    subgraph "Management"
-        R[Feature Registry<br/>Metadata & Discovery]
-        V[Feature Validation<br/>Quality checks]
-    end
+    B --> F
+    I[Feature Registry] --> B
+    I --> F
 ```
 
 ## Key Design Decisions
 
-### 1. Offline vs Online Store
+### Storage Layer
 
-| Aspect | Offline Store | Online Store |
-|--------|--------------|--------------|
-| Purpose | Training | Serving |
-| Latency | Minutes | Milliseconds |
-| Data | Historical | Latest |
-| Storage | Data warehouse | Key-value store |
-| Example | BigQuery, S3 | Redis, DynamoDB |
+| Component | Technology | Latency | Cost |
+|-----------|-----------|---------|------|
+| Offline Store | Parquet/S3, BigQuery | Seconds | Low |
+| Online Store | Redis, DynamoDB | Milliseconds | High |
+| Feature Registry | PostgreSQL, API | N/A | Low |
 
-### 2. Point-in-Time Correctness
+### Feature Freshness
 
-```python
-# WRONG: Using future data (data leakage)
-def get_features(user_id, prediction_time):
-    # This might use data from after prediction_time!
-    return get_latest_features(user_id)
-
-# RIGHT: Point-in-time join
-def get_features(user_id, prediction_time):
-    return feature_store.get_historical_features(
-        entity_df=pd.DataFrame({"user_id": [user_id]}),
-        features=["user_avg_spend_30d"],
-        timestamp=prediction_time
-    )
-```
-
-### 3. Feature Computation
-
-```mermaid
-graph LR
-    subgraph "Raw Events"
-        E1[Click Events]
-        E2[Purchase Events]
-        E3[View Events]
-    end
-    
-    subgraph "Aggregations"
-        A1[Click Count 7d]
-        A2[Total Spend 30d]
-        A3[View Count 24h]
-    end
-    
-    subgraph "Derived Features"
-        F1[CTR = Clicks/Views]
-        F2[Avg Order Value]
-        F3[Activity Score]
-    end
-    
-    E1 --> A1
-    E2 --> A2
-    E3 --> A3
-    A1 --> F1
-    A3 --> F1
-    A2 --> F2
-    A1 --> F3
-    A2 --> F3
-    A3 --> F3
-```
-
-## Feature Store Schema
-
-```yaml
-# Feature definition
-feature_group: user_features
-entities:
-  - name: user_id
-    type: string
-features:
-  - name: total_purchases_30d
-    type: int64
-    description: "Number of purchases in last 30 days"
-  - name: avg_order_value
-    type: float64
-    description: "Average order value"
-  - name: preferred_category
-    type: string
-    description: "Most purchased category"
-ttl: 90 days
-online: true
-offline: true
-```
-
-## Scaling Considerations
-
-```mermaid
-graph TB
-    subgraph "Write Path"
-        W1[High write throughput]
-        W2[Batch + Streaming]
-        W3[Eventual consistency OK]
-    end
-    
-    subgraph "Read Path"
-        R1[Low latency reads]
-        R2[Strong consistency]
-        R3[High availability]
-    end
-    
-    subgraph "Storage"
-        S1[Partition by entity]
-        S2[Time-based compaction]
-        S3[TTL for old features]
-    end
-```
+| Freshness | Method | Use Case |
+|-----------|--------|----------|
+| Hours | Batch jobs | User aggregate stats |
+| Minutes | Micro-batch | Recent activity |
+| Seconds | Streaming (Kafka) | Real-time features |
+| Milliseconds | On-demand computation | Derived features |
 
 ## Interview Questions
 
-1. **How would you design a feature store for a large-scale recommendation system?**
-2. **How do you handle point-in-time correctness?**
-3. **What's the difference between offline and online stores?**
-4. **How do you ensure feature consistency between training and serving?**
-5. **How would you handle feature freshness requirements?**
+1. **Design a feature store for a recommendation system** — Offline store for user/item historical features, online store for real-time features (recent clicks), feature registry for versioning, and point-in-time joins for training data.
 
-## Common Mistakes
+2. **How do you ensure point-in-time correctness?** — When creating training data, join features as of the prediction timestamp, not the current timestamp. Use event_time columns and temporal joins.
 
-- **Training-serving skew**: Different computation logic in training vs serving
-- **Data leakage**: Using future data in features
-- **No TTL**: Feature store grows unbounded
-- **Ignoring freshness**: Stale features lead to poor predictions
+3. **Online vs offline feature serving?** — Offline: batch queries on historical data for training. Online: low-latency lookups for real-time inference. Many features are computed offline and loaded into the online store.
 
 ## Summary
 
-A Feature Store is essential for production ML systems. It ensures feature consistency, enables reuse, and provides point-in-time correctness. Key design decisions include offline vs online storage, feature computation patterns, and scaling strategies. Use established solutions (Feast, Tecton) rather than building from scratch.
+A feature store design must balance latency, freshness, cost, and consistency. The dual online/offline architecture serves both training and serving needs. Point-in-time correctness is critical for preventing data leakage.
+
+## Cross-References
+
+- [Feature Store (MLOps)](../mlops/feature-store.md) — Implementation details
+- [Feature Engineering](../foundations/feature-engineering.md) — Creating features
+- [Data Pipeline](./data-pipeline.md) — Data engineering
+- [Model Serving](./model-serving.md) — Serving architecture

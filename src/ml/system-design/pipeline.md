@@ -2,144 +2,81 @@
 
 ## Overview
 
-An ML Pipeline is an automated workflow that orchestrates the end-to-end ML lifecycle — from data ingestion to model deployment. Good pipeline design ensures reproducibility, scalability, and maintainability.
+An ML pipeline automates the end-to-end workflow from raw data to deployed predictions. A well-designed pipeline ensures reproducibility, scalability, and maintainability. This covers the design of training pipelines, inference pipelines, and the orchestration connecting them.
 
-## Pipeline Architecture
+## Training Pipeline Architecture
 
 ```mermaid
 graph LR
-    subgraph "Data Layer"
-        A[Data Sources] --> B[Ingestion]
-        B --> C[Validation]
-        C --> D[Transformation]
-    end
-    
-    subgraph "Training Layer"
-        D --> E[Feature Engineering]
-        E --> F[Model Training]
-        F --> G[Evaluation]
-    end
-    
-    subgraph "Serving Layer"
-        G --> H[Registration]
-        H --> I[Deployment]
-        I --> J[Monitoring]
-    end
-    
-    J -->|Feedback| A
+    A[Data Sources] --> B[Ingestion]
+    B --> C[Validation]
+    C --> D[Preprocessing]
+    D --> E[Feature Engineering]
+    E --> F[Training]
+    F --> G[Evaluation]
+    G --> H{Quality Gate}
+    H -->|Pass| I[Register Model]
+    H -->|Fail| J[Alert]
+    I --> K[Deploy]
 ```
 
-## Pipeline Types
+## Inference Pipeline Architecture
 
-### 1. Batch Pipeline
 ```mermaid
-graph LR
-    S[Schedule] --> I[Ingest]
-    I --> T[Transform]
-    T --> TR[Train]
-    TR --> E[Evaluate]
-    E --> D[Deploy]
-```
-- Runs on schedule (daily, weekly)
-- Processes historical data
-- Suitable for non-real-time models
-
-### 2. Streaming Pipeline
-```mermaid
-graph LR
-    E[Events] --> K[Kafka]
-    K --> P[Process]
-    P --> F[Features]
-    F --> P2[Predict]
-    P2 --> S[Serve]
-```
-- Processes data in real-time
-- Low latency requirements
-- Complex infrastructure
-
-### 3. Hybrid Pipeline
-- Batch for training, streaming for serving
-- Most common in production
-- Balances complexity and performance
-
-## Pipeline Components
-
-| Component | Purpose | Tools |
-|-----------|---------|-------|
-| Orchestrator | Schedule and manage workflows | Airflow, Kubeflow, Prefect |
-| Data Validation | Ensure data quality | Great Expectations, TFX |
-| Feature Store | Manage features | Feast, Tecton |
-| Training | Model training | SageMaker, Vertex AI |
-| Registry | Version models | MLflow, Neptune |
-| Serving | Model inference | TF Serving, Triton |
-
-## Pipeline Design Patterns
-
-### Fan-Out Pattern
-```mermaid
-graph TB
-    A[Data] --> B[Feature 1]
-    A --> C[Feature 2]
-    A --> D[Feature 3]
-    B --> E[Model]
-    C --> E
-    D --> E
+graph TD
+    A[Request] --> B[Preprocessing]
+    B --> C[Feature Lookup]
+    C --> D[Model Inference]
+    D --> E[Post-processing]
+    E --> F[Response]
+    G[Feature Store] --> C
+    H[Cache] --> F
 ```
 
-### Fan-In Pattern
-```mermaid
-graph TB
-    A1[Data Source 1] --> M[Merge]
-    A2[Data Source 2] --> M
-    A3[Data Source 3] --> M
-    M --> T[Train]
-```
+## Design Decisions
 
-## Error Handling
+### Batch vs Real-time
+
+| Aspect | Batch | Real-time |
+|--------|-------|-----------|
+| Latency | Minutes-hours | Milliseconds |
+| Throughput | High | Per-request |
+| Complexity | Lower | Higher |
+| Use case | Recommendations, reports | Fraud detection, search |
+
+### Pipeline Orchestration
 
 ```python
-# Pipeline with retry and error handling
+# Airflow DAG for ML pipeline
 from airflow import DAG
 from airflow.operators.python import PythonOperator
 
-def train_model(**context):
-    try:
-        model = train()
-        metrics = evaluate(model)
-        
-        if metrics['accuracy'] < BASELINE:
-            raise ValueError("Model below baseline")
-        
-        return model
-    except Exception as e:
-        log_error(e)
-        alert_team(e)
-        raise
-
 with DAG('ml_pipeline', schedule_interval='@daily') as dag:
-    train_task = PythonOperator(
-        task_id='train_model',
-        python_callable=train_model,
-        retries=3,
-        retry_delay=timedelta(minutes=5),
-    )
+    ingest = PythonOperator(task_id='ingest', python_callable=ingest_fn)
+    validate = PythonOperator(task_id='validate', python_callable=validate_fn)
+    transform = PythonOperator(task_id='transform', python_callable=transform_fn)
+    train = PythonOperator(task_id='train', python_callable=train_fn)
+    evaluate = PythonOperator(task_id='evaluate', python_callable=evaluate_fn)
+    deploy = PythonOperator(task_id='deploy', python_callable=deploy_fn)
+
+    ingest >> validate >> transform >> train >> evaluate >> deploy
 ```
 
 ## Interview Questions
 
-1. **How would you design an ML pipeline for a recommendation system?**
-2. **What are the key components of an ML pipeline?**
-3. **How do you handle pipeline failures?**
-4. **Batch vs streaming pipeline — when to use each?**
-5. **How do you ensure reproducibility in ML pipelines?**
+1. **How do you design an ML training pipeline?** — Data ingestion → validation → preprocessing → feature engineering → training → evaluation → registration → deployment. Each step should be idempotent and versioned.
 
-## Common Mistakes
+2. **How do you ensure pipeline reliability?** — Validation gates between steps, retry logic, alerting on failures, checkpointing intermediate results, and idempotent operations.
 
-- **No data validation**: Garbage in, garbage out
-- **Tight coupling**: Changes in one step break others
-- **No monitoring**: Silent failures in production
-- **Missing idempotency**: Pipeline can't be safely re-run
+3. **When should you use batch vs real-time inference?** — Batch: when latency isn't critical (daily recommendations). Real-time: when instant predictions are needed (fraud detection). Consider the business requirement.
 
 ## Summary
 
-ML Pipeline design is critical for production ML systems. Key considerations include orchestration, data validation, error handling, and monitoring. Choose between batch, streaming, or hybrid based on requirements. Use established tools (Airflow, Kubeflow) rather than building from scratch.
+ML pipeline design connects data, features, training, and serving into automated workflows. Key decisions include batch vs real-time, orchestration tool choice, and validation strategy. A well-designed pipeline is the backbone of production ML systems.
+
+## Cross-References
+
+- [ML Pipelines (MLOps)](../mlops/pipelines.md) — Pipeline orchestration
+- [Data Pipeline](./data-pipeline.md) — Data engineering
+- [Feature Store](./feature-store.md) — Feature management
+- [Model Serving](./model-serving.md) — Serving architecture

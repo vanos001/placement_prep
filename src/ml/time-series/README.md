@@ -2,115 +2,131 @@
 
 ## Overview
 
-Time series analysis deals with data points ordered by time — stock prices, sensor readings, web traffic, temperature, demand forecasts. Unlike standard ML where samples are i.i.d., time series data has **temporal dependencies**: past values influence future ones. This section covers classical statistical methods (ARIMA), modern tools (Prophet), deep learning approaches (Transformers), and anomaly detection.
+Time Series Analysis involves analyzing data points collected over time to identify patterns, trends, and make forecasts. It's critical for applications like stock prediction, demand forecasting, anomaly detection, and resource planning.
 
-## Why Time Series is Different
+## Time Series Components
 
 ```mermaid
-graph TD
-    A[Regular ML: i.i.d. samples] --> B[Each sample independent]
-    C[Time Series: temporal dependencies] --> D[Autocorrelation, trends, seasonality]
-    D --> E[Specialized models needed]
+graph TB
+    subgraph "Time Series Decomposition"
+        T[Trend<br/>Long-term direction]
+        S[Seasonality<br/>Repeating patterns]
+        C[Cyclical<br/>Irregular cycles]
+        R[Residual<br/>Random noise]
+    end
+    
+    O[Observed Series] --> T
+    O --> S
+    O --> C
+    O --> R
 ```
 
-### Key Characteristics
+## Types of Time Series
 
-| Property | Description | Example |
-|----------|-------------|---------|
-| Trend | Long-term increase/decrease | Stock market growth |
-| Seasonality | Repeating periodic patterns | Retail sales peak in December |
-| Cyclic | Non-fixed period fluctuations | Business cycles |
-| Noise | Random variation | Measurement errors |
-| Stationarity | Statistical properties don't change over time | Required for ARIMA |
+| Type | Description | Example |
+|------|-------------|---------|
+| Univariate | Single variable over time | Stock price |
+| Multivariate | Multiple variables over time | Weather (temp, humidity, wind) |
+| Stationary | Constant statistical properties | Differenced series |
+| Non-stationary | Changing properties | Raw stock prices |
 
-## Decomposition
+## Common Patterns
 
 ```mermaid
 graph LR
-    A[Time Series Y_t] --> B[Trend T_t]
-    A --> C[Seasonality S_t]
-    A --> D[Residual R_t]
-    B --> E[Y_t = T_t + S_t + R_t Additive]
-    B --> F[Y_t = T_t × S_t × R_t Multiplicative]
+    subgraph "Patterns"
+        T[Trend: Upward/Downward]
+        S[Seasonality: Repeating]
+        C[Cycles: Irregular]
+        N[Noise: Random]
+    end
 ```
+
+## Stationarity
+
+A time series is stationary if its statistical properties (mean, variance) don't change over time.
 
 ```python
-from statsmodels.tsa.seasonal import seasonal_decompose
+# Test for stationarity
+from statsmodels.tsa.stattools import adfuller
 
-# Additive decomposition
-result = seasonal_decompose(series, model='additive', period=12)
-result.plot()
+result = adfuller(time_series)
+print(f'ADF Statistic: {result[0]}')
+print(f'p-value: {result[1]}')
+
+if result[1] < 0.05:
+    print("Series is stationary")
+else:
+    print("Series is non-stationary")
 ```
 
-## Forecasting Approaches
+**Making series stationary:**
+```python
+# Differencing
+diff_series = series.diff().dropna()
+
+# Log transformation
+log_series = np.log(series)
+
+# Log + differencing
+log_diff = np.log(series).diff().dropna()
+```
+
+## Forecasting Methods
 
 ```mermaid
-graph TD
-    A[Time Series Forecasting] --> B[Statistical Methods]
-    A --> C[Machine Learning]
-    A --> D[Deep Learning]
-    B --> E[ARIMA / SARIMA]
-    B --> F[Exponential Smoothing]
-    B --> G[Prophet]
-    C --> H[XGBoost with lag features]
-    C --> I[Random Forest]
-    D --> J[LSTM / GRU]
-    D --> K[Temporal Convolution]
-    D --> L[Transformer-based]
-    D --> M[TimesFM / Chronos]
+graph TB
+    subgraph "Statistical"
+        A[ARIMA]
+        B[Exponential Smoothing]
+        C[Prophet]
+    end
+    
+    subgraph "Machine Learning"
+        D[Random Forest]
+        E[XGBoost]
+        F[LightGBM]
+    end
+    
+    subgraph "Deep Learning"
+        G[LSTM]
+        H[Transformer]
+        I[N-BEATS]
+    end
 ```
 
 ## Evaluation Metrics
 
 | Metric | Formula | Use Case |
 |--------|---------|----------|
-| MAE | $\frac{1}{n}\sum\|y - \hat{y}\|$ | Interpretable, robust to outliers |
-| RMSE | $\sqrt{\frac{1}{n}\sum(y - \hat{y})^2}$ | Penalizes large errors |
-| MAPE | $\frac{100}{n}\sum\|\frac{y - \hat{y}}{y}\|$ | Percentage error, fails at y=0 |
-| SMAPE | Symmetric MAPE | Handles zero crossings |
-| MASE | MAE / MAE of naive forecast | Scale-independent |
+| MAE | Mean Absolute Error | General |
+| MAPE | Mean Absolute Percentage Error | Percentage-based |
+| RMSE | Root Mean Squared Error | Penalizes large errors |
+| SMAPE | Symmetric MAPE | Balanced percentage |
 
 ```python
-import numpy as np
+from sklearn.metrics import mean_absolute_error, mean_squared_error
 
-def mape(y_true, y_pred):
-    return np.mean(np.abs((y_true - y_pred) / y_true)) * 100
-
-def mase(y_true, y_pred, y_train):
-    """Mean Absolute Scaled Error"""
-    naive_mae = np.mean(np.abs(np.diff(y_train)))
-    return np.mean(np.abs(y_true - y_pred)) / naive_mae
+mae = mean_absolute_error(y_true, y_pred)
+rmse = np.sqrt(mean_squared_error(y_true, y_pred))
+mape = np.mean(np.abs((y_true - y_pred) / y_true)) * 100
 ```
-
-## Common Pitfalls
-
-| Pitfall | Description | Solution |
-|---------|-------------|----------|
-| Data leakage | Using future data in features | Strict train/test split by time |
-| Non-stationarity | Mean/variance change over time | Differencing, log transform |
-| Look-ahead bias | Normalizing with future stats | Use only past data for scaling |
-| Overfitting | Too many lags/complex model | Cross-validation with time splits |
 
 ## Interview Questions
 
-1. **How do you handle non-stationarity?** — Differencing ($y_t - y_{t-1}$), log transforms, or detrending. ADF test checks stationarity.
+1. **What is stationarity and why is it important?**
+2. **How do you handle seasonality in time series?**
+3. **Compare ARIMA with machine learning methods for forecasting.**
+4. **How do you evaluate time series models?**
+5. **How do you handle missing data in time series?**
 
-2. **What is autocorrelation and why does it matter?** — Correlation of a series with its own lagged values. High autocorrelation means past values predict future ones. ACF/PACF plots help identify AR/MA orders.
+## Common Mistakes
 
-3. **How do you do cross-validation for time series?** — Time-series split: train on past, test on future. Never shuffle. Walk-forward validation or expanding window.
-
-4. **When would you use ARIMA vs LSTM?** — ARIMA: linear patterns, small data, interpretability. LSTM: complex nonlinear patterns, large data, multivariate.
-
-5. **What is the difference between additive and multiplicative seasonality?** — Additive: seasonal amplitude is constant. Multiplicative: seasonal amplitude scales with the level. Use multiplicative when trend and seasonality interact.
+- **Data leakage**: Using future data in training
+- **Ignoring stationarity**: Many models require stationary data
+- **Overfitting**: Model captures noise, not patterns
+- **Wrong evaluation**: Must use time-based train/test split
 
 ## Summary
 
-Time series forecasting requires specialized approaches due to temporal dependencies. Statistical methods (ARIMA, Prophet) work well for univariate series with clear patterns. Deep learning (Transformers, LSTMs) handles complex, multivariate data. Key considerations include stationarity, proper evaluation (time-based splits), and avoiding data leakage.
-
-## Cross-References
-
-- [RNNs & LSTMs](../deep-learning/rnn-lstm.md) — Sequential modeling basics
-- [Transformers](../transformers/README.md) — Attention for sequences
-- [XGBoost](../classical/xgboost.md) — ML approach with lag features
-- [Evaluation Metrics](../foundations/evaluation.md) — MAE, RMSE, MAPE
-- [Anomaly Detection](./anomaly.md) — Detecting outliers in time series
+Time Series Analysis requires understanding components (trend, seasonality, noise), ensuring stationarity, and choosing appropriate models. Key considerations include proper train/test splitting (time-based), handling missing data, and selecting evaluation metrics. Methods range from statistical (ARIMA) to deep learning (Transformers).

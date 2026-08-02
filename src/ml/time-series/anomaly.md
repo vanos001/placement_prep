@@ -2,233 +2,187 @@
 
 ## Overview
 
-Anomaly detection in time series identifies data points that deviate significantly from expected patterns. Unlike static anomaly detection, time series anomalies must account for **temporal context** — a value might be normal in one season but anomalous in another. Applications include fraud detection, system monitoring, manufacturing quality control, and network intrusion detection.
+Anomaly Detection in time series identifies unusual patterns, outliers, or unexpected behavior. It's critical for monitoring systems, fraud detection, network security, and predictive maintenance.
 
 ## Types of Anomalies
 
 ```mermaid
-graph TD
-    A[Time Series Anomalies] --> B[Point Anomalies]
-    A --> C[Contextual Anomalies]
-    A --> D[Collective Anomalies]
-    B --> E[Single extreme value e.g., spike]
-    C --> F[Normal value in wrong context e.g., 30°C in winter]
-    D --> G[Sequence of values abnormal together e.g., gradual drift]
+graph TB
+    subgraph "Anomaly Types"
+        P[Point Anomaly<br/>Single unusual value]
+        C[Contextual Anomaly<br/>Unusual in context]
+        S[Collective Anomaly<br/>Unusual pattern]
+    end
 ```
 
-| Type | Example | Detection Method |
-|------|---------|-----------------|
-| Point | Sudden spike in CPU usage | Statistical thresholds |
-| Contextual | Normal traffic at 3 AM (unusual time) | Seasonal decomposition |
-| Collective | Gradual degradation over hours | Sequence modeling |
+### Examples
+| Type | Example |
+|------|---------|
+| Point | Sudden spike in CPU usage |
+| Contextual | 30°C in winter (normal in summer) |
+| Collective | Gradual increase indicating drift |
 
-## Methods
+## Detection Methods
 
 ### 1. Statistical Methods
 
-#### Z-Score
-
 ```python
-import numpy as np
-
-def zscore_anomalies(series, threshold=3):
-    """Detect anomalies using Z-score"""
-    mean = np.mean(series)
-    std = np.std(series)
+# Z-Score method
+def detect_anomalies_zscore(series, threshold=3):
+    mean = series.mean()
+    std = series.std()
     z_scores = (series - mean) / std
     return np.abs(z_scores) > threshold
-```
 
-#### Modified Z-Score (Robust to Outliers)
-
-```python
-def modified_zscore(series, threshold=3.5):
-    """Uses median instead of mean (robust to outliers)"""
-    median = np.median(series)
-    mad = np.median(np.abs(series - median))  # Median Absolute Deviation
-    modified_z = 0.6745 * (series - median) / mad
-    return np.abs(modified_z) > threshold
-```
-
-#### IQR Method
-
-```python
-def iqr_anomalies(series, factor=1.5):
-    Q1, Q3 = np.percentile(series, [25, 75])
+# IQR method
+def detect_anomalies_iqr(series, factor=1.5):
+    Q1 = series.quantile(0.25)
+    Q3 = series.quantile(0.75)
     IQR = Q3 - Q1
     lower = Q1 - factor * IQR
     upper = Q3 + factor * IQR
     return (series < lower) | (series > upper)
 ```
 
-### 2. Seasonal-Hybrid ESD (S-HESD)
-
-Used by Twitter (now X) for detecting anomalies in seasonal data:
-
+### 2. Moving Average Method
 ```python
-from statsmodels.tsa.seasonal import seasonal_decompose
+def detect_anomalies_ma(series, window=20, threshold=2):
+    ma = series.rolling(window=window).mean()
+    std = series.rolling(window=window).std()
+    upper = ma + threshold * std
+    lower = ma - threshold * std
+    return (series > upper) | (series < lower)
+```
 
-def shesd_anomalies(series, period=7, max_anomalies=10):
-    """Seasonal Hybrid ESD"""
-    # Decompose to remove seasonality
-    result = seasonal_decompose(series, period=period, model='additive')
-    residual = result.resid.dropna()
-
-    # Apply Generalized ESD on residuals
-    anomalies = []
-    data = residual.copy()
-    for _ in range(max_anomalies):
-        if len(data) < 3:
-            break
-        mean = data.mean()
-        std = data.std()
-        test_stat = ((data - mean) / std).abs()
-        max_idx = test_stat.idxmax()
-        # Critical value from t-distribution
-        from scipy.stats import t
-        n = len(data)
-        p = 1 - 0.05 / (2 * n)
-        critical = t.ppf(p, n - 2)
-        if test_stat[max_idx] > critical:
-            anomalies.append(max_idx)
-            data = data.drop(max_idx)
-        else:
-            break
-    return anomalies
+```mermaid
+graph LR
+    subgraph "Moving Average Detection"
+        S[Series] --> MA[Moving Average]
+        MA --> B[Bands: MA ± 2σ]
+        B --> A[Points outside bands]
+    end
 ```
 
 ### 3. Isolation Forest
-
 ```python
 from sklearn.ensemble import IsolationForest
 
-def isolation_forest_anomalies(series, window_size=10):
-    """Create features from sliding windows, apply Isolation Forest"""
-    # Create lag features
-    X = np.lib.stride_tricks.sliding_window_view(series, window_size)
-    X = X.reshape(-1, window_size)
+# Features: value, hour, day_of_week, rolling_mean, rolling_std
+features = create_features(series)
 
-    clf = IsolationForest(contamination=0.05, random_state=42)
-    labels = clf.fit_predict(X)  # -1 for anomalies, 1 for normal
+model = IsolationForest(contamination=0.01, random_state=42)
+predictions = model.fit_predict(features)
 
-    # Pad to original length
-    full_labels = np.ones(len(series))
-    full_labels[window_size - 1:] = labels
-    return full_labels == -1
+anomalies = predictions == -1
 ```
 
 ### 4. LSTM Autoencoder
-
 ```python
 class LSTMAutoencoder(nn.Module):
-    def __init__(self, input_dim, hidden_dim, num_layers=2):
+    def __init__(self, input_dim, hidden_dim):
         super().__init__()
-        self.encoder = nn.LSTM(input_dim, hidden_dim, num_layers, batch_first=True)
-        self.decoder = nn.LSTM(hidden_dim, hidden_dim, num_layers, batch_first=True)
-        self.output_layer = nn.Linear(hidden_dim, input_dim)
-
+        self.encoder = nn.LSTM(input_dim, hidden_dim, batch_first=True)
+        self.decoder = nn.LSTM(hidden_dim, input_dim, batch_first=True)
+    
     def forward(self, x):
-        # Encode
-        _, (hidden, cell) = self.encoder(x)
-        # Repeat last hidden state for decoder input
-        decoder_input = hidden[-1].unsqueeze(1).repeat(1, x.size(1), 1)
-        # Decode
-        decoded, _ = self.decoder(decoder_input, (hidden, cell))
-        reconstructed = self.output_layer(decoded)
-        return reconstructed
+        _, (hidden, _) = self.encoder(x)
+        # Repeat hidden state for each timestep
+        decoder_input = hidden.repeat(x.size(1), 1, 1).permute(1, 0, 2)
+        output, _ = self.decoder(decoder_input)
+        return output
 
-def detect_anomalies_lstm(model, data, threshold_percentile=95):
-    """Detect anomalies by reconstruction error"""
-    model.eval()
-    with torch.no_grad():
-        reconstructed = model(data)
-        mse = ((data - reconstructed) ** 2).mean(dim=-1)
-        threshold = np.percentile(mse.numpy(), threshold_percentile)
-        return mse > threshold
+# Anomaly = high reconstruction error
+reconstruction = model(data)
+error = torch.mean((data - reconstruction) ** 2, dim=(1, 2))
+anomalies = error > threshold
 ```
 
-### 5. Prophet-Based Detection
-
+### 5. Prophet for Anomaly Detection
 ```python
 from prophet import Prophet
 
-def prophet_anomalies(df):
-    """Use Prophet's uncertainty intervals for anomaly detection"""
-    model = Prophet(interval_width=0.95)
-    model.fit(df)
-    forecast = model.predict(df)
+model = Prophet(interval_width=0.99)
+model.fit(df)
 
-    # Points outside 95% confidence interval
-    df['yhat'] = forecast['yhat']
-    df['yhat_lower'] = forecast['yhat_lower']
-    df['yhat_upper'] = forecast['yhat_upper']
-    df['anomaly'] = (df['y'] < df['yhat_lower']) | (df['y'] > df['yhat_upper'])
-    return df
+forecast = model.predict(future)
+
+# Points outside confidence interval are anomalies
+forecast['anomaly'] = (forecast['y'] > forecast['yhat_upper']) | \
+                      (forecast['y'] < forecast['yhat_lower'])
 ```
 
-## Evaluation
+## Method Comparison
+
+| Method | Pros | Cons |
+|--------|------|------|
+| Z-Score | Simple, fast | Assumes normal distribution |
+| IQR | Robust to outliers | Static thresholds |
+| Moving Average | Captures trends | Window size sensitive |
+| Isolation Forest | No distribution assumption | Feature engineering needed |
+| LSTM Autoencoder | Captures complex patterns | Needs lots of data |
+| Prophet | Handles seasonality | Slow for large data |
+
+## Evaluation Metrics
 
 ```python
-from sklearn.metrics import precision_recall_fscore_support
+from sklearn.metrics import precision_score, recall_score, f1_score
 
-def evaluate_anomaly_detection(true_labels, predicted):
-    precision, recall, f1, _ = precision_recall_fscore_support(
-        true_labels, predicted, average='binary'
-    )
-    print(f"Precision: {precision:.4f}")
-    print(f"Recall: {recall:.4f}")
-    print(f"F1 Score: {f1:.4f}")
-    return precision, recall, f1
+precision = precision_score(y_true, y_pred)
+recall = recall_score(y_true, y_pred)
+f1 = f1_score(y_true, y_pred)
+
+# For imbalanced data, focus on precision and recall
+print(f"Precision: {precision:.3f}")
+print(f"Recall: {recall:.3f}")
+print(f"F1: {f1:.3f}")
 ```
 
-### Metrics for Imbalanced Data
-
-Since anomalies are rare, accuracy is misleading. Use:
-- **Precision**: Of detected anomalies, how many are real?
-- **Recall**: Of real anomalies, how many were detected?
-- **F1**: Harmonic mean of precision and recall
-- **AUC-ROC**: Area under ROC curve
-
-## Method Selection Guide
+## Real-time Anomaly Detection
 
 ```mermaid
-graph TD
-    A[Start] --> B{Data Properties}
-    B -->|Simple, univariate| C[Statistical: Z-score, IQR]
-    B -->|Seasonal| D[S-HESD, Prophet]
-    B -->|Complex patterns| E[Isolation Forest]
-    B -->|Sequential dependencies| F[LSTM Autoencoder]
-    B -->|Large-scale, streaming| G[Real-time: Windowed stats]
+graph LR
+    S[Stream] --> W[Window]
+    W --> F[Features]
+    F --> M[Model]
+    M --> D{Anomaly?}
+    D -->|Yes| A[Alert]
+    D -->|No| N[Next Window]
+```
+
+```python
+class RealTimeAnomalyDetector:
+    def __init__(self, window_size=100, threshold=3):
+        self.window = deque(maxlen=window_size)
+        self.threshold = threshold
+    
+    def update(self, value):
+        self.window.append(value)
+        
+        if len(self.window) < self.window.maxlen:
+            return False
+        
+        mean = np.mean(self.window)
+        std = np.std(self.window)
+        z_score = abs((value - mean) / std)
+        
+        return z_score > self.threshold
 ```
 
 ## Interview Questions
 
-1. **How do you detect anomalies in seasonal time series?** — Decompose into trend + seasonality + residual, then apply anomaly detection on residuals. Methods like S-HESD or Prophet's uncertainty intervals handle this.
-
-2. **What is the difference between point and contextual anomalies?** — Point anomalies are globally extreme values. Contextual anomalies are only anomalous in context (e.g., 30°C is normal in summer but anomalous in winter).
-
-3. **Why use LSTM Autoencoder for anomaly detection?** — It learns to reconstruct normal patterns. Anomalies have high reconstruction error because the model hasn't seen such patterns during training.
-
-4. **How do you handle real-time anomaly detection?** — Use sliding windows with online statistics (rolling mean/std), or maintain a model that updates incrementally. Avoid look-ahead bias.
-
-5. **What metrics should you use for anomaly detection evaluation?** — Precision, recall, F1 (not accuracy, since data is imbalanced). AUC-ROC for threshold-independent evaluation.
+1. **What are the different types of anomalies in time series?**
+2. **How would you design an anomaly detection system for server metrics?**
+3. **Compare statistical and ML-based anomaly detection.**
+4. **How do you handle seasonality in anomaly detection?**
+5. **How do you evaluate anomaly detection systems?**
 
 ## Common Mistakes
 
-- Using future data in the detection window (look-ahead bias)
-- Setting thresholds too aggressively (too many false positives)
-- Not accounting for seasonality (false alarms on seasonal peaks)
-- Using accuracy on imbalanced data (always high, misleading)
-- Not adapting thresholds over time (concept drift)
+- **Ignoring seasonality**: 30°C is normal in summer but anomalous in winter
+- **Static thresholds**: Don't adapt to changing patterns
+- **Too many false positives**: Alert fatigue leads to ignoring real issues
+- **Not considering context**: Same value can be normal or anomalous depending on context
 
 ## Summary
 
-Time series anomaly detection requires accounting for temporal context, seasonality, and trends. Methods range from simple statistical thresholds (Z-score, IQR) to deep learning (LSTM autoencoders). The choice depends on data complexity: statistical methods for simple series, ML for complex patterns, and streaming approaches for real-time detection. Proper evaluation uses precision/recall/F1 due to class imbalance.
-
-## Cross-References
-
-- [Time Series Overview](./README.md) — General time series concepts
-- [ARIMA](./arima.md) — Decomposition and residuals
-- [Prophet](./prophet.md) — Uncertainty-based detection
-- [Isolation Forest](../classical/ensemble.md) — Ensemble anomaly detection
-- [Evaluation Metrics](../foundations/evaluation.md) — Precision, recall, F1
+Time Series Anomaly Detection identifies unusual patterns using statistical methods (Z-score, IQR), ML methods (Isolation Forest, LSTM Autoencoder), or hybrid approaches (Prophet). Key considerations include handling seasonality, choosing appropriate thresholds, and minimizing false positives. Real-time detection requires efficient windowed processing.

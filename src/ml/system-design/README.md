@@ -2,81 +2,59 @@
 
 ## Overview
 
-ML System Design is the process of designing end-to-end machine learning systems that solve real-world problems. It combines software engineering principles with ML-specific considerations like data pipelines, model serving, feature engineering, and monitoring.
+ML System Design is a critical skill for ML engineers, combining machine learning knowledge with systems thinking. It involves designing end-to-end ML systems that are scalable, reliable, and maintainable. This section covers the key components of ML systems and real-world design patterns commonly discussed in interviews.
 
 ## ML System Design Framework
 
 ```mermaid
-graph TB
-    subgraph "1. Problem Definition"
-        P1[Business Objective]
-        P2[ML Objective]
-        P3[Success Metrics]
-    end
-    
-    subgraph "2. Data"
-        D1[Data Sources]
-        D2[Data Pipeline]
-        D3[Feature Engineering]
-    end
-    
-    subgraph "3. Model"
-        M1[Model Selection]
-        M2[Training]
-        M3[Evaluation]
-    end
-    
-    subgraph "4. Serving"
-        S1[Serving Architecture]
-        S2[Scaling]
-        S3[Monitoring]
-    end
-    
-    P1 --> D1
-    D1 --> M1
-    M1 --> S1
+graph TD
+    A[Problem Definition] --> B[Data]
+    B --> C[Features]
+    C --> D[Model]
+    D --> E[Serving]
+    E --> F[Monitoring]
+    F --> G[Iteration]
+    G --> A
 ```
 
-## System Design Template
+### The FRAMEWORK
 
-### Step 1: Requirements
-- Clarify business goals and constraints
-- Define ML metrics (precision, recall, latency)
-- Identify scale requirements (QPS, data volume)
+1. **F**ormulate the problem (metrics, constraints)
+2. **R**equirements (latency, throughput, scale)
+3. **A**rchitecture (data pipeline, feature store, model, serving)
+4. **M**odel selection and training
+5. **E**valuation (offline + online metrics)
+6. **W**orkflow (training pipeline, retraining)
+7. **O**perations (monitoring, alerting, debugging)
+8. **R**ollout (A/B testing, canary deployment)
+9. **K**ey trade-offs and alternatives
 
-### Step 2: Data
-- Identify data sources
-- Design data pipeline
-- Define feature engineering
+## Key System Components
 
-### Step 3: Model
-- Select model architecture
-- Define training strategy
-- Plan evaluation approach
+```mermaid
+graph TD
+    A[ML System] --> B[Data Pipeline]
+    A --> C[Feature Store]
+    A --> D[Training Pipeline]
+    A --> E[Model Serving]
+    A --> F[Monitoring]
+    B --> B1[Ingestion, validation, transformation]
+    C --> C1[Online + Offline features]
+    D --> D1[Training, evaluation, registry]
+    E --> E1[Real-time, batch, streaming]
+    F --> F1[Drift, performance, business metrics]
+```
 
-### Step 4: Serving
-- Design serving architecture
-- Plan scaling strategy
-- Define monitoring approach
+## Interview Questions
 
-## Common System Design Questions
+1. **How do you approach ML system design questions?** — Clarify requirements → Define metrics → Design data pipeline → Choose model → Design serving architecture → Plan monitoring → Discuss trade-offs.
 
-| System | Key Challenges |
-|--------|---------------|
-| Recommendation | Candidate generation, ranking, real-time features |
-| Search Ranking | Relevance, freshness, personalization |
-| Fraud Detection | Imbalanced data, real-time inference, latency |
-| Ad Click Prediction | Scale, CTR estimation, feature freshness |
-| Content Moderation | Multi-modal, low latency, high recall |
+2. **What are the key differences between ML system design and traditional system design?** — ML systems need data pipelines, feature stores, model training/retraining, A/B testing, and drift monitoring on top of traditional distributed systems concerns.
 
-## Interview Tips
+3. **How do you handle model updates in production?** — CI/CD pipelines with automated training, evaluation gates, canary/blue-green deployment, and rollback capability.
 
-1. **Clarify requirements first** — Don't jump into model architecture
-2. **Start simple** — Begin with baseline, then iterate
-3. **Consider trade-offs** — Accuracy vs latency, complexity vs maintainability
-4. **Think about data** — Where does it come from? How fresh?
-5. **Address failure modes** — What happens when the model fails?
+## Cross-References
 
-## Summary
-
-ML System Design interviews test your ability to design end-to-end ML systems. The key is to balance technical depth with practical considerations. Follow a structured approach: requirements → data → model → serving. Always consider trade-offs and failure modes.
+- [MLOps](../mlops/README.md) — Operational practices
+- [System Design Interview](../../interview/system-design/README.md) — General system design
+- [ML Overview](../overview.md) — ML fundamentals

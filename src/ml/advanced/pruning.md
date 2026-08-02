@@ -2,15 +2,7 @@
 
 ## Overview
 
-Pruning removes **redundant or unimportant** components from a neural network — weights, neurons, channels, or even entire layers — to create a smaller, faster model with minimal accuracy loss. Inspired by biological neural development where synaptic connections are pruned over time.
-
-## Why Prune?
-
-- **Size reduction**: Remove 50-90% of parameters
-- **Speedup**: Fewer computations, especially with structured pruning
-- **Memory**: Lower RAM/VRAM requirements
-- **Generalization**: Pruning can reduce overfitting (less overparameterization)
-- **Energy**: Fewer operations = less power consumption
+Pruning removes redundant parameters (weights, neurons, or entire layers) from a trained model to reduce size and improve inference speed. The key insight is that trained neural networks are heavily overparameterized — many weights contribute little to the output. Pruning identifies and removes these unimportant parameters while preserving accuracy.
 
 ## Types of Pruning
 
@@ -18,167 +10,188 @@ Pruning removes **redundant or unimportant** components from a neural network �
 graph TD
     A[Pruning] --> B[Unstructured Pruning]
     A --> C[Structured Pruning]
-    A --> D[Semi-Structured Pruning]
-    
-    B --> B1[Individual weights set to zero]
-    B --> B2[Creates sparse matrices]
-    B --> B3[Needs sparse hardware for speedup]
-    
-    C --> C1[Remove entire channels/layers/attention heads]
-    C --> C2[Dense matrices - regular hardware friendly]
-    C --> C3[Direct speedup on standard hardware]
-    
-    D --> D1[N:M Sparsity - e.g., 2:4]
-    D --> D2[Supported by NVIDIA Ampere+]
+    A --> D[Semi-Structured]
+    B --> B1[Remove individual weights]
+    B --> B2[Sparse matrices]
+    C --> C1[Remove entire filters/channels]
+    C --> C2[Dense matrices, hardware-friendly]
+    D --> D1[N:M sparsity e.g. 2:4]
+    D --> D2[NVIDIA Ampere support]
 ```
 
-### Unstructured Pruning
-- Set individual weights to zero based on magnitude
-- Achieves high sparsity (90%+) with minimal accuracy loss
-- **Problem**: Sparse matrices need specialized hardware for actual speedup
-- Without sparse hardware support, only saves storage, not compute
+## Unstructured Pruning
 
-### Structured Pruning
-- Remove entire **channels, filters, or attention heads**
-- Results in a smaller dense model — works on standard hardware
-- Direct speedup without sparse computation support
-- More accuracy impact than unstructured at same sparsity level
+```python
+import torch.nn.utils.prune as prune
 
-### Semi-Structured (N:M) Pruning
-- In every group of M consecutive weights, keep exactly N non-zero
-- Example: **2:4 sparsity** — 2 out of every 4 weights are zero (50% sparsity)
-- Supported by **NVIDIA Ampere (A100)** and newer GPUs with sparse tensor cores
-- Best of both worlds: structured enough for hardware, flexible enough for accuracy
+def magnitude_pruning(model, sparsity=0.5):
+    """Remove smallest weights globally"""
+    for name, module in model.named_modules():
+        if isinstance(module, (torch.nn.Linear, torch.nn.Conv2d)):
+            prune.l1_unstructured(module, name='weight', amount=sparsity)
+
+    # Make pruning permanent
+    for name, module in model.named_modules():
+        if isinstance(module, (torch.nn.Linear, torch.nn.Conv2d)):
+            prune.remove(module, 'weight')
+
+    return model
+```
+
+### Global vs Local Pruning
+
+```python
+# Global pruning: prune across all layers
+parameters_to_prune = [
+    (module, 'weight')
+    for module in model.modules()
+    if isinstance(module, (torch.nn.Linear, torch.nn.Conv2d))
+]
+
+prune.global_unstructured(
+    parameters_to_prune,
+    pruning_method=prune.L1Unstructured,
+    amount=0.5,  # 50% of all weights globally
+)
+```
+
+## Structured Pruning
+
+```python
+def structured_pruning(model, sparsity=0.3):
+    """Remove entire channels/filters"""
+    for name, module in model.named_modules():
+        if isinstance(module, torch.nn.Conv2d):
+            prune.ln_structured(
+                module,
+                name='weight',
+                amount=sparsity,
+                n=2,  # L2 norm
+                dim=0  # Prune output channels
+            )
+    return model
+```
+
+### Why Structured Pruning?
+
+| Aspect | Unstructured | Structured |
+|--------|-------------|------------|
+| Sparsity pattern | Random | Regular |
+| Hardware support | Needs sparse libs | Standard dense ops |
+| Speedup | Potentially high | Guaranteed |
+| Accuracy | Better at same ratio | Slightly worse |
+| Implementation | Sparse matrices | Smaller dense model |
+
+## N:M Sparsity (Semi-Structured)
+
+NVIDIA Ampere GPUs support 2:4 sparsity — exactly 2 out of every 4 weights are zero:
+
+```python
+def apply_2_4_sparsity(model):
+    """Apply 2:4 structured sparsity"""
+    for name, module in model.named_modules():
+        if isinstance(module, torch.nn.Linear):
+            prune.ln_structured(
+                module, name='weight',
+                amount=0.5, n=1, dim=1
+            )
+    return model
+```
+
+## Iterative Pruning
+
+```python
+def iterative_pruning(model, train_loader, target_sparsity=0.9, steps=10):
+    """Gradually prune and fine-tune"""
+    sparsity_per_step = 1 - (1 - target_sparsity) ** (1 / steps)
+
+    for step in range(steps):
+        # Prune
+        for module in model.modules():
+            if isinstance(module, torch.nn.Linear):
+                prune.l1_unstructured(module, 'weight', sparsity_per_step)
+
+        # Fine-tune
+        fine_tune(model, train_loader, epochs=3)
+
+        # Evaluate
+        accuracy = evaluate(model)
+        print(f"Step {step+1}: sparsity={get_sparsity(model):.1%}, accuracy={accuracy:.4f}")
+
+    return model
+
+def get_sparsity(model):
+    total, zeros = 0, 0
+    for p in model.parameters():
+        total += p.numel()
+        zeros += (p == 0).sum().item()
+    return zeros / total
+```
+
+## Lottery Ticket Hypothesis
+
+Frankle & Carlin (2019): A randomly initialized network contains a sparse subnetwork ("winning ticket") that, when trained in isolation, matches the full network's accuracy.
+
+```python
+def lottery_ticket(model, train_loader, sparsity=0.8):
+    """Find the lottery ticket"""
+    # 1. Train original model
+    train(model, train_loader)
+
+    # 2. Save initial weights
+    initial_state = {k: v.clone() for k, v in model.state_dict().items()}
+
+    # 3. Prune
+    magnitude_pruning(model, sparsity)
+
+    # 4. Reset remaining weights to initial values
+    for name, param in model.named_parameters():
+        mask = param != 0
+        param.data[mask] = initial_state[name][mask]
+
+    # 5. Retrain the sparse network
+    train(model, train_loader)
+
+    return model
+```
 
 ## Pruning Criteria
 
-How to decide which weights/structures to prune:
-
-```mermaid
-graph TD
-    A[Pruning Criteria] --> B[Magnitude-Based]
-    A --> C[Gradient-Based]
-    A --> D[Hessian-Based]
-    A --> E[Activation-Based]
-    
-    B --> B1["Remove smallest |w|"]
-    C --> C1["Remove smallest |w × gradient|"]
-    D --> D1["Remove weights with smallest second-order impact"]
-    E --> E1["Remove channels with lowest activation variance"]
-```
-
-| Criterion | Method | Pros | Cons |
-|-----------|--------|------|------|
-| **Magnitude** | Remove smallest \|w\| | Simple, effective | Ignores gradient info |
-| **Gradient** | \|w × ∂L/∂w\| | Considers loss impact | Requires gradient computation |
-| **Hessian** | Second-order information | Theoretically optimal | Computationally expensive |
-| **Activation** | Low-variance activations | Data-aware | Requires forward passes |
-| **Taylor** | First-order Taylor expansion | Good balance | Moderate cost |
-
-## Pruning Strategies
-
-### One-Shot Pruning
-1. Train model to completion
-2. Prune once
-3. Optionally fine-tune to recover accuracy
-
-**Pros**: Simple, fast
-**Cons**: Accuracy drop can be large at high sparsity
-
-### Iterative Pruning
-1. Train → Prune small amount → Fine-tune → Repeat
-2. Gradually increase sparsity over multiple rounds
-
-```mermaid
-graph LR
-    A[Train] --> B[Prune 10%]
-    B --> C[Fine-tune]
-    C --> D[Prune 10%]
-    D --> E[Fine-tune]
-    E --> F[Repeat until target sparsity]
-```
-
-**Pros**: Better accuracy preservation
-**Cons**: More expensive (multiple train/prune cycles)
-
-### Gradual Pruning
-- Smoothly increase sparsity during training
-- Schedule: start dense, linearly/cosinely increase sparsity
-- Example: "During epochs 1-100, linearly increase sparsity from 0% to 90%"
-
-### Lottery Ticket Hypothesis
-Frankle & Carlin (2019):
-> Within a randomly initialized dense network, there exists a sparse subnetwork ("winning ticket") that, when trained from the same initialization, matches the full network's accuracy.
-
-**Implication**: Pruning finds efficient subnetworks, not just removes noise.
-
-**How to find winning tickets:**
-1. Train the full network
-2. Prune smallest-magnitude weights
-3. Reset remaining weights to **original initialization**
-4. Retrain — if it matches full accuracy, it's a winning ticket
-
-## LLM Pruning
-
-Pruning large language models is a specialized challenge:
-
-### Layer Pruning
-- Remove entire transformer layers
-- Middle layers are often more redundant than first/last
-- Can remove 20-30% of layers with minimal impact
-
-### Attention Head Pruning
-- Remove less important attention heads
-- Importance measured by: attention entropy, gradient-based scores
-- Many heads are redundant (especially in larger models)
-
-### Width Pruning
-- Reduce hidden dimension (e.g., 4096 → 3072)
-- Remove FFN intermediate neurons
-- Often combined with distillation for recovery
-
-### LLM-Pruner (2023)
-- Task-agnostic structured pruning for LLMs
-- Uses first-order and second-order information
-- Followed by LoRA fine-tuning to recover performance
+| Criterion | Method | Description |
+|-----------|--------|-------------|
+| Magnitude | L1/L2 norm | Remove smallest weights |
+| Gradient | Weight × Gradient | Remove weights with small impact on loss |
+| Hessian | Second-order | Remove weights with small Hessian diagonal |
+| Activation | Output magnitude | Remove neurons with low activation |
+| Taylor | First-order Taylor | Approximate impact on loss |
 
 ## Interview Questions
 
-**Q1: What's the difference between structured and unstructured pruning?**
-> Unstructured prunes individual weights, creating sparse matrices — high sparsity but needs specialized hardware for speedup. Structured removes entire channels/layers, creating smaller dense models — works on standard hardware but more accuracy impact at the same sparsity ratio.
+1. **What is pruning?** — Removing redundant parameters from a trained model to reduce size and improve speed. Types: unstructured (individual weights), structured (entire channels), semi-structured (N:M sparsity).
 
-**Q2: Explain the lottery ticket hypothesis.**
-> Dense networks contain sparse subnetworks that can achieve comparable accuracy when trained from the same initialization. This suggests overparameterization helps training but isn't needed for inference. The original paper uses iterative magnitude pruning to find these "winning tickets."
+2. **Unstructured vs structured pruning?** — Unstructured: removes individual weights, creates sparse matrices, needs special hardware. Structured: removes entire filters/channels, creates smaller dense models, guaranteed speedup.
 
-**Q3: How does iterative pruning differ from one-shot pruning?**
-> One-shot: prune once, fine-tune. Simple but large accuracy drop at high sparsity. Iterative: prune a little, fine-tune, repeat. More expensive but preserves accuracy much better. The key insight is that gradually removing weights gives the remaining weights time to adapt.
+3. **What is the Lottery Ticket Hypothesis?** — A randomly initialized dense network contains a sparse subnetwork that, when trained from the same initialization, matches the full network's accuracy.
 
-**Q4: Why is magnitude-based pruning so popular despite being simple?**
-> Because it works remarkably well in practice. Large-magnitude weights tend to be important, small ones tend to be redundant. It's computationally cheap (just sort by absolute value), doesn't require gradient data, and has strong empirical results across domains. More sophisticated methods often show marginal improvement.
+4. **How do you decide what to prune?** — Magnitude pruning (simplest): remove smallest weights. Gradient-based: remove weights with small gradient × weight. Hessian-based: most principled but expensive.
 
-**Q5: How do you prune an LLM without destroying its capabilities?**
-> (1) Use structured pruning (layer/head/width) for hardware-friendly results, (2) Measure importance using calibration data and gradient-based criteria, (3) Follow with LoRA fine-tuning to recover performance, (4) Evaluate on multiple benchmarks to ensure broad capability preservation, (5) Consider task-specific pruning if the model serves a narrow use case.
-
-**Q6: What is N:M sparsity and why is it important?**
-> N:M sparsity requires exactly N non-zero weights out of every M consecutive weights. 2:4 (50% sparsity) is supported by NVIDIA Ampere+ GPUs with dedicated sparse tensor cores, enabling actual 2× speedup. It bridges the gap between unstructured (hard to accelerate) and structured (too restrictive) pruning.
+5. **How does pruning interact with quantization?** — They're complementary. Prune first (remove redundancy), then quantize (reduce precision). Order matters: prune → fine-tune → quantize.
 
 ## Common Mistakes
 
-1. **Pruning without fine-tuning** — Always fine-tune after pruning to recover accuracy
-2. **Using unstructured pruning without sparse hardware** — You get size reduction but no speedup
-3. **Same sparsity for all layers** — Some layers are more sensitive; use sensitivity analysis
-4. **Pruning too aggressively** — There's a threshold beyond which accuracy collapses
-5. **Not measuring actual speedup** — FLOPs reduction ≠ latency reduction; profile on hardware
+- Pruning too aggressively without fine-tuning (accuracy collapse)
+- Not using structured pruning for deployment (sparse matrices need special libraries)
+- Pruning before training (lottery ticket needs trained weights)
+- Not measuring actual speedup (theoretical vs real)
 
 ## Summary
 
-| Aspect | Detail |
-|--------|--------|
-| **Goal** | Remove redundant parameters for efficiency |
-| **Types** | Unstructured (sparse), Structured (dense), N:M (semi-structured) |
-| **Criteria** | Magnitude, gradient, Hessian, activation-based |
-| **Strategy** | One-shot, iterative, gradual |
-| **LLM Pruning** | Layer, head, width pruning + LoRA recovery |
-| **Key Finding** | Lottery ticket hypothesis — sparse subnetworks match dense performance |
+Pruning removes redundant parameters to create smaller, faster models. Unstructured pruning achieves high sparsity but needs sparse hardware support. Structured pruning creates standard dense models with guaranteed speedup. The Lottery Ticket Hypothesis shows that sparse trainable subnetworks exist within large networks. Combined with quantization and distillation, pruning enables efficient model deployment.
 
-Pruning, combined with quantization and distillation, forms the holy trinity of model compression.
+## Cross-References
+
+- [Model Compression](./compression.md) — Compression overview
+- [Quantization](./quantization.md) — Precision reduction
+- [Knowledge Distillation](./distillation.md) — Smaller models
+- [Edge ML](./edge.md) — Deployment targets
+- [Optimization](../foundations/optimization.md) — Training fundamentals
