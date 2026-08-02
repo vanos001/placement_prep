@@ -1,143 +1,93 @@
-# MLOps Overview
+# MLOps
 
 ## Overview
 
-MLOps (Machine Learning Operations) is the practice of deploying, monitoring, and maintaining ML models in production reliably and efficiently. It combines DevOps principles with ML-specific challenges: data drift, model degradation, reproducibility, and experiment tracking. MLOps is what separates a Jupyter notebook prototype from a production ML system.
+MLOps (Machine Learning Operations) is the practice of deploying, monitoring, and maintaining ML models in production reliably and efficiently. It bridges the gap between ML experimentation and production-grade systems, applying DevOps principles to machine learning. MLOps encompasses the entire ML lifecycle: data management, model training, deployment, monitoring, and governance.
 
-## Why MLOps?
+## Why MLOps Matters
 
 ```mermaid
 graph TD
-    PROBLEM[ML in Production Challenges]
-    PROBLEM --> P1[Model degradation over time]
-    PROBLEM --> P2[Reproducibility issues]
-    PROBLEM --> P3[Deployment complexity]
-    PROBLEM --> P4[Monitoring gaps]
-    PROBLEM --> P5[Team collaboration]
-    
-    P1 --> MLOPS[MLOps Solution]
-    P2 --> MLOPS
-    P3 --> MLOPS
-    P4 --> MLOPS
-    P5 --> MLOPS
-    
-    MLOPS --> S1[Automated pipelines]
-    MLOPS --> S2[Experiment tracking]
-    MLOPS --> S3[CI/CD for ML]
-    MLOPS --> S4[Model monitoring]
-    MLOPS --> S5[Model registry]
+    A[ML in Research] --> B[Notebooks, manual, one-off]
+    C[ML in Production] --> D[Automated, reliable, monitored]
+    D --> E[Reproducibility]
+    D --> F[Scalability]
+    D --> G[Monitoring & Alerting]
+    D --> H[Version Control]
+    D --> I[CI/CD Pipelines]
 ```
 
-## The MLOps Lifecycle
+### The Production Gap
 
-```mermaid
-graph LR
-    DATA[Data] --> TRAIN[Training]
-    TRAIN --> EVAL[Eval]
-    EVAL --> REGISTER[Register]
-    REGISTER --> DEPLOY[Deploy]
-    DEPLOY --> MONITOR[Monitor]
-    MONITOR --> DATA
-    
-    note["Continuous cycle: monitor → retrain → deploy"]
-```
+| Aspect | Research | Production |
+|--------|----------|------------|
+| Data | Static, clean | Streaming, dirty |
+| Environment | Jupyter notebook | Container, Kubernetes |
+| Scale | Single GPU | Distributed clusters |
+| Monitoring | Manual checks | Automated alerts |
+| Updates | Ad-hoc | CI/CD pipeline |
+| Versioning | Git (sometimes) | Model registry + data versioning |
 
 ## MLOps Maturity Levels
 
-| Level | Description | Tools | Automation |
-|---|---|---|---|
-| **Level 0** | Manual process | Jupyter, scripts | None |
-| **Level 1** | ML pipeline automation | Airflow, Kubeflow | Training pipeline |
-| **Level 2** | CI/CD for ML | GitHub Actions, Jenkins | Training + deployment |
-| **Level 3** | Full automation | Custom platform | Retrain + deploy + monitor |
+```mermaid
+graph LR
+    A[Level 0: Manual] --> B[Level 1: Pipeline Automation]
+    B --> C[Level 2: CI/CD + CT]
+    C --> D[Level 3: Full MLOps]
+```
+
+| Level | Description | Tools |
+|-------|-------------|-------|
+| 0 | Manual training and deployment | Notebooks, scripts |
+| 1 | Automated training pipelines | Airflow, Kubeflow Pipelines |
+| 2 | CI/CD for models, continuous training | GitHub Actions + MLflow |
+| 3 | Full monitoring, auto-retraining, governance | Vertex AI, SageMaker |
+
+## Key Components
 
 ```mermaid
 graph TD
-    L0["Level 0: Manual<br/>Jupyter notebooks, manual deployment"]
-    L1["Level 1: Pipeline<br/>Automated training pipeline"]
-    L2["Level 2: CI/CD<br/>Automated testing and deployment"]
-    L3["Level 3: Full MLOps<br/>Continuous training, monitoring, retraining"]
-    L0 --> L1 --> L2 --> L3
+    A[MLOps] --> B[Data Management]
+    A --> C[Experiment Tracking]
+    A --> D[Model Registry]
+    A --> E[CI/CD for ML]
+    A --> F[Model Deployment]
+    A --> G[Model Monitoring]
+    A --> H[Feature Store]
+    A --> I[Infrastructure]
+    B --> B1[Data Versioning]
+    B --> B2[Data Validation]
+    C --> C1[MLflow, W&B]
+    D --> D1[Model Versioning]
+    D --> D2[Stage Management]
+    E --> E1[Testing]
+    E --> E2[Automation]
+    F --> F1[Canary, Blue-Green]
+    G --> G1[Drift Detection]
+    G --> G2[Performance Tracking]
 ```
-
-## Core Components
-
-```mermaid
-graph TD
-    MLOPS[MLOps Platform]
-    MLOPS --> PIPELINE[Pipeline Orchestration]
-    MLOPS --> REGISTRY[Model Registry]
-    MLOPS --> FEATURE[Feature Store]
-    MLOPS --> MONITOR[Monitoring]
-    MLOPS --> CICD[CI/CD]
-    MLOPS --> INFRA[Infrastructure]
-    
-    PIPELINE --> P1[Airflow, Kubeflow, Prefect]
-    REGISTRY --> R1[MLflow, W&B]
-    FEATURE --> F1[Feast, Tecton]
-    MONITOR --> M1[Prometheus, Grafana]
-    CICD --> C1[GitHub Actions]
-    INFRA --> I1[Kubernetes, GPU clusters]
-```
-
-## Key Challenges
-
-| Challenge | Description | Solution |
-|---|---|---|
-| **Data drift** | Input data changes over time | Monitoring, automated retraining |
-| **Model degradation** | Performance drops | A/B testing, canary deployment |
-| **Reproducibility** | Can't reproduce results | Versioning (data, code, model) |
-| **Scalability** | Handle more requests | Auto-scaling, batching |
-| **Cost** | GPU expenses | Spot instances, quantization |
-| **Collaboration** | Team coordination | Experiment tracking, model registry |
 
 ## Interview Questions
 
-### Q1: What is MLOps and why is it important?
-**Answer:** MLOps applies DevOps principles to ML systems. It's important because:
-1. Models degrade over time (data drift, concept drift)
-2. ML systems have more components than software (data, model, serving)
-3. Reproducibility requires versioning data, code, and models
-4. Deployment is complex (GPU infrastructure, model optimization)
-5. Monitoring is specialized (model performance, data quality)
+1. **What is MLOps and why is it important?** — MLOps applies DevOps principles to ML systems, ensuring models can be reliably deployed, monitored, and maintained in production. It addresses the gap between research experimentation and production reliability.
 
-Without MLOps, models stay in notebooks and never reach production reliably.
+2. **What are the key differences between DevOps and MLOps?** — MLOps adds data versioning, experiment tracking, model registry, data drift monitoring, and retraining pipelines on top of standard DevOps practices.
 
-### Q2: What are the key components of an MLOps platform?
-**Answer:**
-1. **Pipeline orchestration**: Automate training workflows (Airflow, Kubeflow)
-2. **Experiment tracking**: Log metrics, params, artifacts (MLflow, W&B)
-3. **Model registry**: Version and manage models (MLflow)
-4. **Feature store**: Serve features consistently (Feast)
-5. **CI/CD**: Test and deploy models automatically
-6. **Monitoring**: Track model performance and data quality
-7. **Infrastructure**: GPU clusters, scheduling, cost management
+3. **Describe the ML lifecycle** — Data collection → Feature engineering → Model training → Evaluation → Deployment → Monitoring → Retraining. MLOps automates and monitors each stage.
 
-### Q3: How does ML CI/CD differ from traditional CI/CD?
-**Answer:**
-- **Data testing**: Validate data quality, schema, distributions
-- **Model testing**: Evaluate on holdout sets, check for regression
-- **A/B testing**: Compare new model vs current in production
-- **Canary deployment**: Gradual rollout with monitoring
-- **Automated retraining**: Trigger on data drift or performance degradation
-- **Artifact versioning**: Track data, model, and code together
+4. **What is a feature store and why use one?** — A centralized repository for feature definitions and values, ensuring consistency between training and serving, enabling feature reuse, and providing point-in-time correctness.
 
-## Common Mistakes
-
-- ❌ Skipping MLOps for "simple" models (they still degrade)
-- ❌ Over-engineering (don't need Level 3 for every project)
-- ❌ Not versioning data (can't reproduce results)
-- ❌ No monitoring (silent model failures)
-- ❌ Ignoring cost optimization (GPU bills add up fast)
+5. **How do you detect model degradation in production?** — Monitor prediction distributions, data drift (PSI, KS test), performance metrics (if ground truth available), and business KPIs. Alert on significant deviations.
 
 ## Summary
 
-MLOps applies DevOps principles to ML systems, addressing data drift, reproducibility, deployment, and monitoring. Key components: pipeline orchestration, model registry, feature store, monitoring, and CI/CD. Maturity ranges from manual (Level 0) to fully automated (Level 3).
+MLOps is essential for taking ML models from research to production. It encompasses data management, experiment tracking, model deployment, monitoring, and infrastructure automation. The maturity levels range from manual processes to fully automated pipelines with continuous training and monitoring.
 
 ## Cross-References
 
-- [Pipelines →](pipelines.md) Training automation
-- [Model Registry →](model-registry.md) Model management
-- [Monitoring →](monitoring.md) Production monitoring
-- [CI/CD →](cicd.md) Automated deployment
-- [Infrastructure →](infrastructure.md) GPU clusters
+- [ML Overview](../overview.md) — ML fundamentals
+- [Model Serving](../system-design/model-serving.md) — Serving architecture
+- [ML Monitoring](../system-design/monitoring.md) — Monitoring in system design
+- [Docker](../../os/containers/docker.md) — Containerization
+- [Kubernetes](../../os/containers/kubernetes.md) — Orchestration

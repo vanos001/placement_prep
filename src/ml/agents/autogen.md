@@ -2,177 +2,219 @@
 
 ## Overview
 
-AutoGen (by Microsoft) is a framework for building multi-agent conversational systems. Agents communicate through messages in a group chat, with a manager coordinating the conversation. It's particularly strong for tasks requiring code execution, as it has built-in sandboxed code execution capabilities.
+AutoGen, developed by Microsoft Research, is a framework for building **multi-agent conversation systems** where agents collaborate through structured dialogue. It enables creating agent teams that can solve complex tasks through conversation, code execution, and tool use. AutoGen's core innovation is treating agent interactions as **conversations between customizable agents**.
 
-## Core Concepts
+## Core Architecture
 
 ```mermaid
 graph TD
-    GC[Group Chat]
-    GC --> M[Group Chat Manager]
-    GC --> A1[Agent 1: Assistant]
-    GC --> A2[Agent 2: Coder]
-    GC --> A3[Agent 3: Critic]
-    M --> A1
-    M --> A2
-    M --> A3
+    USER[User] --> ASSISTANT[Assistant Agent]
+    ASSISTANT --> |"Conversation"| USER_PROXY[User Proxy Agent]
+    USER_PROXY --> |"Execute Code"| CODE_EXEC[Code Executor]
+    CODE_EXEC --> |"Results"| USER_PROXY
+    USER_PROXY --> |"Feedback"| ASSISTANT
+    
+    ASSISTANT2[Assistant Agent 2] --> |"Collaborate"| ASSISTANT
+    ASSISTANT --> |"Delegate"| ASSISTANT2
 ```
 
-## Agent Types
+## Key Concepts
 
-| Agent | Role | Special Feature |
-|---|---|---|
-| **AssistantAgent** | General assistant | LLM-powered responses |
-| **UserProxy** | Human proxy | Executes code, asks for input |
-| **GroupChatManager** | Coordinator | Manages multi-agent conversations |
+### ConversableAgent
 
-## Basic Setup
+The base class for all agents — can send, receive, and process messages:
+
+```python
+from autogen import ConversableAgent
+
+agent = ConversableAgent(
+    name="assistant",
+    system_message="You are a helpful AI assistant.",
+    llm_config={"model": "gpt-4", "temperature": 0},
+    human_input_mode="NEVER",  # or "ALWAYS", "TERMINATE"
+)
+```
+
+### AssistantAgent
+
+An LLM-powered agent that generates responses:
+
+```python
+from autogen import AssistantAgent
+
+assistant = AssistantAgent(
+    name="coder",
+    system_message="You are an expert Python developer. Write clean, "
+                   "well-documented code. When you're done, say TERMINATE.",
+    llm_config={"model": "gpt-4"}
+)
+```
+
+### UserProxyAgent
+
+Executes code and provides human feedback:
+
+```python
+from autogen import UserProxyAgent
+
+user_proxy = UserProxyAgent(
+    name="user",
+    human_input_mode="ALWAYS",  # Ask human for input
+    code_execution_config={
+        "work_dir": "coding",
+        "use_docker": True,  # Safer execution
+    }
+)
+```
+
+## Multi-Agent Conversation
 
 ```python
 from autogen import AssistantAgent, UserProxyAgent, GroupChat, GroupChatManager
 
 # Create agents
-assistant = AssistantAgent(
-    name="assistant",
-    llm_config={"model": "gpt-4"},
-    system_message="You are a helpful AI assistant."
-)
-
 coder = AssistantAgent(
-    name="coder",
-    llm_config={"model": "gpt-4"},
-    system_message="You are an expert Python coder. Write clean, working code."
+    name="Coder",
+    system_message="You write Python code."
 )
 
-critic = AssistantAgent(
-    name="critic",
-    llm_config={"model": "gpt-4"},
-    system_message="You review code and provide constructive feedback."
+reviewer = AssistantAgent(
+    name="Reviewer",
+    system_message="You review code for bugs and improvements."
 )
 
-# User proxy (can execute code)
-user_proxy = UserProxyAgent(
-    name="user",
-    human_input_mode="NEVER",  # No human input needed
-    code_execution_config={"work_dir": "coding", "use_docker": True}
+tester = AssistantAgent(
+    name="Tester",
+    system_message="You write and run tests for the code."
+)
+
+user = UserProxyAgent(
+    name="User",
+    human_input_mode="TERMINATE"
 )
 
 # Group chat
 group_chat = GroupChat(
-    agents=[user_proxy, assistant, coder, critic],
+    agents=[user, coder, reviewer, tester],
     messages=[],
-    max_round=10
+    max_round=20
 )
 
 manager = GroupChatManager(group_chat=group_chat)
 
 # Start conversation
-user_proxy.initiate_chat(
+user.initiate_chat(
     manager,
-    message="Write a Python function to find prime numbers up to N."
+    message="Build a web scraper for news articles with error handling and tests."
 )
-```
-
-## Code Execution
-
-AutoGen's key feature — sandboxed code execution:
-
-```mermaid
-graph LR
-    CODER[Coder Agent] -->|Writes code| EXECUTOR[Code Executor]
-    EXECUTOR -->|Runs in sandbox| DOCKER[Docker Container]
-    DOCKER -->|Output/Error| CODER
-    CODER -->|Fixes code| EXECUTOR
-```
-
-```python
-# Configuration for code execution
-code_execution_config = {
-    "work_dir": "output",           # Working directory
-    "use_docker": True,             # Run in Docker (safe)
-    "timeout": 120,                 # Timeout in seconds
-    "last_n_messages": 3,           # Check last N messages for code
-}
 ```
 
 ## Conversation Patterns
 
-### Two-Agent Conversation
+### Two-Agent Chat
 
-```python
-# Simple assistant + user proxy
-assistant = AssistantAgent(name="assistant", llm_config=config)
-user = UserProxyAgent(name="user", human_input_mode="TERMINATE")
-
-user.initiate_chat(assistant, message="Explain recursion")
+```mermaid
+graph LR
+    A[User Proxy] <-->|"Turn-based conversation"| B[Assistant Agent]
 ```
 
-### Group Chat with Speaker Selection
+### Group Chat
+
+```mermaid
+graph TD
+    MANAGER[Group Chat Manager]
+    MANAGER --> A1[Agent 1: Coder]
+    MANAGER --> A2[Agent 2: Reviewer]
+    MANAGER --> A3[Agent 3: Tester]
+    A1 --> MANAGER
+    A2 --> MANAGER
+    A3 --> MANAGER
+```
+
+### Nested Chat
+
+```mermaid
+graph LR
+    A[Main Agent] -->|"Trigger"| B[Nested Chat]
+    B --> C[Sub-agent 1]
+    B --> D[Sub-agent 2]
+    B -->|"Result"| A
+```
+
+## Code Execution
+
+AutoGen can execute code in various environments:
 
 ```python
-group_chat = GroupChat(
-    agents=[planner, coder, reviewer],
-    messages=[],
-    max_round=15,
-    speaker_selection_method="auto"  # Manager picks next speaker
+# Local execution
+user_proxy = UserProxyAgent(
+    name="executor",
+    code_execution_config={
+        "work_dir": "output",
+        "use_docker": False,  # Local execution
+        "timeout": 60,
+        "last_n_messages": 3,
+    }
+)
+
+# Docker execution (safer)
+user_proxy = UserProxyAgent(
+    name="executor",
+    code_execution_config={
+        "work_dir": "output",
+        "use_docker": "python:3.11",  # Docker image
+        "timeout": 120,
+    }
 )
 ```
 
-### Nested Conversations
+## Teaching and Feedback
 
 ```python
-# Inner team for complex sub-tasks
-inner_team = GroupChat(
-    agents=[researcher, analyst],
-    messages=[]
-)
-inner_manager = GroupChatManager(group_chat=inner_team)
-
-# Outer team uses inner team
-outer_team = GroupChat(
-    agents=[coordinator, inner_manager, writer],
-    messages=[]
+# Agent with teaching mode
+assistant = AssistantAgent(
+    name="teacher",
+    system_message="You teach by providing examples and explanations.",
+    teach_config={
+        "teach_agent": student_agent,
+        "max_rounds": 5,
+    }
 )
 ```
 
 ## Interview Questions
 
-### Q1: What is AutoGen and what makes it unique?
-**Answer:** AutoGen is Microsoft's multi-agent conversation framework. Its unique features are:
-1. **Code execution**: Built-in sandboxed code execution (Docker support)
-2. **Conversation-based**: Agents communicate through natural language messages
-3. **Group chat**: Multiple agents in one conversation with a manager
-4. **Human-in-the-loop**: Flexible human input modes (ALWAYS, TERMINATE, NEVER)
-5. **Nested conversations**: Teams within teams
+### Q1: What is AutoGen and how does it work?
+**Answer:** AutoGen is a Microsoft framework for multi-agent conversation systems. Agents communicate through structured dialogue, can execute code, use tools, and collaborate. The key abstraction is ConversableAgent — all agents can send/receive messages. Conversations can be two-agent, group chat, or nested.
 
-### Q2: How does AutoGen handle code execution safely?
-**Answer:** AutoGen executes code in a sandboxed environment:
-- **Docker containers**: Code runs in isolated containers
-- **Timeout limits**: Prevents infinite loops
-- **Work directory**: Limited file system access
-- **Output capture**: stdout/stderr captured and returned to agents
-- **No network access**: By default, preventing data exfiltration
+### Q2: How does AutoGen handle code execution?
+**Answer:** AutoGen's UserProxyAgent can execute code generated by other agents. It supports local execution and Docker containers for safety. The agent receives code blocks from the conversation, executes them, and feeds results back. Error handling includes automatic retry with error messages sent back to the coding agent.
 
-### Q3: Compare AutoGen and CrewAI.
+### Q3: Compare AutoGen with CrewAI.
 **Answer:**
-- **AutoGen**: Conversation-based, code execution focus, flexible but verbose
-- **CrewAI**: Role-based, intuitive team metaphor, less code execution
-- AutoGen is better for coding tasks (built-in execution). CrewAI is better for role-based collaboration.
-- AutoGen has more Microsoft backing. CrewAI has simpler API.
+- **AutoGen**: Conversation-centric, flexible agent communication, strong code execution, group chat with dynamic speaker selection
+- **CrewAI**: Role-centric, structured task delegation, sequential/hierarchical processes, simpler API for common patterns
+- AutoGen is more flexible; CrewAI is more opinionated and easier for standard workflows.
+
+### Q4: What is a GroupChatManager?
+**Answer:** GroupChatManager orchestrates multi-agent group conversations. It selects the next speaker, manages message history, and enforces conversation rules. The speaker selection can be round-robin, random, or LLM-driven (the manager decides who should speak next based on the conversation context).
 
 ## Common Mistakes
 
+- ❌ Not setting `human_input_mode` correctly (infinite loops waiting for input)
 - ❌ Not using Docker for code execution (security risk)
-- ❌ Too many agents in one group chat (chaos)
-- ❌ Not setting max_round (infinite conversations)
-- ❌ Poor system messages (agents don't know their role)
+- ❌ Too many agents in group chat (expensive, hard to control)
+- ❌ No clear termination condition (agents keep chatting)
+- ❌ Not limiting max_rounds (cost explosion)
 
 ## Summary
 
-AutoGen enables multi-agent conversations with built-in code execution. Agents communicate through messages in a group chat managed by a coordinator. Key features: sandboxed code execution, flexible human input, and nested conversations. Best for coding tasks and research workflows.
+AutoGen enables multi-agent collaboration through structured conversation. Key abstractions: ConversableAgent (base), AssistantAgent (LLM-powered), UserProxyAgent (code execution/human input). Supports two-agent chat, group chat with dynamic speaker selection, and nested conversations. Strong code execution capabilities with Docker support.
 
 ## Cross-References
 
-- [Multi-Agent →](multi.md) Multi-agent patterns
-- [CrewAI →](crewai.md) Alternative multi-agent framework
-- [Frameworks →](frameworks.md) Framework comparison
+- [Frameworks →](frameworks.md) Agent framework overview
+- [Multi-Agent →](multi-agent.md) Multi-agent patterns
+- [CrewAI →](crewai.md) Role-based multi-agent
+- [LangChain →](langchain.md) Alternative framework
+- [Tool Calling →](tool-calling.md) How agents use tools

@@ -2,200 +2,171 @@
 
 ## Overview
 
-Model monitoring tracks the performance and health of ML models in production. Unlike software that either works or fails, ML models can silently degrade — predictions become less accurate over time as data patterns change. Monitoring detects these issues before they impact users.
+Model monitoring tracks the health, performance, and behavior of ML models in production. Unlike traditional software, ML models can silently degrade as data patterns shift. Monitoring detects data drift, concept drift, prediction anomalies, and performance degradation — triggering alerts or retraining before business impact.
 
 ## What to Monitor
 
 ```mermaid
 graph TD
-    MONITORING[Model Monitoring]
-    MONITORING --> PERF[Performance Metrics]
-    MONITORING --> DATA[Data Quality]
-    MONITORING --> SYSTEM[System Metrics]
-    MONITORING --> BUSINESS[Business Metrics]
-
-    PERF --> P1[Accuracy, Precision, Recall]
-    PERF --> P2[Latency, Throughput]
-
-    DATA --> D1[Data Drift]
-    DATA --> D2[Concept Drift]
-    DATA --> D3[Missing Values]
-
-    SYSTEM --> S1[CPU/GPU Utilization]
-    SYSTEM --> S2[Memory Usage]
-    SYSTEM --> S3[Error Rates]
-
-    BUSINESS --> B1[Conversion Rate]
-    BUSINESS --> B2[User Satisfaction]
+    A[Model Monitoring] --> B[Data Quality]
+    A --> C[Model Performance]
+    A --> D[System Health]
+    A --> E[Business Metrics]
+    B --> B1[Missing values, schema changes]
+    B --> B2[Data drift distribution shift]
+    B --> B3[Feature anomalies]
+    C --> C1[Prediction distribution]
+    C --> C2[Accuracy, latency, throughput]
+    C --> C3[Confidence scores]
+    D --> D1[CPU, Memory, GPU usage]
+    D --> D2[Request rate, error rate]
+    D --> D3[Latency percentiles]
+    E --> E1[Revenue impact]
+    E --> E2[User engagement]
+    E --> E3[Conversion rates]
 ```
 
-## Types of Drift
+## Monitoring Layers
 
-### Data Drift (Covariate Shift)
-
-Input data distribution changes:
-
-```mermaid
-graph LR
-    subgraph "Training Data"
-        T["Age: 20-40, Income: 50-100K"]
-    end
-    subgraph "Production Data"
-        P["Age: 30-60, Income: 80-200K"]
-    end
-    T -.->|"Drift!"| P
-```
-
-### Concept Drift
-
-Relationship between input and output changes:
-
-```mermaid
-graph LR
-    subgraph "Before"
-        B["Feature X > 50 → Class A"]
-    end
-    subgraph "After"
-        A["Feature X > 50 → Class B"]
-    end
-    B -.->|"Concept drift!"| A
-```
-
-### Label Drift
-
-Output distribution changes:
-
-```mermaid
-graph LR
-    subgraph "Training"
-        T["Class A: 70%, Class B: 30%"]
-    end
-    subgraph "Production"
-        P["Class A: 40%, Class B: 60%"]
-    end
-    T -.->|"Label drift!"| P
-```
-
-## Monitoring Architecture
-
-```mermaid
-graph TD
-    MODEL[Production Model] --> PRED[Predictions]
-    PRED --> LOG[Log Predictions]
-    LOG --> STORE[(Data Store)]
-    
-    GROUND[Ground Truth Labels] --> COMPARE[Compare]
-    STORE --> COMPARE
-    COMPARE --> ALERT{Degraded?}
-    ALERT -->|Yes| NOTIFY[Alert Team]
-    ALERT -->|No| CONTINUE[Continue]
-    
-    STORE --> DRIFT[Drift Detection]
-    DRIFT --> ALERT
-```
-
-## Key Metrics
-
-### Performance Metrics
-
-| Metric | Formula | When to Use |
-|---|---|---|
-| **Accuracy** | correct / total | Balanced classes |
-| **Precision** | TP / (TP + FP) | Cost of false positives is high |
-| **Recall** | TP / (TP + FN) | Cost of false negatives is high |
-| **F1** | 2 × P × R / (P + R) | Balance precision and recall |
-| **AUC** | Area under ROC | Ranking problems |
-| **MAE/MSE** | Error metrics | Regression |
-
-### Operational Metrics
-
-| Metric | What It Measures | Alert Threshold |
-|---|---|---|
-| **Latency (p50/p99)** | Prediction time | > 100ms / > 500ms |
-| **Throughput** | Predictions/sec | < expected minimum |
-| **Error rate** | Failed predictions | > 1% |
-| **Memory usage** | Model memory | > 80% capacity |
-| **Queue depth** | Pending requests | > 100 |
-
-## Alerting
+### 1. Data Monitoring
 
 ```python
-class ModelMonitor:
-    def __init__(self, thresholds):
-        self.thresholds = thresholds
-    
-    def check_metrics(self, current_metrics):
-        alerts = []
-        
-        for metric, value in current_metrics.items():
-            threshold = self.thresholds.get(metric)
-            if threshold and value < threshold:
-                alerts.append(Alert(
-                    metric=metric,
-                    current=value,
-                    threshold=threshold,
-                    severity="HIGH" if value < threshold * 0.9 else "MEDIUM"
-                ))
-        
-        if alerts:
-            self.send_notifications(alerts)
-        
-        return alerts
+import numpy as np
+from scipy.stats import ks_2samp, chi2_contingency
+
+def detect_data_drift(reference_data, current_data, threshold=0.05):
+    """Detect drift using Kolmogorov-Smirnov test"""
+    drift_results = {}
+    for col in reference_data.columns:
+        stat, p_value = ks_2samp(reference_data[col], current_data[col])
+        drift_results[col] = {
+            'statistic': stat,
+            'p_value': p_value,
+            'drift_detected': p_value < threshold
+        }
+    return drift_results
+
+def population_stability_index(reference, current, bins=10):
+    """PSI: measure distribution shift"""
+    # Bin the reference data
+    breakpoints = np.percentile(reference, np.linspace(0, 100, bins + 1))
+    ref_counts = np.histogram(reference, bins=breakpoints)[0] / len(reference)
+    cur_counts = np.histogram(current, bins=breakpoints)[0] / len(current)
+
+    # Avoid division by zero
+    ref_counts = np.clip(ref_counts, 1e-4, None)
+    cur_counts = np.clip(cur_counts, 1e-4, None)
+
+    psi = np.sum((cur_counts - ref_counts) * np.log(cur_counts / ref_counts))
+    return psi  # < 0.1: stable, 0.1-0.25: moderate shift, > 0.25: significant shift
 ```
 
-## Monitoring Tools
+### 2. Prediction Monitoring
 
-| Tool | Focus | Key Feature |
-|---|---|---|
-| **Prometheus + Grafana** | System metrics | Industry standard |
-| **Evidently AI** | ML-specific | Drift detection |
-| **Whylogs** | Data logging | Lightweight profiling |
-| **Arize** | ML observability | Production monitoring |
-| **Fiddler** | Model monitoring | Explainability |
+```python
+class PredictionMonitor:
+    def __init__(self, baseline_predictions):
+        self.baseline_mean = np.mean(baseline_predictions)
+        self.baseline_std = np.std(baseline_predictions)
+
+    def check_prediction_drift(self, current_predictions, window_size=1000):
+        """Monitor prediction distribution shift"""
+        current_mean = np.mean(current_predictions[-window_size:])
+        current_std = np.std(current_predictions[-window_size:])
+
+        # Z-test for mean shift
+        z_score = abs(current_mean - self.baseline_mean) / self.baseline_std
+        drift = z_score > 3  # 3-sigma rule
+
+        return {
+            'mean_shift': current_mean - self.baseline_mean,
+            'z_score': z_score,
+            'drift_detected': drift
+        }
+```
+
+### 3. Performance Monitoring
+
+```python
+def monitor_performance(y_true, y_pred, baseline_metrics):
+    """Track model performance over time"""
+    from sklearn.metrics import accuracy_score, f1_score, roc_auc_score
+
+    current = {
+        'accuracy': accuracy_score(y_true, y_pred),
+        'f1': f1_score(y_true, y_pred),
+    }
+
+    alerts = []
+    for metric, value in current.items():
+        baseline = baseline_metrics[metric]
+        degradation = (baseline - value) / baseline
+        if degradation > 0.05:  # 5% degradation threshold
+            alerts.append(f"⚠️ {metric} degraded by {degradation:.1%}")
+
+    return current, alerts
+```
+
+## Alerting Strategy
+
+```python
+class AlertManager:
+    def __init__(self):
+        self.alerts = []
+
+    def evaluate(self, metrics, thresholds):
+        """Evaluate metrics against thresholds"""
+        for metric, value in metrics.items():
+            threshold = thresholds.get(metric)
+            if threshold and value > threshold:
+                self.alerts.append({
+                    'metric': metric,
+                    'value': value,
+                    'threshold': threshold,
+                    'severity': self._severity(value, threshold)
+                })
+
+    def _severity(self, value, threshold):
+        ratio = value / threshold
+        if ratio > 2:
+            return 'CRITICAL'
+        elif ratio > 1.5:
+            return 'WARNING'
+        return 'INFO'
+```
+
+## Monitoring Dashboard Metrics
+
+| Metric | Frequency | Alert Condition |
+|--------|-----------|-----------------|
+| Prediction distribution | Real-time | PSI > 0.25 |
+| Feature drift | Hourly | KS test p < 0.01 |
+| Latency p99 | Real-time | > 500ms |
+| Error rate | Real-time | > 1% |
+| Throughput | Real-time | < 50% baseline |
+| Missing features | Hourly | > 5% null |
+| Model accuracy | Daily | > 5% degradation |
 
 ## Interview Questions
 
-### Q1: What is model monitoring and why is it important?
-**Answer:** Model monitoring tracks ML model performance in production. It's important because:
-1. Models degrade silently (unlike software errors)
-2. Data distributions change over time (data drift)
-3. The relationship between inputs and outputs can change (concept drift)
-4. Production data may differ from training data
-5. Early detection prevents business impact
+1. **What is the difference between data drift and concept drift?** — Data drift: input distribution P(X) changes. Concept drift: the relationship P(Y|X) changes. Example: user demographics shift (data drift) vs. what users want changes (concept drift).
 
-Without monitoring, you won't know your model is failing until users complain.
+2. **How do you detect data drift?** — Statistical tests (KS test, chi-squared), distribution comparison (PSI, JS divergence), or by monitoring feature statistics (mean, variance, missing rate).
 
-### Q2: What is the difference between data drift and concept drift?
-**Answer:**
-- **Data drift**: The input data distribution changes. Example: average user age shifts from 25 to 35.
-- **Concept drift**: The relationship between inputs and outputs changes. Example: what was a "high-value customer" before is no longer.
-- Data drift is easier to detect (compare distributions). Concept drift requires labeled data or proxy metrics.
+3. **What metrics should you monitor for an ML model?** — Input data quality (missing values, drift), prediction distribution, performance metrics (if ground truth available), system metrics (latency, throughput), and business KPIs.
 
-### Q3: How do you set up monitoring for an ML model?
-**Answer:**
-1. **Log predictions**: Store all inputs, outputs, and timestamps
-2. **Collect ground truth**: Get actual outcomes when available
-3. **Compute metrics**: Calculate performance metrics on recent data
-4. **Detect drift**: Compare recent data distribution to training data
-5. **Set alerts**: Define thresholds for key metrics
-6. **Create dashboards**: Visualize trends over time
-7. **Automate response**: Trigger retraining or rollback on degradation
+4. **How do you handle model degradation?** — Automated retraining pipeline triggered by drift alerts, A/B testing new models, canary deployment for safe rollout, and rollback capability.
 
-## Common Mistakes
-
-- ❌ Not monitoring at all (silent failures)
-- ❌ Monitoring only system metrics (not model quality)
-- ❌ No ground truth collection (can't compute real accuracy)
-- ❌ Setting alert thresholds too sensitive (alert fatigue) or too loose (missed issues)
-- ❌ Not automating response to degradation
+5. **What is the feedback loop problem?** — When model predictions influence future training data (e.g., recommendation system only shows predicted-top items). This can amplify biases and degrade performance.
 
 ## Summary
 
-Model monitoring tracks performance, data quality, system health, and business metrics. Key concepts: data drift (input changes), concept drift (relationship changes), and label drift (output changes). Tools like Evidently AI and Prometheus help detect issues early. Alerting and automated response are essential for production systems.
+Model monitoring is critical for maintaining ML model health in production. It encompasses data quality (drift, anomalies), prediction behavior, system health, and business impact. Key techniques include statistical drift tests (KS, PSI), performance tracking, and multi-level alerting. Monitoring should trigger automated retraining when degradation is detected.
 
 ## Cross-References
 
-- [Drift →](drift.md) Drift detection methods
-- [A/B Testing →](ab-testing.md) Comparing model versions
-- [Canary →](canary.md) Gradual rollout with monitoring
-- [MLflow →](mlflow.md) Experiment tracking
+- [Data Drift](./drift.md) — Detailed drift detection
+- [MLOps Overview](./README.md) — MLOps fundamentals
+- [ML Monitoring (System Design)](../system-design/monitoring.md) — Design perspective
+- [A/B Testing](./ab-testing.md) — Evaluating model changes
+- [Evaluation Metrics](../foundations/evaluation.md) — Performance metrics
