@@ -345,6 +345,6 @@ The bootloader is the critical bridge between firmware and the operating system.
 
 ## Cross References
 
-- [BIOS/UEFI](../os/boot/bios-uefi.md)
-- [Init Systems](../os/boot/init-systems.md)
-- [Kernel Threads](../os/threads/user-vs-kernel.md)
+- [BIOS/UEFI](bios-uefi.md)
+- [Init Systems](init-systems.md)
+- [Kernel Threads](../threads/user-vs-kernel.md)

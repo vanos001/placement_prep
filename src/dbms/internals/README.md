@@ -216,7 +216,7 @@ A: At 80% hit rate: 2,000 disk reads/sec needed — well within 50,000 IOPS. At 
 
 ## Cross References
 
-- [WAL](../dbms/internals/wal.md)
-- [LSM Trees](../dbms/internals/lsm-trees.md)
-- [Buffer Pool](../dbms/caching/buffer-pool.md)
-- [File Organization](../dbms/storage/file-organization.md)
+- [WAL](wal.md)
+- [LSM Trees](lsm-trees.md)
+- [Buffer Pool](../caching/buffer-pool.md)
+- [File Organization](../storage/file-organization.md)

@@ -456,7 +456,7 @@ A:
 
 ## Cross References
 
-- [Page Tables](../os/memory/page-tables.md)
-- [Paging](../os/memory/paging.md)
-- [TLB](../os/memory/tlb.md)
-- [Hash Index](../dbms/indexing/hash-index.md)
+- [Page Tables](page-tables.md)
+- [Paging](paging.md)
+- [TLB](tlb.md)
+- [Hash Index](../../dbms/indexing/hash-index.md)

@@ -205,6 +205,6 @@ A: Use **Virtual Clock** or **Weighted Fair Queuing (WFQ):** Each queue has a we
 
 ## Cross References
 
-- [Multilevel Feedback](../os/scheduling/multilevel-feedback.md)
-- [Priority Scheduling](../os/scheduling/priority.md)
-- [Round Robin](../os/scheduling/round-robin.md)
+- [Multilevel Feedback](multilevel-feedback.md)
+- [Priority Scheduling](priority.md)
+- [Round Robin](round-robin.md)

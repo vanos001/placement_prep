@@ -294,6 +294,5 @@ Graph databases excel at relationship-heavy queries that would require expensive
 
 ## Cross References
 
-- [ER Diagrams](../dbms/relational-model/er-diagrams.md)
-- [GNN](../ml/gnn/README.md)
-- [BFS/DFS](../distributed/fundamentals/README.md)
+- [ER Diagrams](../relational-model/er-diagrams.md)
+- [Graph Neural Networks](../../ml/gnn/README.md)

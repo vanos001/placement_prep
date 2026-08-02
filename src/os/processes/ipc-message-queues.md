@@ -308,7 +308,7 @@ A: 1) **Persistence:** System V queues persist across process crashes, 2) **Ackn
 
 ## Cross References
 
-- [IPC Overview](../os/processes/ipc.md)
-- [Message Queues](../distributed/messaging/queues.md)
-- [Kafka](../distributed/messaging/kafka.md)
-- [Sockets](../os/processes/ipc-sockets.md)
+- [IPC Overview](ipc.md)
+- [Message Queues](../../distributed/messaging/queues.md)
+- [Kafka](../../distributed/messaging/kafka.md)
+- [Sockets](ipc-sockets.md)

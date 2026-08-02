@@ -300,6 +300,6 @@ A: Hash index: exact membership testing with pointers to data. O(1) lookup, supp
 
 ## Cross References
 
-- [B-Tree](../dbms/indexing/b-tree.md)
-- [Consistent Hashing](../distributed/partitioning/consistent-hashing.md)
-- [Cache Mapping](../arch/memory-hierarchy/cache-mapping.md)
+- [B-Tree](b-tree.md)
+- [Consistent Hashing](../../distributed/partitioning/consistent-hashing.md)
+- [Cache Mapping](../../arch/memory-hierarchy/cache-mapping.md)

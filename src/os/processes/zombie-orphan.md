@@ -327,6 +327,6 @@ A: Container runtimes (Docker, containerd) use an init process (like `tini` or `
 
 ## Cross References
 
-- [Process Creation](../os/processes/creation.md)
-- [Process States](../os/processes/states.md)
-- [Signals](../os/processes/ipc-signals.md)
+- [Process Creation](creation.md)
+- [Process States](states.md)
+- [Signals](ipc-signals.md)

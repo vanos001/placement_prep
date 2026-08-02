@@ -454,7 +454,7 @@ Diagnostic commands:
 
 ## Cross References
 
-- [Namespaces](../os/containers/namespaces.md)
-- [Docker](../os/containers/docker.md)
-- [Scheduling](../os/scheduling/README.md)
-- [Resource Management](../os/memory/numa.md)
+- [Namespaces](namespaces.md)
+- [Docker](docker.md)
+- [Scheduling](../scheduling/README.md)
+- [Resource Management](../memory/numa.md)

@@ -355,6 +355,6 @@ A: Primary key determines the **clustering index** — data is physically sorted
 
 ## Cross References
 
-- [ER Diagrams](../dbms/relational-model/er-diagrams.md)
-- [Indexing](../dbms/indexing/README.md)
-- [Normalization](../dbms/normalization/README.md)
+- [ER Diagrams](er-diagrams.md)
+- [Indexing](../indexing/README.md)
+- [Normalization](../normalization/README.md)

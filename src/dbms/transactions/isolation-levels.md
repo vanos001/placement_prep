@@ -364,8 +364,8 @@ A: SSI: No read locks, readers never block. Higher abort rates due to false posi
 
 ## Cross References
 
-- [ACID](../dbms/transactions/acid.md)
-- [MVCC](../dbms/transactions/mvcc.md)
-- [Serializability](../dbms/transactions/serializability.md)
-- [Concurrency Control](../dbms/transactions/concurrency-control.md)
-- [Consistency Models](../distributed/fundamentals/consistency.md)
+- [ACID](acid.md)
+- [MVCC](mvcc.md)
+- [Serializability](serializability.md)
+- [Concurrency Control](concurrency-control.md)
+- [Consistency Models](../../distributed/fundamentals/consistency.md)

@@ -373,7 +373,7 @@ Page Table Entry (PTE):
 
 ## Cross References
 
-- [Page Replacement](../os/virtual-memory/page-replacement.md)
-- [LRU](../os/virtual-memory/lru.md)
-- [FIFO](../os/virtual-memory/fifo.md)
-- [Cache Replacement](../arch/memory-hierarchy/replacement.md)
+- [Page Replacement](page-replacement.md)
+- [LRU](lru.md)
+- [FIFO](fifo.md)
+- [Cache Replacement](../../arch/memory-hierarchy/replacement.md)

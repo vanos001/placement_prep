@@ -364,6 +364,6 @@ $$ LANGUAGE plpgsql;
 
 ## Cross References
 
-- [CTEs](../dbms/sql/ctes.md)
-- [Stored Procedures](../dbms/sql/stored-procedures.md)
-- [Triggers](../dbms/sql/triggers.md)
+- [CTEs](ctes.md)
+- [Stored Procedures](stored-procedures.md)
+- [Triggers](triggers.md)

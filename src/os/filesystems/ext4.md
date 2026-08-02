@@ -232,6 +232,6 @@ If the primary superblock is corrupted, the copies can be used for recovery. Not
 
 ## Cross References
 
-- [Journaling](../os/filesystems/journaling.md)
-- [VFS](../os/filesystems/vfs.md)
-- [Disk Allocation](../os/filesystems/disk-allocation.md)
+- [Journaling](journaling.md)
+- [VFS](vfs.md)
+- [Disk Allocation](disk-allocation.md)

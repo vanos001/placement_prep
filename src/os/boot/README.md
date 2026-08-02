@@ -82,6 +82,6 @@ Each stage must hand off control to the next in a reliable, well-defined manner.
 
 ## Cross References
 
-- [BIOS/UEFI](../os/boot/bios-uefi.md)
-- [Bootloader](../os/boot/bootloader.md)
-- [Init Systems](../os/boot/init-systems.md)
+- [BIOS/UEFI](bios-uefi.md)
+- [Bootloader](bootloader.md)
+- [Init Systems](init-systems.md)

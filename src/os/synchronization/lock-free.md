@@ -258,7 +258,7 @@ When a thread notices another thread is slow (e.g., tail pointer in a queue is l
 
 ## Cross References
 
-- [CAS](../os/synchronization/cas.md)
-- [Memory Barriers](../os/synchronization/memory-barriers.md)
-- [Lock-Free (Concurrency)](../concurrency/lock-free.md)
-- [Optimistic Concurrency](../dbms/transactions/optimistic.md)
+- [CAS](cas.md)
+- [Memory Barriers](memory-barriers.md)
+- [Lock-Free (Concurrency)](../../concurrency/lock-free.md)
+- [Optimistic Concurrency](../../dbms/transactions/optimistic.md)

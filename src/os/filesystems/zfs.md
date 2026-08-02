@@ -306,7 +306,7 @@ ZFS uses RAM for: (1) ARC read cache (typically 50-75% of RAM), (2) metadata cac
 
 ## Cross References
 
-- [Btrfs](../os/filesystems/btrfs.md)
-- [RAID](../os/filesystems/raid.md)
-- [Erasure Coding](../storage/erasure-coding.md)
-- [Copy-on-Write](../os/virtual-memory/cow.md)
+- [Btrfs](btrfs.md)
+- [RAID](raid.md)
+- [Erasure Coding](../../storage/erasure-coding.md)
+- [Copy-on-Write](../virtual-memory/cow.md)

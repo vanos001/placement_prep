@@ -274,7 +274,6 @@ Sort-Merge Join is a versatile algorithm that shines when data is already sorted
 
 ## Cross References
 
-- [Nested Loop](../dbms/query-processing/nested-loop.md)
-- [Hash Join](../dbms/query-processing/hash-join.md)
-- [Buffer Pool](../dbms/caching/buffer-pool.md)
-- [External Sorting](../dbms/query-processing/sort-merge.md)
+- [Nested Loop](nested-loop.md)
+- [Hash Join](hash-join.md)
+- [Buffer Pool](../caching/buffer-pool.md)

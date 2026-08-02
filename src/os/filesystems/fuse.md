@@ -306,7 +306,7 @@ Not directly, because the FUSE daemon runs in userspace and needs the kernel to 
 
 ## Cross References
 
-- [VFS](../os/filesystems/vfs.md)
-- [Device Drivers](../os/io/device-drivers.md)
-- [User vs Kernel](../os/threads/user-vs-kernel.md)
-- [Object Storage](../storage/object-storage.md)
+- [VFS](vfs.md)
+- [Device Drivers](../io/device-drivers.md)
+- [User vs Kernel](../threads/user-vs-kernel.md)
+- [Object Storage](../../storage/object-storage.md)

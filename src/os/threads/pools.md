@@ -431,7 +431,7 @@ A: **Thread pools:** Simple blocking code, N threads = N concurrent tasks, overh
 
 ## Cross References
 
-- [Thread Models](../os/threads/models.md)
-- [Thread Pools (Concurrency)](../concurrency/thread-pools.md)
-- [Producer-Consumer](../concurrency/producer-consumer.md)
-- [Fork-Join](../concurrency/fork-join.md)
+- [Thread Models](models.md)
+- [Thread Pools (Concurrency)](../../concurrency/thread-pools.md)
+- [Producer-Consumer](../../concurrency/producer-consumer.md)
+- [Fork-Join](../../concurrency/fork-join.md)

@@ -490,8 +490,8 @@ A:
 
 ## Cross References
 
-- [Virtual Memory](../os/virtual-memory/README.md)
-- [Page Replacement](../os/virtual-memory/page-replacement.md)
-- [Thrashing](../os/virtual-memory/thrashing.md)
-- [SSD](../storage/ssd.md)
-- [Buffer Pool](../dbms/caching/buffer-pool.md)
+- [Virtual Memory](../virtual-memory/README.md)
+- [Page Replacement](../virtual-memory/page-replacement.md)
+- [Thrashing](../virtual-memory/thrashing.md)
+- [SSD](../../storage/ssd.md)
+- [Buffer Pool](../../dbms/caching/buffer-pool.md)

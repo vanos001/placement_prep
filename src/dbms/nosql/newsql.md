@@ -529,7 +529,7 @@ Spanner's external consistency is the strongest: if T1 commits before T2 starts 
 
 ## Cross References
 
-- [ACID](../dbms/transactions/acid.md)
-- [Distributed Transactions](../dbms/transactions/distributed.md)
-- [Sharding](../dbms/distributed/sharding.md)
-- [Consensus](../dbms/distributed/consensus.md)
+- [ACID](../transactions/acid.md)
+- [Distributed Transactions](../transactions/distributed.md)
+- [Sharding](../distributed/sharding.md)
+- [Consensus](../distributed/consensus.md)

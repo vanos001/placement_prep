@@ -310,6 +310,6 @@ Document databases are the most popular NoSQL type, offering a good balance of f
 
 ## Cross References
 
-- [Key-Value](../dbms/nosql/key-value.md)
-- [B-Tree](../dbms/indexing/b-tree.md)
-- [Relational Model](../dbms/relational-model/README.md)
+- [Key-Value](key-value.md)
+- [B-Tree](../indexing/b-tree.md)
+- [Relational Model](../relational-model/README.md)

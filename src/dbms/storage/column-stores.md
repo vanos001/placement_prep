@@ -273,7 +273,7 @@ Column stores are the foundation of modern analytics. Understanding the trade-of
 
 ## Cross References
 
-- [Record Formats](../dbms/storage/record-formats.md)
-- [Bitmap Index](../dbms/indexing/bitmap-index.md)
-- [SIMD](../arch/parallelism/simd.md)
-- [Compression](../ml/advanced/compression.md)
+- [Record Formats](record-formats.md)
+- [Bitmap Index](../indexing/bitmap-index.md)
+- [SIMD](../../arch/parallelism/simd.md)
+- [Compression](../../ml/advanced/compression.md)

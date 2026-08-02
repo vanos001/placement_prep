@@ -313,7 +313,7 @@ Replication is fundamental to distributed databases. The choice between sync/asy
 
 ## Cross References
 
-- [Consistency Models](../dbms/distributed/consistency.md)
-- [Replication (Distributed)](../distributed/replication/README.md)
-- [Quorum](../distributed/replication/quorum.md)
-- [CAP Theorem](../dbms/distributed/cap.md)
+- [Consistency Models](consistency.md)
+- [Replication (Distributed)](../../distributed/replication/README.md)
+- [Quorum](../../distributed/replication/quorum.md)
+- [CAP Theorem](cap.md)

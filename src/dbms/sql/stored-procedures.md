@@ -511,6 +511,6 @@ A: Stored procedures have their execution plans cached after first compilation. 
 
 ## Cross References
 
-- [Views](../dbms/sql/views.md)
-- [Triggers](../dbms/sql/triggers.md)
-- [SQL DML](../dbms/sql/dml.md)
+- [Views](views.md)
+- [Triggers](triggers.md)
+- [SQL DML](dml.md)

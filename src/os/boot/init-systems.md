@@ -448,7 +448,7 @@ sudo systemctl restart nginx
 
 ## Cross References
 
-- [Bootloader](../os/boot/bootloader.md)
-- [Daemons](../os/processes/daemons.md)
-- [Kubernetes Pods](../cloud/kubernetes/pods.md)
-- [Process Creation](../os/processes/creation.md)
+- [Bootloader](bootloader.md)
+- [Daemons](../processes/daemons.md)
+- [Kubernetes Pods](../../cloud/kubernetes/pods.md)
+- [Process Creation](../processes/creation.md)

@@ -262,8 +262,8 @@ Design: Multi-Class Priority Scheduler with Bandwidth Reservation
 
 ## Cross References
 
-- [FCFS](../os/io/disk-fcfs.md)
-- [SSTF](../os/io/disk-sstf.md)
-- [SCAN](../os/io/disk-scan.md)
-- [Disk Allocation](../os/filesystems/disk-allocation.md)
-- [HDD](../storage/hdd.md)
+- [FCFS](disk-fcfs.md)
+- [SSTF](disk-sstf.md)
+- [SCAN](disk-scan.md)
+- [Disk Allocation](../filesystems/disk-allocation.md)
+- [HDD](../../storage/hdd.md)

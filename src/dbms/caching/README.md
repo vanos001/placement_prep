@@ -199,7 +199,7 @@ The original distributed memory caching system.
 
 ## Cross References
 
-- [Buffer Pool](../dbms/caching/buffer-pool.md)
-- [Redis](../dbms/caching/redis.md)
-- [Cache Hierarchy](../arch/memory-hierarchy/README.md)
-- [Paging (OS)](../os/memory/paging.md)
+- [Buffer Pool](buffer-pool.md)
+- [Redis](redis.md)
+- [Cache Hierarchy](../../arch/memory-hierarchy/README.md)
+- [Paging (OS)](../../os/memory/paging.md)

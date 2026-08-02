@@ -72,8 +72,8 @@ Why is I/O so important?
 
 ## Cross References
 
-- [I/O Architecture](../arch/io/README.md)
-- [Device Drivers](../os/io/device-drivers.md)
-- [Interrupts](../os/io/interrupts.md)
-- [DMA](../os/io/dma.md)
-- [Storage Overview](../storage/overview.md)
+- [I/O Architecture](../../arch/io/README.md)
+- [Device Drivers](device-drivers.md)
+- [Interrupts](interrupts.md)
+- [DMA](dma.md)
+- [Storage Overview](../../storage/overview.md)

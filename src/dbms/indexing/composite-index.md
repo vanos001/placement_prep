@@ -378,6 +378,6 @@ A: (1) Every index should start with tenant_id — this ensures index scans are 
 
 ## Cross References
 
-- [B+ Tree](../dbms/indexing/b-plus-tree.md)
-- [Covering Index](../dbms/indexing/covering-index.md)
-- [Query Optimization](../dbms/query-processing/optimization.md)
+- [B+ Tree](b-plus-tree.md)
+- [Covering Index](covering-index.md)
+- [Query Optimization](../query-processing/optimization.md)

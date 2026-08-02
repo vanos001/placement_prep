@@ -276,6 +276,6 @@ Record format design balances storage efficiency, update performance, and scan s
 
 ## Cross References
 
-- [File Organization](../dbms/storage/file-organization.md)
-- [File Concepts (OS)](../os/filesystems/file-concepts.md)
-- [Column Stores](../dbms/storage/column-stores.md)
+- [File Organization](file-organization.md)
+- [File Concepts (OS)](../../os/filesystems/file-concepts.md)
+- [Column Stores](column-stores.md)

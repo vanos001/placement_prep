@@ -487,7 +487,7 @@ A: Complete flow:
 
 ## Cross References
 
-- [Cache Hierarchy](../arch/memory-hierarchy/cache-basics.md)
-- [Paging](../os/memory/paging.md)
-- [Page Tables](../os/memory/page-tables.md)
-- [Cache Mapping](../arch/memory-hierarchy/cache-mapping.md)
+- [Cache Hierarchy](../../arch/memory-hierarchy/cache-basics.md)
+- [Paging](paging.md)
+- [Page Tables](page-tables.md)
+- [Cache Mapping](../../arch/memory-hierarchy/cache-mapping.md)

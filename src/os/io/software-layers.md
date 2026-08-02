@@ -371,7 +371,7 @@ When you `read()` a file:
 
 ## Cross References
 
-- [Device Drivers](../os/io/device-drivers.md)
-- [VFS](../os/filesystems/vfs.md)
-- [Buffering](../os/io/buffering.md)
-- [I/O Architecture](../arch/io/README.md)
+- [Device Drivers](device-drivers.md)
+- [VFS](../filesystems/vfs.md)
+- [Buffering](buffering.md)
+- [I/O Architecture](../../arch/io/README.md)

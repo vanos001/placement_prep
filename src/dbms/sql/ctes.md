@@ -406,6 +406,6 @@ Note: Recursive CTEs for shortest path are not efficient (they explore all paths
 
 ## Cross References
 
-- [Subqueries](../dbms/sql/subqueries.md)
-- [Views](../dbms/sql/views.md)
-- [Query Optimization](../dbms/query-processing/optimization.md)
+- [Subqueries](subqueries.md)
+- [Views](views.md)
+- [Query Optimization](../query-processing/optimization.md)

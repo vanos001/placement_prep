@@ -530,7 +530,7 @@ A:
 
 ## Cross References
 
-- [Buddy System](../os/memory/buddy-system.md)
-- [Allocation Algorithms](../os/memory/allocation-algorithms.md)
-- [Buffer Pool](../dbms/caching/buffer-pool.md)
-- [Cache Basics](../arch/memory-hierarchy/cache-basics.md)
+- [Buddy System](buddy-system.md)
+- [Allocation Algorithms](allocation-algorithms.md)
+- [Buffer Pool](../../dbms/caching/buffer-pool.md)
+- [Cache Basics](../../arch/memory-hierarchy/cache-basics.md)

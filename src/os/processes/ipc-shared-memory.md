@@ -388,7 +388,7 @@ A: **Spinlock** (fastest for <1μs critical sections, wastes CPU), **Mutex** (ke
 
 ## Cross References
 
-- [IPC Overview](../os/processes/ipc.md)
-- [Memory Barriers](../os/synchronization/memory-barriers.md)
-- [Cache Coherence](../arch/memory-hierarchy/coherence.md)
-- [Shared Buffer Pool](../dbms/caching/buffer-pool.md)
+- [IPC Overview](ipc.md)
+- [Memory Barriers](../synchronization/memory-barriers.md)
+- [Cache Coherence](../../arch/memory-hierarchy/coherence.md)
+- [Buffer Pool](../../dbms/caching/buffer-pool.md)

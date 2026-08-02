@@ -274,7 +274,7 @@ Key optimizations:
 
 ## Cross References
 
-- [DMA](../os/io/dma.md)
-- [Interrupts](../os/io/interrupts.md)
-- [Buses](../arch/io/buses.md)
-- [I/O Architecture](../arch/io/README.md)
+- [DMA](dma.md)
+- [Interrupts](interrupts.md)
+- [Buses](../../arch/io/buses.md)
+- [I/O Architecture](../../arch/io/README.md)

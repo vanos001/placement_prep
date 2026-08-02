@@ -462,7 +462,7 @@ Recommendation: PostgreSQL for complex queries, analytics, and extensibility. My
 
 ## Cross References
 
-- [LSM Trees](../dbms/internals/lsm-trees.md)
-- [B-Tree](../dbms/indexing/b-tree.md)
-- [Buffer Pool](../dbms/caching/buffer-pool.md)
-- [File Organization](../dbms/storage/file-organization.md)
+- [LSM Trees](lsm-trees.md)
+- [B-Tree](../indexing/b-tree.md)
+- [Buffer Pool](../caching/buffer-pool.md)
+- [File Organization](../storage/file-organization.md)

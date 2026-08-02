@@ -362,7 +362,7 @@ A: (1) Statistics are stale — run ANALYZE. (2) The query filters on B without 
 
 ## Cross References
 
-- [Query Optimization](../dbms/query-processing/optimization.md)
-- [B+ Tree](../dbms/indexing/b-plus-tree.md)
-- [Composite Index](../dbms/indexing/composite-index.md)
-- [Execution Plans](../dbms/query-processing/execution-plans.md)
+- [Query Optimization](../query-processing/optimization.md)
+- [B+ Tree](b-plus-tree.md)
+- [Composite Index](composite-index.md)
+- [Execution Plans](../query-processing/execution-plans.md)

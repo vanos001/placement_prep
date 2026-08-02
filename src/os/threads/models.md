@@ -289,7 +289,7 @@ A: In M:N, user threads don't directly map to CPUs. Options: 1) **Pinning:** Loc
 
 ## Cross References
 
-- [User vs Kernel Threads](../os/threads/user-vs-kernel.md)
-- [Thread Pools](../os/threads/pools.md)
-- [Thread Safety](../os/threads/safety.md)
-- [Concurrency Overview](../concurrency/overview.md)
+- [User vs Kernel Threads](user-vs-kernel.md)
+- [Thread Pools](pools.md)
+- [Thread Safety](safety.md)
+- [Concurrency Overview](../../concurrency/overview.md)

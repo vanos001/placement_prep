@@ -405,8 +405,8 @@ A:
 
 ## Cross References
 
-- [Cache Hierarchy](../arch/memory-hierarchy/cache-basics.md)
-- [Buffer Pool](../dbms/caching/buffer-pool.md)
-- [Virtual Memory](../os/virtual-memory/README.md)
-- [TLB](../os/memory/tlb.md)
-- [Page Tables](../os/memory/page-tables.md)
+- [Cache Hierarchy](../../arch/memory-hierarchy/cache-basics.md)
+- [Buffer Pool](../../dbms/caching/buffer-pool.md)
+- [Virtual Memory](../virtual-memory/README.md)
+- [TLB](tlb.md)
+- [Page Tables](page-tables.md)

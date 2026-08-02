@@ -335,7 +335,6 @@ Raft has become the standard consensus algorithm for modern distributed systems,
 
 ## Cross References
 
-- [Paxos](../dbms/distributed/paxos.md)
-- [Raft (Distributed)](../distributed/consensus/raft.md)
-- [Consensus](../dbms/distributed/consensus.md)
-- [Leader Election](../distributed/consensus/raft.md)
+- [Paxos](paxos.md)
+- [Raft (Distributed)](../../distributed/consensus/raft.md)
+- [Consensus](consensus.md)

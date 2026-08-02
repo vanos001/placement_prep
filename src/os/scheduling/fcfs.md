@@ -214,7 +214,7 @@ A: 1) **Shortest Job First approximation:** Predict burst times using exponentia
 
 ## Cross References
 
-- [SJF](../os/scheduling/sjf.md)
-- [Round Robin](../os/scheduling/round-robin.md)
-- [Scheduling Metrics](../os/scheduling/metrics.md)
-- [CPU Architecture](../arch/cpu/README.md)
+- [SJF](sjf.md)
+- [Round Robin](round-robin.md)
+- [Scheduling Metrics](metrics.md)
+- [CPU Architecture](../../arch/cpu/README.md)

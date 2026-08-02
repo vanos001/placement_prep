@@ -335,6 +335,6 @@ The Optimal algorithm is the theoretical gold standard for page replacement — 
 
 ## Cross References
 
-- [Page Replacement](../os/virtual-memory/page-replacement.md)
-- [LRU](../os/virtual-memory/lru.md)
-- [Cache Replacement](../arch/memory-hierarchy/replacement.md)
+- [Page Replacement](page-replacement.md)
+- [LRU](lru.md)
+- [Cache Replacement](../../arch/memory-hierarchy/replacement.md)

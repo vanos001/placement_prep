@@ -587,6 +587,6 @@ A:
 
 ## Cross References
 
-- [Allocation Algorithms](../os/memory/allocation-algorithms.md)
-- [Slab Allocator](../os/memory/slab-allocator.md)
-- [Memory Hierarchy](../arch/memory-hierarchy/README.md)
+- [Allocation Algorithms](allocation-algorithms.md)
+- [Slab Allocator](slab-allocator.md)
+- [Memory Hierarchy](../../arch/memory-hierarchy/README.md)

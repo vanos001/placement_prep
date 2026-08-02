@@ -341,7 +341,7 @@ Memcached remains relevant for large-scale caching where simplicity and memory e
 
 ## Cross References
 
-- [Redis](../dbms/caching/redis.md)
-- [Consistent Hashing](../distributed/partitioning/consistent-hashing.md)
-- [Buffer Pool](../dbms/caching/buffer-pool.md)
-- [LRU (OS)](../os/virtual-memory/lru.md)
+- [Redis](redis.md)
+- [Consistent Hashing](../../distributed/partitioning/consistent-hashing.md)
+- [Buffer Pool](buffer-pool.md)
+- [LRU (OS)](../../os/virtual-memory/lru.md)

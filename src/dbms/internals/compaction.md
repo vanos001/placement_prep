@@ -447,7 +447,7 @@ A:
 
 ## Cross References
 
-- [LSM Trees](../dbms/internals/lsm-trees.md)
-- [WAL](../dbms/internals/wal.md)
-- [SSD](../storage/ssd.md)
-- [Garbage Collection](../os/memory/swapping.md)
+- [LSM Trees](lsm-trees.md)
+- [WAL](wal.md)
+- [SSD](../../storage/ssd.md)
+- [Garbage Collection](../../os/memory/swapping.md)

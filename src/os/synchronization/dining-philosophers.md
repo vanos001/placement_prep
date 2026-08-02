@@ -214,7 +214,7 @@ With 5 philosophers and 4 allowed to try, at least one will find both chopsticks
 
 ## Cross References
 
-- [Deadlocks](../os/synchronization/deadlocks/README.md)
-- [Semaphores](../os/synchronization/semaphores.md)
-- [Mutex](../os/synchronization/mutex.md)
-- [Resource Allocation](../os/synchronization/deadlocks/bankers.md)
+- [Deadlocks](deadlocks/README.md)
+- [Semaphores](semaphores.md)
+- [Mutex](mutex.md)
+- [Resource Allocation](deadlocks/bankers.md)

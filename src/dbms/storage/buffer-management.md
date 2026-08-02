@@ -328,7 +328,7 @@ The buffer manager is the critical layer between the query executor and disk sto
 
 ## Cross References
 
-- [Buffer Pool](../dbms/caching/buffer-pool.md)
-- [Paging (OS)](../os/memory/paging.md)
-- [File Organization](../dbms/storage/file-organization.md)
-- [Cache Hierarchy](../arch/memory-hierarchy/README.md)
+- [Buffer Pool](../caching/buffer-pool.md)
+- [Paging (OS)](../../os/memory/paging.md)
+- [File Organization](file-organization.md)
+- [Cache Hierarchy](../../arch/memory-hierarchy/README.md)

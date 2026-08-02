@@ -299,6 +299,6 @@ efivar -p -n 8BE4DF61-93CA-11d2-AA0D-00E098032B8C-BootOrder
 
 ## Cross References
 
-- [Bootloader](../os/boot/bootloader.md)
-- [Init Systems](../os/boot/init-systems.md)
-- [I/O Hardware](../os/io/hardware.md)
+- [Bootloader](bootloader.md)
+- [Init Systems](init-systems.md)
+- [I/O Hardware](../io/hardware.md)

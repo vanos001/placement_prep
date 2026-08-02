@@ -273,6 +273,6 @@ This design is in 3NF: every non-prime attribute depends directly on its table's
 
 ## Cross References
 
-- [2NF](../dbms/normalization/2nf.md)
-- [BCNF](../dbms/normalization/bcnf.md)
-- [Denormalization](../dbms/normalization/denormalization.md)
+- [2NF](2nf.md)
+- [BCNF](bcnf.md)
+- [Denormalization](denormalization.md)

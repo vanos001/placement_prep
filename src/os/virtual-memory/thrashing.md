@@ -446,7 +446,7 @@ Thrashing is the catastrophic collapse of system performance when processes comp
 
 ## Cross References
 
-- [Working Set](../os/virtual-memory/working-set.md)
-- [Demand Paging](../os/virtual-memory/demand-paging.md)
-- [Page Replacement](../os/virtual-memory/page-replacement.md)
-- [CPU Scheduling](../os/scheduling/README.md)
+- [Working Set](working-set.md)
+- [Demand Paging](demand-paging.md)
+- [Page Replacement](page-replacement.md)
+- [CPU Scheduling](../scheduling/README.md)

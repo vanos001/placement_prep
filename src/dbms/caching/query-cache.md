@@ -284,7 +284,7 @@ Modern systems prefer application-level caching (Redis) over database query cach
 
 ## Cross References
 
-- [Buffer Pool](../dbms/caching/buffer-pool.md)
-- [Query Optimization](../dbms/query-processing/optimization.md)
-- [Redis](../dbms/caching/redis.md)
-- [Cache Hierarchy](../arch/memory-hierarchy/README.md)
+- [Buffer Pool](buffer-pool.md)
+- [Query Optimization](../query-processing/optimization.md)
+- [Redis](redis.md)
+- [Cache Hierarchy](../../arch/memory-hierarchy/README.md)

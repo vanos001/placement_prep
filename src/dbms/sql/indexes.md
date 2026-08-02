@@ -392,7 +392,7 @@ INCLUDE columns are not part of the B+ tree ordering — they're only stored in 
 
 ## Cross References
 
-- [Indexing](../dbms/indexing/README.md)
-- [B+ Tree](../dbms/indexing/b-plus-tree.md)
-- [Query Optimization](../dbms/query-processing/optimization.md)
-- [Covering Index](../dbms/indexing/covering-index.md)
+- [Indexing](../indexing/README.md)
+- [B+ Tree](../indexing/b-plus-tree.md)
+- [Query Optimization](../query-processing/optimization.md)
+- [Covering Index](../indexing/covering-index.md)

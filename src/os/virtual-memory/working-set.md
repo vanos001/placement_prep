@@ -513,7 +513,7 @@ The Working Set Model is a foundational concept in virtual memory management. It
 
 ## Cross References
 
-- [Thrashing](../os/virtual-memory/thrashing.md)
-- [Demand Paging](../os/virtual-memory/demand-paging.md)
-- [Page Replacement](../os/virtual-memory/page-replacement.md)
-- [Cache Performance](../arch/memory-hierarchy/performance.md)
+- [Thrashing](thrashing.md)
+- [Demand Paging](demand-paging.md)
+- [Page Replacement](page-replacement.md)
+- [Cache Performance](../../arch/memory-hierarchy/performance.md)

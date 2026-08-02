@@ -148,8 +148,8 @@ Container adds a writable layer on top
 
 ## Cross References
 
-- [Docker](../os/containers/docker.md)
-- [Kubernetes](../os/containers/kubernetes.md)
-- [Namespaces](../os/containers/namespaces.md)
-- [VM vs Container](../cloud/virtualization/vm-vs-container.md)
-- [Hypervisors](../cloud/virtualization/hypervisors.md)
+- [Docker](docker.md)
+- [Kubernetes](kubernetes.md)
+- [Namespaces](namespaces.md)
+- [VM vs Container](../../cloud/virtualization/vm-vs-container.md)
+- [Hypervisors](../../cloud/virtualization/hypervisors.md)

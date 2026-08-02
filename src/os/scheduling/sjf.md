@@ -264,7 +264,7 @@ A: **Multilevel Feedback Queue with SJF within levels:** 1) MLFQ separates inter
 
 ## Cross References
 
-- [FCFS](../os/scheduling/fcfs.md)
-- [Priority Scheduling](../os/scheduling/priority.md)
-- [Scheduling Metrics](../os/scheduling/metrics.md)
-- [CPU Architecture](../arch/cpu/README.md)
+- [FCFS](fcfs.md)
+- [Priority Scheduling](priority.md)
+- [Scheduling Metrics](metrics.md)
+- [CPU Architecture](../../arch/cpu/README.md)

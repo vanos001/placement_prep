@@ -389,6 +389,6 @@ A: Classic (self-daemonizing): daemon forks, creates PID file, redirects I/O, ma
 
 ## Cross References
 
-- [Init Systems](../os/boot/init-systems.md)
-- [Process Creation](../os/processes/creation.md)
-- [Kubernetes Pods](../cloud/kubernetes/pods.md)
+- [Init Systems](../boot/init-systems.md)
+- [Process Creation](creation.md)
+- [Kubernetes Pods](../../cloud/kubernetes/pods.md)

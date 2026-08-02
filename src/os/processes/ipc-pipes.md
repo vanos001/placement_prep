@@ -300,7 +300,7 @@ A: Pipes can handle ~100-500 MB/s on modern Linux with optimizations: 1) `fcntl(
 
 ## Cross References
 
-- [IPC Overview](../os/processes/ipc.md)
-- [Unix Sockets](../networks/sockets/unix.md)
-- [IPC Sockets](../os/processes/ipc-sockets.md)
-- [Process Creation](../os/processes/creation.md)
+- [IPC Overview](ipc.md)
+- [Unix Sockets](../../networks/sockets/unix.md)
+- [IPC Sockets](ipc-sockets.md)
+- [Process Creation](creation.md)

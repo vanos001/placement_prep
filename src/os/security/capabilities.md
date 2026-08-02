@@ -467,6 +467,6 @@ Tradeoffs:
 
 ## Cross References
 
-- [Access Control](../os/security/access-control.md)
-- [SELinux](../os/security/selinux.md)
-- [Namespaces](../os/containers/namespaces.md)
+- [Access Control](access-control.md)
+- [SELinux](selinux.md)
+- [Namespaces](../containers/namespaces.md)

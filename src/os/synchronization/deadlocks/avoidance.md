@@ -200,6 +200,6 @@ The overhead of running the safety check on every resource request is too high. 
 
 ## Cross References
 
-- [Banker's Algorithm](../os/synchronization/deadlocks/bankers.md)
-- [Deadlock Prevention](../os/synchronization/deadlocks/prevention.md)
-- [Deadlock Detection](../os/synchronization/deadlocks/detection.md)
+- [Banker's Algorithm](bankers.md)
+- [Deadlock Prevention](prevention.md)
+- [Deadlock Detection](detection.md)

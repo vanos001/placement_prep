@@ -312,8 +312,8 @@ A: (1) Composite index on (user_id, created_at DESC) on the posts table. (2) The
 
 ## Cross References
 
-- [B+ Tree](../dbms/indexing/b-plus-tree.md)
-- [B-Tree](../dbms/indexing/b-tree.md)
-- [Hash Index](../dbms/indexing/hash-index.md)
-- [Cache Hierarchy](../arch/memory-hierarchy/README.md)
-- [File Organization](../dbms/storage/file-organization.md)
+- [B+ Tree](b-plus-tree.md)
+- [B-Tree](b-tree.md)
+- [Hash Index](hash-index.md)
+- [Cache Hierarchy](../../arch/memory-hierarchy/README.md)
+- [File Organization](../storage/file-organization.md)

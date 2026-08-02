@@ -378,7 +378,7 @@ A: 2PC: Strong consistency, all-or-nothing guarantee. But: blocking, requires XA
 
 ## Cross References
 
-- [Distributed Transactions](../dbms/transactions/distributed.md)
-- [Two-Phase Commit](../dbms/transactions/two-phase-commit.md)
-- [Circuit Breakers](../distributed/microservices/circuit-breakers.md)
-- [Eventual Consistency](../distributed/fundamentals/consistency.md)
+- [Distributed Transactions](distributed.md)
+- [Two-Phase Commit](two-phase-commit.md)
+- [Circuit Breakers](../../distributed/microservices/circuit-breakers.md)
+- [Eventual Consistency](../../distributed/fundamentals/consistency.md)

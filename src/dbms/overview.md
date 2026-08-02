@@ -221,8 +221,8 @@ A: The optimizer:
 
 ## Cross References
 
-- [Relational Model](../dbms/relational-model/README.md)
-- [SQL](../dbms/sql/README.md)
-- [Transactions](../dbms/transactions/README.md)
+- [Relational Model](relational-model/README.md)
+- [SQL](sql/README.md)
+- [Transactions](transactions/README.md)
 - [OS Overview](../os/overview.md)
 - [Storage Overview](../storage/overview.md)

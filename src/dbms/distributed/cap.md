@@ -259,7 +259,7 @@ The CAP theorem is the starting point for understanding distributed database des
 
 ## Cross References
 
-- [CAP Theorem (Distributed)](../distributed/fundamentals/cap.md)
-- [Consistency Models](../distributed/fundamentals/consistency.md)
-- [Sharding](../dbms/distributed/sharding.md)
-- [Replication](../dbms/distributed/replication.md)
+- [CAP Theorem (Distributed)](../../distributed/fundamentals/cap.md)
+- [Consistency Models](../../distributed/fundamentals/consistency.md)
+- [Sharding](sharding.md)
+- [Replication](replication.md)

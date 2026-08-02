@@ -302,6 +302,6 @@ Result: `/etc/passwd`
 
 ## Cross References
 
-- [File Concepts](../os/filesystems/file-concepts.md)
-- [VFS](../os/filesystems/vfs.md)
-- [B-Tree Indexing](../dbms/indexing/b-tree.md)
+- [File Concepts](file-concepts.md)
+- [VFS](vfs.md)
+- [B-Tree Indexing](../../dbms/indexing/b-tree.md)

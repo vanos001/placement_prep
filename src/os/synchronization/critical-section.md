@@ -267,8 +267,8 @@ The turn-based solution forces processes to alternate entry. If turn=0, only pro
 
 ## Cross References
 
-- [Mutex](../os/synchronization/mutex.md)
-- [Semaphores](../os/synchronization/semaphores.md)
-- [Peterson's](../os/synchronization/petersons.md)
-- [Monitors](../os/synchronization/monitors.md)
-- [Serializability](../dbms/transactions/serializability.md)
+- [Mutex](mutex.md)
+- [Semaphores](semaphores.md)
+- [Peterson's](petersons.md)
+- [Monitors](monitors.md)
+- [Serializability](../../dbms/transactions/serializability.md)

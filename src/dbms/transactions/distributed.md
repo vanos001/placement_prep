@@ -252,8 +252,8 @@ A: Avoid 2PC (too brittle in microservices). Use Saga pattern: (1) Define each s
 
 ## Cross References
 
-- [Two-Phase Commit](../dbms/transactions/two-phase-commit.md)
-- [CAP Theorem](../distributed/fundamentals/cap.md)
-- [Consistency Models](../distributed/fundamentals/consistency.md)
-- [Sharding](../dbms/distributed/sharding.md)
-- [Saga Pattern](../dbms/transactions/saga.md)
+- [Two-Phase Commit](two-phase-commit.md)
+- [CAP Theorem](../../distributed/fundamentals/cap.md)
+- [Consistency Models](../../distributed/fundamentals/consistency.md)
+- [Sharding](../distributed/sharding.md)
+- [Saga Pattern](saga.md)

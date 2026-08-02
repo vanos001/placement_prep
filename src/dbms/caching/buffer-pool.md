@@ -213,8 +213,8 @@ The buffer pool is the foundation of database performance. Proper sizing and mon
 
 ## Cross References
 
-- [Paging (OS)](../os/memory/paging.md)
-- [Cache Hierarchy](../arch/memory-hierarchy/cache-basics.md)
-- [Buffer Management](../dbms/storage/buffer-management.md)
-- [LRU (OS)](../os/virtual-memory/lru.md)
-- [DRAM](../arch/memory-tech/dram.md)
+- [Paging (OS)](../../os/memory/paging.md)
+- [Cache Hierarchy](../../arch/memory-hierarchy/cache-basics.md)
+- [Buffer Management](../storage/buffer-management.md)
+- [LRU (OS)](../../os/virtual-memory/lru.md)
+- [DRAM](../../arch/memory-tech/dram.md)

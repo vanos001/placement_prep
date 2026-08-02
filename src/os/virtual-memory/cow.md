@@ -437,7 +437,7 @@ Copy-on-Write is a fundamental OS optimization that defers memory copying until 
 
 ## Cross References
 
-- [Process Creation](../os/processes/creation.md)
-- [Paging](../os/memory/paging.md)
-- [Fork](../os/processes/creation.md)
-- [Memory Barriers](../os/synchronization/memory-barriers.md)
+- [Process Creation](../processes/creation.md)
+- [Paging](../memory/paging.md)
+- [Memory Barriers](../synchronization/memory-barriers.md)
+- [Write Policies](../../arch/memory-hierarchy/write-policies.md)

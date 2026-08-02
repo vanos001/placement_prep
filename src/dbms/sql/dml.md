@@ -465,7 +465,7 @@ DELETE FROM Employees WHERE deleted_at IS NOT NULL AND deleted_at < NOW() - INTE
 
 ## Cross References
 
-- [DDL](../dbms/sql/ddl.md)
-- [SQL Joins](../dbms/sql/joins.md)
-- [Subqueries](../dbms/sql/subqueries.md)
-- [Query Processing](../dbms/query-processing/README.md)
+- [DDL](ddl.md)
+- [SQL Joins](joins.md)
+- [Subqueries](subqueries.md)
+- [Query Processing](../query-processing/README.md)

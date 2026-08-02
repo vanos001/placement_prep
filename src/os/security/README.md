@@ -144,7 +144,7 @@ Every access must be checked. No caching of access decisions that could become s
 
 ## Cross References
 
-- [Access Control](../os/security/access-control.md)
-- [Capabilities](../os/security/capabilities.md)
-- [SELinux](../os/security/selinux.md)
-- [Namespaces](../os/containers/namespaces.md)
+- [Access Control](access-control.md)
+- [Capabilities](capabilities.md)
+- [SELinux](selinux.md)
+- [Namespaces](../containers/namespaces.md)

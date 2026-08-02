@@ -321,6 +321,6 @@ A: (1) Use a hybrid approach: maintain a small delta store (write-optimized, row
 
 ## Cross References
 
-- [Composite Index](../dbms/indexing/composite-index.md)
-- [Column Stores](../dbms/storage/column-stores.md)
-- [SIMD](../arch/parallelism/simd.md)
+- [Composite Index](composite-index.md)
+- [Column Stores](../storage/column-stores.md)
+- [SIMD](../../arch/parallelism/simd.md)

@@ -528,7 +528,7 @@ Post-compromise detection:
 
 ## Cross References
 
-- [Capabilities](../os/security/capabilities.md)
-- [SELinux](../os/security/selinux.md)
-- [Namespaces](../os/containers/namespaces.md)
-- [TLS/SSL](../networks/security/tls.md)
+- [Capabilities](capabilities.md)
+- [SELinux](selinux.md)
+- [Namespaces](../containers/namespaces.md)
+- [TLS/SSL](../../networks/security/tls.md)

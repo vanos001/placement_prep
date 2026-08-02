@@ -308,7 +308,7 @@ Column-family stores excel at write-heavy, time-series, and wide-row workloads. 
 
 ## Cross References
 
-- [Column Stores](../dbms/storage/column-stores.md)
-- [LSM Trees](../dbms/internals/lsm-trees.md)
-- [Consistent Hashing](../distributed/partitioning/consistent-hashing.md)
-- [Sharding](../dbms/distributed/sharding.md)
+- [Column Stores](../storage/column-stores.md)
+- [LSM Trees](../internals/lsm-trees.md)
+- [Consistent Hashing](../../distributed/partitioning/consistent-hashing.md)
+- [Sharding](../distributed/sharding.md)

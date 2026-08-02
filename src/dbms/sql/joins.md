@@ -433,7 +433,7 @@ WHERE next_id - id > 1;
 
 ## Cross References
 
-- [Query Joins](../dbms/query-processing/joins.md)
-- [Nested Loop](../dbms/query-processing/nested-loop.md)
-- [Subqueries](../dbms/sql/subqueries.md)
-- [Execution Plans](../dbms/query-processing/execution-plans.md)
+- [Query Joins](../query-processing/joins.md)
+- [Nested Loop](../query-processing/nested-loop.md)
+- [Subqueries](subqueries.md)
+- [Execution Plans](../query-processing/execution-plans.md)

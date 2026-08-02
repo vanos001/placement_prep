@@ -375,7 +375,7 @@ Memory Layout:
 
 ## Cross References
 
-- [I/O Software Layers](../os/io/software-layers.md)
-- [Buffer Pool](../dbms/caching/buffer-pool.md)
-- [Buffer Management](../dbms/storage/buffer-management.md)
-- [Cache Hierarchy](../arch/memory-hierarchy/README.md)
+- [I/O Software Layers](software-layers.md)
+- [Buffer Pool](../../dbms/caching/buffer-pool.md)
+- [Buffer Management](../../dbms/storage/buffer-management.md)
+- [Cache Hierarchy](../../arch/memory-hierarchy/README.md)

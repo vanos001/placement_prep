@@ -90,8 +90,8 @@ graph TD
 
 ## Cross References
 
-- [Deadlock Prevention](../os/synchronization/deadlocks/prevention.md)
-- [Deadlock Avoidance](../os/synchronization/deadlocks/avoidance.md)
-- [Deadlock Detection](../os/synchronization/deadlocks/detection.md)
-- [Dining Philosophers](../os/synchronization/dining-philosophers.md)
-- [Two-Phase Commit](../dbms/transactions/two-phase-commit.md)
+- [Deadlock Prevention](prevention.md)
+- [Deadlock Avoidance](avoidance.md)
+- [Deadlock Detection](detection.md)
+- [Dining Philosophers](../dining-philosophers.md)
+- [Two-Phase Commit](../../../dbms/transactions/two-phase-commit.md)

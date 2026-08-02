@@ -204,7 +204,6 @@ Use matrices: Allocation[n][m] (current allocation), Request[n][m] (current requ
 
 ## Cross References
 
-- [Deadlock Avoidance](../os/synchronization/deadlocks/avoidance.md)
-- [Deadlock Recovery](../os/synchronization/deadlocks/recovery.md)
-- [Deadlock Prevention](../os/synchronization/deadlocks/prevention.md)
-- [Wait-For Graph](../os/synchronization/deadlocks/README.md)
+- [Deadlock Avoidance](avoidance.md)
+- [Deadlock Recovery](recovery.md)
+- [Deadlock Prevention](prevention.md)

@@ -250,7 +250,7 @@ In practice, disk scheduling is 1D (cylinder numbers), so SSTF provides reasonab
 
 ## Cross References
 
-- [Disk Scheduling Overview](../os/io/disk-scheduling.md)
-- [FCFS](../os/io/disk-fcfs.md)
-- [SCAN](../os/io/disk-scan.md)
-- [HDD](../storage/hdd.md)
+- [Disk Scheduling Overview](disk-scheduling.md)
+- [FCFS](disk-fcfs.md)
+- [SCAN](disk-scan.md)
+- [HDD](../../storage/hdd.md)

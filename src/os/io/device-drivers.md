@@ -597,7 +597,7 @@ Performance targets:
 
 ## Cross References
 
-- [Interrupts](../os/io/interrupts.md)
-- [I/O Software Layers](../os/io/software-layers.md)
-- [I/O Hardware](../os/io/hardware.md)
-- [VFS](../os/filesystems/vfs.md)
+- [Interrupts](interrupts.md)
+- [I/O Software Layers](software-layers.md)
+- [I/O Hardware](hardware.md)
+- [VFS](../filesystems/vfs.md)

@@ -363,6 +363,6 @@ A: Standard relational algebra uses **sets** (no duplicates). SQL uses **bags** 
 
 ## Cross References
 
-- [Relational Calculus](../dbms/relational-model/relational-calculus.md)
-- [Query Processing](../dbms/query-processing/README.md)
-- [SQL DML](../dbms/sql/dml.md)
+- [Relational Calculus](relational-calculus.md)
+- [Query Processing](../query-processing/README.md)
+- [SQL DML](../sql/dml.md)

@@ -409,6 +409,6 @@ A:
 
 ## Cross References
 
-- [Allocation Algorithms](../os/memory/allocation-algorithms.md)
-- [Segmentation](../os/memory/segmentation.md)
-- [Disk Allocation](../os/filesystems/disk-allocation.md)
+- [Allocation Algorithms](allocation-algorithms.md)
+- [Segmentation](segmentation.md)
+- [Disk Allocation](../filesystems/disk-allocation.md)

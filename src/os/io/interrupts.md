@@ -527,7 +527,7 @@ Detection tools:
 
 ## Cross References
 
-- [Device Drivers](../os/io/device-drivers.md)
-- [DMA](../os/io/dma.md)
-- [CPU Control Unit](../arch/cpu/control-unit.md)
-- [Context Switching](../os/processes/context-switching.md)
+- [Device Drivers](device-drivers.md)
+- [DMA](dma.md)
+- [CPU Control Unit](../../arch/cpu/control-unit.md)
+- [Context Switching](../processes/context-switching.md)

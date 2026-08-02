@@ -179,10 +179,11 @@ Linux uses a **multi-generational LRU** (MGLRU):
 | Modern OS | Multi-generational LRU (Linux) |
 | CPU cache | Pseudo-LRU or true LRU (small caches) |
 
+
 ## Cross References
 
-- [Virtual Memory](./README.md)
-- [Demand Paging](./demand-paging.md)
-- [Thrashing](./thrashing.md)
-- [Working Set](./working-set.md)
-- [Cache Replacement](../../arch/memory-hierarchy/replacement.md)
+- [LRU](lru.md)
+- [FIFO](fifo.md)
+- [Clock Algorithm](clock.md)
+- [Optimal](optimal.md)
+- [Buffer Pool](../../dbms/caching/buffer-pool.md)

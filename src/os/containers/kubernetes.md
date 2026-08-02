@@ -497,7 +497,7 @@ Architecture:
 
 ## Cross References
 
-- [Docker](../os/containers/docker.md)
-- [K8s Pods](../cloud/kubernetes/pods.md)
-- [K8s Deployments](../cloud/kubernetes/deployments.md)
-- [Service Discovery](../distributed/microservices/discovery.md)
+- [Docker](docker.md)
+- [K8s Pods](../../cloud/kubernetes/pods.md)
+- [K8s Deployments](../../cloud/kubernetes/deployments.md)
+- [Service Discovery](../../distributed/microservices/discovery.md)

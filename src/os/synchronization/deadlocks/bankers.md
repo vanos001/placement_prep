@@ -271,6 +271,6 @@ The detection algorithm is similar but uses Request (current request) instead of
 
 ## Cross References
 
-- [Deadlock Avoidance](../os/synchronization/deadlocks/avoidance.md)
-- [Resource Allocation](../os/synchronization/deadlocks/README.md)
-- [Dining Philosophers](../os/synchronization/dining-philosophers.md)
+- [Deadlock Avoidance](avoidance.md)
+- [Resource Allocation](README.md)
+- [Dining Philosophers](../dining-philosophers.md)

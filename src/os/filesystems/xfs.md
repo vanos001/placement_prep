@@ -231,6 +231,6 @@ XFS delays block allocation until writeback time. When `write()` is called, data
 
 ## Cross References
 
-- [Journaling](../os/filesystems/journaling.md)
-- [VFS](../os/filesystems/vfs.md)
-- [Disk Allocation](../os/filesystems/disk-allocation.md)
+- [Journaling](journaling.md)
+- [VFS](vfs.md)
+- [Disk Allocation](disk-allocation.md)

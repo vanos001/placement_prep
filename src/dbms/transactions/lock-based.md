@@ -285,8 +285,7 @@ A: PostgreSQL uses **MVCC** — readers access a snapshot of the data (older ver
 
 ## Cross References
 
-- [Mutex (OS)](../os/synchronization/mutex.md)
-- [Deadlocks (OS)](../os/synchronization/deadlocks/README.md)
-- [Two-Phase Locking](../dbms/transactions/lock-based.md)
-- [Concurrency Control](../dbms/transactions/concurrency-control.md)
-- [Isolation Levels](../dbms/transactions/isolation-levels.md)
+- [Mutex (OS)](../../os/synchronization/mutex.md)
+- [Deadlocks (OS)](../../os/synchronization/deadlocks/README.md)
+- [Concurrency Control](concurrency-control.md)
+- [Isolation Levels](isolation-levels.md)

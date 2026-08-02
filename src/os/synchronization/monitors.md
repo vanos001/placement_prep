@@ -296,7 +296,6 @@ Use a binary semaphore for the monitor lock (init=1), a semaphore per condition 
 
 ## Cross References
 
-- [Mutex](../os/synchronization/mutex.md)
-- [Semaphores](../os/synchronization/semaphores.md)
-- [Condition Variables](../os/synchronization/monitors.md)
-- [Java Concurrency](../concurrency/java.md)
+- [Mutex](mutex.md)
+- [Semaphores](semaphores.md)
+- [Java Concurrency](../../concurrency/java.md)

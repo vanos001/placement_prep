@@ -289,6 +289,6 @@ A: 1) **Cache line alignment:** Place frequently accessed fields (state, priorit
 
 ## Cross References
 
-- [Process States](../os/processes/states.md)
-- [Context Switching](../os/processes/context-switching.md)
-- [Registers](../arch/cpu/registers.md)
+- [Process States](states.md)
+- [Context Switching](context-switching.md)
+- [Registers](../../arch/cpu/registers.md)

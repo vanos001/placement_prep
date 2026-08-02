@@ -307,7 +307,7 @@ A: Key considerations: 1) Use `posix_spawn()` or `clone()` instead of `fork()+ex
 
 ## Cross References
 
-- [Process States](../os/processes/states.md)
-- [Zombie/Orphan](../os/processes/zombie-orphan.md)
-- [Copy-on-Write](../os/virtual-memory/cow.md)
-- [IPC](../os/processes/ipc.md)
+- [Process States](states.md)
+- [Zombie/Orphan](zombie-orphan.md)
+- [Copy-on-Write](../virtual-memory/cow.md)
+- [IPC](ipc.md)

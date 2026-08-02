@@ -394,8 +394,8 @@ A: Write amplification = total bytes written to disk / bytes written by applicat
 
 ## Cross References
 
-- [B-Tree](../dbms/indexing/b-tree.md)
-- [Compaction](../dbms/internals/compaction.md)
-- [WAL](../dbms/internals/wal.md)
-- [SSD](../storage/ssd.md)
-- [Write Policies](../arch/memory-hierarchy/write-policies.md)
+- [B-Tree](../indexing/b-tree.md)
+- [Compaction](compaction.md)
+- [WAL](wal.md)
+- [SSD](../../storage/ssd.md)
+- [Write Policies](../../arch/memory-hierarchy/write-policies.md)

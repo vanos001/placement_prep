@@ -363,7 +363,7 @@ Redis is the de facto standard for application-level caching. Understanding its 
 
 ## Cross References
 
-- [Memcached](../dbms/caching/memcached.md)
-- [Consistent Hashing](../distributed/partitioning/consistent-hashing.md)
-- [Cache Hierarchy](../arch/memory-hierarchy/README.md)
-- [Pub/Sub](../distributed/messaging/pubsub.md)
+- [Memcached](memcached.md)
+- [Consistent Hashing](../../distributed/partitioning/consistent-hashing.md)
+- [Cache Hierarchy](../../arch/memory-hierarchy/README.md)
+- [Pub/Sub](../../distributed/messaging/pubsub.md)

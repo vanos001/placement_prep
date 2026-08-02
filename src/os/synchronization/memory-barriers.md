@@ -269,7 +269,7 @@ x86 Total Store Order guarantees: loads aren't reordered with loads, stores aren
 
 ## Cross References
 
-- [Cache Coherence](../arch/memory-hierarchy/coherence.md)
-- [MESI Protocol](../arch/memory-hierarchy/mesi.md)
-- [CAS](../os/synchronization/cas.md)
-- [Lock-Free](../os/synchronization/lock-free.md)
+- [Cache Coherence](../../arch/memory-hierarchy/coherence.md)
+- [MESI Protocol](../../arch/memory-hierarchy/mesi.md)
+- [CAS](cas.md)
+- [Lock-Free](lock-free.md)

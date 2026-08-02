@@ -286,6 +286,6 @@ A: `signalfd()` creates a file descriptor that can be read to receive signals. T
 
 ## Cross References
 
-- [IPC Overview](../os/processes/ipc.md)
-- [Zombie/Orphan](../os/processes/zombie-orphan.md)
-- [Interrupts](../os/io/interrupts.md)
+- [IPC Overview](ipc.md)
+- [Zombie/Orphan](zombie-orphan.md)
+- [Interrupts](../io/interrupts.md)

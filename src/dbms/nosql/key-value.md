@@ -294,7 +294,7 @@ Key-value stores are the foundation of many distributed systems. Understanding w
 
 ## Cross References
 
-- [Redis](../dbms/caching/redis.md)
-- [Memcached](../dbms/caching/memcached.md)
-- [Consistent Hashing](../distributed/partitioning/consistent-hashing.md)
-- [LSM Trees](../dbms/internals/lsm-trees.md)
+- [Redis](../caching/redis.md)
+- [Memcached](../caching/memcached.md)
+- [Consistent Hashing](../../distributed/partitioning/consistent-hashing.md)
+- [LSM Trees](../internals/lsm-trees.md)

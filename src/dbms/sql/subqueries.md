@@ -312,7 +312,7 @@ If decorrelation fails (complex predicates, LIMIT in subquery), the optimizer fa
 
 ## Cross References
 
-- [SQL Joins](../dbms/sql/joins.md)
-- [CTEs](../dbms/sql/ctes.md)
-- [Query Optimization](../dbms/query-processing/optimization.md)
-- [Relational Calculus](../dbms/relational-model/relational-calculus.md)
+- [SQL Joins](joins.md)
+- [CTEs](ctes.md)
+- [Query Optimization](../query-processing/optimization.md)
+- [Relational Calculus](../relational-model/relational-calculus.md)

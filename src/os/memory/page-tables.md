@@ -600,8 +600,8 @@ A:
 
 ## Cross References
 
-- [Paging](../os/memory/paging.md)
-- [TLB](../os/memory/tlb.md)
-- [Virtual Memory](../os/virtual-memory/README.md)
-- [Multi-Level Page Tables](../os/memory/multi-level-page-tables.md)
-- [Cache Hierarchy](../arch/memory-hierarchy/cache-basics.md)
+- [Paging](paging.md)
+- [TLB](tlb.md)
+- [Virtual Memory](../virtual-memory/README.md)
+- [Multi-Level Page Tables](multi-level-page-tables.md)
+- [Cache Hierarchy](../../arch/memory-hierarchy/cache-basics.md)

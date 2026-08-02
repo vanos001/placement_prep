@@ -453,6 +453,6 @@ In practice: Single table for simple hierarchies (user types), separate tables f
 
 ## Cross References
 
-- [Keys](../dbms/relational-model/keys.md)
-- [Relational Algebra](../dbms/relational-model/relational-algebra.md)
-- [1NF](../dbms/normalization/1nf.md)
+- [Keys](keys.md)
+- [Relational Algebra](relational-algebra.md)
+- [1NF](../normalization/1nf.md)

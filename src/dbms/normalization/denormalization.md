@@ -357,7 +357,7 @@ A: Each service owns its data. Denormalization happens at the API gateway or rea
 
 ## Cross References
 
-- [3NF](../dbms/normalization/3nf.md)
-- [BCNF](../dbms/normalization/bcnf.md)
-- [Query Optimization](../dbms/query-processing/optimization.md)
-- [Redis Caching](../dbms/caching/redis.md)
+- [3NF](3nf.md)
+- [BCNF](bcnf.md)
+- [Query Optimization](../query-processing/optimization.md)
+- [Redis Caching](../caching/redis.md)

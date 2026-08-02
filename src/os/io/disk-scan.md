@@ -312,7 +312,7 @@ Real-world: Linux's mq-deadline scheduler implements something similar:
 
 ## Cross References
 
-- [Disk Scheduling Overview](../os/io/disk-scheduling.md)
-- [C-SCAN](../os/io/disk-cscan.md)
-- [LOOK](../os/io/disk-look.md)
-- [HDD](../storage/hdd.md)
+- [Disk Scheduling Overview](disk-scheduling.md)
+- [C-SCAN](disk-cscan.md)
+- [LOOK](disk-look.md)
+- [HDD](../../storage/hdd.md)

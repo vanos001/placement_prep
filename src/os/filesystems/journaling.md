@@ -287,7 +287,7 @@ NTFS uses redo/undo records in `$LogFile`. If a transaction was committed, redo 
 
 ## Cross References
 
-- [ext4](../os/filesystems/ext4.md)
-- [WAL](../dbms/internals/wal.md)
-- [Recovery](../dbms/transactions/recovery.md)
-- [ARIES](../dbms/transactions/aries.md)
+- [ext4](ext4.md)
+- [WAL](../../dbms/internals/wal.md)
+- [Recovery](../../dbms/transactions/recovery.md)
+- [ARIES](../../dbms/transactions/aries.md)

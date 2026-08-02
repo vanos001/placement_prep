@@ -235,8 +235,8 @@ A: **Shared memory** (~0.1-1 μs): Setup requires syscall (`shmget`/`mmap`), but
 
 ## Cross References
 
-- [Pipes](../os/processes/ipc-pipes.md)
-- [Shared Memory](../os/processes/ipc-shared-memory.md)
-- [Message Queues](../os/processes/ipc-message-queues.md)
-- [Signals](../os/processes/ipc-signals.md)
-- [Sockets](../os/processes/ipc-sockets.md)
+- [Pipes](ipc-pipes.md)
+- [Shared Memory](ipc-shared-memory.md)
+- [Message Queues](ipc-message-queues.md)
+- [Signals](ipc-signals.md)
+- [Sockets](ipc-sockets.md)

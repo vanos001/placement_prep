@@ -287,7 +287,7 @@ A: Each node maintains its own WAL. Global consistency requires: (1) 2PC for dis
 
 ## Cross References
 
-- [WAL](../dbms/internals/wal.md)
-- [ARIES](../dbms/transactions/aries.md)
-- [Checkpointing](../dbms/transactions/checkpointing.md)
-- [Deadlock Recovery (OS)](../os/synchronization/deadlocks/recovery.md)
+- [WAL](../internals/wal.md)
+- [ARIES](aries.md)
+- [Checkpointing](checkpointing.md)
+- [Deadlock Recovery (OS)](../../os/synchronization/deadlocks/recovery.md)

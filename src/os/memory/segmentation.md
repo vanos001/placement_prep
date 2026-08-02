@@ -476,7 +476,7 @@ A: Linux uses VMAs (Virtual Memory Areas) as software segments. Each VMA defines
 
 ## Cross References
 
-- [Paging](../os/memory/paging.md)
-- [Virtual Memory](../os/virtual-memory/README.md)
-- [Memory Hierarchy](../arch/memory-hierarchy/README.md)
-- [Buffer Management](../dbms/storage/buffer-management.md)
+- [Paging](paging.md)
+- [Virtual Memory](../virtual-memory/README.md)
+- [Memory Hierarchy](../../arch/memory-hierarchy/README.md)
+- [Buffer Management](../../dbms/storage/buffer-management.md)

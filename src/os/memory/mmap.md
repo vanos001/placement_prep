@@ -527,8 +527,8 @@ A:
 
 ## Cross References
 
-- [Virtual Memory](../os/virtual-memory/README.md)
-- [Demand Paging](../os/virtual-memory/demand-paging.md)
-- [File Concepts](../os/filesystems/file-concepts.md)
-- [Buffer Management](../dbms/storage/buffer-management.md)
-- [Memory-Mapped I/O](../arch/io/README.md)
+- [Virtual Memory](../virtual-memory/README.md)
+- [Demand Paging](../virtual-memory/demand-paging.md)
+- [File Concepts](../filesystems/file-concepts.md)
+- [Buffer Management](../../dbms/storage/buffer-management.md)
+- [I/O Architecture](../../arch/io/README.md)

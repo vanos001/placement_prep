@@ -162,6 +162,6 @@ Prevention (resource ordering) has zero runtime overhead. Detection + recovery h
 
 ## Cross References
 
-- [Deadlock Detection](../os/synchronization/deadlocks/detection.md)
-- [Process Termination](../os/processes/states.md)
-- [Transaction Recovery](../dbms/transactions/recovery.md)
+- [Deadlock Detection](detection.md)
+- [Process Termination](../../processes/states.md)
+- [Transaction Recovery](../../../dbms/transactions/recovery.md)

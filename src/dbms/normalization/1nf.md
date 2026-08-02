@@ -199,6 +199,6 @@ A: If you never query individual skills and the array is always read as a whole,
 
 ## Cross References
 
-- [2NF](../dbms/normalization/2nf.md)
-- [Keys](../dbms/relational-model/keys.md)
-- [ER Diagrams](../dbms/relational-model/er-diagrams.md)
+- [2NF](2nf.md)
+- [Keys](../relational-model/keys.md)
+- [ER Diagrams](../relational-model/er-diagrams.md)

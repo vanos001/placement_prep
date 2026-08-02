@@ -223,6 +223,6 @@ Use address ordering: always acquire the lock with the lower memory address firs
 
 ## Cross References
 
-- [Deadlock Avoidance](../os/synchronization/deadlocks/avoidance.md)
-- [Deadlock Detection](../os/synchronization/deadlocks/detection.md)
-- [Two-Phase Locking](../dbms/transactions/lock-based.md)
+- [Deadlock Avoidance](avoidance.md)
+- [Deadlock Detection](detection.md)
+- [Two-Phase Locking](../../../dbms/transactions/lock-based.md)

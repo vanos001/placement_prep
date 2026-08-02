@@ -344,8 +344,8 @@ A: B+ Tree: Fast reads (O(log n)), slower writes (random I/O for updates). LSM T
 
 ## Cross References
 
-- [B-Tree](../dbms/indexing/b-tree.md)
-- [Buffer Pool](../dbms/caching/buffer-pool.md)
-- [Disk Scheduling (OS)](../os/io/disk-scheduling.md)
-- [File Organization](../dbms/storage/file-organization.md)
-- [SSD](../storage/ssd.md)
+- [B-Tree](b-tree.md)
+- [Buffer Pool](../caching/buffer-pool.md)
+- [Disk Scheduling (OS)](../../os/io/disk-scheduling.md)
+- [File Organization](../storage/file-organization.md)
+- [SSD](../../storage/ssd.md)

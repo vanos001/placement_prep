@@ -163,7 +163,7 @@ Start with demand paging (the foundation), then page replacement algorithms, the
 
 ## Cross References
 
-- [Paging](../os/memory/paging.md)
-- [Page Tables](../os/memory/page-tables.md)
-- [Buffer Pool](../dbms/caching/buffer-pool.md)
-- [Cache Hierarchy](../arch/memory-hierarchy/README.md)
+- [Paging](../memory/paging.md)
+- [Page Tables](../memory/page-tables.md)
+- [Buffer Pool](../../dbms/caching/buffer-pool.md)
+- [Cache Hierarchy](../../arch/memory-hierarchy/README.md)

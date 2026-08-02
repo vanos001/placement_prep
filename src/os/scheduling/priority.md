@@ -249,7 +249,7 @@ A: In 1997, the Mars Pathfinder experienced priority inversion: a high-priority 
 
 ## Cross References
 
-- [SJF](../os/scheduling/sjf.md)
-- [Multilevel Feedback](../os/scheduling/multilevel-feedback.md)
-- [Real-Time Scheduling](../os/scheduling/realtime.md)
-- [Starvation](../os/scheduling/metrics.md)
+- [SJF](sjf.md)
+- [Multilevel Feedback](multilevel-feedback.md)
+- [Real-Time Scheduling](realtime.md)
+- [Starvation](metrics.md)

@@ -338,7 +338,7 @@ Each process gets its own `struct file` with an independent file offset. Both fi
 
 ## Cross References
 
-- [File Concepts](../os/filesystems/file-concepts.md)
-- [Device Drivers](../os/io/device-drivers.md)
-- [I/O Software Layers](../os/io/software-layers.md)
-- [File Organization (DBMS)](../dbms/storage/file-organization.md)
+- [File Concepts](file-concepts.md)
+- [Device Drivers](../io/device-drivers.md)
+- [I/O Software Layers](../io/software-layers.md)
+- [File Organization (DBMS)](../../dbms/storage/file-organization.md)

@@ -278,8 +278,8 @@ A: 1) Use `rdtsc` (x86 timestamp counter) for nanosecond precision, 2) Create tw
 
 ## Cross References
 
-- [CPU Scheduling](../os/scheduling/README.md)
-- [PCB](../os/processes/pcb.md)
-- [Process States](../os/processes/states.md)
-- [Pipelining](../arch/pipelining/README.md)
-- [Thread Pools](../concurrency/thread-pools.md)
+- [CPU Scheduling](../scheduling/README.md)
+- [PCB](pcb.md)
+- [Process States](states.md)
+- [Pipelining](../../arch/pipelining/README.md)
+- [Thread Pools](../../concurrency/thread-pools.md)

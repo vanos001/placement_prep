@@ -331,6 +331,6 @@ A: (1) How do you handle network partitions during the pre-commit phase? (2) Wha
 
 ## Cross References
 
-- [Two-Phase Commit](../dbms/transactions/two-phase-commit.md)
-- [Distributed Transactions](../dbms/transactions/distributed.md)
-- [Consensus (Raft)](../distributed/consensus/raft.md)
+- [Two-Phase Commit](two-phase-commit.md)
+- [Distributed Transactions](distributed.md)
+- [Consensus (Raft)](../../distributed/consensus/raft.md)

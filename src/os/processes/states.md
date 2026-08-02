@@ -309,7 +309,7 @@ A: When the system is critically low on memory, the OOM (Out of Memory) killer s
 
 ## Cross References
 
-- [PCB](../os/processes/pcb.md)
-- [Context Switching](../os/processes/context-switching.md)
-- [Process Creation](../os/processes/creation.md)
-- [CPU Scheduling](../os/scheduling/README.md)
+- [PCB](pcb.md)
+- [Context Switching](context-switching.md)
+- [Process Creation](creation.md)
+- [CPU Scheduling](../scheduling/README.md)

@@ -284,6 +284,6 @@ Paxos is the theoretical foundation of distributed consensus. While Raft is more
 
 ## Cross References
 
-- [Raft](../dbms/distributed/raft.md)
-- [Paxos (Distributed)](../distributed/consensus/paxos.md)
-- [Consensus](../dbms/distributed/consensus.md)
+- [Raft](raft.md)
+- [Paxos (Distributed)](../../distributed/consensus/paxos.md)
+- [Consensus](consensus.md)

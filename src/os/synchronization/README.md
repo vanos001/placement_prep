@@ -96,8 +96,8 @@ graph TD
 
 ## Cross References
 
-- [Mutex](../os/synchronization/mutex.md)
-- [Semaphores](../os/synchronization/semaphores.md)
-- [Deadlocks](../os/synchronization/deadlocks/README.md)
-- [Concurrency Overview](../concurrency/overview.md)
-- [Lock-Based Concurrency](../dbms/transactions/lock-based.md)
+- [Mutex](mutex.md)
+- [Semaphores](semaphores.md)
+- [Deadlocks](deadlocks/README.md)
+- [Concurrency Overview](../../concurrency/overview.md)
+- [Lock-Based Concurrency](../../dbms/transactions/lock-based.md)

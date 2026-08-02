@@ -436,6 +436,6 @@ Page replacement is a fundamental virtual memory concept. The choice of algorith
 
 ## Cross References
 
-- [Page Replacement](../os/virtual-memory/page-replacement.md)
-- [Thrashing](../os/virtual-memory/thrashing.md)
-- [Working Set](../os/virtual-memory/working-set.md)
+- [Page Replacement](page-replacement.md)
+- [Thrashing](thrashing.md)
+- [Working Set](working-set.md)

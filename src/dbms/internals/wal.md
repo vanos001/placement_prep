@@ -347,8 +347,8 @@ A: Several cascading issues:
 
 ## Cross References
 
-- [Recovery](../dbms/transactions/recovery.md)
-- [ARIES](../dbms/transactions/aries.md)
-- [Journaling (OS)](../os/filesystems/journaling.md)
-- [Checkpointing](../dbms/transactions/checkpointing.md)
-- [Write Policies](../arch/memory-hierarchy/write-policies.md)
+- [Recovery](../transactions/recovery.md)
+- [ARIES](../transactions/aries.md)
+- [Journaling (OS)](../../os/filesystems/journaling.md)
+- [Checkpointing](../transactions/checkpointing.md)
+- [Write Policies](../../arch/memory-hierarchy/write-policies.md)

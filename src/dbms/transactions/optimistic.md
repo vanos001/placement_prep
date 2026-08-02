@@ -301,7 +301,7 @@ A: Use multi-version OCC: writers create new versions, readers access snapshot v
 
 ## Cross References
 
-- [MVCC](../dbms/transactions/mvcc.md)
-- [Timestamp-Based](../dbms/transactions/timestamp-based.md)
-- [CAS (OS)](../os/synchronization/cas.md)
-- [Lock-Free (OS)](../os/synchronization/lock-free.md)
+- [MVCC](mvcc.md)
+- [Timestamp-Based](timestamp-based.md)
+- [CAS (OS)](../../os/synchronization/cas.md)
+- [Lock-Free (OS)](../../os/synchronization/lock-free.md)

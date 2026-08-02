@@ -268,7 +268,7 @@ A: **RR:** Fixed quantum, strict ordering, deterministic. **Lottery scheduling:*
 
 ## Cross References
 
-- [FCFS](../os/scheduling/fcfs.md)
-- [Multilevel Queue](../os/scheduling/multilevel-queue.md)
-- [Scheduling Metrics](../os/scheduling/metrics.md)
-- [Timer Interrupts](../os/io/interrupts.md)
+- [FCFS](fcfs.md)
+- [Multilevel Queue](multilevel-queue.md)
+- [Scheduling Metrics](metrics.md)
+- [Timer Interrupts](../io/interrupts.md)

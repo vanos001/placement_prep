@@ -414,8 +414,8 @@ A: The memory model defines when one thread's writes are visible to another. Key
 
 ## Cross References
 
-- [Mutex](../os/synchronization/mutex.md)
-- [Semaphores](../os/synchronization/semaphores.md)
-- [Lock-Free](../os/synchronization/lock-free.md)
-- [Readers-Writers](../os/synchronization/readers-writers.md)
-- [Thread Safety (Concurrency)](../concurrency/lock-free.md)
+- [Mutex](../synchronization/mutex.md)
+- [Semaphores](../synchronization/semaphores.md)
+- [Lock-Free](../synchronization/lock-free.md)
+- [Readers-Writers](../synchronization/readers-writers.md)
+- [Lock-Free (Concurrency)](../../concurrency/lock-free.md)

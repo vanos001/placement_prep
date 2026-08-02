@@ -332,7 +332,7 @@ SELECT * FROM crosstab(
 
 ## Cross References
 
-- [DDL](../dbms/sql/ddl.md)
-- [DML](../dbms/sql/dml.md)
-- [Joins](../dbms/sql/joins.md)
-- [Query Processing](../dbms/query-processing/README.md)
+- [DDL](ddl.md)
+- [DML](dml.md)
+- [Joins](joins.md)
+- [Query Processing](../query-processing/README.md)

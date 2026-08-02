@@ -140,8 +140,8 @@ The understandable consensus algorithm used by etcd, CockroachDB, etc.
 
 ## Cross References
 
-- [CAP Theorem](../dbms/distributed/cap.md)
-- [Consensus](../dbms/distributed/consensus.md)
-- [Sharding](../dbms/distributed/sharding.md)
-- [Replication](../dbms/distributed/replication.md)
-- [Distributed Overview](../distributed/overview.md)
+- [CAP Theorem](cap.md)
+- [Consensus](consensus.md)
+- [Sharding](sharding.md)
+- [Replication](replication.md)
+- [Distributed Overview](../../distributed/overview.md)

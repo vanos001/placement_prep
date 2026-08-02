@@ -245,7 +245,7 @@ Setting `turn = j` after `flag[i] = true` ensures that if both processes execute
 
 ## Cross References
 
-- [Critical Section](../os/synchronization/critical-section.md)
-- [Mutex](../os/synchronization/mutex.md)
-- [Memory Barriers](../os/synchronization/memory-barriers.md)
-- [CPU Architecture](../arch/cpu/README.md)
+- [Critical Section](critical-section.md)
+- [Mutex](mutex.md)
+- [Memory Barriers](memory-barriers.md)
+- [CPU Architecture](../../arch/cpu/README.md)

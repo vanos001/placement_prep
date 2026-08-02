@@ -404,8 +404,8 @@ A: Each node maintains local versions. Global consistency requires: (1) Globally
 
 ## Cross References
 
-- [Isolation Levels](../dbms/transactions/isolation-levels.md)
-- [Timestamp-Based](../dbms/transactions/timestamp-based.md)
-- [Readers-Writers (OS)](../os/synchronization/readers-writers.md)
-- [Consistency Models](../distributed/fundamentals/consistency.md)
-- [Optimistic Concurrency](../dbms/transactions/optimistic.md)
+- [Isolation Levels](isolation-levels.md)
+- [Timestamp-Based](timestamp-based.md)
+- [Readers-Writers (OS)](../../os/synchronization/readers-writers.md)
+- [Consistency Models](../../distributed/fundamentals/consistency.md)
+- [Optimistic Concurrency](optimistic.md)

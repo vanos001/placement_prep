@@ -250,8 +250,8 @@ Lock hierarchy defines a strict ordering for acquiring multiple locks (e.g., alw
 
 ## Cross References
 
-- [Semaphores](../os/synchronization/semaphores.md)
-- [Spinlocks](../os/synchronization/spinlocks.md)
-- [Monitors](../os/synchronization/monitors.md)
-- [Deadlocks](../os/synchronization/deadlocks/README.md)
-- [Lock-Based Concurrency](../dbms/transactions/lock-based.md)
+- [Semaphores](semaphores.md)
+- [Spinlocks](spinlocks.md)
+- [Monitors](monitors.md)
+- [Deadlocks](deadlocks/README.md)
+- [Lock-Based Concurrency](../../dbms/transactions/lock-based.md)

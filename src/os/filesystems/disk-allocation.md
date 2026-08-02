@@ -271,7 +271,7 @@ Modern filesystems (ext4, XFS, Btrfs, NTFS) use **extent-based allocation** as t
 
 ## Cross References
 
-- [Contiguous Allocation](../os/memory/contiguous.md)
-- [File Concepts](../os/filesystems/file-concepts.md)
-- [HDD](../storage/hdd.md)
-- [File Organization](../dbms/storage/file-organization.md)
+- [Contiguous Allocation](../memory/contiguous.md)
+- [File Concepts](file-concepts.md)
+- [HDD](../../storage/hdd.md)
+- [File Organization](../../dbms/storage/file-organization.md)

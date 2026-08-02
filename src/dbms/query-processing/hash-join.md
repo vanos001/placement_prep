@@ -282,7 +282,7 @@ Hash join is the workhorse of modern database systems for equi-joins. Understand
 
 ## Cross References
 
-- [Nested Loop](../dbms/query-processing/nested-loop.md)
-- [Sort Merge](../dbms/query-processing/sort-merge.md)
-- [Hash Index](../dbms/indexing/hash-index.md)
-- [Cache Hierarchy](../arch/memory-hierarchy/README.md)
+- [Nested Loop](nested-loop.md)
+- [Sort Merge](sort-merge.md)
+- [Hash Index](../indexing/hash-index.md)
+- [Cache Hierarchy](../../arch/memory-hierarchy/README.md)

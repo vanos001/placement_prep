@@ -235,7 +235,7 @@ For lock acquire: `memory_order_acquire` (ensures subsequent reads see writes be
 
 ## Cross References
 
-- [Spinlocks](../os/synchronization/spinlocks.md)
-- [Lock-Free](../os/synchronization/lock-free.md)
-- [Memory Barriers](../os/synchronization/memory-barriers.md)
-- [Atomic Operations](../arch/cpu/README.md)
+- [Spinlocks](spinlocks.md)
+- [Lock-Free](lock-free.md)
+- [Memory Barriers](memory-barriers.md)
+- [Atomic Operations](../../arch/cpu/README.md)

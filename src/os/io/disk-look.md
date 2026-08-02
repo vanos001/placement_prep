@@ -377,6 +377,6 @@ If the load were heavier and requests more uniform, C-LOOK would be preferable.
 
 ## Cross References
 
-- [SCAN](../os/io/disk-scan.md)
-- [C-SCAN](../os/io/disk-cscan.md)
-- [Disk Scheduling Overview](../os/io/disk-scheduling.md)
+- [SCAN](disk-scan.md)
+- [C-SCAN](disk-cscan.md)
+- [Disk Scheduling Overview](disk-scheduling.md)

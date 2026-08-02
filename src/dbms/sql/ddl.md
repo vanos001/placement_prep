@@ -377,6 +377,6 @@ CREATE POLICY tenant_isolation ON users
 
 ## Cross References
 
-- [DML](../dbms/sql/dml.md)
-- [ER Diagrams](../dbms/relational-model/er-diagrams.md)
-- [Normalization](../dbms/normalization/README.md)
+- [DML](dml.md)
+- [ER Diagrams](../relational-model/er-diagrams.md)
+- [Normalization](../normalization/README.md)

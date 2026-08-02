@@ -479,7 +479,7 @@ Prevention:
 
 ## Cross References
 
-- [Interrupts](../os/io/interrupts.md)
-- [I/O Hardware](../os/io/hardware.md)
-- [Buses](../arch/io/buses.md)
-- [PCIe](../arch/io/pcie.md)
+- [Interrupts](interrupts.md)
+- [I/O Hardware](hardware.md)
+- [Buses](../../arch/io/buses.md)
+- [PCIe](../../arch/io/pcie.md)

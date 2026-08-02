@@ -229,6 +229,6 @@ A: In distributed transactions (2PC):
 
 ## Cross References
 
-- [ACID](../dbms/transactions/acid.md)
-- [Process States (OS)](../os/processes/states.md)
-- [Two-Phase Commit](../dbms/transactions/two-phase-commit.md)
+- [ACID](acid.md)
+- [Process States (OS)](../../os/processes/states.md)
+- [Two-Phase Commit](two-phase-commit.md)

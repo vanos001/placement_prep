@@ -216,6 +216,6 @@ Parsing is the gateway to query processing. It ensures the SQL is well-formed an
 
 ## Cross References
 
-- [Query Optimization](../dbms/query-processing/optimization.md)
-- [Execution Plans](../dbms/query-processing/execution-plans.md)
-- [SQL DDL](../dbms/sql/ddl.md)
+- [Query Optimization](optimization.md)
+- [Execution Plans](execution-plans.md)
+- [SQL DDL](../sql/ddl.md)

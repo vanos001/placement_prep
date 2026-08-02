@@ -345,6 +345,6 @@ Cost estimation is the foundation of query optimization. Without accurate estima
 
 ## Cross References
 
-- [Execution Plans](../dbms/query-processing/execution-plans.md)
-- [Query Optimization](../dbms/query-processing/optimization.md)
-- [Buffer Pool](../dbms/caching/buffer-pool.md)
+- [Execution Plans](execution-plans.md)
+- [Query Optimization](optimization.md)
+- [Buffer Pool](../caching/buffer-pool.md)

@@ -205,8 +205,8 @@ A: SSI (PostgreSQL) builds on MVCC snapshot isolation and adds detection of "dan
 
 ## Cross References
 
-- [Lock-Based](../dbms/transactions/lock-based.md)
-- [MVCC](../dbms/transactions/mvcc.md)
-- [Optimistic](../dbms/transactions/optimistic.md)
-- [Timestamp-Based](../dbms/transactions/timestamp-based.md)
-- [Mutex (OS)](../os/synchronization/mutex.md)
+- [Lock-Based](lock-based.md)
+- [MVCC](mvcc.md)
+- [Optimistic](optimistic.md)
+- [Timestamp-Based](timestamp-based.md)
+- [Mutex (OS)](../../os/synchronization/mutex.md)

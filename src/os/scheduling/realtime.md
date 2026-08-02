@@ -651,7 +651,6 @@ A: **Linux (PREEMPT_RT):** General-purpose OS with RT extensions, ~10-100μs lat
 
 ## Cross References
 
-- [Priority Scheduling](../os/scheduling/priority.md)
-- [Rate Monotonic](../os/scheduling/realtime.md)
-- [CPU Architecture](../arch/cpu/README.md)
-- [Interrupts](../os/io/interrupts.md)
+- [Priority Scheduling](priority.md)
+- [CPU Architecture](../../arch/cpu/README.md)
+- [Interrupts](../io/interrupts.md)

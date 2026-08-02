@@ -392,7 +392,7 @@ A: 1) **Goroutine leak:** `runtime.NumGoroutine()` — if growing, goroutines ar
 
 ## Cross References
 
-- [User vs Kernel Threads](../os/threads/user-vs-kernel.md)
-- [Coroutines](../concurrency/coroutines.md)
-- [Async/Await](../concurrency/async-await.md)
-- [Go Channels](../concurrency/go-channels.md)
+- [User vs Kernel Threads](user-vs-kernel.md)
+- [Coroutines](../../concurrency/coroutines.md)
+- [Async/Await](../../concurrency/async-await.md)
+- [Go Channels](../../concurrency/go-channels.md)

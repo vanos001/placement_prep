@@ -200,7 +200,7 @@ Join algorithms are fundamental to database performance. Understanding them deep
 
 ## Cross References
 
-- [Nested Loop](../dbms/query-processing/nested-loop.md)
-- [Hash Join](../dbms/query-processing/hash-join.md)
-- [Sort Merge](../dbms/query-processing/sort-merge.md)
-- [Query Optimization](../dbms/query-processing/optimization.md)
+- [Nested Loop](nested-loop.md)
+- [Hash Join](hash-join.md)
+- [Sort Merge](sort-merge.md)
+- [Query Optimization](optimization.md)

@@ -154,8 +154,8 @@ CockroachDB, TiDB, Spanner — SQL + distributed scalability.
 
 ## Cross References
 
-- [Key-Value](../dbms/nosql/key-value.md)
-- [Document](../dbms/nosql/document.md)
-- [Column Family](../dbms/nosql/column-family.md)
-- [Graph](../dbms/nosql/graph.md)
-- [Relational Model](../dbms/relational-model/README.md)
+- [Key-Value](key-value.md)
+- [Document](document.md)
+- [Column Family](column-family.md)
+- [Graph](graph.md)
+- [Relational Model](../relational-model/README.md)

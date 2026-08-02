@@ -227,7 +227,7 @@ A: Most databases default to lower isolation levels (READ COMMITTED or REPEATABL
 
 ## Cross References
 
-- [Isolation Levels](../dbms/transactions/isolation-levels.md)
-- [Concurrency Control](../dbms/transactions/concurrency-control.md)
-- [Lock-Based](../dbms/transactions/lock-based.md)
-- [Critical Section (OS)](../os/synchronization/critical-section.md)
+- [Isolation Levels](isolation-levels.md)
+- [Concurrency Control](concurrency-control.md)
+- [Lock-Based](lock-based.md)
+- [Critical Section (OS)](../../os/synchronization/critical-section.md)

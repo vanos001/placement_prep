@@ -342,7 +342,7 @@ Sharding is essential for scaling beyond a single machine. The choice of shard k
 
 ## Cross References
 
-- [Consistent Hashing](../distributed/partitioning/consistent-hashing.md)
-- [CAP Theorem](../dbms/distributed/cap.md)
-- [Replication](../dbms/distributed/replication.md)
-- [Range Partitioning](../distributed/partitioning/range.md)
+- [Consistent Hashing](../../distributed/partitioning/consistent-hashing.md)
+- [CAP Theorem](cap.md)
+- [Replication](replication.md)
+- [Range Partitioning](../../distributed/partitioning/range.md)

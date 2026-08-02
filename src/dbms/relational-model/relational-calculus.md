@@ -362,6 +362,6 @@ This is why SQL requires careful NULL handling with `IS NULL`, `COALESCE`, and `
 
 ## Cross References
 
-- [Relational Algebra](../dbms/relational-model/relational-algebra.md)
-- [SQL Subqueries](../dbms/sql/subqueries.md)
-- [Query Processing](../dbms/query-processing/README.md)
+- [Relational Algebra](relational-algebra.md)
+- [SQL Subqueries](../sql/subqueries.md)
+- [Query Processing](../query-processing/README.md)

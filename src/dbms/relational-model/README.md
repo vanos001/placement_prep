@@ -262,7 +262,7 @@ NoSQL addressed these but sacrificed JOINs, ad-hoc queries, and ACID in many cas
 
 ## Cross References
 
-- [ER Diagrams](../dbms/relational-model/er-diagrams.md)
-- [Keys](../dbms/relational-model/keys.md)
-- [Relational Algebra](../dbms/relational-model/relational-algebra.md)
-- [SQL DDL](../dbms/sql/ddl.md)
+- [ER Diagrams](er-diagrams.md)
+- [Keys](keys.md)
+- [Relational Algebra](relational-algebra.md)
+- [SQL DDL](../sql/ddl.md)

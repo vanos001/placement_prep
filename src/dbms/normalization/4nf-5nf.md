@@ -263,6 +263,6 @@ Only the three-table decomposition (with the cyclic constraint) preserves all in
 
 ## Cross References
 
-- [BCNF](../dbms/normalization/bcnf.md)
-- [Denormalization](../dbms/normalization/denormalization.md)
-- [Relational Algebra](../dbms/relational-model/relational-algebra.md)
+- [BCNF](bcnf.md)
+- [Denormalization](denormalization.md)
+- [Relational Algebra](../relational-model/relational-algebra.md)

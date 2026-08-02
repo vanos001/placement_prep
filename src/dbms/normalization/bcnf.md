@@ -259,6 +259,6 @@ All in BCNF, lossless, and dependency-preserved.
 
 ## Cross References
 
-- [3NF](../dbms/normalization/3nf.md)
-- [4NF/5NF](../dbms/normalization/4nf-5nf.md)
-- [Keys](../dbms/relational-model/keys.md)
+- [3NF](3nf.md)
+- [4NF/5NF](4nf-5nf.md)
+- [Keys](../relational-model/keys.md)

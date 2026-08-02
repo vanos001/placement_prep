@@ -417,7 +417,7 @@ Pipeline:
 
 ## Cross References
 
-- [Namespaces](../os/containers/namespaces.md)
-- [Cgroups](../os/containers/cgroups.md)
-- [VM vs Container](../cloud/virtualization/vm-vs-container.md)
-- [Kubernetes](../os/containers/kubernetes.md)
+- [Namespaces](namespaces.md)
+- [Cgroups](cgroups.md)
+- [VM vs Container](../../cloud/virtualization/vm-vs-container.md)
+- [Kubernetes](kubernetes.md)

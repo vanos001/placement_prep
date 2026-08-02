@@ -347,7 +347,7 @@ A: **POSIX threads** (1:1): kernel-managed, true parallelism, OS-visible, ~1-10Î
 
 ## Cross References
 
-- [Process vs Thread](../os/processes/README.md)
-- [Thread Models](../os/threads/models.md)
-- [Synchronization](../os/synchronization/README.md)
-- [Concurrency Overview](../concurrency/overview.md)
+- [Process vs Thread](../processes/README.md)
+- [Thread Models](models.md)
+- [Synchronization](../synchronization/README.md)
+- [Concurrency Overview](../../concurrency/overview.md)

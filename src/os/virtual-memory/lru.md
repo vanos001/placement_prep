@@ -382,7 +382,7 @@ LRU is the gold standard page replacement algorithm — good performance, immune
 
 ## Cross References
 
-- [Page Replacement](../os/virtual-memory/page-replacement.md)
-- [Clock Algorithm](../os/virtual-memory/clock.md)
-- [Cache Replacement](../arch/memory-hierarchy/replacement.md)
-- [Buffer Pool Replacement](../dbms/caching/buffer-pool.md)
+- [Page Replacement](page-replacement.md)
+- [Clock Algorithm](clock.md)
+- [Cache Replacement](../../arch/memory-hierarchy/replacement.md)
+- [Buffer Pool](../../dbms/caching/buffer-pool.md)

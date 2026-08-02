@@ -296,7 +296,7 @@ FIFO is the simplest page replacement algorithm — evict the oldest page. Its s
 
 ## Cross References
 
-- [Page Replacement](../os/virtual-memory/page-replacement.md)
-- [LRU](../os/virtual-memory/lru.md)
-- [Clock Algorithm](../os/virtual-memory/clock.md)
-- [Cache Replacement](../arch/memory-hierarchy/replacement.md)
+- [Page Replacement](page-replacement.md)
+- [LRU](lru.md)
+- [Clock Algorithm](clock.md)
+- [Cache Replacement](../../arch/memory-hierarchy/replacement.md)

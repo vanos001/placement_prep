@@ -296,6 +296,6 @@ A: Global checkpoints require coordination: (1) Use a 2-phase approach: coordina
 
 ## Cross References
 
-- [WAL](../dbms/internals/wal.md)
-- [ARIES](../dbms/transactions/aries.md)
-- [Recovery](../dbms/transactions/recovery.md)
+- [WAL](../internals/wal.md)
+- [ARIES](aries.md)
+- [Recovery](recovery.md)

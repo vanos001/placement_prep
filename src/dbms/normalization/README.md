@@ -247,7 +247,7 @@ Denormalize for:
 
 ## Cross References
 
-- [1NF](../dbms/normalization/1nf.md)
-- [3NF](../dbms/normalization/3nf.md)
-- [BCNF](../dbms/normalization/bcnf.md)
-- [Keys](../dbms/relational-model/keys.md)
+- [1NF](1nf.md)
+- [3NF](3nf.md)
+- [BCNF](bcnf.md)
+- [Keys](../relational-model/keys.md)

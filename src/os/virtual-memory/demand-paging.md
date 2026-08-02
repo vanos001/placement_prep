@@ -503,8 +503,8 @@ A:
 
 ## Cross References
 
-- [Paging](../os/memory/paging.md)
-- [Page Replacement](../os/virtual-memory/page-replacement.md)
-- [Thrashing](../os/virtual-memory/thrashing.md)
-- [Working Set](../os/virtual-memory/working-set.md)
-- [Buffer Pool](../dbms/caching/buffer-pool.md)
+- [Paging](../memory/paging.md)
+- [Page Replacement](page-replacement.md)
+- [Thrashing](thrashing.md)
+- [Working Set](working-set.md)
+- [Buffer Pool](../../dbms/caching/buffer-pool.md)

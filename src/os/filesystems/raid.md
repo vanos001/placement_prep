@@ -268,8 +268,8 @@ RAID-Z uses COW: writes go to new locations, never overwrite. Full stripes are w
 
 ## Cross References
 
-- [Disk Allocation](../os/filesystems/disk-allocation.md)
-- [HDD](../storage/hdd.md)
-- [SSD](../storage/ssd.md)
-- [Erasure Coding](../storage/erasure-coding.md)
-- [Replication](../distributed/replication/README.md)
+- [Disk Allocation](disk-allocation.md)
+- [HDD](../../storage/hdd.md)
+- [SSD](../../storage/ssd.md)
+- [Erasure Coding](../../storage/erasure-coding.md)
+- [Replication](../../distributed/replication/README.md)

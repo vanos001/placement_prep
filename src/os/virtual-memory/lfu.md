@@ -320,7 +320,7 @@ LFU is a counting-based page replacement algorithm that evicts the least frequen
 
 ## Cross References
 
-- [Page Replacement](../os/virtual-memory/page-replacement.md)
-- [LRU](../os/virtual-memory/lru.md)
-- [Redis Caching](../dbms/caching/redis.md)
-- [Cache Replacement](../arch/memory-hierarchy/replacement.md)
+- [Page Replacement](page-replacement.md)
+- [LRU](lru.md)
+- [Redis Caching](../../dbms/caching/redis.md)
+- [Cache Replacement](../../arch/memory-hierarchy/replacement.md)

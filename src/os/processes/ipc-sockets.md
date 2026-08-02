@@ -248,7 +248,7 @@ A: **Establishment (3-way handshake):** Client calls `connect()` â†’ SYN sent â†
 
 ## Cross References
 
-- [IPC Overview](../os/processes/ipc.md)
-- [Network Sockets](../networks/sockets/README.md)
-- [TCP Sockets](../networks/sockets/tcp.md)
-- [Unix Sockets](../networks/sockets/unix.md)
+- [IPC Overview](ipc.md)
+- [Network Sockets](../../networks/sockets/README.md)
+- [TCP Sockets](../../networks/sockets/tcp.md)
+- [Unix Sockets](../../networks/sockets/unix.md)

@@ -119,7 +119,7 @@ Physical Optimization:
 
 ## Cross References
 
-- [Query Optimization](../dbms/query-processing/optimization.md)
-- [Join Algorithms](../dbms/query-processing/joins.md)
-- [Execution Plans](../dbms/query-processing/execution-plans.md)
-- [Indexing](../dbms/indexing/README.md)
+- [Query Optimization](optimization.md)
+- [Join Algorithms](joins.md)
+- [Execution Plans](execution-plans.md)
+- [Indexing](../indexing/README.md)

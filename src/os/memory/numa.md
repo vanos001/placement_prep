@@ -520,7 +520,7 @@ A:
 
 ## Cross References
 
-- [Cache Coherence](../arch/memory-hierarchy/coherence.md)
-- [MESI Protocol](../arch/memory-hierarchy/mesi.md)
-- [Huge Pages](../os/memory/huge-pages.md)
-- [Multicore](../arch/parallelism/multicore.md)
+- [Cache Coherence](../../arch/memory-hierarchy/coherence.md)
+- [MESI Protocol](../../arch/memory-hierarchy/mesi.md)
+- [Huge Pages](huge-pages.md)
+- [Multicore](../../arch/parallelism/multicore.md)

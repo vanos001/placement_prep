@@ -318,6 +318,5 @@ A: (1) Use GIN on tsvector for full-text search. (2) Enable fast update for real
 
 ## Cross References
 
-- [GiST](../dbms/indexing/gist.md)
-- [B-Tree](../dbms/indexing/b-tree.md)
-- [Inverted Index](../dbms/indexing/gin.md)
+- [GiST](gist.md)
+- [B-Tree](b-tree.md)

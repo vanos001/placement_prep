@@ -244,7 +244,7 @@ Nested loop join is the "always works" algorithm — it handles any join conditi
 
 ## Cross References
 
-- [Hash Join](../dbms/query-processing/hash-join.md)
-- [Sort Merge](../dbms/query-processing/sort-merge.md)
-- [Buffer Pool](../dbms/caching/buffer-pool.md)
-- [Cache Performance](../arch/memory-hierarchy/performance.md)
+- [Hash Join](hash-join.md)
+- [Sort Merge](sort-merge.md)
+- [Buffer Pool](../caching/buffer-pool.md)
+- [Cache Performance](../../arch/memory-hierarchy/performance.md)

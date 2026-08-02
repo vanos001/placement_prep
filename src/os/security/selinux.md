@@ -545,7 +545,7 @@ Bottom line: Containers + SELinux = defense in depth
 
 ## Cross References
 
-- [Access Control](../os/security/access-control.md)
-- [Capabilities](../os/security/capabilities.md)
-- [Namespaces](../os/containers/namespaces.md)
-- [Firewalls](../networks/security/firewalls.md)
+- [Access Control](access-control.md)
+- [Capabilities](capabilities.md)
+- [Namespaces](../containers/namespaces.md)
+- [Firewalls](../../networks/security/firewalls.md)

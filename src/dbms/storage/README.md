@@ -111,7 +111,7 @@ The alternative to row-oriented storage: storing data column-by-column for analy
 
 ## Cross References
 
-- [Buffer Management](../dbms/storage/buffer-management.md)
-- [File Organization](../dbms/storage/file-organization.md)
-- [Storage Overview](../storage/overview.md)
-- [File Systems (OS)](../os/filesystems/README.md)
+- [Buffer Management](buffer-management.md)
+- [File Organization](file-organization.md)
+- [Storage Overview](../../storage/overview.md)
+- [File Systems (OS)](../../os/filesystems/README.md)

@@ -193,7 +193,7 @@ A: A fork bomb is a process that recursively forks to exhaust system resources. 
 
 ## Cross References
 
-- [Threads](../os/threads/README.md)
-- [CPU Scheduling](../os/scheduling/README.md)
-- [IPC](../os/processes/ipc.md)
-- [Context Switching](../os/processes/context-switching.md)
+- [Threads](../threads/README.md)
+- [CPU Scheduling](../scheduling/README.md)
+- [IPC](ipc.md)
+- [Context Switching](context-switching.md)

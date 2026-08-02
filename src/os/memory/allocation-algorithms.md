@@ -505,7 +505,7 @@ A:
 
 ## Cross References
 
-- [Buddy System](../os/memory/buddy-system.md)
-- [Slab Allocator](../os/memory/slab-allocator.md)
-- [Contiguous Allocation](../os/memory/contiguous.md)
-- [File Organization](../dbms/storage/file-organization.md)
+- [Buddy System](buddy-system.md)
+- [Slab Allocator](slab-allocator.md)
+- [Contiguous Allocation](contiguous.md)
+- [File Organization](../../dbms/storage/file-organization.md)

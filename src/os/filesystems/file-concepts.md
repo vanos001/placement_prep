@@ -215,7 +215,7 @@ It would create cycles in the filesystem graph, breaking the acyclic tree struct
 
 ## Cross References
 
-- [VFS](../os/filesystems/vfs.md)
-- [Directory Structure](../os/filesystems/directory-structure.md)
-- [File Organization](../dbms/storage/file-organization.md)
-- [Record Formats](../dbms/storage/record-formats.md)
+- [VFS](vfs.md)
+- [Directory Structure](directory-structure.md)
+- [File Organization](../../dbms/storage/file-organization.md)
+- [Record Formats](../../dbms/storage/record-formats.md)

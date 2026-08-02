@@ -256,7 +256,7 @@ To reduce wait time: decrease cycle time (faster disk, fewer cylinders) or reduc
 
 ## Cross References
 
-- [SCAN](../os/io/disk-scan.md)
-- [LOOK](../os/io/disk-look.md)
-- [Disk Scheduling Overview](../os/io/disk-scheduling.md)
-- [HDD](../storage/hdd.md)
+- [SCAN](disk-scan.md)
+- [LOOK](disk-look.md)
+- [Disk Scheduling Overview](disk-scheduling.md)
+- [HDD](../../storage/hdd.md)

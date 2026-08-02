@@ -368,6 +368,6 @@ Reading execution plans is an essential skill for database developers and DBAs. 
 
 ## Cross References
 
-- [Query Optimization](../dbms/query-processing/optimization.md)
-- [Cost Estimation](../dbms/query-processing/cost-estimation.md)
-- [Join Algorithms](../dbms/query-processing/joins.md)
+- [Query Optimization](optimization.md)
+- [Cost Estimation](cost-estimation.md)
+- [Join Algorithms](joins.md)

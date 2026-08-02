@@ -431,7 +431,7 @@ A: ARIES uses **logical undo** for such operations. Instead of logging a before-
 
 ## Cross References
 
-- [WAL](../dbms/internals/wal.md)
-- [Recovery](../dbms/transactions/recovery.md)
-- [Checkpointing](../dbms/transactions/checkpointing.md)
-- [Buffer Pool](../dbms/caching/buffer-pool.md)
+- [WAL](../internals/wal.md)
+- [Recovery](recovery.md)
+- [Checkpointing](checkpointing.md)
+- [Buffer Pool](../caching/buffer-pool.md)

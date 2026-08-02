@@ -368,6 +368,6 @@ A: Use an LSM-tree approach with WAL: (1) All writes go to an in-memory buffer (
 
 ## Cross References
 
-- [WAL](../dbms/internals/wal.md)
-- [ARIES](../dbms/transactions/aries.md)
-- [Recovery](../dbms/transactions/recovery.md)
+- [WAL](../internals/wal.md)
+- [ARIES](aries.md)
+- [Recovery](recovery.md)

@@ -213,6 +213,6 @@ The sleeping barber is a variant of producer-consumer where: customers are produ
 
 ## Cross References
 
-- [Semaphores](../os/synchronization/semaphores.md)
-- [Dining Philosophers](../os/synchronization/dining-philosophers.md)
-- [Producer-Consumer](../concurrency/producer-consumer.md)
+- [Semaphores](semaphores.md)
+- [Dining Philosophers](dining-philosophers.md)
+- [Producer-Consumer](../../concurrency/producer-consumer.md)

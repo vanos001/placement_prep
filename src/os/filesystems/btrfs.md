@@ -280,6 +280,6 @@ A subvolume has its own inode number space, can be snapshotted independently, an
 
 ## Cross References
 
-- [Journaling](../os/filesystems/journaling.md)
-- [ZFS](../os/filesystems/zfs.md)
-- [Copy-on-Write](../os/virtual-memory/cow.md)
+- [Journaling](journaling.md)
+- [ZFS](zfs.md)
+- [Copy-on-Write](../virtual-memory/cow.md)

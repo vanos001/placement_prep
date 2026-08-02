@@ -514,7 +514,7 @@ A:
 
 ## Cross References
 
-- [Paging](../os/memory/paging.md)
-- [TLB](../os/memory/tlb.md)
-- [NUMA](../os/memory/numa.md)
-- [Cache Hierarchy](../arch/memory-hierarchy/cache-basics.md)
+- [Paging](paging.md)
+- [TLB](tlb.md)
+- [NUMA](numa.md)
+- [Cache Hierarchy](../../arch/memory-hierarchy/cache-basics.md)

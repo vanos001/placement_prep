@@ -250,7 +250,7 @@ A: (1) Use a lower fillfactor (e.g., 70%) to leave room for inserts without imme
 
 ## Cross References
 
-- [B+ Tree](../dbms/indexing/b-plus-tree.md)
-- [Cache Hierarchy](../arch/memory-hierarchy/cache-basics.md)
-- [Disk Scheduling (OS)](../os/io/disk-scheduling.md)
-- [File Organization](../dbms/storage/file-organization.md)
+- [B+ Tree](b-plus-tree.md)
+- [Cache Hierarchy](../../arch/memory-hierarchy/cache-basics.md)
+- [Disk Scheduling (OS)](../../os/io/disk-scheduling.md)
+- [File Organization](../storage/file-organization.md)

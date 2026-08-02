@@ -322,6 +322,6 @@ A: PostgreSQL GIN indexes on JSONB can't use INCLUDE. Instead: (1) Create a func
 
 ## Cross References
 
-- [Composite Index](../dbms/indexing/composite-index.md)
-- [Clustered vs Nonclustered](../dbms/indexing/clustered-vs-nonclustered.md)
-- [Query Optimization](../dbms/query-processing/optimization.md)
+- [Composite Index](composite-index.md)
+- [Clustered vs Nonclustered](clustered-vs-nonclustered.md)
+- [Query Optimization](../query-processing/optimization.md)

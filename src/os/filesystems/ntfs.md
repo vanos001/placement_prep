@@ -272,6 +272,6 @@ NTFS uses the `$LogFile` to record all metadata changes before they're committed
 
 ## Cross References
 
-- [Journaling](../os/filesystems/journaling.md)
-- [VFS](../os/filesystems/vfs.md)
-- [Disk Allocation](../os/filesystems/disk-allocation.md)
+- [Journaling](journaling.md)
+- [VFS](vfs.md)
+- [Disk Allocation](disk-allocation.md)

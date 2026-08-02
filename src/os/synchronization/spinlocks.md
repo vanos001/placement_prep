@@ -266,7 +266,7 @@ When a mutex is contended, Linux checks if the lock holder is currently running 
 
 ## Cross References
 
-- [Mutex](../os/synchronization/mutex.md)
-- [CAS](../os/synchronization/cas.md)
-- [Lock-Free](../os/synchronization/lock-free.md)
-- [Cache Coherence](../arch/memory-hierarchy/coherence.md)
+- [Mutex](mutex.md)
+- [CAS](cas.md)
+- [Lock-Free](lock-free.md)
+- [Cache Coherence](../../arch/memory-hierarchy/coherence.md)

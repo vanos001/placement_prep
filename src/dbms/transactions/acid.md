@@ -246,8 +246,8 @@ COMMIT;
 
 ## Cross References
 
-- [Isolation Levels](../dbms/transactions/isolation-levels.md)
-- [Concurrency Control](../dbms/transactions/concurrency-control.md)
-- [WAL](../dbms/internals/wal.md)
-- [Serializability](../dbms/transactions/serializability.md)
-- [Consensus](../distributed/consensus/raft.md)
+- [Isolation Levels](isolation-levels.md)
+- [Concurrency Control](concurrency-control.md)
+- [WAL](../internals/wal.md)
+- [Serializability](serializability.md)
+- [Consensus](../../distributed/consensus/raft.md)

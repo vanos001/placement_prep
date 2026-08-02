@@ -303,7 +303,7 @@ A: **Linux CFS:** Red-black tree, vruntime-based, nice values, O(log n). **Windo
 
 ## Cross References
 
-- [Multilevel Feedback](../os/scheduling/multilevel-feedback.md)
-- [Red-Black Trees](../dbms/indexing/b-tree.md)
-- [Scheduling Metrics](../os/scheduling/metrics.md)
-- [Process States](../os/processes/states.md)
+- [Multilevel Feedback](multilevel-feedback.md)
+- [Red-Black Trees](../../dbms/indexing/b-tree.md)
+- [Scheduling Metrics](metrics.md)
+- [Process States](../processes/states.md)

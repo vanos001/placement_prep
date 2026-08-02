@@ -231,6 +231,6 @@ Modern filesystems primarily use **bitmaps** (ext4, NTFS) or **extent-based B-tr
 
 ## Cross References
 
-- [Disk Allocation](../os/filesystems/disk-allocation.md)
-- [File Concepts](../os/filesystems/file-concepts.md)
-- [Bitmap Index](../dbms/indexing/bitmap-index.md)
+- [Disk Allocation](disk-allocation.md)
+- [File Concepts](file-concepts.md)
+- [Bitmap Index](../../dbms/indexing/bitmap-index.md)

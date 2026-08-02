@@ -586,7 +586,7 @@ A:
 
 ## Cross References
 
-- [Page Tables](../os/memory/page-tables.md)
-- [Paging](../os/memory/paging.md)
-- [Cache Mapping](../arch/memory-hierarchy/cache-mapping.md)
-- [Inverted Page Tables](../os/memory/inverted-page-tables.md)
+- [Page Tables](page-tables.md)
+- [Paging](paging.md)
+- [Cache Mapping](../../arch/memory-hierarchy/cache-mapping.md)
+- [Inverted Page Tables](inverted-page-tables.md)

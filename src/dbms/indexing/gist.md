@@ -285,6 +285,6 @@ A: GiST is a generalization that can implement R-Tree behavior. PostgreSQL's GiS
 
 ## Cross References
 
-- [GIN](../dbms/indexing/gin.md)
-- [B-Tree](../dbms/indexing/b-tree.md)
-- [B+ Tree](../dbms/indexing/b-plus-tree.md)
+- [GIN](gin.md)
+- [B-Tree](b-tree.md)
+- [B+ Tree](b-plus-tree.md)

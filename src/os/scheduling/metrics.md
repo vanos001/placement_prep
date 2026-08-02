@@ -618,7 +618,7 @@ A: CFS uses virtual runtime (vruntime) — each process's vruntime increases pro
 
 ## Cross References
 
-- [FCFS](../os/scheduling/fcfs.md)
-- [SJF](../os/scheduling/sjf.md)
-- [Round Robin](../os/scheduling/round-robin.md)
-- [CPU Performance](../arch/performance/equation.md)
+- [FCFS](fcfs.md)
+- [SJF](sjf.md)
+- [Round Robin](round-robin.md)
+- [CPU Performance](../../arch/performance/equation.md)

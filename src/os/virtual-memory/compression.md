@@ -374,6 +374,6 @@ Memory compression provides a fast middle ground between keeping pages in RAM an
 
 ## Cross References
 
-- [Swapping](../os/memory/swapping.md)
-- [Thrashing](../os/virtual-memory/thrashing.md)
-- [SSD](../storage/ssd.md)
+- [Swapping](../memory/swapping.md)
+- [Thrashing](thrashing.md)
+- [SSD](../../storage/ssd.md)

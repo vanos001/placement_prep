@@ -498,7 +498,7 @@ Fix:
 
 ## Cross References
 
-- [Cgroups](../os/containers/cgroups.md)
-- [Docker](../os/containers/docker.md)
-- [Security](../os/security/README.md)
-- [Process Creation](../os/processes/creation.md)
+- [Cgroups](cgroups.md)
+- [Docker](docker.md)
+- [Security](../security/README.md)
+- [Process Creation](../processes/creation.md)

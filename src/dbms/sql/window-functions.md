@@ -439,6 +439,6 @@ A: Strategies:
 
 ## Cross References
 
-- [CTEs](../dbms/sql/ctes.md)
-- [SQL DML](../dbms/sql/dml.md)
-- [Query Optimization](../dbms/query-processing/optimization.md)
+- [CTEs](ctes.md)
+- [SQL DML](dml.md)
+- [Query Optimization](../query-processing/optimization.md)

@@ -200,7 +200,7 @@ Deadline scheduler fairness:
 
 ## Cross References
 
-- [Disk Scheduling Overview](../os/io/disk-scheduling.md)
-- [SSTF](../os/io/disk-sstf.md)
-- [SCAN](../os/io/disk-scan.md)
-- [HDD](../storage/hdd.md)
+- [Disk Scheduling Overview](disk-scheduling.md)
+- [SSTF](disk-sstf.md)
+- [SCAN](disk-scan.md)
+- [HDD](../../storage/hdd.md)

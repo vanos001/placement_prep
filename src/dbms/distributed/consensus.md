@@ -265,7 +265,7 @@ Consensus is the foundation of strongly consistent distributed systems. Understa
 
 ## Cross References
 
-- [Raft](../distributed/consensus/raft.md)
-- [Paxos](../distributed/consensus/paxos.md)
-- [Two-Phase Commit](../dbms/transactions/two-phase-commit.md)
-- [Distributed Transactions](../dbms/transactions/distributed.md)
+- [Raft](../../distributed/consensus/raft.md)
+- [Paxos](../../distributed/consensus/paxos.md)
+- [Two-Phase Commit](../transactions/two-phase-commit.md)
+- [Distributed Transactions](../transactions/distributed.md)

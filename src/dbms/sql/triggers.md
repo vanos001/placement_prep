@@ -502,6 +502,6 @@ $$ LANGUAGE plpgsql;
 
 ## Cross References
 
-- [Stored Procedures](../dbms/sql/stored-procedures.md)
-- [Views](../dbms/sql/views.md)
-- [ACID](../dbms/transactions/acid.md)
+- [Stored Procedures](stored-procedures.md)
+- [Views](views.md)
+- [ACID](../transactions/acid.md)

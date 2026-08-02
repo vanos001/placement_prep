@@ -212,7 +212,7 @@ A: **Rate Monotonic (RM):** Static priority = 1/period. Optimal among fixed-prio
 
 ## Cross References
 
-- [CPU Architecture](../arch/cpu/README.md)
-- [Process States](../os/processes/states.md)
-- [Context Switching](../os/processes/context-switching.md)
-- [Thread Pools](../concurrency/thread-pools.md)
+- [CPU Architecture](../../arch/cpu/README.md)
+- [Process States](../processes/states.md)
+- [Context Switching](../processes/context-switching.md)
+- [Thread Pools](../../concurrency/thread-pools.md)

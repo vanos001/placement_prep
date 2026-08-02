@@ -274,8 +274,8 @@ Modern databases use **heap files + B+ tree indexes** as the dominant storage st
 
 ## Cross References
 
-- [Record Formats](../dbms/storage/record-formats.md)
-- [File Concepts (OS)](../os/filesystems/file-concepts.md)
-- [Disk Allocation (OS)](../os/filesystems/disk-allocation.md)
-- [B+ Tree](../dbms/indexing/b-plus-tree.md)
-- [HDD](../storage/hdd.md)
+- [Record Formats](record-formats.md)
+- [File Concepts (OS)](../../os/filesystems/file-concepts.md)
+- [Disk Allocation (OS)](../../os/filesystems/disk-allocation.md)
+- [B+ Tree](../indexing/b-plus-tree.md)
+- [HDD](../../storage/hdd.md)

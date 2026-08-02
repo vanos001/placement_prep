@@ -226,7 +226,7 @@ A: 1) Real-time processes bypass MLFQ entirely (SCHED_FIFO/RR with fixed priorit
 
 ## Cross References
 
-- [Multilevel Queue](../os/scheduling/multilevel-queue.md)
-- [Round Robin](../os/scheduling/round-robin.md)
-- [Priority Scheduling](../os/scheduling/priority.md)
-- [Linux CFS](../os/scheduling/linux-cfs.md)
+- [Multilevel Queue](multilevel-queue.md)
+- [Round Robin](round-robin.md)
+- [Priority Scheduling](priority.md)
+- [Linux CFS](linux-cfs.md)
