@@ -1,93 +1,63 @@
-# State-of-the-Art Models
-
-State-of-the-art (SOTA) models represent the current frontier of AI capabilities. This section covers the most influential large language models, their architectures, capabilities, and unique approaches.
+# State-of-the-Art LLMs (2024-2025)
 
 ## Overview
 
+The LLM landscape evolves rapidly. This section covers the most important state-of-the-art models as of 2024-2025, their architectures, key innovations, and how they compare. Understanding these models is essential for ML interviews, as interviewers expect familiarity with current capabilities and trade-offs.
+
+## Model Landscape
+
 ```mermaid
 graph TD
-    A[SOTA Models] --> B[Proprietary]
+    A[LLM Landscape 2024-25] --> B[Proprietary]
     A --> C[Open Source]
-    
-    B --> B1[GPT-4 / GPT-4o]
-    B --> B2[Claude]
-    B --> B3[Gemini]
-    
-    C --> C1[Llama]
-    C --> C2[DeepSeek]
-    C --> C3[Qwen]
-    C --> C4[Mistral]
-    
-    B1 --> D[OpenAI]
-    B2 --> E[Anthropic]
-    B3 --> F[Google DeepMind]
-    
-    C1 --> G[Meta]
-    C2 --> H[DeepSeek]
-    C3 --> I[Alibaba]
-    C4 --> J[Mistral AI]
+    B --> B1[GPT-4o / GPT-4 Turbo]
+    B --> B2[Claude 3.5 Sonnet / Opus]
+    B --> B3[Gemini 1.5 / 2.0]
+    C --> C1[Llama 3.1 / 3.2]
+    C --> C2[DeepSeek V2 / V3 / R1]
+    C --> C3[Qwen 2.5]
+    C --> C4[Mistral / Mixtral]
 ```
 
-## Model Comparison
+## Key Comparison Dimensions
 
-| Model | Org | Parameters | Context | Open | Multimodal | Key Strength |
-|-------|-----|-----------|---------|------|------------|--------------|
-| GPT-4o | OpenAI | ~1.8T (MoE) | 128K | No | Yes | Reasoning, multimodal |
-| Claude 3.5 | Anthropic | Unknown | 200K | No | Yes | Long context, safety |
-| Gemini 2 | Google | Unknown | 1M+ | No | Yes | Native multimodal |
-| Llama 3.1 | Meta | 8B-405B | 128K | Yes | No | Open ecosystem |
-| DeepSeek-V3 | DeepSeek | 671B MoE | 128K | Yes | No | Efficient MoE |
-| Qwen 2.5 | Alibaba | 0.5B-72B | 128K | Yes | Partial | Multilingual |
-| Mistral Large | Mistral | Unknown | 128K | Partial | No | Efficiency |
+| Dimension | What to Compare |
+|-----------|----------------|
+| Architecture | Dense vs MoE, context length, parameter count |
+| Training | Pre-training data, RLHF/DPO, reasoning training |
+| Capabilities | Coding, math, reasoning, multimodal |
+| Performance | Benchmarks (MMLU, HumanEval, MATH) |
+| Efficiency | Inference cost, latency, tokens/second |
+| Access | API-only vs open-weights vs open-source |
 
-## Evolution Timeline
+## Benchmark Overview
 
-```
-2020: GPT-3 (175B) - Scaling laws demonstrated
-2022: ChatGPT - RLHF breakthrough
-2023: GPT-4 - Multimodal, stronger reasoning
-2023: Claude - Constitutional AI, long context
-2023: Llama - Open-source LLMs
-2023: Gemini - Natively multimodal
-2024: Mixtral - Open-source MoE
-2024: GPT-4o - Any-to-any multimodal
-2024: DeepSeek-V3 - Efficient MoE
-2024: Llama 3.1 - 405B open model
-```
+| Model | MMLU | HumanEval | MATH | Context |
+|-------|------|-----------|------|---------|
+| GPT-4o | ~88% | ~90% | ~76% | 128K |
+| Claude 3.5 Sonnet | ~88% | ~92% | ~71% | 200K |
+| Gemini 1.5 Pro | ~86% | ~84% | ~67% | 2M |
+| Llama 3.1 405B | ~87% | ~89% | ~73% | 128K |
+| DeepSeek V3 | ~88% | ~82% | ~75% | 128K |
+| Qwen 2.5 72B | ~86% | ~86% | ~68% | 128K |
 
-## Key Differentiators
-
-### Proprietary Models
-- Generally stronger performance
-- Better safety alignment
-- Expensive API access
-- No weight access
-- Rapid iteration cycles
-
-### Open Source Models
-- Free to use and modify
-- Can run locally
-- Customizable for specific needs
-- Community contributions
-- Rapid catching up to proprietary
+*Note: Benchmarks change rapidly; these are approximate as of early 2025.*
 
 ## Interview Questions
 
-1. **What are the main SOTA models?**
-   GPT-4o (OpenAI), Claude (Anthropic), Gemini (Google), Llama (Meta), DeepSeek, Qwen (Alibaba), and Mistral. Each has different strengths in reasoning, multimodal, context length, or efficiency.
+1. **Compare GPT-4, Claude, and Gemini** — All are frontier proprietary models. GPT-4: strong general capabilities. Claude: strong coding, long context, safety. Gemini: multimodal, extremely long context (2M tokens).
 
-2. **What differentiates proprietary from open-source models?**
-   Proprietary models are generally stronger but require API access. Open-source models can run locally, be customized, and are free, but may lag in capabilities.
+2. **What is the difference between open-source and open-weights?** — Open-weights: model weights are public (Llama, Mistral). Open-source: weights + training code + data are public (some smaller models). Most "open-source" LLMs are actually open-weights.
 
-3. **Which model is best for which use case?**
-   GPT-4o: General purpose, multimodal. Claude: Long documents, safety-critical. Gemini: Video/audio, long context. Llama: Self-hosted, customization. DeepSeek: Efficient inference.
+3. **How do you choose an LLM for a task?** — Consider: task complexity, latency requirements, cost budget, context length needs, fine-tuning requirements, and data privacy constraints.
+
+## Summary
+
+The LLM landscape is dominated by a few frontier proprietary models (GPT-4, Claude, Gemini) and rapidly improving open-source alternatives (Llama, DeepSeek, Qwen, Mistral). Key differentiators include architecture choices (dense vs MoE), training methodology, context length, and multimodal capabilities.
 
 ## Cross-References
 
-- [GPT-4](gpt4.md) - OpenAI's flagship
-- [Claude](claude.md) - Anthropic's approach
-- [Gemini](gemini-sota.md) - Google's multimodal
-- [Llama](llama.md) - Open-source leader
-- [DeepSeek](deepseek.md) - MoE innovation
-- [Qwen](qwen.md) - Multilingual focus
-- [Mistral](mistral.md) - Efficiency focus
+- [LLM Architecture](../llm-serving/architecture.md) — Transformer fundamentals
+- [LLM Inference](../llm-serving/inference.md) — Serving details
+- [Mixture of Experts](../moe/README.md) — MoE architecture
+- [Multimodal Models](../multimodal/README.md) — Vision-language models

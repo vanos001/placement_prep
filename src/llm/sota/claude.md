@@ -1,396 +1,80 @@
 # Claude
 
-Claude is Anthropic's AI assistant, designed with a focus on safety, helpfulness, and honesty. It uses Constitutional AI (CAI) for alignment and is known for strong reasoning, long context handling, and careful responses.
-
 ## Overview
+
+Claude is Anthropic's family of large language models, designed with a focus on safety, helpfulness, and honesty. The Claude 3 family (Haiku, Sonnet, Opus) and Claude 3.5 series offer competitive performance with GPT-4, with particular strengths in coding, long-context processing, and nuanced instruction following.
+
+## Model Family
 
 ```mermaid
 graph TD
-    A[Claude] --> B[Constitutional AI]
-    A --> C[Long Context]
-    A --> D[Model Versions]
-    
-    B --> B1[RLAIF]
-    B --> B2[Safety Principles]
-    B --> B3[Self-Improvement]
-    
-    C --> C1["200K context"]
-    C --> C2[Document analysis]
-    
-    D --> D1[Claude 3 Haiku]
-    D --> D2[Claude 3 Sonnet]
-    D --> D3[Claude 3 Opus]
-    D --> D4[Claude 3.5 Sonnet]
+    A[Claude Family] --> B[Claude 3 Haiku]
+    A --> C[Claude 3 Sonnet]
+    A --> D[Claude 3 Opus]
+    A --> E[Claude 3.5 Sonnet]
+    A --> F[Claude 3.5 Haiku]
+    B --> B1[Fastest, cheapest]
+    C --> C1[Balanced]
+    D --> D1[Most capable]
+    E --> E1[Best value - surpasses Opus]
+    F --> F1[Fast + capable]
 ```
+
+## Key Features
+
+| Feature | Claude 3.5 Sonnet | Claude 3 Opus |
+|---------|-------------------|---------------|
+| Context | 200K tokens | 200K tokens |
+| Coding | Best-in-class | Strong |
+| Reasoning | Excellent | Excellent |
+| Speed | Fast | Slower |
+| Cost | $3/$15 per 1M tokens | $15/$75 per 1M tokens |
 
 ## Constitutional AI (CAI)
 
-### Core Concept
+Claude's training uses Constitutional AI — a safety approach that uses a set of principles (constitution) rather than human feedback:
 
-```python
-# Traditional RLHF: Humans label outputs
-# Constitutional AI: AI self-improves using principles
-
-# CAI Process:
-# 1. Supervised: Model generates responses
-# 2. Self-critique: Model critiques own responses using constitution
-# 3. Revision: Model revises based on critique
-# 4. RLAIF: Train on AI-generated preferences
-
-class ConstitutionalAI:
-    def __init__(self):
-        self.principles = [
-            "Choose the response that is most helpful and honest",
-            "Choose the response that is least harmful",
-            "Choose the response that respects user autonomy",
-            "Choose the response that is most truthful",
-            "Choose the response that avoids bias",
-            # ... more principles
-        ]
-    
-    def critique(self, response):
-        """AI critiques its own response using principles"""
-        critique_prompt = f"""
-        Consider this response: {response}
-        
-        According to the principle: "{self.principles[0]}"
-        Does this response follow the principle? Why or why not?
-        """
-        return self.model.generate(critique_prompt)
-    
-    def revise(self, response, critique):
-        """AI revises based on critique"""
-        revision_prompt = f"""
-        Original response: {response}
-        Critique: {critique}
-        
-        Please revise the response to address the critique.
-        """
-        return self.model.generate(revision_prompt)
+```mermaid
+graph LR
+    A[Pre-training] --> B[Supervised Fine-Tuning]
+    B --> C[Constitutional AI]
+    C --> D[RLAIF: AI Feedback]
+    D --> E[Safety + Helpfulness]
 ```
 
-### RLAIF (RL from AI Feedback)
+### How CAI Works
 
-```python
-# Instead of human labelers, use AI to generate preferences
-
-def rlaif_training(model, prompt, response_a, response_b):
-    """Train using AI-generated preferences"""
-    
-    # AI evaluates which response is better
-    evaluation = model.generate(f"""
-    Which response is better according to these principles:
-    1. Helpful and honest
-    2. Safe and harmless
-    3. Respectful of autonomy
-    
-    Response A: {response_a}
-    Response B: {response_b}
-    
-    Which is better? A or B?
-    """)
-    
-    # Use preference for training
-    if evaluation == "A":
-        preferred, rejected = response_a, response_b
-    else:
-        preferred, rejected = response_b, response_a
-    
-    # Train with DPO or PPO
-    loss = preference_loss(model, prompt, preferred, rejected)
-    return loss
-```
-
-## Claude Model Family
-
-### Claude 3 (March 2024)
-
-| Model | Parameters | Speed | Context | Use Case |
-|-------|-----------|-------|---------|----------|
-| Haiku | Small | Fastest | 200K | High-volume, simple tasks |
-| Sonnet | Medium | Balanced | 200K | General purpose |
-| Opus | Large | Slowest | 200K | Complex reasoning |
-
-### Claude 3.5 Sonnet (June 2024)
-
-```python
-# Claude 3.5 Sonnet: Best balance of capability and speed
-# - Better than Claude 3 Opus on most benchmarks
-# - Faster than Claude 3 Sonnet
-# - 200K context window
-# - Strong coding capabilities
-
-benchmarks = {
-    "MMLU": 88.7,
-    "HumanEval": 92.0,  # Coding benchmark
-    "GSM8K": 96.4,      # Math reasoning
-    "GPQA": 59.4,       # Graduate-level QA
-}
-```
-
-### Claude 3.5 Haiku & Opus
-
-```python
-# Claude 3.5 Haiku: Ultra-fast, efficient
-# Claude 3.5 Opus: Most capable (upcoming)
-```
-
-## API Usage
-
-### Basic Chat
-
-```python
-import anthropic
-
-client = anthropic.Anthropic()
-
-# Simple chat
-message = client.messages.create(
-    model="claude-3-5-sonnet-20241022",
-    max_tokens=1024,
-    messages=[
-        {"role": "user", "content": "Explain quantum computing simply."}
-    ]
-)
-
-print(message.content[0].text)
-```
-
-### Long Document Analysis
-
-```python
-# Claude excels at long document analysis
-# 200K context = ~500 pages of text
-
-def analyze_document(document_text, question):
-    message = client.messages.create(
-        model="claude-3-5-sonnet-20241022",
-        max_tokens=4096,
-        messages=[{
-            "role": "user",
-            "content": f"""
-            Here is a document:
-            
-            <document>
-            {document_text}
-            </document>
-            
-            Please answer: {question}
-            """
-        }]
-    )
-    return message.content[0].text
-```
-
-### Tool Use (Function Calling)
-
-```python
-# Claude supports tool use
-tools = [{
-    "name": "get_weather",
-    "description": "Get current weather for a location",
-    "input_schema": {
-        "type": "object",
-        "properties": {
-            "location": {"type": "string", "description": "City name"},
-            "unit": {"type": "string", "enum": ["celsius", "fahrenheit"]}
-        },
-        "required": ["location"]
-    }
-}]
-
-message = client.messages.create(
-    model="claude-3-5-sonnet-20241022",
-    max_tokens=1024,
-    tools=tools,
-    messages=[{
-        "role": "user",
-        "content": "What's the weather in Tokyo?"
-    }]
-)
-
-# Parse tool call
-for block in message.content:
-    if block.type == "tool_use":
-        print(f"Tool: {block.name}")
-        print(f"Input: {block.input}")
-```
-
-### Vision
-
-```python
-# Claude can analyze images
-import base64
-
-def analyze_image(image_path, question):
-    with open(image_path, "rb") as f:
-        image_data = base64.standard_b64encode(f.read()).decode("utf-8")
-    
-    message = client.messages.create(
-        model="claude-3-5-sonnet-20241022",
-        max_tokens=1024,
-        messages=[{
-            "role": "user",
-            "content": [
-                {
-                    "type": "image",
-                    "source": {
-                        "type": "base64",
-                        "media_type": "image/jpeg",
-                        "data": image_data
-                    }
-                },
-                {
-                    "type": "text",
-                    "text": question
-                }
-            ]
-        }]
-    )
-    return message.content[0].text
-```
-
-## Artifacts & Projects
-
-### Artifacts
-
-```python
-# Claude can create interactive content
-# - Code (HTML, React, Python)
-# - Documents (Markdown, text)
-# - Visualizations (SVG, Mermaid)
-# - Interactive widgets
-
-# Example: Claude generates HTML
-prompt = "Create an interactive HTML page that shows a todo list app"
-# Claude generates complete HTML/CSS/JS code
-```
-
-### Projects
-
-```python
-# Projects allow setting context for conversations
-# - Upload documents as context
-# - Set custom instructions
-# - Share across conversations
-
-# Useful for:
-# - Codebases
-# - Documentation
-# - Style guides
-# - Domain knowledge
-```
+1. **Critique**: Model critiques its own responses against constitutional principles
+2. **Revision**: Model revises responses based on critique
+3. **RLAIF**: Train using AI-generated preferences (from the constitution) instead of human labels
 
 ## Strengths
 
-### 1. Long Context Handling
-
-```python
-# 200K context window
-# Can process:
-# - Entire books
-# - Long codebases
-# - Legal documents
-# - Research papers
-
-# Strong "needle in a haystack" performance
-# Maintains quality across full context
-```
-
-### 2. Reasoning
-
-```python
-# Claude excels at:
-# - Multi-step reasoning
-# - Mathematical proofs
-# - Code analysis
-# - Scientific reasoning
-# - Legal analysis
-
-# Often more careful and thorough than competitors
-```
-
-### 3. Safety
-
-```python
-# Constitutional AI makes Claude:
-# - Less likely to generate harmful content
-# - More honest about uncertainty
-# - Better at refusing inappropriate requests
-# - Less prone to hallucination (but still possible)
-```
-
-### 4. Coding
-
-```python
-# Claude 3.5 Sonnet: 92% on HumanEval
-# Strong at:
-# - Code generation
-# - Code review
-# - Debugging
-# - Architecture design
-# - Documentation
-```
-
-## Limitations
-
-1. **No real-time knowledge:** Training data has cutoff
-2. **No audio/video:** Text and images only (as of Claude 3.5)
-3. **Conservative:** May refuse reasonable requests
-4. **Cost:** Similar to GPT-4 for comparable models
-5. **Availability:** May have rate limits during high demand
-
-## Comparison with GPT-4
-
-| Feature | Claude 3.5 Sonnet | GPT-4o |
-|---------|-------------------|--------|
-| Text Quality | Excellent | Excellent |
-| Vision | Yes | Yes |
-| Audio | No | Yes |
-| Context | 200K | 128K |
-| Coding | 92% HumanEval | 67% HumanEval |
-| Safety | More conservative | Balanced |
-| Speed | Fast | Fast |
-| Price | Similar | Similar |
+- **Long context**: 200K tokens with strong retrieval
+- **Coding**: Consistently top benchmarks (HumanEval, SWE-bench)
+- **Instruction following**: Precise, nuanced adherence to complex instructions
+- **Safety**: Designed to be helpful while avoiding harmful outputs
+- **XML/structured output**: Excellent at structured formats
 
 ## Interview Questions
 
-1. **What is Constitutional AI?**
-   CAI is Anthropic's alignment approach where the AI self-improves using written principles (constitution). Instead of human labelers, the AI critiques and revises its own outputs, then trains on AI-generated preferences (RLAIF).
+1. **What makes Claude different from GPT-4?** — Constitutional AI training (vs RLHF), 200K context window, stronger coding performance, and emphasis on safety. Claude tends to be more verbose and cautious.
 
-2. **How does Claude differ from GPT-4?**
-   Claude uses Constitutional AI for alignment (vs RLHF), has longer context (200K vs 128K), is more safety-focused, and may be more careful in responses. GPT-4 has native audio capabilities.
+2. **What is Constitutional AI?** — Training approach where the model critiques and revises its own outputs against a set of principles, then uses AI-generated preferences for RLHF. Reduces reliance on human labelers.
 
-3. **What is RLAIF?**
-   Reinforcement Learning from AI Feedback. Instead of human preferences, AI generates preference labels using constitutional principles. More scalable than RLHF.
+3. **Claude 3.5 Sonnet vs Claude 3 Opus?** — 3.5 Sonnet actually outperforms Opus on most benchmarks while being faster and cheaper. This demonstrates that newer, smaller models can surpass older, larger ones.
 
-4. **What are Claude's strengths?**
-   Long context handling, careful reasoning, safety, coding (92% HumanEval), and document analysis. Known for thorough, well-structured responses.
+4. **How does Claude handle long context?** — 200K token context window with strong retrieval accuracy. Can process entire codebases or long documents in a single prompt.
 
-5. **How does Claude handle long documents?**
-   With 200K context window, Claude can process entire books or codebases. It maintains strong performance across the full context length.
-
-6. **What is tool use in Claude?**
-   Claude can call external functions/tools, similar to GPT-4's function calling. The model outputs structured tool calls that applications can execute.
-
-7. **What are Claude's limitations?**
-   No real-time knowledge, no audio/video (currently), may be overly conservative, and has similar cost to GPT-4.
-
-## Common Mistakes
-
-- ❌ Not using system prompts for consistent behavior
-- ❌ Sending too much context (waste of tokens)
-- ❌ Expecting real-time information
-- ❌ Not handling tool use responses properly
-- ❌ Overlooking Claude's specific API format (different from OpenAI)
+5. **When would you choose Claude over GPT-4?** — Coding tasks, long document analysis, tasks requiring precise instruction following, and when safety/alignment is critical.
 
 ## Summary
 
-Claude is Anthropic's AI assistant focused on safety, helpfulness, and honesty. Constitutional AI enables self-improvement using principles. Known for long context (200K), strong reasoning, and coding capabilities. Claude 3.5 Sonnet offers the best balance of capability and speed.
+Claude models are Anthropic's frontier LLMs, distinguished by Constitutional AI training, long context windows, and strong coding capabilities. Claude 3.5 Sonnet offers the best value, surpassing the larger Opus model. The focus on safety and nuanced instruction following makes Claude particularly suitable for enterprise applications.
 
 ## Cross-References
 
-- [GPT-4](gpt4.md) - OpenAI's competitor
-- [RLHF](../rlhf.md) - Traditional alignment approach
-- [DPO](../dpo.md) - Direct preference optimization
-- [Long Context](../long-context.md) - Context window techniques
+- [GPT-4](./gpt4.md) — Main competitor
+- [LLM Architecture](../llm-serving/architecture.md) — Transformer fundamentals
+- [RLHF](../llm-serving/rlhf.md) — Alignment training
+- [LLM Serving](../llm-serving/inference.md) — Deployment
