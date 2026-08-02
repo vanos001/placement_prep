@@ -130,4 +130,3 @@ Vertex AI provides a comprehensive, managed ML platform on Google Cloud. Its Aut
 - [Model Deployment](./deployment.md) — Deployment patterns
 - [Kubeflow](./kubeflow.md) — Open-source alternative
 - [Cloud Overview](../../cloud/overview.md)
-

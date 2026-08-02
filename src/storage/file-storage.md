@@ -288,4 +288,3 @@ File storage provides hierarchical file/directory access through standard protoc
 - [Object Storage](./object-storage.md) — Flat namespace alternative
 - [Storage Overview](./overview.md) — Storage hierarchy
 - [OS Filesystems](../os/filesystems/ext4.md)
-

@@ -220,8 +220,4 @@ Speculative decoding achieves 2-3× decode speedup with zero quality loss by usi
 - [KV Cache →](kv-cache.md) KV cache management during verification
 - [Batching →](batching.md) Batching vs speculation trade-off
 - [vLLM →](vllm.md) Speculative decoding in production
-- [Inference](./inference.md)
-- [Batching](./batching.md)
-- [vLLM](./vllm.md)
 - [ML Transformers GPT](../ml/transformers/gpt.md)
-

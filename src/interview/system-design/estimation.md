@@ -255,4 +255,3 @@ Redis instances needed = 350,000 / 100,000 ≈ 4 instances
 - [Performance vs Scalability](./performance-vs-scalability.md)
 - [Framework](./framework.md)
 - [Cloud Overview](../../cloud/overview.md)
-

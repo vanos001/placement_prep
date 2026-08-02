@@ -304,4 +304,3 @@ With index: Binary search O(log n)
 - [DBMS Normalization](../../dbms/normalization/3nf.md)
 - [Storage Distributed](../../storage/distributed.md)
 - [Key-Value Store](../kv-store.md)
-

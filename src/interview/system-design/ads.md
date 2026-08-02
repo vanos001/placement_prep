@@ -261,4 +261,3 @@ graph TB
 - [Real-World: Google Search](./real-world/google-search.md)
 - [ML Search Ranking](../../ml/system-design/search-ranking.md)
 - [Cloud AWS](../../cloud/aws/README.md)
-

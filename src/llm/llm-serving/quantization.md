@@ -262,6 +262,4 @@ Quantization reduces LLM memory and compute by using lower-precision representat
 - [Ollama →](ollama.md) GGUF model deployment
 - [ML Quantization](../ml/advanced/quantization.md)
 - [TensorRT](./tensorrt.md)
-- [Inference](./inference.md)
 - [Model Compression](../ml/advanced/compression.md)
-

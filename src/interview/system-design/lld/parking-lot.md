@@ -464,4 +464,3 @@ class ParkingLot:
 - [UML Class Diagrams](./uml-class-diagrams.md) — Diagram conventions
 - [OOP Concepts](./oop-concepts.md) — Inheritance, polymorphism
 - [Elevator](./elevator.md)
-

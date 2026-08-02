@@ -183,4 +183,3 @@ Amazon SageMaker provides a comprehensive, managed ML platform with deep AWS int
 - [Model Deployment](./deployment.md) — Deployment patterns
 - [Feature Store](./feature-store.md) — Feature management
 - [Cloud AWS](../../cloud/aws/README.md)
-

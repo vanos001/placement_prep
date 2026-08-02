@@ -300,4 +300,3 @@ Fork-join parallelism recursively decomposes tasks into parallel subtasks and co
 - [Concurrency Overview](./overview.md) — Fundamental concepts
 - [ML Training](../ml/deep-learning/backpropagation.md)
 - [Cloud Lambda](../cloud/aws/lambda.md)
-

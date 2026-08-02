@@ -170,4 +170,3 @@ Prophet is an excellent choice for business time series forecasting. It handles 
 - [Time Series Overview](./README.md)
 - [Anomaly Detection](./anomaly.md)
 - [Feature Engineering](../foundations/feature-engineering.md)
-

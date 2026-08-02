@@ -315,4 +315,3 @@ Thread pools manage pre-created worker threads that execute tasks from a queue. 
 - [Concurrency Overview](./overview.md) — Fundamental concepts
 - [Cloud Lambda](../cloud/aws/lambda.md)
 - [LLM Serving Systems](../llm/llm-serving/systems.md)
-

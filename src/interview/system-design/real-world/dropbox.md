@@ -301,4 +301,3 @@ graph TB
 - [Object Storage](../../../storage/object-storage.md)
 - [Consistency Patterns](../consistency-patterns.md)
 - [Key-Value Store](../kv-store.md)
-

@@ -174,4 +174,3 @@ ARIMA is a powerful classical method for time series forecasting. It combines au
 - [Anomaly Detection](./anomaly.md)
 - [Transformers for Time Series](./transformers.md)
 - [ML Foundations Probability](../foundations/probability.md)
-

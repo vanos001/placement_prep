@@ -243,4 +243,3 @@ The Transformer architecture uses stacked encoder and decoder layers, each conta
 - [Attention Mechanism](../deep-learning/attention.md)
 - [GPU Training](../../cloud/virtualization/README.md)
 - [ML System Design Model Serving](../system-design/model-serving.md)
-

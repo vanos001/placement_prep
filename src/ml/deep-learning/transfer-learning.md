@@ -203,4 +203,3 @@ Transfer learning is the foundation of modern deep learning practice — virtual
 - [Vision Transformers](../transformers/vit.md)
 - [Knowledge Distillation](../advanced/distillation.md)
 - [MLOps Deployment](../mlops/deployment.md)
-

@@ -345,4 +345,3 @@ Lock-free programming uses atomic operations (especially CAS) instead of locks. 
 - [Thread Pools](./thread-pools.md) — Higher-level concurrency
 - [CAS Operations](../os/synchronization/cas.md)
 - [Storage Distributed](../storage/distributed.md)
-

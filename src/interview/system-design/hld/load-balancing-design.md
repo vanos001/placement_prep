@@ -284,4 +284,3 @@ Client → LB → Any Server → Redis (session store)
 - [Cloud Kubernetes Services](../../cloud/kubernetes/services.md)
 - [Networks HTTP](../../networks/http/rest.md)
 - [Rate Limiter](../rate-limiter.md)
-

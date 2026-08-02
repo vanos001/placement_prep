@@ -247,4 +247,3 @@ Benchmark (10KB payload, localhost):
 - [Consistency Patterns](./consistency-patterns.md)
 - [Messaging Systems](./hld/messaging-systems.md)
 - [Cloud Networking](../../cloud/aws/vpc.md)
-

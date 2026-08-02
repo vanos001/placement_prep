@@ -267,4 +267,3 @@ graph TB
 - [Recommendation System](../../../ml/system-design/recommendation.md)
 - [Availability Patterns](../availability-patterns.md)
 - [CDN & Caching](../hld/caching-strategy.md)
-

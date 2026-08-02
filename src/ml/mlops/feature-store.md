@@ -105,4 +105,3 @@ A Feature Store solves critical ML infrastructure problems: feature reuse, consi
 - [Storage Distributed](../../storage/distributed.md)
 - [MLOps Pipelines](./pipelines.md)
 - [System Design Feature Store](../system-design/feature-store.md)
-

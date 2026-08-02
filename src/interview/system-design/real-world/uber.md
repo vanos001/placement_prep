@@ -303,4 +303,3 @@ stateDiagram-v2
 - [Payment System](../payment.md)
 - [Rate Limiter](../rate-limiter.md)
 - [Real-Time Location](../search.md)
-

@@ -151,8 +151,5 @@ TensorRT-LLM maximizes LLM inference performance on NVIDIA GPUs through graph op
 - [Quantization →](quantization.md) FP8 and INT4 methods
 - [Batching →](batching.md) In-flight batching theory
 - [Systems Overview →](systems.md) Comparison table
-- [Quantization](./quantization.md)
-- [vLLM](./vllm.md)
 - [TGI](./tgi.md)
 - [Cloud GPU](../cloud/virtualization/README.md)
-

@@ -67,4 +67,3 @@ Key breakthroughs:
 - [Classical ML](../classical/README.md)
 - [Optimizers](./optimizers.md)
 - [GPU Architecture](../../cloud/virtualization/README.md)
-

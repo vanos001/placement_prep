@@ -224,7 +224,4 @@ Positional encoding is essential for Transformers to understand sequence order. 
 - [BERT →](bert.md) Uses learned positional embeddings
 - [GPT →](gpt.md) Uses learned positional embeddings
 - [T5 →](t5.md) Uses relative position bias
-- [Self-Attention](./self-attention.md)
-- [Transformer Architecture](./architecture.md)
 - [LLM Architecture](../../llm/llm-serving/architecture.md)
-

@@ -669,4 +669,3 @@ vm.select_item("coke")  # Dispensing coke. Change: $0.5
 - [UML Class Diagrams](./uml-class-diagrams.md) — Visualize patterns
 - [LLD Problems](./parking-lot.md) — Patterns in practice
 - [Abstraction](./abstraction-interfaces.md)
-

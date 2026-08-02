@@ -209,4 +209,3 @@ HDDs are electromechanical devices limited by physical movement. Their strengths
 - [Distributed Storage](./distributed.md) — Scaling beyond single drives
 - [Storage Overview](./overview.md) — Storage hierarchy
 - [OS Disk Scheduling](../os/io/disk-scheduling.md)
-

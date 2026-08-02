@@ -307,8 +307,5 @@ SFT bridges pre-training and deployment by teaching models to follow instruction
 - [LoRA details →](quantization.md) Quantization methods used with QLoRA
 - [Prompt Engineering →](prompt-engineering.md) How to use SFT models effectively
 - [Evaluation →](evaluation.md) Measuring SFT model quality
-- [RLHF](./rlhf.md)
-- [Pretraining](./pretraining.md)
 - [ML RL DPO](../ml/rl/dpo.md)
 - [Transfer Learning](../ml/deep-learning/transfer-learning.md)
-

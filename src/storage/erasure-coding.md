@@ -286,4 +286,3 @@ Erasure coding provides fault-tolerant storage with lower overhead than replicat
 - [HDD](./hdd.md) — Where EC data lives
 - [Storage Overview](./overview.md) — Storage hierarchy
 - [Cloud S3](../cloud/aws/s3.md)
-

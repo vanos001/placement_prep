@@ -226,8 +226,4 @@ CrewAI enables multi-agent collaboration with role-based specialization. Agents 
 - [LangChain →](langchain.md) Alternative framework
 - [AutoGen →](autogen.md) Microsoft's multi-agent framework
 - [Architecture →](architecture.md) Agent architecture patterns
-- [Multi-Agent](./multi-agent.md)
-- [AutoGen](./autogen.md)
-- [LangChain](./langchain.md)
 - [Agent Planning](./planning.md)
-

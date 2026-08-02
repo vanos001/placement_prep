@@ -297,6 +297,4 @@ Modern LLMs use decoder-only transformers with: multi-head/grouped-query attenti
 - [vLLM →](vllm.md) PagedAttention for efficient serving
 - [ML Transformers](../ml/transformers/architecture.md)
 - [Attention Mechanism](../ml/deep-learning/attention.md)
-- [KV Cache](./kv-cache.md)
 - [GPU Architecture](../cloud/virtualization/README.md)
-

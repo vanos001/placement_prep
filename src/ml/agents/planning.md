@@ -214,7 +214,4 @@ Agent planning involves decomposing tasks, ordering steps with dependencies, and
 - [Multi-Agent →](multi.md) Planning with multiple agents
 - [Agent Architecture →](architecture.md) Where planning fits
 - [Chain-of-Thought](./chain-of-thought.md)
-- [Tree-of-Thought](./tree-of-thought.md)
-- [ReAct](./react.md)
 - [RL Fundamentals](../rl/fundamentals.md)
-

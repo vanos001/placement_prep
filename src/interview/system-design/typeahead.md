@@ -305,4 +305,3 @@ With replication: 300 GB
 - [Caching Strategy](./hld/caching-strategy.md)
 - [Estimation](./estimation.md)
 - [ML Search Ranking](../../ml/system-design/search-ranking.md)
-

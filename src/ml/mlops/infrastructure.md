@@ -162,4 +162,3 @@ ML Infrastructure requires careful planning across compute, storage, orchestrati
 - [GPU in Cloud](../../cloud/virtualization/README.md)
 - [MLOps Platforms](./platforms.md)
 - [Storage Overview](../../storage/overview.md)
-

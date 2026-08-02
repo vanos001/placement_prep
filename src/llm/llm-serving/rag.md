@@ -300,7 +300,6 @@ RAG grounds LLM outputs in retrieved external knowledge, reducing hallucination 
 ## Cross-References
 
 - [Embeddings →](embeddings.md) How text is vectorized
-- [Vector DBs →](embeddings.md) Storage and search
 - [Prompt Engineering →](prompt-engineering.md) Constructing the augmented prompt
 - [Agent Planning →](../agents/planning.md) Agentic RAG patterns
 - [Evaluation →](evaluation.md) Measuring LLM quality

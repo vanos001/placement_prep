@@ -406,4 +406,3 @@ Java provides a rich concurrency toolkit: synchronized + wait/notify for basics,
 - [Interview LLD Concurrency](../interview/system-design/lld/concurrency-design.md)
 - [OS Synchronization](../os/synchronization/mutex.md)
 - [Lock-Free](./lock-free.md)
-

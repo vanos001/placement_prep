@@ -131,6 +131,5 @@ The attention mechanism computes weighted sums based on query-key compatibility.
 ## Cross-References
 
 - [Self-Attention →](../transformers/self-attention.md) Detailed Transformer attention
-- [Multi-Head Attention →](../transformers/self-attention.md) Multi-head mechanism
 - [RNNs & LSTMs →](rnn-lstm.md) Pre-attention sequence models
 - [Transformers →](../transformers/README.md) Full Transformer architecture

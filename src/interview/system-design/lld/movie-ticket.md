@@ -449,4 +449,3 @@ class MovieTicketSystem:
 - [Error Handling](./error-handling.md) — Transaction rollback
 - [OOP Concepts](./oop-concepts.md)
 - [DBMS Transactions](../../../dbms/transactions/acid.md)
-

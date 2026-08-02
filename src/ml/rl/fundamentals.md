@@ -193,4 +193,3 @@ These fundamentals underpin everything from game-playing AI to LLM alignment via
 - [Policy Gradient](./policy-gradient.md)
 - [PPO](./ppo.md)
 - [Agent Architecture](../agents/architecture.md)
-

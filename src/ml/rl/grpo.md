@@ -218,4 +218,3 @@ GRPO is the algorithm behind the current generation of reasoning models. Its sim
 - [PPO](./ppo.md)
 - [LLM RLHF](../../llm/llm-serving/rlhf.md)
 - [DeepSeek](../../llm/sota/deepseek.md)
-

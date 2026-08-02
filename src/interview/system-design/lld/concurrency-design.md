@@ -509,4 +509,3 @@ ReentrantLock lock = new ReentrantLock(true);  // Fair lock
 - [Producer-Consumer](../../../concurrency/producer-consumer.md)
 - [Readers-Writers](../../../concurrency/readers-writers.md)
 - [OS Synchronization](../../../os/synchronization/mutex.md)
-

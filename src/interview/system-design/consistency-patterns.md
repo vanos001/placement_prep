@@ -261,4 +261,3 @@ session.execute(
 - [Distributed File System](./dfs.md)
 - [Key-Value Store](./kv-store.md)
 - [Storage Distributed](../../storage/distributed.md)
-

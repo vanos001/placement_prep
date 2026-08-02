@@ -347,8 +347,5 @@ A: Systematic debugging:
 - [Activation Functions](activation.md) — ReLU helps with vanishing gradients
 - [Batch Normalization](batch-norm.md) — Stabilizes gradients
 - [Optimizers](optimizers.md) — How gradients are used to update weights
-- [Optimizers](./optimizers.md)
-- [Neural Network Basics](./nn-basics.md)
 - [GPU Training](../../cloud/virtualization/README.md)
 - [Loss Functions](../foundations/loss-functions.md)
-

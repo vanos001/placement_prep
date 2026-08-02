@@ -103,4 +103,3 @@ A Model Registry is critical for managing ML model lifecycle. It provides versio
 - [Model Deployment](./deployment.md)
 - [Model Monitoring](./monitoring.md)
 - [Versioning & Storage](../../storage/overview.md)
-

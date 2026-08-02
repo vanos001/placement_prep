@@ -128,4 +128,3 @@ Machine learning encompasses supervised, unsupervised, and reinforcement learnin
 - [LLM Architecture](../llm/llm-serving/architecture.md)
 - [Interview ML Questions](../interview/ml-questions.md)
 - [Cloud GPU](../cloud/virtualization/README.md)
-

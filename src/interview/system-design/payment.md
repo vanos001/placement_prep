@@ -301,4 +301,3 @@ stateDiagram-v2
 - [DBMS Transactions](../../dbms/transactions/acid.md)
 - [DBMS Distributed](../../dbms/transactions/distributed.md)
 - [Cloud AWS](../../cloud/aws/README.md)
-

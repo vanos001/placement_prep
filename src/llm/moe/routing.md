@@ -391,7 +391,4 @@ Routing strategies determine how tokens are assigned to experts in MoE models. T
 - [Load Balancing](training.md#load-balancing) - Training with balanced routing
 - [Switch Transformer](switch.md) - Top-1 routing
 - [Mixtral](mixtral.md) - Practical routing implementation
-- [MoE Architecture](./architecture.md)
-- [Switch Transformer](./switch.md)
 - [ML Deep Learning Attention](../ml/deep-learning/attention.md)
-

@@ -63,4 +63,3 @@ MLOps is essential for moving ML from research to production. It ensures reprodu
 - [Monitoring](./monitoring.md)
 - [Cloud Kubernetes](../../cloud/kubernetes/README.md)
 - [CI/CD](../../cloud/cicd/README.md)
-

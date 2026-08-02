@@ -200,7 +200,5 @@ Tokenization converts text to integer sequences. BPE (GPT, LLaMA) and SentencePi
 - [Architecture →](architecture.md) How tokens become embeddings
 - [Embeddings →](embeddings.md) Dense vector representations
 - [Inference →](inference.md) Token generation
-- [Embeddings](./embeddings.md)
 - [Pretraining](./pretraining.md)
 - [ML Transformers](../ml/transformers/README.md)
-

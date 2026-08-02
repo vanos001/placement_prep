@@ -131,4 +131,3 @@ ML CI/CD automates the entire lifecycle from code commit to production deploymen
 - [ML Pipelines](./pipelines.md)
 - [Model Registry](./model-registry.md)
 - [Deployment Strategies](./deployment.md)
-

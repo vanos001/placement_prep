@@ -377,4 +377,3 @@ Distributed storage systems use partitioning (consistent hashing, range-based) t
 - [DBMS Replication](../dbms/distributed/replication.md)
 - [Cloud Overview](../cloud/overview.md)
 - [Interview DFS](../interview/system-design/dfs.md)
-

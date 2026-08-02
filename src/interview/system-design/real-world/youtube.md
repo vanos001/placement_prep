@@ -292,4 +292,3 @@ graph LR
 - [Recommendation](../../../ml/system-design/recommendation.md)
 - [Object Storage](../../../storage/object-storage.md)
 - [CDN & Caching](../hld/caching-strategy.md)
-

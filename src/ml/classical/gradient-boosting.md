@@ -248,8 +248,4 @@ A: Multi-pronged approach:
 - [XGBoost](xgboost.md) — Regularized gradient boosting
 - [LightGBM](lightgbm.md) — Faster gradient boosting
 - [CatBoost](catboost.md) — Categorical-friendly boosting
-- [XGBoost](./xgboost.md)
-- [LightGBM](./lightgbm.md)
-- [CatBoost](./catboost.md)
 - [Feature Engineering](../foundations/feature-engineering.md)
-

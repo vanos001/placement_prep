@@ -271,4 +271,3 @@ Else (normal operation):
 - [Consistency Patterns](../consistency-patterns.md)
 - [DBMS Distributed Consistency](../../dbms/distributed/consistency.md)
 - [Storage Distributed](../../storage/distributed.md)
-

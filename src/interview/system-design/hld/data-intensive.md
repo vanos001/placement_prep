@@ -367,4 +367,3 @@ Activity → Kafka → Samza (stream processing) → Voldemort (serving)
 - [Monitoring](./monitoring-observability.md) — Pipeline monitoring
 - [DBMS Overview](../../dbms/overview.md)
 - [Storage Overview](../../storage/overview.md)
-

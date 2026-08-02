@@ -284,7 +284,3 @@ vLLM is the leading open-source LLM serving engine. PagedAttention eliminates KV
 - [Quantization →](quantization.md) Model compression supported by vLLM
 - [Systems Overview →](systems.md) Comparison of serving systems
 - [TGI](./tgi.md)
-- [TensorRT](./tensorrt.md)
-- [Batching](./batching.md)
-- [KV Cache](./kv-cache.md)
-

@@ -173,4 +173,3 @@ Transformers have revolutionized time series forecasting by capturing long-range
 - [Time Series Overview](./README.md)
 - [ARIMA](./arima.md)
 - [LLM Architecture](../../llm/llm-serving/architecture.md)
-

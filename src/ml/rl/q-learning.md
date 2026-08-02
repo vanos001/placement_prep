@@ -199,4 +199,3 @@ Q-learning is the bridge between tabular RL and deep RL — understanding it is 
 - [Policy Gradient](./policy-gradient.md)
 - [Agent Architecture](../agents/architecture.md)
 - [Deep Learning](../deep-learning/README.md)
-

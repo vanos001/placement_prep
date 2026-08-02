@@ -354,4 +354,3 @@ The readers-writers problem synchronizes concurrent access where readers can sha
 - [OS Readers-Writers](../os/synchronization/readers-writers.md)
 - [DBMS Concurrency Control](../dbms/transactions/concurrency-control.md)
 - [Storage Distributed](../storage/distributed.md)
-

@@ -204,8 +204,4 @@ Tree-of-Thought explores multiple reasoning paths in a tree structure, evaluates
 - [ReAct →](react.md) Reasoning with tools
 - [Planning →](planning.md) Task decomposition
 - [Agent Architecture →](architecture.md) Where ToT fits in agent design
-- [Chain-of-Thought](./chain-of-thought.md)
-- [ReAct](./react.md)
-- [Agent Planning](./planning.md)
 - [LLM Prompt Engineering](../../llm/llm-serving/prompt-engineering.md)
-

@@ -207,4 +207,3 @@ For a user-facing API with 200ms target:
 - [Performance vs Scalability](./performance-vs-scalability.md)
 - [Caching Strategy](./hld/caching-strategy.md)
 - [Storage: SSD vs HDD](../../storage/ssd.md)
-

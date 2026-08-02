@@ -218,8 +218,4 @@ AutoGen enables multi-agent collaboration through structured conversation. Key a
 - [CrewAI →](crewai.md) Role-based multi-agent
 - [LangChain →](langchain.md) Alternative framework
 - [Tool Calling →](tool-calling.md) How agents use tools
-- [Multi-Agent](./multi-agent.md)
-- [CrewAI](./crewai.md)
-- [LangChain](./langchain.md)
 - [LLM Serving](../../llm/llm-serving/README.md)
-

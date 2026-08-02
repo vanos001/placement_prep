@@ -209,8 +209,4 @@ Multi-agent systems use specialized agents that collaborate through structured c
 - [CrewAI →](crewai.md) Multi-agent framework
 - [AutoGen →](autogen.md) Multi-agent conversations
 - [Planning →](planning.md) Task decomposition for agents
-- [AutoGen](./autogen.md)
-- [CrewAI](./crewai.md)
-- [Agent Communication](./architecture.md)
 - [Messaging Systems](../../interview/system-design/hld/messaging-systems.md)
-

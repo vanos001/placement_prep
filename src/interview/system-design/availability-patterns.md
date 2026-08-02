@@ -339,4 +339,3 @@ graph LR
 - [Latency vs Throughput](./latency-vs-throughput.md)
 - [Performance vs Scalability](./performance-vs-scalability.md)
 - [Cloud Overview](../../cloud/overview.md)
-

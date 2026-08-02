@@ -526,4 +526,3 @@ class Library:
 - [SOLID Principles](./solid.md) — Applied in design
 - [Concurrency Design](./concurrency-design.md) — Thread safety
 - [OOP Concepts](./oop-concepts.md)
-

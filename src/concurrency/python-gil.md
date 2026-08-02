@@ -349,4 +349,3 @@ Python's GIL ensures only one thread executes bytecode at a time, simplifying me
 - [Concurrency Overview](./overview.md) — Fundamental concepts
 - [ML Training](../ml/deep-learning/backpropagation.md)
 - [Coroutines](./coroutines.md)
-

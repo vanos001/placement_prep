@@ -276,4 +276,3 @@ Transactional Memory simplifies concurrent programming by replacing locks with a
 - [Java Concurrency](./java.md) — Java's concurrency utilities
 - [DBMS Transactions](../dbms/transactions/acid.md)
 - [DBMS Two-Phase Commit](../dbms/transactions/two-phase-commit.md)
-

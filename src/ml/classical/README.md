@@ -99,4 +99,3 @@ Each subsequent model builds on the ideas of the previous, adding improvements f
 - [Ensemble Methods](./ensemble.md)
 - [Feature Engineering](../foundations/feature-engineering.md)
 - [ML Interview Questions](../../interview/ml-questions.md)
-

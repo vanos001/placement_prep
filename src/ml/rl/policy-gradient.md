@@ -195,4 +195,3 @@ Policy gradient methods are the direct predecessors of PPO and GRPO — the algo
 - [Q-Learning](./q-learning.md)
 - [RLHF](./rlhf.md)
 - [Agent Planning](../agents/planning.md)
-

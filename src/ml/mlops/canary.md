@@ -129,4 +129,3 @@ Canary deployment provides a safe, gradual rollout strategy for ML models. By st
 - [A/B Testing](./ab-testing.md) — Statistical comparison
 - [Monitoring](./monitoring.md) — What to monitor
 - [Cloud Deployments](../../cloud/kubernetes/deployments.md)
-

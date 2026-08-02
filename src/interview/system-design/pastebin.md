@@ -256,4 +256,3 @@ s3://pastebin-content/{id}
 - [Object Storage](../../storage/object-storage.md)
 - [Key-Value Store](./kv-store.md)
 - [Estimation](./estimation.md)
-

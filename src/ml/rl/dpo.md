@@ -189,4 +189,3 @@ DPO democratized LLM alignment — making it accessible to teams without RL expe
 - [LLM SFT](../../llm/llm-serving/sft.md)
 - [LLM RLHF](../../llm/llm-serving/rlhf.md)
 - [Policy Gradient](./policy-gradient.md)
-

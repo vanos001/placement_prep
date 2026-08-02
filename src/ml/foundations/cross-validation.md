@@ -16,7 +16,6 @@ graph TD
 ```
 
 A single train/test split gives a **noisy** estimate — if you're lucky, the test set is easy; if unlucky, it's hard. Cross-validation averages over multiple splits.
-
 ## K-Fold Cross-Validation
 
 The most common approach:

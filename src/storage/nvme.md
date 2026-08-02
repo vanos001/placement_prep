@@ -250,4 +250,3 @@ NVMe is a storage protocol designed for flash, eliminating the SATA/AHCI bottlen
 - [Storage Overview](./overview.md) — Storage hierarchy
 - [Block Storage](./block-storage.md)
 - [Cloud EC2](../cloud/aws/ec2.md)
-

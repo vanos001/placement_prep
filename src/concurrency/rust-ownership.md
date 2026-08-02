@@ -329,4 +329,3 @@ Rust's ownership system prevents data races, dangling pointers, and use-after-fr
 - [Concurrency Overview](./overview.md) — Fundamental concepts
 - [OS Synchronization](../os/synchronization/mutex.md)
 - [Memory Barriers](../os/synchronization/memory-barriers.md)
-

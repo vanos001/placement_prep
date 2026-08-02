@@ -249,4 +249,3 @@ Metric: CPU < 20% for 15 min → Remove 1 instance
 - [Performance vs Scalability](../performance-vs-scalability.md)
 - [Cloud Auto Scaling](../../cloud/aws/ec2.md)
 - [Storage Distributed](../../storage/distributed.md)
-

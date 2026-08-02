@@ -107,4 +107,3 @@ graph LR
 - [Load Balancing](./hld/load-balancing-design.md)
 - [Scalability](./hld/scalability.md)
 - [Cloud Overview](../../cloud/overview.md)
-

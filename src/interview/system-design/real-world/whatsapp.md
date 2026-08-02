@@ -290,4 +290,3 @@ sequenceDiagram
 - [Notification System](../notifications.md)
 - [Consistency Patterns](../consistency-patterns.md)
 - [End-to-End Encryption](../hld/security-design.md)
-

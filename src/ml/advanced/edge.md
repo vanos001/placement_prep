@@ -145,4 +145,3 @@ Edge ML enables real-time, privacy-preserving inference on resource-constrained 
 - [Model Compression](./compression.md) — Compression overview
 - [Federated Learning](./federated.md) — On-device training
 - [Cloud Lambda](../../cloud/aws/lambda.md)
-

@@ -576,4 +576,3 @@ class Game:
 - [SOLID Principles](./solid.md) — Open/Closed for new pieces
 - [OOP Concepts](./oop-concepts.md) — Polymorphism for piece moves
 - [Game Design](./elevator.md)
-

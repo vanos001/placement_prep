@@ -121,4 +121,3 @@ Start with [Scalability Fundamentals](./scalability.md) to understand the founda
 - [LLD Overview](../lld/README.md)
 - [Estimation](../estimation.md)
 - [Latency Numbers](../latency-numbers.md)
-

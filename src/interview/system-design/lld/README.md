@@ -189,4 +189,3 @@ Dependency:     A - - - - → B  (A depends on B temporarily)
 *Each LLD problem page in this section follows a consistent structure: requirements, class diagrams (Mermaid), code examples, patterns used, SOLID principles, edge cases, and interview tips.*
 - [System Design Framework](../framework.md)
 - [HLD Overview](../hld/README.md)
-

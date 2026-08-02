@@ -385,4 +385,3 @@ graph TB
 - [Distributed Storage](../../storage/distributed.md)
 - [Cloud AWS](../../cloud/aws/README.md)
 - [Networks Routing](../../networks/routing/ospf.md)
-

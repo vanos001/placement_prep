@@ -316,4 +316,3 @@ HFT firms pay to place their servers in the same data center as the exchange:
 - [Latency vs Throughput](./latency-vs-throughput.md)
 - [Consistency Patterns](./consistency-patterns.md)
 - [Concurrency Overview](../../concurrency/overview.md)
-

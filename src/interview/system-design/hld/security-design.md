@@ -306,4 +306,3 @@ Layer 6: Infrastructure → Network segmentation, monitoring
 - [Networks Security](../../networks/security/ssl.md)
 - [Cloud VPC](../../cloud/aws/vpc.md)
 - [DBMS Transactions](../../dbms/transactions/acid.md)
-

@@ -340,4 +340,3 @@ graph TB
 - [Web Crawler](../web-crawler.md)
 - [Ads System](../ads.md)
 - [Caching Strategy](../hld/caching-strategy.md)
-

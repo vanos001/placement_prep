@@ -225,6 +225,4 @@ Agent evaluation requires multi-dimensional assessment: task completion, efficie
 - [Tool Calling →](tool-calling.md) Tool usage evaluation
 - [LLM Evaluation](../../llm/llm-serving/evaluation.md)
 - [ML Foundations Evaluation](../foundations/evaluation.md)
-- [Agent Safety](./safety.md)
 - [MLOps Monitoring](../mlops/monitoring.md)
-

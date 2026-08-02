@@ -255,4 +255,3 @@ Object storage provides a flat namespace with HTTP APIs, rich metadata, and virt
 - [Cloud S3](../cloud/aws/s3.md)
 - [Interview DFS](../interview/system-design/dfs.md)
 - [Interview Pastebin](../interview/system-design/pastebin.md)
-
