@@ -15,3 +15,4 @@ preferred-dark-theme = "ayu"
 git-repository-url = "https://github.com/vanos001/placement_prep"
 edit-url-template = "https://github.com/vanos001/placement_prep/edit/main/{path}"
 additional-css = ["custom.css"]
+additional-js = ["mermaid-init.js"]
