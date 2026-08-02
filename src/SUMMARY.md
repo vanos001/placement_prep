@@ -786,6 +786,12 @@
 - [SQL Cheat Sheet](./cheatsheets/sql.md)
 - [Git Cheat Sheet](./cheatsheets/git.md)
 - [Linux Commands Cheat Sheet](./cheatsheets/linux.md)
+- [Python Cheat Sheet](./cheatsheets/python.md)
+- [ML Cheat Sheet](./cheatsheets/ml.md)
+- [LLM Cheat Sheet](./cheatsheets/llm.md)
+- [System Design Cheat Sheet](./cheatsheets/system-design.md)
+- [Distributed Systems Cheat Sheet](./cheatsheets/distributed.md)
+- [Cloud & DevOps Cheat Sheet](./cheatsheets/cloud.md)
 
 ---
 
