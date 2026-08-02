@@ -315,7 +315,7 @@ Rust async tasks are also bound by Send/Sync:
 - Forgetting that Mutex::lock() returns a Result — unwrap() or handle poisoning.
 - Holding a Mutex lock across an await point — blocks the executor, use tokio::sync::Mutex instead.
 - Trying to share mutable state without synchronization — compile error (this is a feature, not a bug).
-- Overusing Arc<Mutex<T>> — consider channels for message passing instead.
+- Overusing `Arc<Mutex<T>>` — consider channels for message passing instead.
 
 ## Summary
 
