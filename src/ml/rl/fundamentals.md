@@ -2,230 +2,187 @@
 
 ## Overview
 
-This page covers the mathematical foundations of reinforcement learning: Markov Decision Processes, value functions, the Bellman equation, and the exploration-exploitation tradeoff. These concepts are the building blocks for all RL algorithms.
+Reinforcement Learning is a learning paradigm where an **agent** learns to make decisions by interacting with an **environment**. The agent takes **actions**, receives **rewards**, and transitions between **states** — learning a **policy** that maximizes cumulative reward over time.
 
-## Markov Decision Process (MDP)
-
-An MDP is defined by the tuple $\langle \mathcal{S}, \mathcal{A}, P, R, \gamma \rangle$:
+## Core Concepts
 
 ```mermaid
 graph LR
-    S0["s_0"] -->|"a_0, r_1"| S1["s_1"]
-    S1 -->|"a_1, r_2"| S2["s_2"]
-    S2 -->|"a_2, r_3"| S3["s_3"]
-    S3 -->|"..."| S4["..."]
+    A[Agent] -->|Action a_t| B[Environment]
+    B -->|State s_{t+1}| A
+    B -->|Reward r_t| A
 ```
 
-### Markov Property
+### Key Terminology
 
-The future is independent of the past given the present:
+| Term | Symbol | Meaning |
+|------|--------|---------|
+| **State** | s | Current situation of the environment |
+| **Action** | a | What the agent can do |
+| **Policy** | π(a\|s) | Strategy: mapping from states to actions |
+| **Reward** | r | Immediate feedback signal |
+| **Return** | G | Cumulative discounted reward |
+| **Value Function** | V(s) | Expected return from state s |
+| **Q-Function** | Q(s,a) | Expected return from state s taking action a |
+| **Discount Factor** | γ | How much we value future vs immediate rewards |
 
-$$P(s_{t+1} | s_t, a_t, s_{t-1}, a_{t-1}, \dots) = P(s_{t+1} | s_t, a_t)$$
+## Markov Decision Process (MDP)
 
-### Return (Cumulative Reward)
+RL problems are formalized as MDPs, defined by the tuple (S, A, P, R, γ):
 
-$$G_t = r_{t+1} + \gamma r_{t+2} + \gamma^2 r_{t+3} + \dots = \sum_{k=0}^{\infty} \gamma^k r_{t+k+1}$$
+- **S**: Set of states
+- **A**: Set of actions
+- **P(s'|s,a)**: Transition probability
+- **R(s,a,s')**: Reward function
+- **γ ∈ [0,1]**: Discount factor
 
-- $\gamma = 0$: Myopic (only care about immediate reward)
-- $\gamma = 1$: Far-sighted (care about all future rewards equally)
-- Typical values: $\gamma \in [0.95, 0.99]$
+**Markov Property**: The future depends only on the current state, not the history.
+
+$$P(s_{t+1} | s_t, a_t, s_{t-1}, a_{t-1}, ...) = P(s_{t+1} | s_t, a_t)$$
+
+## Return and Discounting
+
+The **discounted return** from time t:
+
+$$G_t = r_t + \gamma r_{t+1} + \gamma^2 r_{t+2} + ... = \sum_{k=0}^{\infty} \gamma^k r_{t+k}$$
+
+- **γ = 0**: Only care about immediate reward (myopic)
+- **γ = 1**: Care equally about all future rewards (far-sighted)
+- **γ = 0.99**: Common default; value future rewards slightly less
 
 ## Value Functions
 
-### State Value Function $V^\pi(s)$
+### State Value V(s)
+Expected return starting from state s, following policy π:
 
-Expected return starting from state $s$, following policy $\pi$:
+$$V^{\pi}(s) = \mathbb{E}_{\pi}[G_t | s_t = s]$$
 
-$$V^\pi(s) = \mathbb{E}_\pi[G_t | s_t = s] = \mathbb{E}_\pi\left[\sum_{k=0}^{\infty} \gamma^k r_{t+k+1} \mid s_t = s\right]$$
+### Action Value Q(s,a)
+Expected return starting from state s, taking action a, then following π:
 
-### Action-Value Function $Q^\pi(s,a)$
+$$Q^{\pi}(s, a) = \mathbb{E}_{\pi}[G_t | s_t = s, a_t = a]$$
 
-Expected return starting from state $s$, taking action $a$, then following policy $\pi$:
+### Bellman Equations
 
-$$Q^\pi(s, a) = \mathbb{E}_\pi[G_t | s_t = s, a_t = a]$$
+The recursive relationship:
 
-### Relationship
+$$V^{\pi}(s) = \sum_a \pi(a|s) \sum_{s'} P(s'|s,a) [R(s,a,s') + \gamma V^{\pi}(s')]$$
 
-$$V^\pi(s) = \sum_{a} \pi(a|s) Q^\pi(s, a)$$
+$$Q^{\pi}(s,a) = \sum_{s'} P(s'|s,a) [R(s,a,s') + \gamma \sum_{a'} \pi(a'|s') Q^{\pi}(s',a')]$$
 
-$$Q^\pi(s, a) = R(s, a) + \gamma \sum_{s'} P(s'|s,a) V^\pi(s')$$
+### Optimal Value Functions
 
-## Bellman Equations
+$$V^*(s) = \max_a Q^*(s, a)$$
 
-### Bellman Expectation Equation
-
-The value of a state equals the immediate reward plus the discounted value of the next state:
-
-$$V^\pi(s) = \sum_{a} \pi(a|s) \left[ R(s, a) + \gamma \sum_{s'} P(s'|s,a) V^\pi(s') \right]$$
-
-$$Q^\pi(s, a) = R(s, a) + \gamma \sum_{s'} P(s'|s,a) \sum_{a'} \pi(a'|s') Q^\pi(s', a')$$
-
-### Bellman Optimality Equation
-
-For the optimal policy $\pi^*$:
-
-$$V^*(s) = \max_{a} \left[ R(s, a) + \gamma \sum_{s'} P(s'|s,a) V^*(s') \right]$$
-
-$$Q^*(s, a) = R(s, a) + \gamma \sum_{s'} P(s'|s,a) \max_{a'} Q^*(s', a')$$
-
-```mermaid
-graph TD
-    S[State s] --> A1[Action a1]
-    S --> A2[Action a2]
-    S --> A3[Action a3]
-    
-    A1 --> R1["R(s,a1) + γV(s')"]
-    A2 --> R2["R(s,a2) + γV(s')"]
-    A3 --> R3["R(s,a3) + γV(s')"]
-    
-    R1 --> MAX["V*(s) = max over actions"]
-    R2 --> MAX
-    R3 --> MAX
-```
-
-## Policy
-
-A policy $\pi$ maps states to actions:
-
-- **Deterministic**: $a = \pi(s)$
-- **Stochastic**: $\pi(a|s) = P(a_t = a | s_t = s)$
-
-### Optimal Policy
-
-$$\pi^* = \arg\max_\pi V^\pi(s) \quad \forall s$$
-
-All optimal policies share the same optimal value functions $V^*$ and $Q^*$.
+$$Q^*(s, a) = \sum_{s'} P(s'|s,a) [R(s,a,s') + \gamma \max_{a'} Q^*(s', a')]$$
 
 ## Exploration vs Exploitation
 
 ```mermaid
 graph TD
-    DILEMMA["Exploration vs Exploitation"]
-    DILEMMA --> EXPLORE[Explore: Try new actions]
-    DILEMMA --> EXPLOIT[Exploit: Use best known action]
-    
-    EXPLORE --> E1[Discover better strategies]
-    EXPLORE --> E2[Reduce uncertainty]
-    
-    EXPLOIT --> EX1[Maximize immediate reward]
-    EXPLOIT --> EX2[Use current knowledge]
+    A[Agent Decision] --> B{Explore or Exploit?}
+    B -->|Explore| C[Try new actions to discover better strategies]
+    B -->|Exploit| D[Use known best action for maximum reward]
+    C --> E[ε-greedy, UCB, Thompson Sampling]
+    D --> F[Greedy policy]
 ```
 
-### Exploration Strategies
+| Strategy | Description |
+|----------|-------------|
+| **ε-greedy** | With probability ε explore, else exploit (most common) |
+| **UCB** | Upper Confidence Bound — explore uncertain actions |
+| **Thompson Sampling** | Sample from posterior distribution of action values |
+| **Boltzmann Exploration** | Softmax over Q-values for probabilistic action selection |
 
-| Strategy | Description | Pros | Cons |
-|----------|-------------|------|------|
-| $\epsilon$-greedy | Random action with prob $\epsilon$ | Simple | Fixed exploration rate |
-| Boltzmann | Softmax over Q-values | Adapts to uncertainty | Needs temperature tuning |
-| UCB | Upper confidence bound | Theoretically grounded | Computationally expensive |
-| Thompson Sampling | Sample from posterior | Bayesian optimal | Needs distribution model |
+## Categories of RL Algorithms
 
-```python
-import numpy as np
-
-class EpsilonGreedy:
-    def __init__(self, n_actions, epsilon=0.1):
-        self.n_actions = n_actions
-        self.epsilon = epsilon
-        self.q_values = np.zeros(n_actions)
-        self.action_counts = np.zeros(n_actions)
+```mermaid
+graph TD
+    A[RL Algorithms] --> B[Value-Based]
+    A --> C[Policy-Based]
+    A --> D[Actor-Critic]
     
-    def select_action(self):
-        if np.random.random() < self.epsilon:
-            return np.random.randint(self.n_actions)  # Explore
-        else:
-            return np.argmax(self.q_values)  # Exploit
+    B --> E[Q-Learning, DQN]
+    B --> F[Learn value function, derive policy]
     
-    def update(self, action, reward):
-        self.action_counts[action] += 1
-        n = self.action_counts[action]
-        self.q_values[action] += (reward - self.q_values[action]) / n
+    C --> G[REINFORCE, PPO]
+    C --> H[Directly optimize policy]
+    
+    D --> I[A2C, A3C, SAC]
+    D --> J[Actor learns policy, Critic learns value]
 ```
 
-## Dynamic Programming
+### Value-Based Methods
+- Learn Q(s,a) or V(s)
+- Derive policy: choose action with highest Q-value
+- Examples: Q-Learning, DQN, Double DQN
+- Limitation: Only for discrete action spaces (usually)
 
-### Policy Evaluation
+### Policy-Based Methods
+- Directly learn policy π(a|s)
+- Optimize expected return via gradient ascent
+- Examples: REINFORCE, PPO
+- Advantage: Can handle continuous action spaces
 
-Compute $V^\pi$ for a given policy $\pi$:
+### Actor-Critic Methods
+- **Actor**: Policy network π(a|s)
+- **Critic**: Value network V(s) or Q(s,a)
+- Critic provides baseline to reduce variance in policy gradients
+- Examples: A2C, A3C, PPO, SAC
 
-```python
-def policy_evaluation(env, policy, gamma=0.99, theta=1e-8):
-    V = np.zeros(env.n_states)
-    while True:
-        delta = 0
-        for s in range(env.n_states):
-            v = V[s]
-            # Bellman expectation update
-            V[s] = sum(
-                policy[a] * sum(
-                    p * (r + gamma * V[s_next])
-                    for p, s_next, r in env.transitions(s, a)
-                )
-                for a in range(env.n_actions)
-            )
-            delta = max(delta, abs(v - V[s]))
-        if delta < theta:
-            break
-    return V
-```
+## Markov vs Non-Markov Environments
 
-### Policy Iteration
+| Property | Markov | Non-Markov |
+|----------|--------|------------|
+| **History dependence** | Only current state | Needs history |
+| **Example** | Chess (full board state) | Poker (hidden cards) |
+| **Solution** | Standard MDP | POMDP, RNN-based policies |
 
-Alternates between evaluation and improvement:
+For LLMs, the "state" is the entire conversation history — technically a POMDP if we consider hidden user intent.
 
-```python
-def policy_iteration(env, gamma=0.99):
-    policy = np.ones((env.n_states, env.n_actions)) / env.n_actions
-    
-    while True:
-        # Policy Evaluation
-        V = policy_evaluation(env, policy, gamma)
-        
-        # Policy Improvement
-        policy_stable = True
-        for s in range(env.n_states):
-            old_action = np.argmax(policy[s])
-            # Greedy update
-            Q = [sum(p * (r + gamma * V[s_next])
-                     for p, s_next, r in env.transitions(s, a))
-                 for a in range(env.n_actions)]
-            policy[s] = np.eye(env.n_actions)[np.argmax(Q)]
-            if old_action != np.argmax(policy[s]):
-                policy_stable = False
-        
-        if policy_stable:
-            return policy, V
-```
+## Discount Factor Intuition
+
+| γ Value | Behavior | Use Case |
+|---------|----------|----------|
+| 0.99 | Values long-term rewards | Navigation, planning |
+| 0.95 | Moderate horizon | Game playing |
+| 0.9 | Shorter horizon | Real-time control |
+| 0 | Myopic | Bandits, immediate decisions |
 
 ## Interview Questions
 
-### Q1: What is the Bellman equation and why is it important?
-**Answer:** The Bellman equation expresses the value of a state recursively in terms of the immediate reward and the discounted value of successor states: $V(s) = \max_a [R(s,a) + \gamma \sum_{s'} P(s'|s,a) V(s')]$. It's important because: 1) It's the foundation of all RL algorithms, 2) It decomposes a long-horizon problem into single-step decisions, 3) It enables iterative computation of optimal values.
+**Q1: What is the Markov property and why does it matter?**
+> The Markov property states that the future state depends only on the current state, not the history. It matters because it simplifies the problem — we can use the current state as a sufficient statistic. In practice, many environments aren't fully Markov, so we use RNNs or attention to encode history into a state representation.
 
-### Q2: What is the difference between $V(s)$ and $Q(s,a)$?
-**Answer:** $V(s)$ is the expected return from state $s$ following policy $\pi$. $Q(s,a)$ is the expected return from state $s$ taking action $a$ then following $\pi$. $Q$ is more useful for action selection because it tells you the value of each action, not just the state. $V^*(s) = \max_a Q^*(s,a)$.
+**Q2: Why do we discount future rewards?**
+> Three reasons: (1) Mathematical convenience — ensures infinite sums converge, (2) Uncertainty — future rewards are less certain, (3) Preference for immediacy — in many practical settings, earlier rewards are genuinely more valuable. For LLMs, discounting is less critical since episodes are short.
 
-### Q3: Explain the exploration-exploitation tradeoff.
-**Answer:** Exploration means trying actions whose outcomes are uncertain to discover potentially better strategies. Exploitation means choosing the best-known action to maximize immediate reward. Too much exploration wastes time on suboptimal actions; too much exploitation may miss the optimal policy. $\epsilon$-greedy is the simplest solution: exploit with probability $1-\epsilon$, explore with probability $\epsilon$.
+**Q3: What's the difference between value-based and policy-based methods?**
+> Value-based: learn Q(s,a), derive policy by picking argmax actions. Discrete actions only. Policy-based: directly optimize π(a|s) via gradient ascent. Handles continuous actions. Actor-critic combines both — actor for policy, critic for value estimation (baseline to reduce variance).
 
-### Q4: Why do we discount future rewards?
-**Answer:** Discount factor $\gamma < 1$ serves multiple purposes: 1) Mathematical convenience (ensures infinite sums converge), 2) Models uncertainty about the future, 3) Reflects time preference (sooner rewards are more valuable), 4) Prevents the agent from getting stuck in infinite loops. Typical values are 0.95-0.99.
+**Q4: What is the exploration-exploitation tradeoff?**
+> Exploitation: use current knowledge to maximize reward. Exploration: try new actions to discover potentially better strategies. Too much exploitation → stuck in local optimum. Too much exploration → waste time on suboptimal actions. ε-greedy is the simplest solution: exploit with probability 1-ε, explore with probability ε.
+
+**Q5: Explain the Bellman equation intuitively.**
+> The value of a state equals the immediate reward plus the discounted value of the next state. It's recursive: V(s) = r + γ·V(s'). This creates a system of equations that can be solved iteratively (value iteration) or from data (Q-learning). The Bellman equation is the foundation of all value-based RL.
 
 ## Common Mistakes
 
-- ❌ Confusing $V(s)$ with $Q(s,a)$
-- ❌ Forgetting that the Bellman equation is recursive
-- ❌ Not understanding the Markov property
-- ❌ Setting $\gamma$ too high (training instability) or too low (short-sighted)
-- ❌ Ignoring exploration (greedy-only leads to suboptimal policies)
+1. **Confusing episode with step** — An episode is a full sequence from start to terminal state
+2. **Not discounting properly** — γ too high can cause unstable training; γ too low ignores long-term planning
+3. **Ignoring exploration** — Pure greedy policies get stuck in local optima
+4. **Assuming Markov when it's not** — Use RNNs or history frames for non-Markov environments
+5. **Mixing up V and Q** — V(s) is state value, Q(s,a) is state-action value; Q includes the action
 
 ## Summary
 
-RL is built on MDPs: states, actions, transitions, rewards, and discount. Value functions ($V$, $Q$) estimate expected returns. The Bellman equation provides recursive computation of optimal values. Exploration-exploitation is the fundamental tradeoff. These foundations underpin all RL algorithms from Q-learning to PPO to RLHF.
+| Concept | Key Takeaway |
+|---------|-------------|
+| **MDP** | (S, A, P, R, γ) — formal framework for RL |
+| **Policy** | π(a\|s) — agent's strategy |
+| **Value Function** | Expected cumulative reward |
+| **Bellman Equation** | Recursive relationship: V(s) = r + γ·V(s') |
+| **Exploration** | Balance trying new things vs using known best |
+| **Algorithm Types** | Value-based, policy-based, actor-critic |
 
-## Cross-References
-
-- [Q-Learning →](q-learning.md) TD learning and DQN
-- [Policy Gradient →](policy-gradient.md) Policy optimization
-- [PPO →](ppo.md) Modern policy optimization
-- [RLHF →](rlhf.md) RL for LLM alignment
+These fundamentals underpin everything from game-playing AI to LLM alignment via RLHF.

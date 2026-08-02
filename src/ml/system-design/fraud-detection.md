@@ -2,157 +2,164 @@
 
 ## Overview
 
-Fraud Detection systems identify fraudulent transactions or activities in real-time. They must handle extreme class imbalance (99.9% legitimate), operate at low latency, and adapt to evolving fraud patterns.
+Fraud detection systems identify fraudulent transactions in real-time, balancing detection accuracy with user experience. The challenge is extreme class imbalance (~0.1% fraud), adversarial evolution (fraudsters adapt), and strict latency requirements (<100ms). This is one of the most common ML system design interview questions.
 
 ## System Architecture
 
 ```mermaid
-graph TB
-    subgraph "Input"
-        T[Transaction] --> F[Feature Extraction]
-    end
-    
-    subgraph "Real-time Pipeline"
-        F --> R[Rules Engine]
-        F --> M[ML Model]
-        R --> D[Decision Engine]
-        M --> D
-    end
-    
-    subgraph "Decision"
-        D -->|Approve| A[Approve]
-        D -->|Reject| RJ[Reject]
-        D -->|Review| RV[Manual Review]
-    end
-    
-    subgraph "Feedback"
-        A --> L[Label Collection]
-        RJ --> L
-        RV --> L
-        L --> RT[Retraining]
-    end
-```
-
-## Key Challenges
-
-### 1. Class Imbalance
-```python
-# Handling imbalanced data
-from imblearn.over_sampling import SMOTE
-from imblearn.under_sampling import RandomUnderSampler
-
-# SMOTE oversampling
-smote = SMOTE(sampling_strategy=0.1)
-X_resampled, y_resampled = smote.fit_resample(X_train, y_train)
-
-# Class weights
-model = RandomForestClassifier(class_weight='balanced')
-
-# Evaluation metrics for imbalanced data
-from sklearn.metrics import precision_recall_curve, average_precision_score
-```
-
-### 2. Real-time Latency
-```mermaid
-graph LR
-    T[Transaction] --> F[Features] --> M[Model] --> D[Decision]
-    
-    style T fill:#f9f,stroke:#333
-    style D fill:#9f9,stroke:#333
-    
-    T -.->|< 100ms| D
-```
-
-### 3. Evolving Patterns
-```mermaid
-graph TB
-    subgraph "Concept Drift"
-        F1[Fraud Pattern 1] --> D1[Detected]
-        F2[Fraud Pattern 2] --> D2[New Pattern]
-        D2 --> R[Retrain]
-    end
+graph TD
+    A[Transaction] --> B[Feature Engineering]
+    B --> C[Rule Engine]
+    C --> D[ML Model]
+    D --> E{Risk Score}
+    E -->|Low Risk| F[Approve]
+    E -->|Medium Risk| G[Step-up Auth]
+    E -->|High Risk| H[Block + Review]
+    I[Real-time Features] --> D
+    J[User History] --> D
+    K[Device/IP Info] --> D
 ```
 
 ## Feature Engineering
 
-| Category | Features |
-|----------|----------|
-| Transaction | Amount, time, location, merchant |
-| User | History, spending patterns, account age |
-| Device | IP, device type, browser fingerprint |
-| Behavioral | Typing speed, navigation patterns |
-| Network | Connection to known fraud rings |
+```python
+def engineer_fraud_features(transaction, user_history):
+    features = {}
+
+    # Transaction features
+    features['amount'] = transaction['amount']
+    features['hour_of_day'] = transaction['timestamp'].hour
+    features['day_of_week'] = transaction['timestamp'].weekday()
+    features['merchant_category'] = transaction['category']
+
+    # Velocity features (aggregates over time windows)
+    features['num_txns_last_hour'] = count_transactions(user_history, hours=1)
+    features['num_txns_last_day'] = count_transactions(user_history, hours=24)
+    features['amount_last_hour'] = sum_amounts(user_history, hours=1)
+    features['unique_merchants_last_day'] = unique_merchants(user_history, hours=24)
+
+    # Behavioral features
+    features['avg_transaction_amount'] = mean(user_history['amount'])
+    features['amount_deviation'] = (transaction['amount'] - features['avg_transaction_amount']) / std(user_history['amount'])
+    features['is_new_merchant'] = transaction['merchant_id'] not in user_history['merchants']
+    features['is_foreign'] = transaction['country'] != user_history['home_country']
+
+    # Device/IP features
+    features['is_new_device'] = transaction['device_id'] not in user_history['devices']
+    features['is_vpn'] = transaction['ip'] in vpn_database
+    features['device_risk_score'] = device_risk(transaction['device_id'])
+
+    return features
+```
+
+## Model Design
+
+### Handling Class Imbalance
 
 ```python
-# Velocity features
-def compute_velocity_features(user_id, transaction):
-    recent = get_recent_transactions(user_id, hours=24)
-    
-    return {
-        'txn_count_1h': len([t for t in recent if t.age < 1]),
-        'txn_count_24h': len(recent),
-        'total_amount_24h': sum(t.amount for t in recent),
-        'unique_merchants_24h': len(set(t.merchant for t in recent)),
-        'avg_amount_30d': mean([t.amount for t in get_transactions(user_id, days=30)])
-    }
+from imblearn.over_sampling import SMOTE
+from sklearn.ensemble import GradientBoostingClassifier
+
+# SMOTE oversampling
+smote = SMOTE(sampling_strategy=0.1)  # 1:10 ratio
+X_resampled, y_resampled = smote.fit_resample(X_train, y_train)
+
+# Class weights
+model = GradientBoostingClassifier(
+    class_weight={0: 1, 1: 100},  # Weight fraud class 100x
+    n_estimators=500
+)
+
+# Or use focal loss for neural networks
+def focal_loss(pred, target, gamma=2, alpha=0.25):
+    ce = F.cross_entropy(pred, target, reduction='none')
+    pt = torch.exp(-ce)
+    focal = alpha * (1 - pt) ** gamma * ce
+    return focal.mean()
 ```
 
-## Model Architecture
+### Two-Stage Model
 
-```mermaid
-graph TB
-    subgraph "Ensemble Approach"
-        R[Rules Engine<br/>Known patterns]
-        M1[Logistic Regression<br/>Interpretable]
-        M2[Gradient Boosting<br/>Tabular data]
-        M3[Neural Network<br/>Complex patterns]
-    end
-    
-    R --> E[Ensemble]
-    M1 --> E
-    M2 --> E
-    M3 --> E
-    
-    E --> D[Decision]
+```python
+# Stage 1: Fast rules + simple model (catches 80% of fraud)
+def fast_screen(transaction):
+    # Rule-based checks
+    if transaction['amount'] > 10000:
+        return 'high_risk'
+    if velocity_check(transaction):
+        return 'high_risk'
+
+    # Simple model (logistic regression, fast)
+    score = simple_model.predict_proba(features)[0][1]
+    if score > 0.8:
+        return 'high_risk'
+    elif score < 0.1:
+        return 'low_risk'
+    return 'needs_deep_check'
+
+# Stage 2: Complex model (for medium-risk transactions)
+def deep_check(transaction, features):
+    score = complex_model.predict_proba(features)[0][1]
+    return score
 ```
 
-## Rules vs ML
+## Real-Time Feature Store
 
-| Aspect | Rules | ML |
-|--------|-------|-----|
-| Speed | Very fast | Fast |
-| Interpretability | High | Varies |
-| Adaptability | Manual updates | Automatic learning |
-| Coverage | Known patterns | Novel patterns |
-| Maintenance | High | Low |
+```python
+class FraudFeatureStore:
+    def __init__(self, redis_client):
+        self.redis = redis_client
 
-**Best Practice:** Combine both — rules for known fraud, ML for novel patterns.
+    def get_velocity_features(self, user_id):
+        """Get real-time velocity features"""
+        key = f"user:{user_id}:velocity"
+        data = self.redis.hgetall(key)
+        return {
+            'txn_count_1h': int(data.get('count_1h', 0)),
+            'amount_1h': float(data.get('amount_1h', 0)),
+            'txn_count_24h': int(data.get('count_24h', 0)),
+        }
 
-## Evaluation
+    def update_velocity(self, user_id, transaction):
+        """Update velocity counters after transaction"""
+        pipe = self.redis.pipeline()
+        key = f"user:{user_id}:velocity"
+        pipe.hincrby(key, 'count_1h', 1)
+        pipe.hincrbyfloat(key, 'amount_1h', transaction['amount'])
+        pipe.expire(key, 86400)  # 24h TTL
+        pipe.execute()
+```
 
-| Metric | Why Important |
-|--------|---------------|
-| Precision | Minimize false positives (blocking legitimate users) |
-| Recall | Catch as much fraud as possible |
-| F1 Score | Balance precision and recall |
-| AUC-PR | Better than AUC-ROC for imbalanced data |
-| Dollar Amount Caught | Business impact |
+## Evaluation Metrics
+
+| Metric | Formula | Importance |
+|--------|---------|------------|
+| Precision | TP / (TP + FP) | Minimize false positives (user friction) |
+| Recall | TP / (TP + FN) | Catch as much fraud as possible |
+| F1 Score | 2 * P * R / (P + R) | Balance precision and recall |
+| AUC-ROC | Area under ROC | Overall discrimination |
+| $ Saved | Caught fraud amount | Business impact |
 
 ## Interview Questions
 
-1. **Design a fraud detection system for a payment platform.**
-2. **How do you handle class imbalance in fraud detection?**
-3. **How do you ensure real-time latency requirements?**
-4. **How do you adapt to new fraud patterns?**
-5. **What's the trade-off between precision and recall in fraud detection?**
+1. **Design a fraud detection system** — Feature engineering (velocity, behavioral, device) → Rules engine (fast screening) → ML model (gradient boosting) → Real-time serving (<100ms) → Human review queue.
 
-## Common Mistakes
+2. **How do you handle class imbalance?** — Class weighting, SMOTE, focal loss, and evaluation with precision/recall (not accuracy). Business-driven threshold: optimize for dollars saved, not accuracy.
 
-- **Only optimizing for recall**: Blocking legitimate users is costly
-- **Ignoring latency**: Real-time decisions require fast models
-- **Not retraining**: Fraud patterns evolve constantly
-- **No human-in-the-loop**: Edge cases need manual review
+3. **How do you handle adversarial evolution?** — Continuous retraining, monitoring for concept drift, adversarial training, and ensemble of diverse models. Fraudsters adapt to rules.
+
+4. **What features are most important?** — Velocity features (transaction frequency/amount in time windows), device/IP reputation, behavioral deviation from user history, and merchant risk scores.
+
+5. **How do you balance fraud prevention with user experience?** — Multi-tier response: approve low-risk, step-up authentication (OTP) for medium-risk, block high-risk. Tune thresholds to minimize false positives while maintaining recall.
 
 ## Summary
 
-Fraud Detection requires real-time processing, handling extreme class imbalance, and adapting to evolving patterns. Key components include feature engineering (especially velocity features), ensemble models (rules + ML), and continuous retraining. Balance precision (minimize false positives) and recall (catch fraud) based on business requirements.
+Fraud detection systems combine rule engines with ML models for real-time transaction scoring. Key challenges include class imbalance, adversarial evolution, and latency requirements. Velocity features and behavioral deviation are the most predictive signals. A two-stage architecture (fast screening + deep analysis) balances speed and accuracy.
+
+## Cross-References
+
+- [Evaluation Metrics](../foundations/evaluation.md) — Precision, recall, F1
+- [Feature Store](./feature-store.md) — Real-time features
+- [Model Serving](./model-serving.md) — Real-time inference
+- [Data Drift](../mlops/drift.md) — Concept drift detection
+- [Time Series Anomaly Detection](../time-series/anomaly.md) — Anomaly methods

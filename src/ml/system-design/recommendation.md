@@ -2,181 +2,137 @@
 
 ## Overview
 
-Recommendation Systems suggest relevant items to users based on their preferences, behavior, and item characteristics. They power platforms like Netflix, Amazon, YouTube, and Spotify.
+Recommendation systems suggest relevant items (products, content, ads) to users based on their preferences and behavior. They power Netflix, YouTube, Amazon, Spotify, and TikTok. Designing a recommendation system involves candidate generation, ranking, and real-time serving at massive scale.
 
 ## System Architecture
 
 ```mermaid
-graph TB
-    subgraph "Data Layer"
-        UI[User Interactions]
-        ID[Item Data]
-        UD[User Data]
-    end
-    
-    subgraph "Feature Layer"
-        UF[User Features]
-        IF[Item Features]
-        CF[Context Features]
-    end
-    
-    subgraph "Model Layer"
-        CG[Candidate Generation]
-        R[Ranking]
-        RR[Re-ranking]
-    end
-    
-    subgraph "Serving Layer"
-        API[API Server]
-        Cache[Cache]
-        Store[Vector Store]
-    end
-    
-    UI --> UF
-    ID --> IF
-    UD --> UF
-    
-    UF --> CG
-    IF --> CG
-    CG --> R
-    R --> RR
-    RR --> API
-    
-    API --> Cache
-    Cache --> Store
+graph TD
+    A[User Request] --> B[Candidate Generation]
+    B --> C[~1000 candidates]
+    C --> D[Ranking Model]
+    D --> E[Top K items]
+    E --> F[Re-ranking / Business Rules]
+    F --> G[Response]
+    H[User Features] --> D
+    I[Item Features] --> D
+    J[Context Features] --> D
 ```
 
-## Two-Stage Architecture
+## Three-Stage Architecture
 
 ### Stage 1: Candidate Generation
-```mermaid
-graph LR
-    subgraph "Approaches"
-        CF[Collaborative Filtering]
-        CB[Content-Based]
-        P[Popularity-Based]
-    end
-    
-    subgraph "Output"
-        C[Candidates<br/>~1000 items]
-    end
-    
-    CF --> C
-    CB --> C
-    P --> C
-```
 
-**Collaborative Filtering:**
+Narrow millions of items to ~1000 candidates:
+
 ```python
-# Matrix Factorization
-import implicit
+# Collaborative filtering (ALS)
+from implicit.als import AlternatingLeastSquares
 
-model = implicit.als.AlternatingLeastSquares(factors=64)
+model = AlternatingLeastSquares(factors=128, iterations=50)
 model.fit(user_item_matrix)
 
-# Get similar items
-similar_items = model.similar_items(item_id, N=100)
-```
+# Get candidates for a user
+user_id = 123
+candidates = model.recommend(user_id, user_item_matrix[user_id], N=1000)
 
-**Content-Based:**
-```python
-# Embedding similarity
-from sentence_transformers import SentenceTransformer
+# Or use embedding similarity (ANN search)
+import faiss
 
-model = SentenceTransformer('all-MiniLM-L6-v2')
-item_embeddings = model.encode(item_descriptions)
+index = faiss.IndexFlatIP(embedding_dim)  # Inner product
+index.add(item_embeddings)
 
-# Find similar items
-similarities = cosine_similarity(query_embedding, item_embeddings)
+_, candidate_indices = index.search(user_embedding.reshape(1, -1), 1000)
 ```
 
 ### Stage 2: Ranking
-```mermaid
-graph LR
-    F[Features] --> M[Model]
-    M --> S[Scores]
-    S --> O[Ordered List]
-```
 
-**Features:**
-| Type | Examples |
-|------|----------|
-| User | Age, history, preferences |
-| Item | Category, price, popularity |
-| Context | Time, device, location |
-| Cross | User-item affinity |
+Score candidates with a sophisticated model:
 
-**Model:**
 ```python
-# Deep ranking model
 class RankingModel(nn.Module):
-    def __init__(self):
-        self.user_embedding = nn.Embedding(num_users, 64)
-        self.item_embedding = nn.Embedding(num_items, 64)
-        self.fc = nn.Linear(128, 1)
-    
-    def forward(self, user_id, item_id, features):
-        user_emb = self.user_embedding(user_id)
-        item_emb = self.item_embedding(item_id)
-        x = torch.cat([user_emb, item_emb, features], dim=1)
-        return torch.sigmoid(self.fc(x))
+    def __init__(self, user_dim, item_dim, context_dim):
+        super().__init__()
+        self.user_tower = nn.Sequential(
+            nn.Linear(user_dim, 256), nn.ReLU(), nn.Linear(256, 128)
+        )
+        self.item_tower = nn.Sequential(
+            nn.Linear(item_dim, 256), nn.ReLU(), nn.Linear(256, 128)
+        )
+        self.context_tower = nn.Sequential(
+            nn.Linear(context_dim, 64), nn.ReLU(), nn.Linear(64, 32)
+        )
+        self.final = nn.Sequential(
+            nn.Linear(128 + 128 + 32, 64), nn.ReLU(), nn.Linear(64, 1)
+        )
+
+    def forward(self, user_feat, item_feat, context_feat):
+        user_emb = self.user_tower(user_feat)
+        item_emb = self.item_tower(item_feat)
+        ctx_emb = self.context_tower(context_feat)
+        combined = torch.cat([user_emb, item_emb, ctx_emb], dim=-1)
+        return torch.sigmoid(self.final(combined))
 ```
 
 ### Stage 3: Re-ranking
-- Business rules (diversity, freshness)
-- Filter seen items
-- Apply constraints
+
+Apply business rules and diversity:
+
+```python
+def rerank(items, scores, rules):
+    # Apply business rules
+    items = apply_boost(items, rules.get('boost', {}))
+    items = apply_filter(items, rules.get('filter', []))
+
+    # Ensure diversity (MMR - Maximal Marginal Relevance)
+    selected = []
+    for _ in range(rules.get('top_k', 10)):
+        best_idx = max(range(len(items)),
+                      key=lambda i: scores[i] - 0.3 * max(
+                          similarity(items[i], s) for s in selected) if selected else scores[i])
+        selected.append(items[best_idx])
+
+    return selected
+```
 
 ## Feature Engineering
 
-```mermaid
-graph TB
-    subgraph "User Features"
-        U1[Purchase History]
-        U2[Click History]
-        U3[Demographics]
-        U4[Preferences]
-    end
-    
-    subgraph "Item Features"
-        I1[Category]
-        I2[Price]
-        I3[Popularity]
-        I4[Embeddings]
-    end
-    
-    subgraph "Cross Features"
-        C1[Affinity Score]
-        C2[Category Match]
-        C3[Price Sensitivity]
-    end
-```
+| Feature Type | Examples |
+|-------------|----------|
+| User | Age, location, historical clicks, purchase history |
+| Item | Category, price, popularity, embeddings |
+| Context | Time of day, device, location, session length |
+| Cross | User-item interaction history, similar user preferences |
 
-## Evaluation Metrics
+## Evaluation
 
-| Metric | Formula | Use Case |
-|--------|---------|----------|
-| Precision@K | Relevant in top K / K | Quality of recommendations |
-| Recall@K | Relevant in top K / Total relevant | Coverage |
-| NDCG | Normalized Discounted Cumulative Gain | Ranking quality |
-| MAP | Mean Average Precision | Overall ranking |
-| CTR | Clicks / Impressions | Online engagement |
+| Metric | Type | Description |
+|--------|------|-------------|
+| Precision@K | Offline | Relevant items in top K |
+| Recall@K | Offline | Coverage of relevant items |
+| NDCG | Offline | Ranking quality |
+| CTR | Online | Click-through rate |
+| Conversion | Online | Purchase rate |
+| Watch time | Online | Engagement |
 
 ## Interview Questions
 
-1. **Design a recommendation system for an e-commerce platform.**
-2. **How do you handle the cold-start problem?**
-3. **Explain collaborative filtering vs content-based filtering.**
-4. **How do you evaluate recommendation quality?**
-5. **How would you scale a recommendation system to millions of users?**
+1. **Design YouTube's recommendation system** — Candidate generation (collaborative filtering + content-based) → Ranking (deep learning with user/video/context features) → Re-ranking (diversity, freshness) → Serving (real-time with caching).
 
-## Common Mistakes
+2. **How do you handle the cold-start problem?** — New users: use demographic features, popular items, or ask for preferences. New items: use content features, show to exploratory users.
 
-- **Popularity bias**: Always recommending popular items
-- **Cold start**: New users/items have no data
-- **Filter bubble**: Users only see similar items
-- **Ignoring diversity**: Recommendations too similar
+3. **How do you ensure diversity in recommendations?** — MMR (Maximal Marginal Relevance), category constraints, exploration-exploitation trade-off, and deduplication.
+
+4. **How do you scale to billions of items?** — Two-stage: fast candidate generation (ANN search, collaborative filtering) followed by precise ranking on a small candidate set.
 
 ## Summary
 
-Recommendation Systems use a multi-stage architecture: candidate generation → ranking → re-ranking. Key techniques include collaborative filtering, content-based filtering, and deep learning models. Critical considerations include feature engineering, evaluation metrics, and handling edge cases like cold start and diversity.
+Recommendation systems use a multi-stage architecture: candidate generation (fast, broad) → ranking (precise, expensive) → re-ranking (business rules, diversity). Key challenges include cold-start, scalability, and balancing relevance with diversity. Real-world systems combine collaborative filtering, content-based methods, and deep learning.
+
+## Cross-References
+
+- [GNN](../gnn/README.md) — Graph-based recommendations
+- [Embeddings](../../llm/llm-serving/embeddings.md) — Representation learning
+- [Feature Store](./feature-store.md) — Feature management
+- [Model Serving](./model-serving.md) — Serving architecture
+- [A/B Testing](./ab-testing.md) — Online evaluation

@@ -2,150 +2,125 @@
 
 ## Overview
 
-Search Ranking systems order search results by relevance to the user's query. They combine information retrieval with ML to deliver the most useful results, powering platforms like Google, Bing, and e-commerce search.
+Search ranking systems order search results by relevance to a user's query. They power Google, Bing, Amazon product search, and enterprise search. The challenge is ranking billions of documents in milliseconds while handling ambiguous queries, personalization, and freshness.
 
-## System Architecture
+## Architecture
 
 ```mermaid
-graph TB
-    subgraph "Query Processing"
-        Q[Query] --> QP[Query Parser]
-        QP --> QE[Query Expansion]
-        QE --> QC[Query Classification]
-    end
-    
-    subgraph "Retrieval"
-        QC --> I[Inverted Index]
-        QC --> V[Vector Search]
-        I --> C[Candidates]
-        V --> C
-    end
-    
-    subgraph "Ranking"
-        C --> L1[L1: Lightweight]
-        L1 --> L2[L2: Deep Model]
-        L2 --> R[Re-ranking]
-    end
-    
-    subgraph "Serving"
-        R --> S[Results]
-        S --> E[Explanation]
-    end
+graph TD
+    A[User Query] --> B[Query Understanding]
+    B --> C[Retrieval / Candidate Generation]
+    C --> D[~1000 candidates]
+    D --> E[Ranking Model]
+    E --> F[Top K Results]
+    F --> G[Re-ranking / Blending]
+    G --> H[Search Results]
 ```
 
-## Multi-Stage Ranking
+## Stages
 
-### Stage 1: Retrieval
-```mermaid
-graph LR
-    Q[Query] --> BM25[BM25<br/>Keyword Match]
-    Q --> VS[Vector Search<br/>Semantic Match]
-    BM25 --> R[Results]
-    VS --> R
-```
+### 1. Query Understanding
 
 ```python
-# BM25 retrieval
+def process_query(query):
+    # Spell correction
+    corrected = spell_correct(query)
+
+    # Query expansion (synonyms)
+    expanded = expand_with_synonyms(corrected)
+
+    # Intent classification
+    intent = classify_intent(corrected)  # navigational, informational, transactional
+
+    # Named entity recognition
+    entities = extract_entities(corrected)
+
+    return {
+        'original': query,
+        'corrected': corrected,
+        'expanded': expanded,
+        'intent': intent,
+        'entities': entities
+    }
+```
+
+### 2. Retrieval (BM25 + Embeddings)
+
+```python
 from rank_bm25 import BM25Okapi
+import faiss
 
-tokenized_docs = [doc.split() for doc in documents]
-bm25 = BM25Okapi(tokenized_docs)
+# BM25 (lexical retrieval)
+bm25 = BM25Okapi(tokenized_corpus)
+bm25_scores = bm25.get_scores(tokenized_query)
 
-query = "machine learning basics"
-scores = bm25.get_scores(query.split())
+# Embedding retrieval (semantic search)
+query_embedding = encode(query)
+index = faiss.IndexFlatIP(embedding_dim)
+_, embedding_indices = index.search(query_embedding.reshape(1, -1), 1000)
 
-# Vector search
-from sentence_transformers import SentenceTransformer
-
-model = SentenceTransformer('all-MiniLM-L6-v2')
-doc_embeddings = model.encode(documents)
-query_embedding = model.encode(query)
-
-similarities = cosine_similarity([query_embedding], doc_embeddings)
+# Hybrid: combine BM25 + embedding candidates
+candidates = merge_candidates(bm25_top_k, embedding_top_k)
 ```
 
-### Stage 2: Lightweight Ranking
-- Simple model (Logistic Regression, LightGBM)
-- Score 1000s of candidates quickly
-- Features: BM25 score, document quality, freshness
+### 3. Ranking Model (Learning to Rank)
 
-### Stage 3: Deep Ranking
 ```python
-# Cross-encoder for re-ranking
-from sentence_transformers import CrossEncoder
+class SearchRanker(nn.Module):
+    def __init__(self, query_dim, doc_dim):
+        super().__init__()
+        self.query_encoder = nn.Linear(query_dim, 128)
+        self.doc_encoder = nn.Linear(doc_dim, 128)
+        self.cross_attention = nn.MultiheadAttention(128, 8)
+        self.ranker = nn.Sequential(
+            nn.Linear(256, 128), nn.ReLU(),
+            nn.Linear(128, 1)
+        )
 
-model = CrossEncoder('cross-encoder/ms-marco-MiniLM-L-6-v2')
-
-pairs = [(query, doc) for doc in top_candidates]
-scores = model.predict(pairs)
-
-# Sort by score
-ranked_results = sorted(zip(top_candidates, scores), key=lambda x: x[1], reverse=True)
+    def forward(self, query_feat, doc_feat):
+        q = self.query_encoder(query_feat)
+        d = self.doc_encoder(doc_feat)
+        # Cross-attention between query and document
+        attended, _ = self.cross_attention(q.unsqueeze(0), d.unsqueeze(0), d.unsqueeze(0))
+        combined = torch.cat([q, attended.squeeze(0)], dim=-1)
+        return self.ranker(combined)
 ```
 
-### Stage 4: Re-ranking
-- Business rules (promote/demote)
-- Diversity
-- Freshness
-- Personalization
+### Learning to Rank Approaches
 
-## Feature Engineering
+| Approach | Loss | Description |
+|----------|------|-------------|
+| Pointwise | MSE / BCE | Predict relevance score per doc |
+| Pairwise | RankNet / LambdaRank | Predict relative order of doc pairs |
+| Listwise | ListNet / LambdaMART | Optimize entire ranking list |
+
+## Features
 
 | Category | Features |
 |----------|----------|
-| Query | Length, type, entities, intent |
-| Document | PageRank, freshness, quality, length |
-| Match | BM25 score, title match, URL match |
-| User | History, preferences, location |
-| Context | Device, time, session |
-
-## Learning to Rank
-
-### Pointwise
-```python
-# Predict relevance score for each document
-model.predict(query_document_features)  # Score per doc
-```
-
-### Pairwise
-```python
-# Learn relative ordering
-# RankNet, LambdaRank
-loss = -log(sigmoid(score_doc1 - score_doc2))
-```
-
-### Listwise
-```python
-# Optimize entire list
-# ListNet, LambdaMART
-loss = cross_entropy(predicted_list_distribution, ideal_list_distribution)
-```
-
-## Evaluation Metrics
-
-| Metric | Description |
-|--------|-------------|
-| NDCG@K | Normalized Discounted Cumulative Gain |
-| MAP | Mean Average Precision |
-| MRR | Mean Reciprocal Rank |
-| Click-through Rate | User engagement |
-| Abandonment Rate | Users leaving without clicking |
+| Query | Keywords, intent, length, entity types |
+| Document | Title, content, authority, freshness, click-through rate |
+| Match | BM25 score, embedding similarity, term overlap |
+| User | Search history, preferences, location |
+| Context | Time, device, session |
 
 ## Interview Questions
 
-1. **Design a search ranking system for an e-commerce site.**
-2. **How do you handle query understanding?**
-3. **Explain the multi-stage ranking architecture.**
-4. **What is learning to rank? Compare pointwise, pairwise, listwise.**
-5. **How do you evaluate search quality?**
+1. **Design Google Search ranking** — Query understanding → Retrieval (BM25 + semantic) → Ranking (learning to rank) → Re-ranking (freshness, diversity) → Results.
 
-## Common Mistakes
+2. **How do you handle query understanding?** — Spell correction, query expansion (synonyms), intent classification, and named entity recognition.
 
-- **No query understanding**: Treating all queries the same
-- **Ignoring freshness**: Stale results for time-sensitive queries
-- **No personalization**: Same results for all users
-- **Over-optimizing for clicks**: Clicks ≠ satisfaction
+3. **BM25 vs embedding retrieval?** — BM25: exact term matching, fast, works well for specific queries. Embeddings: semantic matching, handles synonyms, better for vague queries. Hybrid is best.
+
+4. **What is learning to rank?** — ML models that optimize ranking metrics (NDCG, MAP). Approaches: pointwise (predict score), pairwise (predict order), listwise (optimize list).
 
 ## Summary
 
-Search Ranking uses a multi-stage architecture: retrieval → lightweight ranking → deep ranking → re-ranking. Key techniques include BM25, vector search, cross-encoders, and learning to rank. Critical considerations include query understanding, feature engineering, and evaluation metrics like NDCG and MAP.
+Search ranking systems use multi-stage architectures: query understanding → retrieval → ranking → re-ranking. BM25 handles lexical matching, embeddings handle semantic matching. Learning to rank models optimize for ranking metrics. Personalization, freshness, and diversity are key considerations.
+
+## Cross-References
+
+- [Recommendation](./recommendation.md) — Similar architecture
+- [Embeddings](../../llm/llm-serving/embeddings.md) — Vector representations
+- [Transformers](../transformers/README.md) — Cross-attention for ranking
+- [Model Serving](./model-serving.md) — Serving architecture

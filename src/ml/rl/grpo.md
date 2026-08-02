@@ -1,257 +1,212 @@
-# GRPO (Group Relative Policy Optimization)
+# Group Relative Policy Optimization (GRPO)
 
 ## Overview
 
-GRPO, introduced by DeepSeek (Shao et al., 2024), is a variant of policy optimization that **eliminates the critic/value function** by using **group-level baseline estimation**. Instead of training a separate value network to compute advantages, GRPO generates multiple responses for each prompt, computes their rewards, and uses the group statistics (mean, std) as the baseline. This significantly reduces memory and compute requirements while maintaining performance.
+GRPO is an RL algorithm that **eliminates the critic network** by using **group-relative advantages** — comparing multiple sampled outputs from the same prompt to estimate how good each response is. Popularized by DeepSeek-R1 (2025), GRPO is now the dominant RL optimizer for training reasoning models (LRMs).
 
-## Core Idea
+## Motivation
 
-```mermaid
-graph TD
-    PROMPT[Prompt x] --> GEN1[Response y1, reward r1]
-    PROMPT --> GEN2[Response y2, reward r2]
-    PROMPT --> GEN3[Response y3, reward r3]
-    PROMPT --> GEN4[Response y4, reward r4]
-    
-    GEN1 --> GROUP[Group Statistics]
-    GEN2 --> GROUP
-    GEN3 --> GROUP
-    GEN4 --> GROUP
-    
-    GROUP --> BASELINE["μ = mean(r1,r2,r3,r4)"]
-    GROUP --> STD["σ = std(r1,r2,r3,r4)"]
-    
-    BASELINE --> ADV["Â_i = (r_i - μ) / σ"]
-    STD --> ADV
-    
-    ADV --> UPDATE["Policy Update<br/>∇θ log π(yi|x) · Âi"]
-```
+PPO for LLMs requires four models in memory:
+1. **Policy** (being optimized)
+2. **Reference** (for KL penalty)
+3. **Reward model** (or verifier)
+4. **Critic/Value model** (for advantage estimation)
 
-## Group Advantage Estimation
-
-For each prompt $x$, generate $G$ responses $\{y_1, y_2, \dots, y_G\}$ with rewards $\{r_1, r_2, \dots, r_G\}$:
-
-$$\hat{A}_i = \frac{r_i - \text{mean}(\{r_j\}_{j=1}^G)}{\text{std}(\{r_j\}_{j=1}^G)}$$
-
-This normalized advantage:
-- Positive for above-average responses (reinforced)
-- Negative for below-average responses (penalized)
-- Automatically scales with group variance
-
-## GRPO Objective
-
-The GRPO loss combines policy gradient with KL regularization:
-
-$$\mathcal{L}_{\text{GRPO}}(\theta) = -\mathbb{E}_{x \sim \mathcal{D}}\left[\frac{1}{G} \sum_{i=1}^{G} \min\left(\rho_i \hat{A}_i, \; \text{clip}(\rho_i, 1-\epsilon, 1+\epsilon) \hat{A}_i\right) - \beta \cdot D_{\text{KL}}(\pi_\theta \| \pi_{\text{ref}})\right]$$
-
-Where:
-- $\rho_i = \frac{\pi_\theta(y_i|x)}{\pi_{\text{old}}(y_i|x)}$: probability ratio
-- $\hat{A}_i$: group-relative advantage
-- $\epsilon$: PPO clipping parameter
-- $\beta$: KL penalty coefficient
-
-## Why No Critic?
+GRPO removes the critic, reducing memory and complexity while maintaining training effectiveness.
 
 ```mermaid
 graph TD
-    subgraph "PPO/RLHF"
-        P1[Policy LLM] --> P2[Value Function / Critic]
-        P2 --> P3["Memory: Policy + Critic + Ref + Reward"]
-        P3 --> P4["Complexity: High"]
-    end
+    A[PPO for LLMs] --> B[Policy Model]
+    A --> C[Reference Model]
+    A --> D[Reward Model / Verifier]
+    A --> E[Critic Model - ELIMINATED in GRPO]
     
-    subgraph "GRPO"
-        G1[Policy LLM] --> G2[Group sampling]
-        G2 --> G3["Memory: Policy + Ref + Reward"]
-        G3 --> G4["Simpler, less memory"]
-    end
+    F[GRPO for LLMs] --> G[Policy Model]
+    F --> H[Reference Model]
+    F --> I[Reward Model / Verifier]
 ```
 
-| Aspect | PPO (with critic) | GRPO (no critic) |
-|--------|-------------------|-------------------|
-| LLM copies | 4 (policy, ref, reward, critic) | 3 (policy, ref, reward) |
-| Advantage estimation | Learned value function | Group statistics |
-| Memory | Higher | Lower |
-| Complexity | More hyperparameters | Fewer |
-| Stability | Can have value function errors | No value function issues |
+## How GRPO Works
 
-## Implementation
+### Step 1: Sample a Group of Responses
+
+For each prompt, generate **G responses** from the current policy:
+
+```mermaid
+graph TD
+    A[Prompt x] --> B[Sample response y₁]
+    A --> C[Sample response y₂]
+    A --> D[...]
+    A --> E[Sample response y_G]
+    B --> F[Score each response]
+    C --> F
+    D --> F
+    E --> F
+```
+
+### Step 2: Compute Rewards
+
+Score each response using a reward function (reward model or rule-based verifier):
+
+$$r_i = R(x, y_i) \quad \text{for } i = 1, ..., G$$
+
+### Step 3: Compute Group-Relative Advantages
+
+Normalize rewards **within the group**:
+
+$$\hat{A}_i = \frac{r_i - \text{mean}(r_1, ..., r_G)}{\text{std}(r_1, ..., r_G)}$$
+
+This is the key innovation — advantages are relative to the group, not estimated by a critic.
+
+### Step 4: Policy Update with Clipped Objective
+
+Use a PPO-style clipped objective with the group-relative advantages:
+
+$$L_{GRPO}(\theta) = \mathbb{E}\left[ \min\left( \frac{\pi_\theta(y_i|x)}{\pi_{\theta_{old}}(y_i|x)} \hat{A}_i, \text{clip}(\cdot, 1-\epsilon, 1+\epsilon) \hat{A}_i \right) - \beta D_{KL}[\pi_\theta \| \pi_{ref}] \right]$$
+
+## GRPO vs PPO
+
+| Aspect | PPO | GRPO |
+|--------|-----|------|
+| **Critic Model** | Required (V(s)) | Not needed |
+| **Advantage Estimation** | GAE with critic | Group-relative normalization |
+| **Models in Memory** | 4 (policy, ref, reward, critic) | 3 (policy, ref, reward) |
+| **Per-Prompt Samples** | 1 response | G responses (typically 4-64) |
+| **Variance Reduction** | Critic baseline | Group normalization |
+| **Implementation** | Complex | Simpler |
+| **Used By** | InstructGPT, ChatGPT | DeepSeek-R1, Qwen |
+
+## Why Group-Relative Works
+
+```mermaid
+graph TD
+    A["Prompt: Solve x² + 5x + 6 = 0"] --> B["y₁: x = -2, x = -3 ✓ (reward: 1.0)"]
+    A --> C["y₂: x = 2, x = 3 ✗ (reward: 0.0)"]
+    A --> D["y₃: x = -2, x = -3 ✓ (reward: 1.0)"]
+    A --> E["y₄: Can't solve ✗ (reward: 0.0)"]
+    
+    B --> F["Group mean: 0.5, std: 0.5"]
+    C --> F
+    D --> F
+    E --> F
+    
+    F --> G["y₁ advantage: +1.0 (reinforce)"]
+    F --> H["y₂ advantage: -1.0 (discourage)"]
+```
+
+By comparing responses to the **same prompt**, we get a natural baseline — the average quality of responses in the group. No critic needed.
+
+## GRPO in DeepSeek-R1
+
+DeepSeek-R1 uses GRPO with **verifiable rewards (RLVR)** for training reasoning:
+
+```mermaid
+graph TD
+    A[Math Problem] --> B[Sample G responses with chain-of-thought]
+    B --> C[Verify each answer: correct or incorrect]
+    C --> D["Reward = 1 if correct, 0 if incorrect"]
+    D --> E[Group-relative advantages]
+    E --> F[PPO-style clipped update]
+    F --> G[Model learns to reason]
+```
+
+**Key observations from DeepSeek-R1:**
+- The model spontaneously develops **chain-of-thought** reasoning
+- Longer, more detailed reasoning emerges over training
+- "Aha moments" — the model learns to self-correct
+- GRPO with rule-based rewards (math verification) works without a learned reward model
+
+## RLVR: Reinforcement Learning with Verifiable Rewards
+
+GRPO pairs naturally with RLVR — rewards from deterministic verifiers:
+
+| Task | Verifier | Reward |
+|------|----------|--------|
+| Math | Check final answer | 1 if correct, 0 if not |
+| Code | Run test cases | Fraction of tests passing |
+| Logic | Rule-based checker | 1 if valid, 0 if not |
+
+**Advantage over RLHF rewards:**
+- No reward model to train (no annotation cost)
+- No reward hacking (verification is exact)
+- Clear, unambiguous reward signal
+- Scales easily
+
+## GRPO Algorithm Pseudocode
 
 ```python
-import torch
-import torch.nn.functional as F
-from copy import deepcopy
-
-class GRPOTrainer:
-    def __init__(self, model, ref_model, reward_fn, 
-                 beta=0.04, epsilon=0.2, num_generations=8):
-        self.model = model
-        self.ref_model = ref_model  # Frozen
-        self.reward_fn = reward_fn
-        self.beta = beta
-        self.epsilon = epsilon
-        self.G = num_generations
-        self.optimizer = torch.optim.AdamW(model.parameters(), lr=1e-6)
-    
-    def compute_logprobs(self, model, input_ids, labels, attention_mask):
-        """Compute log probabilities of response tokens."""
-        outputs = model(input_ids, attention_mask=attention_mask)
-        logits = outputs.logits[:, :-1, :]
-        labels = labels[:, 1:]
-        log_probs = F.log_softmax(logits, dim=-1)
-        token_log_probs = log_probs.gather(2, labels.unsqueeze(2)).squeeze(2)
-        return token_log_probs.sum(dim=1)
-    
-    def train_step(self, prompts):
-        self.model.train()
-        all_loss = 0
+def grpo_training(policy, ref_model, reward_fn, prompts, G=8, eps=0.2, beta=0.01):
+    for prompt in prompts:
+        # Step 1: Sample G responses
+        responses = [policy.generate(prompt) for _ in range(G)]
         
-        for prompt in prompts:
-            # 1. Generate G responses per prompt
-            responses = []
-            for _ in range(self.G):
-                response = self.model.generate(prompt, max_length=512)
-                responses.append(response)
-            
-            # 2. Compute rewards
-            rewards = torch.tensor([
-                self.reward_fn(prompt, resp) for resp in responses
-            ])
-            
-            # 3. Compute group-relative advantages
-            advantages = (rewards - rewards.mean()) / (rewards.std() + 1e-8)
-            
-            # 4. Compute log probs for policy and reference
-            policy_logprobs = []
-            ref_logprobs = []
-            for resp in responses:
-                input_ids, labels, mask = tokenize(prompt, resp)
-                policy_lp = self.compute_logprobs(
-                    self.model, input_ids, labels, mask)
-                with torch.no_grad():
-                    ref_lp = self.compute_logprobs(
-                        self.ref_model, input_ids, labels, mask)
-                policy_logprobs.append(policy_lp)
-                ref_logprobs.append(ref_lp)
-            
-            policy_logprobs = torch.stack(policy_logprobs)
-            ref_logprobs = torch.stack(ref_logprobs)
-            old_logprobs = policy_logprobs.detach()
-            
-            # 5. PPO-clip with group advantages
-            ratio = (policy_logprobs - old_logprobs).exp()
-            surr1 = ratio * advantages
-            surr2 = torch.clamp(ratio, 1 - self.epsilon, 1 + self.epsilon) * advantages
-            pg_loss = -torch.min(surr1, surr2).mean()
-            
-            # 6. KL penalty
-            kl = (policy_logprobs - ref_logprobs).mean()
-            
-            # 7. Total loss
-            loss = pg_loss + self.beta * kl
-            
-            self.optimizer.zero_grad()
+        # Step 2: Score each response
+        rewards = [reward_fn(prompt, resp) for resp in responses]
+        
+        # Step 3: Group-relative advantages
+        mean_r, std_r = mean(rewards), std(rewards)
+        advantages = [(r - mean_r) / (std_r + 1e-8) for r in rewards]
+        
+        # Step 4: PPO-style update
+        for resp, adv in zip(responses, advantages):
+            ratio = policy.prob(resp) / old_policy.prob(resp)
+            clipped_ratio = clip(ratio, 1-eps, 1+eps)
+            policy_loss = -min(ratio * adv, clipped_ratio * adv)
+            kl_penalty = beta * kl_div(policy.prob(resp), ref.prob(resp))
+            loss = policy_loss + kl_penalty
             loss.backward()
-            torch.nn.utils.clip_grad_norm_(self.model.parameters(), 1.0)
-            self.optimizer.step()
-            
-            all_loss += loss.item()
         
-        return all_loss / len(prompts)
+        optimizer.step()
 ```
 
-## GRPO in DeepSeek
+## Hyperparameters for GRPO
 
-DeepSeek-R1 uses GRPO for training reasoning models:
-
-```mermaid
-graph TD
-    PRE[DeepSeek-Base] --> COLD[Cold Start SFT]
-    COLD --> GRPO_RL["GRPO RL Training<br/>(reasoning tasks)"]
-    GRPO_RL --> REJECT[Rejection Sampling]
-    REJECT --> SFT2[SFT on best samples]
-    SFT2 --> GRPO_RL2["GRPO RL Training<br/>(all tasks)"]
-    GRPO_RL2 --> FINAL[DeepSeek-R1]
-    
-    subgraph "Reward Functions"
-        R1[Accuracy reward: correct answer?]
-        R2[Format reward: thinking tags?]
-        R3[Language consistency reward]
-    end
-```
-
-### Reward Functions in DeepSeek-R1
-
-```python
-def accuracy_reward(prompt, response, ground_truth):
-    """Reward for correct final answer."""
-    extracted = extract_answer(response)
-    return 1.0 if extracted == ground_truth else 0.0
-
-def format_reward(response):
-    """Reward for using proper thinking format."""
-    has_think = "<think>" in response and "</think>" in response
-    has_answer = "<answer>" in response and "</answer>" in response
-    return 0.5 * has_think + 0.5 * has_answer
-
-def combined_reward(prompt, response, ground_truth):
-    return (0.7 * accuracy_reward(prompt, response, ground_truth) +
-            0.3 * format_reward(response))
-```
-
-## When to Use GRPO vs DPO vs RLHF
-
-| Method | Best For | Requirements |
-|--------|----------|-------------|
-| **RLHF** | Maximum alignment quality | Reward model, PPO, 4 LLM copies |
-| **DPO** | Simple preference optimization | Preference pairs, 2 LLM copies |
-| **GRPO** | Reasoning tasks, verifiable rewards | Reward function, 3 LLM copies |
-
-```mermaid
-graph TD
-    TASK[Task Type]
-    TASK -->|"Subjective quality<br/>(helpfulness, harmlessness)"| RLHF_DPO["RLHF or DPO"]
-    TASK -->|"Verifiable correctness<br/>(math, code, reasoning)"| GRPO_GRPO["GRPO"]
-    
-    RLHF_DPO -->|"Have preference data?"| DPO[DPO]
-    RLHF_DPO -->|"Need reward model?"| RLHF[RLHF]
-    
-    GRPO_GRPO -->|"Can define reward function?"| GRPO[GRPO]
-```
+| Parameter | Typical Value | Notes |
+|-----------|--------------|-------|
+| **Group size G** | 4-64 | More = better advantage estimates, more compute |
+| **Clip ε** | 0.1-0.2 | Same as PPO |
+| **KL coefficient β** | 0.001-0.01 | Lower than PPO (no critic instability) |
+| **Learning rate** | 1e-6 to 5e-6 | Small for LLM stability |
+| **Temperature** | 0.7-1.0 | For sampling diversity in the group |
+| **Max response length** | 512-8192 | Task dependent |
 
 ## Interview Questions
 
-### Q1: What is GRPO and how does it differ from PPO?
-**Answer:** GRPO eliminates the critic/value function by using group-level baseline estimation. For each prompt, it generates multiple responses, computes their rewards, and uses the group mean and standard deviation to normalize advantages. This reduces memory (no critic), simplifies training (fewer hyperparameters), and avoids value function estimation errors.
+**Q1: How does GRPO eliminate the critic?**
+> Instead of using a learned value function V(s) as a baseline, GRPO generates multiple responses per prompt and uses the group's average reward as the baseline. The advantage of each response is its reward normalized by the group mean and standard deviation. This provides a natural, zero-cost baseline.
 
-### Q2: How does GRPO compute advantages without a value function?
-**Answer:** For each prompt, generate $G$ responses. Compute rewards for each response. The advantage of each response is its reward normalized by the group statistics: $\hat{A}_i = (r_i - \mu_G) / \sigma_G$. This provides a natural baseline — above-average responses are reinforced, below-average are penalized.
+**Q2: What are the tradeoffs of using a group-based baseline vs a critic?**
+> Pros: Less memory (no critic model), simpler implementation, no critic training instability. Cons: Higher variance (group estimates are noisy), requires multiple samples per prompt (more compute), baseline quality depends on group size. In practice, the simplicity and memory savings outweigh the variance increase.
 
-### Q3: When should you use GRPO vs DPO?
-**Answer:** Use GRPO when you have a **verifiable reward function** (correct answer for math, passing tests for code). Use DPO when you have **human preference pairs** (subjective quality judgments). GRPO is better for reasoning tasks where correctness is objectively measurable; DPO is better for alignment tasks where quality is subjective.
+**Q3: Why does GRPO work well for reasoning tasks?**
+> Reasoning tasks have verifiable rewards (math answers can be checked). GRPO + RLVR uses rule-based verification instead of learned reward models. This avoids reward hacking and provides clear learning signals. The group comparison naturally distinguishes good reasoning from bad reasoning.
 
-### Q4: Why did DeepSeek-R1 use GRPO?
-**Answer:** DeepSeek-R1 trains reasoning models where the reward is verifiable (math answers can be checked, code can be tested). GRPO is ideal because: 1) No need for a learned reward model (use rule-based rewards), 2) Group sampling naturally explores different reasoning paths, 3) Less memory than PPO (no critic), 4) The group baseline provides stable advantage estimates for reasoning tasks.
+**Q4: How does DeepSeek-R1 use GRPO?**
+> DeepSeek-R1 uses GRPO with verifiable rewards: math problems are verified by checking answers, code by running tests. The model samples multiple chain-of-thought responses, gets binary rewards (correct/incorrect), and updates using group-relative advantages. This led to emergent reasoning capabilities including self-correction.
 
-### Q5: What is the role of the KL penalty in GRPO?
-**Answer:** The KL penalty $D_{\text{KL}}(\pi_\theta \| \pi_{\text{ref}})$ constrains the policy to stay close to the reference model, preventing: 1) Reward hacking (exploiting the reward function), 2) Language quality degradation, 3) Mode collapse (always generating similar responses). It's the same role as in RLHF but applied within the group-based framework.
+**Q5: What is the role of group size G in GRPO?**
+> Larger G gives better advantage estimates (lower variance) but costs more compute. With G=2, the comparison is noisy. With G=64, you get a reliable baseline. Typical range: 8-32 for training, though DeepSeek uses larger groups. The tradeoff is compute vs estimate quality.
+
+**Q6: How does GRPO differ from REINFORCE with baseline?**
+> REINFORCE with baseline subtracts a fixed or state-dependent baseline from the return. GRPO's baseline is the group mean — specific to each prompt and sampled from the current policy. This is more adaptive and doesn't require learning a baseline function. The clipped objective also makes GRPO more stable than vanilla REINFORCE.
 
 ## Common Mistakes
 
-- ❌ Too few generations per prompt (unstable baseline estimates)
-- ❌ Not normalizing advantages (different reward scales break training)
-- ❌ KL penalty too strong (policy can't learn) or too weak (reward hacking)
-- ❌ Using GRPO for subjective tasks where reward is hard to define
-- ❌ Forgetting to freeze the reference model
+1. **Too small group size** — G < 4 gives noisy advantage estimates
+2. **Not normalizing advantages** — Always normalize within the group
+3. **Using GRPO with non-verifiable tasks** — Works best with clear reward signals (math, code)
+4. **Ignoring KL divergence** — Without it, the model can degenerate
+5. **Low sampling temperature** — Need diversity in the group for meaningful comparisons
 
 ## Summary
 
-GRPO replaces the critic with group-level advantage estimation, making it simpler and more memory-efficient than PPO. It generates multiple responses per prompt, uses group statistics as baseline, and applies PPO-clip with group-relative advantages. Ideal for tasks with verifiable rewards (math, code, reasoning). Used in DeepSeek-R1 for training reasoning models.
+| Aspect | Detail |
+|--------|--------|
+| **Core Innovation** | Group-relative advantages replace the critic |
+| **Key Benefit** | Simpler, less memory than PPO |
+| **Best Paired With** | Verifiable rewards (RLVR) |
+| **Used By** | DeepSeek-R1, Qwen reasoning models |
+| **Group Size** | Typically 8-32 responses per prompt |
+| **Advantage** | Normalized rewards within group |
 
-## Cross-References
-
-- [PPO →](ppo.md) The base algorithm GRPO improves upon
-- [RLHF →](rlhf.md) Full RLHF pipeline
-- [DPO →](dpo.md) Preference-based alternative
-- [Policy Gradient →](policy-gradient.md) Policy gradient foundations
-- [Fundamentals →](fundamentals.md) RL basics
+GRPO is the algorithm behind the current generation of reasoning models. Its simplicity and effectiveness have made it the go-to choice for training LLMs to reason.

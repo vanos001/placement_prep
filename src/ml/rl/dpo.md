@@ -1,204 +1,183 @@
-# DPO (Direct Preference Optimization)
+# Direct Preference Optimization (DPO)
 
 ## Overview
 
-DPO, introduced by Rafailov et al. (2023), is a **simpler alternative to RLHF** that directly optimizes the language model on preference data without training a separate reward model or using PPO. It derives a closed-form loss function from the RLHF objective, turning preference learning into a simple classification problem. DPO has become widely adopted due to its simplicity and effectiveness.
+DPO (Rafailov et al., 2023) is a method for aligning language models with human preferences **without reinforcement learning**. It directly optimizes the policy on preference data by deriving a closed-form loss from the RLHF objective, eliminating the need for a separate reward model and PPO training.
 
-## The Key Insight
+## Key Insight
 
-The RLHF objective with KL constraint has a **closed-form optimal solution**:
+The RLHF objective (maximize reward + KL penalty) has a **closed-form optimal policy**. DPO reparameterizes the problem so we can optimize the policy directly on preference data, without ever training a reward model.
 
-$$\pi^*(y|x) = \frac{1}{Z(x)} \pi_{\text{ref}}(y|x) \exp\left(\frac{1}{\beta} r(x, y)\right)$$
+**RLHF Objective:**
+$$\max_\pi \mathbb{E}_{x, y \sim \pi}[r(x,y)] - \beta D_{KL}[\pi \| \pi_{ref}]$$
 
-Where $Z(x)$ is the partition function. Rearranging:
+**Optimal Solution:**
+$$\pi^*(y|x) = \frac{1}{Z(x)} \pi_{ref}(y|x) \exp\left(\frac{1}{\beta} r(x,y)\right)$$
 
-$$r(x, y) = \beta \log \frac{\pi^*(y|x)}{\pi_{\text{ref}}(y|x)} + \beta \log Z(x)$$
+Rearranging to express the reward in terms of the policy:
 
-This means the **optimal policy implicitly defines the reward** — no separate reward model needed!
+$$r(x,y) = \beta \log \frac{\pi^*(y|x)}{\pi_{ref}(y|x)} + \beta \log Z(x)$$
+
+Substituting into the Bradley-Terry preference model, the partition function Z(x) cancels out:
 
 ## DPO Loss Function
 
-Substituting into the Bradley-Terry preference model:
+$$L_{DPO}(\theta) = -\mathbb{E}_{(x, y_w, y_l)} \left[ \log \sigma\left( \beta \log \frac{\pi_\theta(y_w|x)}{\pi_{ref}(y_w|x)} - \beta \log \frac{\pi_\theta(y_l|x)}{\pi_{ref}(y_l|x)} \right) \right]$$
 
-$$\mathcal{L}_{\text{DPO}}(\theta) = -\mathbb{E}_{(x, y_w, y_l)}\left[\log \sigma\left(\beta \log \frac{\pi_\theta(y_w|x)}{\pi_{\text{ref}}(y_w|x)} - \beta \log \frac{\pi_\theta(y_l|x)}{\pi_{\text{ref}}(y_l|x)}\right)\right]$$
+Where:
+- **y_w**: Preferred (winning) response
+- **y_l**: Rejected (losing) response
+- **π_θ**: Policy being optimized
+- **π_ref**: Reference policy (usually SFT model)
+- **β**: Temperature parameter (controls deviation from reference)
+
+## How DPO Works
 
 ```mermaid
-graph LR
-    subgraph "RLHF (Complex)"
-        R1[Train Reward Model] --> R2[PPO Training]
-        R2 --> R3[Multiple LLM copies]
-        R3 --> R4[Complex, expensive]
-    end
-    
-    subgraph "DPO (Simple)"
-        D1[Single loss function] --> D2[Standard backprop]
-        D2 --> D3[Two LLM copies]
-        D3 --> D4[Simple, efficient]
-    end
+graph TD
+    A[Preference Data: prompt, chosen, rejected] --> B[Compute log probabilities under π_θ]
+    A --> C[Compute log probabilities under π_ref]
+    B --> D[Compute log ratios]
+    C --> D
+    D --> E["Loss = -log σ(β · (log_ratio_chosen - log_ratio_rejected))"]
+    E --> F[Update π_θ via gradient descent]
 ```
 
-## DPO vs RLHF
+**Intuition**: DPO increases the likelihood of preferred responses relative to rejected ones, weighted by how much the current policy already differs from the reference.
+
+## DPO vs RLHF Pipeline
+
+```mermaid
+graph TD
+    subgraph "RLHF Pipeline"
+        A1[Preference Data] --> B1[Train Reward Model]
+        B1 --> C1[PPO Training]
+        C1 --> D1[Aligned Model]
+    end
+    
+    subgraph "DPO Pipeline"
+        A2[Preference Data] --> B2[Direct Optimization]
+        B2 --> D2[Aligned Model]
+    end
+```
 
 | Aspect | RLHF | DPO |
 |--------|------|-----|
-| Reward model | Separate, trained first | Implicit in policy |
-| RL algorithm | PPO (complex) | Simple loss function |
-| LLM copies needed | 4 (policy, ref, reward, critic) | 2 (policy, reference) |
-| Training stability | Can be unstable | More stable |
-| Compute cost | High (multiple forward passes) | Lower |
-| Implementation | Complex (PPO, GAE, etc.) | Simple cross-entropy loss |
-| Performance | Slightly better in some cases | Comparable |
+| **Reward Model** | Explicit (separate network) | Implicit (derived from policy) |
+| **RL Algorithm** | PPO | None (supervised loss) |
+| **Training Complexity** | High (3+ models in memory) | Low (2 models: policy + reference) |
+| **Hyperparameters** | Many (PPO, reward model, KL) | Few (mainly β) |
+| **Stability** | Can be unstable | More stable |
+| **Sample Efficiency** | Lower (on-policy) | Higher (off-policy) |
+| **Reward Hacking** | Yes (explicit RM) | Less prone |
 
-## Implementation
+## DPO Implementation
 
 ```python
-import torch
-import torch.nn as nn
-import torch.nn.functional as F
-
-class DPOTrainer:
-    def __init__(self, model, ref_model, beta=0.1, lr=5e-7):
-        self.model = model
-        self.ref_model = ref_model  # Frozen
-        self.beta = beta
-        self.optimizer = torch.optim.AdamW(model.parameters(), lr=lr)
+def dpo_loss(policy_logps, ref_logps, beta):
+    """
+    policy_logps: (chosen_logp, rejected_logp) from policy model
+    ref_logps: (chosen_logp, rejected_logp) from reference model
+    """
+    log_ratio_chosen = policy_logps[0] - ref_logps[0]
+    log_ratio_rejected = policy_logps[1] - ref_logps[1]
     
-    def get_logprobs(self, model, input_ids, labels, attention_mask):
-        """Get log probabilities of the response tokens."""
-        outputs = model(input_ids, attention_mask=attention_mask)
-        logits = outputs.logits[:, :-1, :]  # Shift for autoregressive
-        labels = labels[:, 1:]
-        log_probs = F.log_softmax(logits, dim=-1)
-        # Gather log probs for the actual tokens
-        token_log_probs = log_probs.gather(2, labels.unsqueeze(2)).squeeze(2)
-        return token_log_probs.sum(dim=1)  # Sum over sequence
-    
-    def dpo_loss(self, chosen_ids, chosen_mask, chosen_labels,
-                 rejected_ids, rejected_mask, rejected_labels):
-        """Compute DPO loss."""
-        # Log probs from policy
-        policy_chosen = self.get_logprobs(self.model, chosen_ids, 
-                                           chosen_labels, chosen_mask)
-        policy_rejected = self.get_logprobs(self.model, rejected_ids, 
-                                             rejected_labels, rejected_mask)
-        
-        # Log probs from reference (frozen)
-        with torch.no_grad():
-            ref_chosen = self.get_logprobs(self.ref_model, chosen_ids,
-                                            chosen_labels, chosen_mask)
-            ref_rejected = self.get_logprobs(self.ref_model, rejected_ids,
-                                              rejected_labels, rejected_mask)
-        
-        # DPO loss
-        chosen_rewards = self.beta * (policy_chosen - ref_chosen)
-        rejected_rewards = self.beta * (policy_rejected - ref_rejected)
-        
-        loss = -F.logsigmoid(chosen_rewards - rejected_rewards).mean()
-        
-        # Metrics
-        chosen_reward = chosen_rewards.detach().mean()
-        rejected_reward = rejected_rewards.detach().mean()
-        accuracy = (chosen_rewards > rejected_rewards).float().mean()
-        
-        return loss, chosen_reward, rejected_reward, accuracy
-    
-    def train_step(self, batch):
-        self.model.train()
-        loss, cr, rr, acc = self.dpo_loss(
-            batch['chosen_ids'], batch['chosen_mask'], batch['chosen_labels'],
-            batch['rejected_ids'], batch['rejected_mask'], batch['rejected_labels']
-        )
-        
-        self.optimizer.zero_grad()
-        loss.backward()
-        nn.utils.clip_grad_norm_(self.model.parameters(), 1.0)
-        self.optimizer.step()
-        
-        return {
-            'loss': loss.item(),
-            'chosen_reward': cr.item(),
-            'rejected_reward': rr.item(),
-            'accuracy': acc.item()
-        }
+    logits = beta * (log_ratio_chosen - log_ratio_rejected)
+    loss = -F.logsigmoid(logits).mean()
+    return loss
 ```
+
+**What you need:**
+1. A reference model (frozen SFT model)
+2. The policy model (being trained)
+3. Preference data (prompt, chosen response, rejected response)
+
+No reward model. No PPO. Just a simple binary cross-entropy-style loss.
 
 ## DPO Variants
 
-| Variant | Innovation | Benefit |
-|---------|-----------|---------|
-| **IPO** | Uses different loss function | More robust to noise |
-| **KTO** | Uses only thumbs up/down (not pairs) | Easier data collection |
-| **ORPO** | Combines SFT + preference in one step | Simpler pipeline |
-| **SimPO** | Uses average log prob (no reference model) | Even simpler |
-| **cDPO** | Conservative DPO with label smoothing | Handles label noise |
+### IPO (Identity Preference Optimization)
+Addresses DPO's potential overfitting to preference data:
 
-## Data Format
+$$L_{IPO} = \left(\log \frac{\pi_\theta(y_w|x)}{\pi_{ref}(y_w|x)} - \log \frac{\pi_\theta(y_l|x)}{\pi_{ref}(y_l|x)} - \frac{1}{2\beta}\right)^2$$
 
-DPO needs preference pairs:
+### KTO (Kahneman-Tversky Optimization)
+Works with **pointwise** data (good/bad) instead of pairwise comparisons:
 
-```json
-{
-    "prompt": "Explain quantum computing simply.",
-    "chosen": "Quantum computing uses quantum bits (qubits) that can be 0 and 1 simultaneously...",
-    "rejected": "Quantum computing is a type of computing that uses quantum mechanics..."
-}
+$$L_{KTO} = \mathbb{E}[\text{loss based on whether response is desirable or undesirable}]$$
+
+Doesn't need paired data — can use thumbs up/down signals.
+
+### ORPO (Odds Ratio Preference Optimization)
+Eliminates the reference model entirely by incorporating preference optimization directly into the SFT loss.
+
+### SimPO (Simple Preference Optimization)
+Uses average log probability as the implicit reward (length-normalized), removing the need for a reference model.
+
+## Online vs Offline DPO
+
+```mermaid
+graph TD
+    A[DPO] --> B[Offline DPO]
+    A --> C[Online DPO]
+    
+    B --> B1[Use fixed preference dataset]
+    B --> B2[Simple but limited]
+    
+    C --> C1[Generate new responses each iteration]
+    C --> C2[Iteratively collect preferences]
+    C --> C3[Better but more expensive]
 ```
 
-```python
-def prepare_dpo_data(dataset):
-    """Format data for DPO training."""
-    examples = []
-    for item in dataset:
-        examples.append({
-            'prompt': item['prompt'],
-            'chosen': item['chosen_response'],
-            'rejected': item['rejected_response']
-        })
-    return examples
-```
+**Offline DPO**: Train on a fixed dataset of preferences. Simple but can suffer from distribution shift.
+
+**Online DPO**: Generate new responses with the current policy, collect preferences, and update. More effective but requires on-the-fly generation and evaluation.
+
+## DPO Limitations
+
+1. **Distribution shift**: Offline DPO trains on data from π_ref, but evaluates under π_θ. As π_θ diverges, the data becomes off-distribution.
+2. **No exploration**: DPO can only learn from the preference data it's given. RL methods (PPO) can discover new strategies through exploration.
+3. **Implicit reward may not generalize**: The implicit reward learned by DPO may not transfer to new domains as well as an explicit reward model.
+4. **Quality depends on preference data**: DPO is only as good as the preference data. Noisy or biased preferences → poor alignment.
 
 ## Interview Questions
 
-### Q1: What is DPO and how does it differ from RLHF?
-**Answer:** DPO directly optimizes the policy on preference data using a simple loss function, without training a separate reward model or using PPO. The key insight: the optimal RLHF policy implicitly defines the reward, so we can express the RLHF objective as a function of the policy itself. This simplifies the pipeline from 3 stages (SFT → RM → PPO) to effectively 1 stage.
+**Q1: How does DPO eliminate the need for a reward model?**
+> DPO derives a closed-form relationship between the optimal policy and the reward function from the RLHF objective. By reparameterizing the Bradley-Terry preference model in terms of the policy ratios (π_θ/π_ref), the reward model is implicitly embedded in the policy optimization. The partition function cancels out, leaving a simple loss function over preference pairs.
 
-### Q2: What is the DPO loss function?
-**Answer:** $\mathcal{L} = -\mathbb{E}[\log \sigma(\beta \log \frac{\pi_\theta(y_w)}{\pi_{\text{ref}}(y_w)} - \beta \log \frac{\pi_\theta(y_l)}{\pi_{\text{ref}}(y_l)})]$. It maximizes the difference in log-probability ratios between chosen and rejected responses. The reference model prevents the policy from diverging. $\beta$ controls the strength of the KL constraint.
+**Q2: What is the role of β in DPO?**
+> β controls how much the policy can deviate from the reference model. Small β → more deviation allowed (aggressive optimization). Large β → policy stays close to reference (conservative). It's analogous to the KL coefficient in RLHF. Typical values: 0.1-0.5. Too small β can cause overfitting; too large β prevents learning.
 
-### Q3: Why does DPO need a reference model?
-**Answer:** The reference model (frozen SFT model) serves the same role as the KL penalty in RLHF — it prevents the policy from diverging too far from the pre-trained distribution. Without it, the policy could degenerate or exploit the preference data. The log-ratio $\log \frac{\pi_\theta}{\pi_{\text{ref}}}$ measures how much the policy has changed.
+**Q3: What are the advantages of DPO over RLHF?**
+> (1) Simpler — no reward model, no PPO, (2) More stable — supervised loss instead of RL, (3) Easier to implement — one training loop instead of three, (4) Less memory — only policy + reference models, (5) Fewer hyperparameters — mainly β, (6) Off-policy — can reuse preference data.
 
-### Q4: What are the advantages of DPO over RLHF?
-**Answer:**
-1. **Simpler**: No reward model, no PPO, no value function
-2. **Cheaper**: Only 2 LLM copies (policy + reference) vs. 4
-3. **More stable**: Simple loss function, no RL training instability
-4. **Easier to implement**: Standard supervised training loop
-5. **Comparable performance**: Matches or approaches RLHF quality
+**Q4: When would you prefer RLHF over DPO?**
+> (1) When you need active exploration — RLHF/PPO can discover new strategies beyond the preference data, (2) When you have a well-calibrated reward model that generalizes, (3) When you want to do iterative alignment with online feedback, (4) When the preference dataset is small and you want to leverage the reward model's generalization.
 
-### Q5: What are the limitations of DPO?
-**Answer:
-1. **Offline only**: Uses fixed preference data, can't explore new responses
-2. **Data quality dependent**: Poor preferences → poor alignment
-3. **No reward model**: Can't score new responses independently
-4. **Temperature sensitivity**: $\beta$ needs careful tuning
-5. **May underperform RLHF** on complex tasks where exploration helps
+**Q5: What is distribution shift in DPO and how do you address it?**
+> DPO is trained on preference data collected from π_ref, but as π_θ diverges, the training data becomes off-distribution. Solutions: (1) Online DPO — generate new data with current policy, (2) Use a larger preference dataset, (3) Keep β large enough to stay near reference, (4) Periodically regenerate preference data with the current policy.
+
+**Q6: Compare DPO with KTO and ORPO.**
+> DPO: needs paired preferences (chosen vs rejected). KTO: needs only pointwise labels (good/bad) — more practical for real-world thumbs up/down data. ORPO: eliminates the reference model by combining SFT and preference optimization in one loss. SimPO: uses length-normalized log probability as implicit reward, no reference model needed.
 
 ## Common Mistakes
 
-- ❌ Not freezing the reference model (reference drifts → unstable training)
-- ❌ Using a weak reference model (should be the SFT model)
-- ❌ Poor quality preference data (inconsistent or noisy labels)
-- ❌ Setting $\beta$ too high (overly conservative) or too low (divergence)
-- ❌ Not handling padding/tokens correctly in log-probability computation
+1. **Using a bad reference model** — DPO assumes π_ref is reasonable; use a well-trained SFT model
+2. **β too small** — Causes overfitting and distribution shift
+3. **Poor quality preference data** — Noisy labels degrade alignment
+4. **Not monitoring implicit reward** — Track the DPO reward metric to ensure learning
+5. **Ignoring length bias** — Longer responses may be implicitly preferred; normalize
 
 ## Summary
 
-DPO simplifies RLHF by eliminating the reward model and PPO. It directly optimizes the policy on preference pairs using a closed-form loss derived from the RLHF objective. Simpler, cheaper, and more stable than RLHF with comparable performance. Variants like IPO, KTO, and SimPO further simplify the approach.
+| Aspect | Detail |
+|--------|--------|
+| **Core Idea** | Optimize policy directly on preference data without RL |
+| **Loss** | Binary cross-entropy on log probability ratios |
+| **Models Needed** | Policy + reference (no reward model) |
+| **Advantage** | Simpler, more stable than RLHF |
+| **Limitation** | Distribution shift, no exploration |
+| **Variants** | IPO, KTO, ORPO, SimPO |
+| **When to Use** | When you have good preference data and want simplicity |
 
-## Cross-References
-
-- [RLHF →](rlhf.md) The full RLHF pipeline
-- [PPO →](ppo.md) The RL algorithm DPO replaces
-- [GRPO →](grpo.md) Group relative policy optimization
-- [Fundamentals →](fundamentals.md) RL foundations
+DPO democratized LLM alignment — making it accessible to teams without RL expertise. It's now one of the most popular alignment methods.

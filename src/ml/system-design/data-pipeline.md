@@ -2,167 +2,85 @@
 
 ## Overview
 
-Data Pipelines are automated workflows that move and transform data from various sources to destinations where it can be used for ML training, serving, and analysis. Good data pipeline design is foundational to successful ML systems.
+Data pipelines are the foundation of ML systems — they ingest, validate, transform, and deliver data for training and serving. A well-designed data pipeline ensures data quality, handles schema evolution, and scales to petabytes. This covers both batch and streaming data pipeline architectures.
 
 ## Pipeline Architecture
 
 ```mermaid
-graph LR
-    subgraph "Sources"
-        DB[Databases]
-        API[APIs]
-        FS[Files]
-        S[Streams]
-    end
-    
-    subgraph "Ingestion"
-        B[Batch Ingestion]
-        R[Real-time Ingestion]
-    end
-    
-    subgraph "Processing"
-        V[Validation]
-        T[Transformation]
-        E[Enrichment]
-    end
-    
-    subgraph "Storage"
-        DW[Data Warehouse]
-        DL[Data Lake]
-        FS2[Feature Store]
-    end
-    
-    subgraph "Consumption"
-        ML[ML Training]
-        AN[Analytics]
-        D[Dashboards]
-    end
-    
-    DB --> B
-    API --> B
-    FS --> B
-    S --> R
-    
-    B --> V
-    R --> V
-    V --> T
-    T --> E
-    
-    E --> DW
-    E --> DL
-    E --> FS2
-    
-    DW --> ML
-    DL --> AN
-    FS2 --> D
+graph TD
+    A[Data Sources] --> B[Ingestion Layer]
+    B --> C[Validation Layer]
+    C --> D[Transformation Layer]
+    D --> E[Storage Layer]
+    E --> F[Serving Layer]
+    G[Schema Registry] --> C
+    G --> D
+    H[Monitoring] --> C
+    H --> D
 ```
 
-## Pipeline Types
+## Batch Pipeline
 
-### 1. Batch Pipeline
 ```mermaid
 graph LR
-    S[Schedule] --> E[Extract]
-    E --> T[Transform]
-    T --> L[Load]
-    L --> V[Validate]
+    A[Raw Data S3/GCS] --> B[Apache Spark]
+    B --> C[Data Validation]
+    C --> D[Feature Engineering]
+    D --> E[Feature Store]
+    E --> F[Training Data]
 ```
 
-**Characteristics:**
-- Runs on schedule (hourly, daily)
-- Processes large volumes
-- Higher latency, lower complexity
+## Streaming Pipeline
 
-### 2. Streaming Pipeline
 ```mermaid
 graph LR
-    E[Events] --> K[Kafka]
-    K --> P[Process]
-    P --> S[Sink]
+    A[Event Stream Kafka] --> B[Flink/Kafka Streams]
+    B --> C[Real-time Features]
+    C --> D[Online Feature Store]
+    D --> E[Model Serving]
 ```
-
-**Characteristics:**
-- Processes data in real-time
-- Lower latency, higher complexity
-- Requires message queue
-
-### 3. Lambda Architecture
-```mermaid
-graph TB
-    S[Source] --> B[Batch Layer]
-    S --> S2[Speed Layer]
-    B --> M[Merger]
-    S2 --> M
-    M --> S3[Serving Layer]
-```
-
-- Combines batch and streaming
-- Batch for accuracy, streaming for freshness
-- Complex but comprehensive
 
 ## Data Validation
 
 ```python
-# Great Expectations example
-import great_expectations as gx
+import great_expectations as ge
 
-context = gx.get_context()
+def validate_pipeline_data(df):
+    """Data quality checks in the pipeline"""
+    ge_df = ge.from_pandas(df)
 
-# Define expectations
-validator = context.sources.pandas_default.read_csv("data.csv")
+    # Schema checks
+    ge_df.expect_column_to_exist("user_id")
+    ge_df.expect_column_values_to_not_be_null("user_id")
 
-# Schema validation
-validator.expect_column_to_exist("user_id")
-validator.expect_column_values_to_not_be_null("user_id")
+    # Value checks
+    ge_df.expect_column_values_to_be_between("age", 0, 150)
+    ge_df.expect_column_values_to_be_in_set("status", ["active", "inactive"])
 
-# Value validation
-validator.expect_column_values_to_be_between("age", 0, 120)
-validator.expect_column_values_to_be_in_set("status", ["active", "inactive"])
+    # Statistical checks
+    ge_df.expect_column_mean_to_be_between("purchase_amount", 10, 10000)
+    ge_df.expect_column_unique_value_count_to_be_between("user_id", 1000, 10000000)
 
-# Statistical validation
-validator.expect_column_mean_to_be_between("purchase_amount", 10, 1000)
+    result = ge_df.validate()
+    if not result.success:
+        raise DataQualityError(f"Validation failed: {result.results}")
 ```
-
-## Error Handling
-
-```mermaid
-graph TB
-    E[Error Detected] --> T{Type}
-    T -->|Transient| R[Retry]
-    T -->|Data Quality| Q[Quarantine]
-    T -->|System| A[Alert]
-    
-    R -->|Success| C[Continue]
-    R -->|Fail| DLQ[Dead Letter Queue]
-    Q --> M[Manual Review]
-    A --> O[On-call]
-```
-
-## Data Quality Framework
-
-| Check | Description | Action |
-|-------|-------------|--------|
-| Completeness | Missing values | Alert if > 5% |
-| Accuracy | Values in valid range | Quarantine |
-| Consistency | Cross-field validation | Flag for review |
-| Timeliness | Data freshness | Alert if delayed |
-| Uniqueness | Duplicate detection | Deduplicate |
 
 ## Interview Questions
 
-1. **How would you design a data pipeline for ML?**
-2. **Batch vs streaming — when to use each?**
-3. **How do you handle data quality issues?**
-4. **Explain the Lambda architecture.**
-5. **How do you ensure data freshness for real-time ML?**
+1. **How do you design a data pipeline for ML?** — Ingestion (batch/streaming) → validation (schema, quality) → transformation (cleaning, feature engineering) → storage (data lake, feature store) → serving (training, inference).
 
-## Common Mistakes
+2. **Batch vs streaming pipeline?** — Batch: daily/hourly, high throughput, simpler. Streaming: real-time, lower latency, more complex. Many systems use lambda architecture (both).
 
-- **No validation**: Bad data propagates through the system
-- **No error handling**: Silent failures corrupt downstream data
-- **No monitoring**: Can't fix what you can't see
-- **Tight coupling**: Source changes break the entire pipeline
+3. **How do you handle schema evolution?** — Schema registry (Avro, Protobuf), backward-compatible changes, data validation gates, and alerting on schema violations.
 
 ## Summary
 
-Data Pipeline design is foundational to ML systems. Key decisions include batch vs streaming, data validation, error handling, and monitoring. Use established tools (Airflow, Kafka, Great Expectations) and implement comprehensive validation. Design for failure — assume data will be late, missing, or wrong.
+Data pipelines are the backbone of ML systems. They must handle data ingestion, validation, transformation, and serving at scale. The choice between batch and streaming depends on latency requirements. Data quality validation is critical to prevent garbage-in-garbage-out.
+
+## Cross-References
+
+- [ML Pipeline](./pipeline.md) — ML pipeline orchestration
+- [Feature Store](./feature-store.md) — Feature management
+- [Data Drift](../mlops/drift.md) — Quality monitoring
+- [Kafka](../../distributed/messaging/kafka.md) — Streaming
