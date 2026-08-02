@@ -2,209 +2,162 @@
 
 ## Overview
 
-A/B testing for ML compares two model versions by splitting production traffic between them and measuring which performs better on key metrics. It's the gold standard for evaluating whether a new model is actually better than the current one before fully deploying it.
+A/B testing in ML compares two model versions — the current production model (control) and a candidate model (treatment) — by serving each to a subset of users and measuring which performs better on business metrics. Unlike offline evaluation (test sets), A/B testing captures real-world behavior including user interactions, latency effects, and business impact.
 
-## Why A/B Testing?
-
-```mermaid
-graph TD
-    PROBLEM[New model is better on offline metrics]
-    PROBLEM --> QUESTION["But is it better in production?"]
-    QUESTION --> AB[A/B Test]
-    AB --> RESULT["Real user data proves it"]
-```
-
-Offline metrics (test set accuracy) don't always translate to production improvements. A/B testing measures real-world impact.
-
-## A/B Test Architecture
+## A/B Testing Flow
 
 ```mermaid
 graph TD
-    TRAFFIC[Production Traffic] --> SPLIT[Traffic Splitter]
-    SPLIT -->|50%| MODEL_A[Model A (Control)]
-    SPLIT -->|50%| MODEL_B[Model B (Treatment)]
-    MODEL_A --> METRICS[Collect Metrics]
-    MODEL_B --> METRICS
-    METRICS --> ANALYSIS[Statistical Analysis]
-    ANALYSIS --> DECISION{Significant?}
-    DECISION -->|Yes| WINNER[Deploy Winner]
-    DECISION -->|No| CONTINUE[Continue Testing]
+    A[Traffic] --> B{Splitter}
+    B -->|50% Control| C[Model A - Current]
+    B -->|50% Treatment| D[Model B - Candidate]
+    C --> E[Log Results]
+    D --> E
+    E --> F[Statistical Analysis]
+    F --> G{Significant?}
+    G -->|Yes| H[Deploy Winner]
+    G -->|No| I[Run Longer or More Traffic]
 ```
 
-## Traffic Splitting
+## Key Components
 
-### Random Assignment
+### 1. Traffic Splitting
 
 ```python
 import hashlib
 
-def assign_variant(user_id, variants=["control", "treatment"]):
-    """Deterministically assign user to variant."""
-    hash_val = hashlib.md5(user_id.encode()).hexdigest()
-    bucket = int(hash_val[:8], 16) % 100
-    
-    if bucket < 50:
-        return variants[0]  # control
-    else:
-        return variants[1]  # treatment
+def assign_variant(user_id, experiment_id, variants=['control', 'treatment']):
+    """Deterministic user assignment"""
+    hash_input = f"{user_id}:{experiment_id}"
+    hash_value = int(hashlib.md5(hash_input.encode()).hexdigest(), 16)
+    return variants[hash_value % len(variants)]
 ```
 
-### Sticky Sessions
-
-Users stay in the same variant for the entire experiment:
+### 2. Sample Size Calculation
 
 ```python
-class ABTestRouter:
-    def __init__(self):
-        self.assignments = {}
-    
-    def get_model(self, user_id, experiment_id):
-        key = f"{user_id}:{experiment_id}"
-        
-        if key not in self.assignments:
-            self.assignments[key] = self.assign_variant(user_id)
-        
-        return self.assignments[key]
-```
+from scipy.stats import norm
 
-## Statistical Significance
-
-### Hypothesis Testing
-
-```
-H₀: Model B is not better than Model A (null hypothesis)
-H₁: Model B is better than Model A (alternative hypothesis)
-```
-
-### Sample Size Calculation
-
-```python
-from scipy import stats
-
-def required_sample_size(baseline_rate, min_detectable_effect, alpha=0.05, power=0.8):
-    """Calculate required sample size per variant."""
+def required_sample_size(baseline_rate, mde, alpha=0.05, power=0.8):
+    """Calculate required sample size per variant"""
+    # mde: minimum detectable effect (relative change)
     p1 = baseline_rate
-    p2 = baseline_rate * (1 + min_detectable_effect)
-    
-    z_alpha = stats.norm.ppf(1 - alpha / 2)
-    z_beta = stats.norm.ppf(power)
-    
-    n = ((z_alpha + z_beta) ** 2 * (p1 * (1 - p1) + p2 * (1 - p2))) / (p2 - p1) ** 2
+    p2 = baseline_rate * (1 + mde)
+
+    z_alpha = norm.ppf(1 - alpha / 2)
+    z_beta = norm.ppf(power)
+
+    n = ((z_alpha + z_beta) ** 2 * (p1 * (1 - p1) + p2 * (1 - p2))) / (p1 - p2) ** 2
     return int(np.ceil(n))
 
-# Example: 5% baseline rate, detect 10% relative improvement
-n = required_sample_size(0.05, 0.10)  # ~16,000 per variant
+# Example: 5% baseline conversion, want to detect 10% relative lift
+n = required_sample_size(0.05, 0.10)
+print(f"Need {n} users per variant")
 ```
 
-### Significance Testing
+### 3. Statistical Significance
 
 ```python
-from scipy import stats
+from scipy.stats import ttest_ind, chi2_contingency
 
-def ab_test_significance(control_successes, control_total, 
-                         treatment_successes, treatment_total):
-    """Two-proportion z-test for A/B test."""
-    p1 = control_successes / control_total
-    p2 = treatment_successes / treatment_total
-    
-    p_pool = (control_successes + treatment_successes) / (control_total + treatment_total)
-    
-    se = np.sqrt(p_pool * (1 - p_pool) * (1/control_total + 1/treatment_total))
-    z = (p2 - p1) / se
-    p_value = 1 - stats.norm.cdf(z)  # One-sided test
-    
+def ab_test_continuous(control_metric, treatment_metric, alpha=0.05):
+    """T-test for continuous metrics (revenue, latency)"""
+    stat, p_value = ttest_ind(treatment_metric, control_metric)
+    lift = (treatment_metric.mean() - control_metric.mean()) / control_metric.mean()
     return {
-        "control_rate": p1,
-        "treatment_rate": p2,
-        "lift": (p2 - p1) / p1,
-        "p_value": p_value,
-        "significant": p_value < 0.05
+        'p_value': p_value,
+        'significant': p_value < alpha,
+        'lift': lift
     }
+
+def ab_test_proportion(control_success, control_total,
+                       treatment_success, treatment_total, alpha=0.05):
+    """Chi-squared test for proportions (conversion rate)"""
+    contingency = [
+        [control_success, control_total - control_success],
+        [treatment_success, treatment_total - treatment_success]
+    ]
+    stat, p_value, _, _ = chi2_contingency(contingency)
+    control_rate = control_success / control_total
+    treatment_rate = treatment_success / treatment_total
+    lift = (treatment_rate - control_rate) / control_rate
+    return {'p_value': p_value, 'significant': p_value < alpha, 'lift': lift}
 ```
 
-## ML-Specific A/B Metrics
+## ML-Specific Considerations
 
-| Metric | Description | When to Use |
-|---|---|---|
-| **Click-through rate** | Users click on recommendations | Recommendation models |
-| **Conversion rate** | Users complete desired action | Classification models |
-| **Engagement time** | Time spent on content | Content models |
-| **Revenue** | Direct revenue impact | All models |
-| **User satisfaction** | Ratings, feedback | Any user-facing model |
-| **Latency** | Response time | Any model |
+### Online vs Offline Metrics
 
-## Multi-Armed Bandit
+| Offline Metric | Online Metric |
+|---------------|---------------|
+| AUC-ROC | Click-through rate |
+| F1 Score | Revenue per user |
+| Log Loss | User engagement |
+| BLEU Score | User satisfaction |
 
-Alternative to A/B testing that adapts traffic allocation:
+Offline metrics don't always correlate with online business metrics — that's why A/B testing is essential.
+
+### Multi-Armed Bandit vs A/B Testing
 
 ```mermaid
-graph TD
-    START[Start: Equal traffic] --> EXPLORE[Explore both variants]
-    EXPLORE --> MEASURE[Measure performance]
-    MEASURE --> SHIFT[Shift traffic to better variant]
-    SHIFT --> EXPLORE
+graph LR
+    A[A/B Testing] --> B[Fixed split e.g. 50/50]
+    B --> C[Run for fixed duration]
+    C --> D[Analyze at end]
+    E[Multi-Armed Bandit] --> F[Adaptive split]
+    F --> G[Shift traffic to winner]
+    G --> H[Explore + Exploit]
 ```
 
 ```python
+# Epsilon-greedy bandit
 class EpsilonGreedyBandit:
-    def __init__(self, epsilon=0.1):
+    def __init__(self, n_arms, epsilon=0.1):
         self.epsilon = epsilon
-        self.rewards = {}
-        self.counts = {}
-    
-    def select_variant(self, variants):
+        self.counts = np.zeros(n_arms)
+        self.values = np.zeros(n_arms)
+
+    def select_arm(self):
         if np.random.random() < self.epsilon:
-            return np.random.choice(variants)  # Explore
-        else:
-            # Exploit: pick best
-            return max(variants, key=lambda v: 
-                      self.rewards.get(v, 0) / max(self.counts.get(v, 1), 1))
-    
-    def update(self, variant, reward):
-        self.rewards[variant] = self.rewards.get(variant, 0) + reward
-        self.counts[variant] = self.counts.get(variant, 0) + 1
+            return np.random.randint(len(self.counts))
+        return np.argmax(self.values)
+
+    def update(self, arm, reward):
+        self.counts[arm] += 1
+        n = self.counts[arm]
+        self.values[arm] = ((n - 1) / n) * self.values[arm] + (1 / n) * reward
 ```
+
+## Common Pitfalls
+
+| Pitfall | Description | Solution |
+|---------|-------------|----------|
+| Peeking | Checking results too early | Pre-commit to sample size |
+| Simpson's Paradox | Aggregated results mislead | Segment analysis |
+| Network Effects | Users in different groups interact | Cluster randomization |
+| Novelty Effect | Users react to change, then revert | Run long enough |
+| Metric Sensitivity | Too many metrics inflate false positives | Bonferroni correction |
 
 ## Interview Questions
 
-### Q1: How do you A/B test a new ML model?
-**Answer:**
-1. **Define metrics**: What determines "better"? (CTR, conversion, revenue)
-2. **Calculate sample size**: Based on baseline rate and minimum detectable effect
-3. **Split traffic**: Randomly assign users to control/treatment (sticky sessions)
-4. **Run experiment**: Sufficient duration (typically 1-2 weeks)
-5. **Analyze results**: Statistical significance test (p-value < 0.05)
-6. **Deploy winner**: If treatment is significantly better, roll out to all traffic
+1. **Why A/B test ML models instead of just using offline metrics?** — Offline metrics (AUC, F1) don't capture real-world effects like latency, user behavior changes, and business impact. A/B testing measures actual user outcomes.
 
-### Q2: How is ML A/B testing different from regular A/B testing?
-**Answer:**
-- **Delayed feedback**: Model predictions may take days/weeks to get ground truth
-- **Non-stationarity**: User behavior changes, affecting both variants
-- **Metric complexity**: Model quality is harder to measure than UI changes
-- **Cold start**: New users have no history for personalized models
-- **Interference**: One variant's learning can affect the other (in recommendation)
+2. **How do you determine sample size for an A/B test?** — Based on baseline metric, minimum detectable effect (MDE), significance level (α=0.05), and statistical power (β=0.8). Larger effects need smaller samples.
 
-### Q3: What is the difference between A/B testing and multi-armed bandits?
-**Answer:**
-- **A/B testing**: Fixed traffic split, run until significant, then deploy winner. Explores equally throughout.
-- **Bandits**: Adaptive traffic allocation. More traffic goes to the better variant over time. Exploits good variants while still exploring.
-- A/B testing is better for statistical rigor. Bandits minimize regret (lost conversions) during the experiment.
-- Use A/B for important decisions. Use bandits for continuous optimization.
+3. **What is the multi-armed bandit approach?** — An adaptive allocation strategy that shifts traffic toward the better-performing variant over time. It minimizes regret (lost conversions) but provides less clean statistical analysis.
 
-## Common Mistakes
+4. **How do you handle multiple model changes simultaneously?** — Use factorial design (A/B/C/D combinations) or MAB. Be careful of interaction effects and inflate false discovery rate.
 
-- ❌ Stopping the test too early (not enough data)
-- ❌ Peeking at results before the experiment ends (false significance)
-- ❌ Not using sticky sessions (users see different models)
-- ❌ Running too many tests simultaneously (interference)
-- ❌ Not accounting for novelty effects (users react differently to new things)
+5. **When should you stop an A/B test?** — Pre-commit to a sample size. Stop when you reach it and the result is statistically significant, or when the result is clearly non-significant (futility analysis).
 
 ## Summary
 
-A/B testing compares model versions with real production traffic. Key steps: define metrics, calculate sample size, split traffic, run experiment, analyze significance. Multi-armed bandits offer adaptive allocation. Statistical rigor is essential — don't stop early or peek at results.
+A/B testing is the gold standard for evaluating ML models in production. It measures real-world business impact that offline metrics cannot capture. Key components include traffic splitting, sample size calculation, statistical testing, and proper experiment design. Multi-armed bandits offer a more adaptive alternative when minimizing regret is important.
 
 ## Cross-References
 
-- [Monitoring →](monitoring.md) Tracking metrics during A/B tests
-- [Canary →](canary.md) Gradual rollout alternative
-- [Deployment →](deployment.md) Deployment patterns
+- [A/B Testing (System Design)](../system-design/ab-testing.md) — System design perspective
+- [Evaluation Metrics](../foundations/evaluation.md) — Offline metrics
+- [Model Monitoring](./monitoring.md) — Performance tracking
+- [Canary Deployment](./canary.md) — Safe rollout strategy
+- [ML System Design](../system-design/README.md) — System design overview

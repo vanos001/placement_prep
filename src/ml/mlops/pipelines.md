@@ -1,10 +1,10 @@
-# ML Pipeline Orchestration
+# ML Pipelines
 
 ## Overview
 
-ML pipelines automate the end-to-end machine learning workflow — from data ingestion and preprocessing through model training, evaluation, and deployment. Pipeline orchestration tools manage dependencies between steps, handle failures, enable reproducibility, and allow scheduled or triggered execution. This is the backbone of production ML systems.
+An ML Pipeline is a sequence of automated steps that transform raw data into a trained, deployable model. Pipelines ensure reproducibility, scalability, and maintainability of ML workflows.
 
-## Pipeline Components
+## Pipeline Architecture
 
 ```mermaid
 graph LR
@@ -12,149 +12,82 @@ graph LR
     B --> C[Preprocessing]
     C --> D[Feature Engineering]
     D --> E[Model Training]
-    E --> F[Model Evaluation]
-    F --> G{Pass Criteria?}
+    E --> F[Evaluation]
+    F --> G{Pass?}
     G -->|Yes| H[Model Registration]
-    G -->|No| I[Alert & Retrain]
-    H --> J[Deployment]
-    J --> K[Monitoring]
-    K -->|Drift Detected| A
+    G -->|No| I[Hyperparameter Tuning]
+    I --> E
 ```
 
-## Pipeline Design Patterns
+## Key Components
 
-### 1. Sequential Pipeline
+### 1. Data Ingestion
+- Collect data from various sources (databases, APIs, files)
+- Handle different formats (CSV, JSON, Parquet)
+- Manage data freshness and scheduling
 
+### 2. Data Validation
 ```python
-# Kubeflow Pipelines example
-import kfp
-from kfp import dsl
+# Example: Great Expectations validation
+import great_expectations as gx
 
-@dsl.component
-def data_ingestion() -> str:
-    # Load data from source
-    return data_path
-
-@dsl.component
-def preprocessing(data_path: str) -> str:
-    # Clean, transform, split
-    return processed_path
-
-@dsl.component
-def training(processed_path: str) -> str:
-    # Train model
-    return model_path
-
-@dsl.component
-def evaluation(model_path: str) -> bool:
-    # Evaluate against threshold
-    return passes_criteria
-
-@dsl.pipeline(name='ml-pipeline')
-def ml_pipeline():
-    data = data_ingestion()
-    processed = preprocessing(data=data.output)
-    model = training(processed=processed.output)
-    eval_result = evaluation(model=model.output)
+context = gx.get_context()
+validator = context.sources.pandas_default.read_csv("data.csv")
+validator.expect_column_values_to_not_be_null("feature_1")
+validator.expect_column_values_to_be_between("age", 0, 120)
 ```
 
-### 2. DAG Pipeline
+### 3. Preprocessing & Feature Engineering
+- Handle missing values, outliers
+- Normalize, encode, transform features
+- Create new features from raw data
+
+### 4. Model Training
+- Train with various algorithms
+- Hyperparameter tuning (Grid, Random, Bayesian)
+- Cross-validation
+
+### 5. Evaluation
+- Metrics: accuracy, precision, recall, F1, AUC-ROC
+- Compare against baseline
+- Business metric alignment
+
+## Pipeline Orchestration
 
 ```mermaid
-graph TD
-    A[Data Ingestion] --> B[Train Split]
-    A --> C[Test Split]
-    B --> D[Feature Engineering]
-    D --> E[Model A Training]
-    D --> F[Model B Training]
-    E --> G[Model Evaluation]
-    F --> G
-    C --> G
-    G --> H[Best Model Selection]
-    H --> I[Registration]
+graph TB
+    Scheduler[Cron / Airflow] --> Trigger[Pipeline Trigger]
+    Trigger --> Steps[Execute Steps]
+    Steps --> Monitor[Track Progress]
+    Monitor --> Alert[Alert on Failure]
+    Alert --> Retry[Auto Retry]
 ```
 
-### 3. Event-Driven Pipeline
+## Tools
 
-```mermaid
-graph LR
-    A[New Data Arrives] -->|Trigger| B[Pipeline Run]
-    C[Schedule e.g. Daily] -->|Trigger| B
-    D[Drift Detected] -->|Trigger| B
-    E[Code Change] -->|Trigger| B
-```
-
-## Popular Orchestration Tools
-
-| Tool | Type | Strengths |
-|------|------|-----------|
-| Kubeflow Pipelines | K8s-native | Scalable, K8s integration |
-| Airflow | General DAG | Mature, large ecosystem |
-| Prefect | Modern DAG | Pythonic, easy to use |
-| Dagster | Data-aware | Strong typing, asset-based |
-| MLflow Projects | ML-specific | Simple, MLflow integration |
-| Argo Workflows | K8s-native | Lightweight, container-native |
-
-### Airflow Example
-
-```python
-from airflow import DAG
-from airflow.operators.python import PythonOperator
-from datetime import datetime, timedelta
-
-default_args = {
-    'owner': 'ml-team',
-    'retries': 2,
-    'retry_delay': timedelta(minutes=5),
-}
-
-with DAG(
-    'ml_training_pipeline',
-    default_args=default_args,
-    schedule_interval='@weekly',
-    start_date=datetime(2024, 1, 1),
-    catchup=False,
-) as dag:
-
-    ingest = PythonOperator(task_id='ingest_data', python_callable=ingest_fn)
-    validate = PythonOperator(task_id='validate_data', python_callable=validate_fn)
-    preprocess = PythonOperator(task_id='preprocess', python_callable=preprocess_fn)
-    train = PythonOperator(task_id='train_model', python_callable=train_fn)
-    evaluate = PythonOperator(task_id='evaluate', python_callable=evaluate_fn)
-    deploy = PythonOperator(task_id='deploy', python_callable=deploy_fn)
-
-    ingest >> validate >> preprocess >> train >> evaluate >> deploy
-```
-
-## Pipeline Best Practices
-
-1. **Idempotency**: Each step should produce the same output given the same input
-2. **Versioning**: Version code, data, and model artifacts
-3. **Caching**: Skip steps that haven't changed (Kubeflow caching)
-4. **Validation gates**: Automatic quality checks between steps
-5. **Observability**: Log metrics, artifacts, and execution metadata
-6. **Failure handling**: Retry logic, alerts, graceful degradation
+| Tool | Type | Key Feature |
+|------|------|-------------|
+| Apache Airflow | Orchestrator | DAG-based workflows |
+| Kubeflow Pipelines | ML-native | Kubernetes-based |
+| MLflow | Tracking | Experiment tracking |
+| TFX | End-to-end | TensorFlow ecosystem |
+| ZenML | Framework-agnostic | Stack abstraction |
 
 ## Interview Questions
 
-1. **Why use pipelines instead of scripts?** — Pipelines provide dependency management, parallel execution, caching, monitoring, reproducibility, and failure recovery that scripts lack.
+1. **What are the benefits of using ML pipelines?**
+2. **How do you handle pipeline failures and retries?**
+3. **Explain the difference between batch and streaming pipelines.**
+4. **How do you ensure reproducibility in pipelines?**
+5. **How would you design a pipeline for real-time predictions?**
 
-2. **How do you handle pipeline failures?** — Retry with backoff, alert on-call, checkpoint intermediate results, implement idempotent steps so re-running is safe.
+## Common Mistakes
 
-3. **What is the difference between Airflow and Kubeflow Pipelines?** — Airflow is a general-purpose workflow orchestrator. Kubeflow is ML-specific, runs on Kubernetes, and provides built-in ML components (training, serving, metadata tracking).
-
-4. **How do you ensure reproducibility in ML pipelines?** — Version all inputs (code, data, hyperparameters), use deterministic random seeds, pin dependency versions, and log all artifacts.
-
-5. **When should you retrain a model?** — Scheduled (daily/weekly), on data drift detection, on performance degradation, or on new data availability.
+- **Tight coupling**: Steps depend on each other too heavily, making changes difficult
+- **No data validation**: Garbage in, garbage out — validate at every step
+- **Missing logging**: Hard to debug failures without proper logging
+- **No versioning**: Data, code, and model versions must be tracked together
 
 ## Summary
 
-ML pipeline orchestration automates the end-to-end ML lifecycle, ensuring reproducibility, scalability, and reliability. Tools like Kubeflow, Airflow, and Dagster manage DAG-based workflows with dependencies, caching, and failure handling. Best practices include idempotency, versioning, validation gates, and comprehensive observability.
-
-## Cross-References
-
-- [MLOps Overview](./README.md) — MLOps fundamentals
-- [CI/CD for ML](./cicd.md) — Continuous integration and deployment
-- [Model Registry](./model-registry.md) — Versioning trained models
-- [Monitoring](./monitoring.md) — Production model monitoring
-- [Data Pipeline](../system-design/data-pipeline.md) — Data engineering
+ML Pipelines automate the end-to-end workflow from data to deployed models. They ensure reproducibility, enable collaboration, and form the backbone of production ML systems. Key design principles include modularity, idempotency, and observability.
