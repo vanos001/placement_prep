@@ -1,0 +1,31 @@
+# mdBook build output
+book/
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Editor files
+*.swp
+*.swo
+*~
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Node (if any tooling added later)
+node_modules/
+
+# Rust / Cargo (if mdbook plugins compiled from source)
+target/
+
+# Temp files
+*.tmp
+*.bak
+*.log
