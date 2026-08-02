@@ -134,3 +134,10 @@ The memory hierarchy exploits locality to bridge the speed-capacity gap. Underst
 - [Cache Mapping](cache-mapping.md) — Address mapping strategies
 - [Performance](../performance/README.md) — Amdahl's Law and optimization
 - [SRAM vs DRAM](../memory-tech/sram.md) — Underlying technologies
+
+## Cross References
+
+- [Cache Basics](cache-basics.md)
+- [Levels](levels.md)
+- [OS Virtual Memory](../../os/virtual-memory/README.md)
+- [DBMS Buffer Pool](../../dbms/caching/buffer-pool.md)

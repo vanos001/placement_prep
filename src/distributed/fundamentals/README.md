@@ -25,3 +25,10 @@ Distributed systems are fundamentally harder than single-machine systems because
 4. **Unreliable networks** — Messages can be lost, delayed, duplicated, or reordered
 
 These constraints mean that many problems solvable on a single machine (like consensus) become provably impossible or extremely difficult in distributed settings.
+
+## Cross References
+
+- [CAP Theorem](cap.md)
+- [Consistency](consistency.md)
+- [Lamport Clocks](lamport.md)
+- [FLP Impossibility](flp.md)

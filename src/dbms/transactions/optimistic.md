@@ -297,3 +297,11 @@ A: Use multi-version OCC: writers create new versions, readers access snapshot v
 - [Two-Phase Locking](../indexing/) — The pessimistic alternative to OCC
 - [Distributed Transactions](./distributed.md) — OCC challenges in distributed systems
 - [Recovery](./recovery.md) — How OCC interacts with logging and recovery
+
+
+## Cross References
+
+- [MVCC](../dbms/transactions/mvcc.md)
+- [Timestamp-Based](../dbms/transactions/timestamp-based.md)
+- [CAS (OS)](../os/synchronization/cas.md)
+- [Lock-Free (OS)](../os/synchronization/lock-free.md)

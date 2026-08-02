@@ -192,3 +192,11 @@ However, modern LLM alignment uses PPO/DPO/GRPO instead of Q-learning because th
 | **LLM Relevance** | Foundation for understanding RL-based alignment |
 
 Q-learning is the bridge between tabular RL and deep RL — understanding it is essential for grasping modern algorithms like PPO and GRPO.
+
+## Cross-References
+
+- [Fundamentals](./fundamentals.md)
+- [Policy Gradient](./policy-gradient.md)
+- [Agent Architecture](../agents/architecture.md)
+- [Deep Learning](../deep-learning/README.md)
+

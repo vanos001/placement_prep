@@ -308,3 +308,12 @@ A: (1) Composite index on (user_id, created_at DESC) on the posts table. (2) The
 - [MVCC](../transactions/mvcc.md) — How indexes interact with MVCC
 - [ARIES](../transactions/aries.md) — Index recovery
 - [Query Optimization](../transactions/isolation-levels.md) — How optimizer uses indexes
+
+
+## Cross References
+
+- [B+ Tree](../dbms/indexing/b-plus-tree.md)
+- [B-Tree](../dbms/indexing/b-tree.md)
+- [Hash Index](../dbms/indexing/hash-index.md)
+- [Cache Hierarchy](../arch/memory-hierarchy/README.md)
+- [File Organization](../dbms/storage/file-organization.md)

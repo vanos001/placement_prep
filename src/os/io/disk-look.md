@@ -373,3 +373,10 @@ If the load were heavier and requests more uniform, C-LOOK would be preferable.
 - [C-SCAN](disk-cscan.md) — C-LOOK is the optimized C-SCAN
 - [SSTF](disk-sstf.md) — Greedy alternative
 - [FCFS](disk-fcfs.md) — Baseline comparison
+
+
+## Cross References
+
+- [SCAN](../os/io/disk-scan.md)
+- [C-SCAN](../os/io/disk-cscan.md)
+- [Disk Scheduling Overview](../os/io/disk-scheduling.md)

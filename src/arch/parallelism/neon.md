@@ -203,3 +203,9 @@ NEON is ARM's 128-bit SIMD extension with 32 registers in AArch64. It provides f
 - [Apple Silicon](../modern/apple-silicon.md) — Apple's ARM implementation
 - [ARM Architecture](../modern/arm.md) — ARM processor design
 - [GPU](gpu.md) — Massive data parallelism
+
+## Cross References
+
+- [SIMD](simd.md)
+- [AVX](avx.md)
+- [ARM](../modern/arm.md)

@@ -70,3 +70,9 @@ Mastering network tools is essential for troubleshooting. Start with ping/tracer
 - [netstat](netstat.md)
 - [ping & traceroute](ping-traceroute.md)
 - [curl](curl.md)
+
+## Cross References
+
+- [Ping / Traceroute](ping-traceroute.md)
+- [tcpdump](tcpdump.md)
+- [Wireshark](wireshark.md)

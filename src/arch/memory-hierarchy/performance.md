@@ -282,3 +282,10 @@ Cache performance is measured by AMAT = Hit Time + Miss Rate × Miss Penalty. Th
 - [Amdahl's Law](../performance/amdahl.md) — Overall speedup limits
 - [Prefetching](prefetching.md) — Reducing compulsory misses
 - [Performance Counters](../performance/counters.md) — Measuring cache behavior
+
+## Cross References
+
+- [Cache Basics](cache-basics.md)
+- [Prefetching](prefetching.md)
+- [Amdahl's Law](../performance/amdahl.md)
+- [OS TLB](../../os/memory/tlb.md)

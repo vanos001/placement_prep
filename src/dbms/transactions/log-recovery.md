@@ -364,3 +364,10 @@ A: Use an LSM-tree approach with WAL: (1) All writes go to an in-memory buffer (
 - [ARIES](./aries.md) — Complete recovery algorithm using WAL
 - [MVCC](./mvcc.md) — MVCC and recovery interaction
 - [Distributed Transactions](./distributed.md) — WAL in distributed systems
+
+
+## Cross References
+
+- [WAL](../dbms/internals/wal.md)
+- [ARIES](../dbms/transactions/aries.md)
+- [Recovery](../dbms/transactions/recovery.md)

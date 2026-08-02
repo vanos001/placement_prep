@@ -318,3 +318,10 @@ A: PostgreSQL GIN indexes on JSONB can't use INCLUDE. Instead: (1) Create a func
 - [Composite Index](./composite-index.md) — Alternative approach
 - [Index Tuning](./tuning.md) — When to create covering indexes
 - [MVCC](../transactions/mvcc.md) — Visibility map and index-only scans
+
+
+## Cross References
+
+- [Composite Index](../dbms/indexing/composite-index.md)
+- [Clustered vs Nonclustered](../dbms/indexing/clustered-vs-nonclustered.md)
+- [Query Optimization](../dbms/query-processing/optimization.md)

@@ -238,3 +238,9 @@ ss -tn | awk '$2 > 0'
 - [tcpdump](tcpdump.md) — Packet-level analysis
 - [ping & traceroute](ping-traceroute.md) — Connectivity testing
 - [curl](curl.md) — HTTP-level testing
+
+## Cross References
+
+- [TCP States](../tcp/states.md)
+- [Sockets](../sockets/README.md)
+- [tcpdump](tcpdump.md)

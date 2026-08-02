@@ -54,3 +54,12 @@ graph LR
 > **"The quality of your ML system is determined by the quality of your understanding of the fundamentals, not by the complexity of your model."**
 
 Every advanced topic — from transformers to reinforcement learning — builds on these foundations. Master them first.
+
+## Cross-References
+
+- [Linear Algebra](./linear-algebra.md)
+- [Probability](./probability.md)
+- [Loss Functions](./loss-functions.md)
+- [Classical ML](../classical/README.md)
+- [ML Interview Questions](../../interview/ml-questions.md)
+

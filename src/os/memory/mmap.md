@@ -523,3 +523,12 @@ A:
 - **Related**: [Huge Pages](./huge-pages.md) — MAP_HUGETLB flag
 - **Related**: [Copy-on-Write](../virtual-memory/cow.md) — MAP_PRIVATE COW mechanism
 - **Related**: [Demand Paging](../virtual-memory/demand-paging.md) — pages loaded on first access
+
+
+## Cross References
+
+- [Virtual Memory](../os/virtual-memory/README.md)
+- [Demand Paging](../os/virtual-memory/demand-paging.md)
+- [File Concepts](../os/filesystems/file-concepts.md)
+- [Buffer Management](../dbms/storage/buffer-management.md)
+- [Memory-Mapped I/O](../arch/io/README.md)

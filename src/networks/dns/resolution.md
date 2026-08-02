@@ -368,3 +368,10 @@ DNS resolution is a chain of referrals from root to TLD to authoritative, with c
 - [DNS Caching](caching.md) — Caching mechanisms and TTL management
 - [DNS Security](security.md) — Securing the resolution process
 - [UDP Applications](../udp/applications.md) — DNS uses UDP for queries
+
+## Cross References
+
+- [DNS Caching](caching.md)
+- [Record Types](record-types.md)
+- [DNS Security](security.md)
+- [DHCP](../tcp-ip/dhcp.md)

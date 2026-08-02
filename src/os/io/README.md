@@ -68,3 +68,12 @@ Why is I/O so important?
 - **Buffering types**: Single, double, circular, buffer pool
 - **Disk scheduling**: FCFS, SSTF, SCAN, C-SCAN, LOOK, C-LOOK
 - **Key tradeoff**: Throughput vs. latency vs. fairness
+
+
+## Cross References
+
+- [I/O Architecture](../arch/io/README.md)
+- [Device Drivers](../os/io/device-drivers.md)
+- [Interrupts](../os/io/interrupts.md)
+- [DMA](../os/io/dma.md)
+- [Storage Overview](../storage/overview.md)

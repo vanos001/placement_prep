@@ -211,3 +211,5 @@ Block storage provides raw, addressable blocks that the OS organizes into files.
 - [Object Storage](./object-storage.md) — Object-based alternative
 - [File Storage](./file-storage.md) — File-based alternative
 - [Storage Overview](./overview.md) — Storage hierarchy
+- [Cloud EBS](../cloud/aws/s3.md)
+

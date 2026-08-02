@@ -292,3 +292,10 @@ A: Global checkpoints require coordination: (1) Use a 2-phase approach: coordina
 - [ARIES](./aries.md) — How ARIES uses checkpoints
 - [MVCC](./mvcc.md) — Checkpoint and MVCC snapshot interaction
 - [B+ Tree](../indexing/b-plus-tree.md) — Checkpoint and index recovery
+
+
+## Cross References
+
+- [WAL](../dbms/internals/wal.md)
+- [ARIES](../dbms/transactions/aries.md)
+- [Recovery](../dbms/transactions/recovery.md)

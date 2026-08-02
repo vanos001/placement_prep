@@ -144,3 +144,8 @@ Hexadecimal is a compact binary representation (1 hex digit = 4 bits). Used for 
 - [Binary](binary.md) — Foundation
 - [Two's Complement](twos-complement.md) — Signed hex values
 - [IEEE 754](ieee754.md) — Floating point in hex
+
+## Cross References
+
+- [Binary](binary.md)
+- [IEEE 754](ieee754.md)

@@ -312,3 +312,10 @@ Apple M2:
 - [Speculative Execution](./speculative.md) — OoO CPUs typically also speculate
 - [Branch Prediction](./branch-prediction.md) — OoO needs prediction to keep the pipeline full
 - [Registers](../cpu/registers.md) — Physical vs architectural register files
+
+## Cross References
+
+- [Superscalar](superscalar.md)
+- [Speculative Execution](speculative.md)
+- [Branch Prediction](branch-prediction.md)
+- [SMT](../parallelism/smt.md)

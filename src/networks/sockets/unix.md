@@ -218,3 +218,9 @@ Unix domain sockets provide fast, secure IPC on the same machine. They use files
 - [TCP Sockets](tcp.md) — Network alternative
 - [UDP Sockets](udp.md) — Message-based alternative
 - [Non-blocking I/O](nonblocking.md) — Async UDS
+
+## Cross References
+
+- [TCP Sockets](tcp.md)
+- [OS IPC Sockets](../../os/processes/ipc-sockets.md)
+- [OS IPC Pipes](../../os/processes/ipc-pipes.md)

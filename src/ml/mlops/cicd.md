@@ -123,3 +123,12 @@ graph TB
 ## Summary
 
 ML CI/CD automates the entire lifecycle from code commit to production deployment. It requires testing not just code, but also data quality and model performance. Key components include automated testing, model validation, deployment strategies (blue-green, canary), and monitoring. Tools like GitHub Actions + MLflow + Kubernetes form a common stack.
+
+## Cross-References
+
+- [Cloud CI/CD](../../cloud/cicd/pipelines.md)
+- [GitOps](../../cloud/cicd/gitops.md)
+- [ML Pipelines](./pipelines.md)
+- [Model Registry](./model-registry.md)
+- [Deployment Strategies](./deployment.md)
+

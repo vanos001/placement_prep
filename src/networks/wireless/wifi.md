@@ -144,3 +144,9 @@ WiFi has evolved from 11 Mbps (802.11b) to 46 Gbps (WiFi 7). Key concepts: CSMA/
 - [5G](5g.md) — Cellular alternative
 - [SDN](sdn.md) — Software-defined networking
 - [TLS](../security/tls.md) — Application-layer security
+
+## Cross References
+
+- [5G](5g.md)
+- [Physical Layer](../osi/physical.md)
+- [Data Link Layer](../osi/data-link.md)

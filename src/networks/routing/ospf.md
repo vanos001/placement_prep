@@ -191,3 +191,10 @@ OSPF is the standard enterprise IGP. It uses Dijkstra's algorithm, organizes rou
 - [IS-IS](isis.md) — Another link-state IGP
 - [BGP](bgp.md) — Exterior protocol
 - [Static vs Dynamic](static-vs-dynamic.md)
+
+## Cross References
+
+- [BGP](bgp.md)
+- [IS-IS](isis.md)
+- [RIP](rip.md)
+- [IP Protocol](../tcp-ip/ip.md)

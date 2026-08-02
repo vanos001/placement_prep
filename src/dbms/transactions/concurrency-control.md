@@ -201,3 +201,12 @@ A: SSI (PostgreSQL) builds on MVCC snapshot isolation and adds detection of "dan
 - [MVCC](mvcc.md) — Multi-version concurrency
 - [Isolation Levels](isolation-levels.md) — Practical concurrency trade-offs
 - [Serializability](serializability.md) — Correctness criterion
+
+
+## Cross References
+
+- [Lock-Based](../dbms/transactions/lock-based.md)
+- [MVCC](../dbms/transactions/mvcc.md)
+- [Optimistic](../dbms/transactions/optimistic.md)
+- [Timestamp-Based](../dbms/transactions/timestamp-based.md)
+- [Mutex (OS)](../os/synchronization/mutex.md)

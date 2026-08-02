@@ -284,3 +284,12 @@ graph LR
 - Video storage exceeds 800 PB, growing rapidly, stored on Google's Colossus distributed file system.
 - Content ID automatically detects copyrighted material at upload time.
 - The codec evolution (H.264 → VP9 → AV1) reduces bandwidth costs by 30% with each generation.
+
+## Cross-References
+
+- [Video Streaming](../video-streaming.md)
+- [Search Engine](../search.md)
+- [Recommendation](../../../ml/system-design/recommendation.md)
+- [Object Storage](../../../storage/object-storage.md)
+- [CDN & Caching](../hld/caching-strategy.md)
+

@@ -373,3 +373,8 @@ Distributed storage systems use partitioning (consistent hashing, range-based) t
 - [Ceph](./ceph.md) — Production distributed storage system
 - [Object Storage](./object-storage.md) — Built on distributed storage
 - [Storage Overview](./overview.md) — Storage hierarchy
+- [Interview Consistency](../interview/system-design/consistency-patterns.md)
+- [DBMS Replication](../dbms/distributed/replication.md)
+- [Cloud Overview](../cloud/overview.md)
+- [Interview DFS](../interview/system-design/dfs.md)
+

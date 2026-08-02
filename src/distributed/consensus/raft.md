@@ -306,3 +306,10 @@ Raft decomposes consensus into leader election, log replication, and safety. Its
 - [ZAB](zab.md) — ZooKeeper's similar protocol
 - [Primary-Backup Replication](../replication/primary-backup.md) — Raft implements this pattern
 - [Service Discovery](../microservices/discovery.md) — etcd (Raft-based) is commonly used
+
+## Cross References
+
+- [Paxos](paxos.md)
+- [ZAB](zab.md)
+- [DBMS Raft](../../dbms/distributed/raft.md)
+- [Consistency Models](../fundamentals/consistency.md)

@@ -338,3 +338,11 @@ Sharding is essential for scaling beyond a single machine. The choice of shard k
 - [Consistent Hashing](./cap.md) — distribution mechanism
 - [NoSQL](../nosql/) — many NoSQL databases are designed for sharding
 - [Redis Cluster](../caching/redis.md) — hash slot-based sharding
+
+
+## Cross References
+
+- [Consistent Hashing](../distributed/partitioning/consistent-hashing.md)
+- [CAP Theorem](../dbms/distributed/cap.md)
+- [Replication](../dbms/distributed/replication.md)
+- [Range Partitioning](../distributed/partitioning/range.md)

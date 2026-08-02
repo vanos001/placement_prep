@@ -150,3 +150,11 @@ Sockets are the foundation of network programming. Understanding the socket life
 - [Unix Domain Sockets](unix.md)
 - [Non-blocking I/O](nonblocking.md)
 - [I/O Multiplexing](io-multiplexing.md)
+
+## Cross References
+
+- [TCP Sockets](tcp.md)
+- [UDP Sockets](udp.md)
+- [Unix Sockets](unix.md)
+- [I/O Multiplexing](io-multiplexing.md)
+- [OS IPC Sockets](../../os/processes/ipc-sockets.md)

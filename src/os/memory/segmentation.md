@@ -472,3 +472,11 @@ A: Linux uses VMAs (Virtual Memory Areas) as software segments. Each VMA defines
 - **Related**: [Page Tables](./page-tables.md) — paging's address translation
 - **Modern Usage**: [mmap](./mmap.md) — creating memory segments in Linux
 - **Virtual Memory**: [Demand Paging](../virtual-memory/demand-paging.md) — loading segments on demand
+
+
+## Cross References
+
+- [Paging](../os/memory/paging.md)
+- [Virtual Memory](../os/virtual-memory/README.md)
+- [Memory Hierarchy](../arch/memory-hierarchy/README.md)
+- [Buffer Management](../dbms/storage/buffer-management.md)

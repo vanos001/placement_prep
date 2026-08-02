@@ -200,3 +200,11 @@ Use matrices: Allocation[n][m] (current allocation), Request[n][m] (current requ
 - [Deadlock Prevention](prevention.md) — preventing deadlocks by design
 - [Deadlock Avoidance](avoidance.md) — Banker's algorithm
 - [Banker's Algorithm](bankers.md) — similar to detection algorithm
+
+
+## Cross References
+
+- [Deadlock Avoidance](../os/synchronization/deadlocks/avoidance.md)
+- [Deadlock Recovery](../os/synchronization/deadlocks/recovery.md)
+- [Deadlock Prevention](../os/synchronization/deadlocks/prevention.md)
+- [Wait-For Graph](../os/synchronization/deadlocks/README.md)

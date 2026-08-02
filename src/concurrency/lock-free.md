@@ -343,3 +343,6 @@ Lock-free programming uses atomic operations (especially CAS) instead of locks. 
 - [Java Concurrency](./java.md) — AtomicInteger, ConcurrentHashMap
 - [Rust Ownership](./rust-ownership.md) — Safe concurrent access
 - [Thread Pools](./thread-pools.md) — Higher-level concurrency
+- [CAS Operations](../os/synchronization/cas.md)
+- [Storage Distributed](../storage/distributed.md)
+

@@ -526,3 +526,11 @@ A:
 - **Related**: [Paging](./paging.md) — slab manages page frames
 - **Related**: [NUMA](./numa.md) — per-node slab caches
 - **Virtual Memory**: [Page Replacement](../virtual-memory/page-replacement.md) — slab shrinking
+
+
+## Cross References
+
+- [Buddy System](../os/memory/buddy-system.md)
+- [Allocation Algorithms](../os/memory/allocation-algorithms.md)
+- [Buffer Pool](../dbms/caching/buffer-pool.md)
+- [Cache Basics](../arch/memory-hierarchy/cache-basics.md)

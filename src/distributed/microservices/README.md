@@ -263,3 +263,11 @@ Microservices enable independent development, deployment, and scaling of service
 - [Observability](observability.md) — Monitoring microservices
 - [Message Queues](../messaging/queues.md) — Async communication
 - [Pub/Sub](../messaging/pubsub.md) — Event-driven patterns
+
+## Cross References
+
+- [API Gateways](api-gateways.md)
+- [Service Discovery](discovery.md)
+- [Circuit Breakers](circuit-breakers.md)
+- [Observability](observability.md)
+- [Load Balancing](../../networks/load-balancing/README.md)

@@ -227,3 +227,10 @@ XFS delays block allocation until writeback time. When `write()` is called, data
 - [Free Space Management](free-space.md) — B+ tree approach
 - [Journaling](journaling.md) — crash consistency
 - [VFS](vfs.md) — kernel filesystem abstraction
+
+
+## Cross References
+
+- [Journaling](../os/filesystems/journaling.md)
+- [VFS](../os/filesystems/vfs.md)
+- [Disk Allocation](../os/filesystems/disk-allocation.md)

@@ -525,3 +525,11 @@ Spanner's external consistency is the strongest: if T1 commits before T2 starts 
 - **Clock sync**: TrueTime (strongest, needs special HW), HLC (practical), TSO (simple, centralized)
 - **When to use**: Need ACID + SQL + scale beyond single node
 - **Tradeoff**: Higher latency for cross-shard txns, operational complexity
+
+
+## Cross References
+
+- [ACID](../dbms/transactions/acid.md)
+- [Distributed Transactions](../dbms/transactions/distributed.md)
+- [Sharding](../dbms/distributed/sharding.md)
+- [Consensus](../dbms/distributed/consensus.md)

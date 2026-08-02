@@ -295,3 +295,12 @@ stateDiagram-v2
 - ETA estimation combines graph-based routing with ML models trained on historical data.
 - Location updates from millions of drivers create massive write throughput (Kafka + Flink).
 - Trip lifecycle: request → match → pickup → ride → payment.
+
+## Cross-References
+
+- [Google Maps](../google-maps.md)
+- [Notification System](../notifications.md)
+- [Payment System](../payment.md)
+- [Rate Limiter](../rate-limiter.md)
+- [Real-Time Location](../search.md)
+

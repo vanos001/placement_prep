@@ -221,3 +221,9 @@ IPsec secures IP traffic at Layer 3 using AH (integrity only) and ESP (encryptio
 - [TLS](tls.md) — Application-layer alternative
 - [Firewalls](firewalls.md) — IPsec VPN termination
 - [Security Overview](README.md)
+
+## Cross References
+
+- [VPN](vpn.md)
+- [Firewalls](firewalls.md)
+- [Network Layer](../osi/network.md)

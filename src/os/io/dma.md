@@ -475,3 +475,11 @@ Prevention:
 - [Interrupts](interrupts.md) — DMA completion uses interrupts
 - [Device Drivers](device-drivers.md) — How drivers use DMA
 - [Buffering](buffering.md) — DMA buffers and the page cache
+
+
+## Cross References
+
+- [Interrupts](../os/io/interrupts.md)
+- [I/O Hardware](../os/io/hardware.md)
+- [Buses](../arch/io/buses.md)
+- [PCIe](../arch/io/pcie.md)

@@ -181,3 +181,10 @@ A reverse proxy is a critical infrastructure component that sits between clients
 - [TLS](../security/tls.md) — SSL termination
 - [CDN](../cdn/README.md) — CDN edge nodes are reverse proxies
 - [Firewalls](../security/firewalls.md) — Security functions
+
+## Cross References
+
+- [L4 vs L7](l4-vs-l7.md)
+- [API Gateways](../../distributed/microservices/api-gateways.md)
+- [Firewalls](../security/firewalls.md)
+- [CDN](../cdn/README.md)

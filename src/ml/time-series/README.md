@@ -130,3 +130,12 @@ mape = np.mean(np.abs((y_true - y_pred) / y_true)) * 100
 ## Summary
 
 Time Series Analysis requires understanding components (trend, seasonality, noise), ensuring stationarity, and choosing appropriate models. Key considerations include proper train/test splitting (time-based), handling missing data, and selecting evaluation metrics. Methods range from statistical (ARIMA) to deep learning (Transformers).
+
+## Cross-References
+
+- [ARIMA](./arima.md)
+- [Anomaly Detection](./anomaly.md)
+- [Transformers for Time Series](./transformers.md)
+- [Deep Learning RNN/LSTM](../deep-learning/rnn-lstm.md)
+- [ML Foundations](../foundations/README.md)
+

@@ -241,3 +241,9 @@ The combination enables the Internet to scale: millions of hosts, but only ~1M r
 - [Subnetting](subnetting.md) — Dividing CIDR blocks
 - [NAT](nat.md) — Using private CIDR blocks
 - [IP](ip.md) — Internet Protocol overview
+
+## Cross References
+
+- [Subnetting](subnetting.md)
+- [IPv4](ipv4.md)
+- [Routing Tables](../routing/ospf.md)

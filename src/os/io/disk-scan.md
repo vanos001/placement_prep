@@ -308,3 +308,11 @@ Real-world: Linux's mq-deadline scheduler implements something similar:
 - [SSTF](disk-sstf.md) — Greedy alternative
 - [C-SCAN](disk-cscan.md) — Fixes SCAN's unfairness
 - [LOOK](disk-look.md) — Optimized SCAN (doesn't go to edge)
+
+
+## Cross References
+
+- [Disk Scheduling Overview](../os/io/disk-scheduling.md)
+- [C-SCAN](../os/io/disk-cscan.md)
+- [LOOK](../os/io/disk-look.md)
+- [HDD](../storage/hdd.md)

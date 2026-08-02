@@ -258,3 +258,10 @@ Quorum-based replication uses voting (NRW model) to provide tunable consistency.
 - [Chain Replication](chain.md) — Strong consistency alternative
 - [Consistent Hashing](../partitioning/consistent-hashing.md) — Used in Dynamo-style systems
 - [Consensus Algorithms](../consensus/README.md) — For stronger consistency guarantees
+
+## Cross References
+
+- [CAP Theorem](../fundamentals/cap.md)
+- [Primary-Backup](primary-backup.md)
+- [Consensus](../consensus/README.md)
+- [DBMS Replication](../../dbms/distributed/replication.md)

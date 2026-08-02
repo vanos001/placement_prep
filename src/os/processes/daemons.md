@@ -385,3 +385,10 @@ A: Classic (self-daemonizing): daemon forks, creates PID file, redirects I/O, ma
 - [Zombie & Orphan](./zombie-orphan.md) - Daemon is an intentional orphan
 - [Signals](./ipc-signals.md) - Signal handling for daemons
 - [Boot Process](../boot/README.md) - How daemons are started at boot
+
+
+## Cross References
+
+- [Init Systems](../os/boot/init-systems.md)
+- [Process Creation](../os/processes/creation.md)
+- [Kubernetes Pods](../cloud/kubernetes/pods.md)

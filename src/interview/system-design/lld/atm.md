@@ -502,3 +502,6 @@ class Printer:
 - [Design Patterns](./design-patterns.md) — Command, State, Strategy
 - [Concurrency Design](./concurrency-design.md) — Thread-safe accounts
 - [Error Handling](./error-handling.md) — Transaction rollback
+- [OOP Concepts](./oop-concepts.md)
+- [Payment System](../payment.md)
+

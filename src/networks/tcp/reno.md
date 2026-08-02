@@ -318,3 +318,10 @@ TCP Reno was the workhorse of the Internet for many years and remains the baseli
 - [TCP BBR](bbr.md) — Model-based approach that moves beyond loss-based congestion control
 - [TCP States](states.md) — How congestion control fits into the TCP state machine
 - [TCP Timers](timers.md) — RTO timer that Reno helps avoid via Fast Recovery
+
+## Cross References
+
+- [Slow Start](slow-start.md)
+- [Fast Retransmit](fast-retransmit.md)
+- [Fast Recovery](fast-recovery.md)
+- [TCP Cubic](cubic.md)

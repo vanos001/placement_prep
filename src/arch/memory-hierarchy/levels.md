@@ -121,3 +121,10 @@ Memory levels form a pyramid: fast and small at the top, slow and large at the b
 - [SRAM](../memory-tech/sram.md) — SRAM technology details
 - [DRAM](../memory-tech/dram.md) — Main memory technology
 - [Performance](../performance/README.md) — How cache affects performance
+
+## Cross References
+
+- [Cache Basics](cache-basics.md)
+- [SRAM](../memory-tech/sram.md)
+- [DRAM](../memory-tech/dram.md)
+- [Performance](performance.md)

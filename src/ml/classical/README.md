@@ -91,3 +91,12 @@ graph LR
 ```
 
 Each subsequent model builds on the ideas of the previous, adding improvements for speed, accuracy, or handling specific data types.
+
+## Cross-References
+
+- [ML Foundations](../foundations/README.md)
+- [Deep Learning](../deep-learning/README.md)
+- [Ensemble Methods](./ensemble.md)
+- [Feature Engineering](../foundations/feature-engineering.md)
+- [ML Interview Questions](../../interview/ml-questions.md)
+

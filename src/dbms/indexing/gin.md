@@ -314,3 +314,10 @@ A: (1) Use GIN on tsvector for full-text search. (2) Enable fast update for real
 - [B+ Tree](./b-plus-tree.md) — For scalar data
 - [Index Tuning](./tuning.md) — Choosing between GIN and GiST
 - [Covering Index](./covering-index.md) — Covering GIN indexes
+
+
+## Cross References
+
+- [GiST](../dbms/indexing/gist.md)
+- [B-Tree](../dbms/indexing/b-tree.md)
+- [Inverted Index](../dbms/indexing/gin.md)

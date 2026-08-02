@@ -99,3 +99,12 @@ graph LR
 - Vertical scaling is simpler but has a ceiling. Horizontal scaling is complex but limitless.
 - Always profile before optimizing. Measure, don't guess.
 - Most real-world systems need both: fast individual requests that stay fast as traffic grows.
+
+## Cross-References
+
+- [Latency vs Throughput](./latency-vs-throughput.md)
+- [Latency Numbers](./latency-numbers.md)
+- [Load Balancing](./hld/load-balancing-design.md)
+- [Scalability](./hld/scalability.md)
+- [Cloud Overview](../../cloud/overview.md)
+

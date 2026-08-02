@@ -264,3 +264,12 @@ RAID-Z uses COW: writes go to new locations, never overwrite. Full stripes are w
 - [Disk Scheduling](../io/disk-scheduling.md) — I/O across multiple disks
 - [Disk Allocation](disk-allocation.md) — block allocation across RAID
 - [Journaling](journaling.md) — write hole mitigation
+
+
+## Cross References
+
+- [Disk Allocation](../os/filesystems/disk-allocation.md)
+- [HDD](../storage/hdd.md)
+- [SSD](../storage/ssd.md)
+- [Erasure Coding](../storage/erasure-coding.md)
+- [Replication](../distributed/replication/README.md)

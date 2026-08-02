@@ -256,3 +256,10 @@ Consistent hashing minimizes data redistribution when nodes are added or removed
 - [Range Partitioning](range.md) — Ordered alternative
 - [Quorum-Based Replication](../replication/quorum.md) — Dynamo uses both
 - [Distributed Caching](../microservices/observability.md) — Memcached uses consistent hashing
+
+## Cross References
+
+- [Hash Partitioning](hash.md)
+- [Load Balancing](../../networks/load-balancing/README.md)
+- [DBMS Sharding](../../dbms/distributed/sharding.md)
+- [CDN](../../networks/cdn/README.md)

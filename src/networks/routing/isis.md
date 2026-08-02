@@ -173,3 +173,8 @@ IS-IS is a link-state protocol that runs directly on Layer 2, uses levels (1, 2,
 - [BGP](bgp.md) — Used alongside IS-IS in ISP networks
 - [Static vs Dynamic](static-vs-dynamic.md)
 - [SDN](../wireless/sdn.md) — Modern network control
+
+## Cross References
+
+- [OSPF](ospf.md)
+- [BGP](bgp.md)

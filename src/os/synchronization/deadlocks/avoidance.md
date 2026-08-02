@@ -196,3 +196,10 @@ The overhead of running the safety check on every resource request is too high. 
 - [Deadlock Prevention](prevention.md) — design-time alternative
 - [Deadlock Detection](detection.md) — runtime detection
 - [Deadlock Recovery](recovery.md) — fixing deadlocks
+
+
+## Cross References
+
+- [Banker's Algorithm](../os/synchronization/deadlocks/bankers.md)
+- [Deadlock Prevention](../os/synchronization/deadlocks/prevention.md)
+- [Deadlock Detection](../os/synchronization/deadlocks/detection.md)

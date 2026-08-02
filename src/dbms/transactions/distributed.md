@@ -248,3 +248,12 @@ A: Avoid 2PC (too brittle in microservices). Use Saga pattern: (1) Define each s
 - [Saga Pattern](./saga.md) — Microservices-friendly alternative
 - [Isolation Levels](./isolation-levels.md) — Isolation in distributed context
 - [Recovery](./recovery.md) — Recovery in distributed systems
+
+
+## Cross References
+
+- [Two-Phase Commit](../dbms/transactions/two-phase-commit.md)
+- [CAP Theorem](../distributed/fundamentals/cap.md)
+- [Consistency Models](../distributed/fundamentals/consistency.md)
+- [Sharding](../dbms/distributed/sharding.md)
+- [Saga Pattern](../dbms/transactions/saga.md)

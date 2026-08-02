@@ -179,3 +179,9 @@ MESI is the foundation of cache coherence in multi-core CPUs. The four states tr
 - [MOESI](moesi.md) — AMD's variant
 - [Write Policies](write-policies.md) — Write-back is essential for MESI
 - [Split Cache](split.md) — I/D cache split
+
+## Cross References
+
+- [MOESI](moesi.md)
+- [Coherence](coherence.md)
+- [Multicore](../parallelism/multicore.md)

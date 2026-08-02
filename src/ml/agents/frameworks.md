@@ -140,3 +140,8 @@ Agent frameworks provide building blocks for tool integration, memory, planning,
 - [CrewAI →](crewai.md) Deep dive
 - [AutoGen →](autogen.md) Deep dive
 - [Agent Architecture →](architecture.md) Design patterns
+- [LangChain](./langchain.md)
+- [AutoGen](./autogen.md)
+- [CrewAI](./crewai.md)
+- [MLOps Platforms](../mlops/platforms.md)
+

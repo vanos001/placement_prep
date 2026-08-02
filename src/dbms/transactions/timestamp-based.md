@@ -156,3 +156,11 @@ A: PostgreSQL uses a transaction ID (XID) as a timestamp-like mechanism in its M
 - [MVCC](mvcc.md) — Multiversion approach
 - [Lock-Based](lock-based.md) — Alternative approach
 - [Optimistic](optimistic.md) — Another non-blocking approach
+
+
+## Cross References
+
+- [MVCC](../dbms/transactions/mvcc.md)
+- [Optimistic Concurrency](../dbms/transactions/optimistic.md)
+- [Lamport Clocks](../distributed/fundamentals/lamport.md)
+- [Vector Clocks](../distributed/fundamentals/vector-clocks.md)

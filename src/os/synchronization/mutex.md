@@ -246,3 +246,12 @@ Lock hierarchy defines a strict ordering for acquiring multiple locks (e.g., alw
 - [Semaphores](semaphores.md) — counting synchronization
 - [Monitors](monitors.md) — high-level sync with condition variables
 - [Deadlocks](deadlocks/README.md) — what happens with incorrect locking
+
+
+## Cross References
+
+- [Semaphores](../os/synchronization/semaphores.md)
+- [Spinlocks](../os/synchronization/spinlocks.md)
+- [Monitors](../os/synchronization/monitors.md)
+- [Deadlocks](../os/synchronization/deadlocks/README.md)
+- [Lock-Based Concurrency](../dbms/transactions/lock-based.md)

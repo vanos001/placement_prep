@@ -258,3 +258,11 @@ NoSQL addressed these but sacrificed JOINs, ad-hoc queries, and ACID in many cas
 - [Relational Calculus](relational-calculus.md) — Declarative query language
 - [Normalization](../normalization/README.md) — Eliminating redundancy using functional dependencies
 - [SQL DDL](../sql/ddl.md) — Defining schemas in SQL
+
+
+## Cross References
+
+- [ER Diagrams](../dbms/relational-model/er-diagrams.md)
+- [Keys](../dbms/relational-model/keys.md)
+- [Relational Algebra](../dbms/relational-model/relational-algebra.md)
+- [SQL DDL](../dbms/sql/ddl.md)

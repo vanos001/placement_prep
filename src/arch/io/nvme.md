@@ -232,3 +232,10 @@ NVMe is the modern storage protocol for flash-based SSDs, leveraging PCIe for hi
 - [SSD](../../storage/ssd.md) — Flash storage technology
 - [Storage Overview](../../storage/overview.md) — Storage technologies
 - [NVMe Storage](../../storage/nvme.md) — Storage-level NVMe details
+
+## Cross References
+
+- [PCIe](pcie.md)
+- [SATA](sata.md)
+- [Storage NVMe](../../storage/nvme.md)
+- [Storage SSD](../../storage/ssd.md)

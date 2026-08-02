@@ -288,3 +288,11 @@ If the producer does `wait(mutex)` before `wait(empty)`, it can deadlock: it hol
 - [Dining Philosophers](dining-philosophers.md) — resource allocation
 - [Monitors](monitors.md) — higher-level synchronization
 - [Critical Section](critical-section.md) — the fundamental problem
+
+
+## Cross References
+
+- [Mutex](../os/synchronization/mutex.md)
+- [Critical Section](../os/synchronization/critical-section.md)
+- [Dining Philosophers](../os/synchronization/dining-philosophers.md)
+- [Producer-Consumer](../concurrency/producer-consumer.md)

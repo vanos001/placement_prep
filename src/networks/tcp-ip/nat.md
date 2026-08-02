@@ -258,3 +258,10 @@ Used by WebRTC, many VoIP systems, and gaming platforms.
 - [IPv6](ipv6.md) — Why NAT isn't needed
 - [DHCP](dhcp.md) — Internal address assignment
 - [Firewalls](../osi/network.md) — Security at network boundaries
+
+## Cross References
+
+- [IPv4](ipv4.md)
+- [Firewalls](../security/firewalls.md)
+- [DHCP](dhcp.md)
+- [Load Balancing](../load-balancing/README.md)

@@ -486,3 +486,12 @@ A:
 - **Related**: [Thrashing](../virtual-memory/thrashing.md) — excessive swapping
 - **Related**: [Demand Paging](../virtual-memory/demand-paging.md) — loading pages on demand
 - **Related**: [Working Set](../virtual-memory/working-set.md) — minimizing swap activity
+
+
+## Cross References
+
+- [Virtual Memory](../os/virtual-memory/README.md)
+- [Page Replacement](../os/virtual-memory/page-replacement.md)
+- [Thrashing](../os/virtual-memory/thrashing.md)
+- [SSD](../storage/ssd.md)
+- [Buffer Pool](../dbms/caching/buffer-pool.md)

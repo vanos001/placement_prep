@@ -48,3 +48,12 @@ graph TD
 4. **Safety**: Reduce harmful outputs and hallucinations
 
 Understanding RL is essential for anyone working on modern LLM training pipelines.
+
+## Cross-References
+
+- [Q-Learning](./q-learning.md)
+- [Policy Gradient](./policy-gradient.md)
+- [PPO](./ppo.md)
+- [RLHF](./rlhf.md)
+- [LLM RLHF](../../llm/llm-serving/rlhf.md)
+

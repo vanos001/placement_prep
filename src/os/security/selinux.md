@@ -541,3 +541,11 @@ Bottom line: Containers + SELinux = defense in depth
 - [Capabilities](capabilities.md) — Complementary privilege mechanism
 - [Containers: Docker](../containers/docker.md) — SELinux in containers
 - [Containers: Namespaces](../containers/namespaces.md) — Container isolation
+
+
+## Cross References
+
+- [Access Control](../os/security/access-control.md)
+- [Capabilities](../os/security/capabilities.md)
+- [Namespaces](../os/containers/namespaces.md)
+- [Firewalls](../networks/security/firewalls.md)

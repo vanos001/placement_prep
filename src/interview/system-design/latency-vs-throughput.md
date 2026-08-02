@@ -171,3 +171,14 @@ graph LR
 - Always use percentiles (p50, p99), not averages.
 - Tail latency compounds in distributed systems (the "tail at scale" problem).
 - Most optimizations trade latency for throughput or vice versa — know the trade-off.
+
+## Cross-References
+
+- [Performance vs Scalability](./performance-vs-scalability.md)
+- [Latency Numbers](./latency-numbers.md)
+- [Backpressure](./backpressure.md)
+- [Load Balancing](./hld/load-balancing-design.md)
+- [Concurrency Overview](../../concurrency/overview.md)
+- [Cloud Load Balancing](../../cloud/kubernetes/services.md)
+- [Storage SSD](../../storage/ssd.md)
+

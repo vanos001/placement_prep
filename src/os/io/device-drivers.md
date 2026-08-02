@@ -593,3 +593,11 @@ Performance targets:
 - [DMA](dma.md) — How drivers manage DMA transfers
 - [Software Layers](software-layers.md) — Where drivers fit in the I/O stack
 - [Buffering](buffering.md) — How drivers manage buffers
+
+
+## Cross References
+
+- [Interrupts](../os/io/interrupts.md)
+- [I/O Software Layers](../os/io/software-layers.md)
+- [I/O Hardware](../os/io/hardware.md)
+- [VFS](../os/filesystems/vfs.md)

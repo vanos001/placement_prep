@@ -415,3 +415,9 @@ HTTP/1.1 was the workhorse of the web for 20+ years. Its limitations (HOL blocki
 - [HTTPS](https.md) — TLS encryption for HTTP
 - [TCP Options](../tcp/options.md) — TCP features HTTP/1.1 relies on
 - [Nagle's Algorithm](../tcp/nagle.md) — Nagle + Delayed ACK interaction
+
+## Cross References
+
+- [HTTP/2](http2.md)
+- [REST](rest.md)
+- [HTTPS](https.md)

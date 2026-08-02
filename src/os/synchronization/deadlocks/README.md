@@ -86,3 +86,12 @@ graph TD
 - [Semaphores](../semaphores.md) — another source
 - [Banker's Algorithm](bankers.md) — avoidance strategy
 - [Synchronization](../README.md) — the broader context
+
+
+## Cross References
+
+- [Deadlock Prevention](../os/synchronization/deadlocks/prevention.md)
+- [Deadlock Avoidance](../os/synchronization/deadlocks/avoidance.md)
+- [Deadlock Detection](../os/synchronization/deadlocks/detection.md)
+- [Dining Philosophers](../os/synchronization/dining-philosophers.md)
+- [Two-Phase Commit](../dbms/transactions/two-phase-commit.md)

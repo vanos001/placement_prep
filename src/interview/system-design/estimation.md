@@ -247,3 +247,12 @@ Redis instances needed = 350,000 / 100,000 ≈ 4 instances
 - Round aggressively and use powers of 10 for mental math.
 - Always include peak traffic (3x average) and replication factor (3x storage).
 - Cross-check your answers against known real-world systems.
+
+## Cross-References
+
+- [Latency Numbers](./latency-numbers.md)
+- [Capacity Planning](./hld/capacity-planning.md)
+- [Performance vs Scalability](./performance-vs-scalability.md)
+- [Framework](./framework.md)
+- [Cloud Overview](../../cloud/overview.md)
+

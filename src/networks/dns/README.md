@@ -335,3 +335,11 @@ DNS is the foundation of Internet naming. Understanding its architecture, resolu
 - [DNS Security](security.md) — DNSSEC, DoH, DoT
 - [UDP Overview](../udp/README.md) — DNS uses UDP for queries
 - [HTTP Overview](../http/README.md) — HTTP depends on DNS for name resolution
+
+## Cross References
+
+- [DNS Resolution](resolution.md)
+- [DNS Caching](caching.md)
+- [Record Types](record-types.md)
+- [CDN](../cdn/README.md)
+- [Service Discovery](../../distributed/microservices/discovery.md)

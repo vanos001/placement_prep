@@ -294,3 +294,11 @@ graph TB
 - Conflict resolution: create conflict copies rather than silently overwriting.
 - Filesystem watchers (inotify/FSEvents) enable real-time change detection on desktop.
 - Dropbox Paper uses CRDTs for real-time collaboration without conflicts.
+
+## Cross-References
+
+- [Distributed File System](../dfs.md)
+- [Object Storage](../../../storage/object-storage.md)
+- [Consistency Patterns](../consistency-patterns.md)
+- [Key-Value Store](../kv-store.md)
+

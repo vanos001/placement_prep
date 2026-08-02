@@ -210,3 +210,11 @@ With 5 philosophers and 4 allowed to try, at least one will find both chopsticks
 - [Deadlocks](deadlocks/README.md) — the problem to avoid
 - [Critical Section](critical-section.md) — the fundamental problem
 - [Readers-Writers](readers-writers.md) — another classic synchronization problem
+
+
+## Cross References
+
+- [Deadlocks](../os/synchronization/deadlocks/README.md)
+- [Semaphores](../os/synchronization/semaphores.md)
+- [Mutex](../os/synchronization/mutex.md)
+- [Resource Allocation](../os/synchronization/deadlocks/bankers.md)

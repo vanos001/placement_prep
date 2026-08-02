@@ -96,3 +96,11 @@ with mlflow.start_run():
 ## Summary
 
 A Model Registry is critical for managing ML model lifecycle. It provides versioning, metadata tracking, access control, and a clear promotion path from development to production. Tools like MLflow, Neptune, and cloud-native solutions (Vertex AI, SageMaker) offer varying levels of functionality.
+
+## Cross-References
+
+- [MLflow](./mlflow.md)
+- [Model Deployment](./deployment.md)
+- [Model Monitoring](./monitoring.md)
+- [Versioning & Storage](../../storage/overview.md)
+

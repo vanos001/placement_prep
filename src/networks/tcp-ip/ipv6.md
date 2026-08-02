@@ -279,3 +279,9 @@ Examples:
 - [ICMP](icmp.md) — ICMPv6 is used by NDP
 - [NAT](nat.md) — Why IPv6 doesn't need it
 - [Subnetting](subnetting.md) — /64 is the standard IPv6 subnet
+
+## Cross References
+
+- [IPv4](ipv4.md)
+- [NAT](nat.md)
+- [ICMP](icmp.md)

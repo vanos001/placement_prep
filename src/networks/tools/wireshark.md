@@ -172,3 +172,9 @@ Wireshark is the gold standard for packet analysis. Master display filters, TCP 
 - [ping & traceroute](ping-traceroute.md) — Basic connectivity tools
 - [netstat](netstat.md) — Connection inspection
 - [TLS](../security/tls.md) — Encrypted traffic analysis
+
+## Cross References
+
+- [tcpdump](tcpdump.md)
+- [OSI Model](../osi/README.md)
+- [TLS](../security/tls.md)

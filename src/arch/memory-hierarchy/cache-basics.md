@@ -161,3 +161,11 @@ A cache stores recently accessed data in fast memory. Addresses are split into t
 - [Set Associative](set-associative.md) — Most common mapping
 - [Replacement Policies](replacement.md) — What to evict
 - [Write Policies](write-policies.md) — Detailed write strategies
+
+## Cross References
+
+- [Cache Mapping](cache-mapping.md)
+- [Replacement Policies](replacement.md)
+- [Write Policies](write-policies.md)
+- [Performance](performance.md)
+- [OS Page Tables](../../os/memory/page-tables.md)

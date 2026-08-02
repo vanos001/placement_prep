@@ -316,3 +316,11 @@ LFU is a counting-based page replacement algorithm that evicts the least frequen
 - Mitigation: aging (periodic counter decay), TinyLFU (frequency + recency)
 - LRU is generally preferred over LFU for general workloads
 - LFU is a counting-based algorithm, not a stack algorithm
+
+
+## Cross References
+
+- [Page Replacement](../os/virtual-memory/page-replacement.md)
+- [LRU](../os/virtual-memory/lru.md)
+- [Redis Caching](../dbms/caching/redis.md)
+- [Cache Replacement](../arch/memory-hierarchy/replacement.md)

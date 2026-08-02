@@ -238,3 +238,5 @@ Ceph provides unified object/block/file storage on top of RADOS. The CRUSH algor
 - [Block Storage](./block-storage.md) — RBD provides block interface
 - [Object Storage](./object-storage.md) — RGW provides S3 interface
 - [Storage Overview](./overview.md) — Storage hierarchy
+- [Cloud S3](../cloud/aws/s3.md)
+

@@ -260,3 +260,11 @@ graph TB
 - Cassandra handles most data; MySQL for billing; Elasticsearch for search.
 - Resilience is built-in: Chaos Monkey, Chaos Kong, and continuous failure injection.
 - Per-title encoding and adaptive bitrate streaming optimize quality vs bandwidth.
+
+## Cross-References
+
+- [Video Streaming](../video-streaming.md)
+- [Recommendation System](../../../ml/system-design/recommendation.md)
+- [Availability Patterns](../availability-patterns.md)
+- [CDN & Caching](../hld/caching-strategy.md)
+

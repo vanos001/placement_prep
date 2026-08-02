@@ -268,3 +268,7 @@ Else (normal operation):
 - [Caching Strategy](./caching-strategy.md) — Cache consistency
 - [Scalability](./scalability.md) — Sharding and consistency
 - [Messaging Systems](./messaging-systems.md) — Eventual consistency in async systems
+- [Consistency Patterns](../consistency-patterns.md)
+- [DBMS Distributed Consistency](../../dbms/distributed/consistency.md)
+- [Storage Distributed](../../storage/distributed.md)
+

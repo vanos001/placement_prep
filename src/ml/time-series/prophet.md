@@ -163,3 +163,11 @@ model.plot_components(forecast)
 ## Summary
 
 Prophet is an excellent choice for business time series forecasting. It handles seasonality, holidays, and missing data automatically. Key features include trend models (linear/logistic), automatic changepoint detection, and easy addition of external regressors. It's particularly useful when you need interpretable forecasts with component decomposition.
+
+## Cross-References
+
+- [ARIMA](./arima.md)
+- [Time Series Overview](./README.md)
+- [Anomaly Detection](./anomaly.md)
+- [Feature Engineering](../foundations/feature-engineering.md)
+

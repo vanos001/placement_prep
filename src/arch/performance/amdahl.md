@@ -180,3 +180,10 @@ Amdahl's Law is the fundamental limit on parallel speedup. The maximum speedup i
 - [Multicore](../parallelism/multicore.md) — Hardware parallelism
 - [GPU](../parallelism/gpu.md) — Massive parallelism
 - [Concurrency](../../concurrency/overview.md) — Software parallelism
+
+## Cross References
+
+- [Superscalar](../pipelining/superscalar.md)
+- [Multicore](../parallelism/multicore.md)
+- [Distributed Overview](../../distributed/overview.md)
+- [Latency vs Throughput](../../interview/system-design/latency-vs-throughput.md)

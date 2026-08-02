@@ -340,3 +340,12 @@ A: B+ Tree: Fast reads (O(log n)), slower writes (random I/O for updates). LSM T
 - [Covering Index](./covering-index.md) — B+ Tree indexes that contain all needed columns
 - [Composite Index](./composite-index.md) — Multi-column B+ Tree indexes
 - [Index Tuning](./tuning.md) — How to optimize B+ Tree indexes
+
+
+## Cross References
+
+- [B-Tree](../dbms/indexing/b-tree.md)
+- [Buffer Pool](../dbms/caching/buffer-pool.md)
+- [Disk Scheduling (OS)](../os/io/disk-scheduling.md)
+- [File Organization](../dbms/storage/file-organization.md)
+- [SSD](../storage/ssd.md)

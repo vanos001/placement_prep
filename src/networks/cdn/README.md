@@ -185,3 +185,11 @@ CDNs distribute content globally via edge servers, reducing latency and improvin
 - [Load Balancing](../load-balancing/README.md)
 - [DNS](../routing/README.md)
 - [Reverse Proxy](../load-balancing/reverse-proxy.md)
+
+## Cross References
+
+- [CDN Edge](edge.md)
+- [How CDN Works](how-it-works.md)
+- [DNS Caching](../dns/caching.md)
+- [Load Balancing](../load-balancing/README.md)
+- [Distributed Replication](../../distributed/replication/README.md)

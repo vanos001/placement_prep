@@ -267,3 +267,10 @@ The detection algorithm is similar but uses Request (current request) instead of
 - [Deadlock Detection](detection.md) — similar algorithm for detection
 - [Deadlock Prevention](prevention.md) — practical alternative
 - [Deadlock Recovery](recovery.md) — what to do if avoidance fails
+
+
+## Cross References
+
+- [Deadlock Avoidance](../os/synchronization/deadlocks/avoidance.md)
+- [Resource Allocation](../os/synchronization/deadlocks/README.md)
+- [Dining Philosophers](../os/synchronization/dining-philosophers.md)

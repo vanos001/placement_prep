@@ -199,3 +199,12 @@ For a user-facing API with 200ms target:
 - These ratios justify caching (RAM > SSD > HDD), indexing, connection pooling, CDNs, and batching.
 - A 1ms budget allows ~10K RAM reads, ~6 SSD reads, or ~1 network round trip.
 - Build latency budgets for your system design to ensure you meet SLAs.
+
+## Cross-References
+
+- [Estimation](./estimation.md)
+- [Latency vs Throughput](./latency-vs-throughput.md)
+- [Performance vs Scalability](./performance-vs-scalability.md)
+- [Caching Strategy](./hld/caching-strategy.md)
+- [Storage: SSD vs HDD](../../storage/ssd.md)
+

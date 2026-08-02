@@ -327,3 +327,6 @@ Rust's ownership system prevents data races, dangling pointers, and use-after-fr
 - [Async/Await](./async-await.md) — Rust async with tokio
 - [Go Channels](./go-channels.md) — Similar message-passing philosophy
 - [Concurrency Overview](./overview.md) — Fundamental concepts
+- [OS Synchronization](../os/synchronization/mutex.md)
+- [Memory Barriers](../os/synchronization/memory-barriers.md)
+

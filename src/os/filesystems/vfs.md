@@ -334,3 +334,11 @@ Each process gets its own `struct file` with an independent file offset. Both fi
 - [Directory Structure](directory-structure.md) — how directories work
 - [FUSE](fuse.md) — userspace filesystem implementation via VFS
 - [Device Drivers](../io/device-drivers.md) — how block I/O reaches the filesystem
+
+
+## Cross References
+
+- [File Concepts](../os/filesystems/file-concepts.md)
+- [Device Drivers](../os/io/device-drivers.md)
+- [I/O Software Layers](../os/io/software-layers.md)
+- [File Organization (DBMS)](../dbms/storage/file-organization.md)

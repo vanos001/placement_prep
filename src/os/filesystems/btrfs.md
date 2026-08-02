@@ -276,3 +276,10 @@ A subvolume has its own inode number space, can be snapshotted independently, an
 - [Disk Allocation](disk-allocation.md) — extent-based allocation
 - [Journaling](journaling.md) — Btrfs uses COW instead of journaling
 - [RAID](raid.md) — hardware vs. software RAID
+
+
+## Cross References
+
+- [Journaling](../os/filesystems/journaling.md)
+- [ZFS](../os/filesystems/zfs.md)
+- [Copy-on-Write](../os/virtual-memory/cow.md)

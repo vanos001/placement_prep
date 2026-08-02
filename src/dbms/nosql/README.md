@@ -150,3 +150,12 @@ CockroachDB, TiDB, Spanner — SQL + distributed scalability.
 - [Sharding](../distributed/sharding.md) — how NoSQL scales
 - [Replication](../distributed/replication.md) — how NoSQL replicates
 - [Buffer Management](../storage/buffer-management.md) — underlying storage
+
+
+## Cross References
+
+- [Key-Value](../dbms/nosql/key-value.md)
+- [Document](../dbms/nosql/document.md)
+- [Column Family](../dbms/nosql/column-family.md)
+- [Graph](../dbms/nosql/graph.md)
+- [Relational Model](../dbms/relational-model/README.md)

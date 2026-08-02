@@ -499,3 +499,12 @@ A:
 - **See Also**: [Copy-on-Write](./cow.md) — COW page fault handling
 - **See Also**: [Thrashing](./thrashing.md) — too many page faults
 - **Related**: [Working Set](./working-set.md) — minimizing page faults
+
+
+## Cross References
+
+- [Paging](../os/memory/paging.md)
+- [Page Replacement](../os/virtual-memory/page-replacement.md)
+- [Thrashing](../os/virtual-memory/thrashing.md)
+- [Working Set](../os/virtual-memory/working-set.md)
+- [Buffer Pool](../dbms/caching/buffer-pool.md)

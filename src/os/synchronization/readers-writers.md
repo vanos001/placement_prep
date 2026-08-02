@@ -309,3 +309,12 @@ Use a FIFO queue or ticket system. When a writer arrives, it takes a ticket. New
 - [Mutexes](mutex.md) — alternative for write-heavy workloads
 - [Lock-Free](lock-free.md) — RCU is a lock-free approach
 - [Critical Section](critical-section.md) — the fundamental problem
+
+
+## Cross References
+
+- [Semaphores](../os/synchronization/semaphores.md)
+- [Mutex](../os/synchronization/mutex.md)
+- [MVCC](../dbms/transactions/mvcc.md)
+- [Isolation Levels](../dbms/transactions/isolation-levels.md)
+- [Readers-Writers (Concurrency)](../concurrency/readers-writers.md)

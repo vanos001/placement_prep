@@ -360,3 +360,12 @@ A: SSI: No read locks, readers never block. Higher abort rates due to false posi
 - [Recovery](./recovery.md) — How isolation interacts with recovery
 - [Two-Phase Locking](./two-phase-commit.md) — 2PL as an implementation mechanism for Serializable
 - [Distributed Transactions](./distributed.md) — Isolation in distributed systems
+
+
+## Cross References
+
+- [ACID](../dbms/transactions/acid.md)
+- [MVCC](../dbms/transactions/mvcc.md)
+- [Serializability](../dbms/transactions/serializability.md)
+- [Concurrency Control](../dbms/transactions/concurrency-control.md)
+- [Consistency Models](../distributed/fundamentals/consistency.md)

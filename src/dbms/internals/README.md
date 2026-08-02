@@ -212,3 +212,11 @@ A: At 80% hit rate: 2,000 disk reads/sec needed — well within 50,000 IOPS. At 
 - **Crash recovery**: replay WAL (redo committed, undo uncommitted)
 - **Write amplification**: ratio of actual disk writes to application writes — key performance metric
 - **fsync**: forces OS buffer to physical disk; batch via group commit
+
+
+## Cross References
+
+- [WAL](../dbms/internals/wal.md)
+- [LSM Trees](../dbms/internals/lsm-trees.md)
+- [Buffer Pool](../dbms/caching/buffer-pool.md)
+- [File Organization](../dbms/storage/file-organization.md)

@@ -365,3 +365,10 @@ API gateways provide a unified entry point for microservices, handling cross-cut
 - [Observability](observability.md) — Monitoring gateways
 - [Rate Limiting](circuit-breakers.md) — Rate limiting patterns
 - [Pub/Sub](../messaging/pubsub.md) — Event-driven patterns
+
+## Cross References
+
+- [Load Balancing](../../networks/load-balancing/README.md)
+- [Reverse Proxy](../../networks/load-balancing/reverse-proxy.md)
+- [Service Discovery](discovery.md)
+- [Rate Limiting](../../interview/system-design/rate-limiter.md)

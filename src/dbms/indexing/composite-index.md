@@ -374,3 +374,10 @@ A: (1) Every index should start with tenant_id — this ensures index scans are 
 - [Covering Index](./covering-index.md) — Composite + INCLUDE columns
 - [Index Tuning](./tuning.md) — Designing optimal composite indexes
 - [Clustered vs Non-Clustered](./clustered-vs-nonclustered.md) — Composite clustered indexes
+
+
+## Cross References
+
+- [B+ Tree](../dbms/indexing/b-plus-tree.md)
+- [Covering Index](../dbms/indexing/covering-index.md)
+- [Query Optimization](../dbms/query-processing/optimization.md)

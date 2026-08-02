@@ -367,3 +367,11 @@ When you `read()` a file:
 - [Interrupts](interrupts.md) — Interrupt handling mechanisms
 - [Buffering](buffering.md) — Buffering and caching strategies
 - [DMA](dma.md) — Direct Memory Access
+
+
+## Cross References
+
+- [Device Drivers](../os/io/device-drivers.md)
+- [VFS](../os/filesystems/vfs.md)
+- [Buffering](../os/io/buffering.md)
+- [I/O Architecture](../arch/io/README.md)

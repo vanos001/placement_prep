@@ -304,3 +304,11 @@ A: 1) **Persistence:** System V queues persist across process crashes, 2) **Ackn
 - [Shared Memory](./ipc-shared-memory.md) - Faster alternative
 - [Sockets](./ipc-sockets.md) - Network-capable alternative
 - [Semaphores](../synchronization/semaphores.md) - Synchronization with queues
+
+
+## Cross References
+
+- [IPC Overview](../os/processes/ipc.md)
+- [Message Queues](../distributed/messaging/queues.md)
+- [Kafka](../distributed/messaging/kafka.md)
+- [Sockets](../os/processes/ipc-sockets.md)

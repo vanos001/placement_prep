@@ -246,3 +246,10 @@ Multicore processors integrate multiple independent cores on a single chip. Each
 - [MESI](../memory-hierarchy/mesi.md) — Coherence protocol
 - [Concurrency](../../concurrency/overview.md) — Software concurrency
 - [Amdahl's Law](../performance/amdahl.md) — Parallel speedup limits
+
+## Cross References
+
+- [SMT](smt.md)
+- [Cache Coherence](../memory-hierarchy/coherence.md)
+- [OS Threads](../../os/threads/README.md)
+- [Concurrency](../../concurrency/overview.md)

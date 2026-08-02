@@ -93,3 +93,10 @@ Routing is the backbone of internetworking. Static vs. dynamic routing, the vari
 - [RIP](rip.md)
 - [IS-IS](isis.md)
 - [Load Balancing](../load-balancing/README.md)
+
+## Cross References
+
+- [BGP](bgp.md)
+- [OSPF](ospf.md)
+- [Network Layer](../osi/network.md)
+- [IP Protocol](../tcp-ip/ip.md)

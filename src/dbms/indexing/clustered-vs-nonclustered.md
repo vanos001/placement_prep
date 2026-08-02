@@ -335,3 +335,11 @@ A: 1% of rows: Non-clustered index + key lookup is fine (~1% random reads). Clus
 - [Covering Index](./covering-index.md) — Avoiding key lookups
 - [Composite Index](./composite-index.md) — Multi-column indexes
 - [Index Tuning](./tuning.md) — Choosing the right index strategy
+
+
+## Cross References
+
+- [B+ Tree](../dbms/indexing/b-plus-tree.md)
+- [File Organization](../dbms/storage/file-organization.md)
+- [Buffer Pool](../dbms/caching/buffer-pool.md)
+- [Disk Allocation (OS)](../os/filesystems/disk-allocation.md)

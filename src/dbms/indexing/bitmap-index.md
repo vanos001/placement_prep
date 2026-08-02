@@ -317,3 +317,10 @@ A: (1) Use a hybrid approach: maintain a small delta store (write-optimized, row
 - [Hash Index](./hash-index.md) — Alternative for exact lookups
 - [Index Tuning](./tuning.md) — When to choose bitmap vs B+ Tree
 - [Composite Index](./composite-index.md) — Combining multiple indexes
+
+
+## Cross References
+
+- [Composite Index](../dbms/indexing/composite-index.md)
+- [Column Stores](../dbms/storage/column-stores.md)
+- [SIMD](../arch/parallelism/simd.md)

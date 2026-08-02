@@ -353,3 +353,11 @@ A: Each service owns its data. Denormalization happens at the API gateway or rea
 - [Views](../sql/views.md) — Materialized views for denormalization
 - [Indexes](../indexing/README.md) — Indexes before denormalization
 - [Query Tuning](../indexing/tuning.md) — Optimize before denormalizing
+
+
+## Cross References
+
+- [3NF](../dbms/normalization/3nf.md)
+- [BCNF](../dbms/normalization/bcnf.md)
+- [Query Optimization](../dbms/query-processing/optimization.md)
+- [Redis Caching](../dbms/caching/redis.md)

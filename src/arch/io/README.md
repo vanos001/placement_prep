@@ -83,3 +83,10 @@ Modern systems use **interrupt coalescing** — batching multiple events into on
 - [NVMe](nvme.md) — Modern storage protocol
 - [Buses](buses.md) — Bus fundamentals
 - [Storage Overview](../../storage/overview.md) — Storage technologies
+
+## Cross References
+
+- [Buses](buses.md)
+- [PCIe](pcie.md)
+- [NVMe](nvme.md)
+- [OS I/O](../../os/io/README.md)

@@ -582,3 +582,11 @@ A:
 - **See Also**: [Huge Pages](./huge-pages.md) — skipping levels for larger pages
 - **See Also**: [Inverted Page Tables](./inverted-page-tables.md) — alternative approach
 - **Virtual Memory**: [Demand Paging](../virtual-memory/demand-paging.md) — page tables allocated on demand
+
+
+## Cross References
+
+- [Page Tables](../os/memory/page-tables.md)
+- [Paging](../os/memory/paging.md)
+- [Cache Mapping](../arch/memory-hierarchy/cache-mapping.md)
+- [Inverted Page Tables](../os/memory/inverted-page-tables.md)

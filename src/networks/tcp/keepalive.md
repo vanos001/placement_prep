@@ -441,3 +441,9 @@ TCP Keepalive is a simple but essential mechanism for maintaining connection hea
 - [UDP Overview](../udp/README.md) — UDP has no connection state or keepalive
 - [HTTP/2](../http/http2.md) — HTTP/2 uses its own PING frames for keepalive
 - [WebSocket](../http/websocket.md) — WebSocket has Ping/Pong frames for keepalive
+
+## Cross References
+
+- [TCP Timers](timers.md)
+- [Four-Way Teardown](four-way.md)
+- [TCP Options](options.md)

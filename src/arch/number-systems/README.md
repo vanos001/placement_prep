@@ -45,3 +45,10 @@ Binary is the foundation of computing. Hex and octal are convenient shorthand. U
 - [Two's Complement](twos-complement.md)
 - [Floating Point](floating-point.md)
 - [IEEE 754](ieee754.md)
+
+## Cross References
+
+- [Binary](binary.md)
+- [Hexadecimal](hex.md)
+- [Floating Point](floating-point.md)
+- [IEEE 754](ieee754.md)

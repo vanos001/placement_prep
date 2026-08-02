@@ -175,3 +175,10 @@ Structural hazards:
 - [Forwarding/Bypassing](./forwarding.md) — Hardware solution for data hazards
 - [Branch Prediction](./branch-prediction.md) — Hardware solution for control hazards
 - [Classic Pipeline](./classic.md) — The 5-stage pipeline these hazards affect
+
+## Cross References
+
+- [Data Hazards](data-hazards.md)
+- [Control Hazards](control-hazards.md)
+- [Structural Hazards](structural-hazards.md)
+- [Forwarding](forwarding.md)

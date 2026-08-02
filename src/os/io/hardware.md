@@ -270,3 +270,11 @@ Key optimizations:
 - [DMA](dma.md) — Direct Memory Access in detail
 - [Device Drivers](device-drivers.md) — How drivers interact with hardware
 - [Software Layers](software-layers.md) — The complete I/O software stack
+
+
+## Cross References
+
+- [DMA](../os/io/dma.md)
+- [Interrupts](../os/io/interrupts.md)
+- [Buses](../arch/io/buses.md)
+- [I/O Architecture](../arch/io/README.md)

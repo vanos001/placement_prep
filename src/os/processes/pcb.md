@@ -285,3 +285,10 @@ A: 1) **Cache line alignment:** Place frequently accessed fields (state, priorit
 - [Process Creation](./creation.md) - How PCBs are created
 - [Scheduling](../scheduling/README.md) - How scheduler uses PCB fields
 - [Threads](../threads/README.md) - How threads share PCB data
+
+
+## Cross References
+
+- [Process States](../os/processes/states.md)
+- [Context Switching](../os/processes/context-switching.md)
+- [Registers](../arch/cpu/registers.md)

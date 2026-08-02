@@ -321,3 +321,7 @@ Concurrency enables systems to handle multiple tasks efficiently but introduces 
 - [Lock-Free](./lock-free.md) — Wait-free and lock-free algorithms
 - [Go Channels](./go-channels.md) — CSP concurrency model
 - [Rust Ownership](./rust-ownership.md) — Compile-time concurrency safety
+- [OS Processes](../os/processes/zombie-orphan.md)
+- [Interview System Design](../interview/system-design/README.md)
+- [Cloud Overview](../cloud/overview.md)
+

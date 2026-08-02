@@ -201,3 +201,10 @@ A: Use **Virtual Clock** or **Weighted Fair Queuing (WFQ):** Each queue has a we
 - [Priority](./priority.md) - Priority between queues
 - [Round Robin](./round-robin.md) - Common per-queue algorithm
 - [Linux CFS](./linux-cfs.md) - Linux's approach
+
+
+## Cross References
+
+- [Multilevel Feedback](../os/scheduling/multilevel-feedback.md)
+- [Priority Scheduling](../os/scheduling/priority.md)
+- [Round Robin](../os/scheduling/round-robin.md)

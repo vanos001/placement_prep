@@ -158,3 +158,10 @@ Prevention (resource ordering) has zero runtime overhead. Detection + recovery h
 - [Deadlock Prevention](prevention.md) — preventing deadlocks by design
 - [Deadlock Avoidance](avoidance.md) — Banker's algorithm
 - [Banker's Algorithm](bankers.md) — safe state verification
+
+
+## Cross References
+
+- [Deadlock Detection](../os/synchronization/deadlocks/detection.md)
+- [Process Termination](../os/processes/states.md)
+- [Transaction Recovery](../dbms/transactions/recovery.md)

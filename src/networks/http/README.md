@@ -409,3 +409,11 @@ HTTP is the backbone of the web. Understanding its methods, status codes, header
 - [REST](rest.md) — RESTful API design
 - [gRPC](grpc.md) — gRPC on HTTP/2
 - [DNS Overview](../dns/README.md) — DNS resolves hostnames for HTTP
+
+## Cross References
+
+- [HTTP/1.1](http1.md)
+- [HTTP/2](http2.md)
+- [HTTP/3](http3.md)
+- [REST](rest.md)
+- [gRPC](grpc.md)

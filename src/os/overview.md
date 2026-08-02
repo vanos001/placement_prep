@@ -387,3 +387,12 @@ A: Synchronous I/O blocks the calling process until completion (simple but waste
 - [I/O Systems](./io/README.md) - Hardware interaction and device drivers
 - [Synchronization](./synchronization/README.md) - Coordination between concurrent entities
 - [Boot Process](./boot/README.md) - How the OS starts up
+
+
+## Cross References
+
+- [CPU Architecture](../arch/cpu/README.md)
+- [Cache Hierarchy](../arch/memory-hierarchy/README.md)
+- [Networks Overview](../networks/overview.md)
+- [DBMS Overview](../dbms/overview.md)
+- [Concurrency Overview](../concurrency/overview.md)

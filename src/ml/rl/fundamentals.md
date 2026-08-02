@@ -186,3 +186,11 @@ For LLMs, the "state" is the entire conversation history — technically a POMDP
 | **Algorithm Types** | Value-based, policy-based, actor-critic |
 
 These fundamentals underpin everything from game-playing AI to LLM alignment via RLHF.
+
+## Cross-References
+
+- [Q-Learning](./q-learning.md)
+- [Policy Gradient](./policy-gradient.md)
+- [PPO](./ppo.md)
+- [Agent Architecture](../agents/architecture.md)
+

@@ -72,3 +72,12 @@ graph TD
 - [Synchronization](../synchronization/README.md) — concurrent file access
 - [Security](../security/README.md) — file permissions and access control
 - [Containers](../containers/README.md) — filesystem namespaces
+
+
+## Cross References
+
+- [VFS](../os/filesystems/vfs.md)
+- [File Concepts](../os/filesystems/file-concepts.md)
+- [Disk Allocation](../os/filesystems/disk-allocation.md)
+- [File Organization (DBMS)](../dbms/storage/file-organization.md)
+- [Storage Overview](../storage/overview.md)

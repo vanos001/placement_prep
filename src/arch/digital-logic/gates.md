@@ -201,3 +201,9 @@ Logic gates implement Boolean operations physically. NAND and NOR are universal 
 - [Boolean Algebra](boolean.md) — Mathematical foundation
 - [Combinational Circuits](combinational.md) — Building with gates
 - [Sequential Circuits](sequential.md) — Adding memory
+
+## Cross References
+
+- [Boolean Algebra](boolean.md)
+- [Combinational Circuits](combinational.md)
+- [ALU](../cpu/alu.md)

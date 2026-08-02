@@ -135,3 +135,11 @@ Replication is essential for building reliable distributed systems. The choice o
 - [Quorum-Based Replication](quorum.md) — Tunable consistency
 - [Consensus Algorithms](../consensus/README.md) — Used for replication coordination
 - [Consistent Hashing](../partitioning/consistent-hashing.md) — Data distribution
+
+## Cross References
+
+- [Primary-Backup](primary-backup.md)
+- [Multi-Primary](multi-primary.md)
+- [Quorum](quorum.md)
+- [Chain Replication](chain.md)
+- [DBMS Replication](../../dbms/distributed/replication.md)

@@ -452,3 +452,11 @@ A:
 - **Related**: [TLB](./tlb.md) — caching reduces lookup frequency
 - **Related**: [Paging](./paging.md) — the underlying mechanism
 - **Virtual Memory**: [Page Replacement](../virtual-memory/page-replacement.md) — needs reverse mapping
+
+
+## Cross References
+
+- [Page Tables](../os/memory/page-tables.md)
+- [Paging](../os/memory/paging.md)
+- [TLB](../os/memory/tlb.md)
+- [Hash Index](../dbms/indexing/hash-index.md)

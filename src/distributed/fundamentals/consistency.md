@@ -239,3 +239,10 @@ Facebook-style feed (causal consistency):
 - [Vector Clocks](./vector-clocks.md) — Capturing causal dependencies
 - [Quorum Replication](../replication/quorum.md) — Tuning consistency with quorums
 - [DynamoDB](../replication/primary-backup.md) — Eventual consistency in practice
+
+## Cross References
+
+- [CAP Theorem](cap.md)
+- [DBMS Consistency](../../dbms/distributed/consistency.md)
+- [DBMS Isolation Levels](../../dbms/transactions/isolation-levels.md)
+- [Consensus](../consensus/README.md)

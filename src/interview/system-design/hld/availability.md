@@ -278,3 +278,7 @@ def call_with_retry(func, max_retries=3, backoff=1):
 - [Consistency Tradeoffs](./consistency-tradeoffs.md) — CAP theorem trade-offs
 - [Monitoring](./monitoring-observability.md) — Detect failures for failover
 - [Messaging Systems](./messaging-systems.md) — Queues for fault tolerance
+- [Availability Patterns](../availability-patterns.md)
+- [Cloud Overview](../../cloud/overview.md)
+- [DBMS Replication](../../dbms/distributed/replication.md)
+

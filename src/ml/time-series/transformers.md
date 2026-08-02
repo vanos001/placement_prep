@@ -165,3 +165,12 @@ class TimeSeriesTransformer(nn.Module):
 ## Summary
 
 Transformers have revolutionized time series forecasting by capturing long-range dependencies through self-attention. Key adaptations include patching, positional encoding, and efficient attention mechanisms. Models like Informer, Autoformer, and PatchTST address efficiency concerns. Use Transformers when you have sufficient data and need to capture complex temporal patterns.
+
+## Cross-References
+
+- [Transformer Architecture](../transformers/architecture.md)
+- [Attention Mechanism](../deep-learning/attention.md)
+- [Time Series Overview](./README.md)
+- [ARIMA](./arima.md)
+- [LLM Architecture](../../llm/llm-serving/architecture.md)
+

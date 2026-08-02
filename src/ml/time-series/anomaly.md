@@ -186,3 +186,12 @@ class RealTimeAnomalyDetector:
 ## Summary
 
 Time Series Anomaly Detection identifies unusual patterns using statistical methods (Z-score, IQR), ML methods (Isolation Forest, LSTM Autoencoder), or hybrid approaches (Prophet). Key considerations include handling seasonality, choosing appropriate thresholds, and minimizing false positives. Real-time detection requires efficient windowed processing.
+
+## Cross-References
+
+- [Time Series Overview](./README.md)
+- [ARIMA](./arima.md)
+- [ML Evaluation](../foundations/evaluation.md)
+- [MLOps Monitoring](../mlops/monitoring.md)
+- [Cloud Observability](../../cloud/observability/README.md)
+

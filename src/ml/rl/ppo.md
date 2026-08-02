@@ -182,3 +182,12 @@ These challenges motivated the development of DPO and GRPO.
 | **Limitation** | Sample inefficient, needs critic, memory heavy |
 
 PPO is the workhorse of RL for LLMs — understanding it deeply is essential for anyone working on model alignment.
+
+## Cross-References
+
+- [Policy Gradient](./policy-gradient.md)
+- [RLHF](./rlhf.md)
+- [DPO](./dpo.md)
+- [LLM RLHF](../../llm/llm-serving/rlhf.md)
+- [ChatGPT / InstructGPT](../../llm/sota/gpt4.md)
+

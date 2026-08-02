@@ -427,3 +427,9 @@ Nagle's algorithm is a classic example of a simple optimization that has signifi
 - [TCP Fast Recovery](fast-recovery.md) — Congestion control after Nagle's buffering
 - [UDP Overview](../udp/README.md) — UDP has no Nagle (each send = one datagram)
 - [HTTP/1.1](../http/http1.md) — HTTP benefits from disabling Nagle
+
+## Cross References
+
+- [TCP Options](options.md)
+- [Flow Control](flow-control.md)
+- [Latency vs Throughput](../../interview/system-design/latency-vs-throughput.md)

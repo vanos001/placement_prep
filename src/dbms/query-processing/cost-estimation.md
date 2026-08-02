@@ -341,3 +341,10 @@ Cost estimation is the foundation of query optimization. Without accurate estima
 - [Execution Plans](./execution-plans.md) — reading the optimizer's output
 - [Buffer Management](../storage/buffer-management.md) — how caching affects I/O cost
 - [Indexing](../indexing/) — how indexes affect access path costs
+
+
+## Cross References
+
+- [Execution Plans](../dbms/query-processing/execution-plans.md)
+- [Query Optimization](../dbms/query-processing/optimization.md)
+- [Buffer Pool](../dbms/caching/buffer-pool.md)

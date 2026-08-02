@@ -298,3 +298,10 @@ Result: `/etc/passwd`
 - [Disk Allocation](disk-allocation.md) — how directory blocks are allocated
 - [ext4](ext4.md) — HTree directory indexing
 - [Access Control](../security/access-control.md) — permission checking
+
+
+## Cross References
+
+- [File Concepts](../os/filesystems/file-concepts.md)
+- [VFS](../os/filesystems/vfs.md)
+- [B-Tree Indexing](../dbms/indexing/b-tree.md)

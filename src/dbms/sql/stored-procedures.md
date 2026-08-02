@@ -507,3 +507,10 @@ A: Stored procedures have their execution plans cached after first compilation. 
 - [Triggers](triggers.md) — Automatic execution on events
 - [Transactions](../transactions/README.md) — Transaction control in procedures
 - [Indexes](indexes.md) — Performance of procedure queries
+
+
+## Cross References
+
+- [Views](../dbms/sql/views.md)
+- [Triggers](../dbms/sql/triggers.md)
+- [SQL DML](../dbms/sql/dml.md)

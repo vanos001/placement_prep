@@ -614,3 +614,11 @@ A: CFS uses virtual runtime (vruntime) — each process's vruntime increases pro
 - [Real-time Scheduling](./realtime.md) - Deadline-based metrics
 - [Linux CFS](./linux-cfs.md) - Real-world balanced scheduler
 - [Context Switching](../processes/context-switching.md) - Overhead measurement
+
+
+## Cross References
+
+- [FCFS](../os/scheduling/fcfs.md)
+- [SJF](../os/scheduling/sjf.md)
+- [Round Robin](../os/scheduling/round-robin.md)
+- [CPU Performance](../arch/performance/equation.md)

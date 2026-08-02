@@ -378,3 +378,11 @@ LRU is the gold standard page replacement algorithm — good performance, immune
 - Implementation: hash map + doubly linked list → O(1) per operation
 - Real OSes use approximations (Clock, NFU with aging, two-list strategy)
 - Compare with FIFO (simpler but worse) and Optimal (best but impractical)
+
+
+## Cross References
+
+- [Page Replacement](../os/virtual-memory/page-replacement.md)
+- [Clock Algorithm](../os/virtual-memory/clock.md)
+- [Cache Replacement](../arch/memory-hierarchy/replacement.md)
+- [Buffer Pool Replacement](../dbms/caching/buffer-pool.md)

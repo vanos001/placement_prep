@@ -102,3 +102,8 @@ SSL is dead; TLS is the standard. All SSL versions have known vulnerabilities. T
 - [IPsec](ipsec.md) — Network-layer encryption alternative
 - [Firewalls](firewalls.md) — SSL/TLS inspection
 - [VPN](vpn.md) — Often uses TLS
+
+## Cross References
+
+- [TLS](tls.md)
+- [HTTPS](../http/https.md)

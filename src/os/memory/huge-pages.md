@@ -510,3 +510,11 @@ A:
 - **Related**: [Multi-Level Page Tables](./multi-level-page-tables.md) — skipping levels
 - **Related**: [Buddy System](./buddy-system.md) — allocating contiguous memory
 - **Related**: [NUMA](./numa.md) — huge pages and NUMA interaction
+
+
+## Cross References
+
+- [Paging](../os/memory/paging.md)
+- [TLB](../os/memory/tlb.md)
+- [NUMA](../os/memory/numa.md)
+- [Cache Hierarchy](../arch/memory-hierarchy/cache-basics.md)

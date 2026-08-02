@@ -197,3 +197,9 @@ Flip-flops are edge-triggered memory elements. D flip-flop is the most common (n
 - [Sequential Circuits](sequential.md) — Circuits using flip-flops
 - [Combinational Circuits](combinational.md) — Stateless circuits
 - [Registers](../cpu/registers.md) — CPU registers built from flip-flops
+
+## Cross References
+
+- [Sequential Circuits](sequential.md)
+- [Registers](../cpu/registers.md)
+- [SRAM](../memory-tech/sram.md)

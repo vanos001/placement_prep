@@ -328,3 +328,11 @@ SELECT * FROM crosstab(
 - [Stored Procedures](stored-procedures.md) — Server-side logic
 - [Triggers](triggers.md) — Automatic actions
 - [Indexes](indexes.md) — Performance optimization
+
+
+## Cross References
+
+- [DDL](../dbms/sql/ddl.md)
+- [DML](../dbms/sql/dml.md)
+- [Joins](../dbms/sql/joins.md)
+- [Query Processing](../dbms/query-processing/README.md)

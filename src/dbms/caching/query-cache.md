@@ -280,3 +280,11 @@ Modern systems prefer application-level caching (Redis) over database query cach
 - [Redis](./redis.md) — application-level caching
 - [Memcached](./memcached.md) — simpler caching alternative
 - [Query Processing](../query-processing/) — what caching avoids re-executing
+
+
+## Cross References
+
+- [Buffer Pool](../dbms/caching/buffer-pool.md)
+- [Query Optimization](../dbms/query-processing/optimization.md)
+- [Redis](../dbms/caching/redis.md)
+- [Cache Hierarchy](../arch/memory-hierarchy/README.md)

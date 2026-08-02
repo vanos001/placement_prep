@@ -414,3 +414,9 @@ These four timers work together to ensure TCP's reliability, flow control, and s
 - [TCP Keepalive](keepalive.md) — Deep dive into keepalive mechanism
 - [TCP Options](options.md) — Timestamps help measure RTT for RTO
 - [TCP Reno](reno.md) — Congestion control that uses RTO for loss detection
+
+## Cross References
+
+- [TCP States](states.md)
+- [TCP Keepalive](keepalive.md)
+- [Three-Way Handshake](three-way.md)

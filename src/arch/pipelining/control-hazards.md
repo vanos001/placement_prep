@@ -280,3 +280,9 @@ func:
 - [Speculative Execution](./speculative.md) — Executing before knowing the outcome
 - [Pipeline Hazards](./hazards.md) — Overview of all hazard types
 - [Classic Pipeline](./classic.md) — Where control hazards occur
+
+## Cross References
+
+- [Branch Prediction](branch-prediction.md)
+- [Speculative Execution](speculative.md)
+- [Hazards](hazards.md)

@@ -30,3 +30,10 @@ This section covers the major processor architectures in use today: **x86-64** (
 - [Apple Silicon](apple-silicon.md) — Apple's ARM implementation
 - [Alder Lake](alder-lake.md) — Intel hybrid architecture
 - [AMD Zen](amd-zen.md) — AMD's chiplet design
+
+## Cross References
+
+- [x86-64](x86-64.md)
+- [ARM](arm.md)
+- [RISC-V](risc-v.md)
+- [Apple Silicon](apple-silicon.md)

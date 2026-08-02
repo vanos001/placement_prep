@@ -274,3 +274,12 @@ A: 1) Use `rdtsc` (x86 timestamp counter) for nanosecond precision, 2) Create tw
 - [Threads](../threads/README.md) - Lighter context switches
 - [Virtual Memory](../virtual-memory/README.md) - Page table switching
 - [I/O Systems](../io/README.md) - I/O-triggered context switches
+
+
+## Cross References
+
+- [CPU Scheduling](../os/scheduling/README.md)
+- [PCB](../os/processes/pcb.md)
+- [Process States](../os/processes/states.md)
+- [Pipelining](../arch/pipelining/README.md)
+- [Thread Pools](../concurrency/thread-pools.md)

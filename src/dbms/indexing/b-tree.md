@@ -246,3 +246,11 @@ A: (1) Use a lower fillfactor (e.g., 70%) to leave room for inserts without imme
 - [Hash Index](./hash-index.md) — Alternative for exact lookups
 - [Clustered vs Non-Clustered](./clustered-vs-nonclustered.md) — How B-Trees are used as clustered indexes
 - [Index Tuning](./tuning.md) — How to choose and maintain B-Tree indexes
+
+
+## Cross References
+
+- [B+ Tree](../dbms/indexing/b-plus-tree.md)
+- [Cache Hierarchy](../arch/memory-hierarchy/cache-basics.md)
+- [Disk Scheduling (OS)](../os/io/disk-scheduling.md)
+- [File Organization](../dbms/storage/file-organization.md)

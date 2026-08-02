@@ -271,3 +271,10 @@ This is immediate feedback — no timeout needed.
 - [TCP Header](header.md) — Flags and fields used
 - [TCP Options](options.md) — MSS, SACK, Timestamps
 - [TCP States](states.md) — Connection state machine
+
+## Cross References
+
+- [Four-Way Teardown](four-way.md)
+- [TCP States](states.md)
+- [TCP Header](header.md)
+- [Flow Control](flow-control.md)

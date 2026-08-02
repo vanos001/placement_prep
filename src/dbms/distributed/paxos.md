@@ -280,3 +280,10 @@ Paxos is the theoretical foundation of distributed consensus. While Raft is more
 - [CAP Theorem](./cap.md) — why consensus affects availability
 - [Replication](./replication.md) — how consensus enables replication
 - [Two-Phase Commit](./consensus.md) — the related distributed commit protocol
+
+
+## Cross References
+
+- [Raft](../dbms/distributed/raft.md)
+- [Paxos (Distributed)](../distributed/consensus/paxos.md)
+- [Consensus](../dbms/distributed/consensus.md)

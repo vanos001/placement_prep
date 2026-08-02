@@ -416,3 +416,9 @@ DNS record types are the building blocks of the Internet's naming system. Each s
 - [DNS Caching](caching.md) — How TTL affects record caching
 - [DNS Security](security.md) — DNSSEC, SPF, DKIM, DMARC
 - [HTTPS](../http/https.md) — TLS certificates use DNS for verification
+
+## Cross References
+
+- [DNS Resolution](resolution.md)
+- [DNS Security](security.md)
+- [Load Balancing](../load-balancing/README.md)

@@ -351,3 +351,10 @@ A: Primary key determines the **clustering index** — data is physically sorted
 - [B+ Tree Index](../indexing/b-plus-tree.md) — How PKs affect storage
 - [Clustered vs Non-Clustered](../indexing/clustered-vs-nonclustered.md) — PK and index organization
 - [SQL DDL](../sql/ddl.md) — Defining keys in SQL
+
+
+## Cross References
+
+- [ER Diagrams](../dbms/relational-model/er-diagrams.md)
+- [Indexing](../dbms/indexing/README.md)
+- [Normalization](../dbms/normalization/README.md)

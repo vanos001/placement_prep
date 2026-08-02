@@ -493,3 +493,11 @@ Architecture:
 - [Namespaces](namespaces.md) — Isolation K8s uses
 - [Docker](docker.md) — Container runtime for K8s
 - [Security: Access Control](../security/access-control.md) — K8s RBAC
+
+
+## Cross References
+
+- [Docker](../os/containers/docker.md)
+- [K8s Pods](../cloud/kubernetes/pods.md)
+- [K8s Deployments](../cloud/kubernetes/deployments.md)
+- [Service Discovery](../distributed/microservices/discovery.md)

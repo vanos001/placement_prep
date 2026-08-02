@@ -427,3 +427,11 @@ A: ARIES uses **logical undo** for such operations. Instead of logging a before-
 - [Checkpointing](./checkpointing.md) — How ARIES uses checkpoints
 - [MVCC](./mvcc.md) — How ARIES interacts with MVCC
 - [B+ Tree Index](../indexing/b-plus-tree.md) — Index recovery with ARIES
+
+
+## Cross References
+
+- [WAL](../dbms/internals/wal.md)
+- [Recovery](../dbms/transactions/recovery.md)
+- [Checkpointing](../dbms/transactions/checkpointing.md)
+- [Buffer Pool](../dbms/caching/buffer-pool.md)

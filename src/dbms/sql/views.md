@@ -360,3 +360,10 @@ $$ LANGUAGE plpgsql;
 - [Subqueries](subqueries.md) — Alternative to views
 - [CTEs](ctes.md) — Temporary view-like constructs
 - [Normalization](../normalization/README.md) — Views can present denormalized data
+
+
+## Cross References
+
+- [CTEs](../dbms/sql/ctes.md)
+- [Stored Procedures](../dbms/sql/stored-procedures.md)
+- [Triggers](../dbms/sql/triggers.md)

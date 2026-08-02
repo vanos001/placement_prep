@@ -261,3 +261,11 @@ Consensus is the foundation of strongly consistent distributed systems. Understa
 - [CAP Theorem](./cap.md) — why consensus affects availability
 - [Consistency Models](./consistency.md) — what consensus provides
 - [Replication](./replication.md) — how consensus enables replication
+
+
+## Cross References
+
+- [Raft](../distributed/consensus/raft.md)
+- [Paxos](../distributed/consensus/paxos.md)
+- [Two-Phase Commit](../dbms/transactions/two-phase-commit.md)
+- [Distributed Transactions](../dbms/transactions/distributed.md)

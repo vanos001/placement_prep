@@ -525,3 +525,5 @@ class Library:
 - [Design Patterns](./design-patterns.md) — Strategy, Observer
 - [SOLID Principles](./solid.md) — Applied in design
 - [Concurrency Design](./concurrency-design.md) — Thread safety
+- [OOP Concepts](./oop-concepts.md)
+

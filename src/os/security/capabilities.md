@@ -463,3 +463,10 @@ Tradeoffs:
 - [SELinux](selinux.md) — MAC enforcement that complements capabilities
 - [Containers: Namespaces](../containers/namespaces.md) — Container isolation
 - [Containers: Docker](../containers/docker.md) — Docker capability management
+
+
+## Cross References
+
+- [Access Control](../os/security/access-control.md)
+- [SELinux](../os/security/selinux.md)
+- [Namespaces](../os/containers/namespaces.md)

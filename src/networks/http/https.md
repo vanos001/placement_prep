@@ -379,3 +379,10 @@ HTTPS is the foundation of web security. Understanding TLS handshakes, certifica
 - **[Security Fundamentals](../security.md)** — Broader security concepts
 - **[DNS](../dns.md)** — DNS CAA records control certificate issuance
 - **[WebSocket](./websocket.md)** — WebSocket connections use `wss://` (WebSocket over TLS)
+
+## Cross References
+
+- [TLS](../security/tls.md)
+- [SSL](../security/ssl.md)
+- [HTTP/1.1](http1.md)
+- [Certificates](../security/tls.md)

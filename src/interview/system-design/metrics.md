@@ -264,3 +264,11 @@ graph TB
 - Alerting: rule evaluation on query results, deduplication, multi-channel notification.
 - Scaling: partition by metric name hash, batch writes, query fan-out.
 - Write-Ahead Log (WAL) ensures no data loss on crash.
+
+## Cross-References
+
+- [Monitoring & Observability](./hld/monitoring-observability.md)
+- [Cloud Observability](../../cloud/observability/README.md)
+- [MLOps Monitoring](../../ml/mlops/monitoring.md)
+- [Latency vs Throughput](./latency-vs-throughput.md)
+

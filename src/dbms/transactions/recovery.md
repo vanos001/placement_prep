@@ -283,3 +283,11 @@ A: Each node maintains its own WAL. Global consistency requires: (1) 2PC for dis
 - [ARIES](./aries.md) — The complete recovery algorithm
 - [MVCC](./mvcc.md) — How MVCC interacts with recovery
 - [Distributed Transactions](./distributed.md) — Recovery in distributed systems
+
+
+## Cross References
+
+- [WAL](../dbms/internals/wal.md)
+- [ARIES](../dbms/transactions/aries.md)
+- [Checkpointing](../dbms/transactions/checkpointing.md)
+- [Deadlock Recovery (OS)](../os/synchronization/deadlocks/recovery.md)

@@ -285,3 +285,11 @@ A: In M:N, user threads don't directly map to CPUs. Options: 1) **Pinning:** Loc
 - [Green Threads](./green-threads.md) - M:1 implementation
 - [Thread Pools](./pools.md) - Efficient thread management
 - [Scheduling](../scheduling/README.md) - How threads get CPU time
+
+
+## Cross References
+
+- [User vs Kernel Threads](../os/threads/user-vs-kernel.md)
+- [Thread Pools](../os/threads/pools.md)
+- [Thread Safety](../os/threads/safety.md)
+- [Concurrency Overview](../concurrency/overview.md)

@@ -425,3 +425,10 @@ QUIC represents the most significant change to internet transport protocols in d
 - **[WebSocket](./websocket.md)** — How real-time protocols compare to QUIC-based approaches
 - **[Performance Optimization](../performance.md)** — QUIC's role in web performance
 - **[Network Fundamentals](../fundamentals.md)** — OSI model and where QUIC fits
+
+## Cross References
+
+- [HTTP/3](http3.md)
+- [UDP](../udp/README.md)
+- [TLS](../security/tls.md)
+- [TCP Congestion Control](../tcp/congestion-control.md)

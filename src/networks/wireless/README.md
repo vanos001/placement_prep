@@ -66,3 +66,9 @@ Wireless networking spans from short-range (Bluetooth) to cellular (5G). WiFi, 5
 - [5G](5g.md)
 - [SDN](sdn.md)
 - [NFV](nfv.md)
+
+## Cross References
+
+- [WiFi](wifi.md)
+- [5G](5g.md)
+- [SDN](sdn.md)

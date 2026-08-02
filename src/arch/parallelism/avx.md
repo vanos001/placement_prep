@@ -221,3 +221,9 @@ AVX extends x86 SIMD to 256 bits (AVX/AVX2) and 512 bits (AVX-512). AVX2 adds 25
 - [NEON](neon.md) — ARM's SIMD equivalent
 - [GPU](gpu.md) — Massive parallelism alternative
 - [Performance](../performance/README.md) — Optimization techniques
+
+## Cross References
+
+- [SIMD](simd.md)
+- [NEON](neon.md)
+- [x86-64](../modern/x86-64.md)

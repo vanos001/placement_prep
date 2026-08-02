@@ -243,3 +243,11 @@ Denormalize for:
 - [Denormalization](denormalization.md) — When to break normalization
 - [Relational Model](../relational-model/README.md) — Foundation concepts
 - [Keys](../relational-model/keys.md) — Keys drive normalization
+
+
+## Cross References
+
+- [1NF](../dbms/normalization/1nf.md)
+- [3NF](../dbms/normalization/3nf.md)
+- [BCNF](../dbms/normalization/bcnf.md)
+- [Keys](../dbms/relational-model/keys.md)

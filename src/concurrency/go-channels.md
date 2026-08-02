@@ -391,3 +391,6 @@ Go's concurrency model uses goroutines (lightweight threads) and channels (typed
 - [Fork-Join](./fork-join.md) — Parallel decomposition
 - [Async/Await](./async-await.md) — Alternative concurrency model
 - [Concurrency Overview](./overview.md) — Fundamental concepts
+- [Messaging Systems](../interview/system-design/hld/messaging-systems.md)
+- [Coroutines](./coroutines.md)
+

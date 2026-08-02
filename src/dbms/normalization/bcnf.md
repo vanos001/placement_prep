@@ -255,3 +255,10 @@ All in BCNF, lossless, and dependency-preserved.
 - [4NF & 5NF](4nf-5nf.md) — Higher normal forms
 - [Normalization Overview](README.md) — Functional dependencies
 - [Denormalization](denormalization.md) — When to break normalization
+
+
+## Cross References
+
+- [3NF](../dbms/normalization/3nf.md)
+- [4NF/5NF](../dbms/normalization/4nf-5nf.md)
+- [Keys](../dbms/relational-model/keys.md)

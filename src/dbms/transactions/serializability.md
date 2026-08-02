@@ -223,3 +223,11 @@ A: Most databases default to lower isolation levels (READ COMMITTED or REPEATABL
 - [Lock-Based](lock-based.md) — 2PL protocol
 - [Isolation Levels](isolation-levels.md) — Practical serializability
 - [MVCC](mvcc.md) — Snapshot isolation
+
+
+## Cross References
+
+- [Isolation Levels](../dbms/transactions/isolation-levels.md)
+- [Concurrency Control](../dbms/transactions/concurrency-control.md)
+- [Lock-Based](../dbms/transactions/lock-based.md)
+- [Critical Section (OS)](../os/synchronization/critical-section.md)

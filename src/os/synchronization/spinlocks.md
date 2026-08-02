@@ -262,3 +262,11 @@ When a mutex is contended, Linux checks if the lock holder is currently running 
 - [Memory Barriers](memory-barriers.md) — ordering in spinlock implementation
 - [Critical Section](critical-section.md) — the problem being solved
 - [Deadlocks](deadlocks/README.md) — risks with spinlocks
+
+
+## Cross References
+
+- [Mutex](../os/synchronization/mutex.md)
+- [CAS](../os/synchronization/cas.md)
+- [Lock-Free](../os/synchronization/lock-free.md)
+- [Cache Coherence](../arch/memory-hierarchy/coherence.md)

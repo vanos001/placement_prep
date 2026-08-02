@@ -248,3 +248,10 @@ Key insight: **IP addresses are end-to-end, MAC addresses are hop-by-hop**.
 - [TCP Protocol](../tcp/README.md) — Transport Layer deep dive
 - [UDP Protocol](../udp/README.md) — UDP details
 - [DNS](../dns/README.md) — Application Layer resolution
+
+## Cross References
+
+- [OSI Model](../osi/README.md)
+- [TCP Protocol](../tcp/README.md)
+- [IP Addressing](ip.md)
+- [Routing](../routing/README.md)

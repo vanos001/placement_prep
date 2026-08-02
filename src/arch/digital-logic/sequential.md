@@ -210,3 +210,9 @@ Sequential circuits add memory to digital systems using flip-flops. They're sync
 - [Flip-Flops](flip-flops.md) — Memory elements
 - [Combinational Circuits](combinational.md) — Stateless circuits
 - [Registers](../cpu/registers.md) — CPU registers
+
+## Cross References
+
+- [Combinational Circuits](combinational.md)
+- [Flip-Flops](flip-flops.md)
+- [Registers](../cpu/registers.md)

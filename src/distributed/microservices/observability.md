@@ -370,3 +370,10 @@ Observability is essential for operating distributed systems. Metrics provide nu
 - [API Gateways](api-gateways.md) — Gateway metrics and logging
 - [Stream Processing](../mapreduce/streaming.md) — Processing observability data
 - [Message Queues](../messaging/queues.md) — Queue monitoring
+
+## Cross References
+
+- [Cloud Observability](../../cloud/observability/README.md)
+- [Distributed Tracing](../../cloud/observability/tracing.md)
+- [Logging](../../cloud/observability/logging.md)
+- [Monitoring](../../cloud/observability/monitoring.md)

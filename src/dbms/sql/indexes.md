@@ -388,3 +388,11 @@ INCLUDE columns are not part of the B+ tree ordering — they're only stored in 
 - [Composite Index](../indexing/composite-index.md) — Multi-column index strategies
 - [Query Tuning](../indexing/tuning.md) — Using indexes for optimization
 - [DDL](ddl.md) — Creating indexes
+
+
+## Cross References
+
+- [Indexing](../dbms/indexing/README.md)
+- [B+ Tree](../dbms/indexing/b-plus-tree.md)
+- [Query Optimization](../dbms/query-processing/optimization.md)
+- [Covering Index](../dbms/indexing/covering-index.md)

@@ -287,3 +287,5 @@ File storage provides hierarchical file/directory access through standard protoc
 - [Distributed Storage](./distributed.md) — Distributed systems theory
 - [Object Storage](./object-storage.md) — Flat namespace alternative
 - [Storage Overview](./overview.md) — Storage hierarchy
+- [OS Filesystems](../os/filesystems/ext4.md)
+

@@ -274,3 +274,6 @@ Transactional Memory simplifies concurrent programming by replacing locks with a
 - [Lock-Free](./lock-free.md) — Alternative lock-free approach
 - [Concurrency Overview](./overview.md) — Synchronization primitives
 - [Java Concurrency](./java.md) — Java's concurrency utilities
+- [DBMS Transactions](../dbms/transactions/acid.md)
+- [DBMS Two-Phase Commit](../dbms/transactions/two-phase-commit.md)
+

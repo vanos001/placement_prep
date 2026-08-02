@@ -269,3 +269,10 @@ This design is in 3NF: every non-prime attribute depends directly on its table's
 - [BCNF](bcnf.md) — Stronger form: every determinant is a candidate key
 - [Normalization Overview](README.md) — Functional dependencies and decomposition
 - [Denormalization](denormalization.md) — When to break 3NF for performance
+
+
+## Cross References
+
+- [2NF](../dbms/normalization/2nf.md)
+- [BCNF](../dbms/normalization/bcnf.md)
+- [Denormalization](../dbms/normalization/denormalization.md)

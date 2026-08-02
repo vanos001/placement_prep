@@ -154,3 +154,12 @@ graph TB
 ## Summary
 
 ML Infrastructure requires careful planning across compute, storage, orchestration, and serving. Cloud providers offer managed solutions (SageMaker, Vertex AI), while Kubernetes provides flexibility. Key considerations include cost optimization, auto-scaling, and choosing the right compute (CPU vs GPU) for each workload.
+
+## Cross-References
+
+- [Cloud Overview](../../cloud/overview.md)
+- [Kubernetes](../../cloud/kubernetes/README.md)
+- [GPU in Cloud](../../cloud/virtualization/README.md)
+- [MLOps Platforms](./platforms.md)
+- [Storage Overview](../../storage/overview.md)
+

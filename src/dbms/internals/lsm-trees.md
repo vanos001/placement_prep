@@ -390,3 +390,12 @@ A: Write amplification = total bytes written to disk / bytes written by applicat
 - **Write amplification**: Key tradeoff — LSM trades write amplification for write throughput
 - **RocksDB**: Most popular LSM engine; supports level-based, universal, and FIFO compaction
 - **LevelDB**: Simpler predecessor by Google; single-threaded compaction
+
+
+## Cross References
+
+- [B-Tree](../dbms/indexing/b-tree.md)
+- [Compaction](../dbms/internals/compaction.md)
+- [WAL](../dbms/internals/wal.md)
+- [SSD](../storage/ssd.md)
+- [Write Policies](../arch/memory-hierarchy/write-policies.md)

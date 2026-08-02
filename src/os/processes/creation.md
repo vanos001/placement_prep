@@ -303,3 +303,11 @@ A: Key considerations: 1) Use `posix_spawn()` or `clone()` instead of `fork()+ex
 - [Zombie & Orphan](./zombie-orphan.md) - What happens when parent-child coordination fails
 - [Threads](../threads/README.md) - Lighter alternative to processes
 - [IPC](./ipc.md) - How created processes communicate
+
+
+## Cross References
+
+- [Process States](../os/processes/states.md)
+- [Zombie/Orphan](../os/processes/zombie-orphan.md)
+- [Copy-on-Write](../os/virtual-memory/cow.md)
+- [IPC](../os/processes/ipc.md)

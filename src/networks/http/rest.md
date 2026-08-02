@@ -503,3 +503,10 @@ REST's simplicity, HTTP-native design, and broad tooling support have made it th
 - **[HTTP/2](./http2.md)** — HTTP/2 benefits for REST (multiplexing, header compression)
 - **[WebSocket](./websocket.md)** — Real-time alternatives to REST polling
 - **[HTTP Status Codes](./status-codes.md)** — Detailed status code reference
+
+## Cross References
+
+- [gRPC](grpc.md)
+- [HTTP/1.1](http1.md)
+- [API Gateways](../../distributed/microservices/api-gateways.md)
+- [Microservices](../../distributed/microservices/README.md)

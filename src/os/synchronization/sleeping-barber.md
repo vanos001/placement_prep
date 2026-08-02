@@ -209,3 +209,10 @@ The sleeping barber is a variant of producer-consumer where: customers are produ
 - [Monitors](monitors.md) — alternative implementation approach
 - [Critical Section](critical-section.md) — the fundamental problem
 - [Deadlocks](deadlocks/README.md) — what to avoid
+
+
+## Cross References
+
+- [Semaphores](../os/synchronization/semaphores.md)
+- [Dining Philosophers](../os/synchronization/dining-philosophers.md)
+- [Producer-Consumer](../concurrency/producer-consumer.md)

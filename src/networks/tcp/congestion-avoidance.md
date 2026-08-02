@@ -169,3 +169,9 @@ Like BBR:
 - [Fast Recovery](fast-recovery.md) — Avoiding slow start after loss
 - [TCP Reno](reno.md) — Classic algorithm
 - [TCP CUBIC](cubic.md) — Cubic growth function
+
+## Cross References
+
+- [Congestion Control](congestion-control.md)
+- [Slow Start](slow-start.md)
+- [TCP Cubic](cubic.md)

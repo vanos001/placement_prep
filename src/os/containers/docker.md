@@ -413,3 +413,11 @@ Pipeline:
 - [Namespaces](namespaces.md) — Isolation Docker uses
 - [Kubernetes](kubernetes.md) — Orchestrating Docker containers
 - [Security: Capabilities](../security/capabilities.md) — Docker capability management
+
+
+## Cross References
+
+- [Namespaces](../os/containers/namespaces.md)
+- [Cgroups](../os/containers/cgroups.md)
+- [VM vs Container](../cloud/virtualization/vm-vs-container.md)
+- [Kubernetes](../os/containers/kubernetes.md)

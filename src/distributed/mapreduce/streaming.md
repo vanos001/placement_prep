@@ -315,3 +315,10 @@ Stream processing handles unbounded data streams in real-time. Key concepts incl
 - [Kafka](../messaging/kafka.md) — Common source/sink
 - [Message Queues](../messaging/queues.md) — Delivery guarantees
 - [Observability](../microservices/observability.md) — Monitoring stream jobs
+
+## Cross References
+
+- [MapReduce](mapreduce.md)
+- [Spark](spark.md)
+- [Kafka](../messaging/kafka.md)
+- [Pub/Sub](../messaging/pubsub.md)

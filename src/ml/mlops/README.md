@@ -55,3 +55,12 @@ graph TB
 ## Summary
 
 MLOps is essential for moving ML from research to production. It ensures reproducibility, scalability, and reliability of ML systems through automation, monitoring, and best practices borrowed from DevOps and Data Engineering.
+
+## Cross-References
+
+- [ML Pipelines](./pipelines.md)
+- [Model Deployment](./deployment.md)
+- [Monitoring](./monitoring.md)
+- [Cloud Kubernetes](../../cloud/kubernetes/README.md)
+- [CI/CD](../../cloud/cicd/README.md)
+

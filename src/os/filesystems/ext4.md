@@ -228,3 +228,10 @@ If the primary superblock is corrupted, the copies can be used for recovery. Not
 - [Free Space Management](free-space.md) — bitmaps and block groups
 - [Journaling](journaling.md) — crash consistency mechanisms
 - [VFS](vfs.md) — how ext4 plugs into the kernel
+
+
+## Cross References
+
+- [Journaling](../os/filesystems/journaling.md)
+- [VFS](../os/filesystems/vfs.md)
+- [Disk Allocation](../os/filesystems/disk-allocation.md)

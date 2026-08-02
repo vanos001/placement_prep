@@ -164,3 +164,12 @@ A: Through MVCC (Multi-Version Concurrency Control) — readers don't block writ
 - [Isolation Levels](isolation-levels.md)
 - [Recovery](recovery.md)
 - [Distributed Transactions](distributed.md)
+
+
+## Cross References
+
+- [ACID](../dbms/transactions/acid.md)
+- [Concurrency Control](../dbms/transactions/concurrency-control.md)
+- [Isolation Levels](../dbms/transactions/isolation-levels.md)
+- [Synchronization (OS)](../os/synchronization/README.md)
+- [Distributed Consensus](../distributed/consensus/raft.md)

@@ -144,3 +144,12 @@ Container adds a writable layer on top
 - [Kubernetes](kubernetes.md) — Orchestration
 - [Security: Access Control](../security/access-control.md) — DAC/MAC in containers
 - [Security: SELinux](../security/selinux.md) — SELinux in containers
+
+
+## Cross References
+
+- [Docker](../os/containers/docker.md)
+- [Kubernetes](../os/containers/kubernetes.md)
+- [Namespaces](../os/containers/namespaces.md)
+- [VM vs Container](../cloud/virtualization/vm-vs-container.md)
+- [Hypervisors](../cloud/virtualization/hypervisors.md)

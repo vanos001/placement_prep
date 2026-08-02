@@ -190,3 +190,11 @@ Design:
 - [Flow Control](flow-control.md) — Sliding window mechanism
 - [Congestion Control](congestion-control.md) — Network overload prevention
 - [UDP](../udp/README.md) — The alternative transport protocol
+
+## Cross References
+
+- [UDP](../udp/README.md)
+- [TCP Header](header.md)
+- [Three-Way Handshake](three-way.md)
+- [Congestion Control](congestion-control.md)
+- [Sockets](../sockets/tcp.md)

@@ -297,3 +297,12 @@ With replication: 300 GB
 - Sharding: by first character or hash of prefix for even distribution.
 - Ranking: frequency + trending + personalization + freshness.
 - Memory: ~100GB for 5 billion unique queries (shared prefixes reduce node count).
+
+## Cross-References
+
+- [Search Engine](./search.md)
+- [Trie Data Structure](../coding/data-structures.md)
+- [Caching Strategy](./hld/caching-strategy.md)
+- [Estimation](./estimation.md)
+- [ML Search Ranking](../../ml/system-design/search-ranking.md)
+

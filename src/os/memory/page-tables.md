@@ -596,3 +596,12 @@ A:
 - **See Also**: [Inverted Page Tables](./inverted-page-tables.md) — alternative structure
 - **Advanced**: [Huge Pages](./huge-pages.md) — fewer page table entries
 - **Virtual Memory**: [Copy-on-Write](../virtual-memory/cow.md) — using PTE bits for COW
+
+
+## Cross References
+
+- [Paging](../os/memory/paging.md)
+- [TLB](../os/memory/tlb.md)
+- [Virtual Memory](../os/virtual-memory/README.md)
+- [Multi-Level Page Tables](../os/memory/multi-level-page-tables.md)
+- [Cache Hierarchy](../arch/memory-hierarchy/cache-basics.md)

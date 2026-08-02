@@ -341,3 +341,10 @@ The bootloader is the critical bridge between firmware and the operating system.
 - initramfs provides temporary drivers to mount the real root filesystem
 - Always use `/etc/default/grub` + `update-grub` for configuration changes
 - Know how to repair GRUB from a live USB (chroot + grub-install)
+
+
+## Cross References
+
+- [BIOS/UEFI](../os/boot/bios-uefi.md)
+- [Init Systems](../os/boot/init-systems.md)
+- [Kernel Threads](../os/threads/user-vs-kernel.md)

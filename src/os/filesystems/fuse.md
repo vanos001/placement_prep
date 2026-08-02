@@ -302,3 +302,11 @@ Not directly, because the FUSE daemon runs in userspace and needs the kernel to 
 - [File Concepts](file-concepts.md) — files and operations
 - [Device Drivers](../io/device-drivers.md) — kernel vs. userspace I/O
 - [Security](../security/README.md) — FUSE security considerations
+
+
+## Cross References
+
+- [VFS](../os/filesystems/vfs.md)
+- [Device Drivers](../os/io/device-drivers.md)
+- [User vs Kernel](../os/threads/user-vs-kernel.md)
+- [Object Storage](../storage/object-storage.md)

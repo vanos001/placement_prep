@@ -282,3 +282,10 @@ Optimal: DDR5-6000 at 1:1 ratio (FCLK 3000 MHz)
 - [Out-of-Order Execution](../pipelining/ooo.md) — Zen's OoO engine
 - [Cache Basics](../memory-hierarchy/cache-basics.md) — Zen's cache hierarchy
 - [AVX](../parallelism/avx.md) — AVX-512 implementation details
+
+## Cross References
+
+- [x86-64](x86-64.md)
+- [Alder Lake](alder-lake.md)
+- [SMT](../parallelism/smt.md)
+- [Cache Hierarchy](../memory-hierarchy/levels.md)

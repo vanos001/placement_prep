@@ -298,3 +298,6 @@ Fork-join parallelism recursively decomposes tasks into parallel subtasks and co
 - [Async/Await](./async-await.md) — Asynchronous alternative
 - [Lock-Free](./lock-free.md) — Lock-free task queues
 - [Concurrency Overview](./overview.md) — Fundamental concepts
+- [ML Training](../ml/deep-learning/backpropagation.md)
+- [Cloud Lambda](../cloud/aws/lambda.md)
+

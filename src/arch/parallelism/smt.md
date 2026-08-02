@@ -230,3 +230,10 @@ SMT (Hyper-Threading) allows multiple hardware threads to share a physical core'
 - [Cache Coherence](../memory-hierarchy/coherence.md) — Shared cache implications
 - [Concurrency](../../concurrency/overview.md) — Software threading
 - [Performance](../performance/README.md) — Throughput optimization
+
+## Cross References
+
+- [Multicore](multicore.md)
+- [Superscalar](../pipelining/superscalar.md)
+- [OoO Execution](../pipelining/ooo.md)
+- [OS Threads](../../os/threads/README.md)

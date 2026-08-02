@@ -278,3 +278,11 @@ Hash join is the workhorse of modern database systems for equi-joins. Understand
 - [Join Algorithms Overview](./joins.md) — comparison of all join types
 - [Buffer Management](../storage/buffer-management.md) — how memory is managed during hash join
 - [Cost Estimation](./cost-estimation.md) — how hash join cost is estimated
+
+
+## Cross References
+
+- [Nested Loop](../dbms/query-processing/nested-loop.md)
+- [Sort Merge](../dbms/query-processing/sort-merge.md)
+- [Hash Index](../dbms/indexing/hash-index.md)
+- [Cache Hierarchy](../arch/memory-hierarchy/README.md)

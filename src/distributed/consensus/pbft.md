@@ -248,3 +248,9 @@ PBFT is the foundational algorithm for Byzantine fault tolerance. It uses a thre
 - [Paxos](paxos.md) — Classic consensus
 - [Chain Replication](../replication/chain.md) — Alternative replication strategy
 - [Circuit Breakers](../microservices/circuit-breakers.md) — Handling faulty nodes
+
+## Cross References
+
+- [Paxos](paxos.md)
+- [Raft](raft.md)
+- [FLP Impossibility](../fundamentals/flp.md)

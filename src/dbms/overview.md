@@ -217,3 +217,12 @@ A: The optimizer:
 - [Normalization](normalization/README.md) — Eliminating data redundancy
 - [Transactions](transactions/README.md) — ACID and concurrency control
 - [Indexing](indexing/README.md) — Performance optimization
+
+
+## Cross References
+
+- [Relational Model](../dbms/relational-model/README.md)
+- [SQL](../dbms/sql/README.md)
+- [Transactions](../dbms/transactions/README.md)
+- [OS Overview](../os/overview.md)
+- [Storage Overview](../storage/overview.md)

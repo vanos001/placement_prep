@@ -292,3 +292,11 @@ FIFO is the simplest page replacement algorithm — evict the oldest page. Its s
 - Page fault rate = (Total faults) / (Total references)
 - Belady's anomaly: `faults(n frames) > faults(n-1 frames)` is possible with FIFO
 - Stack algorithm property: `S(n) ⊆ S(n+1)` for all reference strings (LRU and Optimal satisfy this; FIFO does not)
+
+
+## Cross References
+
+- [Page Replacement](../os/virtual-memory/page-replacement.md)
+- [LRU](../os/virtual-memory/lru.md)
+- [Clock Algorithm](../os/virtual-memory/clock.md)
+- [Cache Replacement](../arch/memory-hierarchy/replacement.md)

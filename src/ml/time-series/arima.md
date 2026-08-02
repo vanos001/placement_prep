@@ -166,3 +166,12 @@ plt.show()
 ## Summary
 
 ARIMA is a powerful classical method for time series forecasting. It combines autoregression, differencing, and moving averages. Key steps include achieving stationarity, selecting parameters (p,d,q) using ACF/PACF, and validating with residual diagnostics. For seasonal data, use SARIMA; for external variables, use SARIMAX.
+
+## Cross-References
+
+- [Time Series Overview](./README.md)
+- [Prophet](./prophet.md)
+- [Anomaly Detection](./anomaly.md)
+- [Transformers for Time Series](./transformers.md)
+- [ML Foundations Probability](../foundations/probability.md)
+

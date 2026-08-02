@@ -319,3 +319,12 @@ A: 2PC latency is bounded by the slowest participant. The slow database: (1) inc
 - [Saga Pattern](./saga.md) — Alternative to 2PC
 - [Recovery](./recovery.md) — How 2PC interacts with recovery
 - [ARIES](./aries.md) — Recovery algorithm used with 2PC
+
+
+## Cross References
+
+- [Three-Phase Commit](../dbms/transactions/three-phase-commit.md)
+- [Distributed Transactions](../dbms/transactions/distributed.md)
+- [Consensus (Raft)](../distributed/consensus/raft.md)
+- [Paxos](../distributed/consensus/paxos.md)
+- [Deadlocks (OS)](../os/synchronization/deadlocks/README.md)

@@ -524,3 +524,11 @@ Post-compromise detection:
 - [SELinux](selinux.md) — MAC implementation in Linux
 - [Containers: Namespaces](../containers/namespaces.md) — Isolation mechanisms
 - [Containers: Cgroups](../containers/cgroups.md) — Resource control
+
+
+## Cross References
+
+- [Capabilities](../os/security/capabilities.md)
+- [SELinux](../os/security/selinux.md)
+- [Namespaces](../os/containers/namespaces.md)
+- [TLS/SSL](../networks/security/tls.md)

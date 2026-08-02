@@ -303,3 +303,7 @@ Layer 6: Infrastructure → Network segmentation, monitoring
 - [Load Balancing](./load-balancing-design.md) — SSL termination
 - [Monitoring](./monitoring-observability.md) — Security logging
 - [Consistency Tradeoffs](./consistency-tradeoffs.md) — Security vs usability
+- [Networks Security](../../networks/security/ssl.md)
+- [Cloud VPC](../../cloud/aws/vpc.md)
+- [DBMS Transactions](../../dbms/transactions/acid.md)
+

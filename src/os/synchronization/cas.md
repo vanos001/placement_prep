@@ -231,3 +231,11 @@ For lock acquire: `memory_order_acquire` (ensures subsequent reads see writes be
 - [Memory Barriers](memory-barriers.md) — ordering guarantees
 - [Spinlocks](spinlocks.md) — CAS-based spinlock implementation
 - [Critical Section](critical-section.md) — the problem CAS solves
+
+
+## Cross References
+
+- [Spinlocks](../os/synchronization/spinlocks.md)
+- [Lock-Free](../os/synchronization/lock-free.md)
+- [Memory Barriers](../os/synchronization/memory-barriers.md)
+- [Atomic Operations](../arch/cpu/README.md)

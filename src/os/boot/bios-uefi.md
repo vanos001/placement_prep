@@ -295,3 +295,10 @@ efivar -p -n 8BE4DF61-93CA-11d2-AA0D-00E098032B8C-BootOrder
 | Network | Limited | Full TCP/IP stack |
 
 **Key Takeaway**: UEFI is the modern standard that replaces BIOS. It provides faster boot, larger disk support, Secure Boot for tamper protection, and a modular architecture. For placement interviews, focus on understanding the boot chain (firmware → bootloader → kernel → init), the role of the ESP, and how Secure Boot establishes a chain of trust.
+
+
+## Cross References
+
+- [Bootloader](../os/boot/bootloader.md)
+- [Init Systems](../os/boot/init-systems.md)
+- [I/O Hardware](../os/io/hardware.md)

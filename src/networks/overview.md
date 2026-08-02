@@ -102,3 +102,10 @@ Physical Layer       → Cables, Radio, Fiber, Electrical Signals
 - For **Operating System** concepts related to networking (sockets, I/O), see [OS Section](../os/README.md)
 - For **System Design** applications, see [System Design Section](../system-design/README.md)
 - For **Database** networking (connections, replication), see [DBMS Section](../dbms/README.md)
+
+## Cross References
+
+- [OSI Model](osi/README.md)
+- [TCP/IP Stack](tcp-ip/README.md)
+- [Distributed Systems Overview](../distributed/overview.md)
+- [Cloud Overview](../cloud/overview.md)

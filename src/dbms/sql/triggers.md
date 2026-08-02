@@ -498,3 +498,10 @@ $$ LANGUAGE plpgsql;
 - [DDL](ddl.md) — Creating triggers
 - [DML](dml.md) — Operations that fire triggers
 - [Transactions](../transactions/README.md) — Trigger behavior in transactions
+
+
+## Cross References
+
+- [Stored Procedures](../dbms/sql/stored-procedures.md)
+- [Views](../dbms/sql/views.md)
+- [ACID](../dbms/transactions/acid.md)

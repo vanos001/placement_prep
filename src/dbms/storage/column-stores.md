@@ -269,3 +269,11 @@ Column stores are the foundation of modern analytics. Understanding the trade-of
 - [Buffer Management](./buffer-management.md) — page-level caching
 - [Query Processing](../query-processing/) — how queries execute differently on column stores
 - [Redis](../caching/redis.md) — in-memory data structure store
+
+
+## Cross References
+
+- [Record Formats](../dbms/storage/record-formats.md)
+- [Bitmap Index](../dbms/indexing/bitmap-index.md)
+- [SIMD](../arch/parallelism/simd.md)
+- [Compression](../ml/advanced/compression.md)

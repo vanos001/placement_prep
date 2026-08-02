@@ -212,3 +212,10 @@ Primary-backup replication is the foundation of most distributed databases. The 
 - [Quorum-Based Replication](quorum.md) — Tunable consistency
 - [Consensus Algorithms](../consensus/README.md) — Used for leader election
 - [Raft](../consensus/raft.md) — Primary-backup with consensus
+
+## Cross References
+
+- [Multi-Primary](multi-primary.md)
+- [Quorum](quorum.md)
+- [Consistency](../fundamentals/consistency.md)
+- [DBMS Replication](../../dbms/distributed/replication.md)

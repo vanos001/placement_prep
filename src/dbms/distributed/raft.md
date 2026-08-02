@@ -331,3 +331,11 @@ Raft has become the standard consensus algorithm for modern distributed systems,
 - [Replication](./replication.md) — Raft enables strong replication
 - [Consistency Models](./consistency.md) — what Raft provides
 - [WAL](../internals/wal.md) — write-ahead log (Raft log is similar)
+
+
+## Cross References
+
+- [Paxos](../dbms/distributed/paxos.md)
+- [Raft (Distributed)](../distributed/consensus/raft.md)
+- [Consensus](../dbms/distributed/consensus.md)
+- [Leader Election](../distributed/consensus/raft.md)

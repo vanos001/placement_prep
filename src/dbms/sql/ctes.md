@@ -402,3 +402,10 @@ Note: Recursive CTEs for shortest path are not efficient (they explore all paths
 - [Window Functions](window-functions.md) — Often combined with CTEs
 - [Views](views.md) — Permanent CTE-like constructs
 - [Stored Procedures](stored-procedures.md) — Persistent procedural logic
+
+
+## Cross References
+
+- [Subqueries](../dbms/sql/subqueries.md)
+- [Views](../dbms/sql/views.md)
+- [Query Optimization](../dbms/query-processing/optimization.md)

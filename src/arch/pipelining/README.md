@@ -42,3 +42,10 @@ Pipelined: 4 instructions = 7 time units (after pipeline fills)
 - Explain forwarding/bypassing with a concrete example
 - Compare static and dynamic branch prediction
 - Explain how superscalar and out-of-order execution extend pipelining
+
+## Cross References
+
+- [Classic Pipeline](classic.md)
+- [Hazards](hazards.md)
+- [Superscalar](superscalar.md)
+- [OS Scheduling](../../os/scheduling/README.md)

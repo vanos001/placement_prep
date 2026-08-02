@@ -290,3 +290,15 @@ stateDiagram-v2
 - Settlement: daily aggregation of captured transactions, minus fees, transferred to merchant.
 - PostgreSQL for strong consistency; Kafka for async event processing.
 - PCI DSS compliance: tokenization, encryption, never store raw card data.
+
+## Cross-References
+
+- [Notification System](./notifications.md)
+- [Consistency Patterns](./consistency-patterns.md)
+- [Availability Patterns](./availability-patterns.md)
+- [Stock Exchange](./stock-exchange.md)
+- [Real-World: Uber](./real-world/uber.md)
+- [DBMS Transactions](../../dbms/transactions/acid.md)
+- [DBMS Distributed](../../dbms/transactions/distributed.md)
+- [Cloud AWS](../../cloud/aws/README.md)
+

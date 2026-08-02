@@ -324,3 +324,6 @@ Async/await provides a way to write non-blocking code that looks synchronous. Th
 - [Thread Pools](./thread-pools.md) — Alternative for CPU-bound work
 - [Go Channels](./go-channels.md) — Go's concurrency model
 - [Concurrency Overview](./overview.md) — Fundamental concepts
+- [LLM Batching](../llm/llm-serving/batching.md)
+- [Cloud Lambda](../cloud/aws/lambda.md)
+

@@ -505,3 +505,8 @@ ReentrantLock lock = new ReentrantLock(true);  // Fair lock
 - [Error Handling](./error-handling.md) — Error handling in async
 - [LRU Cache](./cache-lld.md) — Thread-safe cache implementation
 - [Notification Service](./notification-service.md) — Async notification delivery
+- [Concurrency Overview](../../../concurrency/overview.md)
+- [Producer-Consumer](../../../concurrency/producer-consumer.md)
+- [Readers-Writers](../../../concurrency/readers-writers.md)
+- [OS Synchronization](../../../os/synchronization/mutex.md)
+

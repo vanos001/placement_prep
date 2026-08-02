@@ -140,3 +140,11 @@ Every access must be checked. No caching of access decisions that could become s
 - [Access Control](access-control.md) — DAC, MAC, RBAC in detail
 - [Capabilities](capabilities.md) — Linux capabilities deep dive
 - [SELinux](selinux.md) — SELinux architecture and usage
+
+
+## Cross References
+
+- [Access Control](../os/security/access-control.md)
+- [Capabilities](../os/security/capabilities.md)
+- [SELinux](../os/security/selinux.md)
+- [Namespaces](../os/containers/namespaces.md)

@@ -196,3 +196,11 @@ Join algorithms are fundamental to database performance. Understanding them deep
 - [Query Optimization](./optimization.md) — how the optimizer selects join algorithms
 - [Cost Estimation](./cost-estimation.md) — how join costs are estimated
 - [Buffer Management](../storage/buffer-management.md) — memory management for joins
+
+
+## Cross References
+
+- [Nested Loop](../dbms/query-processing/nested-loop.md)
+- [Hash Join](../dbms/query-processing/hash-join.md)
+- [Sort Merge](../dbms/query-processing/sort-merge.md)
+- [Query Optimization](../dbms/query-processing/optimization.md)

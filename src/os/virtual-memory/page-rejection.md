@@ -432,3 +432,10 @@ Page replacement is a fundamental virtual memory concept. The choice of algorith
 - Which are stack algorithms (LRU, Optimal) vs. which aren't (FIFO, Clock)
 - The trade-off between accuracy and implementation cost
 - How real OSes implement page replacement (approximations, not exact algorithms)
+
+
+## Cross References
+
+- [Page Replacement](../os/virtual-memory/page-replacement.md)
+- [Thrashing](../os/virtual-memory/thrashing.md)
+- [Working Set](../os/virtual-memory/working-set.md)

@@ -343,3 +343,11 @@ A: **POSIX threads** (1:1): kernel-managed, true parallelism, OS-visible, ~1-10Î
 - [Green Threads](./green-threads.md) - User-space threads
 - [Synchronization](../synchronization/README.md) - Mutex, semaphore, etc.
 - [Processes](../processes/README.md) - Heavyweight alternative
+
+
+## Cross References
+
+- [Process vs Thread](../os/processes/README.md)
+- [Thread Models](../os/threads/models.md)
+- [Synchronization](../os/synchronization/README.md)
+- [Concurrency Overview](../concurrency/overview.md)

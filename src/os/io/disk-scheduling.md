@@ -258,3 +258,12 @@ Design: Multi-Class Priority Scheduler with Bandwidth Reservation
 - [C-SCAN](disk-cscan.md) — Circular SCAN
 - [LOOK / C-LOOK](disk-look.md) — Optimized SCAN variants
 - [Buffering](buffering.md) — How buffered requests interact with scheduling
+
+
+## Cross References
+
+- [FCFS](../os/io/disk-fcfs.md)
+- [SSTF](../os/io/disk-sstf.md)
+- [SCAN](../os/io/disk-scan.md)
+- [Disk Allocation](../os/filesystems/disk-allocation.md)
+- [HDD](../storage/hdd.md)

@@ -266,3 +266,10 @@ Message queues provide reliable asynchronous communication between distributed c
 - [Pub/Sub](pubsub.md) — Publish-subscribe patterns
 - [Stream Processing](../mapreduce/streaming.md) — Processing message streams
 - [Circuit Breakers](../microservices/circuit-breakers.md) — Handling consumer failures
+
+## Cross References
+
+- [RabbitMQ](rabbitmq.md)
+- [Kafka](kafka.md)
+- [OS Synchronization](../../os/synchronization/README.md)
+- [Concurrency - Producer/Consumer](../../concurrency/producer-consumer.md)

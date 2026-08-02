@@ -461,3 +461,11 @@ DELETE FROM Employees WHERE deleted_at IS NOT NULL AND deleted_at < NOW() - INTE
 - [Window Functions](window-functions.md) — Advanced SELECT analytics
 - [CTEs](ctes.md) — Readable complex queries
 - [Transactions](../transactions/README.md) — Wrapping DML in transactions
+
+
+## Cross References
+
+- [DDL](../dbms/sql/ddl.md)
+- [SQL Joins](../dbms/sql/joins.md)
+- [Subqueries](../dbms/sql/subqueries.md)
+- [Query Processing](../dbms/query-processing/README.md)

@@ -281,3 +281,7 @@ Client → LB → Any Server → Redis (session store)
 - [Caching Strategy](./caching-strategy.md) — Consistent hashing for cache distribution
 - [API Design](./api-design.md) — Rate limiting at the LB level
 - [Security Design](./security-design.md) — SSL termination, DDoS protection
+- [Cloud Kubernetes Services](../../cloud/kubernetes/services.md)
+- [Networks HTTP](../../networks/http/rest.md)
+- [Rate Limiter](../rate-limiter.md)
+

@@ -306,3 +306,10 @@ Document databases are the most popular NoSQL type, offering a good balance of f
 - [NewSQL](./newsql.md) — SQL + distributed scalability
 - [Sharding](../distributed/sharding.md) — how document databases scale
 - [Indexing](../indexing/) — B-tree and other indexes
+
+
+## Cross References
+
+- [Key-Value](../dbms/nosql/key-value.md)
+- [B-Tree](../dbms/indexing/b-tree.md)
+- [Relational Model](../dbms/relational-model/README.md)

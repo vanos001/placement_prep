@@ -246,3 +246,5 @@ SSDs store data in NAND flash cells using trapped charge. The FTL translates log
 - [NVMe](./nvme.md) — High-performance SSD interface
 - [Erasure Coding](./erasure-coding.md) — Redundancy for SSD arrays
 - [Storage Overview](./overview.md) — Storage hierarchy
+- [Latency Numbers](../interview/system-design/latency-numbers.md)
+

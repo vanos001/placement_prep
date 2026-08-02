@@ -114,3 +114,11 @@ Start with [Scalability Fundamentals](./scalability.md) to understand the founda
 ---
 
 *Each page in this section includes real-world examples, architecture diagrams, and interview-specific guidance.*
+
+## Cross-References
+
+- [System Design Framework](../framework.md)
+- [LLD Overview](../lld/README.md)
+- [Estimation](../estimation.md)
+- [Latency Numbers](../latency-numbers.md)
+

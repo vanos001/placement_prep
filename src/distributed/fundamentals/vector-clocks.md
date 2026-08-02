@@ -260,3 +260,9 @@ print(p1.compare(p2))  # 'concurrent'
 - [Consistency Models](./consistency.md) — Causal consistency uses vector clocks
 - [Quorum Replication](../replication/quorum.md) — Version vectors in Dynamo-style systems
 - [Multi-Primary Replication](../replication/multi-primary.md) — Conflict detection with vector clocks
+
+## Cross References
+
+- [Lamport Clocks](lamport.md)
+- [Time](time.md)
+- [Consistency](consistency.md)

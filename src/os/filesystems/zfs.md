@@ -302,3 +302,11 @@ ZFS uses RAM for: (1) ARC read cache (typically 50-75% of RAM), (2) metadata cac
 - [Journaling](journaling.md) — ZFS uses COW instead
 - [Disk Allocation](disk-allocation.md) — ZFS's variable-width stripes
 - [I/O Buffering](../io/buffering.md) — ARC and page cache
+
+
+## Cross References
+
+- [Btrfs](../os/filesystems/btrfs.md)
+- [RAID](../os/filesystems/raid.md)
+- [Erasure Coding](../storage/erasure-coding.md)
+- [Copy-on-Write](../os/virtual-memory/cow.md)

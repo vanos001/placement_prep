@@ -270,3 +270,12 @@ Modern databases use **heap files + B+ tree indexes** as the dominant storage st
 - [Column Stores](./column-stores.md) — alternative column-oriented storage
 - [Indexing](../indexing/) — B+ tree and other index structures
 - [LSM Trees](../internals/lsm-trees.md) — alternative for write-heavy workloads
+
+
+## Cross References
+
+- [Record Formats](../dbms/storage/record-formats.md)
+- [File Concepts (OS)](../os/filesystems/file-concepts.md)
+- [Disk Allocation (OS)](../os/filesystems/disk-allocation.md)
+- [B+ Tree](../dbms/indexing/b-plus-tree.md)
+- [HDD](../storage/hdd.md)

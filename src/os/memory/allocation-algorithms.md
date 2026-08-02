@@ -501,3 +501,11 @@ A:
 - **Related**: [Buddy System](./buddy-system.md) — power-of-2 splitting allocator
 - **Related**: [Slab Allocator](./slab-allocator.md) — kernel object caching
 - **Virtual Memory**: [Page Replacement](../virtual-memory/page-replacement.md) — similar selection problem
+
+
+## Cross References
+
+- [Buddy System](../os/memory/buddy-system.md)
+- [Slab Allocator](../os/memory/slab-allocator.md)
+- [Contiguous Allocation](../os/memory/contiguous.md)
+- [File Organization](../dbms/storage/file-organization.md)

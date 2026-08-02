@@ -241,3 +241,9 @@ the cost of stalling (every branch).
 - [Control Hazards](./control-hazards.md) — The hazard speculation addresses
 - [Out-of-Order Execution](./ooo.md) — Complementary technique to speculation
 - [Superscalar](./superscalar.md) — Wider issue enables more speculation
+
+## Cross References
+
+- [Branch Prediction](branch-prediction.md)
+- [Control Hazards](control-hazards.md)
+- [OoO Execution](ooo.md)

@@ -243,3 +243,11 @@ GPUs are massively parallel processors with thousands of simple cores optimized 
 - [GDDR](../memory-tech/gddr.md) — GPU memory alternative
 - [PCIe](../io/pcie.md) — GPU interconnect
 - [Concurrency](../../concurrency/overview.md) — Software parallelism
+
+## Cross References
+
+- [SIMD](simd.md)
+- [HBM](../memory-tech/hbm.md)
+- [ML Deep Learning](../../ml/deep-learning/README.md)
+- [LLM Serving](../../llm/llm-serving/README.md)
+- [Multicore](multicore.md)

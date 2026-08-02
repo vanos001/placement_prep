@@ -262,3 +262,12 @@ graph LR
 - TCP flow control is backpressure at the network level.
 - Without backpressure, a slow consumer causes cascading failures upstream.
 - Always propagate backpressure — don't just buffer until you crash.
+
+## Cross-References
+
+- [Rate Limiter](./rate-limiter.md)
+- [Availability Patterns](./availability-patterns.md)
+- [Latency vs Throughput](./latency-vs-throughput.md)
+- [Messaging Systems](./hld/messaging-systems.md)
+- [Concurrency Overview](../../concurrency/overview.md)
+

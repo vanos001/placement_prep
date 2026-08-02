@@ -159,3 +159,10 @@ Direct-mapped (1-way) is simple but conflict-prone. Fully associative eliminates
 - [Fully Associative](fully-associative.md) — Detailed fully-associative mechanics
 - [Replacement Policies](replacement.md) — Which line to evict
 - [Cache Basics](cache-basics.md) — Fundamental cache concepts
+
+## Cross References
+
+- [Direct Mapped](direct-mapped.md)
+- [Fully Associative](fully-associative.md)
+- [Set Associative](set-associative.md)
+- [Cache Basics](cache-basics.md)

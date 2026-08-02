@@ -305,3 +305,11 @@ A: When the system is critically low on memory, the OOM (Out of Memory) killer s
 - [Scheduling](../scheduling/README.md) - How the scheduler picks from the ready queue
 - [Zombie & Orphan](./zombie-orphan.md) - The zombie state in detail
 - [Virtual Memory](../virtual-memory/README.md) - Swapping and suspended states
+
+
+## Cross References
+
+- [PCB](../os/processes/pcb.md)
+- [Context Switching](../os/processes/context-switching.md)
+- [Process Creation](../os/processes/creation.md)
+- [CPU Scheduling](../os/scheduling/README.md)

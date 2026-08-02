@@ -245,3 +245,11 @@ A: In 1997, the Mars Pathfinder experienced priority inversion: a high-priority 
 - [Multilevel Queue](./multilevel-queue.md) - Multiple priority levels
 - [Real-time](./realtime.md) - Priority for deadlines
 - [Linux CFS](./linux-cfs.md) - How Linux handles nice values
+
+
+## Cross References
+
+- [SJF](../os/scheduling/sjf.md)
+- [Multilevel Feedback](../os/scheduling/multilevel-feedback.md)
+- [Real-Time Scheduling](../os/scheduling/realtime.md)
+- [Starvation](../os/scheduling/metrics.md)

@@ -358,3 +358,10 @@ This is why SQL requires careful NULL handling with `IS NULL`, `COALESCE`, and `
 - [Relational Model](README.md) — Foundation concepts
 - [SQL Subqueries](../sql/subqueries.md) — SQL implementation of calculus concepts
 - [SQL Joins](../sql/joins.md) — Practical join implementation
+
+
+## Cross References
+
+- [Relational Algebra](../dbms/relational-model/relational-algebra.md)
+- [SQL Subqueries](../dbms/sql/subqueries.md)
+- [Query Processing](../dbms/query-processing/README.md)

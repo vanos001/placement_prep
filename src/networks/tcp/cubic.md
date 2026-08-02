@@ -301,3 +301,9 @@ TCP CUBIC represented a major leap in congestion control, enabling efficient use
 - [TCP Fast Recovery](fast-recovery.md) — Loss recovery mechanism CUBIC builds upon
 - [TCP States](states.md) — How congestion control integrates with TCP state machine
 - [TCP Options](options.md) — SACK and timestamps that enhance CUBIC's performance
+
+## Cross References
+
+- [TCP Reno](reno.md)
+- [BBR](bbr.md)
+- [Congestion Avoidance](congestion-avoidance.md)

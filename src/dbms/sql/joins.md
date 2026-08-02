@@ -429,3 +429,11 @@ WHERE next_id - id > 1;
 - [Subqueries](subqueries.md) — Nested queries as alternatives to joins
 - [Indexes](indexes.md) — Optimizing join performance
 - [Query Tuning](../indexing/tuning.md) — Join algorithm selection
+
+
+## Cross References
+
+- [Query Joins](../dbms/query-processing/joins.md)
+- [Nested Loop](../dbms/query-processing/nested-loop.md)
+- [Subqueries](../dbms/sql/subqueries.md)
+- [Execution Plans](../dbms/query-processing/execution-plans.md)

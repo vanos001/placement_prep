@@ -195,3 +195,12 @@ graph TD
 | **Key Risk** | Negative transfer when domains are too different |
 
 Transfer learning is the foundation of modern deep learning practice — virtually every production model starts from a pre-trained checkpoint.
+
+## Cross-References
+
+- [Fine-Tuning (LLM)](../../llm/llm-serving/sft.md)
+- [Transformers](../transformers/README.md)
+- [Vision Transformers](../transformers/vit.md)
+- [Knowledge Distillation](../advanced/distillation.md)
+- [MLOps Deployment](../mlops/deployment.md)
+

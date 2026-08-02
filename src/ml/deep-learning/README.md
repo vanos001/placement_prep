@@ -59,3 +59,12 @@ Key breakthroughs:
 - **2017**: Transformers ("Attention is All You Need")
 - **2018-2020**: BERT, GPT-2/3 (pre-training revolution)
 - **2022+**: ChatGPT, GPT-4 (LLMs as general-purpose AI)
+
+## Cross-References
+
+- [Neural Network Basics](./nn-basics.md)
+- [Transformers](../transformers/README.md)
+- [Classical ML](../classical/README.md)
+- [Optimizers](./optimizers.md)
+- [GPU Architecture](../../cloud/virtualization/README.md)
+

@@ -218,3 +218,9 @@ t2 = p2.receive_message(send_ts)  # t2 = max(0, 2) + 1 = 3
 - [Time and Ordering](./time.md) — The broader problem of ordering events
 - [Consistency Models](./consistency.md) — Causal consistency uses logical clocks
 - [Paxos](../consensus/paxos.md) — Uses Lamport-style timestamps for leader ordering
+
+## Cross References
+
+- [Vector Clocks](vector-clocks.md)
+- [Time](time.md)
+- [Consistency](consistency.md)

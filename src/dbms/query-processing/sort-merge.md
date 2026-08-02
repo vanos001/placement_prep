@@ -270,3 +270,11 @@ Sort-Merge Join is a versatile algorithm that shines when data is already sorted
 - [External Sorting](../storage/file-organization.md) — how sorting to disk works
 - [Buffer Management](../storage/buffer-management.md) — memory management during sort
 - [Cost Estimation](./cost-estimation.md) — how sort-merge cost is estimated
+
+
+## Cross References
+
+- [Nested Loop](../dbms/query-processing/nested-loop.md)
+- [Hash Join](../dbms/query-processing/hash-join.md)
+- [Buffer Pool](../dbms/caching/buffer-pool.md)
+- [External Sorting](../dbms/query-processing/sort-merge.md)

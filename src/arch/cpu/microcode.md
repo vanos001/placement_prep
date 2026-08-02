@@ -274,3 +274,9 @@ optimized microcode that can leverage wider memory operations.
 - [ISA](./isa.md) — The interface that microcode implements
 - [Superscalar](../pipelining/superscalar.md) — How μops enable superscalar execution
 - [Out-of-Order Execution](../pipelining/ooo.md) — μops are the unit of OoO execution
+
+## Cross References
+
+- [Control Unit](control-unit.md)
+- [CISC vs RISC](cisc-vs-risc.md)
+- [ISA](isa.md)

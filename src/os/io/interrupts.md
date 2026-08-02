@@ -523,3 +523,11 @@ Detection tools:
 - [DMA](dma.md) — DMA completion uses interrupts
 - [Device Drivers](device-drivers.md) — How drivers register interrupt handlers
 - [Software Layers](software-layers.md) — Where interrupts fit in the I/O stack
+
+
+## Cross References
+
+- [Device Drivers](../os/io/device-drivers.md)
+- [DMA](../os/io/dma.md)
+- [CPU Control Unit](../arch/cpu/control-unit.md)
+- [Context Switching](../os/processes/context-switching.md)

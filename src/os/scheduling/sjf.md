@@ -260,3 +260,11 @@ A: **Multilevel Feedback Queue with SJF within levels:** 1) MLFQ separates inter
 - [Multilevel Feedback](./multilevel-feedback.md) - Practical SJF approximation
 - [Linux CFS](./linux-cfs.md) - How Linux approximates fairness
 - [Metrics](./metrics.md) - Evaluating scheduling performance
+
+
+## Cross References
+
+- [FCFS](../os/scheduling/fcfs.md)
+- [Priority Scheduling](../os/scheduling/priority.md)
+- [Scheduling Metrics](../os/scheduling/metrics.md)
+- [CPU Architecture](../arch/cpu/README.md)

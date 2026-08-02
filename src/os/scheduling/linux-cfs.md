@@ -299,3 +299,11 @@ A: **Linux CFS:** Red-black tree, vruntime-based, nice values, O(log n). **Windo
 - [MLFQ](./multilevel-feedback.md) - What CFS replaced
 - [Real-time](./realtime.md) - SCHED_FIFO/RR (above CFS)
 - [Scheduling Metrics](./metrics.md) - Evaluating performance
+
+
+## Cross References
+
+- [Multilevel Feedback](../os/scheduling/multilevel-feedback.md)
+- [Red-Black Trees](../dbms/indexing/b-tree.md)
+- [Scheduling Metrics](../os/scheduling/metrics.md)
+- [Process States](../os/processes/states.md)

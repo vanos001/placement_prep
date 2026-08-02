@@ -328,3 +328,11 @@ A: **Linux (NPTL/CFS):** ~1-5μs context switch, 1:1 model, CFS uses red-black t
 - [Green Threads](./green-threads.md) - User-space thread implementation
 - [Scheduling](../scheduling/README.md) - How threads get CPU time
 - [Context Switching](../processes/context-switching.md) - Switching overhead
+
+
+## Cross References
+
+- [Thread Models](../os/threads/models.md)
+- [Context Switching](../os/processes/context-switching.md)
+- [SMT](../arch/parallelism/smt.md)
+- [Green Threads](../os/threads/green-threads.md)

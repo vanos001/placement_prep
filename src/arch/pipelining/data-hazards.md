@@ -228,3 +228,9 @@ After register renaming:
 - [Out-of-Order Execution](./ooo.md) — Where WAR and WAW become real hazards
 - [Classic Pipeline](./classic.md) — The pipeline where these hazards occur
 - [Registers](../cpu/registers.md) — Register file design affects hazard handling
+
+## Cross References
+
+- [Forwarding](forwarding.md)
+- [Hazards](hazards.md)
+- [Control Hazards](control-hazards.md)

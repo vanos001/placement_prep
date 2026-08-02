@@ -64,3 +64,11 @@ Load balancing is essential for scalable, highly available systems. The choice b
 - [Reverse Proxy](reverse-proxy.md)
 - [CDN](../cdn/README.md)
 - [BGP](../routing/bgp.md) — BGP load balancing
+
+## Cross References
+
+- [Algorithms](algorithms.md)
+- [L4 vs L7](l4-vs-l7.md)
+- [Reverse Proxy](reverse-proxy.md)
+- [Consistent Hashing](../../distributed/partitioning/consistent-hashing.md)
+- [Service Discovery](../../distributed/microservices/discovery.md)

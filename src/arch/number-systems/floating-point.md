@@ -206,3 +206,9 @@ Floating point represents real numbers using sign, biased exponent, and mantissa
 - [IEEE 754](ieee754.md) — Detailed standard
 - [Two's Complement](twos-complement.md) — Integer representation
 - [Binary](binary.md) — Foundation
+
+## Cross References
+
+- [IEEE 754](ieee754.md)
+- [ALU](../cpu/alu.md)
+- [ML Foundations - Linear Algebra](../../ml/foundations/linear-algebra.md)

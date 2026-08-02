@@ -282,3 +282,10 @@ A: `signalfd()` creates a file descriptor that can be read to receive signals. T
 - [Zombie & Orphan](./zombie-orphan.md) - SIGCHLD signal
 - [Process States](./states.md) - Signals that change states (SIGSTOP, SIGCONT)
 - [Synchronization](../synchronization/README.md) - Alternatives to signal-based coordination
+
+
+## Cross References
+
+- [IPC Overview](../os/processes/ipc.md)
+- [Zombie/Orphan](../os/processes/zombie-orphan.md)
+- [Interrupts](../os/io/interrupts.md)

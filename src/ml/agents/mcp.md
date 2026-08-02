@@ -229,3 +229,8 @@ MCP is an open standard for connecting AI models to tools and data sources. It p
 - [Tool Calling →](tool-calling.md) The mechanism MCP standardizes
 - [Agent Architecture →](architecture.md) Where MCP fits in
 - [Frameworks →](frameworks.md) How frameworks use MCP
+- [Tool Calling](./tool-calling.md)
+- [LangChain](./langchain.md)
+- [Agent Architecture](./architecture.md)
+- [API Design](../../interview/system-design/hld/api-design.md)
+

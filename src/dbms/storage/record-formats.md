@@ -272,3 +272,10 @@ Record format design balances storage efficiency, update performance, and scan s
 - [Column Stores](./column-stores.md) — alternative column-oriented storage
 - [WAL](../internals/wal.md) — how record changes are logged
 - [MVCC](../internals/engines.md) — multi-version concurrency control
+
+
+## Cross References
+
+- [File Organization](../dbms/storage/file-organization.md)
+- [File Concepts (OS)](../os/filesystems/file-concepts.md)
+- [Column Stores](../dbms/storage/column-stores.md)

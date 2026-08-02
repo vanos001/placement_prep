@@ -309,3 +309,11 @@ Replication is fundamental to distributed databases. The choice between sync/asy
 - [Sharding](./sharding.md) — complementary technique for scaling
 - [Consensus](./consensus.md) — how replicas agree on leader
 - [Raft](./raft.md) — consensus-based replication
+
+
+## Cross References
+
+- [Consistency Models](../dbms/distributed/consistency.md)
+- [Replication (Distributed)](../distributed/replication/README.md)
+- [Quorum](../distributed/replication/quorum.md)
+- [CAP Theorem](../dbms/distributed/cap.md)

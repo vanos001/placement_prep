@@ -190,3 +190,8 @@ MOESI extends MESI with the Owned state, allowing dirty data to be shared withou
 - [Coherence](coherence.md) — Coherence overview
 - [Write Policies](write-policies.md) — Write-back enables dirty sharing
 - [Split Cache](split.md) — I/D cache design
+
+## Cross References
+
+- [MESI](mesi.md)
+- [Coherence](coherence.md)

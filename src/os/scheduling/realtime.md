@@ -647,3 +647,11 @@ A: **Linux (PREEMPT_RT):** General-purpose OS with RT extensions, ~10-100μs lat
 - [Scheduling Metrics](./metrics.md) - Measuring scheduler performance
 - [Synchronization: Mutexes](../synchronization/mutex.md) - Priority inheritance mutexes
 - [Synchronization: Semaphores](../synchronization/semaphores.md) - RT semaphore usage
+
+
+## Cross References
+
+- [Priority Scheduling](../os/scheduling/priority.md)
+- [Rate Monotonic](../os/scheduling/realtime.md)
+- [CPU Architecture](../arch/cpu/README.md)
+- [Interrupts](../os/io/interrupts.md)

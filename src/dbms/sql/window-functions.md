@@ -435,3 +435,10 @@ A: Strategies:
 - [Subqueries](subqueries.md) — Window functions in subqueries
 - [Indexes](indexes.md) — Indexing for window function performance
 - [Query Tuning](../indexing/tuning.md) — Optimizing analytical queries
+
+
+## Cross References
+
+- [CTEs](../dbms/sql/ctes.md)
+- [SQL DML](../dbms/sql/dml.md)
+- [Query Optimization](../dbms/query-processing/optimization.md)

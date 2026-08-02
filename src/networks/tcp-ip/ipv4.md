@@ -258,3 +258,10 @@ Defenses:
 - [CIDR](cidr.md) — Classless addressing
 - [NAT](nat.md) — Address translation
 - [DHCP](dhcp.md) — Dynamic address assignment
+
+## Cross References
+
+- [IPv6](ipv6.md)
+- [Subnetting](subnetting.md)
+- [NAT](nat.md)
+- [DHCP](dhcp.md)

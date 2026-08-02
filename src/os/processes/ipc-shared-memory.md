@@ -384,3 +384,11 @@ A: **Spinlock** (fastest for <1μs critical sections, wastes CPU), **Mutex** (ke
 - [Mutexes](../synchronization/mutex.md) - Mutual exclusion primitives
 - [Spinlocks](../synchronization/spinlocks.md) - Low-latency locking
 - [Virtual Memory](../virtual-memory/README.md) - How mmap works
+
+
+## Cross References
+
+- [IPC Overview](../os/processes/ipc.md)
+- [Memory Barriers](../os/synchronization/memory-barriers.md)
+- [Cache Coherence](../arch/memory-hierarchy/coherence.md)
+- [Shared Buffer Pool](../dbms/caching/buffer-pool.md)

@@ -668,3 +668,5 @@ vm.select_item("coke")  # Dispensing coke. Change: $0.5
 - [OOP Concepts](./oop-concepts.md) — Foundation for patterns
 - [UML Class Diagrams](./uml-class-diagrams.md) — Visualize patterns
 - [LLD Problems](./parking-lot.md) — Patterns in practice
+- [Abstraction](./abstraction-interfaces.md)
+

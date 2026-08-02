@@ -403,3 +403,7 @@ Java provides a rich concurrency toolkit: synchronized + wait/notify for basics,
 - [Readers-Writers](./readers-writers.md) — ReadWriteLock
 - [Futures](./futures.md) — CompletableFuture
 - [Concurrency Overview](./overview.md) — Fundamental concepts
+- [Interview LLD Concurrency](../interview/system-design/lld/concurrency-design.md)
+- [OS Synchronization](../os/synchronization/mutex.md)
+- [Lock-Free](./lock-free.md)
+

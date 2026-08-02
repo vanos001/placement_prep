@@ -393,3 +393,9 @@ The TCP state machine is the foundation of connection management. Understanding 
 - [TCP Keepalive](keepalive.md) — Keepalive mechanism in ESTABLISHED state
 - [TCP Fast Recovery](fast-recovery.md) — Congestion control within ESTABLISHED state
 - [HTTP Overview](../http/README.md) — Application layer that uses TCP connections
+
+## Cross References
+
+- [Three-Way Handshake](three-way.md)
+- [Four-Way Teardown](four-way.md)
+- [TCP Timers](timers.md)

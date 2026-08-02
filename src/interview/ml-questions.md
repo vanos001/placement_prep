@@ -116,3 +116,12 @@ def forward(X, W1, b1, W2, b2):
 5. **Not checking data quality**: Missing values, duplicates, label errors
 6. **Using the wrong metric**: Accuracy for imbalanced data, MSE for classification
 7. **Ignoring baseline**: Jumping to complex models without trying simple baselines
+
+## Cross-References
+
+- [ML Fundamentals](../ml/foundations/README.md)
+- [Deep Learning](../ml/deep-learning/README.md)
+- [Transformers](../ml/transformers/README.md)
+- [ML System Design](../ml/system-design/README.md)
+- [Interview Overview](./overview.md)
+

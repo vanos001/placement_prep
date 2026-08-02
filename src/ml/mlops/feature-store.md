@@ -97,3 +97,12 @@ features = feature_store.get_historical_features(
 ## Summary
 
 A Feature Store solves critical ML infrastructure problems: feature reuse, consistency between training and serving, and point-in-time correctness. It bridges the gap between data engineering and ML engineering, enabling teams to share and serve features reliably.
+
+## Cross-References
+
+- [ML Feature Engineering](../foundations/feature-engineering.md)
+- [Data Pipeline](../system-design/data-pipeline.md)
+- [Storage Distributed](../../storage/distributed.md)
+- [MLOps Pipelines](./pipelines.md)
+- [System Design Feature Store](../system-design/feature-store.md)
+

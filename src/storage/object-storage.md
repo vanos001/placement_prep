@@ -252,3 +252,7 @@ Object storage provides a flat namespace with HTTP APIs, rich metadata, and virt
 - [Distributed Storage](./distributed.md) — Underlying distributed systems
 - [Erasure Coding](./erasure-coding.md) — Space-efficient redundancy
 - [Storage Overview](./overview.md) — Storage hierarchy
+- [Cloud S3](../cloud/aws/s3.md)
+- [Interview DFS](../interview/system-design/dfs.md)
+- [Interview Pastebin](../interview/system-design/pastebin.md)
+

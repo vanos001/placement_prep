@@ -168,3 +168,10 @@ L4 load balancing is fast and simple — routes by IP/port. L7 is feature-rich �
 - [Reverse Proxy](reverse-proxy.md)
 - [TLS](../security/tls.md) — SSL termination
 - [CDN](../cdn/README.md) — L7 load balancing at edge
+
+## Cross References
+
+- [Algorithms](algorithms.md)
+- [Reverse Proxy](reverse-proxy.md)
+- [TCP](../tcp/README.md)
+- [HTTP](../http/README.md)

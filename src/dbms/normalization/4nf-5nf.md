@@ -259,3 +259,10 @@ Only the three-table decomposition (with the cyclic constraint) preserves all in
 - [Normalization Overview](README.md) — Functional dependencies
 - [Denormalization](denormalization.md) — When to stop normalizing
 - [Relational Model](../relational-model/README.md) — Relation properties
+
+
+## Cross References
+
+- [BCNF](../dbms/normalization/bcnf.md)
+- [Denormalization](../dbms/normalization/denormalization.md)
+- [Relational Algebra](../dbms/relational-model/relational-algebra.md)

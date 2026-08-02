@@ -217,3 +217,9 @@ CPU Time = IC × CPI / Clock Rate. Performance depends on all three factors, not
 - [Cache Performance](../memory-hierarchy/performance.md) — CPI impact of cache misses
 - [Benchmarking](benchmarking.md) — Measuring these metrics
 - [Performance Counters](counters.md) — Hardware measurement
+
+## Cross References
+
+- [Amdahl's Law](amdahl.md)
+- [Benchmarking](benchmarking.md)
+- [Cache Performance](../memory-hierarchy/performance.md)

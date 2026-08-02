@@ -225,3 +225,10 @@ A: In distributed transactions (2PC):
 - [Recovery](recovery.md) — Handling crashes
 - [Concurrency Control](concurrency-control.md) — Managing concurrent transactions
 - [Isolation Levels](isolation-levels.md) — Isolation trade-offs
+
+
+## Cross References
+
+- [ACID](../dbms/transactions/acid.md)
+- [Process States (OS)](../os/processes/states.md)
+- [Two-Phase Commit](../dbms/transactions/two-phase-commit.md)

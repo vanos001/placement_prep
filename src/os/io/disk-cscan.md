@@ -252,3 +252,11 @@ To reduce wait time: decrease cycle time (faster disk, fewer cylinders) or reduc
 - [SCAN](disk-scan.md) — Bidirectional variant
 - [C-LOOK](disk-look.md) — Optimized C-SCAN
 - [LOOK](disk-look.md) — Optimized SCAN (related)
+
+
+## Cross References
+
+- [SCAN](../os/io/disk-scan.md)
+- [LOOK](../os/io/disk-look.md)
+- [Disk Scheduling Overview](../os/io/disk-scheduling.md)
+- [HDD](../storage/hdd.md)

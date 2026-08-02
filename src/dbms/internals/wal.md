@@ -343,3 +343,12 @@ A: Several cascading issues:
 - **PostgreSQL**: WAL segments in `pg_wal/`, physiological logging, LSN = byte offset
 - **InnoDB**: Redo log (ib_logfile*) + undo log; `innodb_flush_log_at_trx_commit` controls durability
 - **RocksDB**: WAL files, one per memtable, deleted after memtable flush to SSTable
+
+
+## Cross References
+
+- [Recovery](../dbms/transactions/recovery.md)
+- [ARIES](../dbms/transactions/aries.md)
+- [Journaling (OS)](../os/filesystems/journaling.md)
+- [Checkpointing](../dbms/transactions/checkpointing.md)
+- [Write Policies](../arch/memory-hierarchy/write-policies.md)

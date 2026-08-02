@@ -208,3 +208,11 @@ A: **Rate Monotonic (RM):** Static priority = 1/period. Optimal among fixed-prio
 - [Real-time](./realtime.md) - Deadline-based scheduling
 - [Metrics](./metrics.md) - Scheduling performance measures
 - [Context Switching](../processes/context-switching.md) - Switching overhead
+
+
+## Cross References
+
+- [CPU Architecture](../arch/cpu/README.md)
+- [Process States](../os/processes/states.md)
+- [Context Switching](../os/processes/context-switching.md)
+- [Thread Pools](../concurrency/thread-pools.md)

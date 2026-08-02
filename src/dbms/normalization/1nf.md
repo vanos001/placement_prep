@@ -195,3 +195,10 @@ A: If you never query individual skills and the array is always read as a whole,
 - [2NF](2nf.md) — Next level: eliminating partial dependencies
 - [Relational Model](../relational-model/README.md) — Relation properties
 - [SQL DDL](../sql/ddl.md) — Implementing 1NF schemas
+
+
+## Cross References
+
+- [2NF](../dbms/normalization/2nf.md)
+- [Keys](../dbms/relational-model/keys.md)
+- [ER Diagrams](../dbms/relational-model/er-diagrams.md)

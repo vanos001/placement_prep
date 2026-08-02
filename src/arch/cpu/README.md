@@ -41,3 +41,11 @@ graph TB
 - Describe the fetch-decode-execute cycle step by step
 - Explain why registers are the fastest storage and how many a typical CPU has
 - Differentiate between the ISA (what the CPU can do) and microarchitecture (how it does it)
+
+## Cross References
+
+- [ISA](isa.md)
+- [Registers](registers.md)
+- [ALU](alu.md)
+- [Control Unit](control-unit.md)
+- [Pipelining](../pipelining/README.md)

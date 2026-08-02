@@ -307,3 +307,9 @@ Spark revolutionized big data processing with in-memory computing and high-level
 - [Kafka](../messaging/kafka.md) — Common data source for Spark
 - [Partitioning](../partitioning/README.md) — How RDDs are partitioned
 - [MapReduce Overview](README.md) — Distributed processing context
+
+## Cross References
+
+- [MapReduce](mapreduce.md)
+- [Streaming](streaming.md)
+- [ML Pipelines](../../ml/mlops/pipelines.md)

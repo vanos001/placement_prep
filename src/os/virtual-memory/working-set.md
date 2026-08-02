@@ -509,3 +509,11 @@ The Working Set Model is a foundational concept in virtual memory management. It
 - |W(t, Δ)| ≤ Δ (working set size ≤ window size)
 - W(t, Δ) ⊆ W(t, Δ+1) (larger window ⊇ smaller window)
 - Thrashing condition: Σᵢ|Wᵢ(t, Δ)| > F (total frames)
+
+
+## Cross References
+
+- [Thrashing](../os/virtual-memory/thrashing.md)
+- [Demand Paging](../os/virtual-memory/demand-paging.md)
+- [Page Replacement](../os/virtual-memory/page-replacement.md)
+- [Cache Performance](../arch/memory-hierarchy/performance.md)

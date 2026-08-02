@@ -159,3 +159,10 @@ DRAM stores each bit as charge on a capacitor with one access transistor (1T1C c
 - [GDDR](gddr.md) — GPU-optimized DRAM
 - [HBM](hbm.md) — High-bandwidth stacked DRAM
 - [Memory Hierarchy](../memory-hierarchy/README.md) — Where DRAM fits
+
+## Cross References
+
+- [SRAM](sram.md)
+- [DDR](ddr.md)
+- [OS Virtual Memory](../../os/virtual-memory/README.md)
+- [OS Swapping](../../os/memory/swapping.md)

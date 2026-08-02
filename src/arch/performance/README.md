@@ -62,3 +62,10 @@ Hardware counters that measure:
 - [Benchmarking](benchmarking.md) — Measuring performance
 - [Performance Counters](counters.md) — Hardware measurement
 - [Cache Performance](../memory-hierarchy/performance.md) — Cache-specific metrics
+
+## Cross References
+
+- [Amdahl's Law](amdahl.md)
+- [Benchmarking](benchmarking.md)
+- [Performance Counters](counters.md)
+- [Performance Equation](equation.md)

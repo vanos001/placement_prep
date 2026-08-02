@@ -267,3 +267,11 @@ Modern filesystems (ext4, XFS, Btrfs, NTFS) use **extent-based allocation** as t
 - [ext4](ext4.md) — extent-based allocation in practice
 - [Disk Scheduling](../io/disk-scheduling.md) — how I/O requests are ordered
 - [RAID](raid.md) — block allocation across multiple disks
+
+
+## Cross References
+
+- [Contiguous Allocation](../os/memory/contiguous.md)
+- [File Concepts](../os/filesystems/file-concepts.md)
+- [HDD](../storage/hdd.md)
+- [File Organization](../dbms/storage/file-organization.md)

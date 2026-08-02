@@ -332,3 +332,12 @@ graph TB
 - Result caching handles popular queries; cache misses trigger parallel queries to all shards.
 - PageRank (link analysis) was foundational; modern ranking uses hundreds of ML features.
 - Query processing includes spell correction, synonym expansion, and intent classification.
+
+## Cross-References
+
+- [Search Engine Design](../search.md)
+- [Typeahead](../typeahead.md)
+- [Web Crawler](../web-crawler.md)
+- [Ads System](../ads.md)
+- [Caching Strategy](../hld/caching-strategy.md)
+

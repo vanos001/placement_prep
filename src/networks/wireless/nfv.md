@@ -225,3 +225,9 @@ NFV virtualizes network functions, running them as software on commodity hardwar
 - [5G](5g.md) — 5G core uses NFV
 - [Firewalls](../security/firewalls.md) — vFirewall example
 - [Load Balancing](../load-balancing/README.md) — vLoadBalancer example
+
+## Cross References
+
+- [SDN](sdn.md)
+- [Cloud Virtualization](../../cloud/virtualization/README.md)
+- [Distributed Microservices](../../distributed/microservices/README.md)

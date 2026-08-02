@@ -101,3 +101,11 @@ Consensus is the backbone of distributed systems. Paxos, Raft, ZAB, and PBFT are
 - [PBFT](pbft.md) — Byzantine fault tolerance
 - [Primary-Backup Replication](../replication/primary-backup.md) — Uses consensus for failover
 - [Quorum-Based Replication](../replication/quorum.md) — Related voting mechanisms
+
+## Cross References
+
+- [Paxos](paxos.md)
+- [Raft](raft.md)
+- [FLP Impossibility](../fundamentals/flp.md)
+- [DBMS Consensus](../../dbms/distributed/consensus.md)
+- [OS Synchronization](../../os/synchronization/README.md)

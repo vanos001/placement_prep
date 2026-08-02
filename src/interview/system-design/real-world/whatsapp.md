@@ -283,3 +283,11 @@ sequenceDiagram
 - Group messaging uses Sender Keys to avoid O(N²) encryption overhead.
 - Media is encrypted and stored in S3; only URLs and keys are sent as messages.
 - Client-side storage — messages live on devices, not on WhatsApp servers.
+
+## Cross-References
+
+- [Chat System](../chat.md)
+- [Notification System](../notifications.md)
+- [Consistency Patterns](../consistency-patterns.md)
+- [End-to-End Encryption](../hld/security-design.md)
+

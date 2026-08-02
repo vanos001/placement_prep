@@ -562,3 +562,10 @@ gRPC excels in **microservice-to-microservice** communication where performance,
 - **[HTTP/3 & QUIC](./http3.md)** — Future transport for gRPC (experimental)
 - **[HTTPS / TLS](./https.md)** — Securing gRPC with TLS
 - **[Protocol Buffers](../serialization.md)** — Deep dive into protobuf serialization
+
+## Cross References
+
+- [REST](rest.md)
+- [HTTP/2](http2.md)
+- [HTTP/3 & QUIC](http3.md)
+- [Microservices](../../distributed/microservices/README.md)

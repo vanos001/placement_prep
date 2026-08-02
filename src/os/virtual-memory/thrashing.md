@@ -442,3 +442,11 @@ Thrashing is the catastrophic collapse of system performance when processes comp
 - Prevented by: working set model, PFF, limiting multiprogramming
 - Linux defense: OOM killer, swappiness tuning, cgroups memory limits
 - Mathematical insight: optimal degree of multiprogramming = service_time / fault_time
+
+
+## Cross References
+
+- [Working Set](../os/virtual-memory/working-set.md)
+- [Demand Paging](../os/virtual-memory/demand-paging.md)
+- [Page Replacement](../os/virtual-memory/page-replacement.md)
+- [CPU Scheduling](../os/scheduling/README.md)

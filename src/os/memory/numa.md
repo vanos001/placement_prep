@@ -516,3 +516,11 @@ A:
 - **Related**: [Buddy System](./buddy-system.md) — per-node buddy allocators
 - **Related**: [Swapping](./swapping.md) — swap should prefer local node
 - **Virtual Memory**: [Working Set](../virtual-memory/working-set.md) — keep working set local
+
+
+## Cross References
+
+- [Cache Coherence](../arch/memory-hierarchy/coherence.md)
+- [MESI Protocol](../arch/memory-hierarchy/mesi.md)
+- [Huge Pages](../os/memory/huge-pages.md)
+- [Multicore](../arch/parallelism/multicore.md)

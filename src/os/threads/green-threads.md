@@ -388,3 +388,11 @@ A: 1) **Goroutine leak:** `runtime.NumGoroutine()` — if growing, goroutines ar
 - [Thread Models](./models.md) - M:1, 1:1, M:N
 - [Thread Pools](./pools.md) - Alternative concurrency model
 - [Scheduling](../scheduling/README.md) - Kernel scheduling
+
+
+## Cross References
+
+- [User vs Kernel Threads](../os/threads/user-vs-kernel.md)
+- [Coroutines](../concurrency/coroutines.md)
+- [Async/Await](../concurrency/async-await.md)
+- [Go Channels](../concurrency/go-channels.md)

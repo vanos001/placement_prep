@@ -373,3 +373,10 @@ CREATE POLICY tenant_isolation ON users
 - [Views](views.md) — Creating virtual tables
 - [Normalization](../normalization/README.md) — Schema design principles
 - [Transactions](../transactions/README.md) — Transaction control with DDL
+
+
+## Cross References
+
+- [DML](../dbms/sql/dml.md)
+- [ER Diagrams](../dbms/relational-model/er-diagrams.md)
+- [Normalization](../dbms/normalization/README.md)

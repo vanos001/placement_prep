@@ -433,3 +433,11 @@ Copy-on-Write is a fundamental OS optimization that defers memory copying until 
 - Reference counting tracks shared frames (ref_count > 1 → must copy)
 - Used in fork(), Btrfs/ZFS, Docker layers, databases
 - Dirty COW (CVE-2016-5195) was a famous COW race condition bug
+
+
+## Cross References
+
+- [Process Creation](../os/processes/creation.md)
+- [Paging](../os/memory/paging.md)
+- [Fork](../os/processes/creation.md)
+- [Memory Barriers](../os/synchronization/memory-barriers.md)

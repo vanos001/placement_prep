@@ -91,3 +91,12 @@ graph TB
 ## Summary
 
 ML Pipelines automate the end-to-end workflow from data to deployed models. They ensure reproducibility, enable collaboration, and form the backbone of production ML systems. Key design principles include modularity, idempotency, and observability.
+
+## Cross-References
+
+- [Kubeflow](./kubeflow.md)
+- [Airflow / Orchestration](../../cloud/cicd/pipelines.md)
+- [Data Pipeline](../system-design/data-pipeline.md)
+- [Feature Store](./feature-store.md)
+- [Cloud Kubernetes](../../cloud/kubernetes/README.md)
+

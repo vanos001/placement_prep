@@ -242,3 +242,12 @@ COMMIT;
 - [Concurrency Control](concurrency-control.md) — Implementing isolation
 - [Recovery](recovery.md) — Implementing durability
 - [Serializability](serializability.md) — Strongest isolation guarantee
+
+
+## Cross References
+
+- [Isolation Levels](../dbms/transactions/isolation-levels.md)
+- [Concurrency Control](../dbms/transactions/concurrency-control.md)
+- [WAL](../dbms/internals/wal.md)
+- [Serializability](../dbms/transactions/serializability.md)
+- [Consensus](../distributed/consensus/raft.md)

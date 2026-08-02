@@ -310,3 +310,10 @@ Design considerations:
 - [Network Layer](network.md) — IP addressing and routing
 - [ARP](../tcp-ip/arp.md) — Address resolution protocol
 - [Subnetting](../tcp-ip/subnetting.md) — How L2 and L3 addressing interact
+
+## Cross References
+
+- [Physical Layer](physical.md)
+- [Network Layer](network.md)
+- [ARP](../tcp-ip/arp.md)
+- [Ethernet](../../arch/io/buses.md)

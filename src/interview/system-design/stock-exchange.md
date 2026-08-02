@@ -309,3 +309,11 @@ HFT firms pay to place their servers in the same data center as the exchange:
 - Market data: UDP multicast for lowest latency (Level 1: best bid/ask, Level 2: top-N levels).
 - Sharding: by stock symbol — each symbol has an independent order book.
 - FIX protocol is the standard for order submission in financial markets.
+
+## Cross-References
+
+- [Payment System](./payment.md)
+- [Latency vs Throughput](./latency-vs-throughput.md)
+- [Consistency Patterns](./consistency-patterns.md)
+- [Concurrency Overview](../../concurrency/overview.md)
+

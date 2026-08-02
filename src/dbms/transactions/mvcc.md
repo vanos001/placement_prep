@@ -400,3 +400,12 @@ A: Each node maintains local versions. Global consistency requires: (1) Globally
 - [Recovery](./recovery.md) — How MVCC interacts with WAL and recovery
 - [B+ Tree Index](../indexing/b-plus-tree.md) — Index structure used with MVCC
 - [Checkpointing](./checkpointing.md) — Checkpoints and MVCC snapshot management
+
+
+## Cross References
+
+- [Isolation Levels](../dbms/transactions/isolation-levels.md)
+- [Timestamp-Based](../dbms/transactions/timestamp-based.md)
+- [Readers-Writers (OS)](../os/synchronization/readers-writers.md)
+- [Consistency Models](../distributed/fundamentals/consistency.md)
+- [Optimistic Concurrency](../dbms/transactions/optimistic.md)

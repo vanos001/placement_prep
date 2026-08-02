@@ -331,3 +331,10 @@ The Optimal algorithm is the theoretical gold standard for page replacement — 
 - Cannot be implemented in practice (needs future knowledge)
 - Used as benchmark to evaluate LRU, FIFO, Clock, etc.
 - Time complexity: O(m) per replacement with precomputed table
+
+
+## Cross References
+
+- [Page Replacement](../os/virtual-memory/page-replacement.md)
+- [LRU](../os/virtual-memory/lru.md)
+- [Cache Replacement](../arch/memory-hierarchy/replacement.md)

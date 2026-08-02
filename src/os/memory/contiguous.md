@@ -405,3 +405,10 @@ A:
 - **See Also**: [Allocation Algorithms](./allocation-algorithms.md) — detailed comparison of fit strategies
 - **Related**: [Buddy System](./buddy-system.md) — power-of-2 contiguous allocator
 - **Virtual Memory**: [Demand Paging](../virtual-memory/demand-paging.md) — modern replacement for contiguous allocation
+
+
+## Cross References
+
+- [Allocation Algorithms](../os/memory/allocation-algorithms.md)
+- [Segmentation](../os/memory/segmentation.md)
+- [Disk Allocation](../os/filesystems/disk-allocation.md)

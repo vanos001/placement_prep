@@ -234,3 +234,9 @@ Workloads:
 - [Out-of-Order Execution](../pipelining/ooo.md) — Apple's massive ROB enables deep OoO
 - [GPU Architecture](../parallelism/gpu.md) — Apple's integrated GPU
 - [Unified Memory](../memory-tech/dram.md) — How UMA works
+
+## Cross References
+
+- [ARM](arm.md)
+- [Unified Memory](../memory-hierarchy/levels.md)
+- [GPU](../parallelism/gpu.md)

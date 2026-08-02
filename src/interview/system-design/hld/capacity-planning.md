@@ -332,3 +332,7 @@ Bandwidth:
 - [Caching Strategy](./caching-strategy.md) — Cache sizing based on working set
 - [Load Balancing](./load-balancing-design.md) — Server count determines LB setup
 - [Data Intensive](./data-intensive.md) — Large-scale data storage
+- [Estimation](../estimation.md)
+- [Latency Numbers](../latency-numbers.md)
+- [Cloud EC2](../../cloud/aws/ec2.md)
+

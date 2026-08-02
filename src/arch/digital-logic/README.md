@@ -55,3 +55,10 @@ Digital logic is built from transistors → gates → circuits → processors. B
 - [Combinational Circuits](combinational.md)
 - [Sequential Circuits](sequential.md)
 - [Flip-Flops](flip-flops.md)
+
+## Cross References
+
+- [Boolean Algebra](boolean.md)
+- [Logic Gates](gates.md)
+- [Combinational Circuits](combinational.md)
+- [Sequential Circuits](sequential.md)

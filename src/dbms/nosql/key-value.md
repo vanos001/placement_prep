@@ -290,3 +290,11 @@ Key-value stores are the foundation of many distributed systems. Understanding w
 - [Document Databases](./document.md) — when you need richer queries
 - [Sharding](../distributed/sharding.md) — how key-value stores partition data
 - [LSM Trees](../internals/lsm-trees.md) — storage engine for key-value stores
+
+
+## Cross References
+
+- [Redis](../dbms/caching/redis.md)
+- [Memcached](../dbms/caching/memcached.md)
+- [Consistent Hashing](../distributed/partitioning/consistent-hashing.md)
+- [LSM Trees](../dbms/internals/lsm-trees.md)

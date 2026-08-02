@@ -240,3 +240,11 @@ Benchmark (10KB payload, localhost):
 - Streaming (server, client, bidirectional) is a key gRPC advantage.
 - Error handling uses standard status codes similar to HTTP but more granular.
 - Code generation from `.proto` files ensures type safety across languages.
+
+## Cross-References
+
+- [API Design](./hld/api-design.md)
+- [Consistency Patterns](./consistency-patterns.md)
+- [Messaging Systems](./hld/messaging-systems.md)
+- [Cloud Networking](../../cloud/aws/vpc.md)
+

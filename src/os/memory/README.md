@@ -176,3 +176,11 @@ graph LR
 ```
 
 Start with contiguous allocation (simplest), then paging (modern standard), then build up to advanced topics.
+
+
+## Cross References
+
+- [Virtual Memory](../os/virtual-memory/README.md)
+- [Cache Hierarchy](../arch/memory-hierarchy/README.md)
+- [Buffer Pool](../dbms/caching/buffer-pool.md)
+- [DRAM](../arch/memory-tech/dram.md)

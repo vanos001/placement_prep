@@ -149,3 +149,5 @@ MLflow is the de facto open-source standard for ML experiment tracking and lifec
 - [W&B](./wandb.md) — Alternative tracking platform
 - [Kubeflow](./kubeflow.md) — Full ML platform
 - [Experiment Tracking](./pipelines.md) — Pipeline integration
+- [Cloud Observability](../../cloud/observability/README.md)
+

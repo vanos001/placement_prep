@@ -446,3 +446,8 @@ Object detection has evolved from R-CNN (slow, multi-stage) to modern anchor-fre
 - [U-Net](segmentation.md#u-net) - Encoder-decoder architecture
 - [CLIP](clip.md) - Open-vocabulary detection
 - [SAM](sam.md) - Segment anything from prompts
+- [ML CNN](../ml/deep-learning/cnn.md)
+- [Vision Transformers](../ml/transformers/vit.md)
+- [Segmentation](./segmentation.md)
+- [CLIP](./clip.md)
+

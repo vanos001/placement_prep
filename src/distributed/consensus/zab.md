@@ -253,3 +253,9 @@ ZAB is ZooKeeper's consensus protocol that provides atomic broadcast with total 
 - [Paxos](paxos.md) — The classic consensus algorithm
 - [Service Discovery](../microservices/discovery.md) — ZooKeeper is commonly used for this
 - [Primary-Backup Replication](../replication/primary-backup.md) — ZAB implements this pattern
+
+## Cross References
+
+- [Raft](raft.md)
+- [Paxos](paxos.md)
+- [DBMS Replication](../../dbms/distributed/replication.md)

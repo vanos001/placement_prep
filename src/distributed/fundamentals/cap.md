@@ -226,3 +226,10 @@ ZooKeeper is a CP system:
 - [Quorum Replication](../replication/quorum.md) — How quorums tune the CAP trade-off
 - [Raft](../consensus/raft.md) — A CP consensus algorithm
 - [Kafka](../messaging/kafka.md) — Configurable consistency in messaging
+
+## Cross References
+
+- [Consistency](consistency.md)
+- [Consensus](../consensus/README.md)
+- [DBMS CAP](../../dbms/distributed/cap.md)
+- [Quorum Replication](../replication/quorum.md)

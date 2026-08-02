@@ -140,3 +140,9 @@ SRAM uses 6 transistors per bit to form a bistable latch. It's the fastest volat
 - [Cache Basics](../memory-hierarchy/cache-basics.md) — How SRAM is used in caches
 - [Memory Hierarchy](../memory-hierarchy/README.md) — Where SRAM fits
 - [HBM](hbm.md) — High-bandwidth memory alternative
+
+## Cross References
+
+- [DRAM](dram.md)
+- [Cache Basics](../memory-hierarchy/cache-basics.md)
+- [Flip-Flops](../digital-logic/flip-flops.md)

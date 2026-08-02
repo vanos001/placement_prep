@@ -253,3 +253,12 @@ session.execute(
 - **Tunable consistency** (Cassandra, DynamoDB) lets you choose per-request.
 - Conflict resolution (LWW, vector clocks, CRDTs) is critical for AP systems.
 - PACELC extends CAP: even without partitions, there's a latency vs. consistency trade-off.
+
+## Cross-References
+
+- [Availability Patterns](./availability-patterns.md)
+- [CAP Theorem](./hld/consistency-tradeoffs.md)
+- [Distributed File System](./dfs.md)
+- [Key-Value Store](./kv-store.md)
+- [Storage Distributed](../../storage/distributed.md)
+

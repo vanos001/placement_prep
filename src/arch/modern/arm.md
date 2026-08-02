@@ -251,3 +251,10 @@ Ampere Altra (2022):
 - [RISC-V](./risc-v.md) — The open-source RISC competitor
 - [Apple Silicon](./apple-silicon.md) — Apple's custom ARM implementations
 - [NEON](../parallelism/neon.md) — ARM's SIMD extension
+
+## Cross References
+
+- [CISC vs RISC](../cpu/cisc-vs-risc.md)
+- [NEON](../parallelism/neon.md)
+- [Apple Silicon](apple-silicon.md)
+- [RISC-V](risc-v.md)

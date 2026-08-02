@@ -182,3 +182,10 @@ Replacement policies determine which line to evict when a set is full. LRU is th
 - [Fully Associative](fully-associative.md) — Policies matter most here
 - [Cache Basics](cache-basics.md) — Hit/miss fundamentals
 - [Coherence](coherence.md) — Eviction interacts with coherence
+
+## Cross References
+
+- [LRU](../../os/virtual-memory/lru.md)
+- [FIFO](../../os/virtual-memory/fifo.md)
+- [Cache Basics](cache-basics.md)
+- [OS Page Replacement](../../os/virtual-memory/page-replacement.md)

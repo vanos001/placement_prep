@@ -201,3 +201,8 @@ Batching is the most impactful optimization for LLM inference. Continuous batchi
 - [KV Cache →](kv-cache.md) Memory that limits batch size
 - [vLLM →](vllm.md) Implementation of continuous batching
 - [Speculative Decoding →](speculative-decoding.md) Alternative to batching for latency
+- [Inference](./inference.md)
+- [vLLM](./vllm.md)
+- [Concurrency Thread Pools](../concurrency/thread-pools.md)
+- [Cloud Auto Scaling](../cloud/aws/ec2.md)
+

@@ -253,3 +253,10 @@ Paxos is the theoretical foundation of consensus in distributed systems. While c
 - [ZAB](zab.md) — ZooKeeper's similar protocol
 - [Primary-Backup Replication](../replication/primary-backup.md) — Uses consensus for failover
 - [Service Discovery](../microservices/discovery.md) — Often built on consensus (etcd uses Raft)
+
+## Cross References
+
+- [Raft](raft.md)
+- [ZAB](zab.md)
+- [FLP Impossibility](../fundamentals/flp.md)
+- [DBMS Paxos](../../dbms/distributed/paxos.md)

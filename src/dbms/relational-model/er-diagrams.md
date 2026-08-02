@@ -449,3 +449,10 @@ In practice: Single table for simple hierarchies (user types), separate tables f
 - [Relational Algebra](relational-algebra.md) — Querying converted schemas
 - [SQL DDL](../sql/ddl.md) — Implementing schemas in SQL
 - [Normalization](../normalization/README.md) — Refining converted schemas
+
+
+## Cross References
+
+- [Keys](../dbms/relational-model/keys.md)
+- [Relational Algebra](../dbms/relational-model/relational-algebra.md)
+- [1NF](../dbms/normalization/1nf.md)

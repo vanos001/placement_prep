@@ -168,3 +168,9 @@ Direct-mapped caches are the simplest and fastest to access but suffer from conf
 - [Fully Associative](fully-associative.md) — Maximum flexibility
 - [Replacement Policies](replacement.md) — N/A for direct-mapped (no choice)
 - [Cache Basics](cache-basics.md) — Fundamental concepts
+
+## Cross References
+
+- [Set Associative](set-associative.md)
+- [Fully Associative](fully-associative.md)
+- [Cache Mapping](cache-mapping.md)

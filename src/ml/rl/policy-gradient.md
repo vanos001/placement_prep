@@ -187,3 +187,12 @@ $$\max_\theta \mathbb{E}\left[\frac{\pi_\theta(a|s)}{\pi_{\theta_{old}}(a|s)} A(
 | **LLM Relevance** | Foundation for PPO, GRPO used in LLM alignment |
 
 Policy gradient methods are the direct predecessors of PPO and GRPO — the algorithms that power LLM alignment and reasoning training.
+
+## Cross-References
+
+- [PPO](./ppo.md)
+- [REINFORCE / Fundamentals](./fundamentals.md)
+- [Q-Learning](./q-learning.md)
+- [RLHF](./rlhf.md)
+- [Agent Planning](../agents/planning.md)
+

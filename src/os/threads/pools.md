@@ -427,3 +427,11 @@ A: **Thread pools:** Simple blocking code, N threads = N concurrent tasks, overh
 - [Thread Safety](./safety.md) - Writing correct pool code
 - [Scheduling](../scheduling/README.md) - How threads are scheduled
 - [Synchronization](../synchronization/README.md) - Mutex, condition variables
+
+
+## Cross References
+
+- [Thread Models](../os/threads/models.md)
+- [Thread Pools (Concurrency)](../concurrency/thread-pools.md)
+- [Producer-Consumer](../concurrency/producer-consumer.md)
+- [Fork-Join](../concurrency/fork-join.md)

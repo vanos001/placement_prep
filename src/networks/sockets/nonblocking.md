@@ -213,3 +213,9 @@ Non-blocking I/O allows a single thread to handle multiple sockets by returning 
 - [I/O Multiplexing](io-multiplexing.md) — The missing piece
 - [TCP Sockets](tcp.md) — Blocking TCP
 - [UDP Sockets](udp.md) — Non-blocking UDP
+
+## Cross References
+
+- [I/O Multiplexing](io-multiplexing.md)
+- [OS I/O Buffering](../../os/io/buffering.md)
+- [Concurrency](../../concurrency/overview.md)

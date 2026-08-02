@@ -291,3 +291,10 @@ Future:       10.6.0.0/22 through 10.255.0.0/22
 - [Subnetting](../tcp-ip/subnetting.md) — Dividing networks efficiently
 - [ICMP](../tcp-ip/icmp.md) — Network layer error reporting
 - [ARP](../tcp-ip/arp.md) — Address resolution
+
+## Cross References
+
+- [Data Link Layer](data-link.md)
+- [IP Protocol](../tcp-ip/ip.md)
+- [Routing](../routing/README.md)
+- [Subnetting](../tcp-ip/subnetting.md)

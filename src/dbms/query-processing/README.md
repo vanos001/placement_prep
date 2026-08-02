@@ -115,3 +115,11 @@ Physical Optimization:
 ---
 
 *For interview preparation, focus on understanding the full pipeline end-to-end, then dive deep into join algorithms and cost estimation.*
+
+
+## Cross References
+
+- [Query Optimization](../dbms/query-processing/optimization.md)
+- [Join Algorithms](../dbms/query-processing/joins.md)
+- [Execution Plans](../dbms/query-processing/execution-plans.md)
+- [Indexing](../dbms/indexing/README.md)

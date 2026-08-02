@@ -308,3 +308,11 @@ If decorrelation fails (complex predicates, LIMIT in subquery), the optimizer fa
 - [Window Functions](window-functions.md) — Alternative to correlated subqueries
 - [Indexes](indexes.md) — Optimizing subquery performance
 - [Query Tuning](../indexing/tuning.md) — Subquery optimization
+
+
+## Cross References
+
+- [SQL Joins](../dbms/sql/joins.md)
+- [CTEs](../dbms/sql/ctes.md)
+- [Query Optimization](../dbms/query-processing/optimization.md)
+- [Relational Calculus](../dbms/relational-model/relational-calculus.md)

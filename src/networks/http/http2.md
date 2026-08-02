@@ -386,3 +386,10 @@ HTTP/2 was a major performance improvement over HTTP/1.1, but its reliance on TC
 - [QUIC Protocol](quic.md) — Transport for HTTP/3
 - [gRPC](grpc.md) — gRPC uses HTTP/2 for multiplexing
 - [WebSocket](websocket.md) — Full-duplex over HTTP/2
+
+## Cross References
+
+- [HTTP/1.1](http1.md)
+- [HTTP/3](http3.md)
+- [gRPC](grpc.md)
+- [QUIC](quic.md)

@@ -268,3 +268,10 @@ VMOVDQU [result], YMM0     ; Store 8 results
 - [CISC vs RISC](./cisc-vs-risc.md) — RISC typically has more registers
 - [Cache Basics](../memory-hierarchy/cache-basics.md) — The next level of the memory hierarchy
 - [Forwarding/Bypassing](../pipelining/forwarding.md) — Register forwarding in pipelines
+
+## Cross References
+
+- [ALU](alu.md)
+- [ISA](isa.md)
+- [Cache Basics](../memory-hierarchy/cache-basics.md)
+- [OS Context Switching](../../os/processes/context-switching.md)

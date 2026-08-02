@@ -269,3 +269,12 @@ graph TB
 - Snowflake generates time-ordered, globally unique 64-bit IDs.
 - Kafka serves as the event bus connecting tweet creation to fanout, search, and notifications.
 - Elasticsearch provides real-time full-text search across billions of tweets.
+
+## Cross-References
+
+- [News Feed](../news-feed.md)
+- [Social Graph](../social-graph.md)
+- [Rate Limiter](../rate-limiter.md)
+- [Fanout & Messaging](../hld/messaging-systems.md)
+- [Caching Strategy](../hld/caching-strategy.md)
+

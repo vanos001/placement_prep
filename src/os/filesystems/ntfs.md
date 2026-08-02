@@ -268,3 +268,10 @@ NTFS uses the `$LogFile` to record all metadata changes before they're committed
 - [Journaling](journaling.md) — crash consistency
 - [Access Control](../security/access-control.md) — ACLs in depth
 - [VFS](vfs.md) — NTFS in the Linux kernel via ntfs3 driver
+
+
+## Cross References
+
+- [Journaling](../os/filesystems/journaling.md)
+- [VFS](../os/filesystems/vfs.md)
+- [Disk Allocation](../os/filesystems/disk-allocation.md)

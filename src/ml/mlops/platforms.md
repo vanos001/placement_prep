@@ -67,3 +67,5 @@ ML platforms abstract the complexity of MLOps infrastructure. Open-source option
 - [Kubeflow](./kubeflow.md) — K8s-native platform
 - [Vertex AI](./vertex.md) — Google's platform
 - [SageMaker](./sagemaker.md) — AWS platform
+- [Cloud Kubernetes](../../cloud/kubernetes/README.md)
+

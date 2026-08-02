@@ -359,3 +359,10 @@ A: Standard relational algebra uses **sets** (no duplicates). SQL uses **bags** 
 - [Relational Calculus](relational-calculus.md) — Declarative equivalent
 - [SQL](../sql/README.md) — Practical implementation
 - [Query Optimization](../indexing/tuning.md) — How optimizers use RA equivalences
+
+
+## Cross References
+
+- [Relational Calculus](../dbms/relational-model/relational-calculus.md)
+- [Query Processing](../dbms/query-processing/README.md)
+- [SQL DML](../dbms/sql/dml.md)

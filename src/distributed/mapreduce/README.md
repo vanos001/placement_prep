@@ -155,3 +155,10 @@ Distributed processing enables computation at scale by parallelizing work across
 - [Partitioning](../partitioning/README.md) — How data is distributed
 - [Message Queues](../messaging/queues.md) — Input for stream processing
 - [Kafka](../messaging/kafka.md) — Common data source
+
+## Cross References
+
+- [MapReduce](mapreduce.md)
+- [Spark](spark.md)
+- [Streaming](streaming.md)
+- [Distributed Overview](../overview.md)

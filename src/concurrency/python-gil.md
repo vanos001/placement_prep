@@ -347,3 +347,6 @@ Python's GIL ensures only one thread executes bytecode at a time, simplifying me
 - [Async/Await](./async-await.md) — Python asyncio
 - [Fork-Join](./fork-join.md) — multiprocessing
 - [Concurrency Overview](./overview.md) — Fundamental concepts
+- [ML Training](../ml/deep-learning/backpropagation.md)
+- [Coroutines](./coroutines.md)
+

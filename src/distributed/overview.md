@@ -73,3 +73,11 @@ Peter Deutsch's fallacies (1994):
 - Explain why distributed consensus is hard
 - Describe how vector clocks capture causality
 - Give examples of distributed systems you use daily
+
+## Cross References
+
+- [CAP Theorem](fundamentals/cap.md)
+- [Consistency Models](fundamentals/consistency.md)
+- [Consensus](consensus/README.md)
+- [Replication](replication/README.md)
+- [Cloud Overview](../cloud/overview.md)

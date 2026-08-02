@@ -245,3 +245,10 @@ Messaging systems enable asynchronous, decoupled communication in distributed sy
 - [Pub/Sub Patterns](pubsub.md) — Publish-subscribe patterns
 - [Stream Processing](../mapreduce/streaming.md) — Processing message streams
 - [Circuit Breakers](../microservices/circuit-breakers.md) — Handling consumer failures
+
+## Cross References
+
+- [Kafka](kafka.md)
+- [RabbitMQ](rabbitmq.md)
+- [Pub/Sub](pubsub.md)
+- [Queues](queues.md)

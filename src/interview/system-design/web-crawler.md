@@ -243,3 +243,12 @@ Total: ~110 TB (replicated 3x = 330 TB)
 - JavaScript-rendered pages require headless browsers (expensive, used selectively).
 - Re-crawl scheduling based on page change frequency and importance.
 - Storage: ~100TB raw for 1B pages, replicated 3x for durability.
+
+## Cross-References
+
+- [Search Engine](./search.md)
+- [Distributed File System](./dfs.md)
+- [BFS / Graph Traversal](../coding/patterns.md)
+- [Robots.txt & Ethics](./hld/security-design.md)
+- [Object Storage](../../storage/object-storage.md)
+

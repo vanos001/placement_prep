@@ -265,3 +265,11 @@ x86 Total Store Order guarantees: loads aren't reordered with loads, stores aren
 - [Lock-Free](lock-free.md) — algorithms that need barriers
 - [Spinlocks](spinlocks.md) — implicit barriers in lock/unlock
 - [Peterson's Algorithm](petersons.md) — needs barriers on modern CPUs
+
+
+## Cross References
+
+- [Cache Coherence](../arch/memory-hierarchy/coherence.md)
+- [MESI Protocol](../arch/memory-hierarchy/mesi.md)
+- [CAS](../os/synchronization/cas.md)
+- [Lock-Free](../os/synchronization/lock-free.md)

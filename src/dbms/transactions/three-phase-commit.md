@@ -327,3 +327,10 @@ A: (1) How do you handle network partitions during the pre-commit phase? (2) Wha
 - [Distributed Transactions](./distributed.md) — Overview of distributed transactions
 - [Saga Pattern](./saga.md) — Alternative to distributed commit protocols
 - [Recovery](./recovery.md) — Recovery in distributed systems
+
+
+## Cross References
+
+- [Two-Phase Commit](../dbms/transactions/two-phase-commit.md)
+- [Distributed Transactions](../dbms/transactions/distributed.md)
+- [Consensus (Raft)](../distributed/consensus/raft.md)

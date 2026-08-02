@@ -264,3 +264,11 @@ A: **RR:** Fixed quantum, strict ordering, deterministic. **Lottery scheduling:*
 - [Multilevel Feedback](./multilevel-feedback.md) - RR per queue level
 - [Linux CFS](./linux-cfs.md) - Linux's fair scheduler
 - [Metrics](./metrics.md) - Evaluating scheduling
+
+
+## Cross References
+
+- [FCFS](../os/scheduling/fcfs.md)
+- [Multilevel Queue](../os/scheduling/multilevel-queue.md)
+- [Scheduling Metrics](../os/scheduling/metrics.md)
+- [Timer Interrupts](../os/io/interrupts.md)

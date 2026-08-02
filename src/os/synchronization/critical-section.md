@@ -263,3 +263,12 @@ The turn-based solution forces processes to alternate entry. If turn=0, only pro
 - [Spinlocks](spinlocks.md) — busy-wait locks
 - [CAS](cas.md) — compare-and-swap in depth
 - [Memory Barriers](memory-barriers.md) — preventing reordering
+
+
+## Cross References
+
+- [Mutex](../os/synchronization/mutex.md)
+- [Semaphores](../os/synchronization/semaphores.md)
+- [Peterson's](../os/synchronization/petersons.md)
+- [Monitors](../os/synchronization/monitors.md)
+- [Serializability](../dbms/transactions/serializability.md)

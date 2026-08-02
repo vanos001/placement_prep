@@ -369,3 +369,11 @@ Page Table Entry (PTE):
 - Both are approximations of LRU, not exact LRU
 - The 4-class priority: (0,0) → (0,1) → (1,0) → (1,1)
 - Worst case: O(n) per replacement (full sweep twice)
+
+
+## Cross References
+
+- [Page Replacement](../os/virtual-memory/page-replacement.md)
+- [LRU](../os/virtual-memory/lru.md)
+- [FIFO](../os/virtual-memory/fifo.md)
+- [Cache Replacement](../arch/memory-hierarchy/replacement.md)

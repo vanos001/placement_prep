@@ -447,3 +447,6 @@ class MovieTicketSystem:
 - [Design Patterns](./design-patterns.md) — State, Strategy
 - [Concurrency Design](./concurrency-design.md) — Thread-safe seat booking
 - [Error Handling](./error-handling.md) — Transaction rollback
+- [OOP Concepts](./oop-concepts.md)
+- [DBMS Transactions](../../../dbms/transactions/acid.md)
+

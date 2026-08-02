@@ -288,3 +288,12 @@ graph TB
 - Social graph uses TAO (in-memory cache + MySQL) for fast relationship queries.
 - Stories use 24-hour TTL with pre-fetching for smooth playback.
 - Explore page uses collaborative filtering to help users discover new content.
+
+## Cross-References
+
+- [News Feed](../news-feed.md)
+- [Social Graph](../social-graph.md)
+- [Video Streaming](../video-streaming.md)
+- [Object Storage](../../../storage/object-storage.md)
+- [CDN & Caching](../hld/caching-strategy.md)
+

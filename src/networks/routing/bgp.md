@@ -167,3 +167,10 @@ BGP is the protocol that glues the Internet together. It's policy-driven, uses A
 - [OSPF](ospf.md) — Interior protocol often used alongside BGP
 - [IS-IS](isis.md) — Another interior protocol
 - [Firewalls](../security/firewalls.md) — BGP security
+
+## Cross References
+
+- [OSPF](ospf.md)
+- [Static vs Dynamic](static-vs-dynamic.md)
+- [Internet Architecture](../tcp-ip/ip.md)
+- [Distributed Consensus](../../distributed/consensus/README.md)

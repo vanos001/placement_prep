@@ -182,3 +182,9 @@ DDR SDRAM transfers data on both clock edges, doubling throughput. Each generati
 - [GDDR](gddr.md) — GPU-optimized variant
 - [HBM](hbm.md) — High-bandwidth alternative
 - [Memory Hierarchy](../memory-hierarchy/README.md) — Where DDR fits
+
+## Cross References
+
+- [DRAM](dram.md)
+- [GDDR](gddr.md)
+- [HBM](hbm.md)

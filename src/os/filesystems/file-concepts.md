@@ -211,3 +211,11 @@ It would create cycles in the filesystem graph, breaking the acyclic tree struct
 - [Inodes and VFS](vfs.md) — kernel-level file abstraction
 - [ext4](ext4.md) — a real-world implementation
 - [Access Control](../security/access-control.md) — permissions in depth
+
+
+## Cross References
+
+- [VFS](../os/filesystems/vfs.md)
+- [Directory Structure](../os/filesystems/directory-structure.md)
+- [File Organization](../dbms/storage/file-organization.md)
+- [Record Formats](../dbms/storage/record-formats.md)

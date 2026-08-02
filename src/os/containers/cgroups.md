@@ -450,3 +450,11 @@ Diagnostic commands:
 - [Docker](docker.md) — Docker's use of cgroups
 - [Kubernetes](kubernetes.md) — Kubernetes resource management
 - [Security: Access Control](../security/access-control.md) — Resource access control
+
+
+## Cross References
+
+- [Namespaces](../os/containers/namespaces.md)
+- [Docker](../os/containers/docker.md)
+- [Scheduling](../os/scheduling/README.md)
+- [Resource Management](../os/memory/numa.md)

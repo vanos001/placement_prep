@@ -444,3 +444,11 @@ sudo systemctl restart nginx
 | Status | Legacy/deprecated | Standard on most distributions |
 
 **Key Takeaway**: systemd is the modern standard init system. For interviews, understand the unit file structure, the difference between `enable` and `start`, how targets replace runlevels, and how systemd achieves parallel startup through dependency resolution and socket activation.
+
+
+## Cross References
+
+- [Bootloader](../os/boot/bootloader.md)
+- [Daemons](../os/processes/daemons.md)
+- [Kubernetes Pods](../cloud/kubernetes/pods.md)
+- [Process Creation](../os/processes/creation.md)

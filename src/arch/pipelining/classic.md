@@ -230,3 +230,9 @@ Speedup = 800 / 250 = 3.2×
 - [Branch Prediction](./branch-prediction.md) — Handling control hazards
 - [Superscalar](./superscalar.md) — Multiple instructions per cycle
 - [Von Neumann Architecture](../cpu/von-neumann.md) — The basic model being pipelined
+
+## Cross References
+
+- [Hazards](hazards.md)
+- [Forwarding](forwarding.md)
+- [Superscalar](superscalar.md)

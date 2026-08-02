@@ -246,3 +246,11 @@ In practice, disk scheduling is 1D (cylinder numbers), so SSTF provides reasonab
 - [FCFS](disk-fcfs.md) — Baseline comparison
 - [SCAN](disk-scan.md) — SCAN fixes SSTF's starvation problem
 - [LOOK](disk-look.md) — Optimized SCAN variant
+
+
+## Cross References
+
+- [Disk Scheduling Overview](../os/io/disk-scheduling.md)
+- [FCFS](../os/io/disk-fcfs.md)
+- [SCAN](../os/io/disk-scan.md)
+- [HDD](../storage/hdd.md)

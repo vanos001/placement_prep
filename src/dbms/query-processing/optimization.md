@@ -331,3 +331,11 @@ Query optimization is a deep topic that bridges database theory and practice. Un
 - [Join Algorithms](./joins.md) — the algorithms the optimizer chooses between
 - [Parsing](./parsing.md) — the phase before optimization
 - [Indexing](../indexing/) — access paths the optimizer considers
+
+
+## Cross References
+
+- [Execution Plans](../dbms/query-processing/execution-plans.md)
+- [Cost Estimation](../dbms/query-processing/cost-estimation.md)
+- [Indexing](../dbms/indexing/README.md)
+- [Query Cache](../dbms/caching/query-cache.md)

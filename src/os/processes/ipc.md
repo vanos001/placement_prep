@@ -231,3 +231,12 @@ A: **Shared memory** (~0.1-1 μs): Setup requires syscall (`shmget`/`mmap`), but
 - [Signals](./ipc-signals.md) - Asynchronous notifications
 - [Synchronization](../synchronization/README.md) - Coordination primitives
 - [Threads](../threads/README.md) - Threads share memory (no IPC needed)
+
+
+## Cross References
+
+- [Pipes](../os/processes/ipc-pipes.md)
+- [Shared Memory](../os/processes/ipc-shared-memory.md)
+- [Message Queues](../os/processes/ipc-message-queues.md)
+- [Signals](../os/processes/ipc-signals.md)
+- [Sockets](../os/processes/ipc-sockets.md)

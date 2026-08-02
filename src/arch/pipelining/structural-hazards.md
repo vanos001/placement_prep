@@ -201,3 +201,8 @@ one must wait. The scheduler avoids this by monitoring port availability.
 - [Superscalar](./superscalar.md) — Multiple issue creates more resource demands
 - [Harvard Architecture](../cpu/harvard.md) — Separate memories solve the classic structural hazard
 - [Split Caches](../memory-hierarchy/split.md) — I-cache and D-cache separation
+
+## Cross References
+
+- [Hazards](hazards.md)
+- [Superscalar](superscalar.md)

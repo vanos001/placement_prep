@@ -209,3 +209,12 @@ The buffer pool is the foundation of database performance. Proper sizing and mon
 - [Redis](./redis.md) — external caching layer
 - [WAL](../internals/wal.md) — write-ahead logging and dirty page management
 - [File Organization](../storage/file-organization.md) — how pages are organized
+
+
+## Cross References
+
+- [Paging (OS)](../os/memory/paging.md)
+- [Cache Hierarchy](../arch/memory-hierarchy/cache-basics.md)
+- [Buffer Management](../dbms/storage/buffer-management.md)
+- [LRU (OS)](../os/virtual-memory/lru.md)
+- [DRAM](../arch/memory-tech/dram.md)

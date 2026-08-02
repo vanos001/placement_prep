@@ -364,3 +364,10 @@ Reading execution plans is an essential skill for database developers and DBAs. 
 - [Join Algorithms](./joins.md) — the algorithms in plan nodes
 - [Indexing](../indexing/) — how indexes affect plan choices
 - [Buffer Management](../storage/buffer-management.md) — how caching affects plan performance
+
+
+## Cross References
+
+- [Query Optimization](../dbms/query-processing/optimization.md)
+- [Cost Estimation](../dbms/query-processing/cost-estimation.md)
+- [Join Algorithms](../dbms/query-processing/joins.md)

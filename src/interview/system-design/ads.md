@@ -251,3 +251,14 @@ graph TB
 - Click fraud detection: velocity checks, IP analysis, ML models.
 - Billing uses a separate, exactly-once pipeline for accuracy.
 - Kafka partitions by ad_id hash for even distribution and ordering guarantees.
+
+## Cross-References
+
+- [Rate Limiter](./rate-limiter.md)
+- [Metrics & Monitoring](./metrics.md)
+- [Streaming Systems](./video-streaming.md)
+- [Estimation](./estimation.md)
+- [Real-World: Google Search](./real-world/google-search.md)
+- [ML Search Ranking](../../ml/system-design/search-ranking.md)
+- [Cloud AWS](../../cloud/aws/README.md)
+

@@ -240,3 +240,11 @@ Nested loop join is the "always works" algorithm — it handles any join conditi
 - [Join Algorithms Overview](./joins.md) — comparison of all join types
 - [Buffer Management](../storage/buffer-management.md) — how buffer pool affects join performance
 - [Cost Estimation](./cost-estimation.md) — how the optimizer estimates nested loop cost
+
+
+## Cross References
+
+- [Hash Join](../dbms/query-processing/hash-join.md)
+- [Sort Merge](../dbms/query-processing/sort-merge.md)
+- [Buffer Pool](../dbms/caching/buffer-pool.md)
+- [Cache Performance](../arch/memory-hierarchy/performance.md)

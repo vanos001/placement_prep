@@ -331,3 +331,12 @@ graph LR
 - Circuit breakers prevent cascading failures in microservices.
 - Graceful degradation keeps the system partially working under stress.
 - Parallel redundancy dramatically improves availability: two 99.9% systems = 99.999%.
+
+## Cross-References
+
+- [Consistency Patterns](./consistency-patterns.md)
+- [Backpressure](./backpressure.md)
+- [Latency vs Throughput](./latency-vs-throughput.md)
+- [Performance vs Scalability](./performance-vs-scalability.md)
+- [Cloud Overview](../../cloud/overview.md)
+

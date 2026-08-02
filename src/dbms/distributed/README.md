@@ -136,3 +136,12 @@ The understandable consensus algorithm used by etcd, CockroachDB, etc.
 - [NoSQL](../nosql/) — distributed NoSQL databases
 - [Storage](../storage/) — local storage fundamentals
 - [Query Processing](../query-processing/) — distributed query execution
+
+
+## Cross References
+
+- [CAP Theorem](../dbms/distributed/cap.md)
+- [Consensus](../dbms/distributed/consensus.md)
+- [Sharding](../dbms/distributed/sharding.md)
+- [Replication](../dbms/distributed/replication.md)
+- [Distributed Overview](../distributed/overview.md)

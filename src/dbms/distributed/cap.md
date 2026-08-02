@@ -255,3 +255,11 @@ The CAP theorem is the starting point for understanding distributed database des
 - [Sharding](./sharding.md) — how data is partitioned
 - [Consensus](./consensus.md) — how nodes agree despite failures
 - [NewSQL](../nosql/newsql.md) — systems that try to provide both C and A
+
+
+## Cross References
+
+- [CAP Theorem (Distributed)](../distributed/fundamentals/cap.md)
+- [Consistency Models](../distributed/fundamentals/consistency.md)
+- [Sharding](../dbms/distributed/sharding.md)
+- [Replication](../dbms/distributed/replication.md)

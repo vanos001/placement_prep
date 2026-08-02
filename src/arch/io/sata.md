@@ -145,3 +145,9 @@ SATA is a serial point-to-point storage interface with a maximum bandwidth of 60
 - [Storage Overview](../../storage/overview.md) — Storage technologies
 - [SSD](../../storage/ssd.md) — Solid-state drives
 - [HDD](../../storage/hdd.md) — Hard disk drives
+
+## Cross References
+
+- [NVMe](nvme.md)
+- [PCIe](pcie.md)
+- [Storage HDD](../../storage/hdd.md)

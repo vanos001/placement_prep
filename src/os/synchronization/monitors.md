@@ -292,3 +292,11 @@ Use a binary semaphore for the monitor lock (init=1), a semaphore per condition 
 - [Readers-Writers](readers-writers.md) — monitor-based solution
 - [Dining Philosophers](dining-philosophers.md) — monitor-based solution
 - [Critical Section](critical-section.md) — the problem being solved
+
+
+## Cross References
+
+- [Mutex](../os/synchronization/mutex.md)
+- [Semaphores](../os/synchronization/semaphores.md)
+- [Condition Variables](../os/synchronization/monitors.md)
+- [Java Concurrency](../concurrency/java.md)

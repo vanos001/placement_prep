@@ -371,3 +371,11 @@ Memory Layout:
 - [DMA](dma.md) — How buffers are used with DMA transfers
 - [Disk Scheduling](disk-scheduling.md) — How buffered requests are scheduled
 - [Device Drivers](device-drivers.md) — How drivers manage buffers
+
+
+## Cross References
+
+- [I/O Software Layers](../os/io/software-layers.md)
+- [Buffer Pool](../dbms/caching/buffer-pool.md)
+- [Buffer Management](../dbms/storage/buffer-management.md)
+- [Cache Hierarchy](../arch/memory-hierarchy/README.md)

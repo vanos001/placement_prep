@@ -107,3 +107,11 @@ The alternative to row-oriented storage: storing data column-by-column for analy
 - [Buffer Pool](./buffer-management.md) — in-memory caching
 - [Indexing](../indexing/) — data structures built on stored data
 - [WAL](../internals/wal.md) — write-ahead logging for durability
+
+
+## Cross References
+
+- [Buffer Management](../dbms/storage/buffer-management.md)
+- [File Organization](../dbms/storage/file-organization.md)
+- [Storage Overview](../storage/overview.md)
+- [File Systems (OS)](../os/filesystems/README.md)

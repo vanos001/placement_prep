@@ -227,3 +227,10 @@ Modern filesystems primarily use **bitmaps** (ext4, NTFS) or **extent-based B-tr
 - [XFS](xfs.md) — B+ tree free space management
 - [Btrfs](btrfs.md) — extent-based allocation tree
 - [Disk Scheduling](../io/disk-scheduling.md) — I/O order optimization
+
+
+## Cross References
+
+- [Disk Allocation](../os/filesystems/disk-allocation.md)
+- [File Concepts](../os/filesystems/file-concepts.md)
+- [Bitmap Index](../dbms/indexing/bitmap-index.md)

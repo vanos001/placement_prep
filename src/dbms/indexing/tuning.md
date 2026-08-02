@@ -358,3 +358,11 @@ A: (1) Statistics are stale — run ANALYZE. (2) The query filters on B without 
 - [Covering Index](./covering-index.md) — Index-only scans
 - [Clustered vs Non-Clustered](./clustered-vs-nonclustered.md) — Physical ordering
 - [Hash Index](./hash-index.md) — For exact lookups
+
+
+## Cross References
+
+- [Query Optimization](../dbms/query-processing/optimization.md)
+- [B+ Tree](../dbms/indexing/b-plus-tree.md)
+- [Composite Index](../dbms/indexing/composite-index.md)
+- [Execution Plans](../dbms/query-processing/execution-plans.md)

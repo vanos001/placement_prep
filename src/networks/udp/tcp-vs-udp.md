@@ -414,3 +414,10 @@ The choice between TCP and UDP depends on application requirements. Modern proto
 - [TCP Options](../tcp/options.md) — TCP header options (overhead)
 - [QUIC Protocol](../http/quic.md) — Reliable transport on UDP
 - [DNS Overview](../dns/README.md) — DNS uses both TCP and UDP
+
+## Cross References
+
+- [TCP](../tcp/README.md)
+- [UDP](README.md)
+- [WebSocket](../http/websocket.md)
+- [gRPC](../http/grpc.md)

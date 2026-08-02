@@ -351,3 +351,7 @@ The readers-writers problem synchronizes concurrent access where readers can sha
 - [Lock-Free](./lock-free.md) — Wait-free data structures
 - [Java Concurrency](./java.md) — Java's ReadWriteLock
 - [Concurrency Overview](./overview.md) — Fundamental concepts
+- [OS Readers-Writers](../os/synchronization/readers-writers.md)
+- [DBMS Concurrency Control](../dbms/transactions/concurrency-control.md)
+- [Storage Distributed](../storage/distributed.md)
+

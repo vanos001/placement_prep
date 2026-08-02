@@ -173,3 +173,12 @@ graph TD
 | **Alternatives** | DPO (no RL), GRPO (simpler), RLAIF (AI feedback) |
 
 RLHF was the breakthrough that made LLMs useful as assistants. Understanding it is essential for anyone working on LLM training.
+
+## Cross-References
+
+- [LLM RLHF](../../llm/llm-serving/rlhf.md)
+- [PPO](./ppo.md)
+- [DPO](./dpo.md)
+- [LLM SFT](../../llm/llm-serving/sft.md)
+- [Agent Safety](../agents/safety.md)
+

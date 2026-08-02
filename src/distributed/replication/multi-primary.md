@@ -234,3 +234,9 @@ Multi-primary replication enables high availability and geo-distributed writes b
 - [Quorum-Based Replication](quorum.md) — Tunable consistency
 - [Consensus Algorithms](../consensus/README.md) — For coordination when needed
 - [Message Queues](../messaging/queues.md) — For async replication
+
+## Cross References
+
+- [Primary-Backup](primary-backup.md)
+- [Quorum](quorum.md)
+- [Conflict Resolution](../fundamentals/consistency.md)

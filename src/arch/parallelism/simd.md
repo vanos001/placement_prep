@@ -233,3 +233,11 @@ SIMD processes multiple data elements with a single instruction using wide regis
 - [GPU](gpu.md) — Massive data parallelism
 - [Multicore](multicore.md) — Thread-level parallelism
 - [Performance](../performance/README.md) — Optimization techniques
+
+## Cross References
+
+- [AVX](avx.md)
+- [NEON](neon.md)
+- [GPU](gpu.md)
+- [ML Deep Learning](../../ml/deep-learning/README.md)
+- [LLM Inference](../../llm/llm-serving/inference.md)

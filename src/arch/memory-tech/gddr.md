@@ -173,3 +173,9 @@ GDDR is optimized for bandwidth over latency, making it ideal for GPUs. GDDR6 us
 - [HBM](hbm.md) — Stacked alternative
 - [GPU](../parallelism/gpu.md) — Why GPUs need high bandwidth
 - [Memory Hierarchy](../memory-hierarchy/README.md) — Where GDDR fits
+
+## Cross References
+
+- [DDR](ddr.md)
+- [HBM](hbm.md)
+- [GPU](../parallelism/gpu.md)

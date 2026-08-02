@@ -248,3 +248,12 @@ s3://pastebin-content/{id}
 - Expiration: Redis TTL for cache, background cleanup for content store.
 - Caching: Redis caches popular pastes; TTL matches paste expiration.
 - Content deduplication: store content by hash to avoid duplicates.
+
+## Cross-References
+
+- [URL Shortener](./url-shortener.md)
+- [Distributed File System](./dfs.md)
+- [Object Storage](../../storage/object-storage.md)
+- [Key-Value Store](./kv-store.md)
+- [Estimation](./estimation.md)
+

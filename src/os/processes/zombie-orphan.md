@@ -323,3 +323,10 @@ A: Container runtimes (Docker, containerd) use an init process (like `tini` or `
 - [Daemons](./daemons.md) - Intentional orphans
 - [Signals](./ipc-signals.md) - SIGCHLD signal
 - [Process Control Block](./pcb.md) - What remains for zombies
+
+
+## Cross References
+
+- [Process Creation](../os/processes/creation.md)
+- [Process States](../os/processes/states.md)
+- [Signals](../os/processes/ipc-signals.md)

@@ -159,3 +159,11 @@ graph LR
 ```
 
 Start with demand paging (the foundation), then page replacement algorithms, then advanced topics.
+
+
+## Cross References
+
+- [Paging](../os/memory/paging.md)
+- [Page Tables](../os/memory/page-tables.md)
+- [Buffer Pool](../dbms/caching/buffer-pool.md)
+- [Cache Hierarchy](../arch/memory-hierarchy/README.md)

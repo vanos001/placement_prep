@@ -210,3 +210,11 @@ A: 1) **Shortest Job First approximation:** Predict burst times using exponentia
 - [Round Robin](./round-robin.md) - FCFS with time quantum
 - [Scheduling Overview](./README.md) - All algorithms
 - [Metrics](./metrics.md) - How to evaluate scheduling
+
+
+## Cross References
+
+- [SJF](../os/scheduling/sjf.md)
+- [Round Robin](../os/scheduling/round-robin.md)
+- [Scheduling Metrics](../os/scheduling/metrics.md)
+- [CPU Architecture](../arch/cpu/README.md)

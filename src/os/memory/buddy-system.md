@@ -583,3 +583,10 @@ A:
 - **Related**: [Paging](./paging.md) — buddy allocates page frames
 - **Related**: [Huge Pages](./huge-pages.md) — buddy handles large contiguous blocks
 - **Related**: [NUMA](./numa.md) — per-node buddy systems
+
+
+## Cross References
+
+- [Allocation Algorithms](../os/memory/allocation-algorithms.md)
+- [Slab Allocator](../os/memory/slab-allocator.md)
+- [Memory Hierarchy](../arch/memory-hierarchy/README.md)

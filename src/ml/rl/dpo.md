@@ -181,3 +181,12 @@ graph TD
 | **When to Use** | When you have good preference data and want simplicity |
 
 DPO democratized LLM alignment — making it accessible to teams without RL expertise. It's now one of the most popular alignment methods.
+
+## Cross-References
+
+- [RLHF](./rlhf.md)
+- [GRPO](./grpo.md)
+- [LLM SFT](../../llm/llm-serving/sft.md)
+- [LLM RLHF](../../llm/llm-serving/rlhf.md)
+- [Policy Gradient](./policy-gradient.md)
+

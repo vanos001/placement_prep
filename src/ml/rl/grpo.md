@@ -210,3 +210,12 @@ def grpo_training(policy, ref_model, reward_fn, prompts, G=8, eps=0.2, beta=0.01
 | **Advantage** | Normalized rewards within group |
 
 GRPO is the algorithm behind the current generation of reasoning models. Its simplicity and effectiveness have made it the go-to choice for training LLMs to reason.
+
+## Cross-References
+
+- [DPO](./dpo.md)
+- [RLHF](./rlhf.md)
+- [PPO](./ppo.md)
+- [LLM RLHF](../../llm/llm-serving/rlhf.md)
+- [DeepSeek](../../llm/sota/deepseek.md)
+

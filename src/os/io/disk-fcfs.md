@@ -196,3 +196,11 @@ Deadline scheduler fairness:
 - [SSTF](disk-sstf.md) — The next step up from FCFS
 - [SCAN](disk-scan.md) — The elevator algorithm
 - [LOOK](disk-look.md) — Optimized SCAN
+
+
+## Cross References
+
+- [Disk Scheduling Overview](../os/io/disk-scheduling.md)
+- [SSTF](../os/io/disk-sstf.md)
+- [SCAN](../os/io/disk-scan.md)
+- [HDD](../storage/hdd.md)

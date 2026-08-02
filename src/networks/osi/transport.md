@@ -266,3 +266,11 @@ HTTP/3 (QUIC over UDP) solves this:
 - [UDP Deep Dive](../udp/README.md) — Complete UDP coverage
 - [HTTP Protocols](../http/README.md) — Application layer protocols using TCP/UDP
 - [DNS](../dns/README.md) — UDP-based name resolution
+
+## Cross References
+
+- [TCP](../tcp/README.md)
+- [UDP](../udp/README.md)
+- [Network Layer](network.md)
+- [Session Layer](session.md)
+- [Flow Control](../tcp/flow-control.md)

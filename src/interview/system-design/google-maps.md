@@ -374,3 +374,15 @@ graph TB
 - ETA = base time × traffic multiplier × ML correction.
 - Place search uses Elasticsearch with geo-indexing for location-based queries.
 - Offline maps: pre-download tiles + road graph for a geographic region.
+
+## Cross-References
+
+- [Search Engine](./search.md)
+- [Distributed File System](./dfs.md)
+- [Key-Value Store](./kv-store.md)
+- [Estimation](./estimation.md)
+- [Real-World: Google Search](./real-world/google-search.md)
+- [Distributed Storage](../../storage/distributed.md)
+- [Cloud AWS](../../cloud/aws/README.md)
+- [Networks Routing](../../networks/routing/ospf.md)
+

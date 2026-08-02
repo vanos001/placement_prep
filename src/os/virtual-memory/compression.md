@@ -370,3 +370,10 @@ Memory compression provides a fast middle ground between keeping pages in RAM an
 - Best algorithms: lz4 (fastest) or zstd (balanced)
 - Decompression speed matters more than compression ratio for swap
 - CPU overhead is the trade-off — not ideal for CPU-bound workloads
+
+
+## Cross References
+
+- [Swapping](../os/memory/swapping.md)
+- [Thrashing](../os/virtual-memory/thrashing.md)
+- [SSD](../storage/ssd.md)

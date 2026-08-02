@@ -443,3 +443,11 @@ A:
 - **Write amplification**: Critical for SSD lifespan; 10-30× is typical for leveled compaction
 - **Rate limiting**: Prevents compaction from starving foreground I/O
 - **Tombstones**: Deletions in LSM; removed only when compaction reaches bottom level
+
+
+## Cross References
+
+- [LSM Trees](../dbms/internals/lsm-trees.md)
+- [WAL](../dbms/internals/wal.md)
+- [SSD](../storage/ssd.md)
+- [Garbage Collection](../os/memory/swapping.md)

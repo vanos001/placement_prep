@@ -228,3 +228,8 @@ UDP is a simple, fast, connectionless protocol. It preserves message boundaries 
 - [TCP Sockets](tcp.md) — Reliable alternative
 - [Unix Domain Sockets](unix.md) — Local IPC
 - [Non-blocking I/O](nonblocking.md) — Async UDP
+
+## Cross References
+
+- [UDP Protocol](../udp/README.md)
+- [TCP Sockets](tcp.md)

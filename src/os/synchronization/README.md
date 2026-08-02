@@ -92,3 +92,12 @@ graph TD
 - [I/O](../io/README.md) — device synchronization
 - [Filesystems](../filesystems/README.md) — concurrent file access
 - [Containers](../containers/README.md) — namespace isolation
+
+
+## Cross References
+
+- [Mutex](../os/synchronization/mutex.md)
+- [Semaphores](../os/synchronization/semaphores.md)
+- [Deadlocks](../os/synchronization/deadlocks/README.md)
+- [Concurrency Overview](../concurrency/overview.md)
+- [Lock-Based Concurrency](../dbms/transactions/lock-based.md)

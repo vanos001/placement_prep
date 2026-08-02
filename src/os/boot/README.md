@@ -78,3 +78,10 @@ Each stage must hand off control to the next in a reliable, well-defined manner.
 - [BIOS/UEFI](bios-uefi.md) — Firmware deep dive
 - [Bootloader](bootloader.md) — GRUB configuration and usage
 - [Init Systems](init-systems.md) — systemd and alternatives
+
+
+## Cross References
+
+- [BIOS/UEFI](../os/boot/bios-uefi.md)
+- [Bootloader](../os/boot/bootloader.md)
+- [Init Systems](../os/boot/init-systems.md)

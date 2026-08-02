@@ -359,3 +359,11 @@ Redis is the de facto standard for application-level caching. Understanding its 
 - [Buffer Pool](./buffer-pool.md) — database page caching
 - [Distributed Caching](../distributed/) — caching in distributed systems
 - [Consistency](../distributed/consistency.md) — cache consistency challenges
+
+
+## Cross References
+
+- [Memcached](../dbms/caching/memcached.md)
+- [Consistent Hashing](../distributed/partitioning/consistent-hashing.md)
+- [Cache Hierarchy](../arch/memory-hierarchy/README.md)
+- [Pub/Sub](../distributed/messaging/pubsub.md)

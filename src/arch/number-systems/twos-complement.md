@@ -172,3 +172,9 @@ Two's complement is the standard signed integer representation. Negative numbers
 - [Binary](binary.md) — Unsigned binary
 - [Hexadecimal](hex.md) — Compact notation
 - [IEEE 754](ieee754.md) — Floating point representation
+
+## Cross References
+
+- [Binary](binary.md)
+- [ALU](../cpu/alu.md)
+- [IEEE 754](ieee754.md)

@@ -281,3 +281,10 @@ A: GiST is a generalization that can implement R-Tree behavior. PostgreSQL's GiS
 - [B+ Tree](./b-plus-tree.md) — For scalar data
 - [Index Tuning](./tuning.md) — Choosing between GiST, GIN, and B-Tree
 - [Bitmap Index](./bitmap-index.md) — For low-cardinality analytical queries
+
+
+## Cross References
+
+- [GIN](../dbms/indexing/gin.md)
+- [B-Tree](../dbms/indexing/b-tree.md)
+- [B+ Tree](../dbms/indexing/b-plus-tree.md)

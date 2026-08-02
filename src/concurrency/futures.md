@@ -339,3 +339,6 @@ Futures/Promises represent pending asynchronous computations. They enable non-bl
 - [Coroutines](./coroutines.md) — Implementation mechanism
 - [Go Channels](./go-channels.md) — Alternative communication model
 - [Concurrency Overview](./overview.md) — Fundamental concepts
+- [Java Concurrency](./java.md)
+- [LLM Batching](../llm/llm-serving/batching.md)
+

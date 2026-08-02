@@ -198,3 +198,10 @@ A:
 - [3NF](3nf.md) — Next level: transitive dependencies
 - [Normalization Overview](README.md) — Functional dependencies
 - [Keys](../relational-model/keys.md) — Understanding candidate keys
+
+
+## Cross References
+
+- [1NF](../dbms/normalization/1nf.md)
+- [3NF](../dbms/normalization/3nf.md)
+- [Keys](../dbms/relational-model/keys.md)

@@ -241,3 +241,11 @@ Setting `turn = j` after `flag[i] = true` ensures that if both processes execute
 - [CAS](cas.md) — hardware primitive
 - [Memory Barriers](memory-barriers.md) — preventing reordering
 - [Lock-Free](lock-free.md) — non-blocking alternatives
+
+
+## Cross References
+
+- [Critical Section](../os/synchronization/critical-section.md)
+- [Mutex](../os/synchronization/mutex.md)
+- [Memory Barriers](../os/synchronization/memory-barriers.md)
+- [CPU Architecture](../arch/cpu/README.md)

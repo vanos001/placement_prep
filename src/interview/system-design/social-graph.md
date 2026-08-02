@@ -296,3 +296,11 @@ graph LR
 - Bidirectional BFS finds shortest path between two users efficiently.
 - Blocking is stored as separate edges and filtered in all read paths.
 - Redis sets enable fast set operations (intersection for mutual friends, union for FoF).
+
+## Cross-References
+
+- [News Feed](./news-feed.md)
+- [Graph Neural Networks](../../ml/gnn/README.md)
+- [Key-Value Store](./kv-store.md)
+- [Distributed File System](./dfs.md)
+

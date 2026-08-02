@@ -401,3 +401,12 @@ A:
 - **See Also**: [Multi-Level Page Tables](./multi-level-page-tables.md) — reducing page table size
 - **Advanced**: [Huge Pages](./huge-pages.md) — using larger page sizes
 - **Virtual Memory**: [Demand Paging](../virtual-memory/demand-paging.md) — loading pages on demand
+
+
+## Cross References
+
+- [Cache Hierarchy](../arch/memory-hierarchy/cache-basics.md)
+- [Buffer Pool](../dbms/caching/buffer-pool.md)
+- [Virtual Memory](../os/virtual-memory/README.md)
+- [TLB](../os/memory/tlb.md)
+- [Page Tables](../os/memory/page-tables.md)
