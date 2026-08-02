@@ -1,222 +1,319 @@
-# AWS EC2 (Elastic Compute Cloud)
+# Amazon EC2 (Elastic Compute Cloud)
 
-## Overview
+## Introduction
 
-EC2 is AWS's Infrastructure-as-a-Service (IaaS) offering — resizable virtual machines in the cloud. You choose the instance type, AMI (operating system), storage, and networking. EC2 is the backbone of AWS and a fundamental topic for any cloud interview.
+Amazon EC2 provides resizable compute capacity in the cloud. It is the backbone of AWS's IaaS offering, allowing you to launch virtual servers (instances) with configurable CPU, memory, storage, and networking.
 
-## Core Concepts
+## EC2 Instance Types
 
-### EC2 Instance Lifecycle
+Instance types are organized by family, each optimized for different workloads:
+
+```mermaid
+graph TB
+    EC2[EC2 Instance Families] --> GENERAL[General Purpose]
+    EC2 --> COMPUTE[Compute Optimized]
+    EC2 --> MEMORY[Memory Optimized]
+    EC2 --> STORAGE[Storage Optimized]
+    EC2 --> ACCEL[Accelerated Computing]
+    EC2 --> HPC[HPC Optimized]
+
+    GENERAL --> T[T3/T3a - Burstable]
+    GENERAL --> M[M5/M6i - Balanced]
+    GENERAL --> A[A1 - ARM-based]
+
+    COMPUTE --> C[C5/C6i - CPU Intensive]
+    COMPUTE --> HPC2[Hpc6a - High Performance]
+
+    MEMORY --> R[R5/R6i - Memory Intensive]
+    MEMORY --> X[X1/X2 - SAP HANA]
+    MEMORY --> Z[Z1d - High Memory + GHz]
+
+    STORAGE --> I[I3/I4i - NVMe SSD]
+    STORAGE --> D[D2/D3 - Dense HDD]
+
+    ACCEL --> P[P4/P5 - GPU - ML Training]
+    ACCEL --> G[G4/G5 - GPU - ML Inference]
+    ACCEL --> INF[Inf1/Inf2 - AWS Inferentia]
+    ACCEL --> TRN[Trn1 - AWS Trainium]
+```
+
+### Instance Type Naming Convention
+
+```
+m6i.2xlarge
+│ │  │
+│ │  └── Size (nano, micro, small, medium, large, xlarge, 2xlarge, ...)
+│ └──── Generation (6 = 6th gen)
+└────── Family (m = general purpose)
+```
+
+| Family | Use Case | Examples |
+|--------|----------|----------|
+| **T3/T3a** | Burstable workloads (web servers, dev/test) | t3.micro, t3.medium |
+| **M5/M6i** | General purpose (web apps, small databases) | m5.large, m6i.xlarge |
+| **C5/C6i** | Compute-intensive (batch processing, gaming) | c5.2xlarge, c6i.4xlarge |
+| **R5/R6i** | Memory-intensive (caching, in-memory DBs) | r5.xlarge, r6i.2xlarge |
+| **I3/I4i** | Storage-intensive (high sequential I/O) | i3.large, i4i.xlarge |
+| **P4/P5** | GPU workloads (ML training, HPC) | p4d.24xlarge |
+| **G4/G5** | GPU inference, graphics rendering | g4dn.xlarge |
+| **Inf1/Inf2** | ML inference (AWS Inferentia chips) | inf1.xlarge |
+
+### Burstable Instances (T3/T3a)
+
+```mermaid
+graph LR
+    subgraph "CPU Credit Model"
+        BASE[Baseline CPU - 20% for t3.micro] --> EARN[Earn Credits When Below Baseline]
+        EARN --> BANK[Credit Bank - Max 24hrs of Baseline]
+        BANK --> BURST[Burst Above Baseline Using Credits]
+        BURST --> DEplete[Credits Depleted → Throttled to Baseline]
+    end
+```
+
+| Instance | vCPUs | Memory | Baseline CPU | Credits/Hour |
+|----------|-------|--------|-------------|-------------|
+| t3.micro | 2 | 1 GB | 20% | 24 |
+| t3.small | 2 | 2 GB | 20% | 24 |
+| t3.medium | 2 | 4 GB | 20% | 24 |
+| t3.large | 2 | 8 GB | 30% | 36 |
+| t3.xlarge | 4 | 16 GB | 40% | 96 |
+
+**T3 Unlimited Mode**: Pay for extra credits when the bank is exhausted—prevents throttling but incurs charges.
+
+## EC2 Pricing
+
+```mermaid
+graph TB
+    PRICING[EC2 Pricing] --> OD[On-Demand]
+    PRICING --> RI[Reserved Instances]
+    PRICING --> SP[Savings Plans]
+    PRICING --> SPOT[Spot Instances]
+    PRICING --> DH[Dedicated Hosts]
+    PRICING --> CI[Capacity Reservations]
+
+    OD --> |Pay per second| OD_D[No commitment, most expensive]
+    RI --> |1yr or 3yr| RI_D[Standard: up to 72% off, Convertible: up to 54% off]
+    SP --> |$Commitment/hr| SP_D[Compute SP or EC2 Instance SP]
+    SPOT --> |Bid for spare| SPT_D[Up to 90% off, 2-min interruption warning]
+    DH --> |Entire host| DH_D[Compliance, existing licenses]
+    CI --> |Reserve capacity| CI_D[On-Demand pricing, capacity guaranteed]
+```
+
+### Spot Instances Deep Dive
+
+```mermaid
+sequenceDiagram
+    participant User
+    participant ASG as Auto Scaling Group
+    participant Spot as Spot Instance
+    participant AWS as AWS
+
+    User->>ASG: Launch Spot Request
+    ASG->>AWS: Request Spot Capacity
+    AWS->>Spot: Launch if capacity available
+    Spot->>User: Running at ~70% discount
+
+    Note over AWS: Capacity needed by On-Demand
+    AWS->>Spot: 2-minute interruption warning
+    Spot->>User: Graceful shutdown
+    ASG->>AWS: Request replacement (different AZ/instance type)
+```
+
+**Spot Best Practices:**
+- Use Spot Fleet with multiple instance types and AZs
+- Implement graceful shutdown handlers (catch SIGTERM)
+- Use Spot for stateless, fault-tolerant workloads (batch, CI/CD, ML training)
+- Combine with On-Demand for baseline capacity
+
+## EC2 Placement Groups
+
+Control how instances are placed on underlying hardware:
+
+```mermaid
+graph TB
+    PG[Placement Groups] --> CLUSTER[Cluster]
+    PG --> SPREAD[Spread]
+    PG --> PARTITION[Partition]
+
+    CLUSTER --> |Same rack| CL_D[Lowest latency, highest throughput]
+    SPREAD --> |Different hardware| SP_D[Maximum isolation, max 7 per AZ]
+    PARTITION --> |Logical partitions| PA_D[Rack-level isolation, for HDFS, HBase]
+```
+
+| Strategy | Placement | Latency | Fault Tolerance | Max Instances |
+|----------|-----------|---------|-----------------|---------------|
+| **Cluster** | Same AZ, same rack | Lowest | Low (rack failure affects all) | No hard limit |
+| **Spread** | Different physical hardware | Higher | High (hardware isolation) | 7 per AZ per group |
+| **Partition** | Logical partitions (racks) | Moderate | Partition-level isolation | 100s per partition |
+
+**When to use:**
+- **Cluster**: HPC, ML training, tightly coupled applications requiring low latency
+- **Spread**: Critical instances that must be on different hardware (domain controllers, ZooKeeper)
+- **Partition**: Large distributed systems (HDFS, HBase, Kafka) where partition awareness matters
+
+## Elastic Network Interfaces (ENIs)
+
+```mermaid
+graph TB
+    subgraph "ENI Components"
+        ENI[Elastic Network Interface]
+        ENI --> MAC[MAC Address]
+        ENI --> IP[Primary Private IPv4]
+        ENI --> EIP[Elastic IP]
+        ENI --> SIPS[Secondary Private IPs - up to 50]
+        ENI --> SG[Security Groups]
+        ENI --> SRC_DST[Source/Destination Check]
+    end
+
+    subgraph "ENI Types"
+        PNI[Primary ENI - Cannot detach]
+        SNI[Secondary ENI - Can detach/reattach]
+    end
+```
+
+**ENI Use Cases:**
+1. **Dual-homed instances**: Instance in two subnets (management + production)
+2. **Failover**: Move ENI from failed instance to standby instance
+3. **MAC-based licensing**: Software licensed to specific MAC address
+4. **Low-budget HA**: Create standby instance, attach ENI on failure
+
+```bash
+# Create an ENI
+aws ec2 create-network-interface \
+    --subnet-id subnet-0123456789abcdef0 \
+    --description "Secondary ENI" \
+    --groups sg-0123456789abcdef0
+
+# Attach ENI to instance
+aws ec2 attach-network-interface \
+    --network-interface-id eni-0123456789abcdef0 \
+    --instance-id i-0123456789abcdef0 \
+    --device-index 1
+```
+
+## EC2 Instance Lifecycle
 
 ```mermaid
 stateDiagram-v2
     [*] --> Pending: Launch
-    Pending --> Running: Instance ready
+    Pending --> Running: Boot complete
     Running --> Stopping: Stop
-    Stopping --> Stopped: Instance stopped
+    Running --> ShuttingDown: Terminate
+    Stopping --> Stopped: Stopped
     Stopped --> Running: Start
-    Running --> Terminating: Terminate
-    Terminating --> [*]: Instance deleted
-    Running --> Rebooting: Reboot
-    Rebooting --> Running: Back to running
+    Stopped --> ShuttingDown: Terminate
+    ShuttingDown --> Terminated: Terminated
+    Terminated --> [*]
+
+    note right of Running: Instance is active\nBilling applies
+    note right of Stopped: EBS volumes persist\nNo compute charges
+    note right of Terminated: EBS volumes deleted\n(default behavior)
 ```
 
-### Instance Types
+| State | Compute Charges | EBS Volumes | Public IP |
+|-------|----------------|-------------|-----------|
+| **Running** | Yes | Attached | Retained (if Elastic IP) |
+| **Stopped** | No | Attached | Released (unless Elastic IP) |
+| **Terminated** | No | Deleted (default) | Released |
+
+## EC2 Purchase Options Comparison
+
+| Feature | On-Demand | Reserved | Spot | Dedicated Host |
+|---------|-----------|----------|------|----------------|
+| **Discount** | None | Up to 72% | Up to 90% | Varies |
+| **Commitment** | None | 1-3 years | None | None |
+| **Interruption** | No | No | Yes (2-min warning) | No |
+| **Predictability** | High | Highest | Low | Highest |
+| **Use Case** | Short-term, variable | Steady-state | Fault-tolerant batch | Compliance, licensing |
+
+## Auto Scaling Groups (ASG)
 
 ```mermaid
-graph TD
-    TYPES[Instance Types] --> GENERAL[General Purpose]
-    TYPES --> COMPUTE[Compute Optimized]
-    TYPES --> MEMORY[Memory Optimized]
-    TYPES --> STORAGE[Storage Optimized]
-    TYPES --> ACCEL[Accelerated (GPU)]
+graph TB
+    ALB[Application Load Balancer] --> ASG[Auto Scaling Group]
 
-    GENERAL --> G1[t3, m5, m6i]
-    GENERAL --> G1D[Balanced CPU, memory, networking]
+    ASG --> AZ1[AZ-1: Instance 1, Instance 2]
+    ASG --> AZ2[AZ-2: Instance 3, Instance 4]
+    ASG --> AZ3[AZ-3: Instance 5]
 
-    COMPUTE --> C1[c5, c6i]
-    COMPUTE --> C1D[Batch processing, scientific modeling]
+    CW[CloudWatch Metrics] --> |CPU > 70%| SC[Scale Out Policy]
+    CW --> |CPU < 30%| SI[Scale In Policy]
+    SC --> ASG
+    SI --> ASG
 
-    MEMORY --> M1[r5, r6i, x1e]
-    MEMORY --> M1D[Databases, in-memory caches]
-
-    STORAGE --> S1[i3, d2]
-    STORAGE --> S1D[High sequential I/O, data warehousing]
-
-    ACCEL --> A1[p3, g4, inf1]
-    ACCEL --> A1D[ML training, graphics, video encoding]
+    LT[Launch Template] --> |Defines| ASG
 ```
 
-| Family | Use Case | Example Specs |
-|--------|----------|---------------|
-| t3/t3a | Burstable, dev/test | 2 vCPU, 1 GB – 8 vCPU, 32 GB |
-| m5/m6i | General purpose | 2-96 vCPU, 8-384 GB |
-| c5/c6i | Compute intensive | 2-96 vCPU, 4-192 GB |
-| r5/r6i | Memory intensive | 2-96 vCPU, 16-768 GB |
-| i3/i4i | Storage intensive | 4-96 vCPU, 30-768 GB + NVMe |
-| p3/p4 | GPU (ML training) | 8 GPUs, 32-640 GB GPU memory |
-| g4 | GPU (inference, graphics) | 1-8 GPUs |
+**ASG Configuration:**
+- **Min Size**: Minimum number of instances
+- **Desired Capacity**: Target number (between min and max)
+- **Max Size**: Maximum number of instances
+- **Scaling Policies**: Target tracking, step scaling, simple scaling
+- **Health Checks**: EC2 status checks, ELB health checks, custom checks
 
-### AMI (Amazon Machine Image)
+**Scaling Policies:**
 
-```mermaid
-graph TD
-    AMI[AMI] --> OS[Operating System]
-    AMI --> APP[Pre-installed Software]
-    AMI --> CONFIG[Configuration]
-    AMI --> EBS_SNAP[EBS Snapshot]
+| Policy Type | How It Works | Best For |
+|------------|--------------|----------|
+| **Target Tracking** | Maintain a target metric (e.g., CPU at 50%) | Simple, most common |
+| **Step Scaling** | Scale based on CloudWatch alarm thresholds | Fine-grained control |
+| **Simple Scaling** | Single adjustment per alarm | Legacy, less flexible |
+| **Scheduled Scaling** | Scale at specific times | Predictable traffic patterns |
+| **Predictive Scaling** | ML-based forecast of traffic | Recurring patterns |
 
-    OS --> LINUX[Amazon Linux, Ubuntu, RHEL, Windows]
-    APP --> SOFTWARE[Docker, WordPress, Deep Learning AMI]
-```
+## EC2 Best Practices
 
-An AMI is a template for launching EC2 instances. Includes the OS, software, and configuration.
-
-## Networking
-
-### Security Groups
-
-```mermaid
-graph TD
-    SG[Security Group] --> INBOUND[Inbound Rules]
-    SG --> OUTBOUND[Outbound Rules]
-
-    INBOUND --> I1[Port 22: SSH from my IP]
-    INBOUND --> I2[Port 80: HTTP from anywhere]
-    INBOUND --> I3[Port 443: HTTPS from anywhere]
-
-    OUTBOUND --> O1[All traffic: Allow all]
-```
-
-Security groups are virtual firewalls. They are stateful (return traffic automatically allowed).
-
-### Elastic IP
-
-```mermaid
-graph TD
-    EIP[Elastic IP: 1.2.3.4] -->|Associate| EC2[EC2 Instance]
-    EC2 -->|Reassociate on failure| EC2B[New EC2 Instance]
-```
-
-A static public IP that can be remapped to different instances.
-
-### Placement Groups
-
-```mermaid
-graph TD
-    PG[Placement Groups] --> CLUSTER[Cluster: Same rack, lowest latency]
-    PG --> SPREAD[Spread: Different racks, max availability]
-    PG --> PARTITION[Partition: Grouped by rack, large distributed]
-
-    CLUSTER --> USE1[HPC, tightly coupled apps]
-    SPREAD --> USE2[Critical instances, max 7 per group]
-    PARTITION --> USE3[Large distributed workloads (HDFS, HBase)]
-```
-
-## Storage Options
-
-```mermaid
-graph TD
-    EC2[EC2 Instance] --> EBS[EBS: Persistent block storage]
-    EC2 --> INSTANCE_STORE[Instance Store: Ephemeral]
-    EC2 --> EFS[EFS: Shared file storage]
-    EC2 --> S3[S3: Object storage]
-
-    EBS --> GP3[gp3: General SSD]
-    EBS --> IO2[io2: High IOPS SSD]
-    EBS --> ST1[st1: Throughput HDD]
-
-    INSTANCE_STORE --> IS1[Lost on stop/terminate]
-    INSTANCE_STORE --> IS2[Very fast NVMe]
-```
-
-## Auto Scaling
-
-```mermaid
-graph TD
-    ASG[Auto Scaling Group] --> MIN[Min: 2 instances]
-    ASG --> DESIRED[Desired: 4 instances]
-    ASG --> MAX[Max: 10 instances]
-
-    TRIGGER[Scaling Trigger] --> CPU{CPU > 70%?}
-    CPU -->|Yes| SCALE_OUT[Add instance]
-    CPU -->|No| CPU_LOW{CPU < 30%?}
-    CPU_LOW -->|Yes| SCALE_IN[Remove instance]
-
-    SCALE_OUT --> LB[Load Balancer]
-    SCALE_IN --> LB
-    LB --> USERS[Users]
-```
-
-### Launch Templates
-
-```json
-{
-    "ImageId": "ami-0abcdef1234567890",
-    "InstanceType": "t3.medium",
-    "KeyName": "my-key",
-    "SecurityGroupIds": ["sg-12345"],
-    "BlockDeviceMappings": [{
-        "DeviceName": "/dev/sda1",
-        "Ebs": { "VolumeSize": 50, "VolumeType": "gp3" }
-    }],
-    "UserData": "#!/bin/bash\nyum install -y nginx"
-}
-```
-
-## Load Balancing
-
-```mermaid
-graph TD
-    CLIENT[Client] --> ALB[Application Load Balancer]
-    ALB --> EC2_1[EC2 Instance 1]
-    ALB --> EC2_2[EC2 Instance 2]
-    ALB --> EC2_3[EC2 Instance 3]
-
-    ALB --> HEALTH[Health Checks]
-    HEALTH -->|Unhealthy| REMOVE[Remove from pool]
-```
-
-| Load Balancer | Layer | Use Case |
-|---------------|-------|----------|
-| ALB (Application) | L7 (HTTP/HTTPS) | Web apps, path-based routing |
-| NLB (Network) | L4 (TCP/UDP) | Ultra-low latency, static IP |
-| GLB (Gateway) | L3 (IP) | Third-party virtual appliances |
-| CLB (Classic) | L4/L7 | Legacy (deprecated) |
+1. **Right-size instances**: Use AWS Compute Optimizer to find optimal instance types
+2. **Use Spot for stateless workloads**: Combine with On-Demand for baseline
+3. **Enable termination protection**: Prevent accidental termination of critical instances
+4. **Use IMDSv2**: Prevent SSRF attacks on instance metadata service
+5. **Encrypt EBS volumes**: Default encryption at rest
+6. **Use placement groups strategically**: Cluster for latency, spread for isolation
+7. **Tag everything**: Cost allocation, automation, access control
 
 ## Interview Questions
 
-1. **Q: What is the difference between stopping and terminating an EC2 instance?**
-   A: Stopping shuts down the instance but preserves EBS root volume data. The instance can be restarted. Terminating deletes the instance and (by default) its EBS root volume. Stopped instances don't incur compute charges but EBS storage charges continue.
+### Q1: What are the different EC2 instance types and when would you use each?
+**Answer**: EC2 families are optimized for different workloads: T3 (burstable, web servers), M5 (general purpose, balanced), C5 (compute-intensive, batch processing), R5 (memory-intensive, caching), I3 (storage-intensive, databases), P4/G5 (GPU, ML training/inference). Choose based on your bottleneck: CPU-bound → C5, memory-bound → R5, I/O-bound → I3, cost-sensitive → T3 for variable workloads.
 
-2. **Q: What is the difference between Security Groups and NACLs?**
-   A: Security Groups are stateful (return traffic automatically allowed), operate at the instance level, and support allow rules only. NACLs are stateless (must explicitly allow return traffic), operate at the subnet level, and support both allow and deny rules.
+### Q2: Explain EC2 Spot Instances and how to handle interruptions.
+**Answer**: Spot Instances use spare EC2 capacity at up to 90% discount but can be interrupted with a 2-minute warning when AWS needs the capacity. To handle interruptions: (1) Use Spot Fleet with diversified instance types/AZs, (2) Implement graceful shutdown handlers (catch SIGTERM), (3) Check for interruption notices via instance metadata, (4) Use checkpointing for long-running jobs, (5) Combine with On-Demand for baseline. Best for stateless, fault-tolerant workloads.
 
-3. **Q: How does Auto Scaling work?**
-   A: Auto Scaling Groups maintain a desired number of instances. CloudWatch alarms trigger scaling policies based on metrics (CPU, memory, request count). Scale-out adds instances; scale-in removes them. Health checks replace unhealthy instances automatically.
+### Q3: What are EC2 Placement Groups and when would you use each type?
+**Answer**: Placement groups control instance placement: Cluster places instances close together (same rack) for lowest latency—use for HPC, tightly coupled apps. Spread places instances on distinct hardware for maximum isolation—use for critical instances (max 7 per AZ). Partition groups instances into logical partitions on separate racks—use for distributed systems (HDFS, HBase) that need partition awareness.
 
-4. **Q: What is a Spot Instance and when would you use it?**
-   A: Spot Instances use spare EC2 capacity at up to 90% discount. AWS can reclaim them with 2-minute warning. Use for fault-tolerant workloads: batch processing, CI/CD, data analysis, ML training. Don't use for databases or critical services.
+### Q4: What is an ENI and what are its use cases?
+**Answer**: An Elastic Network Interface is a virtual network card with a MAC address, private IP, security groups, and source/dest check setting. Use cases: (1) Dual-homed instances in multiple subnets, (2) Failover—detach from failed instance, attach to standby, (3) MAC-based licensing, (4) Management network separate from production. Each instance has a primary ENI (cannot detach) and can have secondary ENIs.
 
-5. **Q: What is EC2 Instance Store vs EBS?**
-   A: Instance Store is ephemeral NVMe storage physically attached to the host. Data is lost when the instance stops or terminates. Very fast (direct NVMe). EBS is persistent network-attached block storage that survives instance stops. Use Instance Store for caches/temp data; EBS for persistent data.
+### Q5: How does Auto Scaling work in EC2?
+**Answer**: Auto Scaling Groups (ASGs) maintain desired instance count across AZs. Scaling policies adjust capacity: Target Tracking maintains a metric target (e.g., CPU at 50%), Step Scaling adjusts based on alarm thresholds, Scheduled Scaling changes at predetermined times. ASGs use Launch Templates to define instance configuration. Health checks (EC2 status or ELB) replace unhealthy instances automatically. Always span multiple AZs for HA.
 
 ## Common Mistakes
 
-- Not using Auto Scaling — paying for peak capacity all the time.
-- Using On-Demand for all instances — Reserved/Spot can save 50-90%.
-- Not setting up health checks — unhealthy instances stay in the load balancer.
-- Opening port 22 to 0.0.0.0/0 — security risk, use VPN or bastion host.
-- Not using IAM roles for EC2 — hardcoding AWS credentials in code.
+1. **Choosing instances by vCPU count alone**: Consider memory, network, and storage requirements too
+2. **Not using Spot for batch workloads**: Missing 70-90% cost savings
+3. **Single-AZ Auto Scaling Groups**: Defeats the purpose of high availability
+4. **Ignoring instance metadata security**: Not enforcing IMDSv2 allows SSRF attacks
+5. **Not monitoring credit balance on T3 instances**: Unexpected throttling when credits run out
+6. **Forgetting to terminate instances**: Especially in dev/test environments—use auto-scaling with min=0
+7. **Using public IPs for inter-instance communication**: Use private IPs and VPC peering instead
 
 ## Summary
 
-EC2 provides resizable virtual machines with flexible instance types, storage options, networking, and auto-scaling. Key concepts: instance types (match workload), security groups (virtual firewall), EBS (persistent storage), Auto Scaling (elastic capacity), and load balancers (distribute traffic). For interviews, understand the instance lifecycle, pricing models, and how to design highly available EC2 architectures.
+| Concept | Key Takeaway |
+|---------|-------------|
+| **Instance Types** | Match workload to instance family (compute, memory, storage, GPU) |
+| **Pricing** | Mix On-Demand + Reserved/Savings + Spot for optimal cost |
+| **Placement Groups** | Cluster (latency), Spread (isolation), Partition (distributed systems) |
+| **ENIs** | Virtual network cards for failover, multi-subnet, and MAC licensing |
+| **Auto Scaling** | Maintain desired capacity, scale with demand, span AZs |
+| **Spot** | Up to 90% off, 2-min warning, use for fault-tolerant workloads |
 
 ## Cross-References
 
-- [VPC](./vpc.md) — EC2 networking
-- [S3](./s3.md) — Object storage
-- [RDS](./rds.md) — Database backend
-- [Lambda](./lambda.md) — Serverless alternative
-- [AWS Overview](./README.md) — All AWS services
+- **VPC**: [Networking](./vpc.md) — Where EC2 instances live
+- **EBS**: Block storage attached to EC2
+- **S3**: [Object Storage](./s3.md) — Store and retrieve data
+- **Lambda**: [Serverless](./lambda.md) — Alternative to always-on EC2
+- **Kubernetes**: [EKS](../kubernetes/README.md) — EC2 as Kubernetes nodes
+- **Cloud Overview**: [Pricing Models](../overview.md) — AWS pricing in context
