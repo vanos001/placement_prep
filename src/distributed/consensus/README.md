@@ -2,110 +2,185 @@
 
 ## Overview
 
-Consensus is the fundamental problem in distributed systems: how do multiple independent nodes agree on a single value or sequence of values? This is critical for maintaining consistency across replicas, electing leaders, and coordinating distributed transactions.
-
-Without consensus, distributed systems cannot guarantee that all nodes see the same data or agree on the order of operations.
+Consensus algorithms are fundamental to distributed systems. They allow a group of nodes to agree on a single value or state, even in the presence of failures. Understanding consensus is critical for designing reliable distributed systems.
 
 ## Why Consensus Matters
 
-```mermaid
-graph TD
-    A[Client writes X=1] --> B[Node A]
-    A --> C[Node B]
-    A --> D[Node C]
-    B -->|X=1| E[Network Partition]
-    C -->|X=1| E
-    D -->|X=0?| F[Stale Data]
-    E --> G[Nodes must agree: what is X?]
-```
+- **Leader election**: Choose a coordinator node
+- **State replication**: Keep replicas consistent
+- **Configuration management**: Agree on cluster configuration
+- **Transaction commit**: Coordinate distributed transactions
 
-In a distributed system, nodes can fail, messages can be lost or reordered, and network partitions can split the cluster. Consensus algorithms ensure that despite these failures, all non-faulty nodes eventually agree on the same value.
+## FLP Impossibility Theorem
 
-## The FLP Impossibility Result
+The Fischer, Lynch, Paterson (FLP) theorem proves that in an asynchronous system, even a single faulty process makes consensus impossible to guarantee. In practice, we work around this with:
+- Partial synchrony assumptions
+- Failure detectors
+- Randomization
 
-Fischer, Lynch, and Paterson (1985) proved that **no deterministic consensus algorithm can guarantee agreement in an asynchronous system if even one process may crash**. This doesn't mean consensus is impossible — it means algorithms must use randomness, timeouts, or partial synchrony assumptions.
+## Paxos
 
-## Properties of Consensus
+### Overview
 
-Every consensus algorithm must satisfy:
+Paxos is the foundational consensus algorithm proposed by Leslie Lamport. It's notoriously difficult to understand and implement.
 
-| Property | Description |
-|----------|-------------|
-| **Agreement** | All correct processes decide the same value |
-| **Validity** | The decided value was proposed by some process |
-| **Termination** | All correct processes eventually decide |
-| **Integrity** | Each process decides at most once |
+### Roles
 
-## Fault Tolerance Bounds
+| Role | Responsibility |
+|------|---------------|
+| **Proposer** | Proposes values, drives the protocol |
+| **Acceptor** | Votes on proposals, stores accepted values |
+| **Learner** | Learns the decided value |
 
-| Fault Type | Min Nodes for f faults |
-|-----------|----------------------|
-| Crash faults | 2f + 1 |
-| Byzantine faults | 3f + 1 |
-
-## Algorithm Comparison
-
-| Algorithm | Fault Type | Communication | Leader-based | Used In |
-|-----------|-----------|---------------|-------------|---------|
-| **Paxos** | Crash | Multi-round | Optional | Google Chubby, Spanner |
-| **Raft** | Crash | Multi-round | Yes | etcd, CockroachDB, TiKV |
-| **ZAB** | Crash | Multi-round | Yes | ZooKeeper |
-| **PBFT** | Byzantine | 3-phase | Yes | Hyperledger |
-
-## Consensus in Practice
+### Two Phases
 
 ```mermaid
-graph LR
-    subgraph "Crash Fault Tolerant"
-        Paxos --> Chubby
-        Paxos --> Spanner
-        Raft --> etcd
-        Raft --> CockroachDB
-        ZAB --> ZooKeeper
+flowchart TD
+    subgraph "Phase 1: Prepare"
+        P1[Proposer] -->|Prepare(n)| A1[Acceptors]
+        A1 -->|Promise(n, prev_accepted)| P1
     end
-    subgraph "Byzantine Fault Tolerant"
-        PBFT --> Hyperledger
+    
+    subgraph "Phase 2: Accept"
+        P1 -->|Accept(n, value)| A1
+        A1 -->|Accepted(n)| L1[Learners]
     end
 ```
+
+1. **Prepare**: Proposer sends prepare(n) to acceptors. Acceptors promise not to accept proposals numbered less than n.
+2. **Accept**: If majority promises, proposer sends accept(n, value). Acceptors accept if they haven't promised higher.
+
+### Multi-Paxos
+
+- Single proposer becomes leader
+- Skip Phase 1 for subsequent values
+- Much higher throughput
+
+## Raft
+
+### Overview
+
+Raft was designed to be more understandable than Paxos. It's used in etcd, Consul, CockroachDB, and many other systems.
+
+### Key Concepts
+
+```mermaid
+flowchart TD
+    subgraph "Raft Roles"
+        FOLLOWER[Follower] -->|election timeout| CANDIDATE[Candidate]
+        CANDIDATE -->|wins vote| LEADER[Leader]
+        CANDIDATE -->|higher term| FOLLOWER
+        LEADER -->|discovers higher term| FOLLOWER
+    end
+```
+
+| Role | Description |
+|------|-------------|
+| **Follower** | Passive, responds to RPCs |
+| **Candidate** | Requests votes to become leader |
+| **Leader** | Handles all client requests, replicates log |
+
+### Leader Election
+
+1. Follower doesn't hear from leader → becomes candidate
+2. Increments term, votes for self, requests votes
+3. Wins if majority votes for same term
+4. Split vote → random timeout, retry
+
+### Log Replication
+
+```mermaid
+flowchart LR
+    CLIENT[Client] --> LEADER[Leader]
+    LEADER -->|AppendEntries| F1[Follower 1]
+    LEADER -->|AppendEntries| F2[Follower 2]
+    F1 -->|Success| LEADER
+    F2 -->|Success| LEADER
+    LEADER -->|Commit| STATE[State Machine]
+```
+
+1. Client sends command to leader
+2. Leader appends to log, replicates to followers
+3. Once majority acknowledges → commit
+4. Apply to state machine, respond to client
+
+### Safety Properties
+
+- **Election safety**: At most one leader per term
+- **Log matching**: If two logs have entry with same index and term, all preceding entries match
+- **Leader completeness**: If entry committed in term, present in logs of leaders for all higher terms
+- **State machine safety**: If server applies entry at index, no other server applies different entry at same index
+
+## ZAB (ZooKeeper Atomic Broadcast)
+
+Used by Apache ZooKeeper. Similar to Raft but with different terminology:
+- **Leader election**: Similar to Raft
+- **Discovery**: Leader learns latest state
+- **Synchronization**: Followers sync with leader
+- **Broadcast**: Normal operation, leader broadcasts proposals
+
+## PBFT (Practical Byzantine Fault Tolerance)
+
+Handles Byzantine (arbitrary) faults, not just crash faults.
+
+| Algorithm | Fault Type | Faults Tolerated | Messages |
+|-----------|-----------|-----------------|----------|
+| Paxos/Raft | Crash | f < n/2 | O(n) |
+| PBFT | Byzantine | f < n/3 | O(n²) |
+
+### PBFT Phases
+
+1. **Pre-prepare**: Leader assigns sequence number
+2. **Prepare**: Nodes broadcast prepare messages
+3. **Commit**: When 2f+1 prepares received, broadcast commit
+4. **Reply**: When 2f+1 commits received, execute
+
+## Comparison
+
+| Feature | Paxos | Raft | ZAB | PBFT |
+|---------|-------|------|-----|------|
+| **Fault type** | Crash | Crash | Crash | Byzantine |
+| **Faults tolerated** | f < n/2 | f < n/2 | f < n/2 | f < n/3 |
+| **Leader** | Optional | Required | Required | Required |
+| **Understandability** | Hard | Easy | Medium | Hard |
+| **Used by** | Chubby | etcd, Consul | ZooKeeper | Blockchain |
+
+## Real-World Implementations
+
+| System | Algorithm | Use Case |
+|--------|-----------|----------|
+| **etcd** | Raft | Kubernetes configuration |
+| **Consul** | Raft | Service discovery |
+| **ZooKeeper** | ZAB | Coordination service |
+| **CockroachDB** | Raft | Distributed SQL |
+| **TiKV** | Raft | Distributed KV |
+| **Chubby** | Paxos | Google lock service |
 
 ## Interview Questions
 
-1. **What is the consensus problem in distributed systems?**
-   - Multiple nodes must agree on a single value despite failures. The algorithm must guarantee agreement, validity, termination, and integrity.
+### Q1: Why is consensus hard in distributed systems?
 
-2. **Why is consensus hard?**
-   - The FLP impossibility result shows deterministic consensus is impossible in purely asynchronous systems with even one crash failure. Real systems use timeouts or partial synchrony.
+Because of the FLP impossibility result: in a purely asynchronous system, even one faulty process makes consensus impossible to guarantee. We need partial synchrony or failure detectors.
 
-3. **What's the difference between crash faults and Byzantine faults?**
-   - Crash faults: nodes stop responding. Byzantine faults: nodes can behave arbitrarily (lie, send conflicting messages). Byzantine requires 3f+1 nodes; crash requires 2f+1.
+### Q2: Raft vs Paxos?
 
-4. **When do you need consensus vs. simple replication?**
-   - Consensus is needed when you need strong consistency guarantees (linearizability). Simple replication (eventual consistency) suffices for availability-prioritized systems.
+Raft is designed for understandability. It decomposes consensus into leader election, log replication, and safety. Paxos is more general but harder to implement correctly. Most modern systems use Raft.
 
-## Common Mistakes
+### Q3: How does Raft handle network partitions?
 
-- Confusing **consensus** with **replication** — consensus is about agreeing on values; replication is about copying data
-- Assuming consensus is cheap — each consensus round requires multiple network round-trips
-- Forgetting that **leader election** is itself a consensus problem
-- Not considering **network partitions** when choosing a consensus algorithm
+The partition with majority of nodes continues to operate (elects leader, commits entries). The minority partition becomes unavailable. When partition heals, the minority syncs with the majority's log.
 
-## Summary
+### Q4: What is linearizability?
 
-Consensus is the backbone of distributed systems. Paxos, Raft, ZAB, and PBFT are the most important algorithms to understand. Each makes different trade-offs between fault tolerance, performance, and complexity.
+A consistency model where every operation appears to take effect atomically at some point between its invocation and response. It's the strongest single-object consistency model.
 
-## Cross-References
+### Q5: CAP theorem in practice?
 
-- [Paxos Algorithm](paxos.md) — The classic consensus protocol
-- [Raft Consensus](raft.md) — Understandable consensus
-- [ZooKeeper Atomic Broadcast](zab.md) — ZAB protocol
-- [PBFT](pbft.md) — Byzantine fault tolerance
-- [Primary-Backup Replication](../replication/primary-backup.md) — Uses consensus for failover
-- [Quorum-Based Replication](../replication/quorum.md) — Related voting mechanisms
+You can't have all three of Consistency, Availability, and Partition tolerance. Since partitions are unavoidable, the real choice is between CP (consistent but may be unavailable) and AP (available but may be inconsistent).
 
-## Cross References
+## Related Topics
 
-- [Paxos](paxos.md)
-- [Raft](raft.md)
-- [FLP Impossibility](../fundamentals/flp.md)
-- [DBMS Consensus](../../dbms/distributed/consensus.md)
-- [OS Synchronization](../../os/synchronization/README.md)
+- [CAP Theorem](../cap-theorem.md) — Fundamental trade-off
+- [Distributed Storage](../../storage/distributed.md) — Storage systems
+- [Distributed Databases](../../dbms/distributed/) — Database replication
+- [System Design](../../interview/system-design/) — Designing distributed systems
