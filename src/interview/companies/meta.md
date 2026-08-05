@@ -1,100 +1,179 @@
-# Meta (Facebook) Interview Guide
+# Meta (Facebook) Interview Preparation
 
-## 🎯 Meta's Interview Process
+## Overview
 
-```
-Typical Meta SWE Interview:
-├── Phone Screen (1-2): Coding
-├── On-site (4-5 rounds):
-│   ├── Coding Round 1: Algorithms
-│   ├── Coding Round 2: Algorithms
-│   ├── System Design (E4+): Distributed systems
-│   ├── Behavioral: Culture fit
-│   └── (Sometimes) Resume deep-dive
-└── Hiring committee makes decision
-```
+Meta's interview process is known for its emphasis on coding ability, system design at scale, and the "Move Fast" culture. Meta tends to focus more on practical coding and less on theoretical algorithms compared to Google.
 
-## 📊 What Meta Evaluates
+## Interview Process
 
-```
-Meta's Core Values:
-├── Move Fast
-│   ├── Bias toward action
-│   ├── Ship quickly, iterate
-│   └── Don't wait for perfect
-│
-├── Boldness
-│   ├── Take on big challenges
-│   ├── Not afraid to fail
-│   └── Think long-term
-│
-├── Openness
-│   ├── Transparent communication
-│   ├── Share information freely
-│   └── Accept feedback
-│
-├── Building Social Value
-│   ├── Connect the world
-│   ├── Impact billions of people
-│   └── Think about societal impact
-│
-└── Continuous Improvement
-    ├── Never settle
-    ├── Always learn
-    └── Iterate on everything
-```
+| Stage | Duration | Focus |
+|-------|----------|-------|
+| **Phone Screen** | 45 min | 1-2 coding problems |
+| **Onsite (4-5 rounds)** | 45 min each | Coding, system design, behavioral |
+| **Hiring Decision** | - | Packet review |
 
-## 💻 Coding at Meta
+## What Meta Looks For
 
-### What Makes Meta Different
-- **Speed matters:** Meta values fast coders
-- **Clean code:** Readability is important
-- **Testing expected:** Walk through test cases
-- **Optimization:** Discuss complexity after brute force
+### 1. Coding (2-3 rounds)
 
-### Common Meta Coding Topics
-1. **Graphs** — Very common (social network connections)
-2. **Trees** — Especially binary trees
-3. **Arrays & Strings** — Foundation
-4. **Dynamic Programming** — Medium to Hard
-5. **Hash Maps** — Used extensively
+Meta coding interviews tend to be more practical and less trick-heavy than Google's.
 
-### Example Meta Questions
-```
-1. Valid Palindrome II (Easy)
-2. Lowest Common Ancestor (Medium)
-3. Minimum Remove to Make Valid Parentheses (Medium)
-4. Buildings With an Ocean View (Medium)
-5. Random Pick with Weight (Medium)
-6. Merge Intervals (Medium)
-```
+**Common topics:**
+- Arrays and strings (frequent)
+- Trees and graphs (very common)
+- Hash tables
+- Dynamic programming (moderate difficulty)
+- BFS/DFS
+- Sliding window
+- Two pointers
+- Stacks and queues
 
-## 🏗️ System Design at Meta
+**Meta-specific patterns:**
+- Heavy emphasis on graph problems
+- Binary tree traversals and modifications
+- String parsing and manipulation
+- Real-world inspired problems
 
-### Meta-Specific Design Topics
+### 2. System Design (1-2 rounds for E4+, all rounds for E5+)
+
+Meta system design interviews focus on social media scale systems.
+
+**Common topics:**
 - Design Facebook News Feed
 - Design Instagram
-- Design WhatsApp/Messenger
+- Design Messenger/WhatsApp
 - Design Facebook Live
+- Design a notification system
+- Design a typeahead/autocomplete system
 - Design a social graph
 
-### Meta's Design Focus
-- **Scale:** Billions of users, massive data
-- **Real-time:** Low latency for social interactions
-- **Engagement:** Optimize for user engagement
-- **Privacy:** User data protection
+### 3. Behavioral (1 round)
 
-## 💡 Tips for Meta
+Meta uses the "PEEL" framework:
+- **Point**: State your main point
+- **Evidence**: Provide specific examples
+- **Explain**: Connect evidence to your point
+- **Link**: Tie back to the question
 
-1. **Code fast** — Meta values speed
-2. **Be bold** — Take on challenging approaches
-3. **Show impact** — Quantify everything
-4. **Think social** — Problems often involve social graphs
-5. **Move fast** — Don't overthink, start coding
-6. **Be open** — Share your thought process
+**Key values:**
+- Move Fast
+- Boldness
+- Openness
+- Building Social Value
+- Continuous Improvement
 
-## 🔗 Cross-References
+## Meta-Specific Tips
 
-- [News Feed Design](../system-design/news-feed.md) — Classic Meta question
-- [Chat System](../system-design/chat.md) — WhatsApp/Messenger design
-- [Coding Patterns](../coding/patterns.md) — Graph patterns common at Meta
+### Coding Approach
+
+```python
+# Meta prefers:
+# 1. Working code over optimal code (get it working first)
+# 2. Clear communication
+# 3. Iterative improvement
+
+# Example: Facebook-style problem
+def merge_intervals(intervals: List[List[int]]) -> List[List[int]]:
+    """Merge overlapping meeting times."""
+    if not intervals:
+        return []
+    
+    intervals.sort(key=lambda x: x[0])
+    merged = [intervals[0]]
+    
+    for start, end in intervals[1:]:
+        if start <= merged[-1][1]:
+            merged[-1][1] = max(merged[-1][1], end)
+        else:
+            merged.append([start, end])
+    
+    return merged
+```
+
+### System Design Framework (Meta Style)
+
+1. **Requirements** (5 min)
+   - What are we building?
+   - Who uses it?
+   - What's the scale?
+
+2. **High-level design** (10 min)
+   - Core components
+   - Data flow
+   - API design
+
+3. **Deep dive** (15 min)
+   - Database design
+   - Scaling the read path
+   - Scaling the write path
+   - Caching strategy
+
+4. **Bottlenecks and improvements** (10 min)
+   - Single points of failure
+   - Performance optimization
+   - Monitoring and alerting
+
+## Common Meta Interview Questions
+
+### Algorithms (Meta-specific)
+
+1. **Valid Palindrome II** — Two pointers, one deletion allowed
+2. **Lowest Common Ancestor** — Binary tree LCA
+3. **Binary Tree Right Side View** — BFS/level order
+4. **Minimum Remove to Make Valid Parentheses** — Stack
+5. **Subarray Sum Equals K** — Prefix sum + hash map
+6. **Product of Array Except Self** — Prefix/suffix products
+7. **Random Pick with Weight** — Binary search on prefix sums
+8. **Merge Intervals** — Sorting + merging
+9. **Dot Product of Two Sparse Vectors** — Design question
+10. **Building with Ocean View** — Monotonic stack
+
+### System Design
+
+1. **Design Facebook News Feed** — Fanout, ranking, real-time updates
+2. **Design Instagram** — Photo upload, feed generation, stories
+3. **Design Messenger** — Real-time messaging, presence, delivery receipts
+4. **Design Facebook Live** — Video streaming, comments, reactions
+5. **Design a Notification System** — Push, email, SMS, preferences
+6. **Design a Typeahead** — Trie, ranking, personalization
+
+### Behavioral (Meta-specific)
+
+1. Tell me about a time you moved fast and broke things
+2. Describe a situation where you had to be bold
+3. How do you handle receiving critical feedback?
+4. Tell me about a time you simplified a complex system
+5. Describe your approach to technical debt
+
+## Level Expectations
+
+| Level | Title | Coding | System Design | Experience |
+|-------|-------|--------|---------------|------------|
+| E3 | Software Engineer | Strong | N/A | 0-2 years |
+| E4 | Software Engineer | Strong | Basic | 2-5 years |
+| E5 | Senior Software Engineer | Expert | Strong | 5+ years |
+| E6 | Staff Software Engineer | Expert | Expert | 8+ years |
+
+## Meta vs Google Interviews
+
+| Aspect | Meta | Google |
+|--------|------|--------|
+| **Coding focus** | Practical, graph-heavy | Algorithmic, DP-heavy |
+| **System design** | Social media systems | Infrastructure systems |
+| **Behavioral** | Move Fast, Boldness | Googleyness, Leadership |
+| **Code quality** | Working first, optimize later | Clean and optimal from start |
+| **Difficulty** | Moderate-High | High |
+
+## Resources
+
+- [LeetCode Meta tagged problems](https://leetcode.com/company/facebook/)
+- Meta Engineering Blog
+- [System Design Primer](https://github.com/donnemartin/system-design-primer)
+- [Cracking the Coding Interview](http://www.crackingthecodinginterview.com/)
+
+## Related Topics
+
+- [System Design Framework](../system-design/framework.md) — How to approach system design
+- [Coding Patterns](../coding/) — Common algorithm patterns
+- [Google Interview](./google.md) — Comparison
+- [Behavioral Interview](../behavioral/) — Soft skills
