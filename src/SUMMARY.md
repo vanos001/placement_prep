@@ -183,6 +183,7 @@
   - [Covering Index](./dbms/indexing/covering-index.md)
   - [Composite Index](./dbms/indexing/composite-index.md)
 - [Query Processing](./dbms/query-processing/README.md)
+    - [Query Optimization](./dbms/internals/query-optimization.md)
   - [Query Parsing](./dbms/query-processing/parsing.md)
   - [Query Optimization](./dbms/query-processing/optimization.md)
   - [Join Algorithms](./dbms/query-processing/joins.md)
