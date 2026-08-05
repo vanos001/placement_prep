@@ -18,6 +18,7 @@
     - [Message Queues](./os/processes/ipc-message-queues.md)
     - [Shared Memory](./os/processes/ipc-shared-memory.md)
     - [Sockets](./os/processes/ipc-sockets.md)
+    - [Advanced IPC](./os/processes/ipc-advanced.md)
     - [Signals](./os/processes/ipc-signals.md)
   - [Zombie and Orphan Processes](./os/processes/zombie-orphan.md)
   - [Daemon Processes](./os/processes/daemons.md)
