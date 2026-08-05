@@ -96,3 +96,4 @@ Cargo.toml
 *.cache
 .env
 .env.local
+token.txt

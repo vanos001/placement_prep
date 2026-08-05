@@ -7,10 +7,11 @@
 ## Concurrency Control Approaches
 
 ```mermaid
-graph CC[Concurrency Control] --> LOCK[Lock-Based<br/>Pessimistic]
-CC --> TS[Timestamp-Based<br/>Deterministic]
-CC --> OPT[Optimistic<br/>Validation-Based]
-CC --> MVCC[Multi-Version<br/>Readers ≠ Writers]
+flowchart TD
+    CC[Concurrency Control] --> LOCK[Lock-Based<br/>Pessimistic]
+    CC --> TS[Timestamp-Based<br/>Deterministic]
+    CC --> OPT[Optimistic<br/>Validation-Based]
+    CC --> MVCC[Multi-Version<br/>Readers ≠ Writers]
 
 LOCK --> 2PL[Two-Phase Locking]
 LOCK --> MULTIGRAN[Multi-Granularity Locking]

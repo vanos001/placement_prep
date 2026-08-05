@@ -38,7 +38,7 @@ graph TD
     subgraph "RDD Properties"
         R[Resilient] --> R1["Can recompute lost partitions"]
         D[Distributed] --> D1["Data across multiple nodes"]
-        D[Dataset] --> D2["Collection of partitioned data"]
+        DS[Dataset] --> D2["Collection of partitioned data"]
         I[Immutable] --> I1["Once created, cannot be changed"]
         L[Lazy] --> L1["Transformations not executed until action"]
     end

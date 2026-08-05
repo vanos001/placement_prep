@@ -21,10 +21,10 @@ graph TD
     end
 
     subgraph TM[Transactional Memory]
-        T1[atomic {]
+        T1["atomic #123;"]
         T2[  modify A]
         T3[  modify B]
-        T4[}]
+        T4["#125;"]
         T1 --> T2 --> T3 --> T4
         T5[No deadlock, automatic conflict detection]
     end
