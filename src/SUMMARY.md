@@ -366,6 +366,7 @@
   - [Cache Replacement](./arch/memory-hierarchy/replacement.md)
   - [Cache Write Policies](./arch/memory-hierarchy/write-policies.md)
   - [Cache Coherence](./arch/memory-hierarchy/coherence.md)
+    - [Cache Coherence Deep Dive](./arch/cpu/cache-coherence.md)
     - [MESI Protocol](./arch/memory-hierarchy/mesi.md)
     - [MOESI Protocol](./arch/memory-hierarchy/moesi.md)
   - [Split Caches](./arch/memory-hierarchy/split.md)
