@@ -893,6 +893,27 @@
 
 ---
 
+# Programming Languages
+
+- [C Language](./languages/c/README.md)
+  - [Memory Management](./languages/c/memory-management.md)
+  - [Pointers](./languages/c/pointers.md)
+  - [Undefined Behavior](./languages/c/undefined-behavior.md)
+  - [Compilation Pipeline](./languages/c/compilation.md)
+  - [POSIX Programming](./languages/c/posix.md)
+  - [Performance Optimization](./languages/c/performance.md)
+  - [C Interview Questions](./languages/c/interview-questions.md)
+- [C++ Language](./languages/cpp/README.md)
+  - [Templates](./languages/cpp/templates.md)
+  - [Standard Template Library](./languages/cpp/stl.md)
+  - [Memory Model and Smart Pointers](./languages/cpp/memory-model.md)
+  - [Move Semantics](./languages/cpp/move-semantics.md)
+  - [Concurrency](./languages/cpp/concurrency.md)
+  - [Modern C++ Features](./languages/cpp/modern-cpp.md)
+  - [C++ Interview Questions](./languages/cpp/interview-questions.md)
+
+---
+
 # Meta
 
 - [Coverage Dashboard](./meta/coverage_dashboard.md)
