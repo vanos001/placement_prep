@@ -800,3 +800,11 @@
 - [Quick Revision - DBMS](./revision/dbms.md)
 - [Quick Revision - Networks](./revision/networks.md)
 - [Quick Revision - Architecture](./revision/architecture.md)
+
+---
+
+# Meta
+
+- [Coverage Dashboard](./meta/coverage_dashboard.md)
+- [Topic Backlog](./meta/topic_backlog.md)
+- [Knowledge Graph](./meta/knowledge_graph.md)
