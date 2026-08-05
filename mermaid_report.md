@@ -1,6 +1,6 @@
 # Mermaid Validation Report
 
-- **Total:** 8
-- **Passed:** 8
+- **Total:** 61
+- **Passed:** 61
 - **Failed:** 0
 - **Pass rate:** 100.0%
