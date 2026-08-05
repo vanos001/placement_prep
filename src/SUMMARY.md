@@ -803,6 +803,83 @@
 
 ---
 
+# Programming Languages
+
+## C
+
+- [C Overview](./languages/c/README.md)
+- [Memory Management](./languages/c/memory-management.md)
+- [Pointers](./languages/c/pointers.md)
+- [Undefined Behavior](./languages/c/undefined-behavior.md)
+- [Compilation](./languages/c/compilation.md)
+- [POSIX](./languages/c/posix.md)
+- [Performance](./languages/c/performance.md)
+- [C Interview Questions](./languages/c/interview-questions.md)
+
+## C++
+
+- [C++ Overview](./languages/cpp/README.md)
+- [Templates](./languages/cpp/templates.md)
+- [STL](./languages/cpp/stl.md)
+- [Memory Model](./languages/cpp/memory-model.md)
+- [Move Semantics](./languages/cpp/move-semantics.md)
+- [Concurrency](./languages/cpp/concurrency.md)
+- [Modern C++](./languages/cpp/modern-cpp.md)
+- [C++ Interview Questions](./languages/cpp/interview-questions.md)
+
+## Rust
+
+- [Rust Overview](./languages/rust/README.md)
+- [Ownership](./languages/rust/ownership.md)
+- [Borrow Checker](./languages/rust/borrow-checker.md)
+- [Lifetimes](./languages/rust/lifetimes.md)
+- [Traits](./languages/rust/traits.md)
+- [Error Handling](./languages/rust/error-handling.md)
+- [Async Rust](./languages/rust/async.md)
+- [Unsafe Rust](./languages/rust/unsafe.md)
+- [Rust Interview Questions](./languages/rust/interview-questions.md)
+
+## Python
+
+- [Python Overview](./languages/python/README.md)
+- [CPython Internals](./languages/python/cpython-internals.md)
+- [GIL](./languages/python/gil.md)
+- [AsyncIO](./languages/python/asyncio.md)
+- [Type System](./languages/python/typing.md)
+- [Data Model](./languages/python/data-model.md)
+- [Packaging](./languages/python/packaging.md)
+- [Performance](./languages/python/performance.md)
+- [Python Interview Questions](./languages/python/interview-questions.md)
+
+## Go
+
+- [Go Overview](./languages/go/README.md)
+- [Scheduler (GMP)](./languages/go/scheduler.md)
+- [Channels](./languages/go/channels.md)
+- [Memory Model](./languages/go/memory-model.md)
+- [Go Interview Questions](./languages/go/interview-questions.md)
+
+## Java
+
+- [Java Overview](./languages/java/README.md)
+- [JVM Internals](./languages/java/jvm.md)
+- [Garbage Collection](./languages/java/gc.md)
+- [Java Interview Questions](./languages/java/interview-questions.md)
+
+## JavaScript
+
+- [JavaScript Overview](./languages/javascript/README.md)
+- [V8 Engine](./languages/javascript/v8.md)
+- [Node.js](./languages/javascript/nodejs.md)
+- [JavaScript Interview Questions](./languages/javascript/interview-questions.md)
+
+## OCaml
+
+- [OCaml Overview](./languages/ocaml/README.md)
+- [OCaml Interview Questions](./languages/ocaml/interview-questions.md)
+
+---
+
 # Meta
 
 - [Coverage Dashboard](./meta/coverage_dashboard.md)
