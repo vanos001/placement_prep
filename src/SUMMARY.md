@@ -476,6 +476,7 @@
 - [Erasure Coding](./storage/erasure-coding.md)
 - [Write-Ahead Log (WAL)](./storage/wal.md)
 - [LSM Compaction Strategies](./storage/lsm-compaction.md)
+- [SSTable Format](./storage/sstable.md)
 
 ---
 
@@ -507,6 +508,8 @@
   - [GraphQL](./backend/api/graphql.md)
   - [gRPC](./backend/api/grpc.md)
   - [API Gateways](./backend/api/api-gateway.md)
+  - [API Versioning](./backend/api/versioning.md)
+  - [Rate Limiting](./backend/api/rate-limiting.md)
   - [Webhooks](./backend/api/webhooks.md)
   - [Connection Pools](./backend/api/connection-pools.md)
 - [Authentication & Authorization](./backend/auth/README.md)
