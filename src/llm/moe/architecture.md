@@ -424,5 +424,5 @@ MoE architecture uses multiple expert networks with selective activation. Key co
 - [Switch Transformer](switch.md) - Top-1 routing
 - [Mixtral](mixtral.md) - Open-source implementation
 - [Training MoE](training.md) - Training challenges
-- [ML Transformers](../ml/transformers/architecture.md)
-- [Cloud Distributed](../storage/distributed.md)
+- [ML Transformers](../../ml/transformers/architecture.md)
+- [Cloud Distributed](../../storage/distributed.md)

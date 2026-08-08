@@ -103,7 +103,7 @@ stateDiagram-v2
 | [TCP States](states.md) | Connection state machine |
 | [TCP Timers](timers.md) | Retransmission and other timers |
 | [TCP Options](options.md) | MSS, Window Scale, SACK, Timestamps |
-| [Nagle's Algorithm](nagle.md | Small packet coalescing |
+| [Nagle's Algorithm](nagle.md) | Small packet coalescing |
 | [Keep-Alive](keepalive.md) | Connection liveness checking |
 
 ## Interview Questions

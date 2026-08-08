@@ -363,4 +363,4 @@ Rarely. The optimizer usually makes good choices. Force only when:
 - [Indexing](../indexing/) — B-tree, hash indexes
 - [Storage Engines](../storage/) — B-tree, LSM-tree
 - [Transactions](../transactions/) — Locking, MVCC
-- [PostgreSQL Internals](./postgresql.md) — PG-specific internals
+- [PostgreSQL Internals](./README.md) — PG-specific internals

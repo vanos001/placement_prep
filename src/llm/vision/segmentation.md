@@ -453,5 +453,5 @@ Segmentation provides pixel-level image understanding. U-Net is the foundational
 - [CLIP](clip.md) - Open-vocabulary segmentation
 - [SAM](sam.md) - Promptable segmentation
 - [U-Net Architecture](segmentation.md#u-net) - Encoder-decoder with skip connections
-- [ML CNN](../ml/deep-learning/cnn.md)
-- [Vision Transformers](../ml/transformers/vit.md)
+- [ML CNN](../../ml/deep-learning/cnn.md)
+- [Vision Transformers](../../ml/transformers/vit.md)

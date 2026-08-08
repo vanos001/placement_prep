@@ -4,9 +4,9 @@ Observability is the ability to understand the internal state of a system from i
 
 ## In This Section
 
-- [Logging](./logging.md) — Structured logging and the ELK stack
-- [Monitoring](./monitoring.md) — Metrics, dashboards, and alerting
-- [Tracing](./tracing.md) — Distributed tracing with OpenTelemetry
+- [Logging](../../cloud/observability/logging.md) — Structured logging and the ELK stack
+- [Monitoring](../../cloud/observability/monitoring.md) — Metrics, dashboards, and alerting
+- [Tracing](../../cloud/observability/tracing.md) — Distributed tracing with OpenTelemetry
 
 ## Three Pillars of Observability
 

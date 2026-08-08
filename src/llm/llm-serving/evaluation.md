@@ -254,5 +254,5 @@ LLM evaluation requires multiple benchmarks covering knowledge (MMLU), code (Hum
 
 - [RAG →](rag.md) RAG-specific evaluation
 - [RLHF →](rlhf.md) Alignment evaluation
-- [Agent Evaluation →](../agents/evaluation.md) Agent-specific metrics
-- [Monitoring →](../mlops/monitoring.md) Production model monitoring
+- [Agent Evaluation →](../../ml/agents/evaluation.md) Agent-specific metrics
+- [Monitoring →](../../ml/mlops/monitoring.md) Production model monitoring

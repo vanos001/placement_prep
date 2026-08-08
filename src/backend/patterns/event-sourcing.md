@@ -47,7 +47,7 @@ The aggregate validates the command against its current state, then emits events
 Technically an append-only log, often implemented on:
 
 - **A relational DB** with an `events` table (`aggregate_id`, `version`, `type`, `payload`, `timestamp`) and a unique constraint on `(aggregate_id, version)` to enforce optimistic concurrency.
-- **Dedicated event stores / brokers**: Kafka (see [Kafka](../distributed/messaging/kafka.md)), NATS JetStream, EventStoreDB, or a log-based system.
+- **Dedicated event stores / brokers**: Kafka (see [Kafka](../../distributed/messaging/kafka.md)), NATS JetStream, EventStoreDB, or a log-based system.
 
 ```sql
 -- optimistic concurrency: version must match what the aggregate loaded
@@ -129,4 +129,4 @@ Version events (e.g., `OrderPlacedV1` → `OrderPlacedV2`), keep consumers able 
 - [Event-Driven Architecture](./event-driven.md) — events as the communication backbone
 - [Idempotency](./idempotency.md) — making consumers safe against redelivery
 - [Distributed Transactions](./distributed-transactions.md) — saga vs event-sourced compensation
-- [Kafka](../distributed/messaging/kafka.md) — log as event store
+- [Kafka](../../distributed/messaging/kafka.md) — log as event store

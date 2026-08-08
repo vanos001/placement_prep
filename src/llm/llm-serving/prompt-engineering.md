@@ -332,8 +332,8 @@ Prompt engineering is the primary interface for using LLMs. Techniques range fro
 
 ## Cross-References
 
-- [Chain-of-Thought →](../agents/chain-of-thought.md) Detailed CoT techniques
-- [ReAct →](../agents/react.md) Reasoning + Acting pattern
+- [Chain-of-Thought →](../../ml/agents/chain-of-thought.md) Detailed CoT techniques
+- [ReAct →](../../ml/agents/react.md) Reasoning + Acting pattern
 - [RAG →](rag.md) Augmenting prompts with retrieved context
 - [SFT →](sft.md) How models learn to follow prompts
-- [Tool Calling →](../agents/tool-calling.md) Function calling with prompts
+- [Tool Calling →](../../ml/agents/tool-calling.md) Function calling with prompts

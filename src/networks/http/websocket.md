@@ -409,7 +409,7 @@ WebSocket is the go-to protocol for real-time, bidirectional web communication. 
 - **[HTTP/2](./http2.md)** — HTTP/2 Server Push vs WebSocket for server-initiated data
 - **[HTTP/3 & QUIC](./http3.md)** — How QUIC's multiplexing compares to WebSocket's single-stream approach
 - **[HTTPS / TLS](./https.md)** — Securing WebSocket with `wss://`
-- **[TCP & UDP](../tcp-udp.md)** — WebSocket runs on TCP; understanding TCP's role
+- **[TCP & UDP](../tcp/README.md)** — WebSocket runs on TCP; understanding TCP's role
 - **[gRPC](./grpc.md)** — gRPC streaming as an alternative to WebSocket
 - **[REST](./rest.md)** — When request-response is sufficient vs when WebSocket is needed
 

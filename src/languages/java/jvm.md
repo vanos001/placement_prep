@@ -306,6 +306,6 @@ flowchart TD
 ## Related Topics
 
 - [Java GC Algorithms](./gc.md) — Detailed GC comparison
-- [Java Concurrency](./concurrency.md) — Threading deep dive
+- [Java Concurrency](../../concurrency/java.md) — Threading deep dive
 - [OS Memory Management](../../os/memory/) — OS-level memory concepts
 - [Computer Architecture](../../arch/) — Hardware memory model

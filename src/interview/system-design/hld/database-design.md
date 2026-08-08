@@ -300,7 +300,7 @@ With index: Binary search O(log n)
 - [Caching Strategy](./caching-strategy.md) — Cache-DB consistency
 - [Data Intensive](./data-intensive.md) — Data warehouses and lakes
 - [Capacity Planning](./capacity-planning.md) — Storage estimation
-- [DBMS Overview](../../dbms/overview.md)
-- [DBMS Normalization](../../dbms/normalization/3nf.md)
-- [Storage Distributed](../../storage/distributed.md)
+- [DBMS Overview](../../../dbms/overview.md)
+- [DBMS Normalization](../../../dbms/normalization/3nf.md)
+- [Storage Distributed](../../../storage/distributed.md)
 - [Key-Value Store](../kv-store.md)

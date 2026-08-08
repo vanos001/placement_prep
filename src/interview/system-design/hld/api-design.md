@@ -421,6 +421,6 @@ paths:
 - [Monitoring](./monitoring-observability.md) — API metrics and logging
 - [Caching Strategy](./caching-strategy.md) — HTTP caching headers
 - [RPC](../rpc.md)
-- [Networks HTTP](../../networks/http/rest.md)
+- [Networks HTTP](../../../networks/http/rest.md)
 - [Rate Limiter](../rate-limiter.md)
-- [Cloud API Gateway](../../cloud/aws/vpc.md)
+- [Cloud API Gateway](../../../cloud/aws/vpc.md)

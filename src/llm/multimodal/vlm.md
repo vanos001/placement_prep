@@ -476,5 +476,5 @@ VLMs combine vision encoders with language models through projection layers. Tra
 - [GPT-4V](gpt4v.md) - OpenAI's multimodal model
 - [Gemini](gemini.md) - Google's natively multimodal model
 - [CLIP](../vision/clip.md) - Vision-language pre-training
-- [Transformers](../transformers.md) - Foundation architecture
-- [Instruction Tuning](../training.md) - Fine-tuning paradigm
+- [Transformers](../../ml/transformers/README.md) - Foundation architecture
+- [Instruction Tuning](../../ml/llm/training-pipeline.md) - Fine-tuning paradigm

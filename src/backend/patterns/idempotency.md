@@ -77,7 +77,7 @@ Key design details:
 
 ### 4. Distributed / exactly-once processing
 
-For message consumers, the *at-least-once* delivery of queues (see [RabbitMQ](../distributed/messaging/rabbitmq.md), [Kafka](../distributed/messaging/kafka.md)) means a consumer may receive the same message twice. Make consumers idempotent:
+For message consumers, the *at-least-once* delivery of queues (see [RabbitMQ](../../distributed/messaging/rabbitmq.md), [Kafka](../../distributed/messaging/kafka.md)) means a consumer may receive the same message twice. Make consumers idempotent:
 
 - **Deduplication keys**: store processed message IDs; skip duplicates.
 - **State-based convergence**: compute from current state so re-applying converges (like PUT).

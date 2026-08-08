@@ -274,7 +274,7 @@ Snooping broadcasts all events → O(n) bandwidth. Directory only sends point-to
 
 ## Related Topics
 
-- [Cache Hierarchy](./pipeline.md) — L1/L2/L3 cache
-- [Memory Ordering](./memory-ordering.md) — CPU memory models
+- [Cache Hierarchy](../memory-hierarchy/README.md) — L1/L2/L3 cache
+- [Memory Ordering](../../os/synchronization/memory-barriers.md) — CPU memory models
 - [NUMA](../../os/memory/numa.md) — Non-uniform memory access
 - [Concurrency](../../concurrency/) — Lock-free programming

@@ -305,5 +305,5 @@ For a model with $P$ parameters in FP16:
 - [Self-Attention](./self-attention.md) — Deep dive into attention
 - [Transformer Variants](./variants.md) — BERT, GPT, T5, ViT
 - [Training Transformers](./training.md) — Optimization techniques
-- [LLM Interview Questions](../llm/interview-questions.md) — LLM-specific questions
-- [GPU Computing](../gpu/README.md) — Hardware for Transformers
+- [LLM Interview Questions](../llm/README.md) — LLM-specific questions
+- [GPU Computing](../../arch/parallelism/gpu.md) — Hardware for Transformers

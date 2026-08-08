@@ -502,7 +502,7 @@ REST's simplicity, HTTP-native design, and broad tooling support have made it th
 - **[HTTPS / TLS](./https.md)** — Securing REST APIs with TLS
 - **[HTTP/2](./http2.md)** — HTTP/2 benefits for REST (multiplexing, header compression)
 - **[WebSocket](./websocket.md)** — Real-time alternatives to REST polling
-- **[HTTP Status Codes](./status-codes.md)** — Detailed status code reference
+- **[HTTP Status Codes](./README.md)** — Detailed status code reference
 
 ## Cross References
 

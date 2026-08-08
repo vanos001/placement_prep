@@ -282,9 +282,9 @@ HTTP/3 represents a fundamental rethinking of web transport. By moving from TCP 
 - **[QUIC Protocol](./quic.md)** — Deep dive into the transport layer that powers HTTP/3
 - **[HTTPS / TLS](./https.md)** — TLS 1.3 integration in QUIC and certificate handling
 - **[HTTP/2](./http2.md)** — The predecessor and why HTTP/3 was needed
-- **[TCP vs UDP](../tcp-udp.md)** — Understanding the transport layer shift
+- **[TCP vs UDP](../tcp/README.md)** — Understanding the transport layer shift
 - **[WebSocket](./websocket.md)** — Real-time protocols and how HTTP/3 affects them
-- **[Performance Optimization](../performance.md)** — How HTTP/3 fits into web performance strategies
+- **[Performance Optimization](../tcp/congestion-control.md)** — How HTTP/3 fits into web performance strategies
 
 ## Cross References
 

@@ -364,7 +364,7 @@ Image classification has evolved from handcrafted features to deep CNNs to Visio
 ## Cross-References
 
 - [CNNs](../vision/README.md) - Convolutional neural network fundamentals
-- [Transformers](../transformers.md) - Self-attention mechanism
+- [Transformers](../../ml/transformers/README.md) - Self-attention mechanism
 - [Object Detection](object-detection.md) - Extending classification to localization
 - [Segmentation](segmentation.md) - Pixel-level classification
 - [CLIP](clip.md) - Contrastive image-text pre-training

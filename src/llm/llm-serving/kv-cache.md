@@ -266,5 +266,5 @@ KV cache is essential for efficient autoregressive generation, but it's the larg
 - [Quantization →](quantization.md) KV cache quantization
 - [vLLM →](vllm.md) PagedAttention implementation
 - [Batching →](batching.md) Batching and KV cache interaction
-- [Attention](../ml/deep-learning/attention.md)
-- [Storage Memory](../storage/overview.md)
+- [Attention](../../ml/deep-learning/attention.md)
+- [Storage Memory](../../storage/overview.md)

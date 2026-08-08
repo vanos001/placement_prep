@@ -224,5 +224,5 @@ torch.save({
 
 - [Machine Learning](../../ml/) — ML fundamentals
 - [Transformers](../../ml/transformers/) — Attention mechanism
-- [GPU Computing](../../ml/gpu/) — CUDA programming
-- [Distributed Training](../../ml/distributed/) — Multi-GPU training
+- [GPU Computing](../../arch/parallelism/gpu.md) — CUDA programming
+- [Distributed Training](../../ml/llm/training-pipeline.md) — Multi-GPU training

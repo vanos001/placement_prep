@@ -301,5 +301,5 @@ RAG grounds LLM outputs in retrieved external knowledge, reducing hallucination 
 
 - [Embeddings →](embeddings.md) How text is vectorized
 - [Prompt Engineering →](prompt-engineering.md) Constructing the augmented prompt
-- [Agent Planning →](../agents/planning.md) Agentic RAG patterns
+- [Agent Planning →](../../ml/agents/planning.md) Agentic RAG patterns
 - [Evaluation →](evaluation.md) Measuring LLM quality

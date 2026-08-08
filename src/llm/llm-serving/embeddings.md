@@ -182,5 +182,5 @@ Embeddings convert text to semantic vectors. Dense embeddings capture meaning; s
 - [RAG →](rag.md) Primary use case for embeddings
 - [Tokenization →](tokenization.md) How text is split before embedding
 - [Architecture →](architecture.md) How transformer encoders work
-- [ML Feature Engineering](../ml/foundations/feature-engineering.md)
-- [Vector Search](../ml/system-design/search-ranking.md)
+- [ML Feature Engineering](../../ml/foundations/feature-engineering.md)
+- [Vector Search](../../ml/system-design/search-ranking.md)

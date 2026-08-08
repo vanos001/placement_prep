@@ -348,5 +348,5 @@ proxy.age = 25; // Logs: Setting age to 25
 
 - [Node.js](./nodejs.md) — Server-side JavaScript
 - [V8 Engine](./v8.md) — Runtime internals
-- [TypeScript](./typescript.md) — Type system
+- [TypeScript](./README.md) — Type system
 - [Event Loop](../../os/processes/) — OS-level event handling

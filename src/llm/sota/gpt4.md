@@ -82,4 +82,4 @@ GPT-4/GPT-4o represent the current frontier of proprietary LLMs. Key strengths i
 - [RLHF](../llm-serving/rlhf.md) — Alignment training
 - [Multimodal Models](../multimodal/README.md) — Vision-language
 - [Claude](./claude.md) — Main competitor
-- [Gemini](./gemini-sota.md) — Google's competitor
+- [Gemini](./gemini.md) — Google's competitor

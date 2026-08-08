@@ -118,8 +118,8 @@ Computer Vision has evolved from handcrafted features to foundation models. The 
 
 ## Cross-References
 
-- [Neural Networks](../basics.md) - Foundation concepts
-- [Transformers](../transformers.md) - ViT and attention mechanisms
+- [Neural Networks](../../ml/transformers/README.md) - Foundation concepts
+- [Transformers](../../ml/transformers/README.md) - ViT and attention mechanisms
 - [GANs](../../ml/gan/README.md) - Generative models
 - [CLIP](clip.md) - Vision-language alignment
 - [Multimodal Models](../multimodal/README.md) - Combining vision and language

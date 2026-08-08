@@ -167,7 +167,7 @@ If the loop enters the **timers phase** first, `setTimeout` wins; if it enters *
 
 ### Q: How do you handle CPU-heavy tasks without blocking the server?
 
-Use `worker_threads` (parallel JS with memory sharing), `cluster` (multi-process), or move work out-of-process/off-box (job queues — see [RabbitMQ](../distributed/messaging/rabbitmq.md) and [Kafka](../distributed/messaging/kafka.md)).
+Use `worker_threads` (parallel JS with memory sharing), `cluster` (multi-process), or move work out-of-process/off-box (job queues — see [RabbitMQ](../../distributed/messaging/rabbitmq.md) and [Kafka](../../distributed/messaging/kafka.md)).
 
 ### Q: What is backpressure and why does it matter?
 
@@ -185,7 +185,7 @@ When a data consumer (e.g., a slow HTTP client) can't keep up with the producer 
 
 - [V8 Engine](./v8.md) — how Node executes JavaScript
 - [JavaScript Overview](./README.md) — language fundamentals, promises, async/await
-- [Express.js](../frameworks/express/README.md) — the most common Node web framework
-- [OS: Processes and Threads](../os/processes/README.md) — what `worker_threads` and `cluster` map to at the OS level
-- [Concurrency](../concurrency/overview.md) — async/await, coroutines, and thread pools
-- [Backend Engineering](../backend/README.md) — HTTP APIs, REST, GraphQL, gRPC built on Node
+- [Express.js](../../frameworks/express/README.md) — the most common Node web framework
+- [OS: Processes and Threads](../../os/processes/README.md) — what `worker_threads` and `cluster` map to at the OS level
+- [Concurrency](../../concurrency/overview.md) — async/await, coroutines, and thread pools
+- [Backend Engineering](../../backend/README.md) — HTTP APIs, REST, GraphQL, gRPC built on Node

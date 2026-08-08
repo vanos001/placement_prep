@@ -129,8 +129,8 @@ LLMs are transformer-based models trained at scale on internet text. The pipelin
 - [Pre-training →](pretraining.md) How LLMs learn from text
 - [SFT →](sft.md) Making LLMs follow instructions
 - [RLHF →](rlhf.md) Aligning LLMs with human preferences
-- [Inference →](infference.md) Serving LLMs efficiently
+- [Inference →](inference.md) Serving LLMs efficiently
 - [Serving Systems →](systems.md) Production deployment
-- [ML Transformers](../ml/transformers/README.md)
-- [Cloud GPU](../cloud/virtualization/README.md)
-- [ML System Design](../ml/system-design/model-serving.md)
+- [ML Transformers](../../ml/transformers/README.md)
+- [Cloud GPU](../../cloud/virtualization/README.md)
+- [ML System Design](../../ml/system-design/model-serving.md)

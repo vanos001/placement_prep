@@ -184,7 +184,7 @@ AI Agents combine LLMs with tools, memory, and planning to solve complex tasks a
 - [Tool Calling →](tool-calling.md) How agents use tools
 - [Memory →](memory.md) Agent memory systems
 - [Planning →](planning.md) Task decomposition
-- [Multi-Agent →](multi.md) Multiple agent systems
+- [Multi-Agent →](multi-agent.md) Multiple agent systems
 - [Frameworks →](frameworks.md) Agent development frameworks
 - [LLM Tool Calling](../../llm/llm-serving/systems.md)
 - [Agent Architecture](./architecture.md)

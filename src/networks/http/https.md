@@ -375,9 +375,9 @@ HTTPS is the foundation of web security. Understanding TLS handshakes, certifica
 
 - **[HTTP/3 & QUIC](./http3.md)** — TLS 1.3 is built into QUIC's handshake
 - **[HTTP/2](./http2.md)** — HTTP/2 with TLS is the current standard deployment
-- **[TCP & UDP](../tcp-udp.md)** — TLS runs on top of TCP (or QUIC for HTTP/3)
-- **[Security Fundamentals](../security.md)** — Broader security concepts
-- **[DNS](../dns.md)** — DNS CAA records control certificate issuance
+- **[TCP & UDP](../tcp/README.md)** — TLS runs on top of TCP (or QUIC for HTTP/3)
+- **[Security Fundamentals](../security/README.md)** — Broader security concepts
+- **[DNS](../dns/README.md)** — DNS CAA records control certificate issuance
 - **[WebSocket](./websocket.md)** — WebSocket connections use `wss://` (WebSocket over TLS)
 
 ## Cross References

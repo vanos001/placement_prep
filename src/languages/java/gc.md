@@ -288,4 +288,4 @@ G1 is the default since JDK 9; **CMS was deprecated in JDK 9 and removed in JDK 
 
 - [JVM Internals](./jvm.md) — class loading, runtime data areas, JIT
 - [Java Overview](./README.md) — memory model and concurrency basics
-- [OS: Paging and Virtual Memory](../os/virtual-memory/README.md) — why heap address space and TLB pressure matter to collectors
+- [OS: Paging and Virtual Memory](../../os/virtual-memory/README.md) — why heap address space and TLB pressure matter to collectors

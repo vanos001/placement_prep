@@ -131,5 +131,5 @@ When the dataset is modest (≤ ~5M vectors), you already run Postgres, and you 
 
 - [Embeddings](./embeddings.md) — how vectors are produced
 - [RAG](./rag.md) — retrieval pipeline that consumes vector search
-- [Indexing](../dbms/indexing/README.md) — classic database indexes (B-trees, hash) vs ANN
-- [Distributed Storage](../storage/distributed.md) — sharding and replication patterns
+- [Indexing](../../dbms/indexing/README.md) — classic database indexes (B-trees, hash) vs ANN
+- [Distributed Storage](../../storage/distributed.md) — sharding and replication patterns

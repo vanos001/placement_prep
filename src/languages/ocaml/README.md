@@ -209,7 +209,7 @@ let fact n =
 
 ## Related Topics
 
-- [Functional Programming](../../concurrency/functional/) — FP concepts
+- [Functional Programming](../../concurrency/overview.md) — FP concepts
 - [Type Systems](../../arch/) — Type theory
 - [Compiler Construction](../../os/) — Parsing, AST
 - [Rust](../rust/) — Similar type system concepts (algebraic types, pattern matching)

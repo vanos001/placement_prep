@@ -561,7 +561,7 @@ gRPC excels in **microservice-to-microservice** communication where performance,
 - **[WebSocket](./websocket.md)** — Alternative real-time/bidirectional protocol
 - **[HTTP/3 & QUIC](./http3.md)** — Future transport for gRPC (experimental)
 - **[HTTPS / TLS](./https.md)** — Securing gRPC with TLS
-- **[Protocol Buffers](../serialization.md)** — Deep dive into protobuf serialization
+- **[Protocol Buffers]()** — Deep dive into protobuf serialization
 
 ## Cross References
 

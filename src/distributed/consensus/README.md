@@ -180,7 +180,7 @@ You can't have all three of Consistency, Availability, and Partition tolerance. 
 
 ## Related Topics
 
-- [CAP Theorem](../cap-theorem.md) — Fundamental trade-off
+- [CAP Theorem](../fundamentals/cap.md) — Fundamental trade-off
 - [Distributed Storage](../../storage/distributed.md) — Storage systems
 - [Distributed Databases](../../dbms/distributed/) — Database replication
 - [System Design](../../interview/system-design/) — Designing distributed systems

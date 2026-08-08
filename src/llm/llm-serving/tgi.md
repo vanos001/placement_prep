@@ -130,4 +130,4 @@ TGI is Hugging Face's production LLM serving solution with continuous batching, 
 - [Batching →](batching.md) Continuous batching theory
 - [Ollama](./ollama.md)
 - [Inference](./inference.md)
-- [Cloud Kubernetes](../cloud/kubernetes/README.md)
+- [Cloud Kubernetes](../../cloud/kubernetes/README.md)
