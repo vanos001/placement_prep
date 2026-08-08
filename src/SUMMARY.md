@@ -934,6 +934,7 @@
 - [Scheduler (GMP)](./languages/go/scheduler.md)
 - [Channels](./languages/go/channels.md)
 - [Memory Model](./languages/go/memory-model.md)
+- [Go Ecosystem & Tooling](./languages/go/ecosystem.md)
 - [Go Interview Questions](./languages/go/interview-questions.md)
 
 ## Java
