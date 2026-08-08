@@ -953,6 +953,7 @@
 ## OCaml
 
 - [OCaml Overview](./languages/ocaml/README.md)
+- [OCaml Ecosystem & Tooling](./languages/ocaml/ecosystem.md)
 - [OCaml Interview Questions](./languages/ocaml/interview-questions.md)
 
 ---
