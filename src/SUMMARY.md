@@ -892,6 +892,7 @@
 - [Compilation](./languages/c/compilation.md)
 - [POSIX](./languages/c/posix.md)
 - [Performance](./languages/c/performance.md)
+- [C Ecosystem & Tooling](./languages/c/ecosystem.md)
 - [C Interview Questions](./languages/c/interview-questions.md)
 
 ## C++
