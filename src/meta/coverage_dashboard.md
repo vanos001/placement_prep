@@ -23,10 +23,10 @@
 
 ## Overall Metrics
 
-- **Total markdown files**: 887
-- **Total Mermaid diagrams**: 2,837
-- **Total size**: 9.1 MB
-- **Build status**: ✅ Clean (zero errors, 0 broken links, 100% mermaid pass — 748 files)
+- **Total markdown files**: 890
+- **Total Mermaid diagrams**: 2,840
+- **Total size**: 9.06 MB
+- **Build status**: ✅ Clean (zero errors, 0 broken links, 100% mermaid pass — 750 files)
 
 ## New Sections Added (2026-08-08 to 2026-08-09)
 
