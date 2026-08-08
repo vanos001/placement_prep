@@ -473,6 +473,7 @@
 - [File Storage](./storage/file-storage.md)
 - [Distributed Storage](./storage/distributed.md)
 - [Ceph](./storage/ceph.md)
+  - [Ceph CRUSH & RADOS Deep Dive](./storage/ceph-crush.md)
 - [Erasure Coding](./storage/erasure-coding.md)
 - [Write-Ahead Log (WAL)](./storage/wal.md)
 - [LSM Compaction Strategies](./storage/lsm-compaction.md)
@@ -942,6 +943,7 @@
 - [Python Overview](./languages/python/README.md)
 - [CPython Internals](./languages/python/cpython-internals.md)
 - [GIL](./languages/python/gil.md)
+- [Free-Threaded Python (3.13t No-GIL)](./languages/python/free-threaded.md)
 - [AsyncIO](./languages/python/asyncio.md)
 - [Type System](./languages/python/typing.md)
 - [Data Model](./languages/python/data-model.md)
@@ -965,6 +967,7 @@
 - [Java Overview](./languages/java/README.md)
 - [JVM Internals](./languages/java/jvm.md)
 - [Garbage Collection](./languages/java/gc.md)
+- [Virtual Threads (Project Loom)](./languages/java/virtual-threads.md)
 - [Java Ecosystem & Tooling](./languages/java/ecosystem.md)
 - [Java Interview Questions](./languages/java/interview-questions.md)
 
