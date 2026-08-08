@@ -131,6 +131,69 @@ graph TD
 
 JavaScript has a single-threaded event loop. Async operations (I/O, timers) are handled by the runtime (libuv), and callbacks are queued for execution.
 
+### Microtasks vs Macrotasks
+
+```javascript
+console.log('1: sync');
+
+setTimeout(() => console.log('2: macrotask'), 0);
+
+Promise.resolve().then(() => console.log('3: microtask'));
+
+queueMicrotask(() => console.log('4: microtask'));
+
+console.log('5: sync');
+
+// Output: 1, 5, 3, 4, 2
+// Microtasks (Promises) run before macrotasks (setTimeout)
+```
+
+```mermaid
+graph TD
+    SYNC[Sync code completes] --> MICROTASK[Process ALL microtasks]
+    MICROTASK --> MACROTASK[Process ONE macrotask]
+    MACROTASK --> MICROTASK
+```
+
+### Node.js Concurrency Patterns
+
+```javascript
+// Promise.allSettled — handle mixed success/failure
+const results = await Promise.allSettled([
+    fetch('/api/users'),
+    fetch('/api/posts'),
+    fetch('/api/comments'),
+]);
+
+results.forEach((result, i) => {
+    if (result.status === 'fulfilled') {
+        console.log(`Task ${i}: success`);
+    } else {
+        console.error(`Task ${i}: ${result.reason}`);
+    }
+});
+
+// Promise.any — first success wins
+const fastest = await Promise.any([
+    fetchFromCDN1(),
+    fetchFromCDN2(),
+    fetchFromCDN3(),
+]);
+
+// Concurrency limiting
+async function asyncPool(poolSize, items, fn) {
+    const results = [];
+    const executing = new Set();
+    for (const [i, item] of items.entries()) {
+        const p = fn(item).then(r => { results[i] = r; executing.delete(p); });
+        executing.add(p);
+        if (executing.size >= poolSize) await Promise.race(executing);
+    }
+    await Promise.all(executing);
+    return results;
+}
+```
+
 ## Python
 
 ```python
@@ -172,6 +235,39 @@ graph TD
 
 Python's asyncio uses a single-threaded event loop with `select`/`epoll`/`kqueue` for I/O multiplexing. Tasks are coroutines scheduled on the event loop.
 
+### Python Structured Concurrency
+
+```python
+import asyncio
+
+# TaskGroup (Python 3.11+) — structured concurrency
+async def main():
+    async with asyncio.TaskGroup() as tg:
+        task1 = tg.create_task(fetch_url("url1"))
+        task2 = tg.create_task(fetch_url("url2"))
+        task3 = tg.create_task(fetch_url("url3"))
+    # All tasks guaranteed complete here
+    print(task1.result(), task2.result(), task3.result())
+
+# If any task raises, all others are cancelled
+# ExceptionGroup is raised with all errors
+
+# Timeout patterns
+async def fetch_with_timeout(url, timeout=5.0):
+    try:
+        async with asyncio.timeout(timeout):
+            return await fetch_url(url)
+    except TimeoutError:
+        return None
+
+# Semaphore for rate limiting
+sem = asyncio.Semaphore(10)  # Max 10 concurrent
+
+async def rate_limited_fetch(url):
+    async with sem:
+        return await fetch_url(url)
+```
+
 ### Python Threading vs Asyncio
 
 | Feature | threading | asyncio |
@@ -179,7 +275,7 @@ Python's asyncio uses a single-threaded event loop with `select`/`epoll`/`kqueue
 | Concurrency | Preemptive (OS-level) | Cooperative (task-level) |
 | GIL | Yes (limits CPU parallelism) | Yes (but I/O releases GIL) |
 | Best for | CPU-bound (with multiprocessing) | I/O-bound |
-| Overhead | ~1MB per thread | ~KB per task |
+| Overhead | ~1MB per task | ~KB per task |
 | Synchronization | Locks, semaphores | Not needed (single thread) |
 
 ## Rust
@@ -231,6 +327,62 @@ graph TD
 ```
 
 Rust async uses a **poll-based** model. Futures are lazy — they only execute when polled. The runtime (tokio, async-std) polls futures on worker threads. When a future returns `Poll::Pending`, it registers a waker to be notified when ready.
+
+### Rust Select and Join
+
+```rust
+use tokio::time::{sleep, Duration};
+
+// select! — race multiple futures
+tokio::select! {
+    result = fetch_from_primary() => {
+        println!("Primary: {}", result);
+    }
+    result = fetch_from_fallback() => {
+        println!("Fallback: {}", result);
+    }
+    _ = sleep(Duration::from_secs(5)) => {
+        println!("Timeout!");
+    }
+}
+
+// join! — wait for all
+let (a, b, c) = tokio::join!(
+    fetch_a(),
+    fetch_b(),
+    fetch_c()
+);
+
+// JoinSet — dynamic number of tasks
+let mut set = tokio::task::JoinSet::new();
+for url in urls {
+    set.spawn(async move { fetch_url(&url).await });
+}
+while let Some(res) = set.join_next().await {
+    println!("Completed: {:?}", res);
+}
+```
+
+## Cross-Language Comparison
+
+```mermaid
+graph TD
+    subgraph "Async Model Comparison"
+        JS[JavaScript] -->|Promise-based| JS_DESC[Eager, microtasks, single-threaded]
+        PY[Python] -->|Coroutine-based| PY_DESC[Eager, Task, single-threaded loop]
+        RUST[Rust] -->|Future-based| RUST_DESC[Lazy, poll-driven, multi-threaded runtime]
+        CSHARP[C#] -->|Task-based| CSHARP_DESC[Eager, SynchronizationContext, thread pool]
+    end
+```
+
+| Feature | JavaScript | Python | Rust | C# |
+|---------|-----------|--------|------|-----|
+| Model | Promise | Coroutine | Future | Task |
+| Eager/Lazy | Eager | Eager | Lazy | Eager |
+| Runtime | V8/libuv | asyncio | Tokio/async-std | .NET ThreadPool |
+| Concurrency | Single-thread | Single-thread | Multi-thread | Thread pool |
+| Cancellation | AbortController | Task.cancel() | Drop | CancellationToken |
+| Structured | No (Promise.all) | TaskGroup (3.11+) | JoinSet | Task.WhenAll |
 
 ## Async vs Threads
 
@@ -288,6 +440,27 @@ graph TD
 
 Once you go async, it "colours" your entire call stack. Sync code can't directly call async code without a runtime.
 
+### Unhandled Rejection (JavaScript)
+
+```javascript
+// BAD: Unhandled promise rejection
+async function risky() {
+    const data = await fetch(url);  // If this fails, unhandled rejection
+    return data.json();
+}
+
+// GOOD: Always handle errors
+async function safe() {
+    try {
+        const data = await fetch(url);
+        return data.json();
+    } catch (err) {
+        logger.error('Fetch failed', err);
+        return null;
+    }
+}
+```
+
 ## Interview Questions
 
 1. **Q: What is async/await and how does it differ from threading?**
@@ -305,6 +478,12 @@ Once you go async, it "colours" your entire call stack. Sync code can't directly
 5. **Q: What is structured concurrency?**
    A: Structured concurrency ensures that async tasks have well-defined lifetimes tied to their parent scope. When the parent scope ends, all child tasks are cancelled or joined. This prevents resource leaks and makes reasoning about async code easier. Python's TaskGroups and Rust's tokio::JoinSet implement this.
 
+6. **Q: Microtasks vs macrotasks in JavaScript?**
+   A: Microtasks (Promise callbacks, queueMicrotask) run after each synchronous task and before the next macrotask. Macrotasks (setTimeout, setInterval, I/O) run one at a time between microtask batches. Promise.then runs as a microtask, so it executes before setTimeout(fn, 0).
+
+7. **Q: How does Python's GIL affect async code?**
+   A: The GIL limits CPU parallelism in threads but doesn't affect async I/O. Async code runs on a single thread anyway, so the GIL is irrelevant. For CPU-bound async work, use `run_in_executor` to offload to a thread/process pool.
+
 ## Common Mistakes
 
 - Blocking the event loop with synchronous I/O.
@@ -317,6 +496,15 @@ Once you go async, it "colours" your entire call stack. Sync code can't directly
 
 Async/await provides a way to write non-blocking code that looks synchronous. The event loop manages task scheduling, suspending tasks at await points and resuming them when I/O is ready. It's ideal for I/O-bound workloads with many concurrent connections. Key differences from threading: cooperative vs preemptive, single-threaded vs multi-threaded, lightweight tasks vs heavyweight threads.
 
+## References
+
+- [MDN: Async/Await](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous/Promises)
+- [Python asyncio Documentation](https://docs.python.org/3/library/asyncio.html)
+- [Rust Async Book](https://rust-lang.github.io/async-book/)
+- [Tokio Tutorial](https://tokio.rs/tokio/tutorial)
+- [Structured Concurrency (Martin Sústrik)](https://250bpm.com/blog:71/)
+- [Node.js Event Loop](https://nodejs.org/en/learn/asynchronous-work/event-loop-timers-and-nexttick)
+
 ## Cross-References
 
 - [Futures](./futures.md) — The underlying abstraction
@@ -324,5 +512,3 @@ Async/await provides a way to write non-blocking code that looks synchronous. Th
 - [Thread Pools](./thread-pools.md) — Alternative for CPU-bound work
 - [Go Channels](./go-channels.md) — Go's concurrency model
 - [Concurrency Overview](./overview.md) — Fundamental concepts
-- [LLM Batching](../llm/llm-serving/batching.md)
-- [Cloud Lambda](../cloud/aws/lambda.md)

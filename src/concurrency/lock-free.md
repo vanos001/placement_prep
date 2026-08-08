@@ -48,6 +48,23 @@ bool cas(int* addr, int expected, int new_value) {
 }
 ```
 
+### CAS in Practice
+
+```mermaid
+sequenceDiagram
+    participant T1 as Thread 1
+    participant T2 as Thread 2
+    participant M as Memory: counter = 0
+
+    T1->>M: Read counter = 0
+    T2->>M: Read counter = 0
+    T1->>M: CAS(0, 1) → Success! counter = 1
+    T2->>M: CAS(0, 1) → Fail! (expected 0, got 1)
+    T2->>M: Read counter = 1
+    T2->>M: CAS(1, 2) → Success! counter = 2
+    Note over M: Both threads contributed: final value = 2
+```
+
 ### Other Atomics
 
 | Operation | Description | Use Case |
@@ -77,6 +94,45 @@ graph TD
 | Release | Prior writes are visible | Release a lock |
 | Acq_Rel | Both | Read-modify-write |
 | Seq_Cst | Total order across all threads | Default, strongest |
+
+### Memory Ordering Visualized
+
+```mermaid
+sequenceDiagram
+    participant T1 as Thread 1
+    participant T2 as Thread 2
+    participant M as Shared Memory
+
+    Note over T1,T2: Release-Acquire pair
+    T1->>M: data = 42 (non-atomic)
+    T1->>M: flag.store(true, Release)
+    Note over T1: Release: data write visible before flag
+
+    M->>T2: flag.load(Acquire) = true
+    Note over T2: Acquire: sees data = 42
+    T2->>M: data (read) = 42 ✓
+
+    Note over T1,T2: Without Release/Acquire:<br/>T2 might see data = 0 (stale)
+```
+
+```cpp
+// C++ example: Release-Acquire synchronization
+#include <atomic>
+#include <thread>
+
+std::atomic<bool> flag{false};
+int data = 0;
+
+void producer() {
+    data = 42;                                    // Non-atomic write
+    flag.store(true, std::memory_order_release);  // Release
+}
+
+void consumer() {
+    while (!flag.load(std::memory_order_acquire)) {} // Acquire
+    assert(data == 42);  // Guaranteed to see 42
+}
+```
 
 ## Lock-Free Counter
 
@@ -169,6 +225,24 @@ graph TD
     CAS_HEAD -->|Fail| READ_HEAD[Retry]
 ```
 
+```java
+// Java ConcurrentLinkedQueue (lock-free)
+ConcurrentLinkedQueue<String> queue = new ConcurrentLinkedQueue<>();
+queue.offer("item");     // Lock-free enqueue
+String item = queue.poll(); // Lock-free dequeue
+
+// Internally uses CAS on head/tail pointers
+```
+
+```rust
+// Rust crossbeam provides lock-free queues
+use crossbeam::queue::ArrayQueue;
+
+let queue = ArrayQueue::new(100);
+queue.push("item").unwrap();  // Lock-free
+let item = queue.pop();       // Lock-free
+```
+
 ## ABA Problem
 
 ```mermaid
@@ -213,6 +287,19 @@ struct TaggedPointer {
 
 // CAS compares both ptr AND tag
 CAS(&head, {old_ptr, old_tag}, {new_ptr, old_tag + 1});
+```
+
+**Hazard pointers**:
+```cpp
+// Thread announces: "I'm reading this node"
+hazard_ptr.store(node, std::memory_order_release);
+
+// Before freeing a node, check if any thread has it as hazard
+if (!is_hazard(node)) {
+    safe_delete(node);
+} else {
+    defer_delete(node);  // Retry later
+}
 ```
 
 ## Wait-Free vs Lock-Free
@@ -261,6 +348,9 @@ void compare_and_increment(int expected) {
         // expected is updated on failure
     }
 }
+
+// compare_exchange_weak may spuriously fail (faster on some archs)
+// compare_exchange_strong never spurious fails (but slower loop body)
 ```
 
 ### Java Lock-Free Collections
@@ -273,6 +363,16 @@ map.put("key", 1);  // Internally uses CAS
 // LongAdder: high-throughput counter (uses cells to reduce contention)
 LongAdder counter = new LongAdder();
 counter.increment();  // Low contention even with many threads
+
+// StampedLock: optimistic reading
+StampedLock lock = new StampedLock();
+long stamp = lock.tryOptimisticRead();
+// ... read shared data ...
+if (!lock.validate(stamp)) {
+    // Data changed, fall back to read lock
+    stamp = lock.readLock();
+    try { /* re-read */ } finally { lock.unlockRead(stamp); }
+}
 ```
 
 ### Rust atomics
@@ -289,6 +389,14 @@ fn increment() {
 fn compare_and_swap(expected: usize, new: usize) -> bool {
     COUNTER.compare_exchange(expected, new, Ordering::AcqRel, Ordering::Relaxed).is_ok()
 }
+
+// Arc<T> for shared ownership across threads
+use std::sync::Arc;
+let data = Arc::new(AtomicUsize::new(0));
+let data_clone = Arc::clone(&data);
+std::thread::spawn(move || {
+    data_clone.fetch_add(1, Ordering::Relaxed);
+});
 ```
 
 ## Performance: Lock-Free vs Locks
@@ -325,6 +433,12 @@ Lock-free isn't always faster. Under low contention, a simple mutex can outperfo
 5. **Q: What is memory ordering in atomics?**
    A: Memory ordering controls how atomic operations interact with non-atomic memory accesses. Relaxed: no ordering. Acquire: subsequent reads see prior writes. Release: prior writes are visible. Seq_Cst: total order. Wrong ordering can cause subtle bugs.
 
+6. **Q: Why might lock-free be slower than locks under low contention?**
+   A: CAS retry loops consume CPU even when there's no contention. A simple mutex has almost zero overhead when uncontended (just an atomic flag set). Lock-free benefits appear under high contention where locks cause OS-level blocking.
+
+7. **Q: What are hazard pointers?**
+   A: A safe memory reclamation technique. Each thread publishes which nodes it's currently reading. Before freeing a node, a thread checks all hazard pointers. If any thread is reading the node, deletion is deferred. This solves ABA without garbage collection.
+
 ## Common Mistakes
 
 - Using CAS for complex data structures without handling ABA.
@@ -337,11 +451,18 @@ Lock-free isn't always faster. Under low contention, a simple mutex can outperfo
 
 Lock-free programming uses atomic operations (especially CAS) instead of locks. It guarantees system-wide progress, avoids deadlocks, and can handle high contention. The ABA problem is a key challenge, solved by versioned pointers or safe memory reclamation. Wait-free algorithms are stronger but harder to implement. For interviews, understand CAS, the ABA problem, memory ordering, and when lock-free outperforms locks.
 
+## References
+
+- [C++ Memory Model](https://en.cppreference.com/w/cpp/atomic/memory_order)
+- [Java Concurrent Package](https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/concurrent/package-summary.html)
+- [Rust Atomics and Locks (Mara Bos)](https://marabos.nl/atomics/)
+- [Lock-Free Data Structures (Dmitry Vyukov)](https://www.1024cores.net/home/lock-free-algorithms)
+- [Hazard Pointers (Maged Michael)](https://www.cs.otago.ac.nz/cosc440/readings/hazard-pointers.pdf)
+- [crossbeam (Rust lock-free utilities)](https://github.com/crossbeam-rs/crossbeam)
+
 ## Cross-References
 
 - [Concurrency Overview](./overview.md) — Synchronization primitives
 - [Java Concurrency](./java.md) — AtomicInteger, ConcurrentHashMap
 - [Rust Ownership](./rust-ownership.md) — Safe concurrent access
 - [Thread Pools](./thread-pools.md) — Higher-level concurrency
-- [CAS Operations](../os/synchronization/cas.md)
-- [Storage Distributed](../storage/distributed.md)

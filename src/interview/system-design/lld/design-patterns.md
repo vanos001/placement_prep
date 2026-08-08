@@ -4,11 +4,36 @@
 
 Design patterns are reusable solutions to common software design problems. They provide a shared vocabulary and proven approaches to recurring design challenges.
 
+```mermaid
+graph TD
+    PATTERNS["Design Patterns"] --> CREATIONAL["Creational<br/>Object creation"]
+    PATTERNS --> STRUCTURAL["Structural<br/>Object composition"]
+    PATTERNS --> BEHAVIORAL["Behavioral<br/>Object interaction"]
+    
+    CREATIONAL --> S1["Singleton"]
+    CREATIONAL --> S2["Factory Method"]
+    CREATIONAL --> S3["Builder"]
+    
+    STRUCTURAL --> T1["Adapter"]
+    STRUCTURAL --> T2["Decorator"]
+    STRUCTURAL --> T3["Facade"]
+    STRUCTURAL --> T4["Proxy"]
+    
+    BEHAVIORAL --> B1["Observer"]
+    BEHAVIORAL --> B2["Strategy"]
+    BEHAVIORAL --> B3["Command"]
+    BEHAVIORAL --> B4["State"]
+```
+
+---
+
 ## Creational Patterns
 
 ### 1. Singleton
 
 **Problem**: Need exactly one instance of a class (e.g., database connection, config manager).
+
+#### Python Implementation
 
 ```python
 class DatabaseConnection:
@@ -29,7 +54,7 @@ db2 = DatabaseConnection()
 print(db1 is db2)  # True
 ```
 
-**Thread-safe version**:
+**Thread-safe version** (Python):
 ```python
 import threading
 
@@ -46,12 +71,66 @@ class DatabaseConnection:
         return cls._instance
 ```
 
-**When to use**: Configuration, connection pools, logging
+#### Java Implementation
+
+```java
+// Eager initialization (thread-safe, simplest)
+public class DatabaseConnection {
+    private static final DatabaseConnection INSTANCE = new DatabaseConnection();
+    private String connection;
+    
+    private DatabaseConnection() {  // Private constructor
+        this.connection = "Connected to DB";
+    }
+    
+    public static DatabaseConnection getInstance() {
+        return INSTANCE;
+    }
+    
+    public String getConnection() { return connection; }
+}
+
+// Lazy initialization with double-checked locking
+public class DatabaseConnectionLazy {
+    private static volatile DatabaseConnectionLazy instance;
+    private String connection;
+    
+    private DatabaseConnectionLazy() {
+        this.connection = "Connected to DB";
+    }
+    
+    public static DatabaseConnectionLazy getInstance() {
+        if (instance == null) {
+            synchronized (DatabaseConnectionLazy.class) {
+                if (instance == null) {
+                    instance = new DatabaseConnectionLazy();
+                }
+            }
+        }
+        return instance;
+    }
+}
+
+// Enum singleton (best for Java — thread-safe, serialization-safe)
+public enum DatabaseConnectionEnum {
+    INSTANCE;
+    
+    private String connection = "Connected to DB";
+    
+    public String getConnection() { return connection; }
+}
+```
+
+**When to use**: Configuration, connection pools, logging, registry
 **When NOT to use**: When you need multiple instances, makes testing hard
+
+---
 
 ### 2. Factory Method
 
 **Problem**: Create objects without specifying exact class.
+
+#### Python Implementation
 
 ```python
 from abc import ABC, abstractmethod
@@ -90,19 +169,70 @@ notification = NotificationFactory.create("email")
 notification.send("Hello!")
 ```
 
+#### Java Implementation
+
+```java
+// Product interface
+public interface Notification {
+    void send(String message);
+}
+
+// Concrete products
+public class EmailNotification implements Notification {
+    @Override
+    public void send(String message) {
+        System.out.println("Email: " + message);
+    }
+}
+
+public class SMSNotification implements Notification {
+    @Override
+    public void send(String message) {
+        System.out.println("SMS: " + message);
+    }
+}
+
+public class PushNotification implements Notification {
+    @Override
+    public void send(String message) {
+        System.out.println("Push: " + message);
+    }
+}
+
+// Factory
+public class NotificationFactory {
+    public static Notification create(String type) {
+        return switch (type.toLowerCase()) {
+            case "email" -> new EmailNotification();
+            case "sms" -> new SMSNotification();
+            case "push" -> new PushNotification();
+            default -> throw new IllegalArgumentException("Unknown type: " + type);
+        };
+    }
+}
+
+// Usage
+Notification notification = NotificationFactory.create("email");
+notification.send("Hello!");
+```
+
 **When to use**: Object creation logic is complex, need to decouple creation from usage
 **Real-world**: Java `Calendar.getInstance()`, Python `datetime.strptime()`
+
+---
 
 ### 3. Builder
 
 **Problem**: Construct complex objects step by step.
+
+#### Python Implementation
 
 ```python
 class House:
     def __init__(self):
         self.walls = None
         self.roof = None
-        self garage = None
+        self.garage = None
         self.pool = None
     
     def __str__(self):
@@ -146,8 +276,73 @@ house = (HouseBuilder()
 print(house)  # House with brick walls, tile roof, garage, pool
 ```
 
+#### Java Implementation
+
+```java
+public class House {
+    private final String walls;
+    private final String roof;
+    private final boolean garage;
+    private final boolean pool;
+    
+    private House(HouseBuilder builder) {
+        this.walls = builder.walls;
+        this.roof = builder.roof;
+        this.garage = builder.garage;
+        this.pool = builder.pool;
+    }
+    
+    @Override
+    public String toString() {
+        return String.format("House[walls=%s, roof=%s, garage=%b, pool=%b]",
+            walls, roof, garage, pool);
+    }
+    
+    public static class HouseBuilder {
+        private String walls;
+        private String roof;
+        private boolean garage;
+        private boolean pool;
+        
+        public HouseBuilder setWalls(String walls) {
+            this.walls = walls;
+            return this;
+        }
+        
+        public HouseBuilder setRoof(String roof) {
+            this.roof = roof;
+            return this;
+        }
+        
+        public HouseBuilder addGarage() {
+            this.garage = true;
+            return this;
+        }
+        
+        public HouseBuilder addPool() {
+            this.pool = true;
+            return this;
+        }
+        
+        public House build() {
+            return new House(this);
+        }
+    }
+}
+
+// Usage
+House house = new House.HouseBuilder()
+    .setWalls("brick")
+    .setRoof("tile")
+    .addGarage()
+    .addPool()
+    .build();
+```
+
 **When to use**: Many optional parameters, complex construction, immutable objects
 **Real-world**: `StringBuilder`, `SQLQueryBuilder`, `HttpClient.Builder`
+
+---
 
 ## Structural Patterns
 
@@ -173,7 +368,6 @@ class OldPaymentAdapter(PaymentProcessor):
         self.old_system = old_system
     
     def process_payment(self, amount: float, currency: str):
-        # Convert currency if needed, then delegate
         converted = self._convert_to_usd(amount, currency)
         self.old_system.make_payment(converted)
     
@@ -229,20 +423,12 @@ class SugarDecorator(CoffeeDecorator):
     def description(self) -> str:
         return self._coffee.description() + ", sugar"
 
-class WhipDecorator(CoffeeDecorator):
-    def cost(self) -> float:
-        return self._coffee.cost() + 0.75
-    
-    def description(self) -> str:
-        return self._coffee.description() + ", whip"
-
 # Usage - stack decorators
 coffee = SimpleCoffee()
 coffee = MilkDecorator(coffee)
 coffee = SugarDecorator(coffee)
-coffee = WhipDecorator(coffee)
 print(f"{coffee.description()}: ${coffee.cost()}")
-# Simple coffee, milk, sugar, whip: $3.5
+# Simple coffee, milk, sugar: $2.75
 ```
 
 **When to use**: Add responsibilities dynamically, avoid subclass explosion
@@ -286,7 +472,6 @@ image.display()  # Already loaded, just displays
 ```
 
 **When to use**: Lazy loading, access control, caching, logging
-**Types**: Virtual proxy, protection proxy, caching proxy
 
 ### 7. Facade
 
@@ -326,11 +511,15 @@ computer.start()
 
 **When to use**: Simplify complex subsystems, reduce dependencies
 
+---
+
 ## Behavioral Patterns
 
 ### 8. Observer
 
 **Problem**: Notify multiple objects when state changes.
+
+#### Python Implementation
 
 ```python
 from abc import ABC, abstractmethod
@@ -359,7 +548,6 @@ class EventEmitter:
 
 class OrderService(EventEmitter):
     def create_order(self, order_id: str, user_id: str):
-        # Create order logic...
         self.emit("order_created", {"order_id": order_id, "user_id": user_id})
 
 # Observers
@@ -371,24 +559,83 @@ class InventoryService(Observer):
     def update(self, event: str, data: dict):
         print(f"Inventory: Reserving items for order {data['order_id']}")
 
-class AnalyticsService(Observer):
-    def update(self, event: str, data: dict):
-        print(f"Analytics: Tracking order {data['order_id']}")
-
 # Usage
 order_service = OrderService()
 order_service.subscribe("order_created", EmailNotifier())
 order_service.subscribe("order_created", InventoryService())
-order_service.subscribe("order_created", AnalyticsService())
-
 order_service.create_order("ORD-123", "USER-456")
 ```
 
-**When to use**: Event systems, UI updates, microservice communication
+#### Java Implementation
+
+```java
+// Observer interface
+public interface OrderObserver {
+    void onOrderCreated(String orderId, String userId);
+}
+
+// Subject (observable)
+public class OrderService {
+    private final List<OrderObserver> observers = new ArrayList<>();
+    
+    public void addObserver(OrderObserver observer) {
+        observers.add(observer);
+    }
+    
+    public void removeObserver(OrderObserver observer) {
+        observers.remove(observer);
+    }
+    
+    public void createOrder(String orderId, String userId) {
+        // Create order logic...
+        System.out.println("Order created: " + orderId);
+        
+        // Notify all observers
+        for (OrderObserver observer : observers) {
+            observer.onOrderCreated(orderId, userId);
+        }
+    }
+}
+
+// Concrete observers
+public class EmailNotifier implements OrderObserver {
+    @Override
+    public void onOrderCreated(String orderId, String userId) {
+        System.out.println("Email: Order " + orderId + " for user " + userId);
+    }
+}
+
+public class InventoryService implements OrderObserver {
+    @Override
+    public void onOrderCreated(String orderId, String userId) {
+        System.out.println("Inventory: Reserving items for " + orderId);
+    }
+}
+
+public class AnalyticsService implements OrderObserver {
+    @Override
+    public void onOrderCreated(String orderId, String userId) {
+        System.out.println("Analytics: Tracking order " + orderId);
+    }
+}
+
+// Usage
+OrderService orderService = new OrderService();
+orderService.addObserver(new EmailNotifier());
+orderService.addObserver(new InventoryService());
+orderService.addObserver(new AnalyticsService());
+orderService.createOrder("ORD-123", "USER-456");
+```
+
+**When to use**: Event systems, UI updates, microservice communication, pub/sub
+
+---
 
 ### 9. Strategy
 
 **Problem**: Algorithm varies at runtime.
+
+#### Python Implementation
 
 ```python
 from abc import ABC, abstractmethod
@@ -418,29 +665,6 @@ class QuickSort(SortingStrategy):
         right = [x for x in data if x > pivot]
         return self.sort(left) + middle + self.sort(right)
 
-class MergeSort(SortingStrategy):
-    def sort(self, data: list) -> list:
-        if len(data) <= 1:
-            return data
-        mid = len(data) // 2
-        left = self.sort(data[:mid])
-        right = self.sort(data[mid:])
-        return self._merge(left, right)
-    
-    def _merge(self, left, right):
-        result = []
-        i = j = 0
-        while i < len(left) and j < len(right):
-            if left[i] <= right[j]:
-                result.append(left[i])
-                i += 1
-            else:
-                result.append(right[j])
-                j += 1
-        result.extend(left[i:])
-        result.extend(right[j:])
-        return result
-
 class Sorter:
     def __init__(self, strategy: SortingStrategy):
         self._strategy = strategy
@@ -459,7 +683,91 @@ sorter.set_strategy(QuickSort())
 print(sorter.sort([3, 1, 4, 1, 5]))
 ```
 
-**When to use**: Multiple algorithms, runtime selection, A/B testing
+#### Java Implementation
+
+```java
+// Strategy interface
+public interface SortingStrategy {
+    int[] sort(int[] data);
+}
+
+// Concrete strategies
+public class BubbleSort implements SortingStrategy {
+    @Override
+    public int[] sort(int[] data) {
+        int[] arr = data.clone();
+        int n = arr.length;
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n - i - 1; j++) {
+                if (arr[j] > arr[j + 1]) {
+                    int temp = arr[j];
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = temp;
+                }
+            }
+        }
+        return arr;
+    }
+}
+
+public class QuickSort implements SortingStrategy {
+    @Override
+    public int[] sort(int[] data) {
+        int[] arr = data.clone();
+        quickSort(arr, 0, arr.length - 1);
+        return arr;
+    }
+    
+    private void quickSort(int[] arr, int low, int high) {
+        if (low < high) {
+            int pivot = partition(arr, low, high);
+            quickSort(arr, low, pivot - 1);
+            quickSort(arr, pivot + 1, high);
+        }
+    }
+    
+    private int partition(int[] arr, int low, int high) {
+        int pivot = arr[high];
+        int i = low - 1;
+        for (int j = low; j < high; j++) {
+            if (arr[j] < pivot) {
+                i++;
+                int temp = arr[i]; arr[i] = arr[j]; arr[j] = temp;
+            }
+        }
+        int temp = arr[i + 1]; arr[i + 1] = arr[high]; arr[high] = temp;
+        return i + 1;
+    }
+}
+
+// Context
+public class Sorter {
+    private SortingStrategy strategy;
+    
+    public Sorter(SortingStrategy strategy) {
+        this.strategy = strategy;
+    }
+    
+    public void setStrategy(SortingStrategy strategy) {
+        this.strategy = strategy;
+    }
+    
+    public int[] sort(int[] data) {
+        return strategy.sort(data);
+    }
+}
+
+// Usage
+Sorter sorter = new Sorter(new BubbleSort());
+int[] result = sorter.sort(new int[]{3, 1, 4, 1, 5});
+
+sorter.setStrategy(new QuickSort());
+result = sorter.sort(new int[]{3, 1, 4, 1, 5});
+```
+
+**When to use**: Multiple algorithms, runtime selection, A/B testing, payment processing
+
+---
 
 ### 10. Command
 
@@ -540,7 +848,9 @@ history.undo()
 print(editor.content)  # "Hello"
 ```
 
-**When to use**: Undo/redo, queuing operations, logging
+**When to use**: Undo/redo, queuing operations, logging, macro recording
+
+---
 
 ### 11. State
 
@@ -557,57 +867,35 @@ class VendingMachineState(ABC):
     @abstractmethod
     def select_item(self, machine: 'VendingMachine', item: str):
         pass
-    
-    @abstractmethod
-    def dispense(self, machine: 'VendingMachine'):
-        pass
 
 class IdleState(VendingMachineState):
-    def insert_money(self, machine: 'VendingMachine', amount: float):
+    def insert_money(self, machine, amount):
         machine.balance += amount
         machine.set_state(HasMoneyState())
         print(f"Inserted ${amount}. Balance: ${machine.balance}")
     
-    def select_item(self, machine: 'VendingMachine', item: str):
+    def select_item(self, machine, item):
         print("Insert money first!")
-    
-    def dispense(self, machine: 'VendingMachine'):
-        print("Insert money and select item first!")
 
 class HasMoneyState(VendingMachineState):
-    def insert_money(self, machine: 'VendingMachine', amount: float):
+    def insert_money(self, machine, amount):
         machine.balance += amount
         print(f"Inserted ${amount}. Balance: ${machine.balance}")
     
-    def select_item(self, machine: 'VendingMachine', item: str):
+    def select_item(self, machine, item):
         if item in machine.items and machine.items[item] > 0:
             if machine.balance >= machine.prices[item]:
                 machine.selected_item = item
-                machine.set_state(DispensingState())
-                machine.dispense()
+                machine.items[item] -= 1
+                change = machine.balance - machine.prices[item]
+                print(f"Dispensing {item}. Change: ${change}")
+                machine.balance = 0
+                machine.selected_item = None
+                machine.set_state(IdleState())
             else:
                 print(f"Insufficient funds. Need ${machine.prices[item]}")
         else:
             print(f"Item {item} not available")
-    
-    def dispense(self, machine: 'VendingMachine'):
-        print("Select an item first!")
-
-class DispensingState(VendingMachineState):
-    def insert_money(self, machine: 'VendingMachine', amount: float):
-        print("Please wait, dispensing...")
-    
-    def select_item(self, machine: 'VendingMachine', item: str):
-        print("Please wait, dispensing...")
-    
-    def dispense(self, machine: 'VendingMachine'):
-        item = machine.selected_item
-        machine.items[item] -= 1
-        change = machine.balance - machine.prices[item]
-        print(f"Dispensing {item}. Change: ${change}")
-        machine.balance = 0
-        machine.selected_item = None
-        machine.set_state(IdleState())
 
 class VendingMachine:
     def __init__(self):
@@ -625,9 +913,6 @@ class VendingMachine:
     
     def select_item(self, item: str):
         self._state.select_item(self, item)
-    
-    def dispense(self):
-        self._state.dispense(self)
 
 # Usage
 vm = VendingMachine()
@@ -636,6 +921,8 @@ vm.select_item("coke")  # Dispensing coke. Change: $0.5
 ```
 
 **When to use**: State machines, objects with distinct behaviors per state
+
+---
 
 ## Pattern Selection Guide
 
@@ -653,6 +940,8 @@ vm.select_item("coke")  # Dispensing coke. Change: $0.5
 | Encapsulate request | Command | Undo/redo support |
 | State-dependent behavior | State | Clean state transitions |
 
+---
+
 ## Interview Tips
 
 1. **Name the pattern** — "I'll use the Observer pattern here"
@@ -661,6 +950,16 @@ vm.select_item("coke")  # Dispensing coke. Change: $0.5
 4. **Implement key parts** — Write the core classes
 5. **Discuss trade-offs** — "Pattern X is simpler but less flexible than Y"
 6. **Don't over-pattern** — Use patterns where they naturally fit
+7. **Know the difference** — Factory vs Builder, Strategy vs State, Proxy vs Decorator
+
+## Common Mistakes
+
+- ❌ Using Singleton everywhere (makes testing hard, global state)
+- ❌ Confusing Factory Method with Abstract Factory
+- ❌ Using Observer when direct method calls would suffice (over-engineering)
+- ❌ Confusing Strategy (algorithm selection) with State (behavior per state)
+- ❌ Not considering thread safety in Singleton implementations
+- ❌ Forcing patterns where simple code would work
 
 ## Cross-References
 
@@ -668,4 +967,4 @@ vm.select_item("coke")  # Dispensing coke. Change: $0.5
 - [OOP Concepts](./oop-concepts.md) — Foundation for patterns
 - [UML Class Diagrams](./uml-class-diagrams.md) — Visualize patterns
 - [LLD Problems](./parking-lot.md) — Patterns in practice
-- [Abstraction](./abstraction-interfaces.md)
+- [Abstraction](./abstraction-interfaces.md) — Interfaces and abstract classes
