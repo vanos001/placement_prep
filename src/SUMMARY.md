@@ -474,6 +474,8 @@
 - [Distributed Storage](./storage/distributed.md)
 - [Ceph](./storage/ceph.md)
 - [Erasure Coding](./storage/erasure-coding.md)
+- [Write-Ahead Log (WAL)](./storage/wal.md)
+- [LSM Compaction Strategies](./storage/lsm-compaction.md)
 
 ---
 
@@ -488,6 +490,7 @@
 - [Futures and Promises](./concurrency/futures.md)
 - [Coroutines](./concurrency/coroutines.md)
 - [Lock-free Data Structures](./concurrency/lock-free.md)
+- [RCU (Read-Copy-Update)](./concurrency/rcu.md)
 - [Transactional Memory](./concurrency/transactional-memory.md)
 - [Go Channels](./concurrency/go-channels.md)
 - [Rust Ownership](./concurrency/rust-ownership.md)

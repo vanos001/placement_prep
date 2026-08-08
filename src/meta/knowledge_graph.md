@@ -2,6 +2,7 @@
 
 > Cross-topic relationships for navigation and study planning.
 > Auto-updated by research agents.
+> Last updated: 2026-08-09
 
 ## Core Relationships
 
@@ -22,8 +23,8 @@ Process Scheduling
   → Context Switching (OS/Processes)
   → Linux CFS (OS/Scheduling)
   → Real-time Systems (OS/Scheduling)
-  → Goroutine Scheduler (Go)
-  → JVM Thread Model (Java)
+  → Goroutine Scheduler (Go) → Go Channels, Work-Stealing, GMP
+  → JVM Thread Model (Java) → Loom Virtual Threads
 
 File Systems
   → VFS (OS/Filesystems)
@@ -32,9 +33,17 @@ File Systems
   → Journaling (OS/Filesystems)
   → RAID (Storage)
   → Distributed File Systems (Distributed)
+  → WAL (Storage/WAL) → ARIES, Checkpointing
+
+Kernel Extensions
+  → Kernel Modules (OS/Kernel/Modules) → insmod/modprobe, params, taint, signing
+  → eBPF (OS/Kernel/eBPF) → XDP, TC, tracing, uprobes, CO-RE
+  → io_uring (OS/Kernel/io_uring) → async I/O, SQ/CQ rings
+  → Tracing (OS/Kernel/Tracing) → ftrace, kprobes 0.05us vs 0.5us, tracepoints, perf, bpftrace
+  → RCU (Concurrency/RCU) → grace period, publish-subscribe, quiescent states
 ```
 
-### DBMS ↔ Other Topics
+### DBMS ↔ Storage ↔ Other Topics
 
 ```
 Transactions
@@ -42,47 +51,59 @@ Transactions
   → Isolation Levels (DBMS/Transactions)
   → MVCC (DBMS/Transactions)
   → 2PL (DBMS/Concurrency Control)
-  → Distributed Transactions (Distributed)
-  → Saga Pattern (Backend Engineering)
+  → Distributed Transactions (Distributed) → 2PC/3PC/Saga
+  → Saga Pattern (Backend Engineering) → Choreography vs Orchestration
+  → WAL (Storage/WAL) → LSN/pageLSN, STEAL/NO-FORCE, group commit
 
-Indexing
-  → B-Tree (DBMS/Indexing)
+Storage Engines
+  → B-Tree (DBMS/Indexing) → B+Tree, Write Amplification low
   → Hash Index (DBMS/Indexing)
-  → LSM-Tree (Storage)
-  → Query Optimization (DBMS/Query)
-  → Covering Index (DBMS/Indexing)
+  → LSM-Tree (DBMS/Internals/LSM) → MemTable, SSTable, Bloom Filter
+  → WAL (Storage/WAL) → durability before MemTable
+  → Compaction (Storage/LSM-Compaction) → Leveled (10-30x WA) vs Tiered (2-4x) vs Hybrid (UCS), SAG, RocksDB tuning knobs
+  → SSTable Format (Storage) → data blocks, index, bloom, footer, compression
+  → Write Amplification (Storage) → affects SSD endurance
+  → Read Amplification (Storage) → bloom reduces
+  → Space Amplification (Storage) → tombstone reclamation
 
 Query Processing
   → Parser (DBMS/Internals)
-  → Optimizer (DBMS/Internals)
+  → Optimizer (DBMS/Internals) → cost model, join algorithms
   → Executor (DBMS/Internals)
-  → Join Algorithms (DBMS/Query)
-  → Sort-Merge (DBMS/Query)
+  → Join Algorithms (DBMS/Query) → nested loop, hash, sort-merge
 ```
 
-### Networks ↔ Other Topics
+### Networks ↔ Backend ↔ Other Topics
 
 ```
 TCP
   → Three-Way Handshake (Networks/TCP)
-  → Congestion Control (Networks/TCP)
+  → Congestion Control (Networks/TCP) → Slow Start, CUBIC, BBR, Reno
+  → Congestion Control Overview (Networks/TCP/Congestion-Control/README) → NEW
   → Flow Control (Networks/TCP)
-  → QUIC (Networks/HTTP)
-  → Socket Programming (Networks/Sockets)
+  → QUIC (Networks/HTTP/QUIC) → 0-RTT, connection migration via Connection ID
+  → Socket Programming (Networks/Sockets) → TCP/UDP/Unix Domain, epoll
 
 HTTP
-  → TLS/HTTPS (Networks/Security)
-  → HTTP/2 (Networks/HTTP)
-  → HTTP/3 (Networks/HTTP)
-  → REST API (Backend Engineering)
-  → gRPC (Backend Engineering)
-  → GraphQL (Backend Engineering)
+  → TLS/HTTPS (Networks/Security) → TLS 1.3 handshake, mTLS, CT
+  → HTTP/1.1, HTTP/2 (Networks/HTTP) → HPACK
+  → HTTP/3 (Networks/HTTP) → QUIC, QPACK (RFC 9204), 0-RTT, HOL blocking eliminated
+  → QPACK (Networks/HTTP/QPACK) → static 99 vs dynamic table, encoder/decoder streams 0x02/0x03, RIC/Base, blocking
+  → QUIC (Networks/HTTP/QUIC)
+  → REST API (Backend/API/REST) → versioning, idempotency
+  → gRPC (Backend/API/gRPC) → protobuf, HTTP/2, streaming
+  → GraphQL (Backend/API/GraphQL) → federation
+  → WebSocket (Networks/HTTP/WebSocket)
 
-DNS
-  → Recursive Resolution (Networks/DNS)
-  → Load Balancing (System Design)
-  → CDN (System Design)
-  → Service Discovery (System Design)
+Service Mesh
+  → xDS Protocol (Backend/Containers/xDS-Protocol) → LDS/RDS/CDS/EDS/SDS, ADS, protobuf not YAML, SotW vs Delta, Pilot, go-control-plane
+  → Service Mesh (Backend/Containers/Service-Mesh) → sidecar pattern (Envoy), mTLS via Citadel SPIFFE, VirtualService/DestinationRule/Gateway
+  → Envoy Proxy → listeners, filter chains, clusters, outlier detection
+
+Wireless
+  → WiFi (Networks/Wireless/WiFi)
+  → Bluetooth (Networks/Wireless/Bluetooth) → NEW: PAN, A2DP/HID/GATT, Classic vs BLE
+  → 5G (Networks/Wireless/5G)
 ```
 
 ### Architecture ↔ Other Topics
@@ -90,64 +111,144 @@ DNS
 ```
 Cache Hierarchy
   → L1/L2/L3 Cache (Architecture)
-  → Cache Coherence (Architecture/MESI)
+  → Cache Coherence (Architecture/MESI) → MSI/MESI/MOESI/MESIF, directory-based, false sharing
   → False Sharing (Concurrency)
   → TLB (OS/Memory)
   → NUMA (OS/Memory)
+  → Storage Hierarchy (Storage/Overview) → Registers → L1 → RAM → NVMe ~25us → HDD 5-10ms → S3 50-200ms
 
 CPU Pipeline
   → Branch Prediction (Architecture)
   → Out-of-Order Execution (Architecture)
   → Speculative Execution (Architecture)
   → SIMD/AVX (Architecture)
-  → GPU Architecture (ML/GPU)
+  → GPU Architecture (Parallelism/GPU) → CUDA (Parallelism/CUDA) → Thread Hierarchy, Memory Model, Kernels
+  → Modern Processors (Arch/Modern) → x86-64 Xeon/EPYC, ARM Neoverse Graviton, RISC-V, Apple Silicon M3/M4
+
+Storage Performance
+  → IOPS vs Throughput vs Latency (Storage)
+  → RAID (Storage) → 0/1/5/6/10
+  → Erasure Coding (Storage/Erasure-Coding) → Reed-Solomon, 10+4
+  → Ceph (Storage/Ceph) → RADOS, CRUSH, PGs
 ```
 
-### Machine Learning ↔ Other Topics
+### Machine Learning ↔ Systems ↔ Other Topics
 
 ```
 Neural Networks
   → Backpropagation (ML/NN)
-  → Gradient Descent (ML/Optimization)
-  → CNN (ML/CNN)
-  → RNN (ML/RNN)
-  → Transformer (ML/Transformer)
-  → Attention Mechanism (ML/Transformer)
+  → Gradient Descent (ML/Optimization) → SGD, Adam
+  → CNN (ML/CNN) → ResNet, ViT
+  → RNN (ML/RNN) → LSTM, GRU
+  → Transformer (ML/Transformer) → Self-Attention O(n²), Positional Encoding
+  → Attention Mechanism (ML/Deep-Learning/Attention)
 
 LLMs
   → Transformer Architecture (ML/Transformer)
-  → Tokenization (ML/NLP)
-  → Fine-tuning (ML/LLM)
-  → RLHF (ML/LLM)
-  → Quantization (ML/Inference)
-  → Distributed Training (ML/Distributed)
+  → Tokenization (LLM-Serving/Tokenization) → BPE, SentencePiece
+  → Embeddings (LLM-Serving/Embeddings)
+  → Fine-tuning (LLM-Serving/SFT) → LoRA, QLoRA
+  → RLHF/DPO (LLM-Serving/RLHF) → PPO, GRPO
+  → Inference Optimization → KV Cache (LLM-Serving/KV-Cache), Quantization (Quant), Speculative Decoding, Batching, vLLM/TensorRT/ TGI/Ollama
+  → RAG (LLM-Serving/RAG) → Vector DBs (Vector-Databases) → HNSW, IVF, PQ
+  → Probabilistic Data Structures (Interview/System-Design/Probabilistic) → Bloom for cache penetration, HLL for distinct count, CMS for heavy hitters
 
 GPU Computing
-  → CUDA (ML/GPU)
+  → CUDA (Parallelism/CUDA) → Thread Hierarchy (Thread/Block/Grid), Memory Model (global/shared/registers), Kernels
   → Thread Hierarchy (ML/GPU)
   → Memory Model (ML/GPU)
-  → Tensor Cores (ML/GPU)
-  → Mixed Precision Training (ML/Distributed)
+  → Tensor Cores (ML/GPU) → Mixed Precision Training (ML/Distributed) → FP16/BF16, DDP/FSDP/ZeRO
 ```
 
-## Cross-Language Relationships
+### Programming Languages ↔ Frameworks ↔ Backend
 
 ```
 Memory Management
-  → C malloc/free (C)
-  → C++ RAII/Smart Pointers (C++)
-  → Rust Ownership (Rust)
-  → Java GC (Java)
-  → Python Reference Counting (Python)
-  → Go GC (Go)
+  → C malloc/free (C) → Undefined Behavior, POSIX
+  → C++ RAII/Smart Pointers (C++) → move semantics, STL, templates, concurrency
+  → Rust Ownership (Rust) → borrow checker, lifetimes, traits, unsafe, async Tokio
+  → Java GC (Java/GC) → Serial/Parallel/G1/ZGC 0.5ms/Shenandoah, generational ZGC JDK21
+  → Python Reference Counting (Python) → GIL, asyncio, typing, 3.13 free-threaded
+  → Go GC (Go) → GMP scheduler, channels, memory model, Web Frameworks (Gin/Echo/Fiber) → net/http compat vs fasthttp 89k rps vs 76k vs 72k
   → Virtual Memory (OS)
 
 Concurrency
   → C pthreads (C)
-  → C++ std::thread (C++)
-  → Rust Send/Sync (Rust)
-  → Java synchronized/ReentrantLock (Java)
-  → Python asyncio/GIL (Python)
-  → Go goroutines/channels (Go)
-  → JavaScript Event Loop (JS)
+  → C++ std::thread (C++) → std::jthread, memory model
+  → Rust Send/Sync (Rust) → Tokio work-stealing
+  → Java synchronized/ReentrantLock (Java) → Loom virtual threads
+  → Python asyncio/GIL (Python) → free-threaded 3.13t
+  → Go goroutines/channels (Go) → work-stealing scheduler, channels
+  → JavaScript Event Loop (JS) → V8, Node.js, libuv
+
+Web Frameworks
+  → Go: Gin (minimal, 1000+ middleware, net/http), Echo (batteries included, radix), Fiber (Express-inspired, fasthttp, 0-1 alloc, 89k rps) → Decision: need compat → Gin, need built-ins → Echo, need max perf → Fiber
+  → Rust: Tokio (async runtime), Axum/Actix (web)
+  → Python: FastAPI (async, Pydantic), Django (batteries), Flask, Pydantic
+  → Java: Spring Boot, Quarkus, Micronaut, Hibernate
+  → JS/TS: React, Next.js, Vue & Angular (combined), Express.js
+
+Backend Patterns
+  → API Design (Backend/API) → REST (versioning, idempotency), gRPC (protobuf, streaming), GraphQL (federation), Webhooks, Connection Pools
+  → Messaging (Backend/Messaging) → Kafka (log), RabbitMQ (queue), Redis (pub/sub + streams + Bloom/HLL), NATS (subject-based)
+  → Auth (Backend/Auth) → JWT RS256, OAuth2 PKCE, mTLS (Service Mesh mTLS via Citadel SPIFFE), Session Management
+  → Containers (Backend/Containers) → Docker, Kubernetes (Pods, Services, Deployments, Ingress, Operators CRD/reconciliation), Service Mesh (sidecar Envoy), xDS (ADS, LDS/RDS/CDS/EDS/SDS)
+  → Observability (Backend/Observability) → Logs, Metrics Prometheus, Tracing Jaeger/Zipkin, Kiali
+  → Patterns (Backend/Patterns) → Circuit Breaker (Closed/Open/HalfOpen), Retry + Exponential Backoff + Jitter, Idempotency Keys, Saga (Choreography vs Orchestration), CQRS (read/write separation), Event Sourcing, Distributed Transactions, Bulkhead
+  → Probabalistic (Interview/Probabilistic) → Bloom for negative cache, HLL for cardinality, CMS for frequency
 ```
+
+### System Design ↔ All
+
+```
+Scalability
+  → Vertical vs Horizontal, Stateless vs Stateful, Consistent Hashing (Distributed/Partitioning), Load Balancing L4 vs L7 (Networks/Load-Balancing), Caching Strategy (Cache-Aside, Write-Through, LRU/LFU/TTL), CDN (Networks/CDN/How-It-Works + Edge)
+
+Data Structures for System Design
+  → Bloom Filter (Interview/Probabilistic) → membership, 10 bits/elem @1% FP, Cassandra SSTable skip 90% IO, cache penetration prevention, safe-browsing
+  → HyperLogLog (Interview/Probabilistic) → distinct counting 12KB fixed ~2% err, mergeable via max, Redis PFADD/PFCOUNT, BigQuery APPROX_COUNT_DISTINCT
+  → Count-Min Sketch (Interview/Probabilistic) → frequency, overestimates, heavy hitters, ε/δ sizing
+
+Storage & Retrieval
+  → WAL (Storage/WAL) → LSN/pageLSN, group commit, fuzzy checkpoint
+  → LSM Compaction (Storage/LSM-Compaction) → leveled vs tiered vs hybrid, RocksDB tuning, write stall
+  → SSTable → bloom, index, data blocks
+
+Real-World Designs
+  → URL Shortener, Chat, News Feed, Rate Limiter (token bucket/leaky/sliding), KV Store, Search Engine, Video Streaming, Notifications, Distributed FS, Web Crawler, Pastebin, Social Graph, Typeahead, Metrics, Payment (idempotency keys), Ad Click Aggregation, Stock Exchange, Google Maps
+  → Netflix (CDN + microservices), Twitter (fanout), Uber (geo), WhatsApp (presence), YouTube (transcoding), Instagram (feed), Dropbox (sync), Distributed Lock (Redlock/etcd/fencing tokens), Streaming Pipeline (Kafka + Flink/Spark + stateful processing), Probabilistic (Bloom/HLL/CMS for scale)
+```
+
+## Cross-Language Relationships (Updated)
+
+```
+Memory Management
+  → C malloc/free (C) → ecosystem & tooling (CMake, Conan, GDB)
+  → C++ RAII/Smart Pointers (C++) → move semantics, STL, templates, ecosystem (Boost, CMake, Catch2)
+  → Rust Ownership (Rust) → borrow checker, lifetimes, traits, error handling, async Tokio, unsafe, ecosystem (Serde, Rayon, Axum)
+  → Java GC (Java) → G1 default 200ms, ZGC <1ms colored pointers load barriers, Shenandoah Brooks pointers, generational ZGC JDK21
+  → Python (Python) → CPython internals, GIL 3.13 free-threaded, asyncio, typing, data model, packaging
+  → Go (Go) → scheduler GMP work-stealing, channels, memory model, web frameworks Gin 76k rps vs Echo vs Fiber 89k rps
+  → Virtual Memory (OS/Virtual Memory) → paging, TLB, NUMA
+
+Concurrency
+  → C pthreads (C) → POSIX
+  → C++ std::thread (C++) → memory model acquire/release
+  → Rust Send/Sync (Rust) → ownership ensures thread safety
+  → Java (Java) → synchronized/ReentrantLock, Loom virtual threads
+  → Python (Python) → asyncio, GIL
+  → Go (Go) → goroutines/channels, work-stealing
+  → JavaScript (JS) → Event Loop, V8, Node.js libuv
+  → Kernel (OS/Kernel) → RCU grace period, publish-subscribe, tracing ftrace/kprobes
+```
+
+## New Edges Added 2026-08-09
+
+- Go Web Frameworks → net/http compatibility ↔ observability (prometheus, pprof, otelhttp) vs fasthttp incompatibility
+- Probabilistic Data Structures → Caching Strategy (negative cache), Redis (BF.ADD, PFADD), LSM (SSTable bloom), Kafka (heavy hitters), BigQuery
+- Kernel Tracing → eBPF (bpftrace kprobe:do_sys_open, hist(retval)), ftrace (function_graph), perf (record), cgroups filtering
+- WAL → ARIES (Analysis/REDO/UNDO), Checkpointing (sharp vs fuzzy), LSM Trees (MemTable replay), RocksDB/Kafka/etcd Raft
+- LSM Compaction → WAL, SSTable, Bloom Filter, RocksDB tuning, Write Amplification, Space Amplification Goal, Time-Window Compaction for time-series
+- RCU → Lock-free (ABA, hazard pointers), Memory Barriers (acquire/release, smp_mb), Kernel Modules (rcu_barrier for unload), cgroups traversal
+- Storage → Distributed (Ceph CRUSH, RADOS), Erasure Coding (Reed-Solomon)
+- Links fixed: introduction.md revision/README → revision/os.md, os/README → os/overview.md, etc., congestion-control README and bluetooth added
