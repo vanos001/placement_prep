@@ -134,6 +134,7 @@
 # Database Management Systems
 
 - [DBMS Overview](./dbms/overview.md)
+- [Types of Databases: SQL & NoSQL](./dbms/types-of-databases.md)
 - [OLTP vs OLAP & Data Warehousing](./dbms/analytics/README.md)
 - [Relational Model](./dbms/relational-model/README.md)
   - [Keys](./dbms/relational-model/keys.md)
@@ -790,6 +791,7 @@
   - [Instagram](./interview/system-design/real-world/instagram.md)
   - [Dropbox](./interview/system-design/real-world/dropbox.md)
   - [Distributed Lock Manager](./interview/system-design/real-world/distributed-lock.md)
+  - [Streaming Analytics Pipeline](./interview/system-design/real-world/streaming-pipeline.md)
   - [High Level Design (HLD)](./interview/system-design/hld/README.md)
     - [Scalability](./interview/system-design/hld/scalability.md)
     - [Load Balancing Design](./interview/system-design/hld/load-balancing-design.md)
@@ -874,6 +876,7 @@
 - [Express.js](./frameworks/express/README.md)
 - [React](./frameworks/react/README.md)
 - [Next.js](./frameworks/nextjs/README.md)
+- [Vue & Angular](./frameworks/vue-angular/README.md)
 - [Tokio](./frameworks/tokio/README.md)
 - [PyTorch](./frameworks/pytorch/README.md)
 
@@ -890,6 +893,7 @@
 - [Compilation](./languages/c/compilation.md)
 - [POSIX](./languages/c/posix.md)
 - [Performance](./languages/c/performance.md)
+- [C Ecosystem & Tooling](./languages/c/ecosystem.md)
 - [C Interview Questions](./languages/c/interview-questions.md)
 
 ## C++
@@ -901,6 +905,7 @@
 - [Move Semantics](./languages/cpp/move-semantics.md)
 - [Concurrency](./languages/cpp/concurrency.md)
 - [Modern C++](./languages/cpp/modern-cpp.md)
+- [C++ Ecosystem & Tooling](./languages/cpp/ecosystem.md)
 - [C++ Interview Questions](./languages/cpp/interview-questions.md)
 
 ## Rust
@@ -913,6 +918,7 @@
 - [Error Handling](./languages/rust/error-handling.md)
 - [Async Rust](./languages/rust/async.md)
 - [Unsafe Rust](./languages/rust/unsafe.md)
+- [Rust Ecosystem & Tooling](./languages/rust/ecosystem.md)
 - [Rust Interview Questions](./languages/rust/interview-questions.md)
 
 ## Python
@@ -925,6 +931,7 @@
 - [Data Model](./languages/python/data-model.md)
 - [Packaging](./languages/python/packaging.md)
 - [Performance](./languages/python/performance.md)
+- [Python Ecosystem & Tooling](./languages/python/ecosystem.md)
 - [Python Interview Questions](./languages/python/interview-questions.md)
 
 ## Go
@@ -933,6 +940,7 @@
 - [Scheduler (GMP)](./languages/go/scheduler.md)
 - [Channels](./languages/go/channels.md)
 - [Memory Model](./languages/go/memory-model.md)
+- [Go Ecosystem & Tooling](./languages/go/ecosystem.md)
 - [Go Interview Questions](./languages/go/interview-questions.md)
 
 ## Java
@@ -940,6 +948,7 @@
 - [Java Overview](./languages/java/README.md)
 - [JVM Internals](./languages/java/jvm.md)
 - [Garbage Collection](./languages/java/gc.md)
+- [Java Ecosystem & Tooling](./languages/java/ecosystem.md)
 - [Java Interview Questions](./languages/java/interview-questions.md)
 
 ## JavaScript

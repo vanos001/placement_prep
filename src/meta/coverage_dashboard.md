@@ -10,20 +10,20 @@
 | Operating Systems | 121 | 210+ | 370+ | 78% |
 | DBMS | 92 | 180+ | 280+ | 70% |
 | Computer Networks | 93 | 170+ | 250+ | 70% |
-| Computer Architecture | 81 | 150+ | 200+ | 65% |
+| Computer Architecture | 82 | 160+ | 205+ | 68% |
 | Machine Learning | 129 | 260+ | 300+ | 62% |
 | Distributed Systems | 36 | 80+ | 80+ | 50% |
-| Interview Prep | 93 | 510+ | 105+ | 72% |
-| Programming Languages | 51 | 270+ | 55+ | 80% |
-| Frameworks | 8 | 80+ | 20+ | 45% |
+| Interview Prep | 94 | 520+ | 110+ | 73% |
+| Programming Languages | 55 | 300+ | 60+ | 85% |
+| Frameworks | 10 | 100+ | 25+ | 55% |
 | Backend Engineering | 30 | 220+ | 75+ | 65% |
 | Concurrency | 14 | 50+ | 30+ | 40% |
 | Storage | 10 | 30+ | 20+ | 35% |
 
 ## Overall Metrics
 
-- **Total markdown files**: 859
-- **Total Mermaid diagrams**: 2,492
+- **Total markdown files**: 869
+- **Total Mermaid diagrams**: 2,497
 - **Total size**: 8.0 MB
 - **Build status**: ✅ Clean (zero errors)
 

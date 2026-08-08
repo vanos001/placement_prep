@@ -25,18 +25,12 @@ The following previously-backlogged topics now have dedicated coverage:
 - **DBMS**: query optimization, storage engines, distributed SQL
   (CockroachDB/TiDB/Spanner), OLTP vs OLAP & data warehousing (new)
 - **Cloud**: autoscaling (new), disaster recovery & multi-region (new),
-  IAM & secrets management (new)
+  IAM & secrets management (new), Kubernetes operators (new)
+- **Arch**: CUDA programming (new)
+- **Interview**: streaming analytics pipeline system design (new)
 - **OOP**: coupling, cohesion & design principles (new)
 - **Interview**: system-design real-world examples (Netflix, Twitter, Uber,
   WhatsApp, YouTube, Instagram, Dropbox, Google Search, distributed lock)
-
-## REMAINING — HIGH Priority
-
-- **CUDA Programming** — thread hierarchy, memory model, kernels, optimization
-  (gpu.md covers basics; a dedicated CUDA deep-dive would strengthen it)
-- **Streaming system design interview** — end-to-end design of a streaming
-  pipeline (Kafka + Flink + sinks) with requirements/estimation
-- **Kubernetes operator pattern** — CRDs, controllers, reconciliation loop
 
 ## REMAINING — MEDIUM Priority
 
@@ -49,9 +43,8 @@ The following previously-backlogged topics now have dedicated coverage:
 - **Service Mesh internals** — Istio/Envoy xDS protocol, sidecar dataplane
 
 ### Languages / Frameworks
-- **Go web frameworks** — Gin/Echo/Fiber comparison
-- **Vue / Angular** — alternative frontend frameworks
-- **Rust async ecosystem** — tokio-uring, axum, sqlx in depth
+- **Linux kernel modules deep dive** — loading/unloading/parameters as a full page
+- **HTTP/3 QPACK** — header compression internals
 
 ## LOW Priority
 
