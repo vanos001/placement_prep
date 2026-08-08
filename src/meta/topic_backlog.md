@@ -43,9 +43,8 @@ The following previously-backlogged topics now have dedicated coverage:
 - **Service Mesh internals** — Istio/Envoy xDS protocol, sidecar dataplane
 
 ### Languages / Frameworks
-- **Go web frameworks** — Gin/Echo/Fiber comparison
-- **Vue / Angular** — alternative frontend frameworks
-- **Rust async ecosystem** — tokio-uring, axum, sqlx in depth
+- **Linux kernel modules deep dive** — loading/unloading/parameters as a full page
+- **HTTP/3 QPACK** — header compression internals
 
 ## LOW Priority
 

@@ -14,15 +14,15 @@
 | Machine Learning | 129 | 260+ | 300+ | 62% |
 | Distributed Systems | 36 | 80+ | 80+ | 50% |
 | Interview Prep | 94 | 520+ | 110+ | 73% |
-| Programming Languages | 51 | 270+ | 55+ | 80% |
-| Frameworks | 8 | 80+ | 20+ | 45% |
+| Programming Languages | 55 | 300+ | 60+ | 85% |
+| Frameworks | 10 | 100+ | 25+ | 55% |
 | Backend Engineering | 30 | 220+ | 75+ | 65% |
 | Concurrency | 14 | 50+ | 30+ | 40% |
 | Storage | 10 | 30+ | 20+ | 35% |
 
 ## Overall Metrics
 
-- **Total markdown files**: 862
+- **Total markdown files**: 869
 - **Total Mermaid diagrams**: 2,497
 - **Total size**: 8.0 MB
 - **Build status**: ✅ Clean (zero errors)
