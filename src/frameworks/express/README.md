@@ -12,11 +12,11 @@ flowchart TD
     MW1 --> MW2[Middleware 2<br/>e.g., Auth]
     MW2 --> ROUTE[Route Handler]
     ROUTE --> RESP[Response]
-    
+
     subgraph "Middleware Stack"
         MW1 --> MW2 --> MW3[...] --> ROUTE
     end
-    
+
     ROUTE --> SERVICE[Service Layer]
     SERVICE --> DB[Database]
 ```
@@ -50,40 +50,116 @@ app.get('/users/:id', (req, res) => {
 });
 ```
 
-### Middleware
+### Advanced Routing Patterns
 
 ```javascript
-// Application-level
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-app.use(cors());
-app.use(helmet());
+// Route parameters with regex
+app.get('/users/:id(\\d+)', getUser);  // Only numeric IDs
 
-// Custom middleware
-const authMiddleware = (req, res, next) => {
-    const token = req.headers.authorization?.split(' ')[1];
-    if (!token) return res.status(401).json({ error: 'No token' });
-    
-    try {
-        req.user = jwt.verify(token, SECRET);
-        next();
-    } catch (err) {
-        res.status(401).json({ error: 'Invalid token' });
-    }
+// Multiple route handlers
+app.get('/users/:id',
+    authenticate,           // Middleware 1
+    authorize('read'),      // Middleware 2
+    getUser                 // Handler
+);
+
+// Router-level middleware
+const userRouter = express.Router();
+userRouter.use(authenticate);          // All user routes need auth
+userRouter.get('/', listUsers);
+userRouter.get('/:id', getUser);
+userRouter.post('/', authorize('admin'), createUser);
+
+// Nested routers
+const apiRouter = express.Router();
+apiRouter.use('/users', userRouter);
+apiRouter.use('/posts', postRouter);
+app.use('/api/v1', apiRouter);
+
+// Route prefixing with versioning
+app.use('/api/v1', v1Router);
+app.use('/api/v2', v2Router);
+```
+
+### Middleware Chain Deep Dive
+
+```mermaid
+sequenceDiagram
+    participant C as Client
+    participant MW1 as CORS Middleware
+    participant MW2 as Auth Middleware
+    participant MW3 as Rate Limiter
+    participant R as Route Handler
+    participant ERR as Error Handler
+
+    C->>MW1: HTTP Request
+    MW1->>MW2: next()
+    MW2->>MW3: next()
+    MW3->>R: next()
+    R->>C: Response
+
+    Note over MW2: If auth fails:<br/>MW2->>ERR: next(error)
+    ERR->>C: Error Response
+```
+
+```javascript
+// Middleware is a function with (req, res, next) signature
+const requestLogger = (req, res, next) => {
+    const start = Date.now();
+    console.log(`→ ${req.method} ${req.url}`);
+
+    // Hook into response finish
+    res.on('finish', () => {
+        const duration = Date.now() - start;
+        console.log(`← ${res.statusCode} (${duration}ms)`);
+    });
+
+    next();  // Pass to next middleware
 };
 
-// Apply to specific routes
-app.get('/protected', authMiddleware, (req, res) => {
-    res.json({ user: req.user });
-});
+// Conditional middleware
+const conditionalMiddleware = (req, res, next) => {
+    if (req.headers['x-debug']) {
+        req.debug = true;
+    }
+    next();
+};
 
-// Error-handling middleware (4 args)
-app.use((err, req, res, next) => {
-    console.error(err.stack);
-    res.status(err.status || 500).json({
-        error: err.message || 'Internal Server Error'
-    });
-});
+// Middleware that modifies response
+const addCorsHeaders = (req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+    next();
+};
+
+app.use(requestLogger);
+app.use(addCorsHeaders);
+app.use(conditionalMiddleware);
+```
+
+### Built-in and Common Middleware
+
+```javascript
+// Body parsing
+app.use(express.json({ limit: '10mb' }));
+app.use(express.urlencoded({ extended: true }));
+
+// Security
+app.use(helmet());                    // Security headers
+app.use(cors({ origin: '*' }));       // CORS
+app.use(rateLimit({ windowMs: 15 * 60 * 1000, max: 100 }));  // Rate limiting
+
+// Logging
+app.use(morgan('combined'));          // HTTP request logging
+
+// Compression
+app.use(compression());               // Gzip responses
+
+// Static files
+app.use(express.static('public'));
+
+// Cookie parsing
+app.use(cookieParser());
 ```
 
 ### Request/Response
@@ -133,6 +209,144 @@ class AppError extends Error {
 }
 ```
 
+### Centralized Error Handling
+
+```mermaid
+graph TD
+    ERR[Error thrown] --> MW{Error Middleware}
+    MW -->|AppError| CLIENT[Client Response<br/>status + message]
+    MW -->|ValidationError| VALIDATE[422 + details]
+    MW -->|Unknown| INTERNAL[500 + generic message]
+    MW --> LOG[Log error details]
+```
+
+```javascript
+// Error handling middleware (must have 4 parameters)
+app.use((err, req, res, next) => {
+    // Log the error
+    console.error(`[${new Date().toISOString()}] Error:`, {
+        message: err.message,
+        stack: err.stack,
+        url: req.url,
+        method: req.method,
+    });
+
+    // Known errors
+    if (err instanceof AppError) {
+        return res.status(err.status).json({
+            error: err.message,
+            code: err.code,
+        });
+    }
+
+    // Validation errors (e.g., from Joi)
+    if (err.isJoi) {
+        return res.status(422).json({
+            error: 'Validation failed',
+            details: err.details.map(d => d.message),
+        });
+    }
+
+    // Unknown errors — don't leak internals
+    res.status(500).json({
+        error: 'Internal Server Error',
+    });
+});
+
+// 404 handler (after all routes)
+app.use((req, res) => {
+    res.status(404).json({ error: 'Not found' });
+});
+```
+
+### Validation with Joi
+
+```javascript
+const Joi = require('joi');
+
+const userSchema = Joi.object({
+    name: Joi.string().min(2).max(100).required(),
+    email: Joi.string().email().required(),
+    age: Joi.number().integer().min(0).max(150),
+    role: Joi.string().valid('user', 'admin').default('user'),
+});
+
+// Validation middleware factory
+const validate = (schema, property = 'body') => {
+    return (req, res, next) => {
+        const { error, value } = schema.validate(req[property], {
+            abortEarly: false,  // Collect all errors
+            stripUnknown: true, // Remove unknown fields
+        });
+        if (error) {
+            return res.status(422).json({
+                error: 'Validation failed',
+                details: error.details.map(d => ({
+                    field: d.path.join('.'),
+                    message: d.message,
+                })),
+            });
+        }
+        req[property] = value;
+        next();
+    };
+};
+
+app.post('/users', validate(userSchema), createUser);
+```
+
+### Structuring Express Applications
+
+```mermaid
+graph TD
+    subgraph "Project Structure"
+        SRC[src/]
+        SRC --> ROUTES[routes/<br/>route definitions]
+        SRC --> CTRL[controllers/<br/>request handling]
+        SRC --> SVC[services/<br/>business logic]
+        SRC --> REPO[repositories/<br/>data access]
+        SRC --> MW[middleware/<br/>auth, validation]
+        SRC --> MODELS[models/<br/>data schemas]
+    end
+
+    ROUTES --> CTRL
+    CTRL --> SVC
+    SVC --> REPO
+```
+
+```javascript
+// routes/users.js
+const router = require('express').Router();
+const ctrl = require('../controllers/users');
+const { validate } = require('../middleware/validation');
+const { authenticate } = require('../middleware/auth');
+
+router.get('/', ctrl.list);
+router.get('/:id', ctrl.getById);
+router.post('/', validate(createSchema), ctrl.create);
+router.put('/:id', authenticate, validate(updateSchema), ctrl.update);
+router.delete('/:id', authenticate, ctrl.delete);
+
+module.exports = router;
+
+// controllers/users.js
+exports.create = asyncHandler(async (req, res) => {
+    const user = await userService.create(req.body);
+    res.status(201).json(user);
+});
+
+// services/users.js
+class UserService {
+    constructor(userRepo) {
+        this.userRepo = userRepo;
+    }
+    async create(data) {
+        // Business logic here
+        return this.userRepo.create(data);
+    }
+}
+```
+
 ## Express vs Fastify vs NestJS
 
 | Feature | Express | Fastify | NestJS |
@@ -154,6 +368,16 @@ class AppError extends Error {
 6. **How to secure Express?** — helmet, cors, rate-limit, express-validator, parameter sanitization
 7. **Session vs JWT?** — Sessions: server-side, stateful; JWT: client-side, stateless, scalable
 8. **How to test Express?** — supertest for integration tests; jest/mocha for unit tests
+9. **What is the middleware chain?** — Ordered sequence of functions; each can modify req/res or terminate the chain
+10. **How to handle async errors?** — Wrap with asyncHandler or use express-async-errors; unhandled rejections crash the process
+
+## References
+
+- [Express.js Official Documentation](https://expressjs.com/)
+- [Express.js Guide](https://expressjs.com/en/guide/routing.html)
+- [Node.js Best Practices](https://github.com/goldbergyoni/nodebestpractices)
+- [Joi Validation](https://joi.dev/)
+- [Helmet.js Security](https://helmetjs.github.io/)
 
 ## Related Topics
 

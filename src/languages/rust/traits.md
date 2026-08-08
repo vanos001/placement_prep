@@ -300,6 +300,164 @@ struct Point {
 | `PartialOrd` | `PartialOrd` | Partial ordering with `<`, `>` |
 | `Ord` | `Ord` | Total ordering |
 
+## Object Safety in Detail
+
+A trait is **object-safe** if it can be used as a trait object (`dyn Trait`). The rules are:
+
+1. **All methods must have `Self: Sized` bound or use `Self` only in receiver position**
+2. **No generic type parameters** on methods
+3. **No associated types** (unless they have a default)
+4. **Return types must not use `Self`** (except as the receiver)
+5. **No `where Self: Sized` constraints** on the trait itself
+
+```rust
+// Object-safe trait
+trait Drawable {
+    fn draw(&self);
+    fn name(&self) -> String;
+}
+
+// NOT object-safe — generic method
+trait Serializer {
+    fn serialize<T: serde::Serialize>(&self, value: &T) -> String;  // ❌ generic method
+}
+
+// NOT object-safe — returns Self
+trait Cloner {
+    fn clone_self(&self) -> Self;  // ❌ returns Self
+}
+
+// Workaround: use Box<dyn Trait>
+trait Cloneable {
+    fn clone_box(&self) -> Box<dyn Cloneable>;  // ✅ returns Box<dyn Trait>
+}
+
+// NOT object-safe — associated type without default
+trait Iterator {
+    type Item;  // ❌ associated type
+    fn next(&mut self) -> Option<Self::Item>;
+}
+
+// Fix: use concrete type or make it a generic parameter
+fn process(iter: &mut dyn Iterator<Item = i32>) {  // ✅ Specify associated type
+    // Now it's object-safe with the type fixed
+}
+```
+
+### Object Safety Decision Flow
+
+```mermaid
+flowchart TD
+    A[Need dyn Trait?] --> B{Are all methods object-safe?}
+    B -->|Yes| C[Use Box<dyn Trait>]
+    B -->|No| D{Can you fix the methods?}
+    D -->|Yes| E[Add Sized bound or change return type]
+    D -->|No| F[Use enum dispatch or generics instead]
+    E --> C
+```
+
+## Derive Macros in Detail
+
+### Common Derive Macros
+
+```rust
+use std::collections::HashMap;
+
+// Derive common traits automatically
+#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+struct Point {
+    x: i32,
+    y: i32,
+}
+
+// Debug: enables {:?} formatting
+let p = Point { x: 1, y: 2 };
+println!("{:?}", p);  // Point { x: 1, y: 2 }
+
+// Clone: enables .clone()
+let p2 = p.clone();
+
+// PartialEq: enables == and !=
+assert_eq!(p, p2);
+
+// Eq: total equality (required for HashMap keys)
+let mut map = HashMap::new();
+map.insert(p, "origin");
+
+// Hash: enables hashing (required for HashMap keys)
+```
+
+### Derive Macro Constraints
+
+```rust
+// Copy requires Clone
+#[derive(Copy, Clone)]
+struct Coordinate {
+    x: f64,
+    y: f64,
+}
+
+// Eq requires PartialEq
+#[derive(PartialEq, Eq)]
+struct Id(u64);
+
+// Ord requires PartialOrd + Eq
+#[derive(PartialOrd, Ord, PartialEq, Eq)]
+struct Priority(u32);
+
+// Can't derive Copy for types with non-Copy fields
+// #[derive(Copy, Clone)]
+// struct Bad {
+//     name: String,  // ❌ String is not Copy
+// }
+```
+
+### Custom Derive Macros
+
+```rust
+// You can implement traits manually when derive isn't enough
+use std::fmt;
+
+struct Color {
+    r: u8,
+    g: u8,
+    b: u8,
+}
+
+// Manual Debug implementation
+impl fmt::Debug for Color {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        write!(f, "#{:02X}{:02X}{:02X}", self.r, self.g, self.b)
+    }
+}
+
+// Manual Display implementation
+impl fmt::Display for Color {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        write!(f, "rgb({}, {}, {})", self.r, self.g, self.b)
+    }
+}
+
+let red = Color { r: 255, g: 0, b: 0 };
+println!("{:?}", red);  // #FF0000
+println!("{}", red);    // rgb(255, 0, 0)
+```
+
+## Trait Aliases (Nightly)
+
+```rust
+// Nightly feature: trait aliases for complex bounds
+#![feature(trait_alias)]
+
+trait MyTrait = Send + Sync + Clone + 'static;
+
+// Equivalent to:
+fn process<T: Send + Sync + Clone + 'static>(item: T) { /* ... */ }
+
+// With alias:
+fn process<T: MyTrait>(item: T) { /* ... */ }
+```
+
 ## Common Mistakes
 
 1. **Confusing `impl Trait` with `dyn Trait`** — `impl Trait` is static dispatch, `dyn Trait` is dynamic dispatch
@@ -324,6 +482,13 @@ struct Point {
 
 5. **What is object safety?**
    A trait is object-safe if it can be used as a trait object (`dyn Trait`). Requirements include: no `Self`-sized return types, no generic methods, and `Self` only in receiver position.
+
+## References
+
+- [The Rust Programming Language — Traits](https://doc.rust-lang.org/book/ch10-02-traits.html)
+- [Rust By Example — Traits](https://doc.rust-lang.org/rust-by-example/trait.html)
+- [Rustonomicon — Object Safety](https://doc.rust-lang.org/nomicon/object-safety.html)
+- [The Rust Reference — Derive Macros](https://doc.rust-lang.org/reference/attributes/derive.html)
 
 ## See Also
 

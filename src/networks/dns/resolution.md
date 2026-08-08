@@ -303,6 +303,162 @@ $ dig www.example.com  # First query (cold)
 $ dig www.example.com  # Second query (cached, ~0ms)
 ```
 
+## DNSSEC (DNS Security Extensions)
+
+DNSSEC adds cryptographic signatures to DNS records, preventing cache poisoning and spoofing attacks.
+
+### DNSSEC Record Types
+
+```
+RRSIG (Resource Record Signature):
+  - Digital signature over a set of DNS records
+  - Created by the zone's private key
+  - Verified using the zone's public key (in DNSKEY record)
+
+DNSKEY:
+  - Public key used to verify RRSIG signatures
+  - Two types: ZSK (Zone Signing Key) and KSK (Key Signing Key)
+  - ZSK: Signs all records in the zone
+  - KSK: Signs only the DNSKEY set (and is signed by parent)
+
+DS (Delegation Signer):
+  - Hash of child zone's KSK
+  - Stored in parent zone
+  - Creates chain of trust from parent to child
+
+NSEC/NSEC3:
+  - Proves that a domain does NOT exist (authenticated denial)
+  - NSEC: Returns next existing domain name (leaks zone contents)
+  - NSEC3: Hashes domain names (prevents zone walking)
+```
+
+### DNSSEC Validation Flow
+
+```mermaid
+sequenceDiagram
+    participant R as Resolver
+    participant Auth as example.com DNS
+    participant Parent as .com TLD
+    
+    R->>Auth: A for www.example.com?
+    Auth->>R: A record + RRSIG (signed by ZSK)
+    R->>Auth: DNSKEY (to get ZSK public key)
+    Auth->>R: DNSKEY set (ZSK + KSK, signed by KSK)
+    
+    Note over R: Verify RRSIG using ZSK public key
+    Note over R: Verify DNSKEY set using KSK public key
+    
+    R->>Parent: DS record for example.com?
+    Parent->>R: DS record (hash of KSK)
+    
+    Note over R: Verify DS matches KSK hash
+    Note over R: DS is signed by .com's ZSK
+    Note over R: Chain of trust: root → .com → example.com
+    
+    R->>R: All verifications pass → response is authentic
+```
+
+### Chain of Trust
+
+```mermaid
+graph TD
+    R["Root Zone<br/>(Trust Anchor)"] -->|"DS record"| T[".com TLD Zone"]
+    T -->|"DS record"| E["example.com Zone"]
+    E -->|"RRSIG"| A["www.example.com A record"]
+    
+    R2["Root KSK<br/>(IANA managed)"] -.->|"signs"| R
+    T2[".com ZSK"] -.->|"signs"| T
+    E2["example.com ZSK"] -.->|"signs"| E
+    
+    style R fill:#c8e6c9
+    style T fill:#e3f2fd
+    style E fill:#fff3e0
+```
+
+### DNSSEC in Practice
+
+```bash
+# Check DNSSEC validation
+$ dig +dnssec www.example.com
+;; ANSWER SECTION:
+www.example.com.  300  IN  A      93.184.216.34
+www.example.com.  300  IN  RRSIG  A 13 3 300 (
+    20240101000000 20231201000000
+    12345 example.com.
+    <base64 signature> )
+
+# Check DS record at parent
+$ dig DS example.com @a.gtld-servers.net.
+;; ANSWER SECTION:
+example.com.  86400  IN  DS  12345 13 2 <hash>
+
+# Verify chain
+$ delv www.example.com @8.8.8.8
+# Shows full validation chain
+```
+
+### DNSSEC Limitations
+
+```
+1. Does NOT encrypt DNS queries (use DoT/DoH for that)
+2. Does NOT protect against DDoS attacks
+3. Adds latency to DNS resolution (signature verification)
+4. Increases DNS response size (RRSIG records)
+5. Key rollover is complex (must coordinate parent/child)
+6. Not universally deployed (~30% of zones signed)
+
+DNSSEC + DoT/DoH = Complete DNS security:
+  DNSSEC: Authenticity (records are genuine)
+  DoT/DoH: Confidentiality (queries are encrypted)
+```
+
+## DNS over Encrypted Transports
+
+### DNS over TLS (DoT)
+
+```
+Traditional DNS: UDP port 53 (plaintext)
+DNS over TLS: TCP port 853 (encrypted with TLS)
+
+Pros:
+  - Encrypts DNS queries (prevents eavesdropping)
+  - Prevents DNS manipulation by network operators
+  - Standard TLS security
+
+Cons:
+  - Extra TCP handshake (1 RTT overhead)
+  - May be blocked by firewalls (port 853)
+  - Not widely supported by resolvers
+```
+
+### DNS over HTTPS (DoH)
+
+```
+DNS over HTTPS: HTTPS port 443
+  - DNS queries as HTTPS GET/POST requests
+  - Uses standard HTTPS port (harder to block)
+  - Supported by major browsers (Chrome, Firefox, Edge)
+
+Example request:
+  GET /dns-query?dns=AAABAAABAAAAAAAAA3d3dwdleGFtcGxlA2NvbQAAAQAB
+  Accept: application/dns-message
+
+Resolver URLs:
+  Google:    https://dns.google/dns-query
+  Cloudflare: https://cloudflare-dns.com/dns-query
+  Quad9:    https://dns.quad9.net/dns-query
+```
+
+### DNS over QUIC (DoQ)
+
+```
+DNS over QUIC: UDP port 853
+  - Like DoT but over QUIC instead of TCP
+  - 0-RTT connection establishment
+  - Better performance on lossy networks
+  - Still experimental (RFC 9250, 2022)
+```
+
 ## Interview Questions
 
 ### Q1: Walk me through DNS resolution for www.example.com.
@@ -311,23 +467,17 @@ $ dig www.example.com  # Second query (cached, ~0ms)
 ### Q2: What is the difference between recursive and iterative queries?
 **A:** **Recursive**: Client asks resolver to do all the work. Resolver returns the final answer or error. **Iterative**: Resolver asks each server, which returns a referral to the next server. Client-to-resolver is recursive; resolver-to-servers is iterative.
 
-### Q3: What are root hints?
-**A:** Root hints are the IP addresses of the 13 root DNS server clusters. They're pre-configured in recursive resolvers and serve as the starting point for DNS resolution when the answer isn't cached. Without root hints, resolvers wouldn't know where to start.
+### Q3: What is DNSSEC and why is it needed?
+**A:** DNSSEC adds cryptographic signatures to DNS records, preventing cache poisoning and spoofing. Without DNSSEC, an attacker can inject false DNS records (Kaminsky attack). DNSSEC creates a chain of trust from the root zone to each domain, where each zone signs its records with its private key and publishes the public key in DNSKEY records.
 
-### Q4: How does DNS caching work at different layers?
-**A:** DNS is cached at: (1) Browser — short-lived, per-origin; (2) OS/stub resolver — follows TTL; (3) Recursive resolver — TTL-based, shared across clients; (4) CDN DNS — may override TTL for load balancing. Each layer reduces query latency and load on authoritative servers.
+### Q4: What is the difference between DoT and DoH?
+**A:** Both encrypt DNS queries. DoT uses TLS on dedicated port 853; DoH uses HTTPS on port 443. DoH is harder to block (uses standard HTTPS port) and is supported by browsers. DoT is simpler and may be preferred in controlled environments. Both provide confidentiality; DNSSEC provides authenticity.
 
-### Q5: What is negative caching in DNS?
-**A:** When a domain doesn't exist (NXDOMAIN), the response is cached to prevent repeated queries. The cache duration is the SOA minimum TTL. This prevents abuse (querying non-existent domains) but delays propagation of newly registered domains.
+### Q5: How does negative caching work in DNS?
+**A:** When a domain doesn't exist (NXDOMAIN), the response is cached to prevent repeated queries. The cache duration is the SOA minimum TTL. This prevents abuse but delays propagation of newly registered domains. DNSSEC's NSEC/NSEC3 records provide authenticated denial of existence.
 
-### Q6: How does reverse DNS resolution work?
-**A:** Reverse DNS uses PTR records in the `in-addr.arpa` (IPv4) or `ip6.arpa` (IPv6) zones. The IP address octets are reversed: 93.184.216.34 → 34.216.184.93.in-addr.arpa. The PTR record maps back to a domain name. Reverse DNS is often used for logging, anti-spam, and security.
-
-### Q7: What happens if the authoritative DNS server is down?
-**A:** If the resolver has a cached answer (within TTL), resolution continues normally. If the cache is expired, the resolver tries all authoritative NS records. If all are down, the query fails (SERVFAIL). This is why domains have multiple authoritative NS servers (primary + secondary).
-
-### Q8: What is the role of the stub resolver?
-**A:** The stub resolver is the client-side DNS library (part of the OS). It receives queries from applications (via getaddrinfo), checks local cache, and forwards to the configured recursive resolver. It's "stub" because it doesn't do full resolution — it delegates to the recursive resolver.
+### Q6: Explain DNS TTL and its impact on caching.
+**A:** TTL (Time-To-Live) is the number of seconds a DNS record can be cached. Lower TTL (e.g., 60s) = faster propagation of changes, but more queries to authoritative server. Higher TTL (e.g., 3600s) = less load on authoritative server, but slower propagation. Common practice: use high TTL for stable records (A, MX), low TTL for records that change frequently (during migrations).
 
 ## Common Mistakes
 
@@ -337,13 +487,15 @@ $ dig www.example.com  # Second query (cached, ~0ms)
 
 3. **Forgetting about negative caching**: Non-existent domains are cached too (NXDOMAIN). Newly registered domains may not resolve until negative cache expires.
 
-4. **Not knowing root hints**: Root hints are the starting point for resolution. They're pre-configured and rarely change, but understanding them is essential for the resolution chain.
+4. **Confusing DNSSEC with DoT/DoH**: DNSSEC provides authenticity (records are genuine). DoT/DoH provide confidentiality (queries are encrypted). They solve different problems.
 
-5. **Confusing CNAME following with A record lookup**: When the authoritative server returns a CNAME, the resolver must follow the chain and query for the target's A record. This adds an extra lookup.
+5. **Not knowing root hints**: Root hints are the starting point for resolution. They're pre-configured and rarely change, but understanding them is essential for the resolution chain.
 
-6. **Not understanding anycast for root servers**: There are 13 root server *addresses*, but hundreds of physical servers worldwide. Anycast routes queries to the nearest instance.
+6. **Confusing CNAME following with A record lookup**: When the authoritative server returns a CNAME, the resolver must follow the chain and query for the target's A record. This adds an extra lookup.
 
-7. **Thinking DNS resolution is always a single query**: A full resolution may require 3-4 queries (root, TLD, authoritative, CNAME target). Only cached answers are single queries.
+7. **Not understanding anycast for root servers**: There are 13 root server *addresses*, but hundreds of physical servers worldwide. Anycast routes queries to the nearest instance.
+
+8. **Thinking DNS resolution is always a single query**: A full resolution may require 3-4 queries (root, TLD, authoritative, CNAME target). Only cached answers are single queries.
 
 ## Summary
 
@@ -358,6 +510,12 @@ $ dig www.example.com  # Second query (cached, ~0ms)
 |----------------|---------------|----------|
 | **Recursive** | Resolver | Client → Resolver |
 | **Iterative** | Resolver follows chain | Resolver → Nameservers |
+
+| Security Layer | What It Protects | Protocol |
+|---------------|-----------------|----------|
+| **DNSSEC** | Authenticity (records genuine) | Signatures in DNS |
+| **DoT** | Confidentiality (queries encrypted) | TLS on port 853 |
+| **DoH** | Confidentiality + censorship resistance | HTTPS on port 443 |
 
 DNS resolution is a chain of referrals from root to TLD to authoritative, with caching at every layer to minimize latency and load.
 

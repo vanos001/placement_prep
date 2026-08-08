@@ -73,7 +73,46 @@ graph TB
     KPROXY2 --> POD4
 ```
 
-### Control Plane Components
+### Control Plane Deep Dive
+
+The control plane is the brain of Kubernetes. It manages the cluster state and makes all scheduling decisions.
+
+**API Server (kube-apiserver)**:
+- The only component that talks to etcd
+- All communication (kubectl, kubelet, controllers) goes through it
+- Validates and processes RESTful requests
+- Handles authentication, authorization, and admission control
+- Supports watch机制 for real-time change notifications
+
+**etcd**:
+- Distributed key-value store (uses Raft consensus)
+- Stores all cluster state: pods, services, config, secrets
+- Typically runs 3 or 5 nodes for fault tolerance
+- Backup is critical — losing etcd means losing the cluster
+- Accessed only through the API server (never directly)
+
+**Scheduler (kube-scheduler)**:
+- Watches for unscheduled pods (no `nodeName` set)
+- Filters nodes that meet requirements (resources, taints, affinity)
+- Scores remaining nodes and picks the best one
+- Two phases: **Filter** (feasible nodes) → **Score** (rank and select)
+- Doesn't actually run pods — just writes the assignment to the API server
+
+**Controller Manager**:
+- Runs multiple controllers in a single process
+- Each controller watches a specific resource type:
+  - **ReplicaSet Controller**: Ensures correct number of pod replicas
+  - **Deployment Controller**: Manages ReplicaSets for rolling updates
+  - **Node Controller**: Monitors node health, evicts pods from failed nodes
+  - **Job Controller**: Creates pods for batch jobs
+  - **Service Account Controller**: Creates default service accounts
+- Reconciliation loop: watch desired state → compare with actual → make changes
+
+**Cloud Controller Manager**:
+- Integrates with cloud provider APIs
+- **Node controller**: checks if nodes are deleted in cloud
+- **Route controller**: sets up routing in cloud network
+- **Service controller**: creates cloud load balancers for LoadBalancer services
 
 | Component | Role |
 |-----------|------|
@@ -83,13 +122,36 @@ graph TB
 | **Controller Manager** | Runs controllers that watch desired state and make actual state match (ReplicaSet, Deployment, Node) |
 | **Cloud Controller** | Integrates with cloud provider APIs (load balancers, storage, node management) |
 
-### Worker Node Components
+### Worker Node Deep Dive
+
+**kubelet**:
+- The primary node agent — runs on every worker node
+- Receives PodSpecs from the API server and ensures containers are running
+- Performs health checks: **liveness probes** (restart if unhealthy) and **readiness probes** (remove from service if not ready)
+- Reports node and pod status back to the API server
+- Manages container lifecycle: create, start, stop, delete
+- Does NOT run in containers — runs as a systemd service
+
+**kube-proxy**:
+- Maintains network rules on each node for Service abstraction
+- Three modes: **iptables** (default), **IPVS** (high performance), **userspace** (legacy)
+- When a Service is created, kube-proxy creates rules to route traffic to the correct Pod
+- Handles ClusterIP, NodePort, and LoadBalancer service types
+- Not an actual proxy — it programs kernel networking rules
+
+**Container Runtime**:
+- Runs containers on the node
+- Communicates with kubelet via CRI (Container Runtime Interface)
+- **containerd**: Industry standard, used by most clusters
+- **CRI-O**: Lightweight, purpose-built for Kubernetes
+- Docker was removed in K8s 1.24 (dockershim deprecated)
+- Images are pulled from registries (Docker Hub, ECR, GCR, ACR)
 
 | Component | Role |
 |-----------|------|
 | **kubelet** | Agent on each node; ensures containers described in PodSpecs are running and healthy |
 | **kube-proxy** | Network proxy maintaining network rules; enables Service abstraction (iptables/IPVS) |
-| **Container Runtime** | Runs containers (containerd, CRI-O)—not Docker since K8s 1.24 |
+| **Container Runtime** | Runs containers (containerd, CRI-O) — not Docker since K8s 1.24 |
 | **Pod** | Smallest deployable unit; one or more containers sharing network and storage |
 
 ## How Kubernetes Works

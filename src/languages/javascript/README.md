@@ -69,6 +69,139 @@ console.log('4');              // Synchronous
 // Microtasks run before macrotasks
 ```
 
+## Syntax Fundamentals
+
+### Variables and Types
+
+```javascript
+// Declaration styles
+let x = 5;           // Block-scoped, reassignable
+const PI = 3.14;     // Block-scoped, cannot reassign
+var old = 'legacy';   // Function-scoped (avoid)
+
+// Primitives
+let str = 'hello';       // String (immutable)
+let num = 42;            // Number (64-bit float)
+let big = 9007199254740991n;  // BigInt
+let bool = true;         // Boolean
+let sym = Symbol('id');  // Symbol (unique)
+let nil = null;          // Null
+let undef = undefined;   // Undefined
+
+// Type checking
+typeof str        // 'string'
+Array.isArray([]) // true
+```
+
+### Objects and Arrays
+
+```javascript
+// Object literals
+const person = {
+    name: 'Alice',
+    age: 30,
+    greet() { return `Hi, I'm ${this.name}`; }
+};
+
+// Destructuring
+const { name, age } = person;
+const [first, ...rest] = [1, 2, 3, 4]; // rest = [2,3,4]
+
+// Spread operator
+const merged = { ...person, role: 'dev' };
+const arr = [...rest, 5, 6];
+
+// Array methods (chainable)
+[1, 2, 3]
+    .map(x => x * 2)        // [2, 4, 6]
+    .filter(x => x > 3)     // [4, 6]
+    .reduce((sum, x) => sum + x, 0)  // 10
+
+// Optional chaining and nullish coalescing
+const city = person?.address?.city ?? 'Unknown';
+```
+
+### Functions
+
+```javascript
+// Function declaration (hoisted)
+function add(a, b) { return a + b; }
+
+// Function expression
+const multiply = function(a, b) { return a * b; };
+
+// Arrow function (no own `this`)
+const square = x => x * x;
+const greet = name => `Hello, ${name}`;
+
+// Default parameters
+function connect(host = 'localhost', port = 8080) { /* ... */ }
+
+// Rest parameters
+function sum(...nums) { return nums.reduce((a, b) => a + b, 0); }
+```
+
+### Classes
+
+```javascript
+class Animal {
+    #name;  // Private field
+
+    constructor(name) {
+        this.#name = name;
+    }
+
+    get name() { return this.#name; }
+
+    speak() { return `${this.#name} makes a sound`; }
+
+    static create(name) { return new Animal(name); }
+}
+
+class Dog extends Animal {
+    speak() { return `${this.name} barks`; }
+}
+```
+
+### Async/Await
+
+```javascript
+// Promise-based
+async function fetchUser(id) {
+    try {
+        const res = await fetch(`/api/users/${id}`);
+        if (!res.ok) throw new Error(res.statusText);
+        return await res.json();
+    } catch (err) {
+        console.error('Failed:', err);
+        throw err;
+    }
+}
+
+// Parallel execution
+const [user, posts] = await Promise.all([
+    fetchUser(1),
+    fetchPosts(1)
+]);
+```
+
+### Modules (ES Modules)
+
+```javascript
+// Named exports
+export const PI = 3.14;
+export function add(a, b) { return a + b; }
+
+// Default export
+class App { /* ... */ }
+export default App;
+
+// Import
+import App from './app.js';
+import { PI, add } from './math.js';
+import * as math from './math.js';
+```
+
 ## Closures
 
 ```javascript

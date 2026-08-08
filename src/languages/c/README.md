@@ -126,6 +126,186 @@ C has a very small runtime library. The language itself provides:
 - Structures and unions
 - Preprocessor directives
 
+## Syntax Fundamentals
+
+### Variables and Types
+
+```c
+#include <stdio.h>
+#include <stdint.h>
+
+// Basic types
+char c = 'A';           // 1 byte
+short s = 100;          // 2 bytes (usually)
+int i = 42;             // 4 bytes (usually)
+long l = 100000L;       // 4 or 8 bytes
+long long ll = 1e18;    // 8 bytes
+float f = 3.14f;        // 4 bytes, single precision
+double d = 3.14159;     // 8 bytes, double precision
+
+// Fixed-width types (stdint.h)
+int8_t a = -128;
+uint8_t b = 255;
+int32_t c = -2147483648;
+uint64_t d = 18446744073709551615ULL;
+
+// Qualifiers
+const int MAX = 100;         // Cannot modify
+volatile int hw_reg;         // Prevent compiler optimization
+static int count = 0;        // Persistent local / file-scoped global
+extern int global_var;       // Declared elsewhere
+```
+
+### Arrays and Strings
+
+```c
+// Arrays (fixed size, no bounds checking)
+int arr[5] = {1, 2, 3, 4, 5};
+int matrix[3][3] = {{1,2,3}, {4,5,6}, {7,8,9}};
+int zeros[100] = {0};  // All zeros
+
+// Strings (null-terminated char arrays)
+char name[] = "Hello";      // {'H','e','l','l','o','\0'}
+char buf[256];               // Uninitialized
+snprintf(buf, sizeof(buf), "Hi %s", name);  // Safe formatting
+
+// String functions (string.h)
+strlen(name);                // Length
+strcmp(s1, s2);              // Compare (0 if equal)
+strcpy(dst, src);            // Copy (UNSAFE — use strncpy)
+strcat(dst, src);            // Concatenate (UNSAFE)
+strstr(haystack, needle);    // Substring search
+```
+
+### Pointers
+
+```c
+int x = 42;
+int *p = &x;        // p holds address of x
+int **pp = &p;      // pointer to pointer
+
+*p = 100;           // Dereference: x is now 100
+
+// Pointer arithmetic
+int arr[] = {10, 20, 30};
+int *p = arr;        // p points to arr[0]
+p++;                 // p now points to arr[1]
+*(p + 1) == arr[2];  // True
+
+// Function pointers
+int (*op)(int, int) = add;  // op points to add function
+int result = op(3, 4);      // Calls add(3, 4)
+
+// void pointer (generic, no arithmetic)
+void *vp = &x;
+int *ip = (int *)vp;  // Must cast before use
+```
+
+### Structs and Unions
+
+```c
+// Struct (all fields stored)
+struct Point {
+    double x;
+    double y;
+};
+
+struct Point p = {1.0, 2.0};
+printf("%f", p.x);
+
+// Typedef for cleaner names
+typedef struct {
+    char name[64];
+    int age;
+    float gpa;
+} Student;
+
+Student s = {"Alice", 20, 3.8f};
+
+// Union (fields share memory — size = largest field)
+union Data {
+    int i;
+    float f;
+    char str[20];
+};
+// Only one field is valid at a time!
+```
+
+### Control Flow
+
+```c
+// if/else
+if (x > 0) {
+    printf("positive");
+} else if (x == 0) {
+    printf("zero");
+} else {
+    printf("negative");
+}
+
+// switch (fall-through without break)
+switch (day) {
+    case MON: printf("Monday"); break;
+    case TUE: printf("Tuesday"); break;
+    default: printf("Other"); break;
+}
+
+// for loop
+for (int i = 0; i < n; i++) { /* ... */ }
+
+// while / do-while
+while (condition) { /* ... */ }
+do { /* ... */ } while (condition);
+
+// goto (use sparingly — error cleanup is valid use)
+if (error) goto cleanup;
+```
+
+### Dynamic Memory
+
+```c
+#include <stdlib.h>
+
+// Allocate
+int *arr = malloc(n * sizeof(int));       // Uninitialized
+int *arr = calloc(n, sizeof(int));        // Zero-initialized
+arr = realloc(arr, 2 * n * sizeof(int)); // Resize
+
+// Free (MANDATORY — memory leaks otherwise)
+free(arr);
+arr = NULL;  // Prevent use-after-free
+
+// Common bugs:
+// - malloc without free → memory leak
+// - free twice → double free (undefined behavior)
+// - use after free → dangling pointer
+// - forgetting NULL check after malloc
+```
+
+### Preprocessor
+
+```c
+#include <stdio.h>      // System header
+#include "myheader.h"   // Local header
+
+#define MAX 100          // Object-like macro
+#define SQUARE(x) ((x)*(x))  // Function-like macro
+#define DEBUG           // Define without value (for #ifdef)
+
+#ifdef DEBUG
+    printf("Debug mode\n");
+#endif
+
+#ifndef HEADER_GUARD     // Include guard
+#define HEADER_GUARD
+// ... declarations ...
+#endif
+
+// Stringification and token pasting
+#define STR(x) #x          // STR(hello) → "hello"
+#define CAT(a, b) a##b     // CAT(x, 1) → x1
+```
+
 ## The C Compilation Pipeline
 
 ```mermaid

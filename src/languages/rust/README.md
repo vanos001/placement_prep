@@ -80,6 +80,202 @@ flowchart TD
     H --> I[Executable / Library]
 ```
 
+## Syntax Fundamentals
+
+### Variables and Mutability
+
+```rust
+let x = 5;           // Immutable by default
+// x = 6;            // ERROR: cannot assign twice
+let mut y = 5;       // Mutable
+y = 6;               // OK
+
+const MAX: u32 = 100_000;  // Compile-time constant
+let _unused = 42;          // Prefix _ to suppress unused warning
+
+// Shadowing (rebinding with same name)
+let x = 5;
+let x = x + 1;      // Shadows previous x
+let x = "six";       // Can change type via shadowing
+```
+
+### Scalar Types
+
+```rust
+// Integers: i8, i16, i32, i64, i128, isize (signed)
+//           u8, u16, u32, u64, u128, usize (unsigned)
+let a: i32 = 42;
+let b = 0xff;        // Hex
+let c = 0o77;        // Octal
+let d = 0b1010;      // Binary
+let e = b'A';        // Byte (u8)
+
+// Floating point
+let f: f64 = 3.14;   // f32 or f64 (default)
+
+// Boolean
+let t: bool = true;
+
+// Character (4 bytes, Unicode)
+let c: char = '😻';
+```
+
+### Compound Types
+
+```rust
+// Tuples
+let tup: (i32, f64, char) = (500, 6.4, 'a');
+let (x, y, z) = tup;        // Destructuring
+let first = tup.0;           // Index access
+
+// Arrays (fixed size, stack-allocated)
+let arr = [1, 2, 3, 4, 5];
+let first = arr[0];          // Panics on out-of-bounds
+let zeros = [0; 5];          // [0, 0, 0, 0, 0]
+```
+
+### Functions
+
+```rust
+fn add(a: i32, b: i32) -> i32 {
+    a + b   // No semicolon = implicit return
+}
+
+// Multiple return values via tuple
+divmod(a: i32, b: i32) -> (i32, i32) {
+    (a / b, a % b)
+}
+
+// Closures
+let add_one = |x: i32| x + 1;
+let add = |a, b| a + b;  // Type inference
+```
+
+### Control Flow
+
+```rust
+// if expressions (not statements — can return values)
+let max = if a > b { a } else { b };
+
+// Loops
+loop { break 42; }           // Infinite loop with break value
+while condition { /* ... */ }
+for i in 0..10 { /* ... */ } // Range
+for item in vec.iter() { /* ... */ }
+
+// Pattern matching (exhaustive)
+match value {
+    1 => println("one"),
+    2 | 3 => println("two or three"),
+    4..=9 => println("four to nine"),
+    _ => println("something else"),
+}
+
+// if let (shorthand for single-arm match)
+if let Some(value) = optional {
+    println!("Got: {}", value);
+}
+```
+
+### Structs and Enums
+
+```rust
+// Struct
+struct Point {
+    x: f64,
+    y: f64,
+}
+
+impl Point {
+    fn new(x: f64, y: f64) -> Self { Self { x, y } }
+    fn distance(&self) -> f64 { (self.x.powi(2) + self.y.powi(2)).sqrt() }
+}
+
+// Enum with data (algebraic data type)
+enum Shape {
+    Circle(f64),              // radius
+    Rectangle(f64, f64),      // width, height
+    Triangle { base: f64, height: f64 },
+}
+
+impl Shape {
+    fn area(&self) -> f64 {
+        match self {
+            Shape::Circle(r) => std::f64::consts::PI * r * r,
+            Shape::Rectangle(w, h) => w * h,
+            Shape::Triangle { base, height } => 0.5 * base * height,
+        }
+    }
+}
+```
+
+### Option and Result
+
+```rust
+// Option — nullable values (no null in Rust)
+fn find(id: u32) -> Option<String> {
+    if id == 1 { Some("Alice".into()) } else { None }
+}
+
+// Result — error handling
+fn read_file(path: &str) -> Result<String, std::io::Error> {
+    std::fs::read_to_string(path)
+}
+
+// ? operator — propagate errors
+fn process() -> Result<(), Box<dyn std::error::Error>> {
+    let content = read_file("data.txt")?;
+    println!("{}", content);
+    Ok(())
+}
+```
+
+### Generics and Traits
+
+```rust
+// Generic function
+fn largest<T: PartialOrd>(list: &[T]) -> &T {
+    let mut largest = &list[0];
+    for item in &list[1..] {
+        if item > largest { largest = item; }
+    }
+    largest
+}
+
+// Trait definition and implementation
+trait Summary {
+    fn summarize(&self) -> String;
+    fn preview(&self) -> String { format!("{}...", &self.summarize()[..20]) } // Default impl
+}
+
+impl Summary for Article {
+    fn summarize(&self) -> String { format!("{}: {}", self.title, self.content) }
+}
+```
+
+### Collections
+
+```rust
+use std::collections::{HashMap, HashSet, BTreeMap};
+
+// Vec — dynamic array
+let mut v = Vec::new();
+v.push(1);
+v.pop();
+let v = vec![1, 2, 3];
+
+// HashMap
+let mut scores = HashMap::new();
+scores.insert("Alice", 100);
+scores.entry("Bob").or_insert(0);
+
+// Iterator chains (zero-cost)
+let sum: i32 = vec![1, 2, 3, 4]
+    .iter()
+    .filter(|&&x| x % 2 == 0)
+    .sum();
+```
+
 ## Key Language Features
 
 - **Pattern matching** with exhaustive `match` expressions

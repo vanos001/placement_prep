@@ -217,6 +217,109 @@ Y = (X · diag(s)^{-1}) · (diag(s) · W) = X̂ · Ŵ
 
 **Key insight:** Activations have outliers (some channels have very large values), making them hard to quantize. By dividing activations by a scaling factor s and multiplying weights by s, we smooth out the outliers. Both X̂ and Ŵ are easier to quantize.
 
+## Quantization Benchmarks
+
+Real-world perplexity impact on LLaMA-2-7B (measured on WikiText-2):
+
+| Method | Bits | Perplexity | Relative Loss | Memory |
+|---|---|---|---|---|
+| FP16 (baseline) | 16 | 5.47 | — | 14 GB |
+| GPTQ | 4 (g128) | 5.63 | +2.9% | 3.8 GB |
+| AWQ | 4 (g128) | 5.60 | +2.4% | 3.8 GB |
+| BNB NF4 | 4 | 5.68 | +3.8% | 3.8 GB |
+| GGUF Q4_K_M | 4.8 | 5.55 | +1.5% | 4.2 GB |
+| GGUF Q3_K_M | 3.9 | 5.82 | +6.4% | 3.4 GB |
+| GGUF Q2_K | 2.6 | 6.65 | +21.6% | 2.3 GB |
+
+**Key takeaways:**
+- INT4 methods (GPTQ, AWQ, NF4) show 2-4% perplexity increase — acceptable for most applications
+- Below INT4, quality degrades rapidly
+- AWQ slightly outperforms GPTQ in most benchmarks
+- GGUF Q4_K_M offers the best quality-to-size ratio for CPU/edge deployment
+- Larger models (70B) tolerate quantization better than smaller models (7B)
+
+### Quantization Impact on Downstream Tasks
+
+| Task | FP16 | GPTQ-4 | AWQ-4 | Q4_K_M |
+|---|---|---|---|---|
+| MMLU (knowledge) | 46.2% | 45.5% | 45.8% | 45.0% |
+| GSM8K (math) | 14.6% | 13.8% | 14.1% | 13.2% |
+| HumanEval (code) | 12.8% | 12.2% | 12.5% | 11.6% |
+| TruthfulQA | 38.3% | 37.9% | 38.1% | 37.4% |
+
+Task-level degradation is typically smaller than perplexity suggests because most tasks don't depend on exact probability calibration.
+
+## KV Cache Quantization
+
+Separate from weight quantization, KV cache can also be quantized during inference:
+
+| KV Precision | Memory Reduction | Quality Impact | Implementation |
+|---|---|---|---|
+| FP16 | 1× | None | Default |
+| FP8 (E4M3) | 2× | <0.1% | H100+ native |
+| INT8 | 2× | <0.5% | vLLM, TensorRT-LLM |
+| INT4 | 4× | ~1% | Experimental |
+
+**FP8 KV cache** is the sweet spot for H100/H200 deployments — 2× memory savings with negligible quality loss.
+
+```python
+# vLLM with KV cache quantization
+from vllm import LLM
+
+llm = LLM(
+    model="meta-llama/Llama-3-8B",
+    kv_cache_dtype="fp8",  # FP8 KV cache
+    gpu_memory_utilization=0.90,
+)
+```
+
+## Practical Deployment Guide
+
+### Choosing a Quantization Method
+
+```mermaid
+graph TD
+    START[Need Quantization?] --> WHERE{Deployment Target?}
+    WHERE -->|GPU Server| GPU_Q{Quality Priority?}
+    WHERE -->|CPU/Edge| CPU_Q[Use GGUF]
+    WHERE -->|Fine-tuning| FT[Use NF4/QLoRA]
+
+    GPU_Q -->|Max Quality| AWQ[AWQ INT4]
+    GPU_Q -->|Balanced| GPTQ[GPTQ INT4]
+    GPU_Q -->|Max Speed| FP8[FP8 on H100+]
+```
+
+### Decision Matrix
+
+| Scenario | Recommended Method | Why |
+|---|---|---|
+| Production GPU server (A100) | GPTQ or AWQ INT4 | Best quality/speed trade-off |
+| Production GPU server (H100) | FP8 | Native hardware support, near-lossless |
+| Consumer GPU (24GB) | AWQ INT4 or BNB NF4 | Fits 7B-13B models |
+| CPU inference / Ollama | GGUF Q4_K_M | Optimized for llama.cpp |
+| Edge deployment (mobile) | GGUF Q3_K_M or Q2_K | Extreme compression |
+| Fine-tuning (QLoRA) | BNB NF4 | HuggingFace integration |
+| Maximum throughput | W4A8 (SmoothQuant) | Integer GEMM on GPU |
+
+### Combining Quantization with Other Optimizations
+
+```mermaid
+graph TD
+    MODEL[FP16 Model] --> Q[Quantize to INT4]
+    Q --> LORA[Apply LoRA Adapters]
+    LORA --> SERVE[Serve with vLLM]
+    SERVE --> PA[PagedAttention]
+    PA --> PC[Prefix Caching]
+    PC --> SPEC[Speculative Decoding]
+```
+
+**Stacking optimizations:**
+1. Quantize base model (GPTQ/AWQ) → 4× memory reduction
+2. Apply LoRA for task adaptation → minimal extra memory
+3. Serve with vLLM → PagedAttention for KV cache efficiency
+4. Enable prefix caching → 5-10× for shared system prompts
+5. Add speculative decoding → 2-3× latency improvement
+
 ## Interview Questions
 
 ### Q1: Explain the difference between GPTQ and AWQ.
@@ -250,7 +353,17 @@ Y = (X · diag(s)^{-1}) · (diag(s) · W) = X̂ · Ŵ
 
 ## Summary
 
-Quantization reduces LLM memory and compute by using lower-precision representations. GPTQ and AWQ are the main INT4 methods for production. NF4 is optimal for normally distributed weights (used in QLoRA). GGUF is the standard for CPU/edge deployment. FP8 is emerging for H100+ GPUs. The trade-off between size and quality must be evaluated per use case.
+Quantization reduces LLM memory and compute by using lower-precision representations. GPTQ and AWQ are the main INT4 methods for production. NF4 is optimal for normally distributed weights (used in QLoRA). GGUF is the standard for CPU/edge deployment. FP8 is emerging for H100+ GPUs with near-lossless quality. INT4 quantization typically shows 2-4% perplexity increase but minimal downstream task degradation. The choice depends on deployment target: AWQ/GPTQ for GPU servers, GGUF for CPU/edge, FP8 for H100+. Stacking quantization with LoRA, PagedAttention, and speculative decoding maximizes efficiency.
+
+## References
+
+1. Dettmers et al., "QLoRA: Efficient Finetuning of Quantized LLMs", NeurIPS 2023
+2. Frantar et al., "GPTQ: Accurate Post-Training Quantization for Generative Pre-trained Transformers", ICLR 2023
+3. Lin et al., "AWQ: Activation-aware Weight Quantization for LLM Compression and Acceleration", MLSys 2024
+4. Xiao et al., "SmoothQuant: Accurate and Efficient Post-Training Quantization for LLMs", ICML 2023
+5. Dettmers et al., "LLM.int8(): 8-bit Matrix Multiplication for Transformers at Scale", 2022
+6. Micikevicius et al., "FP8 Formats for Deep Learning", 2022
+7. llama.cpp / GGUF format specification, Georgi Gerganov, 2023-2025
 
 ## Cross-References
 

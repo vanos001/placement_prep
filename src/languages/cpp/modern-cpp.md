@@ -289,6 +289,211 @@ int main() {
 }
 ```
 
+## Range-Based For Loop (C++11)
+
+```cpp
+#include <vector>
+#include <map>
+#include <string>
+
+int main() {
+    // Basic range-for
+    std::vector<int> vec = {1, 2, 3, 4, 5};
+    for (auto val : vec) {           // Copy each element
+        std::cout << val << " ";
+    }
+
+    for (const auto& val : vec) {    // Const reference — no copy, no modify
+        std::cout << val << " ";
+    }
+
+    for (auto& val : vec) {          // Mutable reference — can modify
+        val *= 2;
+    }
+
+    // Map iteration with structured bindings
+    std::map<std::string, int> scores = {{"Alice", 95}, {"Bob", 87}};
+    for (const auto& [name, score] : scores) {
+        std::cout << name << ": " << score << "\n";
+    }
+
+    // Initializer (C++20)
+    for (auto vec = std::vector{1, 2, 3}; auto& val : vec) {
+        std::cout << val << " ";
+    }
+}
+```
+
+### How Range-For Works
+
+The compiler transforms range-for into:
+
+```cpp
+// for (auto& val : container) { body; }
+// Becomes:
+{
+    auto&& __range = container;
+    auto __begin = __range.begin();  // or begin(__range)
+    auto __end = __range.end();      // or end(__range)
+    for (; __begin != __end; ++__begin) {
+        auto& val = *__begin;
+        body;
+    }
+}
+```
+
+This means any type with `begin()` and `end()` methods (or free functions) works with range-for.
+
+## Concepts (C++20)
+
+Concepts are named constraints on template parameters — making templates more readable and error messages clearer:
+
+```cpp
+#include <concepts>
+#include <iostream>
+#include <vector>
+#include <string>
+
+// Define a concept
+template<typename T>
+concept Numeric = std::integral<T> || std::floating_point<T>;
+
+// Use concept as constraint
+auto add(Numeric a, Numeric b) {
+    return a + b;
+}
+
+// Concept with requires clause
+template<typename T>
+concept Hashable = requires(T t) {
+    { std::hash<T>{}(t) } -> std::convertible_to<std::size_t>;
+};
+
+// Constrained function template
+template<Hashable T>
+void process(const T& value) {
+    std::cout << "Hashable: " << value << "\n";
+}
+
+// Abbreviated function template (auto with concept)
+void print(Numeric auto value) {
+    std::cout << value << "\n";
+}
+
+// Concept for container
+template<typename T>
+concept Container = requires(T t) {
+    { t.begin() } -> std::input_or_output_iterator;
+    { t.end() } -> std::input_or_output_iterator;
+    { t.size() } -> std::convertible_to<std::size_t>;
+};
+
+// Use Container concept
+template<Container C>
+void printAll(const C& container) {
+    for (const auto& item : container) {
+        std::cout << item << " ";
+    }
+    std::cout << "\n";
+}
+
+int main() {
+    add(1, 2);        // OK: int satisfies Numeric
+    add(1.5, 2.5);    // OK: double satisfies Numeric
+    // add("a", "b"); // ERROR: const char* doesn't satisfy Numeric
+
+    print(42);         // OK
+    print(3.14);       // OK
+
+    printAll(std::vector{1, 2, 3});          // OK
+    printAll(std::string{"hello"});           // OK
+}
+```
+
+### Standard Library Concepts
+
+| Concept | Description |
+|---------|-------------|
+| `std::same_as<T, U>` | T and U are the same type |
+| `std::derived_from<T, U>` | T derives from U |
+| `std::convertible_to<T, U>` | T can be converted to U |
+| `std::integral<T>` | T is an integer type |
+| `std::floating_point<T>` | T is a floating-point type |
+| `std::copyable<T>` | T can be copied |
+| `std::movable<T>` | T can be moved |
+| `std::equality_comparable<T>` | T supports `==` |
+| `std::totally_ordered<T>` | T supports `<`, `>`, etc. |
+| `std::invocable<F, Args...>` | F can be called with Args |
+
+### Concepts vs SFINAE vs Static Assert
+
+```cpp
+// Old: SFINAE (complex, poor error messages)
+template<typename T, typename = std::enable_if_t<std::is_integral_v<T>>>
+T old_way(T a, T b) { return a + b; }
+
+// New: Concepts (clear, readable, good errors)
+auto new_way(std::integral auto a, std::integral auto b) {
+    return a + b;
+}
+
+// Also valid: requires clause
+auto requires_way(auto a, auto b) requires std::integral<decltype(a)> {
+    return a + b;
+}
+```
+
+## Ranges (C++20)
+
+Ranges provide composable, lazy sequence operations:
+
+```cpp
+#include <ranges>
+#include <vector>
+#include <iostream>
+
+int main() {
+    std::vector data = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+
+    // Pipeline: filter even, transform to squares, take 3
+    auto result = data
+        | std::views::filter([](int n) { return n % 2 == 0; })
+        | std::views::transform([](int n) { return n * n; })
+        | std::views::take(3);
+
+    for (int val : result) {
+        std::cout << val << " ";  // 4 16 36
+    }
+
+    // Reverse, drop
+    auto rev = data | std::views::reverse | std::views::drop(7);
+    for (int val : rev) {
+        std::cout << val << " ";  // 3 2 1
+    }
+
+    // iota — infinite range
+    auto naturals = std::views::iota(1);  // 1, 2, 3, ...
+    auto first5 = naturals | std::views::take(5);
+    for (int val : first5) {
+        std::cout << val << " ";  // 1 2 3 4 5
+    }
+}
+```
+
+### Range Adaptors
+
+| Adaptor | Description |
+|---------|-------------|
+| `views::filter(pred)` | Keep elements matching predicate |
+| `views::transform(fn)` | Apply function to each element |
+| `views::take(n)` | Take first n elements |
+| `views::drop(n)` | Skip first n elements |
+| `views::reverse` | Reverse the range |
+| `views::join` | Flatten nested ranges |
+| `views::split(delim)` | Split by delimiter |
+| `views::iota(start)` | Infinite sequence from start |
+| `views::zip(r1, r2)` | Combine two ranges (C++23) |
+
 ## Coroutines (C++20)
 
 Coroutines are functions that can suspend and resume execution:
@@ -491,6 +696,14 @@ flowchart LR
 
 5. **What are coroutines used for?**
    - Asynchronous programming, generators, event loops, cooperative multitasking.
+
+## References
+
+- [C++ Reference — Concepts](https://en.cppreference.com/w/cpp/language/constraints)
+- [C++ Reference — Ranges](https://en.cppreference.com/w/cpp/ranges)
+- [C++ Reference — Coroutines](https://en.cppreference.com/w/cpp/language/coroutines)
+- [C++20 Features — cppreference](https://en.cppreference.com/w/cpp/20)
+- [Effective Modern C++ — Scott Meyers](https://www.oreilly.com/library/view/effective-modern-c/9781491908419/)
 
 ## Related Topics
 

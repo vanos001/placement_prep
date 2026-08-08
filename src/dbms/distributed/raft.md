@@ -303,6 +303,228 @@ Typical values:
 
 Raft is equivalent to Multi-Paxos in power but much easier to implement correctly.
 
+## Deep Dive: Leader Election Algorithm
+
+### Election Timeout Mechanism
+
+```
+Election timeout = random value in [T, 2T]
+  Typical T = 150ms
+  So timeout = 150-300ms (random per node)
+
+Why random?
+  - Prevents all nodes from starting election simultaneously
+  - One node will timeout first, request votes, become leader
+  - Probability of repeated split votes: very low
+
+Timing constraints:
+  broadcastTime << electionTimeout << MTBF
+  
+  broadcastTime: time for a message to reach all nodes (~1-10ms on LAN)
+  electionTimeout: 150-300ms
+  MTBF: mean time between failures (months/years)
+```
+
+### Detailed Election Walkthrough
+
+```
+Initial state: Node A is leader (term=1), B and C are followers
+
+1. Leader A crashes
+
+2. B's election timeout fires (after 200ms):
+   B transitions: FOLLOWER → CANDIDATE
+   B.currentTerm = 2
+   B.votedFor = B (votes for itself)
+   B sends RequestVote to A and C:
+     RequestVote {
+       term: 2,
+       candidateId: B,
+       lastLogIndex: 5,
+       lastLogTerm: 1
+     }
+
+3. C receives RequestVote from B:
+   Check: B.term (2) >= C.term (1) → OK
+   Check: C hasn't voted in term 2 → OK
+   Check: B's log is at least as up-to-date → OK
+   C votes for B: VoteGranted { term: 2, voteGranted: true }
+   C resets its election timeout
+
+4. A is down, no response
+
+5. B receives VoteGranted from C:
+   B has 2 votes (self + C) = majority of 3
+   B becomes LEADER for term 2
+   B sends heartbeats to A and C
+
+6. A comes back online:
+   A receives heartbeat from B with term=2
+   A.term (1) < B.term (2)
+   A steps down: LEADER → FOLLOWER
+   A updates A.term = 2
+```
+
+### Log Up-to-Date Check
+
+When a follower receives a RequestVote, it checks if the candidate's log is at least as up-to-date:
+
+```
+Compare:
+  1. lastLogTerm: candidate's term of last log entry
+     - Higher term = more up-to-date
+  2. lastLogIndex: candidate's index of last log entry
+     - If terms are equal, higher index = more up-to-date
+
+Rule: Vote YES if:
+  (candidate.lastLogTerm > my.lastLogTerm) OR
+  (candidate.lastLogTerm == my.lastLogTerm AND
+   candidate.lastLogIndex >= my.lastLogIndex)
+
+Why this matters:
+  Prevents a node with an incomplete log from becoming leader.
+  If candidate is missing committed entries, it would lose data.
+```
+
+## Deep Dive: Log Replication
+
+### Log Entry Structure
+
+```
+Each log entry contains:
+  ┌──────────────────────────────────────────────┐
+  │ Term │ Index │ Command │ Committed? │
+  ├──────────────────────────────────────────────┤
+  │  1   │   1   │ SET x=5 │     ✓      │
+  │  1   │   2   │ SET y=10│     ✓      │
+  │  2   │   3   │ SET x=7 │     ✓      │
+  │  3   │   4   │ SET z=15│     ✗      │
+  └──────────────────────────────────────────────┘
+
+Term: when the entry was created
+Index: position in the log (monotonically increasing)
+Command: the state machine operation
+```
+
+### Commit Rules
+
+```
+An entry is committed when:
+  1. It has been replicated to a MAJORITY of nodes
+  2. The leader that created the entry is still the current leader
+
+Rule 2 is critical:
+  If leader for term T replicates entry to majority, then crashes,
+  A new leader for term T+1 might NOT have that entry.
+  But the entry IS committed (majority had it).
+  The new leader WILL have it (because log up-to-date check).
+
+Wait — this needs more care:
+
+Scenario that demonstrates the rule:
+  Term 1: Leader S1 replicates entry at index 2 to S1, S2 (not S3)
+  S1 crashes
+  Term 2: S3 wins election (gets votes from S3, S4, S5)
+  S3 doesn't have entry at index 2!
+  S3 replicates its own entry at index 2 (term 2)
+  S3 crashes before committing
+  Term 3: S1 wins election again
+  S1 has entry [term=1, index=2]
+  S3 has entry [term=2, index=2]
+  S1 replicates [term=1, index=2] to S3 → overwrites S3's entry
+
+  This is SAFE because S3's entry was never committed.
+```
+
+### AppendEntries Consistency Check
+
+```
+The AppendEntries RPC includes:
+  prevLogIndex: index of entry immediately before new entries
+  prevLogTerm: term of entry at prevLogIndex
+
+Follower checks:
+  1. Does follower have an entry at prevLogIndex?
+  2. If yes, does its term match prevLogTerm?
+
+If either check fails:
+  → Return false
+  → Leader decrements nextIndex[follower]
+  → Retry AppendEntries
+  → Eventually finds matching point
+  → Overwrites follower's divergent entries
+
+Example:
+  Leader log: [T1] [T1] [T2] [T3] [T3]
+  Follower log: [T1] [T1] [T2] [T4]  ← diverges at index 4
+
+  Leader sends AppendEntries(prevLogIndex=4, prevLogTerm=T3)
+  Follower: entry at index 4 has term T4 ≠ T3 → REJECT
+  Leader decrements nextIndex to 3
+  Leader sends AppendEntries(prevLogIndex=3, prevLogTerm=T2)
+  Follower: entry at index 3 has term T2 = T2 → MATCH
+  Leader overwrites follower's entry at index 4 with [T3]
+  Leader sends entry at index 5 [T3]
+```
+
+## Deep Dive: Safety Guarantees
+
+### Election Safety Proof
+
+```
+Theorem: At most one leader per term.
+
+Proof:
+  - Each node votes at most once per term
+  - A candidate needs majority of votes to become leader
+  - Any two majorities overlap by at least one node
+  - That node can't vote for two different candidates in the same term
+  - Therefore, at most one candidate can get majority in any term
+  - ∎
+```
+
+### Leader Completeness Proof
+
+```
+Theorem: If entry e is committed in term T, all leaders for terms > T have e.
+
+Proof:
+  - Entry e committed in term T means it was replicated to majority M1
+  - Leader for term T+1 was elected by majority M2
+  - M1 ∩ M2 ≠ ∅ (majorities overlap)
+  - At least one node in M2 has entry e
+  - Leader election requires candidate's log to be at least as up-to-date
+  - Therefore the new leader must have entry e
+  - By induction, all future leaders have e
+  - ∎
+```
+
+### State Machine Safety
+
+```
+Theorem: If a node applies entry e at index i, no other node applies a different entry at index i.
+
+Proof:
+  - An entry is applied only after it's committed
+  - Committed entries are present in all future leaders (Leader Completeness)
+  - Leaders never overwrite committed entries (they only append)
+  - Therefore all nodes apply the same entry at each index
+  - ∎
+```
+
+## Raft vs Paxos vs ZAB
+
+```
+Aspect          │ Raft              │ Multi-Paxos        │ ZAB
+────────────────┼───────────────────┼────────────────────┼─────────────────────
+Leader          │ Strong leader     │ No fixed leader    │ Strong leader
+Log ordering    │ Strictly ordered  │ Gaps possible      │ Strictly ordered
+Understandability│ High             │ Low (notoriously)  │ Medium
+Specification   │ Complete          │ Incomplete         │ Complete
+Membership      │ Joint consensus   │ External           │ Atomic broadcast
+Used by         │ etcd, CockroachDB │ Spanner, Chubby    │ ZooKeeper
+```
+
 ## Common Mistakes
 
 - ❌ **Not randomizing election timeouts** — Causes repeated split votes
@@ -310,6 +532,8 @@ Raft is equivalent to Multi-Paxos in power but much easier to implement correctl
 - ❌ **Not handling the old leader** — Old leader may still think it's leader (stale term)
 - ❌ **Ignoring log compaction** — Log grows unboundedly without snapshots
 - ❌ **Confusing commit with apply** — Entry is committed when majority acknowledges; applied when state machine executes it
+- ❌ **Not understanding the commit rule** — Leader can't commit entries from previous terms directly; it must commit a new entry from its own term first
+- ❌ **Assuming Raft is always available** — Raft requires majority; minority partition is unavailable
 
 ## Summary
 

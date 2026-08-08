@@ -144,6 +144,171 @@ func workerPool(jobs <-chan int, results chan<- int, workers int) {
 }
 ```
 
+## Advanced Channel Patterns
+
+### Range Over Channels
+
+```go
+func producer(ch chan<- int) {
+    for i := 0; i < 5; i++ {
+        ch <- i
+    }
+    close(ch)  // MUST close for range to terminate
+}
+
+func main() {
+    ch := make(chan int)
+    go producer(ch)
+
+    // range automatically stops when channel is closed
+    for v := range ch {
+        fmt.Println(v)  // 0, 1, 2, 3, 4
+    }
+}
+```
+
+### Done / Quit Pattern
+
+```go
+func worker(done <-chan struct{}, jobs <-chan int) {
+    for {
+        select {
+        case <-done:
+            fmt.Println("Worker shutting down")
+            return
+        case job, ok := <-jobs:
+            if !ok {
+                return  // Channel closed
+            }
+            fmt.Printf("Processing job %d\n", job)
+        }
+    }
+}
+
+func main() {
+    jobs := make(chan int, 10)
+    done := make(chan struct{})
+
+    go worker(done, jobs)
+
+    // Send some jobs
+    for i := 0; i < 5; i++ {
+        jobs <- i
+    }
+
+    // Signal worker to stop
+    close(done)
+}
+```
+
+### Timeout Pattern
+
+```go
+func fetchWithTimeout(url string, timeout time.Duration) (string, error) {
+    result := make(chan string, 1)
+    errCh := make(chan error, 1)
+
+    go func() {
+        resp, err := http.Get(url)
+        if err != nil {
+            errCh <- err
+            return
+        }
+        defer resp.Body.Close()
+        body, _ := io.ReadAll(resp.Body)
+        result <- string(body)
+    }()
+
+    select {
+    case body := <-result:
+        return body, nil
+    case err := <-errCh:
+        return "", err
+    case <-time.After(timeout):
+        return "", fmt.Errorf("timeout after %v", timeout)
+    }
+}
+```
+
+### Or-Done Channel
+
+```go
+// orDone wraps a channel to allow cancellation
+func orDone(done <-chan struct{}, c <-chan int) <-chan int {
+    out := make(chan int)
+    go func() {
+        defer close(out)
+        for {
+            select {
+            case <-done:
+                return
+            case v, ok := <-c:
+                if !ok {
+                    return
+                }
+                select {
+                case out <- v:
+                case <-done:
+                    return
+                }
+            }
+        }
+    }()
+    return out
+}
+```
+
+### Tee Channel
+
+```go
+// tee splits one channel into two
+func tee(done <-chan struct{}, in <-chan int) (<-chan int, <-chan int) {
+    out1 := make(chan int)
+    out2 := make(chan int)
+    go func() {
+        defer close(out1)
+        defer close(out2)
+        for val := range orDone(done, in) {
+            // Send to both channels
+n            var out1, out2 = out1, out2
+            for i := 0; i < 2; i++ {
+                select {
+                case <-done:
+                    return
+                case out1 <- val:
+                    out1 = nil  // Sent to out1
+                case out2 <- val:
+                    out2 = nil  // Sent to out2
+                }
+            }
+        }
+    }()
+    return out1, out2
+}
+```
+
+### Bridge Channel (Channel of Channels)
+
+```go
+// bridge flattens a channel of channels into a single channel
+func bridge(done <-chan struct{}, chanStream <-chan <-chan int) <-chan int {
+    out := make(chan int)
+    go func() {
+        defer close(out)
+        for stream := range chanStream {
+            for val := range orDone(done, stream) {
+                select {
+                case out <- val:
+                case <-done:
+                    return
+                }
+            }
+        }
+    }()
+    return out
+}
+```
+
 ## Common Pitfalls
 
 ### 1. Sending on Closed Channel
@@ -211,6 +376,13 @@ if !ok {
 | Coordinate goroutines | Simple read/write protection |
 | Pipeline patterns | Counter, cache |
 | Signaling (done, quit) | Performance-critical sections |
+
+## References
+
+- [Go Blog — Share Memory by Communicating](https://go.dev/blog/codelab-share)
+- [Effective Go — Channels](https://go.dev/doc/effective_go#channels)
+- [Go Concurrency Patterns — Rob Pike](https://www.youtube.com/watch?v=f6kdp27TYZs)
+- [Advanced Go Concurrency Patterns — Sameer Ajmani](https://www.youtube.com/watch?v=QDDwwePbDtw)
 
 ## Related Topics
 

@@ -221,6 +221,59 @@ VirtIO is a paravirtualization framework that provides high-performance I/O with
 
 > **Interview Tip**: VirtIO is crucial for KVM performance. Always mention it when discussing KVM I/O optimization.
 
+## Containers vs. VMs
+
+While hypervisors virtualize hardware, containers virtualize the operating system. Understanding both is essential for modern infrastructure.
+
+### Architecture Comparison
+
+Virtual Machines run a full OS per instance on top of a hypervisor, providing strong hardware-level isolation. Containers share the host OS kernel and isolate at the process level using namespaces and cgroups.
+
+### Detailed Comparison
+
+| Aspect | Virtual Machines | Containers |
+|--------|-----------------|------------|
+| **Virtualization level** | Hardware (full OS) | OS kernel (process isolation) |
+| **Isolation** | Strong (separate kernel) | Weaker (shared kernel) |
+| **Startup time** | Minutes | Seconds (milliseconds) |
+| **Size** | GBs (includes OS) | MBs (app + dependencies) |
+| **Overhead** | Higher (full OS per VM) | Minimal (shared kernel) |
+| **Density** | 10s per host | 100s-1000s per host |
+| **Security** | Better (hardware isolation) | Good (with seccomp, AppArmor) |
+| **OS support** | Any OS (Windows, Linux, macOS) | Same kernel only |
+| **Persistent state** | Full OS state | Ephemeral by design |
+| **Use case** | Legacy apps, different OSes | Microservices, cloud-native |
+
+### Container Isolation Technologies
+
+| Technology | What It Does |
+|-----------|-------------|
+| **Namespaces** | Isolate view of system (PID, network, mount, user) |
+| **cgroups** | Limit resources (CPU, memory, I/O, network) |
+| **seccomp** | Restrict system calls (syscall filtering) |
+| **AppArmor/SELinux** | Mandatory access control policies |
+| **Capabilities** | Fine-grained privilege control |
+
+### When to Use VMs vs Containers
+
+**Use VMs when:**
+- Running untrusted code (multi-tenant SaaS)
+- Need different OS (Windows app on Linux host)
+- Regulatory compliance requires hardware isolation
+- Running legacy applications that need full OS
+
+**Use Containers when:**
+- Microservices architecture
+- CI/CD pipelines
+- Cloud-native applications
+- Need fast scaling and deployment
+
+**Use Both (VM + Container):**
+- Run containers inside VMs for additional isolation
+- AWS Fargate, Google Cloud Run run containers on managed VMs
+- Kata Containers provide lightweight VMs with container semantics
+- gVisor (Google) provides a user-space kernel for container isolation
+
 ## Hypervisor Security Considerations
 
 ```mermaid

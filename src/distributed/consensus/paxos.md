@@ -216,6 +216,73 @@ sequenceDiagram
 | **Google Spanner** | Replication across data centers |
 | **Apache Cassandra** | Lightweight transactions use Paxos |
 | **Microsoft Azure** | Azure SQL uses Paxos for replication |
+| **CockroachDB** | Uses Raft (equivalent to Multi-Paxos) |
+| **ZooKeeper** | ZAB protocol (similar to Paxos) |
+
+### Google Chubby
+
+Google's distributed lock service, used internally for:
+- Leader election for Google services
+- Configuration management
+- Distributed locking
+
+Chubby uses Multi-Paxos with a stable leader to replicate a distributed lock table across 5 replicas. Clients interact via a file-system-like API.
+
+### Google Spanner
+
+Spanner uses Paxos for replication within each shard:
+
+```mermaid
+graph TD
+    subgraph "Spanner Shard"
+        P1[Paxos Group<br/>5 replicas] --> DB1[(Shard Data)]
+        P1 -->|TrueTime API| TT[GPS + Atomic Clocks]
+    end
+    subgraph "Another Shard"
+        P2[Paxos Group<br/>5 replicas] --> DB2[(Shard Data)]
+    end
+    P1 -->|2PC| P2
+```
+
+Key innovation: **TrueTime API** provides bounded clock uncertainty, enabling globally consistent reads without locking.
+
+## Paxos vs. Raft: Deep Comparison
+
+```mermaid
+graph TD
+    subgraph "Multi-Paxos"
+        MP_L[Leader (proposer)] --> MP_A1[Acceptor 1]
+        MP_L --> MP_A2[Acceptor 2]
+        MP_L --> MP_A3[Acceptor 3]
+        MP_L -->|"Can have gaps"| MP_LOG[Log: 1, 2, _, 5, 6]
+    end
+    subgraph "Raft"
+        R_L[Leader] --> R_F1[Follower 1]
+        R_L --> R_F2[Follower 2]
+        R_L -->|"No gaps"| R_LOG[Log: 1, 2, 3, 4, 5]
+    end
+```
+
+| Aspect | Paxos | Raft |
+|--------|-------|------|
+| Understandability | Complex—many variants | Designed for clarity |
+| Leader | Optional (Multi-Paxos has one) | Mandatory strong leader |
+| Log gaps | Allowed (log is per-slot) | Not allowed (contiguous) |
+| Membership changes | Complex (various proposals) | Joint consensus (well-defined) |
+| Implementation | Many variants, ambiguous spec | Single specification, reference impl |
+| Leader election | Various strategies | Randomized timeouts |
+| Log matching | No guarantee | Leader's log is always complete |
+| Pre-vote | Not standard | Prevents disruptive elections |
+
+### Why Raft Won
+
+Despite Paxos being theoretically equivalent, Raft dominates modern systems because:
+
+1. **Single specification**: Paxos has many variants (Classic, Multi, Fast, Cheap, Flexible, Byzantine). Each implementation makes different choices.
+2. **Strong leader model**: Raft's leader-only-writes simplifies reasoning. Paxos allows any proposer to propose.
+3. **Log structure**: Raft's contiguous log makes replication straightforward. Paxos allows gaps, complicating recovery.
+4. **Membership changes**: Raft has a well-defined mechanism (joint consensus). Paxos requires ad-hoc solutions.
+5. **Educational material**: The Raft paper, interactive visualizations (raft.github.io), and reference implementation made it accessible.
 
 ## Interview Questions
 

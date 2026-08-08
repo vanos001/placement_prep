@@ -480,6 +480,69 @@ async def good():
 
 ---
 
+## asyncio vs Threading vs Multiprocessing
+
+| Feature | asyncio | threading | multiprocessing |
+|---------|---------|-----------|------------------|
+| **Concurrency model** | Cooperative (single thread) | Preemptive (multi-thread) | Separate processes |
+| **Best for** | I/O-bound, many connections | I/O-bound, few connections | CPU-bound |
+| **GIL impact** | None (single thread) | Blocks CPU work | Each process has own GIL |
+| **Memory** | Low (coroutines are lightweight) | Medium (thread stacks ~1MB each) | High (separate memory space) |
+| **Context switch** | ~μs (coroutine switch) | ~ms (OS thread switch) | ~ms (process switch) |
+| **Shared state** | Easy (same thread) | Needs locks | Needs IPC (Queue, Pipe) |
+| **Debugging** | Harder (async stack traces) | Easier | Easiest (isolated) |
+| **Scalability** | 10K+ concurrent tasks | ~100-1000 threads | Limited by CPU cores |
+
+### When to Use Which
+
+```mermaid
+flowchart TD
+    A[What's your workload?] --> B{CPU or I/O bound?}
+    B -->|CPU-bound| C[multiprocessing]
+    B -->|I/O-bound| D{How many connections?}
+    D -->|Many 1000+| E[asyncio]
+    D -->|Few 10-100| F[threading]
+    B -->|Mixed| G[asyncio + run_in_executor]
+    C --> H[ProcessPoolExecutor]
+    F --> I[ThreadPoolExecutor]
+```
+
+### Mixing asyncio with Blocking Code
+
+```python
+import asyncio
+import time
+from concurrent.futures import ThreadPoolExecutor
+
+async def main():
+    loop = asyncio.get_running_loop()
+    
+    # Option 1: run_in_executor for blocking I/O
+    result = await loop.run_in_executor(None, blocking_io)
+    
+    # Option 2: Custom thread pool
+    with ThreadPoolExecutor(max_workers=4) as pool:
+        results = await asyncio.gather(
+            loop.run_in_executor(pool, blocking_task, arg1),
+            loop.run_in_executor(pool, blocking_task, arg2),
+        )
+    
+    # Option 3: ProcessPoolExecutor for CPU-bound work
+    from concurrent.futures import ProcessPoolExecutor
+    with ProcessPoolExecutor(max_workers=4) as pool:
+        cpu_result = await loop.run_in_executor(pool, cpu_bound_task)
+
+asyncio.run(main())
+```
+
+## References
+
+- [Python docs — asyncio](https://docs.python.org/3/library/asyncio.html)
+- [PEP 492 — Coroutines with async and await syntax](https://peps.python.org/pep-0492/)
+- [aiohttp documentation](https://docs.aiohttp.org/)
+- [Python Concurrency — Real Python](https://realpython.com/python-concurrency/)
+- [Structured Concurrency — PEP 654](https://peps.python.org/pep-0654/)
+
 ## Summary Table
 
 | Concept | Purpose |

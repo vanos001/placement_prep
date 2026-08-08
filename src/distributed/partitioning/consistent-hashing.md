@@ -165,21 +165,114 @@ print(ch.get_node("user:123"))  # "Node B"
 print(ch.get_node("user:456"))  # "Node A"
 ```
 
+## Rebalancing
+
+When nodes are added or removed, consistent hashing minimizes data movement:
+
+### Adding a Node
+
+With N nodes, adding one moves approximately 1/N of keys. Removing one moves approximately 1/N of keys to neighbors. This is the core advantage over traditional hash partitioning.
+
+### Rebalancing Process
+
+1. New node joins the ring (gets virtual node positions)
+2. New node identifies keys it now owns (from successor)
+3. Data is transferred from successor to new node
+4. Ring metadata is updated on all clients/servers
+
+### Gradual Rebalancing (Riak/Cassandra Style)
+
+Instead of moving all data at once, systems often **stream data gradually** in the background to prevent network saturation. The new node begins serving reads as soon as its data transfer completes for a given range.
+
+### Consistent Hashing vs. Range Partitioning
+
+| Aspect | Consistent Hashing | Range Partitioning |
+|--------|-------------------|-------------------|
+| **Key distribution** | Hash-based, uniform | Sequential, can be skewed |
+| **Range queries** | Not supported | Efficient |
+| **Rebalancing** | Minimal key movement | May split/merge ranges |
+| **Use case** | Key-value lookups | Time-series, ordered data |
+| **Examples** | Dynamo, Cassandra, Riak | HBase, CockroachDB, Bigtable |
+
 ## Consistent Hashing in Practice
 
 ### Amazon Dynamo
 
-```mermaid
-graph TD
-    subgraph "Dynamo Ring"
-        N1["Node 1\n(vnodes: 0-99)"] --> N2["Node 2\n(vnodes: 100-199)"]
-        N2 --> N3["Node 3\n(vnodes: 200-299)"]
-        N3 --> N4["Node 4\n(vnodes: 300-399)"]
-        N4 --> N1
-    end
-    
-    K["Key 'user:123'\nhash=150"] -->|"Clockwise"| N2
+Amazon's Dynamo paper (2007) popularized consistent hashing for distributed databases:
+
+Each node is assigned multiple positions on the hash ring (virtual nodes). A key is mapped to the ring and assigned to the first N distinct physical nodes encountered clockwise, where N is the replication factor.
+
+**Dynamo innovations**:
+- **Preference list**: each key has an ordered list of nodes responsible for it
+- **Sloppy quorum**: writes/reads succeed even if some nodes are down
+- **Hinted handoff**: temporary nodes store data and forward it when the original recovers
+- **Virtual nodes** with configurable count per physical node
+
+### Cassandra
+
+Cassandra uses Murmur3 hash function with token ranges assigned per node:
+
+```sql
+-- Each node owns a range of tokens
+-- Node 1: tokens 0-42
+-- Node 2: tokens 43-85
+-- Node 3: tokens 86-127
+
+-- Partition key determines token
+token = Murmur3(partition_key)
+-- Routes to node owning that token
 ```
+
+**Cassandra specifics**:
+- `num_tokens` config controls virtual nodes (default: 16 in Cassandra 4.0+)
+- `NetworkTopologyStrategy` ensures replicas are in different racks/data centers
+- `nodetool ring` shows the token ring and which nodes own which ranges
+- Adding a node triggers streaming of data from neighbors
+
+### Memcached
+
+Client-side consistent hashing (no server coordination needed):
+
+```python
+# Ketama algorithm is most common for Memcached
+# Each client maintains its own ring
+# Servers are added with weights controlling vnode count
+
+# Client-side ring
+ring = {
+    "server1:11211": 40,  # Weight: 40 vnodes
+    "server2:11211": 30,  # Weight: 30 vnodes
+    "server3:11211": 30,  # Weight: 30 vnodes
+}
+
+# Get server for a key
+def get_server(key):
+    hash_val = hash(key)
+    # Find next server clockwise on the ring
+    return find_next_server(hash_val, ring)
+```
+
+**Memcached advantages**: No server-side coordination, clients are independent, adding/removing servers only affects a fraction of cache misses.
+
+### Load Balancers (Nginx, Envoy)
+
+Consistent hashing in load balancers ensures the same client always hits the same backend:
+
+```nginx
+# Nginx consistent hashing
+upstream backend {
+    hash $request_uri consistent;
+    server backend1:8080;
+    server backend2:8080;
+    server backend3:8080;
+}
+```
+
+Useful for:
+- **Session affinity** (sticky sessions)
+- **Cache warming** (requests to same URL hit same backend)
+- **WebSocket connections** (same client to same server)
+- **CDN edge routing** (same content to same edge node)
 
 ### Cassandra
 

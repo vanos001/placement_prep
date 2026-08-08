@@ -281,6 +281,161 @@ Thought: I have the answer.
 Answer: The population of Paris (capital of France) is approximately 2.1 million.
 ```
 
+## Tree-of-Thought (ToT) Prompting
+
+Tree-of-Thought (Yao et al., 2023) generalizes CoT by exploring multiple reasoning branches:
+
+```mermaid
+graph TD
+    Q[Problem] --> T1[Thought 1a]
+    Q --> T1B[Thought 1b]
+    Q --> T1C[Thought 1c]
+    T1 --> T2A[Thought 2a]
+    T1 --> T2B[Thought 2b]
+    T1B --> T2C[Thought 2c]
+    T1B --> T2D[Thought 2d]
+    T2A --> EVAL1[Evaluate: Continue?]
+    T2B --> EVAL2[Explore deeper]
+    T2C --> EVAL3[Prune: Dead end]
+    T2D --> EVAL4[Continue]
+    EVAL2 --> BEST[Best solution]
+    EVAL4 --> BEST
+```
+
+**How ToT works:**
+1. Generate multiple initial thoughts (branches)
+2. Evaluate each thought's promise
+3. Explore promising branches, prune dead ends
+4. Use BFS or DFS to search the thought tree
+5. Backtrack when a branch leads to a dead end
+
+**CoT vs ToT:**
+
+| Aspect | CoT | ToT |
+|---|---|---|
+| Structure | Linear chain | Branching tree |
+| Exploration | Single path | Multiple paths |
+| Backtracking | No | Yes |
+| Cost | 1× | 5-10× (multiple evaluations) |
+| Best for | Step-by-step reasoning | Creative problem-solving, puzzles |
+
+**Example (24 game):**
+```
+Numbers: 4, 5, 6, 10 → Target: 24
+
+Thought 1: Try 4 × 6 = 24, then need 5 and 10 to cancel → 10 - 5 = 5, doesn't work
+Thought 2: Try 10 - 6 = 4, then 4 × 5 = 20, + 4 = 24 → Yes! (10-6) × 5 + 4 = 24
+Thought 3: Try 5 × 6 = 30, then 30 - 10 + 4 = 24 → Yes!
+```
+
+## Structured Output Generation
+
+### Function Calling / Tool Use
+
+Modern LLMs support structured function calling:
+
+```json
+{
+  "tools": [{
+    "type": "function",
+    "function": {
+      "name": "get_weather",
+      "description": "Get current weather for a city",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "city": {"type": "string"},
+          "units": {"type": "string", "enum": ["celsius", "fahrenheit"]}
+        },
+        "required": ["city"]
+      }
+    }
+  }]
+}
+```
+
+The model outputs a structured JSON call instead of free text:
+```json
+{"name": "get_weather", "arguments": {"city": "San Francisco", "units": "celsius"}}
+```
+
+### JSON Mode and Constrained Decoding
+
+| Method | How It Works | Reliability |
+|---|---|---|
+| **Prompt-based** | "Return valid JSON" in prompt | ~80% valid |
+| **JSON mode** (OpenAI) | `response_format: {type: 'json_object'}` | ~95% valid |
+| **Constrained decoding** | Grammar-based token masking (Outlines, Guidance) | 100% valid |
+| **Structured outputs** (OpenAI) | JSON Schema enforcement | 100% valid |
+
+**Constrained decoding** guarantees valid output by masking invalid tokens at each step:
+
+```python
+# Using Outlines library
+import outlines
+
+model = outlines.models.transformers("meta-llama/Llama-3-8B")
+
+# Define schema
+schema = '{"name": str, "age": int, "skills": [str]}'
+
+# Generate guaranteed-valid JSON
+result = outlines.generate.json(model, schema)("Extract info from: John, 35, Python/SQL")
+```
+
+## Prompt Caching
+
+Many providers cache common prompt prefixes to reduce cost and latency:
+
+```mermaid
+graph LR
+    SYS[System Prompt 2K tokens] --> CACHE["Cached (compute once)"]
+    CACHE --> R1[Request 1: +200 user tokens]
+    CACHE --> R2[Request 2: +150 user tokens]
+    CACHE --> R3[Request 3: +300 user tokens]
+```
+
+**Provider support:**
+| Provider | Feature | Savings |
+|---|---|---|
+| OpenAI | Automatic prefix caching | 50% cost on cached tokens |
+| Anthropic | Prompt caching (beta) | 90% cost reduction on cached prefix |
+| Google | Context caching | ~75% cost reduction |
+| vLLM | `--enable-prefix-caching` | Free (open-source) |
+
+**Best practices:**
+- Put system prompt and static context at the beginning
+- Keep frequently-used prefixes consistent across requests
+- For RAG: cache the system prompt + few-shot examples, vary only the query + retrieved chunks
+
+## DSPy: Programmatic Prompt Optimization
+
+DSPy (Stanford, 2023) treats prompt engineering as a programming problem:
+
+```python
+import dspy
+
+class RAG(dspy.Module):
+    def __init__(self):
+        self.retrieve = dspy.Retrieve(k=5)
+        self.generate = dspy.ChainOfThought("context, question -> answer")
+    
+    def forward(self, question):
+        context = self.retrieve(question)
+        return self.generate(context=context, question=question)
+
+# Optimize prompts automatically
+from dspy.teleprompt import BootstrapFewShot
+optimizer = BootstrapFewShot(metric=answer_correctness)
+compiled_rag = optimizer.compile(RAG(), trainset=train_data)
+```
+
+**Why DSPy matters:**
+- Automates few-shot example selection
+- Optimizes prompts for specific metrics
+- Compiles natural language programs into effective prompts
+- Bridges the gap between prompt engineering and ML training
+
 ## Interview Questions
 
 ### Q1: What is Chain-of-Thought prompting and why does it work?
@@ -328,7 +483,17 @@ Bad system prompts are vague ("Be helpful"). Good ones are specific and actionab
 
 ## Summary
 
-Prompt engineering is the primary interface for using LLMs. Techniques range from simple zero-shot to advanced CoT and self-consistency. System prompts set behavior, few-shot examples teach format, and CoT enables reasoning. The key is matching the technique to the task complexity and iterating based on results.
+Prompt engineering is the primary interface for using LLMs. Techniques range from simple zero-shot to advanced CoT, ToT, and self-consistency. System prompts set behavior, few-shot examples teach format, and CoT enables reasoning. Structured outputs via function calling and constrained decoding guarantee valid JSON/XML. Prompt caching reduces cost by 50-90% for repeated prefixes. DSPy automates prompt optimization as a programming problem. The key is matching the technique to the task complexity and iterating based on results.
+
+## References
+
+1. Wei et al., "Chain-of-Thought Prompting Elicits Reasoning in Large Language Models", NeurIPS 2022
+2. Yao et al., "Tree of Thoughts: Deliberate Problem Solving with Large Language Models", NeurIPS 2023
+3. Wang et al., "Self-Consistency Improves Chain of Thought Reasoning in Language Models", ICLR 2023
+4. Khattab et al., "DSPy: Compiling Declarative Language Model Calls into Self-Improving Pipelines", ICLR 2024
+5. Kojima et al., "Large Language Models are Zero-Shot Reasoners", NeurIPS 2022
+6. Willard & Lou, "Efficient Guided Generation for Large Language Models", 2023 (Outlines)
+7. White et al., "A Prompt Pattern Catalog to Enhance Prompt Engineering with ChatGPT", 2023
 
 ## Cross-References
 

@@ -445,6 +445,147 @@ auto arr = std::shared_ptr<int>(new int[100], std::default_delete<int[]>());
 // C++20: auto arr = std::make_shared<int[]>(100);
 ```
 
+## Move Semantics (C++11)
+
+Move semantics allow transferring resources from temporary objects without copying.
+
+### Lvalues and Rvalues
+
+| Category | Description | Example |
+|----------|-------------|----------|
+| **Lvalue** | Has a name, has addressable memory | `int x = 42;` → `x` is lvalue |
+| **Rvalue** | Temporary, no persistent address | `42`, `x + 1`, `std::string("temp")` |
+| **Lvalue ref** | `T&` — binds to lvalues | `int& ref = x;` |
+| **Rvalue ref** | `T&&` — binds to rvalues | `int&& ref = 42;` |
+
+### std::move and Move Constructors
+
+```cpp
+#include <iostream>
+#include <cstring>
+
+class Buffer {
+    char* data_;
+    size_t size_;
+
+public:
+    // Constructor
+    Buffer(size_t size) : size_(size), data_(new char[size]) {
+        std::cout << "Constructor: allocated " << size << " bytes\n";
+    }
+
+    // Copy constructor — deep copy
+    Buffer(const Buffer& other) : size_(other.size_), data_(new char[other.size_]) {
+        std::memcpy(data_, other.data_, size_);
+        std::cout << "Copy: deep copied " << size_ << " bytes\n";
+    }
+
+    // Move constructor — steal resources
+    Buffer(Buffer&& other) noexcept : data_(other.data_), size_(other.size_) {
+        other.data_ = nullptr;  // Leave source in valid state
+        other.size_ = 0;
+        std::cout << "Move: stole " << size_ << " bytes\n";
+    }
+
+    // Copy assignment
+    Buffer& operator=(const Buffer& other) {
+        if (this != &other) {
+            delete[] data_;
+            size_ = other.size_;
+            data_ = new char[size_];
+            std::memcpy(data_, other.data_, size_);
+        }
+        return *this;
+    }
+
+    // Move assignment
+    Buffer& operator=(Buffer&& other) noexcept {
+        if (this != &other) {
+            delete[] data_;
+            data_ = other.data_;
+            size_ = other.size_;
+            other.data_ = nullptr;
+            other.size_ = 0;
+        }
+        return *this;
+    }
+
+    ~Buffer() { delete[] data_; }
+};
+
+Buffer createBuffer() {
+    Buffer b(1024);
+    return b;  // NRVO or move
+}
+
+int main() {
+    Buffer a(100);            // Constructor
+    Buffer b = a;             // Copy constructor
+    Buffer c = std::move(a);  // Move constructor — a is now "empty"
+    Buffer d = createBuffer(); // Move (or NRVO)
+}
+```
+
+### When to Use std::move
+
+```cpp
+void process(Buffer b) { /* ... */ }
+
+int main() {
+    Buffer buf(1024);
+
+    process(buf);            // Copy: buf still valid
+    process(std::move(buf)); // Move: buf is now empty (valid but unspecified state)
+
+    // Rule: don't use buf after std::move unless you reassign it
+    buf = Buffer(512);       // OK: move-assign new value
+}
+```
+
+### Perfect Forwarding
+
+```cpp
+#include <utility>
+
+// Forward arguments preserving their value category
+template<typename T>
+void wrapper(T&& arg) {  // Universal reference
+    // std::forward preserves lvalue/rvalue nature
+    target(std::forward<T>(arg));
+}
+
+// Example: factory function
+template<typename T, typename... Args>
+std::unique_ptr<T> make_unique_custom(Args&&... args) {
+    return std::unique_ptr<T>(new T(std::forward<Args>(args)...));
+}
+```
+
+### Rule of Five
+
+If you define any of these, consider defining all five:
+
+```cpp
+class Resource {
+    int* data_;
+public:
+    Resource(int val) : data_(new int(val)) {}      // 1. Constructor
+    ~Resource() { delete data_; }                     // 2. Destructor
+    Resource(const Resource& o)                       // 3. Copy constructor
+        : data_(new int(*o.data_)) {}
+    Resource& operator=(const Resource& o) {          // 4. Copy assignment
+        if (this != &o) *data_ = *o.data_;
+        return *this;
+    }
+    Resource(Resource&& o) noexcept : data_(o.data_)  // 5. Move constructor
+        { o.data_ = nullptr; }
+    Resource& operator=(Resource&& o) noexcept {       // Move assignment
+        if (this != &o) { delete data_; data_ = o.data_; o.data_ = nullptr; }
+        return *this;
+    }
+};
+```
+
 ## Common Memory Errors and Detection
 
 ### Error Types
@@ -491,6 +632,14 @@ valgrind --leak-check=full ./prog
 8. **Using `get()` and then managing the raw pointer** — Leads to double-delete
 9. **Not checking for `nullptr` before dereferencing** — Segfault
 10. **Mixing `malloc`/`free` with `new`/`delete`** — Different allocators, UB
+
+## References
+
+- [Move Semantics and Rvalue References — CppReference](https://en.cppreference.com/w/cpp/language/move_constructor)
+- [Smart Pointers — CppReference](https://en.cppreference.com/w/cpp/memory)
+- [RAII — CppReference](https://en.cppreference.com/w/cpp/language/raii)
+- [Valgrind Documentation](https://valgrind.org/docs/manual/)
+- [AddressSanitizer — Google](https://github.com/google/sanitizers/wiki/AddressSanitizer)
 
 ## Quick Reference — Smart Pointer Decision Flow
 

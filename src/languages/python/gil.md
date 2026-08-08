@@ -341,6 +341,63 @@ safe_queue = queue.Queue()
 
 ---
 
+## GIL Implementation Mechanics
+
+### How the GIL Works Internally
+
+```python
+# CPython's GIL implementation (simplified)
+# In CPython 3.2+, the GIL is released after a configurable number of bytecode instructions
+
+import sys
+# Python 3.12+: sys.getswitchinterval() controls thread switch interval
+print(sys.getswitchinterval())  # Default: 5ms (0.005 seconds)
+
+# The GIL is released and reacquired:
+# 1. Every sys.getswitchinterval() seconds (default 5ms)
+# 2. Before every blocking I/O operation
+# 3. After certain C extension calls
+```
+
+### GIL Contention Measurement
+
+```python
+import threading
+import time
+
+def cpu_work(n):
+    """Pure CPU work — GIL is held the entire time."""
+    total = 0
+    for i in range(n):
+        total += i * i
+    return total
+
+def measure_gil_contention():
+    """Show how GIL contention hurts multi-threaded CPU work."""
+    n = 5_000_000
+    
+    # Single-threaded
+    start = time.perf_counter()
+    cpu_work(n)
+    cpu_work(n)
+    single_time = time.perf_counter() - start
+    
+    # Multi-threaded (GIL contention)
+    start = time.perf_counter()
+    t1 = threading.Thread(target=cpu_work, args=(n,))
+    t2 = threading.Thread(target=cpu_work, args=(n,))
+    t1.start()
+    t2.start()
+    t1.join()
+    t2.join()
+    multi_time = time.perf_counter() - start
+    
+    print(f"Single-threaded: {single_time:.2f}s")
+    print(f"Multi-threaded:  {multi_time:.2f}s")
+    print(f"Overhead:        {multi_time/single_time:.2f}x")
+    # Typically multi_time > single_time due to GIL switching overhead!
+```
+
 ## GIL Decision Flowchart
 
 ```mermaid
@@ -352,6 +409,7 @@ flowchart TD
     C -->|Yes| F[asyncio + aiohttp]
     C -->|No| G[ThreadPoolExecutor]
     A -->|Mixed| H[asyncio for I/O + ProcessPool for CPU]
+    A -->|"NumPy/SciPy"| I[Threading OK - C extensions release GIL]
 ```
 
 ---
@@ -380,6 +438,14 @@ with lock:
 ```
 
 ---
+
+## References
+
+- [PEP 703 — Making the Global Interpreter Lock Optional](https://peps.python.org/pep-0703/)
+- [Python Wiki — GIL](https://wiki.python.org/moin/GlobalInterpreterLock)
+- [David Beazley — Understanding the Python GIL](https://www.dabeaz.com/python/UnderstandingGIL.pdf)
+- [Python docs — threading](https://docs.python.org/3/library/threading.html)
+- [Python docs — multiprocessing](https://docs.python.org/3/library/multiprocessing.html)
 
 ## Summary
 

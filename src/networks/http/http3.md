@@ -249,6 +249,97 @@ sequenceDiagram
 3. Chrome://net-internals/#http3 shows active HTTP/3 connections
 4. `curl --http3 https://example.com` (if compiled with HTTP/3 support)
 
+## Deep Dive: QUIC Connection Establishment
+
+### QUIC Packet Structure
+
+```
+QUIC Packet (Long Header):
+┌───────────┬──────────┬───────────┬──────────┬──────────┐
+│ Header    │ Version  │ DCID Len  │ DCID     │ SCID Len │
+│ Form (1)  │ (32)     │ (8)       │ (0-160)  │ (8)      │
+│ Long (1)  │          │           │          │          │
+│ Fixed (1) │          │           │          │          │
+│ Type (2)  │          │           │          │          │
+│ Reserved  │          │           │          │          │
+│ (2)       │          │           │          │          │
+│ PN Length │          │           │          │          │
+│ (2)       │          │           │          │          │
+├───────────┴──────────┴───────────┼──────────┼──────────┤
+│ SCID (0-160)                     │ Payload  │          │
+│                                  │ (frames) │          │
+└──────────────────────────────────┴──────────┴──────────┘
+
+QUIC Packet Types (Long Header):
+  0x00 → Initial    (first packet, contains ClientHello)
+  0x01 → 0-RTT      (early data, before handshake completes)
+  0x02 → Handshake  (TLS handshake messages)
+  0x03 → Retry      (server retry with new token)
+
+Short Header (after handshake):
+┌───────────┬──────────┬──────────┐
+│ Header    │ DCID     │ Packet   │
+│ Form (1)  │ (var)    │ Number   │
+│ Fixed (1) │          │ (var)    │
+│ Spin (1)  │          │          │
+│ Reserved  │          │          │
+│ (2)       │          │          │
+│ Key Phase │          │          │
+│ (1)       │          │          │
+│ PN Length │          │          │
+│ (2)       │          │          │
+└───────────┴──────────┴──────────┘
+```
+
+### QUIC Connection ID Migration
+
+```
+Traditional TCP:
+  Connection identified by: (src_ip, src_port, dst_ip, dst_port)
+  Change any one → connection breaks
+
+QUIC:
+  Connection identified by: Connection ID (random, assigned at start)
+  IP/port changes → connection continues
+
+Migration flow:
+  1. Client connected via Wi-Fi (IP: 192.168.1.5)
+  2. Client sends PATH_CHALLENGE from new IP (10.0.0.42)
+  3. Server responds with PATH_RESPONSE
+  4. Client validates new path
+  5. Client starts sending on new path
+  6. Old path can be abandoned
+
+Security: Server validates the new path to prevent amplification attacks
+```
+
+### QUIC Flow Control
+
+```
+QUIC has TWO levels of flow control:
+
+1. Connection-level flow control:
+   - Limits total bytes sent across ALL streams
+   - Similar to TCP's receive window
+   - Server advertises max_connection_data
+
+2. Stream-level flow control:
+   - Each stream has its own flow control window
+   - Prevents one stream from consuming all buffer space
+   - Initial window: 65,535 bytes (configurable)
+
+Example:
+  Connection window: 1 MB
+  Stream 1 window: 64 KB
+  Stream 2 window: 64 KB
+  
+  Stream 1 can send up to 64 KB
+  Total across all streams: up to 1 MB
+  
+  If Stream 1's window exhausted: only Stream 1 blocks
+  Stream 2 continues sending (independent flow control)
+```
+
 ## Common Mistakes
 
 1. **Assuming HTTP/3 is always faster** — For small payloads on fast networks, the difference from HTTP/2 may be negligible. HTTP/3 shines on **lossy networks** and **high-latency connections**.
@@ -262,6 +353,8 @@ sequenceDiagram
 5. **Expecting universal support** — As of 2024, HTTP/3 is supported by ~30% of websites. Older clients, some CDNs, and many enterprise environments still rely on HTTP/2 or HTTP/1.1.
 
 6. **Not handling fallback** — Always support HTTP/2 and HTTP/1.1 as fallbacks. The `Alt-Svc` header mechanism allows graceful negotiation.
+
+7. **Forgetting QUIC congestion control** — QUIC has its own congestion control (similar to TCP CUBIC). It's NOT UDP without control — it's TCP-like reliability over UDP.
 
 ## Summary
 
