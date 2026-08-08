@@ -790,6 +790,7 @@
   - [Instagram](./interview/system-design/real-world/instagram.md)
   - [Dropbox](./interview/system-design/real-world/dropbox.md)
   - [Distributed Lock Manager](./interview/system-design/real-world/distributed-lock.md)
+  - [Streaming Analytics Pipeline](./interview/system-design/real-world/streaming-pipeline.md)
   - [High Level Design (HLD)](./interview/system-design/hld/README.md)
     - [Scalability](./interview/system-design/hld/scalability.md)
     - [Load Balancing Design](./interview/system-design/hld/load-balancing-design.md)
