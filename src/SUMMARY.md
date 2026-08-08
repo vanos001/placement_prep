@@ -630,6 +630,7 @@
   - [Tokenization](./llm/llm-serving/tokenization.md)
   - [Embeddings](./llm/llm-serving/embeddings.md)
   - [LLM Evaluation](./llm/llm-serving/evaluation.md)
+  - [LLM Security](./llm/llm-serving/security.md)
 - [Multimodal Models](./llm/multimodal/README.md)
   - [Vision-Language Models](./llm/multimodal/vlm.md)
   - [GPT-4V](./llm/multimodal/gpt4v.md)
