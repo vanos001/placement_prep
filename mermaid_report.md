@@ -2,9 +2,9 @@
 
 Validated with the real Mermaid v11 parser (`mermaid.parse`) on the `dev2` branch.
 
-- **Files with diagrams:** 696
-- **Total diagrams:** 2475
-- **Passed:** 2475
+- **Files with diagrams:** 708
+- **Total diagrams:** 2497
+- **Passed:** 2497
 - **Failed:** 0
 - **Pass rate:** 100.0%
 
