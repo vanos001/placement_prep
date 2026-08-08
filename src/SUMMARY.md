@@ -520,6 +520,7 @@
   - [Idempotency](./backend/patterns/idempotency.md)
   - [Distributed Transactions](./backend/patterns/distributed-transactions.md)
 - [Observability](./backend/observability/README.md)
+- [Testing](./backend/testing.md)
 - [CI/CD](./backend/cicd/README.md)
   - [GitHub Actions](./backend/cicd/github-actions.md)
   - [GitOps](./backend/cicd/gitops.md)
