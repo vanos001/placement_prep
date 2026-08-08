@@ -127,6 +127,7 @@
   - [Init Systems](./os/boot/init-systems.md)
 - [Linux Kernel & Advanced](./os/kernel/README.md)
   - [Kernel Modules](./os/kernel/modules.md)
+  - [Kernel Tracing (ftrace/kprobes)](./os/kernel/tracing.md)
   - [eBPF](./os/kernel/ebpf.md)
   - [io_uring](./os/kernel/io-uring.md)
 
@@ -761,6 +762,7 @@
   - [Problem-solving Framework](./interview/coding/framework.md)
 - [System Design](./interview/system-design/README.md)
   - [Design Framework](./interview/system-design/framework.md)
+  - [Probabilistic Data Structures (Bloom, HLL, CMS)](./interview/system-design/probabilistic-data-structures.md)
   - [URL Shortener](./interview/system-design/url-shortener.md)
   - [Chat System](./interview/system-design/chat.md)
   - [News Feed](./interview/system-design/news-feed.md)
@@ -942,10 +944,11 @@
 ## Go
 
 - [Go Overview](./languages/go/README.md)
-- [Scheduler (GMP)](./languages/go/scheduler.md)
-- [Channels](./languages/go/channels.md)
-- [Memory Model](./languages/go/memory-model.md)
-- [Go Ecosystem & Tooling](./languages/go/ecosystem.md)
+  - [Scheduler (GMP)](./languages/go/scheduler.md)
+  - [Channels](./languages/go/channels.md)
+  - [Memory Model](./languages/go/memory-model.md)
+  - [Web Frameworks (Gin/Echo/Fiber)](./languages/go/web-frameworks.md)
+  - [Go Ecosystem & Tooling](./languages/go/ecosystem.md)
 - [Go Interview Questions](./languages/go/interview-questions.md)
 
 ## Java
