@@ -605,6 +605,7 @@
 - [LLM Deep Dives](./ml/llm/README.md)
   - [GPT Architecture Deep Dive](./ml/llm/gpt-architecture.md)
   - [LLM Training Pipeline](./ml/llm/training-pipeline.md)
+  - [Distributed Training](./ml/llm/distributed-training.md)
 - [Computer Vision](./llm/vision/README.md)
   - [Image Classification](./llm/vision/classification.md)
   - [Object Detection](./llm/vision/object-detection.md)
@@ -861,8 +862,10 @@
 
 - [Spring Boot](./frameworks/spring-boot/README.md)
 - [FastAPI](./frameworks/fastapi/README.md)
+- [Django](./frameworks/django/README.md)
 - [Express.js](./frameworks/express/README.md)
 - [React](./frameworks/react/README.md)
+- [Next.js](./frameworks/nextjs/README.md)
 - [Tokio](./frameworks/tokio/README.md)
 - [PyTorch](./frameworks/pytorch/README.md)
 
@@ -937,6 +940,10 @@
 - [V8 Engine](./languages/javascript/v8.md)
 - [Node.js](./languages/javascript/nodejs.md)
 - [JavaScript Interview Questions](./languages/javascript/interview-questions.md)
+
+## TypeScript
+
+- [TypeScript Overview](./languages/typescript/README.md)
 
 ## OCaml
 
