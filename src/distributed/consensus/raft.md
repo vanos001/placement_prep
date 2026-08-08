@@ -269,6 +269,48 @@ graph TD
 | **TiKV** | Distributed key-value store |
 | **Consul** | Service discovery and configuration |
 | **Rook/Ceph** | Distributed storage |
+| **MongoDB** | Replica set elections (Raft-like) |
+| **RabbitMQ** | Quorum queues use Raft |
+| **CockroachDB** | Multi-region with Raft groups per range |
+
+### etcd Deep Dive
+
+etcd is the canonical Raft implementation and the backbone of Kubernetes:
+
+```mermaid
+graph TD
+    subgraph "etcd Cluster (Raft)"
+        L[Leader] --> F1[Follower 1]
+        L --> F2[Follower 2]
+    end
+    K[kubectl] --> L
+    KS[Scheduler] --> L
+    KC[Controller Manager] --> L
+    KL[kubelet] --> L
+    L --> STATE[(State:<br/>Pods, ConfigMaps,<br/>Secrets, Nodes)]
+```
+
+- **Why Raft for etcd?** Kubernetes needs strong consistency for cluster state—Pod assignments, ConfigMaps, Secrets must be linearizable.
+- **Performance**: etcd handles ~10K writes/sec with typical latencies of 10-50ms.
+- **Scale**: etcd clusters typically run 3 or 5 nodes (odd numbers for majority quorum).
+
+### CockroachDB Multi-Raft
+
+CockroachDB uses **thousands of independent Raft groups**, one per data range (64MB):
+
+```mermaid
+graph TD
+    subgraph "CockroachDB"
+        R1[Range 1: keys a-m<br/>Raft Group 1] --> N1[Node 1 (leader)]
+        R1 --> N2[Node 2]
+        R1 --> N3[Node 3]
+        R2[Range 2: keys n-z<br/>Raft Group 2] --> N2b[Node 2 (leader)]
+        R2 --> N3b[Node 3]
+        R2 --> N1b[Node 1]
+    end
+```
+
+This allows horizontal scaling—different ranges can have different leaders on different nodes, spreading write load across the cluster.
 
 ## Interview Questions
 

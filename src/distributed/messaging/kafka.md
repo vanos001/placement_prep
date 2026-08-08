@@ -273,16 +273,93 @@ graph TD
 
 Log compaction retains only the **latest value for each key**, useful for changelogs and event sourcing.
 
+## Kafka Architecture Deep Dive
+
+### Broker and Cluster
+
+A Kafka cluster consists of one or more **brokers** (servers). Each broker stores a subset of partitions:
+
+```mermaid
+graph TD
+    subgraph "Kafka Cluster (3 Brokers)"
+        B1[Broker 1<br/>id=1] --> P0_1[Partition 0 (Leader)]
+        B1 --> P1_2[Partition 1 (Follower)]
+        B1 --> P2_3[Partition 2 (Follower)]
+
+        B2[Broker 2<br/>id=2] --> P0_2[Partition 0 (Follower)]
+        B2 --> P1_1[Partition 1 (Leader)]
+        B2 --> P2_2[Partition 2 (Follower)]
+
+        B3[Broker 3<br/>id=3] --> P0_3[Partition 0 (Follower)]
+        B3 --> P1_3[Partition 1 (Follower)]
+        B3 --> P2_1[Partition 2 (Leader)]
+    end
+```
+
+### KRaft (Replacing ZooKeeper)
+
+Kafka 3.3+ uses **KRaft** (Kafka Raft) to replace ZooKeeper for metadata management:
+
+```mermaid
+graph TD
+    subgraph "Legacy: ZooKeeper"
+        ZK[ZooKeeper Ensemble] --> B1Z[Broker 1]
+        ZK --> B2Z[Broker 2]
+        ZK --> B3Z[Broker 3]
+        NoteZK["Separate cluster to manage"]
+    end
+
+    subgraph "Modern: KRaft"
+        KR[KRaft Controllers<br/>3 nodes, Raft-based] --> B1K[Broker 1]
+        KR --> B2K[Broker 2]
+        KR --> B3K[Broker 3]
+        NoteKR["Built into Kafka, no external dependency"]
+    end
+```
+
+| Aspect | ZooKeeper | KRaft |
+|--------|-----------|-------|
+| Metadata storage | External ZK cluster | Internal Raft quorum |
+| Scalability | Limited (~200K partitions) | Millions of partitions |
+| Startup time | Minutes (ZK sync) | Seconds |
+| Operations | Two systems to manage | One system |
+| Status | Deprecated (3.5+) | Default since Kafka 3.3+ |
+
+### Kafka Storage Internals
+
+Each partition is a **directory** containing segment files:
+
+```
+topic-partition-0/
+  00000000000000000000.log    # Segment 1 (messages 0-999)
+  00000000000000000000.index  # Offset to file position
+  00000000000000000000.timeindex  # Timestamp to offset
+  000000000000000001000.log   # Segment 2 (messages 1000-1999)
+  000000000000000001000.index
+```
+
+**Write path**: Messages are appended to the active segment. Sequential writes are very fast (OS page cache, zero-copy transfer).
+
+**Read path**: Consumers read from a specific offset. Kafka uses the index to jump to the right position in the log file.
+
 ## Kafka vs. Traditional Message Queues
 
 | Aspect | Kafka | RabbitMQ/ActiveMQ |
-|--------|-------|-------------------|
+|--------|-------|--------------------|
 | **Model** | Distributed log | Message broker |
 | **Retention** | Time/key-based | Until consumed |
 | **Replay** | Yes (from offset) | No |
 | **Ordering** | Per-partition | Per-queue |
 | **Throughput** | Very high (millions/sec) | Moderate |
 | **Use case** | Event streaming, data pipelines | Task queues, RPC |
+| **Protocol** | Kafka binary protocol | AMQP, MQTT, STOMP |
+| **Message priority** | No (FIFO per partition) | Yes |
+| **Routing** | Topic + partition key | Exchanges, bindings, routing keys |
+
+### When to Use Kafka vs RabbitMQ
+
+- **Kafka**: Event streaming, log aggregation, data pipelines, event sourcing, high throughput
+- **RabbitMQ**: Task queues, request/reply RPC, message routing, priority queues, low latency
 
 ## Interview Questions
 
