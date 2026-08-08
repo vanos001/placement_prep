@@ -929,6 +929,7 @@
 - [Data Model](./languages/python/data-model.md)
 - [Packaging](./languages/python/packaging.md)
 - [Performance](./languages/python/performance.md)
+- [Python Ecosystem & Tooling](./languages/python/ecosystem.md)
 - [Python Interview Questions](./languages/python/interview-questions.md)
 
 ## Go
