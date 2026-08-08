@@ -125,6 +125,9 @@
   - [BIOS/UEFI](./os/boot/bios-uefi.md)
   - [Bootloader](./os/boot/bootloader.md)
   - [Init Systems](./os/boot/init-systems.md)
+- [Linux Kernel & Advanced](./os/kernel/README.md)
+  - [eBPF](./os/kernel/ebpf.md)
+  - [io_uring](./os/kernel/io-uring.md)
 
 ---
 
