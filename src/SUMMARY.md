@@ -944,6 +944,7 @@
 - [Java Overview](./languages/java/README.md)
 - [JVM Internals](./languages/java/jvm.md)
 - [Garbage Collection](./languages/java/gc.md)
+- [Java Ecosystem & Tooling](./languages/java/ecosystem.md)
 - [Java Interview Questions](./languages/java/interview-questions.md)
 
 ## JavaScript
