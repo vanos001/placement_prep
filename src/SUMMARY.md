@@ -419,6 +419,7 @@
   - [Time and Ordering](./distributed/fundamentals/time.md)
   - [Lamport Clocks](./distributed/fundamentals/lamport.md)
   - [Vector Clocks](./distributed/fundamentals/vector-clocks.md)
+  - [Gossip Protocol](./distributed/fundamentals/gossip.md)
 - [Consensus](./distributed/consensus/README.md)
   - [Paxos](./distributed/consensus/paxos.md)
   - [Raft](./distributed/consensus/raft.md)

@@ -1,7 +1,7 @@
 # Coverage Dashboard
 
 > Auto-generated tracking of content coverage across all subjects.
-> Last updated: 2026-08-05
+> Last updated: 2026-08-08
 
 ## Summary
 
@@ -11,19 +11,19 @@
 | DBMS | 92 | 180+ | 280+ | 70% |
 | Computer Networks | 93 | 170+ | 250+ | 70% |
 | Computer Architecture | 81 | 150+ | 200+ | 65% |
-| Machine Learning | 127 | 250+ | 300+ | 60% |
+| Machine Learning | 128 | 250+ | 300+ | 60% |
 | Distributed Systems | 36 | 80+ | 80+ | 50% |
 | Interview Prep | 92 | 500+ | 100+ | 70% |
 | Programming Languages | 49 | 250+ | 50+ | 75% |
 | Frameworks | 5 | 50+ | 10+ | 30% |
-| Backend Engineering | 27 | 200+ | 60+ | 60% |
+| Backend Engineering | 29 | 210+ | 70+ | 62% |
 | Concurrency | 14 | 50+ | 30+ | 40% |
 | Storage | 10 | 30+ | 20+ | 35% |
 
 ## Overall Metrics
 
-- **Total markdown files**: 837
-- **Total Mermaid diagrams**: 2,442
+- **Total markdown files**: 842
+- **Total Mermaid diagrams**: 2,467
 - **Total size**: 8.0 MB
 - **Build status**: ✅ Clean (zero errors)
 
