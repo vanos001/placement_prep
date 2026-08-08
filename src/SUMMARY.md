@@ -551,6 +551,7 @@
   - [Logging](./cloud/observability/logging.md)
   - [Monitoring](./cloud/observability/monitoring.md)
   - [Tracing](./cloud/observability/tracing.md)
+- [Cloud Security: IAM & Secrets](./cloud/security/README.md)
 
 ---
 
