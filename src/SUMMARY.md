@@ -914,6 +914,7 @@
 - [Error Handling](./languages/rust/error-handling.md)
 - [Async Rust](./languages/rust/async.md)
 - [Unsafe Rust](./languages/rust/unsafe.md)
+- [Rust Ecosystem & Tooling](./languages/rust/ecosystem.md)
 - [Rust Interview Questions](./languages/rust/interview-questions.md)
 
 ## Python
