@@ -134,6 +134,7 @@
 # Database Management Systems
 
 - [DBMS Overview](./dbms/overview.md)
+- [Types of Databases: SQL & NoSQL](./dbms/types-of-databases.md)
 - [OLTP vs OLAP & Data Warehousing](./dbms/analytics/README.md)
 - [Relational Model](./dbms/relational-model/README.md)
   - [Keys](./dbms/relational-model/keys.md)
