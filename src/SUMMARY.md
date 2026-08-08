@@ -903,6 +903,7 @@
 - [Move Semantics](./languages/cpp/move-semantics.md)
 - [Concurrency](./languages/cpp/concurrency.md)
 - [Modern C++](./languages/cpp/modern-cpp.md)
+- [C++ Ecosystem & Tooling](./languages/cpp/ecosystem.md)
 - [C++ Interview Questions](./languages/cpp/interview-questions.md)
 
 ## Rust
