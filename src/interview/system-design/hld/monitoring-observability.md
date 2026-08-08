@@ -327,6 +327,6 @@ If error budget exhausted:
 - [Load Balancing](./load-balancing-design.md) — Health checks
 - [API Design](./api-design.md) — API metrics and rate limiting
 - [Capacity Planning](./capacity-planning.md) — Metrics for capacity decisions
-- [Cloud Observability](../../cloud/observability/README.md)
-- [MLOps Monitoring](../../ml/mlops/monitoring.md)
+- [Cloud Observability](../../../cloud/observability/README.md)
+- [MLOps Monitoring](../../../ml/mlops/monitoring.md)
 - [Metrics](../metrics.md)

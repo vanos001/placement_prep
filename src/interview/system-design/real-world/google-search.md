@@ -51,20 +51,20 @@ graph TB
     end
 
     subgraph "Ranking"
-        InitialRank[Initial Retrieval<br/>(BM25)]
-        MLRank[ML Ranking<br/>(BERT/MUM)]
+        InitialRank["Initial Retrieval<br/>(BM25)"]
+        MLRank["ML Ranking<br/>(BERT/MUM)"]
         Personalize[Personalization]
     end
 
     subgraph "Crawling"
-        Crawler[Web Crawler<br/>(Googlebot)]
+        Crawler["Web Crawler<br/>(Googlebot)"]
         Scheduler[Crawl Scheduler]
         Parser[Page Parser]
     end
 
     subgraph "Indexing"
         InvertedIdx[Inverted Index Builder]
-        DocStore[(Document Store)]
+        DocStore["(Document Store)"]
         LinkGraph[Link Graph]
     end
 
@@ -135,11 +135,11 @@ graph LR
     end
 
     subgraph "Inverted Index"
-        the["the"] --> "[Doc1, Doc2, Doc3]"
-        cat["cat"] --> "[Doc1, Doc3]"
-        sat["sat"] --> "[Doc1]"
-        dog["dog"] --> "[Doc2]"
-        ran["ran"] --> "[Doc2, Doc3]"
+        the["the"] --> D1["Doc1, Doc2, Doc3"]
+        cat["cat"] --> D2["Doc1, Doc3"]
+        sat["sat"] --> D3["Doc1"]
+        dog["dog"] --> D4["Doc2"]
+        ran["ran"] --> D5["Doc2, Doc3"]
     end
 ```
 

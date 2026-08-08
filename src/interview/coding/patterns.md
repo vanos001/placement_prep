@@ -1,137 +1,99 @@
 # Coding Interview Patterns
 
-> *"The ability to recognize patterns is what separates good programmers from great ones."*
+## Overview
 
-## 🎯 Why Learn Patterns?
+Recognizing patterns is the key to solving coding interview problems efficiently. This guide covers the most common patterns that appear repeatedly in technical interviews at top companies.
 
-**90% of coding interview problems** fall into ~15 recurring patterns. Learning these patterns lets you:
-- Recognize problem types quickly
-- Apply proven solutions instead of reinventing
-- Reduce time to solution from 40 minutes to 15-20
-- Handle variations and follow-ups confidently
+## Pattern 1: Sliding Window
 
----
+**When to use:** Problems involving contiguous subarrays/substrings of variable size.
 
-## 1. Two Pointers
-
-### When to Use
-- Sorted arrays
-- Finding pairs with specific properties
-- Removing duplicates
-- Partitioning arrays
-
-### Template
 ```python
-def two_pointers(arr):
-    left, right = 0, len(arr) - 1
-    while left < right:
-        # Process based on condition
-        if condition_met(arr[left], arr[right]):
-            # Found answer or move both
-            left += 1
-            right -= 1
-        elif need_larger:
-            left += 1
-        else:
-            right -= 1
-```
+def max_sum_subarray(nums: list, k: int) -> int:
+    """Find maximum sum of subarray of size k."""
+    window_sum = sum(nums[:k])
+    max_sum = window_sum
+    
+    for i in range(k, len(nums)):
+        window_sum += nums[i] - nums[i - k]
+        max_sum = max(max_sum, window_sum)
+    
+    return max_sum
 
-### Classic Problems
-| Problem | Difficulty | Key Insight |
-|---------|-----------|-------------|
-| Two Sum II (sorted) | Easy | Move pointer based on sum vs target |
-| 3Sum | Medium | Fix one, two pointers for rest |
-| Container With Most Water | Medium | Move the shorter line inward |
-| Trapping Rain Water | Hard | Track max from both ends |
-| Remove Duplicates | Easy | Slow/fast pointer |
-
-### Example: Container With Most Water
-```python
-def maxArea(height):
-    left, right = 0, len(height) - 1
-    max_area = 0
-    while left < right:
-        area = min(height[left], height[right]) * (right - left)
-        max_area = max(max_area, area)
-        if height[left] < height[right]:
-            left += 1
-        else:
-            right -= 1
-    return max_area
-```
-
----
-
-## 2. Sliding Window
-
-### When to Use
-- Contiguous subarray/substring problems
-- Finding max/min/average of subarray of size K
-- Longest/shortest substring with condition
-
-### Template
-```python
-def sliding_window(s):
-    window = {}  # or set, or counter
-    left = 0
-    result = 0
-
-    for right in range(len(s)):
-        # Expand window: add s[right]
-        window[s[right]] = window.get(s[right], 0) + 1
-
-        # Shrink window when invalid
-        while window_invalid:
-            window[s[left]] -= 1
-            if window[s[left]] == 0:
-                del window[s[left]]
-            left += 1
-
-        # Update result
-        result = max(result, right - left + 1)
-
-    return result
-```
-
-### Classic Problems
-| Problem | Difficulty | Window Condition |
-|---------|-----------|-----------------|
-| Max Subarray of Size K | Easy | Fixed size K |
-| Longest Substring Without Repeating | Medium | No duplicates |
-| Minimum Window Substring | Hard | Contains all chars of target |
-| Longest Repeating Character Replacement | Medium | At most K replacements |
-| Permutation in String | Medium | Fixed-size anagram |
-| Fruits Into Baskets | Medium | At most 2 distinct |
-
-### Example: Longest Substring Without Repeating Characters
-```python
-def lengthOfLongestSubstring(s):
-    char_set = set()
+def longest_substring_without_repeats(s: str) -> int:
+    """Find longest substring without repeating characters."""
+    seen = {}
     left = 0
     max_len = 0
-
-    for right in range(len(s)):
-        while s[right] in char_set:
-            char_set.remove(s[left])
-            left += 1
-        char_set.add(s[right])
+    
+    for right, char in enumerate(s):
+        if char in seen and seen[char] >= left:
+            left = seen[char] + 1
+        seen[char] = right
         max_len = max(max_len, right - left + 1)
-
+    
     return max_len
 ```
 
----
+**Problems:** Longest Substring Without Repeating Characters, Minimum Window Substring, Sliding Window Maximum
 
-## 3. Fast & Slow Pointers
+## Pattern 2: Two Pointers
 
-### When to Use
-- Cycle detection in linked lists/arrays
-- Finding middle of linked list
-- Determining if number is happy
+**When to use:** Sorted arrays, palindrome checking, pair finding.
 
-### Template
 ```python
-def has_cycle(head):
+def two_sum_sorted(nums: list, target: int) -> list:
+    """Find two numbers that add up to target in sorted array."""
+    left, right = 0, len(nums) - 1
+    
+    while left < right:
+        current_sum = nums[left] + nums[right]
+        if current_sum == target:
+            return [left, right]
+        elif current_sum < target:
+            left += 1
+        else:
+            right -= 1
+    
+    return []
+
+def three_sum(nums: list) -> list:
+    """Find all unique triplets that sum to zero."""
+    nums.sort()
+    result = []
+    
+    for i in range(len(nums) - 2):
+        if i > 0 and nums[i] == nums[i-1]:
+            continue
+        
+        left, right = i + 1, len(nums) - 1
+        while left < right:
+            total = nums[i] + nums[left] + nums[right]
+            if total < 0:
+                left += 1
+            elif total > 0:
+                right -= 1
+            else:
+                result.append([nums[i], nums[left], nums[right]])
+                while left < right and nums[left] == nums[left+1]:
+                    left += 1
+                while left < right and nums[right] == nums[right-1]:
+                    right -= 1
+                left += 1
+                right -= 1
+    
+    return result
+```
+
+**Problems:** Two Sum, Three Sum, Container With Most Water, Trapping Rain Water
+
+## Pattern 3: Fast & Slow Pointers
+
+**When to use:** Linked list cycle detection, finding middle element.
+
+```python
+def has_cycle(head: ListNode) -> bool:
+    """Detect cycle in linked list."""
     slow = fast = head
     while fast and fast.next:
         slow = slow.next
@@ -140,7 +102,8 @@ def has_cycle(head):
             return True
     return False
 
-def find_middle(head):
+def find_middle(head: ListNode) -> ListNode:
+    """Find middle of linked list."""
     slow = fast = head
     while fast and fast.next:
         slow = slow.next
@@ -148,59 +111,56 @@ def find_middle(head):
     return slow
 ```
 
-### Classic Problems
-- Linked List Cycle (I & II)
-- Happy Number
-- Find Middle of Linked List
-- Palindrome Linked List
-- Reorder List
+## Pattern 4: Merge Intervals
 
----
+**When to use:** Overlapping intervals, meeting rooms, range problems.
 
-## 4. Merge Intervals
-
-### When to Use
-- Overlapping intervals
-- Meeting room problems
-- Range merging
-
-### Template
 ```python
-def merge_intervals(intervals):
+def merge_intervals(intervals: list) -> list:
+    """Merge all overlapping intervals."""
     intervals.sort(key=lambda x: x[0])
     merged = [intervals[0]]
-
+    
     for start, end in intervals[1:]:
-        if start <= merged[-1][1]:  # overlap
+        if start <= merged[-1][1]:
             merged[-1][1] = max(merged[-1][1], end)
         else:
             merged.append([start, end])
-
+    
     return merged
+
+def insert_interval(intervals: list, new_interval: list) -> list:
+    """Insert new interval and merge overlaps."""
+    result = []
+    i = 0
+    
+    # Add intervals before new_interval
+    while i < len(intervals) and intervals[i][1] < new_interval[0]:
+        result.append(intervals[i])
+        i += 1
+    
+    # Merge overlapping intervals
+    while i < len(intervals) and intervals[i][0] <= new_interval[1]:
+        new_interval[0] = min(new_interval[0], intervals[i][0])
+        new_interval[1] = max(new_interval[1], intervals[i][1])
+        i += 1
+    result.append(new_interval)
+    
+    # Add remaining intervals
+    while i < len(intervals):
+        result.append(intervals[i])
+        i += 1
+    
+    return result
 ```
 
-### Classic Problems
-| Problem | Difficulty | Variation |
-|---------|-----------|-----------|
-| Merge Intervals | Medium | Basic merge |
-| Insert Interval | Medium | Insert + merge |
-| Non-overlapping Intervals | Medium | Greedy removal |
-| Meeting Rooms | Easy | Any overlap? |
-| Meeting Rooms II | Medium | Min rooms needed |
-| Interval List Intersections | Medium | Find all overlaps |
+## Pattern 5: Cyclic Sort
 
----
+**When to use:** Problems involving arrays with numbers in range [1, n].
 
-## 5. Cyclic Sort
-
-### When to Use
-- Array contains numbers in range [1, N]
-- Finding missing/duplicate numbers
-- Constant space requirement
-
-### Template
 ```python
-def cyclic_sort(nums):
+def find_missing_numbers(nums: list) -> list:
+    """Find all missing numbers in range [1, n]."""
     i = 0
     while i < len(nums):
         correct = nums[i] - 1
@@ -208,492 +168,232 @@ def cyclic_sort(nums):
             nums[i], nums[correct] = nums[correct], nums[i]
         else:
             i += 1
-    return nums
-
-# Find missing number
-def find_missing(nums):
-    i = 0
-    while i < len(nums):
-        correct = nums[i]
-        if nums[i] < len(nums) and nums[i] != nums[correct]:
-            nums[i], nums[correct] = nums[correct], nums[i]
-        else:
-            i += 1
-    for i in range(len(nums)):
-        if nums[i] != i:
-            return i
-    return len(nums)
+    
+    return [i + 1 for i, num in enumerate(nums) if num != i + 1]
 ```
 
-### Classic Problems
-- Missing Number
-- Find All Numbers Disappeared in Array
-- Find the Duplicate Number
-- First Missing Positive
-- Find All Duplicates in Array
+## Pattern 6: Tree BFS (Level Order)
 
----
+**When to use:** Level-by-level traversal, shortest path in unweighted graph.
 
-## 6. In-Place Reversal of Linked List
-
-### When to Use
-- Reverse entire or portion of linked list
-- Palindrome check
-- Reorder problems
-
-### Template: Reverse Between Positions
-```python
-def reverse_between(head, left, right):
-    if not head or left == right:
-        return head
-
-    dummy = ListNode(0)
-    dummy.next = head
-    prev = dummy
-
-    for _ in range(left - 1):
-        prev = prev.next
-
-    curr = prev.next
-    for _ in range(right - left):
-        temp = curr.next
-        curr.next = temp.next
-        temp.next = prev.next
-        prev.next = temp
-
-    return dummy.next
-```
-
-### Classic Problems
-- Reverse Linked List
-- Reverse Linked List II (between positions)
-- Reverse Nodes in k-Group
-- Palindrome Linked List
-- Swap Nodes in Pairs
-
----
-
-## 7. Tree BFS (Level Order)
-
-### When to Use
-- Level-by-level processing
-- Shortest path in tree
-- Zigzag traversal
-
-### Template
 ```python
 from collections import deque
 
-def level_order(root):
+def level_order(root: TreeNode) -> list:
+    """Level-order traversal of binary tree."""
     if not root:
         return []
+    
     result = []
     queue = deque([root])
-
+    
     while queue:
         level_size = len(queue)
         level = []
         for _ in range(level_size):
             node = queue.popleft()
             level.append(node.val)
-            if node.left: queue.append(node.left)
-            if node.right: queue.append(node.right)
+            if node.left:
+                queue.append(node.left)
+            if node.right:
+                queue.append(node.right)
         result.append(level)
-
+    
     return result
 ```
 
-### Classic Problems
-- Binary Tree Level Order Traversal
-- Binary Tree Zigzag Level Order
-- Minimum Depth of Binary Tree
-- Binary Tree Right Side View
-- Average of Levels in Binary Tree
-- Populating Next Right Pointers
+## Pattern 7: Tree DFS
 
----
+**When to use:** Path finding, tree properties, backtracking.
 
-## 8. Tree DFS
-
-### When to Use
-- Path finding
-- Validation (BST, balanced)
-- All paths enumeration
-
-### Template
 ```python
-def dfs(root, path, result):
+def has_path_sum(root: TreeNode, target_sum: int) -> bool:
+    """Check if tree has root-to-leaf path with given sum."""
     if not root:
-        return
-
-    # Process current node
-    path.append(root.val)
-
-    if is_leaf(root) and meets_condition(path):
-        result.append(list(path))
-    else:
-        dfs(root.left, path, result)
-        dfs(root.right, path, result)
-
-    path.pop()  # backtrack
+        return False
+    if not root.left and not root.right:
+        return root.val == target_sum
+    return (has_path_sum(root.left, target_sum - root.val) or
+            has_path_sum(root.right, target_sum - root.val))
 ```
 
-### Classic Problems
-- Path Sum (I, II, III)
-- All Paths for Sum
-- Binary Tree Paths
-- Sum of Path Numbers
-- Validate BST
-- Diameter of Binary Tree
+## Pattern 8: Backtracking
 
----
+**When to use:** Generating combinations, permutations, subsets.
 
-## 9. Subsets / Combinations / Permutations (Backtracking)
-
-### When to Use
-- Generate all subsets, combinations, or permutations
-- Constraint satisfaction problems
-- Decision tree exploration
-
-### Templates
 ```python
-# Subsets
-def subsets(nums):
+def subsets(nums: list) -> list:
+    """Generate all subsets."""
     result = []
-    def backtrack(start, path):
-        result.append(list(path))
+    
+    def backtrack(start, current):
+        result.append(current[:])
         for i in range(start, len(nums)):
-            path.append(nums[i])
-            backtrack(i + 1, path)
-            path.pop()
+            current.append(nums[i])
+            backtrack(i + 1, current)
+            current.pop()
+    
     backtrack(0, [])
     return result
 
-# Combinations
-def combine(n, k):
+def permutations(nums: list) -> list:
+    """Generate all permutations."""
     result = []
-    def backtrack(start, path):
-        if len(path) == k:
-            result.append(list(path))
-            return
-        for i in range(start, n + 1):
-            path.append(i)
-            backtrack(i + 1, path)
-            path.pop()
-    backtrack(1, [])
-    return result
-
-# Permutations
-def permute(nums):
-    result = []
-    def backtrack(path, remaining):
+    
+    def backtrack(current, remaining):
         if not remaining:
-            result.append(list(path))
+            result.append(current[:])
             return
-        for i in range(len(remaining)):
-            path.append(remaining[i])
-            backtrack(path, remaining[:i] + remaining[i+1:])
-            path.pop()
+        for i, num in enumerate(remaining):
+            current.append(num)
+            backtrack(current, remaining[:i] + remaining[i+1:])
+            current.pop()
+    
     backtrack([], nums)
     return result
 ```
 
-### Classic Problems
-- Subsets (I, II)
-- Combinations (I, II)
-- Permutations (I, II)
-- Combination Sum (I, II, III)
-- Palindrome Partitioning
-- Letter Combinations of Phone Number
-- N-Queens
-- Sudoku Solver
-- Word Search
+## Pattern 9: Dynamic Programming
 
----
+**When to use:** Optimal solutions, overlapping subproblems, counting problems.
 
-## 10. Dynamic Programming
-
-### When to Use
-- Optimal substructure
-- Overlapping subproblems
-- Counting problems
-- Min/max optimization
-
-### Approaches
-```
-1. Top-Down (Memoization)
-   - Recursive with cache
-   - Natural thinking
-   - Easier to write initially
-
-2. Bottom-Up (Tabulation)
-   - Iterative with table
-   - Better space efficiency
-   - No stack overflow risk
-```
-
-### Common DP Patterns
-
-#### 1D DP
 ```python
-# Fibonacci / Climbing Stairs
-def climb_stairs(n):
-    if n <= 2: return n
-    dp = [0] * (n + 1)
-    dp[1], dp[2] = 1, 2
-    for i in range(3, n + 1):
-        dp[i] = dp[i-1] + dp[i-2]
-    return dp[n]
+# 1D DP
+def climb_stairs(n: int) -> int:
+    """Number of ways to climb n stairs (1 or 2 steps)."""
+    if n <= 2:
+        return n
+    prev2, prev1 = 1, 2
+    for _ in range(3, n + 1):
+        prev2, prev1 = prev1, prev1 + prev2
+    return prev1
 
-# Kadane's Algorithm - Maximum Subarray
-def max_subarray(nums):
-    max_sum = curr_sum = nums[0]
-    for num in nums[1:]:
-        curr_sum = max(num, curr_sum + num)
-        max_sum = max(max_sum, curr_sum)
-    return max_sum
-```
-
-#### 2D DP
-```python
-# Longest Common Subsequence
-def lcs(text1, text2):
+# 2D DP
+def lcs(text1: str, text2: str) -> int:
+    """Longest common subsequence."""
     m, n = len(text1), len(text2)
     dp = [[0] * (n + 1) for _ in range(m + 1)]
+    
     for i in range(1, m + 1):
         for j in range(1, n + 1):
             if text1[i-1] == text2[j-1]:
                 dp[i][j] = dp[i-1][j-1] + 1
             else:
                 dp[i][j] = max(dp[i-1][j], dp[i][j-1])
+    
     return dp[m][n]
 ```
 
-### Classic DP Problems
-| Category | Problems |
-|----------|----------|
-| **1D DP** | Climbing Stairs, House Robber, Decode Ways, Coin Change |
-| **2D DP** | LCS, Edit Distance, Unique Paths, Knapsack |
-| **String DP** | Palindrome Substrings, Word Break, Interleaving String |
-| **Interval DP** | Burst Balloons, Matrix Chain Multiplication |
-| **Game DP** | Stone Game, Nim Game |
+## Pattern 10: Topological Sort
 
----
+**When to use:** Dependency resolution, course scheduling, build order.
 
-## 11. Top K Elements (Heap)
-
-### When to Use
-- Find K largest/smallest elements
-- K most frequent elements
-- Merge K sorted lists
-
-### Template
-```python
-import heapq
-
-def top_k_frequent(nums, k):
-    count = {}
-    for num in nums:
-        count[num] = count.get(num, 0) + 1
-
-    return heapq.nlargest(k, count.keys(), key=count.get)
-
-# Using min heap of size K
-def find_kth_largest(nums, k):
-    heap = []
-    for num in nums:
-        heapq.heappush(heap, num)
-        if len(heap) > k:
-            heapq.heappop(heap)
-    return heap[0]
-```
-
-### Classic Problems
-- Kth Largest Element
-- Top K Frequent Elements
-- K Closest Points to Origin
-- Find K Pairs with Smallest Sums
-- Merge K Sorted Lists
-- Task Scheduler
-
----
-
-## 12. K-Way Merge
-
-### When to Use
-- Merge K sorted arrays/lists
-- Find smallest range covering elements from K lists
-
-### Template
-```python
-import heapq
-
-def merge_k_sorted(lists):
-    heap = []
-    result = []
-
-    # Initialize: push first element of each list
-    for i, lst in enumerate(lists):
-        if lst:
-            heapq.heappush(heap, (lst[0], i, 0))
-
-    while heap:
-        val, list_idx, elem_idx = heapq.heappop(heap)
-        result.append(val)
-
-        if elem_idx + 1 < len(lists[list_idx]):
-            next_val = lists[list_idx][elem_idx + 1]
-            heapq.heappush(heap, (next_val, list_idx, elem_idx + 1))
-
-    return result
-```
-
----
-
-## 13. Topological Sort
-
-### When to Use
-- Dependency resolution
-- Task scheduling with prerequisites
-- Course schedule problems
-
-### Template (Kahn's Algorithm - BFS)
 ```python
 from collections import deque, defaultdict
 
-def topological_sort(num_nodes, edges):
+def topological_sort(numCourses: int, prerequisites: list) -> list:
+    """Course schedule - topological sort using BFS."""
     graph = defaultdict(list)
-    in_degree = [0] * num_nodes
-
-    for src, dst in edges:
-        graph[src].append(dst)
-        in_degree[dst] += 1
-
-    queue = deque([i for i in range(num_nodes) if in_degree[i] == 0])
-    result = []
-
+    in_degree = [0] * numCourses
+    
+    for course, prereq in prerequisites:
+        graph[prereq].append(course)
+        in_degree[course] += 1
+    
+    queue = deque([i for i in range(numCourses) if in_degree[i] == 0])
+    order = []
+    
     while queue:
         node = queue.popleft()
-        result.append(node)
+        order.append(node)
         for neighbor in graph[node]:
             in_degree[neighbor] -= 1
             if in_degree[neighbor] == 0:
                 queue.append(neighbor)
+    
+    return order if len(order) == numCourses else []
+```
 
-    if len(result) != num_nodes:
-        return []  # Cycle detected
+## Pattern 11: Binary Search
+
+**When to use:** Sorted data, search space reduction.
+
+```python
+def search_rotated(nums: list, target: int) -> int:
+    """Search in rotated sorted array."""
+    left, right = 0, len(nums) - 1
+    
+    while left <= right:
+        mid = (left + right) // 2
+        if nums[mid] == target:
+            return mid
+        
+        if nums[left] <= nums[mid]:  # Left half sorted
+            if nums[left] <= target < nums[mid]:
+                right = mid - 1
+            else:
+                left = mid + 1
+        else:  # Right half sorted
+            if nums[mid] < target <= nums[right]:
+                left = mid + 1
+            else:
+                right = mid - 1
+    
+    return -1
+```
+
+## Pattern 12: Heap / Priority Queue
+
+**When to use:** Top K elements, merge K sorted, scheduling.
+
+```python
+import heapq
+
+def top_k_frequent(nums: list, k: int) -> list:
+    """Find k most frequent elements."""
+    count = {}
+    for num in nums:
+        count[num] = count.get(num, 0) + 1
+    
+    return heapq.nlargest(k, count.keys(), key=count.get)
+
+def merge_k_sorted(lists: list) -> list:
+    """Merge k sorted lists."""
+    heap = []
+    for i, lst in enumerate(lists):
+        if lst:
+            heapq.heappush(heap, (lst[0], i, 0))
+    
+    result = []
+    while heap:
+        val, list_idx, elem_idx = heapq.heappop(heap)
+        result.append(val)
+        if elem_idx + 1 < len(lists[list_idx]):
+            next_val = lists[list_idx][elem_idx + 1]
+            heapq.heappush(heap, (next_val, list_idx, elem_idx + 1))
+    
     return result
 ```
 
-### Classic Problems
-- Course Schedule (I, II)
-- Alien Dictionary
-- Parallel Tasks
-- All Possible Recipes
+## Summary Table
 
----
+| Pattern | Key Technique | Time | Space |
+|---------|--------------|------|-------|
+| Sliding Window | Window expansion/contraction | O(n) | O(1) or O(k) |
+| Two Pointers | Converging pointers | O(n) | O(1) |
+| Fast & Slow | Different speed traversal | O(n) | O(1) |
+| Merge Intervals | Sort + merge | O(n log n) | O(n) |
+| Cyclic Sort | In-place swap | O(n) | O(1) |
+| Tree BFS | Queue-based level traversal | O(n) | O(w) |
+| Tree DFS | Recursive/stack traversal | O(n) | O(h) |
+| Backtracking | Explore + undo | O(2^n) | O(n) |
+| DP | Memoization/tabulation | O(n²) typical | O(n²) typical |
+| Topological Sort | BFS/DFS on DAG | O(V+E) | O(V+E) |
+| Binary Search | Halve search space | O(log n) | O(1) |
+| Heap | Priority-based extraction | O(n log k) | O(k) |
 
-## 14. Union Find (Disjoint Set)
+## Related Topics
 
-### When to Use
-- Connected components
-- Detecting cycles in undirected graphs
-- Grouping elements
-
-### Template
-```python
-class UnionFind:
-    def __init__(self, n):
-        self.parent = list(range(n))
-        self.rank = [0] * n
-
-    def find(self, x):
-        if self.parent[x] != x:
-            self.parent[x] = self.find(self.parent[x])  # path compression
-        return self.parent[x]
-
-    def union(self, x, y):
-        px, py = self.find(x), self.find(y)
-        if px == py:
-            return False
-        if self.rank[px] < self.rank[py]:
-            px, py = py, px
-        self.parent[py] = px
-        if self.rank[px] == self.rank[py]:
-            self.rank[px] += 1
-        return True
-```
-
-### Classic Problems
-- Number of Connected Components
-- Redundant Connection
-- Accounts Merge
-- Surrounded Regions
-- Making a Large Island
-
----
-
-## 15. Monotonic Stack
-
-### When to Use
-- Next greater/smaller element
-- Daily temperatures
-- Histogram problems
-
-### Template
-```python
-def next_greater_element(nums):
-    n = len(nums)
-    result = [-1] * n
-    stack = []  # indices
-
-    for i in range(n):
-        while stack and nums[i] > nums[stack[-1]]:
-            idx = stack.pop()
-            result[idx] = nums[i]
-        stack.append(i)
-
-    return result
-```
-
-### Classic Problems
-- Next Greater Element (I, II)
-- Daily Temperatures
-- Largest Rectangle in Histogram
-- Trapping Rain Water
-- Stock Span Problem
-
----
-
-## 🎯 Pattern Recognition Guide
-
-```
-┌─────────────────────────────────────────────────────────┐
-│              HOW TO IDENTIFY THE PATTERN                │
-├─────────────────────────────────────────────────────────┤
-│                                                         │
-│  "Sorted array + find pair"          → Two Pointers    │
-│  "Contiguous subarray/substring"     → Sliding Window  │
-│  "Cycle in linked list"              → Fast/Slow Ptr   │
-│  "Overlapping ranges"                → Merge Intervals │
-│  "Numbers 1 to N in array"           → Cyclic Sort     │
-│  "Reverse linked list portion"       → In-Place Rev    │
-│  "Level by level in tree"            → Tree BFS        │
-│  "All paths in tree"                 → Tree DFS        │
-│  "Generate all combinations"         → Backtracking    │
-│  "Min/max/count with choices"        → Dynamic Prog    │
-│  "K largest/smallest"                → Top K (Heap)    │
-│  "Merge K sorted lists"              → K-Way Merge     │
-│  "Dependencies/prerequisites"        → Topo Sort       │
-│  "Connected components/grouping"     → Union Find      │
-│  "Next greater/smaller element"      → Monotonic Stack │
-│                                                         │
-└─────────────────────────────────────────────────────────┘
-```
-
-## 🔗 Cross-References
-
-- [Data Structures](./data-structures.md) — Complete reference for all structures
-- [Complexity Analysis](./complexity.md) — Big-O for all patterns
-- [Coding Framework](./framework.md) — Step-by-step problem-solving approach
-- [System Design](../system-design/framework.md) — Architecture-level patterns
+- [Coding Overview](./README.md) — Interview coding preparation
+- [Data Structures](../../os/) — Underlying data structures
+- [System Design](../system-design/) — System design interviews

@@ -7,10 +7,11 @@
 ## Concurrency Control Approaches
 
 ```mermaid
-graph CC[Concurrency Control] --> LOCK[Lock-Based<br/>Pessimistic]
-CC --> TS[Timestamp-Based<br/>Deterministic]
-CC --> OPT[Optimistic<br/>Validation-Based]
-CC --> MVCC[Multi-Version<br/>Readers ≠ Writers]
+flowchart TD
+    CC[Concurrency Control] --> LOCK[Lock-Based<br/>Pessimistic]
+    CC --> TS[Timestamp-Based<br/>Deterministic]
+    CC --> OPT[Optimistic<br/>Validation-Based]
+    CC --> MVCC[Multi-Version<br/>Readers ≠ Writers]
 
 LOCK --> 2PL[Two-Phase Locking]
 LOCK --> MULTIGRAN[Multi-Granularity Locking]
@@ -118,8 +119,8 @@ Maintains **multiple versions** of each data item. Readers see a consistent **sn
 
 ```mermaid
 graph LR
-    W[T1: Write(A) → version 3] --> DB[(A: v1, v2, v3)]
-    R[T2: Read(A) → sees version 2] --> DB
+    W["T1: Write(A) → version 3"] --> DB["(A: v1, v2, v3)"]
+    R["T2: Read(A) → sees version 2"] --> DB
 
     style W fill:#ffcdd2
     style R fill:#c8e6c9

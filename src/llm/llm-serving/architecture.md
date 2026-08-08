@@ -295,6 +295,6 @@ Modern LLMs use decoder-only transformers with: multi-head/grouped-query attenti
 - [Embeddings →](embeddings.md) Dense and sparse representations
 - [Quantization →](quantization.md) Reducing precision for efficiency
 - [vLLM →](vllm.md) PagedAttention for efficient serving
-- [ML Transformers](../ml/transformers/architecture.md)
-- [Attention Mechanism](../ml/deep-learning/attention.md)
-- [GPU Architecture](../cloud/virtualization/README.md)
+- [ML Transformers](../../ml/transformers/architecture.md)
+- [Attention Mechanism](../../ml/deep-learning/attention.md)
+- [GPU Architecture](../../cloud/virtualization/README.md)

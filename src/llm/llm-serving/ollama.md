@@ -150,4 +150,4 @@ Ollama is the simplest way to run LLMs locally. It wraps llama.cpp with a user-f
 - [Systems Overview →](systems.md) Comparison with other systems
 - [vLLM →](vllm.md) Production alternative
 - [TGI](./tgi.md)
-- [ML Edge Deployment](../ml/advanced/edge.md)
+- [ML Edge Deployment](../../ml/advanced/edge.md)

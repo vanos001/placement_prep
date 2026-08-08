@@ -301,7 +301,7 @@ journalctl --vacuum-time=30d
 ```mermaid
 graph LR
     subgraph SysVinit
-        A1[/etc/inittab] --> A2[/etc/init.d/rc]
+        A1["/etc/inittab"] --> A2["/etc/init.d/rc"]
         A2 --> A3[Sequential shell scripts]
         A3 --> A4[Services start one by one]
     end

@@ -453,7 +453,7 @@ Audio models span speech recognition (Whisper), synthesis (VITS, XTTS), music ge
 ## Cross-References
 
 - [Multimodal Models](README.md) - Audio as part of multimodal AI
-- [Transformers](../transformers.md) - Attention mechanism
+- [Transformers](../../ml/transformers/README.md) - Attention mechanism
 - [CLIP](../vision/clip.md) - Contrastive learning paradigm
 - [Gemini](gemini.md) - Native audio understanding
 - [Video Understanding](video.md) - Audio-visual processing

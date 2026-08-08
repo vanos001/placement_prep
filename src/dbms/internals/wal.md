@@ -90,7 +90,7 @@ flowchart TD
         direction TB
         N1[Transaction commits] --> N2[Flush ONLY WAL records to disk]
         N2 --> N3[Acknowledge commit]
-        N3 --> N4[Dirty pages written later<br/>(checkpoint or eviction)]
+        N3 --> N4["Dirty pages written later<br/>(checkpoint or eviction)"]
     end
 
     style Force_Policy fill:#ffcdd2
@@ -154,23 +154,23 @@ flowchart TD
 flowchart TD
     subgraph PostgreSQL["PostgreSQL WAL"]
         direction TB
-        PG1[WAL segments (16MB each)] --> PG2[pg_wal/ directory]
+        PG1["WAL segments (16MB each)"] --> PG2[pg_wal/ directory]
         PG2 --> PG3[Binary WAL records]
-        PG3 --> PG4[LSN = byte offset in WAL]
+        PG3 --> PG4["LSN = byte offset in WAL"]
     end
 
     subgraph InnoDB["InnoDB Redo Log"]
         direction TB
-        IN1[ib_logfile0, ib_logfile1] --> IN2[Fixed-size log files]
+        IN1["ib_logfile0, ib_logfile1"] --> IN2[Fixed-size log files]
         IN2 --> IN3[Circular buffer]
-        IN3 --> IN4[LSN = monotonically increasing]
+        IN3 --> IN4["LSN = monotonically increasing"]
     end
 
     subgraph RocksDB["RocksDB WAL"]
         direction TB
         RK1[WAL files in data dir] --> RK2[One WAL per memtable]
         RK2 --> RK3[Deleted after memtable flush]
-        RK3 --> RK4[Can disable (risk data loss)]
+        RK3 --> RK4["Can disable (risk data loss)"]
     end
 
     style PostgreSQL fill:#e1f5fe

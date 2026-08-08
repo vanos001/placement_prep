@@ -9,11 +9,11 @@ An **index** is a data structure that improves the speed of data retrieval opera
 ```mermaid
 graph LR
     subgraph "Without Index (Full Table Scan)"
-        Q1[Query: WHERE email = 'alice@co.com'] --> SCAN[Scan ALL 1M rows<br/>O(n) time]
+        Q1["Query: WHERE email = 'alice@co.com'"] --> SCAN["Scan ALL 1M rows<br/>O(n) time"]
     end
 
     subgraph "With Index"
-        Q2[Query: WHERE email = 'alice@co.com'] --> IDX[Look up in B+ Tree<br/>O(log n) time]
+        Q2["Query: WHERE email = 'alice@co.com'"] --> IDX["Look up in B+ Tree<br/>O(log n) time"]
         IDX --> ROW[Directly find the row]
     end
 

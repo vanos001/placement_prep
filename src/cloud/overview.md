@@ -111,7 +111,7 @@ graph TD
         C1[Data classification]
         C2[Identity & access management]
         C3[Application security]
-        C4[OS patching (IaaS)]
+        C4["OS patching (IaaS)"]
         C5[Network configuration]
     end
 
@@ -289,6 +289,6 @@ Cloud computing provides on-demand resources with pay-as-you-go pricing. The thr
 - [CI/CD](./cicd/README.md) — Deployment pipelines
 - [Observability](./observability/README.md) — Monitoring and logging
 - [Storage Overview](../storage/overview.md)
-- [Networking Overview](../networks/README.md)
+- [Networking Overview](../networks/overview.md)
 - [MLOps Infrastructure](../ml/mlops/infrastructure.md)
 - [Interview System Design](../interview/system-design/README.md)

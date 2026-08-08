@@ -309,4 +309,4 @@ RLHF aligns LLMs with human preferences through reward modeling and PPO. DPO sim
 - [Pre-training →](pretraining.md) The foundation model
 - [Prompt Engineering →](prompt-engineering.md) How to use aligned models
 - [Evaluation →](evaluation.md) Measuring alignment quality
-- [Agent Safety →](../agents/safety.md) Safety considerations for AI systems
+- [Agent Safety →](../../ml/agents/safety.md) Safety considerations for AI systems

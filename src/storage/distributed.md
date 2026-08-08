@@ -16,7 +16,7 @@ graph TD
 
     C1 --> T1[How to split data across nodes?]
     C2 --> T2[How to keep copies in sync?]
-    C3 --> T3[What does "up-to-date" mean?]
+    C3 --> T3["What does #quot;up-to-date#quot; mean?"]
     C4 --> T4[What happens when nodes fail?]
     C5 --> T5[How do nodes agree on a value?]
 ```
@@ -27,7 +27,7 @@ graph TD
 
 ```mermaid
 graph TD
-    KEY[Key: "user:1234"] --> HASH[hash("user:1234") % N]
+    KEY["Key: #quot;user:1234#quot;"] --> HASH["hash(#quot;user:1234#quot;) % N"]
     HASH --> N1[Node 0]
     HASH --> N2[Node 1]
     HASH --> N3[Node 2]
@@ -293,7 +293,7 @@ graph TD
 ```mermaid
 graph TD
     CLIENT[Client] --> CRDB[CockroachDB SQL]
-    CRDB --> RANGE[Ranges (64MB chunks)]
+    CRDB --> RANGE["Ranges (64MB chunks)"]
     RANGE --> RAFT[Raft consensus per range]
     RAFT --> N1[Node 1]
     RAFT --> N2[Node 2]

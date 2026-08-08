@@ -219,8 +219,8 @@ Changing the cluster membership (adding/removing nodes) requires care:
 
 ```mermaid
 flowchart TD
-    A[Old Config: {A, B, C}] --> B[Joint Consensus:<br/>{A,B,C} and {A,B,C,D}]
-    B --> C[New Config: {A, B, C, D}]
+    A["Old Config: {A, B, C}"] --> B["Joint Consensus:<br/>{A,B,C} and {A,B,C,D}"]
+    B --> C["New Config: {A, B, C, D}"]
 
     style B fill:#fff3e0
 ```

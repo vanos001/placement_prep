@@ -166,7 +166,7 @@ graph TD
         C2 -.->|Mismatch!| C4
     end
     
-    Note over C2,C4: Only sync subtree under Child 2
+    NOTE1[Only sync subtree under Child 2]
 ```
 
 ## Conflict Resolution in Quorum Systems

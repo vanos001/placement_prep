@@ -365,5 +365,5 @@ Activity → Kafka → Samza (stream processing) → Voldemort (serving)
 - [Scalability](./scalability.md) — Scaling data systems
 - [Capacity Planning](./capacity-planning.md) — Storage estimation
 - [Monitoring](./monitoring-observability.md) — Pipeline monitoring
-- [DBMS Overview](../../dbms/overview.md)
-- [Storage Overview](../../storage/overview.md)
+- [DBMS Overview](../../../dbms/overview.md)
+- [Storage Overview](../../../storage/overview.md)

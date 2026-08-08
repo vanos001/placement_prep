@@ -217,8 +217,8 @@ with ServiceBusClient.from_connection_string(conn_str) as client:
 graph TD
     subgraph "Ordered Pub/Sub"
         P[Publisher] -->|"Key: user_123"| T[Topic]
-        T -->|"Partition by key"| S1[Subscriber 1\n(user_123 messages)]
-        T -->|"Partition by key"| S2[Subscriber 2\n(user_456 messages)]
+        T -->|"Partition by key"| S1["Subscriber 1\n(user_123 messages)"]
+        T -->|"Partition by key"| S2["Subscriber 2\n(user_456 messages)"]
     end
 ```
 

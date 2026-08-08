@@ -55,17 +55,17 @@ graph TB
 ```mermaid
 graph LR
     subgraph "Cloud"
-        A[AWS] --> G1[SageMaker, EC2, EKS]
-        B[GCP] --> G2[Vertex AI, GKE]
-        C[Azure] -> G3[AML, AKS]
+        A[AWS] --> G1["SageMaker, EC2, EKS"]
+        B[GCP] --> G2["Vertex AI, GKE"]
+        C[Azure] --> G3["AML, AKS"]
     end
     
     subgraph "On-Premise"
         D[Own Hardware] --> G4[Full Control]
     end
     
-    G1 --> P[Pros: Scalable, Managed]
-    G4 --> C2[Pros: Data Privacy, Cost Long-term]
+    G1 --> P["Pros: Scalable, Managed"]
+    G4 --> C2["Pros: Data Privacy, Cost Long-term"]
 ```
 
 ## Containerization

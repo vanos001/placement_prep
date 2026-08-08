@@ -169,7 +169,7 @@ graph TD
         W2 --> W3["Write 3: H→M1→M2→T"]
     end
     
-    Note over W1,W3: Multiple writes in flight simultaneously
+    NOTE1[Multiple writes in flight simultaneously]
 ```
 
 Chain replication achieves high throughput through **pipelining**: multiple writes can be in different stages of propagation simultaneously.

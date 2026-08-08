@@ -99,9 +99,9 @@ Physical Layer       → Cables, Radio, Fiber, Electrical Signals
 
 ## Cross-References
 
-- For **Operating System** concepts related to networking (sockets, I/O), see [OS Section](../os/README.md)
-- For **System Design** applications, see [System Design Section](../system-design/README.md)
-- For **Database** networking (connections, replication), see [DBMS Section](../dbms/README.md)
+- For **Operating System** concepts related to networking (sockets, I/O), see [OS Section](../os/overview.md)
+- For **System Design** applications, see [System Design Section](../interview/system-design/README.md)
+- For **Database** networking (connections, replication), see [DBMS Section](../dbms/overview.md)
 
 ## Cross References
 

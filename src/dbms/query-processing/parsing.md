@@ -211,7 +211,7 @@ Parsing is the gateway to query processing. It ensures the SQL is well-formed an
 - [Query Optimization](./optimization.md) — what happens after parsing
 - [Execution Plans](./execution-plans.md) — the final output of optimization
 - [Query Processing Overview](./README.md) — the full pipeline
-- [SQL Injection](../security/) — how parsing interacts with security
+- [SQL Injection](../../interview/system-design/hld/security-design.md) — how parsing interacts with security
 
 
 ## Cross References

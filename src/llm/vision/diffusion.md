@@ -465,6 +465,6 @@ Diffusion models generate images by learning to reverse a gradual noising proces
 
 - [GANs](../../ml/gan/README.md) - Alternative generative approach
 - [CLIP](clip.md) - Text-image alignment for conditioning
-- [VAE](../generation.md) - Variational autoencoder component
-- [Transformers](../transformers.md) - Attention mechanism in U-Net
+- [VAE](../../ml/transformers/gpt.md) - Variational autoencoder component
+- [Transformers](../../ml/transformers/README.md) - Attention mechanism in U-Net
 - [Stable Diffusion](diffusion.md#stable-diffusion) - Latent diffusion implementation

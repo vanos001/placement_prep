@@ -220,7 +220,7 @@ sequenceDiagram
     participant R1 as Replica (Shard 1)
     participant R2 as Replica (Shard 2)
 
-    C->>GW: BEGIN; UPDATE t SET v=1 WHERE id=100; COMMIT;
+    C->>GW: BEGIN#59; UPDATE t SET v=1 WHERE id=100#59; COMMIT#59;
     GW->>L: Write intent at key 100
     L->>Raft: Propose write via Raft
     Raft->>L: Committed (majority ack)
@@ -338,7 +338,7 @@ sequenceDiagram
     participant S1 as Shard 1 (Raft Group)
     participant S2 as Shard 2 (Raft Group)
 
-    C->>TC: BEGIN; UPDATE s1.t SET v=1; UPDATE s2.t SET v=2; COMMIT;
+    C->>TC: BEGIN#59; UPDATE s1.t SET v=1#59; UPDATE s2.t SET v=2#59; COMMIT#59;
 
     Note over TC: Phase 1: Prepare
     TC->>S1: Prepare (write intent)

@@ -15,7 +15,7 @@ graph TD
 
     THREAD1[Thread 1] -->|Acquire GIL| EXEC1[Execute bytecode]
     THREAD2[Thread 2] -->|Wait for GIL| BLOCK[Blocked]
-    EXEC1 -->|Release GIL (I/O or timeout)| THREAD2
+    EXEC1 -->|"Release GIL (I/O or timeout)"| THREAD2
 ```
 
 ### Why Does the GIL Exist?
@@ -78,7 +78,7 @@ The switch interval controls how often threads switch. Lower values = more fair 
 ```mermaid
 graph TD
     CPU[CPU-Bound Task] --> SINGLE[Single-threaded: 10s]
-    CPU --> MULTI[Multi-threaded: ~10s (NO speedup!)]
+    CPU --> MULTI["Multi-threaded: ~10s (NO speedup!)"]
 
     MULTI --> WHY[Only one thread runs at a time]
     WHY --> OVERHEAD[Thread switching adds overhead]
@@ -116,7 +116,7 @@ print(f"Multi-threaded: {time.time() - start:.2f}s")  # ~10s (same!)
 ```mermaid
 graph TD
     IO[IO-Bound Task] --> SINGLE[Single-threaded: 20s]
-    IO --> MULTI[Multi-threaded: ~5s (4x speedup!)]
+    IO --> MULTI["Multi-threaded: ~5s (4x speedup!)"]
 
     MULTI --> WHY[GIL released during I/O]
     WHY --> PARALLEL[Multiple threads wait for I/O concurrently]

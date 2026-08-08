@@ -247,5 +247,5 @@ Metric: CPU < 20% for 15 min → Remove 1 instance
 - [Capacity Planning](./capacity-planning.md) — Estimate scale requirements
 - [Consistency Tradeoffs](./consistency-tradeoffs.md) — CAP theorem and its implications
 - [Performance vs Scalability](../performance-vs-scalability.md)
-- [Cloud Auto Scaling](../../cloud/aws/ec2.md)
-- [Storage Distributed](../../storage/distributed.md)
+- [Cloud Auto Scaling](../../../cloud/aws/ec2.md)
+- [Storage Distributed](../../../storage/distributed.md)

@@ -48,7 +48,7 @@ graph LR
     G -->|"/api/users/*"| US[User Service]
     G -->|"/api/orders/*"| OS[Order Service]
     G -->|"/api/products/*"| PS[Product Service]
-    G -->|"ws://api/chat"| CS[Chat Service (WebSocket)]
+    G -->|"ws://api/chat"| CS["Chat Service (WebSocket)"]
 ```
 
 ```yaml

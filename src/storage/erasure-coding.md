@@ -46,14 +46,14 @@ Reed-Solomon (RS) is the most common erasure coding algorithm. It treats data as
 
 ```mermaid
 graph TD
-    D[Data: d0, d1, d2, d3] --> POLY[Polynomial: p(x) = d0 + d1·x + d2·x² + d3·x³]
+    D["Data: d0, d1, d2, d3"] --> POLY["Polynomial: p(x) = d0 + d1·x + d2·x² + d3·x³"]
     POLY --> EVAL[Evaluate at N points]
-    EVAL --> E0[p(0) = data chunk 0]
-    EVAL --> E1[p(1) = data chunk 1]
-    EVAL --> E2[p(2) = data chunk 2]
-    EVAL --> E3[p(3) = data chunk 3]
-    EVAL --> E4[p(4) = coding chunk 0]
-    EVAL --> E5[p(5) = coding chunk 1]
+    EVAL --> E0["p(0) = data chunk 0"]
+    EVAL --> E1["p(1) = data chunk 1"]
+    EVAL --> E2["p(2) = data chunk 2"]
+    EVAL --> E3["p(3) = data chunk 3"]
+    EVAL --> E4["p(4) = coding chunk 0"]
+    EVAL --> E5["p(5) = coding chunk 1"]
 ```
 
 **Key insight**: A polynomial of degree K-1 is uniquely determined by K points. So from any K out of N chunks, you can reconstruct the original polynomial (and thus the data).

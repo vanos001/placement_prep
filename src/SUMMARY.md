@@ -18,6 +18,7 @@
     - [Message Queues](./os/processes/ipc-message-queues.md)
     - [Shared Memory](./os/processes/ipc-shared-memory.md)
     - [Sockets](./os/processes/ipc-sockets.md)
+    - [Advanced IPC](./os/processes/ipc-advanced.md)
     - [Signals](./os/processes/ipc-signals.md)
   - [Zombie and Orphan Processes](./os/processes/zombie-orphan.md)
   - [Daemon Processes](./os/processes/daemons.md)
@@ -55,6 +56,7 @@
 - [Virtual Memory](./os/virtual-memory/README.md)
   - [Demand Paging](./os/virtual-memory/demand-paging.md)
   - [Page Replacement Algorithms](./os/virtual-memory/page-replacement.md)
+    - [Overview & Comparison](./os/virtual-memory/page-rejection.md)
     - [FIFO](./os/virtual-memory/fifo.md)
     - [LRU](./os/virtual-memory/lru.md)
     - [Optimal](./os/virtual-memory/optimal.md)
@@ -123,12 +125,16 @@
   - [BIOS/UEFI](./os/boot/bios-uefi.md)
   - [Bootloader](./os/boot/bootloader.md)
   - [Init Systems](./os/boot/init-systems.md)
+- [Linux Kernel & Advanced](./os/kernel/README.md)
+  - [eBPF](./os/kernel/ebpf.md)
+  - [io_uring](./os/kernel/io-uring.md)
 
 ---
 
 # Database Management Systems
 
 - [DBMS Overview](./dbms/overview.md)
+- [OLTP vs OLAP & Data Warehousing](./dbms/analytics/README.md)
 - [Relational Model](./dbms/relational-model/README.md)
   - [Keys](./dbms/relational-model/keys.md)
   - [ER Diagrams](./dbms/relational-model/er-diagrams.md)
@@ -182,6 +188,7 @@
   - [Covering Index](./dbms/indexing/covering-index.md)
   - [Composite Index](./dbms/indexing/composite-index.md)
 - [Query Processing](./dbms/query-processing/README.md)
+    - [Query Optimization](./dbms/internals/query-optimization.md)
   - [Query Parsing](./dbms/query-processing/parsing.md)
   - [Query Optimization](./dbms/query-processing/optimization.md)
   - [Join Algorithms](./dbms/query-processing/joins.md)
@@ -288,6 +295,7 @@
   - [IS-IS](./networks/routing/isis.md)
 - [Security](./networks/security/README.md)
   - [TLS](./networks/security/tls.md)
+  - [TLS Deep Dive](./networks/security/tls-deep-dive.md)
   - [SSL](./networks/security/ssl.md)
   - [Firewalls](./networks/security/firewalls.md)
   - [VPN](./networks/security/vpn.md)
@@ -364,6 +372,7 @@
   - [Cache Replacement](./arch/memory-hierarchy/replacement.md)
   - [Cache Write Policies](./arch/memory-hierarchy/write-policies.md)
   - [Cache Coherence](./arch/memory-hierarchy/coherence.md)
+    - [Cache Coherence Deep Dive](./arch/cpu/cache-coherence.md)
     - [MESI Protocol](./arch/memory-hierarchy/mesi.md)
     - [MOESI Protocol](./arch/memory-hierarchy/moesi.md)
   - [Split Caches](./arch/memory-hierarchy/split.md)
@@ -389,6 +398,7 @@
   - [Multicore](./arch/parallelism/multicore.md)
   - [SMT/Hyperthreading](./arch/parallelism/smt.md)
   - [GPU Architecture](./arch/parallelism/gpu.md)
+  - [CUDA Programming](./arch/parallelism/cuda.md)
 - [Performance](./arch/performance/README.md)
   - [Amdahl's Law](./arch/performance/amdahl.md)
   - [CPU Performance Equation](./arch/performance/equation.md)
@@ -414,6 +424,7 @@
   - [Time and Ordering](./distributed/fundamentals/time.md)
   - [Lamport Clocks](./distributed/fundamentals/lamport.md)
   - [Vector Clocks](./distributed/fundamentals/vector-clocks.md)
+  - [Gossip Protocol](./distributed/fundamentals/gossip.md)
 - [Consensus](./distributed/consensus/README.md)
   - [Paxos](./distributed/consensus/paxos.md)
   - [Raft](./distributed/consensus/raft.md)
@@ -479,9 +490,49 @@
 
 ---
 
+# Backend Engineering
+
+- [Backend Overview](./backend/README.md)
+- [HTTP APIs](./backend/api/README.md)
+  - [REST](./backend/api/rest.md)
+  - [GraphQL](./backend/api/graphql.md)
+  - [gRPC](./backend/api/grpc.md)
+  - [API Gateways](./backend/api/api-gateway.md)
+  - [Webhooks](./backend/api/webhooks.md)
+  - [Connection Pools](./backend/api/connection-pools.md)
+- [Authentication & Authorization](./backend/auth/README.md)
+  - [JWT](./backend/auth/jwt.md)
+  - [OAuth 2.0](./backend/auth/oauth.md)
+  - [Session Management](./backend/auth/session-management.md)
+- [Containers](./backend/containers/README.md)
+  - [Docker](./backend/containers/docker.md)
+  - [Kubernetes](./backend/containers/kubernetes.md)
+  - [Service Mesh](./backend/containers/service-mesh.md)
+- [Messaging](./backend/messaging/README.md)
+  - [Kafka](./backend/messaging/kafka.md)
+  - [RabbitMQ](./backend/messaging/rabbitmq.md)
+  - [Redis](./backend/messaging/redis.md)
+  - [NATS](./backend/messaging/nats.md)
+- [Design Patterns](./backend/patterns/README.md)
+  - [Microservices](./backend/patterns/microservices.md)
+  - [Event-Driven Architecture](./backend/patterns/event-driven.md)
+  - [Event Sourcing](./backend/patterns/event-sourcing.md)
+  - [CQRS](./backend/patterns/cqrs.md)
+  - [Idempotency](./backend/patterns/idempotency.md)
+  - [Distributed Transactions](./backend/patterns/distributed-transactions.md)
+- [Observability](./backend/observability/README.md)
+- [Testing](./backend/testing.md)
+- [CI/CD](./backend/cicd/README.md)
+  - [GitHub Actions](./backend/cicd/github-actions.md)
+  - [GitOps](./backend/cicd/gitops.md)
+
+---
+
 # Cloud & DevOps
 
 - [Cloud Overview](./cloud/overview.md)
+- [Autoscaling](./cloud/autoscaling.md)
+- [Disaster Recovery & Multi-Region](./cloud/disaster-recovery.md)
 - [Virtualization](./cloud/virtualization/README.md)
   - [Hypervisors](./cloud/virtualization/hypervisors.md)
   - [VMs vs Containers](./cloud/virtualization/vm-vs-container.md)
@@ -496,6 +547,7 @@
   - [Services](./cloud/kubernetes/services.md)
   - [Deployments](./cloud/kubernetes/deployments.md)
   - [Ingress](./cloud/kubernetes/ingress.md)
+  - [Operators](./cloud/kubernetes/operators.md)
 - [CI/CD](./cloud/cicd/README.md)
   - [Pipelines](./cloud/cicd/pipelines.md)
   - [GitOps](./cloud/cicd/gitops.md)
@@ -503,6 +555,7 @@
   - [Logging](./cloud/observability/logging.md)
   - [Monitoring](./cloud/observability/monitoring.md)
   - [Tracing](./cloud/observability/tracing.md)
+- [Cloud Security: IAM & Secrets](./cloud/security/README.md)
 
 ---
 
@@ -554,6 +607,12 @@
   - [T5 & Encoder-Decoder](./ml/transformers/t5.md)
   - [Vision Transformers (ViT)](./ml/transformers/vit.md)
   - [Training Transformers](./ml/transformers/training.md)
+  - [Transformer Variants](./ml/transformers/variants.md)
+  - [Transformer Interview Questions](./ml/transformers/interview-questions.md)
+- [LLM Deep Dives](./ml/llm/README.md)
+  - [GPT Architecture Deep Dive](./ml/llm/gpt-architecture.md)
+  - [LLM Training Pipeline](./ml/llm/training-pipeline.md)
+  - [Distributed Training](./ml/llm/distributed-training.md)
 - [Computer Vision](./llm/vision/README.md)
   - [Image Classification](./llm/vision/classification.md)
   - [Object Detection](./llm/vision/object-detection.md)
@@ -568,6 +627,7 @@
   - [RLHF & DPO](./llm/llm-serving/rlhf.md)
   - [Prompt Engineering](./llm/llm-serving/prompt-engineering.md)
   - [RAG](./llm/llm-serving/rag.md)
+  - [Vector Databases](./llm/llm-serving/vector-databases.md)
   - [LLM Inference](./llm/llm-serving/inference.md)
     - [KV Cache](./llm/llm-serving/kv-cache.md)
     - [Quantization](./llm/llm-serving/quantization.md)
@@ -581,6 +641,7 @@
   - [Tokenization](./llm/llm-serving/tokenization.md)
   - [Embeddings](./llm/llm-serving/embeddings.md)
   - [LLM Evaluation](./llm/llm-serving/evaluation.md)
+  - [LLM Security](./llm/llm-serving/security.md)
 - [Multimodal Models](./llm/multimodal/README.md)
   - [Vision-Language Models](./llm/multimodal/vlm.md)
   - [GPT-4V](./llm/multimodal/gpt4v.md)
@@ -721,13 +782,14 @@
   - [Stock Exchange](./interview/system-design/stock-exchange.md)
   - [Google Maps](./interview/system-design/google-maps.md)
   - [Netflix](./interview/system-design/real-world/netflix.md)
-    - [Twitter](./interview/system-design/real-world/twitter.md)
-    - [Uber](./interview/system-design/real-world/uber.md)
-    - [WhatsApp](./interview/system-design/real-world/whatsapp.md)
-    - [Google Search](./interview/system-design/real-world/google-search.md)
-    - [YouTube](./interview/system-design/real-world/youtube.md)
-    - [Instagram](./interview/system-design/real-world/instagram.md)
-    - [Dropbox](./interview/system-design/real-world/dropbox.md)
+  - [Twitter](./interview/system-design/real-world/twitter.md)
+  - [Uber](./interview/system-design/real-world/uber.md)
+  - [WhatsApp](./interview/system-design/real-world/whatsapp.md)
+  - [Google Search](./interview/system-design/real-world/google-search.md)
+  - [YouTube](./interview/system-design/real-world/youtube.md)
+  - [Instagram](./interview/system-design/real-world/instagram.md)
+  - [Dropbox](./interview/system-design/real-world/dropbox.md)
+  - [Distributed Lock Manager](./interview/system-design/real-world/distributed-lock.md)
   - [High Level Design (HLD)](./interview/system-design/hld/README.md)
     - [Scalability](./interview/system-design/hld/scalability.md)
     - [Load Balancing Design](./interview/system-design/hld/load-balancing-design.md)
@@ -747,6 +809,7 @@
     - [UML Class Diagrams](./interview/system-design/lld/uml-class-diagrams.md)
     - [OOP Concepts](./interview/system-design/lld/oop-concepts.md)
     - [Abstraction & Interfaces](./interview/system-design/lld/abstraction-interfaces.md)
+    - [Coupling, Cohesion & Design Principles](./interview/system-design/lld/coupling-cohesion-principles.md)
     - [Error Handling Design](./interview/system-design/lld/error-handling.md)
     - [Concurrency Design](./interview/system-design/lld/concurrency-design.md)
     - [Parking Lot](./interview/system-design/lld/parking-lot.md)
@@ -800,3 +863,106 @@
 - [Quick Revision - DBMS](./revision/dbms.md)
 - [Quick Revision - Networks](./revision/networks.md)
 - [Quick Revision - Architecture](./revision/architecture.md)
+
+---
+
+# Frameworks
+
+- [Spring Boot](./frameworks/spring-boot/README.md)
+- [FastAPI](./frameworks/fastapi/README.md)
+- [Django](./frameworks/django/README.md)
+- [Express.js](./frameworks/express/README.md)
+- [React](./frameworks/react/README.md)
+- [Next.js](./frameworks/nextjs/README.md)
+- [Tokio](./frameworks/tokio/README.md)
+- [PyTorch](./frameworks/pytorch/README.md)
+
+---
+
+# Programming Languages
+
+## C
+
+- [C Overview](./languages/c/README.md)
+- [Memory Management](./languages/c/memory-management.md)
+- [Pointers](./languages/c/pointers.md)
+- [Undefined Behavior](./languages/c/undefined-behavior.md)
+- [Compilation](./languages/c/compilation.md)
+- [POSIX](./languages/c/posix.md)
+- [Performance](./languages/c/performance.md)
+- [C Interview Questions](./languages/c/interview-questions.md)
+
+## C++
+
+- [C++ Overview](./languages/cpp/README.md)
+- [Templates](./languages/cpp/templates.md)
+- [STL](./languages/cpp/stl.md)
+- [Memory Model](./languages/cpp/memory-model.md)
+- [Move Semantics](./languages/cpp/move-semantics.md)
+- [Concurrency](./languages/cpp/concurrency.md)
+- [Modern C++](./languages/cpp/modern-cpp.md)
+- [C++ Interview Questions](./languages/cpp/interview-questions.md)
+
+## Rust
+
+- [Rust Overview](./languages/rust/README.md)
+- [Ownership](./languages/rust/ownership.md)
+- [Borrow Checker](./languages/rust/borrow-checker.md)
+- [Lifetimes](./languages/rust/lifetimes.md)
+- [Traits](./languages/rust/traits.md)
+- [Error Handling](./languages/rust/error-handling.md)
+- [Async Rust](./languages/rust/async.md)
+- [Unsafe Rust](./languages/rust/unsafe.md)
+- [Rust Interview Questions](./languages/rust/interview-questions.md)
+
+## Python
+
+- [Python Overview](./languages/python/README.md)
+- [CPython Internals](./languages/python/cpython-internals.md)
+- [GIL](./languages/python/gil.md)
+- [AsyncIO](./languages/python/asyncio.md)
+- [Type System](./languages/python/typing.md)
+- [Data Model](./languages/python/data-model.md)
+- [Packaging](./languages/python/packaging.md)
+- [Performance](./languages/python/performance.md)
+- [Python Interview Questions](./languages/python/interview-questions.md)
+
+## Go
+
+- [Go Overview](./languages/go/README.md)
+- [Scheduler (GMP)](./languages/go/scheduler.md)
+- [Channels](./languages/go/channels.md)
+- [Memory Model](./languages/go/memory-model.md)
+- [Go Interview Questions](./languages/go/interview-questions.md)
+
+## Java
+
+- [Java Overview](./languages/java/README.md)
+- [JVM Internals](./languages/java/jvm.md)
+- [Garbage Collection](./languages/java/gc.md)
+- [Java Interview Questions](./languages/java/interview-questions.md)
+
+## JavaScript
+
+- [JavaScript Overview](./languages/javascript/README.md)
+- [V8 Engine](./languages/javascript/v8.md)
+- [Node.js](./languages/javascript/nodejs.md)
+- [JavaScript Interview Questions](./languages/javascript/interview-questions.md)
+
+## TypeScript
+
+- [TypeScript Overview](./languages/typescript/README.md)
+
+## OCaml
+
+- [OCaml Overview](./languages/ocaml/README.md)
+- [OCaml Ecosystem & Tooling](./languages/ocaml/ecosystem.md)
+- [OCaml Interview Questions](./languages/ocaml/interview-questions.md)
+
+---
+
+# Meta
+
+- [Coverage Dashboard](./meta/coverage_dashboard.md)
+- [Topic Backlog](./meta/topic_backlog.md)
+- [Knowledge Graph](./meta/knowledge_graph.md)

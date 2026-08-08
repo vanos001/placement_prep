@@ -334,4 +334,4 @@ Bandwidth:
 - [Data Intensive](./data-intensive.md) — Large-scale data storage
 - [Estimation](../estimation.md)
 - [Latency Numbers](../latency-numbers.md)
-- [Cloud EC2](../../cloud/aws/ec2.md)
+- [Cloud EC2](../../../cloud/aws/ec2.md)

@@ -54,8 +54,8 @@ Post-training quantization to INT4/INT3 using layer-wise optimization:
 
 ```mermaid
 graph TD
-    LAYER[Weight Matrix W] --> HESSIAN[Compute Hessian (importance)]
-    HESSIAN --> GROUP[Group columns (128 typical)]
+    LAYER[Weight Matrix W] --> HESSIAN["Compute Hessian (importance)"]
+    HESSIAN --> GROUP["Group columns (128 typical)"]
     GROUP --> QUANTIZE[Quantize each group]
     QUANTIZE --> COMPENSATE[Compensate error using Hessian]
     COMPENSATE --> NEXT[Move to next layer]
@@ -260,6 +260,6 @@ Quantization reduces LLM memory and compute by using lower-precision representat
 - [Inference →](inference.md) Speed improvements from quantization
 - [vLLM →](vllm.md) Quantized model serving
 - [Ollama →](ollama.md) GGUF model deployment
-- [ML Quantization](../ml/advanced/quantization.md)
+- [ML Quantization](../../ml/advanced/quantization.md)
 - [TensorRT](./tensorrt.md)
-- [Model Compression](../ml/advanced/compression.md)
+- [Model Compression](../../ml/advanced/compression.md)

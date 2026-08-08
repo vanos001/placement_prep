@@ -10,13 +10,13 @@ File Organization defines how records (rows) are arranged in data files on disk.
 
 ```mermaid
 flowchart TD
-    A[File Organization] --> B[Heap File<br/>Unordered]
-    A --> C[Sorted File<br/>Sequential]
-    A --> D[Hashed File<br/>Direct]
+    A[File Organization] --> B["Heap File<br/>Unordered"]
+    A --> C["Sorted File<br/>Sequential"]
+    A --> D["Hashed File<br/>Direct"]
 
-    B --> B1[Insert: O(1)<br/>Scan: O(N)<br/>Search: O(N)]
-    C --> C1[Insert: O(N)<br/>Scan: O(N)<br/>Search: O(log N)]
-    D --> D1[Insert: O(1)<br/>Scan: O(N)<br/>Search: O(1)]
+    B --> B1["Insert: O(1)<br/>Scan: O(N)<br/>Search: O(N)"]
+    C --> C1["Insert: O(N)<br/>Scan: O(N)<br/>Search: O(log N)"]
+    D --> D1["Insert: O(1)<br/>Scan: O(N)<br/>Search: O(1)"]
 
     style B fill:#e1f5fe
     style C fill:#c8e6c9

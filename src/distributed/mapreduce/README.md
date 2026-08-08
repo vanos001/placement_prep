@@ -30,9 +30,9 @@ graph TD
 
 ```mermaid
 graph LR
-    MR[MapReduce\n(2004)] --> SP[Spark\n(2014)]
-    MR --> FL[Flink\n(2016)]
-    MR --> KS[Kafka Streams\n(2016)]
+    MR["MapReduce\n(2004)"] --> SP["Spark\n(2014)"]
+    MR --> FL["Flink\n(2016)"]
+    MR --> KS["Kafka Streams\n(2016)"]
     
     subgraph "Batch"
         MR
@@ -101,7 +101,7 @@ graph TD
 graph TD
     T1[Task 1] -->|Success| R1[Result 1]
     T2[Task 2] -->|Failure| X[Crash!]
-    T2b[Task 2 (retry)] -->|Success| R2[Result 2]
+    T2b["Task 2 (retry)"] -->|Success| R2[Result 2]
     T3[Task 3] -->|Success| R3[Result 3]
 ```
 

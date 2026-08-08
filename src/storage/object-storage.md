@@ -37,7 +37,7 @@ graph TD
 
 ```mermaid
 graph TD
-    OBJ[Object] --> ID[Unique Key - e.g., photos/cat.jpg]
+    OBJ[Object] --> ID["Unique Key - e.g., photos/cat.jpg"]
     OBJ --> DATA[Raw Data - binary blob]
     OBJ --> META[Metadata - custom key-value pairs]
     OBJ --> VER[Version ID - if versioning enabled]
@@ -45,7 +45,7 @@ graph TD
 
     META --> M1[Content-Type: image/jpeg]
     META --> M2[Content-Length: 2.4 MB]
-    META --> M3[Custom: {"department": "marketing"}]
+    META --> M3["Custom: {#quot;department#quot;: #quot;marketing#quot;}"]
 ```
 
 ## Amazon S3 Deep Dive

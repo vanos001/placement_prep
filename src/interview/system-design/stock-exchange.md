@@ -258,7 +258,7 @@ graph TB
         Engine1["Matching Engine 1<br/>(A-F symbols)"]
         Engine2["Matching Engine 2<br/>(G-M symbols)"]
         Engine3["Matching Engine 3<br/>(N-S symbols)"]
-        Engine4["Matching Engine 4<br/">(T-Z symbols)"]
+        Engine4["Matching Engine 4<br/>(T-Z symbols)"]
     end
     
     Gateway["Order Gateway"] --> Router["Symbol Router"]

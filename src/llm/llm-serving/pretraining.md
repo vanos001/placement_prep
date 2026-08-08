@@ -278,4 +278,4 @@ Pre-training teaches LLMs to predict the next token using massive text corpora. 
 - [SFT →](sft.md) What happens after pre-training
 - [RLHF →](rlhf.md) Alignment after SFT
 - [Scaling Laws →](evaluation.md) How to evaluate trained models
-- [Infrastructure →](../mlops/infrastructure.md) GPU clusters for training
+- [Infrastructure →](../../ml/mlops/infrastructure.md) GPU clusters for training

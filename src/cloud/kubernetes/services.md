@@ -306,8 +306,8 @@ graph TB
     KP --> IPVS[IPVS Mode]
     KP --> USERSPACE[Userspace Mode - Legacy]
 
-    IPTABLES --> |Default| IPT_D[Good for < 1000 services]
-    IPVS --> |Better at scale| IPVS_D[Hash-based, O(1) lookup]
+    IPTABLES --> |Default| IPT_D["Good for < 1000 services"]
+    IPVS --> |Better at scale| IPVS_D["Hash-based, O(1) lookup"]
     USERSPACE --> |Legacy| US_D[Rarely used]
 ```
 

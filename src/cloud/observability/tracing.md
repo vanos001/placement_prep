@@ -63,7 +63,7 @@ graph TB
     SPAN --> PARENT[Parent Span ID]
     SPAN --> ATTR[Attributes / Tags]
     SPAN --> EVENTS[Events / Logs]
-    SPAN --> STATUS[Status (OK, ERROR)]
+    SPAN --> STATUS["Status (OK, ERROR)"]
 ```
 
 | Span Field | Description | Example |
@@ -397,14 +397,14 @@ graph TB
         PARENT[Parent Span] --> CHILD1[Child 1: 50ms]
         PARENT --> CHILD2[Child 2: 60ms]
         PARENT --> CHILD3[Child 3: 40ms]
-        Note over PARENT: Total: ~60ms (parallel)
+        NOTE1["Total: ~60ms (parallel)"]
     end
 
     subgraph "Bad: Sequential Execution"
         PARENT2[Parent Span] --> C1[Child 1: 50ms]
         C1 --> C2[Child 2: 60ms]
         C2 --> C3[Child 3: 40ms]
-        Note over PARENT2: Total: 150ms (sequential)
+        NOTE2["Total: 150ms (sequential)"]
     end
 ```
 

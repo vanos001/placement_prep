@@ -9,19 +9,19 @@
 ```mermaid
 graph TD
     subgraph "INNER JOIN"
-        I1[A ∩ B<br/>Only matching rows from both]
+        I1["A ∩ B<br/>Only matching rows from both"]
     end
     subgraph "LEFT JOIN"
-        L1[A + (A ∩ B)<br/>All from A, matching from B]
+        L1["A + (A ∩ B)<br/>All from A, matching from B"]
     end
     subgraph "RIGHT JOIN"
-        R1[(A ∩ B) + B<br/>Matching from A, all from B]
+        R1["(A ∩ B) + B<br/>Matching from A, all from B"]
     end
     subgraph "FULL OUTER JOIN"
-        F1[A + B<br/>All rows from both]
+        F1["A + B<br/>All rows from both"]
     end
     subgraph "CROSS JOIN"
-        C1[A × B<br/>Every combination]
+        C1["A × B<br/>Every combination"]
     end
 
     style I1 fill:#bbdefb

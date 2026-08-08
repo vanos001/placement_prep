@@ -79,7 +79,7 @@ graph TD
         HANDLER[Rejected Execution Handler]
     end
 
-    SUBMIT[submit(task)] --> CORE_POOL{Core threads busy?}
+    SUBMIT["submit(task)"] --> CORE_POOL{Core threads busy?}
     CORE_POOL -->|No| RUN[Execute on core thread]
     CORE_POOL -->|Yes| QUEUE_TASK{Queue full?}
     QUEUE_TASK -->|No| ADD_Q[Add to queue]

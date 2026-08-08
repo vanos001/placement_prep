@@ -12,7 +12,7 @@ The generator takes a random noise vector $z$ (typically from a uniform or Gauss
 
 ```mermaid
 graph TD
-    A[Input: z ~ N(0,1), dim=128] --> B[Dense Layer: 4×4×512]
+    A["Input: z ~ N(0,1), dim=128"] --> B[Dense Layer: 4×4×512]
     B --> C[Reshape: 4×4×512]
     C --> D[ConvTranspose2d: 8×8×256]
     D --> E[ConvTranspose2d: 16×16×128]

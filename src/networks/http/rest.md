@@ -394,12 +394,12 @@ sequenceDiagram
 
 ```mermaid
 graph TB
-    USERS[/users<br/>Collection] --> USER1[/users/123<br/>Resource]
-    USERS --> USER2[/users/456<br/>Resource]
-    USER1 --> ORDERS[/users/123/orders<br/>Sub-collection]
-    ORDERS --> ORDER1[/users/123/orders/789<br/>Resource]
-    ORDER1 --> ITEMS[/users/123/orders/789/items<br/>Sub-collection]
-    PRODUCTS[/products<br/>Collection] --> PRODUCT1[/products/101<br/>Resource]
+    USERS["/users<br/>Collection"] --> USER1["/users/123<br/>Resource"]
+    USERS --> USER2["/users/456<br/>Resource"]
+    USER1 --> ORDERS["/users/123/orders<br/>Sub-collection"]
+    ORDERS --> ORDER1["/users/123/orders/789<br/>Resource"]
+    ORDER1 --> ITEMS["/users/123/orders/789/items<br/>Sub-collection"]
+    PRODUCTS["/products<br/>Collection"] --> PRODUCT1["/products/101<br/>Resource"]
     ORDER1 -.->|references| PRODUCT1
 ```
 
@@ -502,7 +502,7 @@ REST's simplicity, HTTP-native design, and broad tooling support have made it th
 - **[HTTPS / TLS](./https.md)** — Securing REST APIs with TLS
 - **[HTTP/2](./http2.md)** — HTTP/2 benefits for REST (multiplexing, header compression)
 - **[WebSocket](./websocket.md)** — Real-time alternatives to REST polling
-- **[HTTP Status Codes](./status-codes.md)** — Detailed status code reference
+- **[HTTP Status Codes](./README.md)** — Detailed status code reference
 
 ## Cross References
 

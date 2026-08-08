@@ -26,9 +26,9 @@ graph TD
     ACTION --> A2[Code execution]
     ACTION --> A3[API calls]
 
-    MEMORY --> M1[Short-term (context)]
-    MEMORY --> M2[Long-term (vector DB)]
-    MEMORY --> M3[Episodic (past interactions)]
+    MEMORY --> M1["Short-term (context)"]
+    MEMORY --> M2["Long-term (vector DB)"]
+    MEMORY --> M3["Episodic (past interactions)"]
 ```
 
 ## Agent vs Chatbot vs Copilot
@@ -184,7 +184,7 @@ AI Agents combine LLMs with tools, memory, and planning to solve complex tasks a
 - [Tool Calling →](tool-calling.md) How agents use tools
 - [Memory →](memory.md) Agent memory systems
 - [Planning →](planning.md) Task decomposition
-- [Multi-Agent →](multi.md) Multiple agent systems
+- [Multi-Agent →](multi-agent.md) Multiple agent systems
 - [Frameworks →](frameworks.md) Agent development frameworks
 - [LLM Tool Calling](../../llm/llm-serving/systems.md)
 - [Agent Architecture](./architecture.md)

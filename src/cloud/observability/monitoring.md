@@ -142,10 +142,10 @@ graph TB
     METRICS --> HISTOGRAM[Histogram]
     METRICS --> SUMMARY[Summary]
 
-    COUNTER --> |Monotonically increasing| COUNTER_D[request_total, bytes_sent_total]
-    GAUGE --> |Can go up or down| GAUGE_D[temperature, memory_usage, queue_size]
-    HISTOGRAM --> |Distribution of values| HIST_D[request_duration_seconds, response_size]
-    SUMMARY --> |Quantiles (client-side)| SUM_D[request_duration_quantiles]
+    COUNTER --> |Monotonically increasing| COUNTER_D["request_total, bytes_sent_total"]
+    GAUGE --> |Can go up or down| GAUGE_D["temperature, memory_usage, queue_size"]
+    HISTOGRAM --> |Distribution of values| HIST_D["request_duration_seconds, response_size"]
+    SUMMARY --> |"Quantiles (client-side)"| SUM_D[request_duration_quantiles]
 ```
 
 | Type | Description | Example | Use Case |

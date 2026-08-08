@@ -368,4 +368,4 @@ Switch Transformer simplified MoE by using top-1 routing, enabling scaling to 1.
 - [Routing Strategies](routing.md) - Comparison with other routing
 - [Mixtral](mixtral.md) - Open-source MoE with top-2
 - [Training MoE](training.md) - Training challenges
-- [Transformers](../transformers.md) - Base architecture
+- [Transformers](../../ml/transformers/README.md) - Base architecture

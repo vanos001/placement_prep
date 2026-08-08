@@ -421,10 +421,10 @@ QUIC represents the most significant change to internet transport protocols in d
 
 - **[HTTP/3](./http3.md)** — The application protocol that runs on QUIC
 - **[HTTPS / TLS](./https.md)** — TLS 1.3 details, certificates, and handshake flow
-- **[TCP & UDP](../tcp-udp.md)** — Understanding the transport layer QUIC builds upon
+- **[TCP & UDP](../tcp/README.md)** — Understanding the transport layer QUIC builds upon
 - **[WebSocket](./websocket.md)** — How real-time protocols compare to QUIC-based approaches
-- **[Performance Optimization](../performance.md)** — QUIC's role in web performance
-- **[Network Fundamentals](../fundamentals.md)** — OSI model and where QUIC fits
+- **[Performance Optimization](../tcp/congestion-control.md)** — QUIC's role in web performance
+- **[Network Fundamentals](../osi/README.md)** — OSI model and where QUIC fits
 
 ## Cross References
 

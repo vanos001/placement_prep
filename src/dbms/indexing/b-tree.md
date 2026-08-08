@@ -69,15 +69,15 @@ Search(node, key):
 
 ```mermaid
 flowchart TD
-    A["Start at root: [30 | 60]"] --> B{key < 30?}
+    A["Start at root: [30 | 60]"] --> B{"key < 30?"}
     B -->|Yes| C["Go to left child: [10 | 20]"]
-    B -->|No| D{key < 60?}
+    B -->|No| D{"key < 60?"}
     D -->|Yes| E["Go to middle child: [40 | 50]"]
     D -->|No| F["Go to right child: [70 | 80 | 90]"]
     
-    C --> G{Search in [10 | 20]}
-    E --> H{Search in [40 | 50]}
-    F --> I{Search in [70 | 80 | 90]}
+    C --> G{"Search in [10 | 20]"}
+    E --> H{"Search in [40 | 50]"}
+    F --> I{"Search in [70 | 80 | 90]"}
     
     style A fill:#e3f2fd
 ```

@@ -71,10 +71,10 @@ graph TD
     TXN[Transaction Ti] --> READ{Read X?}
     TXN --> WRITE{Write X?}
 
-    READ -->|"ts ≥ WT(X)"| R_ALLOW[Allow read, update RT(X)]
+    READ -->|"ts ≥ WT(X)"| R_ALLOW["Allow read, update RT(X)"]
     READ -->|"ts < WT(X)"| R_REJECT[Rollback Ti]
 
-    WRITE -->|"ts ≥ RT(X) AND ts ≥ WT(X)"| W_ALLOW[Allow write, update WT(X)]
+    WRITE -->|"ts ≥ RT(X) AND ts ≥ WT(X)"| W_ALLOW["Allow write, update WT(X)"]
     WRITE -->|"ts < RT(X)"| W_REJECT[Rollback Ti]
     WRITE -->|"ts < WT(X) AND ts ≥ RT(X)"| THOMAS[Thomas Write Rule: Ignore write]
 

@@ -83,8 +83,8 @@ graph LR
 ```mermaid
 graph TD
     subgraph "Topic Partition 0 (replication-factor=3)"
-        L[Leader (Broker 1)] --> F1[Follower (Broker 2)]
-        L --> F2[Follower (Broker 3)]
+        L["Leader (Broker 1)"] --> F1["Follower (Broker 2)"]
+        L --> F2["Follower (Broker 3)"]
     end
     
     P[Producer] -->|Write| L
@@ -96,7 +96,7 @@ graph TD
 ```mermaid
 graph TD
     subgraph "ISR = {Broker 1, Broker 2, Broker 3}"
-        B1[Broker 1 (Leader)] --> B2[Broker 2]
+        B1["Broker 1 (Leader)"] --> B2[Broker 2]
         B1 --> B3[Broker 3]
     end
     

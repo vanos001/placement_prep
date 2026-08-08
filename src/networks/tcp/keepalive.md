@@ -28,7 +28,7 @@ sequenceDiagram
     Note over C: No ACK (server is dead)
     C->>S: Retransmit 1
     C->>S: Retransmit 2
-    ...
+    Note over C: ... retries continue
     C->>S: Retransmit 15
     Note over C: ETIMEDOUT after ~13-30 minutes!
     

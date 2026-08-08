@@ -59,10 +59,10 @@ print(f"Coefficients: {model.theta}")
 
 ```mermaid
 graph TD
-    A[OLS Assumptions] --> B[Linearity: y = Xw + ε]
+    A[OLS Assumptions] --> B["Linearity: y = Xw + ε"]
     A --> C[Independence: errors are independent]
     A --> D[Homoscedasticity: constant error variance]
-    A --> E[Normality: errors ~ N(0, σ²)]
+    A --> E["Normality: errors ~ N(0, σ²)"]
     A --> F[No multicollinearity: X columns not correlated]
 ```
 

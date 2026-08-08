@@ -66,14 +66,14 @@ Memcached uses a **slab allocator** to manage memory efficiently:
 
 ```mermaid
 flowchart TD
-    A[Memory Pool] --> B[Slab Class 1<br/>64 bytes chunks]
-    A --> C[Slab Class 2<br/>128 bytes chunks]
-    A --> D[Slab Class 3<br/>256 bytes chunks]
-    A --> E[Slab Class N<br/>1MB chunks]
+    A[Memory Pool] --> B["Slab Class 1<br/>64 bytes chunks"]
+    A --> C["Slab Class 2<br/>128 bytes chunks"]
+    A --> D["Slab Class 3<br/>256 bytes chunks"]
+    A --> E["Slab Class N<br/>1MB chunks"]
 
-    B --> B1[Page 1: [64B][64B][64B]...]
-    B --> B2[Page 2: [64B][64B][64B]...]
-    C --> C1[Page 1: [128B][128B]...]
+    B --> B1["Page 1: [64B][64B][64B]..."]
+    B --> B2["Page 2: [64B][64B][64B]..."]
+    C --> C1["Page 1: [128B][128B]..."]
 
     style B fill:#e1f5fe
 ```
@@ -148,8 +148,8 @@ Memcached clients use consistent hashing to determine which server stores a key:
 
 ```mermaid
 flowchart LR
-    A[Key: "user:123"] --> B[hash("user:123") = 4567]
-    B --> C[4567 maps to Server 2<br/>on consistent hash ring]
+    A["Key: #quot;user:123#quot;"] --> B["hash(#quot;user:123#quot;) = 4567"]
+    B --> C["4567 maps to Server 2<br/>on consistent hash ring"]
     C --> D[Server 2 stores the value]
 
     style D fill:#c8e6c9

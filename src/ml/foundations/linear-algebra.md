@@ -36,10 +36,10 @@ cos_sim = np.dot(v, w) / (np.linalg.norm(v) * np.linalg.norm(w))
 
 ```mermaid
 graph LR
-    A[Vector v = 1,2,3] --> B[Point in 3D space]
+    A["Vector v = 1,2,3"] --> B[Point in 3D space]
     A --> C[Direction + Magnitude]
     D[Dot product] --> E["v·w = |v||w|cos(θ)"]
-    E --> F[Cosine similarity = cos(θ)]
+    E --> F["Cosine similarity = cos(θ)"]
 ```
 
 **Key insight**: The dot product measures **alignment** between vectors. If `v·w > 0`, they point in similar directions; if `v·w = 0`, they're orthogonal.

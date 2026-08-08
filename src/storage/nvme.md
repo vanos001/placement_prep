@@ -116,15 +116,15 @@ This enables **disaggregated storage** — compute and storage scale independent
 ```mermaid
 graph TD
     FF[Form Factors] --> M2[M.2 - Desktop/Laptop]
-    FF --> U2[U.2 / SFF-8639 - Enterprise 2.5"]
+    FF --> U2["U.2 / SFF-8639 - Enterprise 2.5 inch"]
     FF --> E1[E1.S - Enterprise Short]
     FF --> E3[E3.S - Enterprise Dense]
-    FF --> AIC[Add-in Card (AIC) - PCIe Slot]
+    FF --> AIC["Add-in Card (AIC) - PCIe Slot"]
 
-    M2 -->|Sizes| M2S[2230, 2242, 2260, 2280, 22110]
-    U2 -->|Features| U2F[Hot-swap, dual-port]
-    E1 -->|Features| E1F[Dense, hot-swap]
-    AIC -->|Features| AICF[Full PCIe slot, best cooling]
+    M2 -->|Sizes| M2S["2230, 2242, 2260, 2280, 22110"]
+    U2 -->|Features| U2F["Hot-swap, dual-port"]
+    E1 -->|Features| E1F["Dense, hot-swap"]
+    AIC -->|Features| AICF["Full PCIe slot, best cooling"]
 ```
 
 ## NVMe Command Set

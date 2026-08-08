@@ -9,15 +9,15 @@ Rust's ownership system provides compile-time guarantees about memory safety and
 ### Three Rules
 
 ```mermaid
-graph TD
+flowchart TD
     RULES[Ownership Rules] --> R1[Each value has exactly one owner]
     RULES --> R2[When owner goes out of scope, value is dropped]
-    RULES --> R3[Ownership can be moved (transfer) or borrowed (reference)]
+    RULES --> R3["Ownership can be moved (transfer) or borrowed (reference)"]
 
     R3 --> MOVE[Move: original variable becomes invalid]
     R3 --> BORROW[Borrow: temporary access without ownership]
-    BORROW --> IMMUTABLE[&T: immutable reference, many allowed]
-    BORROW --> MUTABLE[&mut T: mutable reference, exclusive]
+    BORROW --> IMMUTABLE["&T: immutable reference, many allowed"]
+    BORROW --> MUTABLE["&mut T: mutable reference, exclusive"]
 ```
 
 ### Move Semantics
@@ -31,9 +31,9 @@ let s3 = s2.clone(); // Explicit copy, both valid
 ```
 
 ```mermaid
-graph LR
-    S1[s1: String] -->|move| S2[s2: String]
-    S1 -.->|invalidated| X[Can't use s1]
+flowchart LR
+    S1["s1: String"] -->|move| S2["s2: String"]
+    S1 -.->|invalidated| X["Can't use s1"]
 ```
 
 ### Borrowing
@@ -52,9 +52,9 @@ r3.push_str(" world");
 ```
 
 ```mermaid
-graph TD
-    BORROW[Borrowing] --> IMM[&T: Immutable]
-    BORROW --> MUT[&mut T: Mutable]
+flowchart TD
+    BORROW[Borrowing] --> IMM["&T: Immutable"]
+    BORROW --> MUT["&mut T: Mutable"]
 
     IMM --> RULE1[Multiple readers OK]
     IMM --> RULE2[Cannot mutate while borrowed]
@@ -67,7 +67,7 @@ graph TD
 ### The Data Race Prevention Rules
 
 ```mermaid
-graph TD
+flowchart TD
     RULES[Rust prevents data races at compile time] --> R1[Two threads accessing same data]
     R1 --> R2[At least one is writing]
     R2 --> R3[No synchronization]
@@ -82,14 +82,14 @@ Rust's type system prevents data races by enforcing:
 ### Send and Sync Traits
 
 ```mermaid
-graph TD
-    SEND[Send: Can be moved to another thread] --> S1[Almost all types are Send]
-    SEND --> S2[Rc is NOT Send (not thread-safe)]
+flowchart TD
+    SEND["Send: Can be moved to another thread"] --> S1[Almost all types are Send]
+    SEND --> S2["Rc is NOT Send (not thread-safe)"]
 
-    SYNC[Sync: Can be referenced from another thread] --> SY1[&T is Send if T is Sync]
-    SYNC --> SY2[Cell, RefCell are NOT Sync]
+    SYNC["Sync: Can be referenced from another thread"] --> SY1["&T is Send if T is Sync"]
+    SYNC --> SY2["Cell, RefCell are NOT Sync"]
 
-    SEND_SYNC[Send + Sync] --> SS1[Most types: i32, String, Vec, Arc]
+    SEND_SYNC[Send + Sync] --> SS1["Most types: i32, String, Vec, Arc"]
 ```
 
 | Trait | Meaning | Example |
@@ -120,14 +120,14 @@ for h in handles {
 ```
 
 ```mermaid
-graph TD
-    ARC[Arc: Atomic Reference Count] --> DATA[Shared Data on Heap]
+flowchart TD
+    ARC["Arc: Atomic Reference Count"] --> DATA[Shared Data on Heap]
     T1[Thread 1: Arc clone] --> DATA
     T2[Thread 2: Arc clone] --> DATA
     T3[Thread 3: Arc clone] --> DATA
 
-    ARC --> DROP[Drop: decrement count atomically]
-    DROP --> ZERO[Count reaches 0: free data]
+    ARC --> DROP["Drop: decrement count atomically"]
+    DROP --> ZERO["Count reaches 0: free data"]
 ```
 
 ### Mutex
@@ -245,31 +245,31 @@ data.lock().unwrap().push(4);
 ```
 
 ```mermaid
-graph TD
+flowchart TD
     INTERIOR[Interior Mutability] --> SINGLE[Single-threaded]
     INTERIOR --> MULTI[Multi-threaded]
 
     SINGLE --> CELL[Cell: copy types]
-    SINGLE --> REFCELL[RefCell: runtime borrow check]
-    MULTI --> MUTEX[Mutex: exclusive lock]
-    MULTI --> RWLOCK[RwLock: read-write lock]
+    SINGLE --> REFCELL["RefCell: runtime borrow check"]
+    MULTI --> MUTEX["Mutex: exclusive lock"]
+    MULTI --> RWLOCK["RwLock: read-write lock"]
     MULTI --> ATOMIC[Atomic types: lock-free]
 ```
 
 ## Thread Safety Matrix
 
 ```mermaid
-graph TD
+flowchart TD
     TYPE[Type] --> SEND{Send?}
     SEND -->|Yes| SYNC{Sync?}
     SEND -->|No| NOT_THREAD[Not thread-safe]
 
-    SYNC -->|Yes| SAFE[Thread-safe: can share &T]
+    SYNC -->|Yes| SAFE["Thread-safe: can share &T"]
     SYNC -->|No| TRANSFER[Can move, not share]
 
-    NOT_THREAD --> EXAMPLE1[Rc, Cell, RefCell]
+    NOT_THREAD --> EXAMPLE1["Rc, Cell, RefCell"]
     TRANSFER --> EXAMPLE2[MutexGuard]
-    SAFE --> EXAMPLE3[Arc, Mutex, RwLock, AtomicTypes]
+    SAFE --> EXAMPLE3["Arc, Mutex, RwLock, AtomicTypes"]
 ```
 
 ## Async Rust

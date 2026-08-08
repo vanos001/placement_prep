@@ -263,8 +263,12 @@ graph TB
 ```mermaid
 graph LR
     subgraph "Rolling Update"
-        V1_R[V1: Pod1, Pod2, Pod3] --> V2_R[V2: Pod1] + V1_R2[V1: Pod2, Pod3]
-        V2_R2[V2: Pod1, Pod2] + V1_R3[V1: Pod3] --> V2_R3[V2: Pod1, Pod2, Pod3]
+        V1_R["V1: Pod1, Pod2, Pod3"] --> V2_R["V2: Pod1"]
+        V1_R --> V1_R2["V1: Pod2, Pod3"]
+        V2_R --> V2_R2["V2: Pod1, Pod2"]
+        V1_R2 --> V2_R2
+        V2_R2 --> V2_R3["V2: Pod1, Pod2, Pod3"]
+        V1_R3["V1: Pod3"] --> V2_R3
     end
 ```
 

@@ -100,7 +100,7 @@ sequenceDiagram
 graph TB
     subgraph "Cold Start (First Request)"
         CS1[Download Function Code] --> CS2[Start Runtime/Container]
-        CS2 --> CS3[Run Init Code (imports, connections)]
+        CS2 --> CS3["Run Init Code (imports, connections)"]
         CS3 --> CS4[Run Handler]
         CS4 --> CS5[Return Response]
     end

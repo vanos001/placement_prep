@@ -53,11 +53,11 @@ graph LR
     A --> E[Fold 4]
     A --> F[Fold 5]
     
-    G[Iteration 1] --> H[Train: 2,3,4,5 | Val: 1]
-    I[Iteration 2] --> J[Train: 1,3,4,5 | Val: 2]
-    K[Iteration 3] --> L[Train: 1,2,4,5 | Val: 3]
-    M[Iteration 4] --> N[Train: 1,2,3,5 | Val: 4]
-    O[Iteration 5] --> P[Train: 1,2,3,4 | Val: 5]
+    G[Iteration 1] --> H["Train: 2,3,4,5 | Val: 1"]
+    I[Iteration 2] --> J["Train: 1,3,4,5 | Val: 2"]
+    K[Iteration 3] --> L["Train: 1,2,4,5 | Val: 3"]
+    M[Iteration 4] --> N["Train: 1,2,3,5 | Val: 4"]
+    O[Iteration 5] --> P["Train: 1,2,3,4 | Val: 5"]
 ```
 
 ### Choosing K

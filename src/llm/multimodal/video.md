@@ -456,4 +456,4 @@ Video understanding extends image understanding with temporal modeling. Approach
 - [GPT-4V](gpt4v.md) - Image understanding (no video)
 - [Gemini](gemini.md) - Native video processing
 - [Audio Models](audio.md) - Audio in video
-- [Transformers](../transformers.md) - Attention mechanisms
+- [Transformers](../../ml/transformers/README.md) - Attention mechanisms

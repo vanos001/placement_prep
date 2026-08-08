@@ -9,7 +9,7 @@ Reinforcement Learning is a learning paradigm where an **agent** learns to make 
 ```mermaid
 graph LR
     A[Agent] -->|Action a_t| B[Environment]
-    B -->|State s_{t+1}| A
+    B -->|"State s_{t+1}"| A
     B -->|Reward r_t| A
 ```
 

@@ -113,7 +113,7 @@ graph TD
         T1B[Thread 1] -->|holds| M1B[Mutex 1]
         T1B -->|wants| M2B[Mutex 2]
         T2B[Thread 2] -->|wants| M1B
-        Note: T2B must wait for M1B first
+        NOTE1["T2B must wait for M1B first"]
     end
 ```
 

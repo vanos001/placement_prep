@@ -328,4 +328,4 @@ MoE enables scaling model capacity by selectively activating experts per input. 
 - [Switch Transformer](switch.md) - Simplified MoE
 - [Mixtral](mixtral.md) - Open-source MoE
 - [Training MoE](training.md) - Training challenges
-- [Transformers](../transformers.md) - Base architecture
+- [Transformers](../../ml/transformers/README.md) - Base architecture

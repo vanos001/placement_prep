@@ -41,9 +41,9 @@ Out-of-order execution:
 graph LR
     FETCH[Fetch] --> DECODE[Decode / Rename]
     DECODE --> ISSUE[Issue Queue / Reservation Stations]
-    ISSUE --> EXEC[Execute<br/>(out of order)]
+    ISSUE --> EXEC["Execute<br/>(out of order)"]
     EXEC --> COMPLETE[Complete / Write Result]
-    COMPLETE --> RETIRE[Retire / Commit<br/>(in order)]
+    COMPLETE --> RETIRE["Retire / Commit<br/>(in order)"]
 ```
 
 **Three phases:**

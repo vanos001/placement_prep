@@ -255,6 +255,6 @@ Agent architecture consists of perception, reasoning, action, memory, and planni
 - [Memory →](memory.md) Memory systems in detail
 - [Planning →](planning.md) Task decomposition
 - [Tool Calling →](tool-calling.md) Tool integration
-- [Multi-Agent →](multi.md) Multi-agent systems
+- [Multi-Agent →](multi-agent.md) Multi-agent systems
 - [LLM Architecture](../../llm/llm-serving/architecture.md)
 - [Distributed Messaging](../../interview/system-design/hld/messaging-systems.md)

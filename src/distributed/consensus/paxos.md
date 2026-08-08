@@ -102,27 +102,27 @@ sequenceDiagram
     Note over P1: Phase 1: Prepare
     P1->>A1: PREPARE(1)
     P1->>A2: PREPARE(1)
-    A1-->>P1: PROMISE(1, null)
-    A2-->>P1: PROMISE(1, null)
+    A1-->>P1: PROMISE("1, null")
+    A2-->>P1: PROMISE("1, null")
     
     Note over P2: Higher proposal arrives
     P2->>A2: PREPARE(2)
     P2->>A3: PREPARE(2)
-    A2-->>P2: PROMISE(2, null)
-    A3-->>P2: PROMISE(2, null)
+    A2-->>P2: PROMISE("2, null")
+    A3-->>P2: PROMISE("2, null")
     
     Note over P1: Phase 2: Accept (using own value)
-    P1->>A1: ACCEPT(1, "X")
-    P1->>A2: ACCEPT(1, "X")
-    A2 ignores (promised 2)
-    A1-->>P1: ACCEPTED(1, "X")
+    P1->>A1: ACCEPT("1, #quot;X#quot;")
+    P1->>A2: ACCEPT("1, #quot;X#quot;")
+    Note over A2: ignores (promised 2)
+    A1-->>P1: ACCEPTED("1, #quot;X#quot;")
     Note over P1: Only 1/3 accepted, no majority
     
     Note over P2: Phase 2: Accept
-    P2->>A2: ACCEPT(2, "Y")
-    P2->>A3: ACCEPT(2, "Y")
-    A2-->>P2: ACCEPTED(2, "Y")
-    A3-->>P2: ACCEPTED(2, "Y")
+    P2->>A2: ACCEPT("2, #quot;Y#quot;")
+    P2->>A3: ACCEPT("2, #quot;Y#quot;")
+    A2-->>P2: ACCEPTED("2, #quot;Y#quot;")
+    A3-->>P2: ACCEPTED("2, #quot;Y#quot;")
     Note over P2: 2/3 accepted → "Y" is decided!
 ```
 

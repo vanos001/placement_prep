@@ -146,16 +146,16 @@ If Σ|Wᵢ(t, Δ)| < F:
 
 ```mermaid
 graph TD
-    A[Monitor working sets] --> B{Σ|Wᵢ| ≤ F?}
+    A[Monitor working sets] --> B{"Σ|Wᵢ| ≤ F?"}
     B -->|Yes| C[System is healthy]
     B -->|No| D[Thrashing risk!]
-    D --> E[Suspend process with<br/>largest working set]
+    D --> E["Suspend process with<br/>largest working set"]
     E --> F[Swap process to disk]
     F --> G[Free its frames]
-    G --> H[Other processes get<br/>more frames]
+    G --> H["Other processes get<br/>more frames"]
     H --> A
 
-    C --> I{Σ|Wᵢ| << F?}
+    C --> I{"Σ|Wᵢ| << F?"}
     I -->|Yes| J[Can start more processes]
     I -->|No| K[Stay at current level]
     J --> A

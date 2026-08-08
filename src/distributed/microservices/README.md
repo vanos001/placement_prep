@@ -168,8 +168,8 @@ The sidecar proxies handle:
 
 ```mermaid
 graph LR
-    LB[Load Balancer] -->|"Current"| B[Blue (v1)]
-    LB -.->|"Next"| G[Green (v2)]
+    LB[Load Balancer] -->|"Current"| B["Blue (v1)"]
+    LB -.->|"Next"| G["Green (v2)"]
     
     Note["Switch traffic from Blue to Green"]
 ```

@@ -149,7 +149,7 @@ LLM serving systems handle the complex orchestration of model inference. vLLM (P
 - [Ollama →](ollama.md) Local deployment
 - [Batching →](batching.md) Batching strategies
 - [Inference →](inference.md) Inference fundamentals
-- [Agent Tool Calling](../ml/agents/tool-calling.md)
+- [Agent Tool Calling](../../ml/agents/tool-calling.md)
 - [RAG](./rag.md)
 - [Prompt Engineering](./prompt-engineering.md)
-- [Cloud API Gateway](../cloud/aws/vpc.md)
+- [Cloud API Gateway](../../cloud/aws/vpc.md)

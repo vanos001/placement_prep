@@ -96,3 +96,7 @@ Cargo.toml
 *.cache
 .env
 .env.local
+token.txt
+mermaid-validation-report.json
+package-lock.json
+package.json

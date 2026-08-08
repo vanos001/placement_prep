@@ -37,11 +37,11 @@ graph TD
     A --> D[epoll]
     A --> E[kqueue]
     A --> F[IOCP]
-    B --> G[POSIX, portable, O(n)]
-    C --> H[POSIX, no fd limit, O(n)]
-    D --> I[Linux, O(1), scalable]
-    E --> J[macOS/BSD, O(1), scalable]
-    F --> K[Windows, async I/O]
+    B --> G["POSIX, portable, O(n)"]
+    C --> H["POSIX, no fd limit, O(n)"]
+    D --> I["Linux, O(1), scalable"]
+    E --> J["macOS/BSD, O(1), scalable"]
+    F --> K["Windows, async I/O"]
 ```
 
 ## select()

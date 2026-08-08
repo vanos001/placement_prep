@@ -25,9 +25,9 @@ Without synchronization:
 ```mermaid
 graph TD
     subgraph Solution[Bounded Buffer Solution]
-        P[Producer] -->|wait(emptySlots)| MUTEX[Mutex]
+        P[Producer] -->|"wait(emptySlots)"| MUTEX[Mutex]
         MUTEX -->|lock| BUF[Buffer: capacity N]
-        BUF -->|signal(filledSlots)| C[Consumer]
+        BUF -->|"signal(filledSlots)"| C[Consumer]
 
         BUF --> FULL{Full?}
         FULL -->|Yes| P_BLOCK[Producer blocks]

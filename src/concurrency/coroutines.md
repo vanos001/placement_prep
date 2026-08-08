@@ -8,14 +8,14 @@ Coroutines are functions that can suspend execution and resume later, maintainin
 
 ```mermaid
 graph TD
-    COROUTINES[Coroutines] --> STACKLESS[Stackless (Symmetric)]
-    COROUTINES --> STACKFUL[Stackful (Asymmetric)]
+    COROUTINES[Coroutines] --> STACKLESS["Stackless (Symmetric)"]
+    COROUTINES --> STACKFUL["Stackful (Asymmetric)"]
 
-    STACKLESS --> S1[Python generators, Rust async, C++20]
+    STACKLESS --> S1["Python generators, Rust async, C++20"]
     STACKLESS --> S2[State machine compiled from function]
     STACKLESS --> S3[Cannot suspend from nested call stack]
 
-    STACKFUL --> F1[Go goroutines, Lua, Kotlin]
+    STACKFUL --> F1["Go goroutines, Lua, Kotlin"]
     STACKFUL --> F2[Each coroutine has own stack]
     STACKFUL --> F3[Can suspend from nested calls]
 ```
@@ -95,15 +95,15 @@ graph TD
 ```mermaid
 graph TD
     subgraph Main[Main Goroutine]
-        M1[Call foo()]
-        M1 --> M2[Call bar()]
-        M2 --> M3[Runtime.Goexit()]
+        M1["Call foo()"]
+        M1 --> M2["Call bar()"]
+        M2 --> M3["Runtime.Goexit()"]
     end
 
     subgraph Goroutine[New Goroutine]
         G1[Own stack: 2KB]
-        G1 --> G2[Call foo()]
-        G2 --> G3[Call bar()]
+        G1 --> G2["Call foo()"]
+        G2 --> G3["Call bar()"]
         G3 --> G4[Can suspend here!]
         G4 --> G5[Resume later]
     end
