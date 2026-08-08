@@ -492,6 +492,8 @@
   - [GraphQL](./backend/api/graphql.md)
   - [gRPC](./backend/api/grpc.md)
   - [API Gateways](./backend/api/api-gateway.md)
+  - [Webhooks](./backend/api/webhooks.md)
+  - [Connection Pools](./backend/api/connection-pools.md)
 - [Authentication & Authorization](./backend/auth/README.md)
   - [JWT](./backend/auth/jwt.md)
   - [OAuth 2.0](./backend/auth/oauth.md)
