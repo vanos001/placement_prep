@@ -547,6 +547,7 @@
   - [Services](./cloud/kubernetes/services.md)
   - [Deployments](./cloud/kubernetes/deployments.md)
   - [Ingress](./cloud/kubernetes/ingress.md)
+  - [Operators](./cloud/kubernetes/operators.md)
 - [CI/CD](./cloud/cicd/README.md)
   - [Pipelines](./cloud/cicd/pipelines.md)
   - [GitOps](./cloud/cicd/gitops.md)
