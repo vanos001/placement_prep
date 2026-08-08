@@ -477,6 +477,7 @@
 - [Write-Ahead Log (WAL)](./storage/wal.md)
 - [LSM Compaction Strategies](./storage/lsm-compaction.md)
 - [SSTable Format](./storage/sstable.md)
+- [BlobDB (Key-Value Separation)](./storage/blobdb.md)
 
 ---
 
@@ -492,6 +493,8 @@
 - [Coroutines](./concurrency/coroutines.md)
 - [Lock-free Data Structures](./concurrency/lock-free.md)
 - [RCU (Read-Copy-Update)](./concurrency/rcu.md)
+- [Work-Stealing Scheduler](./concurrency/work-stealing.md)
+- [Memory Model (C++/Java/Go/Rust)](./concurrency/memory-model.md)
 - [Transactional Memory](./concurrency/transactional-memory.md)
 - [Go Channels](./concurrency/go-channels.md)
 - [Rust Ownership](./concurrency/rust-ownership.md)
