@@ -225,32 +225,233 @@ A typical LLaMA-style block:
 
 ### Parameter Count
 
-For a model with:
+For a decoder-only transformer with:
 - **L** layers
 - **d** = model dimension
 - **d_ff** = FFN dimension (typically 8/3 × d for SwiGLU)
 - **V** = vocabulary size
+- **h** = number of attention heads
+- **d_head** = dimension per head (d / h)
+
+**Detailed parameter breakdown per layer:**
 
 ```
-Parameters ≈ L × (12d² + 12d × d_ff) + V × d
+Attention:
+  Q projection: d × d           = d²
+  K projection: d × d_kv        = d × d_kv  (d_kv = d with MHA, d/h × g with GQA)
+  V projection: d × d_kv        = d × d_kv
+  O projection: d × d           = d²
+  Total attention: 2d² + 2d × d_kv
+
+FFN (SwiGLU — 3 weight matrices):
+  W_gate:  d × d_ff
+  W_up:    d × d_ff
+  W_down:  d_ff × d
+  Total FFN: 3 × d × d_ff
+
+RMSNorm: 2 × d (per-layer scale parameters, no bias)
 ```
 
-**Simplified rule of thumb:** For a 7B model with d=4096, L=32:
-- Attention per layer: ~4 × d² = ~67M
-- FFN per layer: ~3 × 2 × d × d_ff ≈ ~178M
-- Total per layer: ~245M
-- 32 layers: ~7.8B ✓
+**Total parameters:**
+```
+P ≈ L × (2d² + 2d·d_kv + 3d·d_ff + 2d) + V × d + d  (final norm + embeddings)
+```
+
+**Simplified rule of thumb:** For a 7B model with d=4096, L=32, d_ff=11008 (SwiGLU):
+- Attention per layer: ~2 × 4096² + 2 × 4096² ≈ 134M (with MHA)
+- FFN per layer: ~3 × 4096 × 11008 ≈ 135M
+- Total per layer: ~269M
+- Embeddings: 128256 × 4096 ≈ 525M (LLaMA 3 vocab)
+- 32 layers × 269M + 525M ≈ 9.1B
+
+Note: Actual 7B models are slightly smaller because GQA reduces KV parameters.
 
 ### Memory Estimation
 
-| Precision | Bytes per Parameter | 7B Model | 70B Model |
-|---|---|---|---|
-| FP32 | 4 | 28 GB | 280 GB |
-| FP16/BF16 | 2 | 14 GB | 140 GB |
-| INT8 | 1 | 7 GB | 70 GB |
-| INT4 | 0.5 | 3.5 GB | 35 GB |
+| Precision | Bytes per Parameter | 7B Model | 13B Model | 70B Model | 405B Model |
+|---|---|---|---|---|---|
+| FP32 | 4 | 28 GB | 52 GB | 280 GB | 1620 GB |
+| FP16/BF16 | 2 | 14 GB | 26 GB | 140 GB | 810 GB |
+| INT8 | 1 | 7 GB | 13 GB | 70 GB | 405 GB |
+| INT4 | 0.5 | 3.5 GB | 6.5 GB | 35 GB | 203 GB |
 
 **Rule of thumb**: Memory (GB) ≈ Parameters (B) × Bytes_per_param
+
+**Total GPU memory for inference** = Model weights + KV cache + Activations + Overhead
+```
+total_memory = P × bytes + KV_cache + ~10-20% overhead
+```
+
+For a 70B model at FP16 serving 32 concurrent requests with 4K context:
+- Weights: 140 GB
+- KV cache (GQA-8): 32 × 0.4 GB = 12.8 GB
+- Overhead: ~15 GB
+- **Total: ~168 GB** → needs 3× A100 80GB or 2× H100 80GB
+
+## Scaling Laws
+
+Scaling laws (Kaplan et al., 2020; Hoffmann et al., 2022) describe how model performance (loss) improves with more parameters, data, and compute.
+
+### Kaplan Scaling Laws (OpenAI, 2020)
+
+```
+L(N) ∝ N^(-0.076)
+L(D) ∝ D^(-0.095)
+L(C) ∝ C^(-0.050)
+```
+
+Where L = loss, N = parameters, D = data tokens, C = compute (FLOPs).
+
+**Key insight**: Performance improves as a power law with each factor. Doubling parameters reduces loss by ~5%.
+
+### Chinchilla Scaling Laws (DeepMind, 2022)
+
+The Chinchilla paper (Hoffmann et al., 2022) corrected the Kaplan findings:
+
+**Compute-optimal training:**
+```
+N_opt ∝ C^0.5
+D_opt ∝ C^0.5
+```
+
+**Rule of thumb**: For compute-optimal training, use ~20 tokens per parameter.
+
+| Model Size | Optimal Training Tokens | Compute (FLOPs) |
+|---|---|---|
+| 1B | 20B tokens | ~6 × 10²⁰ |
+| 7B | 140B tokens | ~4 × 10²¹ |
+| 13B | 260B tokens | ~8 × 10²¹ |
+| 70B | 1.4T tokens | ~4 × 10²³ |
+
+**Chinchilla vs Kaplan:**
+- Kaplan suggested training large models on less data
+- Chinchilla showed smaller models trained on more data perform better at the same compute budget
+- Chinchilla (70B, 1.4T tokens) outperformed Gopher (280B, 300B tokens) despite being 4× smaller
+
+**Modern practice**: Most 2024-2025 models train far beyond Chinchilla-optimal (e.g., LLaMA 3 8B trained on 15T tokens, 75× the Chinchilla ratio). The reasoning: inference cost dominates over training cost for deployed models, so over-training smaller models is more cost-effective.
+
+```mermaid
+graph TD
+    subgraph "Chinchilla Optimal"
+        C_COMPUTE[Compute Budget C] --> C_N[Optimal N = √C]
+        C_COMPUTE --> C_D[Optimal D = √C]
+        C_N --> C_RATIO["Ratio: D/N ≈ 20 tokens/param"]
+    end
+
+    subgraph "Modern Practice (2024+)"
+        M_SMALL[Smaller Model] --> M_MORE[Train on 10-100× more tokens]
+        M_MORE --> M_REASON["Reason: Inference cost > Training cost"]
+        M_REASON --> M_BETTER["Better cost per query at deployment"]
+    end
+```
+
+### Scaling Laws and Emergent Abilities
+
+As models scale, they exhibit **emergent abilities** — capabilities that appear suddenly at certain scales:
+
+| Ability | Approximate Scale | Example |
+|---|---|---|
+| Basic instruction following | 1-3B | Simple QA |
+| Chain-of-thought reasoning | 7-13B | Math word problems |
+| In-context learning | 13-70B | Few-shot without fine-tuning |
+| Complex reasoning | 70B+ | Multi-step planning |
+| Theory of mind | 100B+ | Understanding others' perspectives |
+
+**Caveat**: Wei et al. (2022) documented emergent abilities, but Schaeffer et al. (2023) argued some "emergence" is a metric artifact — smooth per-token improvements can appear sudden with threshold metrics.
+
+## Modern Model Architectures (2024-2025)
+
+### Model Size Comparison
+
+| Model | Params | Layers | d_model | Heads | KV Heads | FFN dim | Context | Vocab |
+|---|---|---|---|---|---|---|---|---|
+| LLaMA 3 8B | 8B | 32 | 4096 | 32 | 8 (GQA) | 14336 | 128K | 128K |
+| LLaMA 3 70B | 70B | 80 | 8192 | 64 | 8 (GQA) | 28672 | 128K | 128K |
+| LLaMA 3 405B | 405B | 126 | 16384 | 128 | 8 (GQA) | 53248 | 128K | 128K |
+| Mistral 7B | 7B | 32 | 4096 | 32 | 8 (GQA) | 14336 | 32K | 32K |
+| Mixtral 8x7B | 47B | 32 | 4096 | 32 | 8 (GQA) | 14336 | 32K | 32K |
+| Qwen 2.5 72B | 72B | 80 | 8192 | 64 | 8 (GQA) | 29568 | 128K | 152K |
+| DeepSeek V3 | 671B | 61 | 7168 | 128 | 1 (MLA) | 18432 | 128K | 129K |
+| Gemma 2 27B | 27B | 46 | 4608 | 32 | 16 (GQA) | 36864 | 8K | 256K |
+
+### DeepSeek MLA (Multi-head Latent Attention)
+
+DeepSeek V2/V3 introduced **MLA**, a radical compression of the KV cache:
+
+```
+Standard MHA: Store K, V ∈ R^{d} per token per layer
+GQA: Store K, V ∈ R^{d_kv} where d_kv < d
+MLA: Store c_t ∈ R^{d_c} where d_c << d_kv
+     K = W_UK × c_t,  V = W_UV × c_t  (up-project at attention time)
+```
+
+MLA compresses KV into a low-dimensional latent vector, then up-projects when needed. This achieves **~93% KV cache compression** vs MHA while maintaining quality.
+
+| Method | KV per token (7B-scale) | Compression vs MHA |
+|---|---|---|
+| MHA | 0.5 MB | 1× |
+| GQA-8 | 0.125 MB | 4× |
+| MQA | 0.016 MB | 32× |
+| MLA | ~0.03 MB | ~17× |
+
+### MoE (Mixture of Experts) Architecture
+
+Models like Mixtral 8x7B and DeepSeek V3 use MoE:
+
+```mermaid
+graph LR
+    X[Input Token] --> ROUTER[Router Network]
+    ROUTER --> E1[Expert 1 - FFN]
+    ROUTER --> E2[Expert 2 - FFN]
+    ROUTER --> E3[Expert N - FFN]
+    E1 --> COMBINE[Weighted Sum]
+    E2 --> COMBINE
+    E3 --> COMBINE
+    COMBINE --> OUT[Output]
+```
+
+**Key properties:**
+- Total parameters >> Active parameters (Mixtral: 47B total, ~13B active per token)
+- Each token routed to top-k experts (typically k=2)
+- Training is cheaper (fewer FLOPs per token)
+- Inference is faster (fewer active parameters)
+- Challenge: Load balancing across experts
+
+See [MoE section →](../moe/architecture.md) for details.
+
+## Decoder-Only Training Details
+
+### Causal Language Modeling Objective
+
+Decoder-only models train with next-token prediction:
+
+```
+L = -Σ log P(x_t | x_1, ..., x_{t-1})
+```
+
+The causal mask ensures each position can only attend to previous positions:
+
+```mermaid
+graph TD
+    subgraph "Causal Mask (Lower Triangular)"
+        M1["t=1: sees [1]"]
+        M2["t=2: sees [1,2]"]
+        M3["t=3: sees [1,2,3]"]
+        M4["t=4: sees [1,2,3,4]"]
+    end
+```
+
+### Why Decoder-Only Won
+
+| Property | Decoder-Only | Encoder-Decoder |
+|---|---|---|
+| **Simplicity** | One model, one objective | Two models, cross-attention |
+| **Scaling** | Scales more predictably | Harder to scale both parts |
+| **In-context learning** | Natural (prompt = context) | Requires task-specific formatting |
+| **Unified interface** | Text-in, text-out | Needs task prefixes |
+| **Training efficiency** | Every token is a training example | Only decoder tokens generate loss |
+
+The simplicity of decoder-only models makes them easier to scale, and scaling is what matters most for capability.
 
 ## Interview Questions
 
@@ -288,6 +489,22 @@ Parameters ≈ L × (12d² + 12d × d_ff) + V × d
 
 Modern LLMs use decoder-only transformers with: multi-head/grouped-query attention, RoPE positional encoding, SwiGLU FFN, RMSNorm, and pre-norm residual connections. Understanding the math behind attention, the role of FFNs, and how model size translates to memory and compute is essential for interviews.
 
+## References
+
+1. Vaswani et al., "Attention Is All You Need", NeurIPS 2017
+2. Brown et al., "Language Models are Few-Shot Learners" (GPT-3), NeurIPS 2020
+3. Kaplan et al., "Scaling Laws for Neural Language Models", 2020
+4. Hoffmann et al., "Training Compute-Optimal Large Language Models" (Chinchilla), 2022
+5. Touvron et al., "LLaMA: Open and Efficient Foundation Language Models", 2023
+6. Touvron et al., "LLaMA 2: Open Foundation and Fine-Tuned Chat Models", 2023
+7. Dubey et al., "The Llama 3 Herd of Models", 2024
+8. DeepSeek-AI, "DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model", 2024
+9. Shazeer, "GLU Variants Improve Transformer", 2020
+10. Su et al., "RoFormer: Enhanced Transformer with Rotary Position Embedding", 2021
+11. Dao et al., "FlashAttention: Fast and Memory-Efficient Exact Attention", 2022
+12. Wei et al., "Emergent Abilities of Large Language Models", 2022
+13. Schaeffer et al., "Are Emergent Abilities of Large Language Models a Mirage?", 2023
+
 ## Cross-References
 
 - [KV Cache →](kv-cache.md) How attention states are cached during inference
@@ -295,6 +512,7 @@ Modern LLMs use decoder-only transformers with: multi-head/grouped-query attenti
 - [Embeddings →](embeddings.md) Dense and sparse representations
 - [Quantization →](quantization.md) Reducing precision for efficiency
 - [vLLM →](vllm.md) PagedAttention for efficient serving
+- [MoE Architecture →](../moe/architecture.md) Mixture of Experts detail
 - [ML Transformers](../ml/transformers/architecture.md)
 - [Attention Mechanism](../ml/deep-learning/attention.md)
 - [GPU Architecture](../cloud/virtualization/README.md)

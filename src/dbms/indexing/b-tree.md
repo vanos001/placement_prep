@@ -219,6 +219,242 @@ A: (1) Rebuild the index: CREATE INDEX ... WITH (fillfactor=90) to leave space f
 **Q9: Design a B-Tree for a write-heavy workload with random inserts.**
 A: (1) Use a lower fillfactor (e.g., 70%) to leave room for inserts without immediate splits. (2) Consider using an LSM-Tree instead for write-heavy workloads. (3) If B-Tree is required, use bulk loading for initial data, then switch to random insert mode. (4) Implement buffer pool with dirty page batching to reduce disk writes.
 
+## Detailed Algorithm: Insertion with Split
+
+### Step-by-Step Example (Order 5, max 4 keys)
+
+Insert keys: 10, 20, 30, 40, 50, 25
+
+```
+Step 1: Insert 10
+  [10]
+
+Step 2: Insert 20
+  [10 | 20]
+
+Step 3: Insert 30
+  [10 | 20 | 30]
+
+Step 4: Insert 40
+  [10 | 20 | 30 | 40]
+
+Step 5: Insert 50 → OVERFLOW!
+  Before: [10 | 20 | 30 | 40]
+  Insert: [10 | 20 | 30 | 40 | 50]  ← 5 keys (exceeds max 4)
+
+  Split:
+    Left:  [10 | 20]
+    Median: 30 → promoted to new root
+    Right: [40 | 50]
+
+  Result:
+          [30]
+         /    \  
+    [10|20]  [40|50]
+
+Step 6: Insert 25
+  Find leaf: 25 > 20, go right of [10|20] → but 25 < 30, so go to [10|20]'s right child
+  Actually: 25 < 30, so go left from root to [10|20]
+  25 > 20, insert at end of [10|20]
+  Result: [10 | 20 | 25]
+
+  Final tree:
+          [30]
+         /    \  
+    [10|20|25]  [40|50]
+```
+
+### Cascading Split Example
+
+Insert into order-3 tree (max 2 keys): 1, 2, 3, 4, 5
+
+```
+Insert 1: [1]
+Insert 2: [1|2]
+Insert 3: Split! → [2] with children [1] and [3]
+
+       [2]
+      /   \  
+    [1]   [3]
+
+Insert 4: [3|4] in right leaf
+
+       [2]
+      /   \  
+    [1]   [3|4]
+
+Insert 5: Right leaf overflows [3|4|5]
+  Split right leaf: [3] [4] [5] → median 4
+  Promote 4 to root: [2|4]
+
+       [2|4]
+      /  |  \  
+    [1] [3]  [5]
+```
+
+## Detailed Algorithm: Deletion with Merge
+
+### Case 1: Delete from Leaf (No Underflow)
+
+```
+Tree (order 5, min 2 keys per non-root node):
+       [30]
+      /    \  
+  [10|20]  [40|50]
+
+Delete 20:
+  Remove 20 from leaf: [10]
+  Keys remaining: 1 (≥ min 2? No! Underflow for non-root)
+  Wait — for order 5, min keys = ⌈5/2⌉ - 1 = 2
+  But this is a non-root leaf... let me recalculate.
+
+Actually for order 5: min keys (non-root) = ⌈5/2⌉ - 1 = 2
+  [10] has 1 key → underflow!
+
+  Rebalance:
+  - Check sibling [40|50] (has 2 keys, can spare one)
+  - Borrow: rotate left through parent
+  - Parent 30 comes down, sibling's 40 goes up
+
+  Result:
+       [40]
+      /    \  
+  [10|30]  [50]
+```
+
+### Case 2: Delete from Leaf → Merge
+
+```
+Tree:
+       [30]
+      /    \  
+  [10|20]  [40]
+
+Delete 20:
+  Remove 20: [10] → underflow (1 key, min is 2)
+  Sibling [40] also has minimum (1 key) → can't borrow
+  Merge: combine [10], parent key 30, and [40] → [10|30|40]
+
+  Result:
+  [10 | 30 | 40]  (single node, now root)
+```
+
+### Case 3: Delete from Internal Node
+
+```
+Tree:
+       [30]
+      /    \  
+  [10|20]  [40|50]
+
+Delete 30 (internal node key):
+  30 is in the root. Replace with in-order predecessor (20) or successor (40).
+
+  Using predecessor (20):
+  Step 1: Find max in left subtree = 20
+  Step 2: Replace 30 with 20 in root
+  Step 3: Delete 20 from leaf [10|20] → [10]
+
+  After replacement:
+       [20]
+      /    \  
+  [10]     [40|50]
+
+  [10] has 1 key → underflow → borrow from sibling or merge
+```
+
+## Complexity Analysis
+
+### Time Complexity
+
+```
+Operation     │ Time Complexity │ Disk I/Os    │ Notes
+──────────────┼─────────────────┼──────────────┼──────────────────────
+Search        │ O(log_m n)      │ O(h)         │ h = height
+Insert        │ O(log_m n)      │ O(h)         │ + possible splits up to root
+Delete        │ O(log_m n)      │ O(h)         │ + possible merges up to root
+Range scan    │ O(log_m n + k)  │ O(h + k/m)   │ k = result size
+```
+
+### Space Complexity
+
+```
+Total space: O(n)
+Each key stored once: n keys
+Each node has m-1 keys and m pointers
+Number of nodes: O(n / (m-1)) ≈ O(n/m)
+Space utilization: 50-100% (avg ~69% with random inserts)
+```
+
+### Height Analysis
+
+```
+For a B-Tree of order m with n keys:
+
+Minimum height: ⌈log_m(n+1)⌉
+  (when all nodes are full)
+
+Maximum height: ⌈log_{⌈m/2⌉}((n+1)/2)⌉ + 1
+  (when all nodes are minimum full)
+
+Example (m = 100, n = 1,000,000):
+  Min height: ⌈log_100(1,000,001)⌉ = ⌈3⌉ = 3
+  Max height: ⌈log_50(500,001)⌉ + 1 = ⌈3.85⌉ + 1 ≈ 5
+
+  In practice: 3-4 disk reads for any operation
+  vs Binary tree: log_2(1,000,000) ≈ 20 disk reads!
+```
+
+### Why B-Trees Are Fast for Disk
+
+```
+Disk characteristics:
+  - Sequential read: ~500 MB/s (SSD) or ~200 MB/s (HDD)
+  - Random read: ~0.1ms (SSD) or ~10ms (HDD)
+  - Page size: typically 4KB or 8KB
+
+B-Tree node fits in one page:
+  4KB page / 40 bytes per key = ~100 keys per node
+  100 keys = order 100
+  1 billion records → height ≈ 4
+  4 random reads × 0.1ms (SSD) = 0.4ms total
+
+Compare to binary tree:
+  1 billion records → height ≈ 30
+  30 random reads × 0.1ms = 3ms total (7.5x slower)
+```
+
+## B-Tree Concurrency Control
+
+### Latch Crabbing (Lock Coupling)
+
+```
+Algorithm for concurrent B-Tree access:
+  1. Acquire latch on parent node
+  2. Acquire latch on child node
+  3. If child is "safe" (won't split/merge):
+     Release parent latch
+  4. If child is "unsafe":
+     Keep parent latch (crab down)
+
+Safe for insert: node has room (keys < m-1)
+Safe for delete: node has more than minimum keys
+
+This allows concurrent operations on different subtrees
+while preventing structural conflicts.
+```
+
+### B-Link Trees (Lehman & Yao)
+
+```
+Enhancement for higher concurrency:
+  - Each node has a "high key" (maximum key in subtree)
+  - Each node has a "right link" to its sibling
+  - If a search overshoots (key > high key), follow right link
+  - Allows searches to proceed even during splits
+  - Used by PostgreSQL's B-Tree implementation
+```
+
 ## Common Mistakes
 
 1. **Confusing B-Tree with B+ Tree** — B-Trees store data in all nodes; B+ Trees store data only in leaves. Most databases use B+ Trees.
@@ -228,6 +464,8 @@ A: (1) Use a lower fillfactor (e.g., 70%) to leave room for inserts without imme
 3. **Ignoring fillfactor** — A 100% fillfactor means no room for inserts, causing immediate splits. Use 70-90% depending on workload.
 
 4. **Deleting without rebalancing** — Underflow must be handled to maintain the B-Tree properties. Ignoring it breaks the balance guarantee.
+
+5. **Not understanding amortized cost** — While individual splits/merges are O(log n), the amortized cost of insertions is O(1) splits per insert.
 
 ## Summary
 

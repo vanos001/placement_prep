@@ -257,6 +257,130 @@ graph LR
 | **Process reward models** | Reward each reasoning step, not just final answer |
 | **Length penalty** | Penalize unnecessarily long responses |
 
+## DAPO and RLVR: The 2025 Frontier
+
+### RLVR (Reinforcement Learning with Verifiable Rewards)
+
+RLVR uses rewards that can be automatically verified, removing the need for human feedback or learned reward models:
+
+```mermaid
+graph TD
+    Q[Math Problem] --> MODEL[Model generates solution]
+    MODEL --> VERIFY[Execute code / check math]
+    VERIFY -->|Correct| R_POS[+1 reward]
+    VERIFY -->|Incorrect| R_NEG[0 reward]
+    R_POS --> GRPO[GRPO Update]
+    R_NEG --> GRPO
+```
+
+**Verifiable reward domains:**
+- **Math**: Check if final answer matches ground truth
+- **Code**: Execute generated code against test cases
+- **Logic**: Verify formal proofs
+- **Structured output**: Validate JSON/XML against schema
+
+**Why RLVR matters:**
+- No human labeling needed (scales infinitely)
+- No reward model to train (saves compute)
+- No reward hacking (ground truth is objective)
+- DeepSeek R1 used RLVR to achieve breakthrough reasoning
+
+### DAPO (Dynamic Sampling Policy Optimization)
+
+DAPO (ByteDance, 2025) improves on GRPO with several techniques:
+
+| Technique | What It Does | Why It Helps |
+|---|---|---|
+| **Dynamic sampling** | Adjusts number of samples per prompt based on difficulty | More exploration for hard problems |
+| **Clip-higher** | Asymmetric PPO clipping (higher upper bound) | Prevents premature convergence |
+| **Token-level loss** | Normalizes loss per token, not per sequence | Balances short and long responses |
+| **Overlong filtering** | Penalizes excessively long responses | Prevents reward hacking via verbosity |
+
+### The Three-Stage Pipeline (2025 State of the Art)
+
+```mermaid
+graph LR
+    BASE[Base Model] --> SFT1[Stage 1: SFT]
+    SFT1 --> ALIGN[Stage 2: DPO/RLHF Alignment]
+    ALIGN --> RLVR[Stage 3: RLVR with GRPO/DAPO]
+    RLVR --> REASONING[Reasoning Model]
+```
+
+**Stage 1 — SFT**: Teach instruction following (1-3 epochs, high-quality data)
+**Stage 2 — DPO/RLHF**: Align with human preferences (helpfulness, safety)
+**Stage 3 — RLVR**: Train reasoning with verifiable rewards (math, code, logic)
+
+DeepSeek R1, OpenAI o1, and Claude 3.5 all use variations of this pipeline.
+
+## Online vs Offline RL
+
+| Aspect | Offline RL (DPO) | Online RL (PPO/GRPO) |
+|---|---|---|
+| **Data** | Pre-collected preference pairs | Generate new responses during training |
+| **Exploration** | Fixed dataset | Model explores new response space |
+| **Compute** | Lower (no generation during training) | Higher (generate + score + update) |
+| **Quality ceiling** | Limited by dataset diversity | Higher (discovers new strategies) |
+| **Stability** | Very stable | Can be unstable |
+| **Use case** | Quick alignment, limited compute | Maximum quality, frontier models |
+
+**Key insight**: Online RL has a higher quality ceiling because the model can discover response strategies not present in the original preference dataset. This is why frontier labs (OpenAI, Anthropic, DeepSeek) use online RL despite the higher cost.
+
+### Iterative DPO (Bridging the Gap)
+
+Iterative DPO generates new responses with the current model, then creates preference pairs:
+
+```mermaid
+graph TD
+    MODEL[Current Model] --> GEN[Generate responses]
+    GEN --> SCORE[Score with reward model / judge]
+    SCORE --> PAIRS[Create preference pairs]
+    PAIRS --> DPO[DPO training step]
+    DPO --> MODEL
+```
+
+This combines DPO's simplicity with online exploration.
+
+## Practical RLHF/DPO Training
+
+### DPO with TRL
+
+```python
+from trl import DPOTrainer, DPOConfig
+from transformers import AutoModelForCausalLM
+
+model = AutoModelForCausalLM.from_pretrained("sft-model")
+ref_model = AutoModelForCausalLM.from_pretrained("sft-model")
+
+config = DPOConfig(
+    output_dir="./dpo-output",
+    per_device_train_batch_size=2,
+    gradient_accumulation_steps=8,
+    learning_rate=5e-7,  # Much lower than SFT!
+    beta=0.1,  # KL penalty coefficient
+    num_train_epochs=1,  # Usually 1 epoch for DPO
+    bf16=True,
+)
+
+trainer = DPOTrainer(
+    model=model,
+    ref_model=ref_model,
+    args=config,
+    train_dataset=preference_dataset,  # Must have 'chosen' and 'rejected' columns
+    tokenizer=tokenizer,
+)
+trainer.train()
+```
+
+### Key Hyperparameters
+
+| Parameter | Typical Value | Notes |
+|---|---|---|
+| Learning rate | 1e-7 to 5e-7 | Much lower than SFT (1e-5) |
+| Beta (β) | 0.1-0.5 | KL penalty, higher = closer to reference |
+| Epochs | 1-2 | DPO overfits quickly |
+| Batch size | 32-128 | Larger than SFT for stable gradients |
+| Max length | 2048-4096 | Depends on preference data |
+
 ## Interview Questions
 
 ### Q1: Explain the full RLHF pipeline.
@@ -301,7 +425,19 @@ RLHF/DPO teaches nuance: not just "how to respond" but "which response is prefer
 
 ## Summary
 
-RLHF aligns LLMs with human preferences through reward modeling and PPO. DPO simplifies this to a direct preference loss without a separate reward model. GRPO removes the critic model. Constitutional AI replaces human feedback with AI feedback. All methods share the goal of making LLMs helpful, harmless, and honest while avoiding reward hacking.
+RLHF aligns LLMs with human preferences through reward modeling and PPO. DPO simplifies this to a direct preference loss without a separate reward model. GRPO removes the critic model using group-relative advantages. The 2025 frontier adds RLVR (verifiable rewards) with GRPO/DAPO for reasoning models. Online RL (PPO/GRPO) has a higher quality ceiling than offline RL (DPO) because the model explores new response strategies. Constitutional AI replaces human feedback with AI feedback. The modern three-stage pipeline is: SFT → DPO/RLHF alignment → RLVR for reasoning. All methods share the goal of making LLMs helpful, harmless, and honest while avoiding reward hacking.
+
+## References
+
+1. Ouyang et al., "Training language models to follow instructions with human feedback" (InstructGPT/RLHF), NeurIPS 2022
+2. Rafailov et al., "Direct Preference Optimization: Your Language Model is Secretly a Reward Model" (DPO), NeurIPS 2023
+3. Schulman et al., "Proximal Policy Optimization Algorithms" (PPO), 2017
+4. Bai et al., "Constitutional AI: Harmlessness from AI Feedback" (Anthropic), 2022
+5. Shao et al., "DeepSeekMath: Pushing the Limits of Mathematical Reasoning in Open Language Models" (GRPO), 2024
+6. DeepSeek-AI, "DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning", 2025
+7. Yu et al., "DAPO: An Open-Source LLM Reinforcement Learning System", ByteDance, 2025
+8. Ziegler et al., "Fine-Tuning Language Models from Human Preferences", 2019
+9. Christiano et al., "Deep Reinforcement Learning from Human Preferences", NeurIPS 2017
 
 ## Cross-References
 

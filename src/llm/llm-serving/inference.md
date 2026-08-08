@@ -177,6 +177,161 @@ graph TD
 | **PagedAttention** | Memory efficiency | 2-4× more concurrent requests |
 | **Prefix caching** | Repeated prompts | 5-10× for shared prefixes |
 
+## Detailed Memory Analysis
+
+### Prefill Memory Breakdown
+
+During prefill, the model processes all input tokens in parallel:
+
+```
+Memory_prefill = Model_weights + KV_cache_partial + Activations + Attention_matrix
+```
+
+| Component | Size | Notes |
+|---|---|---|
+| Model weights | P × bytes | Static, loaded once |
+| KV cache (partial) | Growing with tokens | Allocated per-layer as tokens processed |
+| Activations | batch × seq_len × d × layers | Peak during attention computation |
+| Attention matrix | batch × heads × seq_len² | O(n²) — the bottleneck for long prompts |
+
+**FlashAttention eliminates the attention matrix** from HBM, reducing peak memory from O(n²) to O(n).
+
+### Decode Memory Breakdown
+
+During decode, only one token is processed at a time:
+
+```
+Memory_decode = Model_weights + Full_KV_cache + Tiny_activations
+```
+
+| Component | Size | Notes |
+|---|---|---|
+| Model weights | P × bytes | Same as prefill |
+| KV cache (full) | 2 × L × H_kv × d_head × total_seq_len × batch × bytes | Dominant component |
+| Activations | batch × 1 × d × layers | Negligible |
+
+**Key insight**: During decode, KV cache typically exceeds model weights in memory consumption for long sequences or large batches.
+
+### Practical GPU Memory Planning
+
+For LLaMA-3-8B (8B params, 32 layers, 8 KV heads, 128 head dim, GQA):
+
+```
+Weights (FP16):    8B × 2 bytes = 16 GB
+Weights (INT8):    8B × 1 byte  = 8 GB
+Weights (INT4):    8B × 0.5 bytes = 4 GB
+
+KV cache per token (FP16): 2 × 32 × 8 × 128 × 2 = 131,072 bytes = 128 KB
+KV cache per token (INT8): 64 KB
+
+4K context, batch=1:   128 KB × 4096 = 512 MB
+32K context, batch=1:  128 KB × 32768 = 4 GB
+128K context, batch=1: 128 KB × 131072 = 16 GB
+
+4K context, batch=32:  512 MB × 32 = 16 GB
+```
+
+**A100 80GB budget (FP16 weights):**
+```
+80 GB total - 16 GB weights = 64 GB for KV cache
+64 GB / 128 KB per token = 512K tokens total across all batches
+Batch of 32 × 4K context = 128K tokens → fits easily
+Batch of 32 × 32K context = 1M tokens → doesn't fit!
+```
+
+This is why PagedAttention, KV cache quantization, and GQA are essential for production serving.
+
+## Speculative Decoding
+
+Speculative decoding accelerates autoregressive generation by using a smaller "draft" model to generate candidate tokens, then verifying them in parallel with the target model:
+
+```mermaid
+graph LR
+    DRAFT[Draft Model - Small] --> CANDIDATES[Generate K candidate tokens]
+    CANDIDATES --> VERIFY[Target Model - Large]
+    VERIFY --> ACCEPT[Accept correct prefix]
+    ACCEPT --> NEXT[Continue from first wrong token]
+```
+
+**How it works:**
+1. Draft model (e.g., 1B) generates K tokens autoregressively (fast)
+2. Target model (e.g., 70B) verifies all K tokens in one forward pass (parallel)
+3. Accept the longest correct prefix, reject from first mismatch
+4. Repeat
+
+**Key insight**: Verification is as cheap as generating one token (same matrix multiplications), but we check K tokens at once.
+
+| Metric | Without Speculative | With Speculative (K=5) |
+|---|---|---|
+| Tokens per step | 1 | ~3-4 (depends on acceptance rate) |
+| Latency per token | 1× | ~0.3-0.4× |
+| Compute cost | 1× | ~1.2× (draft model overhead) |
+
+**Acceptance rate** depends on how well the draft model approximates the target. For tasks with predictable output (code, structured data), acceptance is high (~80-90%). For creative text, it's lower (~50-70%).
+
+**Variants:**
+- **Medusa**: Adds multiple prediction heads to the target model (no separate draft model)
+- **EAGLE**: Uses feature-level drafting for higher acceptance rates
+- **Self-speculative**: Uses early exit from the target model as the draft
+
+## Chunked Prefill
+
+For very long prompts, chunked prefill splits the input into chunks processed across multiple decode steps:
+
+```mermaid
+graph LR
+    P[Long Prompt] --> C1[Chunk 1: tokens 1-1024]
+    C1 --> D1[Decode step 1]
+    D1 --> C2[Chunk 2: tokens 1025-2048]
+    C2 --> D2[Decode step 2]
+    D2 --> DECODE[Normal decode continues]
+```
+
+**Benefits:**
+- Prevents long prefill from blocking other requests
+- Interleaves prefill with decode for other sequences
+- Reduces TTFT variance in batched serving
+
+Used by Sarathi-Serve (2024) and integrated into vLLM.
+
+## Production Serving Architecture
+
+```mermaid
+graph TD
+    CLIENT[Client Request] --> LB[Load Balancer]
+    LB --> API[API Server]
+    API --> SCHED[Request Scheduler]
+    SCHED --> ENGINE[Inference Engine]
+    ENGINE --> GPU1[GPU 0]
+    ENGINE --> GPU2[GPU 1]
+    ENGINE --> GPU3[GPU N]
+    GPU1 --> CACHE[Response Cache]
+    GPU2 --> CACHE
+    GPU3 --> CACHE
+    CACHE --> STREAM[Streaming Response]
+    STREAM --> CLIENT
+```
+
+### Continuous Batching (Iteration-Level Scheduling)
+
+Traditional batching waits for all sequences to finish before starting new ones. Continuous batching adds/removes sequences at every decode step:
+
+```mermaid
+sequenceDiagram
+    participant S as Scheduler
+    participant B as Batch
+
+    Note over B: Step 1: [Seq1, Seq2, Seq3]
+    S->>B: Seq3 finished (EOS)
+    S->>B: Add Seq4
+    Note over B: Step 2: [Seq1, Seq2, Seq4]
+    S->>B: Seq1 finished
+    S->>B: Add Seq5, Seq6
+    Note over B: Step 3: [Seq2, Seq4, Seq5, Seq6]
+```
+
+**Impact**: 5-20× throughput improvement over static batching because GPUs are never idle waiting for the longest sequence.
+
 ## Interview Questions
 
 ### Q1: Why is LLM inference memory-bandwidth bound?
@@ -213,7 +368,17 @@ For chat applications, both matter. TTFT should be <500ms, TPOT should be <50ms 
 
 ## Summary
 
-LLM inference has two phases: compute-bound prefill and memory-bound decode. The key metrics are TTFT, TPOT, throughput, and cost. Optimization strategies target different phases: FlashAttention for prefill, continuous batching and quantization for decode. Understanding the memory-bandwidth bottleneck is essential for efficient serving.
+LLM inference has two phases: compute-bound prefill and memory-bound decode. The key metrics are TTFT, TPOT, throughput, and cost. Optimization strategies target different phases: FlashAttention for prefill, continuous batching and quantization for decode. Speculative decoding accelerates decode by 2-3× using a draft model. PagedAttention and chunked prefill enable efficient long-context serving. Understanding the memory-bandwidth bottleneck and KV cache memory math is essential for capacity planning and efficient serving.
+
+## References
+
+1. Kwon et al., "Efficient Memory Management for Large Language Model Serving with PagedAttention" (vLLM), SOSP 2023
+2. Leviathan et al., "Fast Inference from Transformers via Speculative Decoding", ICML 2023
+3. Chen et al., "Accelerating Large Language Model Decoding with Speculative Sampling", 2023
+4. Cai et al., "Medusa: Simple LLM Inference Acceleration Framework with Multiple Decoding Heads", 2024
+5. Agrawal et al., "Sarathi-Serve: Efficient Chunked-Prefill-based LLM Inference", 2024
+6. Dao, "FlashAttention-2: Faster Attention with Better Parallelism and Work Partitioning", 2023
+7. Yu et al., "EAGLE: Speculative Sampling Requires Rethinking Feature Uncertainty", 2024
 
 ## Cross-References
 
@@ -222,4 +387,5 @@ LLM inference has two phases: compute-bound prefill and memory-bound decode. The
 - [Speculative Decoding →](speculative-decoding.md) Faster decode
 - [Batching →](batching.md) Throughput optimization
 - [vLLM →](vllm.md) Production inference engine
+- [Architecture →](architecture.md) Model architecture details
 - [Cloud GPU](../cloud/virtualization/README.md)

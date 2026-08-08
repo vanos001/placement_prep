@@ -249,6 +249,141 @@ graph TD
 
 **Frameworks:** RAGAS, TruLens, DeepEval
 
+## GraphRAG
+
+GraphRAG (Microsoft, 2024) augments vector retrieval with knowledge graph traversal:
+
+```mermaid
+graph TD
+    DOC[Documents] --> NER[Entity Extraction]
+    NER --> KG[Knowledge Graph]
+    KG --> COMM[Community Detection]
+    COMM --> SUMMARY[Community Summaries]
+    
+    Q[User Query] --> LOCAL[Local Search: Entity → Graph → Context]
+    Q --> GLOBAL[Global Search: Community Summaries → Answer]
+    LOCAL --> LLM[LLM]
+    GLOBAL --> LLM
+```
+
+**Why GraphRAG?**
+- Vector RAG retrieves chunks by similarity, missing multi-hop relationships
+- "Which suppliers are connected to Company X?" requires graph traversal
+- GraphRAG builds a knowledge graph from documents, extracts entities and relationships
+- Supports both local (entity-focused) and global (theme-focused) queries
+
+**When to use GraphRAG:**
+- Documents have rich entity relationships (legal, financial, medical)
+- Multi-hop questions are common
+- You need explainable retrieval paths
+- Pure vector search misses cross-document connections
+
+## CRAG (Corrective RAG)
+
+CRAG (Yan et al., 2024) adds a self-correction step to the RAG pipeline:
+
+```mermaid
+graph TD
+    Q[Query] --> RETRIEVE[Retrieve Documents]
+    RETRIEVE --> EVAL{Evaluator}
+    EVAL -->|Correct| USE[Use documents directly]
+    EVAL -->|Incorrect| WEB[Web search fallback]
+    EVAL -->|Ambiguous| REFINED[Refine + decompose query]
+    REFINED --> RETRIEVE
+    USE --> GENERATE[Generate answer]
+    WEB --> GENERATE
+```
+
+**Key innovation:** A lightweight evaluator scores retrieved documents. If documents are irrelevant, the system falls back to web search or reformulates the query. This prevents the LLM from generating answers based on poor retrieval.
+
+## Context Window Management
+
+With many retrieved chunks, managing the context window becomes critical:
+
+### The "Lost in the Middle" Problem
+
+Liu et al. (2023) showed that LLMs pay less attention to information in the middle of long contexts:
+
+```mermaid
+graph LR
+    subgraph "Attention Distribution"
+        HIGH1[High attention - start]
+        LOW[Low attention - middle]
+        HIGH2[High attention - end]
+    end
+```
+
+**Mitigations:**
+- Place the most important chunks at the beginning and end
+- Limit the number of retrieved chunks (5-10 is typical)
+- Use reranking to ensure the best chunks are in top positions
+- Summarize chunks before inserting into context
+
+### Context Window Budget
+
+| Context Window | Usable for Retrieved Context | RAG Chunks (512 tokens each) |
+|---|---|---|
+| 4K | ~2K tokens | ~4 chunks |
+| 8K | ~5K tokens | ~10 chunks |
+| 32K | ~24K tokens | ~48 chunks |
+| 128K | ~100K tokens | ~195 chunks |
+| 1M+ | ~800K tokens | ~1500 chunks |
+
+**More chunks ≠ better answers.** Beyond 10-15 chunks, retrieval noise degrades quality. Use reranking and filtering to keep only high-quality context.
+
+## Production RAG Patterns
+
+### Naive vs Production RAG
+
+| Aspect | Naive RAG | Production RAG |
+|---|---|---|
+| Chunking | Fixed-size, no overlap | Semantic/recursive, with overlap |
+| Retrieval | Dense only | Hybrid (dense + BM25) |
+| Reranking | None | Cross-encoder reranker |
+| Query handling | Direct query | Query rewriting, HyDE, decomposition |
+| Evaluation | Manual spot-checks | RAGAS metrics, automated testing |
+| Observability | None | Logging, tracing, feedback loops |
+| Caching | None | Embedding cache, response cache |
+
+### RAG Evaluation Framework
+
+```mermaid
+graph TD
+    EVAL[RAG Evaluation]
+    EVAL --> RET[Retrieval Quality]
+    EVAL --> GEN[Generation Quality]
+    EVAL --> END[End-to-End]
+
+    RET --> PREC[Context Precision]
+    RET --> REC[Context Recall]
+    RET --> MRR[MRR@K]
+
+    GEN --> FAITH[Faithfulness]
+    GEN --> REL[Answer Relevance]
+    GEN --> CORR[Correctness]
+
+    END --> SAT[User Satisfaction]
+    END --> TASK[Task Completion]
+```
+
+**RAGAS Metrics:**
+- **Context Precision**: Of retrieved chunks, how many are relevant?
+- **Context Recall**: Of all relevant information, how much was retrieved?
+- **Faithfulness**: Is every claim in the answer supported by retrieved context?
+- **Answer Relevance**: Does the answer address the actual question?
+
+**Evaluation code example:**
+```python
+from ragas import evaluate
+from ragas.metrics import faithfulness, answer_relevancy, context_precision
+
+result = evaluate(
+    dataset=eval_dataset,
+    metrics=[faithfulness, answer_relevancy, context_precision],
+)
+print(result)
+```
+
 ## Interview Questions
 
 ### Q1: Explain the RAG pipeline and its components.
@@ -295,7 +430,18 @@ Tools: RAGAS framework, TruLens, manual evaluation on a golden test set.
 
 ## Summary
 
-RAG grounds LLM outputs in retrieved external knowledge, reducing hallucination and enabling access to current/private data. The pipeline involves chunking, embedding, retrieval (dense/sparse/hybrid), reranking, and generation. Advanced patterns like HyDE, query transformation, and agentic RAG improve quality. Proper chunking and retrieval evaluation are critical for production RAG systems.
+RAG grounds LLM outputs in retrieved external knowledge, reducing hallucination and enabling access to current/private data. The pipeline involves chunking, embedding, retrieval (dense/sparse/hybrid), reranking, and generation. Advanced patterns like HyDE, query transformation, and agentic RAG improve quality. GraphRAG adds knowledge graph traversal for multi-hop reasoning. CRAG adds self-correction for retrieval quality. Production RAG requires hybrid search, reranking, evaluation (RAGAS), and observability. The "lost in the middle" problem means chunk ordering matters — place important chunks at start and end. More chunks isn't always better; 5-10 high-quality chunks outperform 50 noisy ones.
+
+## References
+
+1. Lewis et al., "Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks", NeurIPS 2020
+2. Gao et al., "Retrieval-Augmented Generation for Large Language Models: A Survey", 2024
+3. Edge et al., "From Local to Global: A Graph RAG Approach to Query-Focused Summarization" (Microsoft), 2024
+4. Yan et al., "Corrective Retrieval Augmented Generation" (CRAG), 2024
+5. Liu et al., "Lost in the Middle: How Language Models Use Long Contexts", 2023
+6. Es et al., "RAGAS: Automated Evaluation of Retrieval Augmented Generation", 2023
+7. Robertson & Zaragoza, "The Probabilistic Relevance Framework: BM25 and Beyond", 2009
+8. Luan et al., "Sparse, Dense, and Attentional Representations for Text Retrieval", 2021
 
 ## Cross-References
 

@@ -244,6 +244,133 @@ For multi-turn data, mask all user turns and system prompts:
 [Assistant] Python is...  [COMPUTED]
 ```
 
+## SFT Evaluation
+
+### Automatic Metrics
+
+| Metric | What It Measures | How To Compute |
+|---|---|---|
+| **Loss** | Token prediction quality | Validation set cross-entropy |
+| **Perplexity** | How "surprised" the model is | exp(loss) |
+| **BLEU/ROUGE** | N-gram overlap with reference | Compare generated vs reference text |
+| **Pass@k** | Code correctness | Execute generated code, check tests |
+| **Exact Match** | Factual accuracy | Compare answer to ground truth |
+
+### LLM-as-Judge
+
+Use a stronger model to evaluate SFT quality:
+
+```python
+judge_prompt = """
+Rate the following response on a scale of 1-5 for:
+- Helpfulness: Does it answer the question?
+- Accuracy: Is the information correct?
+- Clarity: Is it well-written?
+- Safety: Does it avoid harmful content?
+
+Question: {question}
+Response: {response}
+
+Return JSON: {"helpfulness": N, "accuracy": N, "clarity": N, "safety": N}
+"""
+```
+
+**Frameworks:** MT-Bench, AlpacaEval, Arena-Hard
+
+### Benchmark Suites
+
+| Benchmark | Tests | Scale |
+|---|---|---|
+| **MT-Bench** | Multi-turn conversation quality | 80 questions, GPT-4 judge |
+| **AlpacaEval** | Single-turn instruction following | 805 questions, win rate vs GPT-4 |
+| **Arena-Hard** | Challenging real-world queries | 500 questions |
+| **OpenLLM Leaderboard** | MMLU, ARC, HellaSwag, etc. | Standard NLP benchmarks |
+| **IFEval** | Instruction following precision | Verifiable constraints |
+
+## Training Frameworks
+
+### Popular SFT Frameworks (2024-2025)
+
+| Framework | Focus | Key Feature |
+|---|---|---|
+| **TRL** (Hugging Face) | Full training pipeline | SFT + RLHF + DPO in one library |
+| **Axolotl** | Easy fine-tuning | YAML config, multi-GPU, LoRA/QLoRA |
+| **LLaMA-Factory** | Comprehensive | 100+ models, web UI, multi-method |
+| **Unsloth** | Speed | 2× faster training, 70% less memory |
+| **OpenRLHF** | RLHF/DPO/GRPO | Distributed training with Ray |
+| **torchtune** (Meta) | Official LLaMA | Meta's fine-tuning library |
+
+### Example: SFT with TRL
+
+```python
+from trl import SFTTrainer, SFTConfig
+from transformers import AutoModelForCausalLM, AutoTokenizer
+from peft import LoraConfig
+
+model = AutoModelForCausalLM.from_pretrained("meta-llama/Llama-3-8B")
+tokenizer = AutoTokenizer.from_pretrained("meta-llama/Llama-3-8B")
+
+peft_config = LoraConfig(
+    r=16, lora_alpha=32, lora_dropout=0.05,
+    target_modules=["q_proj", "v_proj", "k_proj", "o_proj",
+                     "gate_proj", "up_proj", "down_proj"],
+)
+
+training_args = SFTConfig(
+    output_dir="./sft-output",
+    num_train_epochs=3,
+    per_device_train_batch_size=4,
+    gradient_accumulation_steps=8,
+    learning_rate=2e-5,
+    lr_scheduler_type="cosine",
+    warmup_ratio=0.1,
+    bf16=True,
+    max_seq_length=4096,
+)
+
+trainer = SFTTrainer(
+    model=model,\    args=training_args,
+    train_dataset=dataset,
+    tokenizer=tokenizer,
+    peft_config=peft_config,
+)
+trainer.train()
+```
+
+### Example: SFT with Axolotl (YAML Config)
+
+```yaml
+base_model: meta-llama/Llama-3-8B
+adapter: lora
+lora_r: 16
+lora_alpha: 32
+lora_target_linear: true
+
+datasets:
+  - path: HuggingFaceH4/ultrachat_200k
+    type: chat
+
+micro_batch_size: 4
+gradient_accumulation_steps: 8
+num_epochs: 3
+learning_rate: 2e-5
+lr_scheduler: cosine
+warmup_steps: 100
+bf16: true
+flash_attention: true
+```
+
+## Common SFT Pitfalls and Solutions
+
+| Pitfall | Symptom | Solution |
+|---|---|---|
+| Wrong chat template | Garbage output, ignores instructions | Verify template matches model's training |
+| Loss on all tokens | Model generates questions too | Mask user tokens with -100 |
+| Too many epochs | Overfits, repeats training data | Use 1-3 epochs, monitor val loss |
+| LR too high | Catastrophic forgetting | Use 1e-5 to 5e-5 |
+| Data too uniform | Poor generalization | Diversify tasks and response styles |
+| No eval set | Can't detect overfitting | Hold out 10% for validation |
+
 ## Interview Questions
 
 ### Q1: What is the difference between pre-training, SFT, and RLHF?
@@ -298,7 +425,18 @@ Research (LIMA paper) showed 1,000 carefully curated examples can match 50K+ noi
 
 ## Summary
 
-SFT bridges pre-training and deployment by teaching models to follow instructions. Full fine-tuning updates all parameters; PEFT methods (LoRA, QLoRA) update only a small fraction with minimal quality loss. Data quality matters more than quantity — 1K curated examples can outperform 100K noisy ones. Loss masking, proper chat templates, and appropriate learning rates are critical details.
+SFT bridges pre-training and deployment by teaching models to follow instructions. Full fine-tuning updates all parameters; PEFT methods (LoRA, QLoRA) update only a small fraction with minimal quality loss. Data quality matters more than quantity — 1K curated examples can outperform 100K noisy ones. Loss masking, proper chat templates, and appropriate learning rates are critical details. Evaluation uses both automatic metrics (loss, perplexity, benchmarks) and LLM-as-judge (MT-Bench, AlpacaEval). Popular frameworks include TRL, Axolotl, LLaMA-Factory, and Unsloth. DoRA is an emerging improvement over LoRA that decomposes weight updates into direction and magnitude.
+
+## References
+
+1. Hu et al., "LoRA: Low-Rank Adaptation of Large Language Models", ICLR 2022
+2. Dettmers et al., "QLoRA: Efficient Finetuning of Quantized LLMs", NeurIPS 2023
+3. Liu et al., "Few-Shot Parameter-Efficient Fine-Tuning is Better and Cheaper than In-Context Learning", NeurIPS 2022
+4. Zhou et al., "LIMA: Less Is More for Alignment", NeurIPS 2023
+5. Taori et al., "Stanford Alpaca: An Instruction-following LLaMA Model", 2023
+6. Liu et al., "DoRA: Weight-Decomposed Low-Rank Adaptation", ICML 2024
+7. Zheng et al., "Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena", NeurIPS 2023
+8. Tunstall et al., "Zephyr: Direct Distillation of LM Alignment", 2023
 
 ## Cross-References
 

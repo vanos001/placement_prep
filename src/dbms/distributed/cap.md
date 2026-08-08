@@ -230,6 +230,150 @@ Example: If a network partition isolates a MongoDB secondary, reads from that se
 
 This lets applications choose the right trade-off per operation: strong consistency for critical writes, eventual consistency for reads where staleness is acceptable.
 
+## Real-World Deep Dive: Database Classifications
+
+### Cassandra (AP — Available + Partition Tolerant)
+
+```
+Architecture:
+  - Peer-to-peer (no master)
+  - Consistent hashing for data distribution
+  - Tunable consistency per query
+
+During partition:
+  - Both sides continue accepting reads/writes
+  - Conflict resolution: last-write-wins (LWW)
+  - May lose writes if timestamps conflict
+
+Normal operation:
+  - Low latency (no coordination for reads/writes at ONE level)
+  - Consistency achieved via QUORUM (majority)
+
+Example:
+  3 replicas, RF=3
+  CL.ONE  → Any 1 replica responds (fast, may be stale)
+  CL.QUORUM → 2 of 3 replicas respond (balanced)
+  CL.ALL → All 3 respond (slow, strong consistency)
+
+Classification: PA/EL (Available during partition, low latency normally)
+```
+
+### MongoDB (CP — Consistent + Partition Tolerant)
+
+```
+Architecture:
+  - Replica set: 1 primary + N secondaries
+  - Primary handles all writes
+  - Majority write concern ensures consistency
+
+During partition:
+  - Partition with majority elects new primary
+  - Minority partition: reads fail, no writes accepted
+  - Consistency preserved (no split-brain)
+
+Example:
+  5-node replica set, partition {A,B} vs {C,D,E}
+  {C,D,E} has majority → elects new primary
+  {A,B}: old primary steps down, becomes read-only
+  When healed: A,B sync from new primary
+
+Classification: PC/EC (Consistent always)
+```
+
+### Google Spanner (Externally Consistent)
+
+```
+Architecture:
+  - Globally distributed, synchronous replication
+  - Uses Paxos for replication (not Raft)
+  - TrueTime API: GPS + atomic clocks for bounded clock uncertainty
+
+Key innovation: TrueTime
+  - Provides time interval [earliest, latest]
+  - Actual time is guaranteed to be in this interval
+  - Uncertainty typically < 7ms
+
+External consistency (stronger than linearizability):
+  If T1 completes before T2 starts (real time),
+  then T1's timestamp < T2's timestamp
+
+How it works:
+  - Each transaction waits out clock uncertainty before committing
+  - "Commit wait" = TT.after(s) — wait until timestamp s is definitely in the past
+  - This ensures timestamps reflect real-time ordering
+
+Classification: PC/EC with external consistency
+```
+
+### CockroachDB (CP — Consistent + Partition Tolerant)
+
+```
+Architecture:
+  - Inspired by Spanner (but uses NTP instead of TrueTime)
+  - Each range is a Raft group
+  - Serializable isolation by default
+
+Clock uncertainty handling:
+  - Uses hybrid logical clocks (HLC)
+  - If read encounters value with uncertain timestamp → retries
+  - "uncertainty interval" based on max clock offset
+
+Classification: PC/EC
+```
+
+### DynamoDB (Tunable)
+
+```
+Architecture:
+  - Managed AWS service
+  - Consistent hashing with virtual nodes
+  - Sloppy quorum + hinted handoff
+
+Consistency options:
+  - Eventually consistent reads (default, faster)
+  - Strongly consistent reads (slower, guaranteed latest)
+
+Classification: PA/EL (default), can be PC with strong reads
+```
+
+### Redis Cluster (CP)
+
+```
+Architecture:
+  - Hash slots (16384 slots)
+  - Master-replica per slot
+  - Asynchronous replication
+
+During partition:
+  - Minority masters become unavailable (after timeout)
+  - No writes to minority (consistency preserved)
+  - Reads may fail
+
+Classification: PC/EC
+```
+
+## PACELC Decision Framework
+
+```mermaid
+flowchart TD
+    A{Network Partition?} -->|Yes| B{Choose:}
+    A -->|No| C{Choose:}
+    B --> D["A: Keep serving<br/>(AP systems)"]
+    B --> E["C: Refuse requests<br/>(CP systems)"]
+    C --> F["L: Optimize latency<br/>(async replication)"]
+    C --> G["C: Optimize consistency<br/>(sync replication)"]
+    
+    D --> D1[Cassandra, DynamoDB]
+    E --> E1[MongoDB, Spanner]
+    F --> F1[Cassandra, DynamoDB]
+    G --> G1[Spanner, CockroachDB]
+    
+    style D fill:#c8e6c9
+    style E fill:#ffcdd2
+    style F fill:#e1f5fe
+    style G fill:#fff3e0
+```
+
 ## Common Mistakes
 
 - ❌ **"Pick 2 of 3"** — You can't opt out of P; the real choice is C vs. A during partitions
@@ -237,6 +381,8 @@ This lets applications choose the right trade-off per operation: strong consiste
 - ❌ **Ignoring latency** — Even without partitions, strong consistency has latency costs
 - ❌ **Treating CAP as binary** — It's a spectrum with tunable consistency levels
 - ❌ **Confusing consistency models** — CAP "C" means linearizability, not ACID consistency
+- ❌ **Ignoring PACELC** — CAP only describes partition behavior; PACELC describes normal-operation trade-offs
+- ❌ **Thinking "eventual" means "never"** — Eventual consistency guarantees convergence; it just doesn't say when
 
 ## Summary
 

@@ -220,6 +220,104 @@ graph TD
 | GQA (8 groups) | 0.125 MB |
 | MQA | 0.016 MB |
 
+## Multi-head Latent Attention (MLA)
+
+DeepSeek V2/V3 introduced MLA, which compresses KV cache into a low-dimensional latent space:
+
+```mermaid
+graph TD
+    subgraph "Standard MHA"
+        MH_X[Input] --> MH_K[Compute K - stored]
+        MH_X --> MH_V[Compute V - stored]
+        MH_K --> MH_ATT[Attention]
+        MH_V --> MH_ATT
+    end
+
+    subgraph "MLA (DeepSeek)"
+        MLA_X[Input] --> MLA_C[Compress to latent c_t - stored]
+        MLA_C --> MLA_K[Up-project to K at attention time]
+        MLA_C --> MLA_V[Up-project to V at attention time]
+        MLA_K --> MLA_ATT[Attention]
+        MLA_V --> MLA_ATT
+    end
+```
+
+**How MLA works:**
+1. Instead of storing full K and V, compress them into a low-rank latent vector c_t ∈ R^{d_c}
+2. At attention time, up-project c_t back to K and V
+3. Store only c_t in KV cache (much smaller)
+
+**Compression ratios:**
+| Method | KV per token (7B-scale) | vs MHA |
+|---|---|---|
+| MHA | 512 KB | 1× |
+| GQA-8 | 128 KB | 4× |
+| MQA | 16 KB | 32× |
+| MLA (d_c=512) | ~32 KB | 16× |
+
+**MLA vs GQA trade-offs:**
+- MLA achieves better compression than GQA with similar or better quality
+- GQA is simpler to implement and widely supported
+- MLA requires custom kernels for the up-projection at attention time
+- DeepSeek V3 uses MLA with d_c = 512, achieving ~16× compression vs MHA
+
+## KV Cache Eviction Policies
+
+When KV cache exceeds memory limits, which tokens to evict?
+
+### Eviction Strategies
+
+| Strategy | Keeps | Evicts | Use Case |
+|---|---|---|---|
+| **FIFO** | Newest tokens | Oldest tokens | Simple, baseline |
+| **Sliding window** | Last W tokens | Everything else | Mistral (W=4096) |
+| **H2O** | High-attention tokens | Low-attention tokens | Dynamic, attention-aware |
+| **StreamingLLM** | First few + recent window | Middle tokens | Infinite-length generation |
+| **SnapKV** | Clustered important tokens | Redundant tokens | Compression-based |
+
+### StreamingLLM
+
+StreamingLLM (Xiao et al., 2023) discovered that the first few tokens act as "attention sinks" — they receive disproportionately high attention regardless of content:
+
+```mermaid
+graph LR
+    subgraph "StreamingLLM Window"
+        SINK["Attention Sink Tokens (first 4)"]
+        RECENT["Recent Window (last W tokens)"]
+    end
+```
+
+By keeping only the attention sink tokens and the recent window, StreamingLLM enables infinite-length generation with fixed memory.
+
+**Why attention sinks work:** The model uses initial tokens as a "default" attention target when no other token is strongly relevant. Removing them causes attention distribution to collapse.
+
+## Advanced KV Cache Techniques
+
+### KV Cache Sharing
+
+In beam search or parallel sampling, multiple sequences share the same prefix:
+
+```mermaid
+graph TD
+    PREFIX[Shared Prefix KV Cache] --> B1[Beam 1: own KV from fork]
+    PREFIX --> B2[Beam 2: own KV from fork]
+    PREFIX --> B3[Beam 3: own KV from fork]
+```
+
+**Copy-on-write**: KV pages are reference-counted. Only forked pages are copied when modified. This saves memory proportional to shared prefix length.
+
+### KV Cache Offloading
+
+For very long contexts, offload KV cache to CPU memory or NVMe SSD:
+
+| Tier | Latency | Capacity | Use Case |
+|---|---|---|---|
+| GPU HBM | ~1 ns | 80-192 GB | Active KV cache |
+| CPU DRAM | ~100 ns | 256 GB-2 TB | Overflow KV cache |
+| NVMe SSD | ~10 μs | 1-8 TB | Rarely accessed cache |
+
+Offloading adds latency but enables context lengths that exceed GPU memory.
+
 ## Interview Questions
 
 ### Q1: What is the KV cache and why is it necessary?
@@ -257,7 +355,16 @@ This is why GQA (fewer KV heads) and PagedAttention are critical.
 
 ## Summary
 
-KV cache is essential for efficient autoregressive generation, but it's the largest memory consumer during inference. Key optimizations: GQA (fewer KV heads), PagedAttention (block allocation), KV quantization (lower precision), sliding window (limited context), and prefix caching (shared prefixes). Understanding KV cache math is critical for capacity planning and model serving.
+KV cache is essential for efficient autoregressive generation, but it's the largest memory consumer during inference. Key optimizations: GQA (fewer KV heads), MLA (latent compression, 16× savings), PagedAttention (block allocation), KV quantization (lower precision), sliding window (limited context), prefix caching (shared prefixes), and eviction policies (H2O, StreamingLLM). The KV cache formula (2 × L × H_kv × d_head × seq_len × batch × bytes) is critical for capacity planning. For production, combine GQA/MLA with PagedAttention and FP8 KV cache quantization.
+
+## References
+
+1. Kwon et al., "Efficient Memory Management for Large Language Model Serving with PagedAttention" (vLLM), SOSP 2023
+2. Xiao et al., "Efficient Streaming Language Models with Attention Sinks" (StreamingLLM), ICLR 2024
+3. Zhang et al., "H2O: Heavy-Hitter Oracle for Efficient Generative Inference of Large Language Models", NeurIPS 2023
+4. DeepSeek-AI, "DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model", 2024
+5. Li et al., "SnapKV: LLM Knows What You are Looking for Before Generation", 2024
+6. Ainslie et al., "GQA: Training Generalized Multi-Query Transformer Models from Multi-Head Checkpoints", EMNLP 2023
 
 ## Cross-References
 

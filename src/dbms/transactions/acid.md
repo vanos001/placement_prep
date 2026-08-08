@@ -218,6 +218,197 @@ WHERE EXISTS (SELECT 1 FROM ProcessedMessages WHERE message_id = 'msg-123'
 COMMIT;
 ```
 
+## Deep Dive: Isolation Issues in Practice
+
+### Dirty Read — Full Walkthrough
+
+A dirty read occurs when a transaction reads data that has been modified by another concurrent transaction that has not yet committed. If the writing transaction rolls back, the reading transaction has based decisions on data that never officially existed.
+
+```
+T1 (Transfer $100 from A to B):    T2 (Reporting query):
+  BEGIN;                              BEGIN;
+  UPDATE accounts SET                  SELECT SUM(balance)
+    balance = balance - 100            FROM accounts;
+  WHERE id = 'A';                      -- Reads: A=400, B=300
+  -- A is now 400 (uncommitted)        -- Total = 700 ← DIRTY!
+  UPDATE accounts SET                  COMMIT;
+    balance = balance + 100
+  WHERE id = 'B';
+  -- ERROR! Constraint violation
+  ROLLBACK;
+  -- A back to 500, B stays 300
+  -- Total should be 800
+
+  Result: T2 reported total=700, but actual total=800
+  T2's decision was based on data that was rolled back.
+```
+
+**Prevention:** READ COMMITTED or higher isolation level.
+
+### Non-Repeatable Read — Full Walkthrough
+
+A non-repeatable read occurs when a transaction reads the same row twice and gets different values because another transaction modified and committed changes between the reads.
+
+```
+T1 (Balance check):                 T2 (Fee deduction):
+  BEGIN;                              BEGIN;
+  SELECT balance FROM accounts        UPDATE accounts
+  WHERE id = 'A';                     SET balance = balance - 50
+  -- Returns: 1000                    WHERE id = 'A';
+                                      COMMIT;
+  -- T2 committed here
+  SELECT balance FROM accounts
+  WHERE id = 'A';
+  -- Returns: 950 ← Different!
+  -- T1 can't trust its own reads
+  COMMIT;
+
+  Problem: T1 saw two different values for the same row.
+  If T1 was computing a loan eligibility based on balance,
+  the result depends on WHICH read you use.
+```
+
+**Prevention:** REPEATABLE READ or higher isolation level.
+
+### Phantom Read — Full Walkthrough
+
+A phantom read occurs when a transaction re-executes a query and finds new rows that were inserted (or deleted) by another committed transaction.
+
+```
+T1 (Sum report):                    T2 (New order):
+  BEGIN;                              BEGIN;
+  SELECT COUNT(*), SUM(amount)        INSERT INTO orders
+  FROM orders                         (customer_id, amount)
+  WHERE status = 'pending';           VALUES ('C1', 500);
+  -- Returns: 5 rows, $2000 total    COMMIT;
+
+  -- T2 committed here
+  SELECT COUNT(*), SUM(amount)
+  FROM orders
+  WHERE status = 'pending';
+  -- Returns: 6 rows, $2500 total ← Phantom!
+  COMMIT;
+
+  Problem: The aggregate result changed mid-transaction.
+  If T1 was allocating budget based on pending orders,
+  it may have allocated insufficient funds.
+```
+
+**Prevention:** SERIALIZABLE isolation level (or SELECT ... FOR UPDATE in some systems).
+
+### Lost Update — Full Walkthrough
+
+A lost update occurs when two transactions read the same data, make modifications based on that read, and one transaction's write overwrites the other's.
+
+```
+T1 (Increment counter):             T2 (Increment counter):
+  BEGIN;                              BEGIN;
+  SELECT counter FROM metrics         SELECT counter FROM metrics
+  WHERE name = 'page_views';          WHERE name = 'page_views';
+  -- Returns: 100                     -- Returns: 100
+  counter = 100 + 1                   counter = 100 + 1
+  UPDATE metrics SET counter = 101    UPDATE metrics SET counter = 101
+  WHERE name = 'page_views';          WHERE name = 'page_views';
+  COMMIT;                             COMMIT;
+
+  Final value: 101 (should be 102)
+  One increment was LOST.
+```
+
+**Prevention:** REPEATABLE READ (with locking), SELECT ... FOR UPDATE, or optimistic concurrency control.
+
+## Deep Dive: Write-Ahead Logging (WAL)
+
+WAL is the fundamental mechanism that makes both atomicity and durability possible.
+
+```mermaid
+sequenceDiagram
+    participant T as Transaction
+    participant WAL as WAL Buffer
+    participant DISK as Stable Storage
+    participant DB as Database Buffer
+
+    T->>WAL: Write BEGIN record
+    T->>WAL: Write UPDATE record (before/after images)
+    T->>WAL: Write COMMIT record
+    WAL->>DISK: Flush WAL (fsync)
+    Note over DISK: COMMIT is now durable
+    T->>DB: Apply changes to database buffer
+    Note over DB: Database pages updated lazily
+```
+
+**WAL Rules (Write-Ahead Logging Protocol):**
+1. **Rule 1:** The log record for a change must be written to stable storage BEFORE the corresponding data page is flushed.
+2. **Rule 2:** The commit log record must be written to stable storage BEFORE the COMMIT returns to the caller.
+3. **Rule 3:** Before a dirty page is flushed, all log records that affect that page must be flushed.
+
+### ARIES Recovery (Algorithm for Recovery and Isolation Exploiting Semantics)
+
+Modern databases use ARIES for crash recovery:
+
+```
+Recovery has three phases:
+
+1. Analysis Phase:
+   - Scan WAL from last checkpoint
+   - Determine which transactions were active at crash
+   - Identify dirty pages in the buffer pool
+
+2. Redo Phase:
+   - Replay ALL log records (committed AND uncommitted)
+   - Restore database to exact state at crash
+   - Idempotent: replaying twice has same effect
+
+3. Undo Phase:
+   - Roll back all transactions that were active at crash
+   - Process undo records in reverse order
+   - Write compensation log records (CLRs)
+```
+
+## Deep Dive: Distributed ACID
+
+### Two-Phase Commit (2PC)
+
+```mermaid
+sequenceDiagram
+    participant C as Coordinator
+    participant N1 as Node 1
+    participant N2 as Node 2
+
+    Note over C,N2: Phase 1: Prepare
+    C->>N1: PREPARE
+    C->>N2: PREPARE
+    N1-->>C: YES (vote commit)
+    N2-->>C: YES (vote commit)
+
+    Note over C,N2: Phase 2: Commit
+    C->>N1: COMMIT
+    C->>N2: COMMIT
+    N1-->>C: ACK
+    N2-->>C: ACK
+```
+
+**2PC Problem — Blocking:**
+```
+If coordinator crashes after PREPARE:
+  - Nodes voted YES and are in "prepared" state
+  - They CANNOT commit (no decision received)
+  - They CANNOT abort (might violate atomicity)
+  - They must BLOCK until coordinator recovers
+  - This can last for hours!
+```
+
+**Solution: 3PC (Three-Phase Commit)** adds a pre-commit phase, but it's rarely used due to network partition issues. Modern systems use Paxos/Raft instead.
+
+### Distributed ACID in Practice
+
+| System | Atomicity | Consistency | Isolation | Durability |
+|--------|-----------|-------------|-----------|------------|
+| **CockroachDB** | Raft groups | Serializable | MVCC + SSI | Raft replication |
+| **TiDB** | Per-region Raft | Snapshot Isolation | MVCC | Raft replication |
+| **Spanner** | 2PC + Paxos | External consistency | MVCC + TrueTime | Paxos replication |
+| **YugabyteDB** | Raft groups | Serializable | MVCC | Raft replication |
+
 ## Common Mistakes
 
 - Assuming consistency is fully handled by the DBMS (application must enforce business rules)
@@ -225,6 +416,8 @@ COMMIT;
 - Confusing atomicity with durability
 - Not using transactions for multi-statement operations
 - Committing too frequently (transaction overhead) or too infrequently (holding locks too long)
+- Assuming 2PC provides the same guarantees as consensus (2PC is blocking, consensus is not)
+- Forgetting that "ACID" means different things in different databases (e.g., MongoDB's single-document vs multi-document ACID)
 
 ## Summary
 

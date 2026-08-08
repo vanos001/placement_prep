@@ -331,6 +331,141 @@ A: (1) Identify the anomaly — likely write skew or lost update. (2) For lost u
 **Q11: Explain the trade-offs between SSI (PostgreSQL) and 2PL-based Serializable in terms of performance, abort rates, and anomaly detection.**
 A: SSI: No read locks, readers never block. Higher abort rates due to false positives (dependency tracking may flag safe executions). Performance degrades gracefully under read-heavy workloads. Aborted transactions can be retried. 2PL: Fewer false positives (locks provide exact conflict detection). Readers block writers (shared locks). Deadlocks possible, requiring detection/restart. Under high concurrency, lock contention degrades throughput. SSI is better for read-heavy workloads; 2PL may be better for write-heavy workloads with high contention.
 
+## Practical Implementation Deep Dive
+
+### PostgreSQL MVCC Internals
+
+PostgreSQL uses Multi-Version Concurrency Control to implement isolation levels without read locks:
+
+```
+Each row has hidden system columns:
+  xmin  → Transaction ID that inserted this row version
+  xmax  → Transaction ID that deleted/updated this row version
+  ctid  → Physical location of this row version
+
+Visibility rules determine which row versions a transaction can see:
+
+READ COMMITTED:
+  - Snapshot taken at START OF EACH STATEMENT
+  - Sees rows where xmin is committed AND xmax is not committed (or > snapshot)
+  - Result: Each statement sees latest committed data
+
+REPEATABLE READ:
+  - Snapshot taken at START OF TRANSACTION
+  - Sees rows where xmin is committed (at snapshot time) AND xmax is not committed (or > snapshot)
+  - Result: All statements see the same snapshot
+  - NOTE: This is actually Snapshot Isolation, not true REPEATABLE READ
+
+SERIALIZABLE (SSI):
+  - Same as REPEATABLE READ + dependency tracking
+  - Tracks rw-dependencies between transactions
+  - Aborts if dangerous structure (rw-rw cycle) detected
+```
+
+### PostgreSQL Isolation Level Internals Table
+
+```
+Level              │ Snapshot Timing      │ Conflict Detection    │ Lock Behavior
+───────────────────┼──────────────────────┼───────────────────────┼──────────────────
+READ UNCOMMITTED   │ = READ COMMITTED     │ None                  │ No read locks
+READ COMMITTED     │ Per statement        │ None                  │ No read locks
+REPEATABLE READ    │ Per transaction      │ Write-write only      │ No read locks
+SERIALIZABLE       │ Per transaction      │ rw-rw cycle detection │ No read locks
+```
+
+**Key insight:** PostgreSQL NEVER takes read locks (shared locks) for SELECT. This is a major advantage of MVCC over 2PL-based systems.
+
+### MySQL InnoDB MVCC Internals
+
+```
+Each row has hidden columns:
+  DB_TRX_ID   → Transaction ID of last modifier
+  DB_ROLL_PTR → Pointer to undo log (previous version)
+
+Read View (snapshot) contains:
+  m_ids          → List of active transaction IDs
+  min_trx_id     → Minimum active transaction ID
+  max_trx_id     → Next transaction ID to assign
+  creator_trx_id → Transaction that created this read view
+
+Visibility: A row version is visible if:
+  1. DB_TRX_ID < min_trx_id (committed before snapshot)
+  2. DB_TRX_ID NOT IN m_ids (not in active list)
+  3. DB_TRX_ID < max_trx_id (not from the future)
+```
+
+### MySQL InnoDB Gap Locks Deep Dive
+
+Gap locks are unique to MySQL's REPEATABLE READ implementation and prevent phantom reads:
+
+```
+Types of locks in InnoDB:
+  Record lock  → Locks an index record
+  Gap lock     → Locks the gap BEFORE an index record
+  Next-key lock → Record lock + gap lock (default for REPEATABLE READ)
+
+Example:
+  Table: employees, index on age
+  Values: [10, 20, 30, 40]
+
+  T1: SELECT * FROM employees WHERE age BETWEEN 20 AND 30 FOR SHARE;
+  → Acquires next-key locks on (10,20], (20,30], (30,40]
+  → Gap lock on (10, 20): prevents INSERT age=15
+  → Gap lock on (20, 30): prevents INSERT age=25
+  → Gap lock on (30, 40): prevents INSERT age=35
+
+  T2: INSERT INTO employees (age) VALUES (25);
+  → BLOCKED by gap lock on (20, 30)
+```
+
+### When to Choose Each Level
+
+```
+READ UNCOMMITTED:
+  ✗ Almost never appropriate
+  ✓ Monitoring dashboards where approximate data is OK
+  ✓ Debugging: checking what uncommitted data looks like
+
+READ COMMITTED:
+  ✓ Default for most OLTP applications (PostgreSQL, Oracle)
+  ✓ Good balance of consistency and concurrency
+  ✓ Works well with connection pooling
+  ✗ Not enough if you need consistent reads within a transaction
+
+REPEATABLE READ:
+  ✓ Default for MySQL InnoDB
+  ✓ Reports that need consistent snapshots
+  ✓ Read-modify-write patterns (with SELECT ... FOR UPDATE)
+  ✗ May have phantom reads (implementation-dependent)
+
+SERIALIZABLE:
+  ✓ Financial transactions requiring strict consistency
+  ✓ When correctness is more important than performance
+  ✓ When you can't tolerate any anomalies
+  ✗ Significant performance overhead under contention
+```
+
+### Real-World: Choosing Isolation Levels
+
+```sql
+-- E-commerce: Most operations at READ COMMITTED
+BEGIN TRANSACTION ISOLATION LEVEL READ COMMITTED;
+-- Process order, update inventory, etc.
+COMMIT;
+
+-- Financial reconciliation: SERIALIZABLE for correctness
+BEGIN TRANSACTION ISOLATION LEVEL SERIALIZABLE;
+-- Transfer funds between accounts
+-- Guarantee no lost updates, no write skew
+COMMIT;
+
+-- Analytics report: REPEATABLE READ for consistent snapshot
+BEGIN TRANSACTION ISOLATION LEVEL REPEATABLE READ;
+-- Run multiple queries that must be consistent with each other
+-- e.g., total revenue + breakdown by category should match
+COMMIT;
+```
+
 ## Common Mistakes
 
 1. **Assuming REPEATABLE READ prevents all anomalies** — Write skew is possible at REPEATABLE READ and even SNAPSHOT ISOLATION.
@@ -342,6 +477,10 @@ A: SSI: No read locks, readers never block. Higher abort rates due to false posi
 4. **Ignoring lock escalation** — In 2PL-based systems, too many row locks can escalate to table locks, causing massive contention.
 
 5. **Confusing isolation level with consistency** — Isolation levels prevent read anomalies but don't guarantee application-level invariants. Use constraints, triggers, or application logic for that.
+
+6. **Not using SELECT ... FOR UPDATE** — In READ COMMITTED, a read-then-write pattern is not safe without explicit locking. Use `SELECT ... FOR UPDATE` to lock rows before modifying them.
+
+7. **Forgetting about connection pooling** — SET TRANSACTION ISOLATION LEVEL applies to the connection/session. With connection pooling (PgBouncer, HikariCP), isolation level settings may leak between requests if not reset.
 
 ## Summary
 

@@ -153,6 +153,260 @@ When you visit https://example.com:
 6. **Q: What is certificate pinning?**
    A: Hardcoding the expected certificate (or its public key) in the client application. This prevents MITM even if a CA is compromised, because the client only trusts the pinned certificate. Used by mobile apps and high-security applications.
 
+## Deep Dive: TLS 1.2 Handshake
+
+```mermaid
+sequenceDiagram
+    participant C as Client
+    participant S as Server
+    
+    Note over C,S: TCP connection established
+    
+    C->>S: 1. ClientHello
+    Note right of C: - TLS version: 1.2
+    Note right of C: - Random: 32 bytes
+    Note right of C: - Cipher suites: list of supported
+    Note right of C: - Extensions: SNI, ALPN, etc.
+    
+    S->>C: 2. ServerHello
+    Note left of S: - Selected cipher suite
+    Note left of S: - Random: 32 bytes
+    Note left of S: - Session ID
+    
+    S->>C: 3. Certificate
+    Note left of S: - Server's X.509 certificate chain
+    Note left of S: - Leaf cert + intermediate CAs
+    
+    S->>C: 4. ServerKeyExchange (if needed)
+    Note left of S: - DH/ECDH parameters
+    Note left of S: - Signed with server's private key
+    
+    S->>C: 5. ServerHelloDone
+    
+    C->>C: 6. Verify certificate chain
+    Note right of C: - Check CA signature
+    Note right of C: - Check hostname (SNI)
+    Note right of C: - Check expiry
+    Note right of C: - Check revocation (OCSP/CRL)
+    
+    C->>S: 7. ClientKeyExchange
+    Note right of C: - Pre-master secret
+    Note right of C: - Encrypted with server's public key (RSA)
+    Note right of C: - Or: DH/ECDH public value
+    
+    C->>S: 8. ChangeCipherSpec
+    C->>S: 9. Finished (encrypted)
+    
+    S->>C: 10. ChangeCipherSpec
+    S->>C: 11. Finished (encrypted)
+    
+    Note over C,S: Application data encrypted with session keys
+```
+
+## Deep Dive: TLS 1.3 Handshake
+
+```mermaid
+sequenceDiagram
+    participant C as Client
+    participant S as Server
+    
+    Note over C,S: TCP connection established
+    
+    C->>S: 1. ClientHello
+    Note right of C: - TLS version: 1.3
+    Note right of C: - Random: 32 bytes
+    Note right of C: - Cipher suites: AEAD only
+    Note right of C: - Key shares: ECDHE public key
+    Note right of C: - Supported groups: x25519, P-256
+    Note right of C: - Signature algorithms
+    Note right of C: - PSK identity (if resuming)
+    
+    S->>C: 2. ServerHello
+    Note left of S: - Selected cipher suite
+    Note left of S: - Key share: ECDHE public key
+    Note left of S: - Random: 32 bytes
+    
+    Note over C,S: Both derive handshake keys from ECDHE shared secret
+    
+    S->>C: 3. EncryptedExtensions
+    Note left of S: - ALPN, SNI, etc. (encrypted!)
+    
+    S->>C: 4. Certificate
+    Note left of S: - Server's certificate chain (encrypted!)
+    
+    S->>C: 5. CertificateVerify
+    Note left of S: - Signature over handshake transcript
+    Note left of S: - Proves possession of private key
+    
+    S->>C: 6. Finished
+    
+    Note over C,S: Both derive application keys
+    
+    C->>S: 7. Finished
+    
+    Note over C,S: Application data encrypted (1-RTT total)
+```
+
+### Key Differences: TLS 1.2 vs 1.3
+
+```
+Feature              │ TLS 1.2            │ TLS 1.3
+─────────────────────┼────────────────────┼──────────────────────
+Handshake RTTs       │ 2 (full)           │ 1 (full) + 0-RTT resumption
+Key exchange         │ RSA, DHE, ECDHE    │ ECDHE only (mandatory)
+Forward secrecy      │ Optional           │ Mandatory
+Cipher suites        │ 37+ combinations   │ 5 AEAD-only
+Signature algorithms │ Many (incl. SHA-1) │ SHA-256/384 only
+Certificate          │ Plaintext          │ Encrypted
+Extensions           │ Plaintext          │ Encrypted
+RSA key exchange     │ Supported          │ REMOVED
+CBC mode             │ Supported          │ REMOVED
+RC4                  │ Supported          │ REMOVED
+Compression          │ Supported          │ REMOVED
+Renegotiation        │ Supported          │ REMOVED (use KeyUpdate)
+0-RTT                │ Not available      │ Available (with replay risk)
+```
+
+## Deep Dive: Certificate Chain Verification
+
+```mermaid
+graph TD
+    R["Root CA<br/>(in trust store)"] -->|signs| I["Intermediate CA<br/>(sent by server)"]
+    I -->|signs| L["Leaf Certificate<br/>(server's cert)"]
+    
+    L --> V{"Client Verifies:<br/>1. Signature chain valid<br/>2. Not expired<br/>3. Not revoked<br/>4. Hostname matches<br/>5. Key usage correct"}
+    V -->|All pass| OK["✅ Connection established"]
+    V -->|Any fail| ERR["❌ Connection refused"]
+    
+    style R fill:#c8e6c9
+    style I fill:#e3f2fd
+    style L fill:#fff3e0
+```
+
+### Certificate Types
+
+```
+DV (Domain Validation):
+  - Only verifies domain ownership
+  - Let's Encrypt issues DV certs (free, automated)
+  - Process: HTTP challenge or DNS challenge
+
+OV (Organization Validation):
+  - Verifies domain + organization identity
+  - CA checks business registration
+  - Organization name visible in cert
+
+EV (Extended Validation):
+  - Most rigorous verification
+  - Legal identity + physical address + operational existence
+  - Green bar in old browsers (now deprecated UI)
+  - Used by banks, e-commerce
+```
+
+### Certificate Pinning
+
+```
+Standard validation: Trust any cert signed by trusted CA
+Pinning: Trust only a specific cert or public key
+
+Types:
+  - HPKP (HTTP Public Key Pinning): Deprecated, removed from browsers
+  - Static pinning: Hardcode expected cert in app
+  - Dynamic pinning: First connection stores cert, subsequent connections verify
+
+Mobile apps commonly use pinning:
+  // Android (Network Security Config)
+  <pin-set>
+    <pin digest="SHA-256">base64hash=</pin>
+  </pin-set>
+
+Why pinning matters:
+  - Protects against compromised CAs
+  - Prevents MITM with forged certificates
+  - But: must handle cert rotation carefully
+```
+
+## Deep Dive: Cipher Suites
+
+### TLS 1.3 Cipher Suites (AEAD Only)
+
+```
+TLS_AES_128_GCM_SHA256        → AES-128-GCM + HKDF-SHA256
+TLS_AES_256_GCM_SHA384        → AES-256-GCM + HKDF-SHA384
+TLS_CHACHA20_POLY1305_SHA256  → ChaCha20-Poly1305 + HKDF-SHA256
+TLS_AES_128_CCM_SHA256        → AES-128-CCM + HKDF-SHA256
+TLS_AES_128_CCM_8_SHA256      → AES-128-CCM-8 + HKDF-SHA256
+
+All are AEAD (Authenticated Encryption with Associated Data)
+No separate MAC algorithm needed
+```
+
+### TLS 1.2 Cipher Suite Format
+
+```
+TLS_<KeyExchange>_WITH_<Cipher>_<MAC>[_<PRF>]
+
+Components:
+  KeyExchange: RSA, DHE_RSA, ECDHE_RSA, ECDHE_ECDSA
+  Cipher: AES_128_GCM, AES_256_CBC, CHACHA20_POLY1305
+  MAC: SHA256, SHA384 (implicit in AEAD)
+  PRF: SHA256, SHA384 (optional)
+
+Example:
+  TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
+  ↑         ↑              ↑         ↑
+  ECDHE    Server uses    AES-256   HKDF
+  key       ECDSA cert    GCM       SHA-384
+  exchange  for auth      (AEAD)
+```
+
+### Recommended Cipher Suite Order
+
+```
+Modern (2024):
+  1. TLS_AES_256_GCM_SHA384
+  2. TLS_CHACHA20_POLY1305_SHA256
+  3. TLS_AES_128_GCM_SHA256
+
+  TLS 1.3: Handled automatically (only 5 suites)
+  TLS 1.2: Configure ECDHE + AEAD suites
+    TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
+    TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+    TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256
+    TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256
+
+Avoid:
+  ✗ Anything with RSA key exchange (no forward secrecy)
+  ✗ Anything with CBC mode (vulnerable to padding oracles)
+  ✗ Anything with RC4, DES, 3DES
+  ✗ Anything with MD5 or SHA-1
+  ✗ Anything with NULL or EXPORT
+```
+
+## Deep Dive: Perfect Forward Secrecy (PFS)
+
+```mermaid
+sequenceDiagram
+    participant C as Client
+    participant S as Server
+    
+    Note over C,S: Without PFS (RSA key exchange)
+    C->>S: Pre-master secret encrypted with server's RSA public key
+    Note over S: Decrypt with RSA private key → shared secret
+    Note over C,S: ALL session keys derived from this secret
+    Note over S: If RSA private key is stolen LATER...
+    Note over S: Attacker can decrypt ALL recorded past sessions!
+    
+    Note over C,S: With PFS (ECDHE key exchange)
+    C->>S: Client ECDHE public key
+    S->>C: Server ECDHE public key
+    Note over C,S: Both compute shared secret from ephemeral keys
+    Note over C,S: Ephemeral keys are DISCARDED after session
+    Note over S: If RSA private key is stolen LATER...
+    Note over S: Attacker CANNOT decrypt past sessions
+    Note over S: (ephemeral keys are gone)
+```
+
 ## Common Mistakes
 
 - Using "SSL" when you mean "TLS" (SSL is deprecated)
@@ -160,6 +414,9 @@ When you visit https://example.com:
 - Confusing the certificate (identity) with the encryption (session keys)
 - Forgetting that TLS encrypts application data but the TLS handshake itself reveals the server certificate in plaintext
 - Not knowing that 0-RTT in TLS 1.3 is vulnerable to replay attacks
+- Not configuring proper cipher suite order (weak suites enabled)
+- Ignoring certificate expiry and revocation checking
+- Assuming HTTPS means "secure" — it only encrypts the transport, not the endpoints
 
 ## Summary
 
