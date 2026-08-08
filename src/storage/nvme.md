@@ -116,7 +116,7 @@ This enables **disaggregated storage** — compute and storage scale independent
 ```mermaid
 graph TD
     FF[Form Factors] --> M2[M.2 - Desktop/Laptop]
-    FF --> U2[U.2 / SFF-8639 - Enterprise 2.5"]
+    FF --> U2["U.2 / SFF-8639 - Enterprise 2.5 inch"]
     FF --> E1[E1.S - Enterprise Short]
     FF --> E3[E3.S - Enterprise Dense]
     FF --> AIC[Add-in Card (AIC) - PCIe Slot]
