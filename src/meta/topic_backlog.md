@@ -2,68 +2,60 @@
 
 > Auto-maintained by research agents. Topics discovered during expansion that need coverage.
 > Priority: HIGH (interview-critical) | MEDIUM (important) | LOW (nice-to-have)
+> Last updated: 2026-08-08
 
-## HIGH Priority
+## Completed (since 2026-08-05)
 
-### Programming Languages — Missing Entirely
-- **C** — Memory management, ABI, compilation, undefined behavior, POSIX, performance
-- **C++** — Templates, STL, memory model, RAII, smart pointers, move semantics, concurrency
-- **Rust** — Ownership, borrow checker, lifetimes, traits, async, Tokio, unsafe
-- **Java** — JVM, GC, memory model, threads, Spring, performance
-- **Python** — CPython, GIL, asyncio, typing, packaging, performance
-- **Go** — Scheduler, goroutines, channels, memory model, runtime
-- **JavaScript** — Runtime, event loop, V8, async, promises, Node.js
-- **OCaml** — Functional programming, pattern matching, type system, modules
+The following previously-backlogged topics now have dedicated coverage:
 
-### Frameworks — Missing Entirely
-- **Spring Boot** — Architecture, auto-configuration, dependency injection, testing
-- **FastAPI** — Async, Pydantic, dependency injection, OpenAPI
-- **Django** — ORM, middleware, signals, testing
-- **Express** — Middleware, routing, error handling
-- **Tokio** — Runtime, tasks, async/await, channels
-- **PyTorch** — Autograd, modules, DataLoader, distributed training
-- **TensorFlow** — Graph execution, Keras, TF Serving
+- **Languages**: C, C++, Rust, Java (incl. GC), Python, Go, JavaScript/Node/V8,
+  OCaml (incl. ecosystem/tooling), **TypeScript** (new)
+- **Frameworks**: Spring Boot, FastAPI, Django (new), Express, React (new),
+  Next.js (new), Tokio, PyTorch
+- **Backend**: REST, gRPC, GraphQL, JWT/OAuth/sessions, Docker, Kubernetes,
+  CI/CD (GitHub Actions, GitOps), Redis, Kafka, RabbitMQ, NATS, service mesh,
+  event sourcing, CQRS, idempotency, webhooks, connection pools, testing
+- **ML/LLM**: Transformers, attention, GPT/BERT, fine-tuning, RLHF/DPO,
+  inference optimization (KV cache, quantization, speculative decoding),
+  RAG, vector databases, LLM security (OWASP Top 10), distributed training
+  (DDP/FSDP/ZeRO/TP/PP), diffusion, MoE
+- **OS**: eBPF, io_uring, Linux kernel internals, namespaces, cgroups v2,
+  kernel modules
+- **Networks**: QUIC, HTTP/3, TLS deep dive, eBPF networking
+- **DBMS**: query optimization, storage engines, distributed SQL
+  (CockroachDB/TiDB/Spanner), OLTP vs OLAP & data warehousing (new)
+- **Cloud**: autoscaling (new), disaster recovery & multi-region (new),
+  IAM & secrets management (new)
+- **OOP**: coupling, cohesion & design principles (new)
+- **Interview**: system-design real-world examples (Netflix, Twitter, Uber,
+  WhatsApp, YouTube, Instagram, Dropbox, Google Search, distributed lock)
 
-### Backend Engineering — Missing Entirely
-- **REST API Design** — Richardson maturity model, HATEOAS, versioning
-- **gRPC** — Protobuf, streaming, interceptors
-- **GraphQL** — Schema, resolvers, N+1 problem, subscriptions
-- **Docker** — Images, containers, networking, volumes, multi-stage builds
-- **Kubernetes** — Pods, services, deployments, ingress, operators
-- **CI/CD** — GitHub Actions, Jenkins, ArgoCD, GitOps
-- **Redis** — Data structures, pub/sub, Lua scripting, clustering
-- **Kafka** — Topics, partitions, consumer groups, exactly-once
+## REMAINING — HIGH Priority
 
-### Machine Learning Expansion
-- **Transformers** — Attention mechanism, positional encoding, layer normalization
-- **LLMs** — GPT architecture, BERT, fine-tuning, RLHF, inference optimization
-- **Diffusion Models** — DDPM, score matching, guidance
-- **CUDA Programming** — Thread hierarchy, memory model, kernels, optimization
-- **Distributed Training** — Data parallelism, model parallelism, pipeline parallelism, FSDP
+- **CUDA Programming** — thread hierarchy, memory model, kernels, optimization
+  (gpu.md covers basics; a dedicated CUDA deep-dive would strengthen it)
+- **Streaming system design interview** — end-to-end design of a streaming
+  pipeline (Kafka + Flink + sinks) with requirements/estimation
+- **Kubernetes operator pattern** — CRDs, controllers, reconciliation loop
 
-## MEDIUM Priority
+## REMAINING — MEDIUM Priority
 
-### Operating Systems Expansion
-- **Linux Kernel Modules** — Loading, unloading, parameters
-- **eBPF** — Programs, maps, hooks, tracing
-- **io_uring** — Submission queue, completion queue, async I/O
-- **Namespaces** — PID, net, mount, user, cgroup
-- **Cgroups v2** — CPU, memory, I/O controllers
+### Operating Systems
+- **Linux Kernel Modules** — loading, unloading, parameters (covered briefly;
+  expand into a page)
 
-### DBMS Expansion
-- **PostgreSQL Internals** — MVCC, VACUUM, WAL, planner/optimizer
-- **Query Optimization** — Cost-based optimization, join ordering, statistics
-- **Storage Engines** — B-tree variants, LSM-tree, hash indexes
-- **Distributed SQL** — CockroachDB, TiDB, Spanner
+### Networks
+- **HTTP/3 QPACK** — header compression specifics
+- **Service Mesh internals** — Istio/Envoy xDS protocol, sidecar dataplane
 
-### Networks Expansion
-- **QUIC** — Connection migration, multiplexing, 0-RTT
-- **HTTP/3** — QPACK, server push deprecation
-- **eBPF Networking** — XDP, TC, socket filters
-- **Service Mesh** — Istio, Envoy, sidecar pattern
+### Languages / Frameworks
+- **Go web frameworks** — Gin/Echo/Fiber comparison
+- **Vue / Angular** — alternative frontend frameworks
+- **Rust async ecosystem** — tokio-uring, axum, sqlx in depth
 
 ## LOW Priority
 
-- **Quantum Computing** — Qubits, gates, algorithms
-- **Blockchain** — Consensus, smart contracts
-- **Edge Computing** — CDN compute, edge functions
+- **Quantum Computing** — qubits, gates, algorithms
+- **Blockchain** — consensus, smart contracts
+- **Edge Computing** — CDN compute, edge functions (covered in cdn/edge.md;
+  could expand)

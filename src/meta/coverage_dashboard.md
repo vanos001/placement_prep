@@ -11,25 +11,27 @@
 | DBMS | 92 | 180+ | 280+ | 70% |
 | Computer Networks | 93 | 170+ | 250+ | 70% |
 | Computer Architecture | 81 | 150+ | 200+ | 65% |
-| Machine Learning | 128 | 250+ | 300+ | 60% |
+| Machine Learning | 129 | 260+ | 300+ | 62% |
 | Distributed Systems | 36 | 80+ | 80+ | 50% |
-| Interview Prep | 92 | 500+ | 100+ | 70% |
-| Programming Languages | 49 | 250+ | 50+ | 75% |
-| Frameworks | 6 | 60+ | 15+ | 35% |
-| Backend Engineering | 29 | 210+ | 70+ | 62% |
+| Interview Prep | 93 | 510+ | 105+ | 72% |
+| Programming Languages | 51 | 270+ | 55+ | 80% |
+| Frameworks | 8 | 80+ | 20+ | 45% |
+| Backend Engineering | 30 | 220+ | 75+ | 65% |
 | Concurrency | 14 | 50+ | 30+ | 40% |
 | Storage | 10 | 30+ | 20+ | 35% |
 
 ## Overall Metrics
 
-- **Total markdown files**: 848
-- **Total Mermaid diagrams**: 2,475
+- **Total markdown files**: 859
+- **Total Mermaid diagrams**: 2,492
 - **Total size**: 8.0 MB
 - **Build status**: ✅ Clean (zero errors)
 
 ## New Sections Added
 
-### Programming Languages (49 files)
+### Programming Languages (51 files)
+- **TypeScript**: 1 file (type system, generics, structural typing, TS 7)
+- **OCaml**: 3 files (type system, pattern matching, ecosystem/tooling)
 - **C**: 8 files (memory, pointers, UB, compilation, POSIX, performance)
 - **C++**: 8 files (templates, STL, memory model, move semantics, concurrency, modern C++)
 - **Rust**: 9 files (ownership, borrow checker, lifetimes, traits, error handling, async, unsafe)
@@ -39,8 +41,8 @@
 - **JavaScript**: 3 files (event loop, V8, Node.js)
 - **OCaml**: 2 files (type system, pattern matching)
 
-### Frameworks (5 files)
-- Spring Boot, FastAPI, Express.js, Tokio, PyTorch
+### Frameworks (8 files)
+- Spring Boot, FastAPI, **Django**, Express.js, **React**, **Next.js**, Tokio, PyTorch
 
 ### Backend Engineering (27 files)
 - **API**: REST, gRPC, GraphQL, API Gateway
@@ -67,19 +69,15 @@
 ## Priority Gaps Remaining
 
 ### HIGH Priority
-1. **ML GPU Computing** — CUDA, optimization, frameworks (empty)
-2. **ML Distributed Training** — DDP, FSDP, model parallelism (empty)
-3. **ML LLM remaining** — inference, quantization, RAG, prompt engineering
-4. **Frameworks** — Only 5 files; need Django, Flask, Gin, Actix, Axum, NestJS
+1. **CUDA deep dive** — gpu.md covers basics; dedicated CUDA programming page (thread hierarchy, memory model, kernels)
+2. **Streaming system design interview** — end-to-end streaming pipeline design walkthrough
+3. **Kubernetes operator pattern** — CRDs, controllers, reconciliation loop
 
 ### MEDIUM Priority
-5. **OS expansion** — Linux kernel internals, eBPF, io_uring, namespaces, cgroups v2
-6. **DBMS expansion** — PostgreSQL internals, storage engines, distributed SQL
-7. **Networks expansion** — QUIC, HTTP/3, eBPF networking
-8. **Concurrency** — Lock-free programming, memory models, actor model
-9. **Storage** — LSM-tree, distributed file systems, object storage
+4. **Go web frameworks** — Gin/Echo/Fiber comparison
+5. **Vue / Angular** — alternative frontend frameworks
+6. **Linux kernel modules** — dedicated page (covered briefly)
+7. **Service mesh internals** — Istio/Envoy xDS protocol
 
 ### LOW Priority
-10. **More interview company guides** — Amazon, Apple, Microsoft, Netflix
-11. **Cheatsheets** — Need more topic-specific cheatsheets
-12. **Revision notes** — Quick revision for each major topic
+8. **Quantum computing, blockchain, edge computing expansion** — see topic_backlog.md
