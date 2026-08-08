@@ -859,6 +859,7 @@
 - [Spring Boot](./frameworks/spring-boot/README.md)
 - [FastAPI](./frameworks/fastapi/README.md)
 - [Express.js](./frameworks/express/README.md)
+- [React](./frameworks/react/README.md)
 - [Tokio](./frameworks/tokio/README.md)
 - [PyTorch](./frameworks/pytorch/README.md)
 

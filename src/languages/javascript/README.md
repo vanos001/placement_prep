@@ -205,5 +205,5 @@ type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
 
 - [Node.js](./nodejs.md) — Server-side JavaScript
 - [V8 Engine](./v8.md) — JavaScript runtime internals
-- [React]() — Frontend framework
+- [React](../frameworks/react/README.md) — Frontend framework
 - [Express](../../frameworks/express/) — Node.js web framework
