@@ -134,6 +134,7 @@
 # Database Management Systems
 
 - [DBMS Overview](./dbms/overview.md)
+- [OLTP vs OLAP & Data Warehousing](./dbms/analytics/README.md)
 - [Relational Model](./dbms/relational-model/README.md)
   - [Keys](./dbms/relational-model/keys.md)
   - [ER Diagrams](./dbms/relational-model/er-diagrams.md)
