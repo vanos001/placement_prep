@@ -807,6 +807,7 @@
     - [UML Class Diagrams](./interview/system-design/lld/uml-class-diagrams.md)
     - [OOP Concepts](./interview/system-design/lld/oop-concepts.md)
     - [Abstraction & Interfaces](./interview/system-design/lld/abstraction-interfaces.md)
+    - [Coupling, Cohesion & Design Principles](./interview/system-design/lld/coupling-cohesion-principles.md)
     - [Error Handling Design](./interview/system-design/lld/error-handling.md)
     - [Concurrency Design](./interview/system-design/lld/concurrency-design.md)
     - [Parking Lot](./interview/system-design/lld/parking-lot.md)
