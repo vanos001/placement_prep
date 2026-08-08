@@ -394,12 +394,12 @@ sequenceDiagram
 
 ```mermaid
 graph TB
-    USERS[/users<br/>Collection] --> USER1[/users/123<br/>Resource]
-    USERS --> USER2[/users/456<br/>Resource]
-    USER1 --> ORDERS[/users/123/orders<br/>Sub-collection]
-    ORDERS --> ORDER1[/users/123/orders/789<br/>Resource]
-    ORDER1 --> ITEMS[/users/123/orders/789/items<br/>Sub-collection]
-    PRODUCTS[/products<br/>Collection] --> PRODUCT1[/products/101<br/>Resource]
+    USERS["/users<br/>Collection"] --> USER1["/users/123<br/>Resource"]
+    USERS --> USER2["/users/456<br/>Resource"]
+    USER1 --> ORDERS["/users/123/orders<br/>Sub-collection"]
+    ORDERS --> ORDER1["/users/123/orders/789<br/>Resource"]
+    ORDER1 --> ITEMS["/users/123/orders/789/items<br/>Sub-collection"]
+    PRODUCTS["/products<br/>Collection"] --> PRODUCT1["/products/101<br/>Resource"]
     ORDER1 -.->|references| PRODUCT1
 ```
 

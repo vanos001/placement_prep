@@ -12,8 +12,8 @@ graph TD
     A --> C[Concept Drift]
     A --> D[Label Drift / Prior Probability Shift]
     A --> E[Feature Drift]
-    B --> F[P X changes, P Y|X same]
-    C --> G[P Y|X changes, P X same or different]
+    B --> F["P X changes, P Y|X same"]
+    C --> G["P Y|X changes, P X same or different"]
     D --> H[P Y changes]
 ```
 

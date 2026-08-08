@@ -9,7 +9,7 @@ The circuit breaker pattern **prevents cascading failures** in distributed syste
 ```mermaid
 graph TD
     subgraph "Without Circuit Breaker (Cascading Failure)"
-        A[Service A] -->|"Call"| B[Service B (failing)]
+        A[Service A] -->|"Call"| B["Service B (failing)"]
         B -->|"Timeout 30s"| A
         A -->|"Call"| B
         B -->|"Timeout 30s"| A
@@ -224,9 +224,9 @@ await circuitBreakerPolicy.ExecuteAsync(() =>
 ```mermaid
 graph TD
     subgraph "Bulkhead (Isolation)"
-        S1[Service A] --> T1[Thread Pool A (10)]
-        S2[Service B] --> T2[Thread Pool B (10)]
-        S3[Service C] --> T3[Thread Pool C (10)]
+        S1[Service A] --> T1["Thread Pool A (10)"]
+        S2[Service B] --> T2["Thread Pool B (10)"]
+        S3[Service C] --> T3["Thread Pool C (10)"]
         
         T1 -.->|"Isolated"| T2
         T2 -.->|"Isolated"| T3

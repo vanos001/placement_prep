@@ -94,13 +94,13 @@ The advantage tells us how much better action a was compared to the average acti
 
 ```mermaid
 graph TD
-    A[State s] --> B[Actor: π_θ a|s]
+    A --> B["Actor: π_θ a|s"]
     A --> C[Critic: V_φ s]
     B --> D[Action a]
     D --> E[Environment]
-    E --> F[Next state s', reward r]
-    F --> G[Advantage = r + γV s' - V s]
-    G --> H[Update Actor: ∇log π · A]
+    E --> F["Next state s', reward r"]
+    F --> G["Advantage = r + γV s' - V s"]
+    G --> H["Update Actor: ∇log π · A"]
     G --> I[Update Critic: minimize TD error]
 ```
 

@@ -10,9 +10,9 @@ SVM finds the **optimal hyperplane** that maximizes the margin between classes. 
 graph LR
     A[Class -1: o] --> C[Margin]
     B[Class +1: x] --> C
-    C --> D[Hyperplane: wᵀx + b = 0]
+    C --> D["Hyperplane: wᵀx + b = 0"]
     D --> E[Support Vectors: closest points to boundary]
-    E --> F[Maximize margin: 2/||w||]
+    E --> F["Maximize margin: 2/||w||"]
 ```
 
 ### The Optimization Problem

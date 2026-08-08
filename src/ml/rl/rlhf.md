@@ -50,7 +50,7 @@ Where $y_w$ is the preferred (winning) response and $y_l$ is the rejected (losin
 graph TD
     A[Prompt] --> B[LLM generates response]
     B --> C[Reward Model scores response]
-    C --> D[Reward = RM_score - β · KL(π_θ || π_ref)]
+    C --> D["Reward = RM_score - β · KL(π_θ || π_ref)"]
     D --> E[PPO updates LLM]
     E --> F[KL constraint keeps model close to SFT]
     F --> A

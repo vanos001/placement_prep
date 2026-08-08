@@ -26,9 +26,9 @@ graph TD
     ACTION --> A2[Code execution]
     ACTION --> A3[API calls]
 
-    MEMORY --> M1[Short-term (context)]
-    MEMORY --> M2[Long-term (vector DB)]
-    MEMORY --> M3[Episodic (past interactions)]
+    MEMORY --> M1["Short-term (context)"]
+    MEMORY --> M2["Long-term (vector DB)"]
+    MEMORY --> M3["Episodic (past interactions)"]
 ```
 
 ## Agent vs Chatbot vs Copilot

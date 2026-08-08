@@ -20,7 +20,7 @@ GANs revolutionized generative modeling and have applications across:
 ```mermaid
 graph LR
     subgraph Generator
-        Z[Random Noise z ~ p(z)] --> G[Generator G]
+        Z["Random Noise z ~ p(z)"] --> G[Generator G]
     end
     subgraph Discriminator
         G -->|Fake Data| D[Discriminator D]

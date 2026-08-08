@@ -10,12 +10,12 @@ The **Instruction Set Architecture (ISA)** is the abstract interface between har
 
 ```mermaid
 graph TB
-    subgraph ISA = The Contract
-        INST[Instruction Set<br/>Opcodes & Operations]
-        REG[Register File<br/>Number, width, purpose]
-        MEM[Memory Model<br/>Addressing modes, endianness]
-        DATA[Data Types<br/>Integer, float, SIMD]
-        PRIV[Privilege Levels<br/>User vs kernel mode]
+    subgraph ISA["ISA = The Contract"]
+        INST["Instruction Set<br/>Opcodes & Operations"]
+        REG["Register File<br/>Number, width, purpose"]
+        MEM["Memory Model<br/>Addressing modes, endianness"]
+        DATA["Data Types<br/>Integer, float, SIMD"]
+        PRIV["Privilege Levels<br/>User vs kernel mode"]
         INT[Interrupt/Exception Model]
     end
     SW[Software / Compilers] --> ISA

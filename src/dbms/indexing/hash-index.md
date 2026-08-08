@@ -33,10 +33,10 @@ graph LR
         B3["Bucket 3<br/>h=3: (key4, ptr4)"]
     end
     
-    H -->|h(key1)=0| B0
-    H -->|h(key2)=1| B1
-    H -->|h(key3)=2| B2
-    H -->|h(key4)=3| B3
+    H -->|"h(key1)=0"| B0
+    H -->|"h(key2)=1"| B1
+    H -->|"h(key3)=2"| B2
+    H -->|"h(key4)=3"| B3
     
     style H fill:#e3f2fd
 ```

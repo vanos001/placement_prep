@@ -11,11 +11,11 @@ Transactional Memory (TM) applies database transaction concepts to shared memory
 ```mermaid
 graph TD
     subgraph Locks[Lock-Based Programming]
-        L1[lock(A)]
-        L2[lock(B)]
+        L1["lock(A)"]
+        L2["lock(B)"]
         L3[modify A and B]
-        L4[unlock(B)]
-        L5[unlock(A)]
+        L4["unlock(B)"]
+        L5["unlock(A)"]
         L1 --> L2 --> L3 --> L4 --> L5
         L6[Deadlock risk if another thread locks B then A!]
     end
@@ -26,7 +26,7 @@ graph TD
         T3[  modify B]
         T4["#125;"]
         T1 --> T2 --> T3 --> T4
-        T5[No deadlock, automatic conflict detection]
+        T5["No deadlock, automatic conflict detection"]
     end
 ```
 

@@ -281,8 +281,8 @@ async def good():
 
 ```mermaid
 graph TD
-    SYNC[Sync function] -->|Can't call| ASYNC[Async function directly]
-    ASYNC -->|Solution| RUN[asyncio.run() or runtime.block_on()]
+    SYNC[Sync function] -->|"Can't call"| ASYNC[Async function directly]
+    ASYNC -->|Solution| RUN["asyncio.run() or runtime.block_on()"]
     ASYNC -->|Solution| RUN2[await from async context]
 ```
 

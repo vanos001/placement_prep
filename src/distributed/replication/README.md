@@ -40,9 +40,9 @@ graph TD
     end
     
     subgraph "Choose 2 of 3"
-        CP[CP: Consistent + Partition Tolerant\n(Sacrifice Availability)]
-        AP[AP: Available + Partition Tolerant\n(Sacrifice Consistency)]
-        CA[CA: Consistent + Available\n(No Partitions)]
+        CP["CP: Consistent + Partition Tolerant\n(Sacrifice Availability)"]
+        AP["AP: Available + Partition Tolerant\n(Sacrifice Consistency)"]
+        CA["CA: Consistent + Available\n(No Partitions)"]
     end
 ```
 
@@ -96,9 +96,9 @@ graph TD
     Start[Need Replication?] --> Q1{Need strong consistency?}
     Q1 -->|Yes| Q2{Read-heavy or write-heavy?}
     Q1 -->|No| Q3{Need high availability?}
-    Q2 -->|Read-heavy| PB[Primary-Backup\n(read from replicas)]
+    Q2 -->|Read-heavy| PB["Primary-Backup\n(read from replicas)"]
     Q2 -->|Write-heavy| CH[Chain Replication]
-    Q3 -->|Yes| QU[Quorum-Based\n(Dynamo-style)]
+    Q3 -->|Yes| QU["Quorum-Based\n(Dynamo-style)"]
     Q3 -->|No| MP[Multi-Primary]
 ```
 

@@ -10,12 +10,12 @@ A Future (or Promise) represents a value that will be available at some point in
 
 ```mermaid
 graph TD
-    FUTURE[Future: Read-only handle to pending result] --> GET[get() / .await — blocks until done]
-    FUTURE --> DONE[isDone() — check without blocking]
-    FUTURE --> CANCEL[cancel() — attempt to cancel]
+    FUTURE[Future: Read-only handle to pending result] --> GET["get() / .await — blocks until done"]
+    FUTURE --> DONE["isDone() — check without blocking"]
+    FUTURE --> CANCEL["cancel() — attempt to cancel"]
 
-    PROMISE[Promise: Write-end that sets the result] --> SET[set(value) — fulfill the promise]
-    PROMISE --> SET_ERR[set_error(exception) — reject]
+    PROMISE[Promise: Write-end that sets the result] --> SET["set(value) — fulfill the promise"]
+    PROMISE --> SET_ERR["set_error(exception) — reject"]
 ```
 
 - **Future**: The consumer side. You can check if it's done, wait for the result, or cancel it.

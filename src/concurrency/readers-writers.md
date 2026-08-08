@@ -10,7 +10,7 @@ The Readers-Writers problem is a classic synchronization challenge: multiple thr
 graph TD
     R1[Reader 1] -->|Read| RES[Shared Resource]
     R2[Reader 2] -->|Read| RES
-    R3[Reader 3] -->Read| RES
+    R3[Reader 3] -->|Read| RES
     W1[Writer 1] -->|Write| RES
 
     RULE[Rules] --> R_OK[Multiple readers OK simultaneously]
@@ -307,12 +307,12 @@ RW locks have more overhead than regular mutexes (reference counting, state trac
 graph LR
     subgraph Mutex[Regular Mutex]
         M1[Read] --> M2[Read] --> M3[Read] --> M4[Write]
-        Note over M1,M4: Serial: 4 × T
+        NOTE1[Serial: 4 × T]
     end
     subgraph RW[Read-Write Lock]
         R1[Read] --- R2[Read] --- R3[Read]
         R3 --> R4[Write]
-        Note over R1,R4: Readers parallel: ~2T
+        NOTE2[Readers parallel: ~2T]
     end
 ```
 

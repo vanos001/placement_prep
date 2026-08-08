@@ -40,7 +40,12 @@ Scans from the beginning and allocates the **first** hole that is large enough.
 ```mermaid
 graph LR
     subgraph "Memory"
-        A["A:30K"] B["Free:20K"] C["B:15K"] D["Free:50K"] E["C:25K"] F["Free:40K"]
+        A["A:30K"]
+        B["Free:20K"]
+        C["B:15K"]
+        D["Free:50K"]
+        E["C:25K"]
+        F["Free:40K"]
     end
     
     B -->|"Request 15K\n20K ≥ 15K ✓\nALLOCATE HERE"| G["A:30K | D:15K | Free:5K | B:15K | Free:50K | C:25K | Free:40K"]
@@ -80,7 +85,12 @@ Scans the entire list and allocates the **smallest** hole that is large enough.
 ```mermaid
 graph LR
     subgraph "Memory"
-        A["A:30K"] B["Free:20K"] C["B:15K"] D["Free:50K"] E["C:25K"] F["Free:40K"]
+        A["A:30K"]
+        B["Free:20K"]
+        C["B:15K"]
+        D["Free:50K"]
+        E["C:25K"]
+        F["Free:40K"]
     end
     
     B -->|"20K ≥ 15K"| H["Candidate"]
@@ -127,7 +137,12 @@ Scans the entire list and allocates the **largest** hole.
 ```mermaid
 graph LR
     subgraph "Memory"
-        A["A:30K"] B["Free:20K"] C["B:15K"] D["Free:50K"] E["C:25K"] F["Free:40K"]
+        A["A:30K"]
+        B["Free:20K"]
+        C["B:15K"]
+        D["Free:50K"]
+        E["C:25K"]
+        F["Free:40K"]
     end
     
     D -->|"Largest = 50K\nAllocate 15K"| G["Remaining: 35K"]

@@ -186,7 +186,7 @@ A public, append-only log of all issued certificates. Browsers require CT proofs
 ```mermaid
 flowchart TD
     CA[Certificate Authority] -->|Submit cert| LOG[CT Log Server]
-    LOG -->|SCT (Signed Certificate Timestamp)| CA
+    LOG -->|"SCT (Signed Certificate Timestamp)"| CA
     CA -->|Certificate + SCT| SERVER[Website]
     SERVER -->|Present| BROWSER[Browser]
     BROWSER -->|Verify SCT| LOG

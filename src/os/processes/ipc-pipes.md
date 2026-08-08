@@ -31,8 +31,8 @@ graph LR
         Write["fd[1] (write end)"] -->|kernel buffer| Read["fd[0] (read end)"]
     end
     
-    Writer[Process A: write fd[1]] --> Write
-    Read --> Reader[Process B: read fd[0]]
+    Writer["Process A: write fd[1]"] --> Write
+    Read --> Reader["Process B: read fd[0]"]
 ```
 
 ### Example: Parent-Child Communication

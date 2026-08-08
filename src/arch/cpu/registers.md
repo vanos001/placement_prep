@@ -27,22 +27,22 @@ Registers sit at the top—every instruction reads from or writes to registers. 
 ```mermaid
 graph TB
     subgraph General Purpose
-        GPR[General-Purpose Registers<br/>RAX, RBX, RCX, RDX, ...]
+        GPR["General-Purpose Registers<br/>RAX, RBX, RCX, RDX, ..."]
     end
     subgraph Special Purpose
-        PC[Program Counter / IP<br/>Address of next instruction]
-        SP[Stack Pointer<br/>Top of stack]
-        FLAGS[Status/Flags Register<br/>Zero, Carry, Overflow, ...]
-        FP[Frame Pointer<br/>Stack frame base]
+        PC["Program Counter / IP<br/>Address of next instruction"]
+        SP["Stack Pointer<br/>Top of stack"]
+        FLAGS["Status/Flags Register<br/>Zero, Carry, Overflow, ..."]
+        FP["Frame Pointer<br/>Stack frame base"]
     end
     subgraph Floating Point / SIMD
-        FPR[Floating-Point Registers<br/>ST(0)-ST(7) or XMM0-15]
-        SIMD[SIMD Registers<br/>YMM0-15, ZMM0-31]
+        FPR["Floating-Point Registers<br/>ST(0)-ST(7) or XMM0-15"]
+        SIMD["SIMD Registers<br/>YMM0-15, ZMM0-31"]
     end
     subgraph System
-        CR[Control Registers<br/>CR0-CR4]
+        CR["Control Registers<br/>CR0-CR4"]
         MSR[Model-Specific Registers]
-        SEG[Segment Registers<br/>CS, DS, SS, ES, FS, GS]
+        SEG["Segment Registers<br/>CS, DS, SS, ES, FS, GS"]
     end
 ```
 

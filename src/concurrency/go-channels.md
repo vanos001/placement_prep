@@ -49,9 +49,9 @@ func main() {
 
 ```mermaid
 graph LR
-    SEND[chan <- value] -->|Send| CH[Channel]
-    CH -->|Receive| RECV[value := <-chan]
-    CH -->|Close| CLOSE[close(chan)]
+    SEND["chan <- value"] -->|Send| CH[Channel]
+    CH -->|Receive| RECV["value := <-chan"]
+    CH -->|Close| CLOSE["close(chan)"]
 ```
 
 ```go

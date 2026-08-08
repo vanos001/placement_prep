@@ -111,7 +111,7 @@ graph TD
         C1[Data classification]
         C2[Identity & access management]
         C3[Application security]
-        C4[OS patching (IaaS)]
+        C4["OS patching (IaaS)"]
         C5[Network configuration]
     end
 

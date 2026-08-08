@@ -75,7 +75,7 @@ graph TB
     end
     EX1 -->|EX/MEM Forward| EX1
     MEM1 -->|MEM/WB Forward| EX1
-    WB1 -->|Register File (no forward needed)| ID1
+    WB1 -->|"Register File (no forward needed)"| ID1
 ```
 
 Three forwarding paths:

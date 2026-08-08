@@ -219,11 +219,11 @@ def parallel_sum(data, num_chunks=4):
 
 ```mermaid
 graph TD
-    P[Program] --> S[Sequential Part: (1-p)]
+    P[Program] --> S["Sequential Part: (1-p)"]
     P --> PAR[Parallel Part: p]
 
-    SPEEDUP[Speedup = 1 / ((1-p) + p/N)]
-    SPEEDUP --> LIMIT[Lim as N→∞: 1/(1-p)]
+    SPEEDUP["Speedup = 1 / ((1-p) + p/N)"]
+    SPEEDUP --> LIMIT["Lim as N→∞: 1/(1-p)"]
 ```
 
 If 95% of a program is parallelizable (p=0.95):
@@ -235,9 +235,9 @@ If 95% of a program is parallelizable (p=0.95):
 
 ```mermaid
 graph TD
-    G[Gustafson: Scaled Speedup = N - (1-p)(N-1)]
-    G --> IMPLIES[As problem size grows, parallel portion increases]
-    IMPLIES --> BETTER[More realistic than Amdahl's for large problems]
+    G["Gustafson: Scaled Speedup = N - (1-p)(N-1)"]
+    G --> IMPLIES["As problem size grows, parallel portion increases"]
+    IMPLIES --> BETTER["More realistic than Amdahl's for large problems"]
 ```
 
 ### Overhead Considerations

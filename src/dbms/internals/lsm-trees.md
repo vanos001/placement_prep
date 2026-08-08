@@ -274,7 +274,7 @@ flowchart TD
         direction TB
         L1[Single-threaded compaction]
         L2[Level-based compaction only]
-        L3[Two memtables (active + immutable)]
+        L3["Two memtables (active + immutable)"]
     end
 
     subgraph RocksDB["RocksDB (Facebook)"]

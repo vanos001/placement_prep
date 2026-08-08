@@ -37,7 +37,7 @@ graph TD
 
 ```mermaid
 graph LR
-    P[Producer] -->|routing_key="error"| E[Direct Exchange]
+    P[Producer] -->|"routing_key=#quot;error#quot;"| E[Direct Exchange]
     E -->|"error"| Q1[Error Queue]
     E -->|"info"| Q2[Info Queue]
     E -->|"warning"| Q3[Warning Queue]
@@ -59,7 +59,7 @@ graph LR
 
 ```mermaid
 graph LR
-    P[Producer] -->|routing_key="order.created.us"| E[Topic Exchange]
+    P[Producer] -->|"routing_key=#quot;order.created.us#quot;"| E[Topic Exchange]
     E -->|"order.*"| Q1[Order Queue]
     E -->|"*.created.*"| Q2[Created Queue]
     E -->|"order.#"| Q3[All Orders Queue]
@@ -205,9 +205,9 @@ graph TD
     end
     
     subgraph "Queue Mirroring"
-        Q1[Queue (Master) on Node 1]
-        Q2[Queue (Mirror) on Node 2]
-        Q3[Queue (Mirror) on Node 3]
+        Q1["Queue (Master) on Node 1"]
+        Q2["Queue (Mirror) on Node 2"]
+        Q3["Queue (Mirror) on Node 3"]
     end
 ```
 
@@ -216,8 +216,8 @@ graph TD
 ```mermaid
 graph TD
     subgraph "Quorum Queue"
-        L[Leader (Node 1)] --> F1[Follower (Node 2)]
-        L --> F2[Follower (Node 3)]
+        L["Leader (Node 1)"] --> F1["Follower (Node 2)"]
+        L --> F2["Follower (Node 3)"]
     end
     
     P[Producer] --> L

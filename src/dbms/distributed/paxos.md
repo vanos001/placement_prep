@@ -96,14 +96,14 @@ sequenceDiagram
     participant A2 as Acceptor 2
     participant A3 as Acceptor 3
 
-    Note over P: Got majority promises<br/>If any promise had accepted value,<br/>use that value; else use own value
+    Note over P: Got majority promises<br/>If any promise had accepted value,<br/>use that value#59; else use own value
 
-    P->>A1: ACCEPT(n=5, v=Y)
-    P->>A2: ACCEPT(n=5, v=Y)
-    P->>A3: ACCEPT(n=5, v=Y)
+    P->>A1: ACCEPT("n=5, v=Y")
+    P->>A2: ACCEPT("n=5, v=Y")
+    P->>A3: ACCEPT("n=5, v=Y")
 
-    A1-->>P: ACCEPTED(n=5, v=Y)
-    A2-->>P: ACCEPTED(n=5, v=Y)
+    A1-->>P: ACCEPTED("n=5, v=Y")
+    A2-->>P: ACCEPTED("n=5, v=Y")
     Note over A3: Rejected (promised n=7)
 ```
 

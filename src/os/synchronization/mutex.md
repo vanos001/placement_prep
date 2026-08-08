@@ -30,15 +30,15 @@ Linux mutexes use **futexes** (Fast Userspace muTEXes):
 
 ```mermaid
 graph TD
-    A[pthread_mutex_lock] --> B{CAS: 0→1?<br>Uncontended?}
-    B -->|Yes| C[Enter CS<br>Fast path - no syscall]
-    B -->|No| D[futex(FUTEX_WAIT)<br>Sleep in kernel]
+    A[pthread_mutex_lock] --> B{"CAS: 0→1?<br>Uncontended?"}
+    B -->|Yes| C["Enter CS<br>Fast path - no syscall"]
+    B -->|No| D["futex(FUTEX_WAIT)<br>Sleep in kernel"]
     D --> E[Woken by unlock]
     E --> C
     
-    F[pthread_mutex_unlock] --> G{Waiters?<br>state==1?}
-    G -->|No| H[Set to 0<br>Fast path]
-    G -->|Yes| I[futex(FUTEX_WAKE)<br>Wake one waiter]
+    F[pthread_mutex_unlock] --> G{"Waiters?<br>state==1?"}
+    G -->|No| H["Set to 0<br>Fast path"]
+    G -->|Yes| I["futex(FUTEX_WAKE)<br>Wake one waiter"]
 ```
 
 **Key insight**: Uncontended mutex lock/unlock is just a single CAS — no syscall!

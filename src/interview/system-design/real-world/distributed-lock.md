@@ -218,11 +218,11 @@ def write(data, fencing_token):
 ```mermaid
 flowchart TD
     subgraph "Lock Entry"
-        NAME[Lock Name<br/>e.g., "order:123"]
-        HOLDER[Holder ID<br/>UUID]
-        TOKEN[Fencing Token<br/>Monotonic counter]
-        TTL[TTL<br/>e.g., 30s]
-        CREATED[Created At<br/>Timestamp]
+        NAME["Lock Name<br/>e.g., #quot;order:123#quot;"]
+        HOLDER["Holder ID<br/>UUID"]
+        TOKEN["Fencing Token<br/>Monotonic counter"]
+        TTL["TTL<br/>e.g., 30s"]
+        CREATED["Created At<br/>Timestamp"]
     end
 ```
 

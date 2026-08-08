@@ -33,7 +33,7 @@ graph TD
 
 ```mermaid
 graph TD
-    M[Messaging Patterns] --> Q[Point-to-Point (Queue)]
+    M[Messaging Patterns] --> Q["Point-to-Point (Queue)"]
     M --> PS[Pub/Sub]
     M --> RR[Request-Reply]
     

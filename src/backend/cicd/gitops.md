@@ -37,7 +37,7 @@ flowchart TD
     subgraph "Components"
         UI[Web UI]
         CLI[CLI]
-        DEX[Dex (SSO)]
+        DEX["Dex (SSO)"]
     end
 ```
 
@@ -127,8 +127,8 @@ spec:
 
 ```mermaid
 flowchart TD
-    LB[Load Balancer] --> BLUE[Blue (current)]
-    LB -.->|switch| GREEN[Green (new)]
+    LB[Load Balancer] --> BLUE["Blue (current)"]
+    LB -.->|switch| GREEN["Green (new)"]
     
     subgraph "Blue-Green"
         BLUE --> V1[Version 1]

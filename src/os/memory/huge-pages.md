@@ -307,13 +307,25 @@ The kernel runs a compaction daemon to create contiguous regions:
 ```mermaid
 graph LR
     subgraph "Before Compaction"
-        A1["Used"] A2["Free"] A3["Used"] A4["Free"]
-        A5["Used"] A6["Free"] A7["Used"] A8["Free"]
+        A1["Used"]
+        A2["Free"]
+        A3["Used"]
+        A4["Free"]
+        A5["Used"]
+        A6["Free"]
+        A7["Used"]
+        A8["Free"]
     end
     
     subgraph "After Compaction"
-        B1["Used"] B2["Used"] B3["Used"] B4["Used"]
-        B5["Free"] B6["Free"] B7["Free"] B8["Free"]
+        B1["Used"]
+        B2["Used"]
+        B3["Used"]
+        B4["Used"]
+        B5["Free"]
+        B6["Free"]
+        B7["Free"]
+        B8["Free"]
     end
     
     A1 --> B1

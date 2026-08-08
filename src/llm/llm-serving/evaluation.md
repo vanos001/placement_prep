@@ -131,11 +131,11 @@ The gold standard for LLM evaluation:
 ```mermaid
 graph TD
     USER[User submits prompt] --> ARENA[Chatbot Arena]
-    ARENA --> MODEL_A[Model A (anonymous)]
-    ARENA --> MODEL_B[Model B (anonymous)]
+    ARENA --> MODEL_A["Model A (anonymous)"]
+    ARENA --> MODEL_B["Model B (anonymous)"]
     MODEL_A --> RESPONSE_A[Response A]
     MODEL_B --> RESPONSE_B[Response B]
-    RESPONSE_A --> VOTE[User votes: A > B, B > A, or Tie]
+    RESPONSE_A --> VOTE["User votes: A > B, B > A, or Tie"]
     RESPONSE_B --> VOTE
     VOTE --> ELO[Elo Rating Update]
 ```

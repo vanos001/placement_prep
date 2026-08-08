@@ -54,8 +54,8 @@ Post-training quantization to INT4/INT3 using layer-wise optimization:
 
 ```mermaid
 graph TD
-    LAYER[Weight Matrix W] --> HESSIAN[Compute Hessian (importance)]
-    HESSIAN --> GROUP[Group columns (128 typical)]
+    LAYER[Weight Matrix W] --> HESSIAN["Compute Hessian (importance)"]
+    HESSIAN --> GROUP["Group columns (128 typical)"]
     GROUP --> QUANTIZE[Quantize each group]
     QUANTIZE --> COMPENSATE[Compensate error using Hessian]
     COMPENSATE --> NEXT[Move to next layer]

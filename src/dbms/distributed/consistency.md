@@ -77,13 +77,13 @@ Causal Consistency:
 
 ```mermaid
 flowchart TD
-    A[Write x=1 on Node 1] --> B[Message: "I wrote x=1"]
+    A["Write x=1 on Node 1"] --> B["Message: #quot;I wrote x=1#quot;"]
     B --> C[Read x on Node 2]
-    C --> D[MUST return 1<br/>causal dependency]
+    C --> D["MUST return 1<br/>causal dependency"]
 
-    E[Write y=1 on Node 1] --> F[Write y=2 on Node 2]
+    E["Write y=1 on Node 1"] --> F["Write y=2 on Node 2"]
     F --> G[Read y on Node 3]
-    G --> H[Can return 1 or 2<br/>no causal dependency]
+    G --> H["Can return 1 or 2<br/>no causal dependency"]
 ```
 
 **Used by:** MongoDB (with causal sessions), COPS, Eiger

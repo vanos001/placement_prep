@@ -10,9 +10,9 @@
 
 ```mermaid
 graph TB
-    RULE1[Rule 1: Before each event,<br/>increment local counter]
-    RULE2[Rule 2: When sending message,<br/>include current counter]
-    RULE3[Rule 3: When receiving message,<br/>set counter = max(local, received) + 1]
+    RULE1["Rule 1: Before each event,<br/>increment local counter"]
+    RULE2["Rule 2: When sending message,<br/>include current counter"]
+    RULE3["Rule 3: When receiving message,<br/>set counter = max(local, received) + 1"]
 ```
 
 ```

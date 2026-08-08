@@ -14,13 +14,13 @@ Thrashing is one of the most severe performance pathologies in virtual memory sy
 
 ```mermaid
 graph TD
-    A[High degree of<br/>multiprogramming] --> B[Each process gets<br/>fewer frames]
-    B --> C[More page faults<br/>per process]
-    C --> D[Processes wait for<br/>disk I/O (swap)]
+    A["High degree of<br/>multiprogramming"] --> B["Each process gets<br/>fewer frames"]
+    B --> C["More page faults<br/>per process"]
+    C --> D["Processes wait for<br/>disk I/O (swap)"]
     D --> E[CPU utilization drops]
-    E --> F[OS thinks: CPU idle,<br/>start more processes!]
+    E --> F["OS thinks: CPU idle,<br/>start more processes!"]
     F --> A
-    G[THRASHING!<br/>System barely makes progress]
+    G["THRASHING!<br/>System barely makes progress"]
 ```
 
 ### Visual Representation

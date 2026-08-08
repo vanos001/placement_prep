@@ -22,7 +22,7 @@ Microservices is an architectural style where an application is composed of smal
 ```mermaid
 flowchart TD
     DECOMPOSE[Decompose By...] --> DOMAIN[Domain/Business Capability]
-    DECOMPOSE --> SUBDOMAIN[Subdomain (DDD)]
+    DECOMPOSE --> SUBDOMAIN["Subdomain (DDD)"]
     DECOMPOSE --> DATA[Data Ownership]
     
     DOMAIN --> USER[User Service]
@@ -122,7 +122,7 @@ sequenceDiagram
     P->>I: Reserve inventory
     I-->>O: Success
     O->>P: Confirm payment
-    Note over O,P,I: If any step fails, compensate
+    Note over O,I: If any step fails, compensate
 ```
 
 ### Event Sourcing

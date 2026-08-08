@@ -87,7 +87,7 @@ graph TD
     subgraph "vLLM Engine"
         API[OpenAI-compatible API]
         SCHED[Scheduler]
-        KV[KV Cache Manager (PagedAttention)]
+        KV["KV Cache Manager (PagedAttention)"]
         MODEL[Model Runner]
         WORKER[GPU Workers]
     end

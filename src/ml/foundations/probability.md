@@ -69,10 +69,10 @@ $$P(\theta | D) = \frac{P(D | \theta) \cdot P(\theta)}{P(D)}$$
 
 ```mermaid
 graph LR
-    A[Prior P,θ] --> D[Bayes Theorem]
-    B[Likelihood P,D|θ] --> D
-    C[Evidence P,D] --> D
-    D --> E[Posterior P,θ|D]
+    A["Prior P,θ"] --> D[Bayes Theorem]
+    B["Likelihood P,D|θ"] --> D
+    C["Evidence P,D"] --> D
+    D --> E["Posterior P,θ|D"]
     E -->|New Data| A
 ```
 
@@ -204,9 +204,9 @@ $$\hat{\theta}_{MAP} = \arg\max_\theta P(\theta|D) = \arg\max_\theta P(D|\theta)
 
 ```mermaid
 graph LR
-    A[MLE: argmax P,D|θ] --> C[No prior knowledge]
-    B[MAP: argmax P,θ|D * P,θ] --> D[Includes prior]
-    E[Full Bayesian: P,θ|D] --> F[Complete posterior distribution]
+    A["MLE: argmax P,D|θ"] --> C[No prior knowledge]
+    B["MAP: argmax P,θ|D * P,θ"] --> D[Includes prior]
+    E["Full Bayesian: P,θ|D"] --> F[Complete posterior distribution]
     C --> G[Point estimate]
     D --> G
     F --> H[Distribution over parameters]

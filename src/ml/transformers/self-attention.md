@@ -172,13 +172,13 @@ print(output.shape)  # torch.Size([2, 10, 512])
 ```mermaid
 graph LR
     subgraph "Standard Attention"
-        SA1[Compute full QK^T - O(n²) memory]
+        SA1["Compute full QK^T - O(n²) memory"]
         SA2[Softmax]
         SA3[Multiply by V]
     end
     
     subgraph "Flash Attention"
-        FA1[Tile Q, K, V into blocks]
+        FA1["Tile Q, K, V into blocks"]
         FA2[Compute attention block-by-block]
         FA3[Online softmax - no full n² matrix]
         FA4[Recompute in backward pass]

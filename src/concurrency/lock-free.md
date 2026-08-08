@@ -115,14 +115,14 @@ sequenceDiagram
 
 ```mermaid
 graph TD
-    PUSH[Push(value)] --> READ_HEAD[Read head pointer]
-    READ_HEAD --> SET_NEXT[value.next = head]
+    PUSH["Push(value)"] --> READ_HEAD[Read head pointer]
+    READ_HEAD --> SET_NEXT["value.next = head"]
     SET_NEXT --> CAS_HEAD{"CAS(&head, old_head, &value)"}
     CAS_HEAD -->|Success| DONE[Pushed]
     CAS_HEAD -->|Fail| READ_HEAD[Retry]
 
-    POP[Pop()] --> READ_HEAD2[Read head pointer]
-    READ_HEAD2 --> READ_NEXT[new_head = head->next]
+    POP["Pop()"] --> READ_HEAD2[Read head pointer]
+    READ_HEAD2 --> READ_NEXT["new_head = head->next"]
     READ_NEXT --> CAS_HEAD2{"CAS(&head, old_head, new_head)"}
     CAS_HEAD2 -->|Success| RETURN[Return old_head value]
     CAS_HEAD2 -->|Fail| READ_HEAD2[Retry]
@@ -156,14 +156,14 @@ int pop(Node** top) {
 
 ```mermaid
 graph TD
-    ENQ[Enqueue(value)] --> READ_TAIL[Read tail pointer]
+    ENQ["Enqueue(value)"] --> READ_TAIL[Read tail pointer]
     READ_TAIL --> CAS_NEXT{"CAS(&tail->next, NULL, new_node)"}
     CAS_NEXT -->|Success| CAS_TAIL{"CAS(&tail, old_tail, new_node)"}
     CAS_NEXT -->|Fail| READ_TAIL[Retry: help advance tail]
     CAS_TAIL -->|Done| ENQ_DONE[Enqueued]
 
-    DEQ[Dequeue()] --> READ_HEAD[Read head pointer]
-    READ_HEAD --> READ_NEXT[Read head->next]
+    DEQ["Dequeue()"] --> READ_HEAD[Read head pointer]
+    READ_HEAD --> READ_NEXT["Read head->next"]
     READ_NEXT --> CAS_HEAD{"CAS(&head, old_head, next)"}
     CAS_HEAD -->|Success| DEQ_DONE[Return value]
     CAS_HEAD -->|Fail| READ_HEAD[Retry]
@@ -197,10 +197,10 @@ graph TD
     ABA[ABA Problem] --> SOL1[Versioned pointer: add counter]
     ABA --> SOL2[Hazard pointers: protect nodes]
     ABA --> SOL3[Epoch-based reclamation]
-    ABA --> SOL4[Garbage collected language (Java, C#)]
+    ABA --> SOL4["Garbage collected language (Java, C#)"]
 
     SOL1 --> DETAIL[Pointer + version: CAS checks both]
-    SOL2 --> DETAIL2[Thread announces which nodes it's accessing]
+    SOL2 --> DETAIL2["Thread announces which nodes it's accessing"]
     SOL3 --> DETAIL3[Defer deletion until safe epoch]
 ```
 

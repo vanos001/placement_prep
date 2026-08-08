@@ -30,9 +30,9 @@ def sigmoid(z):
 
 ```mermaid
 graph LR
-    A[Linear: z = wᵀx + b] --> B[Sigmoid: σ,z]
-    B --> C[Probability: P,y=1|x]
-    C --> D{P > 0.5?}
+    A["Linear: z = wᵀx + b"] --> B["Sigmoid: σ,z"]
+    B --> C["Probability: P,y=1|x"]
+    C --> D{"P > 0.5?"}
     D -->|Yes| E[Class 1]
     D -->|No| F[Class 0]
 ```

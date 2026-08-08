@@ -9,10 +9,10 @@ Prophet is Facebook's open-source time series forecasting library designed for b
 ```mermaid
 graph TB
     subgraph "Prophet Decomposition"
-        Y[y(t)] --> T[Trend g(t)]
-        Y --> S[Seasonality s(t)]
-        Y --> H[Holiday Effects h(t)]
-        Y --> E[Error ε(t)]
+        Y["y(t)"] --> T["Trend g(t)"]
+        Y --> S["Seasonality s(t)"]
+        Y --> H["Holiday Effects h(t)"]
+        Y --> E["Error ε(t)"]
     end
     
     T --> F["y(t) = g(t) + s(t) + h(t) + ε(t)"]

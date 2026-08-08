@@ -184,17 +184,17 @@ graph TB
 graph TB
     subgraph "Customer Responsibility - Security IN the Cloud"
         C1[Customer Data]
-        C2[Platform, Applications, IAM]
-        C3[Operating System, Network, Firewall]
+        C2["Platform, Applications, IAM"]
+        C3["Operating System, Network, Firewall"]
         C4[Client-Side & Server-Side Encryption]
         C5[Network Traffic Protection]
     end
 
     subgraph "AWS Responsibility - Security OF the Cloud"
         A1[Hardware / AWS Global Infrastructure]
-        A2[Regions, Availability Zones, Edge Locations]
-        A3[Compute, Storage, Database, Networking]
-        A4[Software (Managed Service Platforms)]
+        A2["Regions, Availability Zones, Edge Locations"]
+        A3["Compute, Storage, Database, Networking"]
+        A4["Software (Managed Service Platforms)"]
     end
 
     C1 --> A1

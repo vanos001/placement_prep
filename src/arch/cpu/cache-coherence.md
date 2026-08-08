@@ -9,19 +9,19 @@ In multi-core processors, each core has its own private cache. When multiple cor
 ```mermaid
 flowchart TD
     subgraph "Core 0"
-        C0[L1 Cache<br/>X = 5]
+        C0["L1 Cache<br/>X = 5"]
     end
     subgraph "Core 1"
-        C1[L1 Cache<br/>X = 5]
+        C1["L1 Cache<br/>X = 5"]
     end
-    MEM[Main Memory<br/>X = 5]
+    MEM["Main Memory<br/>X = 5"]
     
     C0 -->|Read X| MEM
     C1 -->|Read X| MEM
     
     subgraph "Problem: Core 0 writes X = 10"
-        C0W[L1 Cache<br/>X = 10]
-        C1OLD[L1 Cache<br/>X = 5 (stale!)]
+        C0W["L1 Cache<br/>X = 10"]
+        C1OLD["L1 Cache<br/>X = 5 (stale!)"]
     end
 ```
 
@@ -44,8 +44,8 @@ flowchart LR
     I[Invalid] -->|Read hit| S[Shared]
     I -->|Write hit| M[Modified]
     S -->|Write hit| M
-    M -->|Read miss (other core)| S
-    M -->|Write miss (other core)| I
+    M -->|"Read miss (other core)"| S
+    M -->|"Write miss (other core)"| I
     S -->|Invalidate from other core| I
 ```
 

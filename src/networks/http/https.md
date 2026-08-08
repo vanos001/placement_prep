@@ -288,12 +288,12 @@ flowchart TD
 
 ```mermaid
 flowchart TD
-    A[User types http://example.com] --> B{Browser has HSTS<br/>record for this domain?}
-    B -->|Yes| C[Automatically rewrite<br/>to https://example.com]
+    A[User types http://example.com] --> B{"Browser has HSTS<br/>record for this domain?"}
+    B -->|Yes| C["Automatically rewrite<br/>to https://example.com"]
     B -->|No| D[Send HTTP request]
-    D --> E{Server sends<br/>HSTS header?}
-    E -->|Yes| F[Browser stores HSTS policy<br/>Future visits: always HTTPS]
-    E -->|No G[Normal HTTP connection<br/>⚠️ Vulnerable to MITM]
+    D --> E{"Server sends<br/>HSTS header?"}
+    E -->|Yes| F["Browser stores HSTS policy<br/>Future visits: always HTTPS"]
+    E -->|No| G["Normal HTTP connection<br/>⚠️ Vulnerable to MITM"]
     C --> H[HTTPS connection established]
     F --> H
 ```

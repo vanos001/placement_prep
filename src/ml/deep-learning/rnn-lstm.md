@@ -83,12 +83,12 @@ graph TD
     A[Input x_t] --> B[Forget Gate]
     A --> C[Input Gate]
     A --> D[Cell Gate]
-    E[Previous Cell State C_{t-1}] --> B
-    B --> F[C_t = f * C_{t-1} + i * g]
+    E["Previous Cell State C_{t-1}"] --> B
+    B --> F["C_t = f * C_{t-1} + i * g"]
     C --> F
     D --> F
     F --> G[Output Gate]
-    G --> H[h_t = o * tanh,C_t]
+    G --> H["h_t = o * tanh,C_t"]
 ```
 
 ### LSTM Equations

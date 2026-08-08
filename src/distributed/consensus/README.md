@@ -37,13 +37,13 @@ Paxos is the foundational consensus algorithm proposed by Leslie Lamport. It's n
 ```mermaid
 flowchart TD
     subgraph "Phase 1: Prepare"
-        P1[Proposer] -->|Prepare(n)| A1[Acceptors]
-        A1 -->|Promise(n, prev_accepted)| P1
+        P1[Proposer] -->|"Prepare(n)"| A1[Acceptors]
+        A1 -->|"Promise(#quot;n, prev_accepted#quot;)"| P1
     end
     
     subgraph "Phase 2: Accept"
-        P1 -->|Accept(n, value)| A1
-        A1 -->|Accepted(n)| L1[Learners]
+        P1 -->|"Accept(#quot;n, value#quot;)"| A1
+        A1 -->|"Accepted(n)"| L1[Learners]
     end
 ```
 
