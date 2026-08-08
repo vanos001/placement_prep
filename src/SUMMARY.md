@@ -528,6 +528,8 @@
 # Cloud & DevOps
 
 - [Cloud Overview](./cloud/overview.md)
+- [Autoscaling](./cloud/autoscaling.md)
+- [Disaster Recovery & Multi-Region](./cloud/disaster-recovery.md)
 - [Virtualization](./cloud/virtualization/README.md)
   - [Hypervisors](./cloud/virtualization/hypervisors.md)
   - [VMs vs Containers](./cloud/virtualization/vm-vs-container.md)

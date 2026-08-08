@@ -138,6 +138,6 @@ Lift state to a common ancestor and pass props; use **Context** for broad, low-f
 - [JavaScript Overview](../../languages/javascript/README.md) — the language React is built on
 - [V8 Engine](../../languages/javascript/v8.md) — how the browser executes React apps
 - [Node.js](../../languages/javascript/nodejs.md) — the runtime Next.js builds on
-- [Next.js](./nextjs/README.md) — the full-stack React framework built on React
+- [Next.js](../nextjs/README.md) — the full-stack React framework built on React
 - [Backend Engineering](../../backend/README.md) — the APIs React apps consume
 - [System Design: Frontend](../../interview/system-design/README.md) — scaling web apps
