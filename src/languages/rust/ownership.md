@@ -186,6 +186,110 @@ fn modify(s: &mut String) { /* ... */ }
 fn produce() -> String { String::from("new") }
 ```
 
+## How String Works Internally
+
+Understanding `String` vs `&str` requires knowing the memory layout:
+
+```mermaid
+flowchart LR
+    subgraph "Stack"
+        S1["s1: ptr, len, cap"]
+        S2["s2: ptr, len, cap"]
+    end
+    subgraph "Heap"
+        H1["h e l l o"]
+    end
+    S1 --> H1
+    S2 --> H1
+```
+
+```rust
+fn main() {
+    let s1 = String::from("hello");
+    // Stack: s1 = { ptr: 0x..., len: 5, cap: 5 }
+    // Heap:  [h, e, l, l, o]
+
+    let s2 = s1; // Move: s1's stack data copied to s2, s1 invalidated
+    // Stack: s2 = { ptr: 0x..., len: 5, cap: 5 }
+    // s1 is no longer valid — prevents double-free
+
+    let s3 = s2.clone(); // Deep copy: new heap allocation
+    // Stack: s2 = { ptr: 0xA, len: 5, cap: 5 }, s3 = { ptr: 0xB, len: 5, cap: 5 }
+    // Heap:  0xA: [h, e, l, l, o], 0xB: [h, e, l, l, o]
+}
+```
+
+### Why `&str` Is Different
+
+```rust
+fn main() {
+    let s: &str = "hello";  // String literal — stored in program binary
+    // Stack: s = { ptr: 0x... (into binary), len: 5 }
+    // No heap allocation, no ownership to transfer
+    // 'static lifetime — lives for entire program
+
+    let owned = String::from("hello"); // Heap-allocated, owned
+    let borrowed: &str = &owned;        // Borrows from owned String
+    // borrowed points into owned's heap buffer
+}
+```
+
+## Ownership Transfer Patterns
+
+```rust
+// Pattern 1: Return ownership from function
+fn create_greeting(name: &str) -> String {
+    format!("Hello, {}!", name)  // Returns owned String
+}
+
+// Pattern 2: Transfer ownership via function argument
+fn process_and_print(s: String) {
+    println!("Processing: {}", s);
+}  // s is dropped here
+
+// Pattern 3: Return ownership back ("give and take back")
+fn add_suffix(mut s: String, suffix: &str) -> String {
+    s.push_str(suffix);
+    s  // Return ownership back to caller
+}
+
+fn main() {
+    let greeting = create_greeting("Alice");
+    let modified = add_suffix(greeting, " Welcome!");
+    // println!("{}", greeting);  // ERROR: ownership moved to add_suffix
+    println!("{}", modified);     // OK: we got ownership back
+}
+```
+
+## Ownership and Collections
+
+```rust
+fn main() {
+    let mut names = vec![String::from("Alice"), String::from("Bob")];
+
+    // ERROR: can't move out of a collection by index
+    // let first = names[0];  // Can't move out of borrowed content
+
+    // Solutions:
+    let first = names[0].clone();              // 1. Clone
+    let first = names.remove(0);               // 2. Remove (shifts elements)
+    let first = names.swap_remove(0);          // 3. Swap remove (O(1), changes order)
+    let first = std::mem::take(&mut names[0]); // 4. Take (leaves default)
+    let first = std::mem::replace(&mut names[0], String::from("replacement"));
+
+    // Iterating gives references by default
+    for name in &names {
+        println!("{}", name);  // name is &String
+    }
+
+    // Into iterator takes ownership
+    for name in names {
+        println!("{}", name);  // name is String (owned)
+    }
+    // names is no longer usable here
+}
+```
+
 ## Common Mistakes
 
 1. **Using a value after moving it** — The most common Rust error for beginners
@@ -210,6 +314,13 @@ fn produce() -> String { String::from("new") }
 
 5. **How does Rust prevent dangling references?**
    The borrow checker ensures that references never outlive the data they point to. If a reference would outlive the data, the code won't compile.
+
+## References
+
+- [The Rust Programming Language — Ownership](https://doc.rust-lang.org/book/ch04-00-understanding-ownership.html)
+- [Rust By Example — Ownership and Moves](https://doc.rust-lang.org/rust-by-example/scope/move.html)
+- [Rustonomicon — Ownership](https://doc.rust-lang.org/nomicon/ownership.html)
+- [Visualizing memory layout of Rust's data types](https://cheats.rs/#memory-layout)
 
 ## See Also
 
