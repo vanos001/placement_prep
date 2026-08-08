@@ -58,7 +58,7 @@ If you're learning these topics for the first time, follow this order:
 
 Use the cheat sheets and revision notes for quick review:
 
-- **[Revision Notes](./revision/README.md)** — One-page summaries of every topic
+- **[Revision Notes](./revision/os.md)** — One-page summaries of every topic
 - **Interview Questions** — Each topic includes questions at multiple difficulty levels
 - **Quick Reference Tables** — Comparison tables for rapid recall
 
@@ -196,11 +196,11 @@ graph TD
 
 | If You Need... | Go To |
 |----------------|-------|
-| Quick revision before interview | [Revision Notes](./revision/README.md) |
+| Quick revision before interview | [Revision Notes](./revision/os.md) |
 | System design practice | [System Design](./interview/system-design/README.md) |
 | Behavioral interview prep | [Behavioral](./interview/behavioral/README.md) |
 | Company-specific tips | [Companies](./interview/companies/README.md) |
-| OS fundamentals | [Operating Systems](./os/README.md) |
-| Database internals | [DBMS](./dbms/README.md) |
-| Network protocols | [Networks](./networks/README.md) |
-| Distributed systems | [Distributed Systems](./distributed/README.md) |
+| OS fundamentals | [Operating Systems](./os/overview.md) |
+| Database internals | [DBMS](./dbms/overview.md) |
+| Network protocols | [Networks](./networks/overview.md) |
+| Distributed systems | [Distributed Systems](./distributed/overview.md) |

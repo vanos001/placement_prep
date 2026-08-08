@@ -342,9 +342,9 @@ Inode:
 - [OS Interview Questions](../interview/os-questions.md) — Full Q&A
 - [Memory Hierarchy](../arch/memory-hierarchy/README.md) — Cache details
 - [Processes & Threads](../os/processes/README.md) — Deep dive
-- [Virtual Memory](../os/memory/virtual-memory.md) — Detailed coverage
-- [File Systems](../os/file-systems/README.md) — Detailed coverage
-- [Deadlock](../os/synchronization/deadlock.md) — Detailed analysis
+- [Virtual Memory](../os/virtual-memory/README.md) — Detailed coverage
+- [File Systems](../os/filesystems/README.md) — Detailed coverage
+- [Deadlock](../os/synchronization/deadlocks/README.md) — Detailed analysis
 
 ## References
 

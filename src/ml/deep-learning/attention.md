@@ -408,7 +408,7 @@ IO-aware exact attention with $O(n)$ memory by tiling computation to exploit GPU
 ```mermaid
 graph LR
     subgraph "Standard Attention"
-        SA1[Compute full QK^T] --> SA2[O(n²) memory]
+        SA1[Compute full QK^T] --> SA2["O(n²) memory"]
         SA2 --> SA3[Softmax]
         SA3 --> SA4[Multiply by V]
     end

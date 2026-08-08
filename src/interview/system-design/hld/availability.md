@@ -159,8 +159,8 @@ graph TD
 #### Primary with Sync Replica
 ```mermaid
 graph TD
-    APP[Application] -->|Write| P[(Primary)]
-    P -->|Sync Replication| R[(Sync Replica)]
+    APP[Application] -->|Write| P["(Primary)"]
+    P -->|Sync Replication| R["(Sync Replica)"]
     APP -->|Read| R
     P -.->|Failover: Promote Replica| R
 ```
@@ -171,10 +171,10 @@ graph TD
 #### Primary with Multiple Async Replicas
 ```mermaid
 graph TD
-    APP[Application] -->|Write| P[(Primary)]
-    P -->|Async| R1[(Replica 1)]
-    P -->|Async| R2[(Replica 2)]
-    P -->|Async| R3[(Replica 3)]
+    APP[Application] -->|Write| P["(Primary)"]
+    P -->|Async| R1["(Replica 1)"]
+    P -->|Async| R2["(Replica 2)"]
+    P -->|Async| R3["(Replica 3)"]
     APP -->|Read| R1
     APP -->|Read| R2
 ```
@@ -230,7 +230,7 @@ graph TD
     S -->|Heartbeat| P
     Q[Quorum Service] -->|Vote| P
     Q -->|Vote| S
-    Note: Only node with quorum majority becomes primary
+    NOTE_FIX["Note: Only node with quorum majority becomes primary"]
 ```
 
 **Methods**:

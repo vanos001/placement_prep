@@ -101,7 +101,7 @@ A **Resource Allocation Graph** visually represents the state of resource alloca
 
 ```mermaid
 graph LR
-    P1[Process 1] -->|Request edge| R1[Resource Type R\n○○○ (3 instances)]
+    P1[Process 1] -->|Request edge| R1["Resource Type R\n○○○ (3 instances)"]
     R1 -->|Assignment edge| P1
     P2[Process 2] -->|Request edge| R1
     

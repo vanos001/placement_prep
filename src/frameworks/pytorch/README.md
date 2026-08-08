@@ -263,9 +263,9 @@ for epoch in range(num_epochs):
 ```mermaid
 graph TD
     START[Epoch Start] --> TRAIN[Training Phase]
-    TRAIN --> FORWARD[Forward Pass<br/>output = model(x)]
-    FORWARD --> LOSS[Compute Loss<br/>loss = criterion(output, y)]
-    LOSS --> ZERO[Zero Gradients<br/>optimizer.zero_grad()]
+    TRAIN --> FORWARD["Forward Pass<br/>output = model(x)"]
+    FORWARD --> LOSS["Compute Loss<br/>loss = criterion(output, y)"]
+    LOSS --> ZERO["Zero Gradients<br/>optimizer.zero_grad()"]
     ZERO --> BACKWARD[Backward Pass<br/>loss.backward]
     BACKWARD --> CLIP[Clip Gradients<br/>clip_grad_norm_]
     CLIP --> STEP[Update Weights<br/>optimizer.step]

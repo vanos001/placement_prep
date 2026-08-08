@@ -198,14 +198,14 @@ graph TB
         X86_D[x86-64]
     end
     subgraph "Data Center / Cloud"
-        X86_S[x86-64 (Xeon/EPYC)]
-        ARM_S[ARM Neoverse (Graviton)]
-        RV_S[RISC-V (emerging)]
+        X86_S["x86-64 (Xeon/EPYC)"]
+        ARM_S["ARM Neoverse (Graviton)"]
+        RV_S["RISC-V (emerging)"]
     end
     subgraph "AI / HPC"
         X86_AI[x86 + GPU]
         ARM_AI[ARM + Custom]
-        RV_AI[RISC-V (Tenstorrent)]
+        RV_AI["RISC-V (Tenstorrent)"]
     end
 ```
 

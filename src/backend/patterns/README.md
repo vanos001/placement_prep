@@ -370,13 +370,13 @@ CQRS separates the **write model** (commands) from the **read model** (queries),
 ```mermaid
 graph TD
     subgraph "Write Side (Commands)"
-        WC[Write Commands] --> WDB[(Write DB<br/>Normalized)]
+        WC[Write Commands] --> WDB["(Write DB<br/>Normalized)"]
         WDB --> EVENT[Event Bus]
     end
 
     subgraph "Read Side (Queries)"
         EVENT --> PROJECTOR[Projector/Projector]
-        PROJECTOR --> RDB[(Read DB<br/>Denormalized)]
+        PROJECTOR --> RDB["(Read DB<br/>Denormalized)"]
         RQ[Read Queries] --> RDB
     end
 
@@ -389,14 +389,14 @@ graph TD
 ```mermaid
 graph LR
     subgraph "Traditional: Same Model"
-        APP[App] --> DB[(Single DB)]
+        APP[App] --> DB["(Single DB)"]
         DB --> APP
         Note1["Reads and writes compete<br/>Same schema for both"]
     end
 
     subgraph "CQRS: Separate Models"
-        APP2[App] --> W[(Write DB<br/>3NF, normalized)]
-        APP2 --> R[(Read DB<br/>Denormalized, indexed)]
+        APP2[App] --> W["(Write DB<br/>3NF, normalized)"]
+        APP2 --> R["(Read DB<br/>Denormalized, indexed)"]
         W -->|Events| R
         Note2["Reads optimized separately<br/>Different schemas"]
     end
@@ -450,9 +450,9 @@ graph TD
     end
 
     subgraph "With Bulkhead"
-        R1[Request Type A] --> P1[Pool A (10 threads)]
-        R2[Request Type B] --> P2[Pool B (20 threads)]
-        R3[Request Type C] --> P3[Pool C (15 threads)]
+        R1[Request Type A] --> P1["Pool A (10 threads)"]
+        R2[Request Type B] --> P2["Pool B (20 threads)"]
+        R3[Request Type C] --> P3["Pool C (15 threads)"]
         P1 -->|Exhausted| FAIL1[Only Type A fails]
         P2 --> OK2[Continues normally]
         P3 --> OK3[Continues normally]

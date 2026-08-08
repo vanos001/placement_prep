@@ -235,11 +235,11 @@ Spanner uses Paxos for replication within each shard:
 ```mermaid
 graph TD
     subgraph "Spanner Shard"
-        P1[Paxos Group<br/>5 replicas] --> DB1[(Shard Data)]
+        P1[Paxos Group<br/>5 replicas] --> DB1["(Shard Data)"]
         P1 -->|TrueTime API| TT[GPS + Atomic Clocks]
     end
     subgraph "Another Shard"
-        P2[Paxos Group<br/>5 replicas] --> DB2[(Shard Data)]
+        P2[Paxos Group<br/>5 replicas] --> DB2["(Shard Data)"]
     end
     P1 -->|2PC| P2
 ```
@@ -251,7 +251,7 @@ Key innovation: **TrueTime API** provides bounded clock uncertainty, enabling gl
 ```mermaid
 graph TD
     subgraph "Multi-Paxos"
-        MP_L[Leader (proposer)] --> MP_A1[Acceptor 1]
+        MP_L["Leader (proposer)"] --> MP_A1[Acceptor 1]
         MP_L --> MP_A2[Acceptor 2]
         MP_L --> MP_A3[Acceptor 3]
         MP_L -->|"Can have gaps"| MP_LOG[Log: 1, 2, _, 5, 6]

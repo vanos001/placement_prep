@@ -281,9 +281,9 @@ Data structures that automatically resolve conflicts by design. All concurrent o
 ```mermaid
 graph TD
     subgraph "G-Counter (Grow-only)"
-        G1[Node 1: {N1:5, N2:0} → value=5]
-        G2[Node 2: {N1:0, N2:3} → value=3]
-        G3[Merged: {N1:5, N2:3} → value=8]
+        G1["Node 1: {N1:5, N2:0} → value=5"]
+        G2["Node 2: {N1:0, N2:3} → value=3"]
+        G3["Merged: {N1:5, N2:3} → value=8"]
     end
     subgraph "PN-Counter (Positive-Negative)"
         P1[Increment: G-Counter for adds]

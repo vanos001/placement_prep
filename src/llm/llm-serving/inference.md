@@ -388,4 +388,4 @@ LLM inference has two phases: compute-bound prefill and memory-bound decode. The
 - [Batching →](batching.md) Throughput optimization
 - [vLLM →](vllm.md) Production inference engine
 - [Architecture →](architecture.md) Model architecture details
-- [Cloud GPU](../cloud/virtualization/README.md)
+- [Cloud GPU](../../cloud/virtualization/README.md)

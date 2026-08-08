@@ -287,7 +287,7 @@ graph TD
     KS[Scheduler] --> L
     KC[Controller Manager] --> L
     KL[kubelet] --> L
-    L --> STATE[(State:<br/>Pods, ConfigMaps,<br/>Secrets, Nodes)]
+    L --> STATE["(State:<br/>Pods, ConfigMaps,<br/>Secrets, Nodes)"]
 ```
 
 - **Why Raft for etcd?** Kubernetes needs strong consistency for cluster state—Pod assignments, ConfigMaps, Secrets must be linearizable.
@@ -301,10 +301,10 @@ CockroachDB uses **thousands of independent Raft groups**, one per data range (6
 ```mermaid
 graph TD
     subgraph "CockroachDB"
-        R1[Range 1: keys a-m<br/>Raft Group 1] --> N1[Node 1 (leader)]
+        R1[Range 1: keys a-m<br/>Raft Group 1] --> N1["Node 1 (leader)"]
         R1 --> N2[Node 2]
         R1 --> N3[Node 3]
-        R2[Range 2: keys n-z<br/>Raft Group 2] --> N2b[Node 2 (leader)]
+        R2[Range 2: keys n-z<br/>Raft Group 2] --> N2b["Node 2 (leader)"]
         R2 --> N3b[Node 3]
         R2 --> N1b[Node 1]
     end

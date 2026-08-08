@@ -272,7 +272,7 @@ Network security is multi-layered, applying controls at every level of the stack
 - [VPN](vpn.md)
 - [IPsec](ipsec.md)
 - [Wireless Security](../wireless/wifi.md)
-- [Cryptography](../../dsa/cryptography/README.md)
+- [Cryptography](./tls.md)
 
 ## References
 

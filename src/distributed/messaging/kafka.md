@@ -282,17 +282,17 @@ A Kafka cluster consists of one or more **brokers** (servers). Each broker store
 ```mermaid
 graph TD
     subgraph "Kafka Cluster (3 Brokers)"
-        B1[Broker 1<br/>id=1] --> P0_1[Partition 0 (Leader)]
-        B1 --> P1_2[Partition 1 (Follower)]
-        B1 --> P2_3[Partition 2 (Follower)]
+        B1[Broker 1<br/>id=1] --> P0_1["Partition 0 (Leader)"]
+        B1 --> P1_2["Partition 1 (Follower)"]
+        B1 --> P2_3["Partition 2 (Follower)"]
 
-        B2[Broker 2<br/>id=2] --> P0_2[Partition 0 (Follower)]
-        B2 --> P1_1[Partition 1 (Leader)]
-        B2 --> P2_2[Partition 2 (Follower)]
+        B2[Broker 2<br/>id=2] --> P0_2["Partition 0 (Follower)"]
+        B2 --> P1_1["Partition 1 (Leader)"]
+        B2 --> P2_2["Partition 2 (Follower)"]
 
-        B3[Broker 3<br/>id=3] --> P0_3[Partition 0 (Follower)]
-        B3 --> P1_3[Partition 1 (Follower)]
-        B3 --> P2_1[Partition 2 (Leader)]
+        B3[Broker 3<br/>id=3] --> P0_3["Partition 0 (Follower)"]
+        B3 --> P1_3["Partition 1 (Follower)"]
+        B3 --> P2_1["Partition 2 (Leader)"]
     end
 ```
 

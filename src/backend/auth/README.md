@@ -145,7 +145,7 @@ graph LR
         P5[iat: 1699996400]
     end
     subgraph "Signature"
-        S1[RSASHA256<br/>header.payload<br/>private_key)]
+        S1["RSASHA256<br/>header.payload<br/>private_key)"]
     end
 ```
 
@@ -203,7 +203,7 @@ sequenceDiagram
 graph TB
     subgraph "Session-Based"
         SB_C[Client] -->|"Cookie: session_id=abc"| SB_S[Server]
-        SB_S --> SB_STORE[(Session Store<br/>Redis/Memory)]
+        SB_S --> SB_STORE["(Session Store<br/>Redis/Memory)"]
         SB_STORE --> SB_S
     end
 
@@ -390,4 +390,4 @@ More granular than RBAC—decisions based on attributes:
 - [JWT](./jwt.md) — Token structure and validation
 - [Session Management](./session-management.md) — Server-side sessions
 - [API Gateway](../api/api-gateway.md) — Auth at the gateway
-- [Service Mesh](../../distributed/microservices/service-mesh.md) — mTLS in practice
+- [Service Mesh](../containers/service-mesh.md) — mTLS in practice

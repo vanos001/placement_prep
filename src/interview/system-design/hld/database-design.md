@@ -14,7 +14,7 @@ graph TD
     Q1 -->|Time-series, write-heavy| COL[Column-Family]
     Q1 -->|Relationships, traversals| GRAPH[Graph Database]
 
-    Q2{Consistency needs?} -->|Strong (ACID)| SQL
+    Q2{Consistency needs?} -->|"Strong (ACID)"| SQL
     Q2 -->|Eventual OK| DOC
     Q2 -->|Tunable| COL
 
@@ -157,9 +157,9 @@ Splitting a large database into smaller, faster, more manageable pieces called *
 
 ```mermaid
 graph TD
-    A[Application / Router] --> S1[(Shard 1: Users A-H)]
-    A --> S2[(Shard 2: Users I-P)]
-    A --> S3[(Shard 3: Users Q-Z)]
+    A[Application / Router] --> S1["(Shard 1: Users A-H)"]
+    A --> S2["(Shard 2: Users I-P)"]
+    A --> S3["(Shard 3: Users Q-Z)"]
 ```
 
 ### Shard Key Selection
@@ -213,9 +213,9 @@ Lookup Table:
 #### Geographic Sharding
 ```mermaid
 graph TD
-    R[Router] -->|US users| S1[(Shard US)]
-    R -->|EU users| S2[(Shard EU)]
-    R -->|APAC users| S3[(Shard APAC)]
+    R[Router] -->|US users| S1["(Shard US)"]
+    R -->|EU users| S2["(Shard EU)"]
+    R -->|APAC users| S3["(Shard APAC)"]
 ```
 - **Pros**: Data locality, compliance (GDPR), low latency
 - **Cons**: Cross-region queries are expensive; users who travel
@@ -295,10 +295,10 @@ When sharding, you need globally unique IDs that don't require coordination.
 ### Primary-Replica (Master-Slave)
 ```mermaid
 graph TD
-    APP[Application] -->|Writes| P[(Primary DB)]
-    P -->|Async Replication| R1[(Replica 1)]
-    P -->|Async Replication| R2[(Replica 2)]
-    P -->|Async Replication| R3[(Replica 3)]
+    APP[Application] -->|Writes| P["(Primary DB)"]
+    P -->|Async Replication| R1["(Replica 1)"]
+    P -->|Async Replication| R2["(Replica 2)"]
+    P -->|Async Replication| R3["(Replica 3)"]
     APP -->|Reads| R1
     APP -->|Reads| R2
     APP -->|Reads| R3
@@ -312,7 +312,7 @@ graph TD
 ### Multi-Primary (Master-Master)
 ```mermaid
 graph LR
-    P1[(Primary 1 - US)] <-->|Bi-directional replication| P2[(Primary 2 - EU)]
+    P1["(Primary 1 - US)"] <-->|Bi-directional replication| P2["(Primary 2 - EU)"]
     W1[Write Traffic US] --> P1
     W2[Write Traffic EU] --> P2
 ```
@@ -362,12 +362,12 @@ Split columns across databases to separate hot and cold data.
 ```mermaid
 graph LR
     subgraph "Before: Single Table"
-        T1[id | name | email | bio | avatar | settings | logs]
+        T1["id | name | email | bio | avatar | settings | logs"]
     end
     subgraph "After: Vertical Partition"
-        T2[id | name | email]
-        T3[id | bio | avatar]
-        T4[id | settings | logs]
+        T2["id | name | email"]
+        T3["id | bio | avatar"]
+        T4["id | settings | logs"]
     end
     T1 --> T2
     T1 --> T3
@@ -384,13 +384,13 @@ Split by feature/service. Each service owns its data.
 ```mermaid
 graph TD
     subgraph "User Domain"
-        UDB[(User DB)]
+        UDB["(User DB)"]
     end
     subgraph "Order Domain"
-        ODB[(Order DB)]
+        ODB["(Order DB)"]
     end
     subgraph "Product Domain"
-        PDB[(Product DB)]
+        PDB["(Product DB)"]
     end
     US[User Service] --> UDB
     OS[Order Service] --> ODB
@@ -542,7 +542,7 @@ graph LR
     A1[App Thread 1] --> CP[Connection Pool]
     A2[App Thread 2] --> CP
     A3[App Thread 3] --> CP
-    CP -->|Pool of 20 connections| DB[(Database)]
+    CP -->|Pool of 20 connections| DB["(Database)"]
 ```
 
 ### Pool Configuration
