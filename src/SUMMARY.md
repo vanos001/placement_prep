@@ -398,6 +398,7 @@
   - [Multicore](./arch/parallelism/multicore.md)
   - [SMT/Hyperthreading](./arch/parallelism/smt.md)
   - [GPU Architecture](./arch/parallelism/gpu.md)
+  - [CUDA Programming](./arch/parallelism/cuda.md)
 - [Performance](./arch/performance/README.md)
   - [Amdahl's Law](./arch/performance/amdahl.md)
   - [CPU Performance Equation](./arch/performance/equation.md)
