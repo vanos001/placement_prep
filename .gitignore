@@ -97,7 +97,6 @@ Cargo.toml
 .env
 .env.local
 token.txt
-token.txt
 mermaid-validation-report.json
 package-lock.json
 package.json

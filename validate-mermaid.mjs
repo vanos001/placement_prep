@@ -179,3 +179,6 @@ if (results.errors.length > 0) {
 
 writeFileSync('mermaid-validation-report.json', JSON.stringify(results, null, 2));
 console.log(`\nFull report written to mermaid-validation-report.json`);
+
+// Make the validator usable in CI: a broken diagram must fail the command.
+if (results.failed > 0) process.exitCode = 1;
