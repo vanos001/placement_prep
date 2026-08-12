@@ -2,7 +2,19 @@
 
 > Auto-maintained by research agents. Topics discovered during expansion that need coverage.
 > Priority: HIGH (interview-critical) | MEDIUM (important) | LOW (nice-to-have)
-> Last updated: 2026-08-12 (Linux and DSA integration batch)
+> Last updated: 2026-08-13 (dev pull audit)
+
+## Dev pull audit — 2026-08-13
+
+- Pulled the latest `dev` expansion and repaired ten missing Summary targets
+  plus four stale relative links. All pulled pages are now Summary-reachable.
+- Remaining work is content depth/references review, not broken navigation.
+
+## Software Engineering pages — 2026-08-13
+
+- Added dedicated `testing.md`, `devops.md`, and `CONTRIBUTING.md` under
+  `src/software-engineering/` (previously those links were redirected to the
+  general `testing/` and `cloud/cicd/` sections and a GitHub URL).
 
 ## Integration completed — 2026-08-12
 
@@ -17,7 +29,7 @@
 - **Integrity gate** — 0 broken links, Summary navigation OK, and 4,387/4,387
   Mermaid diagrams pass both the heuristic and Mermaid v11 parser checks.
 
-## Completed (since 2026-08-05) — Updated 2026-08-09
+## Completed (since 2026-08-05) — Updated 2026-08-13
 
 The following previously-backlogged topics now have dedicated coverage:
 
@@ -36,6 +48,24 @@ The following previously-backlogged topics now have dedicated coverage:
 - **OOP**: coupling, cohesion & design principles (lld/coupling-cohesion-principles.md)
 - **Security**: TLS deep dive, mTLS, certificate transparency already; auth expanded (OAuth, JWT, session, mTLS)
 
+## NEWLY COMPLETED (2026-08-13 — Parallel Agent Batch)
+
+### Completely New Sections Added:
+- **Git** ✅ `src/git/` — 15 files: internals, fundamentals, branching, rebasing, stashing, advanced ops, remotes, tags, hooks, workflows, GitHub, interview questions, cheat sheet
+- **Software Engineering** ✅ `src/software-engineering/` — 10 files: SDLC, Agile, requirements, design (SOLID), code quality, documentation, project management, metrics, team dynamics
+- **Programming Fundamentals** ✅ `src/programming-fundamentals/` — 10 files: variables/types, scope/lifetime, functions, error handling, type systems, memory model, I/O, modules
+- **Security & Cryptography** ✅ `src/security/` — 7 files: authentication (OAuth/OIDC/JWT), authorization (RBAC/ABAC), web security (OWASP), cryptography (AES/RSA/TLS), secrets management
+- **Machine Coding** ✅ `src/machine-coding/` — 10 files: parking lot, elevator, library, splitwise, rate limiter, LRU cache, task scheduler
+- **Data Engineering** ✅ `src/data-engineering/` — 7 files: Spark, Kafka, Airflow, Parquet/Avro/ORC, data quality
+- **Search Engines** ✅ `src/search/` — 5 files: inverted indexes, TF-IDF/BM25, Elasticsearch, vector search
+- **Aptitude** ✅ `src/aptitude/` — 11 files: percentages, ratios, averages, profit/loss, time/work, speed/distance, probability, number systems, logical reasoning, data interpretation
+- **Placement Preparation** ✅ `src/placement-preparation/` — 6 files: campus process, OA, technical/HR interview, group discussion
+- **Resume & Career** ✅ `src/resume/` — 7 files: structure, bullet writing, projects, ATS optimization
+- **Behavioral Interviews** ✅ `src/behavioral-interviews/` — 5 files: STAR method, 30+ questions, company fit, scenarios
+- **Communication** ✅ `src/communication/` — 4 files: technical, interview, written communication
+- **Practical Programming Problems** ✅ `src/practical-problems/` — 6 files: parsers, CLI tools, file processing, concurrent problems
+- **DBMS Interview Problems** ✅ `src/dbms/interview-problems/` — 6 files: classic SQL, window functions, joins, optimization, concurrency
+
 ## REMAINING — MEDIUM Priority (Updated)
 
 ### Operating Systems — Partially Done
@@ -46,35 +76,37 @@ The following previously-backlogged topics now have dedicated coverage:
 ### Networks — Partially Done
 - ~~HTTP/3 QPACK — header compression specifics~~ ✅ Done `networks/http/qpack.md`
 - ~~Service Mesh internals — Istio/Envoy xDS protocol, sidecar dataplane~~ ✅ Done `backend/containers/xds-protocol.md`
-- **eBPF Networking Deep Dive** — XDP, TC, sockmap, and Cilium datapath are covered in `linux/kernel/networking/`; add a focused comparison only if interviews require it
+- ~~eBPF Networking Deep Dive~~ ✅ Done `networks/ebpf-networking.md` (2026-08-12): XDP, TC, socket hooks, maps, AF_XDP, Cilium, CO-RE, and observability
 
 ### Languages / Frameworks — Partially Done
 - ~~Go web frameworks — Gin/Echo/Fiber comparison~~ ✅ Done `languages/go/web-frameworks.md`
-- **Rust Async Runtimes** — Tokio vs async-std vs smol comparison — dedicated page missing, Tokio exists but comparison missing
+- ~~Rust Async Runtimes~~ ✅ Done `languages/rust/async-runtimes.md` (2026-08-12): Tokio, smol, async-std, Glommio, Monoio, Embassy, blocking and cancellation
 - **Python Free-Threaded (3.13t) Deep Dive** — GIL removal, free-threaded build
 - **Java Loom Virtual Threads** — expand java.md with Project Loom
 
 ### Backend / Storage / Concurrency — Newly Discovered
+- ~~Tiered Storage and Data Temperature~~ ✅ Done `storage/tiered-storage.md` (2026-08-12): hot/warm/cold, RocksDB, object lifecycle, caches, recovery
 - ~~Storage: SSTable Format — data blocks, index, bloom, footer, compression~~ ✅ Done `storage/sstable.md` (2026-08-09): BlockBasedTable diagram, Index/Bloom/Footer 48 bytes magic, partitioned index/filter, read path, compression
 - ~~Storage: BlobDB — separation of small vs large values~~ ✅ Done `storage/blobdb.md` (2026-08-09): WiscKey, BlobIndex file_no/offset/size, GC age cutoff 0.25, WA 1.4-1.7 vs 6.1-6.8 75% lower, options enable_blob_files/min_blob_size
 - **Storage: Ceph CRUSH/RADOS Deep Dive** — CRUSH algorithm, placement groups, RADOS (still TODO)
-- **Storage: NVMe over Fabrics** — NVMe-oF TCP/RDMA (TODO)
+- ~~Storage: NVMe over Fabrics~~ ✅ Done `storage/nvmeof.md` (2026-08-12): TCP/RDMA, discovery, queues, multipathing, security, observability
 - ~~Concurrency: Work-Stealing Scheduler — Go scheduler work-stealing, Java ForkJoinPool, Rust Tokio~~ ✅ Done `concurrency/work-stealing.md` (2026-08-09): LIFO owner head vs FIFO thief tail, Go GMP P local 256 + global, Java ForkJoinPool WorkQueue 4096, Tokio 256 ring + injection queue
-- **Concurrency: ABA Problem & Memory Reclamation** — hazard pointers vs RCU vs epoch (TODO, RCU done but ABA still missing)
+- ~~Concurrency: ABA Problem & Memory Reclamation~~ ✅ Done `concurrency/aba-problem.md` (2026-08-12): tagged pointers, hazard pointers, EBR, RCU, reference counting, memory ordering, C++26 safe-reclamation references
 - ~~Concurrency: Memory Model — C++/Java/Go memory models, acquire/release, data races~~ ✅ Done `concurrency/memory-model.md` (2026-08-09): TSO vs weak ARM, DRF-SC happens-before, C++11 6 orders, Java volatile total order vs VarHandle acq/rel, Go channel happens-before, Rust Send/Sync, store buffering litmus
 
 ### Interview / System Design — Newly Discovered
+- ~~GraphQL Federation~~ ✅ Done `backend/api/graphql-federation.md` (2026-08-12): entities, composition, directives, query planning, governance
 - ~~API Versioning Strategies — URL vs header vs content negotiation, Stripe example~~ ✅ Done `backend/api/versioning.md` (2026-08-09): 6 strategies table, URL path safest default, date-based Stripe pinning compatibility layer, decision flowchart, Deprecation/Sunset headers
 - ~~Rate Limiting Algorithms Deep Dive — token bucket vs leaky bucket vs sliding window logs vs sliding window counter~~ ✅ Done `backend/api/rate-limiting.md` (2026-08-09): 5 algos fixed vs sliding log O(n) exact vs sliding counter 2 keys ~1% err vs token bucket HASH burst vs leaky queue steady, comparison table, Redis Lua token bucket script, decision tree
-- **Distributed Lock Deep Dive** — Redlock controversy, fenced tokens, etcd locks (distributed-lock.md exists, could expand)
-- **Change Data Capture & Outbox Pattern** — Debezium, transactional outbox (TODO)
+- ~~Distributed Lock Deep Dive~~ ✅ Done `distributed/fundamentals/distributed-locks.md` (2026-08-12): leases, fencing tokens, Redis/Redlock, ZooKeeper, etcd, and alternatives
+- ~~Change Data Capture & Outbox Pattern~~ ✅ Done `backend/patterns/cdc-outbox.md` (2026-08-12): dual-write failure, Debezium, WAL retention, idempotency, ordering
 
 ## LOW Priority
 
 - **Quantum Computing** — qubits, gates, algorithms (curiosity, not interview-critical)
 - **Blockchain** — consensus PoW/PoS, smart contracts, Merkle trees (could be `arch/blockchain.md` or separate)
 - **Edge Computing** — CDN compute, edge functions (covered in cdn/edge.md; could expand with Cloudflare Workers, Fastly Compute@Edge)
-- **Observability Deep Dive** — OpenTelemetry traces/metrics/logs correlation, exemplar
+- ~~Observability Deep Dive~~ ✅ Done `backend/observability/opentelemetry.md` (2026-08-12): signals, propagation, Collector, semantic conventions, sampling, cardinality
 
 ## Decisions / Notes
 

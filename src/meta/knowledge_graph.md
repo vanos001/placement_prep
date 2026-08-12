@@ -282,6 +282,75 @@ Concurrency
   STL, cache hierarchy, profiling, branch prediction, SIMD, and undefined
   behavior.
 
+### Research loop batch 4 edges — 2026-08-12
+
+- [GraphQL Federation](../backend/api/graphql-federation.md) → subgraphs,
+  entities, `@key`, `@requires`, `@provides`, `@shareable`, composition,
+  query planning, schema checks, and OpenTelemetry.
+- GraphQL Federation → [GraphQL](../backend/api/graphql.md), API gateways,
+  service mesh, authorization, and distributed failure handling.
+- [Distributed Locks](../distributed/fundamentals/distributed-locks.md) →
+  leases, Redis/Redlock, ZooKeeper ephemeral-sequential nodes, etcd revisions,
+  fencing tokens, idempotency, and transactional alternatives.
+- Distributed locks ↔ [Consensus](../distributed/consensus/README.md) and
+  [CDC/outbox](../backend/patterns/cdc-outbox.md): coordinate only when a
+  resource-side invariant cannot be enforced with a conditional write.
+- [Tiered Storage](../storage/tiered-storage.md) → NVMe-oF, SSTables, LSM
+  compaction, BlobDB, object lifecycle, cache admission, and recovery SLOs.
+- Tiered Storage ↔ [Capacity Planning](../interview/system-design/hld/capacity-planning.md)
+  → cost, tail latency, retrieval, egress, and data temperature policies.
+
+### Research loop batch 3 edges — 2026-08-12
+
+- [eBPF networking](../networks/ebpf-networking.md) → XDP, TC/TCX, cgroup and
+  socket hooks, BPF maps, AF_XDP, CO-RE/BTF, and Cilium datapaths.
+- eBPF networking → [Linux networking tools](../linux/tools.md), TCP/IP,
+  [Cilium/Kubernetes](../backend/containers/kubernetes.md), and kernel tracing.
+- [Rust async runtimes](../languages/rust/async-runtimes.md) → futures,
+  executors, reactors, Tokio work stealing, smol/futures traits, io_uring,
+  blocking pools, cancellation, and OpenTelemetry context propagation.
+- [OpenTelemetry](../backend/observability/opentelemetry.md) → traces, metrics,
+  logs, baggage, semantic conventions, Collector pipelines, sampling,
+  cardinality, service mesh, CDC, and async context propagation.
+- OpenTelemetry ↔ [system design observability](../distributed/microservices/observability.md)
+  → SLOs, tail latency, retries, queues, and production diagnosis.
+
+### Research loop batch 2 edges — 2026-08-12
+
+- [NVMe-oF](../storage/nvmeof.md) → NVMe command queues, TCP/RDMA
+  transports, discovery, multipathing, Linux `nvme-cli`, storage latency, and
+  network congestion.
+- NVMe-oF → [Block Storage](../storage/block-storage.md), [Linux networking](../linux/networking/fundamentals.md),
+  [RDMA](../linux/networking/rdma.md), and distributed-storage design.
+- [CRDTs](../distributed/fundamentals/crdts.md) → convergence, SEC, vector
+  clocks, gossip, replication, local-first software, Yjs/Automerge, and rich
+  text collaboration.
+- CRDTs ↔ [Consensus](../distributed/consensus/README.md): CRDTs avoid some
+  coordination for mergeable state; consensus is required for linearizable
+  decisions and global invariants.
+- [CDC and Transactional Outbox](../backend/patterns/cdc-outbox.md) → WAL,
+  logical decoding, Debezium, Kafka, idempotency, event-driven architecture,
+  CQRS, and distributed transaction boundaries.
+- CDC/outbox ↔ CRDTs: event publication transports changes; CRDTs define a
+  mergeable replicated state. Neither alone guarantees business invariants or
+  exactly-once external side effects.
+
+### ABA and safe-reclamation edges — 2026-08-12
+
+- [ABA Problem](../concurrency/aba-problem.md) → CAS/compare-exchange, tagged
+  pointers, memory ordering, lock-free stacks and queues.
+- ABA → [Hazard Pointers](../concurrency/aba-problem.md) → per-pointer reader
+  reservations, retire lists, scans, and delayed reclamation.
+- ABA → [Epoch Reclamation](../concurrency/aba-problem.md) → pinning,
+  participant advancement, stalled-reader memory growth, and Crossbeam Epoch.
+- ABA → [RCU](../concurrency/rcu.md) → grace periods, unlink-before-free,
+  Linux kernel quiescent states, and read-mostly data structures.
+- ABA → C++ safe reclamation → current C++ working draft `hazard_pointer` and
+  `rcu_obj_base`, with implementation availability still compiler-dependent.
+- Safe reclamation → [Memory Model](../concurrency/memory-model.md) →
+  acquire/release publication, CAS success/failure orderings, and lifetime
+  safety as a separate proof obligation.
+
 ### Cross-track placement edges
 
 - Linux `perf`/cache hierarchy ↔ DSA complexity and [cache-aware engineering](../dsa/chapters/ch89-engineering-cache.md).
@@ -309,3 +378,127 @@ Concurrency
 - RCU → Lock-free (ABA, hazard pointers), Memory Barriers (acquire/release, smp_mb), Kernel Modules (rcu_barrier for unload), cgroups traversal
 - Storage → Distributed (Ceph CRUSH, RADOS), Erasure Coding (Reed-Solomon)
 - Links fixed: introduction.md revision/README → revision/os.md, os/README → os/overview.md, etc., congestion-control README and bluetooth added
+
+## New Edges Added 2026-08-13 — Massive Expansion
+
+### Git ↔ Other Topics
+```
+Git Internals
+  → Objects (blob, tree, commit) ↔ Data Structures (hash tables, trees)
+  → SHA-1/SHA-256 ↔ Cryptography (hashing)
+  → Packfiles ↔ Storage (delta compression)
+  → Refs ↔ File Systems (pointer files)
+
+Git Workflows
+  → CI/CD (GitHub Actions) ↔ DevOps
+  → Code Review ↔ Software Engineering (team dynamics)
+  → Branching Strategy ↔ Release Management
+  → Merge vs Rebase ↔ Distributed Systems (conflict resolution)
+
+Git Hooks
+  → Pre-commit ↔ Testing (linting, unit tests)
+  → Commit-msg ↔ Code Quality (Conventional Commits)
+  → Pre-push ↔ CI/CD (validation)
+```
+
+### Software Engineering ↔ Other Topics
+```
+SDLC Models
+  → Agile/Scrum ↔ Project Management
+  → Waterfall ↔ Documentation (requirements specs)
+  → Spiral ↔ Risk Management
+
+SOLID Principles
+  → Single Responsibility ↔ Design Patterns (SRP in every pattern)
+  → Open/Closed ↔ Strategy Pattern, Decorator Pattern
+  → Liskov Substitution ↔ OOP (inheritance contracts)
+  → Interface Segregation ↔ API Design (focused interfaces)
+  → Dependency Inversion ↔ Backend (DI containers, Spring)
+
+Code Quality
+  → Technical Debt ↔ Refactoring
+  → Code Smells ↔ Design Patterns (antidotes)
+  → Clean Code ↔ Interview Preparation
+```
+
+### Security ↔ Other Topics
+```
+Authentication
+  → OAuth 2.0 ↔ Backend (JWT, API auth)
+  → OIDC ↔ Identity Providers
+  → Sessions ↔ Backend (session management)
+  → JWT ↔ Distributed Systems (stateless auth)
+
+Web Security
+  → XSS ↔ Frontend (CSP, sanitization)
+  → SQL Injection ↔ DBMS (parameterized queries)
+  → CSRF ↔ Backend (tokens, SameSite cookies)
+  → SSRF ↔ Cloud (metadata endpoints)
+
+Cryptography
+  → AES ↔ Storage (encryption at rest)
+  → TLS ↔ Networks (HTTPS, certificate pinning)
+  → RSA/ECC ↔ PKI (certificate chains)
+  → Password Hashing ↔ Backend (bcrypt, Argon2)
+```
+
+### Data Engineering ↔ Other Topics
+```
+Spark
+  → RDDs ↔ Programming Fundamentals (functional programming)
+  → DataFrames ↔ SQL (query optimization)
+  → DAG Execution ↔ Distributed Systems (task scheduling)
+
+Kafka
+  → Partitions ↔ Distributed Systems (partitioning)
+  → Consumer Groups ↔ Message Queues
+  → Exactly-Once ↔ Distributed Transactions
+  → WAL ↔ Storage (append-only log)
+
+Airflow
+  → DAGs ↔ Graph Algorithms
+  → Operators ↔ DevOps (CI/CD pipelines)
+  → Scheduling ↔ OS (cron, systemd timers)
+```
+
+### Machine Coding ↔ Other Topics
+```
+Design Patterns
+  → Strategy ↔ OOP (polymorphism)
+  → Observer ↔ Backend (event-driven)
+  → Factory ↔ Creational Patterns
+  → Builder ↔ Complex Object Construction
+
+Parking Lot
+  → OOP (inheritance, polymorphism)
+  → Design Patterns (Strategy for pricing)
+  → Database (slot allocation)
+
+LRU Cache
+  → Data Structures (HashMap + Doubly Linked List)
+  → Caching Theory ↔ OS (page replacement LRU)
+  → Concurrency (thread-safe cache)
+
+Rate Limiter
+  → Token Bucket ↔ Backend (API rate limiting)
+  → Sliding Window ↔ Networks (traffic shaping)
+  → Distributed Rate Limiting ↔ Distributed Systems
+```
+
+### Aptitude & Placement ↔ Other Topics
+```
+Probability
+  → Randomized Algorithms ↔ DSA
+  → Expected Value ↔ Algorithm Analysis
+  → Hashing ↔ Data Structures
+
+Logical Reasoning
+  → Problem Solving ↔ Interview Preparation
+  → Pattern Recognition ↔ Algorithm Design
+
+Placement Preparation
+  → Technical Interview ↔ All CS Topics
+  → System Design ↔ Distributed Systems, Backend
+  → Coding Round ↔ DSA, Competitive Programming
+  → Behavioral ↔ Communication, Resume
+```

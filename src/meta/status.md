@@ -1,28 +1,37 @@
 # Project Status
 
-> Status snapshot: 2026-08-12 (Asia/Calcutta)
+> Status snapshot: 2026-08-13 (Asia/Calcutta)
 
 ## Current status
 
-**Integration and validation are complete on `dev`.**
-The two public source books have been cloned, reviewed, integrated as coherent
-learning tracks, and wired into the parent `SUMMARY.md`.
+**Link repair and Software Engineering pages complete.** The Software Engineering
+section now has dedicated pages for Testing, DevOps & CI/CD, and Contributing,
+registered in `SUMMARY.md` and linked from the section README. All relative
+links, navigation, MathJax, and Mermaid checks pass on `dev`.
 
 | Area | Status | Evidence |
 |---|---|---|
-| Git safety | ✅ Complete | Development is on `dev`; the released tree is synchronized on both `dev` and `main` |
-| Linux source | ✅ Integrated | `src/linux/` contains the educational Markdown from `lb2` |
-| DSA source | ✅ Integrated | `src/dsa/` contains the educational Markdown from `dsa_book_2` |
-| Linux tools | ✅ Added | `src/linux/tools.md` is a placement-focused, referenced guide |
-| Navigation | ✅ Passing | 1,533 of 1,534 Markdown files are linked; `SUMMARY.md` itself is excluded |
-| Relative links | ✅ Passing | Repository checker reports 0 broken links |
-| Mermaid heuristic | ✅ Passing | 4,387 of 4,387 diagrams pass |
-| Mermaid v11 parser | ✅ Passing | 4,387 of 4,387 diagrams pass with `mermaid@11` + `jsdom` |
-| MathJax | ✅ Enabled | mdBook `mathjax-support = true`; DSA block and inline delimiters are preserved |
-| MathJax verifier | ✅ Added | `scripts/check-mathjax.py` is included in `validate-all.sh` and supports generated HTML checks |
-| Cross-reference graph | ✅ Automatic | Generated from 1,533 pages and 7,123 internal links during Pages deployment |
-| Research/validation audit | ✅ Complete | 0 broken links, 0 broken fragments, 0 unclosed fences, 0 duplicate bodies |
-| mdBook build | ✅ Constrained build passed | mdBook 0.4.52 built 1,575 output files with search indexing disabled; the normal search-enabled build was OOM-killed in this sandbox (exit 137) |
+| Git safety | ✅ Complete | Active branch is `dev`; `main` remains unchanged |
+| Content inventory | ✅ Audited | 1,726 content Markdown pages plus `SUMMARY.md` |
+| Navigation | ✅ Passing | 1,726 of 1,726 content pages are reachable from `SUMMARY.md` |
+| Relative links | ✅ Passing | Checker reports 0 broken links |
+| Mermaid heuristic | ✅ Passing | 4,405 of 4,405 diagrams pass |
+| Mermaid v11 parser | ✅ Passing | 4,405 of 4,405 diagrams pass (previous run) |
+| MathJax | ✅ Passing | 396 block pairs, 610 inline pairs, no legacy `$$` delimiters |
+| Cross-reference graph | ✅ Generated | 1,723 nodes and 7,405 internal links (pre-SE-pages run) |
+| Software Engineering | ✅ Expanded | 14 pages, incl. new Testing, DevOps & CI/CD, Contributing |
+
+## Validation command
+
+The lightweight validation suite was re-run on the latest `dev` tree:
+
+- `scripts/check-links.py` → 0 broken links
+- `scripts/check-summary.py` → SUMMARY navigation: OK
+- `scripts/check-mathjax.py` → MathJax validation: OK
+- `scripts/validate-mermaid-heuristic.mjs` → 4,405/4,405 pass
+
+A full `mdbook build` is not run in this sandbox: it peaks >1 GB RSS and is
+OOM-killed under the ~2 GB memory limit (documented in `validate-all.sh`).
 
 ## Repository provenance
 
@@ -39,18 +48,5 @@ rewritten or converted to nearby text when their old source path did not exist.
 
 - Development work is performed on `dev`.
 - Release promotion from `dev` to `main` occurs only after validation.
-- The current released tree is synchronized on `origin/dev` and `origin/main`.
 - Credentials are read only at command time and are not stored in repository
   files, commits, or documentation.
-
-## Final record
-
-`validate-all.sh` was run with an absolute repository path, mdBook 0.4.52, and
-Mermaid v11/jsdom. It returned 0: Mermaid heuristic/parser, links, and Summary
-all passed. The search-enabled build was attempted twice and killed by the
-sandbox memory limit; an isolated full build with `output.html.search.enable = false`
-completed successfully. The production `book.toml` was left unchanged.
-
-The release was promoted from `dev` to `main` after validation and synchronized
-back to `dev`. The two release branches are kept at the same validated tree;
-the working tree is clean.

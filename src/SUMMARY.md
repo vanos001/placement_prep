@@ -1159,6 +1159,7 @@
   - [netstat/ss](./networks/tools/netstat.md)
   - [ping/traceroute](./networks/tools/ping-traceroute.md)
   - [curl](./networks/tools/curl.md)
+  - [eBPF Networking](./networks/ebpf-networking.md)
 - [Socket Programming](./networks/sockets/README.md)
   - [TCP Sockets](./networks/sockets/tcp.md)
   - [UDP Sockets](./networks/sockets/udp.md)
@@ -1272,6 +1273,8 @@
   - [Lamport Clocks](./distributed/fundamentals/lamport.md)
   - [Vector Clocks](./distributed/fundamentals/vector-clocks.md)
   - [Gossip Protocol](./distributed/fundamentals/gossip.md)
+  - [Conflict-Free Replicated Data Types](./distributed/fundamentals/crdts.md)
+  - [Distributed Locks and Fencing Tokens](./distributed/fundamentals/distributed-locks.md)
 - [Consensus](./distributed/consensus/README.md)
   - [Paxos](./distributed/consensus/paxos.md)
   - [Raft](./distributed/consensus/raft.md)
@@ -1309,6 +1312,7 @@
 - [HDD](./storage/hdd.md)
 - [SSD](./storage/ssd.md)
 - [NVMe](./storage/nvme.md)
+- [NVMe over Fabrics](./storage/nvmeof.md)
 - [Object Storage](./storage/object-storage.md)
 - [Block Storage](./storage/block-storage.md)
 - [File Storage](./storage/file-storage.md)
@@ -1320,6 +1324,7 @@
 - [LSM Compaction Strategies](./storage/lsm-compaction.md)
 - [SSTable Format](./storage/sstable.md)
 - [BlobDB (Key-Value Separation)](./storage/blobdb.md)
+- [Tiered Storage and Data Temperature](./storage/tiered-storage.md)
 
 ---
 
@@ -1335,6 +1340,7 @@
 - [Coroutines](./concurrency/coroutines.md)
 - [Lock-free Data Structures](./concurrency/lock-free.md)
 - [RCU (Read-Copy-Update)](./concurrency/rcu.md)
+- [ABA Problem and Safe Memory Reclamation](./concurrency/aba-problem.md)
 - [Work-Stealing Scheduler](./concurrency/work-stealing.md)
 - [Memory Model (C++/Java/Go/Rust)](./concurrency/memory-model.md)
 - [Transactional Memory](./concurrency/transactional-memory.md)
@@ -1351,6 +1357,7 @@
 - [HTTP APIs](./backend/api/README.md)
   - [REST](./backend/api/rest.md)
   - [GraphQL](./backend/api/graphql.md)
+  - [GraphQL Federation](./backend/api/graphql-federation.md)
   - [gRPC](./backend/api/grpc.md)
   - [API Gateways](./backend/api/api-gateway.md)
   - [API Versioning](./backend/api/versioning.md)
@@ -1376,13 +1383,348 @@
   - [Event-Driven Architecture](./backend/patterns/event-driven.md)
   - [Event Sourcing](./backend/patterns/event-sourcing.md)
   - [CQRS](./backend/patterns/cqrs.md)
+  - [Change Data Capture and Transactional Outbox](./backend/patterns/cdc-outbox.md)
   - [Idempotency](./backend/patterns/idempotency.md)
   - [Distributed Transactions](./backend/patterns/distributed-transactions.md)
 - [Observability](./backend/observability/README.md)
+  - [OpenTelemetry](./backend/observability/opentelemetry.md)
 - [Testing](./backend/testing.md)
 - [CI/CD](./backend/cicd/README.md)
   - [GitHub Actions](./backend/cicd/github-actions.md)
   - [GitOps](./backend/cicd/gitops.md)
+
+---
+
+# Git
+
+- [Git Overview](./git/README.md)
+- [Git Internals](./git/internals.md)
+- [Git Fundamentals](./git/fundamentals.md)
+- [Branching & Merging](./git/branching.md)
+- [Rebasing](./git/rebasing.md)
+- [Stashing](./git/stashing.md)
+- [Advanced Operations](./git/advanced.md)
+- [Remote Operations](./git/remotes.md)
+- [Tags & Releases](./git/tags.md)
+- [Git Hooks](./git/hooks.md)
+- [Worktrees & Submodules](./git/worktrees-submodules.md)
+- [Git Workflows](./git/workflows.md)
+- [GitHub & Code Review](./git/github.md)
+- [Git Interview Questions](./git/interview-questions.md)
+- [Git Cheat Sheet](./git/cheat-sheet.md)
+
+---
+
+# Software Engineering
+
+- [SE Overview](./software-engineering/README.md)
+- [SDLC Models](./software-engineering/sdlc.md)
+- [Agile & Scrum](./software-engineering/agile.md)
+- [Requirements Engineering](./software-engineering/requirements.md)
+- [Software Design](./software-engineering/design.md)
+- [Code Quality](./software-engineering/code-quality.md)
+- [Testing](./software-engineering/testing.md)
+- [DevOps & CI/CD](./software-engineering/devops.md)
+- [Documentation](./software-engineering/documentation.md)
+- [Project Management](./software-engineering/project-management.md)
+- [Software Metrics](./software-engineering/metrics.md)
+- [Team Dynamics](./software-engineering/team-dynamics.md)
+- [SE Interview Questions](./software-engineering/interview-questions.md)
+- [Contributing](./software-engineering/CONTRIBUTING.md)
+
+---
+
+# Programming Fundamentals
+
+- [PF Overview](./programming-fundamentals/README.md)
+- [Variables and Types](./programming-fundamentals/variables-and-types.md)
+- [Scope and Lifetime](./programming-fundamentals/scope-and-lifetime.md)
+- [Functions](./programming-fundamentals/functions.md)
+- [Error Handling](./programming-fundamentals/error-handling.md)
+- [Type Systems](./programming-fundamentals/type-systems.md)
+- [Memory Model](./programming-fundamentals/memory-model.md)
+- [I/O and Serialization](./programming-fundamentals/io-and-serialization.md)
+- [Modules and Packages](./programming-fundamentals/modules-and-packages.md)
+- [PF Interview Questions](./programming-fundamentals/interview-questions.md)
+
+---
+
+# Security
+
+- [Security Overview](./security/README.md)
+- [Authentication](./security/authentication.md)
+- [Authorization](./security/authorization.md)
+- [Web Security](./security/web-security.md)
+- [Cryptography](./security/cryptography.md)
+- [Secrets Management](./security/secrets-management.md)
+- [Security Interview Questions](./security/interview-questions.md)
+
+---
+
+# Machine Coding
+
+- [Machine Coding Overview](./machine-coding/README.md)
+- [Approach & Strategy](./machine-coding/approach.md)
+- [Design Principles in Practice](./machine-coding/design-principles.md)
+- [Parking Lot](./machine-coding/parking-lot.md)
+- [Elevator System](./machine-coding/elevator.md)
+- [Library Management](./machine-coding/library-management.md)
+- [Splitwise](./machine-coding/splitwise.md)
+- [Rate Limiter](./machine-coding/rate-limiter.md)
+- [LRU Cache](./machine-coding/cache-lru.md)
+- [Task Scheduler](./machine-coding/task-scheduler.md)
+
+---
+
+# Data Engineering
+
+- [DE Overview](./data-engineering/README.md)
+- [DE Fundamentals](./data-engineering/fundamentals.md)
+- [Batch Processing](./data-engineering/batch-processing.md)
+- [Stream Processing](./data-engineering/stream-processing.md)
+- [Data Formats](./data-engineering/data-formats.md)
+- [Data Quality](./data-engineering/data-quality.md)
+- [DE Interview Questions](./data-engineering/interview-questions.md)
+
+---
+
+# Search Engines
+
+- [Search Overview](./search/README.md)
+- [Search Fundamentals](./search/fundamentals.md)
+- [Elasticsearch](./search/elasticsearch.md)
+- [Vector Search](./search/vector-search.md)
+- [Search Interview Questions](./search/interview-questions.md)
+
+---
+
+# Aptitude
+
+- [Aptitude Overview](./aptitude/README.md)
+- [Percentages](./aptitude/percentages.md)
+- [Ratios & Proportions](./aptitude/ratios-proportions.md)
+- [Averages](./aptitude/averages.md)
+- [Profit & Loss](./aptitude/profit-loss.md)
+- [Time & Work](./aptitude/time-work.md)
+- [Speed & Distance](./aptitude/speed-distance.md)
+- [Probability & Combinatorics](./aptitude/probability-combinatorics.md)
+- [Number Systems](./aptitude/number-systems.md)
+- [Logical Reasoning](./aptitude/logical-reasoning.md)
+- [Data Interpretation](./aptitude/data-interpretation.md)
+
+---
+
+# Placement Preparation
+
+- [Placement Overview](./placement-preparation/README.md)
+- [Campus Placement Process](./placement-preparation/campus-placement.md)
+- [Online Assessment](./placement-preparation/online-assessment.md)
+- [Technical Interview](./placement-preparation/technical-interview.md)
+- [HR Interview](./placement-preparation/hr-interview.md)
+- [Group Discussion](./placement-preparation/group-discussion.md)
+
+---
+
+# Resume & Career
+
+- [Resume Overview](./resume/README.md)
+- [Resume Structure](./resume/structure.md)
+- [Writing Bullet Points](./resume/writing-bullets.md)
+- [Projects on Resume](./resume/projects.md)
+- [Technical Skills](./resume/technical-skills.md)
+- [Common Resume Mistakes](./resume/common-mistakes.md)
+- [ATS Optimization](./resume/ats-optimization.md)
+
+---
+
+# Behavioral Interviews
+
+- [Behavioral Overview](./behavioral-interviews/README.md)
+- [STAR Method](./behavioral-interviews/star-method.md)
+- [Common Questions](./behavioral-interviews/common-questions.md)
+- [Company Fit](./behavioral-interviews/company-fit.md)
+- [Scenarios](./behavioral-interviews/scenarios.md)
+
+---
+
+# Communication
+
+- [Communication Overview](./communication/README.md)
+- [Technical Communication](./communication/technical-communication.md)
+- [Interview Communication](./communication/interview-communication.md)
+- [Written Communication](./communication/written-communication.md)
+
+---
+
+# Practical Programming Problems
+
+- [PP Overview](./practical-problems/README.md)
+- [Parsers](./practical-problems/parsers.md)
+- [CLI Tools](./practical-problems/cli-tools.md)
+- [File Processing](./practical-problems/file-processing.md)
+- [Concurrent Problems](./practical-problems/concurrent-problems.md)
+- [System Utilities](./practical-problems/system-utilities.md)
+
+---
+
+# DBMS Interview Problems
+
+- [DBMS Problems Overview](./dbms/interview-problems/README.md)
+- [Classic Problems](./dbms/interview-problems/classic-problems.md)
+- [Window Function Problems](./dbms/interview-problems/window-function-problems.md)
+- [Join Problems](./dbms/interview-problems/join-problems.md)
+- [Optimization Problems](./dbms/interview-problems/optimization-problems.md)
+- [Concurrency Scenarios](./dbms/interview-problems/concurrency-scenarios.md)
+
+---
+
+# Testing
+
+- [Testing Overview](./testing/README.md)
+- [Unit Testing](./testing/unit-testing.md)
+- [Integration Testing](./testing/integration-testing.md)
+- [E2E Testing](./testing/e2e-testing.md)
+- [TDD & BDD](./testing/tdd-bdd.md)
+- [Mocking](./testing/mocking.md)
+- [Test Strategy](./testing/test-strategy.md)
+- [Testing Interview Questions](./testing/interview-questions.md)
+
+---
+
+# Web Development
+
+- [Web Dev Overview](./web-development/README.md)
+- [Browser Architecture](./web-development/browser-architecture.md)
+- [DOM](./web-development/dom.md)
+- [Cookies & Storage](./web-development/cookies-storage.md)
+- [CORS](./web-development/cors.md)
+- [WebSockets](./web-development/websockets.md)
+- [HTTP Fundamentals](./web-development/http-fundamentals.md)
+- [Web Dev Interview Questions](./web-development/interview-questions.md)
+
+---
+
+# Frontend
+
+- [Frontend Overview](./frontend/README.md)
+- [HTML & CSS Fundamentals](./frontend/html-css-fundamentals.md)
+- [JavaScript Deep Dive](./frontend/javascript-deep-dive.md)
+- [TypeScript](./frontend/typescript.md)
+- [React](./frontend/react.md)
+- [Frontend Interview Questions](./frontend/interview-questions.md)
+
+---
+
+# CS Theory
+
+- [CS Theory Overview](./cs-theory/README.md)
+- [Sets, Relations & Functions](./cs-theory/sets-relations-functions.md)
+- [Logic](./cs-theory/logic.md)
+- [Proof Techniques](./cs-theory/proofs.md)
+- [Complexity Classes](./cs-theory/complexity-classes.md)
+
+---
+
+# Production Engineering
+
+- [Prod Eng Overview](./production-engineering/README.md)
+- [Deployments](./production-engineering/deployments.md)
+- [Graceful Shutdown](./production-engineering/graceful-shutdown.md)
+- [Incident Response](./production-engineering/incident-response.md)
+- [Prod Eng Interview Questions](./production-engineering/interview-questions.md)
+
+---
+
+# OOP & Design Patterns
+
+- [OOP Overview](./oop-patterns/README.md)
+- [SOLID Deep Dive](./oop-patterns/solid-deep-dive.md)
+- [Creational Patterns](./oop-patterns/design-patterns-creational.md)
+- [Structural & Behavioral Patterns](./oop-patterns/design-patterns-structural-behavioral.md)
+
+---
+
+# Web Servers
+
+- [Web Servers Overview](./web-servers/README.md)
+- [Nginx](./web-servers/nginx.md)
+- [Apache](./web-servers/apache.md)
+- [Web Server Interview Questions](./web-servers/interview-questions.md)
+
+---
+
+# Infrastructure as Code
+
+- [IaC Overview](./iac/README.md)
+- [Terraform](./iac/terraform.md)
+- [Ansible](./iac/ansible.md)
+- [IaC Interview Questions](./iac/interview-questions.md)
+
+---
+
+# Site Reliability Engineering
+
+- [SRE Overview](./sre/README.md)
+- [SLI/SLO/SLA](./sre/slo-sli-sla.md)
+- [Incident Management](./sre/incident-management.md)
+- [Chaos Engineering](./sre/chaos-engineering.md)
+- [SRE Interview Questions](./sre/interview-questions.md)
+
+---
+
+# Architecture Anti-Patterns
+
+- [Anti-Patterns Overview](./anti-patterns/README.md)
+- [Architecture Anti-Patterns](./anti-patterns/architecture-anti-patterns.md)
+- [Anti-Pattern Interview Questions](./anti-patterns/interview-questions.md)
+
+---
+
+# Failure Modes
+
+- [Failure Modes Overview](./failure-modes/README.md)
+- [Common Failures](./failure-modes/common-failures.md)
+- [Failure Interview Questions](./failure-modes/interview-questions.md)
+
+---
+
+# Projects
+
+- [Projects Overview](./projects/README.md)
+- [Project Ideas](./projects/project-ideas.md)
+- [Explaining Projects](./projects/explaining-projects.md)
+
+---
+
+# PostgreSQL
+
+- [PostgreSQL Overview](./dbms/postgresql/README.md)
+- [PostgreSQL Advanced Features](./dbms/postgresql/advanced-features.md)
+- [PostgreSQL Interview Questions](./dbms/postgresql/interview-questions.md)
+
+---
+
+# Redis
+
+- [Redis Overview](./redis/README.md)
+- [Redis Patterns & Internals](./redis/patterns-and-internals.md)
+- [Redis Interview Questions](./redis/interview-questions.md)
+
+---
+
+# Mobile Development
+
+- [Mobile Overview](./mobile/README.md)
+- [Android](./mobile/android.md)
+- [Mobile Interview Questions](./mobile/interview-questions.md)
+
+---
+
+# Mathematics
+
+- [Math Overview](./mathematics/README.md)
+- [Discrete Mathematics](./mathematics/discrete-math.md)
+- [Number Theory](./mathematics/number-theory.md)
 
 ---
 
@@ -1769,6 +2111,7 @@
 ## Rust
 
 - [Rust Overview](./languages/rust/README.md)
+- [Async Runtime Choices](./languages/rust/async-runtimes.md)
 - [Ownership](./languages/rust/ownership.md)
 - [Borrow Checker](./languages/rust/borrow-checker.md)
 - [Lifetimes](./languages/rust/lifetimes.md)

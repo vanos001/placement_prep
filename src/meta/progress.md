@@ -1,6 +1,18 @@
 # Integration Progress
 
-> Work log for 2026-08-12. Counts are from the working tree after integration.
+> Work log for 2026-08-12/13. Counts are from the working tree after integration.
+
+## Software Engineering section completion — 2026-08-13
+
+| Step | Result |
+|---|---|
+| Added `software-engineering/testing.md` | Testing levels, types, TDD/BDD, strategy, test doubles, interview Qs |
+| Added `software-engineering/devops.md` | CI/CD, deployment strategies, pipelines, IaC, interview Qs |
+| Added `software-engineering/CONTRIBUTING.md` | Contribution and validation guide for the book |
+| Registered pages in `SUMMARY.md` | All three listed under Software Engineering |
+| Re-pointed SE links | README and `documentation.md` now link the new local pages |
+| Re-ran validation | 0 broken links, SUMMARY OK, MathJax OK, Mermaid 4,405/4,405 |
+| Pushed | Commit `6318d8b` on `origin/dev`; `main` untouched |
 
 ## Completed today
 
@@ -18,16 +30,61 @@
 | Repaired Mermaid diagrams | Completed; imported and touched diagrams pass both validators |
 | Pushed integration commits | Completed; commits `42c4e57` and `5f986da` are on `origin/dev` |
 
+## Research batches — concurrency, storage, distributed systems, backend
+
+- Added `concurrency/aba-problem.md` covering tagged pointers, hazard pointers,
+  epoch reclamation, RCU, reference counting, memory ordering, and interview
+  trade-offs. References include Linux kernel docs, WG21 safe-reclamation
+  papers/current draft, IBM hazard-pointer research, Boost, Folly, and
+  Crossbeam.
+- Added `storage/nvmeof.md` covering NVMe/TCP, NVMe/RDMA, discovery, queue
+  pairs, multipathing, security, observability, and Linux `nvme-cli` workflows.
+- Added `distributed/fundamentals/crdts.md` covering convergence, SEC,
+  state/operation/delta CRDTs, causality, tombstones, local-first systems, and
+  CRDT versus OT trade-offs.
+- Added `backend/patterns/cdc-outbox.md` covering dual writes, transactional
+  outbox, Debezium logical decoding, delivery semantics, idempotency, WAL
+  retention, ordering, cleanup, and polling alternatives.
+
+## Research loop batch 3 — eBPF networking, Rust async, OpenTelemetry
+
+- Added `networks/ebpf-networking.md` covering XDP, TC, socket hooks, maps,
+  AF_XDP, Cilium datapaths, CO-RE, and production observability.
+- Added `languages/rust/async-runtimes.md` comparing Tokio, smol, async-std,
+  Glommio, Monoio, and Embassy with blocking/cancellation guidance.
+- Added `backend/observability/opentelemetry.md` covering traces, metrics, logs,
+  context propagation, semantic conventions, Collector pipelines, sampling,
+  and cardinality.
+
+## Research loop batch 4 — Federation, locks, tiered storage
+
+- Added GraphQL Federation, distributed locks/fencing tokens, and tiered-storage
+  chapters with official Apollo, Redis, ZooKeeper, etcd, RocksDB, and cloud
+  storage references.
+
+## Dev pull audit — 2026-08-13
+
+- Pulled remote `origin/dev` fast-forward to `61ac3ce`.
+- Audited the expanded tree: 1,723 content Markdown pages, 4,405 Mermaid
+  diagrams, and 7,405 cross-reference edges.
+- Added the ten pages that the pulled Summary referenced but the branch lacked:
+  data formats, data quality, search fundamentals, vector search, technical
+  interview, group discussion, window-function problems, join problems,
+  concurrency scenarios, and testing interview questions.
+- Repaired four relative links in Software Engineering/documentation/testing.
+- Link checker, Summary checker, MathJax checker, Mermaid heuristic/parser, and
+  a constrained mdBook build all pass.
+
 ## Final validation snapshot
 
-- Markdown files under `src/`: **1,534**
-- Mermaid blocks: **4,387**
+- Markdown files under `src/`: **1,724**
+- Mermaid blocks: **4,405**
 - Files containing Mermaid: **1,136**
-- Cross-reference graph: **1,533 nodes / 7,123 internal links**, generated automatically by the deployment workflow
+- Cross-reference graph: **1,723 nodes / 7,405 internal links**, generated automatically by the deployment workflow
 - Link checker: **0 broken links**
 - SUMMARY checker: **OK**
-- Mermaid heuristic: **4,387 / 4,387 passed**
-- Mermaid v11 parser: **4,387 / 4,387 passed**
+- Mermaid heuristic: **4,405 / 4,405 passed**
+- Mermaid v11 parser: **4,405 / 4,405 passed**
 - mdBook build: **constrained full build passed; normal search-enabled build was killed by sandbox OOM (exit 137)**
 - Research/validation audit: **0 broken links, 0 bad fragments, 0 unclosed fences, 0 exact duplicate bodies**; 73 URL-bearing pages remain in the reference-review queue
 

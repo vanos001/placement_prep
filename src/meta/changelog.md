@@ -1,7 +1,130 @@
 # Changelog
 
+## 2026-08-13 — Software Engineering: dedicated Testing, DevOps, and Contributing pages
+
+- Added `software-engineering/testing.md` (levels, types, TDD/BDD, strategy),
+  `software-engineering/devops.md` (CI/CD, deployment strategies, IaC), and
+  `software-engineering/CONTRIBUTING.md` (contribution guide).
+- Registered all three in `SUMMARY.md`; re-pointed the Software Engineering
+  README and `documentation.md` links to the new local pages (previously routed
+  to `../testing/README.md`, `../cloud/cicd/README.md`, and a GitHub URL).
+- Validation after change: 0 broken links, Summary navigation OK, MathJax OK,
+  Mermaid heuristic 4,405/4,405.
+- Committed on `dev` as `6318d8b` and pushed to `origin/dev`; `main` unchanged.
+
+## 2026-08-13 — Pull and topic-completeness audit
+
+- Fast-forwarded local `dev` to remote commit `61ac3ce`.
+- Found ten Summary entries whose target files were absent and added concise,
+  referenced pages for data formats, data quality, search fundamentals, vector
+  search, technical interviews, group discussions, SQL window functions,
+  joins, DBMS concurrency scenarios, and testing interview questions.
+- Repaired four stale links in Software Engineering and testing documentation.
+- Validation after repair: 0 broken links, complete Summary reachability,
+  MathJax OK, Mermaid 4,405/4,405, and Mermaid v11 parser 4,405/4,405.
+- Work remains on `dev`; `main` was not modified.
+
+
 This file records meaningful content and validation changes to the placement
 preparation book. Dates use the project timezone, Asia/Calcutta.
+
+## 2026-08-13 — Massive content expansion (parallel agents)
+
+Six parallel agents are creating comprehensive new sections:
+
+### Git Section (15 files)
+- `src/git/README.md` — Overview and chapter outline
+- `src/git/internals.md` — Objects (blob, tree, commit, tag), refs, HEAD, index, packfiles, SHA-1
+- `src/git/fundamentals.md` — Setup, config, staging, committing, diffing, undoing
+- `src/git/branching.md` — Branches, fast-forward, three-way merge, conflicts, octopus merge
+- `src/git/rebasing.md` — Rebase, interactive rebase, --onto, autosquash, rerere
+- `src/git/stashing.md` — Stash operations, partial stashing, branch from stash
+- `src/git/advanced.md` — cherry-pick, revert, reset, reflog, bisect, worktree, submodule, blame, grep
+- `src/git/remotes.md` — fetch, pull, push, force-with-lease, multiple remotes
+- `src/git/tags.md` — Lightweight vs annotated, semver, GPG signing
+- `src/git/hooks.md` — Client-side (pre-commit, commit-msg, pre-push), server-side (pre-receive, update)
+- `src/git/workflows.md` — Trunk-based, GitFlow, GitHub Flow, GitLab Flow, forking
+- `src/git/github.md` — PRs, code review, branch protection, CODEOWNERS, GitHub Actions
+- `src/git/interview-questions.md` — 25+ questions from beginner to advanced + scenarios
+- `src/git/cheat-sheet.md` — Quick reference for all commands
+
+### Software Engineering Section (10 files)
+- SDLC models, Agile/Scrum, requirements engineering, software design (SOLID)
+- Code quality, documentation, project management, metrics, team dynamics
+- Interview questions covering all SE topics
+
+### Programming Fundamentals Section (10 files)
+- Variables/types, scope/lifetime, functions (closures, HOFs, generators)
+- Error handling, type systems, memory model, I/O/serialization
+- Modules/packages, interview questions
+
+### Aptitude & Placement Preparation (17 files)
+- Quantitative: percentages, ratios, averages, profit/loss, time/work, speed/distance
+- Logical: probability, number systems, logical reasoning, data interpretation
+- Placement: campus process, online assessment, technical/HR interview, group discussion
+
+### Resume, Behavioral, Communication (15 files)
+- Resume: structure, bullet writing, projects, technical skills, ATS optimization
+- Behavioral: STAR method, 30+ common questions, company fit, scenarios
+- Communication: technical, interview, written
+
+### Machine Coding & Practical Problems (22 files)
+- Machine coding: parking lot, elevator, library, splitwise, rate limiter, LRU cache, task scheduler
+- Practical problems: parsers, CLI tools, file processing, concurrent problems, system utilities
+- DBMS interview problems: classic SQL, window functions, joins, optimization, concurrency
+
+### Security, Data Engineering, Search (18 files)
+- Security: authentication (OAuth/OIDC/JWT), authorization (RBAC/ABAC), web security (OWASP Top 10)
+- Cryptography: AES/RSA/ECC, TLS, password hashing, certificates, PKI
+- Data engineering: Spark, Kafka, Airflow, Parquet/Avro/ORC, data quality
+- Search: inverted indexes, TF-IDF/BM25, Elasticsearch, vector search
+
+## 2026-08-12 — Research loop batch 4
+
+- Added `backend/api/graphql-federation.md` with entities, composition,
+  directives, query planning, schema governance, and failure modes.
+- Added `distributed/fundamentals/distributed-locks.md` with lease races,
+  fencing tokens, Redis/Redlock, ZooKeeper, etcd, and lock alternatives.
+- Added `storage/tiered-storage.md` with hot/warm/cold policies, RocksDB
+  tiering, object lifecycle, caching, cost, latency, and recovery trade-offs.
+- Added navigation, cross-reference edges, backlog markers, and coverage data
+  for the research batch.
+
+## 2026-08-12 — Research loop batch 3
+
+- Added `networks/ebpf-networking.md` using Linux kernel networking/BPF docs,
+  AF_XDP, XSKMAP, SOCKMAP, BPF maps, Cilium, and eBPF Docs references.
+- Added `languages/rust/async-runtimes.md` using the Rust Async Book, Tokio,
+  smol, async-std, Glommio, Monoio, and Embassy documentation.
+- Added `backend/observability/opentelemetry.md` using OpenTelemetry signal,
+  propagation, semantic-convention, sampling, and specification docs.
+- Added Summary links, graph edges, backlog markers, and coverage updates.
+
+## 2026-08-12 — Research loop batch 2
+
+- Added `storage/nvmeof.md` using current NVM Express TCP/RDMA transport
+  specifications and Linux NVMe documentation.
+- Added `distributed/fundamentals/crdts.md` using CRDT.tech, the CRDT papers
+  bibliography, the original CRDT literature, and Ink & Switch local-first and
+  Peritext research.
+- Added `backend/patterns/cdc-outbox.md` using current Debezium connector,
+  Outbox Event Router, PostgreSQL logical decoding, and Microservices.io
+  transaction-log-tailing documentation.
+- Added Summary links, cross-reference edges, backlog completion markers, and
+  coverage updates for all three topics.
+
+## 2026-08-12 — Research: ABA and safe memory reclamation
+
+- Added `src/concurrency/aba-problem.md` covering ABA interleavings, tagged
+  pointers, hazard pointers, epoch-based reclamation, RCU, reference counting,
+  memory ordering, implementation choices, and interview questions.
+- Cross-linked the chapter to lock-free structures, the memory model, Linux
+  RCU, OS memory barriers, C++, Rust/Crossbeam, and DSA hardware context.
+- Researched against [Linux RCU Concepts](https://docs.kernel.org/RCU/rcu.html),
+  [WG21 P2530R3](https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2023/p2530r3.pdf),
+  [WG21 P2545R4](https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2023/p2545r4.pdf),
+  the [current C++ working draft](https://eel.is/c++draft/thread#saferecl),
+  IBM's hazard-pointer paper, Boost.Lockfree, Folly Hazptr, and Crossbeam Epoch.
 
 ## 2026-08-12 — Add MathJax validation tooling
 
