@@ -137,7 +137,7 @@ graph LR
     G[Wire] --> H[RX DMA]
     H --> I[NIC Crypto Engine]
     I --> J[AES-GCM Decrypt]
-    J --> kTLS Kernel
+    J --> KTLS["kTLS kernel"]
 ```
 
 ### Full Offload (TLS_HW_RECORD)

@@ -131,7 +131,7 @@ The CPU controller manages CPU bandwidth and scheduling:
 ```mermaid
 flowchart TB
     subgraph sys_fs_cgroup["/sys/fs/cgroup/"]
-        ROOT_CPU[cpu.max: "max 100000"]
+        ROOT_CPU["cpu.max: max 100000"]
         ROOT_WEIGHT[cpu.weight: 100]
     end
     subgraph my_app["my-app/"]

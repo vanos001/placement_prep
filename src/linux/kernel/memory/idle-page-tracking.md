@@ -621,7 +621,7 @@ sudo ./page-types -p <pid> --idle
 ```mermaid
 flowchart TD
     A[Page accessed] --> B[Set PTE Accessed bit]
-    B --> C[Page is "hot"]
+    B --> C["Page is hot"]
     C --> D[LRU active list]
     D --> E[Protected from reclaim]
 
@@ -632,7 +632,7 @@ flowchart TD
     J --> D
 
     K[Page not accessed] --> L[PTE Accessed bit stays clear]
-    L --> M[Page is "cold"]
+    L --> M["Page is cold"]
     M --> N[LRU inactive list]
     N --> O[Candidate for reclaim]
 ```

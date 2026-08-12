@@ -352,18 +352,18 @@ graph TD
     EVAL[RAG Evaluation]
     EVAL --> RET[Retrieval Quality]
     EVAL --> GEN[Generation Quality]
-    EVAL --> END[End-to-End]
+    EVAL --> E2E[End to End]
 
     RET --> PREC[Context Precision]
     RET --> REC[Context Recall]
-    RET --> MRR[MRR@K]
+    RET --> MRR["MRR at K"]
 
     GEN --> FAITH[Faithfulness]
     GEN --> REL[Answer Relevance]
     GEN --> CORR[Correctness]
 
-    END --> SAT[User Satisfaction]
-    END --> TASK[Task Completion]
+    E2E --> SAT[User Satisfaction]
+    E2E --> TASK[Task Completion]
 ```
 
 **RAGAS Metrics:**

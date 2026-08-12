@@ -1,7 +1,7 @@
 # Coverage Dashboard
 
 > Auto-generated tracking of content coverage across all subjects.
-> Last updated: 2026-08-09 20:30 IST (autonomous loop — batch 3)
+> Last updated: 2026-08-12 (integration batch)
 
 ## Summary
 
@@ -20,13 +20,15 @@
 | Concurrency | 17 | 65+ | 45+ | 55% |
 | Storage | 14 | 50+ | 40+ | 50% |
 | Cloud & DevOps | 26 | 80+ | 50+ | 60% |
+| Linux Deep Dive (`lb2`) | 446 | — | 1,531 | Integrated |
+| DSA Track (`dsa_book_2`) | 194 | — | 16 | Integrated |
 
 ## Overall Metrics
 
-- **Total markdown files**: 890
-- **Total Mermaid diagrams**: 2,840
-- **Total size**: 9.06 MB
-- **Build status**: ✅ Clean (zero errors, 0 broken links, 100% mermaid pass — 750 files)
+- **Total markdown files**: 1,533
+- **Total Mermaid diagrams**: 4,387
+- **Total size**: 26 MB (src/)
+- **Build status**: ✅ Full constrained build clean (mdBook 0.4.52, search index disabled for sandbox); normal search-enabled build is OOM-limited in this sandbox
 
 ## New Sections Added (2026-08-08 to 2026-08-09)
 
@@ -56,7 +58,27 @@
 - **BlobDB** (`storage/blobdb.md`) — KV separation for large values, WiscKey insight, RocksDB Integrated BlobDB design flush if V>=min_blob_size → blob file + SST K+BlobIndex file_no/offset/size, GC age cutoff 0.25 oldest files relocation, options enable_blob_files/min_blob_size/blob_file_size/enable_blob_garbage_collection, leveled recommended, performance bulk load 2.3-4.7× faster WA 1.0-1.02 vs 1.6, overwrite 1.4-1.7 vs 6.1-6.8 75-78% lower, trade-offs RA extra I/O SA higher via garbage, WiscKey vs Badger vs RocksDB, Qs, refs RocksDB Wiki BlobDB + Integrated Blob Blog + Pebble Issue 112
 - **Meta fixes**: 14 mermaid regressions after dev merge fixed (unquoted labels () {} |, Note over → NODE_FIX), 16 broken links fixed, bluetooth + congestion-control README added
 
-## Priority Gaps Remaining (Updated 2026-08-09 20:30)
+## Integration Batch — 2026-08-12
+
+- **Linux book (`lb2`)**: 444 source chapters integrated under `src/linux/`,
+  plus a track overview and the original [Linux Tools study component](../linux/tools.md).
+  Its navigation is adapted into this book's Summary; repository workflows,
+  generated output, and source deployment assets were excluded.
+- **DSA book (`dsa_book_2`)**: 193 source chapters and appendices integrated
+  under `src/dsa/`, plus a track overview and references. The source's
+  anchor-named filesystem artifacts were excluded.
+- **Navigation**: 1,533 Markdown files are present and 1,532 are linked from
+  `SUMMARY.md` (the Summary file is the only excluded Markdown file).
+- **Link repair**: 0 broken relative Markdown or image links.
+- **Mermaid repair**: 4,387/4,387 pass the repository heuristic and Mermaid v11
+  parser validators.
+- **Branch safety**: integration commits are on `dev`; `main` was not changed.
+- **mdBook build note**: the full source tree builds to 1,573 files with search
+  indexing disabled in the constrained sandbox. The normal search-enabled
+  build was attempted twice and terminated by the environment with exit 137;
+  `book.toml` was not changed to hide that limitation.
+
+## Priority Gaps Remaining (Updated 2026-08-12)
 
 ### HIGH Priority — Covered:
 1. CUDA Deep Dive — exists `arch/parallelism/cuda.md` ✅
@@ -102,5 +124,6 @@
 - Expand Concurrency to 25+ pages: currently 17 → add ABA, memory barriers, work-stealing done, RCU done, memory-model done — need transactional memory expansion, work-stealing already done, maybe add lock-free queue, wait-free
 - Expand Frameworks to 20+ pages: currently 9 → split Vue & Angular dedicated, add Svelte, Micronaut/Quarkus, Actix/Axum, Fiber/Chi done via Go web frameworks, need Rust Actix
 - Expand Distributed to 50+ pages: currently 37 → add CRDTs, vector clocks deep dive, gossip tuning
-- Keep meta updated each batch, maintain 100% mermaid, 0 links broken, build clean
-- Push to `dev` every batch, merge to `main` periodically when stable
+- Keep meta updated each batch; current checks are 100% Mermaid and 0 broken links.
+- Run and record the full mdBook build before declaring a future batch complete. The constrained build for this batch passed; the production search-enabled build is memory-limited here.
+- Push incremental work to `dev` only for this task; do not modify `main`.

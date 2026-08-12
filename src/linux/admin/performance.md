@@ -184,7 +184,7 @@ The following diagram shows a systematic approach to performance investigation.
 
 ```mermaid
 flowchart TD
-    A[Complaint: "System is slow"] --> B{Run vmstat 1 5}
+    A["Complaint: System is slow"] --> B{Run vmstat 1 5}
     B -->|High r, low b| C[CPU-bound]
     B -->|High b| D[I/O-bound]
     B -->|High si/so| E[Memory pressure / swapping]

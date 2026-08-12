@@ -2,7 +2,7 @@
 
 > Cross-topic relationships for navigation and study planning.
 > Auto-updated by research agents.
-> Last updated: 2026-08-09
+> Last updated: 2026-08-12
 
 ## Core Relationships
 
@@ -241,6 +241,63 @@ Concurrency
   → JavaScript (JS) → Event Loop, V8, Node.js libuv
   → Kernel (OS/Kernel) → RCU grace period, publish-subscribe, tracing ftrace/kprobes
 ```
+
+## Linux and DSA Integration Edges — 2026-08-12
+
+### Linux track
+
+- [Linux Tools](../linux/tools.md) → shell quoting, NUL-delimited pipelines,
+  `find`/`xargs`, text processing, process inspection, sockets, HTTP, storage,
+  tracing, and incident response.
+- Shell → [system programming](../linux/sysprog/syscalls.md) → system calls,
+  file descriptors, IPC, `epoll`, `io_uring`, ELF, and dynamic linking.
+- Processes and threads → [kernel scheduling and synchronization](../linux/kernel/processes/scheduler.md)
+  → per-CPU data, atomics, RCU, lock ordering, and lock contention.
+- `ip`/`ss`/`tcpdump` → [Linux networking](../linux/networking/fundamentals.md)
+  → TCP/IP, DNS, routing, TLS, WireGuard, and kernel eBPF hooks.
+- `/proc`, perf, ftrace, eBPF → [performance](../linux/performance/overview.md)
+  → USE method, flame graphs, cache behavior, NUMA, and production diagnosis.
+- Namespaces + cgroups + seccomp → [containers](../linux/containers/overview.md)
+  → OCI runtimes, rootless isolation, Kubernetes, and security boundaries.
+- Block I/O and filesystems → [Linux storage](../linux/storage/overview.md)
+  → LVM, RAID, NVMe-oF, Ceph, multipath, and filesystem internals.
+
+### DSA track
+
+- [DSA overview](../dsa/README.md) → foundations → arrays, sorting, searching,
+  hashing, recursion, and complexity analysis.
+- Arrays and hashing → [problem-solving patterns](../dsa/chapters/ch34-two-pointers.md)
+  → two pointers, sliding windows, prefix sums, monotonic structures, and
+  divide and conquer.
+- Trees → heaps, tries, DSU, segment trees, Fenwick trees, sparse tables, and
+  binary lifting; these feed range-query and graph problem strategies.
+- [Graph fundamentals](../dsa/chapters/ch22-graph-fundamentals.md) → DFS/BFS
+  → topological sort, shortest paths, MST, SCC, network flow, and tree
+  decompositions.
+- DP fundamentals → DP patterns → digit/profile/optimization DP; correctness
+  proofs and complexity analysis provide the explanation expected in interviews.
+- String algorithms → rolling hash, KMP, Z, tries, suffix arrays/automata,
+  Aho–Corasick, BWT/FM-index, and palindromic structures.
+- DSA engineering chapters → [architecture](../arch/modern/README.md), C++ memory and
+  STL, cache hierarchy, profiling, branch prediction, SIMD, and undefined
+  behavior.
+
+### Cross-track placement edges
+
+- Linux `perf`/cache hierarchy ↔ DSA complexity and [cache-aware engineering](../dsa/chapters/ch89-engineering-cache.md).
+- Linux kernel trees, hash tables, allocators, and schedulers ↔ DSA trees,
+  hashing, heaps, graphs, and amortized analysis.
+- `epoll`/`io_uring` readiness queues ↔ DSA queues and event-driven systems.
+- Consistent hashing ↔ Linux/network service discovery and DSA's advanced
+  hashing chapter; this is also relevant to distributed-system interviews.
+
+### Provenance and integrity
+
+- Source learning tracks: [lb2](https://github.com/Abhinav-Kumar012/lb2) and
+  [dsa_book_2](https://github.com/Abhinav-Kumar012/dsa_book_2).
+- Parent navigation: [`src/SUMMARY.md`](../SUMMARY.md).
+- Validation edges: Markdown links → Summary reachability → Mermaid v11 parser
+  → mdBook build.
 
 ## New Edges Added 2026-08-09
 

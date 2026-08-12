@@ -646,8 +646,7 @@ When optimizing a system, follow this systematic approach:
 
 ```mermaid
 flowchart TD
-    START[Performance Problem] --> USE[Run USE Method
-(Utilization, Saturation, Errors)]
+    START[Performance Problem] --> USE["Run USE method: utilization, saturation, errors"]
     USE --> BOTTLENECK{Bottleneck identified?}
     BOTTLENECK -->|Yes| FIX[Apply targeted fix]
     BOTTLENECK -->|No| PROFILE[Profile with perf/bpftrace]

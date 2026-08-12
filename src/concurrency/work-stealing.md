@@ -10,11 +10,11 @@
 
 ```mermaid
 flowchart TB
-    subgraph Worker 0 - Busy
+    subgraph WORKER0["Worker 0 - Busy"]
         Q0["Local deque - tasks [T1,T2,T3,T4] head->tail"]
         Q0H["Owner pops from HEAD (LIFO) - cache hot"]
     end
-    subgraph Worker 1 - Idle (Thief)
+    subgraph WORKER1["Worker 1 - Idle, Thief"]
         Q1["Local deque empty"]
         Q1T["Steals from TAIL of Worker 0 (FIFO) - minimizes contention"]
     end

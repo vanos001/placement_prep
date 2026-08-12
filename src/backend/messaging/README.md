@@ -14,7 +14,7 @@ graph LR
         A1 -->|HTTP| D1[Email Service]
         B1 -->|HTTP| E1[Fraud Service]
     end
-    subgraph Async["With Messaging (Loose Coupling")]
+    subgraph Async["With Messaging (Loose Coupling)"]
         A2[Order Service] -->|Publish| Q[Message Broker]
         Q --> B2[Payment Consumer]
         Q --> C2[Inventory Consumer]

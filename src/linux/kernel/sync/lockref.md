@@ -235,9 +235,9 @@ stateDiagram-v2
     Retry --> Read: Re-read combined value
 
     Success --> [*]: count incremented, lock untouched
-    SlowPath --> LockAcquire: spin_lock(&amp;lockref->lock)
+    SlowPath --> LockAcquire: spin_lock(lockref)
     LockAcquire --> CountUpdate: Modify count under lock
-    CountUpdate --> LockRelease: spin_unlock(&amp;lockref->lock)
+    CountUpdate --> LockRelease: spin_unlock(lockref)
     LockRelease --> [*]: count incremented via slow path
 ```
 

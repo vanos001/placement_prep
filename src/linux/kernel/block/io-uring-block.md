@@ -505,10 +505,12 @@ sequenceDiagram
 
     APP->>SQ: Post SQE (no syscall in SQPOLL mode)
     Note over KT: SQ thread or io_uring_enter()<br>dequeues SQE
-    KT->>KT: io_submit_sqe()<n    KT->>KT: io_issue_sqe()<n    alt Blocking I/O
+    KT->>KT: io_submit_sqe()
+    KT->>KT: io_issue_sqe()
+    alt Blocking I/O
         KT->>IOWQ: Queue to io-wq worker
         IOWQ->>BLK: Submit bio
-    else Non-blocking (O_DIRECT)
+    else Non-blocking IO
         KT->>BLK: Submit bio directly
     end
     BLK-->>KT: bio completion callback

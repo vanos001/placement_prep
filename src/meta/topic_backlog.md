@@ -2,7 +2,20 @@
 
 > Auto-maintained by research agents. Topics discovered during expansion that need coverage.
 > Priority: HIGH (interview-critical) | MEDIUM (important) | LOW (nice-to-have)
-> Last updated: 2026-08-09 (autonomous loop, after dev merge + new chapters)
+> Last updated: 2026-08-12 (Linux and DSA integration batch)
+
+## Integration completed — 2026-08-12
+
+- **Linux deep dive (`lb2`)** — integrated 444 educational pages under
+  `src/linux/`, with source navigation adapted to the parent Summary.
+- **Linux tools** — added a focused guide for `find`, `xargs`, text filters,
+  process/system-call tools, storage inspection, networking, HTTP debugging,
+  SSH/rsync, `jq`, `make`, and `tmux`, including interview questions,
+  safety notes, and official references.
+- **DSA track (`dsa_book_2`)** — integrated 193 educational pages and
+  appendices under `src/dsa/`, from foundations to advanced algorithms.
+- **Integrity gate** — 0 broken links, Summary navigation OK, and 4,387/4,387
+  Mermaid diagrams pass both the heuristic and Mermaid v11 parser checks.
 
 ## Completed (since 2026-08-05) — Updated 2026-08-09
 
@@ -27,13 +40,13 @@ The following previously-backlogged topics now have dedicated coverage:
 
 ### Operating Systems — Partially Done
 - ~~Linux Kernel Modules — loading, unloading, parameters (covered briefly; expand into a page)~~ ✅ Done `os/kernel/modules.md`
-- **Linux Tracing Deep Dive** — ftrace function_graph advanced, LTTng comparison (partially done `tracing.md`, could add LTTng page)
+- **Linux Tracing Deep Dive** — ftrace, kprobes, perf, eBPF, and advanced tracing are covered in the integrated Linux track; an LTTng comparison remains optional
 - **Memory Barriers Deep Dive** — C++20/Java/Go memory models (acquire/release, seq_cst) — dedicated page missing, currently in OS sync
 
 ### Networks — Partially Done
 - ~~HTTP/3 QPACK — header compression specifics~~ ✅ Done `networks/http/qpack.md`
 - ~~Service Mesh internals — Istio/Envoy xDS protocol, sidecar dataplane~~ ✅ Done `backend/containers/xds-protocol.md`
-- **eBPF Networking Deep Dive** — XDP, TC, sockmap, Cilium datapath — could be `networks/ebpf-networking.md` or expand `os/kernel/ebpf.md`
+- **eBPF Networking Deep Dive** — XDP, TC, sockmap, and Cilium datapath are covered in `linux/kernel/networking/`; add a focused comparison only if interviews require it
 
 ### Languages / Frameworks — Partially Done
 - ~~Go web frameworks — Gin/Echo/Fiber comparison~~ ✅ Done `languages/go/web-frameworks.md`

@@ -559,13 +559,10 @@ flowchart TD
     FOUND -->|Yes| PORT{Same port?}
     PORT -->|Yes| DROP["Drop, hairpin"]
     PORT -->|No| FWD[Forward to destination port]
-    FOUND -->|No| FLOOD[Flood to all ports
-(except source)]
-    FWD --> VLAN_CHECK{VLAN filtering
-enabled?}
+    FOUND -->|No| FLOOD["Flood to all ports, except source"]
+    FWD --> VLAN_CHECK{"VLAN filtering enabled?"}
     FLOOD --> VLAN_CHECK
-    VLAN_CHECK -->|Yes| VLAN_FWD[Check VLAN tags
-and port membership]
+    VLAN_CHECK -->|Yes| VLAN_FWD["Check VLAN tags and port membership"]
     VLAN_CHECK -->|No| SEND[Send frame]
     VLAN_FWD --> SEND
 ```

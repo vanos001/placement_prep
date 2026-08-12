@@ -603,8 +603,7 @@ memcpy(&ival, &val, sizeof(ival));
 ```mermaid
 graph TD
     A[Need atomic RMW?] --> B{Simple increment/decrement?}
-    B -->|Yes| C[Use atomic_add/atomic_inc
-(native instruction on x86)]
+    B -->|Yes| C["Use atomic add or inc, native instruction on x86"]
     B -->|No| D{Conditional update?}
     D -->|Yes| E{Single variable?}
     E -->|Yes| F[Use cmpxchg]

@@ -79,7 +79,8 @@ graph LR
     VA2 --> PA2
     VA3 --> PA3
     VA4 --> PA4
-    VB1 --> PA1  %% Shared code (same physical frame)
+    %% Shared code (same physical frame)
+    VB1 --> PA1
     VB2 --> PA5
     
     style PA1 fill:#69db7c,color:#000

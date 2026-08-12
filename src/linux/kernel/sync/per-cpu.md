@@ -736,14 +736,10 @@ void rcu_sched_clock_irq(int user) {
 
 ```mermaid
 flowchart TD
-    BOOT[Boot: __per_cpu_start section] --> STATIC[Static per-CPU variables
-placed in .data..percpu]
-    STATIC --> ALLOC[setup_per_cpu_areas()
-allocates per-CPU memory]
-    ALLOC --> COPY[Copy .data..percpu to
-each CPU's area]
-    COPY --> DYNAMIC[Dynamic: alloc_percpu()
-from vmalloc area]
+    BOOT["Boot: per-CPU start section"] --> STATIC["Static per-CPU variables placed in per-CPU data"]
+    STATIC --> ALLOC["setup_per_cpu_areas allocates per-CPU memory"]
+    ALLOC --> COPY["Copy per-CPU data to each CPU area"]
+    COPY --> DYNAMIC["Dynamic per-CPU allocation from vmalloc"]
 ```
 
 ### CPU Hotplug

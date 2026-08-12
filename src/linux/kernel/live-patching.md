@@ -228,28 +228,14 @@ The livepatch subsystem uses a **per-task consistency model** to ensure safe tra
 
 ```mermaid
 stateDiagram-v2
-    [*] => UNPATCHED: Module loaded
-
-    state UNPATCHED {
-        [*] => PATCHED_UNSAFE: klp_enable_patch()
-        PATCHED_UNSAFE => PATCHED_SAFE: All tasks checked
-    }
-
-    state PATCHED_SAFE {
-        [*] => PATCHED: Patch active
-    }
-
-    PATCHED => UNPATCHED: Module unloaded
-    PATCHED_SAFE => [*]
-
+    [*] --> UNPATCHED: module loaded
+    UNPATCHED --> PATCHED_UNSAFE: enable patch
+    PATCHED_UNSAFE --> PATCHED_SAFE: all tasks checked
+    PATCHED_SAFE --> PATCHED: patch active
+    PATCHED --> UNPATCHED: module unloaded
+    PATCHED --> [*]
     note right of PATCHED_UNSAFE
-        Tasks are individually transitioned
-        when they reach a safe point
-    end note
-
-    note right of PATCHED_SAFE
-        All tasks have been verified to not
-        be executing the old function
+        Tasks move at safe points
     end note
 ```
 
