@@ -1159,6 +1159,7 @@
   - [netstat/ss](./networks/tools/netstat.md)
   - [ping/traceroute](./networks/tools/ping-traceroute.md)
   - [curl](./networks/tools/curl.md)
+  - [eBPF Networking](./networks/ebpf-networking.md)
 - [Socket Programming](./networks/sockets/README.md)
   - [TCP Sockets](./networks/sockets/tcp.md)
   - [UDP Sockets](./networks/sockets/udp.md)
@@ -1383,6 +1384,7 @@
   - [Idempotency](./backend/patterns/idempotency.md)
   - [Distributed Transactions](./backend/patterns/distributed-transactions.md)
 - [Observability](./backend/observability/README.md)
+  - [OpenTelemetry](./backend/observability/opentelemetry.md)
 - [Testing](./backend/testing.md)
 - [CI/CD](./backend/cicd/README.md)
   - [GitHub Actions](./backend/cicd/github-actions.md)
@@ -1773,6 +1775,7 @@
 ## Rust
 
 - [Rust Overview](./languages/rust/README.md)
+- [Async Runtime Choices](./languages/rust/async-runtimes.md)
 - [Ownership](./languages/rust/ownership.md)
 - [Borrow Checker](./languages/rust/borrow-checker.md)
 - [Lifetimes](./languages/rust/lifetimes.md)

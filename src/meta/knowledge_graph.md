@@ -282,6 +282,21 @@ Concurrency
   STL, cache hierarchy, profiling, branch prediction, SIMD, and undefined
   behavior.
 
+### Research loop batch 3 edges — 2026-08-12
+
+- [eBPF networking](../networks/ebpf-networking.md) → XDP, TC/TCX, cgroup and
+  socket hooks, BPF maps, AF_XDP, CO-RE/BTF, and Cilium datapaths.
+- eBPF networking → [Linux networking tools](../linux/tools.md), TCP/IP,
+  [Cilium/Kubernetes](../backend/containers/kubernetes.md), and kernel tracing.
+- [Rust async runtimes](../languages/rust/async-runtimes.md) → futures,
+  executors, reactors, Tokio work stealing, smol/futures traits, io_uring,
+  blocking pools, cancellation, and OpenTelemetry context propagation.
+- [OpenTelemetry](../backend/observability/opentelemetry.md) → traces, metrics,
+  logs, baggage, semantic conventions, Collector pipelines, sampling,
+  cardinality, service mesh, CDC, and async context propagation.
+- OpenTelemetry ↔ [system design observability](../distributed/microservices/observability.md)
+  → SLOs, tail latency, retries, queues, and production diagnosis.
+
 ### Research loop batch 2 edges — 2026-08-12
 
 - [NVMe-oF](../storage/nvmeof.md) → NVMe command queues, TCP/RDMA

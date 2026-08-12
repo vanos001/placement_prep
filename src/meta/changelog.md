@@ -3,6 +3,16 @@
 This file records meaningful content and validation changes to the placement
 preparation book. Dates use the project timezone, Asia/Calcutta.
 
+## 2026-08-12 — Research loop batch 3
+
+- Added `networks/ebpf-networking.md` using Linux kernel networking/BPF docs,
+  AF_XDP, XSKMAP, SOCKMAP, BPF maps, Cilium, and eBPF Docs references.
+- Added `languages/rust/async-runtimes.md` using the Rust Async Book, Tokio,
+  smol, async-std, Glommio, Monoio, and Embassy documentation.
+- Added `backend/observability/opentelemetry.md` using OpenTelemetry signal,
+  propagation, semantic-convention, sampling, and specification docs.
+- Added Summary links, graph edges, backlog markers, and coverage updates.
+
 ## 2026-08-12 — Research loop batch 2
 
 - Added `storage/nvmeof.md` using current NVM Express TCP/RDMA transport

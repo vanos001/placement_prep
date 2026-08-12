@@ -9,14 +9,14 @@
 |---------|-------|-------------|----------|----------|
 | Operating Systems | 123 | 220+ | 385+ | 82% |
 | DBMS | 94 | 190+ | 295+ | 72% |
-| Computer Networks | 96 | 180+ | 265+ | 73% |
+| Computer Networks | 97 | 180+ | 267+ | 75% |
 | Computer Architecture | 82 | 160+ | 205+ | 68% |
 | Machine Learning (ml+llm) | 177 | 320+ | 400+ | 70% |
-| Distributed Systems | 38 | 85+ | 85+ | 58% |
+| Distributed Systems | 39 | 85+ | 85+ | 60% |
 | Interview Prep | 96 | 540+ | 125+ | 76% |
-| Programming Languages | 58 | 310+ | 75+ | 88% |
+| Programming Languages | 61 | 310+ | 75+ | 90% |
 | Frameworks | 9 | 100+ | 25+ | 60% |
-| Backend Engineering | 37 | 250+ | 250+ | 76% |
+| Backend Engineering | 38 | 250+ | 250+ | 78% |
 | Concurrency | 18 | 65+ | 47+ | 58% |
 | Storage | 16 | 50+ | 42+ | 55% |
 | Cloud & DevOps | 26 | 80+ | 50+ | 60% |
@@ -25,8 +25,8 @@
 
 ## Overall Metrics
 
-- **Total markdown files**: 1,538
-- **Total Mermaid diagrams**: 4,394
+- **Total markdown files**: 1,541
+- **Total Mermaid diagrams**: 4,399
 - **Total size**: 26 MB (src/)
 - **Build status**: ✅ Full constrained build clean (mdBook 0.4.52, search index disabled for sandbox); normal search-enabled build is OOM-limited in this sandbox
 
@@ -51,6 +51,14 @@
 - **API Versioning** (`backend/api/versioning.md`) — 6 strategies table URL Path dominant (safest default) vs query param vs header vs Accept vs date-based Stripe pinning vs no versioning evolution, caching Vary header, decision flowchart, Gin groups & Echo middleware & Deprecation/Sunset RFC 9745, 5 Qs, refs apiscout.dev & knowledgelib.io & oneuptime
 - **Rate Limiting Algorithms** (`backend/api/rate-limiting.md`) — 5 algos fixed window 1 key approx 2× burst vs sliding log SORTED SET O(n) exact vs sliding counter 2 keys near-exact ~1% err best balance vs token bucket HASH 2 fields burst tolerant Stripe 100/sec burst 1000 vs leaky bucket queue steady, comparison table, distributed Redis Lua atomic token bucket script, local+sync hybrid, gateway Envoy RateLimitService 429, decision tree flowchart, refs Redis official tutorial & AlgoMaster & Layrs.me
 - **SSTable Format** (`storage/sstable.md`) — BlockBasedTable diagram Data Block 4KB compressed, Index Block last key+offset, Filter Block Bloom per block, Footer 48 bytes magic, read path flowchart Index→Bloom→Data, building flush sequenceDiagram, partitioned index/filter for 256MB SST 0.5/5MB on-demand, tuning table, 5 Qs, refs Adam Comer blog & LevelDB Explained & RocksDB wiki partitioned filters
+
+### Batch 8 — eBPF networking, Rust async, OpenTelemetry (3 files) — 2026-08-12
+- **eBPF Networking** (`networks/ebpf-networking.md`) — XDP, TC, socket and
+  cgroup hooks, maps, AF_XDP, Cilium, CO-RE, and debugging.
+- **Rust Async Runtime Choices** (`languages/rust/async-runtimes.md`) — Tokio,
+  smol, async-std, Glommio, Monoio, Embassy, cancellation, and blocking work.
+- **OpenTelemetry** (`backend/observability/opentelemetry.md`) — signals,
+  propagation, Collector pipelines, semantic conventions, sampling, and cost.
 
 ### Batch 7 — NVMe-oF, CRDTs, and CDC/outbox (3 files) — 2026-08-12
 - **NVMe over Fabrics** (`storage/nvmeof.md`) — NVMe/TCP and NVMe/RDMA
@@ -85,13 +93,13 @@
 - **DSA book (`dsa_book_2`)**: 193 source chapters and appendices integrated
   under `src/dsa/`, plus a track overview and references. The source's
   anchor-named filesystem artifacts were excluded.
-- **Navigation**: 1,538 Markdown files are present and 1,537 are linked from
+- **Navigation**: 1,541 Markdown files are present and 1,540 are linked from
   `SUMMARY.md` (the Summary file is the only excluded Markdown file).
 - **Link repair**: 0 broken relative Markdown or image links.
 - **Mermaid repair**: 4,387/4,387 pass the repository heuristic and Mermaid v11
   parser validators.
 - **Branch safety**: integration commits are on `dev`; `main` was not changed.
-- **mdBook build note**: the full source tree builds to 1,579 files with search
+- **mdBook build note**: the full source tree builds to 1,582 files with search
   indexing disabled in the constrained sandbox. The normal search-enabled
   build was attempted twice and terminated by the environment with exit 137;
   `book.toml` was not changed to hide that limitation.
@@ -124,8 +132,8 @@
 ### Remaining MEDIUM (Next Loop):
 - Python GIL 3.13 free-threaded deep dive (`languages/python/free-threaded.md`)
 - Java Loom Virtual Threads (`languages/java/virtual-threads.md`)
-- Rust async runtimes comparison Tokio vs async-std vs smol (`languages/rust/async-runtimes.md`)
-- eBPF Networking Deep Dive: XDP, TC, sockmap, Cilium (`networks/ebpf-networking.md` or `os/kernel/ebpf-networking.md`)
+- Rust async runtimes comparison ✅ `languages/rust/async-runtimes.md`
+- eBPF Networking Deep Dive ✅ `networks/ebpf-networking.md`
 - Storage: Ceph CRUSH/RADOS deep dive (`storage/ceph-crush.md`) remains; NVMe-oF is complete in `storage/nvmeof.md` ✅
 - Concurrency: ABA Problem & Hazard Pointers ✅ `concurrency/aba-problem.md`; transactional memory expansion remains
 - Backend: GraphQL Federation (`backend/api/graphql-federation.md`) remains; CDC and Outbox are complete in `backend/patterns/cdc-outbox.md` ✅
@@ -133,7 +141,7 @@
 
 ### LOW Priority:
 - Quantum computing, blockchain (PoW/PoS, Merkle), edge computing (Cloudflare Workers, Fastly Compute@Edge)
-- Observability Deep Dive: OpenTelemetry correlation traces/metrics/logs
+- Observability Deep Dive: OpenTelemetry ✅ `backend/observability/opentelemetry.md`
 - SSTable already done, BlobDB done — remaining tiered storage could be done
 
 ## Next Steps (Loop Continues)

@@ -34,16 +34,26 @@
   outbox, Debezium logical decoding, delivery semantics, idempotency, WAL
   retention, ordering, cleanup, and polling alternatives.
 
+## Research loop batch 3 — eBPF networking, Rust async, OpenTelemetry
+
+- Added `networks/ebpf-networking.md` covering XDP, TC, socket hooks, maps,
+  AF_XDP, Cilium datapaths, CO-RE, and production observability.
+- Added `languages/rust/async-runtimes.md` comparing Tokio, smol, async-std,
+  Glommio, Monoio, and Embassy with blocking/cancellation guidance.
+- Added `backend/observability/opentelemetry.md` covering traces, metrics, logs,
+  context propagation, semantic conventions, Collector pipelines, sampling,
+  and cardinality.
+
 ## Final validation snapshot
 
-- Markdown files under `src/`: **1,538**
-- Mermaid blocks: **4,394**
+- Markdown files under `src/`: **1,541**
+- Mermaid blocks: **4,399**
 - Files containing Mermaid: **1,136**
-- Cross-reference graph: **1,537 nodes / 7,158 internal links**, generated automatically by the deployment workflow
+- Cross-reference graph: **1,540 nodes / 7,187 internal links**, generated automatically by the deployment workflow
 - Link checker: **0 broken links**
 - SUMMARY checker: **OK**
-- Mermaid heuristic: **4,394 / 4,394 passed**
-- Mermaid v11 parser: **4,394 / 4,394 passed**
+- Mermaid heuristic: **4,399 / 4,399 passed**
+- Mermaid v11 parser: **4,399 / 4,399 passed**
 - mdBook build: **constrained full build passed; normal search-enabled build was killed by sandbox OOM (exit 137)**
 - Research/validation audit: **0 broken links, 0 bad fragments, 0 unclosed fences, 0 exact duplicate bodies**; 73 URL-bearing pages remain in the reference-review queue
 

@@ -2,7 +2,7 @@
 
 > Auto-maintained by research agents. Topics discovered during expansion that need coverage.
 > Priority: HIGH (interview-critical) | MEDIUM (important) | LOW (nice-to-have)
-> Last updated: 2026-08-12 (research loop batch 2)
+> Last updated: 2026-08-12 (research loop batch 3)
 
 ## Integration completed — 2026-08-12
 
@@ -46,11 +46,11 @@ The following previously-backlogged topics now have dedicated coverage:
 ### Networks — Partially Done
 - ~~HTTP/3 QPACK — header compression specifics~~ ✅ Done `networks/http/qpack.md`
 - ~~Service Mesh internals — Istio/Envoy xDS protocol, sidecar dataplane~~ ✅ Done `backend/containers/xds-protocol.md`
-- **eBPF Networking Deep Dive** — XDP, TC, sockmap, and Cilium datapath are covered in `linux/kernel/networking/`; add a focused comparison only if interviews require it
+- ~~eBPF Networking Deep Dive~~ ✅ Done `networks/ebpf-networking.md` (2026-08-12): XDP, TC, socket hooks, maps, AF_XDP, Cilium, CO-RE, and observability
 
 ### Languages / Frameworks — Partially Done
 - ~~Go web frameworks — Gin/Echo/Fiber comparison~~ ✅ Done `languages/go/web-frameworks.md`
-- **Rust Async Runtimes** — Tokio vs async-std vs smol comparison — dedicated page missing, Tokio exists but comparison missing
+- ~~Rust Async Runtimes~~ ✅ Done `languages/rust/async-runtimes.md` (2026-08-12): Tokio, smol, async-std, Glommio, Monoio, Embassy, blocking and cancellation
 - **Python Free-Threaded (3.13t) Deep Dive** — GIL removal, free-threaded build
 - **Java Loom Virtual Threads** — expand java.md with Project Loom
 
@@ -74,7 +74,7 @@ The following previously-backlogged topics now have dedicated coverage:
 - **Quantum Computing** — qubits, gates, algorithms (curiosity, not interview-critical)
 - **Blockchain** — consensus PoW/PoS, smart contracts, Merkle trees (could be `arch/blockchain.md` or separate)
 - **Edge Computing** — CDN compute, edge functions (covered in cdn/edge.md; could expand with Cloudflare Workers, Fastly Compute@Edge)
-- **Observability Deep Dive** — OpenTelemetry traces/metrics/logs correlation, exemplar
+- ~~Observability Deep Dive~~ ✅ Done `backend/observability/opentelemetry.md` (2026-08-12): signals, propagation, Collector, semantic conventions, sampling, cardinality
 
 ## Decisions / Notes
 
