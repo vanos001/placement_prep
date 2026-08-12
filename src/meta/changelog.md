@@ -3,6 +3,19 @@
 This file records meaningful content and validation changes to the placement
 preparation book. Dates use the project timezone, Asia/Calcutta.
 
+## 2026-08-12 — Research loop batch 2
+
+- Added `storage/nvmeof.md` using current NVM Express TCP/RDMA transport
+  specifications and Linux NVMe documentation.
+- Added `distributed/fundamentals/crdts.md` using CRDT.tech, the CRDT papers
+  bibliography, the original CRDT literature, and Ink & Switch local-first and
+  Peritext research.
+- Added `backend/patterns/cdc-outbox.md` using current Debezium connector,
+  Outbox Event Router, PostgreSQL logical decoding, and Microservices.io
+  transaction-log-tailing documentation.
+- Added Summary links, cross-reference edges, backlog completion markers, and
+  coverage updates for all three topics.
+
 ## 2026-08-12 — Research: ABA and safe memory reclamation
 
 - Added `src/concurrency/aba-problem.md` covering ABA interleavings, tagged

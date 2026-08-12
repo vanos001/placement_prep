@@ -14,15 +14,15 @@ learning tracks, and wired into the parent `SUMMARY.md`.
 | Linux source | ✅ Integrated | `src/linux/` contains the educational Markdown from `lb2` |
 | DSA source | ✅ Integrated | `src/dsa/` contains the educational Markdown from `dsa_book_2` |
 | Linux tools | ✅ Added | `src/linux/tools.md` is a placement-focused, referenced guide |
-| Navigation | ✅ Passing | 1,534 of 1,535 Markdown files are linked; `SUMMARY.md` itself is excluded |
+| Navigation | ✅ Passing | 1,537 of 1,538 Markdown files are linked; `SUMMARY.md` itself is excluded |
 | Relative links | ✅ Passing | Repository checker reports 0 broken links |
-| Mermaid heuristic | ✅ Passing | 4,389 of 4,389 diagrams pass |
-| Mermaid v11 parser | ✅ Passing | 4,389 of 4,389 diagrams pass with `mermaid@11` + `jsdom` |
+| Mermaid heuristic | ✅ Passing | 4,394 of 4,394 diagrams pass |
+| Mermaid v11 parser | ✅ Passing | 4,394 of 4,394 diagrams pass with `mermaid@11` + `jsdom` |
 | MathJax | ✅ Enabled | mdBook `mathjax-support = true`; DSA block and inline delimiters are preserved |
 | MathJax verifier | ✅ Added | `scripts/check-mathjax.py` is included in `validate-all.sh` and supports generated HTML checks |
-| Cross-reference graph | ✅ Automatic | Generated from 1,534 pages and 7,134 internal links during Pages deployment |
+| Cross-reference graph | ✅ Automatic | Generated from 1,537 pages and 7,158 internal links during Pages deployment |
 | Research/validation audit | ✅ Complete | 0 broken links, 0 broken fragments, 0 unclosed fences, 0 duplicate bodies |
-| mdBook build | ✅ Constrained build passed | mdBook 0.4.52 built 1,576 output files with search indexing disabled; the normal search-enabled build was OOM-killed in this sandbox (exit 137) |
+| mdBook build | ✅ Constrained build passed | mdBook 0.4.52 built 1,579 output files with search indexing disabled; the normal search-enabled build was OOM-killed in this sandbox (exit 137) |
 
 ## Repository provenance
 

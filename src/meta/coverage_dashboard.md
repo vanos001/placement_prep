@@ -12,21 +12,21 @@
 | Computer Networks | 96 | 180+ | 265+ | 73% |
 | Computer Architecture | 82 | 160+ | 205+ | 68% |
 | Machine Learning (ml+llm) | 177 | 320+ | 400+ | 70% |
-| Distributed Systems | 37 | 85+ | 85+ | 55% |
+| Distributed Systems | 38 | 85+ | 85+ | 58% |
 | Interview Prep | 96 | 540+ | 125+ | 76% |
 | Programming Languages | 58 | 310+ | 75+ | 88% |
 | Frameworks | 9 | 100+ | 25+ | 60% |
-| Backend Engineering | 36 | 250+ | 95+ | 73% |
+| Backend Engineering | 37 | 250+ | 250+ | 76% |
 | Concurrency | 18 | 65+ | 47+ | 58% |
-| Storage | 14 | 50+ | 40+ | 50% |
+| Storage | 16 | 50+ | 42+ | 55% |
 | Cloud & DevOps | 26 | 80+ | 50+ | 60% |
 | Linux Deep Dive (`lb2`) | 446 | — | 1,531 | Integrated |
 | DSA Track (`dsa_book_2`) | 194 | — | 16 | Integrated |
 
 ## Overall Metrics
 
-- **Total markdown files**: 1,535
-- **Total Mermaid diagrams**: 4,389
+- **Total markdown files**: 1,538
+- **Total Mermaid diagrams**: 4,394
 - **Total size**: 26 MB (src/)
 - **Build status**: ✅ Full constrained build clean (mdBook 0.4.52, search index disabled for sandbox); normal search-enabled build is OOM-limited in this sandbox
 
@@ -52,6 +52,17 @@
 - **Rate Limiting Algorithms** (`backend/api/rate-limiting.md`) — 5 algos fixed window 1 key approx 2× burst vs sliding log SORTED SET O(n) exact vs sliding counter 2 keys near-exact ~1% err best balance vs token bucket HASH 2 fields burst tolerant Stripe 100/sec burst 1000 vs leaky bucket queue steady, comparison table, distributed Redis Lua atomic token bucket script, local+sync hybrid, gateway Envoy RateLimitService 429, decision tree flowchart, refs Redis official tutorial & AlgoMaster & Layrs.me
 - **SSTable Format** (`storage/sstable.md`) — BlockBasedTable diagram Data Block 4KB compressed, Index Block last key+offset, Filter Block Bloom per block, Footer 48 bytes magic, read path flowchart Index→Bloom→Data, building flush sequenceDiagram, partitioned index/filter for 256MB SST 0.5/5MB on-demand, tuning table, 5 Qs, refs Adam Comer blog & LevelDB Explained & RocksDB wiki partitioned filters
 
+### Batch 7 — NVMe-oF, CRDTs, and CDC/outbox (3 files) — 2026-08-12
+- **NVMe over Fabrics** (`storage/nvmeof.md`) — NVMe/TCP and NVMe/RDMA
+  transport trade-offs, discovery, queueing, multipathing, security, and
+  Linux operations.
+- **Conflict-Free Replicated Data Types** (`distributed/fundamentals/crdts.md`)
+  — SEC, CvRDT/CmRDT/delta CRDTs, causality, deletes, local-first, and OT
+  comparison.
+- **CDC and Transactional Outbox** (`backend/patterns/cdc-outbox.md`) —
+  atomic local events, Debezium, logical decoding, idempotency, ordering,
+  WAL retention, cleanup, and polling alternatives.
+
 ### Batch 6 — Safe Memory Reclamation (1 file) — 2026-08-12
 - **ABA Problem and Safe Memory Reclamation** (`concurrency/aba-problem.md`) —
   CAS ABA interleaving, tagged/versioned pointers, hazard pointers, EBR,
@@ -74,13 +85,13 @@
 - **DSA book (`dsa_book_2`)**: 193 source chapters and appendices integrated
   under `src/dsa/`, plus a track overview and references. The source's
   anchor-named filesystem artifacts were excluded.
-- **Navigation**: 1,535 Markdown files are present and 1,534 are linked from
+- **Navigation**: 1,538 Markdown files are present and 1,537 are linked from
   `SUMMARY.md` (the Summary file is the only excluded Markdown file).
 - **Link repair**: 0 broken relative Markdown or image links.
 - **Mermaid repair**: 4,387/4,387 pass the repository heuristic and Mermaid v11
   parser validators.
 - **Branch safety**: integration commits are on `dev`; `main` was not changed.
-- **mdBook build note**: the full source tree builds to 1,576 files with search
+- **mdBook build note**: the full source tree builds to 1,579 files with search
   indexing disabled in the constrained sandbox. The normal search-enabled
   build was attempted twice and terminated by the environment with exit 137;
   `book.toml` was not changed to hide that limitation.
@@ -115,10 +126,10 @@
 - Java Loom Virtual Threads (`languages/java/virtual-threads.md`)
 - Rust async runtimes comparison Tokio vs async-std vs smol (`languages/rust/async-runtimes.md`)
 - eBPF Networking Deep Dive: XDP, TC, sockmap, Cilium (`networks/ebpf-networking.md` or `os/kernel/ebpf-networking.md`)
-- Storage: Ceph CRUSH/RADOS deep dive (`storage/ceph-crush.md`), NVMe-oF (`storage/nvmeof.md`)
+- Storage: Ceph CRUSH/RADOS deep dive (`storage/ceph-crush.md`) remains; NVMe-oF is complete in `storage/nvmeof.md` ✅
 - Concurrency: ABA Problem & Hazard Pointers ✅ `concurrency/aba-problem.md`; transactional memory expansion remains
-- Backend: GraphQL Federation (`backend/api/graphql-federation.md`), Change Data Capture & Outbox (`backend/patterns/cdc-outbox.md`)
-- Distributed: CRDTs (`distributed/fundamentals/crdts.md`), Vector Clocks already have file but expand
+- Backend: GraphQL Federation (`backend/api/graphql-federation.md`) remains; CDC and Outbox are complete in `backend/patterns/cdc-outbox.md` ✅
+- Distributed: CRDTs are complete in `distributed/fundamentals/crdts.md` ✅; Vector Clocks can still be expanded
 
 ### LOW Priority:
 - Quantum computing, blockchain (PoW/PoS, Merkle), edge computing (Cloudflare Workers, Fastly Compute@Edge)
@@ -127,10 +138,10 @@
 
 ## Next Steps (Loop Continues)
 
-- Expand Storage to 20+ pages: currently 14 → add Ceph CRUSH, NVMe-oF, tiered storage, BlobDB done, SSTable done, WAL done, compaction done — need Ceph RADOS, write amplification minimization, erasure coding deep dive already exists but could expand
+- Expand Storage to 20+ pages: currently 16 → add Ceph CRUSH, NVMe-oF, tiered storage, BlobDB done, SSTable done, WAL done, compaction done — need Ceph RADOS, write amplification minimization, erasure coding deep dive already exists but could expand
 - Expand Concurrency to 25+ pages: currently 18 → ABA, memory barriers, work-stealing, RCU, and memory-model coverage are present — need transactional memory expansion, work-stealing already done, maybe add lock-free queue, wait-free
 - Expand Frameworks to 20+ pages: currently 9 → split Vue & Angular dedicated, add Svelte, Micronaut/Quarkus, Actix/Axum, Fiber/Chi done via Go web frameworks, need Rust Actix
-- Expand Distributed to 50+ pages: currently 37 → add CRDTs, vector clocks deep dive, gossip tuning
+- Expand Distributed to 50+ pages: currently 38 → CRDTs complete; add vector clocks deep dive and gossip tuning
 - Keep meta updated each batch; current checks are 100% Mermaid and 0 broken links.
 - Run and record the full mdBook build before declaring a future batch complete. The constrained build for this batch passed; the production search-enabled build is memory-limited here.
 - Push incremental work to `dev` only for this task; do not modify `main`.

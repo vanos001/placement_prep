@@ -18,24 +18,32 @@
 | Repaired Mermaid diagrams | Completed; imported and touched diagrams pass both validators |
 | Pushed integration commits | Completed; commits `42c4e57` and `5f986da` are on `origin/dev` |
 
-## Research batch — ABA and safe memory reclamation
+## Research batches — concurrency, storage, distributed systems, backend
 
 - Added `concurrency/aba-problem.md` covering tagged pointers, hazard pointers,
   epoch reclamation, RCU, reference counting, memory ordering, and interview
   trade-offs. References include Linux kernel docs, WG21 safe-reclamation
   papers/current draft, IBM hazard-pointer research, Boost, Folly, and
   Crossbeam.
+- Added `storage/nvmeof.md` covering NVMe/TCP, NVMe/RDMA, discovery, queue
+  pairs, multipathing, security, observability, and Linux `nvme-cli` workflows.
+- Added `distributed/fundamentals/crdts.md` covering convergence, SEC,
+  state/operation/delta CRDTs, causality, tombstones, local-first systems, and
+  CRDT versus OT trade-offs.
+- Added `backend/patterns/cdc-outbox.md` covering dual writes, transactional
+  outbox, Debezium logical decoding, delivery semantics, idempotency, WAL
+  retention, ordering, cleanup, and polling alternatives.
 
 ## Final validation snapshot
 
-- Markdown files under `src/`: **1,535**
-- Mermaid blocks: **4,389**
+- Markdown files under `src/`: **1,538**
+- Mermaid blocks: **4,394**
 - Files containing Mermaid: **1,136**
-- Cross-reference graph: **1,534 nodes / 7,134 internal links**, generated automatically by the deployment workflow
+- Cross-reference graph: **1,537 nodes / 7,158 internal links**, generated automatically by the deployment workflow
 - Link checker: **0 broken links**
 - SUMMARY checker: **OK**
-- Mermaid heuristic: **4,389 / 4,389 passed**
-- Mermaid v11 parser: **4,389 / 4,389 passed**
+- Mermaid heuristic: **4,394 / 4,394 passed**
+- Mermaid v11 parser: **4,394 / 4,394 passed**
 - mdBook build: **constrained full build passed; normal search-enabled build was killed by sandbox OOM (exit 137)**
 - Research/validation audit: **0 broken links, 0 bad fragments, 0 unclosed fences, 0 exact duplicate bodies**; 73 URL-bearing pages remain in the reference-review queue
 

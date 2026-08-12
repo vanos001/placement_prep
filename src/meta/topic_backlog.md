@@ -2,7 +2,7 @@
 
 > Auto-maintained by research agents. Topics discovered during expansion that need coverage.
 > Priority: HIGH (interview-critical) | MEDIUM (important) | LOW (nice-to-have)
-> Last updated: 2026-08-12 (research and validation batches)
+> Last updated: 2026-08-12 (research loop batch 2)
 
 ## Integration completed — 2026-08-12
 
@@ -58,7 +58,7 @@ The following previously-backlogged topics now have dedicated coverage:
 - ~~Storage: SSTable Format — data blocks, index, bloom, footer, compression~~ ✅ Done `storage/sstable.md` (2026-08-09): BlockBasedTable diagram, Index/Bloom/Footer 48 bytes magic, partitioned index/filter, read path, compression
 - ~~Storage: BlobDB — separation of small vs large values~~ ✅ Done `storage/blobdb.md` (2026-08-09): WiscKey, BlobIndex file_no/offset/size, GC age cutoff 0.25, WA 1.4-1.7 vs 6.1-6.8 75% lower, options enable_blob_files/min_blob_size
 - **Storage: Ceph CRUSH/RADOS Deep Dive** — CRUSH algorithm, placement groups, RADOS (still TODO)
-- **Storage: NVMe over Fabrics** — NVMe-oF TCP/RDMA (TODO)
+- ~~Storage: NVMe over Fabrics~~ ✅ Done `storage/nvmeof.md` (2026-08-12): TCP/RDMA, discovery, queues, multipathing, security, observability
 - ~~Concurrency: Work-Stealing Scheduler — Go scheduler work-stealing, Java ForkJoinPool, Rust Tokio~~ ✅ Done `concurrency/work-stealing.md` (2026-08-09): LIFO owner head vs FIFO thief tail, Go GMP P local 256 + global, Java ForkJoinPool WorkQueue 4096, Tokio 256 ring + injection queue
 - ~~Concurrency: ABA Problem & Memory Reclamation~~ ✅ Done `concurrency/aba-problem.md` (2026-08-12): tagged pointers, hazard pointers, EBR, RCU, reference counting, memory ordering, C++26 safe-reclamation references
 - ~~Concurrency: Memory Model — C++/Java/Go memory models, acquire/release, data races~~ ✅ Done `concurrency/memory-model.md` (2026-08-09): TSO vs weak ARM, DRF-SC happens-before, C++11 6 orders, Java volatile total order vs VarHandle acq/rel, Go channel happens-before, Rust Send/Sync, store buffering litmus
@@ -67,7 +67,7 @@ The following previously-backlogged topics now have dedicated coverage:
 - ~~API Versioning Strategies — URL vs header vs content negotiation, Stripe example~~ ✅ Done `backend/api/versioning.md` (2026-08-09): 6 strategies table, URL path safest default, date-based Stripe pinning compatibility layer, decision flowchart, Deprecation/Sunset headers
 - ~~Rate Limiting Algorithms Deep Dive — token bucket vs leaky bucket vs sliding window logs vs sliding window counter~~ ✅ Done `backend/api/rate-limiting.md` (2026-08-09): 5 algos fixed vs sliding log O(n) exact vs sliding counter 2 keys ~1% err vs token bucket HASH burst vs leaky queue steady, comparison table, Redis Lua token bucket script, decision tree
 - **Distributed Lock Deep Dive** — Redlock controversy, fenced tokens, etcd locks (distributed-lock.md exists, could expand)
-- **Change Data Capture & Outbox Pattern** — Debezium, transactional outbox (TODO)
+- ~~Change Data Capture & Outbox Pattern~~ ✅ Done `backend/patterns/cdc-outbox.md` (2026-08-12): dual-write failure, Debezium, WAL retention, idempotency, ordering
 
 ## LOW Priority
 

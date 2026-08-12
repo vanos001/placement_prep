@@ -282,6 +282,26 @@ Concurrency
   STL, cache hierarchy, profiling, branch prediction, SIMD, and undefined
   behavior.
 
+### Research loop batch 2 edges — 2026-08-12
+
+- [NVMe-oF](../storage/nvmeof.md) → NVMe command queues, TCP/RDMA
+  transports, discovery, multipathing, Linux `nvme-cli`, storage latency, and
+  network congestion.
+- NVMe-oF → [Block Storage](../storage/block-storage.md), [Linux networking](../linux/networking/fundamentals.md),
+  [RDMA](../linux/networking/rdma.md), and distributed-storage design.
+- [CRDTs](../distributed/fundamentals/crdts.md) → convergence, SEC, vector
+  clocks, gossip, replication, local-first software, Yjs/Automerge, and rich
+  text collaboration.
+- CRDTs ↔ [Consensus](../distributed/consensus/README.md): CRDTs avoid some
+  coordination for mergeable state; consensus is required for linearizable
+  decisions and global invariants.
+- [CDC and Transactional Outbox](../backend/patterns/cdc-outbox.md) → WAL,
+  logical decoding, Debezium, Kafka, idempotency, event-driven architecture,
+  CQRS, and distributed transaction boundaries.
+- CDC/outbox ↔ CRDTs: event publication transports changes; CRDTs define a
+  mergeable replicated state. Neither alone guarantees business invariants or
+  exactly-once external side effects.
+
 ### ABA and safe-reclamation edges — 2026-08-12
 
 - [ABA Problem](../concurrency/aba-problem.md) → CAS/compare-exchange, tagged
