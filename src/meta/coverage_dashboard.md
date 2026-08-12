@@ -25,7 +25,7 @@
 
 ## Overall Metrics
 
-- **Total markdown files**: 1,533
+- **Total markdown files**: 1,534
 - **Total Mermaid diagrams**: 4,387
 - **Total size**: 26 MB (src/)
 - **Build status**: ✅ Full constrained build clean (mdBook 0.4.52, search index disabled for sandbox); normal search-enabled build is OOM-limited in this sandbox
@@ -67,13 +67,13 @@
 - **DSA book (`dsa_book_2`)**: 193 source chapters and appendices integrated
   under `src/dsa/`, plus a track overview and references. The source's
   anchor-named filesystem artifacts were excluded.
-- **Navigation**: 1,533 Markdown files are present and 1,532 are linked from
+- **Navigation**: 1,534 Markdown files are present and 1,533 are linked from
   `SUMMARY.md` (the Summary file is the only excluded Markdown file).
 - **Link repair**: 0 broken relative Markdown or image links.
 - **Mermaid repair**: 4,387/4,387 pass the repository heuristic and Mermaid v11
   parser validators.
 - **Branch safety**: integration commits are on `dev`; `main` was not changed.
-- **mdBook build note**: the full source tree builds to 1,573 files with search
+- **mdBook build note**: the full source tree builds to 1,575 files with search
   indexing disabled in the constrained sandbox. The normal search-enabled
   build was attempted twice and terminated by the environment with exit 137;
   `book.toml` was not changed to hide that limitation.

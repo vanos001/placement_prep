@@ -29,6 +29,8 @@ npm install mermaid@11 jsdom   # in a scratch dir, NOT committed
 node /tmp/mermaid-validate/validate.mjs /path/to/repo/src   # real Mermaid v11 parser
 ./scripts/check-links.py /path/to/repo           # broken relative links
 ./scripts/check-summary.py /path/to/repo/src     # SUMMARY completeness
+python3 scripts/generate-cross-reference-graph.py \
+  --output book/meta/cross-reference-graph-view.html # generated graph after mdBook build
 ```
 
 ## Scripts

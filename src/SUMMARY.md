@@ -1836,6 +1836,7 @@
 - [Status](./meta/status.md)
 - [Progress](./meta/progress.md)
 - [Changelog](./meta/changelog.md)
+- [Cross-Reference Graph](./meta/cross-reference-graph.md)
 - [Coverage Dashboard](./meta/coverage_dashboard.md)
 - [Topic Backlog](./meta/topic_backlog.md)
 - [Knowledge Graph](./meta/knowledge_graph.md)

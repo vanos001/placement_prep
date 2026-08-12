@@ -3,10 +3,14 @@
 This file records meaningful content and validation changes to the placement
 preparation book. Dates use the project timezone, Asia/Calcutta.
 
-## 2026-08-12 — Enable MathJax for DSA equations
+## 2026-08-12 — Enable MathJax and automatic cross-reference graph
 
 - Enabled mdBook’s built-in MathJax support with
   `output.html.mathjax-support = true`.
+- Added `scripts/generate-cross-reference-graph.py` and a Meta navigation page;
+  the GitHub Pages workflow now generates the interactive graph automatically
+  after every successful mdBook build.
+- Added the `Cross-Reference Graph` Meta page; the generated view is output-only and is not committed as a large artifact.
 - Confirmed the integrated DSA source uses mdBook-compatible escaped inline
   `\\(` / `\\)` and block `\\[` / `\\]` delimiters.
 - The generated DSA math page now includes the MathJax runtime instead of
@@ -42,12 +46,12 @@ preparation book. Dates use the project timezone, Asia/Calcutta.
 ### Validation
 
 - Link checker: **0 broken links**.
-- SUMMARY checker: **OK** for 1,533 Markdown files (1,532 linked chapters).
+- SUMMARY checker: **OK** for 1,534 Markdown files (1,533 linked chapters).
 - Mermaid heuristic: **4,387 / 4,387 passed**.
 - Mermaid v11 parser: **4,387 / 4,387 passed**.
 - `validate-all.sh`: **exit 0 / ALL VALIDATION PASSED** when called with an
   absolute repository path.
-- mdBook 0.4.52: a full search-disabled build produced 1,573 output files
+- mdBook 0.4.52: a full search-disabled build produced 1,575 output files
   successfully; the normal search-enabled build was killed by the sandbox
   memory limit with exit 137. The production configuration remains unchanged.
 

@@ -14,12 +14,13 @@ learning tracks, and wired into the parent `SUMMARY.md`.
 | Linux source | ✅ Integrated | `src/linux/` contains the educational Markdown from `lb2` |
 | DSA source | ✅ Integrated | `src/dsa/` contains the educational Markdown from `dsa_book_2` |
 | Linux tools | ✅ Added | `src/linux/tools.md` is a placement-focused, referenced guide |
-| Navigation | ✅ Passing | 1,532 of 1,533 Markdown files are linked; `SUMMARY.md` itself is excluded |
+| Navigation | ✅ Passing | 1,533 of 1,534 Markdown files are linked; `SUMMARY.md` itself is excluded |
 | Relative links | ✅ Passing | Repository checker reports 0 broken links |
 | Mermaid heuristic | ✅ Passing | 4,387 of 4,387 diagrams pass |
 | Mermaid v11 parser | ✅ Passing | 4,387 of 4,387 diagrams pass with `mermaid@11` + `jsdom` |
 | MathJax | ✅ Enabled | mdBook `mathjax-support = true`; DSA block and inline delimiters are preserved |
-| mdBook build | ✅ Constrained build passed | mdBook 0.4.52 built 1,573 output files with search indexing disabled; the normal search-enabled build was OOM-killed in this sandbox (exit 137) |
+| Cross-reference graph | ✅ Automatic | Generated from 1,533 pages and 7,122 internal links during Pages deployment |
+| mdBook build | ✅ Constrained build passed | mdBook 0.4.52 built 1,575 output files with search indexing disabled; the normal search-enabled build was OOM-killed in this sandbox (exit 137) |
 
 ## Repository provenance
 

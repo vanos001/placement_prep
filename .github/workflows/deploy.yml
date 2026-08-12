@@ -30,6 +30,9 @@ jobs:
       - name: Build mdBook
         run: mdbook build
 
+      - name: Generate cross-reference graph
+        run: python3 scripts/generate-cross-reference-graph.py --output book/meta/cross-reference-graph-view.html
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:

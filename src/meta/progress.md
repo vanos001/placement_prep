@@ -20,9 +20,10 @@
 
 ## Final validation snapshot
 
-- Markdown files under `src/`: **1,533**
+- Markdown files under `src/`: **1,534**
 - Mermaid blocks: **4,387**
 - Files containing Mermaid: **1,136**
+- Cross-reference graph: **1,533 nodes / 7,122 internal links**, generated automatically by the deployment workflow
 - Link checker: **0 broken links**
 - SUMMARY checker: **OK**
 - Mermaid heuristic: **4,387 / 4,387 passed**
