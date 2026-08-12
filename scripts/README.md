@@ -1,8 +1,8 @@
 # Validation Scripts
 
 Reusable tooling for the Placement Prep mdBook repo. These scripts validate
-**Mermaid diagrams**, **Markdown links**, and **SUMMARY navigation** so every
-change is verified before commit.
+**Mermaid diagrams**, **MathJax equations**, **Markdown links**, and **SUMMARY
+navigation** so every change is verified before commit.
 
 ## Requirements
 
@@ -10,7 +10,7 @@ change is verified before commit.
 |---|---|---|
 | mdBook (0.4.x) | `validate-all.sh` | `curl -sL https://github.com/rust-lang/mdBook/releases/download/v0.4.40/mdbook-v0.4.40-x86_64-unknown-linux-gnu.tar.gz -o mdbook.tar.gz && tar xzf mdbook.tar.gz` |
 | Node.js ≥ 18 + npm | `validate-mermaid.mjs` (real parser) | — |
-| Python 3 | `check-links.py`, `check-summary.py` | — |
+| Python 3 | `check-links.py`, `check-summary.py`, `check-mathjax.py`, graph generator | — |
 
 For the **real Mermaid parser** validator, install once:
 
@@ -29,6 +29,8 @@ npm install mermaid@11 jsdom   # in a scratch dir, NOT committed
 node /tmp/mermaid-validate/validate.mjs /path/to/repo/src   # real Mermaid v11 parser
 ./scripts/check-links.py /path/to/repo           # broken relative links
 ./scripts/check-summary.py /path/to/repo/src     # SUMMARY completeness
+python3 scripts/check-mathjax.py /path/to/repo   # MathJax source/config check
+python3 scripts/check-mathjax.py /path/to/repo --book-dir book # generated HTML check
 python3 scripts/generate-cross-reference-graph.py \
   --output book/meta/cross-reference-graph-view.html # generated graph after mdBook build
 ```
@@ -109,6 +111,24 @@ every SUMMARY link points to an existing file. Usage:
 ```bash
 python3 scripts/check-summary.py /path/to/repo/src
 ```
+
+### `check-mathjax.py` — MathJax configuration and delimiter check
+
+Checks that `book.toml` enables `mathjax-support`, scans Markdown outside
+fenced code and inline-code spans, verifies balanced mdBook-compatible inline
+and block delimiters, rejects legacy `$$...$$` display delimiters, and detects
+unclosed code fences. Pass `--book-dir` after a build to verify generated HTML
+contains the MathJax runtime.
+
+```bash
+# Source/configuration check
+python3 scripts/check-mathjax.py /path/to/repo
+
+# Also inspect generated HTML
+python3 scripts/check-mathjax.py /path/to/repo --book-dir book
+```
+
+A successful run reports `MathJax validation: OK` and exits with status 0.
 
 ## Mermaid gotchas (what the validators look for)
 
