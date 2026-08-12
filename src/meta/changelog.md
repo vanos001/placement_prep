@@ -3,6 +3,15 @@
 This file records meaningful content and validation changes to the placement
 preparation book. Dates use the project timezone, Asia/Calcutta.
 
+## 2026-08-12 — Add MathJax validation tooling
+
+- Added `scripts/check-mathjax.py` to verify `mathjax-support = true`, balanced
+  escaped inline/block delimiters, no legacy `$$` delimiters outside code, and
+  no unclosed Markdown fences.
+- Added optional `--book-dir` checking for the generated MathJax runtime.
+- Added the MathJax check as step 6 in `scripts/validate-all.sh` and documented
+  standalone usage in `scripts/README.md`.
+
 ## 2026-08-12 — Research and validation audit
 
 ### Fixed

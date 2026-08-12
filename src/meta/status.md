@@ -19,6 +19,7 @@ learning tracks, and wired into the parent `SUMMARY.md`.
 | Mermaid heuristic | ✅ Passing | 4,387 of 4,387 diagrams pass |
 | Mermaid v11 parser | ✅ Passing | 4,387 of 4,387 diagrams pass with `mermaid@11` + `jsdom` |
 | MathJax | ✅ Enabled | mdBook `mathjax-support = true`; DSA block and inline delimiters are preserved |
+| MathJax verifier | ✅ Added | `scripts/check-mathjax.py` is included in `validate-all.sh` and supports generated HTML checks |
 | Cross-reference graph | ✅ Automatic | Generated from 1,533 pages and 7,123 internal links during Pages deployment |
 | Research/validation audit | ✅ Complete | 0 broken links, 0 broken fragments, 0 unclosed fences, 0 duplicate bodies |
 | mdBook build | ✅ Constrained build passed | mdBook 0.4.52 built 1,575 output files with search indexing disabled; the normal search-enabled build was OOM-killed in this sandbox (exit 137) |

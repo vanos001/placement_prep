@@ -44,6 +44,7 @@ Runs, in order, skipping anything whose dependencies are missing:
 3. real Mermaid parser (`validate-mermaid.mjs` via `node`, if a copy exists)
 4. link check (`check-links.py`)
 5. SUMMARY check (`check-summary.py`)
+6. MathJax source/config check (`check-mathjax.py`)
 
 Exits non-zero if any *available* check fails.
 

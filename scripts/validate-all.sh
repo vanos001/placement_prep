@@ -12,7 +12,7 @@ cd "$REPO" || { echo "ERROR: cannot cd to $REPO"; exit 1; }
 MDBOOK="${MDBOOK:-mdbook}"
 fail=0
 
-echo "=== [1/5] mdBook build ==="
+echo "=== [1/6] mdBook build ==="
 if command -v "$MDBOOK" >/dev/null 2>&1 || [ -x "$MDBOOK" ]; then
     if ! "$MDBOOK" build; then
         echo "  build failed (mdbook can peak >1 GB; constrained sandboxes may OOM-kill it) — retrying once..."
@@ -32,11 +32,11 @@ else
 fi
 
 echo
-echo "=== [2/5] Mermaid heuristic checks ==="
+echo "=== [2/6] Mermaid heuristic checks ==="
 node scripts/validate-mermaid-heuristic.mjs || { echo "FAIL: heuristic mermaid"; fail=1; }
 
 echo
-echo "=== [3/5] Mermaid real parser (needs mermaid@11 + jsdom in node_modules) ==="
+echo "=== [3/6] Mermaid real parser (needs mermaid@11 + jsdom in node_modules) ==="
 PARSER_OK=0
 # Try repo-local node_modules, then MERMAID_DIR (e.g. a scratch dir holding node_modules + validate-mermaid.mjs)
 for base in "$(pwd)" "${MERMAID_DIR:-}"; do
@@ -53,12 +53,16 @@ if [ "$PARSER_OK" -eq 0 ]; then
 fi
 
 echo
-echo "=== [4/5] Broken link check ==="
+echo "=== [4/6] Broken link check ==="
 python3 scripts/check-links.py "$REPO" || { echo "FAIL: links"; fail=1; }
 
 echo
-echo "=== [5/5] SUMMARY completeness ==="
+echo "=== [5/6] SUMMARY completeness ==="
 python3 scripts/check-summary.py "$REPO/src" || { echo "FAIL: summary"; fail=1; }
+
+echo
+echo "=== [6/6] MathJax source checks ==="
+python3 scripts/check-mathjax.py "$REPO" || { echo "FAIL: MathJax"; fail=1; }
 
 echo
 if [ "$fail" -eq 0 ]; then
