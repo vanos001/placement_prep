@@ -1423,11 +1423,14 @@
 - [Requirements Engineering](./software-engineering/requirements.md)
 - [Software Design](./software-engineering/design.md)
 - [Code Quality](./software-engineering/code-quality.md)
+- [Testing](./software-engineering/testing.md)
+- [DevOps & CI/CD](./software-engineering/devops.md)
 - [Documentation](./software-engineering/documentation.md)
 - [Project Management](./software-engineering/project-management.md)
 - [Software Metrics](./software-engineering/metrics.md)
 - [Team Dynamics](./software-engineering/team-dynamics.md)
 - [SE Interview Questions](./software-engineering/interview-questions.md)
+- [Contributing](./software-engineering/CONTRIBUTING.md)
 
 ---
 
