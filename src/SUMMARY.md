@@ -1575,6 +1575,72 @@
 
 ---
 
+# Testing
+
+- [Testing Overview](./testing/README.md)
+- [Unit Testing](./testing/unit-testing.md)
+- [Integration Testing](./testing/integration-testing.md)
+- [E2E Testing](./testing/e2e-testing.md)
+- [TDD & BDD](./testing/tdd-bdd.md)
+- [Mocking](./testing/mocking.md)
+- [Test Strategy](./testing/test-strategy.md)
+- [Testing Interview Questions](./testing/interview-questions.md)
+
+---
+
+# Web Development
+
+- [Web Dev Overview](./web-development/README.md)
+- [Browser Architecture](./web-development/browser-architecture.md)
+- [DOM](./web-development/dom.md)
+- [Cookies & Storage](./web-development/cookies-storage.md)
+- [CORS](./web-development/cors.md)
+- [WebSockets](./web-development/websockets.md)
+- [HTTP Fundamentals](./web-development/http-fundamentals.md)
+- [Web Dev Interview Questions](./web-development/interview-questions.md)
+
+---
+
+# Frontend
+
+- [Frontend Overview](./frontend/README.md)
+- [HTML & CSS Fundamentals](./frontend/html-css-fundamentals.md)
+- [JavaScript Deep Dive](./frontend/javascript-deep-dive.md)
+- [TypeScript](./frontend/typescript.md)
+- [React](./frontend/react.md)
+- [Frontend Interview Questions](./frontend/interview-questions.md)
+
+---
+
+# CS Theory
+
+- [CS Theory Overview](./cs-theory/README.md)
+- [Sets, Relations & Functions](./cs-theory/sets-relations-functions.md)
+- [Logic](./cs-theory/logic.md)
+- [Proof Techniques](./cs-theory/proofs.md)
+- [Complexity Classes](./cs-theory/complexity-classes.md)
+
+---
+
+# Production Engineering
+
+- [Prod Eng Overview](./production-engineering/README.md)
+- [Deployments](./production-engineering/deployments.md)
+- [Graceful Shutdown](./production-engineering/graceful-shutdown.md)
+- [Incident Response](./production-engineering/incident-response.md)
+- [Prod Eng Interview Questions](./production-engineering/interview-questions.md)
+
+---
+
+# OOP & Design Patterns
+
+- [OOP Overview](./oop-patterns/README.md)
+- [SOLID Deep Dive](./oop-patterns/solid-deep-dive.md)
+- [Creational Patterns](./oop-patterns/design-patterns-creational.md)
+- [Structural & Behavioral Patterns](./oop-patterns/design-patterns-structural-behavioral.md)
+
+---
+
 # Cloud & DevOps
 
 - [Cloud Overview](./cloud/overview.md)
