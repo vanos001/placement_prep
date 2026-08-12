@@ -1395,6 +1395,186 @@
 
 ---
 
+# Git
+
+- [Git Overview](./git/README.md)
+- [Git Internals](./git/internals.md)
+- [Git Fundamentals](./git/fundamentals.md)
+- [Branching & Merging](./git/branching.md)
+- [Rebasing](./git/rebasing.md)
+- [Stashing](./git/stashing.md)
+- [Advanced Operations](./git/advanced.md)
+- [Remote Operations](./git/remotes.md)
+- [Tags & Releases](./git/tags.md)
+- [Git Hooks](./git/hooks.md)
+- [Worktrees & Submodules](./git/worktrees-submodules.md)
+- [Git Workflows](./git/workflows.md)
+- [GitHub & Code Review](./git/github.md)
+- [Git Interview Questions](./git/interview-questions.md)
+- [Git Cheat Sheet](./git/cheat-sheet.md)
+
+---
+
+# Software Engineering
+
+- [SE Overview](./software-engineering/README.md)
+- [SDLC Models](./software-engineering/sdlc.md)
+- [Agile & Scrum](./software-engineering/agile.md)
+- [Requirements Engineering](./software-engineering/requirements.md)
+- [Software Design](./software-engineering/design.md)
+- [Code Quality](./software-engineering/code-quality.md)
+- [Documentation](./software-engineering/documentation.md)
+- [Project Management](./software-engineering/project-management.md)
+- [Software Metrics](./software-engineering/metrics.md)
+- [Team Dynamics](./software-engineering/team-dynamics.md)
+- [SE Interview Questions](./software-engineering/interview-questions.md)
+
+---
+
+# Programming Fundamentals
+
+- [PF Overview](./programming-fundamentals/README.md)
+- [Variables and Types](./programming-fundamentals/variables-and-types.md)
+- [Scope and Lifetime](./programming-fundamentals/scope-and-lifetime.md)
+- [Functions](./programming-fundamentals/functions.md)
+- [Error Handling](./programming-fundamentals/error-handling.md)
+- [Type Systems](./programming-fundamentals/type-systems.md)
+- [Memory Model](./programming-fundamentals/memory-model.md)
+- [I/O and Serialization](./programming-fundamentals/io-and-serialization.md)
+- [Modules and Packages](./programming-fundamentals/modules-and-packages.md)
+- [PF Interview Questions](./programming-fundamentals/interview-questions.md)
+
+---
+
+# Security
+
+- [Security Overview](./security/README.md)
+- [Authentication](./security/authentication.md)
+- [Authorization](./security/authorization.md)
+- [Web Security](./security/web-security.md)
+- [Cryptography](./security/cryptography.md)
+- [Secrets Management](./security/secrets-management.md)
+- [Security Interview Questions](./security/interview-questions.md)
+
+---
+
+# Machine Coding
+
+- [Machine Coding Overview](./machine-coding/README.md)
+- [Approach & Strategy](./machine-coding/approach.md)
+- [Design Principles in Practice](./machine-coding/design-principles.md)
+- [Parking Lot](./machine-coding/parking-lot.md)
+- [Elevator System](./machine-coding/elevator.md)
+- [Library Management](./machine-coding/library-management.md)
+- [Splitwise](./machine-coding/splitwise.md)
+- [Rate Limiter](./machine-coding/rate-limiter.md)
+- [LRU Cache](./machine-coding/cache-lru.md)
+- [Task Scheduler](./machine-coding/task-scheduler.md)
+
+---
+
+# Data Engineering
+
+- [DE Overview](./data-engineering/README.md)
+- [DE Fundamentals](./data-engineering/fundamentals.md)
+- [Batch Processing](./data-engineering/batch-processing.md)
+- [Stream Processing](./data-engineering/stream-processing.md)
+- [Data Formats](./data-engineering/data-formats.md)
+- [Data Quality](./data-engineering/data-quality.md)
+- [DE Interview Questions](./data-engineering/interview-questions.md)
+
+---
+
+# Search Engines
+
+- [Search Overview](./search/README.md)
+- [Search Fundamentals](./search/fundamentals.md)
+- [Elasticsearch](./search/elasticsearch.md)
+- [Vector Search](./search/vector-search.md)
+- [Search Interview Questions](./search/interview-questions.md)
+
+---
+
+# Aptitude
+
+- [Aptitude Overview](./aptitude/README.md)
+- [Percentages](./aptitude/percentages.md)
+- [Ratios & Proportions](./aptitude/ratios-proportions.md)
+- [Averages](./aptitude/averages.md)
+- [Profit & Loss](./aptitude/profit-loss.md)
+- [Time & Work](./aptitude/time-work.md)
+- [Speed & Distance](./aptitude/speed-distance.md)
+- [Probability & Combinatorics](./aptitude/probability-combinatorics.md)
+- [Number Systems](./aptitude/number-systems.md)
+- [Logical Reasoning](./aptitude/logical-reasoning.md)
+- [Data Interpretation](./aptitude/data-interpretation.md)
+
+---
+
+# Placement Preparation
+
+- [Placement Overview](./placement-preparation/README.md)
+- [Campus Placement Process](./placement-preparation/campus-placement.md)
+- [Online Assessment](./placement-preparation/online-assessment.md)
+- [Technical Interview](./placement-preparation/technical-interview.md)
+- [HR Interview](./placement-preparation/hr-interview.md)
+- [Group Discussion](./placement-preparation/group-discussion.md)
+
+---
+
+# Resume & Career
+
+- [Resume Overview](./resume/README.md)
+- [Resume Structure](./resume/structure.md)
+- [Writing Bullet Points](./resume/writing-bullets.md)
+- [Projects on Resume](./resume/projects.md)
+- [Technical Skills](./resume/technical-skills.md)
+- [Common Resume Mistakes](./resume/common-mistakes.md)
+- [ATS Optimization](./resume/ats-optimization.md)
+
+---
+
+# Behavioral Interviews
+
+- [Behavioral Overview](./behavioral-interviews/README.md)
+- [STAR Method](./behavioral-interviews/star-method.md)
+- [Common Questions](./behavioral-interviews/common-questions.md)
+- [Company Fit](./behavioral-interviews/company-fit.md)
+- [Scenarios](./behavioral-interviews/scenarios.md)
+
+---
+
+# Communication
+
+- [Communication Overview](./communication/README.md)
+- [Technical Communication](./communication/technical-communication.md)
+- [Interview Communication](./communication/interview-communication.md)
+- [Written Communication](./communication/written-communication.md)
+
+---
+
+# Practical Programming Problems
+
+- [PP Overview](./practical-problems/README.md)
+- [Parsers](./practical-problems/parsers.md)
+- [CLI Tools](./practical-problems/cli-tools.md)
+- [File Processing](./practical-problems/file-processing.md)
+- [Concurrent Problems](./practical-problems/concurrent-problems.md)
+- [System Utilities](./practical-problems/system-utilities.md)
+
+---
+
+# DBMS Interview Problems
+
+- [DBMS Problems Overview](./dbms/interview-problems/README.md)
+- [Classic Problems](./dbms/interview-problems/classic-problems.md)
+- [Window Function Problems](./dbms/interview-problems/window-function-problems.md)
+- [Join Problems](./dbms/interview-problems/join-problems.md)
+- [Optimization Problems](./dbms/interview-problems/optimization-problems.md)
+- [Concurrency Scenarios](./dbms/interview-problems/concurrency-scenarios.md)
+
+---
+
 # Cloud & DevOps
 
 - [Cloud Overview](./cloud/overview.md)
