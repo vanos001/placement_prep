@@ -1,6 +1,18 @@
 # Integration Progress
 
-> Work log for 2026-08-12. Counts are from the working tree after integration.
+> Work log for 2026-08-12/13. Counts are from the working tree after integration.
+
+## Software Engineering section completion — 2026-08-13
+
+| Step | Result |
+|---|---|
+| Added `software-engineering/testing.md` | Testing levels, types, TDD/BDD, strategy, test doubles, interview Qs |
+| Added `software-engineering/devops.md` | CI/CD, deployment strategies, pipelines, IaC, interview Qs |
+| Added `software-engineering/CONTRIBUTING.md` | Contribution and validation guide for the book |
+| Registered pages in `SUMMARY.md` | All three listed under Software Engineering |
+| Re-pointed SE links | README and `documentation.md` now link the new local pages |
+| Re-ran validation | 0 broken links, SUMMARY OK, MathJax OK, Mermaid 4,405/4,405 |
+| Pushed | Commit `6318d8b` on `origin/dev`; `main` untouched |
 
 ## Completed today
 

@@ -1,5 +1,17 @@
 # Changelog
 
+## 2026-08-13 — Software Engineering: dedicated Testing, DevOps, and Contributing pages
+
+- Added `software-engineering/testing.md` (levels, types, TDD/BDD, strategy),
+  `software-engineering/devops.md` (CI/CD, deployment strategies, IaC), and
+  `software-engineering/CONTRIBUTING.md` (contribution guide).
+- Registered all three in `SUMMARY.md`; re-pointed the Software Engineering
+  README and `documentation.md` links to the new local pages (previously routed
+  to `../testing/README.md`, `../cloud/cicd/README.md`, and a GitHub URL).
+- Validation after change: 0 broken links, Summary navigation OK, MathJax OK,
+  Mermaid heuristic 4,405/4,405.
+- Committed on `dev` as `6318d8b` and pushed to `origin/dev`; `main` unchanged.
+
 ## 2026-08-13 — Pull and topic-completeness audit
 
 - Fast-forwarded local `dev` to remote commit `61ac3ce`.

@@ -10,6 +10,12 @@
   plus four stale relative links. All pulled pages are now Summary-reachable.
 - Remaining work is content depth/references review, not broken navigation.
 
+## Software Engineering pages — 2026-08-13
+
+- Added dedicated `testing.md`, `devops.md`, and `CONTRIBUTING.md` under
+  `src/software-engineering/` (previously those links were redirected to the
+  general `testing/` and `cloud/cicd/` sections and a GitHub URL).
+
 ## Integration completed — 2026-08-12
 
 - **Linux deep dive (`lb2`)** — integrated 444 educational pages under

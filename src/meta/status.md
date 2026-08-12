@@ -1,33 +1,37 @@
 # Project Status
 
-> Status snapshot: 2026-08-13 (Asia/Shanghai)
+> Status snapshot: 2026-08-13 (Asia/Calcutta)
 
 ## Current status
 
-**Latest `dev` pull audit complete.** The remote `dev` branch added a large
-placement-preparation expansion. The audit found ten Summary entries pointing
-to absent pages and four additional broken relative links; those gaps were
-filled or repaired locally on `dev`.
+**Link repair and Software Engineering pages complete.** The Software Engineering
+section now has dedicated pages for Testing, DevOps & CI/CD, and Contributing,
+registered in `SUMMARY.md` and linked from the section README. All relative
+links, navigation, MathJax, and Mermaid checks pass on `dev`.
 
 | Area | Status | Evidence |
 |---|---|---|
-| Git safety | ✅ Complete | Active branch is `dev`; `main` remains unchanged at the previous release |
-| Content inventory | ✅ Audited | 1,723 content Markdown pages plus `SUMMARY.md` |
-| Navigation | ✅ Passing | 1,723 of 1,723 content pages are reachable from `SUMMARY.md` |
+| Git safety | ✅ Complete | Active branch is `dev`; `main` remains unchanged |
+| Content inventory | ✅ Audited | 1,726 content Markdown pages plus `SUMMARY.md` |
+| Navigation | ✅ Passing | 1,726 of 1,726 content pages are reachable from `SUMMARY.md` |
 | Relative links | ✅ Passing | Checker reports 0 broken links |
 | Mermaid heuristic | ✅ Passing | 4,405 of 4,405 diagrams pass |
-| Mermaid v11 parser | ✅ Passing | 4,405 of 4,405 diagrams pass |
+| Mermaid v11 parser | ✅ Passing | 4,405 of 4,405 diagrams pass (previous run) |
 | MathJax | ✅ Passing | 396 block pairs, 610 inline pairs, no legacy `$$` delimiters |
-| Cross-reference graph | ✅ Generated | 1,723 nodes and 7,405 internal links |
-| mdBook build | ✅ Constrained | 1,765 output files built with search indexing disabled for the sandbox |
-| Missing-topic repair | ✅ Complete | 10 Summary-referenced pages added; 4 stale links repaired |
+| Cross-reference graph | ✅ Generated | 1,723 nodes and 7,405 internal links (pre-SE-pages run) |
+| Software Engineering | ✅ Expanded | 14 pages, incl. new Testing, DevOps & CI/CD, Contributing |
 
 ## Validation command
 
-The six-step validation suite returned **ALL VALIDATION PASSED** for the pulled
-`dev` tree. The normal mdBook executable was unavailable in that specific run;
-a separate constrained mdBook 0.4.52 build completed successfully and included
-MathJax and the generated cross-reference graph.
+The lightweight validation suite was re-run on the latest `dev` tree:
+
+- `scripts/check-links.py` → 0 broken links
+- `scripts/check-summary.py` → SUMMARY navigation: OK
+- `scripts/check-mathjax.py` → MathJax validation: OK
+- `scripts/validate-mermaid-heuristic.mjs` → 4,405/4,405 pass
+
+A full `mdbook build` is not run in this sandbox: it peaks >1 GB RSS and is
+OOM-killed under the ~2 GB memory limit (documented in `validate-all.sh`).
 
 ## Repository provenance
 
@@ -44,18 +48,5 @@ rewritten or converted to nearby text when their old source path did not exist.
 
 - Development work is performed on `dev`.
 - Release promotion from `dev` to `main` occurs only after validation.
-- The current released tree is synchronized on `origin/dev` and `origin/main`.
 - Credentials are read only at command time and are not stored in repository
   files, commits, or documentation.
-
-## Final record
-
-`validate-all.sh` was run with an absolute repository path, mdBook 0.4.52, and
-Mermaid v11/jsdom. It returned 0: Mermaid heuristic/parser, links, and Summary
-all passed. The search-enabled build was attempted twice and killed by the
-sandbox memory limit; an isolated full build with `output.html.search.enable = false`
-completed successfully. The production `book.toml` was left unchanged.
-
-The release was promoted from `dev` to `main` after validation and synchronized
-back to `dev`. The two release branches are kept at the same validated tree;
-the working tree is clean.

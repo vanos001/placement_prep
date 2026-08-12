@@ -1,7 +1,7 @@
 # Coverage Dashboard
 
 > Auto-generated tracking of content coverage across all subjects.
-> Last updated: 2026-08-13 (dev pull audit)
+> Last updated: 2026-08-13 (dev pull audit + SE section)
 
 ## Summary
 
@@ -23,7 +23,7 @@
 | Linux Deep Dive (`lb2`) | 446 | — | 1,531 | Integrated |
 | DSA Track (`dsa_book_2`) | 194 | — | 16 | Integrated |
 | **Git** | **15** | **25+** | **5+** | **NEW** |
-| **Software Engineering** | **10** | **30+** | **3+** | **NEW** |
+| **Software Engineering** | **14** | **40+** | **3+** | **Expanded** |
 | **Programming Fundamentals** | **10** | **20+** | **2+** | **NEW** |
 | **Security & Cryptography** | **7** | **15+** | **3+** | **NEW** |
 | **Machine Coding** | **10** | **10+** | **5+** | **NEW** |
