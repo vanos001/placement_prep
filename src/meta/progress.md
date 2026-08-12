@@ -44,16 +44,22 @@
   context propagation, semantic conventions, Collector pipelines, sampling,
   and cardinality.
 
+## Research loop batch 4 — Federation, locks, tiered storage
+
+- Added GraphQL Federation, distributed locks/fencing tokens, and tiered-storage
+  chapters with official Apollo, Redis, ZooKeeper, etcd, RocksDB, and cloud
+  storage references.
+
 ## Final validation snapshot
 
-- Markdown files under `src/`: **1,541**
-- Mermaid blocks: **4,399**
+- Markdown files under `src/`: **1,544**
+- Mermaid blocks: **4,403**
 - Files containing Mermaid: **1,136**
-- Cross-reference graph: **1,540 nodes / 7,187 internal links**, generated automatically by the deployment workflow
+- Cross-reference graph: **1,543 nodes / 7,219 internal links**, generated automatically by the deployment workflow
 - Link checker: **0 broken links**
 - SUMMARY checker: **OK**
-- Mermaid heuristic: **4,399 / 4,399 passed**
-- Mermaid v11 parser: **4,399 / 4,399 passed**
+- Mermaid heuristic: **4,403 / 4,403 passed**
+- Mermaid v11 parser: **4,403 / 4,403 passed**
 - mdBook build: **constrained full build passed; normal search-enabled build was killed by sandbox OOM (exit 137)**
 - Research/validation audit: **0 broken links, 0 bad fragments, 0 unclosed fences, 0 exact duplicate bodies**; 73 URL-bearing pages remain in the reference-review queue
 

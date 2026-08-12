@@ -3,6 +3,17 @@
 This file records meaningful content and validation changes to the placement
 preparation book. Dates use the project timezone, Asia/Calcutta.
 
+## 2026-08-12 — Research loop batch 4
+
+- Added `backend/api/graphql-federation.md` with entities, composition,
+  directives, query planning, schema governance, and failure modes.
+- Added `distributed/fundamentals/distributed-locks.md` with lease races,
+  fencing tokens, Redis/Redlock, ZooKeeper, etcd, and lock alternatives.
+- Added `storage/tiered-storage.md` with hot/warm/cold policies, RocksDB
+  tiering, object lifecycle, caching, cost, latency, and recovery trade-offs.
+- Added navigation, cross-reference edges, backlog markers, and coverage data
+  for the research batch.
+
 ## 2026-08-12 — Research loop batch 3
 
 - Added `networks/ebpf-networking.md` using Linux kernel networking/BPF docs,

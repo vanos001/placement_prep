@@ -1274,6 +1274,7 @@
   - [Vector Clocks](./distributed/fundamentals/vector-clocks.md)
   - [Gossip Protocol](./distributed/fundamentals/gossip.md)
   - [Conflict-Free Replicated Data Types](./distributed/fundamentals/crdts.md)
+  - [Distributed Locks and Fencing Tokens](./distributed/fundamentals/distributed-locks.md)
 - [Consensus](./distributed/consensus/README.md)
   - [Paxos](./distributed/consensus/paxos.md)
   - [Raft](./distributed/consensus/raft.md)
@@ -1323,6 +1324,7 @@
 - [LSM Compaction Strategies](./storage/lsm-compaction.md)
 - [SSTable Format](./storage/sstable.md)
 - [BlobDB (Key-Value Separation)](./storage/blobdb.md)
+- [Tiered Storage and Data Temperature](./storage/tiered-storage.md)
 
 ---
 
@@ -1355,6 +1357,7 @@
 - [HTTP APIs](./backend/api/README.md)
   - [REST](./backend/api/rest.md)
   - [GraphQL](./backend/api/graphql.md)
+  - [GraphQL Federation](./backend/api/graphql-federation.md)
   - [gRPC](./backend/api/grpc.md)
   - [API Gateways](./backend/api/api-gateway.md)
   - [API Versioning](./backend/api/versioning.md)

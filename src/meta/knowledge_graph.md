@@ -282,6 +282,24 @@ Concurrency
   STL, cache hierarchy, profiling, branch prediction, SIMD, and undefined
   behavior.
 
+### Research loop batch 4 edges — 2026-08-12
+
+- [GraphQL Federation](../backend/api/graphql-federation.md) → subgraphs,
+  entities, `@key`, `@requires`, `@provides`, `@shareable`, composition,
+  query planning, schema checks, and OpenTelemetry.
+- GraphQL Federation → [GraphQL](../backend/api/graphql.md), API gateways,
+  service mesh, authorization, and distributed failure handling.
+- [Distributed Locks](../distributed/fundamentals/distributed-locks.md) →
+  leases, Redis/Redlock, ZooKeeper ephemeral-sequential nodes, etcd revisions,
+  fencing tokens, idempotency, and transactional alternatives.
+- Distributed locks ↔ [Consensus](../distributed/consensus/README.md) and
+  [CDC/outbox](../backend/patterns/cdc-outbox.md): coordinate only when a
+  resource-side invariant cannot be enforced with a conditional write.
+- [Tiered Storage](../storage/tiered-storage.md) → NVMe-oF, SSTables, LSM
+  compaction, BlobDB, object lifecycle, cache admission, and recovery SLOs.
+- Tiered Storage ↔ [Capacity Planning](../interview/system-design/hld/capacity-planning.md)
+  → cost, tail latency, retrieval, egress, and data temperature policies.
+
 ### Research loop batch 3 edges — 2026-08-12
 
 - [eBPF networking](../networks/ebpf-networking.md) → XDP, TC/TCX, cgroup and
