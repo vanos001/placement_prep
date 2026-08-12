@@ -3,6 +3,15 @@
 This file records meaningful content and validation changes to the placement
 preparation book. Dates use the project timezone, Asia/Calcutta.
 
+## 2026-08-12 — Enable MathJax for DSA equations
+
+- Enabled mdBook’s built-in MathJax support with
+  `output.html.mathjax-support = true`.
+- Confirmed the integrated DSA source uses mdBook-compatible escaped inline
+  `\\(` / `\\)` and block `\\[` / `\\]` delimiters.
+- The generated DSA math page now includes the MathJax runtime instead of
+  leaving formulas as raw `\\[` text.
+
 ## 2026-08-12 — Linux and DSA book integration
 
 ### Added
@@ -46,9 +55,9 @@ preparation book. Dates use the project timezone, Asia/Calcutta.
 
 - Integration commits `42c4e57` and `5f986da`, followed by metadata/validation
   commit `79145d7`, were made on `dev` and pushed to `origin/dev`.
-- Local `dev` and remote `origin/dev` resolve to `79145d7`; the working tree is
-  clean.
-- `main` was not modified.
+- The validated tree was promoted from `dev` to `main` and synchronized back to
+  `dev`; both release branches are kept aligned.
+- The working tree was clean after promotion.
 
 ## Earlier history
 

@@ -10,7 +10,7 @@ learning tracks, and wired into the parent `SUMMARY.md`.
 
 | Area | Status | Evidence |
 |---|---|---|
-| Git safety | ✅ Complete | Current branch is `dev`; `main` was not modified |
+| Git safety | ✅ Complete | Development is on `dev`; the released tree is synchronized on both `dev` and `main` |
 | Linux source | ✅ Integrated | `src/linux/` contains the educational Markdown from `lb2` |
 | DSA source | ✅ Integrated | `src/dsa/` contains the educational Markdown from `dsa_book_2` |
 | Linux tools | ✅ Added | `src/linux/tools.md` is a placement-focused, referenced guide |
@@ -18,6 +18,7 @@ learning tracks, and wired into the parent `SUMMARY.md`.
 | Relative links | ✅ Passing | Repository checker reports 0 broken links |
 | Mermaid heuristic | ✅ Passing | 4,387 of 4,387 diagrams pass |
 | Mermaid v11 parser | ✅ Passing | 4,387 of 4,387 diagrams pass with `mermaid@11` + `jsdom` |
+| MathJax | ✅ Enabled | mdBook `mathjax-support = true`; DSA block and inline delimiters are preserved |
 | mdBook build | ✅ Constrained build passed | mdBook 0.4.52 built 1,573 output files with search indexing disabled; the normal search-enabled build was OOM-killed in this sandbox (exit 137) |
 
 ## Repository provenance
@@ -47,6 +48,6 @@ all passed. The search-enabled build was attempted twice and killed by the
 sandbox memory limit; an isolated full build with `output.html.search.enable = false`
 completed successfully. The production `book.toml` was left unchanged.
 
-The final metadata commit is `79145d7`; it is present on `origin/dev`, the
-local `dev` branch is tracking the same commit, and the working tree is clean.
-All changes for this task are on `dev` only.
+The release was promoted from `dev` to `main` after validation and synchronized
+back to `dev`. The two release branches are kept at the same validated tree;
+the working tree is clean.
