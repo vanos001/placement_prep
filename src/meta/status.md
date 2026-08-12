@@ -46,3 +46,7 @@ Mermaid v11/jsdom. It returned 0: Mermaid heuristic/parser, links, and Summary
 all passed. The search-enabled build was attempted twice and killed by the
 sandbox memory limit; an isolated full build with `output.html.search.enable = false`
 completed successfully. The production `book.toml` was left unchanged.
+
+The final metadata commit is `79145d7`; it is present on `origin/dev`, the
+local `dev` branch is tracking the same commit, and the working tree is clean.
+All changes for this task are on `dev` only.

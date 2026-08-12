@@ -44,7 +44,10 @@ preparation book. Dates use the project timezone, Asia/Calcutta.
 
 ### Git
 
-- Integration commits were made on `dev` and pushed to `origin/dev`.
+- Integration commits `42c4e57` and `5f986da`, followed by metadata/validation
+  commit `79145d7`, were made on `dev` and pushed to `origin/dev`.
+- Local `dev` and remote `origin/dev` resolve to `79145d7`; the working tree is
+  clean.
 - `main` was not modified.
 
 ## Earlier history

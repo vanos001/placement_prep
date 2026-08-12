@@ -35,8 +35,8 @@
   returned 0 / **ALL VALIDATION PASSED**.
 - The metadata pages now record the actual mdBook result and the sandbox
   memory limitation of the search-enabled build.
-- The final step is the metadata commit and push to `origin/dev`, followed by
-  remote-head verification.
+- Metadata commit `79145d7` was pushed to `origin/dev`; local and remote `dev`
+  resolve to the same commit and the working tree is clean.
 
 ## Quality bar
 
