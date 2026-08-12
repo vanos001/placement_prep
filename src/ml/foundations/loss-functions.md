@@ -8,7 +8,7 @@ Loss functions quantify **how wrong** a model's predictions are. The choice of l
 
 ### Mean Squared Error (MSE)
 
-$$\text{MSE} = \frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y}_i)^2$$
+\\[\text{MSE} = \frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y}_i)^2\\]
 
 ```python
 import numpy as np
@@ -29,7 +29,7 @@ def mse_gradient(y_true, y_pred):
 
 ### Mean Absolute Error (MAE)
 
-$$\text{MAE} = \frac{1}{n} \sum_{i=1}^{n} |y_i - \hat{y}_i|$$
+\\[\text{MAE} = \frac{1}{n} \sum_{i=1}^{n} |y_i - \hat{y}_i|\\]
 
 ```python
 def mae(y_true, y_pred):
@@ -47,7 +47,7 @@ def mae(y_true, y_pred):
 
 Combines MSE (near zero) and MAE (for large errors):
 
-$$L_\delta(a) = \begin{cases} \frac{1}{2}a^2 & \text{if } |a| \leq \delta \\ \delta(|a| - \frac{1}{2}\delta) & \text{otherwise} \end{cases}$$
+\\[L_\delta(a) = \begin{cases} \frac{1}{2}a^2 & \text{if } |a| \leq \delta \\ \delta(|a| - \frac{1}{2}\delta) & \text{otherwise} \end{cases}\\]
 
 ```python
 def huber_loss(y_true, y_pred, delta=1.0):
@@ -71,7 +71,7 @@ graph LR
 
 ### Binary Cross-Entropy (Log Loss)
 
-$$L = -\frac{1}{n}\sum_{i=1}^n [y_i \log(\hat{y}_i) + (1-y_i)\log(1-\hat{y}_i)]$$
+\\[L = -\frac{1}{n}\sum_{i=1}^n [y_i \log(\hat{y}_i) + (1-y_i)\log(1-\hat{y}_i)]\\]
 
 ```python
 def binary_cross_entropy(y_true, y_pred):
@@ -93,7 +93,7 @@ def binary_cross_entropy(y_true, y_pred):
 
 For multi-class problems with softmax output:
 
-$$L = -\sum_{c=1}^{C} y_c \log(\hat{y}_c)$$
+\\[L = -\sum_{c=1}^{C} y_c \log(\hat{y}_c)\\]
 
 Where `y` is one-hot encoded and `ŷ = softmax(z)`.
 
@@ -126,7 +126,7 @@ When labels are integers (not one-hot):
 
 ### Hinge Loss (SVM Loss)
 
-$$L = \frac{1}{n}\sum_{i=1}^n \max(0, 1 - y_i \cdot \hat{y}_i)$$
+\\[L = \frac{1}{n}\sum_{i=1}^n \max(0, 1 - y_i \cdot \hat{y}_i)\\]
 
 Where `y ∈ {-1, +1}` and `ŷ = wᵀx + b` (raw score, not probability).
 
@@ -147,7 +147,7 @@ def hinge_loss(y_true, y_pred):
 
 ### Multi-Class Hinge Loss
 
-$$L = \frac{1}{n}\sum_{i=1}^n \sum_{c \neq y_i} \max(0, \hat{y}_c - \hat{y}_{y_i} + \Delta)$$
+\\[L = \frac{1}{n}\sum_{i=1}^n \sum_{c \neq y_i} \max(0, \hat{y}_c - \hat{y}_{y_i} + \Delta)\\]
 
 Where Δ is the margin (typically 1).
 
@@ -157,7 +157,7 @@ Where Δ is the margin (typically 1).
 
 Addresses **class imbalance** by down-weighting easy examples:
 
-$$FL(p_t) = -\alpha_t (1-p_t)^\gamma \log(p_t)$$
+\\[FL(p_t) = -\alpha_t (1-p_t)^\gamma \log(p_t)\\]
 
 Where:
 - `p_t` = probability of correct class
@@ -193,7 +193,7 @@ graph LR
 
 For **siamese networks** — learns embeddings where similar items are close and dissimilar items are far:
 
-$$L = \frac{1}{2N}\sum_{i=1}^N [y_i \cdot d_i^2 + (1-y_i) \cdot \max(0, m - d_i)^2]$$
+\\[L = \frac{1}{2N}\sum_{i=1}^N [y_i \cdot d_i^2 + (1-y_i) \cdot \max(0, m - d_i)^2]\\]
 
 Where `d = ||f(x_1) - f(x_2)||₂` and `m` is the margin.
 
@@ -211,7 +211,7 @@ def contrastive_loss(embedding1, embedding2, y, margin=1.0):
 
 Used in face recognition (FaceNet) — anchors should be closer to positives than negatives:
 
-$$L = \sum_{i} \max(0, ||f(a_i) - f(p_i)||^2 - ||f(a_i) - f(n_i)||^2 + \alpha)$$
+\\[L = \sum_{i} \max(0, ||f(a_i) - f(p_i)||^2 - ||f(a_i) - f(n_i)||^2 + \alpha)\\]
 
 ```python
 def triplet_loss(anchor, positive, negative, margin=1.0):
@@ -232,7 +232,7 @@ graph LR
 
 ### KL Divergence Loss
 
-$$D_{KL}(P || Q) = \sum_x P(x) \log \frac{P(x)}{Q(x)}$$
+\\[D_{KL}(P || Q) = \sum_x P(x) \log \frac{P(x)}{Q(x)}\\]
 
 ```python
 def kl_divergence(p, q):
@@ -248,7 +248,7 @@ def kl_divergence(p, q):
 
 For learning similarity:
 
-$$L = \begin{cases} 1 - \cos(x_1, x_2) & \text{if } y = 1 \\ \max(0, \cos(x_1, x_2) - m) & \text{if } y = -1 \end{cases}$$
+\\[L = \begin{cases} 1 - \cos(x_1, x_2) & \text{if } y = 1 \\ \max(0, \cos(x_1, x_2) - m) & \text{if } y = -1 \end{cases}\\]
 
 ## Loss Function Selection Guide
 
@@ -322,7 +322,7 @@ A: In distillation, we use `softmax(z/T)` where T is temperature:
 
 The student learns from both the hard labels (ground truth) and soft labels (teacher's knowledge), weighted by α:
 
-$$L = \alpha \cdot T^2 \cdot D_{KL}(\text{softmax}(z_T/T) || \text{softmax}(z_S/T)) + (1-\alpha) \cdot \text{CE}(y, z_S)$$
+\\[L = \alpha \cdot T^2 \cdot D_{KL}(\text{softmax}(z_T/T) || \text{softmax}(z_S/T)) + (1-\alpha) \cdot \text{CE}(y, z_S)\\]
 
 ### FAANG-Level
 

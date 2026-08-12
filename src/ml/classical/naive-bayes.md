@@ -6,7 +6,7 @@ Naive Bayes is a **probabilistic classifier** based on Bayes' theorem with the "
 
 ## Bayes' Theorem Review
 
-$$P(y|X) = \frac{P(X|y) \cdot P(y)}{P(X)}$$
+\\[P(y|X) = \frac{P(X|y) \cdot P(y)}{P(X)}\\]
 
 Where:
 - P(y|X): **Posterior** — probability of class y given features X
@@ -18,7 +18,7 @@ Where:
 
 Features are conditionally independent given the class:
 
-$$P(x_1, x_2, ..., x_d | y) = \prod_{i=1}^d P(x_i | y)$$
+\\[P(x_1, x_2, ..., x_d | y) = \prod_{i=1}^d P(x_i | y)\\]
 
 This simplifies the likelihood computation enormously:
 
@@ -62,7 +62,7 @@ class NaiveBayes:
 
 Assumes features follow a Gaussian distribution:
 
-$$P(x_i|y) = \frac{1}{\sqrt{2\pi\sigma_y^2}} \exp\left(-\frac{(x_i - \mu_y)^2}{2\sigma_y^2}\right)$$
+\\[P(x_i|y) = \frac{1}{\sqrt{2\pi\sigma_y^2}} \exp\left(-\frac{(x_i - \mu_y)^2}{2\sigma_y^2}\right)\\]
 
 ```python
 from sklearn.naive_bayes import GaussianNB
@@ -78,7 +78,7 @@ y_pred = gnb.predict(X_test)
 
 For count data (word frequencies, TF-IDF):
 
-$$P(x_i|y) = \frac{N_{yi} + \alpha}{N_y + \alpha d}$$
+\\[P(x_i|y) = \frac{N_{yi} + \alpha}{N_y + \alpha d}\\]
 
 Where N_yi is the count of feature i in class y, and α is Laplace smoothing.
 
@@ -95,7 +95,7 @@ mnb.fit(X_train_counts, y_train)
 
 For binary features (presence/absence):
 
-$$P(x_i|y) = P(x_i=1|y)^{x_i} \cdot (1 - P(x_i=1|y))^{1-x_i}$$
+\\[P(x_i|y) = P(x_i=1|y)^{x_i} \cdot (1 - P(x_i=1|y))^{1-x_i}\\]
 
 ```python
 from sklearn.naive_bayes import BernoulliNB
@@ -118,7 +118,7 @@ bnb.fit(X_binary, y_train)
 
 Prevents zero probabilities for unseen features:
 
-$$P(x_i|y) = \frac{count(x_i, y) + \alpha}{count(y) + \alpha \cdot d}$$
+\\[P(x_i|y) = \frac{count(x_i, y) + \alpha}{count(y) + \alpha \cdot d}\\]
 
 Where α=1 for Laplace smoothing, α<1 for Lidstone smoothing.
 

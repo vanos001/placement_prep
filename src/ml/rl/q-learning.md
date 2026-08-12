@@ -8,7 +8,7 @@ Q-Learning is a **model-free, value-based** reinforcement learning algorithm tha
 
 Learn a table (or function) mapping each (state, action) pair to its expected cumulative reward:
 
-$$Q(s, a) \leftarrow Q(s, a) + \alpha \left[ r + \gamma \max_{a'} Q(s', a') - Q(s, a) \right]$$
+\\[Q(s, a) \leftarrow Q(s, a) + \alpha \left[ r + \gamma \max_{a'} Q(s', a') - Q(s, a) \right]\\]
 
 Where:
 - **α**: Learning rate
@@ -55,8 +55,8 @@ Typically decay ε over training: start with ε=1.0 (full exploration), decay to
 - **Off-policy (Q-Learning)**: Learns the optimal policy while exploring with ε-greedy. The target uses max (greedy action).
 - **On-policy (SARSA)**: Learns about the policy it's actually following. The target uses the action actually taken.
 
-$$\text{Q-Learning: } Q(s,a) \leftarrow r + \gamma \max_{a'} Q(s', a')$$
-$$\text{SARSA: } Q(s,a) \leftarrow r + \gamma Q(s', a') \text{ (where a' is actually taken)}$$
+\\[\text{Q-Learning: } Q(s,a) \leftarrow r + \gamma \max_{a'} Q(s', a')\\]
+\\[\text{SARSA: } Q(s,a) \leftarrow r + \gamma Q(s', a') \text{ (where a' is actually taken)}\\]
 
 ## Deep Q-Network (DQN)
 
@@ -91,7 +91,7 @@ graph TD
 #### 2. Target Network
 Use a separate, slowly-updating network for the target:
 
-$$\text{Loss} = \left[ r + \gamma \max_{a'} Q_{\text{target}}(s', a') - Q(s, a) \right]^2$$
+\\[\text{Loss} = \left[ r + \gamma \max_{a'} Q_{\text{target}}(s', a') - Q(s, a) \right]^2\\]
 
 - Prevents "moving target" problem
 - Target network updated periodically (every C steps) or with soft update
@@ -115,14 +115,14 @@ Input: 84×84×4 (4 stacked frames)
 ### Double DQN (DDQN)
 Q-learning overestimates Q-values (max operator is biased). Double DQN decouples action selection from evaluation:
 
-$$\text{Target} = r + \gamma Q_{\text{target}}(s', \arg\max_{a'} Q_{\text{online}}(s', a'))$$
+\\[\text{Target} = r + \gamma Q_{\text{target}}(s', \arg\max_{a'} Q_{\text{online}}(s', a'))\\]
 
 Use online network to select the best action, target network to evaluate it.
 
 ### Dueling DQN
 Separate the Q-value into **value** and **advantage**:
 
-$$Q(s, a) = V(s) + A(s, a) - \frac{1}{|A|} \sum_{a'} A(s, a')$$
+\\[Q(s, a) = V(s) + A(s, a) - \frac{1}{|A|} \sum_{a'} A(s, a')\\]
 
 ```mermaid
 graph TD

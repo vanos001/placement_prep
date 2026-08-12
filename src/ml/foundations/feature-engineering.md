@@ -26,7 +26,7 @@ graph TD
 
 Transforms features to have mean=0, std=1:
 
-$$x_{scaled} = \frac{x - \mu}{\sigma}$$
+\\[x_{scaled} = \frac{x - \mu}{\sigma}\\]
 
 ```python
 from sklearn.preprocessing import StandardScaler
@@ -51,7 +51,7 @@ def standardize(X_train, X_test):
 
 Transforms features to [0, 1]:
 
-$$x_{scaled} = \frac{x - x_{min}}{x_{max} - x_{min}}$$
+\\[x_{scaled} = \frac{x - x_{min}}{x_{max} - x_{min}}\\]
 
 ```python
 from sklearn.preprocessing import MinMaxScaler
@@ -69,7 +69,7 @@ X_scaled = scaler.fit_transform(X)
 
 Uses median and IQR — robust to outliers:
 
-$$x_{scaled} = \frac{x - \text{median}}{\text{IQR}}$$
+\\[x_{scaled} = \frac{x - \text{median}}{\text{IQR}}\\]
 
 ```python
 from sklearn.preprocessing import RobustScaler

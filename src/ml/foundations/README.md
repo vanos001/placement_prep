@@ -66,9 +66,9 @@ graph LR
 
 **Key formula — Matrix multiplication in a neural network layer:**
 
-$$
+\\[
 z = Wx + b
-$$
+\\]
 
 Where W is the weight matrix, x is the input vector, and b is the bias vector.
 
@@ -85,9 +85,9 @@ Where W is the weight matrix, x is the input vector, and b is the bias vector.
 
 **Key formula — Bayes' Theorem:**
 
-$$
+\\[
 P(\theta | D) = \frac{P(D | \theta) \cdot P(\theta)}{P(D)}
-$$
+\\]
 
 Posterior = Likelihood × Prior / Evidence
 
@@ -140,9 +140,9 @@ graph TD
 
 **Key formula — SGD update rule:**
 
-$$
+\\[
 \theta_{t+1} = \theta_t - \eta \cdot \nabla_\theta J(\theta_t)
-$$
+\\]
 
 Where η is the learning rate and J is the loss function.
 

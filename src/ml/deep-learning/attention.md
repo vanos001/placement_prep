@@ -24,11 +24,11 @@ graph TD
 
 The original attention mechanism uses a small feed-forward network to compute alignment scores:
 
-$$\text{score}(s_{t-1}, h_j) = v^T \tanh(W_1 s_{t-1} + W_2 h_j)$$
+\\[\text{score}(s_{t-1}, h_j) = v^T \tanh(W_1 s_{t-1} + W_2 h_j)\\]
 
-$$\alpha_{tj} = \frac{\exp(\text{score}(s_{t-1}, h_j))}{\sum_{k=1}^{n} \exp(\text{score}(s_{t-1}, h_k))}$$
+\\[\alpha_{tj} = \frac{\exp(\text{score}(s_{t-1}, h_j))}{\sum_{k=1}^{n} \exp(\text{score}(s_{t-1}, h_k))}\\]
 
-$$c_t = \sum_{j=1}^{n} \alpha_{tj} h_j$$
+\\[c_t = \sum_{j=1}^{n} \alpha_{tj} h_j\\]
 
 **Intuition**: The alignment model learns which source words are most relevant for predicting the next target word. The vector $v$ and matrices $W_1, W_2$ are learned jointly with the rest of the model.
 
@@ -69,7 +69,7 @@ class AdditiveAttention(nn.Module):
 
 Simpler — uses the dot product directly as the compatibility function:
 
-$$\text{score}(s_t, h_j) = s_t^T h_j$$
+\\[\text{score}(s_t, h_j) = s_t^T h_j\\]
 
 This is much faster to compute (just a matrix multiplication) but assumes the query and key have the same dimensionality.
 
@@ -77,7 +77,7 @@ This is much faster to compute (just a matrix multiplication) but assumes the qu
 
 The core attention operation used in Transformers:
 
-$$\text{Attention}(Q, K, V) = \text{softmax}\left(\frac{QK^T}{\sqrt{d_k}}\right)V$$
+\\[\text{Attention}(Q, K, V) = \text{softmax}\left(\frac{QK^T}{\sqrt{d_k}}\right)V\\]
 
 ### Why Scale by $\sqrt{d_k}$?
 
@@ -154,9 +154,9 @@ output = torch.matmul(weights, V)
 
 A single attention head can only attend to one type of relationship at a time. Multi-head attention runs $h$ attention operations in parallel, each learning different patterns:
 
-$$\text{MultiHead}(Q, K, V) = \text{Concat}(\text{head}_1, \dots, \text{head}_h)W^O$$
+\\[\text{MultiHead}(Q, K, V) = \text{Concat}(\text{head}_1, \dots, \text{head}_h)W^O\\]
 
-$$\text{head}_i = \text{Attention}(QW_i^Q, KW_i^K, VW_i^V)$$
+\\[\text{head}_i = \text{Attention}(QW_i^Q, KW_i^K, VW_i^V)\\]
 
 ```python
 class MultiHeadAttention(nn.Module):
@@ -221,7 +221,7 @@ Research (Voita et al., 2019; Clark et al., 2019) shows different heads speciali
 
 Self-attention is when Q, K, V all come from the **same sequence**. Each token computes how much to attend to every other token in the sequence.
 
-$$Q = XW^Q, \quad K = XW^K, \quad V = XW^V$$
+\\[Q = XW^Q, \quad K = XW^K, \quad V = XW^V\\]
 
 ```python
 # Self-attention: query, key, value all from the same input
@@ -256,7 +256,7 @@ graph LR
 
 Cross-attention connects **two different sequences**. Q comes from one sequence (e.g., decoder), while K and V come from another (e.g., encoder).
 
-$$Q = YW^Q, \quad K = XW^K, \quad V = XW^V$$
+\\[Q = YW^Q, \quad K = XW^K, \quad V = XW^V\\]
 
 Where $Y$ is the decoder state and $X$ is the encoder output.
 
@@ -281,7 +281,7 @@ def cross_attention(decoder_state, encoder_output, W_q, W_k, W_v):
 
 For autoregressive models (GPT), each token can only attend to **previous tokens** (and itself). A causal mask enforces this:
 
-$$\text{mask}_{ij} = \begin{cases} 1 & \text{if } j \leq i \\ 0 & \text{if } j > i \end{cases}$$
+\\[\text{mask}_{ij} = \begin{cases} 1 & \text{if } j \leq i \\ 0 & \text{if } j > i \end{cases}\\]
 
 ```python
 def create_causal_mask(seq_len):
@@ -391,7 +391,7 @@ graph LR
 
 All attention heads share the same K and V projections:
 
-$$\text{head}_i = \text{Attention}(QW_i^Q, KW^K, VW^V)$$
+\\[\text{head}_i = \text{Attention}(QW_i^Q, KW^K, VW^V)\\]
 
 **Benefit**: Reduces KV cache size by $h\times$ during inference. Used in Falcon, PaLM.
 

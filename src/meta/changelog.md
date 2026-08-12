@@ -3,6 +3,30 @@
 This file records meaningful content and validation changes to the placement
 preparation book. Dates use the project timezone, Asia/Calcutta.
 
+## 2026-08-12 — Research and validation audit
+
+### Fixed
+
+- Converted legacy `$$...$$` display equations in 61 Markdown pages to the
+  mdBook-compatible escaped block delimiters used by MathJax.
+- Closed malformed code fences in DSA advanced segment trees, Linux firewall
+  maps, and ML optimizer examples.
+- Repaired nine stale internal heading fragments and four escaped `Ctrl+` code
+  examples discovered by the audit.
+- Corrected the retired `ebpf.io/docs` URL to the maintained `docs.ebpf.io`
+  documentation site.
+
+### Audit result
+
+- Broken relative links: **0**.
+- SUMMARY reachability: **1,533 of 1,533 content pages linked**.
+- Mermaid heuristic/parser: **4,387 / 4,387 passed**.
+- Math delimiter counts are balanced outside fenced code and inline code spans.
+- No exact duplicate Markdown bodies were found.
+- 73 URL-bearing pages without a References-style heading and 112 pages with
+  no content cross-links remain as research-review candidates; they are not
+  navigation failures because Summary reachability is complete.
+
 ## 2026-08-12 — Enable MathJax and automatic cross-reference graph
 
 - Enabled mdBook’s built-in MathJax support with
@@ -12,9 +36,9 @@ preparation book. Dates use the project timezone, Asia/Calcutta.
   after every successful mdBook build.
 - Added the `Cross-Reference Graph` Meta page; the generated view is output-only and is not committed as a large artifact.
 - Confirmed the integrated DSA source uses mdBook-compatible escaped inline
-  `\\(` / `\\)` and block `\\[` / `\\]` delimiters.
+  mdBook-compatible inline and block delimiters.
 - The generated DSA math page now includes the MathJax runtime instead of
-  leaving formulas as raw `\\[` text.
+  leaving formulas as raw delimiter text.
 
 ## 2026-08-12 — Linux and DSA book integration
 

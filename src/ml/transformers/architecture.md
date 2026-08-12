@@ -56,7 +56,7 @@ graph TD
 
 Converts discrete tokens to dense vectors of dimension $d_{\text{model}}$:
 
-$$\mathbf{x}_i = \text{Embedding}(w_i) \in \mathbb{R}^{d_{\text{model}}}$$
+\\[\mathbf{x}_i = \text{Embedding}(w_i) \in \mathbb{R}^{d_{\text{model}}}\\]
 
 In the original Transformer, the embedding weights are multiplied by $\sqrt{d_{\text{model}}}$ to scale them before adding positional encodings. This is because the positional encodings have values in $[-1, 1]$, while the embeddings (trained with Xavier init) have much smaller magnitudes.
 
@@ -79,13 +79,13 @@ class TransformerEmbedding(nn.Module):
 
 Since the Transformer has no recurrence, it needs explicit position information. The original paper uses sinusoidal encodings:
 
-$$PE_{(pos, 2i)} = \sin\left(\frac{pos}{10000^{2i/d_{\text{model}}}}\right)$$
+\\[PE_{(pos, 2i)} = \sin\left(\frac{pos}{10000^{2i/d_{\text{model}}}}\right)\\]
 
-$$PE_{(pos, 2i+1)} = \cos\left(\frac{pos}{10000^{2i/d_{\text{model}}}}\right)$$
+\\[PE_{(pos, 2i+1)} = \cos\left(\frac{pos}{10000^{2i/d_{\text{model}}}}\right)\\]
 
 **Intuition**: Each dimension corresponds to a different frequency. The encoding for position $pos$ is a unique point on a high-dimensional circle. The relative position between two tokens can be expressed as a linear transformation of their encodings:
 
-$$PE_{pos+k} = T_k \cdot PE_{pos}$$
+\\[PE_{pos+k} = T_k \cdot PE_{pos}\\]
 
 where $T_k$ is a rotation matrix that depends only on $k$ (the offset), not on $pos$.
 
@@ -132,11 +132,11 @@ class LearnedPositionalEncoding(nn.Module):
 
 Instead of a single attention function, the Transformer uses **$h$ parallel attention heads**:
 
-$$\text{MultiHead}(Q, K, V) = \text{Concat}(\text{head}_1, \dots, \text{head}_h)W^O$$
+\\[\text{MultiHead}(Q, K, V) = \text{Concat}(\text{head}_1, \dots, \text{head}_h)W^O\\]
 
-$$\text{head}_i = \text{Attention}(QW_i^Q, KW_i^K, VW_i^V)$$
+\\[\text{head}_i = \text{Attention}(QW_i^Q, KW_i^K, VW_i^V)\\]
 
-$$\text{Attention}(Q, K, V) = \text{softmax}\left(\frac{QK^T}{\sqrt{d_k}}\right)V$$
+\\[\text{Attention}(Q, K, V) = \text{softmax}\left(\frac{QK^T}{\sqrt{d_k}}\right)V\\]
 
 Where:
 - $W_i^Q \in \mathbb{R}^{d_{\text{model}} \times d_k}$, $W_i^K \in \mathbb{R}^{d_{\text{model}} \times d_k}$, $W_i^V \in \mathbb{R}^{d_{\text{model}} \times d_v}$
@@ -149,7 +149,7 @@ Where:
 
 Applied independently to each position:
 
-$$\text{FFN}(x) = \max(0, xW_1 + b_1)W_2 + b_2$$
+\\[\text{FFN}(x) = \max(0, xW_1 + b_1)W_2 + b_2\\]
 
 This is equivalent to two 1×1 convolutions. The inner dimension $d_{ff}$ is typically $4 \times d_{\text{model}}$ (e.g., 2048 for $d_{\text{model}} = 512$).
 
@@ -157,7 +157,7 @@ This is equivalent to two 1×1 convolutions. The inner dimension $d_{ff}$ is typ
 
 Modern variants use **GLU (Gated Linear Unit)** variants for better performance:
 
-$$\text{SwiGLU}(x) = (\text{Swish}(xW_1) \odot (xW_3)) W_2$$
+\\[\text{SwiGLU}(x) = (\text{Swish}(xW_1) \odot (xW_3)) W_2\\]
 
 ```python
 class FeedForward(nn.Module):
@@ -187,17 +187,17 @@ class SwiGLUFeedForward(nn.Module):
 
 Each sub-layer has a residual connection around it:
 
-$$\text{output} = \text{LayerNorm}(x + \text{Sublayer}(x))$$
+\\[\text{output} = \text{LayerNorm}(x + \text{Sublayer}(x))\\]
 
 **Why they work**: Residual connections solve the vanishing gradient problem in deep networks. They provide a "shortcut" for gradients to flow directly:
 
-$$\frac{\partial \mathcal{L}}{\partial x} = \frac{\partial \mathcal{L}}{\partial \text{output}} \left(1 + \frac{\partial \text{Sublayer}(x)}{\partial x}\right)$$
+\\[\frac{\partial \mathcal{L}}{\partial x} = \frac{\partial \mathcal{L}}{\partial \text{output}} \left(1 + \frac{\partial \text{Sublayer}(x)}{\partial x}\right)\\]
 
 The gradient always has a direct path (the "1" term), regardless of what the sublayer's gradient is. This enables training Transformers with 96+ layers (GPT-3).
 
 ### 6. Layer Normalization
 
-$$\text{LayerNorm}(x) = \gamma \odot \frac{x - \mu}{\sqrt{\sigma^2 + \epsilon}} + \beta$$
+\\[\text{LayerNorm}(x) = \gamma \odot \frac{x - \mu}{\sqrt{\sigma^2 + \epsilon}} + \beta\\]
 
 Where $\mu$ and $\sigma^2$ are computed over the last dimension (the feature dimension), not across the batch.
 

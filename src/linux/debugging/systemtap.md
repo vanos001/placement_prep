@@ -525,10 +525,10 @@ sudo stap -DINTERRUPTIBLE=1 myprobe.stp
 ## Related Topics
 
 - [Debugging Overview](./overview.md) — tool selection guide
-- [eBPF](./overview.md#ebpf) — modern alternative
+- [eBPF](./overview.md#ebpf-extended-berkeley-packet-filter) — modern alternative
 - [Valgrind](./valgrind.md) — binary analysis
 - [Sanitizers](./sanitizers.md) — compile-time instrumentation
-- [perf](./overview.md#perf) — performance profiling
+- [perf](./overview.md#perf-performance-profiler) — performance profiling
 
 ## SystemTap Scripting Language Deep Dive
 

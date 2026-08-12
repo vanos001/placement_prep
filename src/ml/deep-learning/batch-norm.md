@@ -21,13 +21,13 @@ graph TD
 
 For a mini-batch B = {x₁, ..., xₘ}:
 
-$$\mu_B = \frac{1}{m}\sum_{i=1}^m x_i \quad \text{(Batch mean)}$$
+\\[\mu_B = \frac{1}{m}\sum_{i=1}^m x_i \quad \text{(Batch mean)}\\]
 
-$$\sigma_B^2 = \frac{1}{m}\sum_{i=1}^m (x_i - \mu_B)^2 \quad \text{(Batch variance)}$$
+\\[\sigma_B^2 = \frac{1}{m}\sum_{i=1}^m (x_i - \mu_B)^2 \quad \text{(Batch variance)}\\]
 
-$$\hat{x}_i = \frac{x_i - \mu_B}{\sqrt{\sigma_B^2 + \epsilon}} \quad \text{(Normalize)}$$
+\\[\hat{x}_i = \frac{x_i - \mu_B}{\sqrt{\sigma_B^2 + \epsilon}} \quad \text{(Normalize)}\\]
 
-$$y_i = \gamma \hat{x}_i + \beta \quad \text{(Scale and shift)}$$
+\\[y_i = \gamma \hat{x}_i + \beta \quad \text{(Scale and shift)}\\]
 
 Where γ (scale) and β (shift) are **learnable parameters**.
 
@@ -156,7 +156,7 @@ instance_norm = nn.InstanceNorm2d(256)
 
 Used in **LLaMA** and modern LLMs — simpler than LayerNorm:
 
-$$\text{RMSNorm}(x) = \frac{x}{\sqrt{\frac{1}{d}\sum_{i=1}^d x_i^2 + \epsilon}} \cdot \gamma$$
+\\[\text{RMSNorm}(x) = \frac{x}{\sqrt{\frac{1}{d}\sum_{i=1}^d x_i^2 + \epsilon}} \cdot \gamma\\]
 
 ```python
 class RMSNorm(nn.Module):

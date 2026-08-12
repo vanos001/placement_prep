@@ -28,11 +28,11 @@ graph TD
 
 Unlike vanilla gradient boosting, XGBoost adds regularization:
 
-$$\text{Obj} = \sum_{i=1}^n L(y_i, \hat{y}_i) + \sum_{k=1}^K \Omega(f_k)$$
+\\[\text{Obj} = \sum_{i=1}^n L(y_i, \hat{y}_i) + \sum_{k=1}^K \Omega(f_k)\\]
 
 Where the regularization term:
 
-$$\Omega(f) = \gamma T + \frac{1}{2}\lambda \sum_{j=1}^T w_j^2$$
+\\[\Omega(f) = \gamma T + \frac{1}{2}\lambda \sum_{j=1}^T w_j^2\\]
 
 - T: Number of leaves
 - wⱼ: Leaf weights

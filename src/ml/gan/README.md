@@ -33,7 +33,7 @@ graph LR
 
 ### The Minimax Objective
 
-$$\min_G \max_D V(D, G) = \mathbb{E}_{x \sim p_{data}}[\log D(x)] + \mathbb{E}_{z \sim p_z}[\log(1 - D(G(z)))]$$
+\\[\min_G \max_D V(D, G) = \mathbb{E}_{x \sim p_{data}}[\log D(x)] + \mathbb{E}_{z \sim p_z}[\log(1 - D(G(z)))]\\]
 
 - **Discriminator** maximizes: correctly classifying real vs fake
 - **Generator** minimizes: fooling the discriminator

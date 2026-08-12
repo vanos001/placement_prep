@@ -20,8 +20,8 @@ graph LR
 
 ### Forward Pass
 
-$$h_t = \tanh(W_{hh} h_{t-1} + W_{xh} x_t + b_h)$$
-$$y_t = W_{hy} h_t + b_y$$
+\\[h_t = \tanh(W_{hh} h_{t-1} + W_{xh} x_t + b_h)\\]
+\\[y_t = W_{hy} h_t + b_y\\]
 
 ```python
 import numpy as np
@@ -70,7 +70,7 @@ graph TD
 
 For a T-step RNN:
 
-$$\frac{\partial h_T}{\partial h_1} = \prod_{t=2}^{T} \frac{\partial h_t}{\partial h_{t-1}} = \prod_{t=2}^{T} W_{hh}^T \text{diag}(\tanh'(z_t))$$
+\\[\frac{\partial h_T}{\partial h_1} = \prod_{t=2}^{T} \frac{\partial h_t}{\partial h_{t-1}} = \prod_{t=2}^{T} W_{hh}^T \text{diag}(\tanh'(z_t))\\]
 
 If the spectral radius of W_hh < 1, the product vanishes exponentially.
 
@@ -93,12 +93,12 @@ graph TD
 
 ### LSTM Equations
 
-$$f_t = \sigma(W_f [h_{t-1}, x_t] + b_f) \quad \text{(Forget gate)}$$
-$$i_t = \sigma(W_i [h_{t-1}, x_t] + b_i) \quad \text{(Input gate)}$$
-$$\tilde{C}_t = \tanh(W_C [h_{t-1}, x_t] + b_C) \quad \text{(Candidate)}$$
-$$C_t = f_t \odot C_{t-1} + i_t \odot \tilde{C}_t \quad \text{(Cell state update)}$$
-$$o_t = \sigma(W_o [h_{t-1}, x_t] + b_o) \quad \text{(Output gate)}$$
-$$h_t = o_t \odot \tanh(C_t) \quad \text{(Hidden state)}$$
+\\[f_t = \sigma(W_f [h_{t-1}, x_t] + b_f) \quad \text{(Forget gate)}\\]
+\\[i_t = \sigma(W_i [h_{t-1}, x_t] + b_i) \quad \text{(Input gate)}\\]
+\\[\tilde{C}_t = \tanh(W_C [h_{t-1}, x_t] + b_C) \quad \text{(Candidate)}\\]
+\\[C_t = f_t \odot C_{t-1} + i_t \odot \tilde{C}_t \quad \text{(Cell state update)}\\]
+\\[o_t = \sigma(W_o [h_{t-1}, x_t] + b_o) \quad \text{(Output gate)}\\]
+\\[h_t = o_t \odot \tanh(C_t) \quad \text{(Hidden state)}\\]
 
 ```python
 import numpy as np
@@ -143,7 +143,7 @@ class LSTMCell:
 
 The **cell state** C_t acts as a "highway" for gradients:
 
-$$C_t = f_t \odot C_{t-1} + i_t \odot \tilde{C}_t$$
+\\[C_t = f_t \odot C_{t-1} + i_t \odot \tilde{C}_t\\]
 
 When f_t ≈ 1 (forget gate open), the gradient flows directly: ∂C_t/∂C_{t-1} ≈ 1. This is similar to ResNet's skip connections.
 

@@ -69,7 +69,7 @@ The W space is **disentangled** — individual dimensions correspond to interpre
 
 AdaIN applies the style to each feature map:
 
-$$\text{AdaIN}(x_i, y) = y_{s,i} \frac{x_i - \mu(x_i)}{\sigma(x_i)} + y_{b,i}$$
+\\[\text{AdaIN}(x_i, y) = y_{s,i} \frac{x_i - \mu(x_i)}{\sigma(x_i)} + y_{b,i}\\]
 
 where $y_s$ and $y_b$ are learned from $w$ via a **style modulator** (affine transformation).
 
@@ -126,13 +126,13 @@ graph TD
 
 Instead of AdaIN (which can cause artifacts), StyleGAN2 modulates convolution weights directly:
 
-$$w'_{ijk} = s_i \cdot w_{ijk} \cdot \frac{1}{\sqrt{\sum_{i,k} (s_i \cdot w_{ijk})^2 + \epsilon}}$$
+\\[w'_{ijk} = s_i \cdot w_{ijk} \cdot \frac{1}{\sqrt{\sum_{i,k} (s_i \cdot w_{ijk})^2 + \epsilon}}\\]
 
 ### Path Length Regularization
 
 Encourages smooth mapping from W to images:
 
-$$L_{pl} = \mathbb{E}_w \left\| J_w^T J_w \mathbf{1} - 1 \right\|^2$$
+\\[L_{pl} = \mathbb{E}_w \left\| J_w^T J_w \mathbf{1} - 1 \right\|^2\\]
 
 ## Style Mixing
 
@@ -156,7 +156,7 @@ This produces images where coarse structure (pose, face shape) comes from one so
 
 Control quality vs diversity trade-off:
 
-$$w' = \bar{w} + \psi(w - \bar{w})$$
+\\[w' = \bar{w} + \psi(w - \bar{w})\\]
 
 - $\psi = 1$: Full diversity, some low-quality outputs
 - $\psi = 0$: Average face, highest quality

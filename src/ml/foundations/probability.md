@@ -42,7 +42,7 @@ graph TD
 
 The most important theorem in ML — it connects **prior beliefs** with **observed evidence**.
 
-$$P(\theta | D) = \frac{P(D | \theta) \cdot P(\theta)}{P(D)}$$
+\\[P(\theta | D) = \frac{P(D | \theta) \cdot P(\theta)}{P(D)}\\]
 
 | Term | Name | Meaning |
 |------|------|---------|
@@ -162,11 +162,11 @@ cov_matrix = np.cov(X.T)  # Shape: (3, 3)
 
 **Goal**: Find parameters θ that maximize the likelihood of observing the data.
 
-$$\hat{\theta}_{MLE} = \arg\max_\theta P(D|\theta) = \arg\max_\theta \prod_{i=1}^n P(x_i|\theta)$$
+\\[\hat{\theta}_{MLE} = \arg\max_\theta P(D|\theta) = \arg\max_\theta \prod_{i=1}^n P(x_i|\theta)\\]
 
 In practice, we work with **log-likelihood** (turns products into sums):
 
-$$\hat{\theta}_{MLE} = \arg\max_\theta \sum_{i=1}^n \log P(x_i|\theta)$$
+\\[\hat{\theta}_{MLE} = \arg\max_\theta \sum_{i=1}^n \log P(x_i|\theta)\\]
 
 ```python
 # MLE for Gaussian: Given data x₁,...,xₙ
@@ -185,7 +185,7 @@ $$\hat{\theta}_{MLE} = \arg\max_\theta \sum_{i=1}^n \log P(x_i|\theta)$$
 
 **Goal**: Find parameters that maximize the posterior (incorporating prior knowledge).
 
-$$\hat{\theta}_{MAP} = \arg\max_\theta P(\theta|D) = \arg\max_\theta P(D|\theta) \cdot P(\theta)$$
+\\[\hat{\theta}_{MAP} = \arg\max_\theta P(\theta|D) = \arg\max_\theta P(D|\theta) \cdot P(\theta)\\]
 
 ```python
 # MAP = MLE + Prior
@@ -216,13 +216,13 @@ graph LR
 
 ### Entropy
 
-$$H(X) = -\sum_x P(x) \log P(x)$$
+\\[H(X) = -\sum_x P(x) \log P(x)\\]
 
 Measures **uncertainty** in a distribution. Uniform distribution has maximum entropy.
 
 ### KL Divergence
 
-$$D_{KL}(P || Q) = \sum_x P(x) \log \frac{P(x)}{Q(x)}$$
+\\[D_{KL}(P || Q) = \sum_x P(x) \log \frac{P(x)}{Q(x)}\\]
 
 Measures how different Q is from P. **Not symmetric**. Used in:
 - Variational Autoencoders (VAE)
@@ -231,7 +231,7 @@ Measures how different Q is from P. **Not symmetric**. Used in:
 
 ### Cross-Entropy
 
-$$H(P, Q) = -\sum_x P(x) \log Q(x) = H(P) + D_{KL}(P || Q)$$
+\\[H(P, Q) = -\sum_x P(x) \log Q(x) = H(P) + D_{KL}(P || Q)\\]
 
 **This is the most common loss function for classification!** Minimizing cross-entropy ≡ minimizing KL divergence (since H(P) is constant).
 
@@ -252,7 +252,7 @@ loss = cross_entropy(y_true, y_pred)  # -log(0.7) ≈ 0.357
 
 For a model trained on dataset D:
 
-$$E_D[(f_D(x) - y)^2] = \text{Bias}^2 + \text{Variance} + \text{Irreducible Noise}$$
+\\[E_D[(f_D(x) - y)^2] = \text{Bias}^2 + \text{Variance} + \text{Irreducible Noise}\\]
 
 Where:
 - **Bias²** = $(E_D[f_D(x)] - f^*(x))^2$ — systematic error

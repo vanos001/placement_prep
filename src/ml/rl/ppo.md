@@ -18,7 +18,7 @@ PPO (Schulman et al., 2017) is the most widely used policy gradient algorithm in
 
 The core innovation is the **clipped surrogate objective**:
 
-$$L^{CLIP}(\theta) = \mathbb{E}_t \left[ \min\left( r_t(\theta) \hat{A}_t, \text{clip}(r_t(\theta), 1-\epsilon, 1+\epsilon) \hat{A}_t \right) \right]$$
+\\[L^{CLIP}(\theta) = \mathbb{E}_t \left[ \min\left( r_t(\theta) \hat{A}_t, \text{clip}(r_t(\theta), 1-\epsilon, 1+\epsilon) \hat{A}_t \right) \right]\\]
 
 Where:
 - **r_t(θ) = π_θ(a|s) / π_{θ_old}(a|s)**: Probability ratio (new / old policy)
@@ -63,7 +63,7 @@ graph TD
 
 ### Full PPO Objective
 
-$$L(\theta) = \mathbb{E}\left[ L^{CLIP}(\theta) - c_1 L^{VF}(\theta) + c_2 H[\pi_\theta](s) \right]$$
+\\[L(\theta) = \mathbb{E}\left[ L^{CLIP}(\theta) - c_1 L^{VF}(\theta) + c_2 H[\pi_\theta](s) \right]\\]
 
 Where:
 - **L^CLIP**: Clipped surrogate objective (policy improvement)
@@ -79,7 +79,7 @@ The clipped objective described above. Used in most implementations.
 ### PPO-Penalty
 Uses KL divergence as a penalty instead of clipping:
 
-$$L(\theta) = \mathbb{E}\left[ r_t(\theta) \hat{A}_t - \beta D_{KL}[\pi_{\theta_{old}} \| \pi_\theta] \right]$$
+\\[L(\theta) = \mathbb{E}\left[ r_t(\theta) \hat{A}_t - \beta D_{KL}[\pi_{\theta_{old}} \| \pi_\theta] \right]\\]
 
 Adaptive β: increase if KL too large, decrease if KL too small.
 

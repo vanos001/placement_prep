@@ -8,7 +8,7 @@ Graph Convolutional Networks (GCNs), introduced by Kipf and Welling (2017), exte
 
 ### Propagation Rule
 
-$$H^{(l+1)} = \sigma\left(\hat{D}^{-1/2} \hat{A} \hat{D}^{-1/2} H^{(l)} W^{(l)}\right)$$
+\\[H^{(l+1)} = \sigma\left(\hat{D}^{-1/2} \hat{A} \hat{D}^{-1/2} H^{(l)} W^{(l)}\right)\\]
 
 where:
 - $\hat{A} = A + I_N$ (adjacency matrix with self-loops)
@@ -28,7 +28,7 @@ graph LR
 
 For each node $v$:
 
-$$h_v^{(l+1)} = \sigma\left(W^{(l)} \sum_{u \in \mathcal{N}(v) \cup \{v\}} \frac{h_u^{(l)}}{\sqrt{\hat{d}_u \hat{d}_v}}\right)$$
+\\[h_v^{(l+1)} = \sigma\left(W^{(l)} \sum_{u \in \mathcal{N}(v) \cup \{v\}} \frac{h_u^{(l)}}{\sqrt{\hat{d}_u \hat{d}_v}}\right)\\]
 
 Each node aggregates features from its neighbors (including itself), weighted by the inverse square root of degrees.
 

@@ -129,7 +129,7 @@ graph TD
 
 Any `m × n` matrix `A` can be decomposed as:
 
-$$A = U \Sigma V^T$$
+\\[A = U \Sigma V^T\\]
 
 Where:
 - `U` (`m × m`): Left singular vectors (orthogonal)

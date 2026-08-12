@@ -35,7 +35,7 @@ graph TD
 
 ### Accuracy
 
-$$\text{Accuracy} = \frac{TP + TN}{TP + TN + FP + FN}$$
+\\[\text{Accuracy} = \frac{TP + TN}{TP + TN + FP + FN}\\]
 
 ```python
 from sklearn.metrics import accuracy_score
@@ -49,7 +49,7 @@ accuracy = accuracy_score(y_true, y_pred)
 
 ### Precision
 
-$$\text{Precision} = \frac{TP}{TP + FP}$$
+\\[\text{Precision} = \frac{TP}{TP + FP}\\]
 
 "Of all predicted positives, how many are actually positive?"
 
@@ -64,7 +64,7 @@ precision = precision_score(y_true, y_pred)
 
 ### Recall (Sensitivity, True Positive Rate)
 
-$$\text{Recall} = \frac{TP}{TP + FN}$$
+\\[\text{Recall} = \frac{TP}{TP + FN}\\]
 
 "Of all actual positives, how many did we catch?"
 
@@ -81,7 +81,7 @@ recall = recall_score(y_true, y_pred)
 
 Harmonic mean of precision and recall:
 
-$$F1 = 2 \cdot \frac{\text{Precision} \cdot \text{Recall}}{\text{Precision} + \text{Recall}}$$
+\\[F1 = 2 \cdot \frac{\text{Precision} \cdot \text{Recall}}{\text{Precision} + \text{Recall}}\\]
 
 ```python
 from sklearn.metrics import f1_score
@@ -104,7 +104,7 @@ graph LR
 
 ### Specificity (True Negative Rate)
 
-$$\text{Specificity} = \frac{TN}{TN + FP}$$
+\\[\text{Specificity} = \frac{TN}{TN + FP}\\]
 
 "Of all actual negatives, how many did we correctly identify?"
 
@@ -174,7 +174,7 @@ ap = average_precision_score(y_true, y_scores)
 
 Penalizes confident wrong predictions:
 
-$$\text{Log Loss} = -\frac{1}{n}\sum_{i=1}^n [y_i \log(\hat{y}_i) + (1-y_i)\log(1-\hat{y}_i)]$$
+\\[\text{Log Loss} = -\frac{1}{n}\sum_{i=1}^n [y_i \log(\hat{y}_i) + (1-y_i)\log(1-\hat{y}_i)]\\]
 
 ```python
 from sklearn.metrics import log_loss
@@ -188,7 +188,7 @@ loss = log_loss(y_true, y_scores)
 
 ### Mean Squared Error (MSE)
 
-$$\text{MSE} = \frac{1}{n}\sum_{i=1}^n (y_i - \hat{y}_i)^2$$
+\\[\text{MSE} = \frac{1}{n}\sum_{i=1}^n (y_i - \hat{y}_i)^2\\]
 
 ```python
 from sklearn.metrics import mean_squared_error
@@ -201,7 +201,7 @@ rmse = mean_squared_error(y_true, y_pred, squared=False)  # Root MSE
 
 ### Mean Absolute Error (MAE)
 
-$$\text{MAE} = \frac{1}{n}\sum_{i=1}^n |y_i - \hat{y}_i|$$
+\\[\text{MAE} = \frac{1}{n}\sum_{i=1}^n |y_i - \hat{y}_i|\\]
 
 ```python
 from sklearn.metrics import mean_absolute_error
@@ -213,7 +213,7 @@ mae = mean_absolute_error(y_true, y_pred)
 
 ### R² Score (Coefficient of Determination)
 
-$$R^2 = 1 - \frac{\sum(y_i - \hat{y}_i)^2}{\sum(y_i - \bar{y})^2} = 1 - \frac{SS_{res}}{SS_{tot}}$$
+\\[R^2 = 1 - \frac{\sum(y_i - \hat{y}_i)^2}{\sum(y_i - \bar{y})^2} = 1 - \frac{SS_{res}}{SS_{tot}}\\]
 
 ```python
 from sklearn.metrics import r2_score
@@ -228,7 +228,7 @@ r2 = r2_score(y_true, y_pred)
 
 ### MAPE (Mean Absolute Percentage Error)
 
-$$\text{MAPE} = \frac{100}{n}\sum_{i=1}^n \left|\frac{y_i - \hat{y}_i}{y_i}\right|$$
+\\[\text{MAPE} = \frac{100}{n}\sum_{i=1}^n \left|\frac{y_i - \hat{y}_i}{y_i}\right|\\]
 
 ```python
 from sklearn.metrics import mean_absolute_percentage_error

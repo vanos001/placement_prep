@@ -58,28 +58,28 @@ def train_step(real_data, generator, discriminator, opt_G, opt_D, latent_dim):
 
 ### Original GAN Loss (Minimax)
 
-$$L_D = -\mathbb{E}[\log D(x)] - \mathbb{E}[\log(1 - D(G(z)))]$$
-$$L_G = -\mathbb{E}[\log D(G(z))]$$
+\\[L_D = -\mathbb{E}[\log D(x)] - \mathbb{E}[\log(1 - D(G(z)))]\\]
+\\[L_G = -\mathbb{E}[\log D(G(z))]\\]
 
 **Problem**: When the discriminator is strong, $\log(1 - D(G(z)))$ saturates and gradients vanish.
 
 ### Non-Saturating Loss
 
-$$L_G = -\mathbb{E}[\log D(G(z))]$$
+\\[L_G = -\mathbb{E}[\log D(G(z))]\\]
 
 Instead of minimizing $\log(1 - D(G(z)))$, maximize $\log D(G(z))$. This provides stronger gradients early in training.
 
 ### Wasserstein Loss (WGAN)
 
-$$L_D = -\mathbb{E}[D(x)] + \mathbb{E}[D(G(z))]$$
-$$L_G = -\mathbb{E}[D(G(z))]$$
+\\[L_D = -\mathbb{E}[D(x)] + \mathbb{E}[D(G(z))]\\]
+\\[L_G = -\mathbb{E}[D(G(z))]\\]
 
 The discriminator (called "critic") outputs unbounded scores instead of probabilities.
 
 ### Hinge Loss
 
-$$L_D = -\mathbb{E}[\min(0, -1 + D(x))] - \mathbb{E}[\min(0, -1 - D(G(z)))]$$
-$$L_G = -\mathbb{E}[D(G(z))]$$
+\\[L_D = -\mathbb{E}[\min(0, -1 + D(x))] - \mathbb{E}[\min(0, -1 - D(G(z)))]\\]
+\\[L_G = -\mathbb{E}[D(G(z))]\\]
 
 Used in SAGAN and BigGAN; empirically more stable.
 
@@ -102,7 +102,7 @@ graph LR
 
 Instead of weight clipping, enforce the Lipschitz constraint via a gradient penalty:
 
-$$L_{GP} = \lambda \mathbb{E}_{\hat{x}}[(\|\nabla_{\hat{x}} D(\hat{x})\|_2 - 1)^2]$$
+\\[L_{GP} = \lambda \mathbb{E}_{\hat{x}}[(\|\nabla_{\hat{x}} D(\hat{x})\|_2 - 1)^2]\\]
 
 where $\hat{x}$ is a random interpolation between real and fake samples.
 
@@ -128,7 +128,7 @@ def gradient_penalty(discriminator, real, fake, device):
 
 Normalizes the weight matrices by their spectral norm (largest singular value), enforcing Lipschitz constraint directly on the discriminator:
 
-$$\bar{W} = \frac{W}{\sigma(W)}$$
+\\[\bar{W} = \frac{W}{\sigma(W)}\\]
 
 ```python
 # PyTorch built-in

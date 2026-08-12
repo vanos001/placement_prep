@@ -31,7 +31,7 @@ graph TD
 
 An image $\mathbf{x} \in \mathbb{R}^{H \times W \times C}$ is split into $N = \frac{H \times W}{P^2}$ patches of size $P \times P$:
 
-$$\mathbf{z}_0 = [\mathbf{x}_{\text{cls}}; \; \mathbf{x}_p^1 \mathbf{E}; \; \mathbf{x}_p^2 \mathbf{E}; \; \dots; \; \mathbf{x}_p^N \mathbf{E}] + \mathbf{E}_{\text{pos}}$$
+\\[\mathbf{z}_0 = [\mathbf{x}_{\text{cls}}; \; \mathbf{x}_p^1 \mathbf{E}; \; \mathbf{x}_p^2 \mathbf{E}; \; \dots; \; \mathbf{x}_p^N \mathbf{E}] + \mathbf{E}_{\text{pos}}\\]
 
 Where:
 - $\mathbf{E} \in \mathbb{R}^{P^2 \cdot C \times D}$: patch embedding projection

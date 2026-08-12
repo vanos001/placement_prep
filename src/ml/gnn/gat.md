@@ -19,7 +19,7 @@ graph LR
 
 For each edge $(i, j)$, compute:
 
-$$e_{ij} = \text{LeakyReLU}\left(\vec{a}^T [Wh_i \| Wh_j]\right)$$
+\\[e_{ij} = \text{LeakyReLU}\left(\vec{a}^T [Wh_i \| Wh_j]\right)\\]
 
 where:
 - $W$ is a shared linear transformation
@@ -28,11 +28,11 @@ where:
 
 Normalize with softmax over neighbors:
 
-$$\alpha_{ij} = \frac{\exp(e_{ij})}{\sum_{k \in \mathcal{N}(i)} \exp(e_{ik})}$$
+\\[\alpha_{ij} = \frac{\exp(e_{ij})}{\sum_{k \in \mathcal{N}(i)} \exp(e_{ik})}\\]
 
 Update rule:
 
-$$h_i' = \sigma\left(\sum_{j \in \mathcal{N}(i)} \alpha_{ij} Wh_j\right)$$
+\\[h_i' = \sigma\left(\sum_{j \in \mathcal{N}(i)} \alpha_{ij} Wh_j\right)\\]
 
 ## Implementation
 
@@ -179,7 +179,7 @@ def visualize_attention(model, graph):
 
 GATv2 (Brody et al., 2022) fixes a limitation where static attention ranks are fixed regardless of the query:
 
-$$e_{ij} = \vec{a}^T \text{LeakyReLU}(W [h_i \| h_j])$$
+\\[e_{ij} = \vec{a}^T \text{LeakyReLU}(W [h_i \| h_j])\\]
 
 In GATv2, the nonlinearity is applied **after** the linear transformation, making attention dynamic:
 

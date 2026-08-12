@@ -380,5 +380,5 @@ for _ in range(20):
 
 - [Design Patterns](./design-patterns.md) — Strategy, State patterns
 - [Concurrency Design](./concurrency-design.md) — Thread safety
-- [State Pattern](./design-patterns.md#10-state) — Elevator state management
+- [State Pattern](./design-patterns.md#11-state) — Elevator state management
 - [OOP Concepts](./oop-concepts.md)

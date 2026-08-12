@@ -31,7 +31,7 @@ graph TD
 
 Each token embedding is the sum of three embeddings:
 
-$$\text{Input} = \text{TokenEmb}(w_i) + \text{PositionEmb}(i) + \text{SegmentEmb}(s_i)$$
+\\[\text{Input} = \text{TokenEmb}(w_i) + \text{PositionEmb}(i) + \text{SegmentEmb}(s_i)\\]
 
 - **Token Embedding**: WordPiece tokenization (30,522 tokens)
 - **Position Embedding**: Learned absolute positions (max 512)
@@ -51,7 +51,7 @@ Randomly mask 15% of tokens and predict them:
 - 10% replaced with random token
 - 10% kept unchanged
 
-$$\mathcal{L}_{\text{MLM}} = -\sum_{i \in \mathcal{M}} \log P(x_i | x_{\backslash \mathcal{M}})$$
+\\[\mathcal{L}_{\text{MLM}} = -\sum_{i \in \mathcal{M}} \log P(x_i | x_{\backslash \mathcal{M}})\\]
 
 ```mermaid
 graph LR
@@ -65,7 +65,7 @@ Predict if sentence B follows sentence A:
 - 50% positive (B follows A)
 - 50% negative (B is random)
 
-$$\mathcal{L}_{\text{NSP}} = -\log P(y | [\text{CLS}])$$
+\\[\mathcal{L}_{\text{NSP}} = -\log P(y | [\text{CLS}])\\]
 
 > **Note**: Later research (RoBERTa, ALBERT) showed NSP may not be helpful. RoBERTa removed it entirely.
 

@@ -39,9 +39,9 @@ graph LR
 
 ### Distillation Loss
 
-$$
+\\[
 L = \alpha \cdot L_{CE}(y, \hat{y}_{student}) + (1-\alpha) \cdot T^2 \cdot KL(\hat{y}_{teacher}/T \| \hat{y}_{student}/T)
-$$
+\\]
 
 - **Temperature (T)**: Higher T → softer probability distributions (typically T=3-20)
 - **α**: Balance between hard label loss and distillation loss

@@ -40,7 +40,7 @@ graph TD
 
 **Loss Function (Bradley-Terry Model):**
 
-$$L_{RM} = -\mathbb{E}\left[\log \sigma(r_\phi(x, y_w) - r_\phi(x, y_l))\right]$$
+\\[L_{RM} = -\mathbb{E}\left[\log \sigma(r_\phi(x, y_w) - r_\phi(x, y_l))\right]\\]
 
 Where $y_w$ is the preferred (winning) response and $y_l$ is the rejected (losing) response.
 
@@ -58,7 +58,7 @@ graph TD
 
 **Objective:**
 
-$$\max_\theta \mathbb{E}_{x \sim D, y \sim \pi_\theta} \left[ r_\phi(x, y) - \beta D_{KL}(\pi_\theta(y|x) \| \pi_{ref}(y|x)) \right]$$
+\\[\max_\theta \mathbb{E}_{x \sim D, y \sim \pi_\theta} \left[ r_\phi(x, y) - \beta D_{KL}(\pi_\theta(y|x) \| \pi_{ref}(y|x)) \right]\\]
 
 - Maximize reward model score
 - Stay close to the SFT model (KL penalty)

@@ -27,7 +27,7 @@ At each node, the algorithm:
 
 Based on **entropy** — a measure of impurity:
 
-$$H(S) = -\sum_{k=1}^{K} p_k \log_2(p_k)$$
+\\[H(S) = -\sum_{k=1}^{K} p_k \log_2(p_k)\\]
 
 Where $p_k$ is the proportion of class $k$ in set $S$.
 
@@ -54,7 +54,7 @@ def information_gain(y, y_left, y_right):
 
 ### Gini Impurity (CART)
 
-$$Gini(S) = 1 - \sum_{k=1}^{K} p_k^2$$
+\\[Gini(S) = 1 - \sum_{k=1}^{K} p_k^2\\]
 
 ```python
 def gini(y):
@@ -70,7 +70,7 @@ def gini(y):
 
 Addresses Information Gain's bias toward features with many values:
 
-$$GainRatio = \frac{InformationGain}{SplitInfo}$$
+\\[GainRatio = \frac{InformationGain}{SplitInfo}\\]
 
 Where $SplitInfo = -\sum_{i=1}^{m} \frac{|S_i|}{|S|} \log_2\frac{|S_i|}{|S|}$
 

@@ -48,13 +48,13 @@ graph TD
 
 Score each response using a reward function (reward model or rule-based verifier):
 
-$$r_i = R(x, y_i) \quad \text{for } i = 1, ..., G$$
+\\[r_i = R(x, y_i) \quad \text{for } i = 1, ..., G\\]
 
 ### Step 3: Compute Group-Relative Advantages
 
 Normalize rewards **within the group**:
 
-$$\hat{A}_i = \frac{r_i - \text{mean}(r_1, ..., r_G)}{\text{std}(r_1, ..., r_G)}$$
+\\[\hat{A}_i = \frac{r_i - \text{mean}(r_1, ..., r_G)}{\text{std}(r_1, ..., r_G)}\\]
 
 This is the key innovation — advantages are relative to the group, not estimated by a critic.
 
@@ -62,7 +62,7 @@ This is the key innovation — advantages are relative to the group, not estimat
 
 Use a PPO-style clipped objective with the group-relative advantages:
 
-$$L_{GRPO}(\theta) = \mathbb{E}\left[ \min\left( \frac{\pi_\theta(y_i|x)}{\pi_{\theta_{old}}(y_i|x)} \hat{A}_i, \text{clip}(\cdot, 1-\epsilon, 1+\epsilon) \hat{A}_i \right) - \beta D_{KL}[\pi_\theta \| \pi_{ref}] \right]$$
+\\[L_{GRPO}(\theta) = \mathbb{E}\left[ \min\left( \frac{\pi_\theta(y_i|x)}{\pi_{\theta_{old}}(y_i|x)} \hat{A}_i, \text{clip}(\cdot, 1-\epsilon, 1+\epsilon) \hat{A}_i \right) - \beta D_{KL}[\pi_\theta \| \pi_{ref}] \right]\\]
 
 ## GRPO vs PPO
 

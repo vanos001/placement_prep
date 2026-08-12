@@ -17,7 +17,7 @@ Activation functions introduce **non-linearity** into neural networks, enabling 
 
 ### Sigmoid
 
-$$\sigma(z) = \frac{1}{1 + e^{-z}}$$
+\\[\sigma(z) = \frac{1}{1 + e^{-z}}\\]
 
 ```python
 def sigmoid(z):
@@ -37,7 +37,7 @@ def sigmoid_derivative(z):
 
 ### Tanh
 
-$$\tanh(z) = \frac{e^z - e^{-z}}{e^z + e^{-z}}$$
+\\[\tanh(z) = \frac{e^z - e^{-z}}{e^z + e^{-z}}\\]
 
 ```python
 def tanh(z):
@@ -56,7 +56,7 @@ def tanh_derivative(z):
 
 ### ReLU (Rectified Linear Unit)
 
-$$\text{ReLU}(z) = \max(0, z)$$
+\\[\text{ReLU}(z) = \max(0, z)\\]
 
 ```python
 def relu(z):
@@ -76,7 +76,7 @@ def relu_derivative(z):
 
 ### Leaky ReLU
 
-$$\text{LeakyReLU}(z) = \begin{cases} z & \text{if } z > 0 \\ \alpha z & \text{if } z \leq 0 \end{cases}$$
+\\[\text{LeakyReLU}(z) = \begin{cases} z & \text{if } z > 0 \\ \alpha z & \text{if } z \leq 0 \end{cases}\\]
 
 ```python
 def leaky_relu(z, alpha=0.01):
@@ -87,13 +87,13 @@ def leaky_relu(z, alpha=0.01):
 
 ### Parametric ReLU (PReLU)
 
-$$\text{PReLU}(z) = \begin{cases} z & \text{if } z > 0 \\ a z & \text{if } z \leq 0 \end{cases}$$
+\\[\text{PReLU}(z) = \begin{cases} z & \text{if } z > 0 \\ a z & \text{if } z \leq 0 \end{cases}\\]
 
 Where `a` is a learnable parameter.
 
 ### ELU (Exponential Linear Unit)
 
-$$\text{ELU}(z) = \begin{cases} z & \text{if } z > 0 \\ \alpha(e^z - 1) & \text{if } z \leq 0 \end{cases}$$
+\\[\text{ELU}(z) = \begin{cases} z & \text{if } z > 0 \\ \alpha(e^z - 1) & \text{if } z \leq 0 \end{cases}\\]
 
 ```python
 def elu(z, alpha=1.0):
@@ -106,7 +106,7 @@ def elu(z, alpha=1.0):
 
 Used in **Transformers** (BERT, GPT):
 
-$$\text{GELU}(z) = z \cdot \Phi(z) \approx 0.5z\left(1 + \tanh\left[\sqrt{2/\pi}(z + 0.044715z^3)\right]\right)$$
+\\[\text{GELU}(z) = z \cdot \Phi(z) \approx 0.5z\left(1 + \tanh\left[\sqrt{2/\pi}(z + 0.044715z^3)\right]\right)\\]
 
 Where Φ is the CDF of standard normal.
 
@@ -123,7 +123,7 @@ activation = nn.GELU()
 
 ### Swish / SiLU
 
-$$\text{Swish}(z) = z \cdot \sigma(z) = \frac{z}{1 + e^{-z}}$$
+\\[\text{Swish}(z) = z \cdot \sigma(z) = \frac{z}{1 + e^{-z}}\\]
 
 ```python
 def swish(z):
@@ -137,7 +137,7 @@ def swish(z):
 
 ### Mish
 
-$$\text{Mish}(z) = z \cdot \tanh(\text{softplus}(z)) = z \cdot \tanh(\ln(1 + e^z))$$
+\\[\text{Mish}(z) = z \cdot \tanh(\text{softplus}(z)) = z \cdot \tanh(\ln(1 + e^z))\\]
 
 ```python
 def mish(z):

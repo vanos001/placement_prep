@@ -8,7 +8,7 @@ Policy Gradient methods directly optimize the **policy** π(a|s) by computing gr
 
 Instead of learning Q-values and deriving a policy, **directly parameterize the policy** and optimize it via gradient ascent:
 
-$$\nabla_\theta J(\theta) = \mathbb{E}_{\pi_\theta} \left[ \nabla_\theta \log \pi_\theta(a|s) \cdot G_t \right]$$
+\\[\nabla_\theta J(\theta) = \mathbb{E}_{\pi_\theta} \left[ \nabla_\theta \log \pi_\theta(a|s) \cdot G_t \right]\\]
 
 Where:
 - **J(θ)**: Expected return under policy π_θ
@@ -19,7 +19,7 @@ This is the **REINFORCE** algorithm (Williams, 1992).
 
 ## The Policy Gradient Theorem
 
-$$\nabla_\theta J(\theta) = \mathbb{E}_{\pi_\theta} \left[ \sum_t \nabla_\theta \log \pi_\theta(a_t|s_t) \cdot G_t \right]$$
+\\[\nabla_\theta J(\theta) = \mathbb{E}_{\pi_\theta} \left[ \sum_t \nabla_\theta \log \pi_\theta(a_t|s_t) \cdot G_t \right]\\]
 
 **Intuition**: 
 - If action a led to high reward → increase its probability (∇log π positive)
@@ -82,11 +82,11 @@ Solutions:
 ### 1. Baseline Subtraction
 Subtract a baseline b(s) from the return to reduce variance without introducing bias:
 
-$$\nabla_\theta J(\theta) = \mathbb{E} \left[ \nabla_\theta \log \pi_\theta(a|s) \cdot (G_t - b(s)) \right]$$
+\\[\nabla_\theta J(\theta) = \mathbb{E} \left[ \nabla_\theta \log \pi_\theta(a|s) \cdot (G_t - b(s)) \right]\\]
 
 Common baseline: **state value function V(s)**
 
-$$G_t - V(s_t) = \text{Advantage } A(s_t, a_t)$$
+\\[G_t - V(s_t) = \text{Advantage } A(s_t, a_t)\\]
 
 The advantage tells us how much better action a was compared to the average action in state s.
 
@@ -110,13 +110,13 @@ graph TD
 
 ### 3. Advantage Function
 
-$$A(s, a) = Q(s, a) - V(s)$$
+\\[A(s, a) = Q(s, a) - V(s)\\]
 
 - A > 0: Action is better than average → increase probability
 - A < 0: Action is worse than average → decrease probability
 
 **Generalized Advantage Estimation (GAE)**:
-$$A_t^{GAE} = \sum_{l=0}^{\infty} (\gamma \lambda)^l \delta_{t+l}$$
+\\[A_t^{GAE} = \sum_{l=0}^{\infty} (\gamma \lambda)^l \delta_{t+l}\\]
 Where $\delta_t = r_t + \gamma V(s_{t+1}) - V(s_t)$
 
 - **λ = 0**: Only TD error (low variance, high bias)
@@ -141,7 +141,7 @@ Large policy updates can cause catastrophic performance drops. Trust region meth
 ### TRPO (Trust Region Policy Optimization)
 Maximize expected advantage subject to KL divergence constraint:
 
-$$\max_\theta \mathbb{E}\left[\frac{\pi_\theta(a|s)}{\pi_{\theta_{old}}(a|s)} A(s,a)\right] \quad \text{s.t.} \quad \mathbb{E}[D_{KL}(\pi_{\theta_{old}} \| \pi_\theta)] \leq \delta$$
+\\[\max_\theta \mathbb{E}\left[\frac{\pi_\theta(a|s)}{\pi_{\theta_{old}}(a|s)} A(s,a)\right] \quad \text{s.t.} \quad \mathbb{E}[D_{KL}(\pi_{\theta_{old}} \| \pi_\theta)] \leq \delta\\]
 
 - Guarantees monotonic improvement (theoretically)
 - Expensive (requires computing Fisher information matrix inverse)

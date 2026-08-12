@@ -51,9 +51,9 @@ An MDP is the formal framework for RL, defined by the tuple (S, A, P, R, γ):
 
 The future depends only on the current state, not on the history:
 
-$$
+\\[
 P(s_{t+1} | s_t, a_t, s_{t-1}, a_{t-1}, ...) = P(s_{t+1} | s_t, a_t)
-$$
+\\]
 
 **Interview tip:** Real-world problems are often POMDP (Partially Observable MDPs) where the agent doesn't have full state information. Solutions include RNNs, belief states, or attention mechanisms.
 
@@ -69,9 +69,9 @@ $$
 
 **Bellman Equation (core of value-based RL):**
 
-$$
+\\[
 V(s) = \max_a \left[ R(s,a) + \gamma \sum_{s'} P(s'|s,a) V(s') \right]
-$$
+\\]
 
 ### Policy Types
 
@@ -161,9 +161,9 @@ graph LR
 
 DPO eliminates the reward model entirely by directly optimizing the policy on preference data:
 
-$$
+\\[
 L_{DPO} = -\log \sigma \left( \beta \log \frac{\pi_\theta(y_w|x)}{\pi_{ref}(y_w|x)} - \beta \log \frac{\pi_\theta(y_l|x)}{\pi_{ref}(y_l|x)} \right)
-$$
+\\]
 
 Where y_w is the preferred response and y_l is the rejected response.
 

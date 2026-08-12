@@ -8,11 +8,11 @@ Backpropagation is the **algorithm that makes deep learning possible**. It effic
 
 For composite functions: if y = f(g(x)), then:
 
-$$\frac{dy}{dx} = \frac{dy}{dg} \cdot \frac{dg}{dx}$$
+\\[\frac{dy}{dx} = \frac{dy}{dg} \cdot \frac{dg}{dx}\\]
 
 For a neural network with layers: L = loss(f₃(f₂(f₁(x)))):
 
-$$\frac{\partial L}{\partial w_1} = \frac{\partial L}{\partial f_3} \cdot \frac{\partial f_3}{\partial f_2} \cdot \frac{\partial f_2}{\partial f_1} \cdot \frac{\partial f_1}{\partial w_1}$$
+\\[\frac{\partial L}{\partial w_1} = \frac{\partial L}{\partial f_3} \cdot \frac{\partial f_3}{\partial f_2} \cdot \frac{\partial f_2}{\partial f_1} \cdot \frac{\partial f_1}{\partial w_1}\\]
 
 ## Forward Pass
 
@@ -196,7 +196,7 @@ graph TD
 
 With sigmoid/tanh: derivatives are < 1 → product of many small numbers → gradients vanish in early layers.
 
-$$\frac{\partial L}{\partial W_1} = \prod_{i=2}^{L} \sigma'(z_i) \cdot W_i \cdot \frac{\partial z_1}{\partial W_1}$$
+\\[\frac{\partial L}{\partial W_1} = \prod_{i=2}^{L} \sigma'(z_i) \cdot W_i \cdot \frac{\partial z_1}{\partial W_1}\\]
 
 If σ'(z) ≤ 0.25 (sigmoid), the product shrinks exponentially.
 

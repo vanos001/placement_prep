@@ -43,7 +43,7 @@ graph TD
 
 Transformers use a **warmup + cosine decay** schedule:
 
-$$\text{lr}(t) = \begin{cases} \text{lr}_{\max} \cdot \frac{t}{T_{\text{warmup}}} & \text{if } t < T_{\text{warmup}} \\ \text{lr}_{\min} + \frac{1}{2}(\text{lr}_{\max} - \text{lr}_{\min})(1 + \cos(\frac{t - T_{\text{warmup}}}{T - T_{\text{warmup}}} \pi)) & \text{otherwise} \end{cases}$$
+\\[\text{lr}(t) = \begin{cases} \text{lr}_{\max} \cdot \frac{t}{T_{\text{warmup}}} & \text{if } t < T_{\text{warmup}} \\ \text{lr}_{\min} + \frac{1}{2}(\text{lr}_{\max} - \text{lr}_{\min})(1 + \cos(\frac{t - T_{\text{warmup}}}{T - T_{\text{warmup}}} \pi)) & \text{otherwise} \end{cases}\\]
 
 ```python
 import math
@@ -59,10 +59,10 @@ def cosine_schedule_with_warmup(step, warmup_steps, total_steps, max_lr, min_lr=
 
 The standard optimizer for Transformers:
 
-$$m_t = \beta_1 m_{t-1} + (1 - \beta_1) g_t$$
-$$v_t = \beta_2 v_{t-1} + (1 - \beta_2) g_t^2$$
-$$\hat{m}_t = \frac{m_t}{1 - \beta_1^t}, \quad \hat{v}_t = \frac{v_t}{1 - \beta_2^t}$$
-$$\theta_t = \theta_{t-1} - \text{lr} \cdot \left(\frac{\hat{m}_t}{\sqrt{\hat{v}_t} + \epsilon} + \lambda \theta_{t-1}\right)$$
+\\[m_t = \beta_1 m_{t-1} + (1 - \beta_1) g_t\\]
+\\[v_t = \beta_2 v_{t-1} + (1 - \beta_2) g_t^2\\]
+\\[\hat{m}_t = \frac{m_t}{1 - \beta_1^t}, \quad \hat{v}_t = \frac{v_t}{1 - \beta_2^t}\\]
+\\[\theta_t = \theta_{t-1} - \text{lr} \cdot \left(\frac{\hat{m}_t}{\sqrt{\hat{v}_t} + \epsilon} + \lambda \theta_{t-1}\right)\\]
 
 Typical hyperparameters:
 - $\beta_1 = 0.9$, $\beta_2 = 0.95$ (or 0.999)
@@ -104,7 +104,7 @@ for batch in dataloader:
 
 For effective batch sizes larger than GPU memory allows:
 
-$$\text{Effective batch size} = \text{micro\_batch} \times \text{accumulation\_steps} \times \text{num\_GPUs}$$
+\\[\text{Effective batch size} = \text{micro\_batch} \times \text{accumulation\_steps} \times \text{num\_GPUs}\\]
 
 ```python
 accumulation_steps = 8
@@ -156,7 +156,7 @@ graph TD
 
 Instead of updating full weight matrices, LoRA adds low-rank updates:
 
-$$W' = W + \Delta W = W + BA$$
+\\[W' = W + \Delta W = W + BA\\]
 
 Where $B \in \mathbb{R}^{d \times r}$, $A \in \mathbb{R}^{r \times d}$, and $r \ll d$.
 

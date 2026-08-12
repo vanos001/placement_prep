@@ -18,15 +18,15 @@ graph TD
 
 ### Step 1: Center the Data
 
-$$X_{centered} = X - \bar{X}$$
+\\[X_{centered} = X - \bar{X}\\]
 
 ### Step 2: Compute Covariance Matrix
 
-$$C = \frac{1}{n-1} X_{centered}^T X_{centered}$$
+\\[C = \frac{1}{n-1} X_{centered}^T X_{centered}\\]
 
 ### Step 3: Eigendecomposition
 
-$$C = V \Lambda V^T$$
+\\[C = V \Lambda V^T\\]
 
 Where:
 - V: Matrix of eigenvectors (principal components)
@@ -38,7 +38,7 @@ Sort eigenvalues in descending order, keep top K eigenvectors.
 
 ### Step 5: Project
 
-$$X_{reduced} = X_{centered} \cdot V_k$$
+\\[X_{reduced} = X_{centered} \cdot V_k\\]
 
 ```python
 import numpy as np
@@ -86,7 +86,7 @@ class PCA:
 
 More numerically stable than eigendecomposition:
 
-$$X_{centered} = U \Sigma V^T$$
+\\[X_{centered} = U \Sigma V^T\\]
 
 The principal components are the columns of V (right singular vectors).
 
@@ -144,7 +144,7 @@ graph TD
 
 For **non-linear** dimensionality reduction:
 
-$$K_{centered} = K - 1_n K - K 1_n + 1_n K 1_n$$
+\\[K_{centered} = K - 1_n K - K 1_n + 1_n K 1_n\\]
 
 Where K is the kernel matrix (e.g., RBF).
 

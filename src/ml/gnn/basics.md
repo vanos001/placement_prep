@@ -58,7 +58,7 @@ A = np.array([
 
 For GNN propagation, we use the **symmetric normalized Laplacian**:
 
-$$\hat{A} = D^{-1/2} A D^{-1/2}$$
+\\[\hat{A} = D^{-1/2} A D^{-1/2}\\]
 
 where $D$ is the diagonal degree matrix $D_{ii} = \sum_j A_{ij}$.
 

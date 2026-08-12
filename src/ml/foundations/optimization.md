@@ -6,7 +6,7 @@ Optimization is **how models learn**. Training a model means finding parameters 
 
 ## The Optimization Problem
 
-$$\theta^* = \arg\min_\theta \mathcal{L}(\theta; D)$$
+\\[\theta^* = \arg\min_\theta \mathcal{L}(\theta; D)\\]
 
 Where:
 - θ: Model parameters (weights, biases)
@@ -95,8 +95,8 @@ graph LR
 
 Accelerates convergence by accumulating a **velocity vector**.
 
-$$v_t = \beta v_{t-1} + \nabla L(\theta_t)$$
-$$\theta_{t+1} = \theta_t - \eta v_t$$
+\\[v_t = \beta v_{t-1} + \nabla L(\theta_t)\\]
+\\[\theta_{t+1} = \theta_t - \eta v_t\\]
 
 ```python
 def sgd_momentum(X, y, theta, lr=0.01, beta=0.9, epochs=100, batch_size=32):
@@ -120,8 +120,8 @@ def sgd_momentum(X, y, theta, lr=0.01, beta=0.9, epochs=100, batch_size=32):
 
 "Look ahead" before computing gradient:
 
-$$v_t = \beta v_{t-1} + \nabla L(\theta_t - \eta \beta v_{t-1})$$
-$$\theta_{t+1} = \theta_t - \eta v_t$$
+\\[v_t = \beta v_{t-1} + \nabla L(\theta_t - \eta \beta v_{t-1})\\]
+\\[\theta_{t+1} = \theta_t - \eta v_t\\]
 
 ```python
 def nesterov_sgd(X, y, theta, lr=0.01, beta=0.9, epochs=100, batch_size=32):
@@ -147,9 +147,9 @@ def nesterov_sgd(X, y, theta, lr=0.01, beta=0.9, epochs=100, batch_size=32):
 
 Adapts learning rate per parameter based on historical gradient magnitudes.
 
-$$g_t = \nabla L(\theta_t)$$
-$$G_t = G_{t-1} + g_t^2$$
-$$\theta_{t+1} = \theta_t - \frac{\eta}{\sqrt{G_t + \epsilon}} g_t$$
+\\[g_t = \nabla L(\theta_t)\\]
+\\[G_t = G_{t-1} + g_t^2\\]
+\\[\theta_{t+1} = \theta_t - \frac{\eta}{\sqrt{G_t + \epsilon}} g_t\\]
 
 ```python
 def adagrad(X, y, theta, lr=0.01, eps=1e-8, epochs=100, batch_size=32):
@@ -173,8 +173,8 @@ def adagrad(X, y, theta, lr=0.01, eps=1e-8, epochs=100, batch_size=32):
 
 Fixes AdaGrad's decaying learning rate by using an **exponential moving average**.
 
-$$G_t = \rho G_{t-1} + (1-\rho) g_t^2$$
-$$\theta_{t+1} = \theta_t - \frac{\eta}{\sqrt{G_t + \epsilon}} g_t$$
+\\[G_t = \rho G_{t-1} + (1-\rho) g_t^2\\]
+\\[\theta_{t+1} = \theta_t - \frac{\eta}{\sqrt{G_t + \epsilon}} g_t\\]
 
 ```python
 def rmsprop(X, y, theta, lr=0.001, rho=0.9, eps=1e-8, epochs=100, batch_size=32):
@@ -190,21 +190,21 @@ def rmsprop(X, y, theta, lr=0.001, rho=0.9, eps=1e-8, epochs=100, batch_size=32)
             G = rho * G + (1 - rho) * gradient ** 2
             theta -= (lr / (np.sqrt(G) + eps)) * gradient
     return theta
-$$
+```
 
 ### Adam (Adaptive Moment Estimation)
 
 **The default optimizer for most deep learning tasks.** Combines momentum (1st moment) and RMSProp (2nd moment).
 
-$$m_t = \beta_1 m_{t-1} + (1-\beta_1) g_t$$  (1st moment - mean)
-$$v_t = \beta_2 v_{t-1} + (1-\beta_2) g_t^2$$  (2nd moment - variance)
+\\[m_t = \beta_1 m_{t-1} + (1-\beta_1) g_t\\]  (1st moment - mean)
+\\[v_t = \beta_2 v_{t-1} + (1-\beta_2) g_t^2\\]  (2nd moment - variance)
 
 Bias correction (since m₀=v₀=0):
-$$\hat{m}_t = m_t / (1-\beta_1^t)$$
-$$\hat{v}_t = v_t / (1-\beta_2^t)$$
+\\[\hat{m}_t = m_t / (1-\beta_1^t)\\]
+\\[\hat{v}_t = v_t / (1-\beta_2^t)\\]
 
 Update:
-$$\theta_{t+1} = \theta_t - \frac{\eta}{\sqrt{\hat{v}_t} + \epsilon} \hat{m}_t$$
+\\[\theta_{t+1} = \theta_t - \frac{\eta}{\sqrt{\hat{v}_t} + \epsilon} \hat{m}_t\\]
 
 ```python
 class Adam:

@@ -610,6 +610,8 @@ nft add rule inet filter input ip saddr @allowed_ips accept
 ### Maps
 
 Maps associate keys with values, enabling dynamic lookups:
+
+```bash
 nft add map inet filter port_to_action { type inet_service : verdict \; }
 nft add element inet filter port_to_action { 22 : accept, 80 : accept, 443 : accept, 8080 : drop }
 nft add rule inet filter input tcp dport vmap @port_to_action

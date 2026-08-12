@@ -48,9 +48,9 @@ graph TD
 
 The original Transformer uses sine and cosine functions of different frequencies:
 
-$$PE_{(pos, 2i)} = \sin\left(\frac{pos}{10000^{2i/d_{\text{model}}}}\right)$$
+\\[PE_{(pos, 2i)} = \sin\left(\frac{pos}{10000^{2i/d_{\text{model}}}}\right)\\]
 
-$$PE_{(pos, 2i+1)} = \cos\left(\frac{pos}{10000^{2i/d_{\text{model}}}}\right)$$
+\\[PE_{(pos, 2i+1)} = \cos\left(\frac{pos}{10000^{2i/d_{\text{model}}}}\right)\\]
 
 Where:
 - $pos$: position in the sequence
@@ -82,7 +82,7 @@ def sinusoidal_encoding(max_len, d_model):
 
 Each position gets a learnable embedding vector:
 
-$$PE = \text{Embedding}(\text{position\_ids}) \in \mathbb{R}^{L \times d_{\text{model}}}$$
+\\[PE = \text{Embedding}(\text{position\_ids}) \in \mathbb{R}^{L \times d_{\text{model}}}\\]
 
 - Used in BERT (max 512), GPT-2 (max 1024)
 - More expressive than sinusoidal but **cannot extrapolate** beyond training length
@@ -107,7 +107,7 @@ class LearnedPositionalEncoding(nn.Module):
 
 For position $m$, rotate the embedding by angle $m\theta$:
 
-$$f(x, m) = \begin{pmatrix} x_0 \\ x_1 \\ x_2 \\ x_3 \\ \vdots \end{pmatrix} \otimes \begin{pmatrix} \cos m\theta_0 \\ \cos m\theta_0 \\ \cos m\theta_1 \\ \cos m\theta_1 \\ \vdots \end{pmatrix} + \begin{pmatrix} -x_1 \\ x_0 \\ -x_3 \\ x_2 \\ \vdots \end{pmatrix} \otimes \begin{pmatrix} \sin m\theta_0 \\ \sin m\theta_0 \\ \sin m\theta_1 \\ \sin m\theta_1 \\ \vdots \end{pmatrix}$$
+\\[f(x, m) = \begin{pmatrix} x_0 \\ x_1 \\ x_2 \\ x_3 \\ \vdots \end{pmatrix} \otimes \begin{pmatrix} \cos m\theta_0 \\ \cos m\theta_0 \\ \cos m\theta_1 \\ \cos m\theta_1 \\ \vdots \end{pmatrix} + \begin{pmatrix} -x_1 \\ x_0 \\ -x_3 \\ x_2 \\ \vdots \end{pmatrix} \otimes \begin{pmatrix} \sin m\theta_0 \\ \sin m\theta_0 \\ \sin m\theta_1 \\ \sin m\theta_1 \\ \vdots \end{pmatrix}\\]
 
 Where $\theta_i = 10000^{-2i/d}$.
 
@@ -115,7 +115,7 @@ Where $\theta_i = 10000^{-2i/d}$.
 
 The inner product $\langle f(q, m), f(k, n) \rangle$ depends only on $q$, $k$, and the **relative distance** $m - n$:
 
-$$\langle f(q, m), f(k, n) \rangle = \text{Re}\left[\sum_i (q_{2i} + iq_{2i+1})(k_{2i} - ik_{2i+1})e^{i(m-n)\theta_i}\right]$$
+\\[\langle f(q, m), f(k, n) \rangle = \text{Re}\left[\sum_i (q_{2i} + iq_{2i+1})(k_{2i} - ik_{2i+1})e^{i(m-n)\theta_i}\right]\\]
 
 This means RoPE naturally captures relative positions through the attention mechanism.
 
@@ -143,7 +143,7 @@ def precompute_freqs_cis(dim, max_len, theta=10000.0):
 
 For extending RoPE beyond training length, **NTK-aware interpolation** modifies the base frequency:
 
-$$\theta' = \theta \cdot \alpha^{d/(d-2)}$$
+\\[\theta' = \theta \cdot \alpha^{d/(d-2)}\\]
 
 Where $\alpha$ is the extension ratio. This preserves high-frequency components while interpolating low-frequency ones.
 
@@ -151,7 +151,7 @@ Where $\alpha$ is the extension ratio. This preserves high-frequency components 
 
 ALiBi doesn't add positional embeddings at all. Instead, it adds a **linear bias** to attention scores:
 
-$$\text{softmax}\left(\frac{QK^T}{\sqrt{d_k}} + m \cdot \text{bias}\right)$$
+\\[\text{softmax}\left(\frac{QK^T}{\sqrt{d_k}} + m \cdot \text{bias}\right)\\]
 
 Where $\text{bias}_{ij} = -|i - j|$ and $m$ is a head-specific slope.
 
@@ -175,7 +175,7 @@ graph LR
 
 T5 uses **learned relative position biases** added to attention logits:
 
-$$\text{Attention} = \text{softmax}\left(\frac{QK^T}{\sqrt{d_k}} + B_{ij}\right)V$$
+\\[\text{Attention} = \text{softmax}\left(\frac{QK^T}{\sqrt{d_k}} + B_{ij}\right)V\\]
 
 Where $B_{ij}$ is a learned scalar for relative distance $|i-j|$, with logarithmic bucketing for efficiency.
 

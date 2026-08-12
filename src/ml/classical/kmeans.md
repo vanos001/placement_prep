@@ -121,7 +121,7 @@ plt.title('Elbow Method')
 
 Measures how similar a point is to its own cluster vs other clusters:
 
-$$s(i) = \frac{b(i) - a(i)}{\max(a(i), b(i))}$$
+\\[s(i) = \frac{b(i) - a(i)}{\max(a(i), b(i))}\\]
 
 Where:
 - a(i): Average distance to other points in same cluster
@@ -258,7 +258,7 @@ labels = bkm.fit_predict(X)
 
 A: K-Means minimizes the **within-cluster sum of squares** (WCSS), also called inertia:
 
-$$\min \sum_{k=1}^K \sum_{x \in C_k} ||x - \mu_k||^2$$
+\\[\min \sum_{k=1}^K \sum_{x \in C_k} ||x - \mu_k||^2\\]
 
 Where μ_k is the centroid of cluster C_k. This is equivalent to minimizing the total squared distance from each point to its cluster center.
 

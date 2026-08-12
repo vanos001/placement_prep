@@ -279,7 +279,7 @@ A: PostgreSQL uses **MVCC** — readers access a snapshot of the data (older ver
 - [Concurrency Control](concurrency-control.md) — Overview of all approaches
 - [Isolation Levels](isolation-levels.md) — Locking behavior per level
 - [MVCC](mvcc.md) — Lock-free reads
-- [Deadlocks](concurrency-control.md#deadlocks) — Detection and prevention
+- [Deadlocks](../../os/synchronization/deadlocks/README.md) — Detection and prevention
 - [Serializability](serializability.md) — What 2PL guarantees
 
 

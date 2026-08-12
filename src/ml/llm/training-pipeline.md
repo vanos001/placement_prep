@@ -45,7 +45,7 @@ flowchart TD
 
 The standard pre-training objective is **causal language modeling** (next-token prediction):
 
-$$\mathcal{L}_{\text{pretrain}} = -\sum_{t=1}^{T} \log P_\theta(x_t \mid x_1, \ldots, x_{t-1})$$
+\\[\mathcal{L}_{\text{pretrain}} = -\sum_{t=1}^{T} \log P_\theta(x_t \mid x_1, \ldots, x_{t-1})\\]
 
 Some models use **masked language modeling** (BERT-style) or **span corruption** (T5-style), but decoder-only autoregressive models dominate for generative LLMs.
 
@@ -277,11 +277,11 @@ For each prompt $x$, the SFT model generates $K$ responses $\{y_1, \ldots, y_K\}
 
 The reward model $r_\phi(x, y)$ is trained using the **Bradley-Terry model** of pairwise preferences:
 
-$$P(y_w \succ y_l \mid x) = \sigma(r_\phi(x, y_w) - r_\phi(x, y_l))$$
+\\[P(y_w \succ y_l \mid x) = \sigma(r_\phi(x, y_w) - r_\phi(x, y_l))\\]
 
 The loss is:
 
-$$\mathcal{L}_{\text{RM}} = -\mathbb{E}_{(x, y_w, y_l)} \left[\log \sigma(r_\phi(x, y_w) - r_\phi(x, y_l))\right]$$
+\\[\mathcal{L}_{\text{RM}} = -\mathbb{E}_{(x, y_w, y_l)} \left[\log \sigma(r_\phi(x, y_w) - r_\phi(x, y_l))\right]\\]
 
 ```python
 class RewardModel(nn.Module):
@@ -321,7 +321,7 @@ def reward_model_loss(reward_model, chosen_ids, chosen_mask,
 
 PPO optimizes the policy (LLM) to maximize reward while staying close to the SFT model:
 
-$$\mathcal{L}_{\text{PPO}} = \mathbb{E}_{t} \left[\min\left(r_t(\theta) \hat{A}_t, \text{clip}(r_t(\theta), 1-\epsilon, 1+\epsilon) \hat{A}_t\right)\right]$$
+\\[\mathcal{L}_{\text{PPO}} = \mathbb{E}_{t} \left[\min\left(r_t(\theta) \hat{A}_t, \text{clip}(r_t(\theta), 1-\epsilon, 1+\epsilon) \hat{A}_t\right)\right]\\]
 
 where:
 - $r_t(\theta) = \frac{\pi_\theta(a_t|s_t)}{\pi_{\theta_{\text{old}}}(a_t|s_t)}$ is the probability ratio
@@ -330,7 +330,7 @@ where:
 
 The full RLHF objective includes a **KL penalty** to prevent the policy from drifting too far from the SFT model:
 
-$$\max_{\pi_\theta} \mathbb{E}_{x \sim D, y \sim \pi_\theta} \left[r_\phi(x, y) - \beta \cdot D_{\text{KL}}[\pi_\theta(y|x) \| \pi_{\text{SFT}}(y|x)]\right]$$
+\\[\max_{\pi_\theta} \mathbb{E}_{x \sim D, y \sim \pi_\theta} \left[r_\phi(x, y) - \beta \cdot D_{\text{KL}}[\pi_\theta(y|x) \| \pi_{\text{SFT}}(y|x)]\right]\\]
 
 ```python
 def compute_ppo_loss(
@@ -368,19 +368,19 @@ DPO (Rafailov et al., 2023) eliminates the need for a separate reward model and 
 
 The optimal RLHF policy can be expressed analytically:
 
-$$\pi^*(y|x) = \frac{1}{Z(x)} \pi_{\text{ref}}(y|x) \exp\left(\frac{1}{\beta} r(x, y)\right)$$
+\\[\pi^*(y|x) = \frac{1}{Z(x)} \pi_{\text{ref}}(y|x) \exp\left(\frac{1}{\beta} r(x, y)\right)\\]
 
 Rearranging to express the reward in terms of the policy:
 
-$$r(x, y) = \beta \log \frac{\pi_\theta(y|x)}{\pi_{\text{ref}}(y|x)} + \beta \log Z(x)$$
+\\[r(x, y) = \beta \log \frac{\pi_\theta(y|x)}{\pi_{\text{ref}}(y|x)} + \beta \log Z(x)\\]
 
 Substituting into the Bradley-Terry preference model, the partition function $Z(x)$ cancels:
 
-$$P(y_w \succ y_l | x) = \sigma\left(\beta \log \frac{\pi_\theta(y_w|x)}{\pi_{\text{ref}}(y_w|x)} - \beta \log \frac{\pi_\theta(y_l|x)}{\pi_{\text{ref}}(y_l|x)}\right)$$
+\\[P(y_w \succ y_l | x) = \sigma\left(\beta \log \frac{\pi_\theta(y_w|x)}{\pi_{\text{ref}}(y_w|x)} - \beta \log \frac{\pi_\theta(y_l|x)}{\pi_{\text{ref}}(y_l|x)}\right)\\]
 
 ### DPO Loss
 
-$$\mathcal{L}_{\text{DPO}} = -\mathbb{E}_{(x, y_w, y_l)} \left[\log \sigma\left(\beta \left(\log \frac{\pi_\theta(y_w|x)}{\pi_{\text{ref}}(y_w|x)} - \log \frac{\pi_\theta(y_l|x)}{\pi_{\text{ref}}(y_l|x)}\right)\right)\right]$$
+\\[\mathcal{L}_{\text{DPO}} = -\mathbb{E}_{(x, y_w, y_l)} \left[\log \sigma\left(\beta \left(\log \frac{\pi_\theta(y_w|x)}{\pi_{\text{ref}}(y_w|x)} - \log \frac{\pi_\theta(y_l|x)}{\pi_{\text{ref}}(y_l|x)}\right)\right)\right]\\]
 
 ```python
 def dpo_loss(

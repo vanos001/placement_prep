@@ -14,7 +14,7 @@ Linux defines 64 signals on most architectures (31 standard + 33 real-time):
 |--------|--------|---------|-------------|
 | `SIGHUP` | 1 | Terminate | Terminal hangup / reload config |
 | `SIGINT` | 2 | Terminate | Interrupt (Ctrl+C) |
-| `SIGQUIT` | 3 | Core dump | Quit (Ctrl+\\) |
+| `SIGQUIT` | 3 | Core dump | Quit (Ctrl+backslash) |
 | `SIGILL` | 4 | Core dump | Illegal instruction |
 | `SIGTRAP` | 5 | Core dump | Breakpoint / trace |
 | `SIGABRT` | 6 | Core dump | Abort (from `abort()`) |

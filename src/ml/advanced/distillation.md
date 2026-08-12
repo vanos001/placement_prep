@@ -30,7 +30,7 @@ graph TD
 
 The student's loss combines two objectives:
 
-$$L = \alpha \cdot L_{hard} + (1 - \alpha) \cdot T^2 \cdot L_{soft}$$
+\\[L = \alpha \cdot L_{hard} + (1 - \alpha) \cdot T^2 \cdot L_{soft}\\]
 
 where:
 - $L_{hard}$: Cross-entropy with true labels
@@ -70,7 +70,7 @@ class DistillationLoss(nn.Module):
 
 Temperature $T$ controls how "soft" the probability distribution becomes:
 
-$$p_i = \frac{\exp(z_i / T)}{\sum_j \exp(z_j / T)}$$
+\\[p_i = \frac{\exp(z_i / T)}{\sum_j \exp(z_j / T)}\\]
 
 - $T = 1$: Standard softmax
 - $T > 1$: Softer distribution (more uniform, reveals class relationships)

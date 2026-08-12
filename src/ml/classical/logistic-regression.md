@@ -8,7 +8,7 @@ Despite its name, logistic regression is a **classification algorithm**. It mode
 
 ### Binary Logistic Regression
 
-$$P(y=1|x) = \sigma(w^Tx + b) = \frac{1}{1 + e^{-(w^Tx + b)}}$$
+\\[P(y=1|x) = \sigma(w^Tx + b) = \frac{1}{1 + e^{-(w^Tx + b)}}\\]
 
 Where σ is the sigmoid function:
 
@@ -50,13 +50,13 @@ The decision boundary is where P(y=1|x) = 0.5, i.e., where wᵀx + b = 0. This i
 
 The loss function is **binary cross-entropy** (negative log-likelihood):
 
-$$L(w) = -\frac{1}{n}\sum_{i=1}^n [y_i \log(\hat{y}_i) + (1-y_i)\log(1-\hat{y}_i)]$$
+\\[L(w) = -\frac{1}{n}\sum_{i=1}^n [y_i \log(\hat{y}_i) + (1-y_i)\log(1-\hat{y}_i)]\\]
 
 ### Gradient Derivation
 
 For a single sample with sigmoid output ŷ = σ(z):
 
-$$\frac{\partial L}{\partial z} = \hat{y} - y$$
+\\[\frac{\partial L}{\partial z} = \hat{y} - y\\]
 
 This elegant result comes from the derivative of log(sigmoid):
 
@@ -134,7 +134,7 @@ graph TD
 
 Generalizes logistic regression to K classes:
 
-$$P(y=k|x) = \frac{e^{w_k^Tx + b_k}}{\sum_{j=1}^K e^{w_j^Tx + b_j}}$$
+\\[P(y=k|x) = \frac{e^{w_k^Tx + b_k}}{\sum_{j=1}^K e^{w_j^Tx + b_j}}\\]
 
 ```python
 def softmax(z):

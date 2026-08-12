@@ -24,7 +24,7 @@ graph LR
 
 ### Objective
 
-$$\min_G \max_D V(D, G) = \mathbb{E}_{x \sim p_{data}}[\log D(x|y)] + \mathbb{E}_{z \sim p_z}[\log(1 - D(G(z|y)|y))]$$
+\\[\min_G \max_D V(D, G) = \mathbb{E}_{x \sim p_{data}}[\log D(x|y)] + \mathbb{E}_{z \sim p_z}[\log(1 - D(G(z|y)|y))]\\]
 
 The condition $y$ is provided to both networks, so the discriminator checks both realism and condition adherence.
 
@@ -61,7 +61,7 @@ class ConditionalGenerator(nn.Module):
 
 Scale and shift feature maps based on the condition:
 
-$$\text{FiLM}(F) = \gamma(y) \cdot F + \beta(y)$$
+\\[\text{FiLM}(F) = \gamma(y) \cdot F + \beta(y)\\]
 
 ```python
 class FiLMLayer(nn.Module):
@@ -141,7 +141,7 @@ Generates images from text descriptions in two stages:
 
 Uses segmentation maps as conditioning, modulating feature maps spatially:
 
-$$\text{SPADE}(x, s) = \gamma(s) \cdot \text{BN}(x) + \beta(s)$$
+\\[\text{SPADE}(x, s) = \gamma(s) \cdot \text{BN}(x) + \beta(s)\\]
 
 where $\gamma(s)$ and $\beta(s)$ are spatially-varying, derived from the segmentation map.
 
@@ -178,7 +178,7 @@ class SRResNet(nn.Module):
 
 **Perceptual Loss**: Instead of pixel-wise MSE, uses feature distances from a pretrained VGG network:
 
-$$L_{perceptual} = \|\phi(x_{HR}) - \phi(G(x_{LR}))\|_2^2$$
+\\[L_{perceptual} = \|\phi(x_{HR}) - \phi(G(x_{LR}))\|_2^2\\]
 
 ## Comparison of cGAN Variants
 

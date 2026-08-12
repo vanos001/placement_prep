@@ -91,7 +91,7 @@ graph TD
 
 The core idea is **self-attention** — every token attends to every other token in the sequence, enabling direct modeling of long-range dependencies.
 
-$$\text{Attention}(Q, K, V) = \text{softmax}\left(\frac{QK^T}{\sqrt{d_k}}\right)V$$
+\\[\text{Attention}(Q, K, V) = \text{softmax}\left(\frac{QK^T}{\sqrt{d_k}}\right)V\\]
 
 Where:
 - $Q$ (Query): "What am I looking for?"

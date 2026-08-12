@@ -21,7 +21,7 @@ graph TD
 
 For an ensemble of N independent models each with error ε:
 
-$$P(\text{ensemble wrong}) = \sum_{k=\lceil N/2 \rceil}^{N} \binom{N}{k} \epsilon^k (1-\epsilon)^{N-k}$$
+\\[P(\text{ensemble wrong}) = \sum_{k=\lceil N/2 \rceil}^{N} \binom{N}{k} \epsilon^k (1-\epsilon)^{N-k}\\]
 
 If ε < 0.5 and models are independent, the ensemble error → 0 as N → ∞.
 

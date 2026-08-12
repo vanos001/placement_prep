@@ -15,7 +15,7 @@ The Transformer (Vaswani et al., 2017) replaced recurrent architectures with **p
 
 ### 2. Explain the scaled dot-product attention mechanism.
 
-$$\text{Attention}(Q, K, V) = \text{softmax}\left(\frac{QK^T}{\sqrt{d_k}}\right)V$$
+\\[\text{Attention}(Q, K, V) = \text{softmax}\left(\frac{QK^T}{\sqrt{d_k}}\right)V\\]
 
 - $Q$ (query), $K$ (key), $V$ (value) are linear projections of the input
 - $d_k$ is the key dimension — scaling prevents softmax saturation for large $d_k$
@@ -29,8 +29,8 @@ Without scaling, when $d_k$ is large, the dot products $QK^T$ grow in magnitude,
 
 Multi-head attention runs $h$ parallel attention operations with different learned projections:
 
-$$\text{MultiHead}(Q, K, V) = \text{Concat}(\text{head}_1, \dots, \text{head}_h)W^O$$
-$$\text{head}_i = \text{Attention}(QW_i^Q, KW_i^K, VW_i^V)$$
+\\[\text{MultiHead}(Q, K, V) = \text{Concat}(\text{head}_1, \dots, \text{head}_h)W^O\\]
+\\[\text{head}_i = \text{Attention}(QW_i^Q, KW_i^K, VW_i^V)\\]
 
 Benefits:
 - Different heads can attend to different types of relationships (syntactic, semantic, positional)
@@ -70,7 +70,7 @@ x = self.ln2(x + self.feedforward(x))
 
 Each layer has a position-wise FFN applied independently to each token:
 
-$$\text{FFN}(x) = \text{ReLU}(xW_1 + b_1)W_2 + b_2$$
+\\[\text{FFN}(x) = \text{ReLU}(xW_1 + b_1)W_2 + b_2\\]
 
 - Typically $d_{ff} = 4 \times d_{\text{model}}$ (e.g., 3072 for $d=768$)
 - Acts as a key-value memory (Geva et al., 2021)
@@ -117,7 +117,7 @@ FlashAttention is an IO-aware exact attention algorithm that:
 
 RoPE encodes position by rotating query and key vectors:
 
-$$f(q, m) = q e^{im\theta}$$
+\\[f(q, m) = q e^{im\theta}\\]
 
 where $m$ is position and $\theta$ is a frequency. The dot product $f(q,m)^T f(k,n)$ naturally depends on relative position $(m-n)$, providing:
 - Relative position awareness without explicit relative embeddings
@@ -128,7 +128,7 @@ where $m$ is position and $\theta$ is a frequency. The dot product $f(q,m)^T f(k
 
 ALiBi adds a linear bias to attention scores based on distance:
 
-$$\text{score}_{ij} = q_i^T k_j - m \cdot |i - j|$$
+\\[\text{score}_{ij} = q_i^T k_j - m \cdot |i - j|\\]
 
 where $m$ is a head-specific slope. Benefits:
 - No positional embeddings needed
@@ -156,7 +156,7 @@ Swin Transformer uses **shifted window attention**:
 
 MoE replaces the FFN with multiple "expert" FFNs and a gating network:
 
-$$y = \sum_{i=1}^{E} g_i(x) \cdot \text{Expert}_i(x)$$
+\\[y = \sum_{i=1}^{E} g_i(x) \cdot \text{Expert}_i(x)\\]
 
 where $g(x) = \text{TopK}(\text{softmax}(W_g x))$ activates only the top-$k$ experts.
 

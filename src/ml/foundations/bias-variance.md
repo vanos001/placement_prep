@@ -8,7 +8,7 @@ The bias-variance tradeoff is the **central tension in machine learning**. It ex
 
 For a model $\hat{f}$ trained on dataset $D$, predicting at point $x$ with true function $f^*(x)$ and noise $\epsilon \sim N(0, \sigma^2)$:
 
-$$E_D[(y - \hat{f}(x))^2] = \underbrace{(E_D[\hat{f}(x)] - f^*(x))^2}_{\text{Bias}^2} + \underbrace{E_D[(\hat{f}(x) - E_D[\hat{f}(x)])^2]}_{\text{Variance}} + \underbrace{\sigma^2}_{\text{Irreducible Noise}}$$
+\\[E_D[(y - \hat{f}(x))^2] = \underbrace{(E_D[\hat{f}(x)] - f^*(x))^2}_{\text{Bias}^2} + \underbrace{E_D[(\hat{f}(x) - E_D[\hat{f}(x)])^2]}_{\text{Variance}} + \underbrace{\sigma^2}_{\text{Irreducible Noise}}\\]
 
 ### What Each Term Means
 
@@ -215,7 +215,7 @@ graph TD
 
 **Reduces variance** by averaging multiple high-variance models:
 
-$$\text{Var}(\bar{X}) = \frac{\rho \sigma^2}{n} + \frac{(1-\rho)\sigma^2}{n}$$
+\\[\text{Var}(\bar{X}) = \frac{\rho \sigma^2}{n} + \frac{(1-\rho)\sigma^2}{n}\\]
 
 Where ρ is correlation between models. Random Forest reduces ρ via feature randomness.
 

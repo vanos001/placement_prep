@@ -28,7 +28,7 @@ GPT-2 (2019) was a scaled-up decoder-only Transformer that demonstrated zero-sho
 ### Key Design Choices
 
 1. **Pre-normalization (LayerNorm before attention):** Unlike the original Transformer which applies LayerNorm after the sublayer, GPT-2 applies it **before**:
-   $$\text{output} = x + \text{Sublayer}(\text{LayerNorm}(x))$$
+   \\[\text{output} = x + \text{Sublayer}(\text{LayerNorm}(x))\\]
    This "Pre-LN" formulation stabilizes training for deep models.
 
 2. **Learned positional embeddings:** GPT-2 uses learned absolute position embeddings instead of sinusoidal encodings.
@@ -133,7 +133,7 @@ flowchart TD
 
 Modern LLMs use **Rotary Position Embeddings (RoPE)**:
 
-$$\text{RoPE}(x, m) = x \cdot e^{im\theta}$$
+\\[\text{RoPE}(x, m) = x \cdot e^{im\theta}\\]
 
 where $m$ is the position and $\theta$ is a frequency parameter. RoPE naturally extends to longer sequences with techniques like:
 
@@ -174,7 +174,7 @@ flowchart TD
 
 For a model with $L$ layers, hidden dim $d$, $H$ heads, context length $n$, and precision $b$ bytes:
 
-$$\text{KV Cache Size} = 2 \times L \times n \times H \times d_H \times b$$
+\\[\text{KV Cache Size} = 2 \times L \times n \times H \times d_H \times b\\]
 
 where $d_H = d/H$ is the head dimension.
 
@@ -220,16 +220,16 @@ flowchart TD
 
 The router computes a sparse distribution over experts:
 
-$$G(x) = \text{TopK}(\text{softmax}(W_g \cdot x))$$
+\\[G(x) = \text{TopK}(\text{softmax}(W_g \cdot x))\\]
 
-$$y = \sum_{i \in \text{TopK}} G(x)_i \cdot E_i(x)$$
+\\[y = \sum_{i \in \text{TopK}} G(x)_i \cdot E_i(x)\\]
 
 ### Load Balancing
 
 A critical challenge is **expert collapse** — where the router sends all tokens to a few experts. Solutions:
 
 - **Auxiliary loss:** Add a load-balancing term to the training loss:
-  $$\mathcal{L}_{\text{aux}} = \alpha \cdot N \sum_{i=1}^{N} f_i \cdot P_i$$
+  \\[\mathcal{L}_{\text{aux}} = \alpha \cdot N \sum_{i=1}^{N} f_i \cdot P_i\\]
   where $f_i$ is the fraction of tokens assigned to expert $i$ and $P_i$ is the mean routing probability for expert $i$.
 
 ### Notable MoE Models

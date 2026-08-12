@@ -19,7 +19,8 @@ learning tracks, and wired into the parent `SUMMARY.md`.
 | Mermaid heuristic | ✅ Passing | 4,387 of 4,387 diagrams pass |
 | Mermaid v11 parser | ✅ Passing | 4,387 of 4,387 diagrams pass with `mermaid@11` + `jsdom` |
 | MathJax | ✅ Enabled | mdBook `mathjax-support = true`; DSA block and inline delimiters are preserved |
-| Cross-reference graph | ✅ Automatic | Generated from 1,533 pages and 7,122 internal links during Pages deployment |
+| Cross-reference graph | ✅ Automatic | Generated from 1,533 pages and 7,123 internal links during Pages deployment |
+| Research/validation audit | ✅ Complete | 0 broken links, 0 broken fragments, 0 unclosed fences, 0 duplicate bodies |
 | mdBook build | ✅ Constrained build passed | mdBook 0.4.52 built 1,575 output files with search indexing disabled; the normal search-enabled build was OOM-killed in this sandbox (exit 137) |
 
 ## Repository provenance
@@ -35,9 +36,9 @@ rewritten or converted to nearby text when their old source path did not exist.
 
 ## Safety constraints
 
-- All work is performed on `dev`.
-- Pushes for this task go to `origin/dev` only.
-- `main` is not a destination for this work.
+- Development work is performed on `dev`.
+- Release promotion from `dev` to `main` occurs only after validation.
+- The current released tree is synchronized on `origin/dev` and `origin/main`.
 - Credentials are read only at command time and are not stored in repository
   files, commits, or documentation.
 

@@ -44,11 +44,11 @@ class SGDMomentum:
 
 The default optimizer for most deep learning tasks:
 
-$$m_t = \beta_1 m_{t-1} + (1-\beta_1) g_t \quad \text{(1st moment: mean)}$$
-$$v_t = \beta_2 v_{t-1} + (1-\beta_2) g_t^2 \quad \text{(2nd moment: uncentered variance)}$$
-$$\hat{m}_t = m_t / (1-\beta_1^t) \quad \text{(bias correction)}$$
-$$\hat{v}_t = v_t / (1-\beta_2^t) \quad \text{(bias correction)}$$
-$$\theta_t = \theta_{t-1} - \eta \frac{\hat{m}_t}{\sqrt{\hat{v}_t} + \epsilon}$$
+\\[m_t = \beta_1 m_{t-1} + (1-\beta_1) g_t \quad \text{(1st moment: mean)}\\]
+\\[v_t = \beta_2 v_{t-1} + (1-\beta_2) g_t^2 \quad \text{(2nd moment: uncentered variance)}\\]
+\\[\hat{m}_t = m_t / (1-\beta_1^t) \quad \text{(bias correction)}\\]
+\\[\hat{v}_t = v_t / (1-\beta_2^t) \quad \text{(bias correction)}\\]
+\\[\theta_t = \theta_{t-1} - \eta \frac{\hat{m}_t}{\sqrt{\hat{v}_t} + \epsilon}\\]
 
 ```python
 class Adam:

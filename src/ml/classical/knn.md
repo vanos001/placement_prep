@@ -51,7 +51,7 @@ class KNN:
 
 ### Euclidean Distance (L2)
 
-$$d(x, y) = \sqrt{\sum_{i=1}^n (x_i - y_i)^2}$$
+\\[d(x, y) = \sqrt{\sum_{i=1}^n (x_i - y_i)^2}\\]
 
 ```python
 def euclidean(x, y):
@@ -60,7 +60,7 @@ def euclidean(x, y):
 
 ### Manhattan Distance (L1)
 
-$$d(x, y) = \sum_{i=1}^n |x_i - y_i|$$
+\\[d(x, y) = \sum_{i=1}^n |x_i - y_i|\\]
 
 ```python
 def manhattan(x, y):
@@ -69,7 +69,7 @@ def manhattan(x, y):
 
 ### Minkowski Distance
 
-$$d(x, y) = \left(\sum_{i=1}^n |x_i - y_i|^p\right)^{1/p}$$
+\\[d(x, y) = \left(\sum_{i=1}^n |x_i - y_i|^p\right)^{1/p}\\]
 
 - p=1: Manhattan
 - p=2: Euclidean
@@ -77,7 +77,7 @@ $$d(x, y) = \left(\sum_{i=1}^n |x_i - y_i|^p\right)^{1/p}$$
 
 ### Cosine Distance
 
-$$d(x, y) = 1 - \frac{x \cdot y}{||x|| \cdot ||y||}$$
+\\[d(x, y) = 1 - \frac{x \cdot y}{||x|| \cdot ||y||}\\]
 
 Best for text/high-dimensional sparse data.
 

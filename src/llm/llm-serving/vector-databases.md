@@ -93,7 +93,7 @@ with `α` tuned per domain, plus optional **RRF (Reciprocal Rank Fusion)** to me
 
 ## Practical Considerations
 
-- **Chunking quality beats index choice** — retrieval quality is dominated by how documents are chunked (see [RAG](./rag.md#chunking)).
+- **Chunking quality beats index choice** — retrieval quality is dominated by how documents are chunked (see [RAG](./rag.md#document-chunking)).
 - **Filtered search** changes the index math — pushing a metadata filter inside HNSW (filtered graphs) behaves differently from post-filtering.
 - **Quantization** (PQ/SQ8) trades memory for recall; test at your recall target (e.g., recall@10 ≥ 0.95).
 - **Staleness**: embedding models change; re-embedding and re-indexing is an operational chore (version your embedding space).

@@ -35,7 +35,7 @@ graph TD
 
 All GNNs follow a common **message passing** paradigm:
 
-$$h_v^{(l+1)} = \text{UPDATE}^{(l)}\left(h_v^{(l)}, \text{AGGREGATE}^{(l)}\left(\{h_u^{(l)} : u \in \mathcal{N}(v)\}\right)\right)$$
+\\[h_v^{(l+1)} = \text{UPDATE}^{(l)}\left(h_v^{(l)}, \text{AGGREGATE}^{(l)}\left(\{h_u^{(l)} : u \in \mathcal{N}(v)\}\right)\right)\\]
 
 1. **Message**: Each neighbor $u$ computes a message $m_u = \text{MSG}(h_u)$
 2. **Aggregate**: Combine messages from all neighbors $\bar{m}_v = \text{AGG}(\{m_u\})$

@@ -38,13 +38,13 @@ RL problems are formalized as MDPs, defined by the tuple (S, A, P, R, γ):
 
 **Markov Property**: The future depends only on the current state, not the history.
 
-$$P(s_{t+1} | s_t, a_t, s_{t-1}, a_{t-1}, ...) = P(s_{t+1} | s_t, a_t)$$
+\\[P(s_{t+1} | s_t, a_t, s_{t-1}, a_{t-1}, ...) = P(s_{t+1} | s_t, a_t)\\]
 
 ## Return and Discounting
 
 The **discounted return** from time t:
 
-$$G_t = r_t + \gamma r_{t+1} + \gamma^2 r_{t+2} + ... = \sum_{k=0}^{\infty} \gamma^k r_{t+k}$$
+\\[G_t = r_t + \gamma r_{t+1} + \gamma^2 r_{t+2} + ... = \sum_{k=0}^{\infty} \gamma^k r_{t+k}\\]
 
 - **γ = 0**: Only care about immediate reward (myopic)
 - **γ = 1**: Care equally about all future rewards (far-sighted)
@@ -55,26 +55,26 @@ $$G_t = r_t + \gamma r_{t+1} + \gamma^2 r_{t+2} + ... = \sum_{k=0}^{\infty} \gam
 ### State Value V(s)
 Expected return starting from state s, following policy π:
 
-$$V^{\pi}(s) = \mathbb{E}_{\pi}[G_t | s_t = s]$$
+\\[V^{\pi}(s) = \mathbb{E}_{\pi}[G_t | s_t = s]\\]
 
 ### Action Value Q(s,a)
 Expected return starting from state s, taking action a, then following π:
 
-$$Q^{\pi}(s, a) = \mathbb{E}_{\pi}[G_t | s_t = s, a_t = a]$$
+\\[Q^{\pi}(s, a) = \mathbb{E}_{\pi}[G_t | s_t = s, a_t = a]\\]
 
 ### Bellman Equations
 
 The recursive relationship:
 
-$$V^{\pi}(s) = \sum_a \pi(a|s) \sum_{s'} P(s'|s,a) [R(s,a,s') + \gamma V^{\pi}(s')]$$
+\\[V^{\pi}(s) = \sum_a \pi(a|s) \sum_{s'} P(s'|s,a) [R(s,a,s') + \gamma V^{\pi}(s')]\\]
 
-$$Q^{\pi}(s,a) = \sum_{s'} P(s'|s,a) [R(s,a,s') + \gamma \sum_{a'} \pi(a'|s') Q^{\pi}(s',a')]$$
+\\[Q^{\pi}(s,a) = \sum_{s'} P(s'|s,a) [R(s,a,s') + \gamma \sum_{a'} \pi(a'|s') Q^{\pi}(s',a')]\\]
 
 ### Optimal Value Functions
 
-$$V^*(s) = \max_a Q^*(s, a)$$
+\\[V^*(s) = \max_a Q^*(s, a)\\]
 
-$$Q^*(s, a) = \sum_{s'} P(s'|s,a) [R(s,a,s') + \gamma \max_{a'} Q^*(s', a')]$$
+\\[Q^*(s, a) = \sum_{s'} P(s'|s,a) [R(s,a,s') + \gamma \max_{a'} Q^*(s', a')]\\]
 
 ## Exploration vs Exploitation
 

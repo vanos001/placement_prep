@@ -17,8 +17,8 @@ graph LR
 
 ### The Optimization Problem
 
-$$\min_{w,b} \frac{1}{2}||w||^2$$
-$$\text{subject to: } y_i(w^Tx_i + b) \geq 1, \forall i$$
+\\[\min_{w,b} \frac{1}{2}||w||^2\\]
+\\[\text{subject to: } y_i(w^Tx_i + b) \geq 1, \forall i\\]
 
 The margin is $\frac{2}{||w||}$ — maximizing the margin means minimizing $||w||^2$.
 
@@ -68,8 +68,8 @@ def linear_svm(X, y, C=1.0):
 
 Real-world data is rarely linearly separable. Soft margin allows some misclassifications:
 
-$$\min_{w,b,\xi} \frac{1}{2}||w||^2 + C\sum_{i=1}^n \xi_i$$
-$$\text{subject to: } y_i(w^Tx_i + b) \geq 1 - \xi_i, \xi_i \geq 0$$
+\\[\min_{w,b,\xi} \frac{1}{2}||w||^2 + C\sum_{i=1}^n \xi_i\\]
+\\[\text{subject to: } y_i(w^Tx_i + b) \geq 1 - \xi_i, \xi_i \geq 0\\]
 
 Where:
 - ξᵢ: Slack variables (how much each point violates the margin)
@@ -169,7 +169,7 @@ def compute_kernel_matrix(X, kernel_func, **kwargs):
 
 SVM can be viewed through the lens of loss functions:
 
-$$\min_w \lambda||w||^2 + \frac{1}{n}\sum_{i=1}^n \max(0, 1 - y_i(w^Tx_i + b))$$
+\\[\min_w \lambda||w||^2 + \frac{1}{n}\sum_{i=1}^n \max(0, 1 - y_i(w^Tx_i + b))\\]
 
 The second term is the **hinge loss**:
 
@@ -204,8 +204,8 @@ svm = SVC(decision_function_shape='ovr')
 
 SVM can also do regression — find a function that deviates from targets by at most ε:
 
-$$\min_{w,b} \frac{1}{2}||w||^2 + C\sum_{i=1}^n (\xi_i + \xi_i^*)$$
-$$\text{subject to: } y_i - w^Tx_i - b \leq \epsilon + \xi_i$$
+\\[\min_{w,b} \frac{1}{2}||w||^2 + C\sum_{i=1}^n (\xi_i + \xi_i^*)\\]
+\\[\text{subject to: } y_i - w^Tx_i - b \leq \epsilon + \xi_i\\]
 
 ```python
 from sklearn.svm import SVR

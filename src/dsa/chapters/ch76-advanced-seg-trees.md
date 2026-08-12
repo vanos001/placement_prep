@@ -384,6 +384,7 @@ public:
         return std::min(inMin, outMin);
     }
 };
+```
 
 ---
 

@@ -190,7 +190,7 @@ kill -l
 |--------|--------|---------------|-------------|
 | `SIGHUP` | 1 | Terminate | Hangup (reload config for daemons) |
 | `SIGINT` | 2 | Terminate | Interrupt (Ctrl+C) |
-| `SIGQUIT` | 3 | Core dump | Quit (Ctrl+\\) |
+| `SIGQUIT` | 3 | Core dump | Quit (Ctrl+backslash) |
 | `SIGKILL` | 9 | Terminate | Force kill (uncatchable) |
 | `SIGTERM` | 15 | Terminate | Graceful termination (default for `kill`) |
 | `SIGSTOP` | 19 | Stop | Pause process (uncatchable) |

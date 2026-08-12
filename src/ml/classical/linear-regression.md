@@ -6,7 +6,7 @@ Linear regression is the **foundation of statistical modeling**. It models the r
 
 ## The Model
 
-$$\hat{y} = Xw + b = \sum_{j=1}^{d} x_j w_j + b$$
+\\[\hat{y} = Xw + b = \sum_{j=1}^{d} x_j w_j + b\\]
 
 Where:
 - `X`: Input features (n × d matrix)
@@ -26,11 +26,11 @@ def predict(X, w, b):
 
 Minimize the sum of squared residuals:
 
-$$\min_w ||Xw - y||^2$$
+\\[\min_w ||Xw - y||^2\\]
 
 ### Closed-Form Solution (Normal Equation)
 
-$$w^* = (X^T X)^{-1} X^T y$$
+\\[w^* = (X^T X)^{-1} X^T y\\]
 
 ```python
 import numpy as np
@@ -76,7 +76,7 @@ graph TD
 
 Iteratively update weights to minimize MSE:
 
-$$w_{t+1} = w_t - \eta \nabla L(w_t)$$
+\\[w_{t+1} = w_t - \eta \nabla L(w_t)\\]
 
 Where $\nabla L = \frac{2}{n} X^T(Xw - y)$
 
@@ -131,7 +131,7 @@ graph TD
 
 ### Ridge Regression (L2)
 
-$$\min_w ||Xw - y||^2 + \lambda ||w||^2$$
+\\[\min_w ||Xw - y||^2 + \lambda ||w||^2\\]
 
 Closed-form: $w^* = (X^TX + \lambda I)^{-1}X^Ty$
 
@@ -146,7 +146,7 @@ ridge.fit(X, y)
 
 ### Lasso Regression (L1)
 
-$$\min_w ||Xw - y||^2 + \lambda ||w||_1$$
+\\[\min_w ||Xw - y||^2 + \lambda ||w||_1\\]
 
 ```python
 from sklearn.linear_model import Lasso
@@ -160,7 +160,7 @@ print(f"Non-zero coefficients: {np.sum(lasso.coef_ != 0)}")
 
 ### Elastic Net
 
-$$\min_w ||Xw - y||^2 + \lambda_1 ||w||_1 + \lambda_2 ||w||^2$$
+\\[\min_w ||Xw - y||^2 + \lambda_1 ||w||_1 + \lambda_2 ||w||^2\\]
 
 ```python
 from sklearn.linear_model import ElasticNet

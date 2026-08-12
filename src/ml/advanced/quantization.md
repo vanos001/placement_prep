@@ -20,7 +20,7 @@ graph TD
 
 ### Linear Quantization
 
-$$x_q = \text{round}\left(\frac{x}{s}\right) + z$$
+\\[x_q = \text{round}\left(\frac{x}{s}\right) + z\\]
 
 where $s$ is the scale factor and $z$ is the zero point.
 

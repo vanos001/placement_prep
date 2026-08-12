@@ -673,6 +673,6 @@ graph TB
 
 - [Sanitizers](./sanitizers.md) — compile-time alternative
 - [Debugging Overview](./overview.md) — tool selection guide
-- [GDB](./overview.md#gdb) — interactive debugging
-- [perf](./overview.md#perf) — performance profiling
+- [GDB](./overview.md#gdb-the-gnu-debugger) — interactive debugging
+- [perf](./overview.md#perf-performance-profiler) — performance profiling
 - [SystemTap](./systemtap.md) — dynamic kernel tracing

@@ -87,7 +87,7 @@ class RandomForest:
 
 Without random features, all trees trained on bootstrap samples would be **highly correlated** (especially at the top splits). Random feature selection **decorrelates** the trees, making the ensemble more effective.
 
-$$\text{Var}(\bar{X}) = \rho \sigma^2 + \frac{1-\rho}{B}\sigma^2$$
+\\[\text{Var}(\bar{X}) = \rho \sigma^2 + \frac{1-\rho}{B}\sigma^2\\]
 
 Where ρ is correlation between trees. Reducing ρ reduces ensemble variance.
 

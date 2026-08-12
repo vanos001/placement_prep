@@ -32,7 +32,7 @@ graph TD
 
 Each token can only attend to itself and previous tokens:
 
-$$\text{mask}_{ij} = \begin{cases} 0 & \text{if } j \leq i \text{ (can attend)} \\ -\infty & \text{if } j > i \text{ (cannot attend)} \end{cases}$$
+\\[\text{mask}_{ij} = \begin{cases} 0 & \text{if } j \leq i \text{ (can attend)} \\ -\infty & \text{if } j > i \text{ (cannot attend)} \end{cases}\\]
 
 ```python
 def causal_mask(seq_len):
@@ -45,11 +45,11 @@ def causal_mask(seq_len):
 
 The model maximizes the probability of each token given all previous tokens:
 
-$$\mathcal{L} = -\sum_{t=1}^{T} \log P(x_t | x_1, x_2, \dots, x_{t-1}; \theta)$$
+\\[\mathcal{L} = -\sum_{t=1}^{T} \log P(x_t | x_1, x_2, \dots, x_{t-1}; \theta)\\]
 
 This is equivalent to maximizing the likelihood of the entire sequence:
 
-$$P(x_1, x_2, \dots, x_T) = \prod_{t=1}^{T} P(x_t | x_{<t})$$
+\\[P(x_1, x_2, \dots, x_T) = \prod_{t=1}^{T} P(x_t | x_{<t})\\]
 
 ## GPT Evolution
 
@@ -74,7 +74,7 @@ graph TD
 
 GPT's success is driven by **scaling laws** — performance improves predictably with more compute, data, and parameters:
 
-$$L(N, D, C) \approx \left(\frac{N_c}{N}\right)^{\alpha_N} + \left(\frac{D_c}{D}\right)^{\alpha_D} + \left(\frac{C_c}{C}\right)^{\alpha_C}$$
+\\[L(N, D, C) \approx \left(\frac{N_c}{N}\right)^{\alpha_N} + \left(\frac{D_c}{D}\right)^{\alpha_D} + \left(\frac{C_c}{C}\right)^{\alpha_C}\\]
 
 Where:
 - $N$: number of parameters
@@ -141,7 +141,7 @@ print(tokenizer.decode(output[0], skip_special_tokens=True))
 | Top-k | Sample from top-$k$ tokens | Balanced quality/diversity |
 | Top-p (nucleus) | Sample from smallest set with cumulative prob ≥ $p$ | Dynamic filtering |
 
-$$P(x_t = w | x_{<t}) = \frac{\exp(z_w / T)}{\sum_{w'} \exp(z_{w'} / T)}$$
+\\[P(x_t = w | x_{<t}) = \frac{\exp(z_w / T)}{\sum_{w'} \exp(z_{w'} / T)}\\]
 
 ## GPT vs BERT
 

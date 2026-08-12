@@ -17,11 +17,11 @@ A **Large Language Model (LLM)** is a deep neural network — typically a Transf
 
 At its core, an LLM models the conditional probability of the next token given all previous tokens:
 
-$$P(x_t \mid x_1, x_2, \ldots, x_{t-1}; \theta)$$
+\\[P(x_t \mid x_1, x_2, \ldots, x_{t-1}; \theta)\\]
 
 where $\theta$ represents the model's learnable parameters. The training objective is to minimize the negative log-likelihood (cross-entropy loss):
 
-$$\mathcal{L} = -\frac{1}{T} \sum_{t=1}^{T} \log P(x_t \mid x_{<t}; \theta)$$
+\\[\mathcal{L} = -\frac{1}{T} \sum_{t=1}^{T} \log P(x_t \mid x_{<t}; \theta)\\]
 
 Modern LLMs are **autoregressive** — they generate tokens one at a time, feeding each generated token back as input for the next prediction.
 
@@ -31,7 +31,7 @@ Modern LLMs are **autoregressive** — they generate tokens one at a time, feedi
 
 The landmark paper by Hoffmann et al. (2022) established that for a **fixed compute budget** $C$, the optimal model size $N$ and training data size $D$ should scale roughly equally:
 
-$$N_{\text{opt}} \propto C^{0.5}, \quad D_{\text{opt}} \propto C^{0.5}$$
+\\[N_{\text{opt}} \propto C^{0.5}, \quad D_{\text{opt}} \propto C^{0.5}\\]
 
 This means if you double your compute budget, you should roughly double both model parameters **and** training tokens.
 
@@ -39,7 +39,7 @@ This means if you double your compute budget, you should roughly double both mod
 
 Earlier work by Kaplan et al. showed that model performance (loss) follows power laws:
 
-$$L(N) \approx \left(\frac{N_c}{N}\right)^{\alpha_N}, \quad L(D) \approx \left(\frac{D_c}{D}\right)^{\alpha_D}, \quad L(C) \approx \left(\frac{C_c}{C}\right)^{\alpha_C}$$
+\\[L(N) \approx \left(\frac{N_c}{N}\right)^{\alpha_N}, \quad L(D) \approx \left(\frac{D_c}{D}\right)^{\alpha_D}, \quad L(C) \approx \left(\frac{C_c}{C}\right)^{\alpha_C}\\]
 
 where $\alpha_N \approx 0.076$, $\alpha_D \approx 0.095$, and $\alpha_C \approx 0.050$.
 
@@ -138,7 +138,7 @@ flowchart TD
 
 The self-attention mechanism computes:
 
-$$\text{Attention}(Q, K, V) = \text{softmax}\left(\frac{QK^T}{\sqrt{d_k}} + M\right)V$$
+\\[\text{Attention}(Q, K, V) = \text{softmax}\left(\frac{QK^T}{\sqrt{d_k}} + M\right)V\\]
 
 where $M$ is a causal mask ensuring tokens only attend to previous positions (autoregressive property).
 

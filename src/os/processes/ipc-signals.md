@@ -12,7 +12,7 @@
 |--------|--------|---------------|-------------|
 | `SIGHUP` | 1 | Terminate | Terminal hangup; often used to reload config |
 | `SIGINT` | 2 | Terminate | Interrupt (Ctrl+C) |
-| `SIGQUIT` | 3 | Core dump | Quit (Ctrl+\) |
+| `SIGQUIT` | 3 | Core dump | Quit (Ctrl+backslash) |
 | `SIGKILL` | 9 | Terminate | **Cannot be caught or ignored** |
 | `SIGSEGV` | 11 | Core dump | Segmentation fault (invalid memory access) |
 | `SIGPIPE` | 13 | Terminate | Write to pipe with no readers |

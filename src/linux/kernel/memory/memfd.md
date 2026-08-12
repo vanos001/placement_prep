@@ -695,7 +695,7 @@ graph TD
 ## See Also
 
 - [Virtual Memory](./virtual-memory.md) — virtual address space management
-- [Shared Memory](./virtual-memory.md#shared-memory) — mmap and shared mappings
+- [Shared Memory](../core/ipc/shared-memory.md) — mmap and shared mappings
 - [Huge Pages](./huge-pages.md) — large page backing for memfd
 - [Namespaces](../networking/namespaces.md) — isolation context for IPC
 - [Pipe and Socket IPC](../sync/completions.md) — synchronization alternatives

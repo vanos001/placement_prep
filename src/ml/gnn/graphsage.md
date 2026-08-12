@@ -65,19 +65,19 @@ GraphSAGE proposes several aggregators:
 
 ### 1. Mean Aggregator
 
-$$h_v^{(l+1)} = \sigma\left(W \cdot \text{MEAN}\left(\{h_v^{(l)}\} \cup \{h_u^{(l)}, \forall u \in \mathcal{N}(v)\}\right)\right)$$
+\\[h_v^{(l+1)} = \sigma\left(W \cdot \text{MEAN}\left(\{h_v^{(l)}\} \cup \{h_u^{(l)}, \forall u \in \mathcal{N}(v)\}\right)\right)\\]
 
 Simplest, similar to GCN.
 
 ### 2. LSTM Aggregator
 
-$$h_v^{(l+1)} = \sigma\left(W \cdot \text{LSTM}\left(\{h_u^{(l)}, \forall u \in \pi(\mathcal{N}(v))\}\right)\right)$$
+\\[h_v^{(l+1)} = \sigma\left(W \cdot \text{LSTM}\left(\{h_u^{(l)}, \forall u \in \pi(\mathcal{N}(v))\}\right)\right)\\]
 
 LSTM over randomly permuted neighbors. More expressive but requires ordering.
 
 ### 3. Pooling Aggregator
 
-$$h_v^{(l+1)} = \sigma\left(W_1 h_v^{(l)} + W_2 \cdot \max\left(\{\sigma(W_3 h_u^{(l)}), \forall u \in \mathcal{N}(v)\}\right)\right)$$
+\\[h_v^{(l+1)} = \sigma\left(W_1 h_v^{(l)} + W_2 \cdot \max\left(\{\sigma(W_3 h_u^{(l)}), \forall u \in \mathcal{N}(v)\}\right)\right)\\]
 
 Element-wise max of transformed neighbor features.
 

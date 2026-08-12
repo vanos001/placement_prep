@@ -681,7 +681,7 @@ sudo bpftrace -e 'kprobe:__kmalloc { @bytes[comm] = sum(arg0); }'
 - [strace(1) man page](https://man7.org/linux/man-pages/man1/strace.1.html)
 - [perf Tutorial](https://perf.wiki.kernel.org/index.php/Tutorial) — kernel wiki
 - [ftrace Documentation](https://www.kernel.org/doc/html/latest/trace/ftrace.html) — kernel docs
-- [eBPF Documentation](https://ebpf.io/docs/) — ebpf.io
+- [eBPF Documentation](https://docs.ebpf.io/) — ebpf.io
 - [bpftrace Reference Guide](https://github.com/bpftrace/bpftrace/blob/master/docs/reference_guide.md)
 - [Brendan Gregg's Linux Performance](https://www.brendangregg.com/linuxperf.html) — comprehensive tools map
 - [LWN: Tracing the kernel](https://lwn.net/Articles/tracing/) — overview articles

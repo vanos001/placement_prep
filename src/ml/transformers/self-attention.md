@@ -8,7 +8,7 @@ Self-attention is the core mechanism of the Transformer. It allows each token in
 
 The fundamental attention operation:
 
-$$\text{Attention}(Q, K, V) = \text{softmax}\left(\frac{QK^T}{\sqrt{d_k}}\right)V$$
+\\[\text{Attention}(Q, K, V) = \text{softmax}\left(\frac{QK^T}{\sqrt{d_k}}\right)V\\]
 
 ```mermaid
 graph LR
@@ -45,7 +45,7 @@ graph LR
 
 Given input sequence $X \in \mathbb{R}^{n \times d_{\text{model}}}$ where $n$ is the sequence length:
 
-$$Q = XW^Q, \quad K = XW^K, \quad V = XW^V$$
+\\[Q = XW^Q, \quad K = XW^K, \quad V = XW^V\\]
 
 Where:
 - $W^Q \in \mathbb{R}^{d_{\text{model}} \times d_k}$ — projects input into **query** space
@@ -145,7 +145,7 @@ If we used the same projection for all three (i.e., $Q = K = V = XW$), the model
 
 **Softmax normalization**: Each row of the attention matrix sums to 1:
 
-$$\sum_{j=1}^{n} \alpha_{ij} = 1 \quad \forall i$$
+\\[\sum_{j=1}^{n} \alpha_{ij} = 1 \quad \forall i\\]
 
 This means the output is a **convex combination** of the value vectors — a weighted average where weights are non-negative and sum to 1.
 
@@ -181,9 +181,9 @@ for d_k in d_k_values:
 
 A single attention head can only focus on one type of relationship at a time. **Multi-head attention** runs $h$ attention operations in parallel, each learning different patterns:
 
-$$\text{MultiHead}(Q, K, V) = \text{Concat}(\text{head}_1, \dots, \text{head}_h)W^O$$
+\\[\text{MultiHead}(Q, K, V) = \text{Concat}(\text{head}_1, \dots, \text{head}_h)W^O\\]
 
-$$\text{head}_i = \text{Attention}(QW_i^Q, KW_i^K, VW_i^V)$$
+\\[\text{head}_i = \text{Attention}(QW_i^Q, KW_i^K, VW_i^V)\\]
 
 ```mermaid
 graph TD
@@ -266,7 +266,7 @@ graph TD
 
 For autoregressive models, token $i$ must not attend to tokens $j > i$:
 
-$$\text{mask}_{ij} = \begin{cases} 0 & \text{if } j \leq i \\ -\infty & \text{if } j > i \end{cases}$$
+\\[\text{mask}_{ij} = \begin{cases} 0 & \text{if } j \leq i \\ -\infty & \text{if } j > i \end{cases}\\]
 
 After softmax, the $-\infty$ positions become zero attention weight.
 

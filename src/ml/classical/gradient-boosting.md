@@ -68,17 +68,17 @@ Gradient boosting performs **gradient descent in function space**. Instead of op
 
 At iteration $m$, we have the current model $F_{m-1}$. We want to find the update $h_m$ that minimizes the loss:
 
-$$F_m = F_{m-1} + \eta \cdot h_m$$
+\\[F_m = F_{m-1} + \eta \cdot h_m\\]
 
 The optimal update direction is the **negative gradient** of the loss with respect to $F$:
 
-$$h_m(x) \approx -\frac{\partial L(y, F(x))}{\partial F(x)}\bigg|_{F=F_{m-1}}$$
+\\[h_m(x) \approx -\frac{\partial L(y, F(x))}{\partial F(x)}\bigg|_{F=F_{m-1}}\\]
 
 ### Gradient Computation for Different Losses
 
 For a general loss $L(y, F(x))$, the negative gradient (pseudo-residual) is:
 
-$$r_{im} = -\frac{\partial L(y_i, F(x_i))}{\partial F(x_i)}\bigg|_{F=F_{m-1}}$$
+\\[r_{im} = -\frac{\partial L(y_i, F(x_i))}{\partial F(x_i)}\bigg|_{F=F_{m-1}}\\]
 
 | Loss Function | $L(y, F)$ | Negative Gradient $r_{im}$ | Interpretation |
 |--------------|-----------|---------------------------|----------------|
@@ -92,9 +92,9 @@ $$r_{im} = -\frac{\partial L(y_i, F(x_i))}{\partial F(x_i)}\bigg|_{F=F_{m-1}}$$
 
 For $L = \frac{1}{2}(y - F)^2$:
 
-$$\frac{\partial L}{\partial F} = -(y - F) = F - y$$
+\\[\frac{\partial L}{\partial F} = -(y - F) = F - y\\]
 
-$$r_{im} = -\frac{\partial L}{\partial F}\bigg|_{F=F_{m-1}} = y_i - F_{m-1}(x_i)$$
+\\[r_{im} = -\frac{\partial L}{\partial F}\bigg|_{F=F_{m-1}} = y_i - F_{m-1}(x_i)\\]
 
 This is exactly the **residual** — the difference between the true value and the current prediction. So for MSE, "fitting the negative gradient" is the same as "fitting the residuals."
 
@@ -102,13 +102,13 @@ This is exactly the **residual** — the difference between the true value and t
 
 For binary classification with log loss:
 
-$$L = -y\log(\sigma(F)) - (1-y)\log(1-\sigma(F))$$
+\\[L = -y\log(\sigma(F)) - (1-y)\log(1-\sigma(F))\\]
 
 where $\sigma(F) = \frac{1}{1+e^{-F}}$ is the sigmoid function.
 
-$$\frac{\partial L}{\partial F} = -(y - \sigma(F))$$
+\\[\frac{\partial L}{\partial F} = -(y - \sigma(F))\\]
 
-$$r_{im} = y_i - \sigma(F_{m-1}(x_i))$$
+\\[r_{im} = y_i - \sigma(F_{m-1}(x_i))\\]
 
 This is the **probability residual** — the difference between the true label (0 or 1) and the current predicted probability.
 
@@ -116,7 +116,7 @@ This is the **probability residual** — the difference between the true label (
 
 XGBoost uses **second-order** Taylor expansion for better approximations:
 
-$$L(y, F + h) \approx L(y, F) + g \cdot h + \frac{1}{2}h \cdot H \cdot h$$
+\\[L(y, F + h) \approx L(y, F) + g \cdot h + \frac{1}{2}h \cdot H \cdot h\\]
 
 Where:
 - $g = \frac{\partial L}{\partial F}$ — first derivative (gradient)
@@ -124,13 +124,13 @@ Where:
 
 The optimal update is:
 
-$$h^* = -\frac{g}{H}$$
+\\[h^* = -\frac{g}{H}\\]
 
 For MSE: $g = F - y$, $H = 1$, so $h^* = y - F$ (same as first-order).
 
 For log loss: $g = \sigma(F) - y$, $H = \sigma(F)(1-\sigma(F))$, so:
 
-$$h^* = \frac{y - \sigma(F)}{\sigma(F)(1-\sigma(F))}$$
+\\[h^* = \frac{y - \sigma(F)}{\sigma(F)(1-\sigma(F))}\\]
 
 This Newton step converges faster than plain gradient descent.
 

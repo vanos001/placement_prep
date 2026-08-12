@@ -9,20 +9,20 @@ DPO (Rafailov et al., 2023) is a method for aligning language models with human 
 The RLHF objective (maximize reward + KL penalty) has a **closed-form optimal policy**. DPO reparameterizes the problem so we can optimize the policy directly on preference data, without ever training a reward model.
 
 **RLHF Objective:**
-$$\max_\pi \mathbb{E}_{x, y \sim \pi}[r(x,y)] - \beta D_{KL}[\pi \| \pi_{ref}]$$
+\\[\max_\pi \mathbb{E}_{x, y \sim \pi}[r(x,y)] - \beta D_{KL}[\pi \| \pi_{ref}]\\]
 
 **Optimal Solution:**
-$$\pi^*(y|x) = \frac{1}{Z(x)} \pi_{ref}(y|x) \exp\left(\frac{1}{\beta} r(x,y)\right)$$
+\\[\pi^*(y|x) = \frac{1}{Z(x)} \pi_{ref}(y|x) \exp\left(\frac{1}{\beta} r(x,y)\right)\\]
 
 Rearranging to express the reward in terms of the policy:
 
-$$r(x,y) = \beta \log \frac{\pi^*(y|x)}{\pi_{ref}(y|x)} + \beta \log Z(x)$$
+\\[r(x,y) = \beta \log \frac{\pi^*(y|x)}{\pi_{ref}(y|x)} + \beta \log Z(x)\\]
 
 Substituting into the Bradley-Terry preference model, the partition function Z(x) cancels out:
 
 ## DPO Loss Function
 
-$$L_{DPO}(\theta) = -\mathbb{E}_{(x, y_w, y_l)} \left[ \log \sigma\left( \beta \log \frac{\pi_\theta(y_w|x)}{\pi_{ref}(y_w|x)} - \beta \log \frac{\pi_\theta(y_l|x)}{\pi_{ref}(y_l|x)} \right) \right]$$
+\\[L_{DPO}(\theta) = -\mathbb{E}_{(x, y_w, y_l)} \left[ \log \sigma\left( \beta \log \frac{\pi_\theta(y_w|x)}{\pi_{ref}(y_w|x)} - \beta \log \frac{\pi_\theta(y_l|x)}{\pi_{ref}(y_l|x)} \right) \right]\\]
 
 Where:
 - **y_w**: Preferred (winning) response
@@ -99,12 +99,12 @@ No reward model. No PPO. Just a simple binary cross-entropy-style loss.
 ### IPO (Identity Preference Optimization)
 Addresses DPO's potential overfitting to preference data:
 
-$$L_{IPO} = \left(\log \frac{\pi_\theta(y_w|x)}{\pi_{ref}(y_w|x)} - \log \frac{\pi_\theta(y_l|x)}{\pi_{ref}(y_l|x)} - \frac{1}{2\beta}\right)^2$$
+\\[L_{IPO} = \left(\log \frac{\pi_\theta(y_w|x)}{\pi_{ref}(y_w|x)} - \log \frac{\pi_\theta(y_l|x)}{\pi_{ref}(y_l|x)} - \frac{1}{2\beta}\right)^2\\]
 
 ### KTO (Kahneman-Tversky Optimization)
 Works with **pointwise** data (good/bad) instead of pairwise comparisons:
 
-$$L_{KTO} = \mathbb{E}[\text{loss based on whether response is desirable or undesirable}]$$
+\\[L_{KTO} = \mathbb{E}[\text{loss based on whether response is desirable or undesirable}]\\]
 
 Doesn't need paired data — can use thumbs up/down signals.
 

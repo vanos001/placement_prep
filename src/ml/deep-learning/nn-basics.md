@@ -17,7 +17,7 @@ graph LR
     E --> F[Output ŷ]
 ```
 
-$$\hat{y} = f\left(\sum_{i=1}^d w_i x_i + b\right) = f(w^Tx + b)$$
+\\[\hat{y} = f\left(\sum_{i=1}^d w_i x_i + b\right) = f(w^Tx + b)\\]
 
 ```python
 import numpy as np
@@ -123,7 +123,7 @@ class MLP:
 
 A single hidden layer with enough neurons can approximate **any continuous function** to arbitrary precision:
 
-$$f(x) \approx \sum_{i=1}^N \alpha_i \sigma(w_i^T x + b_i)$$
+\\[f(x) \approx \sum_{i=1}^N \alpha_i \sigma(w_i^T x + b_i)\\]
 
 Where σ is a non-linear activation function.
 
@@ -156,7 +156,7 @@ W = np.random.randn(n, m) * 0.001
 
 Designed for sigmoid/tanh activations:
 
-$$W \sim N\left(0, \frac{2}{n_{in} + n_{out}}\right)$$
+\\[W \sim N\left(0, \frac{2}{n_{in} + n_{out}}\right)\\]
 
 ```python
 def xavier_init(fan_in, fan_out):
@@ -167,7 +167,7 @@ def xavier_init(fan_in, fan_out):
 
 Designed for ReLU activations:
 
-$$W \sim N\left(0, \frac{2}{n_{in}}\right)$$
+\\[W \sim N\left(0, \frac{2}{n_{in}}\right)\\]
 
 ```python
 def he_init(fan_in, fan_out):

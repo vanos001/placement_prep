@@ -61,7 +61,7 @@ command behaviour:
 - [Bash Reference Manual](https://www.gnu.org/software/bash/manual/)
 - [Open Group POSIX utilities](https://pubs.opengroup.org/onlinepubs/9699919799/)
 - [systemd documentation](https://systemd.io/)
-- [eBPF documentation](https://ebpf.io/docs/)
+- [eBPF documentation](https://docs.ebpf.io/)
 - [curl documentation](https://curl.se/docs/)
 - [OpenSSH manuals](https://man.openbsd.org/)
 

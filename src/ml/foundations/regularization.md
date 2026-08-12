@@ -19,7 +19,7 @@ graph TD
 
 Adds the **sum of absolute values** of weights to the loss:
 
-$$L_{regularized} = L_{original} + \lambda \sum_{i=1}^{n} |w_i|$$
+\\[L_{regularized} = L_{original} + \lambda \sum_{i=1}^{n} |w_i|\\]
 
 ```python
 import numpy as np
@@ -61,7 +61,7 @@ print(lasso.coef_)  # [2.98, 0, 0, 1.97, 0] — sparse!
 
 Adds the **sum of squared weights** to the loss:
 
-$$L_{regularized} = L_{original} + \lambda \sum_{i=1}^{n} w_i^2$$
+\\[L_{regularized} = L_{original} + \lambda \sum_{i=1}^{n} w_i^2\\]
 
 ```python
 def l2_regularization(weights, lambda_reg=0.01):
@@ -106,7 +106,7 @@ graph TD
 
 Combines L1 and L2:
 
-$$L = L_{original} + \lambda_1 \sum |w_i| + \lambda_2 \sum w_i^2$$
+\\[L = L_{original} + \lambda_1 \sum |w_i| + \lambda_2 \sum w_i^2\\]
 
 ```python
 from sklearn.linear_model import ElasticNet
@@ -298,8 +298,8 @@ def cutmix(x1, y1, x2, y2, alpha=1.0):
 
 Normalizes activations within a mini-batch (also acts as regularizer):
 
-$$\hat{x}_i = \frac{x_i - \mu_B}{\sqrt{\sigma_B^2 + \epsilon}}$$
-$$y_i = \gamma \hat{x}_i + \beta$$
+\\[\hat{x}_i = \frac{x_i - \mu_B}{\sqrt{\sigma_B^2 + \epsilon}}\\]
+\\[y_i = \gamma \hat{x}_i + \beta\\]
 
 ```python
 class BatchNorm:
@@ -329,7 +329,7 @@ class BatchNorm:
 
 Instead of hard labels (0 or 1), use soft targets:
 
-$$y_{smooth} = (1 - \epsilon) \cdot y + \epsilon / C$$
+\\[y_{smooth} = (1 - \epsilon) \cdot y + \epsilon / C\\]
 
 ```python
 def label_smoothing_loss(y_true, y_pred, epsilon=0.1, num_classes=10):
