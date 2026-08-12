@@ -282,6 +282,22 @@ Concurrency
   STL, cache hierarchy, profiling, branch prediction, SIMD, and undefined
   behavior.
 
+### ABA and safe-reclamation edges — 2026-08-12
+
+- [ABA Problem](../concurrency/aba-problem.md) → CAS/compare-exchange, tagged
+  pointers, memory ordering, lock-free stacks and queues.
+- ABA → [Hazard Pointers](../concurrency/aba-problem.md) → per-pointer reader
+  reservations, retire lists, scans, and delayed reclamation.
+- ABA → [Epoch Reclamation](../concurrency/aba-problem.md) → pinning,
+  participant advancement, stalled-reader memory growth, and Crossbeam Epoch.
+- ABA → [RCU](../concurrency/rcu.md) → grace periods, unlink-before-free,
+  Linux kernel quiescent states, and read-mostly data structures.
+- ABA → C++ safe reclamation → current C++ working draft `hazard_pointer` and
+  `rcu_obj_base`, with implementation availability still compiler-dependent.
+- Safe reclamation → [Memory Model](../concurrency/memory-model.md) →
+  acquire/release publication, CAS success/failure orderings, and lifetime
+  safety as a separate proof obligation.
+
 ### Cross-track placement edges
 
 - Linux `perf`/cache hierarchy ↔ DSA complexity and [cache-aware engineering](../dsa/chapters/ch89-engineering-cache.md).

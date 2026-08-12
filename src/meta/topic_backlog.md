@@ -2,7 +2,7 @@
 
 > Auto-maintained by research agents. Topics discovered during expansion that need coverage.
 > Priority: HIGH (interview-critical) | MEDIUM (important) | LOW (nice-to-have)
-> Last updated: 2026-08-12 (Linux and DSA integration batch)
+> Last updated: 2026-08-12 (research and validation batches)
 
 ## Integration completed — 2026-08-12
 
@@ -60,7 +60,7 @@ The following previously-backlogged topics now have dedicated coverage:
 - **Storage: Ceph CRUSH/RADOS Deep Dive** — CRUSH algorithm, placement groups, RADOS (still TODO)
 - **Storage: NVMe over Fabrics** — NVMe-oF TCP/RDMA (TODO)
 - ~~Concurrency: Work-Stealing Scheduler — Go scheduler work-stealing, Java ForkJoinPool, Rust Tokio~~ ✅ Done `concurrency/work-stealing.md` (2026-08-09): LIFO owner head vs FIFO thief tail, Go GMP P local 256 + global, Java ForkJoinPool WorkQueue 4096, Tokio 256 ring + injection queue
-- **Concurrency: ABA Problem & Memory Reclamation** — hazard pointers vs RCU vs epoch (TODO, RCU done but ABA still missing)
+- ~~Concurrency: ABA Problem & Memory Reclamation~~ ✅ Done `concurrency/aba-problem.md` (2026-08-12): tagged pointers, hazard pointers, EBR, RCU, reference counting, memory ordering, C++26 safe-reclamation references
 - ~~Concurrency: Memory Model — C++/Java/Go memory models, acquire/release, data races~~ ✅ Done `concurrency/memory-model.md` (2026-08-09): TSO vs weak ARM, DRF-SC happens-before, C++11 6 orders, Java volatile total order vs VarHandle acq/rel, Go channel happens-before, Rust Send/Sync, store buffering litmus
 
 ### Interview / System Design — Newly Discovered

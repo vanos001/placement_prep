@@ -18,16 +18,24 @@
 | Repaired Mermaid diagrams | Completed; imported and touched diagrams pass both validators |
 | Pushed integration commits | Completed; commits `42c4e57` and `5f986da` are on `origin/dev` |
 
+## Research batch — ABA and safe memory reclamation
+
+- Added `concurrency/aba-problem.md` covering tagged pointers, hazard pointers,
+  epoch reclamation, RCU, reference counting, memory ordering, and interview
+  trade-offs. References include Linux kernel docs, WG21 safe-reclamation
+  papers/current draft, IBM hazard-pointer research, Boost, Folly, and
+  Crossbeam.
+
 ## Final validation snapshot
 
-- Markdown files under `src/`: **1,534**
-- Mermaid blocks: **4,387**
+- Markdown files under `src/`: **1,535**
+- Mermaid blocks: **4,389**
 - Files containing Mermaid: **1,136**
-- Cross-reference graph: **1,533 nodes / 7,123 internal links**, generated automatically by the deployment workflow
+- Cross-reference graph: **1,534 nodes / 7,134 internal links**, generated automatically by the deployment workflow
 - Link checker: **0 broken links**
 - SUMMARY checker: **OK**
-- Mermaid heuristic: **4,387 / 4,387 passed**
-- Mermaid v11 parser: **4,387 / 4,387 passed**
+- Mermaid heuristic: **4,389 / 4,389 passed**
+- Mermaid v11 parser: **4,389 / 4,389 passed**
 - mdBook build: **constrained full build passed; normal search-enabled build was killed by sandbox OOM (exit 137)**
 - Research/validation audit: **0 broken links, 0 bad fragments, 0 unclosed fences, 0 exact duplicate bodies**; 73 URL-bearing pages remain in the reference-review queue
 

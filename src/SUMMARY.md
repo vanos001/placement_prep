@@ -1335,6 +1335,7 @@
 - [Coroutines](./concurrency/coroutines.md)
 - [Lock-free Data Structures](./concurrency/lock-free.md)
 - [RCU (Read-Copy-Update)](./concurrency/rcu.md)
+- [ABA Problem and Safe Memory Reclamation](./concurrency/aba-problem.md)
 - [Work-Stealing Scheduler](./concurrency/work-stealing.md)
 - [Memory Model (C++/Java/Go/Rust)](./concurrency/memory-model.md)
 - [Transactional Memory](./concurrency/transactional-memory.md)

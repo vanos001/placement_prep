@@ -3,6 +3,19 @@
 This file records meaningful content and validation changes to the placement
 preparation book. Dates use the project timezone, Asia/Calcutta.
 
+## 2026-08-12 — Research: ABA and safe memory reclamation
+
+- Added `src/concurrency/aba-problem.md` covering ABA interleavings, tagged
+  pointers, hazard pointers, epoch-based reclamation, RCU, reference counting,
+  memory ordering, implementation choices, and interview questions.
+- Cross-linked the chapter to lock-free structures, the memory model, Linux
+  RCU, OS memory barriers, C++, Rust/Crossbeam, and DSA hardware context.
+- Researched against [Linux RCU Concepts](https://docs.kernel.org/RCU/rcu.html),
+  [WG21 P2530R3](https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2023/p2530r3.pdf),
+  [WG21 P2545R4](https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2023/p2545r4.pdf),
+  the [current C++ working draft](https://eel.is/c++draft/thread#saferecl),
+  IBM's hazard-pointer paper, Boost.Lockfree, Folly Hazptr, and Crossbeam Epoch.
+
 ## 2026-08-12 — Add MathJax validation tooling
 
 - Added `scripts/check-mathjax.py` to verify `mathjax-support = true`, balanced
