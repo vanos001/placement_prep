@@ -50,16 +50,29 @@
   chapters with official Apollo, Redis, ZooKeeper, etcd, RocksDB, and cloud
   storage references.
 
+## Dev pull audit — 2026-08-13
+
+- Pulled remote `origin/dev` fast-forward to `61ac3ce`.
+- Audited the expanded tree: 1,723 content Markdown pages, 4,405 Mermaid
+  diagrams, and 7,405 cross-reference edges.
+- Added the ten pages that the pulled Summary referenced but the branch lacked:
+  data formats, data quality, search fundamentals, vector search, technical
+  interview, group discussion, window-function problems, join problems,
+  concurrency scenarios, and testing interview questions.
+- Repaired four relative links in Software Engineering/documentation/testing.
+- Link checker, Summary checker, MathJax checker, Mermaid heuristic/parser, and
+  a constrained mdBook build all pass.
+
 ## Final validation snapshot
 
-- Markdown files under `src/`: **1,544**
-- Mermaid blocks: **4,403**
+- Markdown files under `src/`: **1,724**
+- Mermaid blocks: **4,405**
 - Files containing Mermaid: **1,136**
-- Cross-reference graph: **1,543 nodes / 7,219 internal links**, generated automatically by the deployment workflow
+- Cross-reference graph: **1,723 nodes / 7,405 internal links**, generated automatically by the deployment workflow
 - Link checker: **0 broken links**
 - SUMMARY checker: **OK**
-- Mermaid heuristic: **4,403 / 4,403 passed**
-- Mermaid v11 parser: **4,403 / 4,403 passed**
+- Mermaid heuristic: **4,405 / 4,405 passed**
+- Mermaid v11 parser: **4,405 / 4,405 passed**
 - mdBook build: **constrained full build passed; normal search-enabled build was killed by sandbox OOM (exit 137)**
 - Research/validation audit: **0 broken links, 0 bad fragments, 0 unclosed fences, 0 exact duplicate bodies**; 73 URL-bearing pages remain in the reference-review queue
 

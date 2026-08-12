@@ -11,8 +11,8 @@ A comprehensive guide to software engineering principles, practices, and process
 | [Requirements Engineering](./requirements.md) | Functional, non-functional, user stories |
 | [Software Design](./design.md) | Architecture, design principles, patterns |
 | [Code Quality](./code-quality.md) | Clean code, refactoring, technical debt |
-| [Testing](./testing.md) | Testing types, TDD, BDD, test strategy |
-| [DevOps & CI/CD](./devops.md) | Continuous integration, delivery, deployment |
+| [Testing](../testing/README.md) | Testing types, TDD, BDD, test strategy |
+| [DevOps & CI/CD](../cloud/cicd/README.md) | Continuous integration, delivery, deployment |
 | [Project Management](./project-management.md) | Estimation, planning, risk management |
 | [Software Metrics](./metrics.md) | Code metrics, process metrics, quality metrics |
 | [Documentation](./documentation.md) | Types, ADRs, RFCs, runbooks |

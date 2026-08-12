@@ -1,5 +1,18 @@
 # Changelog
 
+## 2026-08-13 — Pull and topic-completeness audit
+
+- Fast-forwarded local `dev` to remote commit `61ac3ce`.
+- Found ten Summary entries whose target files were absent and added concise,
+  referenced pages for data formats, data quality, search fundamentals, vector
+  search, technical interviews, group discussions, SQL window functions,
+  joins, DBMS concurrency scenarios, and testing interview questions.
+- Repaired four stale links in Software Engineering and testing documentation.
+- Validation after repair: 0 broken links, complete Summary reachability,
+  MathJax OK, Mermaid 4,405/4,405, and Mermaid v11 parser 4,405/4,405.
+- Work remains on `dev`; `main` was not modified.
+
+
 This file records meaningful content and validation changes to the placement
 preparation book. Dates use the project timezone, Asia/Calcutta.
 

@@ -174,7 +174,7 @@ npm run lint:fix
 
 ## Contributing
 
-See [CONTRIBUTING.md](CONTRIBUTING.md)
+See the [repository contribution guidance](https://github.com/vanos001/placement_prep)
 
 ## License
 

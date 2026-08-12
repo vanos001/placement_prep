@@ -2,7 +2,13 @@
 
 > Auto-maintained by research agents. Topics discovered during expansion that need coverage.
 > Priority: HIGH (interview-critical) | MEDIUM (important) | LOW (nice-to-have)
-> Last updated: 2026-08-12 (research loop batch 4)
+> Last updated: 2026-08-13 (dev pull audit)
+
+## Dev pull audit — 2026-08-13
+
+- Pulled the latest `dev` expansion and repaired ten missing Summary targets
+  plus four stale relative links. All pulled pages are now Summary-reachable.
+- Remaining work is content depth/references review, not broken navigation.
 
 ## Integration completed — 2026-08-12
 

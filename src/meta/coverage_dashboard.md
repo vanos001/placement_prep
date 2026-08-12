@@ -1,7 +1,7 @@
 # Coverage Dashboard
 
 > Auto-generated tracking of content coverage across all subjects.
-> Last updated: 2026-08-12 (integration batch)
+> Last updated: 2026-08-13 (dev pull audit)
 
 ## Summary
 
@@ -39,10 +39,21 @@
 
 ## Overall Metrics
 
-- **Total markdown files**: ~1,660 (was 1,544; +116 from new sections)
-- **Total Mermaid diagrams**: 4,403+
+- **Total markdown files**: 1,724 (1,723 content pages plus SUMMARY)
+- **Total Mermaid diagrams**: 4,405
 - **Total size**: ~30 MB (src/)
 - **Build status**: ✅ Full constrained build clean (mdBook 0.4.52, search index disabled for sandbox); normal search-enabled build is OOM-limited in this sandbox
+
+## Dev Pull Audit — 2026-08-13
+
+- Pulled `origin/dev` at `61ac3ce` and checked the expanded Summary against the
+  filesystem.
+- Repaired **14 navigation/link defects**: ten absent Summary pages and four
+  stale relative links.
+- Current integrity totals: **1,723 content pages**, **4,405 Mermaid blocks**,
+  **7,405 internal graph links**, 0 broken links, and complete Summary coverage.
+- The repaired pages are intentionally concise and referenced; future loops can
+  deepen them rather than accumulating empty placeholders.
 
 ## Major New Sections (2026-08-13)
 
