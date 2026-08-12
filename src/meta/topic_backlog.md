@@ -17,7 +17,7 @@
 - **Integrity gate** — 0 broken links, Summary navigation OK, and 4,387/4,387
   Mermaid diagrams pass both the heuristic and Mermaid v11 parser checks.
 
-## Completed (since 2026-08-05) — Updated 2026-08-09
+## Completed (since 2026-08-05) — Updated 2026-08-13
 
 The following previously-backlogged topics now have dedicated coverage:
 
@@ -35,6 +35,24 @@ The following previously-backlogged topics now have dedicated coverage:
 - **Concurrency**: fork-join/thread-pools/producer-consumer/readers-writers/async-await/futures/coroutines/lock-free/transactional-memory/go-channels/rust-ownership/java/python-gil (14) → 15 with **RCU**, still low (48%)
 - **OOP**: coupling, cohesion & design principles (lld/coupling-cohesion-principles.md)
 - **Security**: TLS deep dive, mTLS, certificate transparency already; auth expanded (OAuth, JWT, session, mTLS)
+
+## NEWLY COMPLETED (2026-08-13 — Parallel Agent Batch)
+
+### Completely New Sections Added:
+- **Git** ✅ `src/git/` — 15 files: internals, fundamentals, branching, rebasing, stashing, advanced ops, remotes, tags, hooks, workflows, GitHub, interview questions, cheat sheet
+- **Software Engineering** ✅ `src/software-engineering/` — 10 files: SDLC, Agile, requirements, design (SOLID), code quality, documentation, project management, metrics, team dynamics
+- **Programming Fundamentals** ✅ `src/programming-fundamentals/` — 10 files: variables/types, scope/lifetime, functions, error handling, type systems, memory model, I/O, modules
+- **Security & Cryptography** ✅ `src/security/` — 7 files: authentication (OAuth/OIDC/JWT), authorization (RBAC/ABAC), web security (OWASP), cryptography (AES/RSA/TLS), secrets management
+- **Machine Coding** ✅ `src/machine-coding/` — 10 files: parking lot, elevator, library, splitwise, rate limiter, LRU cache, task scheduler
+- **Data Engineering** ✅ `src/data-engineering/` — 7 files: Spark, Kafka, Airflow, Parquet/Avro/ORC, data quality
+- **Search Engines** ✅ `src/search/` — 5 files: inverted indexes, TF-IDF/BM25, Elasticsearch, vector search
+- **Aptitude** ✅ `src/aptitude/` — 11 files: percentages, ratios, averages, profit/loss, time/work, speed/distance, probability, number systems, logical reasoning, data interpretation
+- **Placement Preparation** ✅ `src/placement-preparation/` — 6 files: campus process, OA, technical/HR interview, group discussion
+- **Resume & Career** ✅ `src/resume/` — 7 files: structure, bullet writing, projects, ATS optimization
+- **Behavioral Interviews** ✅ `src/behavioral-interviews/` — 5 files: STAR method, 30+ questions, company fit, scenarios
+- **Communication** ✅ `src/communication/` — 4 files: technical, interview, written communication
+- **Practical Programming Problems** ✅ `src/practical-problems/` — 6 files: parsers, CLI tools, file processing, concurrent problems
+- **DBMS Interview Problems** ✅ `src/dbms/interview-problems/` — 6 files: classic SQL, window functions, joins, optimization, concurrency
 
 ## REMAINING — MEDIUM Priority (Updated)
 

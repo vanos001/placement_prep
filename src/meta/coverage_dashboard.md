@@ -22,13 +22,71 @@
 | Cloud & DevOps | 26 | 80+ | 50+ | 60% |
 | Linux Deep Dive (`lb2`) | 446 | — | 1,531 | Integrated |
 | DSA Track (`dsa_book_2`) | 194 | — | 16 | Integrated |
+| **Git** | **15** | **25+** | **5+** | **NEW** |
+| **Software Engineering** | **10** | **30+** | **3+** | **NEW** |
+| **Programming Fundamentals** | **10** | **20+** | **2+** | **NEW** |
+| **Security & Cryptography** | **7** | **15+** | **3+** | **NEW** |
+| **Machine Coding** | **10** | **10+** | **5+** | **NEW** |
+| **Data Engineering** | **7** | **15+** | **5+** | **NEW** |
+| **Search Engines** | **5** | **10+** | **3+** | **NEW** |
+| **Aptitude** | **11** | **50+** | **2+** | **NEW** |
+| **Placement Preparation** | **6** | **20+** | **2+** | **NEW** |
+| **Resume & Career** | **7** | **10+** | **2+** | **NEW** |
+| **Behavioral Interviews** | **5** | **30+** | **2+** | **NEW** |
+| **Communication** | **4** | **10+** | **1+** | **NEW** |
+| **Practical Problems** | **6** | **10+** | **3+** | **NEW** |
+| **DBMS Interview Problems** | **6** | **15+** | **2+** | **NEW** |
 
 ## Overall Metrics
 
-- **Total markdown files**: 1,544
-- **Total Mermaid diagrams**: 4,403
-- **Total size**: 26 MB (src/)
+- **Total markdown files**: ~1,660 (was 1,544; +116 from new sections)
+- **Total Mermaid diagrams**: 4,403+
+- **Total size**: ~30 MB (src/)
 - **Build status**: ✅ Full constrained build clean (mdBook 0.4.52, search index disabled for sandbox); normal search-enabled build is OOM-limited in this sandbox
+
+## Major New Sections (2026-08-13)
+
+### Git Section — 15 files
+Complete Git reference: internals (objects, refs, packfiles), fundamentals, branching/merging, rebasing (interactive, --onto, autosquash), stashing, advanced ops (cherry-pick, revert, reset, reflog, bisect), remotes, tags, hooks, workflows (trunk-based, GitFlow, GitHub Flow), GitHub/PRs/code review, interview questions, cheat sheet.
+
+### Software Engineering — 10 files
+SDLC models, Agile/Scrum (ceremonies, artifacts, velocity), requirements engineering (user stories, MoSCoW), software design (SOLID, DRY, KISS), code quality (clean code, tech debt, refactoring), documentation (ADRs, RFCs, runbooks), project management (estimation, risk), metrics (DORA, cyclomatic complexity), team dynamics, interview questions.
+
+### Programming Fundamentals — 10 files
+Variables/types (value vs reference, stack vs heap), scope/lifetime, functions (closures, HOFs, generators, tail recursion), error handling (exceptions, Result/Option), type systems (static/dynamic, structural/nominal, generics), memory model (pointers, GC, smart pointers), I/O and serialization (Unicode, streams), modules/packages (semver, dependency management).
+
+### Security & Cryptography — 7 files
+Authentication (OAuth 2.0, OIDC, JWT, MFA, SSO), authorization (RBAC, ABAC), web security (OWASP Top 10: XSS, SQLi, CSRF, SSRF, XXE), cryptography (AES/RSA/ECC, TLS handshake, password hashing with bcrypt/Argon2), secrets management.
+
+### Machine Coding — 10 files
+Approach & strategy, design principles in practice, complete solutions: parking lot, elevator system, library management, splitwise, rate limiter (token bucket, sliding window), LRU cache (O(1)), task scheduler.
+
+### Data Engineering — 7 files
+ETL/ELT, warehouses/lakes/lakehouses, Spark (RDDs, DataFrames), Kafka (consumer groups, exactly-once), Airflow (DAGs), Parquet/Avro/ORC (columnar vs row), data quality.
+
+### Search Engines — 5 files
+Inverted indexes, TF-IDF/BM25, Elasticsearch architecture (shards, replicas, queries, aggregations), vector search (HNSW, ANN, embeddings, semantic search).
+
+### Aptitude — 11 files
+Percentages, ratios/proportions, averages, profit/loss, time/work, speed/distance, probability/combinatorics, number systems, logical reasoning (syllogisms, blood relations, puzzles), data interpretation.
+
+### Placement Preparation — 6 files
+Campus placement process, online assessment strategy, technical interview prep, HR interview (STAR method), group discussion.
+
+### Resume & Career — 7 files
+Resume structure, ATS optimization, bullet writing (STAR format, quantified impact), projects, technical skills, common mistakes.
+
+### Behavioral Interviews — 5 files
+STAR method deep dive, 30+ common questions with frameworks, company fit questions, scenario templates.
+
+### Communication — 4 files
+Technical communication (explaining code/architecture), interview communication (clarifying questions), written communication.
+
+### Practical Programming Problems — 6 files
+Parsers (JSON, CSV, URL, expression), CLI tools, file processing, concurrent problems (thread pool, worker pool), system utilities (circuit breaker, retry).
+
+### DBMS Interview Problems — 6 files
+Classic SQL (Nth salary, duplicates, top N per group), window functions (running totals, gaps/islands), joins (anti-join, self-join), optimization scenarios, concurrency scenarios.
 
 ## New Sections Added (2026-08-08 to 2026-08-09)
 

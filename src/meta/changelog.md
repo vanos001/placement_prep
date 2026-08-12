@@ -3,6 +3,57 @@
 This file records meaningful content and validation changes to the placement
 preparation book. Dates use the project timezone, Asia/Calcutta.
 
+## 2026-08-13 — Massive content expansion (parallel agents)
+
+Six parallel agents are creating comprehensive new sections:
+
+### Git Section (15 files)
+- `src/git/README.md` — Overview and chapter outline
+- `src/git/internals.md` — Objects (blob, tree, commit, tag), refs, HEAD, index, packfiles, SHA-1
+- `src/git/fundamentals.md` — Setup, config, staging, committing, diffing, undoing
+- `src/git/branching.md` — Branches, fast-forward, three-way merge, conflicts, octopus merge
+- `src/git/rebasing.md` — Rebase, interactive rebase, --onto, autosquash, rerere
+- `src/git/stashing.md` — Stash operations, partial stashing, branch from stash
+- `src/git/advanced.md` — cherry-pick, revert, reset, reflog, bisect, worktree, submodule, blame, grep
+- `src/git/remotes.md` — fetch, pull, push, force-with-lease, multiple remotes
+- `src/git/tags.md` — Lightweight vs annotated, semver, GPG signing
+- `src/git/hooks.md` — Client-side (pre-commit, commit-msg, pre-push), server-side (pre-receive, update)
+- `src/git/workflows.md` — Trunk-based, GitFlow, GitHub Flow, GitLab Flow, forking
+- `src/git/github.md` — PRs, code review, branch protection, CODEOWNERS, GitHub Actions
+- `src/git/interview-questions.md` — 25+ questions from beginner to advanced + scenarios
+- `src/git/cheat-sheet.md` — Quick reference for all commands
+
+### Software Engineering Section (10 files)
+- SDLC models, Agile/Scrum, requirements engineering, software design (SOLID)
+- Code quality, documentation, project management, metrics, team dynamics
+- Interview questions covering all SE topics
+
+### Programming Fundamentals Section (10 files)
+- Variables/types, scope/lifetime, functions (closures, HOFs, generators)
+- Error handling, type systems, memory model, I/O/serialization
+- Modules/packages, interview questions
+
+### Aptitude & Placement Preparation (17 files)
+- Quantitative: percentages, ratios, averages, profit/loss, time/work, speed/distance
+- Logical: probability, number systems, logical reasoning, data interpretation
+- Placement: campus process, online assessment, technical/HR interview, group discussion
+
+### Resume, Behavioral, Communication (15 files)
+- Resume: structure, bullet writing, projects, technical skills, ATS optimization
+- Behavioral: STAR method, 30+ common questions, company fit, scenarios
+- Communication: technical, interview, written
+
+### Machine Coding & Practical Problems (22 files)
+- Machine coding: parking lot, elevator, library, splitwise, rate limiter, LRU cache, task scheduler
+- Practical problems: parsers, CLI tools, file processing, concurrent problems, system utilities
+- DBMS interview problems: classic SQL, window functions, joins, optimization, concurrency
+
+### Security, Data Engineering, Search (18 files)
+- Security: authentication (OAuth/OIDC/JWT), authorization (RBAC/ABAC), web security (OWASP Top 10)
+- Cryptography: AES/RSA/ECC, TLS, password hashing, certificates, PKI
+- Data engineering: Spark, Kafka, Airflow, Parquet/Avro/ORC, data quality
+- Search: inverted indexes, TF-IDF/BM25, Elasticsearch, vector search
+
 ## 2026-08-12 — Research loop batch 4
 
 - Added `backend/api/graphql-federation.md` with entities, composition,

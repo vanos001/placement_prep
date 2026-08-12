@@ -378,3 +378,127 @@ Concurrency
 - RCU → Lock-free (ABA, hazard pointers), Memory Barriers (acquire/release, smp_mb), Kernel Modules (rcu_barrier for unload), cgroups traversal
 - Storage → Distributed (Ceph CRUSH, RADOS), Erasure Coding (Reed-Solomon)
 - Links fixed: introduction.md revision/README → revision/os.md, os/README → os/overview.md, etc., congestion-control README and bluetooth added
+
+## New Edges Added 2026-08-13 — Massive Expansion
+
+### Git ↔ Other Topics
+```
+Git Internals
+  → Objects (blob, tree, commit) ↔ Data Structures (hash tables, trees)
+  → SHA-1/SHA-256 ↔ Cryptography (hashing)
+  → Packfiles ↔ Storage (delta compression)
+  → Refs ↔ File Systems (pointer files)
+
+Git Workflows
+  → CI/CD (GitHub Actions) ↔ DevOps
+  → Code Review ↔ Software Engineering (team dynamics)
+  → Branching Strategy ↔ Release Management
+  → Merge vs Rebase ↔ Distributed Systems (conflict resolution)
+
+Git Hooks
+  → Pre-commit ↔ Testing (linting, unit tests)
+  → Commit-msg ↔ Code Quality (Conventional Commits)
+  → Pre-push ↔ CI/CD (validation)
+```
+
+### Software Engineering ↔ Other Topics
+```
+SDLC Models
+  → Agile/Scrum ↔ Project Management
+  → Waterfall ↔ Documentation (requirements specs)
+  → Spiral ↔ Risk Management
+
+SOLID Principles
+  → Single Responsibility ↔ Design Patterns (SRP in every pattern)
+  → Open/Closed ↔ Strategy Pattern, Decorator Pattern
+  → Liskov Substitution ↔ OOP (inheritance contracts)
+  → Interface Segregation ↔ API Design (focused interfaces)
+  → Dependency Inversion ↔ Backend (DI containers, Spring)
+
+Code Quality
+  → Technical Debt ↔ Refactoring
+  → Code Smells ↔ Design Patterns (antidotes)
+  → Clean Code ↔ Interview Preparation
+```
+
+### Security ↔ Other Topics
+```
+Authentication
+  → OAuth 2.0 ↔ Backend (JWT, API auth)
+  → OIDC ↔ Identity Providers
+  → Sessions ↔ Backend (session management)
+  → JWT ↔ Distributed Systems (stateless auth)
+
+Web Security
+  → XSS ↔ Frontend (CSP, sanitization)
+  → SQL Injection ↔ DBMS (parameterized queries)
+  → CSRF ↔ Backend (tokens, SameSite cookies)
+  → SSRF ↔ Cloud (metadata endpoints)
+
+Cryptography
+  → AES ↔ Storage (encryption at rest)
+  → TLS ↔ Networks (HTTPS, certificate pinning)
+  → RSA/ECC ↔ PKI (certificate chains)
+  → Password Hashing ↔ Backend (bcrypt, Argon2)
+```
+
+### Data Engineering ↔ Other Topics
+```
+Spark
+  → RDDs ↔ Programming Fundamentals (functional programming)
+  → DataFrames ↔ SQL (query optimization)
+  → DAG Execution ↔ Distributed Systems (task scheduling)
+
+Kafka
+  → Partitions ↔ Distributed Systems (partitioning)
+  → Consumer Groups ↔ Message Queues
+  → Exactly-Once ↔ Distributed Transactions
+  → WAL ↔ Storage (append-only log)
+
+Airflow
+  → DAGs ↔ Graph Algorithms
+  → Operators ↔ DevOps (CI/CD pipelines)
+  → Scheduling ↔ OS (cron, systemd timers)
+```
+
+### Machine Coding ↔ Other Topics
+```
+Design Patterns
+  → Strategy ↔ OOP (polymorphism)
+  → Observer ↔ Backend (event-driven)
+  → Factory ↔ Creational Patterns
+  → Builder ↔ Complex Object Construction
+
+Parking Lot
+  → OOP (inheritance, polymorphism)
+  → Design Patterns (Strategy for pricing)
+  → Database (slot allocation)
+
+LRU Cache
+  → Data Structures (HashMap + Doubly Linked List)
+  → Caching Theory ↔ OS (page replacement LRU)
+  → Concurrency (thread-safe cache)
+
+Rate Limiter
+  → Token Bucket ↔ Backend (API rate limiting)
+  → Sliding Window ↔ Networks (traffic shaping)
+  → Distributed Rate Limiting ↔ Distributed Systems
+```
+
+### Aptitude & Placement ↔ Other Topics
+```
+Probability
+  → Randomized Algorithms ↔ DSA
+  → Expected Value ↔ Algorithm Analysis
+  → Hashing ↔ Data Structures
+
+Logical Reasoning
+  → Problem Solving ↔ Interview Preparation
+  → Pattern Recognition ↔ Algorithm Design
+
+Placement Preparation
+  → Technical Interview ↔ All CS Topics
+  → System Design ↔ Distributed Systems, Backend
+  → Coding Round ↔ DSA, Competitive Programming
+  → Behavioral ↔ Communication, Resume
+```
