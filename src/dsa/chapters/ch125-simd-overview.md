@@ -32,7 +32,7 @@ VADD V1, V2, V3  → V1[0..3] = V2[0..3] + V3[0..3] (four additions at once)
 
 | Instruction Set | Width | int32 | float32 | Introduced |
 |---|---|---|---|---|
-| MMX | 64-bit | 2 | 2 | 1997 |
+| MMX | 64-bit | 2 | — | 1997 |
 | SSE | 128-bit | 4 | 4 | 1999 |
 | SSE2 | 128-bit | 4 | 4 | 2001 |
 | AVX | 256-bit | 8 | 8 | 2011 |

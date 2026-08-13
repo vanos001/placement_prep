@@ -347,11 +347,16 @@ std::vector<Point> halfPlaneIntersect(std::vector<HalfPlane>& hps) {
 
 int main() {
     // Intersect 4 half-planes forming a unit square [0,1] x [0,1]
+    // inside() uses cross(d, p - p0) >= 0 (left-side convention), so the
+    // direction vector must point ALONG the boundary such that the interior
+    // is on the left. For x >= 0 (interior to the right of the y-axis),
+    // walk upward: d = (0, 1) gives cross((0,1), (x,y)) = -x >= 0 → x <= 0,
+    // which is wrong. Use d = (0, -1) so cross((0,-1), (x,y)) = x >= 0 → x >= 0.
     std::vector<HalfPlane> hps = {
-        HalfPlane({0, 0}, {0, 1}),    // x >= 0
-        HalfPlane({1, 0}, {0, -1}),   // x <= 1
-        HalfPlane({0, 0}, {-1, 0}),   // y >= 0
-        HalfPlane({0, 1}, {1, 0}),    // y <= 1
+        HalfPlane({0, 0}, {0, -1}),   // x >= 0  (interior on left of downward ray)
+        HalfPlane({1, 0}, {0, 1}),    // x <= 1  (interior on left of upward ray from x=1)
+        HalfPlane({0, 0}, {1, 0}),    // y >= 0  (interior on left of rightward ray)
+        HalfPlane({0, 1}, {-1, 0}),   // y <= 1  (interior on left of leftward ray from y=1)
     };
     
     auto poly = halfPlaneIntersect(hps);

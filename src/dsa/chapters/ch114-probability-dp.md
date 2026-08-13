@@ -475,7 +475,7 @@ int main() {
 ## Exercises
 
 1. **Easy:** What's the expected number of fair coin flips to get at least one head?
-2. **Easy:** In the dice-throw game, verify that the expected throws for n=6 is exactly 7/3.6 ≈ 1.9444.
+2. **Easy:** In the dice-throw game, the expected throws for n=6 is (7/6)^5 = 16807/7776 ≈ 2.1614.
 3. **Medium:** You flip a coin with probability p of heads. What's the expected number of flips to see the pattern HTH?
 4. **Medium:** Two players alternately flip a fair coin. The first to flip heads wins. What's the probability the first player wins?
 5. **Hard:** You have a biased coin (p heads). You flip until you see k consecutive heads. Derive the expected number of flips as a function of p and k.

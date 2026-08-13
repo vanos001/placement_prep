@@ -94,7 +94,7 @@ Universe {0, 1, ..., 15}. √16 = 4 clusters of size 4.
 
 ```
 VEB(16):
-  min = 2, max = 14
+  min = 2, max = 15
   summary: VEB(4) tracking which of 4 clusters are non-empty
   cluster[0]: VEB(4) for {0,1,2,3}  (contains 3)
   cluster[1]: VEB(4) for {4,5,6,7}  (empty)

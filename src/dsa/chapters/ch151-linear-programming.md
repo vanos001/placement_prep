@@ -619,7 +619,7 @@ Where n = number of variables, m = number of constraints, ε = precision.
 
 ## 151.10 Exercises
 
-1. **Formulate as LP:** A factory produces two products. Product A requires 2 hours of labor and 1 unit of material, yielding \\(5 profit. Product B requires 1 hour of labor and 3 units of material, yielding\\)7 profit. There are 8 hours of labor and 12 units of material available. Formulate and solve the LP.
+1. **Formulate as LP:** A factory produces two products. Product A requires 2 hours of labor and 1 unit of material, yielding $5 profit. Product B requires 1 hour of labor and 3 units of material, yielding $7 profit. There are 8 hours of labor and 12 units of material available. Formulate and solve the LP.
 
 2. **Convert to standard form:** Convert the following LP to standard form:
    ```

@@ -53,6 +53,10 @@ def backward_pass(activations, z_values, weights, y_true):
     n = len(y_true)
     gradients = {'W': [], 'b': []}
     
+    # One-hot encode the labels (assumes y_true is integer class labels)
+    y_onehot = np.zeros_like(activations[-1])
+    y_onehot[np.arange(n), y_true] = 1
+    
     # Output layer gradient (softmax + cross-entropy)
     delta = activations[-1] - y_onehot  # (n, output_dim)
     

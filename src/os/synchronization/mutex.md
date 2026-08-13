@@ -179,7 +179,7 @@ bool data_ready = false;
 // Producer                          // Consumer
 pthread_mutex_lock(&mutex);         pthread_mutex_lock(&mutex);
 data_ready = true;                  while (!data_ready)
-pthread_cond_signal(&cond);             pthread_cond_cond_wait(&cond, &mutex);
+pthread_cond_signal(&cond);             pthread_cond_wait(&cond, &mutex);
 pthread_mutex_unlock(&mutex);       // Use data...
                                     pthread_mutex_unlock(&mutex);
 ```

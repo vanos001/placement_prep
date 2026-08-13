@@ -84,9 +84,9 @@ Gale-Shapley(proposerPrefs, acceptorPrefs):
 
 **Step 2**: Proposer 1 proposes to B (first choice). B is free → match(1, B).
 
-**Step 3**: Proposer 2 proposes to A (first choice). A prefers 1 (current) over 2 → rejected.
+**Step 3**: Proposer 2 proposes to A (first choice). A prefers 0 (current match) over 2 → rejected.
 
-**Step 4**: Proposer 2 proposes to B (second choice). B prefers 0 (current) over 2 → rejected.
+**Step 4**: Proposer 2 proposes to B (second choice). B prefers 1 (current match) over 2 → rejected.
 
 **Step 5**: Proposer 2 proposes to C (third choice). C is free → match(2, C).
 

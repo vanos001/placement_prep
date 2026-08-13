@@ -321,7 +321,7 @@ Step 1: Pick (0,1) → cover = {0,1}, remove edges (0,1), (0,2), (1,3)
 Step 2: Remaining edges: (2,3), (2,4), (3,5), (4,5). Pick (2,3) → cover = {0,1,2,3}, remove (2,3), (2,4), (3,5)
 Step 3: Remaining: (4,5). Pick (4,5) → cover = {0,1,2,3,4,5}
 
-Approximate cover: 6 vertices. Optimal: 3 (e.g., {2,3,5} or {0,3,4}). Ratio: 6/3 = 2. ✓
+Approximate cover: 6 vertices. Optimal: 3 (e.g., {0,3,4} or {1,2,5}). Ratio: 6/3 = 2. ✓
 
 ---
 

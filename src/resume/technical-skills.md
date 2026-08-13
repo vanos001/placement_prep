@@ -183,7 +183,7 @@ Cloud: AWS, Docker, Vercel, GitHub Actions
 ```
 Languages: Python, C++, SQL
 ML/AI: PyTorch, TensorFlow, scikit-learn, Hugging Face Transformers
-Data: Pandas, NumPy, Spark, SQL, Pandas
+Data: Pandas, NumPy, Spark, SQL
 Cloud: AWS (SageMaker, S3, EC2), Docker, MLflow
 Concepts: NLP, Computer Vision, MLOps, Model Optimization
 ```

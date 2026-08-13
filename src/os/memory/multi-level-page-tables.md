@@ -104,7 +104,7 @@ Two-level page table:
     → Need 2,560 PTEs → 3 page table pages (2,560 / 1,024 ≈ 2.5)
   Total: 4 KB + 12 KB = 16 KB
 
-  Savings: 4 MB → 16 KB (250x reduction!)
+  Savings: 4 MB → 16 KB (256x reduction)
 ```
 
 ## Four-Level Page Table (x86-64)
@@ -527,7 +527,7 @@ A: The page fault handler walks the page table top-down. At each level, if the e
 **Q7: A process maps a 4 GB file using mmap with MAP_NORESERVE. How much page table memory is consumed immediately? How much after touching every page?**
 A: 
 - **Immediately after mmap**: Only the PGD entry is created (pointing to a not-yet-allocated PUD). No actual page table pages are allocated for the mapping — maybe 0-4 KB total.
-- **After touching all pages**: 4 GB / 4 KB = 1M pages. Need: 1 PGD entry, ~2 PUD entries, ~2048 PMD entries, ~1024 PTE tables. Total: ~8 MB of page table pages.
+- **After touching all pages**: 4 GB / 4 KB = 1M pages. Need: 1 PGD entry, ~1 PUD entry, ~4 PMD entries, ~2048 PTE tables. Total: ~8 MB of page table pages.
 - **With 2 MB huge pages**: Would need ~2048 PMD entries only → ~16 KB page table + 1 PGD entry.
 - The key insight: page table pages are allocated on demand, just like the data pages.
 

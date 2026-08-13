@@ -248,7 +248,7 @@ int main() {
     std::vector<int> arr = {3, 1, 4, 1, 5, 9, 2, 6};
     WaveletTree wt(arr.begin(), arr.end(), 1, 9);
 
-    // 2nd smallest in [0, 4] = sorted({3,1,4,1,5})[1] = 3
+    // 2nd smallest in [0, 4] = sorted({3,1,4,1,5})[1] = 1
     std::cout << "2nd smallest in [0,4]: " << wt.kth(0, 4, 1) << "\n";
 
     // 3rd smallest in [2, 6] = sorted({4,1,5,9,2})[2] = 4
