@@ -418,7 +418,7 @@ str="hello world"
 echo "${str^}"             # Hello world
 
 # Uppercase all characters matching pattern
-echo "${str^^[a-m]}"      # Hello World  (H, l→L not matched since l>a-m... wait)
+echo "${str^^[a-m]}"      # Hello World  (uppercase only the chars a-m: H, e, l, l, o, space, W, o, r, l, d → "Hello World"; here H is already uppercase, e->E, l->L, l->L, o is not in a-m so unchanged, etc. Result depends on the input "Hello World" — characters in [a-m] are e, l, l, l, d → become E, L, L, L, D, giving "HELLo WorLD")
 
 # Actually let me be more careful:
 str="hello world"

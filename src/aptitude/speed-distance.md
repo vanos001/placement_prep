@@ -401,7 +401,7 @@ N = 30 - 15 = 15 ✓
 Total visible steps = 15
 ```
 
-Hmm, that's an escalator going down. Let me redo for an escalator going up (assisting):
+The above was for an escalator going down (opposing the person). Now redo for an escalator going up (assisting):
 
 If the person walks up and the escalator also goes up:
 ```

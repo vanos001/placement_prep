@@ -300,10 +300,10 @@ ip rule add from 192.168.2.0/24 table custom
 
 # View all routing rules
 $ ip rule show
-0:	from all lookup local
-32764:	from 192.168.2.0/24 lookup custom
-32766:	from all lookup main
-32767:	from all lookup default
+0:      from all lookup local
+32764:  from 192.168.2.0/24 lookup custom
+32766:  from all lookup main
+32767:  from all lookup default
 
 # ECMP (equal-cost multi-path) routing
 $ ip route add default nexthop via 10.0.0.1 weight 1 nexthop via 10.0.0.2 weight 1
@@ -865,6 +865,15 @@ $ openssl s_client -connect host:443  # TLS debugging
 ```
 
 ## Key Differences: OSI vs. TCP/IP Model
+
+| Aspect | OSI Model | TCP/IP Model |
+|--------|-----------|--------------|
+| Layers | 7 (Application, Presentation, Session, Transport, Network, Data Link, Physical) | 4 (Application, Transport, Internet, Network Access) — sometimes 5 if Physical is split out |
+| Origin | Theoretical / academic reference (ISO 7498-1, 1984) | Practical, born from ARPANET (1970s) |
+| Strictness | Strictly layered; each layer talks only to its immediate neighbors | Looser; allows "leaky" abstractions (e.g., ARP sits between layers 2 and 3) |
+| Session / Presentation | Separate layers | Folded into the Application layer |
+| Network vs. Internet | "Network" layer | "Internet" layer — explicitly about inter-networking |
+| Adoption | Taught widely, deployed rarely as-is | The model the actual Internet runs on |
 
 ## Further Reading
 

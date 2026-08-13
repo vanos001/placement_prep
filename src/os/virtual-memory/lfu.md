@@ -29,57 +29,32 @@ LFU does **not** have the stack property — it can exhibit **Belady's anomaly**
 
 **Given:** 3 page frames, reference string: `7, 0, 1, 2, 0, 3, 0, 4, 2, 3, 0, 3, 2, 1, 2, 0, 1, 7, 0, 1`
 
-| Step | Ref | Frames | Counters | Page Fault? | Action |
-|------|-----|--------|----------|-------------|--------|
-| 1 | 7 | [7, -, -] | {7:1} | ✅ Fault | Load 7 |
-| 2 | 0 | [7, 0, -] | {7:1, 0:1} | ✅ Fault | Load 0 |
-| 3 | 1 | [7, 0, 1] | {7:1, 0:1, 1:1} | ✅ Fault | Load 1 |
-| 4 | 2 | [2, 0, 1] | {2:1, 0:1, 1:1} | ✅ Fault | Evict 7 (count=1, tie→oldest) |
-| 5 | 0 | [2, 0, 1] | {2:1, 0:2, 1:1} | ❌ Hit | Increment 0 |
-| 6 | 3 | [2, 3, 1] | {2:1, 3:1, 1:1} | ✅ Fault | Evict 0... wait, 0 has count 2 |
+Tie-break rule (when multiple pages share the lowest count): evict the one that was loaded earliest (FIFO among ties).
 
-Let me redo. At step 6, we need to load page 3. Frames are [2, 0, 1] with counts {2:1, 0:2, 1:1}.
-- 2: count=1
-- 0: count=2
-- 1: count=1
+| Step | Ref | Frames | Counters | Event |
+|------|-----|--------|----------|-------|
+| 1 | 7 | [7, -, -] | {7:1} | ✅ Fault — load 7 |
+| 2 | 0 | [7, 0, -] | {7:1, 0:1} | ✅ Fault — load 0 |
+| 3 | 1 | [7, 0, 1] | {7:1, 0:1, 1:1} | ✅ Fault — load 1 |
+| 4 | 2 | [0, 1, 2] | {0:1, 1:1, 2:1} | ✅ Fault — evict 7 (count 1, loaded earliest at step 1) |
+| 5 | 0 | [0, 1, 2] | {0:2, 1:1, 2:1} | ❌ Hit — increment 0 |
+| 6 | 3 | [0, 2, 3] | {0:2, 2:1, 3:1} | ✅ Fault — evict 1 (count 1, loaded earlier than 2) |
+| 7 | 0 | [0, 2, 3] | {0:3, 2:1, 3:1} | ❌ Hit — increment 0 |
+| 8 | 4 | [0, 3, 4] | {0:3, 3:1, 4:1} | ✅ Fault — evict 2 (count 1, loaded earlier than 3) |
+| 9 | 2 | [0, 4, 2] | {0:3, 4:1, 2:1} | ✅ Fault — evict 3 (count 1, loaded earlier than 4) |
+| 10 | 3 | [0, 2, 3] | {0:3, 2:1, 3:1} | ✅ Fault — evict 4 (count 1) |
+| 11 | 0 | [0, 2, 3] | {0:4, 2:1, 3:1} | ❌ Hit — increment 0 |
+| 12 | 3 | [0, 2, 3] | {0:4, 2:1, 3:2} | ❌ Hit — increment 3 |
+| 13 | 2 | [0, 2, 3] | {0:4, 2:2, 3:2} | ❌ Hit — increment 2 |
+| 14 | 1 | [0, 3, 1] | {0:4, 3:2, 1:1} | ✅ Fault — evict 2 (count 2, tied with 3; 2 loaded earlier) |
+| 15 | 2 | [0, 3, 2] | {0:4, 3:2, 2:1} | ✅ Fault — evict 1 (count 1) |
+| 16 | 0 | [0, 3, 2] | {0:5, 3:2, 2:1} | ❌ Hit — increment 0 |
+| 17 | 1 | [0, 3, 1] | {0:5, 3:2, 1:1} | ✅ Fault — evict 2 (count 1, loaded earlier than 1) |
+| 18 | 7 | [0, 3, 7] | {0:5, 3:2, 7:1} | ✅ Fault — evict 1 (count 1) |
+| 19 | 0 | [0, 3, 7] | {0:6, 3:2, 7:1} | ❌ Hit — increment 0 |
+| 20 | 1 | [0, 3, 1] | {0:6, 3:2, 1:1} | ✅ Fault — evict 7 (count 1) |
 
-Lowest count is 1 (pages 2 and 1). Tie-breaking: evict the one loaded earliest (FIFO among ties). Page 2 was loaded at step 4, page 1 at step 3. So evict **1** (loaded earlier).
-
-| 6 | 3 | [2, 0, 3] | {2:1, 0:2, 3:1} | ✅ Fault | Evict 1 (count=1, loaded earliest) |
-| 7 | 0 | [2, 0, 3] | {2:1, 0:3, 3:1} | ❌ Hit | Increment 0 |
-| 8 | 4 | [2, 0, 4] | {2:1, 0:3, 4:1} | ✅ Fault | Evict 3 (count=1, loaded earliest among {2,3}) |
-| 9 | 2 | [2, 0, 4] | {2:2, 0:3, 4:1} | ❌ Hit | Increment 2 |
-| 10 | 3 | [3, 0, 4] | {3:1, 0:3, 4:1} | ✅ Fault | Evict 2 (count=2... wait) |
-
-Hmm, at step 10, frames are [2, 0, 4] with counts {2:2, 0:3, 4:1}. We need to load 3.
-- 2: count=2
-- 0: count=3
-- 4: count=1
-
-Lowest count = 1 (page 4). Evict **4**.
-
-| 10 | 3 | [2, 0, 3] | {2:2, 0:3, 3:1} | ✅ Fault | Evict 4 (count=1) |
-| 11 | 0 | [2, 0, 3] | {2:2, 0:4, 3:1} | ❌ Hit | Increment 0 |
-| 12 | 3 | [2, 0, 3] | {2:2, 0:4, 3:2} | ❌ Hit | Increment 3 |
-| 13 | 2 | [2, 0, 3] | {2:3, 0:4, 3:2} | ❌ Hit | Increment 2 |
-| 14 | 1 | [2, 0, 1] | {2:3, 0:4, 1:1} | ✅ Fault | Evict 3 (count=2, lowest) |
-| 15 | 2 | [2, 0, 1] | {2:4, 0:4, 1:1} | ❌ Hit | Increment 2 |
-| 16 | 0 | [2, 0, 1] | {2:4, 0:5, 1:1} | ❌ Hit | Increment 0 |
-| 17 | 1 | [2, 0, 1] | {2:4, 0:5, 1:2} | ❌ Hit | Increment 1 |
-| 18 | 7 | [2, 0, 7] | {2:4, 0:5, 7:1} | ✅ Fault | Evict 1 (count=2, lowest) |
-| 19 | 0 | [2, 0, 7] | {2:4, 0:6, 7:1} | ❌ Hit | Increment 0 |
-| 20 | 1 | [1, 0, 7] | {1:1, 0:6, 7:1} | ✅ Fault | Evict 2 (count=4... wait) |
-
-At step 20, frames are [2, 0, 7] with counts {2:4, 0:6, 7:1}. Need to load 1.
-- 2: count=4
-- 0: count=6
-- 7: count=1
-
-Lowest count = 1 (page 7). Evict **7**.
-
-| 20 | 1 | [2, 0, 1] | {2:4, 0:6, 1:1} | ✅ Fault | Evict 7 (count=1) |
-
-**Total page faults: 10**
+**Total page faults: 13** (compare: LRU gives 12, FIFO gives 15, Optimal gives 9 — for the same reference string)
 
 ---
 

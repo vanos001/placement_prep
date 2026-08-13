@@ -289,11 +289,31 @@ Rounding: if x_v ≥ 0.5, include v in cover → 2-approximation.
 #include <iostream>
 #include <vector>
 
+// LP-relaxation rounding for Vertex Cover (2-approximation).
+//
+// The TRUE algorithm solves the LP relaxation
+//     min  sum_v x_v
+//     s.t. x_u + x_v >= 1   for every edge (u,v)
+//          0 <= x_v <= 1
+// and then rounds: x_v >= 0.5  =>  include v in the cover.
+//
+// This file does NOT contain an LP solver. The `lpSolution` argument
+// below is the LP optimum you obtain from an external solver
+// (e.g. GLPK, lp_solve, Gurobi, scipy.optimize.linprog). We provide
+// the rounding step only, since that is the IP-specific part of the
+// algorithm. The 2-approximation guarantee holds for ANY feasible LP
+// solution, not just the optimum.
 std::vector<int> lpRoundingVertexCover(
-    const std::vector<std::pair<int,int>>& edges, int n) {
-    // In practice, solve LP with simplex. Here we use 0.5 as placeholder.
-    std::vector<double> lpSolution(n, 0.5);
-
+    const std::vector<std::pair<int,int>>& edges,
+    int n,
+    const std::vector<double>& lpSolution) {
+    // Sanity check: the LP solution must cover every edge.
+    for (auto [u, v] : edges) {
+        if (lpSolution[u] + lpSolution[v] < 1.0 - 1e-9) {
+            std::cerr << "Warning: LP solution is infeasible for edge ("
+                      << u << "," << v << ")\n";
+        }
+    }
     std::vector<int> cover;
     for (int v = 0; v < n; v++)
         if (lpSolution[v] >= 0.5) cover.push_back(v);
@@ -301,9 +321,15 @@ std::vector<int> lpRoundingVertexCover(
 }
 
 int main() {
+    // 4-cycle: edges (0,1), (1,2), (2,3), (3,0). LP optimum is x_v = 0.5 for all v
+    // (sum = 2), and rounding yields all 4 vertices. The TRUE optimal vertex
+    // cover is {0, 2} (or {1, 3}) of size 2 — so this rounding gives a
+    // 4/2 = 2-approximation, as the theory predicts.
     std::vector<std::pair<int,int>> edges = {{0,1},{1,2},{2,3},{3,0}};
-    auto cover = lpRoundingVertexCover(edges, 4);
-    std::cout << "Cover size: " << cover.size() << " (optimal is 2)\n";
+    std::vector<double> lpSolution(4, 0.5);  // from your LP solver
+    auto cover = lpRoundingVertexCover(edges, 4, lpSolution);
+    std::cout << "Cover size: " << cover.size()
+              << " (optimal is 2; ratio = " << cover.size() / 2.0 << ")\n";
     return 0;
 }
 ```

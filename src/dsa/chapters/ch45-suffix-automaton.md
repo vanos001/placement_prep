@@ -148,7 +148,8 @@ struct SuffixAutomaton {
         return true;
     }
 
-    // Count occurrences of a pattern
+    // Count occurrences of a pattern. Requires computeEndposSizes() to have
+    // been called first (it populates the `occ` field on every state).
     int countOccurrences(const string& pattern) {
         int v = 0;
         for (char c : pattern) {
@@ -156,14 +157,14 @@ struct SuffixAutomaton {
                 return 0;
             v = st[v].next[c];
         }
-        // v is the state for the pattern
-        // We need to compute the size of the endpos set
-        // This requires a separate DP (done after building)
-        return -1; // Placeholder; see full example below
+        // v is the state for the pattern; occ[v] was computed by computeEndposSizes()
+        return occ[v];
     }
 
-    // Compute endpos sizes (number of occurrences)
-    vector<int> computeEndposSizes() {
+    vector<int> occ;  // populated by computeEndposSizes()
+
+    // Compute endpos sizes (number of occurrences) and cache them in `occ`.
+    void computeEndposSizes() {
         // Topological order by len (descending)
         vector<int> order(sz);
         iota(order.begin(), order.end(), 0);
@@ -171,15 +172,13 @@ struct SuffixAutomaton {
             return st[a].len > st[b].len;
         });
 
-        vector<int> occ(sz, 0);
+        occ.assign(sz, 0);
         for (int i = 0; i < sz; i++) occ[i] = cnt[i];
 
         for (int v : order) {
             if (st[v].link >= 0)
                 occ[st[v].link] += occ[v];
         }
-
-        return occ;
     }
 };
 
@@ -198,14 +197,18 @@ int main() {
         cout << "  \"" << p << "\" found: " << (sa.contains(p) ? "YES" : "NO") << "\n";
     }
 
-    // Count occurrences
-    auto occ = sa.computeEndposSizes();
+    // Count occurrences — compute endpos sizes first, then query patterns
+    sa.computeEndposSizes();
     cout << "\nOccurrence counts for each state:\n";
     for (int i = 0; i < sa.sz; i++) {
         if (sa.cnt[i] > 0 || i == 0) {
             cout << "  State " << i << " (len=" << sa.st[i].len
-                 << "): " << occ[i] << " occurrences\n";
+                 << "): " << sa.occ[i] << " occurrences\n";
         }
+    }
+    cout << "\nPattern occurrence counts:\n";
+    for (const string& p : patterns) {
+        cout << "  \"" << p << "\": " << sa.countOccurrences(p) << "\n";
     }
 
     return 0;
@@ -244,7 +247,7 @@ int main() {
 - p=-1 → link[5]=0
 - last=5
 
-States: 0(root), 1(a), 2(ab/bb), 3(abb), 4(clone of 2), 5(abbc/bbc/bc/c)
+States: 0(root), 1(a), 2(ab), 3(abb), 4(clone of 2), 5(abbc/bbc/bc/c)
 
 Suffix links: link[1]=0, link[2]=4, link[3]=4, link[4]=0, link[5]=0
 

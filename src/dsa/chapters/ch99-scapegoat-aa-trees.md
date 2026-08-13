@@ -80,7 +80,7 @@ After insert 4:  1→2→3→4 (depth 3)
 After insert 5:  1→2→3→4→5 (depth 4)
   n=5, log_{1/0.75}(5) ≈ 5.6, depth 4 < 5.6, fine
 
-Hmm, let's use α = 0.5 for clearer example:
+Using α = 0.5 for a clearer example:
 After insert 5:  n=5, log_2(5) ≈ 2.3, depth 4 > 2.3 → SCAPEGOAT!
   Walk up from 5: check 4 (size 2, parent size 5, 2 > 0.5*5=2.5? No)
   Check 3 (size 3, parent size 5, 3 > 0.5*5=2.5? YES → Scapegoat!)

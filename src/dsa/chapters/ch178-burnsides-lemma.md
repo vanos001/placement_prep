@@ -165,12 +165,9 @@ The 6 distinct necklaces are:
 
 For n=4, there are 4 reflections. Let's use the 2 types:
 
-**f₀, f₁ (reflect through opposite vertices)**: Fixes strings where the axis characters are free and the other pairs match.
-- Pattern: a b a b (no, that's wrong for vertex reflection)
-- For vertex reflection through positions 0 and 2: a, b, a, d → need a=a (trivially) and b=d
-- So: 2² · 2 = 8 strings fixed? Let me be more careful.
+**f₀, f₁ (reflect through opposite vertices)**: For vertex reflection through positions 0 and 2, the string a,b,c,d is fixed iff a=a (trivially) and b=d. That gives 2³ = 8 fixed strings per such reflection.
 
-Actually, let's label positions 0,1,2,3.
+Label positions 0,1,2,3.
 
 **Reflection through axis between positions 0 and 1 (and 2 and 3)**:
 - Maps: 0↔3, 1↔2
@@ -199,7 +196,7 @@ So for the 4 reflections: |Fix| = 4, 4, 8, 8.
 |X/G| = (1/8)(16 + 2 + 4 + 2 + 4 + 4 + 8 + 8) = 48/8 = 6
 ```
 
-Hmm, same as rotation-only for n=4, c=2. Let me verify... Actually for n=4, c=2, the answer is indeed 6 for both necklaces and bracelets. This is because the bracelet symmetries don't merge any additional orbits in this specific case.
+For n=4, c=2, both necklaces and bracelets yield 6 — in this specific case the reflection symmetries don't merge any additional orbits beyond the rotational ones.
 
 For a different example: n=4, c=3 (3 colors):
 - Rotations: (81 + 3 + 9 + 3)/4 = 96/4 = 24 necklaces

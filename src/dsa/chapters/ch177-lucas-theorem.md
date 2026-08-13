@@ -435,9 +435,17 @@ def count_zero_mod_p(n, k, p):
     
     # Count i in [0, n] such that C(i, k) ≢ 0 (mod p)
     # This requires that for every digit position, k_j <= i_j
-    # This is a digit DP problem
-    # (Simplified version — full digit DP is in Chapter 85)
-    return -1  # Placeholder for digit DP connection
+    # (Kummer's theorem: v_p(C(i,k)) equals the number of carries
+    # when adding k and i-k in base p.)
+    #
+    # This is a digit-DP problem (see ch85-digit-dp.md for the template).
+    # Returning a stub here intentionally — wire it up to digit DP
+    # by adapting the countSumK template to the per-digit condition k_j <= i_j.
+    raise NotImplementedError(
+        "Connect to digit DP from ch85-digit-dp.md: count base-p numbers i "
+        "in [0, n] such that every base-p digit of i is >= the corresponding "
+        "digit of k."
+    )
 
 
 def binom_with_crt(n, k, mod):
@@ -498,7 +506,7 @@ def binom_with_crt(n, k, mod):
             # 1. Kummer's theorem for p-adic valuation
             # 2. Granville's extension of Lucas
             # Simplified: use direct computation for small n
-            rem = lucas(n, k, p)  # approximation; full implementation is complex
+            rem = lucas(n, k, p)  # NOTE: Lucas's theorem does NOT directly apply to prime powers; a correct implementation requires Granville's extension. This is a simplification for illustration only.
         remainders.append(rem)
         moduli.append(pe)
     

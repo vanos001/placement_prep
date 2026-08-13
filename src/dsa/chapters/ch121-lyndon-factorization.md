@@ -93,81 +93,24 @@ while i < n:
 - k=0, j=5 (j == n, loop ends)
 
 Now output factors while i ≤ k:
-- i=0, k=0: factor of length j-k = 5-0 = 5? No, wait...
+- i=0, k=0, j=5: factor length = j − k = 5. Push start index 0, advance i by 5 → i=5 (loop ends).
 
-Let me re-trace more carefully.
-
-**Input:** `s = "aabab"`, n=5
-
-**Iteration 1:** i=0
-- j=1, k=0
-- s[k]='a' vs s[j]='a': equal → k=1, j=2
-- s[k]='a' vs s[j]='b': 'a' < 'b' → k=0, j=3
-- s[k]='a' vs s[j]='a': equal → k=1, j=4
-- s[k]='a' vs s[j]='b': 'a' < 'b' → k=0, j=5
-- j == n, exit inner loop
-
-- i=0, k=0: output s[0..2] = "aab" (length j-k=5-0=5? No...)
-
-Actually, the factor length is j-k. Let me re-check the algorithm.
-
-The standard Duval's algorithm:
-
-```
-i = 0
-while i < n:
-    j = i + 1, k = i
-    while j < n and s[k] <= s[j]:
-        if s[k] < s[j]:
-            k = i
-        else:
-            k++
-        j++
-    while i <= k:
-        result.push_back(i)
-        i += j - k
-```
-
-The factor has length `j - k`, and starts at position `i`.
-
-Let me retrace:
-
-**Input:** `s = "aabab"`, n=5
-
-**Iteration:** i=0
-- j=1, k=0
-- s[0]='a' <= s[1]='a': equal → k=1, j=2
-- s[1]='a' <= s[2]='b': 'a' < 'b' → k=0, j=3
-- s[0]='a' <= s[3]='a': equal → k=1, j=4
-- s[1]='a' <= s[4]='b': 'a' < 'b' → k=0, j=5
-- j=5 == n, exit
-
-Now: i=0, k=0, j=5, factor length = j-k = 5
-- i <= k (0 <= 0): push i=0, i += 5 → i=5
-
-So the result is one factor: "aabab" (the whole string is a Lyndon word).
-
-Wait, is "aabab" a Lyndon word? Let me check its rotations:
-- aabab, ababa, babaa, abaab, baab
-- Sort: aabab, abaab, ababa, baab, babaa
-- "aabab" is the smallest → Yes, it IS a Lyndon word!
-
-Let me try a different example.
+So `s = "aabab"` decomposes into a single Lyndon factor: `"aabab"` (the whole string is a Lyndon word). Verification: its rotations are `aabab, ababa, babaa, abaab, baab`; sorted ascending gives `aabab < abaab < ababa < baab < babaa`, so `"aabab"` is indeed lexicographically smallest among its rotations — confirming it is a Lyndon word.
 
 **Input:** `s = "ababc"`, n=5
 
 **Iteration:** i=0
 - j=1, k=0
-- s[0]='a' <= s[1]='b': 'a' < 'b' → k=0, j=2
-- s[0]='a' <= s[2]='a': equal → k=1, j=3
-- s[1]='b' <= s[3]='b': equal → k=2, j=4
-- s[2]='a' <= s[4]='c': 'a' < 'c' → k=0, j=5
+- s[0]='a' vs s[1]='b': 'a' < 'b' → k=0, j=2
+- s[0]='a' vs s[2]='a': equal → k=1, j=3
+- s[1]='b' vs s[3]='b': equal → k=2, j=4
+- s[2]='a' vs s[4]='c': 'a' < 'c' → k=0, j=5
 - j=5 == n, exit
 
-i=0, k=0, j=5, factor length = 5-0 = 5
-- i <= k: push 0, i += 5 → i=5
+i=0, k=0, j=5, factor length = 5 − 0 = 5
+- i ≤ k (0 ≤ 0): push 0, i += 5 → i=5
 
-Again one factor. Let me try "baab":
+`"ababc"` is also a single Lyndon word.
 
 **Input:** `s = "baab"`, n=4
 
@@ -441,39 +384,22 @@ i=1: j=2, k=1
   i += 1 → i=2
 
 i=2: j=3, k=2
-  s[2]='a' <= s[3]='c': 'a' < 'c' → k=2, j=4
-  s[3]='c' <= s[4]='b': 'c' > 'b' → exit
-  Factor: i=2, len=2 → "ac"? Wait...
-
-Let me re-check: j=4, k=3? No, k was set to 2 initially, then:
-- s[2]='a' < s[3]='c' → k=i=2, j=3? No, j starts at i+1=3.
-
-Let me restart more carefully.
-
-i=2: j=3, k=2
   s[2]='a' <= s[3]='c': 'a' < 'c' → k=i=2, j=4
   s[2]='a' <= s[4]='b': 'a' < 'b' → k=i=2, j=5
   s[2]='a' <= s[5]='a': equal → k=3, j=6
   j==n, exit
-  Factor: i=2, len=6-3=3 → s[2..4] = "acb"? 
-
-Hmm, the factor length is j-k = 6-3 = 3. So factor starts at i=2 with length 3: s[2], s[3], s[4] = "acb". Wait, that doesn't seem right.
-
-Actually, the factor covers positions i to i+(j-k)-1. So:
-- Factor: positions 2 to 2+3-1 = 2 to 4 → "acb"
-
-But "acb" should be a Lyndon word. Rotations: acb, cba, bac. Sorted: acb, bac, cba. "acb" is smallest ✓.
-
-Then: i += j-k = 2+3 = 5
+  Factor: i=2, len = j-k = 6-3 = 3, covers positions 2..4 → "acb"
+  Verify "acb" is a Lyndon word: rotations are acb, cba, bac; sorted ascending gives acb < bac < cba, so "acb" is the smallest → ✓
+  i += 3 → i=5
 
 i=5: j=6, k=5
   j==n, exit immediately
-  Factor: i=5, len=6-5=1 → "a"
+  Factor: i=5, len = j-k = 6-5 = 1 → "a"
   i += 1 → i=6
 
 Result: ["c", "b", "acb", "a"]
 
-Check: c ≥ b ≥ acb ≥ a? 'c' > 'b' > 'a' (first char of acb) > 'a' ✓
+Sanity check (factors must be in non-increasing lexicographic order): 'c' > 'b' > 'a' (first char of "acb") >= 'a' ✓
 ```
 
 ---

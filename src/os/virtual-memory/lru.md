@@ -38,26 +38,26 @@ On page access(page):
 
 | Step | Ref | Frame 0 | Frame 1 | Frame 2 | Last Used (step#) | Page Fault? |
 |------|-----|---------|---------|---------|-------------------|-------------|
-| 1 | 7 | **7** | - | - | 7→1 | ✅ Fault |
-| 2 | 0 | 7 | **0** | - | 7→1, 0→2 | ✅ Fault |
-| 3 | 1 | 7 | 0 | **1** | 7→1, 0→2, 1→3 | ✅ Fault |
+| 1 | 7 | **7** | - | - | 7→1 | ✅ Fault (load) |
+| 2 | 0 | 7 | **0** | - | 7→1, 0→2 | ✅ Fault (load) |
+| 3 | 1 | 7 | 0 | **1** | 7→1, 0→2, 1→3 | ✅ Fault (load) |
 | 4 | 2 | **2** | 0 | 1 | 2→4, 0→2, 1→3 | ✅ Fault (evict 7, used at step 1) |
 | 5 | 0 | 2 | 0 | 1 | 2→4, 0→5, 1→3 | ❌ Hit |
-| 6 | 3 | 2 | **3** | 1 | 2→4, 3→6, 1→3 | ✅ Fault (evict 0... wait) |
-| 7 | 0 | 2 | 3 | **0** | 2→4, 3→6, 0→7 | ✅ Fault (evict 1, used at step 3) |
-| 8 | 4 | **4** | 3 | 0 | 4→8, 3→6, 0→7 | ✅ Fault (evict 2, used at step 4) |
-| 9 | 2 | 4 | **2** | 0 | 4→8, 2→9, 0→7 | ✅ Fault (evict 3, used at step 6) |
-| 10 | 3 | 4 | 2 | **3** | 4→8, 2→9, 3→10 | ✅ Fault (evict 0, used at step 7) |
-| 11 | 0 | **0** | 2 | 3 | 0→11, 2→9, 3→10 | ✅ Fault (evict 4, used at step 8) |
-| 12 | 3 | 0 | 2 | 3 | 0→11, 2→9, 3→12 | ❌ Hit |
-| 13 | 2 | 0 | 2 | 3 | 0→11, 2→13, 3→12 | ❌ Hit |
-| 14 | 1 | 0 | **1** | 3 | 0→11, 1→14, 3→12 | ✅ Fault (evict 2, used at step 13... wait) |
-| 15 | 2 | 0 | 1 | **2** | 0→11, 1→14, 2→15 | ✅ Fault (evict 3, used at step 12) |
-| 16 | 0 | 0 | 1 | 2 | 0→16, 1→14, 2→15 | ❌ Hit |
-| 17 | 1 | 0 | 1 | 2 | 0→16, 1→17, 2→15 | ❌ Hit |
-| 18 | 7 | **7** | 1 | 2 | 7→18, 1→17, 2→15 | ✅ Fault (evict 0, used at step 16) |
-| 19 | 0 | 7 | **0** | 2 | 7→18, 0→19, 2→15 | ✅ Fault (evict 1, used at step 17) |
-| 20 | 1 | 7 | 0 | **1** | 7→18, 0→19, 1→20 | ✅ Fault (evict 2, used at step 15) |
+| 6 | 3 | 2 | 0 | **3** | 2→4, 0→5, 3→6 | ✅ Fault (evict 1, used at step 3) |
+| 7 | 0 | 2 | 0 | 3 | 2→4, 0→7, 3→6 | ❌ Hit |
+| 8 | 4 | 2 | **4** | 3 | 2→4, 4→8, 3→6 | ✅ Fault (evict 0, used at step 7) |
+| 9 | 2 | 2 | 4 | 3 | 2→9, 4→8, 3→6 | ❌ Hit |
+| 10 | 3 | 2 | 4 | 3 | 2→9, 4→8, 3→10 | ❌ Hit |
+| 11 | 0 | 2 | 4 | **0** | 2→9, 4→8, 0→11 | ✅ Fault (evict 3, used at step 10) |
+| 12 | 3 | 2 | 4 | **3** | 2→9, 4→8, 3→12 | ✅ Fault (evict 0, used at step 11) |
+| 13 | 2 | 2 | 4 | 3 | 2→13, 4→8, 3→12 | ❌ Hit |
+| 14 | 1 | **1** | 4 | 3 | 1→14, 4→8, 3→12 | ✅ Fault (evict 2, used at step 13) |
+| 15 | 2 | 1 | 4 | **2** | 1→14, 4→8, 2→15 | ✅ Fault (evict 3, used at step 12) |
+| 16 | 0 | 1 | **0** | 2 | 1→14, 0→16, 2→15 | ✅ Fault (evict 4, used at step 8) |
+| 17 | 1 | 1 | 0 | 2 | 1→17, 0→16, 2→15 | ❌ Hit |
+| 18 | 7 | 1 | 0 | **7** | 1→17, 0→16, 7→18 | ✅ Fault (evict 2, used at step 15) |
+| 19 | 0 | 1 | 0 | 7 | 1→17, 0→19, 7→18 | ❌ Hit |
+| 20 | 1 | 1 | 0 | 7 | 1→20, 0→19, 7→18 | ❌ Hit |
 
 **Total page faults: 12** (better than FIFO's 15 for the same input)
 
@@ -361,7 +361,7 @@ This is the same data structure used for LRU caches in system design interviews.
 ## Common Mistakes
 
 1. **Confusing LRU with LFU**: LRU = least recently used (recency). LFU = least frequently used (frequency). They are fundamentally different.
-2. **Assining LRU is O(1) without specifying the data structure**: With a simple array, LRU is O(n). The O(1) implementation requires a hash map + doubly linked list.
+2. **Assuming LRU is O(1) without specifying the data structure**: With a simple array, LRU is O(n). The O(1) implementation requires a hash map + doubly linked list.
 3. **Not knowing the stack property**: In interviews, you should know that LRU is a stack algorithm and therefore immune to Belady's anomaly.
 4. **Confusing LRU with Optimal**: LRU looks at the **past** (last access time). Optimal looks at the **future** (next access time). Optimal is theoretically best but impractical.
 5. **Forgetting that real OSes approximate LRU**: No real OS implements exact LRU. They all use approximations (clock, NFU with aging, active/inactive lists).

@@ -272,9 +272,7 @@ Flow: 3. Residual:
 
 Update potentials. dist from s: s=0, a=∞ (edge s→a saturated), b=5 (s→b), t=6 (s→b→t).
 
-Wait, a is reachable via s→b→a? No, the edge is a→b, not b→a in original. But in residual, b→a exists with cap=1 (from the flow we pushed).
-
-Let me retrace. After step 2:
+Note: a is reachable via the residual reverse edge b→a (cap=1, cost=-1, created by the flow we just pushed on a→b). The full residual graph after step 2:
 Residual edges from s: s→a (cap=0, cost=1), s→b (cap=2, cost=5)
 Residual edges from a: a→s (cap=3, cost=-1), a→b (cap=1, cost=1), a→t (cap=0, cost=2)
 Residual edges from b: b→a (cap=1, cost=-1), b→t (cap=2, cost=1), b→s (cap=0, cost=-5)

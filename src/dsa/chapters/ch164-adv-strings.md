@@ -24,7 +24,7 @@ When dealing with massive repetitive datasets (version control histories, genomi
 
 ### Intuition
 
-Think of the string `abcabcabcabc`. Instead of storing all 12 characters, we can write:
+Think of the string `abcabc`. Instead of storing all 6 characters, we can write:
 
 ```
 S → X X
@@ -33,7 +33,7 @@ A → a
 B → b c
 ```
 
-Each rule captures a repeated substring. Larger repetitions compress further by reusing non-terminals.
+Each rule captures a repeated substring. Larger repetitions compress further by reusing non-terminals. For example, `abcabcabcabc` (12 characters) can be written as `S → Y Y` with `Y → X X`, reusing the same `X` definition above.
 
 ### Formal Explanation
 

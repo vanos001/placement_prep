@@ -971,11 +971,11 @@ int main() {
 | 3 | a | {a:3,b:1,c:2} | 1 | 3 | "bca" |
 | 4 | b | {a:3,b:4,c:2} | 2 | 3 | "cab" |
 | 5 | c | {a:3,b:4,c:5} | 3 | 3 | "abc" |
-| 6 | b | {a:3,b:6,c:5} | 4 | 3 | "cb" → "bcb"? |
+| 6 | b | {a:3,b:6,c:5} | 5 | 3 | "cb" → length 2 (window reset) |
 
-Wait, let me re-trace. At i=6, s[6]='b'. lastSeen['b']=4, start=3. Since 4 >= 3, start = 4+1 = 5. Window: "cb", length 2.
+Re-tracing step 6 in detail: s[6]='b'. lastSeen['b']=4 (>= start=3), so start = 4+1 = 5. Window: "b" at index 6, length 1 — but maxLen stays 3 from the earlier "abc".
 
-Actually the answer is 3 for "abc". Let me re-trace more carefully:
+The correct answer for the longest substring without repeating characters in "abcabcbb" is 3 (the substring "abc"). Trace:
 
 | i | s[i] | lastSeen[s[i]] | start | maxLen | Window |
 |---|---|---|---|---|---|

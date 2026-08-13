@@ -752,9 +752,9 @@ From 0 in transpose: → 2. From 2: → 1. From 1: → 0 (visited).
 ```
 **SCC 3: {0, 1, 2}**
 
-**Result:** Three SCCs: **{6}**, **{3, 4, 5}**, **{0, 1, 2}** — and vertex 7 was never reached as a start (it was visited via 6), so {7} should also be an SCC. Let me re-check: transpose edge (7,6) means 7→6 in transpose. Starting from 6, DFS visits 6 only (no outgoing from 6 in transpose). Then 7 is processed next and forms its own SCC.
+**Result:** Four SCCs: **{6}**, **{7}**, **{3, 4, 5}**, **{0, 1, 2}**. Vertex 7 is processed after 6 in the second pass: in the transpose graph, 7 has only the edge 7→6, so a DFS from 7 stays at {7}, forming its own SCC.
 
-**Final SCCs: {6}, {7}, {3, 4, 5}, {0, 1, 2}** — the condensation DAG is: {0,1,2} → {3,4,5} ← {6}, and {7} → {6} (via transpose edge 7→6 meaning original 6→7, so condensation edge {6} → {7}).
+**Final SCCs: {6}, {7}, {3, 4, 5}, {0, 1, 2}** — the condensation DAG is: {0,1,2} → {3,4,5} ← {6}, and {6} → {7} (original edge 6→7).
 
 ---
 

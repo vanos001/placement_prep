@@ -76,8 +76,7 @@ Comparisons:
   D || B: [2,0,0] vs [1,2,0] — D[0]=2 > B[0]=1, but D[1]=0 < B[1]=2
   D || C: concurrent too
   
-  D || A: [2,0,0] vs [1,0,0] — D > A, but wait... A → D (same process!)
-  Actually: A < D: [1,0,0] < [2,0,0] ✓ (correct: A is before D on P1)
+  D vs A: A → D (same process P1), so D is causally after A. Concurrency check gives A ≤ D (since [1,0,0] ≤ [2,0,0]).
 ```
 
 ### Detecting Concurrency

@@ -61,17 +61,19 @@ int main() {
     std::vector<int> v = {1, 2, 3};
     decltype(v.begin()) it = v.begin();  // iterator type
     
-    // Trailing return type (C++11)
-    auto add(int a, int b) -> decltype(a + b) {
-        return a + b;
-    }
-    
-    // C++14: return type deduction without trailing type
-    auto multiply(int a, int b) {
-        return a * b;  // Compiler deduces int
-    }
+    std::cout << add(2, 3) << " " << multiply(4, 5) << "\n";
     
     return 0;
+}
+
+// Trailing return type (C++11) — must be at namespace scope, NOT inside main
+auto add(int a, int b) -> decltype(a + b) {
+    return a + b;
+}
+
+// C++14: return type deduction without trailing type
+auto multiply(int a, int b) {
+    return a * b;  // Compiler deduces int
 }
 ```
 

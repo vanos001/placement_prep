@@ -110,29 +110,50 @@ Let N = 235, K = 7.
 
 ## 85.5 General Template
 
+Below is a minimal working template that counts numbers in `[0, n]` whose digit sum equals `K`. Replace the state dimensions and the acceptance test to adapt it to other digit-DP problems (e.g. "no two adjacent digits equal", "no digit `d`", "digit product equals `P`").
+
 ```cpp
 #include <iostream>
 #include <vector>
-#include <cstring>
 #include <string>
+#include <cstring>
 #include <functional>
 
-long long digitDP(long long n) {
+// Counts numbers x in [0, n] with sum_of_digits(x) == K.
+long long countSumK(long long n, int K) {
     std::string num = std::to_string(n);
-    int len = num.size();
+    int len = static_cast<int>(num.size());
 
-    // dp[pos][tight][...] — problem-specific dimensions
-    // Use -1 for unvisited states
-    // Example: dp[pos][tight][sum]
-    // For memoization, we use a lambda with capture
+    // dp[pos][tight][sum] = number of ways to finish positions [pos..len)
+    //                       such that digits so far sum to `sum`,
+    //                       under the `tight` constraint.
+    static long long memo[20][2][200];
+    std::memset(memo, -1, sizeof(memo));
 
-    // This template shows the skeleton; customize the state dimension
-    // for each specific problem.
+    std::function<long long(int, bool, int)> solve =
+        [&](int pos, bool tight, int sum) -> long long {
+            if (pos == len) return (sum == K) ? 1LL : 0LL;
+            long long& cached = memo[pos][tight][sum];
+            if (cached != -1) return cached;
 
-    // For this example: count numbers with digit sum == K
-    // (K is passed as a parameter in the actual implementation below)
+            int limit = tight ? (num[pos] - '0') : 9;
+            long long ways = 0;
+            for (int d = 0; d <= limit; ++d) {
+                ways += solve(pos + 1, tight && (d == limit), sum + d);
+            }
+            return cached = ways;
+        };
 
-    return 0; // Placeholder — see complete examples below
+    return solve(0, /*tight=*/true, /*sum=*/0);
+}
+
+int main() {
+    long long n = 100;
+    int K = 5;
+    std::cout << "Count in [0, " << n << "] with digit sum " << K
+              << " = " << countSumK(n, K) << "\n";
+    // [0, 100]: 5, 14, 23, 32, 41, 50  => 6
+    return 0;
 }
 ```
 

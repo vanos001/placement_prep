@@ -258,18 +258,7 @@ Root (0)
 - Node 3 (her): link → 0
 - Node 4 (hers): link → 0
 - Node 5 (hi): link → 1 (suffix "h" is a prefix → node 1)
-- Node 6 (his): link → 6? No... suffix "is" — not a prefix. Suffix "s" → not a prefix starting with any pattern start. → link → 0. Wait, let me reconsider. suffix "is" → not a prefix. suffix "s" → "s" starts "she"! So... node for "s" is node 7. So link[6] = 7.
-
-Actually, let me recompute. The failure link for node 6 (representing "his"):
-- Proper suffixes: "is", "s"
-- "is": not a prefix of any pattern
-- "s": IS a prefix (of "she" and starts at node 7)
-- So link[6] = 7
-
-For node 5 (representing "hi"):
-- Proper suffixes: "i"
-- "i": not a prefix of any pattern (no pattern starts with 'i')
-- So link[5] = 0
+- Node 6 (his): the proper suffixes of "his" are "is" and "s". "is" is not a prefix of any pattern. "s" is a prefix of "she" (node 7). So link[6] = 7.
 
 For node 9 (representing "she"):
 - Proper suffixes: "he", "e"

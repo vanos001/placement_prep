@@ -48,7 +48,7 @@ sequenceDiagram
     
     A1-->>P: PROMISE(n, {n_a1, v_a1})
     A2-->>P: PROMISE(n, {n_a2, v_a2})
-    A3-->>X: (no response - crashed)
+    A3-xP: (no response - crashed)
     
     Note over P: Majority (2/3) promised
 ```

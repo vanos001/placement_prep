@@ -553,111 +553,29 @@ Trie: root → 0 → 0 → ... → 0 → 1 → 1
 Step 2: Query max XOR with 10 (1010)
 Starting from MSB, we want opposite bits:
 Bit 31..5: all 0, desired 1, but trie only has 0 path → go 0
-Bit 4: num=0, desired=1, trie has 0 path (from 25 not inserted yet). Actually wait,
-  only 3 is in the trie. 3 = ...00011.
-  
-  Let me trace the bits we care about (last 8 bits for clarity):
-  3  = 00000011
-  10 = 00001010
-  
-  Bit 4: 10 has 0, desired 1. Trie: 3's bit 4 is 0. Only 0 child exists. Go 0.
-  Bit 3: 10 has 1, desired 0. Trie: 3's bit 3 is 0. Go 0. maxXor bit 3 = 0.
-  
-  Hmm wait, I need to be more careful. Let me trace the full trie path for 3:
-  3 in binary (32 bits): 00000000 00000000 00000000 00000011
-  
-  Trie path for 3: 0→0→0→...→0→0→1→1 (bits 31 down to 0)
-  
-  Query for 10: 00000000 00000000 00000000 00001010
-  Bit 31: num=0, want 1, trie only has 0 → go 0, xor bit = 0
-  ... (bits 30..5: same, all 0 in both)
-  Bit 4: num=0, want 1, trie only has 0 → go 0, xor bit = 0
-  Bit 3: num=1, want 0, trie has 0 → go 0, xor bit = 1! maxXor |= (1<<3) = 8
-  Bit 2: num=0, want 1, trie only has 0 (since 3's bit 2 is 0) → go 0, xor bit = 0
-  Bit 1: num=1, want 0, trie has 0 (3's bit 1 is 1... wait)
-  
-  3 = ...0011. Bit 1 = 1. So after bit 2, we're at the node for bit 2 of 3,
-  which is 0. Its child is 1 (bit 1 of 3). So children[0] exists but children[1]
-  also exists? No — we're at the node for bit position 2 of 3. 3's bit 2 = 0,
-  so only children[0] exists at that level.
-  
-  Hmm, let me re-think the trie structure. After inserting 3:
-  root → children[0] (bit 31 of 3 is 0)
-    → children[0] (bit 30)
-    → ... → children[0] (bit 2)
-    → children[1] (bit 1 of 3 is 1)
-    → children[1] (bit 0 of 3 is 1)
-  
-  Query for 10: 00000000 00000000 00000000 00001010
-  Bit 4: 0, want 1. children[1] doesn't exist at root→...→bit5 level. Go children[0].
-  Bit 3: 1, want 0. At bit 3 level, children[0] exists (3's bit 3 = 0). Go 0. maxXor |= 8.
-  Bit 2: 0, want 1. At bit 2 level, only children[0] (3's bit 2 = 0). Go 0.
-  Bit 1: 1, want 0. At bit 1 level, only children[1] (3's bit 1 = 1). Go 1. No xor contribution.
-  Bit 0: 0, want 1. At bit 0 level, only children[1] (3's bit 0 = 1). Go 1. maxXor |= 1.
-  
-  maxXor = 8 + 1 = 9. 3 XOR 10 = 9. ✓
+Bit 4: num=0 (10 has bit 4 = 0), want 1, trie only has 0 (only 3 is inserted, 3 has bit 4 = 0) → go 0
+Bit 3: num=1 (10 has bit 3 = 1), want 0, trie has 0 (3 has bit 3 = 0) → go 0, maxXor |= (1<<3) = 8
+Bit 2: num=0, want 1, trie has 0 (3 has bit 2 = 0) → go 0
+Bit 1: num=1, want 0, trie has 1 (3 has bit 1 = 1) → go 1, no xor contribution
+Bit 0: num=0, want 1, trie has 1 (3 has bit 0 = 1) → go 1, maxXor |= 1
+
+maxXor = 8 + 1 = 9. Verification: 3 XOR 10 = 9. ✓
 
 Step 3: Insert 10, query with 5:
   5 = 00000101
   3 XOR 5 = 6, 10 XOR 5 = 15 → max so far = 15
 
   Query 5 against trie (containing 3 and 10):
-  Bit 3: 5 has 0, want 1. Trie: both 3 and 10 have bit 3 = 0. Only 0 child. Go 0.
-  Bit 2: 5 has 1, want 0. Trie: 3's bit 2 = 0, 10's bit 2 = 0. children[0] exists. Go 0. maxXor |= 4.
-  Bit 1: 5 has 0, want 1. Trie: 3's bit 1 = 1, 10's bit 1 = 1. children[1] exists. Go 1. maxXor |= 2.
-  Bit 0: 5 has 1, want 0. Trie: 3's bit 0 = 1, 10's bit 0 = 0. children[0] exists (from 10). Go 0. maxXor |= 1.
-  
-  maxXor = 4+2+1 = 7. But 10 XOR 5 = 15. Something's wrong...
-  
-  Ah, I see the issue. The trie path isn't just at the "bit 2 level" — the path is determined by ALL higher bits. Since we go through children[0] for bits 31..4, and children[0] for bit 3, we're now at the node representing the path "all 0s for bits 31..3". Both 3 and 10 share this prefix. But at bit 2, 3 has 0 and 10 has 0. So still one path. At bit 1, 3 has 1 and 10 has 1. Still one path. At bit 0, 3 has 1 and 10 has 0 — now there's a branch!
+  The trie paths diverge at bit 3: 3 has bit 3 = 0, 10 has bit 3 = 1.
 
-  So at bit 0: 5 has 1, want 0. The trie node has both children[0] (from 10) and children[1] (from 3). We prefer children[0]. maxXor |= 1.
-  
-  Total: 4 + 2 + 1 = 7. But 10 XOR 5 = 15 (1111 in binary).
-  
-  Wait, I think I made an error. Let me recompute:
-  10 XOR 5 = 1010 XOR 0101 = 1111 = 15. ✓
-  
-  But the trie gives 7? That's wrong. Let me re-examine.
-  
-  Ah, I see my mistake. When I said "at bit 1, children[1] exists," I need to check which PATH we're on. We went through children[0] at bit 3. At bit 2, both 3 and 10 have 0. But the trie node at "bit 2" depends on the path taken at higher bits. Since we went 0→0→...→0 at all higher bits, and then 0 at bit 3, we're at a node where both 3 and 10 pass through.
-  
-  At bit 2: 3 has 0, 10 has 0. Only children[0]. Go 0. maxXor |= 4.
-  At bit 1: 3 has 1, 10 has 1. Only children[1]. We want 0 but only 1 exists. Go 1. No xor.
-  At bit 0: 3 has 1, 10 has 0. Both children exist. We want 0 (since 5 has 1). Go 0. maxXor |= 1.
-  
-  So maxXor = 4 + 0 + 1 = 5. Hmm, that's also not 15.
-  
-  Wait, I think the issue is that I'm computing the XOR with a SPECIFIC number in the trie, not the global maximum. Let me re-examine.
-  
-  findMaxXOR(5) should find the number in {3, 10} that maximizes XOR with 5.
-  3 XOR 5 = 6 (0110)
-  10 XOR 5 = 15 (1111)
-  So the answer should be 15, achieved with 10.
-  
-  Let me trace the trie more carefully. The trie contains:
-  3  = ...00000011
-  10 = ...00001010
-  
-  The trie path for 3: bits 31..3 are all 0, bit 2 is 0, bit 1 is 1, bit 0 is 1.
-  The trie path for 10: bits 31..4 are all 0, bit 3 is 1, bit 2 is 0, bit 1 is 1, bit 0 is 0.
-  
-  Wait! 10 = 1010. Bit 3 = 1! So at the bit 3 level:
-  - 3 has bit 3 = 0 → goes to children[0]
-  - 10 has bit 3 = 1 → goes to children[1]
-  
-  So at the "bit 3" level from the root's bit-4 child, both children[0] (from 3) and children[1] (from 10) exist!
-  
-  Now query for 5 = 0101:
-  Bit 4: 0, want 1. Only children[0] (both 3 and 10 have 0). Go 0.
-  Bit 3: 0, want 1. children[1] EXISTS (from 10)! Go 1. maxXor |= 8.
-  Now we're on the path that only 10 took. At bit 2: 10 has 0. children[0] exists. 5 has 1, want 0. Go 0. maxXor |= 4.
-  At bit 1: 10 has 1. children[1] exists. 5 has 0, want 1. Go 1. maxXor |= 2.
-  At bit 0: 10 has 0. children[0] exists. 5 has 1, want 0. Go 0. maxXor |= 1.
-  
-  maxXor = 8 + 4 + 2 + 1 = 15. ✓!
-  
-  Great, so the algorithm is correct. I was making errors in my manual trace by forgetting that 10 has bit 3 = 1.
+  Bit 4: 5 has 0, want 1. Both 3 and 10 have bit 4 = 0 → only children[0]. Go 0.
+  Bit 3: 5 has 0, want 1. children[1] EXISTS (from 10)! Go 1. maxXor |= 8.
+    Now we are on the path that only 10 took.
+  Bit 2: 10 has 0, 5 has 1, want 0. Go 0. maxXor |= 4.
+  Bit 1: 10 has 1, 5 has 0, want 1. Go 1. maxXor |= 2.
+  Bit 0: 10 has 0, 5 has 1, want 0. Go 0. maxXor |= 1.
+
+  maxXor = 8 + 4 + 2 + 1 = 15. Verification: 10 XOR 5 = 15. ✓
 ```
 
 **Complexity:** O(32n) = O(n) time, O(32n) = O(n) space.

@@ -70,7 +70,7 @@ The PRAM is the foundational theoretical model for parallel algorithms. It assum
 | **EREW** (Exclusive Read Exclusive Write) | No | No | Most practical |
 | **CREW** (Concurrent Read Exclusive Write) | Yes | No | Common pattern |
 | **CRCW** (Concurrent Read Concurrent Write) | Yes | Yes | Most powerful |
-| **ERCW** (Exclusive Read Concurrent Write) | Yes (write only) | No | Rarely used |
+| **ERCW** (Exclusive Read Concurrent Write) | No | Yes | Rarely used |
 
 **CRCW Sub-variants** for write conflicts:
 - **Common**: All concurrent writes must write the same value
@@ -156,9 +156,9 @@ For d = log₂(n) - 1, ..., 0:
 
 **Up-Sweep**:
 ```
-d=0 (stride 1): [3, 4, 7, 7, 4, 5, 6, 9]   (pairs: 1+3, 0+7, 1+4, 6+3)
-d=1 (stride 2): [3, 4, 7, 11, 4, 5, 6, 14]  (7+4, 6+9... wait)
-d=2 (stride 4): [3, 4, 7, 11, 4, 5, 6, 25]
+d=0 (stride 1): [3, 4, 7, 7, 4, 5, 6, 9]   (pairs: 3+1=4, 7+0=7, 4+1=5, 6+3=9)
+d=1 (stride 2): [3, 4, 7, 11, 4, 5, 6, 14]  (pairs: 4+7=11, 5+9=14)
+d=2 (stride 4): [3, 4, 7, 11, 4, 5, 6, 25]  (pair: 11+14=25)
 ```
 Total sum = 25 at A[7].
 

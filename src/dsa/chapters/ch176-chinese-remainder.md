@@ -436,12 +436,22 @@ def crt_counting(modulus, factors):
     """
     When modulus is not prime, split computation into prime powers,
     solve each independently, then combine with CRT.
-    
+
     Example: compute C(n, k) mod m where m = p1^e1 * p2^e2 * ...
+
+    This is a SCHEMATIC outline. A complete implementation requires
+    Granville's extension of Lucas's theorem for each prime power
+    factor (see ch177-lucas-theorem.md). The sketch below only shows
+    the CRT combination step.
     """
-    # Placeholder: the actual computation would be done mod each factor
-    # then combined via CRT
-    pass
+    # Solve independently mod each prime-power factor (omitted — non-trivial).
+    # For each (factor, exponent) pair, compute the answer mod p^e using
+    # Kummer's theorem (p-adic valuation) + Granville's formula.
+    remainders = []   # fill in: answer mod p^e for each factor
+    prime_powers = []  # fill in: each p^e
+
+    # Combine with CRT (uses the crt() helper defined earlier in this file).
+    return crt(remainders, prime_powers)[0]
 
 def count_with_crt(n, k, mod):
     """

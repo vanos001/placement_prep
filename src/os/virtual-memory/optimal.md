@@ -30,16 +30,7 @@ The Optimal algorithm is a **stack algorithm**: `S(n) ⊆ S(n+1)` for all refere
 
 **Given:** 3 page frames, reference string: `7, 0, 1, 2, 0, 3, 0, 4, 2, 3, 0, 3, 2, 1, 2, 0, 1, 7, 0, 1`
 
-| Step | Ref | Frames | Next Use Info | Evict | Reason |
-|------|-----|--------|---------------|-------|--------|
-| 1 | 7 | [7, -, -] | 7→step 18 | - | Fault, empty frame |
-| 2 | 0 | [7, 0, -] | 0→step 5 | - | Fault, empty frame |
-| 3 | 1 | [7, 0, 1] | 1→step 14 | - | Fault, empty frame |
-| 4 | 2 | [2, 0, 1] | 7→∞, 0→5, 1→14 | 7 | Fault, 7 used farthest (step 18), but 0 at step 5 is closer. Wait — 7 is never used until step 18, so evict 7. |
-| 5 | 0 | [2, 0, 1] | | - | Hit |
-| 6 | 3 | [2, 3, 1] | 2→9, 0→7, 1→14 | 0 | Fault, 0 next at step 7... Let me recalculate. |
-
-Let me redo this more carefully:
+**Algorithm:** on each fault with no free frame, evict the page whose **next future use** is farthest away. A page never used again is treated as ∞ (the maximum).
 
 **Reference string:** `7, 0, 1, 2, 0, 3, 0, 4, 2, 3, 0, 3, 2, 1, 2, 0, 1, 7, 0, 1`
 
@@ -57,89 +48,36 @@ Let me redo this more carefully:
 
 **Trace:**
 
-| Step | Ref | Frames | Next uses of frames | Evict | Fault? |
-|------|-----|--------|---------------------|-------|--------|
-| 1 | 7 | [7, -, -] | — | — | ✅ |
-| 2 | 0 | [7, 0, -] | — | — | ✅ |
-| 3 | 1 | [7, 0, 1] | — | — | ✅ |
-| 4 | 2 | [2, 0, 1] | 7→18, 0→5, 1→14 | **7** (farthest) | ✅ |
-| 5 | 0 | [2, 0, 1] | — | — | ❌ Hit |
-| 6 | 3 | [2, 3, 1] | 2→9, 0→7, 1→14 | **0** (next at 7, closest) | ✅ |
-
-Wait, we should evict the one used **farthest** in the future. Let me reconsider:
-
-- 2 is next used at step 9
-- 0 is next used at step 7
-- 1 is next used at step 14
-
-The page used farthest in the future is 1 (step 14). But wait, 0 is next used at step 7 (closest), and 1 at step 14 (farthest). So we evict **1**.
-
-Actually, let me re-examine. For step 6, we're replacing a page for page 3:
-- 2's next use: step 9
-- 0's next use: step 7  
-- 1's next use: step 14
-
-Farthest = 1 (step 14). Evict 1.
-
 | Step | Ref | Frames | Next uses of current pages | Evict | Fault? |
 |------|-----|--------|---------------------------|-------|--------|
 | 1 | 7 | [7] | — | — | ✅ |
 | 2 | 0 | [7, 0] | — | — | ✅ |
 | 3 | 1 | [7, 0, 1] | — | — | ✅ |
-| 4 | 2 | [7, 0, 1] | 7→18, 0→5, 1→14 | **7** (18, farthest) | ✅ |
+| 4 | 2 | [2, 0, 1] | 7→18, 0→5, 1→14 | **7** (18, farthest) | ✅ |
 | 5 | 0 | [2, 0, 1] | — | — | ❌ Hit |
 | 6 | 3 | [2, 0, 1] | 2→9, 0→7, 1→14 | **1** (14, farthest) | ✅ |
 | 7 | 0 | [2, 0, 3] | — | — | ❌ Hit |
-| 8 | 4 | [2, 0, 3] | 2→9, 0→11, 3→10 | **0** (11)... |
+| 8 | 4 | [2, 4, 3] | 2→9, 0→11, 3→10 | **0** (11, farthest future use) | ✅ |
 
-Hmm, 0's next use after step 8 is step 11. 2's next use is step 9. 3's next use is step 10. So farthest is 0 at step 11. Evict 0.
+At step 8, the pages in memory are [2, 0, 3] and we need to load 4. Next future uses:
+- 2 → step 9
+- 0 → step 11
+- 3 → step 10
 
-Wait, but that means 0 is evicted. Let me recalculate:
+Farthest future use is page 0 at step 11, so evict 0 and load 4.
 
-After step 8, the pages in memory are [2, 0, 3] and we need to load 4.
-- 2 next used at: step 9
-- 0 next used at: step 11
-- 3 next used at: step 10
-
-Farthest future use = 0 (step 11). Evict 0.
-
-| 8 | 4 | [2, 4, 3] | 2→9, 0→11, 3→10 | **0** (11) | ✅ |
-
-Actually wait. Looking at the reference string again: `7, 0, 1, 2, 0, 3, 0, 4, 2, 3, 0, 3, 2, 1, 2, 0, 1, 7, 0, 1`
-
-After step 8 (page 4), frames are [2, 4, 3]:
-- 2 next used at step 9 (immediate)
-- 4: never used again (∞)
-- 3 next used at step 10
-
-So 4 is never used again → evict 4? No wait, 4 was just loaded. We need to keep 4 and evict something else.
-
-Oh wait, I made an error. After step 7, frames are [2, 0, 3]. At step 8, we load page 4, which is a fault. We need to evict one of {2, 0, 3}:
-- 2 next at step 9
-- 0 next at step 11
-- 3 next at step 10
-
-Evict **0** (farthest, step 11). Frames become [2, 4, 3].
-
-Continuing:
 | 9 | 2 | [2, 4, 3] | — | — | ❌ Hit |
 | 10 | 3 | [2, 4, 3] | — | — | ❌ Hit |
-| 11 | 0 | [2, 4, 3] | 2→13, 4→∞, 3→12 | **4** (∞, never used) | ✅ |
-| 12 | 3 | [2, 0, 3] | — | — | ❌ Hit |
-| 13 | 2 | [2, 0, 3] | — | — | ❌ Hit |
-| 14 | 1 | [2, 0, 3] | 2→15, 0→16, 3→12... |
-
-Wait, 3's next use after step 14... looking at positions 15 onward: `2, 0, 1, 7, 0, 1`. No more 3s. So 3→∞.
-
-So at step 14: 2→15, 0→16, 3→∞. Evict **3** (∞). Frames: [2, 0, 1].
-
-| 14 | 1 | [2, 0, 1] | 2→15, 0→16, 3→∞ | **3** (∞) | ✅ |
+| 11 | 0 | [2, 3, 0] | 2→13, 3→12, 4→∞ | **4** (∞, never used again) | ✅ |
+| 12 | 3 | [2, 3, 0] | — | — | ❌ Hit |
+| 13 | 2 | [2, 3, 0] | — | — | ❌ Hit |
+| 14 | 1 | [2, 0, 1] | 2→15, 0→16, 3→∞ | **3** (∞, no more 3s in the reference) | ✅ |
 | 15 | 2 | [2, 0, 1] | — | — | ❌ Hit |
 | 16 | 0 | [2, 0, 1] | — | — | ❌ Hit |
 | 17 | 1 | [2, 0, 1] | — | — | ❌ Hit |
-| 18 | 7 | [2, 0, 1] | 2→∞, 0→19, 1→20 | **2** (∞) | ✅ |
-| 19 | 0 | [7, 0, 1] | — | — | ❌ Hit |
-| 20 | 1 | [7, 0, 1] | — | — | ❌ Hit |
+| 18 | 7 | [0, 1, 7] | 0→19, 1→20, 2→∞ | **2** (∞, no more 2s) | ✅ |
+| 19 | 0 | [0, 1, 7] | — | — | ❌ Hit |
+| 20 | 1 | [0, 1, 7] | — | — | ❌ Hit |
 
 **Total page faults: 9** (compared to FIFO's 15 and LRU's 12 for the same input!)
 

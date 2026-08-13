@@ -99,7 +99,7 @@ func pipeline() {
     squared := square(nums)
     doubled := double(squared)
     for v := range doubled {
-        fmt.Println(v) // 4, 16, 36, 64, 100
+        fmt.Println(v) // 2, 8, 18, 32, 50
     }
 }
 

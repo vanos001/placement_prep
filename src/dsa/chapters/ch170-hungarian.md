@@ -239,8 +239,8 @@ i=3 [  3    2    2 ]
   - not used: minv[1] = 3, minv[2] = 0, minv[3] = 2
   - j0 = 2
 - j0 = 2: used[2]=T, i0 = p[2]... p[2] = 0 (unset)
-  
-Hmm, this is getting confusing with the specific indexing. Let me just write clean code and explain the logic.
+
+The bookkeeping gets fiddly to trace by hand; the implementation below shows the canonical version with comments at each step.
 
 ---
 

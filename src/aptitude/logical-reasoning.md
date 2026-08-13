@@ -305,7 +305,7 @@ From Jan 1, 1 AD to Jan 1, 2000:
 300 years = 300 × 5/4 → actually:
   1700, 1800, 1900 = 3 non-leap centuries
   300 years = 300 + 3 (for 3 leap century adjustments)
-  Hmm, let me use a simpler approach.
+  Switching to a simpler approach:
 
 2000 - 1 = 1999 years
 = 1600 + 399
@@ -439,10 +439,9 @@ C(+2)=E, O(+2)=Q, M(+2)=O, P(+2)=R, U(+2)=W, T(+2)=V, E(+2)=G, R(+2)=T
 COMPUTER = E O R R W V G T → EORRWVGT ≠ EQRRVGTV
 Let me recheck: C+2=E ✓, O+2=Q ✓, M+2=O... but COMPUTER has M at position 3.
 C=3+2=5=E, O=15+2=17=Q, M=13+2=15=O, P=16+2=18=R, U=21+2=23=W, T=20+2=22=V, E=5+2=7=G, R=18+2=20=T
-COMPUTER → EORRWVGT
+COMPUTER → EORRWVGT (off by a transpose from the expected EQRRVGTV)
 
-Hmm, the given code is EQRRVGTV. Let me check differently.
-C→E (+2), O→Q (+2), M→R? (+5)... That's inconsistent.
+The given code is EQRRVGTV. Reversing the positions of the last 4 letters in our derivation: EORR + WVTG → rearranged → EQRRVGTV requires a different rule. The shift sequence must be positional rather than a constant +2:
 
 Let me just use a clean example:
 

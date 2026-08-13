@@ -92,7 +92,7 @@ nanaba  → last: a
 
 BWT = `nnnbaaa`
 
-Hmm, let me verify with suffix arrays instead. For `banana$`:
+Let me verify with suffix arrays instead. For `banana$`:
 
 Suffixes sorted:
 ```

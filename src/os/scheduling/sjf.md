@@ -52,10 +52,14 @@ Average Waiting Time = (0 + 14 + 6 + 1) / 4 = 5.25
 
 If FCFS (P1→P2→P3→P4):
 ```
-Average Waiting Time = (0 + 4 + 11 + 17) / 4 = 8.0
+P1: waits 0  (0..8)
+P2: waits 8  (arrives 1, runs 8..12)
+P3: waits 10 (arrives 2, runs 12..21)
+P4: waits 18 (arrives 3, runs 21..26)
+Average Waiting Time = (0 + 8 + 10 + 18) / 4 = 9.0
 ```
 
-SJF: 5.25 vs FCFS: 8.0 — SJF is 34% better!
+SJF: 5.25 vs FCFS: 9.0 — SJF is 42% better!
 
 ## SRTF (Preemptive SJF)
 
@@ -71,28 +75,29 @@ If a new process arrives with a shorter remaining time, the current process is p
 ### Gantt Chart (SRTF)
 
 ```
-Time:  0 1   5     10    18    26
-       |P|P2-|---P4--|---P1--|---P3--|
-       |1|[1 5][5  10][10  18][18  26]
+Time:  0 1   5     10    17    26
+       |P|P2-|---P4-|----P1-|----P3-|
+       |1|[1 5][5  10][10 17][17  26]
 ```
 
 - t=0: P1 arrives, runs (remaining: 8)
 - t=1: P2 arrives (remaining: 4) < P1 (remaining: 7) → preempt P1, run P2
 - t=5: P2 done. P1(7), P3(9), P4(5) → run P4 (shortest)
 - t=10: P4 done. P1(7), P3(9) → run P1
-- t=18: P1 done. P3(9) → run P3
+- t=17: P1 done. P3(9) → run P3
+- t=26: P3 done
 
 ### SRTF Calculations
 
 | Process | Arrival | Burst | Completion | Turnaround | Waiting |
 |---------|---------|-------|------------|------------|---------|
-| P1 | 0 | 8 | 18 | 18 | 10 |
+| P1 | 0 | 8 | 17 | 17 | 9 |
 | P2 | 1 | 4 | 5 | 4 | 0 |
 | P3 | 2 | 9 | 26 | 24 | 15 |
 | P4 | 3 | 5 | 10 | 7 | 2 |
 
 ```
-Average Waiting Time = (10 + 0 + 15 + 2) / 4 = 6.75
+Average Waiting Time = (9 + 0 + 15 + 2) / 4 = 6.5
 ```
 
 ## Optimality Proof (SJF)

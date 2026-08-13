@@ -340,7 +340,7 @@ Wait — let me redo this carefully:
 | 5 | -8      | 10 + (-8) = 2                       |
 | 6 | 0       | 2 + 0 = 2                           |
 
-Hmm, let me verify manually:
+Manual verification of the result:
 - Index 0: +2 = 2 ✓
 - Index 1: +5 +2 = 7 ✓
 - Index 2: +5 +3 +2 = 10 ✓
@@ -364,7 +364,7 @@ Reconstruction: [2, 7, 10, 10, 10, 2, 2]
 
 But expected: [2, 7, 10, 8, 8, 3, 0]
 
-The issue: `diff[3]` should have a -5 from the first update ending at r=4... no wait, r=4 means `diff[5] -= 5`. Let me re-examine.
+The issue is the diff indices: for an update `add v to [l, r]`, we do `diff[l] += v` and `diff[r+1] -= v`. Re-deriving:
 
 Update 1: add 5 to [1,4] → diff[1]+=5, diff[5]-=5
 Update 2: add 3 to [2,5] → diff[2]+=3, diff[6]-=3

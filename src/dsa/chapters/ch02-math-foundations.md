@@ -194,7 +194,7 @@ int main() {
 | 3 | 1 | 1 | 16 | 256 |
 | 4 | 0 | — | 16 | — |
 
-Wait, that gives 16. Let me recheck: 2^10 = 1024. Let me redo:
+The first trace was off. Corrected trace (computing 2^10 = 1024):
 
 | Step | exp | exp & 1 | result | base |
 |---|---|---|---|---|

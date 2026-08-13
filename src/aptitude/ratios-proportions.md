@@ -258,12 +258,10 @@ Let present ages be 3x and 5x.
 (3x+5)/(5x+5) = 3/4
 4(3x+5) = 3(5x+5)
 12x + 20 = 15x + 15
-3x = 5 → x = 5/3
-
-Wait, that gives fractional ages. Let me re-examine.
+3x = 5 → x = 5/3  (fractional — problem data is inconsistent; try a cleaner ratio below)
 ```
 
-Actually, let me redo:
+Redoing with cleaner numbers:
 ```
 (3x+5)/(5x+5) = 3/4
 12x + 20 = 15x + 15
@@ -271,7 +269,7 @@ Actually, let me redo:
 A = 3(5/3) = 5, B = 5(5/3) = 25/3
 ```
 
-Hmm, let me use a cleaner example.
+Let's work a cleaner example.
 
 **Problem:** The ratio of A's and B's ages is 5:3. After 6 years, ratio becomes 3:2. Find present ages.
 
@@ -354,8 +352,7 @@ Let ages be 7x and 9x.
 (7x+4)/(9x+4) = 5/6
 6(7x+4) = 5(9x+4)
 42x + 24 = 45x + 20
-3x = 4 → x = 4/3
-Hmm, fractional. Let me recheck.
+3x = 4 → x = 4/3  (fractional — original problem data may be inconsistent; redo with cleaner numbers below)
 ```
 
 Actually:

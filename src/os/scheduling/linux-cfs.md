@@ -16,7 +16,8 @@ vruntime += actual_runtime × (NICE_0_WEIGHT / process_weight)
 
 - **NICE_0_WEIGHT** = 1024 (weight of nice 0)
 - **process_weight** = weight corresponding to the process's nice value
-- Higher nice → higher weight → vruntime grows slower → gets more CPU
+- Lower (more negative) nice → higher weight → vruntime grows slower → gets more CPU
+- Higher (more positive) nice → lower weight → vruntime grows faster → gets less CPU
 
 ### Weight Table
 
