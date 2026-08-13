@@ -136,7 +136,7 @@ void *local = numa_alloc_local(size);
 void *interleaved = numa_alloc_interleaved(size);
 ```
 
-### /proc/<pid>/numa_maps
+### `/proc/<pid>/numa_maps`
 
 ```bash
 # View NUMA memory distribution for a process

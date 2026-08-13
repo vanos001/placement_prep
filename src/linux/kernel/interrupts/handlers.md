@@ -411,7 +411,7 @@ $ cat /proc/interrupts | head -5
   8:          0          0          0          1   IO-APIC   8-edge      rtc0
 ```
 
-### /proc/irq/<N>/
+### `/proc/irq/<N>/`
 
 ```bash
 $ ls /proc/irq/120/

@@ -318,7 +318,7 @@ Useful for conditions that might fire many times but you only want one report.
 
 ## /proc and /sys Interfaces
 
-### /proc/<pid>/stack
+### `/proc/<pid>/stack`
 
 ```bash
 # View current stack trace of a process
@@ -335,7 +335,7 @@ cat /proc/1234/stack
 
 This is useful for checking what a stuck process is doing.
 
-### /proc/<pid>/syscall
+### `/proc/<pid>/syscall`
 
 ```bash
 # Show current system call

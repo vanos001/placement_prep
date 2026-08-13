@@ -245,7 +245,7 @@ Container namespace:
   /dev           (slave of host /dev)  ← receives device hotplug
 ```
 
-### The /proc/<pid>/mountinfo File
+### The `/proc/<pid>/mountinfo` File
 
 This file shows detailed mount information including propagation:
 
@@ -260,7 +260,7 @@ cat /proc/self/mountinfo
 
 The `shared:N` tag indicates shared propagation with peer group N.
 
-### /proc/<pid>/mounts vs /proc/<pid>/mountinfo
+### `/proc/<pid>/mounts` vs `/proc/<pid>/mountinfo`
 
 - `/proc/<pid>/mounts`: Traditional mount listing (fstab format)
 - `/proc/<pid>/mountinfo`: Extended format with propagation info, mount IDs, and optional fields
