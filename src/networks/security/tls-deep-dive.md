@@ -162,7 +162,7 @@ sequenceDiagram
     participant S as Server
     
     Note over C,S: Initial handshake (1-RTT)
-    C->>S: ClientHello + PSK
+    C->>S: ClientHello
     S->>C: ServerHello + NewSessionTicket
     
     Note over C,S: Later resumption (0-RTT)

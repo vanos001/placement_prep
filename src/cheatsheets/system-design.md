@@ -106,7 +106,7 @@ Serial components:   A_total = A1 × A2 × A3
 Parallel components: A_total = 1 - (1-A1)(1-A2)
 
 Example: 3 nodes each 99.9% in parallel:
-  A = 1 - (1-0.999)³ = 1 - 0.000000001 = 99.999999999%
+  A = 1 - (1-0.999)³ = 1 - 0.000000001 = 99.9999999% (nine 9s)
 ```
 
 ### Caching

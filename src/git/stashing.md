@@ -89,7 +89,7 @@ git pull --rebase --autostash
 A: `pop` applies the stash and removes it from the stash list. `apply` applies without removing — useful when you want to apply the same stash to multiple branches.
 
 **Q: How do you stash only staged changes?**
-A: `git stash --keep-index` stashes only unstaged changes, keeping staged changes in place. To stash only staged changes: `git stash push -p` and select only staged hunks, or `git stash --keep-index` then `git stash push --cached` (the second approach requires care).
+A: `git stash --keep-index` stashes only unstaged changes, keeping staged changes in place. To stash only staged changes: `git stash push -p` and interactively select only the staged hunks. (There is no `--cached` flag on `git stash`.)
 
 **Q: What happens to stashed untracked files?**
 A: By default, `git stash` only stashes tracked files. Use `git stash -u` (or `--include-untracked`) to include untracked files. Use `git stash -a` to include ignored files too.

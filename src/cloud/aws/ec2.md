@@ -72,7 +72,7 @@ graph LR
 
 | Instance | vCPUs | Memory | Baseline CPU | Credits/Hour |
 |----------|-------|--------|-------------|-------------|
-| t3.micro | 2 | 1 GB | 20% | 24 |
+| t3.micro | 2 | 1 GB | 10% | 12 |
 | t3.small | 2 | 2 GB | 20% | 24 |
 | t3.medium | 2 | 4 GB | 20% | 24 |
 | t3.large | 2 | 8 GB | 30% | 36 |

@@ -214,7 +214,7 @@ def detect_conflict(v1, v2):
 | System | N | R | W | Notes |
 |--------|---|---|---|-------|
 | **Cassandra** | Configurable | Configurable | Configurable | CL.ONE, CL.QUORUM, CL.ALL |
-| **DynamoDB** | 3 | 2 | 2 | Default strong consistency |
+| **DynamoDB** | 3 | 2 | 2 | Default eventually consistent; strong reads via ConsistentRead=true |
 | **Riak** | Configurable | Configurable | Configurable | Default N=3, R=2, W=2 |
 | **Voldemort** | Configurable | Configurable | Configurable | LinkedIn's key-value store |
 

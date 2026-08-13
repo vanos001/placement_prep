@@ -144,12 +144,12 @@ graph LR
 
 **Dijkstra from A:**
 1. Start at A: {A: 0}
-2. Neighbors: B(2), C(5)
-3. Visit B (cost 2): C via B = 2+3=5 (no improvement), D = 2+1=3
-4. Visit D (cost 3): Done
-5. Visit C (cost 5): Done
+2. Neighbors of A: B(2), C(5)
+3. Visit B (cost 2): relax B's neighbors — C via B = 2+3=5 (no improvement over A→C=5), D = 2+1=3
+4. Visit D (cost 3): relax D's neighbors — C via D = 3+1=4 < 5, so update C to 4 via A→B→D→C
+5. Visit C (cost 4): Done
 
-**Result**: A→B(2), A→B→D(3), A→C(5)
+**Result**: A→B(2), A→B→D(3), A→B→D→C(4)
 
 ## Interview Questions
 

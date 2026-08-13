@@ -137,11 +137,10 @@ Profit% = [(1000 - 900) / 900] × 100 = (100/900) × 100 = 11.11%
 ### Dealer sells at x% loss using y% less weight
 
 ```
-Actual profit/loss% = [(100+x)/(100-y) - 1] × 100
+Actual profit% = [(100-x)/(100-y) - 1] × 100
 ```
 
-**Wait — correct formula:**
-
+(Use the same formula with +x in place of -x when selling at x% profit instead of loss.)
 If a dealer sells at a loss of x% but uses y% less weight:
 ```
 Net effect = [(100-x)/(100-y) - 1] × 100
@@ -155,7 +154,6 @@ If positive → profit, if negative → loss.
 = [90/80 - 1] × 100
 = [1.125 - 1] × 100 = 12.5% profit
 ```
-
 ## Buy X Get Y Free
 
 **Problem:** A shopkeeper offers "Buy 2 Get 1 Free". What is the discount%?
@@ -217,8 +215,10 @@ Total CP = S[100/(100+x) + 100/(100-x)]
 = S × 20000 / (10000-x²)
 Total SP = 2S
 Loss = Total CP - Total SP = 2S × x²/(10000-x²)
-Loss% = x²/100 (approximately, when x is small)
-Exact: Loss% = [x²/(10000-x²)] × 100 ≈ x²/100
+Loss% (as fraction of CP) = [x²/(10000-x²)] × 100
+
+When x is small, 10000-x² ≈ 10000, so Loss% ≈ x²/100.
+Note: For the standard interview shortcut, **Loss% = x²/100** is the exact answer when "two items at same SP, one at x% profit and one at x% loss" — both items are referenced to their CP, and the calculation simplifies to x²/100 exactly (not approximately). The formula above is the corresponding expression when SP is held fixed and CP varies.
 ```
 
 ### Different Percentages

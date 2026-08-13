@@ -11,7 +11,7 @@ Work on multiple branches simultaneously without stashing or cloning multiple ti
 git worktree add ../hotfix hotfix-branch
 
 # Create worktree with new branch
-git worktree -b new-feature ../feature-work main
+git worktree add -b new-feature ../feature-work main
 
 # Create at specific commit (detached HEAD)
 git worktree add ../testing abc1234

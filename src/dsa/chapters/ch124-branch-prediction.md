@@ -513,9 +513,15 @@ int binarySearch(const std::vector<int>& arr, int target) {
 // Branchless binary search (using conditional moves)
 int binarySearchBranchless(const std::vector<int>& arr, int target) {
     int lo = 0, n = arr.size();
-    for (int step = n / 2; step > 0; step /= 2) {
+    if (n == 0) return -1;
+    // Start with the largest power of 2 <= n
+    int step = 1;
+    while (step * 2 <= n) step *= 2;
+    for (; step > 0; step /= 2) {
         // Branchless: always update lo, but conditionally
-        lo += (arr[lo + step] < target) ? step : 0;
+        if (lo + step < n && arr[lo + step] <= target) {
+            lo += step;
+        }
     }
     return (lo < n && arr[lo] == target) ? lo : -1;
 }

@@ -37,13 +37,13 @@ Stores **file content only** — no filename, no permissions, no directory struc
 ```bash
 # Manually create a blob
 echo "Hello, Git" | git hash-object -w --stdin
-# Output: 557db03de997c86a4a028e1ebd3a1ceb225be238
+# Output: b7aec520dec0a7516c18eb4c68b64ae1eb9b5a5e
 
 # Inspect a blob
-git cat-file -p 557db03
+git cat-file -p b7aec52
 # Output: Hello, Git
 
-git cat-file -t 557db03
+git cat-file -t b7aec52
 # Output: blob
 ```
 
@@ -203,8 +203,8 @@ commit: "commit <size>\0<commit-data>"
 
 ```bash
 # Compute a blob hash manually
-echo -n "Hello, Git" | (printf "blob 11\0"; cat) | sha1sum
-# 557db03de997c86a4a028e1ebd3a1ceb225be238
+echo "Hello, Git" | (printf "blob 11\0"; cat) | sha1sum
+# b7aec520dec0a7516c18eb4c68b64ae1eb9b5a5e
 ```
 
 > **Note**: Git is transitioning to SHA-256 for new repositories.

@@ -96,24 +96,20 @@ B alone = 35/2 = 17.5 days
 
 ### "A works for x days, then B joins"
 
-**Problem:** A starts a job and works for 3 days. Then B joins and they finish in 3 more days. A alone takes 10 days, B alone takes 15 days. Verify.
+**Problem:** A starts a job and works alone for 4 days. Then B joins and they finish in 3 more days. A alone takes 10 days, B alone takes 15 days. Verify.
 
 **Solution:**
 ```
-Total work = 30
-A's rate = 3, B's rate = 2
-A works alone for 3 days → 3×3 = 9
-A+B work for 3 days → 5×3 = 15
-Total done = 24 ≠ 30 → Need to adjust problem
+Total work = LCM(10, 15) = 30 units
+A's rate = 30/10 = 3 units/day
+B's rate = 30/15 = 2 units/day
+A works alone for 4 days → 3×4 = 12 units done
+Remaining = 30 - 12 = 18 units
+A+B together = 5 units/day → 18/5 = 3.6 days
+Total time = 4 + 3.6 = 7.6 days
 ```
 
-Let me reframe: **A starts, works for 4 days, then B joins. Total time?**
-```
-A alone for 4 days → 3×4 = 12
-Remaining = 30 - 12 = 18
-Together at 5/day → 18/5 = 3.6 days
-Total = 4 + 3.6 = 7.6 days
-```
+If instead A works 3 days alone and then B joins for 3 more days: 3×3 + 5×3 = 9 + 15 = 24 units, leaving 6 units unfinished — so the problem data must be consistent.
 
 ## Efficiency Concept
 

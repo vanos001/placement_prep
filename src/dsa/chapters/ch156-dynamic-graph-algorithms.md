@@ -339,7 +339,7 @@ public class DynamicMST {
         
         dmst.removeEdge(2, 3);
         dmst.addEdge(1, 3, 1);
-        System.out.println("MST weight: " + dmst.computeMST()); // 8
+        System.out.println("MST weight: " + dmst.computeMST()); // 10
     }
 }
 ```

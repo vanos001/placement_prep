@@ -23,7 +23,7 @@ graph TB
 
 ```
 Physical clocks are imperfect:
-  - Clock drift: ~1-10 ms per day for quartz oscillators
+  - Clock drift: ~1-10 seconds per day for quartz oscillators (typical 10-100 ppm)
   - Clock skew: Different machines have different clock values
   - NTP synchronization: Only accurate to ~1-50 ms
   - Leap seconds: Can cause clock jumps
@@ -215,7 +215,7 @@ Concurrent pairs:
 
 | Concept | Description |
 |---------|-------------|
-| **Physical Clocks** | Imperfect; drift ~1ms/day; NTP accuracy ~1-50ms |
+| **Physical Clocks** | Imperfect; drift ~1-10 sec/day; NTP accuracy ~1-50ms |
 | **TrueTime** | Returns interval [earliest, latest]; used by Spanner |
 | **Happened-Before** | Logical ordering; doesn't need physical time |
 | **Concurrent** | No causal relationship; order doesn't matter |

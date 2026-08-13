@@ -218,8 +218,8 @@ L = [ 1 -1  0  0]
 For P₄, the eigenvalues of L are approximately:
 - λ₁ = 0
 - λ₂ ≈ 0.586
-- λ₃ ≈ 1.414
-- λ₄ ≈ 2.414
+- λ₃ = 2.0
+- λ₄ ≈ 3.414
 
 **Step 5: Interpret**
 
@@ -243,13 +243,17 @@ Power iteration finds the largest eigenvalue by repeatedly multiplying by the ma
 Initial:  v = [1, 1, 1] / √3
 
 Iteration 1:
-  M·v = [1/√3, 2/√3, 1/√3]  (for L of P₃)
-  Normalize: v = [0.408, 0.816, 0.408]
-  Rayleigh quotient ≈ 0.0
+  L·v = [0, 0, 0]  (since [1,1,1] is the eigenvector for λ₁=0)
+  → v is already the null-space vector; power iteration on L from this
+    starting vector collapses to λ₁=0. To find the Fiedler vector (λ₂),
+    you must either (a) project out the null space (subtract the mean from v)
+    or (b) use inverse iteration with a shift. Standard power iteration on L
+    converges to the **largest** eigenvalue (λ_max), not λ₂.
 
-Iteration 2:
-  M·v = [0.408, 0.816, 0.408] → [−0.408, 0, 0.408]
-  ...converges to Fiedler vector for λ₂
+To find λ₂ correctly, start with a vector orthogonal to [1,1,1]/√3, e.g.
+v = [1, 0, -1] / √2, then iterate v ← L·v / ‖L·v‖. This converges to
+the eigenvector of the largest nonzero eigenvalue (λ_max for P₃ = 3).
+For λ₂ specifically, use **inverse iteration** with L⁻¹ (or a shifted variant).
 ```
 
 ---

@@ -177,19 +177,21 @@ graph TD
 
 ### FCFS (P1 → P2 → P3 → P4)
 
+By arrival order: P1(0) → P2(1) → P3(2) → P4(3).
+
 ```
-Time:  0        8  12    17      26
-       |---P1---|P2|--P4--|---P3---|
+Time:  0        8  12      21      26
+       |---P1---|P2|---P3---|---P4---|
 ```
 
 | Process | CT | TAT | WT | RT |
 |---------|-----|-----|-----|-----|
 | P1 | 8 | 8 | 0 | 0 |
 | P2 | 12 | 11 | 7 | 7 |
-| P3 | 26 | 24 | 15 | 15 |
-| P4 | 17 | 14 | 9 | 9 |
+| P3 | 21 | 19 | 10 | 10 |
+| P4 | 26 | 23 | 18 | 18 |
 
-**Avg TAT:** 14.25 | **Avg WT:** 7.75 | **Avg RT:** 7.75
+**Avg TAT:** 15.25 | **Avg WT:** 8.75 | **Avg RT:** 8.75
 
 ### SJF (Non-preemptive)
 
@@ -214,18 +216,25 @@ Time:  0        8 12  17      26
 ### SRTF (Preemptive SJF)
 
 ```
-Time:  0 1   5     10    18    26
-       |P|P2-|---P4--|---P1--|---P3--|
+Time:  0 1   5     10    17    26
+       |P|P2-|---P4-|----P1-|----P3-|
 ```
+
+- t=0: P1 arrives, runs (rem 8)
+- t=1: P2 arrives (rem 4) < P1 (rem 7) → preempt, run P2
+- t=5: P2 done. P1(7), P3(9), P4(5) → run P4
+- t=10: P4 done. P1(7), P3(9) → run P1
+- t=17: P1 done. Run P3
+- t=26: P3 done
 
 | Process | CT | TAT | WT | RT |
 |---------|-----|-----|-----|-----|
-| P1 | 18 | 18 | 10 | 0 |
+| P1 | 17 | 17 | 9 | 0 |
 | P2 | 5 | 4 | 0 | 0 |
-| P3 | 26 | 24 | 15 | 16 |
+| P3 | 26 | 24 | 15 | 15 |
 | P4 | 10 | 7 | 2 | 2 |
 
-**Avg TAT:** 13.25 | **Avg WT:** 6.75 | **Avg RT:** 4.5
+**Avg TAT:** 13.0 | **Avg WT:** 6.5 | **Avg RT:** 4.25
 
 ### Round Robin (quantum=3)
 
@@ -264,36 +273,35 @@ Time:  0  3  6  9  12  15  18  21  24  26
 | P4 | 3 | 5 | 2 |
 
 ```
-Time:  0  1  5  6  11  14  19      26
-       |P1|P2|P4|P1|P4|P1|---P3---|
-
-Wait, let me recalculate:
-t=0: P1 runs (prio 3)
-t=1: P2 arrives (prio 1) → preempt, run P2
-t=5: P2 done. P1(3,prio3), P3(9,prio4), P4(5,prio2) → P4 (prio 2)
-t=10: P4 done. P1(3,prio3), P3(9,prio4) → P1
-t=13: P1 done. P3(9,prio4) → P3
-t=22: P3 done
+Time:  0 1     5     10    17      26
+       |P|P2---|---P4-|----P1-|----P3-|
 ```
+
+- t=0: P1 runs (prio 3, only process)
+- t=1: P2 arrives (prio 1) → preempt P1 (rem 7), run P2
+- t=5: P2 done. P1(7,prio3), P3(9,prio4), P4(5,prio2) → run P4 (prio 2)
+- t=10: P4 done. P1(7,prio3), P3(9,prio4) → run P1
+- t=17: P1 done. Run P3
+- t=26: P3 done
 
 | Process | CT | TAT | WT | RT |
 |---------|-----|-----|-----|-----|
-| P1 | 13 | 13 | 5 | 0 |
+| P1 | 17 | 17 | 9 | 0 |
 | P2 | 5 | 4 | 0 | 0 |
-| P3 | 22 | 20 | 11 | 11 |
+| P3 | 26 | 24 | 15 | 15 |
 | P4 | 10 | 7 | 2 | 2 |
 
-**Avg TAT:** 11.0 | **Avg WT:** 4.5 | **Avg RT:** 3.25
+**Avg TAT:** 13.0 | **Avg WT:** 6.5 | **Avg RT:** 4.25
 
 ### Algorithm Comparison Summary
 
 | Algorithm | Avg TAT | Avg WT | Avg RT | Starvation |
 |-----------|---------|--------|--------|------------|
-| FCFS | 14.25 | 7.75 | 7.75 | No |
+| FCFS | 15.25 | 8.75 | 8.75 | No |
 | SJF | 14.25 | 7.75 | 7.75 | Yes |
-| SRTF | 13.25 | 6.75 | 4.5 | Yes |
+| SRTF | 13.0 | 6.5 | 4.25 | Yes |
 | RR (q=3) | 20.0 | 13.5 | 3.0 | No |
-| Priority | 11.0 | 4.5 | 3.25 | Yes |
+| Priority | 13.0 | 6.5 | 4.25 | Yes |
 
 **Key observations:**
 - **SJF/SRTF** minimize waiting time (SJF is provably optimal)

@@ -174,16 +174,13 @@ struct Result {
 // Solve unconstrained problem with penalty lambda per partition
 Result solve(const std::vector<int>& arr, long long lambda) {
     int n = arr.size();
-    // DP: dp[i] = min cost to partition arr[0..i-1]
-    // Each partition's cost is its sum, and each partition costs lambda extra
     long long currentSum = 0;
     long long maxInCurrent = 0;
-    int partitions = 0;
+    int partitions = 1;  // Always start with at least one partition
 
     for (int x : arr) {
-        // Should we start a new partition here?
-        // If extending would make currentSum > lambda + maxInCurrent, start new
-        if (partitions > 0 && currentSum + x > maxInCurrent + lambda) {
+        // If extending would make currentSum > lambda + maxInCurrent, start new partition
+        if (currentSum + x > maxInCurrent + lambda) {
             partitions++;
             currentSum = x;
             maxInCurrent = x;
@@ -192,8 +189,6 @@ Result solve(const std::vector<int>& arr, long long lambda) {
             maxInCurrent = std::max(maxInCurrent, currentSum);
         }
     }
-    // First partition always starts at index 0
-    if (partitions == 0) partitions = 1;
 
     return {maxInCurrent + lambda * partitions, partitions};
 }
@@ -415,14 +410,14 @@ The Alien Trick is dramatically faster when n and K are large.
 
 | Iter | λ | Cost | Partitions | Action |
 |---|---|---|---|---|
-| 1 | 0 | 17 (all in one) | 1 | partitions < K → decrease λ |
-| 2 | -5 | 17 + (-5)·1 = 12 | 1 | still < K → decrease λ |
-| 3 | -8 | Split [7,2,5] + [10,8] → max=14, cost=14+(-8)·2=-2 | 2 | partitions = K → record answer = -2 - (-8)·2 = 14, increase λ |
-| 4 | -6 | Split [7,2,5] + [10,8] → cost=14+(-6)·2=2 | 2 | partitions = K → answer = 2 - (-6)·2 = 14, increase λ |
-| 5 | -4 | [7,2,5,10]+[8] → max=24, cost=24+(-4)·2=16 | 2 | answer = 16 - (-4)·2 = 24, increase λ |
+| 1 | 0 | 32 (all in one, max=32) | 1 | partitions < K → decrease λ |
+| 2 | -5 | 32 + (-5)·1 = 27 | 1 | still < K → decrease λ |
+| 3 | -8 | Split [7,2,5] + [10,8] → max=18, cost=18+(-8)·2=2 | 2 | partitions = K → record answer = 2 - (-8)·2 = 18, increase λ |
+| 4 | -6 | Split [7,2,5] + [10,8] → max=18, cost=18+(-6)·2=6 | 2 | partitions = K → answer = 6 - (-6)·2 = 18, increase λ |
+| 5 | -4 | [7,2,5]+[10,8] → max=18, cost=18+(-4)·2=10 | 2 | answer = 10 - (-4)·2 = 18, increase λ |
 | ... | ... | ... | ... | converges |
 
-**Final answer:** 14 (partition [7,2,5] and [10,8], max sum = 14)
+**Final answer:** 18 (partition [7,2,5] and [10,8], max sum = max(14, 18) = 18)
 
 ---
 

@@ -324,9 +324,11 @@ class Memory:
     def free(self, address): print(f"Memory: Freeing {address}")
 
 class SSD:
-    def read(self, sector): print(f"SSD: Reading sector {sector}")
+    def read(self, sector):
+        print(f"SSD: Reading sector {sector}")
         return "boot_data"
-    def write(self, sector, data): print(f"SSD: Writing to sector {sector}")
+    def write(self, sector, data):
+        print(f"SSD: Writing to sector {sector}")
 
 class Bootloader:
     def load_kernel(self): print("Bootloader: Loading kernel")

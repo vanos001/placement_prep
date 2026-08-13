@@ -56,26 +56,28 @@ ps -o pid,ni,pri,comm -p <PID>
 ### Non-preemptive Priority
 
 ```
-Time:  0     10 11  13    14     19
-       |--P1--|P2|--P3--|P4|---P5---|
+Time:  0        10 11     16  18 19
+       |---P1---|P2|---P5---|P3|P4|
 ```
 
-P1 arrives first (only one available), runs to completion. Then P2 (priority 1), P3 (priority 4), P4 (priority 5), P5 (priority 2).
+P1 arrives first (only one available), runs to completion at t=10. The ready queue then contains P2(prio 1), P3(prio 4), P4(prio 5), P5(prio 2). Sorted by priority (lower=higher): **P2 → P5 → P3 → P4**.
 
 ### Preemptive Priority
 
 ```
-Time:  0  1  2  3  4     9  10 12 13    23
-       |P1|P2|P3|P4|---P5---|P3|P1 remaining--|
+Time:  0  1  2     4        9        16  18 19
+       |P1|P2|--P1--|---P5---|---P1---|P3|P4|
 ```
 
-- t=0: P1 runs (priority 3)
-- t=1: P2 arrives (priority 1) → preempt P1, run P2
-- t=2: P2 done. P1(3), P3(4) → P1 runs (higher priority)
-- t=3: P4 arrives (priority 5) → lower than P1, continue
-- t=4: P5 arrives (priority 2) → preempt P1, run P5
-- t=9: P5 done. P1(3), P3(4), P4(5) → P1 runs
-- ...continues
+- t=0: P1 runs (only process, prio 3)
+- t=1: P2 arrives (prio 1 < 3) → preempt P1 (rem 9), run P2
+- t=2: P2 done. P1(9, prio 3), P3(2, prio 4 just arrived) → P1 runs (prio 3 < 4)
+- t=3: P4 arrives (prio 5) → lower than P1, P1 continues (rem 8)
+- t=4: P5 arrives (prio 2 < 3) → preempt P1 (rem 8), run P5
+- t=9: P5 done. P1(8, prio 3), P3(2, prio 4), P4(1, prio 5) → P1 runs
+- t=16: P1 done (8 units). P3(2, prio 4), P4(1, prio 5) → P3 runs
+- t=18: P3 done. P4 runs
+- t=19: P4 done. Total elapsed = 19
 
 ## Starvation Problem
 

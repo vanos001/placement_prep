@@ -178,12 +178,13 @@ Non-pipelined execution:
 
 5-stage pipelined execution:
   Clock period = 50 ns (longest stage delay + overhead)
-  Pipeline fill: 4 × 50 ns = 200 ns
-  Steady state: 1 instruction × 50 ns = 50 ns
-  Total: 200 + 50 = 250 ns
+  Time for all 4 instructions to complete = (k + n - 1) × τ
+                                           = (5 + 4 - 1) × 50 ns
+                                           = 8 × 50 ns = 400 ns
+  (k = number of stages = 5, n = number of instructions = 4, τ = clock period)
 
-Speedup = 800 / 250 = 3.2×
-(Not quite 5× due to pipeline overhead and fill time)
+Speedup = 800 / 400 = 2.0×
+(Not 4× because the first instruction still takes 5 cycles to drain through the pipeline)
 ```
 
 ## Interview Questions

@@ -242,7 +242,7 @@ class HyperLogLog:
     """Simplified HyperLogLog for counting distinct elements."""
     def __init__(self, precision=10):
         self.p = precision
-        self.m = 1 << p  # Number of registers
+        self.m = 1 << self.p  # Number of registers
         self.registers = [0] * self.m
 
     def _hash(self, item):
@@ -254,9 +254,12 @@ class HyperLogLog:
         idx = h & (self.m - 1)           # First p bits: register index
         remaining = h >> self.p
         self.registers[idx] = max(self.registers[idx],
-                                   self._leading_zeros(remaining) + 1)
+                                   self._trailing_zeros(remaining) + 1)
 
-    def _leading_zeros(self, x):
+    def _trailing_zeros(self, x):
+        # Counts the number of trailing zero bits in x (i.e., the position
+        # of the lowest set bit, minus 1). Used by HyperLogLog to estimate
+        # the rarity of the hash prefix.
         if x == 0:
             return 64 - self.p
         count = 0

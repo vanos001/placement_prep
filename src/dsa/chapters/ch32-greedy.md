@@ -196,8 +196,8 @@ int main() {
 
 **Output**:
 ```
-Selected activities: 1 4 7 8 11 
-Max activities: 5
+Selected activities: 1 4 8 11 
+Max activities: 4
 ```
 
 **Complexity**: O(n log n) for sorting + O(n) for selection = O(n log n).
@@ -219,7 +219,7 @@ Step 9: (8,12): start=8 < 11. Skip.
 Step 10: (2,14): start=2 < 11. Skip.
 Step 11: (12,16): start=12 ≥ 11. Select. last_finish=16
 
-Result: 5 activities selected.
+Result: 4 activities selected.
 ```
 
 ---

@@ -340,7 +340,7 @@ int main() {
     auto cover = approxVertexCover(adj, edges);
     std::cout << "Approximate vertex cover: ";
     for (int v : cover) std::cout << v << " ";
-    std::cout << "\nSize: " << cover.size() << " (optimal is 2: {0,1} or {0,2})\n";
+    std::cout << "\nSize: " << cover.size() << " (optimal is 2: {1,2})\n";
     
     return 0;
 }

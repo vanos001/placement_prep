@@ -22,8 +22,8 @@ flowchart TD
 | **Text** | Executable instructions | Program lifetime | Fixed |
 | **Data** | Initialized global/static variables | Program lifetime | Fixed |
 | **BSS** | Uninitialized global/static variables | Program lifetime | Fixed |
-| **Heap** | Dynamically allocated memory | Manual (or smart pointer) | Grows downward |
-| **Stack** | Local variables, function parameters, return addresses | Scope-based | Grows upward |
+| **Heap** | Dynamically allocated memory | Manual (or smart pointer) | Grows upward |
+| **Stack** | Local variables, function parameters, return addresses | Scope-based | Grows downward |
 
 ### Stack vs Heap
 

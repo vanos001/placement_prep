@@ -105,7 +105,7 @@ graph TD
 
 A replica is **prepared** when it has:
 1. The pre-prepare message
-2. 2f matching prepare messages (including its own)
+2. 2f matching prepare messages from **other** replicas (so 2f+1 total including its own)
 
 ### Phase 3: Commit
 

@@ -1175,7 +1175,7 @@ This means Merge Sort, Quick Sort, and Heap Sort are **asymptotically optimal** 
 
 ### Exercise 8: Count Inversions in an Array
 **Difficulty**: Medium
-**Problem**: An inversion is a pair (i, j) where i < j but arr[i] > arr[i]. Count the total number of inversions.
+**Problem**: An inversion is a pair (i, j) where i < j but arr[i] > arr[j]. Count the total number of inversions.
 **Hint**: Modify merge sort. During the merge step, when an element from the right half is placed before elements from the left half, it forms inversions with all remaining elements in the left half. Count these and add to the total.
 **Expected Time Complexity**: O(n log n).
 

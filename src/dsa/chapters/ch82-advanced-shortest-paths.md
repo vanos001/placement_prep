@@ -160,7 +160,7 @@ public class BellmanFord {
     public static void main(String[] args) {
         Edge[] edges = {new Edge(0,1,6),new Edge(0,3,7),new Edge(1,2,5),
                         new Edge(1,4,-4),new Edge(2,1,-2),new Edge(3,2,-3)};
-        long[] dist = solve(4, edges, 0);
+        long[] dist = solve(5, edges, 0);
         for (int i = 0; i < dist.length; i++)
             System.out.println("To " + i + ": " + dist[i]);
     }

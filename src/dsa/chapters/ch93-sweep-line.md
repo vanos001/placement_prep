@@ -627,7 +627,7 @@ long long rectangleUnionArea(std::vector<Rectangle>& rects) {
 int main() {
     std::vector<Rectangle> rects = {{0, 0, 3, 3}, {1, 1, 4, 4}, {2, 2, 5, 5}};
     std::cout << "Union area: " << rectangleUnionArea(rects) << "\n";
-    // Expected: 16 (3x3 + extra strips)
+    // Expected: 19 (by inclusion-exclusion: 9+9+9 - 4 - 4 - 1 + 1 = 19)
     return 0;
 }
 ```

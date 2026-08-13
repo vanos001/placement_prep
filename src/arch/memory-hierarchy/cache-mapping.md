@@ -107,11 +107,11 @@ Tag:    9 bits (16 - 3 - 4)
 ```
 
 Address `0x1A3C` = `0001 1010 0011 1100`:
-- Index = `100` = Set 4
 - Offset = `1100` = byte 12
-- Tag = `0001 1010 0` = `0x0D`
+- Index = `011` = Set 3
+- Tag = `0001 1010 0` = `0x34`
 
-The CPU checks set 4, compares tag `0x0D` with both lines in the set.
+The CPU checks set 3, compares tag `0x34` with both lines in the set.
 
 ## Specialized Mapping: Victim Cache
 

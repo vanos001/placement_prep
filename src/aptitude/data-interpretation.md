@@ -340,13 +340,12 @@ Sharpest decline: March to April (-8 Cr)
 **Q1: How many senior employees in total?**
 ```
 Engineering: 300 × 0.4 = 120
-Sales: 125 × 0.3 = 37.5 → 38 (round)
-Admin: 75 × 0.5 = 37.5 → 38
-Total seniors ≈ 196
+Sales: 125 × 0.3 = 37.5
+Admin: 75 × 0.5 = 37.5
+Total seniors = 120 + 37.5 + 37.5 = 195
 ```
 
-Wait, 500 employees: 60% = 300, 25% = 125, 15% = 75. Total = 500 ✓
-Senior: 120 + 37.5 + 37.5 = 195
+Sanity check: 500 employees total = 300 + 125 + 75 = 500 ✓
 
 **Q2: What percentage of all employees are senior engineers?**
 ```

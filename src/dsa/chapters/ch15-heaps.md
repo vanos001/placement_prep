@@ -798,7 +798,7 @@ The **Fibonacci heap** is a theoretically superior heap that achieves amortized 
 | Decrease-key | O(log n) | O(1) amortized |
 | Merge | O(n) | O(1) |
 
-**Why it matters**: Dijkstra's algorithm runs in O(V log V + E) with a binary heap but O(V log V + E) with a Fibonacci heap. For dense graphs where E ≈ V², this becomes O(V²) vs O(V² log V).
+**Why it matters**: Dijkstra's algorithm runs in O((V + E) log V) with a binary heap but O(V log V + E) with a Fibonacci heap. For dense graphs where E ≈ V², this becomes O(V² log V) for binary heap vs O(V²) for Fibonacci heap — Fibonacci is asymptotically faster on dense graphs.
 
 **Why it's rarely used in practice**: Large constant factors, complex implementation, poor cache locality. The binary heap or 4-ary heap often outperforms it for practical input sizes.
 

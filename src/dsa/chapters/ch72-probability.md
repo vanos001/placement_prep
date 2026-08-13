@@ -140,7 +140,7 @@ Expected number of trials to collect all n coupons:
 E[T] = n × (1 + 1/2 + 1/3 + ... + 1/n) = n × H(n)
 ```
 
-where H(n) is the n-th harmonic number ≈ n × ln(n).
+where H(n) is the n-th harmonic number ≈ ln(n) + γ (γ ≈ 0.5772 is the Euler-Mascheroni constant).
 
 ```cpp
 #include <iostream>

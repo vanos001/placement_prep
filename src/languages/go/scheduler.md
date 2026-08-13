@@ -84,7 +84,7 @@ flowchart LR
 
 When a P's local queue is empty:
 
-1. Check global queue (50% chance based on schedtick)
+1. Check global queue (every 61st tick, i.e. when `schedtick%61 == 0`)
 2. Check network poller
 3. Try to steal from other P's local queues
    - Steal half of the victim's local queue

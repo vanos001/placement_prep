@@ -209,7 +209,7 @@ class Elevator:
         return False
 
     def _stop_at_floor(self):
-        self.state = ElevatorState.STOPPED
+        self.state = ElevatorState.DOOR_OPEN
         self.up_requests.discard(self.current_floor)
         self.down_requests.discard(self.current_floor)
         self.destination_floors.discard(self.current_floor)
