@@ -13,14 +13,14 @@ Before diving into code, let's establish precise terminology:
 | **Root** | The topmost node (no parent) | Node A |
 | **Parent** | A node's immediate predecessor | B is parent of D |
 | **Child** | A node's immediate successor | D is child of B |
-| **Leaf** | A node with no children | E, F, G, H |
-| **Internal** | A node with at least one child | B, C |
+| **Leaf** | A node with no children | E, F, G |
+| **Internal** | A node with at least one child | A, B, C, D |
 | **Sibling** | Nodes sharing the same parent | D and E are siblings |
 | **Ancestor** | Any node on the path from root to the node | A, B are ancestors of D |
 | **Descendant** | Any node in the subtree rooted at the node | D, E are descendants of B |
 | **Depth** | Distance from root to the node (root has depth 0) | B has depth 1 |
 | **Height** | Distance from the node to its deepest leaf | Tree height = 3 |
-| **Level** | All nodes at the same depth | Level 2: D, E, F, G |
+| **Level** | All nodes at the same depth | Level 2: D, E, F |
 | **Degree** | Number of children of a node | B has degree 2 |
 | **Subtree** | A node and all its descendants | The subtree rooted at B |
 

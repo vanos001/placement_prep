@@ -127,7 +127,7 @@ ERE is the dialect used by `grep -E` (or `egrep`), `awk`, and `sed -E`. It makes
 |---------|-----|-----|
 | `+` (one or more) | `\+` | `+` |
 | `?` (zero or one) | `\?` | `?` |
-| `|` (alternation) | `\|` | `\|` |
+| `|` (alternation) | `\|` | `|` |
 | `{m,n}` (repetition) | `\{m,n\}` | `{m,n}` |
 | `()` (grouping) | `\(\)` | `()` |
 | Backreferences | `\1`-`\9` | Not standard |

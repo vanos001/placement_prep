@@ -568,20 +568,12 @@ After a non-doubling push:
 - ΔΦ: 2 (size increased by 1, capacity unchanged)
 - Amortized cost: 1 + 2 = 3
 
-After a doubling push (size was capacity/2, now capacity):
-- Actual cost: capacity/2 + 1 (copy + insert)
-- Φ before: 2 × (capacity/2) - capacity = 0
-- Φ after: 2 × capacity - capacity = capacity
-- ΔΦ: capacity
-- Wait, that gives amortized cost = capacity/2 + 1 + capacity, which is too high.
-
-Let me use a different potential. Let Φ = 2 × size - capacity (when capacity > 0, else 0).
-
-Before doubling: size = capacity, Φ = 2·capacity - capacity = capacity.
-After doubling: capacity' = 2·capacity, size' = capacity + 1, Φ' = 2(capacity+1) - 2·capacity = 2.
-ΔΦ = 2 - capacity.
-Actual cost = capacity + 1 (copy capacity elements + 1 insert).
-Amortized = (capacity + 1) + (2 - capacity) = 3. ✓
+After a doubling push (size == capacity before doubling):
+- Actual cost: capacity + 1 (copy capacity elements + 1 insert)
+- Φ before: 2 × capacity - capacity = capacity
+- Φ after: 2 × (capacity + 1) - 2 × capacity = 2
+- ΔΦ: 2 - capacity
+- Amortized cost: (capacity + 1) + (2 - capacity) = 3 ✓
 
 So every push_back has amortized cost ≤ 3 = O(1). ✓
 

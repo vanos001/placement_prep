@@ -118,10 +118,10 @@ def domain_classifier_drift(reference, current):
     y = np.concatenate([np.zeros(len(reference)), np.ones(len(current))])
 
     clf = RandomForestClassifier(n_estimators=100, random_state=42)
-    scores = cross_val_score(clf, X, y, cv=5)
+    scores = cross_val_score(clf, X, y, cv=5, scoring='roc_auc')
 
     auc = scores.mean()
-    drift = auc > 0.6  # Significantly better than random
+    drift = auc > 0.6  # Significantly better than random (AUC > 0.6 indicates drift)
 
     return {'auc': auc, 'drift_detected': drift}
 ```

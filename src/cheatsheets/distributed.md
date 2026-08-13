@@ -47,7 +47,7 @@ Log Replication: Leader receives → appends → replicates → commits (majorit
 | Asynchronous | Low | Eventual | Possible |
 | Semi-sync | Medium | Hybrid | Minimal |
 | Chain | Variable | Strong | Depends on position |
-| Quorum (NRW) | Configurable | Tunable | N-W+R > N ensures consistency |
+| Quorum (NRW) | Configurable | Tunable | W + R > N ensures consistency |
 
 ## Quorum Formula
 

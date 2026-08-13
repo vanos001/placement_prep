@@ -241,7 +241,7 @@ A: `--no-ff` always creates a merge commit, preserving the branch topology. This
 A: `rerere` (reuse recorded resolution) remembers how you resolved merge conflicts. If the same conflict appears again (common when rebasing), Git automatically applies the previous resolution. Enable with `git config rerere.enabled true`.
 
 **Q: How does Git's `ort` merge strategy differ from the old `recursive` strategy?**
-A: `ort` (Ostensibly Recursive's Twin) is the default since Git 2.33. It's faster, uses less memory, and handles directory renames better. It produces the same results as `recursive` for most cases but handles edge cases more efficiently.
+A: `ort` (Ostensibly Recursive's Twin) is the default since Git 2.34 (Nov 2021). It's faster, uses less memory, and handles directory renames better. It produces the same results as `recursive` for most cases but handles edge cases more efficiently.
 
 ### Common Traps
 

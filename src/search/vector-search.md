@@ -140,5 +140,4 @@ Evaluate each stage separately.
 - [HNSW paper](https://arxiv.org/abs/1603.09320)
 - [Elasticsearch vector search](https://www.elastic.co/guide/en/elasticsearch/reference/current/knn-search.html)
 - [Milvus ANN concepts](https://milvus.io/docs/index.md)
-- [CRDT.tech local-first overview](https://crdt.tech/)
 - [Stanford Information Retrieval book](https://nlp.stanford.edu/IR-book/)
