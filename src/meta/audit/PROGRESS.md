@@ -9,18 +9,18 @@
 
 | Chunk ID | Scope | Agent Task ID | Files | Status | Findings | Fixed |
 |---|---|---|---|---|---|---|
-| A | dsa/chapters ch01-30 (excl. already-fixed) | 6-A | 18 | completed | 8 | - |
-| B | dsa/chapters ch31-90 (excl. already-fixed) | 6-B | 26 | completed | 11 | - |
-| C | dsa/chapters ch91-150 (excl. already-fixed) | 6-C | 26 | completed | 47 | - |
-| D | dsa/chapters ch151-180 + appendices (excl. fixed) | 6-D | 27 | completed | 28 | - |
-| E | os/* (excl. fixed) | 6-E | 105 | completed | 15 | - |
-| F | networks/* (excl. fixed) | 6-F | ~55 | completed | 18 | - |
-| G | arch/* (excl. fixed) | 6-G | 75 | completed | 33 | - |
-| H | distributed/* + backend/* + cloud/* | 6-H | ~80 | completed | 17 | - |
-| I | languages/* + frameworks/* + redis/* + machine-coding/* | 6-I | ~60 | completed | 33 | - |
-| J | storage/* + search/* + web-servers/* + data-engineering/* | 6-J | 33 | completed | 17 | - |
-| K | aptitude/* + cs-theory/* + oop-patterns/* + anti-patterns/* + failure-modes/* | 6-K | 18 | completed | 8 (1 HIGH / 3 MEDIUM / 4 LOW) | - |
-| L | git/* + testing/* + sre/* + projects/* + resume/* + placement-preparation/* + cheatsheets/* + mobile/* + ml/* + linux/* | 6-L | ~80 | completed | 16 | - |
+| A | dsa/chapters ch01-30 (excl. already-fixed) | 6-A | 18 | completed | 8 | 0 (1 HIGH deferred — ch16 trie diagram) |
+| B | dsa/chapters ch31-90 (excl. already-fixed) | 6-B | 26 | completed | 11 | 5 HIGH (ch49,52,74,80,87) |
+| C | dsa/chapters ch91-150 (excl. already-fixed) | 6-C | 26 | completed | 47 | 6 HIGH (ch96,100,102,114,118,125) |
+| D | dsa/chapters ch151-180 + appendices (excl. fixed) | 6-D | 27 | completed | 28 | 5 HIGH (ch151,153,161,162 + others) |
+| E | os/* (excl. fixed) | 6-E | 105 | completed | 15 | 3 HIGH (multi-level-page-tables x2, mutex) |
+| F | networks/* (excl. fixed) | 6-F | ~55 | completed | 18 | 6 HIGH (tcp header/options/cubic, ssl, routing, http3) |
+| G | arch/* (excl. fixed) | 6-G | 75 | completed | 33 | 4 HIGH (equation, alu, smt, performance/README) |
+| H | distributed/* + backend/* + cloud/* | 6-H | ~80 | completed | 17 | 7 HIGH (k8s x2, k8s README, aws README, rabbitmq x2, observability) |
+| I | languages/* + frameworks/* + redis/* + machine-coding/* | 6-I | ~60 | completed | 33 | 8 HIGH (rust x3, go x2, python x2, redis) |
+| J | storage/* + search/* + web-servers/* + data-engineering/* | 6-J | 33 | completed | 17 | 5 HIGH (nvme, lsm x2, ceph-crush, apache) |
+| K | aptitude/* + cs-theory/* + oop-patterns/* + anti-patterns/* + failure-modes/* | 6-K | 18 | completed | 8 (1 HIGH / 3 MEDIUM / 4 LOW) | 0 (HIGH deferred — oop Builder pattern) |
+| L | git/* + testing/* + sre/* + projects/* + resume/* + placement-preparation/* + cheatsheets/* + mobile/* + ml/* + linux/* | 6-L | ~80 | completed | 16 | 3 HIGH (ml bias-variance, backprop, resume) |
 
 Total: ~537 files in this round (the remaining ~1190 are mostly appendix/index/README
 files that are short and will be batched in a final pass after these chunks complete).
