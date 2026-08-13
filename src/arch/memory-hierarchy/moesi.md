@@ -152,9 +152,7 @@ When a cache line is in **O** state:
 1. It's the **owner** — responsible for supplying data on snoops
 2. It's **dirty** — must writeback on eviction
 3. It's **shared** — other caches have S copies
-4. **S copies are stale** — they have the correct data but the O copy may be newer
-
-Actually, in MOESI, S copies have the same data as O. The O state means "I'm the one who will writeback, and I have the latest data."
+4. **S copies have the same data as O** — the O state just means "I'm the one who will writeback, and I have the latest data." S copies are not stale.
 
 ## Interview Questions
 

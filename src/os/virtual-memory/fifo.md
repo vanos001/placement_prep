@@ -87,9 +87,9 @@ This violates the intuition that more memory should always mean fewer page fault
 | 5 | 5 | 1 | 2 | ✅ (replace 4) |
 | 1 | 5 | 1 | 2 | ❌ Hit |
 | 2 | 5 | 1 | 2 | ❌ Hit |
-| 3 | 3 | 1 | 2 | ✅ (replace 5) |
-| 4 | 3 | 4 | 2 | ✅ (replace 1) |
-| 5 | 3 | 4 | 5 | ✅ (replace 2) |
+| 3 | 3 | 1 | 2 | ✅ (replace 1) |
+| 4 | 3 | 4 | 2 | ✅ (replace 2) |
+| 5 | 3 | 4 | 5 | ❌ Hit |
 
 **Total: 9 page faults**
 

@@ -670,7 +670,7 @@ WEIGHTED-RESERVOIR-SAMPLE(stream with weights, k):
     return reservoir items
 ```
 
-The key insight: for item with weight w, the key `U^(1/w)` where U ~ Uniform(0,1) has the property that larger weights produce smaller keys (more likely to be selected).
+The key insight: for item with weight w, the key `U^(1/w)` where U ~ Uniform(0,1) is stochastically LARGER for larger w (since U ∈ (0,1), raising to a smaller exponent 1/w pushes the value closer to 1). The algorithm keeps the k LARGEST keys, so larger weight → larger key → more likely to be retained.
 
 ### Proof Sketch
 
@@ -722,7 +722,8 @@ public:
                             CompareKey> heap;
 
         for (const auto& [id, weight] : stream) {
-            // Key = U^(1/w) — higher weight → smaller key → more likely kept
+            // Key = U^(1/w) — higher weight → larger key → more likely kept
+            // (min-heap evicts the smallest key when full)
             double u = uniform(rng);
             double key = std::pow(u, 1.0 / weight);
 
@@ -919,11 +920,9 @@ RNG sequence: j=1, j=0, j=2
 
 Step 1: i=3, j=1 → swap A[3]=D with A[1]=B → [A, D, C, B]
 Step 2: i=2, j=0 → swap A[2]=C with A[0]=A → [C, D, A, B]
-Step 3: i=1, j=2 → j > i? No, j=2 > i=1 → INVALID (this can't happen with correct [0,i])
+Step 3: i=1, j must be in [0, 1] (valid range is 0..i inclusive)
 
-Let me redo with valid random values:
-
-RNG sequence: j=1, j=0, j=0
+Using valid random values j=1, j=0, j=0:
 
 Step 1: i=3, j=1 → swap A[3]=D with A[1]=B → [A, D, C, B]
 Step 2: i=2, j=0 → swap A[2]=C with A[0]=A → [C, D, A, B]

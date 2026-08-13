@@ -267,7 +267,7 @@ int main() {
     e.print_info();
     // Distinct palindromic substrings: 7
     //   Node 2: len=1, count=4  (a)
-    //   Node 3: len=1, count=1  (b) -- wait, b also appears multiple times
+    //   Node 3: len=1, count=N_b  (b)
     //   ... actual counts depend on implementation details
     //   Distinct palindromes: a, b, c, aba, aca, bacab, abacaba
 

@@ -47,8 +47,8 @@
 Graph: 0-1, 1-2, 2-0 (triangle), 1-3, 3-4, 4-5, 5-3 (cycle), 4-6, 6-7, 7-8, 8-6 (cycle)
 
 ```
-Round 0 (degree < 1): Remove vertex 8? No, degree 2.
-Actually let's use bucket sort:
+Round 0 (degree < 1): No vertex has degree < 1 in this graph.
+Using bucket sort for efficiency:
 
 Degrees: 0:2, 1:3, 2:2, 3:3, 4:3, 5:2, 6:2, 7:2, 8:2
 

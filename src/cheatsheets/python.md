@@ -180,6 +180,6 @@ class TrieNode:
 |-----------|------|------|-----|-------|
 | Access | O(1) | O(1) | - | O(n) |
 | Search | O(n) | O(1) | O(1) | O(n) |
-| Insert | O(n) | O(1) | O(1) | O(1) |
+| Insert | O(n) | O(1) | O(1) | O(n) |
 | Delete | O(n) | O(1) | O(1) | O(1) |
 | Append | O(1) | - | O(1) | O(1) |

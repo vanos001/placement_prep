@@ -703,7 +703,7 @@ int main() {
     //   Contribution: 3 * 2 * 2 = 12
     // a[2]=2: 1 subarray ([2]) → 2*1*1 = 2
     // Total: 1 + 12 + 2 = 15
-    // Wait, let me recheck: subarray sums of maxes:
+    // Verification: subarray sums of maxes:
     // [1]→1, [3]→3, [2]→2, [1,3]→3, [3,2]→3, [1,3,2]→3 → 1+3+2+3+3+3=15 ✓
 }
 ```

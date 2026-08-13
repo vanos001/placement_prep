@@ -191,12 +191,18 @@ FileHugePages:         0 kB
 ### Method 3: 1 GB Huge Pages
 
 ```bash
-# Reserve 1GB huge pages (must be at boot)
+# Reserve 1GB huge pages (must be at Boot)
 # Add to GRUB: hugepagesz=1G hugepages=4
-$ cat /proc/meminfo | grep -i "Giga\|HugePage"
-Hugepagesize:     262144 kB  # 256 MB? No, this is 1GB page count...
+$ cat /proc/meminfo | grep -i "HugePage"
+AnonHugePages:         0 kB
+ShmemHugePages:        0 kB
+HugePages_Total:       0
+HugePages_Free:        0
+HugePages_Rsvd:        0
+HugePages_Surp:        0
+Hugepagesize:       2048 kB    # default 2 MB huge pages on x86_64
 
-# Actually, check:
+# For 1 GB huge pages, check:
 $ ls /sys/kernel/mm/hugepages/
 hugepages-2048kB  hugepages-1048576kB
 

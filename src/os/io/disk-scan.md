@@ -113,7 +113,7 @@ Same example: Requests [98, 183, 37, 122, 14, 124, 65, 67], Head at 53
 FCFS:  53→98→183→37→122→14→124→65→67    = 640 cylinders
 SSTF:  53→65→67→37→14→98→122→124→183    = 236 cylinders
 SCAN:  53→65→67→98→122→124→183→37→14    = 331 cylinders (to edge)
-LOOK:  53→65→67→98→122→124→183→37→14    = 226 cylinders (doesn't go to edge)
+LOOK:  53→65→67→98→122→124→183→37→14    = 299 cylinders (doesn't go to edge)
 
 SCAN is slightly worse than SSTF but provides fairness guarantees.
 LOOK (optimized SCAN) is comparable to SSTF.

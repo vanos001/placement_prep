@@ -266,7 +266,7 @@ http {
         location /api/users/ {
             proxy_pass http://user_service;
             proxy_set_header X-Real-IP $remote_addr;
-            rate_limit zone=api burst=10;
+            limit_req zone=api burst=10;
         }
         
         location /api/orders/ {

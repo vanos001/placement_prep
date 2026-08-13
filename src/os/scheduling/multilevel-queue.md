@@ -175,7 +175,7 @@ A: Based on: 1) Process type (system calls, flags), 2) Behavior (I/O-bound → i
 **Q6: Design a multilevel queue system for a cloud provider.**  
 A: 1) **Tier 1 (Premium):** Guaranteed latency SLA, preemptive priority, dedicated CPU cores, 2) **Tier 2 (Standard):** Best-effort latency, CFS-based, shared cores, 3) **Tier 3 (Spot):** Cheapest, runs when tiers 1-2 are idle, can be preempted, 4) **Scheduling:** Time-slicing between tiers with configurable weights, 5) **Isolation:** cgroups for CPU/memory, network QoS, 6) **Monitoring:** Track per-tier utilization and SLA compliance.
 
-**QQ7: How would you implement fair scheduling across queues?**  
+**Q7: How would you implement fair scheduling across queues?**  
 A: Use **Virtual Clock** or **Weighted Fair Queuing (WFQ):** Each queue has a weight. Virtual time advances based on real time / total weight. Each queue gets CPU proportional to its weight. Processes within a queue use the queue's algorithm. This prevents starvation while respecting priority differences.
 
 ## Common Mistakes

@@ -197,7 +197,7 @@ Let's trace through building the palindromic tree for the string `s = "abacaba"`
 - "a" (node 2), "b" (node 3), "aba" (node 4), "c" (node 5)
 - "aca" (node 6), "bacab" (node 7), "abacaba" (node 8)
 
-Wait — that's 7 distinct palindromes (plus the empty string at node 1). Let me recount: nodes 2-8 = 7 nodes. The empty string palindrome is at node 1. So `distinctPalindromes() = 8 - 2 = 6`? No, nodes 2 through 8 are 7 nodes, minus 2 roots = 7 distinct non-empty palindromes. The answer is **7**.
+That's 7 distinct non-empty palindromes (nodes 2-8), plus the two roots (nodes 0 and 1) which represent the empty/imaginary palindromes. So `distinctPalindromes() = 7`.
 
 **Suffix link tree:**
 ```

@@ -80,7 +80,7 @@ fn main() {
 }
 ```
 
-### How Async/Aawait Works in Rust
+### How Async/Await Works in Rust
 
 ```mermaid
 sequenceDiagram

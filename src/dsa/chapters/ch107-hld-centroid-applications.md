@@ -77,10 +77,6 @@ Chain 3: 2 → 5 (heavy path)
 **Query path 3→5**:
 ```
 head[3]=0, head[5]=2 → different chains
-  Query pos[0]..pos[3] = positions 0..2 (chain 0→1→3)
-  Move to parent of head: u = parent[0] = -1? No, parent[head[3]] = parent[0]...
-
-Actually: head[3]=0, head[5]=2
   depth[head[3]]=0, depth[head[5]]=1
   Move 5 up: query pos[2]..pos[5] = positions 4..5
   u = parent[head[5]] = parent[2] = 0

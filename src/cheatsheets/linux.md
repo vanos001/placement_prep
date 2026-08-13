@@ -122,7 +122,7 @@ chmod 755 file              # rwxr-xr-x
 chmod u+x file              # Add execute for user
 chmod go-w file             # Remove write for group/others
 chown user:group file       # Change ownership
-chown -R user:dir           # Recursive ownership
+chown -R user:group dir       # Recursive ownership
 
 Permission bits:
   r (read) = 4

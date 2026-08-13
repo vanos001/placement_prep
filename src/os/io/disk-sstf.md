@@ -141,8 +141,7 @@ Requests: 10, 20, 100
 Head at: 50
 
 SSTF: 50→20→10→100  = 30 + 10 + 90 = 130
-Optimal: 50→20→10→100 or 50→100→20→10 = 90 + 80 = 170 (worse)
-Actually SSTF is optimal here!
+Optimal: 50→20→10→100 = 130 (same as SSTF here)
 
 But consider: 10, 20, 30, 200
 Head at: 50

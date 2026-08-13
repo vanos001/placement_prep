@@ -231,7 +231,7 @@ A: `rerere` (reuse recorded resolution) records conflict resolutions. When rebas
 2. **Forgetting `--abort`**: You can always abort a rebase in progress.
 3. **Losing commits**: Use `git reflog` to recover if you accidentally drop commits.
 4. **Rebase vs merge in pull requests**: Some teams prefer merge commits in PRs for traceability.
-5. **Interactive rebase order**: Commits are listed oldest-first (bottom-to-top), opposite of `git log`.
+5. **Interactive rebase order**: Commits are listed oldest-first (top-to-bottom), opposite of `git log` which shows newest-first.
 
 ## References
 

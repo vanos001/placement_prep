@@ -104,7 +104,7 @@ Same example: Requests [98, 183, 37, 122, 14, 124, 65, 67], Head at 53
 FCFS:  53→98→183→37→122→14→124→65→67    = 640 cylinders
 SSTF:  53→65→67→37→14→98→122→124→183    = 236 cylinders
 SCAN:  53→37→14→0→65→67→98→122→124→183  = 236 cylinders (to edge)
-LOOK:  53→37→14→65→67→98→122→124→183    = 226 cylinders
+LOOK:  53→37→14→65→67→98→122→124→183    = 208 cylinders
 
 FCFS is 2.7x worse than SSTF in this example!
 ```

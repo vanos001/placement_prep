@@ -244,7 +244,7 @@ class PaymentServicePactTest {
 
     @State("account has sufficient funds")
     void setupSufficientFunds() {
-        testDatabase.seedAccount("test-account", balance: 1000);
+        testDatabase.seedAccount("test-account", 1000);
     }
 }
 ```

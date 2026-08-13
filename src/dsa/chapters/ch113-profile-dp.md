@@ -72,7 +72,7 @@ new_mask = mask | (1 << col)
 dp[row+1][col][new_mask] += dp[row][col][mask]
 ```
 
-Actually, the standard approach processes cell by cell and "clears" the bit when a cell is filled by a horizontal domino or passes to the next row.
+The standard approach processes cell by cell and "clears" the bit when a cell is filled by a horizontal domino or passes to the next row.
 
 ### Simplified Transition
 
