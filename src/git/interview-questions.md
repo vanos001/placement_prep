@@ -55,7 +55,7 @@
 **A:** `rerere` (reuse recorded resolution) remembers how you resolved merge conflicts. If the same conflict appears again (common during rebases), Git auto-applies the previous resolution. Enable with `git config rerere.enabled true`.
 
 ### Q17: How would you recover from a `git reset --hard` that discarded important work?
-**A:** (1) `git reflog` to find the commit before the reset, (2) `git reset --hard HEAD@{1}` or `git cherry-pick <hash>` to recover. If reflog doesn't help: `git fsck --lost-found` finds orphaned objects. Act quickly — `git gc` prunes unreachable objects after 30 days.
+**A:** (1) `git reflog` to find the commit before the reset, (2) `git reset --hard HEAD@{1}` or `git cherry-pick <hash>` to recover. If reflog doesn't help: `git fsck --lost-found` finds orphaned objects. Act quickly — `git gc` prunes unreachable objects after 14 days (default `gc.pruneExpire`).
 
 ### Q18: Explain Git's packfile mechanism.
 **A:** Loose objects are stored individually. Over time, `git gc` packs them into packfiles using delta compression — similar objects store only differences. Pack index files enable fast O(log n) lookup. This reduces storage and speeds up network transfer.

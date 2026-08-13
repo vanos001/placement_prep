@@ -140,8 +140,10 @@ class AdaBoost:
             # Compute model weight (alpha)
             alpha = 0.5 * np.log((1 - error) / (error + 1e-10))
             
-            # Update sample weights
-            weights *= np.exp(-alpha * y * predictions)
+            # Update sample weights (AdaBoost requires {-1, +1} labels)
+            y_signed = np.where(y == 0, -1, 1)
+            pred_signed = np.where(predictions == 0, -1, 1)
+            weights *= np.exp(-alpha * y_signed * pred_signed)
             weights /= np.sum(weights)  # Normalize
             
             self.models.append(model)

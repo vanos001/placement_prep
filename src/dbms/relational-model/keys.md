@@ -48,11 +48,9 @@ For a relation with `n` attributes, there are **2ⁿ - 1** possible super keys.
 
 Given `R(A, B, C)` with functional dependencies: `{A} → {B, C}`, `{B} → {C}`
 
-- Candidate keys: `{A}`, `{B}` (B determines C, and A determines B and C)
-- Wait — let's re-derive. If `{A} → {B,C}` and `{B} → {C}`:
-  - `{A}` determines everything → candidate key
+- Candidate keys: `{A}` only. Derivation:
+  - `{A}` determines `{B, C}` → determines everything → candidate key
   - `{B}` determines only `{C}`, not `{A}` → NOT a candidate key
-  - So only `{A}` is a candidate key
 - Super keys: `{A}`, `{A,B}`, `{A,C}`, `{A,B,C}` (4 = 2²)
 
 ## 2. Candidate Key

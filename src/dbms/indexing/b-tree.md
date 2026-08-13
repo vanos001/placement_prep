@@ -305,10 +305,7 @@ Tree (order 5, min 2 keys per non-root node):
 Delete 20:
   Remove 20 from leaf: [10]
   Keys remaining: 1 (≥ min 2? No! Underflow for non-root)
-  Wait — for order 5, min keys = ⌈5/2⌉ - 1 = 2
-  But this is a non-root leaf... let me recalculate.
-
-Actually for order 5: min keys (non-root) = ⌈5/2⌉ - 1 = 2
+  For order 5, min keys (non-root) = ⌈5/2⌉ - 1 = 2
   [10] has 1 key → underflow!
 
   Rebalance:

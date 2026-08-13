@@ -34,7 +34,7 @@ result = model.fit()
 ```python
 # Differencing to achieve stationarity
 d1 = series.diff(1)   # First difference
-d2 = series.diff(2)   # Second difference (if needed)
+d2 = series.diff().diff()   # Second difference (if needed)
 ```
 
 ### 3. Moving Average (MA) - q

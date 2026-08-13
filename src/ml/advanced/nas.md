@@ -101,7 +101,7 @@ class NASController(nn.Module):
             probs = F.softmax(logits, dim=0)
             action = torch.multinomial(probs, 1)
             actions.append(action.item())
-            input = F.one_action(action, num_ops).unsqueeze(0).unsqueeze(0)
+            input = F.one_hot(action, num_ops).unsqueeze(0).unsqueeze(0)
 
         return actions  # Architecture specification
 ```

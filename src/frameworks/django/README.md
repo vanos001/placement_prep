@@ -69,11 +69,14 @@ Django 4.1 added async queryset methods; Django 5.x stabilized them across backe
 
 ```python
 async def product_list(request):
-    products = [p async for p in Product.objects.all().afilter(active=True)]
+    # filter() is lazy (no DB hit), so it has no async variant.
+    # Filter synchronously, then iterate asynchronously:
+    qs = Product.objects.filter(active=True)
+    products = [p async for p in qs]
     return JsonResponse({"products": products})
 ```
 
-`aget()`, `afilter()`, `acreate()`, `aupdate()`, `adelete()`, `acount()`, `aexists()` — and `sync_to_async` when you must call sync ORM from async views.
+`aget()`, `acreate()`, `aupdate()`, `adelete()`, `acount()`, `aexists()` — and `sync_to_async` when you must call sync ORM from async views. Note: `filter()` does NOT have an `afilter()` counterpart because it is lazy (returns a QuerySet without executing a query).
 
 ## Middleware
 

@@ -161,6 +161,9 @@ class GRUCell:
         self.Wr = np.random.randn(concat_size, hidden_size) * 0.01
         self.Wh = np.random.randn(concat_size, hidden_size) * 0.01
     
+    def sigmoid(self, z):
+        return 1 / (1 + np.exp(-np.clip(z, -500, 500)))
+    
     def forward(self, x, h_prev):
         concat = np.concatenate([x, h_prev])
         
@@ -168,7 +171,7 @@ class GRUCell:
         z = self.sigmoid(concat @ self.Wz)
         
         # Reset gate: how much past to forget
-        r = self.sigmoid(concat @ self.wr)
+        r = self.sigmoid(concat @ self.Wr)
         
         # Candidate hidden state
         concat_r = np.concatenate([x, r * h_prev])

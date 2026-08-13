@@ -64,11 +64,17 @@ from sklearn.ensemble import GradientBoostingClassifier
 smote = SMOTE(sampling_strategy=0.1)  # 1:10 ratio
 X_resampled, y_resampled = smote.fit_resample(X_train, y_train)
 
-# Class weights
-model = GradientBoostingClassifier(
+# Class weights — GradientBoostingClassifier does NOT accept class_weight.
+# Use sample_weight in fit(), or switch to HistGradientBoostingClassifier.
+from sklearn.ensemble import HistGradientBoostingClassifier
+model = HistGradientBoostingClassifier(
     class_weight={0: 1, 1: 100},  # Weight fraud class 100x
-    n_estimators=500
+    max_iter=500
 )
+# Alternatively, with plain GradientBoostingClassifier:
+#   sample_weights = np.where(y_train == 1, 100, 1)
+#   model = GradientBoostingClassifier(n_estimators=500)
+#   model.fit(X_train, y_train, sample_weight=sample_weights)
 
 # Or use focal loss for neural networks
 def focal_loss(pred, target, gamma=2, alpha=0.25):

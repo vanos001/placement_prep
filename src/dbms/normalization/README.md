@@ -191,7 +191,7 @@ A: Yes. Consider R(student, course, instructor) where:
 - But BCNF violated: {course} is a determinant but not a candidate key
 
 **Q6: How do you test if a decomposition is lossless?**
-A: For R1 and R2 from R: compute R1 ∩ R2 (common attributes). If (R1 ∩ R2) → R1 or (R1 ∩ R� R2) → R2 (checked against the original FDs), the decomposition is lossless.
+A: For R1 and R2 from R: compute R1 ∩ R2 (common attributes). If (R1 ∩ R2) → R1 or (R1 ∩ R2) → R2 (checked against the original FDs), the decomposition is lossless.
 
 ### Advanced / FAANG-Level
 

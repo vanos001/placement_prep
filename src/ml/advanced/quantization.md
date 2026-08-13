@@ -168,7 +168,7 @@ model.quantize(calibration_data)
 
 2. **PTQ vs QAT?** — PTQ: quantize after training, no retraining needed, faster but may lose more accuracy. QAT: simulate quantization during training, learns to compensate, better accuracy.
 
-3. **What is calibration in static quantization? — Running representative data through the model to determine the optimal scale and zero-point for activation quantization. Without it, activation ranges are estimated poorly.
+3. **What is calibration in static quantization?** — Running representative data through the model to determine the optimal scale and zero-point for activation quantization. Without it, activation ranges are estimated poorly.
 
 4. **What is mixed precision training?** — Using FP16 for forward/backward passes and FP32 for master weights and gradient accumulation. Reduces memory and speeds up training with minimal accuracy impact.
 

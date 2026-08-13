@@ -295,7 +295,7 @@ A: `revert` is safe for shared/public branches because it adds a new commit that
 A: Git computes the diff between the working tree and the index, then presents each hunk interactively. You choose `y` (stage), `n` (skip), `s` (split), `e` (edit), etc. The selected hunks update the index, allowing partial staging of a file's changes.
 
 **Q: What happens to orphaned commits after `git reset --hard`?**
-A: They remain in the object database as unreachable objects. They can be recovered via `git reflog` until garbage collected (default: 30 days for unreachable objects, configurable via `gc.pruneExpire`).
+A: They remain in the object database as unreachable objects. They can be recovered via `git reflog` until garbage collected (default: 14 days for unreachable objects via `gc.pruneExpire`, configurable).
 
 ## References
 

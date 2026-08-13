@@ -41,7 +41,7 @@ def low_rank_decompose(weight, rank):
     """Decompose W (m×n) into U (m×r) @ V (r×n)"""
     U, S, V = torch.svd(weight)
     U_r = U[:, :rank] * S[:rank].sqrt()
-    V_r = V[:, :rank].T * S[:rank].sqrt()
+    V_r = V[:, :rank].T * S[:rank].sqrt().unsqueeze(-1)
     return U_r, V_r
 
 # Original: Linear(512, 512) = 262,144 parameters

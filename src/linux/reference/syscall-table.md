@@ -218,7 +218,7 @@ grep -r "__NR_open " /usr/include/asm/
 | 48 | `shutdown` | `int shutdown(int sockfd, int how)` | Shut down socket |
 | 49 | `bind` | `int bind(int sockfd, const struct sockaddr *addr, socklen_t addrlen)` | Bind socket to address |
 | 50 | `listen` | `int listen(int sockfd, int backlog)` | Listen for connections |
-| 51 | `accept4` | `int accept4(int sockfd, struct sockaddr *addr, socklen_t *addrlen, int flags)` | Accept with flags |
+| 51 | `getsockname` | `int getsockname(int sockfd, struct sockaddr *addr, socklen_t *addrlen)` | Get socket local address |
 | 54 | `setsockopt` | `int setsockopt(int sockfd, int level, int optname, const void *optval, socklen_t optlen)` | Set socket option |
 | 55 | `getsockopt` | `int getsockopt(int sockfd, int level, int optname, void *optval, socklen_t *optlen)` | Get socket option |
 
@@ -226,12 +226,14 @@ grep -r "__NR_open " /usr/include/asm/
 
 | Number | Name | Signature | Description |
 |--------|------|-----------|-------------|
-| 281 | `epoll_create1` | `int epoll_create1(int flags)` | Create epoll instance |
-| 282 | `epoll_ctl` | `int epoll_ctl(int epfd, int op, int fd, struct epoll_event *event)` | Control epoll interest list |
-| 283 | `epoll_wait` | `int epoll_wait(int epfd, struct epoll_event *events, int maxevents, int timeout)` | Wait for epoll events |
+| 281 | `epoll_pwait` | `int epoll_pwait(int epfd, struct epoll_event *events, int maxevents, int timeout, const sigset_t *sigmask)` | Wait for epoll events with signal mask |
+| 282 | `signalfd` | `int signalfd(int fd, const sigset_t *mask, int flags)` | Create/signaled fd for signals |
+| 283 | `timerfd_create` | `int timerfd_create(int clockid, int flags)` | Create timer fd |
 | 288 | `accept4` | `int accept4(int sockfd, struct sockaddr *addr, socklen_t *addrlen, int flags)` | Accept with SOCK_NONBLOCK/CLOEXEC |
 | 290 | `eventfd2` | `int eventfd2(unsigned int initval, int flags)` | Create eventfd |
-| 291 | `epoll_create1` | — | (duplicate entry, see 281) |
+| 291 | `epoll_create1` | `int epoll_create1(int flags)` | Create epoll instance (with flags) |
+| 232 | `epoll_wait` | `int epoll_wait(int epfd, struct epoll_event *events, int maxevents, int timeout)` | Wait for epoll events |
+| 233 | `epoll_ctl` | `int epoll_ctl(int epfd, int op, int fd, struct epoll_event *event)` | Control epoll interest list |
 | 292 | `dup3` | `int dup3(int oldfd, int newfd, int flags)` | Duplicate fd with flags |
 | 293 | `pipe2` | `int pipe2(int pipefd[2], int flags)` | Create pipe with flags |
 | 302 | `prlimit64` | `int prlimit64(pid_t pid, int resource, const struct rlimit64 *new_limit, struct rlimit64 *old_limit)` | Get/set resource limits |

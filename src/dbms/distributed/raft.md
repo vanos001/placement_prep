@@ -419,8 +419,6 @@ Rule 2 is critical:
   But the entry IS committed (majority had it).
   The new leader WILL have it (because log up-to-date check).
 
-Wait — this needs more care:
-
 Scenario that demonstrates the rule:
   Term 1: Leader S1 replicates entry at index 2 to S1, S2 (not S3)
   S1 crashes
