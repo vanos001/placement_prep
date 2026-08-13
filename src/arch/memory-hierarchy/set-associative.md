@@ -155,9 +155,3 @@ Set-associative caches offer the best balance of hit rate and hardware complexit
 - [Fully Associative](fully-associative.md) — Maximum associativity
 - [Replacement Policies](replacement.md) — Eviction strategies
 - [Cache Basics](cache-basics.md) — Fundamental concepts
-
-## Cross References
-
-- [Direct Mapped](direct-mapped.md)
-- [Fully Associative](fully-associative.md)
-- [Cache Mapping](cache-mapping.md)

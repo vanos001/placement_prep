@@ -239,9 +239,3 @@ TCP sockets provide reliable, ordered, connection-oriented communication. The 3-
 - [UDP Sockets](udp.md) — Connectionless alternative
 - [Non-blocking I/O](nonblocking.md) — Async socket usage
 - [I/O Multiplexing](io-multiplexing.md) — Handling multiple connections
-
-## Cross References
-
-- [TCP Protocol](../tcp/README.md)
-- [UDP Sockets](udp.md)
-- [Non-blocking I/O](nonblocking.md)

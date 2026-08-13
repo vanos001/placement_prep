@@ -377,9 +377,3 @@ HTTP/3 represents a fundamental rethinking of web transport. By moving from TCP 
 - **[TCP vs UDP](../tcp/README.md)** — Understanding the transport layer shift
 - **[WebSocket](./websocket.md)** — Real-time protocols and how HTTP/3 affects them
 - **[Performance Optimization](../tcp/congestion-control.md)** — How HTTP/3 fits into web performance strategies
-
-## Cross References
-
-- [HTTP/2](http2.md)
-- [QUIC](quic.md)
-- [UDP](../udp/README.md)

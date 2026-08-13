@@ -123,9 +123,3 @@ Static routing is simple, secure, and zero-overhead but doesn't scale or adapt. 
 - [OSPF](ospf.md) — Interior link-state protocol
 - [RIP](rip.md) — Interior distance-vector protocol
 - [IS-IS](isis.md) — Interior link-state protocol
-
-## Cross References
-
-- [BGP](bgp.md)
-- [OSPF](ospf.md)
-- [RIP](rip.md)

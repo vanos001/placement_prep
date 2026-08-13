@@ -209,9 +209,3 @@ Linux auto-tuning (`net.ipv4.tcp_moderate_rcvbuf`):
 - [TCP Header](header.md) — Window field
 - [Nagle's Algorithm](nagle.md) — Sender-side SWS prevention
 - [TCP Options](options.md) — Window Scale option
-
-## Cross References
-
-- [Congestion Control](congestion-control.md)
-- [TCP Header](header.md)
-- [Sliding Window](../../arch/pipelining/classic.md)

@@ -216,8 +216,3 @@ Fast Recovery was a major improvement in TCP's ability to handle congestion with
 - [TCP Timers](timers.md) — RTO timer that Fast Recovery helps avoid
 - [TCP Options](options.md) — SACK option that enhances multi-loss recovery
 - [TCP States](states.md) — How recovery interacts with TCP state transitions
-
-## Cross References
-
-- [Fast Retransmit](fast-retransmit.md)
-- [TCP Reno](reno.md)

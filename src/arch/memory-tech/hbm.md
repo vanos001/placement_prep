@@ -214,9 +214,3 @@ HBM achieves massive bandwidth through 3D stacking of DRAM dies connected by TSV
 - [GDDR](gddr.md) — GPU memory alternative
 - [GPU](../parallelism/gpu.md) — Why GPUs need HBM
 - [Memory Hierarchy](../memory-hierarchy/README.md) — Where HBM fits
-
-## Cross References
-
-- [GDDR](gddr.md)
-- [GPU](../parallelism/gpu.md)
-- [LLM Inference](../../llm/llm-serving/inference.md)

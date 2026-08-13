@@ -263,9 +263,3 @@ Prefetching hides memory latency by loading data before it's needed. Hardware pr
 - [Performance](performance.md) — AMAT and miss penalty
 - [DRAM](../memory-tech/dram.md) — Memory latency source
 - [SIMD](../parallelism/simd.md) — Prefetch in vectorized code
-
-## Cross References
-
-- [Performance](performance.md)
-- [Cache Basics](cache-basics.md)
-- [OS Demand Paging](../../os/virtual-memory/demand-paging.md)

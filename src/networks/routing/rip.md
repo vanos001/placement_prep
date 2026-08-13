@@ -159,8 +159,3 @@ RIP is a simple distance-vector protocol limited to 15 hops. It uses hop count a
 - [BGP](bgp.md) — Exterior routing protocol
 - [Static vs Dynamic](static-vs-dynamic.md)
 - [IS-IS](isis.md) — Another link-state alternative
-
-## Cross References
-
-- [OSPF](ospf.md)
-- [Static vs Dynamic](static-vs-dynamic.md)

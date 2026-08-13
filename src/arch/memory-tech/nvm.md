@@ -205,9 +205,3 @@ NVM technologies bridge the gap between volatile DRAM and traditional storage. N
 - [SSD](../../storage/ssd.md) — NAND Flash in SSDs
 - [Storage Overview](../../storage/overview.md) — Storage technologies
 - [Memory Hierarchy](../memory-hierarchy/README.md) — Where NVM fits
-
-## Cross References
-
-- [DRAM](dram.md)
-- [Storage SSD](../../storage/ssd.md)
-- [Storage NVMe](../../storage/nvme.md)

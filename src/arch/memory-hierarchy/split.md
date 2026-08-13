@@ -183,9 +183,3 @@ Split L1 caches separate instruction and data streams to enable simultaneous acc
 - [Cache Mapping](cache-mapping.md) — I-cache and D-cache use set-associative mapping
 - [Coherence](coherence.md) — I/D cache coherence for self-modifying code
 - [Performance](../performance/README.md) — Cache bandwidth and pipeline throughput
-
-## Cross References
-
-- [Harvard Architecture](../cpu/harvard.md)
-- [Cache Basics](cache-basics.md)
-- [Performance](performance.md)

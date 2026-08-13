@@ -273,9 +273,3 @@ Kubernetes networking:
 - [ARP](arp.md) — IP to MAC resolution (complementary to DHCP)
 - [DNS](../dns/README.md) — Often configured via DHCP
 - [Subnetting](subnetting.md) — Address pool design
-
-## Cross References
-
-- [IPv4](ipv4.md)
-- [NAT](nat.md)
-- [DNS Resolution](../dns/resolution.md)

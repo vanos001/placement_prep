@@ -192,9 +192,3 @@ Static algorithms (round robin, weighted RR, IP hash) are simple but don't adapt
 - [L4 vs L7](l4-vs-l7.md) — Different layers enable different algorithms
 - [Reverse Proxy](reverse-proxy.md) — Where algorithms are implemented
 - [CDN](../cdn/README.md) — Uses consistent hashing
-
-## Cross References
-
-- [L4 vs L7](l4-vs-l7.md)
-- [Consistent Hashing](../../distributed/partitioning/consistent-hashing.md)
-- [OS Scheduling](../../os/scheduling/README.md)

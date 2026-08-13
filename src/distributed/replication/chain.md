@@ -241,9 +241,3 @@ Chain replication provides linearizable consistency by organizing replicas in a 
 - [Multi-Primary Replication](multi-primary.md) — High availability
 - [Quorum-Based Replication](quorum.md) — Tunable consistency
 - [Consensus Algorithms](../consensus/README.md) — For chain reconfiguration
-
-## Cross References
-
-- [Quorum](quorum.md)
-- [Primary-Backup](primary-backup.md)
-- [Consistency](../fundamentals/consistency.md)

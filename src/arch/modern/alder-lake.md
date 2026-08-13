@@ -256,9 +256,3 @@ Also supports DDR4 (motherboard dependent):
 - [Superscalar](../pipelining/superscalar.md) — Wide decode enables high IPC
 - [Out-of-Order Execution](../pipelining/ooo.md) — Both P and E cores are OoO
 - [x86-64](./x86-64.md) — The ISA Alder Lake implements
-
-## Cross References
-
-- [x86-64](x86-64.md)
-- [AMD Zen](amd-zen.md)
-- [SMT](../parallelism/smt.md)

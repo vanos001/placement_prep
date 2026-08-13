@@ -370,8 +370,3 @@ The UDP header's simplicity is its strength — 8 bytes of overhead provides pro
 - [UDP Applications](applications.md) — Real-world use cases
 - [DNS Overview](../dns/README.md) — DNS uses UDP port 53
 - [TCP Options](../tcp/options.md) — TCP header options (UDP has none)
-
-## Cross References
-
-- [TCP Header](../tcp/header.md)
-- [UDP Applications](applications.md)

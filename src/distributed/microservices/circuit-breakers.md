@@ -335,9 +335,3 @@ Circuit breakers prevent cascading failures by detecting failing services and st
 - [API Gateways](api-gateways.md) — Entry point with circuit breakers
 - [Observability](observability.md) — Monitoring circuit breakers
 - [Message Queues](../messaging/queues.md) — Async alternative to sync calls
-
-## Cross References
-
-- [Microservices](README.md)
-- [Observability](observability.md)
-- [Backpressure](../../interview/system-design/backpressure.md)

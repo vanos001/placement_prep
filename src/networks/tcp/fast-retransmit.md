@@ -161,9 +161,3 @@ QUIC improvements:
 - [TCP Reno](reno.md) — Classic algorithm using fast retransmit
 - [TCP Options](options.md) — SACK option
 - [Congestion Control](congestion-control.md) — Where fast retransmit fits
-
-## Cross References
-
-- [Fast Recovery](fast-recovery.md)
-- [TCP Reno](reno.md)
-- [TCP Timers](timers.md)

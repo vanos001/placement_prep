@@ -362,9 +362,3 @@ BBR represents the future direction of congestion control — moving from reacti
 - [TCP Fast Recovery](fast-recovery.md) — Loss recovery that BBR aims to minimize
 - [TCP States](states.md) — TCP state machine that BBR operates within
 - [TCP Timers](timers.md) — RTO and other timers relevant to BBR's operation
-
-## Cross References
-
-- [TCP Cubic](cubic.md)
-- [Congestion Control](congestion-control.md)
-- [Flow Control](flow-control.md)

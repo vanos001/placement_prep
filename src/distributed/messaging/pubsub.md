@@ -317,9 +317,3 @@ Pub/Sub enables loose, scalable communication between distributed components. Pu
 - [RabbitMQ](rabbitmq.md) — Exchange-based pub/sub
 - [Microservices](../microservices/README.md) — Event-driven microservices
 - [Stream Processing](../mapreduce/streaming.md) — Processing pub/sub events
-
-## Cross References
-
-- [Kafka](kafka.md)
-- [WebSocket](../../networks/http/websocket.md)
-- [Microservices](../microservices/README.md)

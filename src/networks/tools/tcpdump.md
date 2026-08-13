@@ -226,9 +226,3 @@ tcpdump is the essential CLI packet capture tool. Master BPF filters, understand
 - [ping & traceroute](ping-traceroute.md) — Basic connectivity
 - [netstat](netstat.md) — Connection inspection
 - [TLS](../security/tls.md) — Analyzing encrypted traffic
-
-## Cross References
-
-- [Wireshark](wireshark.md)
-- [TCP Header](../tcp/header.md)
-- [netstat](netstat.md)

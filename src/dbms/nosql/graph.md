@@ -290,9 +290,3 @@ Graph databases excel at relationship-heavy queries that would require expensive
 - [NewSQL](./newsql.md) — SQL + distributed scalability
 - [Indexing](../indexing/) — how indexes support graph queries
 - [Query Processing](../query-processing/) — how graph queries execute
-
-
-## Cross References
-
-- [ER Diagrams](../relational-model/er-diagrams.md)
-- [Graph Neural Networks](../../ml/gnn/README.md)

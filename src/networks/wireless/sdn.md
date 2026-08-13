@@ -199,9 +199,3 @@ SDN separates control and data planes, enabling centralized, programmable networ
 - [NFV](nfv.md) — Complementary technology
 - [5G](5g.md) — 5G uses SDN principles
 - [Load Balancing](../load-balancing/README.md) — SDN use case
-
-## Cross References
-
-- [NFV](nfv.md)
-- [Load Balancing](../load-balancing/README.md)
-- [Cloud Virtualization](../../cloud/virtualization/README.md)

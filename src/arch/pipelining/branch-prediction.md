@@ -332,9 +332,3 @@ AMD Zen 4:
 - [Speculative Execution](./speculative.md) — Executing predicted path before confirmation
 - [Classic Pipeline](./classic.md) — Where branches cause hazards
 - [Branch Target Buffer](#) — Predicting where to fetch (not just direction)
-
-## Cross References
-
-- [Control Hazards](control-hazards.md)
-- [Speculative Execution](speculative.md)
-- [OoO Execution](ooo.md)

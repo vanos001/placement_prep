@@ -156,9 +156,3 @@ Fully associative caches eliminate conflict misses by allowing any block to go a
 - [Set-Associative](set-associative.md) — Practical middle ground
 - [Replacement Policies](replacement.md) — Critical for fully associative
 - [Cache Basics](cache-basics.md) — Fundamental concepts
-
-## Cross References
-
-- [Direct Mapped](direct-mapped.md)
-- [Set Associative](set-associative.md)
-- [Replacement Policies](replacement.md)

@@ -203,9 +203,3 @@ PCIe is the primary high-speed interconnect in modern computers. It uses serial,
 - [Buses](buses.md) — Bus fundamentals
 - [GPU](../parallelism/gpu.md) — PCIe for GPU communication
 - [Storage Overview](../../storage/overview.md) — Storage interfaces
-
-## Cross References
-
-- [Buses](buses.md)
-- [NVMe](nvme.md)
-- [SATA](sata.md)

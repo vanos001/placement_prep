@@ -260,9 +260,3 @@ Benchmarking measures and compares system performance using standardized tests. 
 - [Performance Equation](equation.md) — Theoretical performance
 - [Cache Performance](../memory-hierarchy/performance.md) — Cache benchmarks
 - [Amdahl's Law](amdahl.md) — Parallelism limits
-
-## Cross References
-
-- [Performance Counters](counters.md)
-- [Performance Equation](equation.md)
-- [Amdahl's Law](amdahl.md)

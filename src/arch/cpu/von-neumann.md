@@ -161,9 +161,3 @@ This was occasionally used in early computing for optimization but is avoided in
 - [Cache Basics](../memory-hierarchy/cache-basics.md) — How caches mitigate the bottleneck
 - [Classic Pipeline](../pipelining/classic.md) — How the fetch-decode-execute cycle is pipelined
 - [ISA](./isa.md) — The interface that sits above the hardware model
-
-## Cross References
-
-- [Harvard Architecture](harvard.md)
-- [Memory Hierarchy](../memory-hierarchy/README.md)
-- [OS Memory](../../os/memory/README.md)

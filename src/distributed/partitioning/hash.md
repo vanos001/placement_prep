@@ -211,9 +211,3 @@ Hash partitioning provides uniform data distribution by computing hash(key) % N.
 - [Consistent Hashing](consistent-hashing.md) — Dynamic repartitioning
 - [Kafka](../messaging/kafka.md) — Uses hash partitioning for messages
 - [Cassandra](../replication/quorum.md) — Uses hash partitioning with quorum replication
-
-## Cross References
-
-- [Consistent Hashing](consistent-hashing.md)
-- [Range Partitioning](range.md)
-- [DBMS Sharding](../../dbms/distributed/sharding.md)

@@ -279,9 +279,3 @@ curl is the Swiss Army knife of HTTP. Master `-X` for methods, `-H` for headers,
 - [ping & traceroute](ping-traceroute.md) — Network-level testing
 - [tcpdump](tcpdump.md) — Packet-level analysis
 - [TLS](../security/tls.md) — HTTPS connections
-
-## Cross References
-
-- [HTTP](../http/README.md)
-- [REST](../http/rest.md)
-- [HTTPS](../http/https.md)

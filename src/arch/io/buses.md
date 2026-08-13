@@ -145,9 +145,3 @@ I/O buses transfer data between CPU/memory and devices. Modern systems use point
 - [SATA](sata.md) — Storage bus
 - [NVMe](nvme.md) — Storage protocol over PCIe
 - [I/O Overview](README.md) — I/O system architecture
-
-## Cross References
-
-- [PCIe](pcie.md)
-- [OS DMA](../../os/io/dma.md)
-- [Physical Layer](../../networks/osi/physical.md)

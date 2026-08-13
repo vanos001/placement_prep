@@ -199,9 +199,3 @@ Write-back with write-allocate is the dominant policy in modern caches. Write-ba
 - [MESI Protocol](mesi.md) — Coherence for write-back caches
 - [Coherence](coherence.md) — Multi-core consistency
 - [Performance](../performance/README.md) — How write policies affect performance
-
-## Cross References
-
-- [Cache Basics](cache-basics.md)
-- [Coherence](coherence.md)
-- [DBMS WAL](../../dbms/internals/wal.md)

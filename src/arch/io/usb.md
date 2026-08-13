@@ -172,8 +172,3 @@ USB is the universal peripheral interface, evolving from 1.5 Mbps to 80 Gbps. US
 - [Thunderbolt](pcie.md) — Related to USB4
 - [Buses](buses.md) — Bus fundamentals
 - [I/O Overview](README.md) — I/O system architecture
-
-## Cross References
-
-- [Buses](buses.md)
-- [PCIe](pcie.md)

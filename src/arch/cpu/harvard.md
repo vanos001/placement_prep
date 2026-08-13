@@ -173,9 +173,3 @@ The L1 split allows the front-end (instruction fetch) and back-end
 - [Cache Basics](../memory-hierarchy/cache-basics.md) — How caches implement the Harvard split
 - [Split Caches](../memory-hierarchy/split.md) — Separate I-cache and D-cache design
 - [Classic Pipeline](../pipelining/classic.md) — How Harvard enables better pipeline throughput
-
-## Cross References
-
-- [Von Neumann](von-neumann.md)
-- [Cache Split](../memory-hierarchy/split.md)
-- [Memory Hierarchy](../memory-hierarchy/README.md)

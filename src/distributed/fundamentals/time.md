@@ -228,9 +228,3 @@ Concurrent pairs:
 - [Consistency Models](./consistency.md) — Time/ordering affects consistency
 - [Raft](../consensus/raft.md) — Uses term numbers as logical clocks
 - [Spanner](../replication/primary-backup.md) — TrueTime-based global consistency
-
-## Cross References
-
-- [Lamport Clocks](lamport.md)
-- [Vector Clocks](vector-clocks.md)
-- [NTP](../../networks/tcp-ip/ip.md)

@@ -252,9 +252,3 @@ Solutions:
 - [TCP States](states.md) — Full state machine
 - [TCP Timers](timers.md) — MSL, TIME_WAIT timers
 - [TCP Header](header.md) — FIN and RST flags
-
-## Cross References
-
-- [Three-Way Handshake](three-way.md)
-- [TCP States](states.md)
-- [TCP Keepalive](keepalive.md)

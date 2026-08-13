@@ -201,8 +201,3 @@ Boolean algebra is the mathematical language of digital circuits. Key operations
 - [Digital Logic Overview](README.md)
 - [Logic Gates](gates.md) — Physical implementation
 - [Combinational Circuits](combinational.md) — Applying Boolean algebra
-
-## Cross References
-
-- [Logic Gates](gates.md)
-- [Combinational Circuits](combinational.md)

@@ -253,9 +253,3 @@ Architecture:
 - [IPv6](ipv6.md) — ICMPv6 and its expanded role
 - [ARP](arp.md) — Another Layer 2/3 protocol
 - [OSI Network Layer](../osi/network.md) — Where ICMP fits
-
-## Cross References
-
-- [IP Protocol](ip.md)
-- [Ping / Traceroute](../tools/ping-traceroute.md)
-- [ARP](arp.md)

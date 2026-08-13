@@ -191,9 +191,3 @@ VPNs create encrypted tunnels over public networks. Site-to-site connects networ
 - [TLS](tls.md) — Underlying encryption for SSL VPNs
 - [Firewalls](firewalls.md) — Where VPNs often terminate
 - [Security Overview](README.md)
-
-## Cross References
-
-- [IPsec](ipsec.md)
-- [Firewalls](firewalls.md)
-- [TLS](tls.md)

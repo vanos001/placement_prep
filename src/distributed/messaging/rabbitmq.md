@@ -277,9 +277,3 @@ RabbitMQ is a mature message broker with flexible routing through exchanges. It 
 - [Pub/Sub](pubsub.md) — Publish-subscribe patterns
 - [Circuit Breakers](../microservices/circuit-breakers.md) — Handling consumer failures
 - [API Gateways](../microservices/api-gateways.md) — Message routing
-
-## Cross References
-
-- [Kafka](kafka.md)
-- [Queues](queues.md)
-- [Pub/Sub](pubsub.md)

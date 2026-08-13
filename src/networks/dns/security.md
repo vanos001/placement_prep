@@ -392,9 +392,3 @@ DNS security has evolved from no security (1983) to authentication (DNSSEC) and 
 - [DNS Caching](caching.md) — Cache poisoning prevention
 - [HTTPS](../http/https.md) — TLS concepts shared with DoT/DoH
 - [QUIC Protocol](../http/quic.md) — DoQ uses QUIC for DNS encryption
-
-## Cross References
-
-- [DNS Caching](caching.md)
-- [Firewalls](../security/firewalls.md)
-- [TLS](../security/tls.md)

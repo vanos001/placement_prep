@@ -219,9 +219,3 @@ Design (similar to DCTCP):
 - [Congestion Avoidance](congestion-avoidance.md) — Linear growth phase
 - [Fast Retransmit](fast-retransmit.md) — Loss detection
 - [TCP Reno](reno.md) — Classic algorithm using slow start
-
-## Cross References
-
-- [Congestion Control](congestion-control.md)
-- [Congestion Avoidance](congestion-avoidance.md)
-- [TCP Reno](reno.md)

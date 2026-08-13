@@ -278,9 +278,3 @@ StarFive JH7110:
 - [ISA](../cpu/isa.md) — RISC-V defines a modern ISA
 - [ARM](./arm.md) — The dominant RISC architecture RISC-V aims to compete with
 - [Registers](../cpu/registers.md) — RISC-V register file design
-
-## Cross References
-
-- [CISC vs RISC](../cpu/cisc-vs-risc.md)
-- [ARM](arm.md)
-- [ISA](../cpu/isa.md)

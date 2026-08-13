@@ -177,9 +177,3 @@ Binary is the foundation of all computer data. Understanding conversions, arithm
 - [Hexadecimal](hex.md) — Compact binary representation
 - [Two's Complement](twos-complement.md) — Signed integers
 - [Floating Point](floating-point.md) — Real numbers
-
-## Cross References
-
-- [Hexadecimal](hex.md)
-- [Two's Complement](twos-complement.md)
-- [ALU](../cpu/alu.md)

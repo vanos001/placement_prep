@@ -241,9 +241,3 @@ Range partitioning organizes data into contiguous ranges, enabling efficient ran
 - [Consistent Hashing](consistent-hashing.md) — Dynamic repartitioning
 - [Kafka](../messaging/kafka.md) — Partitioned message storage
 - [MapReduce](../mapreduce/README.md) — Processing partitioned data
-
-## Cross References
-
-- [Hash Partitioning](hash.md)
-- [DBMS Sharding](../../dbms/distributed/sharding.md)
-- [DBMS Indexing](../../dbms/indexing/README.md)

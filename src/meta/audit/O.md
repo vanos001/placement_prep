@@ -495,32 +495,6 @@ items (WAL, LSM Compaction, Bluetooth fix) is 3 items, which would make 13. Also
 - [Link 1](target1.md) — description
 - [Link 2](target2.md) — description
 
-## Cross References
-- [Link 1](target1.md)
-- [Link 2](target2.md)
-- [Additional link](target3.md)
-```
-
-**Files affected (32):**
-- `networks/{osi,http,cdn,udp,sockets,tcp,dns,routing,tcp-ip}/README.md` (9 files)
-- `arch/{parallelism,memory-hierarchy,io}/README.md` (3 files)
-- `distributed/{messaging,partitioning,microservices,mapreduce,replication}/README.md` (5 files)
-- `dbms/{indexing,relational-model,internals,caching,transactions,query-processing,storage,nosql,distributed,sql,normalization}/README.md` (11 files)
-- `os/{filesystems,security,boot,containers}/README.md` (4 files)
-
-**Problem:** The two sections are largely redundant. The "Cross-References" (with hyphen)
-section usually has descriptive labels; the "Cross References" (no hyphen) section is
-often a flat list. Readers get two near-identical lists, and maintaining both is error-
-prone (they sometimes disagree).
-
-**Recommendation:** Pick one canonical form (recommend `## Cross-References` with
-descriptive labels) and delete the duplicate section in all 32 files.
-
-**Verification:** `rg -l -U '## Cross-References[\s\S]*?## Cross References' src/` returns
-32 files (with multiline matching).
-
----
-
 ## Files confirmed clean (sample)
 
 The following deeply-audited files had no findings:

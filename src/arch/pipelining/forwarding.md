@@ -251,8 +251,3 @@ SW   x1, 0(x3)     # Store x1 (uses x1 as data)
 - [Pipeline Hazards](./hazards.md) — Overview of all hazard types
 - [Out-of-Order Execution](./ooo.md) — OoO uses physical register files for forwarding
 - [Registers](../cpu/registers.md) — Register file design for multi-ported access
-
-## Cross References
-
-- [Data Hazards](data-hazards.md)
-- [Classic Pipeline](classic.md)

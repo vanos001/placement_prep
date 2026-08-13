@@ -209,9 +209,3 @@ Combinational circuits implement Boolean functions without memory. Key circuits:
 - [Logic Gates](gates.md) — Building blocks
 - [Sequential Circuits](sequential.md) — Adding memory
 - [ALU](../cpu/alu.md) — Uses combinational circuits
-
-## Cross References
-
-- [Logic Gates](gates.md)
-- [Sequential Circuits](sequential.md)
-- [ALU](../cpu/alu.md)

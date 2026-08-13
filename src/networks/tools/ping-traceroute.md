@@ -263,9 +263,3 @@ Host                   Loss%   Snt   Last   Avg  Best  Wrst
 - [tcpdump](tcpdump.md) — See actual packets
 - [netstat](netstat.md) — Connection state
 - [curl](curl.md) — HTTP-level testing
-
-## Cross References
-
-- [ICMP](../tcp-ip/icmp.md)
-- [DNS Resolution](../dns/resolution.md)
-- [Routing](../routing/README.md)

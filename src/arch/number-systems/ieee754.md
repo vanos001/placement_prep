@@ -335,9 +335,3 @@ if (isnan(x)) {
 - [Binary](./binary.md) — Binary number system fundamentals
 - [ALU](../cpu/alu.md) — Where floating-point operations execute (FPU)
 - [SIMD](../parallelism/simd.md) — Parallel floating-point operations
-
-## Cross References
-
-- [Floating Point](floating-point.md)
-- [Two's Complement](twos-complement.md)
-- [ALU](../cpu/alu.md)

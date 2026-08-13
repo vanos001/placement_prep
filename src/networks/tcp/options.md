@@ -389,9 +389,3 @@ TCP options are essential for modern network performance. Without MSS, Window Sc
 - [TCP Reno](reno.md) — Congestion control that benefits from SACK
 - [TCP CUBIC](cubic.md) — Modern CC that relies on accurate RTT from timestamps
 - [UDP Header](../udp/header.md) — UDP has no options (8-byte fixed header)
-
-## Cross References
-
-- [TCP Header](header.md)
-- [Nagle's Algorithm](nagle.md)
-- [TCP Keepalive](keepalive.md)

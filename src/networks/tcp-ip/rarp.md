@@ -145,8 +145,3 @@ Modern equivalents:
 - [ARP](arp.md) — The active protocol (IP → MAC)
 - [DHCP](dhcp.md) — The modern replacement
 - [Data Link Layer](../osi/data-link.md) — Where RARP operated
-
-## Cross References
-
-- [ARP](arp.md)
-- [DHCP](dhcp.md)

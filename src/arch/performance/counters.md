@@ -280,8 +280,3 @@ Performance counters provide hardware-level insight into CPU behavior. Use `perf
 - [Cache Performance](../memory-hierarchy/performance.md) — Cache miss impact
 - [Benchmarking](benchmarking.md) — Measuring performance
 - [Prefetching](../memory-hierarchy/prefetching.md) — Reducing cache misses
-
-## Cross References
-
-- [Benchmarking](benchmarking.md)
-- [OS Observability](../../distributed/microservices/observability.md)

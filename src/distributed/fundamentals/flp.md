@@ -243,9 +243,3 @@ Ben-Or's Algorithm (1983):
 - [Paxos](../consensus/paxos.md) — Classic consensus algorithm
 - [Raft](../consensus/raft.md) — Understandable consensus algorithm
 - [Time and Ordering](./time.md) — Why time assumptions matter
-
-## Cross References
-
-- [Consensus](../consensus/README.md)
-- [CAP Theorem](cap.md)
-- [Paxos](../consensus/paxos.md)
