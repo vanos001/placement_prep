@@ -170,7 +170,7 @@ Solution 1: Last Write Wins (LWW)
 Solution 2: Vector Clocks
 ├── Track causal ordering of events
 ├── Detect conflicts, let application resolve
-└── Used by: DynamoDB, Riak
+└── Used by: Amazon Dynamo (2007 paper), Riak. (AWS DynamoDB the product uses LWW + conditional writes, not vector clocks.)
 
 Vector Clock Example:
   Node A writes: VC = {A:1}

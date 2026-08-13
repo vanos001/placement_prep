@@ -257,4 +257,4 @@ Consistency models are the foundation of distributed system design. Choosing the
 - [Replication](./replication.md) — how consistency is maintained across replicas
 - [Consensus](./consensus.md) — how nodes agree on values
 - [Raft](./raft.md) — consensus algorithm for strong consistency
-- [Distributed Transactions](./consistency.md) — multi-operation consistency
+- [Distributed Transactions](../transactions/distributed.md) — multi-operation consistency

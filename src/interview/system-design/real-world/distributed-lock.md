@@ -87,14 +87,16 @@ class RedisLock:
 
 ```python
 class Redlock:
-    def __init__(self, redis_instances, ttl=30):
+    def __init__(self, redis_instances, name, ttl=30):
         self.instances = redis_instances
+        self.name = name
         self.ttl = ttl
         self.token = str(uuid.uuid4())
         self.quorum = len(redis_instances) // 2 + 1
     
     def acquire(self, timeout=10):
-        end = time.time() + timeout
+        start = time.time()
+        end = start + timeout
         while time.time() < end:
             acquired = 0
             for instance in self.instances:

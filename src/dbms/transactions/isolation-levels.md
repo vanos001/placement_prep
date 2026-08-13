@@ -497,5 +497,5 @@ COMMIT;
 - [MVCC](./mvcc.md) — How MVCC implements snapshots for isolation levels
 - [Optimistic Concurrency Control](./optimistic.md) — OCC and Snapshot Isolation
 - [Recovery](./recovery.md) — How isolation interacts with recovery
-- [Two-Phase Locking](./two-phase-commit.md) — 2PL as an implementation mechanism for Serializable
+- [Two-Phase Locking](./lock-based.md) — 2PL as an implementation mechanism for Serializable
 - [Distributed Transactions](./distributed.md) — Isolation in distributed systems

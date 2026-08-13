@@ -95,7 +95,7 @@ If no new updates are made, all replicas will **eventually** converge to the sam
 **Vector Clocks**
 - Each node maintains a version vector
 - Detects concurrent writes; application resolves conflicts
-- Used by Amazon DynamoDB (pre-2017), Riak
+- Used by Amazon Dynamo (2007 paper), Riak, CouchDB. (AWS DynamoDB uses LWW, not vector clocks.)
 
 **CRDTs (Conflict-free Replicated Data Types)**
 - Data structures that mathematically guarantee convergence

@@ -307,4 +307,4 @@ A: (1) Composite index on (user_id, created_at DESC) on the posts table. (2) The
 - [B+ Tree](./b-plus-tree.md) — The most common index structure
 - [MVCC](../transactions/mvcc.md) — How indexes interact with MVCC
 - [ARIES](../transactions/aries.md) — Index recovery
-- [Query Optimization](../transactions/isolation-levels.md) — How optimizer uses indexes
+- [Query Optimization](../internals/query-optimization.md) — How optimizer uses indexes

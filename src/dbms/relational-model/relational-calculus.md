@@ -322,7 +322,7 @@ The proof assumes finite relations and safe expressions (active domain restricti
 A: Standard relational calculus uses two-valued logic (TRUE/FALSE). SQL uses three-valued logic (TRUE/FALSE/UNKNOWN) due to NULLs. This causes:
 - `¬(NULL > 5)` = `¬UNKNOWN` = `UNKNOWN`, not TRUE
 - `t.name = NULL` is always UNKNOWN (must use `IS NULL`)
-- De Morgan's laws don't hold: `NOT (A AND B)` ≠ `(NOT A) OR (NOT B)` when NULLs are involved
+- De Morgan's laws DO hold in 3-valued logic: `NOT (A AND B)` ≡ `(NOT A) OR (NOT B)` (verified by exhaustive truth-table enumeration). What fails is the **Law of Excluded Middle**: `A OR NOT A` is not always TRUE (it's UNKNOWN when A is UNKNOWN).
 - Quantifier semantics change: `∀x P(x)` over a set containing NULL may behave unexpectedly
 
 This is why SQL requires careful NULL handling with `IS NULL`, `COALESCE`, and `IS DISTINCT FROM`.

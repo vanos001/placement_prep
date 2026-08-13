@@ -89,9 +89,9 @@ Uber uses Uber's **H3** — a hexagonal hierarchical spatial index:
 ```mermaid
 graph TB
     subgraph "H3 Hexagonal Grid"
-        H1["Hex Level 7<br/>(~500m edge)"]
-        H2["Hex Level 9<br/>(~100m edge)"]
-        H3["Hex Level 12<br/>(~3m edge)"]
+        H1["Hex Level 7<br/>(~1220m edge)"]
+        H2["Hex Level 9<br/>(~174m edge)"]
+        H3["Hex Level 12<br/>(~9m edge)"]
     end
     
     Driver["Driver Location"] --> H3

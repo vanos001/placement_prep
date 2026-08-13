@@ -328,7 +328,7 @@ SELECT * FROM Hierarchy;
 A: Methods:
 1. **WHERE termination condition**: `WHERE depth < 10` or `WHERE n < 1000`
 2. **Cycle detection**: `WHERE path NOT LIKE '%' || new_node || '%'`
-3. **Database limits**: Most databases have a `max_recursive_iterations` setting (PostgreSQL: 100 by default)
+3. **Database limits**: PostgreSQL relies on natural termination (no iteration limit setting); MySQL has `cte_max_recursion_depth` (default 1000); SQL Server has `MAXRECURSION` (default 100).
 4. **MAXRECURSION hint** (SQL Server): `OPTION (MAXRECURSION 100)`
 
 **Q6: When does a CTE get materialized vs inlined?**
