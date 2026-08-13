@@ -55,14 +55,14 @@ The most common unresolvable-without-stall data hazard:
 
 ```
 LW  R1, 0(R2)     ; Data available at end of MEM stage (cycle 4)
-ADD R3, R1, R4     ; Data needed at beginning of EX stage (cycle 3)
+ADD R3, R1, R4     ; Data needed at beginning of EX stage (cycle 4)
 
 Timeline:
   CC1   CC2   CC3   CC4   CC5
   LW:   IF    ID    EX    MEM   WB   ← data ready at end of CC4
-  ADD:        IF    ID    EX    MEM  WB ← needs data at start of CC3!
+  ADD:        IF    ID    EX    MEM  WB ← needs data at start of CC4 (EX stage)!
 
-Even with forwarding, there's a 1-cycle gap.
+Even with forwarding, there's a 1-cycle gap (ADD's EX is CC4, but LW's MEM result isn't ready until end of CC4).
 The pipeline must stall for 1 cycle.
 ```
 

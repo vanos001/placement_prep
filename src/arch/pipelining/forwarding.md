@@ -10,10 +10,11 @@
 
 Without forwarding:
 ```
-ADD R1, R2, R3    ; Produces R1 in WB (cycle 5)
-SUB R4, R1, R5    ; Needs R1 in ID (cycle 2) — 3 cycles too early!
+ADD R1, R2, R3    ; Produces R1 in WB (end of CC5)
+SUB R4, R1, R5    ; Needs R1 in ID (CC3) — register file not yet updated!
 
-Must stall for 3 cycles until R1 is written to register file.
+Must stall for 2 cycles (CC3, CC4 become bubbles) until R1 is written to register file in CC5.
+With the write-first-half / read-second-half register-file convention, SUB's ID can shift to CC5 to safely read R1.
 ```
 
 With forwarding:
@@ -96,14 +97,14 @@ if (MEM/WB.RegWrite == 1
 
 ```
 LW  R1, 0(R2)    ; Data available at end of MEM (cycle 4)
-ADD R3, R1, R4    ; Data needed at start of EX (cycle 3)
+ADD R3, R1, R4    ; Data needed at start of EX (cycle 4)
 
 Timeline:
   CC1   CC2   CC3   CC4   CC5
   LW:   IF    ID    EX    MEM   WB  ← data ready end of CC4
-  ADD:        IF    ID    EX    MEM  WB ← needs at start of CC3
+  ADD:        IF    ID    EX    MEM  WB ← needs at start of CC4
 
-Even with MEM/WB → EX forwarding, there's a 1-cycle gap.
+Even with MEM/WB → EX forwarding, there's a 1-cycle gap (ADD's EX is CC4, but LW's MEM result isn't ready until end of CC4).
 Must insert 1 stall cycle, then forward from MEM/WB.
 ```
 

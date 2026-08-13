@@ -89,10 +89,10 @@ graph LR
 
 ```python
 # PyTorch mixed precision
-scaler = torch.cuda.amp.GradScaler()
+scaler = torch.amp.GradScaler('cuda')
 for batch in dataloader:
     optimizer.zero_grad()
-    with torch.cuda.amp.autocast():
+    with torch.amp.autocast('cuda'):
         outputs = model(batch)
         loss = criterion(outputs)
     scaler.scale(loss).backward()

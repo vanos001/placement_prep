@@ -4,7 +4,7 @@
 
 Process creation is one of the most fundamental operations in Unix/Linux. The original Unix `fork()` system call creates a nearly exact copy of the calling process. Over time, Linux has added several variations — `vfork()` for performance, `clone()` for threads, and `clone3()` for a modern extensible interface.
 
-All of these ultimately funnel into the kernel's `copy_process()` function, which does the heavy lifting of duplicating a task. This page explains each system call, how Copy-on-Write (COW) makes `fork()` efficient, and the internals of `do_fork()` / `copy_process()`.
+All of these ultimately funnel into the kernel's `copy_process()` function, which does the heavy lifting of duplicating a task. This page explains each system call, how Copy-on-Write (COW) makes `fork()` efficient, and the internals of `kernel_clone()` / `copy_process()`.
 
 ## The System Calls
 
@@ -20,12 +20,19 @@ pid_t vfork(void);
 /* Both are implemented in the kernel as: */
 SYSCALL_DEFINE0(fork)
 {
-    return do_fork(SIGCHLD, 0, 0, NULL, NULL);
+    struct kernel_clone_args args = {
+        .exit_signal = SIGCHLD,
+    };
+    return kernel_clone(&args);
 }
 
 SYSCALL_DEFINE0(vfork)
 {
-    return do_fork(CLONE_VFORK | CLONE_VM | SIGCHLD, 0, 0, NULL, NULL);
+    struct kernel_clone_args args = {
+        .flags = CLONE_VFORK | CLONE_VM,
+        .exit_signal = SIGCHLD,
+    };
+    return kernel_clone(&args);
 }
 ```
 
@@ -58,7 +65,11 @@ VmRSS:       320 kB  # Much less physical memory (COW)
 ```c
 SYSCALL_DEFINE0(vfork)
 {
-    return do_fork(CLONE_VFORK | CLONE_VM | SIGCHLD, 0, 0, NULL, NULL);
+    struct kernel_clone_args args = {
+        .flags = CLONE_VFORK | CLONE_VM,
+        .exit_signal = SIGCHLD,
+    };
+    return kernel_clone(&args);
 }
 ```
 
@@ -105,7 +116,14 @@ SYSCALL_DEFINE5(clone, unsigned long, clone_flags,
                 unsigned long, newsp, int __user *, parent_tidptr,
                 int __user *, child_tidptr, unsigned long, tls)
 {
-    return do_fork(clone_flags, newsp, 0, parent_tidptr, child_tidptr);
+    struct kernel_clone_args args = {
+        .flags = clone_flags,
+        .stack = newsp,
+        .parent_tid = parent_tidptr,
+        .child_tid = child_tidptr,
+        .tls = tls,
+    };
+    return kernel_clone(&args);
 }
 ```
 
@@ -274,11 +292,11 @@ os.waitpid(pid, 0)
 "
 ```
 
-## do_fork() Internals
+## kernel_clone() Internals
 
 ### The Main Path
 
-All fork-family calls eventually reach `kernel_clone()` (or the older `do_fork()`):
+All fork-family calls eventually reach `kernel_clone()` (in older kernels this was `do_fork()`, which was inlined into `kernel_clone()` in Linux 5.9):
 
 ```c
 /* kernel/fork.c - simplified */
@@ -533,7 +551,7 @@ void wake_up_new_task(struct task_struct *p)
 ```mermaid
 flowchart TD
     A["User calls fork()"] --> B["SYSCALL_DEFINE0(fork)"]
-    B --> C["do_fork(SIGCHLD, ...)"]
+    B --> C["kernel_clone(&args)"]
     C --> D["kernel_clone()"]
 
     D --> E["copy_process()"]

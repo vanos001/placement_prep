@@ -201,8 +201,9 @@ void syscall_init(void)
     wrmsr(MSR_LSTAR, (unsigned long)entry_SYSCALL_64);
 
     /* Mask traps and direction flag on syscall entry */
-    wrmsr(MSR_SYSCALL_MASK,
-          EFLAC_TF | EFLAC_DF | EFLAC_IF | EFLAC_IOPL);
+    wrmsrl(MSR_SYSCALL_MASK,
+           X86_EFLAGS_TF | X86_EFLAGS_DF | X86_EFLAGS_IF |
+           X86_EFLAGS_IOPL | X86_EFLAGS_NT | X86_EFLAGS_AC | X86_EFLAGS_RF);
 }
 ```
 
@@ -233,8 +234,8 @@ The `SYSCALL_DEFINE1` macro handles type checking, `copy_from_user()` safety ann
 For x86-64, add to `arch/x86/entry/syscalls/syscall_64.tbl`:
 
 ```
-# Add at the end (use next available number)
-548    common    hello    sys_hello
+# Add at the end (use next available number — 463 as of Linux 6.11, after __NR_uretprobe=462)
+463    common    hello    sys_hello
 ```
 
 ### Step 3: Add Prototype

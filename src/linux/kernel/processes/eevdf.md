@@ -194,7 +194,7 @@ static struct sched_entity *pick_eevdf(struct cfs_rq *cfs_rq)
 }
 ```
 
-Actually, the real implementation uses a more efficient O(log n) search:
+The kernel's actual implementation uses a more efficient O(log n) search:
 
 ```c
 /* kernel/sched/fair.c - actual pick_eevdf */

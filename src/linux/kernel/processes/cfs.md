@@ -612,9 +612,13 @@ $ cat /proc/sched_debug | grep -A 5 "Task"
 ### CFS with cgroups
 
 ```bash
-# Create a group with 25% CPU share
+# Create a group with 25% of one CPU (hard limit)
 $ mkdir /sys/fs/cgroup/cpu/limited
-$ echo 25000 > /sys/fs/cgroup/cpu/limited/cpu.shares
+$ echo 25000 > /sys/fs/cgroup/cpu/limited/cpu.cfs_quota_us
+$ echo 100000 > /sys/fs/cgroup/cpu/limited/cpu.cfs_period_us
+
+# OR: relative weight (default 1024 — higher = more share, not a percentage)
+$ echo 250 > /sys/fs/cgroup/cpu/limited/cpu.shares
 
 # Add process
 $ echo $PID > /sys/fs/cgroup/cpu/limited/cgroup.procs

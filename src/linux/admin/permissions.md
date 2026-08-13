@@ -13,14 +13,15 @@ Linux file permissions are the foundation of system security. Every file and dir
 │                                                     │
 │  File: -rwxr-xr-- 1 alice developers 4096 file.txt  │
 │        │││││││││                                      │
-│        │││││││└── Other: read                        │
-│        ││││││└─── Other: (no write)                  │
-│        │││││└──── Other: (no execute)                │
-│        ││││└───── Group: read                        │
-│        │││└────── Group: execute                     │
-│        ││└─────── Group: (no write)                  │
-│        │└──────── Owner: read                        │
-│        └───────── Owner: execute                     │
+│        ││││││││└── Other: (no execute)               │
+│        │││││││└─── Other: (no write)                 │
+│        ││││││└──── Other: read                       │
+│        │││││└───── Group: execute                    │
+│        ││││└────── Group: (no write)                 │
+│        │││└─────── Group: read                       │
+│        ││└──────── Owner: execute                    │
+│        │└───────── Owner: write                      │
+│        └────────── Owner: read                       │
 │                                                     │
 │  Type: - (file), d (directory), l (symlink)         │
 │        c (char device), b (block device)            │

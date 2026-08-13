@@ -6,7 +6,7 @@
 Pick 2 of 3: Consistency, Availability, Partition Tolerance
 Since P is inevitable → Choose CP or AP
 
-CP: ZooKeeper, HBase, MongoDB (strong consistency, may reject requests)
+CP: ZooKeeper, HBase, MongoDB (default `writeConcern=majority` since v3.2; strong consistency, may reject requests)
 AP: Cassandra, DynamoDB, CouchDB (always available, eventual consistency)
 ```
 

@@ -131,7 +131,7 @@ grep -r "__NR_open " /usr/include/asm/
 
 ## x86_64 Syscall Table
 
-### File I/O (0–19)
+### File I/O (0–18)
 
 | Number | Name | Signature | Description |
 |--------|------|-----------|-------------|

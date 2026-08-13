@@ -116,18 +116,18 @@ struct zswap_header {
 
 ### Store Path: zswap_store()
 
-When a page is swapped out, zswap intercepts it via the **frontswap** API:
+When a page is swapped out, zswap intercepts it via its hooks into the swap subsystem (`__swap_writepage()` → `zswap_store()`):
 
 ```mermaid
 sequenceDiagram
     participant VM as VM Subsystem
-    participant FS as frontswap
+    participant SWP as swap subsystem
     participant ZS as zswap
     participant CP as Crypto (compress)
     participant ZP as zpool
 
-    VM->>FS: frontswap_store(swpentry, page)
-    FS->>ZS: zswap_store(swpentry, page)
+    VM->>SWP: __swap_writepage(swpentry, page)
+    SWP->>ZS: zswap_store(swpentry, page)
     ZS->>ZS: Check if pool is full
     alt Pool has space
         ZS->>CP: compress page → compressed data

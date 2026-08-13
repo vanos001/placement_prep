@@ -265,7 +265,7 @@ reduces downtime:
 # Pre-dump: dump memory pages but keep process running
 sudo criu pre-dump -t <PID> -D /tmp/pre-dump-1/
 
-# Wait, let more pages become dirty
+# Wait — let more pages become dirty
 sleep 5
 
 # Second pre-dump

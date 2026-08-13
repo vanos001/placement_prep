@@ -251,8 +251,8 @@ $ dmesg | grep "idle"
 ### TASK_PARKED / TASK_NOLOAD
 
 ```c
-#define TASK_PARKED             0x0040
-#define TASK_NOLOAD             0x0400
+#define TASK_PARKED             0x0400
+#define TASK_NOLOAD             0x0800
 ```
 
 - `TASK_PARKED`: Used for parked kernel threads

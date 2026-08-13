@@ -49,7 +49,7 @@ fun UserCard(user: User) {
             .padding(16.dp)
     ) {
         Column {
-            Text(text = user.name, style = MaterialTheme.typography.h6)
+            Text(text = user.name, style = MaterialTheme.typography.titleLarge)
             if (expanded) {
                 Text(text = user.email)
                 Text(text = user.bio)
