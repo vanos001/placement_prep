@@ -291,7 +291,7 @@ int main() {
     while (1) {
         do_critical_work();
         /* Sleep until next period */
-        clock_nanosleep(CLOCK_MONOTONIO, TIMER_ABSTIME, &next_wakeup, NULL);
+        clock_nanosleep(CLOCK_MONOTONIC, TIMER_ABSTIME, &next_wakeup, NULL);
     }
     return 0;
 }

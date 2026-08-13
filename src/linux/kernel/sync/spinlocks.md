@@ -93,10 +93,10 @@ sequenceDiagram
     participant IRQ as Hard IRQ
     participant Lock
 
-    CPU0->>Lock: spin_lock(andshared_lock) ✓
+    CPU0->>Lock: spin_lock(&shared_lock) ✓
     Note over CPU0: Working with shared data...
     IRQ->>CPU0: Hardware interrupt fires!
-    IRQ->>Lock: spin_lock(andshared_lock) → SPINS FOREVER
+    IRQ->>Lock: spin_lock(&shared_lock) → SPINS FOREVER
     Note over CPU0,Lock: DEADLOCK -- IRQ waits for lock held by interrupted code on same CPU
 ```
 

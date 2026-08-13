@@ -4,8 +4,8 @@
 - [Chapter 102: Graph Fundamentals](ch22-graph-fundamentals.md)
 - Chapter 103: DFS and BFS
 - Chapter 104: Strongly Connected Components
-- Chapter 105: Shortest Paths
-- Chapter 108: Trees
+- Chapter 26: Shortest Paths
+- Chapter 13: Trees
 - Tarjan's algorithm, bridge detection, tree decomposition basics
 
 ## Interview Frequency: ★★

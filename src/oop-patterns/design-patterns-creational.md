@@ -570,33 +570,33 @@ HttpRequest request = new HttpRequest.Builder("https://api.example.com/users")
 class HttpRequest:
     def __init__(self, builder):
         self.url = builder.url
-        self.method = builder.method
-        self.headers = dict(builder.headers)
-        self.body = builder.body
-        self.timeout = builder.timeout
+        self.method = builder._method
+        self.headers = dict(builder._headers)
+        self.body = builder._body
+        self.timeout = builder._timeout
     
     class Builder:
         def __init__(self, url):
             self.url = url
-            self.method = "GET"
-            self.headers = {}
-            self.body = None
-            self.timeout = 30
+            self._method = "GET"
+            self._headers = {}
+            self._body = None
+            self._timeout = 30
         
         def method(self, method):
-            self.method = method
+            self._method = method
             return self
         
         def header(self, key, value):
-            self.headers[key] = value
+            self._headers[key] = value
             return self
         
         def body(self, body):
-            self.body = body
+            self._body = body
             return self
         
         def timeout(self, timeout):
-            self.timeout = timeout
+            self._timeout = timeout
             return self
         
         def build(self):

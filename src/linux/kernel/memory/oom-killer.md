@@ -91,7 +91,7 @@ unsigned long oom_badness(struct task_struct *p,
 
     /* Special case: OOM_SCORE_ADJ_MIN (-1000) makes process unkillable */
     if (adj == OOM_SCORE_ADJ_MIN)
-        return ULONG_MAX;  /* Intentionally high — see below */
+        return LONG_MIN;  /* Lowest possible score — never selected for kill */
 
     /* Adjust score by oom_score_adj (-1000 to +1000) */
     points += (points * adj) / 1000;

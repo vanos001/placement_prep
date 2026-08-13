@@ -614,20 +614,22 @@ A standard trie can waste significant memory when many nodes have only a single 
 Standard trie for: "romane", "romanus", "romulus", "rubens", "ruber", "rubicon", "rubicundus"
 
          r
-         |
-         o
         / \
-       m   u
-      / \   \
-     a   u   b
-    / \  |   |
-   n   n l   e
-   |   | u   |
-   e   u s   n
-       |     |
-       s     s
-              |
-              (continues...)
+       o   u
+      /     \
+     m       b
+    / \     / \
+   a   u   e   i
+   |   |   |   |
+   n   l   n   c
+   |   u   s   o
+   e   s       n
+                |
+               d
+               |
+               u
+               |
+               s
 ```
 
 ### After Compression
@@ -636,15 +638,14 @@ Standard trie for: "romane", "romanus", "romulus", "rubens", "ruber", "rubicon",
 Compressed trie:
          r
         / \
-       o   ube
-      / \    \
-     manu   ns
-     / \     \
-    e   s   (rest)
-    |
-    (roman + e)
-    (roman + us)
+       om  ub
+      / \   / \
+    ane  ul  ens  icon
+         |  |      |
+         us s      dundus
 ```
+
+Key: `om` = shared prefix "om" (romane, romanus, romulus); `ub` = shared prefix "ub" (rubens, ruber, rubicon, rubicundus). Each leaf edge is the remaining suffix after the shared prefix.
 
 ### Implementation of Compressed Trie
 

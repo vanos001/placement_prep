@@ -199,7 +199,7 @@ int main() {
     std::cout << "0-3 connected: " << lct.connected(0, 3) << "\n"; // 0
 
     lct.link(3, 4); lct.link(4, 5);
-    std::cout << "Find root of 5: " << lct.findRoot(5) << "\n"; // 3
+    std::cout << "Find root of 5: " << lct.findRoot(5) << "\n"; // 5
 
     return 0;
 }

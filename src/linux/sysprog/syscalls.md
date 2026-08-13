@@ -44,9 +44,9 @@ asmlinkage const sys_call_ptr_t sys_call_table[] = {
     [2] = sys_open,
     [3] = sys_close,
     /* ... hundreds more ... */
-    [435] = sys_io_uring_setup,
-    [436] = sys_io_uring_enter,
-    [437] = sys_io_uring_register,
+    [425] = sys_io_uring_setup,
+    [426] = sys_io_uring_enter,
+    [427] = sys_io_uring_register,
 };
 ```
 
@@ -73,12 +73,12 @@ $ cat /usr/include/asm/unistd_64.h | head -20
 
 # Or use ausyscall
 $ ausyscall --dump | head -10
-read	0
-write	1
-open	2
-close	3
-stat	4
-fstat	5
+read    0
+write   1
+open    2
+close   3
+stat    4
+fstat   5
 ```
 
 ### User/Kernel Transition Details
@@ -135,7 +135,7 @@ sequenceDiagram
 The oldest mechanism on x86. Uses a software interrupt:
 
 ```asm
-mov eax, 1        ; syscall number: sys_write
+mov eax, 4        ; syscall number: sys_write (i386 __NR_write = 4)
 mov ebx, 1        ; fd: stdout
 mov ecx, msg      ; buffer
 mov edx, len      ; count

@@ -174,11 +174,11 @@ $ ps -eo pid,stat,comm | grep t
  1234 t+   myapp       ← Traced by debugger
 ```
 
-### EXIT_ZOMBIE (32) / EXIT_DEAD (128)
+### EXIT_ZOMBIE (32) / EXIT_DEAD (16)
 
 ```c
 #define EXIT_ZOMBIE             0x0020
-#define EXIT_DEAD               0x0080
+#define EXIT_DEAD               0x0010
 ```
 
 **Zombie** (`EXIT_ZOMBIE`): A process that has exited but whose parent hasn't called `wait()` yet. The kernel retains the `task_struct` so the parent can read the exit status.
@@ -221,7 +221,7 @@ A combination of `TASK_UNINTERRUPTIBLE` and a fatal signal check:
 
 ```c
 #define TASK_KILLABLE           (TASK_WAKEKILL | TASK_UNINTERRUPTIBLE)
-#define TASK_WAKEKILL           0x0020
+#define TASK_WAKEKILL           0x0100
 ```
 
 A task in `TASK_KILLABLE` is uninterruptible except for fatal signals (`SIGKILL`). This is used for operations that must complete but shouldn't make the system unkillable:

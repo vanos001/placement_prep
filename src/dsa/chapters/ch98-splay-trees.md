@@ -58,26 +58,25 @@ The key insight: in the Zig-Zig case, we rotate the **grandparent first**, then 
 
 ### Step-by-Step Walkthrough
 
-Consider inserting nodes 1-7 in order, then searching for 1:
+Consider inserting nodes 1-7 in order. Since the chapter's `insert()` splays each newly inserted node to the root, the tree is a degenerate LEFT chain with 7 at the root:
 
 ```
-After inserting 1,2,3,4,5,6,7 (degenerate right chain):
-    1
-     \
-      2
-       \
-        3
-         \
-          4
-           \
-            5
-             \
-              6
-               \
+After inserting 1,2,3,4,5,6,7 (each insert splays the new node to root):
                 7
+               /
+              6
+             /
+            5
+           /
+          4
+         /
+        3
+       /
+      2
+     /
+    1
 
-After splaying 1 (search for 1):
-  Multiple Zig-Zig rotations bring 1 to root:
+Searching for 1: splay(1) brings 1 to the root via Zig-Zig rotations.
   Step 1: Zig-Zig at (1,2,3) → rotate 3, then 2
   Step 2: Zig-Zig at (1,4,5) → rotate 5, then 4
   Step 3: Zig-Zig at (1,6,7) → rotate 7, then 6

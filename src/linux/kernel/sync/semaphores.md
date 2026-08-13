@@ -33,7 +33,7 @@ The `count` field represents the number of available resources:
 
 ```c
 /* Binary semaphore (1 resource, like a mutex) */
-static DECLARE_SEM(my_sem);
+static DEFINE_SEMAPHORE(my_sem);
 
 /* Counting semaphore (N resources) */
 static struct semaphore pool_sem;
@@ -177,7 +177,7 @@ stateDiagram-v2
 ### Pattern 1: Mutual Exclusion (Binary Semaphore)
 
 ```c
-static DECLARE_SEM(mtx);
+static DEFINE_SEMAPHORE(mtx);
 
 void critical_section(void) {
     if (down_interruptible(&mtx))
@@ -194,7 +194,7 @@ void critical_section(void) {
 
 ```c
 /* Limit concurrent DMA channels to 4 */
-static DECLARE_SEM(dma_slots);  /* Inited to 4 */
+static DEFINE_SEMAPHORE(dma_slots);  /* Inited to 4 */
 
 int start_dma_transfer(void) {
     /* Acquire a DMA slot (blocks if all 4 are in use) */
@@ -219,9 +219,9 @@ void release_dma_slot(void) {
 ```c
 #define BUFFER_SIZE 10
 
-static DECLARE_SEM(empty_slots);  /* Initialized to BUFFER_SIZE */
-static DECLARE_SEM(filled_slots); /* Initialized to 0 */
-static DECLARE_SEM(buffer_mutex); /* Initialized to 1 */
+static DEFINE_SEMAPHORE(empty_slots);  /* Initialized to BUFFER_SIZE */
+static DEFINE_SEMAPHORE(filled_slots); /* Initialized to 0 */
+static DEFINE_SEMAPHORE(buffer_mutex); /* Initialized to 1 */
 
 static int buffer[BUFFER_SIZE];
 static int in = 0, out = 0;
@@ -313,7 +313,7 @@ graph TD
 
 ```c
 /* USE SEMAPHORE when counting resources: */
-static DECLARE_SEM(connection_pool);  /* 10 DB connections */
+static DEFINE_SEMAPHORE(connection_pool);  /* 10 DB connections */
 down(&connection_pool);    /* Get a connection */
 use_connection();
 up(&connection_pool);      /* Return it */
@@ -442,7 +442,7 @@ up(&sem);    /* Task B (different task!) */
 ### Mistake 2: Double Down (Deadlock with Binary)
 
 ```c
-static DECLARE_SEM(sem);  /* count = 1 */
+static DEFINE_SEMAPHORE(sem);  /* count = 1 */
 
 down(&sem);  /* count = 0 */
 down(&sem);  /* Deadlock! Count is 0, waiting for up() that never comes */
@@ -649,7 +649,7 @@ Compare with mutex fast path (~10-20ns) and spinlock (~5-10ns).
 Use a counting semaphore to wait for N events:
 
 ```c
-static DECLARE_SEM(barrier_sem);  /* Initialized to 0 */
+static DEFINE_SEMAPHORE(barrier_sem);  /* Initialized to 0 */
 
 /* Worker thread signals completion */
 void worker_done(void) {
@@ -722,7 +722,7 @@ cat /proc/lock_stat
 
 ```c
 /* Binary semaphore (count = 1) */
-static DECLARE_SEM(my_sem);
+static DEFINE_SEMAPHORE(my_sem);
 
 /* Counting semaphore (count = N) */
 static struct semaphore pool_sem;
