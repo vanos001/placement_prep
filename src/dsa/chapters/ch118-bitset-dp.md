@@ -1,8 +1,8 @@
 # Chapter 118: Bitset DP and Memory Optimization
 
 ## Prerequisites
-- Bit manipulation (Chapter 15)
-- Dynamic programming basics (Chapter 40–45)
+- Bit manipulation ([Chapter 33](ch33-bit-manipulation.md))
+- Dynamic programming basics ([Chapter 30](ch30-dp-fundamentals.md))
 - Space complexity analysis
 - Binary number representation
 
@@ -120,7 +120,7 @@ arr = {3, 1, 4}
 Step 0: dp = {0} → bitset: ...00000001 (only bit 0 set)
 
 Step 1: x = 3
-- dp << 3: ...00001000 (shift right by 3: bit 3 set)
+- dp << 3: ...00001000 (shift LEFT by 3: bit 3 set)
 - dp |= dp << 3: ...00001001 (bits 0 and 3 set)
 - Achievable sums: {0, 3}
 
@@ -425,19 +425,19 @@ Items: (w=2, v=3), (w=3, v=4), (w=4, v=5), (w=5, v=6). Capacity W=8.
 Initial: dp = [0, 0, 0, 0, 0, 0, 0, 0, 0]
 
 After item 0 (w=2, v=3):
-- Process w=8→2: dp[8]=max(0, dp[6]+3)=3, dp[6]=max(0, dp[4]+3)=3, dp[4]=max(0, dp[2]+3)=3, dp[2]=max(0, dp[0]+3)=3
-- dp = [0, 0, 3, 0, 3, 0, 3, 0, 3]
+- Process w=8→2: dp[8]=max(0, dp[6]+3)=3, dp[7]=max(0, dp[5]+3)=3, dp[6]=max(0, dp[4]+3)=3, dp[5]=max(0, dp[3]+3)=3, dp[4]=max(0, dp[2]+3)=3, dp[3]=max(0, dp[1]+3)=3, dp[2]=max(0, dp[0]+3)=3
+- dp = [0, 0, 3, 3, 3, 3, 3, 3, 3]
 
 After item 1 (w=3, v=4):
-- dp[8]=max(3, dp[5]+4)=7, dp[7]=max(0, dp[4]+4)=7, dp[6]=max(3, dp[3]+4)=7, dp[5]=max(0, dp[2]+4)=7, dp[3]=max(0, dp[0]+4)=4
-- dp = [0, 0, 3, 4, 3, 7, 7, 7, 7]
+- dp[8]=max(3, dp[5]+4)=7, dp[7]=max(3, dp[4]+4)=7, dp[6]=max(3, dp[3]+4)=7, dp[5]=max(3, dp[2]+4)=7, dp[4]=max(3, dp[1]+4)=4, dp[3]=max(3, dp[0]+4)=4
+- dp = [0, 0, 3, 4, 4, 7, 7, 7, 7]
 
 After item 2 (w=4, v=5):
-- dp[8]=max(7, dp[4]+5)=8, dp[7]=max(7, dp[3]+5)=9, dp[6]=max(7, dp[2]+5)=8, dp[4]=max(3, dp[0]+5)=5
-- dp = [0, 0, 3, 4, 5, 7, 8, 9, 8]
+- dp[8]=max(7, dp[4]+5)=9, dp[7]=max(7, dp[3]+5)=9, dp[6]=max(7, dp[2]+5)=8, dp[5]=max(7, dp[1]+5)=7, dp[4]=max(4, dp[0]+5)=5
+- dp = [0, 0, 3, 4, 5, 7, 8, 9, 9]
 
 After item 3 (w=5, v=6):
-- dp[8]=max(8, dp[3]+6)=10, dp[7]=max(9, dp[2]+6)=9, dp[6]=max(8, dp[1]+6)=8, dp[5]=max(7, dp[0]+6)=7
+- dp[8]=max(9, dp[3]+6)=10, dp[7]=max(9, dp[2]+6)=9, dp[6]=max(8, dp[1]+6)=8, dp[5]=max(7, dp[0]+6)=7
 - dp = [0, 0, 3, 4, 5, 7, 8, 9, 10]
 
 Result: dp[8] = 10 (items 0 and 2: weight 2+4=6, value 3+5=8? No: items 1 and 3: weight 3+5=8, value 4+6=10) ✓
@@ -800,10 +800,10 @@ Answer: 80 ✓
 
 ## Cross-References
 
-- **Chapter 15**: Bit Manipulation — foundation for bitset operations
-- **Chapter 40**: Dynamic Programming Basics — DP fundamentals
-- **Chapter 43**: Knapsack Problems — classic application of rolling array
-- **Chapter 44**: String DP — LCS, edit distance
-- **Chapter 45**: Interval DP — another DP category
-- **Chapter 70**: Graph Algorithms — bitset BFS/DFS
-- **Chapter 117**: State Space Search — bitmask DP for combinatorial problems
+- **Chapter 33**: Bit Manipulation — foundation for bitset operations
+- **Chapter 30**: Dynamic Programming Fundamentals — DP fundamentals
+- **Chapter 59**: DP Expanded — Knapsack and other DP categories
+- **Chapter 122**: Edit Distance Variants — string DP (LCS, edit distance)
+- **Chapter 31**: DP Patterns — another DP category reference
+- **Chapter 22**: Graph Fundamentals — bitset BFS/DFS
+- **Chapter 132**: IDA* and Beam Search — state space search techniques

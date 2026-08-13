@@ -80,11 +80,11 @@ This chapter provides multiple cross-referenced indexes to help you quickly find
 
 | Algorithm | Chapter | Time | Use Case |
 |---|---|---|---|
-| Sieve of Eratosthenes | 67 | O(n log log n) | Prime generation |
-| GCD (Euclidean) | 67 | O(log min(a,b)) | Greatest common divisor |
-| Modular Exponentiation | 67 | O(log n) | Fast power |
-| Miller-Rabin | 67 | O(k log²n) | Primality test |
-| Pollard's Rho | 67 | O(n^{1/4}) | Factorization |
+| Sieve of Eratosthenes | 60 | O(n log log n) | Prime generation |
+| GCD (Euclidean) | 60 | O(log min(a,b)) | Greatest common divisor |
+| Modular Exponentiation | 60 | O(log n) | Fast power |
+| Miller-Rabin | 175 | O(k log²n) | Primality test |
+| Pollard's Rho | 175 | O(n^{1/4}) | Factorization |
 
 ### Optimization & Approximation
 
@@ -94,7 +94,7 @@ This chapter provides multiple cross-referenced indexes to help you quickly find
 | Held-Karp (TSP) | 149 | O(2^n · n²) | Exact TSP |
 | Karger's Min Cut | 150 | O(n² log n) runs | Min cut |
 | Simplex | 151 | Exponential worst | Linear programming |
-| Hungarian | 84 | O(n³) | Assignment problem |
+| Hungarian | 170 | O(n³) | Assignment problem |
 
 ---
 
@@ -118,7 +118,7 @@ This chapter provides multiple cross-referenced indexes to help you quickly find
 |---|---|---|---|---|---|
 | Hash Map | 7 | O(1) avg | O(1) avg | O(1) avg | O(n) |
 | Hash Set | 7 | O(1) avg | O(1) avg | O(1) avg | O(n) |
-| Bloom Filter | 80 | O(k) | N/A | O(k) | O(m bits) |
+| Bloom Filter | 79 | O(k) | N/A | O(k) | O(m bits) |
 | Cuckoo Hashing | 7 | O(1) worst | O(1) worst | O(1) worst | O(n) |
 
 ### Tree Structures
@@ -127,10 +127,10 @@ This chapter provides multiple cross-referenced indexes to help you quickly find
 |---|---|---|---|---|---|
 | BST (unbalanced) | 14 | O(h) | O(h) | O(h) | O(n) |
 | AVL Tree | 14 | O(log n) | O(log n) | O(log n) | O(n) |
-| Red-Black Tree | 76 | O(log n) | O(log n) | O(log n) | O(n) |
+| Red-Black Tree | 14 | O(log n) | O(log n) | O(log n) | O(n) |
 | B-Tree | 77 | O(log n) | O(log n) | O(log n) | O(n) |
 | Treap | 57 | O(log n) | O(log n) | O(log n) | O(n) |
-| Splay Tree | 75 | O(log n) amort | O(log n) amort | O(log n) amort | O(n) |
+| Splay Tree | 98 | O(log n) amort | O(log n) amort | O(log n) amort | O(n) |
 | Skip List | 74 | O(log n) | O(log n) | O(log n) | O(n) |
 
 ### Priority Queue Structures
@@ -150,8 +150,8 @@ This chapter provides multiple cross-referenced indexes to help you quickly find
 | Lazy Segment Tree | 18 | O(n) | O(log n) | O(log n) | O(n) |
 | Fenwick Tree | 19 | O(n) | O(log n) | O(log n) | O(n) |
 | Sparse Table | 20 | O(n log n) | N/A | O(1) | O(n log n) |
-| Square Root Decomposition | 94 | O(n) | O(√n) | O(√n) | O(n) |
-| Mo's Algorithm | 93 | — | — | O(n√n) total | O(n) |
+| Square Root Decomposition | 173 | O(n) | O(√n) | O(√n) | O(n) |
+| Mo's Algorithm | 173 | — | — | O(n√n) total | O(n) |
 
 ### Specialized Structures
 
@@ -162,7 +162,7 @@ This chapter provides multiple cross-referenced indexes to help you quickly find
 | KD Tree | 78 | Nearest neighbor | O(log n) avg | O(n) |
 | Van Emde Boas | 100 | Successor/Predecessor | O(log log U) | O(U) |
 | Link-Cut Tree | 157 | Path/Link/Cut | O(log n) | O(n) |
-| Persistent Segment Tree | 79 | Version-based query | O(log n) | O(n log n) |
+| Persistent Segment Tree | 75 | Version-based query | O(log n) | O(n log n) |
 
 ---
 
@@ -191,7 +191,7 @@ This chapter provides multiple cross-referenced indexes to help you quickly find
 | "sliding window max/min" | Monotonic Queue | 38 | — |
 | "median" | Two Heaps | 15 | Binary Search |
 | "LCA" (lowest common ancestor) | Binary Lifting | 21 | Euler Tour + RMQ |
-| "path on tree" | HLD | 62 | Euler Tour |
+| "path on tree" | HLD | 107 | Euler Tour |
 | "count with digits" | Digit DP | 85 | — |
 | "optimal k groups" | Binary Search on Answer | 6 | Alien Trick |
 | "matrix chain" | Interval DP | 31 | — |
@@ -261,31 +261,31 @@ This chapter provides multiple cross-referenced indexes to help you quickly find
 
 | Formula | Expression | Chapter | Use Case |
 |---|---|---|---|
-| Permutation | P(n,r) = n!/(n-r)! | 68 | Ordered selection |
-| Combination | C(n,r) = n!/(r!(n-r)!) | 68 | Unordered selection |
-| Stars and Bars | C(n+k-1, k-1) | 68 | Distribution problems |
-| Catalan Number | C(2n,n)/(n+1) | 68 | Balanced parentheses, trees |
-| Inclusion-Exclusion | \|A∪B\| = \|A\|+\|B\|-\|A∩B\| | 68 | Counting with constraints |
-| Derangement | D(n) = (n-1)(D(n-1)+D(n-2)) | 68 | No fixed points |
+| Permutation | P(n,r) = n!/(n-r)! | 71 | Ordered selection |
+| Combination | C(n,r) = n!/(r!(n-r)!) | 71 | Unordered selection |
+| Stars and Bars | C(n+k-1, k-1) | 71 | Distribution problems |
+| Catalan Number | C(2n,n)/(n+1) | 71 | Balanced parentheses, trees |
+| Inclusion-Exclusion | \|A∪B\| = \|A\|+\|B\|-\|A∩B\| | 71 | Counting with constraints |
+| Derangement | D(n) = (n-1)(D(n-1)+D(n-2)) | 71 | No fixed points |
 
 ### Number Theory
 
 | Formula | Expression | Chapter | Use Case |
 |---|---|---|---|
-| Euler's Totient | φ(n) = n∏(1-1/p) | 67 | Coprime counting |
-| Modular Inverse | a^{-1} ≡ a^{p-2} (mod p) | 67 | Division in modular arithmetic |
-| Chinese Remainder | x ≡ aᵢ (mod mᵢ) | 67 | System of congruences |
-| Fermat's Little Theorem | a^{p-1} ≡ 1 (mod p) | 67 | Modular exponentiation |
-| Möbius Function | μ(n) | 67 | Inclusion-exclusion on divisors |
+| Euler's Totient | φ(n) = n∏(1-1/p) | 60 | Coprime counting |
+| Modular Inverse | a^{-1} ≡ a^{p-2} (mod p) | 60 | Division in modular arithmetic |
+| Chinese Remainder | x ≡ aᵢ (mod mᵢ) | 176 | System of congruences |
+| Fermat's Little Theorem | a^{p-1} ≡ 1 (mod p) | 60 | Modular exponentiation |
+| Möbius Function | μ(n) | 172 | Inclusion-exclusion on divisors |
 
 ### Probability & Statistics
 
 | Formula | Expression | Chapter | Use Case |
 |---|---|---|---|
-| Bayes' Theorem | P(A\|B) = P(B\|A)P(A)/P(B) | 69 | Conditional probability |
-| Birthday Paradox | P ≈ 1 - e^{-n²/2d} | 69 | Hash collision probability |
-| Coupon Collector | E = n·H(n) ≈ n ln n | 69 | Expected coverage |
-| Linearity of Expectation | E[X+Y] = E[X]+E[Y] | 69 | Expected value computation |
+| Bayes' Theorem | P(A\|B) = P(B\|A)P(A)/P(B) | 72 | Conditional probability |
+| Birthday Paradox | P ≈ 1 - e^{-n²/2d} | 72 | Hash collision probability |
+| Coupon Collector | E = n·H(n) ≈ n ln n | 72 | Expected coverage |
+| Linearity of Expectation | E[X+Y] = E[X]+E[Y] | 72 | Expected value computation |
 
 ### Series & Sequences
 

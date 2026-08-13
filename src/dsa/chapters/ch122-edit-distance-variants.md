@@ -1,7 +1,7 @@
 # Chapter 122: Edit Distance and Its Variants
 
 ## Prerequisites
-- Dynamic programming basics (Chapter 40)
+- Dynamic programming basics ([Chapter 30](ch30-dp-fundamentals.md))
 - String fundamentals
 - LCS (Longest Common Subsequence)
 
@@ -654,7 +654,8 @@ struct AlignmentResult {
     std::string alignedA, alignedB;
 };
 
-// Needleman-Wunsch (global alignment) with affine gap penalties
+// Needleman-Wunsch (global alignment) with linear gap penalties
+// (Every gap position costs gapOpen. For true affine gaps, see Gotoh's algorithm with separate M/I matrices.)
 AlignmentResult globalAlignment(const std::string& a, const std::string& b,
                                  int match = 2, int mismatch = -1,
                                  int gapOpen = -2, int gapExtend = -1) {
@@ -779,9 +780,9 @@ int main() {
 
 ## Cross-References
 
-- **Chapter 40**: Dynamic Programming Basics — foundation for edit distance
-- **Chapter 44**: String DP — related string problems
-- **Chapter 43**: LCS — longest common subsequence
+- **Chapter 30**: Dynamic Programming Fundamentals — foundation for edit distance
+- **Chapter 55**: Strings Expanded — related string problems
+- **Chapter 122**: Edit Distance Variants (this chapter) — LCS, edit distance
 - **Chapter 118**: Bitset DP — space optimization techniques
-- **Chapter 123**: Cache Optimization — memory access patterns in DP
-- **Chapter 77**: Trie — for efficient spell checking
+- **Chapter 137**: Profiling Tools — memory access patterns in DP
+- **Chapter 16**: Trie — for efficient spell checking

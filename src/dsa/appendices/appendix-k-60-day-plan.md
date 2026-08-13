@@ -6,9 +6,9 @@ An accelerated plan for those with less time. Covers all essential topics with a
 
 ## Overview
 
-- **Duration:** 8 weeks (60 days, including 4 rest days)
+- **Duration:** 8 weeks (56 days, including 4 rest days)
 - **Daily commitment:** 4-5 hours
-- **Weekly pattern:** 6 days learning + 1 day review (rest on days 15, 30, 45, 60)
+- **Weekly pattern:** 6 days learning + 1 day review (rest on days 15, 29, 45, 56)
 - **Total problems:** ~200-250
 - **Goal:** Solid coverage of all major DSA topics
 

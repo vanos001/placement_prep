@@ -2,9 +2,9 @@
 
 ## Prerequisites
 - Game theory basics
-- Graph algorithms (Chapters 97-105)
-- Linear programming (Chapter 140)
-- Probability (Chapter 150)
+- Graph algorithms (Chapters 22-29, 81-84, 107-111)
+- Linear programming (Chapter 151)
+- Probability (Chapter 72)
 
 ## Interview Frequency: ★★
 

@@ -302,12 +302,12 @@ int main() {
     // Triangle: 0-1, 1-2, 2-0 (non-bipartite)
     BlossomSimple bs(3);
     bs.addEdge(0, 1); bs.addEdge(1, 2); bs.addEdge(2, 0);
-    std::cout << "Max matching in triangle: " << bs.maxMatching() << "\\n"; // 1
+    std::cout << "Max matching in triangle: " << bs.maxMatching() << "\n"; // 1
     
     // Path: 0-1-2-3
     BlossomSimple bs2(4);
     bs2.addEdge(0, 1); bs2.addEdge(1, 2); bs2.addEdge(2, 3);
-    std::cout << "Max matching in path: " << bs2.maxMatching() << "\\n"; // 2
+    std::cout << "Max matching in path: " << bs2.maxMatching() << "\n"; // 2
     
     return 0;
 }

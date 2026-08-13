@@ -63,7 +63,6 @@ dp[0][1] = true  (p[0]='*', match empty)
 dp[0][2] = false (p[1]='a', can't match empty string)
 dp[0][3] = false
 dp[0][4] = false
-dp[0][5] = false
 
 Fill row by row:
 
@@ -72,37 +71,32 @@ i=1 (s[0]='a'):
   j=2 (p[1]='a'): dp[1][2] = dp[0][1] && ('a'=='a') = true
   j=3 (p[2]='*'): dp[1][3] = dp[1][2] || dp[0][3] = true || false = true
   j=4 (p[3]='b'): dp[1][4] = dp[0][3] && ('a'=='b') = false
-  j=5 (p[4]='*'): dp[1][5] = dp[1][4] || dp[0][5] = false || false = false
 
 i=2 (s[1]='d'):
   j=1: dp[2][1] = dp[2][0] || dp[1][1] = true
   j=2: dp[2][2] = dp[1][1] && ('d'=='a') = false
   j=3: dp[2][3] = dp[2][2] || dp[1][3] = false || true = true
   j=4: dp[2][4] = dp[1][3] && ('d'=='b') = false
-  j=5: dp[2][5] = dp[2][4] || dp[1][5] = false
 
 i=3 (s[2]='c'):
   j=1: dp[3][1] = true
   j=2: dp[3][2] = dp[2][1] && ('c'=='a') = false
   j=3: dp[3][3] = dp[3][2] || dp[2][3] = true
   j=4: dp[3][4] = dp[2][3] && ('c'=='b') = false
-  j=5: dp[3][5] = dp[3][4] || dp[2][5] = false
 
 i=4 (s[3]='e'):
   j=1: dp[4][1] = true
   j=2: dp[4][2] = false
   j=3: dp[4][3] = dp[4][2] || dp[3][3] = true
   j=4: dp[4][4] = dp[3][3] && ('e'=='b') = false
-  j=5: dp[4][5] = dp[4][4] || dp[3][5] = false
 
 i=5 (s[4]='b'):
   j=1: dp[5][1] = true
   j=2: dp[5][2] = false
   j=3: dp[5][3] = dp[5][2] || dp[4][3] = true
-  j=4: dp[5][4] = dp[4][3] && ('b'=='b') = true  ← match!
-  j=5: dp[5][5] = dp[5][4] || dp[4][5] = true    ← final answer!
+  j=4: dp[5][4] = dp[4][3] && ('b'=='b') = true  ← final answer!
 
-Result: dp[5][5] = true ✅
+Result: dp[5][4] = true ✅
 ```
 
 ---

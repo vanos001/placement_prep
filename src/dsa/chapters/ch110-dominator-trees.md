@@ -549,13 +549,13 @@ Given a flowgraph, find all nodes that are dominators of at least k other nodes.
 
 | Topic | Related Chapter |
 |---|---|
-| DFS | Chapter 40 |
-| SCC (Tarjan's) | Chapter 45 |
-| LCA (Lowest Common Ancestor) | Chapter 65 |
-| Union-Find | Chapter 35 |
-| Topological Sort | Chapter 42 |
-| Control Flow Graphs | Chapter 120 |
-| SSA Form | Chapter 122 |
+| DFS | Chapter 23 |
+| SCC (Tarjan's) | Chapter 81 |
+| LCA (Lowest Common Ancestor) | Chapter 21 |
+| Union-Find | Chapter 17 |
+| Topological Sort | Chapter 25 |
+| Control Flow Graphs | — (no DSA chapter) |
+| SSA Form | — (no DSA chapter) |
 
 ---
 

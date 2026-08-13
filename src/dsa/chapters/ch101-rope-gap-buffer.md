@@ -228,7 +228,7 @@ Gap shifts to position 5:
 Buffer: "Hello World!" (unchanged, just gap moved)
 
 Step 12: Insert '!' at cursor
-[H e l l o ! _ _ _ _ _ _ _ _ ' ' W o r l d !]
+[H e l l o ! _ _ _ _ _ _ _ ' ' W o r l d !]
              ↑
 Buffer: "Hello! World!"
 ```
@@ -981,12 +981,12 @@ Result: "Hello Beautiful World"
 
 ## 101.14 Cross-References
 
-- **Chapter 13 (Arrays and Strings)**: Basic string operations and their complexities
-- **Chapter 15 (Binary Trees)**: Tree structure underlying ropes
-- **Chapter 16 (Balanced BSTs)**: AVL/Red-black trees for balanced ropes
-- **Chapter 102 (Tries)**: Another tree-based string structure
-- **Chapter 104 (Segment Trees)**: Similar augmented tree concept
-- **Chapter 105 (Fenwick Trees)**: Prefix sum augmentation
+- **Chapter 4 (Arrays and Strings)**: Basic string operations and their complexities
+- **Chapter 13 (Trees)**: Tree structure underlying ropes
+- **Chapter 14 (BST)**: AVL/Red-black trees for balanced ropes
+- **Chapter 16 (Tries)**: Another tree-based string structure
+- **Chapter 18 (Segment Trees)**: Similar augmented tree concept
+- **Chapter 19 (Fenwick Trees)**: Prefix sum augmentation
 
 ---
 

@@ -569,12 +569,12 @@ public class EulerTourExample {
 
 ## 106.12 Cross-References
 
-- **Chapter 101 (Segment Trees):** Euler tour + segment tree is the standard pattern for subtree queries.
-- **Chapter 99 (BIT/Fenwick Tree):** BIT can replace segment tree for subtree sum (no lazy updates).
-- **Chapter 11 (LCA):** Euler tour (entry-exit variant) is the foundation of the Euler tour + sparse table LCA method.
-- **Chapter 110 (Heavy-Light Decomposition):** HLD extends Euler tour to handle path queries.
+- **Chapter 18 (Segment Trees):** Euler tour + segment tree is the standard pattern for subtree queries.
+- **Chapter 19 (BIT/Fenwick Tree):** BIT can replace segment tree for subtree sum (no lazy updates).
+- **Chapter 21 (LCA):** Euler tour (entry-exit variant) is the foundation of the Euler tour + sparse table LCA method.
+- **Chapter 107 (Heavy-Light Decomposition):** HLD extends Euler tour to handle path queries.
 - **Chapter 102 (Wavelet Trees):** Can be used on the flattened array for more advanced queries.
-- **Chapter 150 (Mo's Algorithm):** Euler tour + Mo's algorithm handles subtree queries offline.
+- **Chapter 62 (Offline Algorithms / Mo's Algorithm):** Euler tour + Mo's algorithm handles subtree queries offline.
 
 ---
 

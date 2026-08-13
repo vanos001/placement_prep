@@ -152,7 +152,7 @@ public:
             if (norm < 1e-10) break;
             for (int i = 0; i < n; i++) v[i] = w[i] / norm;
 
-            if (iter == 99) return lambda;  // Second eigenvalue
+            if (iter == 99) return lambda * d;  // Second eigenvalue of A (unnormalized)
         }
         return 0;
     }
@@ -331,7 +331,7 @@ A graph H is a **minor** of G if H can be obtained from G by:
 |---|---|---|
 | Planarity | K₅, K₃,₃ | O(n) |
 | Linkless embeddable | Petersen graph family | O(n³) |
-| Knotless embeddable | Unknown | Open |
+| Knotless embeddable | Not fully characterized | Open |
 
 ### Code: Minor Testing (Simplified)
 
@@ -696,10 +696,10 @@ int main() {
 
 ## 155.9 Cross-References
 
-- **Chapter 23**: Graph traversal (BFS/DFS for separator finding)
-- **Chapter 27**: Shortest paths (used in expander analysis)
-- **Chapter 78**: Dynamic programming on graphs
-- **Chapter 122**: Divide and conquer (for separator-based algorithms)
+- **Chapter 23/24**: Graph traversal (BFS/DFS for separator finding)
+- **Chapter 26**: Shortest paths (used in expander analysis)
+- **Chapter 30**: Dynamic programming on graphs
+- **Chapter 39**: Divide and conquer (for separator-based algorithms)
 - **Chapter 150**: Randomized algorithms (random expanders)
 - **Chapter 161**: Advanced geometry (planar graph algorithms)
 

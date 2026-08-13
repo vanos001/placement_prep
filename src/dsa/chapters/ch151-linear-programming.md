@@ -605,7 +605,7 @@ print(f"x = {result.x[0]:.2f}, y = {result.x[1]:.2f}")
 | Simplex | Exponential worst case | Fast in practice (polynomial average) |
 | Ellipsoid method | O(n⁶ log(1/ε)) | First polynomial LP algorithm |
 | Interior point (Karmarkar) | O(n^{3.5} log(1/ε)) | Practical polynomial method |
-| Network simplex | O(n² m) | Specialized for network problems |
+| Network simplex | O(n² m) typical, exponential worst case | Specialized for network problems |
 
 Where n = number of variables, m = number of constraints, ε = precision.
 

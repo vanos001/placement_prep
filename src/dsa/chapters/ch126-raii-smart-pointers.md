@@ -291,7 +291,7 @@ struct GoodNode {
 1. Create node A: A.use_count = 1
 2. Create node B: B.use_count = 1
 3. A->right = B:   B.use_count = 2
-4. B->left = A (weak): A.use_count = 1 (not incremented)
+4. B->parent = A (weak): A.use_count = 1 (not incremented)
 5. Destroy A: A.use_count = 0, A freed
    B->left.lock() returns nullptr
 6. Destroy B: B.use_count = 0, B freed
@@ -347,7 +347,7 @@ std::shared_ptr<int> sp(new int(42), cleanup);
 | Move | O(1) | O(1) | O(1) |
 | Dereference | O(1) | O(1) | — |
 | Destroy | O(1) | O(1) | O(1) |
-| Memory overhead | 0 bytes | 16-32 bytes | 16-32 bytes |
+| Memory overhead | 0 bytes (default deleter) | 16-32 bytes | 16-32 bytes |
 
 ---
 
@@ -490,10 +490,10 @@ sp.reset();
 
 ## 126.13 Cross-References
 
-- **Chapter 2**: Memory management fundamentals
-- **Chapter 5**: Linked lists using smart pointers
+- **Chapter 52**: Memory management fundamentals
+- **Chapter 12**: Linked lists using smart pointers
 - **Chapter 32**: Thread safety and mutexes
-- **Chapter 45**: Move semantics and rvalue references
+- **Chapter 127**: Move semantics and rvalue references
 - **Chapter 78**: Design patterns (Factory with `unique_ptr`)
 - **Chapter 145**: Lock-free data structures
 

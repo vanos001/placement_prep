@@ -1,10 +1,10 @@
 # Chapter 159: External Memory Algorithms
 
 ## Prerequisites
-- Sorting algorithms ([Chapter 108](ch108-dsu-on-tree-rerooting.md))
-- B-Trees ([Chapter 104](ch104-cartesian-tournament-trees.md))
+- Sorting algorithms ([Chapter 5](ch05-sorting.md))
+- B-Trees ([Chapter 77](ch77-btrees.md))
 - Basic I/O concepts
-- Graph algorithms ([Chapter 120](ch120-bwt-fmindex.md))
+- Graph algorithms ([Chapter 22](ch22-graph-fundamentals.md))
 
 ## Interview Frequency: ★
 
@@ -37,7 +37,7 @@ The **External Memory Model** (also called **Disk Access Model** or **DAM**) abs
 | Parameter | Typical Value |
 |---|---|
 | M (RAM) | 8 GB |
-| B (block size) | 4 KB = 1024 words |
+| B (block size) | 4 KB = 1024 words (assuming 4-byte words) |
 | M/B (blocks in RAM) | ~2 million |
 
 ### Why I/O Matters
@@ -560,9 +560,9 @@ M = 4, B = 1
 
 ## 159.12 Cross-References
 
-- **Sorting**: [Chapter 108](ch108-dsu-on-tree-rerooting.md) — internal sorting algorithms used within runs
-- **B-Trees**: [Chapter 104](ch104-cartesian-tournament-trees.md) — disk-friendly search trees
-- **Graph Algorithms**: [Chapter 120](ch120-bwt-fmindex.md) — BFS, DFS, shortest paths
-- **Hash Tables**: [Chapter 101](ch101-rope-gap-buffer.md) — external hashing techniques
-- **Parallel Algorithms**: [Chapter 158](ch158-succinct-ds.md) — parallel I/O and concurrent access
-- **Database Indexing**: [Chapter 160](ch160-parallel-algorithms.md) — practical applications of B-Trees
+- **Sorting**: [Chapter 5](ch05-sorting.md) — internal sorting algorithms used within runs
+- **B-Trees**: [Chapter 77](ch77-btrees.md) — disk-friendly search trees
+- **Graph Algorithms**: [Chapter 22](ch22-graph-fundamentals.md) — BFS, DFS, shortest paths
+- **Hash Tables**: [Chapter 7](ch07-hashing.md) — external hashing techniques
+- **Parallel Algorithms**: [Chapter 160](ch160-parallel-algorithms.md) — parallel I/O and concurrent access
+- **Database Indexing**: B-Trees (Chapter 77) are the standard on-disk index structure used by databases

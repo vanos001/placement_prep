@@ -489,12 +489,12 @@ if __name__ == "__main__":
 
 ## 104.11 Cross-References
 
-- **Chapter 101 (Segment Trees):** Both solve RMQ; segment trees are more general but slower per query.
+- **Chapter 18 (Segment Trees):** Both solve RMQ; segment trees are more general but slower per query.
 - **Chapter 102 (Wavelet Trees):** Another tree structure that partitions arrays recursively.
-- **Chapter 105 (Suffix Trees/Arrays):** Cartesian trees appear in suffix array construction algorithms.
-- **Chapter 97 (Heaps):** Tournament trees are essentially heap-like structures.
-- **Chapter 11 (LCA):** LCA on Cartesian trees gives O(1) RMQ.
-- **Chapter 116 (Treaps):** Treaps are Cartesian trees with random priorities.
+- **Chapter 44 (Suffix Arrays):** Cartesian trees appear in suffix array construction algorithms.
+- **Chapter 15 (Heaps):** Tournament trees are essentially heap-like structures.
+- **Chapter 21 (LCA):** LCA on Cartesian trees gives O(1) RMQ.
+- **Chapter 99 (Scapegoat and AA Trees):** Treaps are Cartesian trees with random priorities.
 
 ---
 

@@ -1,8 +1,8 @@
 # Chapter 119: Manacher's Algorithm
 
 ## Prerequisites
-- Palindromes, string basics ([Chapter 102](ch102-wavelet-trees.md))
-- Two-pointer technique ([Chapter 107](ch107-hld-centroid-applications.md))
+- Palindromes, string basics ([Chapter 4](ch04-arrays-strings.md))
+- Two-pointer technique ([Chapter 34](ch34-two-pointers.md))
 
 ## Interview Frequency: ★★★
 
@@ -276,17 +276,16 @@ String: `s = "abacaba"`, n = 7
 | 1 | b | 0 | 0 | 1→2 | 2 | "aba" |
 | 2 | a | 0 | 2 | 1 | 1 | "a" |
 | 3 | c | 2 | 4 | 1→4 | 4 | "abacaba" |
-| 4 | a | 0 | 6 | 2 | 2 | "aba" |
+| 4 | a | 0 | 6 | 1 | 1 | "a" |
 | 5 | b | 5 | 5 | 1→2 | 2 | "aba" |
 | 6 | a | 6 | 6 | 1 | 1 | "a" |
 
 **Walkthrough for i = 3** (the key step):
-- l=1, r=3, so i=3 ≤ r=3
-- Mirror: l + r - i = 1 + 3 - 3 = 1, d1[1] = 1
-- k = min(1, 3 - 3 + 1) = min(1, 1) = 1
-- Check s[3-1]='b' vs s[3+1]='b' → match, k=2
-- Check s[3-2]='a' vs s[3+2]='a' → match, k=3
-- Check s[3-3]='?' — out of bounds, stop. Wait, s[0]='a', s[6]='a' → match, k=4
+- State before i=3: l=0, r=2
+- Since i=3 > r=2, k=1 directly (no mirror to consult)
+- Check s[3-1]='a' vs s[3+1]='a' → match, k=2
+- Check s[3-2]='b' vs s[3+2]='b' → match, k=3
+- Check s[0]='a' vs s[6]='a' → match, k=4
 - Check s[3-4] — out of bounds, stop
 - d1[3] = 4, update l=0, r=6
 
@@ -450,9 +449,9 @@ This is equivalent to the dual-array approach but uses a single array and transf
 
 ## 119.11 Cross-References
 
-- **String Basics**: [Chapter 102](ch102-wavelet-trees.md) — fundamental string operations
-- **Two Pointers**: [Chapter 107](ch107-hld-centroid-applications.md) — expand-around-center technique
-- **KMP Algorithm**: [Chapter 103](ch103-interval-order-statistic-trees.md) — similar amortized analysis
-- **Suffix Arrays**: [Chapter 104](ch104-cartesian-tournament-trees.md) — alternative approach for string problems
-- **Dynamic Programming**: [Chapter 109](ch109-bridge-trees-treewidth.md) — for subsequence variants
-- **Palindromic Tree**: [Chapter 120](ch120-bwt-fmindex.md) — more advanced palindrome data structure
+- **String Basics**: [Chapter 4](ch04-arrays-strings.md) — fundamental string operations
+- **Two Pointers**: [Chapter 34](ch34-two-pointers.md) — expand-around-center technique
+- **KMP Algorithm**: [Chapter 41](ch41-kmp.md) — similar amortized analysis
+- **Suffix Arrays**: [Chapter 44](ch44-suffix-array.md) — alternative approach for string problems
+- **Dynamic Programming**: [Chapter 30](ch30-dp-fundamentals.md) — for subsequence variants
+- **Palindromic Tree**: [Chapter 88](ch88-palindromic-tree.md) — more advanced palindrome data structure

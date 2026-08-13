@@ -303,7 +303,7 @@ The top 100 most frequently asked DSA interview questions, organized by topic, w
 **Time:** O(n), **Space:** O(1)
 
 ### 57. Unique Paths
-Problem:** Count paths from top-left to bottom-right (only right/down).
+**Problem:** Count paths from top-left to bottom-right (only right/down).
 **Hint:** `dp[i][j] = dp[i-1][j] + dp[i][j-1]`
 **Time:** O(n × m), **Space:** O(m)
 

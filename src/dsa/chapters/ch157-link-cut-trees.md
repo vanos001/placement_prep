@@ -167,7 +167,7 @@ public:
     void cut(int u, int v) {
         makeRoot(nodes[u]);
         access(nodes[v]);
-        if (nodes[v]->left == nodes[u]) {
+        if (nodes[v]->left == nodes[u] && nodes[u]->right == nullptr) {
             nodes[v]->left = nullptr;
             nodes[u]->parent = nullptr;
         }
@@ -311,7 +311,7 @@ print(f"0-3 connected: {lct.connected(0, 3)}")  # True
 lct.cut(1, 2)
 print(f"0-3 connected: {lct.connected(0, 3)}")  # False
 lct.link(3, 4); lct.link(4, 5)
-print(f"Find root of 5: {lct.find_root(5)}")  # 3
+print(f"Find root of 5: {lct.find_root(5)}")  # 5
 ```
 
 ### Complexity

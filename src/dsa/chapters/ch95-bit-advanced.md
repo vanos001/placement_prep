@@ -653,9 +653,9 @@ int main() {
 
 ## Cross-References
 
-- Chapter 94: Bit Manipulation Basics — Foundation: AND, OR, XOR, shifts, and basic tricks
-- Chapter 23: Dynamic Programming — Bit DP is a specialized DP technique
-- Chapter 91: STL Deep Dive — `std::bitset` for compile-time bit operations
+- [Chapter 33: Bit Manipulation](ch33-bit-manipulation.md) — Foundation: AND, OR, XOR, shifts, and basic tricks
+- [Chapter 30: Dynamic Programming Fundamentals](ch30-dp-fundamentals.md) — Bit DP is a specialized DP technique
+- [Chapter 128: STL Internals](ch128-stl-internals.md) — `std::bitset` for compile-time bit operations
 - [Chapter 98: Splay Trees](ch98-splay-trees.md) — XOR-based hashing in tree structures
 - [Chapter 145: Approximation Algorithms](ch145-approximation-algorithms.md) — TSP approximation vs exact bit DP solution
 

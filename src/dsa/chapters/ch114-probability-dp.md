@@ -1,7 +1,7 @@
 # Chapter 114: Probability and Expected Value DP
 
 ## Prerequisites
-- DP basics (Chapters 45–48)
+- DP basics ([Chapter 30](ch30-dp-fundamentals.md))
 - Probability fundamentals
 - Markov chains (basic understanding)
 
@@ -494,7 +494,7 @@ int main() {
    **A:** E = Σ k × P(first red at draw k). Alternatively, by linearity: E = (3/10)×1 + (7/10)×(1 + E_with_2_red_6_blue). Solve recursively.
 
 ## Cross-References
-- DP fundamentals: Chapter 45
-- Game theory DP: Chapter 115
-- Probability basics: Chapter 100
-- Markov chains: Chapter 101
+- DP fundamentals: Chapter 30
+- Game theory DP: Chapter 61
+- Probability basics: Chapter 72
+- Markov chains: Chapter 72

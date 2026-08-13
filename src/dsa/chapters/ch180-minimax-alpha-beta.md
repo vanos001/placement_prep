@@ -422,7 +422,7 @@ public class TicTacToe {
 
 | Game | Branching Factor b | Depth d | Nodes (minimax) |
 |---|---|---|---|
-| Tic-Tac-Toe | ~5 (avg) | 9 | ~55,000 |
+| Tic-Tac-Toe | ~5 (avg) | 9 | ~549,946 |
 | Connect Four | ~7 | 42 | ~10^36 (intractable) |
 | Chess | ~35 | ~80 | ~10^120 (intractable) |
 | Go | ~250 | ~150 | ~10^360 (intractable) |

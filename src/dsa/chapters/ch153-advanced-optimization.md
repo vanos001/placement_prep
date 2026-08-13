@@ -641,13 +641,13 @@ Given n points on a line, find the point that minimizes the sum of squared dista
 
 | Topic | Related Chapter |
 |---|---|
-| Max Flow | Chapter 100 |
-| Bipartite Matching | Chapter 101 |
-| Binary Search | Chapter 3 |
-| Greedy Algorithms | Chapter 15 |
-| Dynamic Programming | Chapter 20 |
-| Graph Theory | Chapter 40 |
-| Number Theory (modular inverse) | Chapter 80 |
+| Max Flow | Chapter 29 |
+| Bipartite Matching | Chapter 112 |
+| Binary Search | Chapter 6 |
+| Greedy Algorithms | Chapter 32 |
+| Dynamic Programming | Chapter 30 |
+| Graph Theory | Chapter 22 |
+| Number Theory (modular inverse) | Chapter 60 |
 
 ---
 

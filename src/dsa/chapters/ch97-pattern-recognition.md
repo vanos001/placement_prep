@@ -149,7 +149,7 @@ START: Read problem carefully
 | n ≤ 10^5 | O(n log n) | Sort, Seg Tree |
 | n ≤ 10^6 | O(n) | Linear |
 | n ≤ 10^7 | O(n) | Careful linear |
-| n > 10^7 | O(log n) | Binary search, math |
+| n > 10^7 | sub-linear preferred | Binary search, math (or O(n) if carefully optimized) |
 
 ---
 

@@ -1,9 +1,9 @@
 # Chapter 109: Bridge Trees and Treewidth
 
 ## Prerequisites
-- [Chapter 102: Graph Fundamentals](ch22-graph-fundamentals.md)
-- Chapter 103: DFS and BFS
-- Chapter 104: Strongly Connected Components
+- [Chapter 22: Graph Fundamentals](ch22-graph-fundamentals.md)
+- [Chapter 23: DFS](ch23-dfs.md) and [Chapter 24: BFS](ch24-bfs.md)
+- [Chapter 81: Strongly Connected Components](ch81-scc-bridges.md)
 - Chapter 26: Shortest Paths
 - Chapter 13: Trees
 - Tarjan's algorithm, bridge detection, tree decomposition basics
@@ -231,15 +231,15 @@ Let's trace Tarjan's algorithm on the example graph above. We'll track `tin[u]` 
 | 3 | 2 | 2 | 2 | DFS(2), neighbor 0 is visited back edge → low[2] = min(2, tin[0]) = 0. Neighbor 1 is parent, skip. Return. |
 | 4 | — | — | — | Back at 1: low[1] = min(low[1], low[2]) = min(1, 0) = 0. Check: low[2] (0) > tin[1] (1)? **No** → edge (1,2) is NOT a bridge. |
 | 5 | — | — | — | Back at 1: explore neighbor 3 |
-| 6 | 3 | 3 | 3 | DFS(3), explore neighbor 1 (visited back edge → low[3] = min(3, tin[1]) = 1). Explore 5. |
+| 6 | 3 | 3 | 3 | DFS(3), explore neighbor 1 (parent, skip). Explore 5. |
 | 7 | 5 | 4 | 4 | DFS(5), explore 3 (parent, skip). Explore 4. |
 | 8 | 4 | 5 | 5 | DFS(4), explore 3 (visited back edge → low[4] = min(5, tin[3]) = 3). Explore 5 (parent, skip). Return. |
 | 9 | — | — | — | Back at 5: low[5] = min(low[5], low[4]) = min(4, 3) = 3. Check: low[4] (3) > tin[5] (4)? **No** → edge (5,4) is NOT a bridge. |
 | 10 | — | — | — | Back at 5: explore 6 |
 | 11 | 6 | 6 | 6 | DFS(6), explore 5 (parent, skip). Return. |
 | 12 | — | — | — | Back at 5: low[5] = min(low[5], low[6]) = min(3, 6) = 3. Check: low[6] (6) > tin[5] (4)? **Yes** → edge (5,6) **IS a bridge**. |
-| 13 | — | — | — | Back at 3: low[3] = min(low[3], low[5]) = min(1, 3) = 1. Check: low[5] (3) > tin[3] (3)? **No** → edge (3,5) is NOT a bridge. |
-| 14 | — | — | — | Back at 1: low[1] = min(low[1], low[3]) = min(0, 1) = 0. Check: low[3] (3) > tin[1] (1)? **Yes** → edge (1,3) **IS a bridge**. |
+| 13 | — | — | — | Back at 3: low[3] = min(low[3], low[5]) = min(3, 3) = 3. Check: low[5] (3) > tin[3] (3)? **No** → edge (3,5) is NOT a bridge. |
+| 14 | — | — | — | Back at 1: low[1] = min(low[1], low[3]) = min(0, 3) = 0. Check: low[3] (3) > tin[1] (1)? **Yes** → edge (1,3) **IS a bridge**. |
 | 15 | — | — | — | Back at 0: low[0] = min(low[0], low[1]) = min(0, 0) = 0. Check: low[1] (0) > tin[0] (0)? **No** → edge (0,1) is NOT a bridge. |
 
 **Final tin/low values**:
@@ -653,12 +653,12 @@ int main() {
     // Tree: 0-1, 0-2, 1-3
     std::vector<std::vector<int>> adj(4);
     adj[0] = {1, 2}; adj[1] = {0, 3}; adj[2] = {0}; adj[3] = {1};
-    std::cout << "Is tree: " << isTree(4, adj) << "\\n";
+    std::cout << "Is tree: " << isTree(4, adj) << "\n";
     
     // Cycle: 0-1, 1-2, 2-0
     std::vector<std::vector<int>> adj2(3);
     adj2[0] = {1, 2}; adj2[1] = {0, 2}; adj2[2] = {0, 1};
-    std::cout << "Is tree: " << isTree(3, adj2) << "\\n";
+    std::cout << "Is tree: " << isTree(3, adj2) << "\n";
     
     return 0;
 }
@@ -725,12 +725,12 @@ Link-Cut Trees maintain connectivity in a dynamic forest with O(log n) per opera
 
 ## Cross-References
 
-- **[Chapter 102: Graph Fundamentals](ch22-graph-fundamentals.md)** — Basic graph representations and terminology used throughout this chapter.
-- **Chapter 103: DFS and BFS** — DFS is the foundation of Tarjan's bridge-finding algorithm.
-- **Chapter 104: Strongly Connected Components** — SCCs are the directed-graph analog of 2-edge-connected components. Tarjan's SCC algorithm uses similar tin/low reasoning.
-- **Chapter 105: Shortest Paths** — Bridge trees can be used to optimize shortest path queries in graphs with few bridges.
-- **Chapter 108: Trees** — Bridge trees are trees; all tree algorithms (LCA, DP, diameter) apply.
-- **[Chapter 110: Euler Tour and Flows](ch106-euler-tour-tree-flattening.md)** — Euler Tour Trees are used for dynamic connectivity on forests.
-- **Chapter 112: Advanced Graph Algorithms** — Covers link-cut trees and other advanced dynamic graph data structures.
-- **Chapter 106: Minimum Spanning Trees** — Bridges are always in every MST; non-bridge edges may or may not be.
-- **[Chapter 107: Network Flow](ch29-network-flow.md)** — Edge connectivity (minimum number of edges whose removal disconnects the graph) relates to bridges (1-edge-connected components).
+- **[Chapter 22: Graph Fundamentals](ch22-graph-fundamentals.md)** — Basic graph representations and terminology used throughout this chapter.
+- [Chapter 23: DFS](ch23-dfs.md) — DFS is the foundation of Tarjan's bridge-finding algorithm.
+- [Chapter 81: Strongly Connected Components](ch81-scc-bridges.md) — SCCs are the directed-graph analog of 2-edge-connected components. Tarjan's SCC algorithm uses similar tin/low reasoning.
+- [Chapter 26: Shortest Paths](ch26-shortest-paths.md) — Bridge trees can be used to optimize shortest path queries in graphs with few bridges.
+- [Chapter 13: Trees](ch13-trees.md) — Bridge trees are trees; all tree algorithms (LCA, DP, diameter) apply.
+- [Chapter 106: Euler Tour](ch106-euler-tour-tree-flattening.md) — Euler Tour Trees are used for dynamic connectivity on forests.
+- [Chapter 157: Link-Cut Trees](ch157-link-cut-trees.md) — Covers link-cut trees and other advanced dynamic graph data structures.
+- [Chapter 27: Minimum Spanning Trees](ch27-mst.md) — Bridges are always in every MST; non-bridge edges may or may not be.
+- [Chapter 29: Network Flow](ch29-network-flow.md) — Edge connectivity (minimum number of edges whose removal disconnects the graph) relates to bridges (1-edge-connected components).

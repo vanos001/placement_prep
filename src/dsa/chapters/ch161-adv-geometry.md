@@ -1,8 +1,8 @@
 # Chapter 161: Advanced Computational Geometry
 
 ## Prerequisites
-- Convex hull (Chapter 156)
-- Sweep line basics (Chapter 157)
+- Convex hull ([Chapter 64](ch64-geometry.md))
+- Sweep line basics ([Chapter 93](ch93-sweep-line.md))
 - Binary search trees
 - Divide and conquer
 
@@ -673,8 +673,8 @@ int main() {
 
 ## Cross-References
 
-- **Chapter 156**: Convex Hull — foundation for many geometry algorithms
-- **Chapter 157**: Sweep Line — used in Voronoi construction
-- **Chapter 162**: Advanced Graph Algorithms — spatial graphs
-- **Chapter 158**: Interval Trees — another approach to range queries
-- **Chapter 76**: KD-Trees — practical alternative to range trees for nearest neighbor
+- **Chapter 64**: Convex Hull — foundation for many geometry algorithms
+- **Chapter 93**: Sweep Line — used in Voronoi construction
+- **Chapter 155**: Advanced Graph Theory — spatial graphs
+- **Chapter 103**: Interval Order Statistic Trees — another approach to range queries
+- **Chapter 78**: KD-Trees — practical alternative to range trees for nearest neighbor
