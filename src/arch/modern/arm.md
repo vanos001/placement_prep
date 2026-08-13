@@ -51,8 +51,8 @@ Floating Point / SIMD:
   FPSR    : FP status register
 
 System:
-  CPSR    : Current program status register
-  SPSR    : Saved program status register
+  PSTATE  : Process state (N, Z, C, V condition flags + DAIF)
+  SPSR_ELx: Saved program status register (on exception entry)
   ELR     : Exception link register
   SCTLR   : System control register
 ```

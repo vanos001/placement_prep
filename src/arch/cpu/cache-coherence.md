@@ -41,12 +41,12 @@ The simplest cache coherence protocol with three states:
 
 ```mermaid
 flowchart LR
-    I[Invalid] -->|Read hit| S[Shared]
-    I -->|Write hit| M[Modified]
-    S -->|Write hit| M
-    M -->|"Read miss (other core)"| S
-    M -->|"Write miss (other core)"| I
-    S -->|Invalidate from other core| I
+    I[Invalid] -->|Read miss / BusRd| S[Shared]
+    I -->|Write miss / BusRdX| M[Modified]
+    S -->|Write hit / BusRdX| M
+    M -->|"Snoop BusRd (other core reads)"| S
+    M -->|"Snoop BusRdX (other core writes)"| I
+    S -->|"Snoop BusRdX (other core writes)"| I
 ```
 
 ### MSI Operations

@@ -43,7 +43,8 @@ http {
     }
 
     server {
-        listen 443 ssl http2;
+        listen 443 ssl;          # nginx >= 1.25.1: use `http2 on;` instead of `listen ... http2`
+        http2 on;
         server_name example.com;
 
         ssl_certificate /etc/ssl/cert.pem;
@@ -85,7 +86,7 @@ http {
 
 ```nginx
 location /api/ {
-    proxy_pass http://backend;  # trailing slash strips /api/
+    proxy_pass http://backend;  # no trailing slash → request URI passed unchanged (/api/users → /api/users)
     proxy_http_version 1.1;
     proxy_set_header Upgrade $http_upgrade;
     proxy_set_header Connection "upgrade";

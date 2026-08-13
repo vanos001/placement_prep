@@ -6,12 +6,16 @@
 Cluster
 ├── Node 1 (master)
 │   ├── Shard 0 (primary)
-│   └── Shard 1 (replica)
+│   ├── Shard 1 (replica)
+│   └── Shard 2 (replica)
 ├── Node 2
 │   ├── Shard 1 (primary)
+│   ├── Shard 2 (replica)
 │   └── Shard 0 (replica)
 └── Node 3
-    └── Shard 2 (primary)
+    ├── Shard 2 (primary)
+    ├── Shard 0 (replica)
+    └── Shard 1 (replica)
 ```
 
 - **Cluster**: Collection of nodes

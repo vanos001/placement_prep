@@ -9,7 +9,7 @@ A: TF (Term Frequency) = how often a term appears in a document. IDF (Inverse Do
 A: BM25 (Best Match 25) improves TF-IDF with: (1) term frequency saturation (diminishing returns for repeated terms), (2) document length normalization (longer docs aren't unfairly favored), (3) tunable parameters (k1 for term frequency, b for length normalization).
 
 **Q: What is the difference between stemming and lemmatization?**
-A: Stemming chops word endings (running → run, better → bett). Lemmatization uses vocabulary and morphology to find the root form (better → good, running → run). Lemmatization is more accurate but slower.
+A: Stemming chops word endings (running → run, better → bet via Lancaster; Porter/Snowball leave "better" unchanged). Lemmatization uses vocabulary and morphology to find the root form (better → good, running → run). Lemmatization is more accurate but slower.
 
 ## Elasticsearch
 

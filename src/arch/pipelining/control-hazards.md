@@ -130,11 +130,12 @@ graph LR
 - Only mispredicts once at loop entry and once at loop exit
 
 ```
-2-bit predictor states:
-  00 (Strongly Not-Taken) ←────── 01 (Weakly Not-Taken)
-       │                              ↑
-       ↓                              │
-  10 (Weakly Taken) ──────→ 11 (Strongly Taken)
+2-bit predictor states (4-state linear chain):
+  00 (Strongly Not-Taken) ←──NT── 01 (Weakly Not-Taken) ←──NT── 10 (Weakly Taken) ←──NT── 11 (Strongly Taken)
+   │                            │                            │                            │
+   T                            T                            T                            T
+   ↓                            ↓                            ↓                            ↓
+  01                           10                           11                           11
 
   Taken → increment (saturate at 11)
   Not-Taken → decrement (saturate at 00)
@@ -203,7 +204,7 @@ Iteration 5: Predict T, Actual T  → Correct, state → 11
 Exit:        Predict T, Actual NT → MISPREDICT, state → 10
 
 Mispredictions: 2 (entry and exit)
-1-bit predictor would mispredict 4 times (flips each iteration!)
+A 1-bit predictor (remembers only the last outcome) would also mispredict 2 times on this single-loop invocation — once on entry (last state was NT from previous exit, actual T) and once on exit (last state was T, actual NT). The 1-bit predictor only flips more often than 2-bit when the *same* loop is called many times with non-trip-count behavior, or for nested short loops.
 ```
 
 ### Example 3: Pipeline Flush on Misprediction

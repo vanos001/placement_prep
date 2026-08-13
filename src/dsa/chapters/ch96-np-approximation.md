@@ -748,7 +748,7 @@ int main() {
 
 1. **Prove NP-Completeness**: Show that the Hamiltonian Cycle problem is NP-Complete by reducing from Hamiltonian Path.
 
-2. **Implement 3-Approximation**: Design a 3-approximation algorithm for the Traveling Salesman Problem when the triangle inequality does NOT hold (hint: use MST and shortcutting with a different analysis).
+2. **Implement 3-Approximation**: Design a 3-approximation algorithm for the Traveling Salesman Problem when the triangle inequality DOES hold (hint: use MST and shortcutting with a different analysis). Note: without the triangle inequality, TSP admits no constant-factor polynomial-time approximation unless P=NP (Sahni & Gonzalez, 1976).
 
 3. **Set Cover Analysis**: Prove that the greedy set cover algorithm achieves an approximation ratio of H(n) = 1 + 1/2 + 1/3 + ... + 1/n.
 
@@ -781,9 +781,9 @@ int main() {
 
 ## Cross-References
 
-- **Chapter 95**: Complexity Theory — foundations of P, NP, reductions
-- **Chapter 97**: Backtracking — exact exponential algorithms for NP problems
-- **Chapter 98**: Branch and Bound — smarter exact search
-- **Chapter 40**: Greedy Algorithms — foundation for approximation algorithms
-- **Chapter 45**: Dynamic Programming — pseudo-polynomial solutions
-- **Chapter 70**: Graph Algorithms — MST-based TSP approximation
+- **Chapter 70**: Computational Models and Complexity Classes — foundations of P, NP, reductions
+- **Chapter 9**: Backtracking — exact exponential algorithms for NP problems
+- **Chapter 133**: Branch and Bound — smarter exact search
+- **Chapter 32**: Greedy Algorithms — foundation for approximation algorithms
+- **Chapter 30**: Dynamic Programming Fundamentals — pseudo-polynomial solutions
+- **Chapter 22**: Graph Fundamentals — MST-based TSP approximation

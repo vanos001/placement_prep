@@ -2,7 +2,7 @@
 
 ## Prerequisites
 - Binary search trees ([Chapter 14](ch14-bst.md))
-- Tree rotations (Chapter 16)
+- Tree rotations ([Chapter 14](ch14-bst.md))
 - Amortized analysis basics
 
 ## Interview Frequency: ★★
@@ -544,7 +544,6 @@ This remains unproven (one of the most famous open problems in data structures).
 
 - [Chapter 13: Trees](ch13-trees.md) — Tree fundamentals: traversals, recursion, and basic tree properties
 - [Chapter 14: Binary Search Trees](ch14-bst.md) — The foundation; splay trees are a self-adjusting variant of BSTs
-- Chapter 16: AVL Trees — Strictly balanced BSTs for worst-case guarantees
 - [Chapter 99: Scapegoat and AA Trees](ch99-scapegoat-aa-trees.md) — Other simple balanced BST alternatives
 - [Chapter 75: Persistent Data Structures](ch75-persistent-ds.md) — Splay trees can be made persistent via path copying
 - [Chapter 157: Link-Cut Trees](ch157-link-cut-trees.md) — Sleator-Tarjan's dynamic trees use splay operations for path decomposition

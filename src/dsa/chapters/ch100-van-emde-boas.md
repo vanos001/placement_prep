@@ -1018,10 +1018,10 @@ Longest prefix matching in routers can use trie-based structures similar to X-Fa
 
 ## 100.12 Cross-References
 
-- **Chapter 29: Hashing** — Hash tables provide O(1) average but no order operations
-- **Chapter 30: Tries** — Binary tries are the foundation of X-Fast tries
-- **Chapter 25: Binary Search Trees** — BSTs used within Y-Fast groups
-- **Chapter 33: Heaps** — Priority queue comparison with VEB
+- **Chapter 7: Hashing** — Hash tables provide O(1) average but no order operations
+- **Chapter 16: Tries** — Binary tries are the foundation of X-Fast tries
+- **Chapter 14: Binary Search Trees** — BSTs used within Y-Fast groups
+- **Chapter 15: Heaps** — Priority queue comparison with VEB
 - **Chapter 158: Succinct Data Structures** — Bit-level operations on compressed data
 - **Chapter 160: Parallel Algorithms** — Parallel integer sorting
 - **Chapter 163: Advanced Mathematics** — Recurrence solving, number theory

@@ -235,7 +235,7 @@ Objects are distributed across storage nodes using consistent hashing, ensuring 
 
 ## Common Mistakes
 
-- Using S3 for database storage — S3 has high latency (50-200ms) and eventual consistency for some operations (now strong). Use RDS/EBS.
+- Using S3 for database storage — S3 has high latency (50-200ms) and is not designed for transactional workloads. Since Dec 2020 S3 is strongly consistent for all operations, but latency and lack of partial-overwrite semantics still make it unsuitable as a database backend. Use RDS/EBS.
 - Not using multipart upload for large files — single PUT has a 5 GB limit and no resume capability.
 - Storing sensitive data without encryption — always enable SSE-S3 or SSE-KMS.
 - Ignoring lifecycle policies — data accumulates and costs grow. Automate transitions and expiration.

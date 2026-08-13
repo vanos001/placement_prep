@@ -293,7 +293,7 @@ graph TD
 ```mermaid
 graph TD
     CLIENT[Client] --> CRDB[CockroachDB SQL]
-    CRDB --> RANGE["Ranges (64MB chunks)"]
+    CRDB --> RANGE["Ranges (512 MiB chunks since v19.2)"]
     RANGE --> RAFT[Raft consensus per range]
     RAFT --> N1[Node 1]
     RAFT --> N2[Node 2]

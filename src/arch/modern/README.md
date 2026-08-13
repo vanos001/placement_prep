@@ -67,7 +67,7 @@ graph TD
 | Intel Alder Lake | 2021 | 16 (8P+8E) | Intel 7 | Hybrid P+E cores |
 | Intel Meteor Lake | 2023 | 14 (6P+8E) | Intel 4 | Chiplet/tile design |
 | AMD Zen 4 | 2022 | 16-96 | 5nm | 3D V-Cache, chiplet |
-| AMD Zen 5 | 2024 | 16-192 | 4nm | 2-wide fetch, improved IPC |
+| AMD Zen 5 | 2024 | 16-192 | 4nm | 8-wide decode, larger µop cache, ~512 ROB |
 
 ### Intel Hybrid Architecture (P-cores + E-cores)
 

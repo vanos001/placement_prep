@@ -130,29 +130,29 @@ The tree has height `⌈log₂ σ⌉` where `σ = hi - lo + 1`.
 
 ```
 Step 1: Root [1,9], mid=5, l=0, r=7
-  B = [0,1,2,2,3,4,4,4,4]  (prefix count of ≤5)
-  inLeft = B[8] - B[0] = 4 - 0 = 4
-  k=3 < 4 → go LEFT
-  New: l=B[0]=0, r=B[8]-1=3, range=[1,5]
+  B = [0,1,2,3,4,5,5,6,6]  (prefix count of ≤5)
+  inLeft = B[8] - B[0] = 6 - 0 = 6
+  k=3 < 6 → go LEFT
+  New: l=B[0]=0, r=B[8]-1=5, range=[1,5]
 
-Step 2: Node [1,5], mid=3, l=0, r=3
-  Sub-array here: [3,1,4,1] → partitioned: [3,1,1] left, [4] right
-  B = [0,1,2,2,3]
+Step 2: Node [1,5], mid=3, l=0, r=5
+  Sub-array here: [3,1,4,1,5,2] → partitioned: [3,1,1,2] left, [4,5] right
+  B = [0,1,2,2,3,3,4]
+  inLeft = B[6] - B[0] = 4 - 0 = 4
+  k=3 < 4 → go LEFT
+  New: l=B[0]=0, r=B[6]-1=3, range=[1,3]
+
+Step 3: Node [1,3], mid=2, l=0, r=3
+  Sub-array here: [3,1,1,2] → partitioned: [1,1,2] left, [3] right
+  B = [0,0,1,2,3]
   inLeft = B[4] - B[0] = 3 - 0 = 3
   k=3 ≥ 3 → go RIGHT
-  New: l=0-B[0]=0, r=3-B[4]=0, k=3-3=0, range=[4,5]
+  New: l=0-B[0]=0, r=3-B[4]=0, k=3-3=0, range=[3,3]
 
-Step 3: Node [4,5], mid=4, l=0, r=0
-  Sub-array here: [4]
-  B = [0,1]
-  inLeft = B[1] - B[0] = 1
-  k=0 < 1 → go LEFT
-  New: l=B[0]=0, r=B[1]-1=0, range=[4,4]
-
-Step 4: Leaf [4,4] → return 4
+Step 4: Leaf [3,3] → return 3
 ```
 
-**Result:** 4th smallest in [0,7] = **4** ✓ (sorted: [1,1,2,3,4,5,6,9])
+**Result:** 4th smallest in [0,7] = **3** ✓ (sorted: [1,1,2,3,4,5,6,9])
 
 ---
 

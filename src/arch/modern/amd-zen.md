@@ -15,7 +15,7 @@
 | **Zen 2** | 2019 | 7nm | +15% | Doubled L3, 2× FP width, chiplet design |
 | **Zen 3** | 2020 | 7nm | +19% | Unified 8-core CCD, wider frontend |
 | **Zen 4** | 2022 | 5nm | +13% | AVX-512, AI extensions, DDR5 |
-| **Zen 5** | 2024 | 4nm/3nm | +16% | 2-wide dispatch, AI, RDNA2 iGPU |
+| **Zen 5** | 2024 | 4nm/3nm | +16% | 8-wide decode (up from 4), larger µop cache, ~512 ROB, AI, RDNA2 iGPU |
 
 ### Chiplet Design
 

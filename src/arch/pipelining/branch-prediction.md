@@ -72,12 +72,12 @@ Problem with loops:
 Requires two consecutive mispredictions to change prediction:
 
 ```
-State diagram:
-  00 (Strongly Not-Taken) ──T──→ 01 (Weakly Not-Taken)
-         ↑                           │
-         NT                          T
-         │                           ↓
-  10 (Weakly Taken) ←──NT── 11 (Strongly Taken)
+State diagram (4-state linear chain, T = increment, NT = decrement, both saturating):
+  00 (Strongly Not-Taken) ──T──→ 01 (Weakly Not-Taken) ──T──→ 10 (Weakly Taken) ──T──→ 11 (Strongly Taken)
+   ↑                            │                            │                            │
+   NT                           NT                           NT                           NT
+   ↓                            ↓                            ↓                            ↓
+  00                           00                           01                           10
 
   Predict Taken if state >= 10
   Predict Not-Taken if state <= 01

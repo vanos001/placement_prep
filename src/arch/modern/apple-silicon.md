@@ -116,13 +116,13 @@ UltraFusion:
 
 ```
 Single-thread performance (Geekbench 6):
-  M2:        ~1900
-  M2 Pro:    ~1950
-  M3:        ~2150
-  M3 Max:    ~2150
-  M4:        ~2400
-  Intel i9-13900K: ~2200
-  AMD Ryzen 9 7950X: ~2100
+  M2:        ~2600
+  M2 Pro:    ~2640
+  M3:        ~3080
+  M3 Max:    ~3180
+  M4:        ~3800
+  Intel i9-13900K: ~2900
+  AMD Ryzen 9 7950X: ~2800
 
 Multi-thread performance:
   M2 (8 cores):     ~8500

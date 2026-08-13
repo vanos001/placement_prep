@@ -66,7 +66,7 @@ Example: 24 OSDs, replication 3, target 128 per OSD, pool holds 25% data → raw
 
 ## CRUSH Algorithm — Controlled Replication Under Scalable Hashing
 
-Weil's CRUSH, designed for RADOS, is stable when many devices join/leave — only minimal data moves to re-balance, vs classic consistent hashing where massive rebalance would be needed.
+Weil's CRUSH, designed for RADOS, is stable when many devices join/leave — only minimal data moves to re-balance. Note that classic *consistent hashing* (Karger et al. 1997) provides the same K/N-stability property; CRUSH's actual advantages over consistent hashing are its **failure-domain-aware hierarchical placement** and **per-device weighting**. The straw-man comparison below was previously phrased against naive modulo hashing (`hash(k) % N`), which does remap almost all keys when N changes.
 
 CRUSH map is hierarchy: root → datacenter → room → row → rack → host → OSD, with weights (e.g., host straw 1 replica per host, rack straw 2 servers per rack).
 
@@ -156,7 +156,7 @@ Clients compute object location via CRUSH using cluster map retrieved from MONs.
 PG aggregates objects into groups mapped to OSDs together. Tracking 10B objects individually metadata heavy. Tracking 256 PGs reduces overhead.
 
 **Q: Explain CRUSH stability when adding new disk.**
-CRUSH is pseudo-random but deterministic with hierarchy and weights. When adding OSD, only `1/N` data moves to new OSD to rebalance, vs consistent hashing where many keys move. Because CRUSH chooses via hierarchical straw algorithm, minimal data transfer.
+CRUSH is pseudo-random but deterministic with hierarchy and weights. When adding OSD, only `1/N` data moves to new OSD to rebalance. (This K/N-stability property is shared with classic *consistent hashing* — what CRUSH adds is the failure-domain hierarchy and per-OSD weighting. The "many keys move" behaviour is from naive modulo hashing, not consistent hashing.) Because CRUSH chooses via hierarchical straw algorithm, minimal data transfer.
 
 **Q: How does CRUSH ensure replicas on different racks?**
 Via CRUSH rule: `step chooseleaf firstn 3 type host` or `type rack`. Map hierarchy includes rack/host levels with failure domain. Rule ensures replicas on distinct failure domains.

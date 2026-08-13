@@ -42,12 +42,15 @@ counts = (rdd
 ### DataFrames (modern Spark)
 
 ```python
+from pyspark.sql.functions import avg, count, desc
+
 df = spark.read.csv("data.csv", header=True)
 result = (df
     .filter(df.age > 25)
     .groupBy("city")
-    .agg(avg("salary"), count("*"))
-    .orderBy(desc("count"))
+    .agg(avg("salary").alias("avg_salary"),
+         count("*").alias("row_count"))
+    .orderBy(desc("row_count"))
 )
 ```
 

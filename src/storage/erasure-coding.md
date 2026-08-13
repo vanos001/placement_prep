@@ -104,15 +104,19 @@ From any K chunks, select the corresponding K rows of G, invert the K×K matrix,
 # Simplified Reed-Solomon encoding
 import numpy as np
 
-# Galois Field arithmetic (GF(2^8))
-# In practice, use libraries like zfec, pyfinite, or jerasure
+# TOY ILLUSTRATION in ordinary real arithmetic — NOT real GF(2^8) Reed-Solomon.
+# Real RS over GF(2^8) requires addition = XOR and multiplication via log/exp
+# tables; numpy does NOT implement GF(2^8). For production RS use the `galois`,
+# `reedsolo`, `zfec`, `pyfinite`, or `jerasure` libraries. The matrix below is
+# only meant to convey the structure of a generator matrix G (identity on top
+# for data chunks, parity rows below).
 
 K = 4  # data chunks
 M = 2  # parity chunks
 N = K + M  # total chunks
 
-# Generator matrix (simplified)
-# Identity for data rows, Vandermonde for parity rows
+# Generator matrix (toy real-arithmetic version of the structure)
+# Identity for data rows, Vandermonde-style for parity rows
 G = np.array([
     [1, 0, 0, 0],  # data chunk 0
     [0, 1, 0, 0],  # data chunk 1
@@ -125,8 +129,8 @@ G = np.array([
 # Data (4 chunks)
 data = np.array([10, 20, 30, 40])
 
-# Encode: multiply G × data
-coded = G @ data  # [10, 20, 30, 40, 100, ?]
+# Encode: multiply G × data (real arithmetic — NOT GF(2^8))
+coded = G @ data  # [10, 20, 30, 40, 100, 300]
 ```
 
 ### Reconstruction Example
@@ -231,8 +235,8 @@ For a 4+2 scheme, reading 1 MB requires reading 4 × 256 KB = 1 MB from 4 differ
 | Scheme | Recovery Read | Recovery Network | Recovery Time |
 |--------|--------------|------------------|---------------|
 | 3× Replication | 1× data size | 1× data size | Fast |
-| 4+2 EC | 4× data size | 1× data size | Moderate |
-| 10+4 EC | 10× data size | 1× data size | Slow |
+| 4+2 EC | ~1× data size (K chunks of size data/K) | 1× chunk size (= data/K) | Moderate |
+| 10+4 EC | ~1× data size (K chunks of size data/K) | 1× chunk size (= data/K) | Slow |
 
 ## Choosing Between Replication and EC
 

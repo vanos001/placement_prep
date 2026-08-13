@@ -89,7 +89,7 @@ ARMv8-A (AArch64):
   XZR       : Zero register (always reads as 0)
   SP        : Stack pointer
   PC        : Program counter
-  CPSR      : Current program status register
+  PSTATE    : Process state (N, Z, C, V, DAIF flag bits) — saved to SPSR_ELx on exception
   V0-V31    : 128-bit SIMD/FP registers
   
 Special:
@@ -118,7 +118,7 @@ x28-x31  | t3-t6    | Temporaries      | No
 
 ### Status Flags Register
 
-The flags register (RFLAGS in x86, CPSR in ARM) contains condition codes:
+The flags register (RFLAGS in x86, PSTATE in AArch64 / CPSR in AArch32) contains condition codes:
 
 | Flag | Name | Set When |
 |------|------|----------|
@@ -255,7 +255,7 @@ VMOVDQU [result], YMM0     ; Store 8 results
 | **Speed** | 0 additional cycles (directly wired to ALU) |
 | **Types** | GPRs, special-purpose (PC, SP, flags), SIMD/FP, system |
 | **x86-64** | 16 GPRs, RFLAGS, RIP, XMM/YMM/ZMM |
-| **ARM** | 31 GPRs + SP, PC, CPSR, V0-V31 |
+| **ARM** | 31 GPRs + SP, PC, PSTATE, V0-V31 |
 | **RISC-V** | 32 GPRs (x0 = zero), 32 FPRs |
 | **Register Spilling** | When too many live variables, some go to stack |
 | **Register Renaming** | Microarchitectural technique to eliminate false dependencies |

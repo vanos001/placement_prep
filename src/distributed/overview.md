@@ -64,7 +64,7 @@ Peter Deutsch's fallacies (1994):
 | **Amazon DynamoDB** | Distributed database | Trillions of requests/day |
 | **Apache Kafka** | Message streaming | Trillions of events/day |
 | **Netflix** | Content delivery | 200+ million subscribers |
-| **Bitcoin** | Blockchain | ~15,000 nodes worldwide |
+| **Bitcoin** | Blockchain | ~18,000 reachable nodes worldwide (hundreds of thousands including non-listening) |
 
 ## Interview Focus
 

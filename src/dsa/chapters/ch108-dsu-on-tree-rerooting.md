@@ -2,7 +2,7 @@
 
 ## Prerequisites
 - DFS ([Chapter 22](ch22-graph-fundamentals.md))
-- DSU / Union-Find (Chapter 20)
+- DSU / Union-Find ([Chapter 17](ch17-dsu.md))
 - Tree DP ([Chapter 30](ch30-dp-fundamentals.md))
 
 ## Interview Frequency: ★★★
@@ -61,9 +61,9 @@ Tree with values [1, 2, 1, 3, 2, 3] at nodes 0-5:
 ```
 
 Processing node 1 (heavy child of 0):
-- Process light child 4 (with 5): distinct = {2, 3} → 2
-- Process heavy child 3: distinct = {3} → 1
-- Keep heavy child 3's data, add light child 4's data
+- Process light child 3: distinct = {3} → 1
+- Process heavy child 4 (with 5): distinct = {2, 3} → 2
+- Keep heavy child 4's data, add light child 3's data
 - Add node 1's value: distinct = {2, 3} → 2
 - Answer for node 1: 2 distinct values
 
@@ -577,7 +577,7 @@ public class Rerooting {
 
 ## Cross-References
 
-- Chapter 20: DSU / Union-Find — The "DSU" in DSU on Tree refers to small-to-large merging, not the Union-Find data structure
+- [Chapter 17: DSU / Union-Find](ch17-dsu.md) — The "DSU" in DSU on Tree refers to small-to-large merging, not the Union-Find data structure
 - [Chapter 30: DP Fundamentals](ch30-dp-fundamentals.md) — Tree DP is the foundation for rerooting
 - [Chapter 107: HLD and Centroid Applications](ch107-hld-centroid-applications.md) — Other advanced tree decomposition techniques
 - [Chapter 13: Trees](ch13-trees.md) — Tree fundamentals

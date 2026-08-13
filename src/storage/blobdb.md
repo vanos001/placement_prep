@@ -102,7 +102,7 @@ When **not** to use: values <1KB (pointer overhead bigger than benefit), range s
 
 ## WiscKey vs Badger vs RocksDB Integrated BlobDB
 
-- **WiscKey** (paper): simplest, separates all values, log-structured blob file, keeps in-memory hash table of key→blob offset (needs rebuild on crash).
+- **WiscKey** (paper): separates all values from keys; values are appended to a log-structured vBlob/vLog file, while the LSM tree stores only the keys together with a pointer to the value's location in the vLog. The LSM tree stays small (just keys + small pointers) so it can be cached and searched efficiently. Garbage collection reclaims space by rewriting valid values in the vLog.
 - **Badger** (Go): LSM stores keys + value log pointer, value log separate vlog files, GC via rewriting. Good for Go ecosystem.
 - **RocksDB Integrated BlobDB**: integrated into LSM, compatible with most RocksDB features (transactions, compaction filter `FilterBlobByKey` — can decide to drop based on key only without reading blob, which is optimization).
 

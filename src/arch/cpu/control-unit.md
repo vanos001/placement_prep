@@ -152,11 +152,11 @@ The control unit generates signals that configure the datapath:
 The control unit reads the instruction register to determine what to do:
 
 ```
-IR contents for "ADD R1, R2, R3" (RISC):
-┌────────┬───────┬───────┬───────┬────────┬────────┐
-│ 000000 │ 00010 │ 00011 │ 00001 │  000   │ 100000 │
-│ Opcode │  Rs2  │  Rs1  │  Rd   │ Funct3 │ Funct7 │
-└────────┴───────┴───────┴───────┴────────┴────────┘
+IR contents for "ADD R1, R2, R3" (RISC-V R-type, 32-bit):
+┌─────────┬───────┬───────┬───────┬────────┬─────────┐
+│ 0000000 │ 00011 │ 00010 │ 000   │ 00001  │ 0110011 │
+│ Funct7  │  Rs2  │  Rs1  │Funct3 │  Rd    │ Opcode  │
+└─────────┴───────┴───────┴───────┴────────┴─────────┘
          │                                   │
          └── Control unit reads these fields ┘
              to generate control signals
