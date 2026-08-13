@@ -392,7 +392,7 @@ Or: N = 20 + 10(-0.5) = 20 - 5 = 15 ✓
 Visible steps = 15... but wait, this seems small.
 ```
 
-Actually, let me reconsider: if escalator moves down while person walks up:
+Now consider the opposite case: escalator moves down while person walks up:
 ```
 N = 30 - 30e/p (net progress per step is 1-e/p)
 At 2p: N = 20 - 20e/(2p) = 20 - 10e/p

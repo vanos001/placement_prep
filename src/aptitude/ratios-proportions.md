@@ -153,7 +153,7 @@ Milk = ₹20, Water = ₹0, Mean = ₹15
 Ratio of Milk:Water = (0 - 15):(15 - 20)
                     = -15:-5 (take absolute) = 3:1
 
-Wait, let me recalculate:
+Correction: the right formula uses the diagonal differences:
 Ratio = (20-15):(15-0) = 5:15 = 1:3
 
 Milk:Water = 1:3

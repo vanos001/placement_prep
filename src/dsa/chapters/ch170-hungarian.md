@@ -211,11 +211,9 @@ W2 [  3   2   2 ]
   - Update: u[p[0]] += 1 → u[0] = 1; v[0] -= 1 → v[0] = -1; minv[1] -= 1 = 0; minv[2] -= 1 = 2
   - j0 = 1
 - Process j0 = 1:
-  - used[1] = true, i0 = p[1]... wait, p[1] is still -1
-  
-Actually, let me re-examine. The standard implementation uses 1-indexed arrays. Let me use a cleaner version.
+  - used[1] = true, i0 = p[1] (still -1 at this point)
 
-Let me redo with the standard efficient implementation:
+The standard implementation uses 1-indexed arrays. Cleaner version below.
 
 **Cost matrix (1-indexed)**:
 ```

@@ -206,8 +206,6 @@ c → d: cap=1, cost=2
 d → t: cap=2, cost=1
 ```
 
-Wait, let me use a cleaner example.
-
 ### Clean Example
 
 ```

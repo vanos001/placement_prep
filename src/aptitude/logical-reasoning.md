@@ -441,9 +441,9 @@ Let me recheck: C+2=E ✓, O+2=Q ✓, M+2=O... but COMPUTER has M at position 3.
 C=3+2=5=E, O=15+2=17=Q, M=13+2=15=O, P=16+2=18=R, U=21+2=23=W, T=20+2=22=V, E=5+2=7=G, R=18+2=20=T
 COMPUTER → EORRWVGT (off by a transpose from the expected EQRRVGTV)
 
-The given code is EQRRVGTV. Reversing the positions of the last 4 letters in our derivation: EORR + WVTG → rearranged → EQRRVGTV requires a different rule. The shift sequence must be positional rather than a constant +2:
+The given code is EQRRVGTV. Reversing the positions of the last 4 letters in our derivation: EORR + WVTG → rearranged → EQRRVGTV requires a different rule. The shift sequence must be positional rather than a constant +2.
 
-Let me just use a clean example:
+A cleaner example:
 
 If TIGER = UJHFS (+1 to each letter):
 PROGRAM = QSPHSBN

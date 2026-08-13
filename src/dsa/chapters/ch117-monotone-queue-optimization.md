@@ -77,11 +77,11 @@ i=1: dq=[0,1] → window not full (1,3)
 i=2: remove back (A[1]=3 >= A[2]=-1), dq=[0,2] → min=1 (1,3,-1)
 i=3: remove back (A[2]=-1 > A[3]=-3? No, -1 >= -3, so remove), dq=[3] 
      Wait, i-k+1=1, so index 0 is out. Remove front 0.
-     Actually: A[2]=-1, A[3]=-3, -1 >= -3 → remove index 2
+     Correction: A[2]=-1, A[3]=-3, -1 >= -3 → remove index 2
      Then check: A[0]=1, 1 >= -3 → remove index 0 (but 0 is already out of window)
      dq=[3] → min=-3 (-3,-3,5)
-     
-Let me redo this more carefully:
+
+Re-tracing step by step:
 
 i=0: push 0. dq=[0]. Window [0,0] not full yet.
 i=1: A[0]=1 < A[1]=3, don't remove. Push 1. dq=[0,1]. Window [0,1] not full.

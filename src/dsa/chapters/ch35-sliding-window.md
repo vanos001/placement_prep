@@ -123,10 +123,7 @@ int main() {
 i=0: dq=[0] (val=1)
 i=1: remove back(0) since 1<=3 → dq=[1] (val=3)
 i=2: dq=[1,2] (val=3,-1). i>=2 → output dq.front()=3
-i=3: remove front(1) since 1<=3-3=0 → dq=[2,3] (val=-1,-3). i>=2 → output -1? No, dq.front()=2, nums[2]=-1.
-     Wait, let me recheck: i=3, i-k=0. dq.front()=1, 1<=0? No. So dq=[1,2,3].
-     nums[3]=-3 <= nums[2]=-1? No, -3 < -1, so we pop back 2? nums[dq.back()]=nums[2]=-1, -1 <= -3? No.
-     So dq=[1,2,3]. Output nums[1]=3.
+i=3: i-k=0. dq.front()=1, 1<=0? No. So dq stays. Now nums[3]=-3 <= nums[dq.back()]=nums[2]=-1? Yes (-3 < -1), pop back 2. nums[dq.back()]=nums[1]=3, -3<=3? Yes, pop back 1. dq=[3]. Output nums[3]=-3.
 i=4: i-k=1. dq.front()=1, 1<=1? Yes, pop front. dq=[2,3].
      nums[4]=5. Pop back: nums[3]=-3 <=5, pop. nums[2]=-1 <=5, pop. dq=[4]. Output 5.
 i=5: i-k=2. dq.front()=4, 4<=2? No. nums[5]=3, nums[4]=5, 5<=3? No. dq=[4,5]. Output 5.

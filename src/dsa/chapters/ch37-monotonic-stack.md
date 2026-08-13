@@ -288,8 +288,6 @@ int main() {
 
 Stack before: `{(70, 2), (60, 1)}` (bottom to top: `(60,1), (70,2)`)
 
-Wait, let me trace more carefully:
-
 After processing [100, 80, 60, 70, 60]:
 - 100: push (100, 1). Stack: [(100,1)]
 - 80: 80 ≤ 100? No. Push (80, 1). Stack: [(100,1), (80,1)]

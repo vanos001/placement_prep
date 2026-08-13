@@ -297,9 +297,8 @@ All 36 pairs. Non-coprime pairs share a factor:
 - gcd = 6: (6,6) — 1 pair
 
 By inclusion-exclusion: non-coprime = 9 + 4 - 1 = 12 (subtract gcd=6 counted twice)
-Wait, let me just count directly:
 
-Pairs with gcd > 1:
+Counting directly — pairs with gcd > 1:
 gcd=2: (2,2),(2,4),(2,6),(4,2),(4,4),(4,6),(6,2),(6,4),(6,6) — 9
 gcd=3: (3,3),(3,6),(6,3),(6,6) — 4
 gcd=6: (6,6) — 1
