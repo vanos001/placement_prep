@@ -46,7 +46,8 @@ while r is not null and s is not null:
                 emit (r, s)
                 s = next(sorted_S)
             r = next(sorted_R)
-        s = next(sorted_S)  # Move past the group
+        # s is already positioned past the matching group from the inner loop;
+        # no extra next() needed here (it would skip a tuple)
     elif r.join_key < s.join_key:
         r = next(sorted_R)
     else:

@@ -27,7 +27,6 @@ Jeff Dean's famous latency numbers are the foundation for back-of-the-envelope c
 | SSD sequential read (1MB) | 500 μs | — |
 | HDD random read | 10 ms | Mechanical seek + rotation |
 | HDD sequential read (1MB) | 2 ms | — |
-| Read 1 MB from SSD | 1 ms | — |
 | Read 1 MB from HDD | 20 ms | — |
 | Read 1 MB from memory | 0.25 ms | — |
 | Read 1 MB from SSD (NVMe) | 0.3 ms | NVMe is much faster |

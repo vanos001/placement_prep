@@ -270,7 +270,7 @@ CONFIG SET maxmemory-policy allkeys-lru  # Eviction policy
 3. **Non-blocking I/O** — Uses epoll/kqueue for handling thousands of connections
 4. **Simple operations** — Most operations are O(1) or O(log N)
 
-Redis can handle 100,000+ operations per second on a single thread. For CPU-bound operations (Lua scripts, big sorted sets), Redis 6+ supports I/O threads.
+Redis can handle 100,000+ operations per second on a single thread. For network-I/O-bound workloads (many concurrent connections), Redis 6+ supports I/O threads (`io-threads` config). Command execution remains single-threaded.
 
 ### Q2: How do you choose between Redis data structures?
 **Answer:** 
