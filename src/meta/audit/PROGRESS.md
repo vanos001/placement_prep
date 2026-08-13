@@ -21,14 +21,14 @@
 | J | storage/* + search/* + web-servers/* + data-engineering/* | 6-J | 33 | completed | 17 | 5 HIGH (nvme, lsm x2, ceph-crush, apache) |
 | K | aptitude/* + cs-theory/* + oop-patterns/* + anti-patterns/* + failure-modes/* | 6-K | 18 | completed | 8 (1 HIGH / 3 MEDIUM / 4 LOW) | 0 (HIGH deferred — oop Builder pattern) |
 | L | git/* + testing/* + sre/* + projects/* + resume/* + placement-preparation/* + cheatsheets/* + mobile/* + ml/* + linux/* | 6-L | ~80 | completed | 16 | 3 HIGH (ml bias-variance, backprop, resume) |
-| M | ml/* (deep re-audit excl. already-fixed bias-variance & backprop) | 7-M | 77 | completed | 24 (11 HIGH / 10 MEDIUM / 3 LOW) | 5 HIGH (self-attention x5, deep-learning attention x2) |
-| N | linux/* (deep re-audit, excl. already-fixed) | 7-N | 444 | completed | 25 (16 HIGH / 8 MEDIUM / 1 LOW) | 8 HIGH (io_uring syscalls, INT 0x80, EXIT_DEAD, TASK_WAKEKILL, oom_badness, CLOCK_MONOTONIC, DECLARE_SEMAPHORE, spin_lock&) |
-| O | All README.md, overview.md, meta/*.md across src/ (skipping already-fixed) | 7-O | 121 | completed | 36 (6 HIGH / 19 MEDIUM / 11 LOW + 1 systemic across 32 files) | 0 (pending — mostly cosmetic) |
-| P | dbms/* + mobile/* + interview/* + projects/* + resume/* + placement-preparation/* + sre/* + anti-patterns/* + failure-modes/* (skipping already-fixed technical-skills.md) | 8-P | 75 deep + 175 grep-skim | completed | 11 (7 HIGH / 3 MEDIUM / 1 systemic across 91 files) | 0 (pending — fixes identified, not yet applied) |
-| R | frameworks/* (excl. tokio) + data-engineering/* + search/* + web-servers/* (excl. apache) + cheatsheets/* (excl. system-design/python/linux) + testing/* (excl. integration-testing) + git/* (excl. internals/stashing/worktrees-submodules/rebasing) | 8-R | 33 | completed | 15 (4 HIGH / 9 MEDIUM / 2 LOW) | 0 (pending — see audit/R.md) |
-| Q | ml/* (deep re-audit of subdir files NOT deeply read by M) + linux/* (admin/, shell/, networking/, reference/, sysprog/ — files NOT deeply read by N) | 8-Q | ~85 deep + ~150 grep-skim | completed | 18 (5 HIGH / 7 MEDIUM / 6 LOW) | 0 (pending — see audit/Q.md) |
+| M | ml/* (deep re-audit excl. already-fixed bias-variance & backprop) | 7-M | 77 | completed | 24 (11 HIGH / 10 MEDIUM / 3 LOW) | 12 (self-attention x5, attention x2, rnn-lstm x2, fraud-detection, ensemble, nas, arima, quantization, compression) |
+| N | linux/* (deep re-audit, excl. already-fixed) | 7-N | 444 | completed | 25 (16 HIGH / 8 MEDIUM / 1 LOW) | 10 (io_uring syscalls, INT 0x80, EXIT_DEAD, TASK_WAKEKILL, oom_badness, CLOCK_MONOTONIC, DECLARE_SEMAPHORE x10, spin_lock&, epoll syscall table x8) |
+| O | All README.md, overview.md, meta/*.md across src/ (skipping already-fixed) | 7-O | 121 | completed | 36 (6 HIGH / 19 MEDIUM / 11 LOW + 1 systemic across 32 files) | 2 (changelog structure, + 378 duplicate xref removals systemic) |
+| P | dbms/* + mobile/* + interview/* + projects/* + resume/* + placement-preparation/* + sre/* + anti-patterns/* + failure-modes/* (skipping already-fixed technical-skills.md) | 8-P | 75 deep + 175 grep-skim | completed | 11 (7 HIGH / 3 MEDIUM / 1 systemic across 91 files) | 5 (dbms normalization mojibake, b-tree LLM artifact, keys LLM artifact, raft LLM artifact, + duplicate xref removals) |
+| R | frameworks/* (excl. tokio) + data-engineering/* + search/* + web-servers/* (excl. apache) + cheatsheets/* (excl. system-design/python/linux) + testing/* (excl. integration-testing) + git/* (excl. internals/stashing/worktrees-submodules/rebasing) | 8-R | 33 | completed | 15 (4 HIGH / 9 MEDIUM / 2 LOW) | 4 (django afilter, git gc prune, git ort version, distributed quorum formula, vector-search CRDT ref) |
+| Q | ml/* (deep re-audit of subdir files NOT deeply read by M) + linux/* (admin/, shell/, networking/, reference/, sysprog/ — files NOT deeply read by N) | 8-Q | ~85 deep + ~150 grep-skim | completed | 18 (5 HIGH / 7 MEDIUM / 6 LOW) | 2 (linux regex ERE alternation, ml drift scoring) |
 
-Total: ~1,536 files deeply read across all 18 chunks (A–R + Q). ~378 findings identified, ~90 HIGH severity fixes applied.
+Total: ~1,536 files deeply read across all 18 chunks (A–R). ~378 findings identified, ~120 HIGH severity fixes applied, ~378 duplicate Cross-References sections removed.
 
 ## Already-fixed files (DO NOT re-audit)
 
