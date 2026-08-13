@@ -243,7 +243,7 @@ Neo4j is better for on-premise or single-cloud deployments. Neptune is better fo
 CREATE TABLE nodes (id INT PRIMARY KEY, properties JSONB);
 CREATE TABLE edges (
   source_id INT REFERENCES nodes(id),
-  target_id REFERENCES nodes(id),
+  target_id INT REFERENCES nodes(id),
   edge_type VARCHAR,
   properties JSONB,
   PRIMARY KEY (source_id, target_id, edge_type)

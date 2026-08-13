@@ -449,7 +449,7 @@ rand()          # Random number [0, 1)
 # Examples
 awk '{print int($3 * 1.5)}' file
 awk 'BEGIN {srand(); print rand()}'               # Random number
-awk '{sum+=$1; sumsq+=$1*$1} END {print "avg:", sum/NR, "stddev:", sqrt(ssq/NR - (sum/NR)^2)}' file
+awk '{sum+=$1; sumsq+=$1*$1} END {print "avg:", sum/NR, "stddev:", sqrt(sumsq/NR - (sum/NR)^2)}' file
 ```
 
 ### awk Arrays

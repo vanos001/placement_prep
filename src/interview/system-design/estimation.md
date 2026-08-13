@@ -85,13 +85,13 @@ Peak read QPS = 23,000 × 3 ≈ 70,000 feed reads/s
 **Step 3: Storage estimation**
 
 ```
-Daily tweet storage = 4,600 × 86,400 × 0.5 KB ≈ 200 MB/day
-Yearly tweet storage = 200 MB × 365 ≈ 73 GB/year
+Daily tweet storage = 4,600 × 86,400 × 0.5 KB ≈ 200 GB/day
+Yearly tweet storage = 200 GB × 365 ≈ 73 TB/year
 
-Daily image storage = 4,600 × 86,400 × 0.1 × 1 MB ≈ 40 GB/day
-Yearly image storage = 40 GB × 365 ≈ 14.6 TB/year
+Daily image storage = 4,600 × 86,400 × 0.1 × 1 MB ≈ 40 TB/day
+Yearly image storage = 40 TB × 365 ≈ 14.6 PB/year
 
-5-year storage = 73 GB × 5 + 14.6 TB × 5 ≈ 73 TB
+5-year storage = 73 TB × 5 + 14,600 TB × 5 ≈ 438 TB (tweets) + 73 PB (images)
 ```
 
 **Step 4: Bandwidth estimation**

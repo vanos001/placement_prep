@@ -191,7 +191,8 @@ flowchart TD
 **PostgreSQL:**
 ```sql
 -- Set buffer pool size (in 8KB pages)
-SET shared_buffers = '4GB';  -- 4GB buffer pool
+-- shared_buffers has postmaster context — must use ALTER SYSTEM + restart, not SET
+ALTER SYSTEM SET shared_buffers = '4GB';  -- 4GB buffer pool (requires restart)
 
 -- Check hit ratio
 SELECT 

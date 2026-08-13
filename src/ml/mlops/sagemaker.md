@@ -118,15 +118,29 @@ train_step = TrainingStep(
     inputs={"train": process_step.properties.ProcessingOutputConfig.Outputs["train"].S3Output.S3Uri},
 )
 
-# Quality gate
+# Quality gate — condition must be wrapped in a ConditionStep
+from sagemaker.workflow.condition_step import ConditionStep
+from sagemaker.workflow.fail_step import FailStep
+
 condition = ConditionGreaterThanOrEqualTo(
     left=train_step.properties.FinalMetricDataList[0].Value,
     right=0.90,
 )
 
+# Define what happens on success vs failure
+deploy_step = TrainingStep(name="Deploy", ...)  # your deployment step
+fail_step = FailStep(name="Quality-Gate-Failed", error_message="Accuracy below 0.90")
+
+cond_step = ConditionStep(
+    name="Quality-Gate",
+    conditions=[condition],
+    if_steps=[deploy_step],   # run if accuracy >= 0.90
+    else_steps=[fail_step],   # run otherwise
+)
+
 pipeline = Pipeline(
     name="ml-pipeline",
-    steps=[process_step, train_step],
+    steps=[process_step, train_step, cond_step],
 )
 
 pipeline.upsert(role_arn=role)

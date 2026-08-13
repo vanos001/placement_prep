@@ -79,7 +79,7 @@ def is_visible(version, snapshot):
     if version.xmin >= snapshot.xmax:
         return False  # Created after snapshot
     if version.xmin in snapshot.in_progress:
-        return False  # Creator was still running
+        return True  # Own write — a transaction always sees its own uncommitted changes
     
     # Rule 2: Was the deleting transaction committed?
     if version.xmax == INVALID:

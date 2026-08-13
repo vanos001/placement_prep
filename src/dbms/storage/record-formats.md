@@ -136,7 +136,7 @@ Tuple Header (PostgreSQL: 23 bytes):
 │ t_infomask (2 bytes)         │  Status bits (nulls, visibility)
 │ t_hoff (1 byte)              │  Header offset to user data
 ├──────────────────────────────┤
-│ NULL bitmap (variable)       │  Bit per column: 1=NULL
+│ NULL bitmap (variable)       │  Bit per column: 1=NOT NULL, 0=NULL
 ├──────────────────────────────┤
 │ Column data (variable)       │  Actual values
 └──────────────────────────────┘

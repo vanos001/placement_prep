@@ -42,10 +42,10 @@ Storage: 500 hours/min × 60 min × 24hr = 720,000 hours/day
 Streaming: 2B daily views, average 5 minutes
           = 10B minutes/day = 167M hours/day
           Average bitrate: 5 Mbps
-          Bandwidth: 167M × 3600 × 5 Mbps = ~230 Pbps peak
+          Steady-state bandwidth: 167M hours/day ÷ 24 = 6.94M concurrent viewers × 5 Mbps ≈ 34.7 Tbps
 
 CDN offload: 95% of traffic served from CDN edge
-Origin bandwidth: 5% of total = ~11.5 Pbps
+Origin bandwidth: 5% of total ≈ 1.7 Tbps
 ```
 
 ---

@@ -277,8 +277,8 @@ public class GreetingAutoConfiguration {
 ```mermaid
 stateDiagram-v2
     [*] --> BeanDefinition: Component scanning / @Bean methods
-    BeanDefinition --> BeanPostProcessor: BeanFactoryPostProcessor
-    BeanPostProcessor --> Instantiation: Create instance
+    BeanDefinition --> BeanFactoryPostProcessor: Modify bean definitions (before instantiation)
+    BeanFactoryPostProcessor --> Instantiation: Create instance
     Instantiation --> PopulateProperties: Inject dependencies
     PopulateProperties --> Aware: BeanNameAware, ApplicationContextAware
     Aware --> PostProcessBefore: BeanPostProcessor.before
@@ -288,6 +288,8 @@ stateDiagram-v2
     Ready --> Destroy: @PreDestroy / DisposableBean
     Destroy --> [*]
 ```
+
+**Key distinction**: `BeanFactoryPostProcessor` runs **once** after bean definitions are loaded but **before** any bean is instantiated. `BeanPostProcessor` runs **around each bean's** initialization (before/after `@PostConstruct`).
 
 ```java
 @Component

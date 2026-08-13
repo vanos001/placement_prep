@@ -142,9 +142,9 @@ ORDER BY g.grade DESC;
 
 ### Example: MySQL Parser
 
-MySQL uses a hand-written recursive descent parser (not generated). Key files:
-- `sql/sql_lex.cc` — lexer
-- `sql/sql_yacc.yy` — grammar (Bison)
+MySQL uses a Bison-generated LALR(1) parser (the lexer is hand-written). Key files:
+- `sql/sql_lex.cc` — hand-written lexer
+- `sql/sql_yacc.yy` — Bison grammar (generates `sql_yacc.cc`)
 
 ## Parsing Edge Cases
 

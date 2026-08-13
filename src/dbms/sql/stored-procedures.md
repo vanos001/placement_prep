@@ -69,15 +69,15 @@ SELECT @count, @avg, @max;
 ```sql
 DELIMITER //
 
-CREATE PROCEDURE CalculateBonus(IN emp_id INT)
+CREATE PROCEDURE CalculateBonus(IN p_emp_id INT)
 BEGIN
     DECLARE base_salary DECIMAL(10,2);
     DECLARE performance VARCHAR(20);
     DECLARE bonus DECIMAL(10,2);
 
-    -- Get employee data
+    -- Get employee data (use p_emp_id prefix to avoid shadowing the emp_id column)
     SELECT salary, perf_rating INTO base_salary, performance
-    FROM Employees WHERE emp_id = emp_id;
+    FROM Employees WHERE emp_id = p_emp_id;
 
     -- Calculate bonus based on performance
     SET bonus = CASE performance
@@ -99,24 +99,24 @@ DELIMITER ;
 ```sql
 DELIMITER //
 
-CREATE PROCEDURE ProcessOrder(IN order_id INT)
+CREATE PROCEDURE ProcessOrder(IN p_order_id INT)
 BEGIN
     DECLARE order_status VARCHAR(20);
     DECLARE order_total DECIMAL(10,2);
 
     SELECT status, total INTO order_status, order_total
-    FROM Orders WHERE order_id = order_id;
+    FROM Orders WHERE order_id = p_order_id;
 
     -- IF-ELSEIF-ELSE
     IF order_status = 'pending' THEN
         IF order_total > 1000 THEN
             UPDATE Orders SET status = 'approved', discount = order_total * 0.05
-            WHERE order_id = order_id;
+            WHERE order_id = p_order_id;
         ELSE
-            UPDATE Orders SET status = 'approved' WHERE order_id = order_id;
+            UPDATE Orders SET status = 'approved' WHERE order_id = p_order_id;
         END IF;
     ELSEIF order_status = 'approved' THEN
-        UPDATE Orders SET status = 'shipped' WHERE order_id = order_id;
+        UPDATE Orders SET status = 'shipped' WHERE order_id = p_order_id;
     ELSE
         SIGNAL SQLSTATE '45000'
             SET MESSAGE_TEXT = 'Cannot process order in current status';

@@ -270,7 +270,7 @@ class MultiHeadSelfAttention(nn.Module):
             torch.triu(torch.ones(max_seq_len, max_seq_len), diagonal=1).bool()
         )
     
-    def forward(self, x, kv_cache=None):
+    def forward(self, x, kv_cache=None, start_pos=0):
         B, T, C = x.shape
         
         # Project to Q, K, V
@@ -290,10 +290,15 @@ class MultiHeadSelfAttention(nn.Module):
         scale = math.sqrt(self.d_head)
         attn_scores = torch.matmul(q, k.transpose(-2, -1)) / scale
         
-        # Apply causal mask
-        seq_len_k = k.size(2)
+        # Apply causal mask — must cover [T, start_pos + T] to account for cached positions.
+        # During generation step (T=1), start_pos is the number of cached tokens.
+        seq_len_k = k.size(2)  # = start_pos + T
+        # The causal mask for this forward call: query position i (0..T-1,
+        # representing absolute positions start_pos..start_pos+T-1) can attend
+        # to key positions 0..start_pos+i. Since the mask is relative to the
+        # query, we slice [start_pos : start_pos+T, :seq_len_k].
         attn_scores = attn_scores.masked_fill(
-            self.causal_mask[:T, :seq_len_k].unsqueeze(0).unsqueeze(0),
+            self.causal_mask[start_pos:start_pos+T, :seq_len_k].unsqueeze(0).unsqueeze(0),
             float('-inf')
         )
         

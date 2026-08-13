@@ -19,7 +19,7 @@ Typical Amazon SDE Interview:
 
 ## 📊 Amazon's Leadership Principles
 
-**This is the most important section.** Amazon maps EVERY behavioral question to their 14 Leadership Principles (LPs). Failing the behavioral round = no offer, regardless of technical performance.
+**This is the most important section.** Amazon maps EVERY behavioral question to their 16 Leadership Principles (LPs). Failing the behavioral round = no offer, regardless of technical performance.
 
 ```
 ┌─────────────────────────────────────────────────────────┐

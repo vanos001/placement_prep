@@ -38,7 +38,7 @@ def create_patches(series, patch_size, stride):
         patches.append(series[i:i+patch_size])
     return np.array(patches)
 
-# Example: 100 timesteps → 10 patches of size 16 with stride 8
+# Example: 100 timesteps → 11 patches of size 16 with stride 8
 patches = create_patches(series, patch_size=16, stride=8)
 ```
 
