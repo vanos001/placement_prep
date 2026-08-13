@@ -168,7 +168,7 @@ int main() {
         hll.add("element_" + std::to_string(i));
     
     std::cout << "Estimated distinct: " << hll.estimate() 
-              << " (actual: 10000)\\n";
+              << " (actual: 10000)\n";
     return 0;
 }
 ```
@@ -221,9 +221,9 @@ int main() {
     for (int i = 0; i < 10; i++) cms.add("less_frequent");
     for (int i = 0; i < 1; i++) cms.add("rare");
     
-    std::cout << "frequent: " << cms.estimate("frequent") << "\\n";
-    std::cout << "less_frequent: " << cms.estimate("less_frequent") << "\\n";
-    std::cout << "rare: " << cms.estimate("rare") << "\\n";
+    std::cout << "frequent: " << cms.estimate("frequent") << "\n";
+    std::cout << "less_frequent: " << cms.estimate("less_frequent") << "\n";
+    std::cout << "rare: " << cms.estimate("rare") << "\n";
     
     return 0;
 }

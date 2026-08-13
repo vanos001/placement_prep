@@ -286,14 +286,14 @@ int main() {
         for (int j = 0; j < 5; j++)
             A[i][j] = std::abs(i - j);
     
-    std::cout << "Distance matrix is Monge: " << isMonge(A) << "\\n";
+    std::cout << "Distance matrix is Monge: " << isMonge(A) << "\n";
     
     // Squared distance is also Monge
     for (int i = 0; i < 5; i++)
         for (int j = 0; j < 5; j++)
             A[i][j] = (i - j) * (i - j);
     
-    std::cout << "Squared distance matrix is Monge: " << isMonge(A) << "\\n";
+    std::cout << "Squared distance matrix is Monge: " << isMonge(A) << "\n";
     
     return 0;
 }

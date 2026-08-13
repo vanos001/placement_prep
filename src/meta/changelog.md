@@ -1,5 +1,8 @@
 # Changelog
 
+This file records meaningful content and validation changes to the placement
+preparation book. Dates use the project timezone, Asia/Calcutta.
+
 ## 2026-08-13 — Software Engineering: dedicated Testing, DevOps, and Contributing pages
 
 - Added `software-engineering/testing.md` (levels, types, TDD/BDD, strategy),
@@ -24,9 +27,6 @@
   MathJax OK, Mermaid 4,405/4,405, and Mermaid v11 parser 4,405/4,405.
 - Work remains on `dev`; `main` was not modified.
 
-
-This file records meaningful content and validation changes to the placement
-preparation book. Dates use the project timezone, Asia/Calcutta.
 
 ## 2026-08-13 — Massive content expansion (parallel agents)
 
