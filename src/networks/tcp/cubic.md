@@ -19,7 +19,7 @@ W(t) = C × (t - K)³ + W_max
 Where:
 - `C` = scaling constant (0.4, chosen experimentally)
 - `t` = time since last congestion event
-- `K` = time at which the window would reach W_max (computed as ∛(W_max × β / C))
+- `K` = time at which the window would reach W_max (computed as ∛(W_max × (1 − β) / C))
 - `W_max` = window size at the last congestion event
 - `β` = multiplicative decrease factor (0.7 in Linux, so 30% reduction)
 

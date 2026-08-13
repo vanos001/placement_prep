@@ -13,7 +13,7 @@ graph TD
     O --> T[Tracing]
     
     M --> M1["What is happening?\n(Numbers, counters)"]
-    L --> L["Why is it happening?\n(Detailed context)"]
+    L --> L1["Why is it happening?\n(Detailed context)"]
     T --> T1["Where is it happening?\n(Request flow)"]
 ```
 

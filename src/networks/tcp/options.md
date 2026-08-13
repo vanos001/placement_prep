@@ -81,7 +81,7 @@ iptables -t mangle -A FORWARD -p tcp --tcp-flags SYN,RST SYN \
 **How it works:**
 ```
 Window field: 16 bits → max 65,535 bytes
-Window scale: 4-14 (shift count)
+Window scale: 0-14 (shift count)
 Actual window = window_field × 2^scale
 
 Example:

@@ -26,7 +26,7 @@ flowchart TB
     MON --> MGR
 ```
 
-- **MON**: maintains authoritative cluster map (CRUSH map, OSD map, PG map, pool properties). Paxos/Raft-like consensus (Paxos until Pacific, now using `paxos` + `cephx`).
+- **MON**: maintains authoritative cluster map (CRUSH map, OSD map, PG map, pool properties). Uses a variant of the Multi-Paxos algorithm to reach consensus on cluster-map updates. `cephx` is the Ceph authentication protocol (Kerberos-style mutual auth), not a consensus algorithm.
 - **OSD**: stores objects on Bluestore (RocksDB + raw blocks). Handles replication, recovery, backfill, scrubbing (deep scrub verifies checksums), heartbeats.
 - **MGR**: metrics, dashboard, Prometheus exporter, balancer module.
 

@@ -45,21 +45,22 @@
 ### TCP Flags
 
 ```
-|C|E|U|A|P|R|S|F|I|
-|R|C|R|C|S|S|Y|I|N|
-|W|E|G|K|H|T|N|N|N|
+|N|C|E|U|A|P|R|S|F|
+|S|W|C|R|C|S|S|Y|I|
+| |R|E|G|K|H|T|N|N|
 ```
 
 | Flag | Bit | Name | Purpose |
 |------|-----|------|---------|
-| **CWR** | 8 | Congestion Window Reduced | ECN: Sender reduced cwnd |
-| **ECE** | 7 | ECN Echo | ECN: Congestion experienced |
-| **URG** | 6 | Urgent | Urgent pointer field is valid |
-| **ACK** | 5 | Acknowledgment | Acknowledgment number is valid |
-| **PSH** | 4 | Push | Deliver data to application immediately |
-| **RST** | 3 | Reset | Abort connection |
-| **SYN** | 2 | Synchronize | Connection establishment |
-| **FIN** | 1 | Finish | Connection termination |
+| **NS** | 8 | ECN Nonce | ECN Nonce sum (RFC 3540) |
+| **CWR** | 7 | Congestion Window Reduced | ECN: Sender reduced cwnd |
+| **ECE** | 6 | ECN Echo | ECN: Congestion experienced |
+| **URG** | 5 | Urgent | Urgent pointer field is valid |
+| **ACK** | 4 | Acknowledgment | Acknowledgment number is valid |
+| **PSH** | 3 | Push | Deliver data to application immediately |
+| **RST** | 2 | Reset | Abort connection |
+| **SYN** | 1 | Synchronize | Connection establishment |
+| **FIN** | 0 | Finish | Connection termination |
 
 ### Common Flag Combinations
 

@@ -82,7 +82,7 @@ The control plane is the brain of Kubernetes. It manages the cluster state and m
 - All communication (kubectl, kubelet, controllers) goes through it
 - Validates and processes RESTful requests
 - Handles authentication, authorization, and admission control
-- Supports watch机制 for real-time change notifications
+- Supports watch mechanism for real-time change notifications
 
 **etcd**:
 - Distributed key-value store (uses Raft consensus)

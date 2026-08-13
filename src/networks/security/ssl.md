@@ -19,7 +19,7 @@ graph LR
     B --> C[TLS 1.0<br>1999]
     C --> D[TLS 1.1<br>2006]
     D --> E[TLS 1.2<br>2008]
-    E --> F[TLS 3.1<br>2018]
+    E --> F[TLS 1.3<br>2018]
     style A fill:#f00
     style B fill:#f00
     style C fill:#f90

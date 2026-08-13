@@ -50,7 +50,7 @@ flowchart TD
 
 - **API Server** (`kube-apiserver`): Frontend for the cluster. All communication goes through it (REST API). Authenticates, validates, and persists objects to etcd.
 - **etcd**: Distributed key-value store. The single source of truth for cluster state. Uses Raft consensus for consistency.
-- **Scheduler** (`kube-swatch`): Watches for unscheduled Pods and assigns them to nodes based on resource requests, affinity rules, and taints/tolerations.
+- **Scheduler** (`kube-scheduler`): Watches for unscheduled Pods and assigns them to nodes based on resource requests, affinity rules, and taints/tolerations.
 - **Controller Manager**: Runs reconciliation loops. The Deployment controller ensures the desired number of Pods exist. The Node controller detects and responds to node failures.
 
 ### Node Components
@@ -163,8 +163,8 @@ spec:
             - name: DB_PASSWORD
               valueFrom:
                 secretKeyRef:
-                name: app-secrets
-                key: db-password
+                  name: app-secrets
+                  key: db-password
 ```
 
 ### Rolling Update Strategy

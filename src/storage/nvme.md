@@ -24,7 +24,7 @@ graph LR
 
 | Feature | AHCI/SATA | NVMe |
 |---------|-----------|------|
-| Max Queue Depth | 32 commands (1 queue) | 64,536 commands (64K queues) |
+| Max Queue Depth | 32 commands (1 queue) | 65,535 commands per queue (up to 64K queues) |
 | Interface | SATA (6 Gbps) | PCIe (16-64 Gbps per lane) |
 | Protocol Overhead | High (designed for HDDs) | Minimal (designed for flash) |
 | Latency | ~6 µs | ~2.8 µs |

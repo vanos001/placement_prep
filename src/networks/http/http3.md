@@ -258,7 +258,6 @@ QUIC Packet (Long Header):
 ┌───────────┬──────────┬───────────┬──────────┬──────────┐
 │ Header    │ Version  │ DCID Len  │ DCID     │ SCID Len │
 │ Form (1)  │ (32)     │ (8)       │ (0-160)  │ (8)      │
-│ Long (1)  │          │           │          │          │
 │ Fixed (1) │          │           │          │          │
 │ Type (2)  │          │           │          │          │
 │ Reserved  │          │           │          │          │

@@ -59,7 +59,7 @@ graph TD
 | EIGRP (internal) | 90 |
 | OSPF | 110 |
 | IS-IS | 115 |
-| RIP | 200 |
+| RIP | 120 |
 | EIGRP (external) | 170 |
 | iBGP | 200 |
 

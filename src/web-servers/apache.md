@@ -12,7 +12,7 @@ Client → Master → Worker Process (handles entire request)
 ```
 One process per connection. Safe for non-thread-safe modules (PHP mod_php). High memory usage.
 
-### MMP worker
+### MPM worker
 ```
 Client → Master → Worker Process → Thread 1 (handles request)
                                   → Thread 2

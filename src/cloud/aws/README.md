@@ -132,7 +132,7 @@ graph TB
     PRICING --> SPOT[Spot Instances]
     PRICING --> DED[Dedicated Hosts]
 
-    ONDEMARK --> |Pay per hour/second| OD_DESC[No commitment, most expensive]
+    ONDEMAND --> |Pay per hour/second| OD_DESC[No commitment, most expensive]
     RI --> |1 or 3 year term| RI_DESC[Up to 72% discount]
     SP --> |Flexible commitment| SP_DESC[Up to 72% across instance types]
     SPOT --> |Bid for spare capacity| SPT_DESC[Up to 90% discount, can be interrupted]

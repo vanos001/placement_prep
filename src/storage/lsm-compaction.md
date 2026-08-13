@@ -19,7 +19,7 @@ flowchart LR
     L3 --> L4["L4 = largest, 90% data"]
 ```
 
-- L0 is special: flushed SSTs overlap (since flushed from unsorted MemTables at different times), so reads must check all L0 files.
+- L0 is special: flushed SSTs overlap (since each MemTable flush independently produces a new SST at L0 without merging with existing L0 files), so reads must check all L0 files.
 - L1+ can be leveled: files within a level have disjoint key ranges → at most one file per level needed for point lookup (plus Bloom).
 
 ## Amplifications
@@ -61,9 +61,9 @@ Good for: write-heavy, bulk ingest, append-only, time-series where reads scan ma
 
 | Strategy | WA typical | RA point | SA | Reclaim speed | Best for | Impl |
 |----------|------------|----------|----|---------------|----------|------|
-| Leveled | High 10-30× | Low (bounded files) | Fast (regular merges remove tombstones) | Read-heavy low fanout | RocksDB level, Cassandra LCS |
-| Size-tiered / Universal | Lower (fewer rewrites) | Higher (many overlapping) | Slower, major compactions heavy | Bulk ingest, write-heavy | Cassandra STCS, RocksDB Universal |
-| Hybrid (Tiered+Leveled) | Middle | Middle | Tunable | Mixed | RocksDB tiered+leveled, Cassandra UCS |
+| Leveled | High 10-30× | Low (bounded files) | Low (~10%) | Fast (regular merges remove tombstones) | Read-heavy low fanout | RocksDB level, Cassandra LCS |
+| Size-tiered / Universal | Lower (fewer rewrites) | Higher (many overlapping) | High (up to 2×) | Slower, major compactions heavy | Bulk ingest, write-heavy | Cassandra STCS, RocksDB Universal |
+| Hybrid (Tiered+Leveled) | Middle | Middle | Tunable | Tunable | Mixed | RocksDB tiered+leveled, Cassandra UCS |
 
 Sources: beefed.ai LSM compaction trade-offs, RocksDB Compaction wiki (classic leveled description), Cassandra docs.
 

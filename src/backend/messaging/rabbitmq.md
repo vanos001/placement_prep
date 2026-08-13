@@ -300,7 +300,7 @@ channel.exchangeDeclare("delayed", "x-delayed-message",
 
 ### 9. What are the differences between quorum queues and streams?
 
-**Answer:** Quorum queues: traditional message broker semantics, messages deleted after ack, competing consumers, at-least-once delivery. Streams: log-based (like Kafka), messages retained, multiple consumers can read independently, at-most-once delivery, supports replay from any offset. Use quorum queues for task processing, streams for event sourcing.
+**Answer:** Quorum queues: traditional message broker semantics, messages deleted after ack, competing consumers, at-least-once delivery. Streams: log-based (like Kafka), messages retained, multiple consumers can read independently, at-least-once delivery (the Java client re-subscribes at the last dispatched offset if offset tracking is not enabled), supports replay from any offset. Use quorum queues for task processing, streams for event sourcing.
 
 ### 10. How do you prevent message loss in RabbitMQ?
 
