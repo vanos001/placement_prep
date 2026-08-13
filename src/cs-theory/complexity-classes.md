@@ -72,18 +72,31 @@ Problems at least as hard as NP-complete, but not necessarily in NP.
 ```
 ┌──────────────────────────────────────┐
 │              NP-Hard                 │
-│  ┌──────────────────────────────┐    │
-│  │            NP                │    │
-│  │  ┌──────────────────────┐    │    │
-│  │  │     NP-Complete      │    │    │
-│  │  │  (SAT, TSP, 3-Color) │    │    │
-│  │  └──────────────────────┘    │    │
-│  │  ┌──────────────────────┐    │    │
-│  │  │         P             │    │    │
-│  │  │  (Sort, Shortest Path)│    │    │
-│  │  └──────────────────────┘    │    │
-│  └──────────────────────────────┘    │
+│                                      │
+│    ┌──────────────────────────┐      │
+│    │          NP              │      │
+│    │  ┌──────────────────┐    │      │
+│    │  │   NP-Complete    │    │      │
+│    │  │  (SAT, TSP-dec)  │    │      │
+│    │  └──────────────────┘    │      │
+│    │  ┌──────────────────┐    │      │
+│    │  │        P         │    │      │
+│    │  │ (Sort, Shortest  │    │      │
+│    │  │  Path)           │    │      │
+│    │  └──────────────────┘    │      │
+│    └──────────────────────────┘      │
+│                                      │
+│  (NP-Hard problems outside NP, e.g.  │
+│   Halting Problem, are in the        │
+│   NP-Hard region but NOT in NP)      │
 └──────────────────────────────────────┘
+
+Note: NP-Hard is NOT a superset of NP. NP-Hard problems are "at least
+as hard as the hardest NP problems." Some NP-Hard problems are in NP
+(these are NP-Complete), and some are outside NP (e.g. undecidable
+problems like the Halting Problem). The intersection of NP and NP-Hard
+is exactly NP-Complete.
+```
 
 Unknown: P = NP?  (million-dollar question)
 ```

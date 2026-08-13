@@ -198,7 +198,15 @@ long long determinant(Matrix A) {
         if (pivot != col) { std::swap(A[col], A[pivot]); det = -det; }
         if (A[col][col] == 0) return 0;
         det = det * A[col][col] % MOD;
-        // Eliminate below (for modular: use modular inverse)
+        // Eliminate below: for each row r > col, subtract a multiple of row col
+        // so that A[r][col] becomes 0. (For modular arithmetic, use modular
+        // inverse of A[col][col]; for floating-point, just divide.)
+        for (int row = col + 1; row < n; row++) {
+            long long factor = A[row][col] * modInverse(A[col][col], MOD) % MOD;
+            for (int j = col; j < n; j++) {
+                A[row][j] = (A[row][j] - factor * A[col][j] % MOD + MOD) % MOD;
+            }
+        }
     }
     return det;
 }

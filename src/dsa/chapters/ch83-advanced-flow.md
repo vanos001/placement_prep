@@ -79,10 +79,10 @@ Source (S)                          Sink (T)
 Imagine each node is a **water tank** at a certain height:
 
 ```
-Height 3:              [T] (Sink — lowest point)
-Height 2:         [D] [E]
-Height 1:    [A] [C]
-Height 0: [S] [B]        (Source — highest point)
+Height 3:  [S]                   (Source — highest point, h[S] = |V|)
+Height 2:    [A] [C]
+Height 1:       [D] [E]
+Height 0:          [T]           (Sink — lowest point, h[T] = 0)
 ```
 
 - **Push**: Water flows from taller tanks to shorter tanks (higher height to lower height)
