@@ -100,21 +100,21 @@ W_v = torch.tensor([
 
 # Step 1: Compute Q, K, V
 Q = X @ W_q  # (3, 2)
-# Q = [[1, 0], [0, 2], [1, 1]]
-# "The" queries for [1,0], "cat" queries for [0,2], "sat" queries for [1,1]
+# Q = [[2, 0], [0, 2], [1, 1]]
+# "The" queries for [2,0], "cat" queries for [0,2], "sat" queries for [1,1]
 
 K = X @ W_k  # (3, 2)
 # K = [[0, 2], [2, 0], [1, 1]]
 # "The" key is [0,2], "cat" key is [2,0], "sat" key is [1,1]
 
 V = X @ W_v  # (3, 2)
-# V = [[1, 0], [0, 2], [1, 1]]
+# V = [[1, 1], [1, 1], [1, 1]]
 
 # Step 2: Compute attention scores QK^T
 scores = Q @ K.T  # (3, 3)
-# scores = [[0, 2, 1],    "The" attends to "The"=0, "cat"=2, "sat"=1
+# scores = [[0, 4, 2],    "The" attends to "The"=0, "cat"=4, "sat"=2
 #           [4, 0, 2],    "cat" attends to "The"=4, "cat"=0, "sat"=2
-#           [1, 2, 2]]    "sat" attends to "The"=1, "cat"=2, "sat"=2
+#           [2, 2, 2]]    "sat" attends to "The"=2, "cat"=2, "sat"=2
 
 # Step 3: Scale by sqrt(d_k) = sqrt(2) ≈ 1.414
 d_k = Q.size(-1)
@@ -124,13 +124,13 @@ scaled_scores = scores / math.sqrt(d_k)
 attention_weights = F.softmax(scaled_scores, dim=-1)
 # Row "cat": softmax([4/1.414, 0/1.414, 2/1.414])
 #         = softmax([2.83, 0, 1.41])
-#         ≈ [0.79, 0.05, 0.16]
+#         ≈ [0.768, 0.045, 0.187]
 # "cat" strongly attends to "The"!
 
 # Step 5: Compute weighted sum of values
 output = attention_weights @ V  # (3, 2)
-# output[1] = 0.79*[1,0] + 0.05*[0,2] + 0.16*[1,1]
-#           = [0.95, 0.26]
+# output[1] = 0.768*[1,1] + 0.045*[1,1] + 0.187*[1,1]
+#           = [1.0, 1.0]
 ```
 
 ### Why Separate Q, K, V?

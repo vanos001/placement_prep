@@ -143,11 +143,11 @@ scaled_scores = scores / (d_k ** 0.5)
 
 # Step 3: Softmax
 weights = torch.softmax(scaled_scores, dim=-1)
-# Row 0: softmax([1.0, 0.0, 0.5]) ≈ [0.441, 0.163, 0.396]
+# Row 0: softmax([1.0, 0.0, 0.5]) ≈ [0.506, 0.186, 0.307]
 
 # Step 4: Multiply by V
 output = torch.matmul(weights, V)
-# output[0, 0] ≈ 0.441*[1,2] + 0.163*[3,4] + 0.396*[5,6] ≈ [2.91, 3.80]
+# output[0, 0] ≈ 0.506*[1,2] + 0.186*[3,4] + 0.307*[5,6] ≈ [2.60, 3.60]
 ```
 
 ## 4. Multi-Head Attention
