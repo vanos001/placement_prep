@@ -157,14 +157,15 @@ Operation: 5 + 3 (8-bit)
   V = 0 (no signed overflow)
 
 Operation: 200 + 100 (8-bit unsigned)
-  A    = 11001000 (200)
-  B    = 01100100 (100)
+  A    = 11001000 (200 unsigned = -56 signed)
+  B    = 01100100 (100 unsigned = +100 signed)
   ─────────────────
-  Sum  = 00101100 (44, overflow!)
-  C = 1 (carry out — unsigned overflow)
+  Sum  = 00101100 (44)
+  C = 1 (carry out — unsigned overflow, since 200+100=300 > 255)
   Z = 0
   N = 0
-  V = 1 (signed overflow: positive + positive = negative-looking)
+  V = 0 (no signed overflow: -56 + 100 = +44, which fits in [-128, 127])
+       Proof via V = C_in_MSB XOR C_out_MSB = 1 XOR 1 = 0
 ```
 
 ### Example 2: Subtraction Using 2's Complement

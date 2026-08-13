@@ -96,7 +96,7 @@ ZCARD rate:user:1
 A: Redis supports rich data structures (lists, sets, sorted sets, hashes, streams), persistence (RDB/AOF), replication, Lua scripting, pub/sub. Memcached is simpler (key-value only), multithreaded, no persistence. Redis is more feature-rich; Memcached is simpler for basic caching.
 
 **Q: How does Redis achieve high performance?**
-A: (1) In-memory storage, (2) single-threaded event loop (no locks), (3) efficient data structures (ziplist, intset, skiplist), (4) I/O multiplexing (epoll), (5) pipeline/batch operations. Single-threaded avoids context switching; event loop handles concurrency.
+A: (1) In-memory storage, (2) single-threaded command execution (avoids locks and context switching on the command path; Redis 6.0+ optional multi-threaded I/O for network reads/writes via `io-threads`), (3) efficient data structures (ziplist, intset, skiplist), (4) I/O multiplexing (epoll), (5) pipeline/batch operations.
 
 **Q: How do you handle Redis running out of memory?**
 A: (1) Set `maxmemory`, (2) configure eviction policy (LRU/LFU), (3) use TTLs on cached keys, (4) shard across cluster, (5) monitor memory usage, (6) compress values, (7) use hashes instead of many small keys (more memory efficient).

@@ -142,7 +142,7 @@ fn add(a: i32, b: i32) -> i32 {
 }
 
 // Multiple return values via tuple
-divmod(a: i32, b: i32) -> (i32, i32) {
+fn divmod(a: i32, b: i32) -> (i32, i32) {
     (a / b, a % b)
 }
 
@@ -165,10 +165,10 @@ for item in vec.iter() { /* ... */ }
 
 // Pattern matching (exhaustive)
 match value {
-    1 => println("one"),
-    2 | 3 => println("two or three"),
-    4..=9 => println("four to nine"),
-    _ => println("something else"),
+    1 => println!("one"),
+    2 | 3 => println!("two or three"),
+    4..=9 => println!("four to nine"),
+    _ => println!("something else"),
 }
 
 // if let (shorthand for single-arm match)
@@ -308,7 +308,7 @@ let sum: i32 = vec![1, 2, 3, 4]
 
 ## Interview Questions Preview
 
-1. Explain Rust's ownership model and how it prevents memory leaks
+1. Explain Rust's ownership model and how it prevents memory-safety bugs (use-after-free, double-free, dangling pointers, data races)
 2. What is the difference between `Box<T>`, `Rc<T>`, and `Arc<T>`?
 3. When would you use `unsafe` code in Rust?
 4. Explain the orphan rule for trait implementations

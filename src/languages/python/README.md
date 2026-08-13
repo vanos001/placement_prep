@@ -224,7 +224,7 @@ def append_to(item, lst=None):
 
 # Late binding closure trap
 funcs = [lambda: i for i in range(5)]
-print([f() for f in f])  # [4, 4, 4, 4, 4] — NOT [0, 1, 2, 3, 4]
+print([f() for f in funcs])  # [4, 4, 4, 4, 4] — NOT [0, 1, 2, 3, 4]
 
 # Fix: capture with default argument
 funcs = [lambda i=i: i for i in range(5)]

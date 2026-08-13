@@ -138,8 +138,8 @@ graph TD
 ## AMD SMT
 
 AMD Zen processors support SMT:
-- **Zen/Zen+**: SMT disabled (1 thread per core)
-- **Zen 2/3/4**: SMT enabled (2 threads per core)
+- **Zen/Zen+** (2017): SMT enabled (2 threads per core) — Ryzen 1000, Threadripper 1000, EPYC Naples
+- **Zen 2/3/4/5**: SMT enabled (2 threads per core)
 - Similar to Intel HTT but different implementation
 
 ## SMT Security Concerns

@@ -155,7 +155,7 @@ case <-time.After(time.Second):
 5. **Memory model** — Happens-before, sync package, atomic operations
 6. **Generics** — Type parameters, constraints, type inference (Go 1.18+)
 7. **Context** — Cancellation, timeouts, value propagation
-8. **Race detection** — `go test -race`, race detector原理
+8. **Race detection** — `go test -race`, race detector internals
 
 ## Related Topics
 

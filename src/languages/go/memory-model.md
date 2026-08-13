@@ -13,7 +13,7 @@ An event **e1 happens-before** event **e2** if e1 is ordered before e2 and e1's 
 1. **Within a goroutine** — Statements execute in program order
 2. **Channel operations** — Send happens-before corresponding receive completes
 3. **Mutex operations** — `Unlock` happens-before subsequent `Lock`
-4. **sync.Once** — `Do` call happens-before `f()` returns
+4. **sync.Once** — `f()` invocation happens-before any `Do(f)` call returns
 5. **sync.WaitGroup** — `Wait` returns after all `Done` calls
 6. **sync/atomic** — Atomic operations provide sequential consistency
 

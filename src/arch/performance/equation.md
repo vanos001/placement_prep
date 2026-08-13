@@ -174,12 +174,18 @@ Processor A: 2 GHz, CPI = 1.5
 Processor B: 4 GHz, CPI = 2.5
 
 ```
-Speedup = (CPI_B / CPI_A) × (f_A / f_B)
-= (2.5 / 1.5) × (2 / 4)
-= 1.667 × 0.5
-= 0.833
+Time ratio = (CPI_A / f_A) / (CPI_B / f_B)
+           = (CPI_A × f_B) / (CPI_B × f_A)
+           = (1.5 × 4) / (2.5 × 2)
+           = 6 / 5 = 1.2
 
-Processor A is 1/0.833 = 1.2× faster despite half the clock rate!
+Processor A takes 1.2× LONGER than Processor B for the same workload.
+So Processor B is 1.2× FASTER than Processor A (despite A's lower CPI,
+B's higher clock rate more than compensates).
+
+Concrete: for 10^9 instructions,
+  Time_A = 10^9 × 1.5 / 2×10^9 = 0.75 s
+  Time_B = 10^9 × 2.5 / 4×10^9 = 0.625 s   ← B finishes first
 ```
 
 ## Interview Questions

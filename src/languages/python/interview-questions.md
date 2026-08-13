@@ -360,7 +360,7 @@ def my_function(): ...
 ```python
 # Problem
 funcs = [lambda: i for i in range(5)]
-print([f() for f in f])  # [4, 4, 4, 4, 4] — not [0, 1, 2, 3, 4]!
+print([f() for f in funcs])  # [4, 4, 4, 4, 4] — not [0, 1, 2, 3, 4]!
 
 # Fix: capture the value
 funcs = [lambda i=i: i for i in range(5)]
