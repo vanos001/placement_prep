@@ -366,10 +366,10 @@ When two threads modify different variables that reside on the **same cache line
 #include <chrono>
 #include <iostream>
 
-// BAD: counters are adjacent, likely on the same cache line
+// BAD: two atomics share a cache line (false sharing)
 struct Bad {
-    std::atomic<long long> counter_a{0};
-    std::atomic<long long> counter_b{0};
+    struct { std::atomic<long long> value{0}; } counter_a;
+    struct { std::atomic<long long> value{0}; } counter_b;
 };
 
 // GOOD: pad to separate cache lines

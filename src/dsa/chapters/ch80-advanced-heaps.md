@@ -409,4 +409,4 @@ int main() {
 | Binary | O(log n) | O(log n) | O(log n) | O(n) |
 | Binomial | O(1) amort | O(log n) | O(log n) | O(log n) |
 | Fibonacci | O(1) | O(log n) amort | O(1) amort | O(1) |
-| Pairing | O(1) | O(log n) amort | O(log log n)* | O(1) |
+| Pairing | O(1) amort | O(log n) amort | O(log n) amort (best known: O(2^(2√log log n)) by Pettie 2005) | O(1) amort |

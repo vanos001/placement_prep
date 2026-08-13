@@ -33,7 +33,7 @@ A naive approach answers each query in O(nm) time. With a suffix tree, all of th
 
 ### Intuition: Compressed Trie of All Suffixes
 
-A suffix tree is a compressed trie (radix tree) of all suffixes of a string S\\(, where\\) is a unique terminator not appearing in S.
+A suffix tree is a compressed trie (radix tree) of all suffixes of a string S$, where $ is a unique terminator not appearing in S.
 
 **Example**: For S = "banana$"
 
@@ -79,7 +79,7 @@ A suffix tree for string S[0..n-1]$ (length n+1) is a rooted tree with:
 
 ### Implicit Suffix Tree
 
-During construction (Ukkonen's algorithm), we work with an **implicit suffix tree** — the suffix tree of S[0..i] without the \\(terminator. Internal nodes may have only one child. We convert to the explicit suffix tree at the end by adding\\).
+During construction (Ukkonen's algorithm), we work with an **implicit suffix tree** — the suffix tree of S[0..i] without the $ terminator. Internal nodes may have only one child. We convert to the explicit suffix tree at the end by adding $.
 
 ### Path Labels and Suffix Links
 
@@ -149,7 +149,7 @@ root -- "abc" --> leaf 0
 
 ### Dry Run: Building Suffix Tree for "banana$"
 
-Suffixes: banana\\(, anana\\), nana\\(, ana\\), na\\(, a\\), $
+Suffixes: banana$, anana$, nana$, ana$, na$, a$, $
 
 After compression, the tree looks like:
 

@@ -281,7 +281,7 @@ Delivered naturally:
 
 **Action**: "I started by checking our monitoring dashboards and noticed a spike in database connection timeouts. I correlated the timing with the flash sale traffic surge — we had hit the connection pool limit. Rather than just increasing the pool size (which would have been a band-aid), I identified that a recent deployment had introduced a connection leak in one code path. I traced it to a missing `finally` block that wasn't closing connections. I hot-patched the code, deployed it, and verified the fix. Then I wrote a runbook for future connection pool incidents and added a connection leak detector to our monitoring."
 
-**Result**: "The system was back up within 45 minutes of my involvement. The hot-patch prevented the issue from recurring during the rest of the flash sale, which went on to generate \\(2M in revenue. The runbook and monitoring I added caught a similar leak two months later before it caused an outage, saving an estimated\\)100K in potential lost revenue."
+**Result**: "The system was back up within 45 minutes of my involvement. The hot-patch prevented the issue from recurring during the rest of the flash sale, which went on to generate $2M in revenue. The runbook and monitoring I added caught a similar leak two months later before it caused an outage, saving an estimated $100K in potential lost revenue."
 
 ---
 

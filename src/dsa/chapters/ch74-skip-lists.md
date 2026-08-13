@@ -167,7 +167,7 @@ Steps taken: 3 (vs 4 in a plain linked list). With larger lists, the difference 
 
 **Expected height**: Each level has ~half the nodes of the level below. The probability of a node having k levels is 1/2^k. The expected height is:
 
-E[h] = Σ_{k=1}^{∞} P(level ≥ k) = Σ_{k=1}^{∞} (1/2)^k = 1 + 1 = O(log n)
+E[h] ≈ log₂(n) + O(1). The expected level of a single node is Σ_{k=1}^{∞} P(level ≥ k) = Σ_{k=1}^{∞} (1/2)^k = 1, but the expected HEIGHT of the skip list (max level over all n nodes) is log₂(n) + O(1), since P(no node reaches level k) = (1 − 1/2^k)^n ≈ e^{−n/2^k}, which transitions from ~1 to ~0 around k = log₂ n.
 
 More precisely, the expected height is log₂(n) + O(1).
 
