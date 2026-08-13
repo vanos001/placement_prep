@@ -222,8 +222,15 @@ auto add(const T& a, const T& b) -> decltype(a + b) {
 }
 
 // This overload is selected for types without +
+template <typename T, typename = void>
+struct supports_add : std::false_type {};
+
 template <typename T>
-std::string add(...) {
+struct supports_add<T, std::void_t<decltype(std::declval<T>() + std::declval<T>())>> : std::true_type {};
+
+template <typename T>
+std::enable_if_t<!supports_add<T>::value, std::string>
+add(const T&, const T&) {
     return "unsupported";
 }
 ```

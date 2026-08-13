@@ -37,7 +37,7 @@ flowchart TD
     DL["dl_sched_class<br>(SCHED_DEADLINE)"]
     RT["rt_sched_class<br>(SCHED_FIFO, SCHED_RR)"]
     FAIR["fair_sched_class<br>(SCHED_NORMAL, SCHED_BATCH)"]
-    IDLE["idle_sched_class<br>(SCHED_IDLE)"]
+    IDLE["idle_sched_class<br>(per-CPU idle task, PID 0)"]
 
     STOP --> DL --> RT --> FAIR --> IDLE
 

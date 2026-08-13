@@ -349,6 +349,8 @@ Maintain a running aggregate (sum, min, max) over a sliding window in O(1) amort
 ```cpp
 #include <iostream>
 #include <stack>
+#include <climits>
+#include <algorithm>
 
 // Sliding window min using two stacks
 class SlidingWindowMin {
@@ -358,7 +360,6 @@ class SlidingWindowMin {
         if (out.empty()) {
             while (!in.empty()) {
                 int val = in.top().first;
-                int newMin = in.top().second;
                 in.pop();
                 int minVal = out.empty() ? val : std::min(val, out.top().second);
                 out.push({val, minVal});

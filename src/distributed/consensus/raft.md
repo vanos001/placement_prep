@@ -265,13 +265,12 @@ graph TD
 | System | Usage |
 |--------|-------|
 | **etcd** | Kubernetes' backing store |
-| **CockroachDB** | Distributed SQL database |
+| **CockroachDB** | Distributed SQL database (multi-region with Raft groups per range) |
 | **TiKV** | Distributed key-value store |
 | **Consul** | Service discovery and configuration |
 | **Rook/Ceph** | Distributed storage |
 | **MongoDB** | Replica set elections (Raft-like) |
 | **RabbitMQ** | Quorum queues use Raft |
-| **CockroachDB** | Multi-region with Raft groups per range |
 
 ### etcd Deep Dive
 

@@ -53,8 +53,6 @@ systemd manages resources through **units**. Each unit has a type that determine
 | Scope | `.scope` | Externally-created processes |
 | Path | `.path` | Path-based activation |
 | Snapshot | `.snapshot` | Saved state of systemd |
-| Journal | `.journal` | Journal files |
-| Timer | `.timer` | Timer-based activation |
 
 ## Service Units
 

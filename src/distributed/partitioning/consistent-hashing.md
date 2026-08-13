@@ -274,32 +274,6 @@ Useful for:
 - **WebSocket connections** (same client to same server)
 - **CDN edge routing** (same content to same edge node)
 
-### Cassandra
-
-```sql
--- Each node owns a range of tokens
--- Node 1: tokens 0-100
--- Node 2: tokens 100-200
--- Node 3: tokens 200-300
-
--- Partition key determines token
-token = Murmur3(partition_key)
--- Routes to node owning that token
-```
-
-### Memcached
-
-```python
-# Client-side consistent hashing
-# Each client maintains the ring
-# No coordination needed between servers
-
-def get_server(key):
-    hash_val = hash(key)
-    # Find next server clockwise on the ring
-    return find_next_server(hash_val)
-```
-
 ## Consistent Hashing vs. Traditional Hashing
 
 | Aspect | Consistent Hashing | Traditional Hashing |

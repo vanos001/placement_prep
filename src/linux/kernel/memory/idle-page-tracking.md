@@ -78,20 +78,14 @@ Each bit corresponds to one page frame (PFN). Bit *N* → PFN *N*.
 | Operation | Mechanism | Effect |
 |-----------|-----------|--------|
 | **Mark idle** | Write `1` to bits for target PFNs | Sets the idle bit; next access clears it |
-| **Clear idle** | Write `0` to bits | Removes idle tracking for those pages |
+| **Clear idle** | (no userspace clear) | Kernel auto-clears on page access |
 | **Read status** | Read the bitmap | Bit=1 → not accessed since last mark; Bit=0 → accessed |
 
 ### Important: Write Semantics
 
 Writing to the bitmap performs an **OR** operation — bits are only set, never
-cleared by writing. To clear bits, you must write a value that has 0s in the
-positions you want to clear (which effectively does nothing, since OR with 0
-is a no-op). To clear all idle bits, you must re-read the bitmap, clear the
-desired bits, and write it back.
-
-Actually, the kernel uses a different approach: writing sets bits via OR, and
-there is no direct "clear" operation via the bitmap file. The kernel clears
-the idle bit automatically when the page is accessed.
+cleared. The kernel clears idle bits automatically when the corresponding page
+is accessed; there is no userspace "clear" operation via the bitmap file.
 
 ### Reading Idle Pages
 

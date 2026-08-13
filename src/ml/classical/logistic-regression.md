@@ -114,9 +114,12 @@ Train K binary classifiers, one per class:
 
 ```python
 from sklearn.linear_model import LogisticRegression
+from sklearn.multiclass import OneVsRestClassifier
 
-# sklearn uses OvR by default for multi-class
-model = LogisticRegression(multi_class='ovr')
+# In scikit-learn >= 1.5, the `multi_class` parameter of LogisticRegression is
+# deprecated and will be removed in 1.7. Use OneVsRestClassifier explicitly for OvR,
+# or rely on the default (multinomial logistic regression with the lbfgs solver).
+model = OneVsRestClassifier(LogisticRegression())
 model.fit(X, y)
 ```
 

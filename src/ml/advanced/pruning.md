@@ -88,13 +88,20 @@ NVIDIA Ampere GPUs support 2:4 sparsity — exactly 2 out of every 4 weights are
 
 ```python
 def apply_2_4_sparsity(model):
-    """Apply 2:4 structured sparsity"""
+    """Apply 2:4 structured sparsity (each block of 4 consecutive weights has exactly 2 zeros).
+
+    NOTE: torch.nn.utils.prune.ln_structured(amount=0.5, n=1, dim=1) is plain L1 column
+    pruning — it removes 50% of columns and does NOT enforce the 2:4 pattern. For real
+    2:4 sparsity use NVIDIA's apex/tensorrt sparse utilities or apply the explicit mask below.
+    """
     for name, module in model.named_modules():
         if isinstance(module, torch.nn.Linear):
-            prune.ln_structured(
-                module, name='weight',
-                amount=0.5, n=1, dim=1
-            )
+            w = module.weight.data
+            # reshape into blocks of 4 along the output-feature dimension
+            w_view = w.view(-1, 4)
+            # in each block of 4, zero out the 2 smallest-magnitude weights
+            _, idx = torch.topk(w_view.abs(), k=2, dim=1, largest=False)
+            w_view.scatter_(1, idx, 0.0)
     return model
 ```
 

@@ -365,7 +365,7 @@ A: 1) **Goroutine leak:** `runtime.NumGoroutine()` — if growing, goroutines ar
 ## Common Mistakes
 
 1. **Using blocking I/O with green threads:** Defeats the purpose. Always use async I/O.
-2. **Assining green threads give parallelism:** In M:1, they don't. Use M:N or OS threads for CPU-bound work.
+2. **Assuming green threads give parallelism:** In M:1, they don't. Use M:N or OS threads for CPU-bound work.
 3. **Stack overflow with small stacks:** Deep recursion with small green thread stacks. Increase stack size or use iterative algorithms.
 4. **Not yielding:** Long-running green threads (tight loops) prevent others from running. Add yield points.
 5. **Confusing concurrency with parallelism:** Green threads give concurrency (many tasks in progress) but not necessarily parallelism (many tasks executing simultaneously).

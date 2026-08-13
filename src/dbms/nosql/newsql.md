@@ -304,7 +304,7 @@ flowchart TD
         direction TB
         YSQL["YSQL<br/>(PostgreSQL query layer)"]
         YCQL["YCQL<br/>(Cassandra-like CQL)"]
-        YEDIS["YEDIS<br/>(Redis-compatible)"]
+        YEDIS["YEDIS<br/>(Redis-compatible, deprecated)"]
         DOCDB["DocDB<br/>(distributed document store)"]
         RAFT2["Raft per tablet"]
 
@@ -417,7 +417,7 @@ flowchart TD
     B -->|Yes| D{"Need SQL + transactions?"}
     D -->|No| E["Use Cassandra / DynamoDB"]
     D -->|Yes| F{"Need strong consistency?"}
-    F -->|No, eventual is OK| G["Use Cassandra with LWT"]
+    F -->|No, eventual is OK| G["Use Cassandra (regular writes)"]
     F -->|Yes| H["Use NewSQL"]
 
     H --> I["CockroachDB<br/>(PostgreSQL compatible)"]

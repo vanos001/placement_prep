@@ -77,7 +77,7 @@ Causal Consistency:
 
 ```mermaid
 flowchart TD
-    A["Write x=1 on Node 1"] --> B["Message: #quot;I wrote x=1#quot;"]
+    A["Write x=1 on Node 1"] --> B["Message: &quot;I wrote x=1&quot;"]
     B --> C[Read x on Node 2]
     C --> D["MUST return 1<br/>causal dependency"]
 

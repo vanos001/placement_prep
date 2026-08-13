@@ -95,7 +95,7 @@ Git creates a **merge commit** (M) with two parents.
 ### Merge Strategies
 
 ```bash
-git merge -s ort feature      # default (renamed from 'recursive')
+git merge -s ort feature      # default (successor to 'recursive', which is still available)
 git merge -s ours feature     # keep current branch's version
 git merge -s recursive -X ours feature   # favor current on conflicts
 git merge -s recursive -X theirs feature # favor incoming on conflicts

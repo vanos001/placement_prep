@@ -198,9 +198,9 @@ Bypass the chain for reads by using quorum reads at the tail and one other node.
 
 | System | Usage |
 |--------|-------|
-| **Microsoft Azure Storage** | Uses chain replication for durability |
-| **HDFS** | Pipeline replication (similar to chain) |
-| **Ceph** | Uses chain-like replication for RADOS |
+| **Microsoft Azure Storage** | Stream layer uses primary-replica (leader-based) replication with erasure coding (not classic chain replication) |
+| **HDFS** | Pipeline replication (data flows unidirectionally, similar in spirit to chain but not the head→tail ACK model) |
+| **Ceph** | RADOS PG replication is primary-fanout (primary OSD serializes writes, then forwards to replicas), not chain |
 | **CORFU** | Chain replication for shared log |
 
 ## Interview Questions

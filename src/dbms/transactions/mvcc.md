@@ -51,9 +51,10 @@ A snapshot contains:
 ```
 Snapshot S = {xmin=100, xmax=200, in_progress=[150, 167]}
 
-Visibility rules for a version:
-  - Visible if xmin < xmax of snapshot AND xmin not in in_progress
-  - AND xmax > xmin of snapshot (not deleted before snapshot)
+Visibility rules for a version (simplified; see code below for full rules):
+  - Created before snapshot (xmin < snapshot.xmax) AND creator was committed (xmin not in in_progress)
+  - AND (not deleted (xmax = INVALID) OR deleted after snapshot (xmax ≥ snapshot.xmax)
+        OR deleter was still in-progress at snapshot time (xmax in in_progress))
 ```
 
 ### Version Chains
@@ -225,7 +226,7 @@ ReadView {
 ```python
 def is_visible(version_trx_id, read_view):
     if version_trx_id == read_view.m_creator_trx_id:
-        return False  # Own changes not visible to other transactions
+        return True  # A transaction always sees its own uncommitted writes
     
     if version_trx_id < read_view.m_up_limit_id:
         return True  # Committed before oldest active txn

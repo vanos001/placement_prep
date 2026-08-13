@@ -240,7 +240,7 @@ int main() {
     int b = x << -1;   // Negative shift is UB
     int c = x >> 33;   // More than type width
     
-    // UB: Shifting negative values (C89/C99)
+    // UB: Shifting negative values (UB in all C standards: C89, C99, C11, C17, C23)
     int d = -1 << 2;   // Shifting negative signed int
     
     // FIX: Use unsigned and check bounds

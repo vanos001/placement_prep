@@ -30,7 +30,7 @@ OCaml (Objective Caml) is a statically typed, functional programming language wi
 ```ocaml
 (* Type inference *)
 let x = 42          (* int *)
-let f = 3.14        (* float *)
+let pi = 3.14       (* float *)
 let s = "hello"     (* string *)
 let b = true        (* bool *)
 

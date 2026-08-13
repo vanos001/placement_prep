@@ -191,10 +191,10 @@ loss = log_loss(y_true, y_scores)
 \\[\text{MSE} = \frac{1}{n}\sum_{i=1}^n (y_i - \hat{y}_i)^2\\]
 
 ```python
-from sklearn.metrics import mean_squared_error
+from sklearn.metrics import mean_squared_error, root_mean_squared_error
 
 mse = mean_squared_error(y_true, y_pred)
-rmse = mean_squared_error(y_true, y_pred, squared=False)  # Root MSE
+rmse = root_mean_squared_error(y_true, y_pred)  # Root MSE (sklearn >= 1.4)
 ```
 
 **Properties**: Penalizes large errors heavily (quadratic), same units as target squared

@@ -174,7 +174,7 @@ graph TD
     A[Training: Randomly zero neurons with prob p] --> B[Each forward pass uses different subnetwork]
     B --> C[Ensemble of 2^n possible networks]
     C --> D[Averaging effect at inference]
-    E[Inference: Use all neurons, scale by 1-p] --> D
+    E[Inference: Use all neurons (no scaling — inverted dropout already scaled during training)] --> D
 ```
 
 ### Why Dropout Prevents Overfitting

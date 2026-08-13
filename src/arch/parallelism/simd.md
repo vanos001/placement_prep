@@ -39,9 +39,10 @@ flowchart TD
 |-----------|------|---------------|-----------|-------------|
 | MMX | 1997 | 64-bit | 8 (MM0-MM7) | Integer SIMD |
 | SSE | 1999 | 128-bit | 8 (XMM0-7) | Float SIMD |
-| SSE2 | 2001 | 128-bit | 16 (XMM0-15) | Double precision |
-| SSE3 | 2004 | 128-bit | 16 | Horizontal ops |
-| SSE4 | 2007 | 128-bit | 16 | Dot product, blend |
+| SSE2 | 2001 | 128-bit | 8 (XMM0-7) | Double precision |
+| SSE3 | 2004 | 128-bit | 8 | Horizontal ops |
+| SSE4 | 2007 | 128-bit | 8 | Dot product, blend |
+| x86-64 (AMD64) | 2003 | 128-bit | 16 (XMM0-15) | Doubled XMM count to 16 |
 | AVX | 2011 | 256-bit | 16 (YMM0-15) | 256-bit float |
 | AVX2 | 2013 | 256-bit | 16 | 256-bit integer |
 | AVX-512 | 2016 | 512-bit | 32 (ZMM0-31) | 512-bit, mask registers |

@@ -274,10 +274,11 @@ ORDER BY num_courses DESC;
 Relational algebra (simplified):
 ```
 τ_{num_courses DESC}(
-    γ_{S.student_id, S.name; COUNT(E.course_id)→num_courses}(
-        σ_{gpa > 3.0}(Student) ⋈ Enrollment
+    σ_{num_courses > 3}(
+        γ_{S.student_id, S.name; COUNT(E.course_id)→num_courses}(
+            σ_{gpa > 3.0}(Student) ⋈ Enrollment
+        )
     )
-    where num_courses > 3
 )
 ```
 

@@ -86,9 +86,9 @@ graph LR
 ```
 
 ### Manchester Encoding
-Used in classic Ethernet (10BASE-T):
-- **Low-to-High** transition = bit `0`
-- **High-to-Low** transition = bit `1`
+Used in classic Ethernet (10BASE-T, IEEE 802.3):
+- **Low-to-High** transition = bit `1`
+- **High-to-Low** transition = bit `0`
 - Advantage: Self-clocking (no separate clock signal needed)
 
 ## Transmission Modes
@@ -172,7 +172,7 @@ The Physical Layer transmits raw bits over a physical medium. It defines electri
 A hub (Layer 1) broadcasts all incoming bits to every port. A switch (Layer 2) reads MAC addresses and forwards frames only to the intended recipient. Hubs create one collision domain; switches create separate collision domains per port.
 
 **Q3: What is Manchester encoding and why is it used?**
-Manchester encoding embeds clock information in the data signal by using transitions in the middle of each bit period. A low-to-high = 0, high-to-low = 1. This self-clocking property means no separate clock wire is needed, and it's easy to detect if the signal is absent (no transitions).
+Manchester encoding embeds clock information in the data signal by using transitions in the middle of each bit period. Per IEEE 802.3 (10BASE-T), a low-to-high = 1, high-to-low = 0. This self-clocking property means no separate clock wire is needed, and it's easy to detect if the signal is absent (no transitions).
 
 ### Intermediate
 

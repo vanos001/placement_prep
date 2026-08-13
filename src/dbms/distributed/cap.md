@@ -346,7 +346,7 @@ Architecture:
 
 During partition:
   - Minority masters become unavailable (after timeout)
-  - No writes to minority (consistency preserved)
+  - No writes to minority (prevents split-brain, but async replication means acknowledged writes can be lost on failover)
   - Reads may fail
 
 Classification: PC/EC

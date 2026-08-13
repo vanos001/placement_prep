@@ -192,7 +192,8 @@ float val = data[threadIdx.x * stride];
 | Pascal | 2016 | 56 | 12 | 16 GB HBM2 | NVLink |
 | Volta | 2017 | 80 | 15 | 16/32 GB HBM2 | Tensor Cores |
 | Turing | 2018 | 72 | 16 | 8-24 GB GDDR6 | RT Cores |
-| Ampere | 2020 | 108 | 31 | 24-80 GB HBM2 | 3rd gen Tensor |
+| Ampere (GA100) | 2020 | 108 | 19.5 | 40/80 GB HBM2 | 3rd gen Tensor (datacenter) |
+| Ampere (GA102) | 2020 | 84 | 35.6 | 24 GB GDDR6X | 3rd gen Tensor (consumer) |
 | Hopper | 2022 | 132 | 67 | 80 GB HBM3 | Transformer Engine |
 | Blackwell | 2024 | 192 | 125 | 192 GB HBM3E | 2nd gen Transformer |
 

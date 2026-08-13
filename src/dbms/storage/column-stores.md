@@ -197,7 +197,6 @@ flowchart TD
 | **Snowflake** | Cloud data warehouse | Auto-scaling, columnar |
 | **Google BigQuery** | Serverless DW | Columnar, serverless |
 | **Apache Druid** | Real-time analytics | Columnar + inverted index |
-| **Cassandra** | NoSQL | Column-family store |
 
 ### Row Store vs. Column Store Comparison
 

@@ -273,7 +273,7 @@ Time 900ms:  New ACK received
 **A:** Reno handles this poorly. After retransmitting the first loss and receiving a partial ACK (that doesn't cover all outstanding data), Reno may exit Fast Recovery prematurely. The second loss may only be detected via timeout, which is much slower. NewReno was designed to fix this.
 
 ### Q6: Why is Reno's linear increase problematic for high-BDP networks?
-**A:** In a network with 1 Gbps bandwidth and 100ms RTT, the BDP is ~12.5 MB. Reno increases cwnd by 1 MSS per RTT (1460 bytes per 100ms), so it takes ~8500 RTTs (14 minutes!) to fully utilize the link after a loss event. This is why CUBIC and BBR were developed.
+**A:** In a network with 1 Gbps bandwidth and 100ms RTT, the BDP is ~12.5 MB (≈8562 MSS of 1460 bytes). For a 3-dupACK loss (Reno's fast-recovery case), cwnd drops to cwnd/2 (≈4281 MSS), so recovery to BDP takes ~4281 RTTs (~7.1 minutes). The 8500-RTT / 14-minute figure is only correct for a timeout that resets cwnd to 1 MSS, which Reno's fast-recovery feature is designed to avoid. This is why CUBIC and BBR were developed.
 
 ### Q7: How does Reno determine the initial ssthresh?
 **A:** Typically, ssthresh is set to a large value (e.g., 65535 bytes) at connection start, so slow start runs until actual congestion is detected. After a loss event, ssthresh is set to cwnd/2.

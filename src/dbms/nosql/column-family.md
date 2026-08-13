@@ -150,7 +150,7 @@ CONSISTENCY QUORUM;    -- Read from majority
 CONSISTENCY ONE;       -- Read from one (fast, may be stale)
 ```
 
-**Quorum formula:**
+**Strong consistency condition:**
 ```
 Strong consistency: W + R > N
   W = write consistency (number of replicas)

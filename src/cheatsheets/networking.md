@@ -8,8 +8,8 @@
 | 6 | Presentation | Data | SSL/TLS, JPEG, ASCII | — |
 | 5 | Session | Data | NetBIOS, RPC | — |
 | 4 | Transport | Segment | TCP, UDP | — |
-| 3 | Network | Packet | IP, ICMP, ARP | Router |
-| 2 | Data Link | Frame | Ethernet, Wi-Fi | Switch |
+| 3 | Network | Packet | IP, ICMP | Router |
+| 2 | Data Link | Frame | Ethernet, Wi-Fi, ARP | Switch |
 | 1 | Physical | Bits | Cables, Radio | Hub |
 
 ## 🔄 TCP vs UDP

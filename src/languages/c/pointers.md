@@ -504,7 +504,7 @@ Database* db_create(const char *path) {
    - `int *p` is a pointer to int. `int **p` is a pointer to a pointer to int.
 
 2. **What happens when you increment a `void *` pointer?**
-   - It's undefined behavior in C. `void` has no size, so the compiler doesn't know how far to advance.
+   - It's a constraint violation in standard C — the compiler rejects it (GCC allows it as an extension, treating `void*` like `char*`). `void` has no size, so the compiler doesn't know how far to advance.
 
 3. **Explain `const int *p` vs `int * const p` vs `const int * const p`.**
    - `const int *p`: pointer to constant int (can't modify `*p`)

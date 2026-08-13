@@ -308,7 +308,7 @@ int main() {
 }
 ```
 
-**Why SoA is faster**: In AoS, each `Particle_AoS` is 28 bytes (7 floats + int). When you access `.x`, the cache line also loads `.y`, `.z`, `.vx`, etc. — but you only need x, vx. SoA lets you load only the data you need, improving cache utilization.
+**Why SoA is faster**: In AoS, each `Particle_AoS` is 32 bytes (7 floats × 4 bytes + 1 int × 4 bytes = 32 bytes). When you access `.x`, the cache line also loads `.y`, `.z`, `.vx`, etc. — but you only need x, vx. SoA lets you load only the data you need, improving cache utilization.
 
 ---
 

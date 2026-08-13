@@ -233,17 +233,17 @@ graph TD
 ```
 
 ```python
-# Python: OpenTelemetry tracing
+# Python: OpenTelemetry tracing — OTLP exporter to Jaeger (Jaeger natively supports OTLP since v1.35)
+# Note: opentelemetry-exporter-jaeger was deprecated in OTel Python 1.16 and removed in later versions.
 from opentelemetry import trace
 from opentelemetry.sdk.trace import TracerProvider
 from opentelemetry.sdk.trace.export import BatchSpanProcessor
-from opentelemetry.exporter.jaeger.thrift import JaegerExporter
+from opentelemetry.exporter.otlp.proto.grpc.trace_exporter import OTLPSpanExporter
 
 # Setup
 provider = TracerProvider()
-jaeger_exporter = JaegerExporter(agent_host_name="localhost", 
-                                  agent_port=6831)
-provider.add_span_processor(BatchSpanProcessor(jaeger_exporter))
+otlp_exporter = OTLPSpanExporter(endpoint="http://jaeger:4317", insecure=True)
+provider.add_span_processor(BatchSpanProcessor(otlp_exporter))
 trace.set_tracer_provider(provider)
 
 tracer = trace.get_tracer(__name__)

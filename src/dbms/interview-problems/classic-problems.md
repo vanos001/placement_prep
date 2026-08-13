@@ -125,9 +125,9 @@ FROM yearly_revenue;
 -- Find users who logged in 3+ consecutive days
 SELECT user_id FROM (
   SELECT user_id, login_date,
-    login_date - INTERVAL ROW_NUMBER() OVER (
+    login_date - (ROW_NUMBER() OVER (
       PARTITION BY user_id ORDER BY login_date
-    ) DAY as grp
+    ) * INTERVAL '1 day') as grp
   FROM logins
 ) GROUP BY user_id, grp
 HAVING COUNT(*) >= 3;

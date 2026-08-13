@@ -222,7 +222,7 @@ The key WAL rules in 2PC:
 Phase 1: Coordinator → Participants (1 RTT) + prepare processing
 Phase 2: Coordinator → Participants (1 RTT) + commit processing
 
-Total: 4 network round trips (2 per phase)
+Total: 2 network round trips (1 per phase), or 4 one-way messages
 ```
 
 ### Throughput Impact

@@ -160,7 +160,7 @@ HTTP/1.1 200 OK
 Content-Type: text/html
 Transfer-Encoding: chunked
 
-1a\r\n
+16\r\n
 <h1>Hello, World!</h1>\r\n
 0\r\n
 \r\n
@@ -342,9 +342,9 @@ HTTP/1.1 200 OK
 Content-Type: text/event-stream
 Transfer-Encoding: chunked
 
-19\r\n
+1c\r\n
 event: message\ndata: Hello\n\n\r\n
-1a\r\n
+1c\r\n
 event: message\ndata: World\n\n\r\n
 0\r\n
 \r\n
@@ -374,7 +374,7 @@ event: message\ndata: World\n\n\r\n
 **A:** HTTP/1.1 introduced `Cache-Control` headers for fine-grained caching: `max-age` (cache duration), `no-cache` (revalidate), `no-store` (don't cache), `must-revalidate` (check with server). Combined with `ETag` and `If-None-Match` for conditional requests (304 Not Modified).
 
 ### Q8: How many parallel connections does a browser use for HTTP/1.1?
-**A:** Most browsers use **6 parallel connections per domain** (defined by HTTP/1.1 specification guidance). This partially mitigates HOL blocking but adds overhead. Sharding (using multiple domains) can increase parallelism. HTTP/2 eliminates this need with multiplexing.
+**A:** Browsers use 6 parallel connections per domain (their own implementation choice). The HTTP/1.1 specification (RFC 9112 §9.7) actually recommends a single-user client SHOULD NOT maintain more than 2 connections per server; the 6-connection limit is a browser convention that ignores the RFC. This partially mitigates HOL blocking but adds overhead. Sharding (using multiple domains) can increase parallelism. HTTP/2 eliminates this need with multiplexing.
 
 ## Common Mistakes
 

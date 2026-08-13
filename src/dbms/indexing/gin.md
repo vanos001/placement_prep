@@ -202,7 +202,7 @@ Tuning:
 ### Bulk Update (No Pending List)
 
 ```sql
-CREATE INDEX idx_name ON table USING GIST (column) 
+CREATE INDEX idx_name ON table USING GIN (column) 
   WITH (fastupdate = off);
 ```
 

@@ -46,7 +46,7 @@ Routes based on TCP/UDP information only. Doesn't inspect application data.
 graph LR
     C[Client] -->|TCP SYN| LB[L4 LB]
     LB -->|TCP SYN| S1[Server 1]
-    NOTE_FIX["Note: LB picks server based on IP:port only"]
+    Note over LB: Picks server based on IP:port only
 ```
 
 **Advantages**: Very fast, low overhead, works with any TCP/UDP protocol.

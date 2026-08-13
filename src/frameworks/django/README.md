@@ -4,7 +4,7 @@
 
 Django is a **high-level, batteries-included Python web framework** (created 2003–2005, open-sourced 2005, maintained by the Django Software Foundation). Its philosophy: "the framework for perfectionists with deadlines" — it ships the full toolkit for a typical web app (ORM, admin, auth, forms, templating, migrations) rather than leaving you to assemble micro-libraries.
 
-Django powers Instagram (historically), Disqus, Mozilla, Pinterest (historically), and countless internal tools and content platforms. It's a frequent interview topic for Python/backend roles, especially the **ORM**, **middleware**, and **MVC/MTV** architecture.
+Django powers Instagram (heavily customized Django at scale), Disqus, Mozilla, Pinterest (historically), and countless internal tools and content platforms. It's a frequent interview topic for Python/backend roles, especially the **ORM**, **middleware**, and **MVC/MTV** architecture.
 
 ## Django's Architecture (MTV)
 

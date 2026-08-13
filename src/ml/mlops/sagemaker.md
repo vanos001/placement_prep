@@ -150,7 +150,7 @@ pipeline.start()
 ## SageMaker Feature Store
 
 ```python
-from sagemaker.feature_store.feature_group import FeatureGroup
+from sagemaker.feature_store.feature_group import FeatureGroup, FeatureValue
 
 feature_group = FeatureGroup(
     name="user-features",

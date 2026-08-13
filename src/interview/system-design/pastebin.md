@@ -242,7 +242,7 @@ s3://pastebin-content/{id}
 
 ## Key Takeaways
 
-- Pastebin is a write-heavy service: 10M pastes/day with 5:1 read/write ratio.
+- Pastebin is a read-heavy service: 10M pastes/day with 5:1 read/write ratio (50M reads/day vs 10M writes/day).
 - Short URL generation: Base62 encoding of auto-increment IDs or pre-generated keys (KGS).
 - Storage separation: metadata in MySQL, content in S3 for independent scaling.
 - Expiration: Redis TTL for cache, background cleanup for content store.

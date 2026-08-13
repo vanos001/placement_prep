@@ -171,9 +171,11 @@ VALUES ('alice@co.com', 'Alice', 'Smith')
 ON CONFLICT (email) DO NOTHING;
 
 -- MySQL: UPSERT
+-- Note: VALUES(col) in ON DUPLICATE KEY UPDATE is deprecated as of MySQL 8.0.20;
+-- the modern syntax aliases the inserted row (AS new_row) and references its columns.
 INSERT INTO Employees (emp_id, first_name, email, salary)
-VALUES (101, 'Alice', 'alice@co.com', 75000)
-ON DUPLICATE KEY UPDATE salary = VALUES(salary), email = VALUES(email);
+VALUES (101, 'Alice', 'alice@co.com', 75000) AS new_row
+ON DUPLICATE KEY UPDATE salary = new_row.salary, email = new_row.email;
 
 -- SQL Server: MERGE
 MERGE INTO Employees AS target

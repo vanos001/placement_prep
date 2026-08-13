@@ -95,21 +95,21 @@ Since n=3, bound = 0.780. U=0.85 > 0.780, so the **sufficient test fails**, but 
 
 ```
 Time:  0  1  2  3  4  5  6  7  8  9  10  11  12  13  14  15  16  17  18  19  20
-       |τ1|τ2|τ2|  |τ1|τ2|τ2|τ3|τ3|  |τ1 |τ1 |τ2 |τ2 |   |τ1 |τ2 |τ2 |τ3 |τ3 |τ1 |
+       |τ1|τ2|τ2|τ3|τ1|τ2|τ2|τ3|  |  |τ1 |τ2 |τ2 |τ3 |τ3 |τ1 |τ2 |τ2 |  |  |τ1 |
 
-t=0: τ1 releases (highest priority) → runs 0-1
-t=1: τ2 releases → runs 1-3
-t=3: Idle (no task ready)
-t=4: τ1 releases (period=4) → runs 4-5
-     τ2 releases (period=5) → runs 5-7
-t=7: τ3 released at t=0 → runs 7-9 (completes within deadline of 10)
-t=9: Idle
-t=10: τ1 releases → runs 10-11
-      τ2 releases at t=10 (period=5×2) → runs 11-13
-      τ3 releases at t=10 (period=10×1) → runs 13-15 (deadline=20, OK)
-t=15: τ1 releases → runs 15-16
-      τ2 releases at t=15 → runs 16-18
-t=18: Idle
+t=0-1: τ1 releases (highest priority) → runs 0-1
+t=1-3: τ2 released at t=0 (P=5, C=2) → runs 1-3
+t=3-4: τ3 released at t=0 (P=10, C=2) → runs 1 of 2 units
+t=4-5: τ1 releases (period=4) → runs 4-5
+t=5-7: τ2 releases (period=5) → runs 5-7
+t=7-8: τ3 (remaining 1 unit, completes by D=10 ✓) → runs 7-8
+t=8-10: Idle (no task ready)
+t=10-11: τ1 releases → runs 10-11
+t=11-13: τ2 releases at t=10 (period=5×2) → runs 11-13
+t=13-15: τ3 releases at t=10 (period=10×1) → runs 13-15 (deadline=20, OK)
+t=15-16: τ1 releases → runs 15-16
+t=16-18: τ2 releases at t=15 → runs 16-18
+t=18-20: Idle
 t=20: τ1 releases → runs 20-21
       ...
 ```

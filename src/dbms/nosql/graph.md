@@ -89,7 +89,7 @@ flowchart TD
     A --> C["Graph DB<br/>Traverse 2 hops"]
 
     B --> B1["SELECT u2.* FROM users u1<br/>JOIN friends f1 ON u1.id = f1.user_id<br/>JOIN friends f2 ON f1.friend_id = f2.user_id<br/>JOIN users u2 ON f2.friend_id = u2.id<br/>WHERE u1.name = 'Alice'"]
-    B --> B2["4 JOINs, O(N²) or worse"]
+    B --> B2["3 JOINs, O(K²)"]
 
     C --> C1["MATCH (a:Person {name:'Alice'})<br/>-[:FRIENDS_WITH*2]->(fof)<br/>RETURN fof"]
     C --> C2["O(K²) where K = avg friends"]

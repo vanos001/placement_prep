@@ -74,7 +74,7 @@ On failure at any step:
 
 **Answer**: Multi-layered approach:
 
-1. **Exponential backoff with jitter**: `wait = min(base * 2^attempt + random_jitter, max_wait)`
+1. **Exponential backoff with jitter**: `wait = min(base × 2^attempt, max_wait) + random_jitter`
 2. **Circuit breakers**: Stop retrying after a threshold of failures (e.g., Hystrix, Resilience4j)
 3. **Retry budgets**: Limit retries to a percentage of total requests (e.g., max 10% of traffic can be retries)
 4. **Idempotency**: Make all operations idempotent so retries are safe

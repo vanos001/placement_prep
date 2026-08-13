@@ -63,7 +63,8 @@ stateDiagram-v2
 Hold all **exclusive** locks until commit/abort. Prevents:
 - Dirty reads
 - Cascading aborts
-- Non-repeatable reads
+
+Note: shared (S) locks may still be released in the shrinking phase, so non-repeatable reads are NOT prevented by Strict 2PL — only Rigorous 2PL (below) holds S locks until commit and prevents them.
 
 ```sql
 T1: S-Lock(A), R(A), X-Lock(B), R(B), W(B)
@@ -237,7 +238,7 @@ A: **Strict 2PL**: Holds exclusive (write) locks until commit/abort; shared (rea
 A: When a transaction acquires too many fine-grained locks (e.g., thousands of row locks), the lock manager escalates to a coarser lock (e.g., table lock). This reduces lock management overhead but reduces concurrency. Threshold is typically configurable (SQL Server default: 5000 locks).
 
 **Q5: Compare wait-die and wound-wait.**
-A: **Wait-Die**: Older transaction waits for younger; younger aborts immediately if it can't get a lock. **Wound-Wait**: Older transaction forces younger to abort; younger waits if older holds the lock. Wound-Wait is generally preferred because younger transactions eventually proceed (they wait for older to finish), while in Wait-Die, older transactions may repeatedly wait.
+A: **Wait-Die**: Older transaction waits for younger; younger aborts immediately if it can't get a lock. **Wound-Wait**: Older transaction forces younger to abort; younger waits if older holds the lock. Wound-Wait generally has fewer aborts/restarts than Wait-Die because younger transactions WAIT (rather than being immediately aborted as in Wait-Die). In Wait-Die, when a younger transaction is aborted it restarts with its original timestamp and may die again — leading to more restarts. The "preferred" designation is workload-dependent; both are correct deadlock-prevention protocols.
 
 **Q6: What are intention locks?**
 A: Intention locks (IS, IX, SIX) are placed on higher-level objects (tables, pages) to signal that a transaction intends to lock a lower-level object (rows). They prevent other transactions from acquiring conflicting locks at the higher level without checking every row. Example: Before locking a row with X, the transaction acquires IX on the table.

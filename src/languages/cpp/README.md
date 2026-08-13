@@ -184,10 +184,10 @@ g++ -std=c++17 -O2 -Wall -Wextra -Wshadow -o sol solution.cpp
 | Feature | C++ | Java | Python | Rust |
 |---------|-----|------|--------|------|
 | Memory management | Manual + RAII | GC | GC | Ownership |
-| Performance | Near-zero overhead | JIT compiled | Interpreted | Near-zero overhead |
+| Performance | Near-zero overhead | Bytecode + JIT | Interpreted | Near-zero overhead |
 | OOP | Full + multiple inheritance | Single inheritance | Duck typing | Trait-based |
 | Templates/Generics | Compile-time (monomorphized) | Type-erased generics | Duck typing | Monomorphized |
-| Compilation | AOT compiled | JIT compiled | Interpreted | AOT compiled |
+| Compilation | AOT compiled | Bytecode + JIT | Interpreted | AOT compiled |
 | Standard library | STL (containers + algorithms) | Rich stdlib | Batteries included | std + crates |
 
 ## Common Pitfalls for Beginners

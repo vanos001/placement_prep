@@ -104,8 +104,8 @@ curl -b cookies.txt https://api.example.com/users
 # Verbose (show full request/response)
 curl -v https://api.example.com/users
 
-# Very verbose (TLS details)
-curl -vv https://api.example.com/users
+# Trace (very verbose — TLS details, byte-level hexdump)
+curl --trace-ascii - https://api.example.com/users
 
 # Show timing
 curl -w "\n\nTime DNS:    %{time_namelookup}s\n\

@@ -214,6 +214,7 @@ public class DiningTable {
     enum State { THINKING, HUNGRY, EATING }
     private State[] state = new State[5];
     private Condition[] self = new Condition[5];
+    private final Lock lock = new ReentrantLock();
     
     public DiningTable() {
         for (int i = 0; i < 5; i++) {
@@ -222,23 +223,33 @@ public class DiningTable {
         }
     }
     
-    public synchronized void pickup(int i) throws InterruptedException {
-        state[i] = State.HUNGRY;
-        test(i);
-        while (state[i] != State.EATING)
-            self[i].await();
+    public void pickup(int i) throws InterruptedException {
+        lock.lock();
+        try {
+            state[i] = State.HUNGRY;
+            test(i);
+            while (state[i] != State.EATING)
+                self[i].await();
+        } finally {
+            lock.unlock();
+        }
     }
     
-    public synchronized void putdown(int i) {
-        state[i] = State.THINKING;
-        test((i + 4) % 5);  // Check left neighbor
-        test((i + 1) % 5);  // Check right neighbor
+    public void putdown(int i) {
+        lock.lock();
+        try {
+            state[i] = State.THINKING;
+            test((i + 4) % 5);  // Check left neighbor
+            test((i + 1) % 5);  // Check right neighbor
+        } finally {
+            lock.unlock();
+        }
     }
     
     private void test(int i) {
-        if (state[(i+4)%5] != State.EATING &&
+        if (state[(i + 4) % 5] != State.EATING &&
             state[i] == State.HUNGRY &&
-            state[(i+1)%5] != State.EATING) {
+            state[(i + 1) % 5] != State.EATING) {
             state[i] = State.EATING;
             self[i].signal();
         }

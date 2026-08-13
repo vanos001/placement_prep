@@ -151,7 +151,7 @@ Before crash:
 
 Write D0=15:
   Write D0=15  ✓  (committed)
-  Write P = 15⊕20 = 35  ✗  (crash!)
+  Write P = 15⊕20 = 27  ✗  (crash!)
 
 After crash:
   D0=15, D1=20, P=30  ← P is wrong!

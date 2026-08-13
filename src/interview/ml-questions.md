@@ -46,7 +46,7 @@
 **Answer:** During autoregressive generation, each new token needs to attend to all previous tokens. Without KV cache, you'd recompute K and V for all tokens at each step (O(n²)). KV cache stores computed K, V tensors, so each step only computes Q for the new token. Speedup: 10-100x for long sequences. Trade-off: memory (scales with sequence length × layers × heads × d_head).
 
 ### Q13: Compare RLHF and DPO for LLM alignment.
-**Answer:** RLHF: (1) train reward model on preference data, (2) optimize policy with PPO + KL penalty against reference. Complex, 3 models, can be unstable. DPO: directly optimize policy on preference pairs without explicit reward model. Simpler, 1 model, more stable. DPO loss = -log σ(β log π(y_w)/π_ref(y_w) - β log π(y_l)/π_ref(y_l)).
+**Answer:** RLHF: (1) train reward model on preference data, (2) optimize policy with PPO + KL penalty against reference. Complex, 3 models, can be unstable. DPO: directly optimize policy on preference pairs without explicit reward model. Simpler, 1 model, more stable. DPO loss = -log σ(β · log(π(y_w|x) / π_ref(y_w|x)) - β · log(π(y_l|x) / π_ref(y_l|x))).
 
 ### Q14: Explain speculative decoding.
 **Answer:** Use a small, fast "draft" model to generate candidate tokens. Then verify all candidates in parallel with the large "target" model. Accept tokens that match the target's distribution, reject and resample from the rest. Speedup: 2-3x (limited by draft model's acceptance rate). The output distribution is identical to the target model.

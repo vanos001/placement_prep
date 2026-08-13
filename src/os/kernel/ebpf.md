@@ -2,7 +2,7 @@
 
 ## Overview
 
-**eBPF (extended Berkeley Packet Filter)** is a Linux kernel technology that runs **sandboxed, event-driven programs inside the kernel**, attached to hooks such as system calls, network events, and function entry points — with no kernel modules and no application changes. Merged into Linux 3.18 in 2014, it powers today's observability, networking, and security tooling.
+**eBPF (extended Berkeley Packet Filter)** is a Linux kernel technology that runs **sandboxed, event-driven programs inside the kernel**, attached to hooks such as system calls, network events, and function entry points — with no kernel modules and no application changes. Merged into Linux 3.15 in 2014 (the bpf() syscall that lets user space load programs landed in 3.18), it powers today's observability, networking, and security tooling.
 
 It evolved from the classic BPF packet filter (tcpdump's filter language, 1992) into a general-purpose in-kernel VM with maps, JIT compilation, and a safety verifier.
 

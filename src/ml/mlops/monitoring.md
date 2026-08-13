@@ -81,9 +81,16 @@ graph TB
 def calculate_psi(expected, actual, buckets=10):
     """Calculate PSI between two distributions."""
     breakpoints = np.percentile(expected, np.linspace(0, 100, buckets + 1))
+    # Extend the first/last breakpoints to ±inf so values outside the expected
+    # min/max are not silently dropped into np.histogram's under/overflow bins.
+    breakpoints[0], breakpoints[-1] = -np.inf, np.inf
     expected_pct = np.histogram(expected, breakpoints)[0] / len(expected)
     actual_pct = np.histogram(actual, breakpoints)[0] / len(actual)
-    
+
+    # Avoid log(0)
+    expected_pct = np.clip(expected_pct, 1e-4, None)
+    actual_pct = np.clip(actual_pct, 1e-4, None)
+
     psi = np.sum((actual_pct - expected_pct) * np.log(actual_pct / expected_pct))
     return psi
 

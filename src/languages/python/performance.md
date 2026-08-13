@@ -121,7 +121,7 @@ kernprof -l -v script.py
 # Output shows time per line:
 # Line #      Hits         Time  Per Hit   % Time  Line Contents
 # ==============================================================
-#      3   1000001      0.15000   0.000     30.0  total += i * i
+#      3   1000000      0.15000   0.000     30.0  total += i * i
 #      2   1000001      0.35000   0.000     70.0  for i in range(n):
 ```
 

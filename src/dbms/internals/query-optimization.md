@@ -86,7 +86,7 @@ flowchart TD
 | Algorithm | Best For | Worst Case | Memory |
 |-----------|----------|------------|--------|
 | **Nested Loop** | Small outer, indexed inner | O(n×m) | O(1) |
-| **Hash Join** | Equi-joins, large tables | O(n+m) | O(n) |
+| **Hash Join** | Equi-joins, large tables | O(n+m) expected; O(n×m) worst case with hash collisions | O(n) |
 | **Sort-Merge** | Pre-sorted data, range joins | O(n log n + m log m) | O(n+m) |
 
 ### Nested Loop Join

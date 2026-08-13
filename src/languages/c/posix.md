@@ -445,13 +445,13 @@ int main() {
 
 ```mermaid
 flowchart LR
-    subgraph "Parent Process"
+    subgraph "Child Process"
         A["Write end fd 1"]
     end
     subgraph "Pipe Kernel Buffer"
         B["Unidirectional data flow"]
     end
-    subgraph "Child Process"
+    subgraph "Parent Process"
         C["Read end fd 0"]
     end
     

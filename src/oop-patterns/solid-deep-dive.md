@@ -377,6 +377,8 @@ class Ostrich(Bird):
 
 # Refactored: Use composition
 class Bird:
+    def __init__(self, movement):
+        self.movement = movement
     def move(self):
         return self.movement.move()
 
@@ -387,6 +389,12 @@ class FlyingBehavior:
 class RunningBehavior:
     def move(self):
         return "Running"
+
+# Usage
+eagle = Bird(FlyingBehavior())
+ostrich = Bird(RunningBehavior())
+print(eagle.move())   # "Flying"
+print(ostrich.move()) # "Running"
 ```
 
 ### Key Takeaway

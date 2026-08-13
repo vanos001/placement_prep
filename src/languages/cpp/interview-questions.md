@@ -231,9 +231,10 @@ for (const auto& [key, value] : map) { /* ... */ }
 
 ```cpp
 // Optional: may or may not have a value
+// (illustrative pseudocode — `found`/`value` represent your lookup result)
 std::optional<int> find(int key) {
-    if (found) return value;
-    return std::nullopt;
+    if (db.contains(key)) return db[key];   // value found
+    return std::nullopt;                      // not found
 }
 
 // Variant: type-safe union (one of specified types)
@@ -252,9 +253,11 @@ int i = std::any_cast<int>(a);
 
 ```cpp
 #include <coroutine>
+#include <generator>  // std::generator is C++23 (P2502)
 
-// Generator coroutine
-generator<int> fibonacci() {
+// C++23 std::generator coroutine (C++20 coroutines require a hand-rolled
+// or library-provided generator type; std::generator was added in C++23).
+std::generator<int> fibonacci() {
     int a = 0, b = 1;
     while (true) {
         co_yield a;

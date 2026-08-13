@@ -350,7 +350,7 @@ A: Yes! Two page table entries (from different processes) can point to the same 
 
 ### Advanced / FAANG-Level
 
-**Q7: You have a system with 48-bit virtual addresses, 4KB pages, and 8-byte PTEs. A process uses only 3 regions: code (0x00000000-0x00400000), heap (0x00600000-0x00800000), and stack (0x7FFF00000000-0x7FFFFFFFFFFFF). How much memory does a single-level page table waste? Design a better solution.**
+**Q7: You have a system with 48-bit virtual addresses, 4KB pages, and 8-byte PTEs. A process uses only 3 regions: code (0x00000000-0x00400000), heap (0x00600000-0x00800000), and stack (0x7FFF00000000-0x7FFFFFFFFFFF). How much memory does a single-level page table waste? Design a better solution.**
 A: Single-level: 2^48 / 2^12 = 2^36 entries × 8 bytes = 512 GB per page table — absurd. The process only uses ~12 MB of address space. Solution: 4-level page table (like x86-64). Only allocate inner tables for used regions. Code region: 1024 pages → 1 top-level entry → 1 second-level → 1 third-level → 1 fourth-level with entries. Total page table overhead: ~16 KB instead of 512 GB.
 
 **Q8: Design a page table structure for a system that needs to support both 4KB and 2MB pages simultaneously.**

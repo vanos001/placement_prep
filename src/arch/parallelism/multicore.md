@@ -18,8 +18,9 @@ graph LR
 |------|-------|---------|
 | 2005 | Dual-core | Intel Pentium D |
 | 2006 | Quad-core | Intel Core 2 Quad |
-| 2011 | 8-core | AMD FX-8350 |
-| 2017 | 16-core (chiplet) | AMD Ryzen Threadripper |
+| 2012 | 8-core | AMD FX-8350 |
+| 2017 | 16-core | AMD Ryzen Threadripper 1950X |
+| 2019 | 16-core (chiplet) | Ryzen 9 3950X |
 | 2022 | 96-core (chiplet) | AMD EPYC 9654 |
 | 2024 | 128+ cores | ARM Graviton4, AMD EPYC |
 

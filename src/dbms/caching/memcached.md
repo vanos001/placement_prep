@@ -86,9 +86,9 @@ flowchart TD
 
 **Slab class sizes (default):**
 ```
-Class 1:   64 bytes  (item overhead: 48 bytes → 16 bytes data)
-Class 2:  128 bytes  (80 bytes data)
-Class 3:  256 bytes  (208 bytes data)
+Class 1:   ~96 bytes  (item overhead: ~48-56 bytes → ~40 bytes data)
+Class 2:  ~120 bytes
+Class 3:  ~152 bytes
 ...
 Class N:   1 MB
 Growth factor: 1.25 (default)
@@ -235,7 +235,7 @@ Memcached Memory Management:
 Eviction:
   - Per-slab-class LRU (not global)
   - When a slab class is full, evict oldest item in that class
-  - Items with TTL=0 (never expire) are evicted first
+  - Items are evicted by LRU (least recently used) regardless of TTL setting; TTL=0 items are not prioritized for eviction
   - No persistence — all data lost on restart
 
 Memory fragmentation:
@@ -305,7 +305,7 @@ If you only need "get/set/delete" with maximum throughput, Memcached is slightly
 2. **Lease-based** — Memcached gives a "lease" to one client to rebuild; others get a short delay
 3. **Stale-while-revalidate** — Return stale data while one client refreshes
 
-Facebook uses a lease mechanism built into their modified Memcached (memcachelint).
+Facebook uses a lease mechanism built into their modified Memcached (called "Memcache" in their paper).
 
 ## Common Mistakes
 

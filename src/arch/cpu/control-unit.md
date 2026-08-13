@@ -218,7 +218,7 @@ After interrupt handler:
 
 ```
 Simple RISC instruction (hardwired):
-  Decode: 1 gate delay (~0.1 ns at modern process nodes)
+  Decode: 1 gate delay (~0.01-0.02 ns at modern process nodes)
   Execute: 1 cycle
   Total: 1 cycle
 

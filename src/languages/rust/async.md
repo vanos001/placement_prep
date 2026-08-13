@@ -96,8 +96,8 @@ async fn main() {
     });
 
     // Wait for both tasks
-    let (r1, r2) = tokio::join!(handle1.unwrap(), handle2.unwrap());
-    println!("{}, {}", r1, r2);
+    let (r1, r2) = tokio::join!(handle1, handle2);
+    println!("{}, {}", r1.unwrap(), r2.unwrap());
 }
 ```
 

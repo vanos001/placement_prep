@@ -2,11 +2,11 @@
 
 ## Overview
 
-FastAPI is a modern, fast (high-performance) web framework for building APIs with Python 3.7+ based on standard Python type hints. It's built on Starlette (ASGI) and Pydantic (data validation).
+FastAPI is a modern, fast (high-performance) web framework for building APIs with Python 3.8+ based on standard Python type hints. It's built on Starlette (ASGI) and Pydantic (data validation).
 
 ## Why FastAPI for Interviews
 
-- **Performance**: One of the fastest Python frameworks (on par with Node.js/Go)
+- **Performance**: One of the fastest Python frameworks (Starlette-level throughput)
 - **Type safety**: Automatic validation via Pydantic
 - **Auto-docs**: OpenAPI/Swagger generated automatically
 - **Async native**: First-class async/await support
@@ -70,7 +70,7 @@ async def create_user(user: UserCreate):
 ### Pydantic Models
 
 ```python
-from pydantic import BaseModel, Field, validator, EmailStr
+from pydantic import BaseModel, Field, field_validator, EmailStr
 from datetime import datetime
 from typing import Optional
 
@@ -82,7 +82,8 @@ class UserBase(BaseModel):
 class UserCreate(UserBase):
     password: str = Field(..., min_length=8)
 
-    @validator('password')
+    @field_validator('password')
+    @classmethod
     def password_strength(cls, v):
         if not any(c.isupper() for c in v):
             raise ValueError('must contain uppercase')
@@ -354,7 +355,7 @@ app.add_middleware(GZipMiddleware, minimum_size=500)
 
 | Feature | FastAPI | Flask | Django |
 |---------|---------|-------|--------|
-| **Async** | Native | Extensions | Django 4.1+ |
+| **Async** | Native | Extensions | Django 3.1+ |
 | **Validation** | Automatic (Pydantic) | Manual | DRF serializers |
 | **Docs** | Auto-generated | Extensions | DRF |
 | **Performance** | Very fast | Moderate | Moderate |

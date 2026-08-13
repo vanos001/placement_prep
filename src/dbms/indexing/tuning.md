@@ -154,8 +154,9 @@ ORDER BY pg_relation_size(indexrelid) DESC;
 ```sql
 -- PostgreSQL: Log slow queries with plans
 SET log_min_duration_statement = 1000;  -- Log queries > 1 second
-SET autoexplain.log_min_duration = 1000;
-SET autoexplain.log_analyze = true;
+-- Requires `LOAD 'auto_explain';` or shared_preload_libraries = 'auto_explain'
+SET auto_explain.log_min_duration = 1000;
+SET auto_explain.log_analyze = true;
 ```
 
 ## Index Tuning Methodology

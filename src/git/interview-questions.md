@@ -97,7 +97,7 @@ git cherry-pick <commit-hash>      # apply to correct branch
 |---|---|
 | "Git tracks changes" | Git stores snapshots; diffs are computed on demand |
 | "Branches are expensive" | Branches are 41-byte files (ref + newline) |
-| "Deleted means gone" | Objects persist until GC'd (30+ days) |
+| "Deleted means gone" | Objects persist until GC'd (14 days default for unreachable objects; reflog entries 30/90 days) |
 | "Rebase = delete old commits" | Old commits exist in reflog until GC'd |
 | "Merge commit = bad" | Merge commits preserve branch topology — useful for traceability |
 | "git pull is safe" | `git pull --rebase` can cause surprises; prefer explicit fetch + merge/rebase |

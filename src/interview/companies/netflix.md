@@ -38,10 +38,11 @@ Netflix Culture Deck Values:
 │   ├── Minimal dependencies
 │   └── Team autonomy
 │
-└── Radical Candor
-    ├── Honest, direct feedback
-    ├── No politics
-    └── Assume positive intent
+└── Radical Honesty / 4A Feedback
+    ├── Aim to Assist
+    ├── Actionable
+    ├── Appreciated
+    └── Accept or Discard
 ```
 
 ## 💻 Coding at Netflix

@@ -2,7 +2,7 @@
 
 ## Overview
 
-**Alder Lake** (12th Gen Intel Core, 2021) is Intel's first mainstream desktop/laptop processor to use a **hybrid architecture**, combining high-performance **P-cores** (Golden Cove) with power-efficient **E-cores** (Gracemount). This design, similar in concept to ARM's big.LITTLE, represents a major shift in Intel's x86 architecture strategy.
+**Alder Lake** (12th Gen Intel Core, 2021) is Intel's first mainstream desktop/laptop processor to use a **hybrid architecture**, combining high-performance **P-cores** (Golden Cove) with power-efficient **E-cores** (Gracemont). This design, similar in concept to ARM's big.LITTLE, represents a major shift in Intel's x86 architecture strategy.
 
 ## Detailed Explanation
 
@@ -40,7 +40,7 @@ graph TB
 | **Decode Width** | 6-wide | 3-wide (per core) |
 | **Pipeline Depth** | ~20 stages | ~16 stages |
 | **OoO Window** | 512-entry ROB | 256-entry ROB |
-| **Execution Units** | 5 ALU, 3 FP | 3 ALU, 2 FP |
+| **Execution Units** | 4 ALU, 3 FP | 3 ALU, 2 FP |
 | **Hyper-Threading** | Yes (2 threads) | No |
 | **Clock Speed** | Up to 5.2 GHz | Up to 3.9 GHz |
 | **IPC** | ~1.0× (baseline) | ~0.65× of P-core |
@@ -99,7 +99,7 @@ Front-end:
 
 Back-end:
   - 512-entry ROB (up from 352)
-  - 5 integer ALUs (3 simple + 2 complex)
+  - 4 integer ALUs (ports 0, 1, 5, 6)
   - 3 FP/SIMD execution ports
   - 3 load + 2 store ports
   - 48 KB L1D cache, 12-way

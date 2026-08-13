@@ -4,7 +4,7 @@
 
 Binary JSON with indexing support:
 
-```json
+```sql
 -- Store and query JSON
 CREATE TABLE events (data JSONB);
 INSERT INTO events VALUES ('{"type": "click", "page": "/home", "user": {"id": 1}}');

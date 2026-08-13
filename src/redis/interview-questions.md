@@ -4,7 +4,7 @@
 A: `noeviction` (error on full), `allkeys-lru` (evict least recently used), `volatile-lru` (LRU on keys with TTL), `allkeys-lfu` (least frequently used), `volatile-ttl` (shortest TTL first). `allkeys-lru` is the most common for caching.
 
 **Q: What is the difference between RDB and AOF?**
-A: RDB = point-in-time snapshots (compact, fast recovery, possible data loss). AOF = logs every write (more durable, max 1s loss, larger files). Can use both together. RDB for backups, AOF for durability.
+A: RDB = point-in-time snapshots (compact, fast recovery, possible data loss). AOF = logs every write (more durable, max 1s loss with default `everysec` policy — configurable via `appendfsync`; `always` = no loss, `no` = up to ~30s loss; larger files). Can use both together. RDB for backups, AOF for durability.
 
 **Q: How does Redis Sentinel work?**
 A: Sentinel monitors Redis master/replica instances. If master is down, Sentinel promotes a replica to master and updates clients. Provides: monitoring, notification, automatic failover. Requires at least 3 Sentinels for quorum.

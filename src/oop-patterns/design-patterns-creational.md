@@ -431,6 +431,14 @@ class DarkButton(Button):
     def render(self):
         print("Dark button")
 
+class LightCheckbox(Checkbox):
+    def render(self):
+        print("Light checkbox")
+
+class DarkCheckbox(Checkbox):
+    def render(self):
+        print("Dark checkbox")
+
 class LightThemeFactory(UIFactory):
     def create_button(self): return LightButton()
     def create_checkbox(self): return LightCheckbox()

@@ -247,7 +247,7 @@ A service runs out of available threads — all threads are busy processing requ
 
 ### How to Prevent
 - **Async I/O**: Use non-blocking I/O (NIO, async/await) instead of thread-per-request
-- **Thread pool tuning**: Size thread pools appropriately (typically CPU cores * 2 for CPU-bound, higher for I/O-bound)
+- **Thread pool tuning**: Set thread pools appropriately — roughly `CPU cores + 1` for CPU-bound work, and `CPU cores × (1 + wait/compute ratio)` (often 2×–10× cores) for I/O-bound work
 - **Timeouts**: Set timeouts on all I/O operations to prevent threads from blocking indefinitely
 - **Circuit breakers**: Fail fast when downstream services are slow
 - **Load shedding**: Reject requests when the thread pool is nearly full

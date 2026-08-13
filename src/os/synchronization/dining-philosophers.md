@@ -7,15 +7,25 @@ The **Dining Philosophers Problem** was formulated by Edsger Dijkstra in 1965. F
 ## Problem Setup
 
 ```
-        P0
-    C0      C4
-  P4          P1
-    C3      C1
-        P2
-        C2
-        P3
+            P0
+           /  \
+         C4    C0
+        /        \
+      P4          P1
+       \          /
+        C3      C1
+          \    /
+           P3-C2-P2
 
-P_i needs C_i and C_{(i+1)%5}
+Pentagon layout: philosophers P0..P4 at the 5 vertices,
+chopstick C_i is on the edge between P_i and P_{(i+1)%5}.
+
+P_i needs C_i and C_{(i+1)%5}:
+  P0 needs C0, C4
+  P1 needs C1, C0
+  P2 needs C2, C1
+  P3 needs C3, C2
+  P4 needs C4, C3
 ```
 
 ## Why It Matters

@@ -193,14 +193,14 @@ ARM Cortex-X4:
 
 ```
 AWS Graviton3 (2022):
-  - 64 Cortex-A710 cores
+  - 64 Neoverse-V1 cores
   - ARMv8.4-A
   - 2 GHz base clock
   - 48 MB L3 cache
   - DDR5 memory
   - 60% better perf/watt vs Graviton2
 
-Ampere Altra (2022):
+Ampere Altra (2020):
   - 128 custom ARM cores (Neoverse N1)
   - 3.0 GHz
   - 128 MB L3 cache

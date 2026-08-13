@@ -310,7 +310,7 @@ A:
 - **CART**: Requires encoding (one-hot, label) — binary splits only
 - **ID3/C4.5**: Can handle natively by splitting on each category
 - **CatBoost**: Uses ordered target statistics for native categorical handling
-- **LightGBM**: Uses gradient-based one-side sampling for categorical features
+- **LightGBM**: Native categorical splits (Fisher-based partitioning / target-encoded sorting); GOSS is for sample selection, not categorical handling
 
 ### FAANG-Level
 

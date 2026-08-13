@@ -80,7 +80,7 @@ Turbopack is a **Rust-based bundler** that replaces Webpack (default in 16; opti
 
 ## Middleware → proxy.ts (Next.js 16)
 
-Next.js 15 used `middleware.ts` for edge logic (auth guards, redirects, A/B tests). Next.js 16 replaces it with **`proxy.ts`** for clearer network-boundary semantics (renamed to reflect that it intercepts at the edge/proxy layer, not inside the request pipeline).
+Next.js 15 used `middleware.ts` for edge logic (auth guards, redirects, A/B tests). Next.js 16 introduces **`proxy.ts`** as the new preferred name (middleware.ts still supported) for clearer network-boundary semantics (renamed to reflect that it intercepts at the edge/proxy layer, not inside the request pipeline).
 
 ## Ecosystem
 

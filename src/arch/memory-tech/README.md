@@ -191,7 +191,7 @@ Optimized for **high bandwidth** in GPUs.
 | GDDR5 | 2008 | ~28 GB/s per chip | Mid-range GPUs |
 | GDDR5X | 2016 | ~48 GB/s per chip | High-end GPUs |
 | GDDR6 | 2018 | ~64 GB/s per chip | RTX 20/30 series |
-| GDDR6X | 2020 | ~108 GB/s per chip | RTX 3090/4090 |
+| GDDR6X | 2020 | ~78-84 GB/s per chip | RTX 3090/4090 |
 
 **Key differences from DDR:**
 - Higher clock speeds (wider bus, higher frequency)
@@ -227,7 +227,7 @@ HBM:
 | HBM | 2013 | 128 GB/s | 4 dies | AMD Fury |
 | HBM2 | 2016 | 307 GB/s | 8 dies | NVIDIA V100 |
 | HBM2E | 2019 | 461 GB/s | 8 dies | NVIDIA A100 |
-| HBM3 | 2022 | 819 GB/s | 8-12 dies | NVIDIA H100 |
+| HBM3 | 2022 | up to 819 GB/s (spec) | 8-12 dies | NVIDIA H100 (~670 GB/s/stack) |
 | HBM3E | 2024 | 1.2 TB/s | 12 dies | NVIDIA H200 |
 
 **Key features:**

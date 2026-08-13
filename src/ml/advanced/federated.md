@@ -29,22 +29,28 @@ def federated_averaging(global_model, client_data, num_rounds=100, local_epochs=
 
         # Each client trains locally
         client_updates = []
+        client_sizes = []  # n_k — number of examples on each client (for FedAvg weighting)
         for client_id in selected_clients:
             local_model = copy.deepcopy(global_model)
             local_model = train_local(local_model, client_data[client_id], local_epochs)
             client_updates.append(get_model_params(local_model))
+            client_sizes.append(len(client_data[client_id]))
 
-        # Aggregate updates (weighted average)
-        global_params = aggregate(client_updates)
+        # Aggregate updates (weighted average — FedAvg uses n_k / Σn_k weighting)
+        global_params = aggregate(client_updates, client_sizes)
         set_model_params(global_model, global_params)
 
     return global_model
 
-def aggregate(client_updates):
-    """FedAvg: weighted average of client model parameters"""
+def aggregate(client_updates, client_sizes):
+    """FedAvg: weighted average of client model parameters, weighted by n_k / Σn_k"""
+    total_size = sum(client_sizes)
     avg_params = {}
     for key in client_updates[0].keys():
-        avg_params[key] = sum(update[key] for update in client_updates) / len(client_updates)
+        avg_params[key] = sum(
+            size * update[key]
+            for size, update in zip(client_sizes, client_updates)
+        ) / total_size
     return avg_params
 ```
 

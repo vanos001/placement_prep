@@ -210,7 +210,7 @@ The frame defines which rows are included in the window for each row.
 ```sql
 -- ROWS: Physical offset (specific number of rows)
 ROWS BETWEEN 2 PRECEDING AND CURRENT ROW
-ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW  -- default
+ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW  -- explicit ROWS frame (default is RANGE)
 ROWS BETWEEN CURRENT ROW AND UNBOUNDED FOLLOWING
 ROWS BETWEEN 1 PRECEDING AND 1 FOLLOWING  -- sliding window of 3
 

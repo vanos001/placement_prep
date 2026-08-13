@@ -293,7 +293,7 @@ class Nagle:
 ### Nagle's Algorithm Statistics
 
 ```
-Impact on small messages (100-byte messages):
+Impact on tiny messages (1-byte payloads, 40-byte TCP/IP header → 41-byte packets):
 
 Without Nagle:
   - 1000 messages/sec × 41 bytes = 41 KB/sec
@@ -301,9 +301,9 @@ Without Nagle:
   - Header overhead: 40 KB/sec (97.6%)
 
 With Nagle (assuming 5 messages per ACK):
-  - 200 segments/sec × 240 bytes = 48 KB/sec
+  - 200 segments/sec × 45 bytes (40 header + 5 payload) = 9 KB/sec
   - 200 packets/sec
-  - Header overhead: 16 KB/sec (33.3%)
+  - Header overhead: 8 KB/sec (88.9%)
   - 5× fewer packets
 ```
 

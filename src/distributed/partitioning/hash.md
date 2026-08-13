@@ -184,7 +184,7 @@ slot = crc16(key) % 16384
    - No range queries (keys are scattered), expensive repartitioning (changing N redistributes most data), no ordering.
 
 3. **Why is repartitioning expensive with hash partitioning?**
-   - Changing N from 3 to 4 means hash%3 ≠ hash%4 for most keys. Approximately (N-1)/N of all keys must move.
+   - Changing N from 3 to 4 means hash%3 ≠ hash%4 for most keys. Approximately N/(N+1) of all keys must move (for the 3→4 case, 3/4 = 75%).
 
 4. **When would you choose hash over range partitioning?**
    - Hash: when you need uniform distribution and only do point lookups (key-value stores). Range: when you need range queries or ordered data.

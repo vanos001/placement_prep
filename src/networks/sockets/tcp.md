@@ -210,7 +210,7 @@ graph TD
    A: With 2-way, the server can't confirm the client received its SYN-ACK. The 3rd ACK confirms to the server that the client is ready. Also prevents old duplicate SYN packets from creating phantom connections.
 
 3. **Q: What is TIME_WAIT?**
-   A: After closing, the endpoint that sent the final ACK waits 2×MSL (typically 60s). Purpose: 1) Ensure the remote receives the ACK (if lost, remote retransmits FIN), 2) Allow remaining packets to expire. Can cause "Address already in use" errors — use SO_REUSEADDR.
+   A: After closing, the endpoint that sent the final ACK waits 2×MSL. RFC 793 specifies MSL = 2 minutes, so 2×MSL = 4 minutes (240 seconds). Linux's default TIME_WAIT is 60 seconds (note: `net.ipv4.tcp_fin_timeout` is for FIN_WAIT-2, not TIME_WAIT). Purpose: 1) Ensure the remote receives the ACK (if lost, remote retransmits FIN), 2) Allow remaining packets to expire. Can cause "Address already in use" errors — use SO_REUSEADDR.
 
 4. **Q: What is Nagle's algorithm and when should you disable it?**
    A: Nagle's buffers small writes into larger segments (saves bandwidth, adds latency). Disable with TCP_NODELAY for: interactive applications (SSH, telnet), real-time systems (gaming), or when you're already batching data at the application layer.

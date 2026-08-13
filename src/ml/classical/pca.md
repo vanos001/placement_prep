@@ -101,7 +101,10 @@ class PCA_SVD:
         
         self.components = Vt[:self.n_components]
         self.explained_variance = (S**2) / (len(X) - 1)
-        self.explained_variance_ratio = self.explained_variance / np.sum(self.explained_variance)
+        # Divide by total variance across ALL components, not just the kept top n_components.
+        # This mirrors sklearn's PCA.explained_variance_ratio_, which only sums to 1.0
+        # when n_components == min(n_samples, n_features).
+        self.explained_variance_ratio = self.explained_variance / np.sum((S**2) / (len(X) - 1))
         
         return self
 ```

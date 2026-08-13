@@ -126,7 +126,7 @@ graph LR
 | **Readable** | Source of data | `fs.createReadStream()`, `http.IncomingMessage` |
 | **Writable** | Destination for data | `fs.createWriteStream()`, `http.ServerResponse` |
 | **Duplex** | Both readable and writable | `net.Socket`, `zlib` streams |
-| **Transform** | Modify data as it passes through | `zlib.createGzip()`, `crypto.createCipher()` |
+| **Transform** | Modify data as it passes through | `zlib.createGzip()`, `crypto.createCipheriv()` |
 
 ### Backpressure
 

@@ -189,7 +189,10 @@ channel.queue_declare(
         'x-dead-letter-exchange': 'dlx',
         'x-dead-letter-routing-key': 'dlq',
         'x-message-ttl': 60000,  # 60 seconds TTL
-        'x-max-retries': 3
+        # Note: there is no `x-max-retries` argument in RabbitMQ. To limit retries,
+        # track delivery count in the message's `x-death` header (set when a message
+        # is dead-lettered) and/or use `x-delivery-limit` (quorum queues only).
+        'x-delivery-limit': 3,  # quorum queues only — number of redelivery attempts
     }
 )
 ```

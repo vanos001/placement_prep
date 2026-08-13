@@ -236,7 +236,7 @@ sed 'G' file
 # Triple-space a file
 sed 'G;G' file
 
-# Comment out a line
+# Uncomment and change a line: '#Port 22' → 'Port 2222'
 sed -i 's/^#Port 22/Port 2222/' /etc/ssh/sshd_config
 
 # Add prefix to each line

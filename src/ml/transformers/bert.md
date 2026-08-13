@@ -158,7 +158,7 @@ for epoch in range(3):
 1. Removed NSP (found to be unhelpful)
 2. Trained with larger batch sizes and more data
 3. Used dynamic masking (different mask each epoch vs. static)
-4. Trained longer (500K vs. 1M steps)
+4. Trained with larger batches and more total compute (500K steps × 8K batch ≈ 4× more tokens/step than BERT's 1M steps × 256 batch)
 5. Used byte-level BPE instead of WordPiece
 
 ## Common Mistakes

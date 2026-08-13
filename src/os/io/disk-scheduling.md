@@ -68,13 +68,14 @@ Access Time = Seek Time + Rotational Latency + Transfer Time
 
 ```
 Head starts at track 50, requests: 95, 15, 35, 70, 10
-Direction: toward higher tracks
+Disk range: 0-100. Direction: toward higher tracks
 
 FCFS:    50 → 95 → 15 → 35 → 70 → 10  (total movement: 45+80+20+35+60 = 240)
 SSTF:    50 → 35 → 15 → 10 → 70 → 95  (total movement: 15+20+5+60+25 = 125)
-SCAN:    50 → 70 → 95 → 35 → 15 → 10  (total movement: 20+25+60+20+5 = 130)
-C-SCAN:  50 → 70 → 95 → 10 → 15 → 35  (total movement: 20+25+85+5+20 = 155)
-LOOK:    50 → 70 → 95 → 35 → 15 → 10  (same as SCAN here, doesn't go to edge)
+SCAN:    50 → 70 → 95 → 100 → 35 → 15 → 10  (total movement: 20+25+5+65+20+5 = 140)
+C-SCAN:  50 → 70 → 95 → 100 → 0 → 10 → 15 → 35  (total movement: 20+25+5+100+10+5+20 = 185)
+LOOK:    50 → 70 → 95 → 35 → 15 → 10  (total movement: 20+25+60+20+5 = 130)
+C-LOOK:  50 → 70 → 95 → 10 → 15 → 35  (total movement: 20+25+85+5+20 = 155)
 ```
 
 ## Linux I/O Schedulers

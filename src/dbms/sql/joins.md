@@ -408,7 +408,7 @@ WHERE next_id - id > 1;
 - Filtering right-table columns in WHERE instead of ON with LEFT JOIN
 - Forgetting that NOT IN with NULLs returns empty result
 - Not using table aliases with self-joins (ambiguous column names)
-- Assuming INNER JOIN order doesn't affect performance (it does — smaller table first is usually better)
+- Assuming INNER JOIN written order matters — modern cost-based optimizers (PostgreSQL, MySQL, SQL Server, Oracle) reorder INNER JOINs automatically based on table statistics; the written order only affects OUTER JOINs or when the optimizer picks a bad plan due to stale statistics
 - Using CROSS JOIN accidentally (missing ON clause) and getting millions of rows
 
 ## Summary

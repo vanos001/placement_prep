@@ -100,7 +100,8 @@ find . -cmin -30     # Changed in last 30 minutes
 find . -ctime -7     # Changed in last 7 days
 
 # Birth time (Linux 4.11+, GNU findutils 4.9+)
-find . -newerBm -7   # Created in last 7 months
+# -newerBt compares birth time against a literal date string (the 't' suffix).
+find . -newerBt "7 days ago"   # Created in last 7 days
 
 # Time comparison
 find . -newer reference_file    # Modified after reference

@@ -153,7 +153,8 @@ After enqueue(1,2,3), dequeue() x2, enqueue(4,5,6,7):
 
 Index:  0   1   2   3   4
 Data:   6   7   3   4   5
-                ^front  ^back
+            ^back
+                ^front
 
 frontIndex = 2
 backIndex = 1  (wrapped around!)

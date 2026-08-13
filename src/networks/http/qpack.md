@@ -99,10 +99,12 @@ graph LR
 
 ### Encoder Instructions (on encoder stream)
 
+Per RFC 9204 §4.3.2:
+
 | Bits prefix | Type | Fields |
 |-------------|------|--------|
-| `00` | Insert with Name Ref | Static/Dynamic flag, name index, H flag, value literal (Huffman?) |
-| `01` | Insert Literal | H flag, name literal (possibly Huffman) + value |
+| `1T` (1-bit prefix) | Insert with Name Reference | Static/Dynamic flag, name index, H flag, value literal (Huffman?) |
+| `01H` (3-bit prefix) | Insert with Literal Name | H flag, name literal (possibly Huffman) + value |
 | `001` | Set Dynamic Table Capacity | New capacity (5-bit prefix varint) |
 | `000` | Duplicate | Relative index of entry to duplicate |
 

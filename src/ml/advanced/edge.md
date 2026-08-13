@@ -52,7 +52,7 @@ class DepthwiseSeparable(nn.Module):
 
 # Regular conv: 3×3×Cin×Cout = 9×Cin×Cout parameters
 # Depthwise separable: 3×3×Cin + Cin×Cout = Cin×(9 + Cout) parameters
-# For 256→512: 1,179,648 → 147,456 (8x reduction)
+# For 256→512: 1,179,648 → 133,376 (≈8.8x reduction)
 ```
 
 ### 2. TensorFlow Lite

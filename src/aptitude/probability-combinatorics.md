@@ -118,8 +118,11 @@ C(n, r) = C(n-1, r-1) + C(n-1, r)
 
 Divide n distinct objects into groups of sizes r₁, r₂, ...:
 ```
-n! / (r₁! × r₂! × ... × rₖ!) × 1/k! (if groups are identical)
-n! / (r₁! × r₂! × ... × rₖ!) (if groups are distinct)
+Into k unordered (identical) groups: n! / (r₁! × r₂! × ... × rₖ! × s₁! × s₂! × ... × sₘ!)
+  where sᵢ counts how many groups share the same size
+  (special case: if all k groups have distinct sizes, this reduces to n! / (r₁! × ... × rₖ!) × 1/k!)
+
+Into k ordered (labeled) groups: n! / (r₁! × r₂! × ... × rₖ!)
 ```
 
 ### Dividing Identical Objects

@@ -308,7 +308,7 @@ A trait is **object-safe** if it can be used as a trait object (`dyn Trait`). Th
 2. **No generic type parameters** on methods
 3. **No associated types** (unless they have a default)
 4. **Return types must not use `Self`** (except as the receiver)
-5. **No `where Self: Sized` constraints** on the trait itself
+5. **The trait itself must not require `Self: Sized` as a supertrait; methods may add `where Self: Sized` to opt out of dyn dispatch**
 
 ```rust
 // Object-safe trait

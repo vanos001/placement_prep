@@ -192,7 +192,7 @@ Services that make many fine-grained calls to each other instead of using coarse
 ### Remediation
 - Design coarse-grained APIs that represent business operations
 - Use the BFF (Backend for Frontend) pattern to aggregate calls
-- Implement GraphQL or gQL for flexible data fetching
+- Implement GraphQL for flexible data fetching, or gRPC for efficient binary RPC
 - Use data denormalization to reduce cross-service queries
 - Consider whether services should be merged if they communicate excessively
 - Implement batching and caching at the API gateway level

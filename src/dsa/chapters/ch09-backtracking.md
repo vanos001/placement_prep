@@ -633,7 +633,7 @@ int main() {
 | Version | Time | Space |
 |---------|------|-------|
 | Basic backtracking | O(n!) | O(n^2) |
-| Optimized with hash sets | O(n!) | O(n) |
+| Optimized with hash sets | O(n!) | O(n^2) |
 
 The time complexity is O(n!) because:
 - Row 0: n choices

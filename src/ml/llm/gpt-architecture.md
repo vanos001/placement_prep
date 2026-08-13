@@ -330,11 +330,11 @@ class TransformerBlock(nn.Module):
         self.ln2 = nn.LayerNorm(d_model)
         self.ffn = FeedForward(d_model)
     
-    def forward(self, x, kv_cache=None):
+    def forward(self, x, kv_cache=None, start_pos=0):
         # Pre-LayerNorm (GPT-2 style)
         residual = x
         x_norm = self.ln1(x)
-        attn_out, new_cache = self.attn(x_norm, kv_cache)
+        attn_out, new_cache = self.attn(x_norm, kv_cache, start_pos=start_pos)
         x = residual + attn_out
         
         residual = x
@@ -364,19 +364,21 @@ class GPT2(nn.Module):
         # Weight tying
         self.lm_head.weight = self.token_emb.weight
     
-    def forward(self, input_ids, kv_caches=None):
+    def forward(self, input_ids, kv_caches=None, start_pos=0):
         B, T = input_ids.shape
         device = input_ids.device
         
-        # Token + position embeddings
-        positions = torch.arange(T, device=device).unsqueeze(0)
+        # Token + position embeddings — positions must start at start_pos (the
+        # number of already-cached tokens) so cached generation uses correct
+        # positional embeddings for each new token.
+        positions = torch.arange(start_pos, start_pos + T, device=device).unsqueeze(0)
         x = self.token_emb(input_ids) + self.pos_emb(positions)
         
         # Process through blocks
         new_caches = []
         for i, block in enumerate(self.blocks):
             cache = kv_caches[i] if kv_caches else None
-            x, new_cache = block(x, cache)
+            x, new_cache = block(x, cache, start_pos=start_pos)
             new_caches.append(new_cache)
         
         x = self.ln_final(x)
@@ -388,18 +390,23 @@ class GPT2(nn.Module):
         """Autoregressive generation with KV cache."""
         self.eval()
         kv_caches = None
+        start_pos = 0  # Number of tokens already processed (cached)
         
         for _ in range(max_new_tokens):
             # Use only the last token if we have KV cache
             if kv_caches is not None:
-                input_ids = input_ids[:, -1:]
+                input_step = input_ids[:, -1:]
+            else:
+                input_step = input_ids
             
-            logits, kv_caches = self.forward(input_ids, kv_caches)
+            logits, kv_caches = self.forward(input_step, kv_caches, start_pos=start_pos)
             logits = logits[:, -1, :] / temperature
             
             probs = F.softmax(logits, dim=-1)
             next_token = torch.multinomial(probs, num_samples=1)
             input_ids = torch.cat([input_ids, next_token], dim=1)
+            # Advance the position pointer by the number of tokens just processed
+            start_pos += input_step.size(1)
         
         return input_ids
 

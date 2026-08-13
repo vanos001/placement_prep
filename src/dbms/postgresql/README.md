@@ -15,7 +15,8 @@ Client → Postmaster (master process)
                   ├── bgwriter (writes dirty pages)
                   ├── checkpointer
                   ├── autovacuum
-                  ├── stats collector
+                  ├── walwriter
+                  ├── logical replication launcher
                   └── WAL archiver
 ```
 

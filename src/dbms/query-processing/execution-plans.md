@@ -156,8 +156,6 @@ Execution plans are trees where:
 For: SELECT name FROM students WHERE gpa > 3.5 ORDER BY name
 
 Plan Tree:
-         Limit (if TOP N)
-            ↓
          Sort (ORDER BY name)
             ↓
          Seq Scan (students, Filter: gpa > 3.5)
@@ -219,7 +217,7 @@ flowchart TD
 **Examples:**
 - **SQL Server Adaptive Joins**: Can switch between hash join and nested loop mid-execution
 - **Oracle Adaptive Plans**: Re-optimizes if estimates are way off
-- **PostgreSQL**: Limited adaptive capabilities (mostly through GEQO for many-way joins)
+- **PostgreSQL**: Limited adaptive capabilities (mostly plan-time, e.g. GEQO for many-way joins). Runtime adaptation is minimal compared to SQL Server Adaptive Joins or Oracle Adaptive Plans.
 
 ### Reading a Complex Plan
 

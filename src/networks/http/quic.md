@@ -123,24 +123,31 @@ QUIC provides **native stream multiplexing**. Each stream is an independent, ord
 
 ```
 QUIC Connection
-├── Stream 0 (control stream, unidirectional)
-├── Stream 1 (control stream, unidirectional)
-├── Stream 2 (encoder stream)
-├── Stream 3 (decoder stream)
-├── Stream 4 (request/response, bidirectional) ← HTTP request 1
-├── Stream 8 (request/response, bidirectional) ← HTTP request 2
-├── Stream 12 (request/response, bidirectional) ← HTTP request 3
+├── Stream 0  (client bidi, first HTTP request/response)
+├── Stream 1  (server bidi, rarely used in HTTP/3)
+├── Stream 2  (client uni, control stream) ← HTTP/3 control
+├── Stream 3  (server uni, control stream) ← HTTP/3 control
+├── Stream 4  (client bidi, HTTP request 2)
+├── Stream 6  (client uni, QPACK encoder stream)
+├── Stream 7  (server uni, QPACK encoder stream)
+├── Stream 8  (client bidi, HTTP request 3)
+├── Stream 10 (client uni, QPACK decoder stream)
+├── Stream 11 (server uni, QPACK decoder stream)
+├── Stream 12 (client bidi, HTTP request 4)
 └── ...
 
-Streams are identified by a stream ID:
-- Bit 0: 0 = client-initiated, 1 = server-initiated
-- Bit 1: 0 = bidirectional, 1 = unidirectional
-- Remaining bits: stream number
+Stream IDs encode type in their low 2 bits (RFC 9000 §2.1):
+  0b00 = client-initiated, bidirectional  (0, 4, 8, 12, ...)
+  0b01 = server-initiated, bidirectional (1, 5, 9, 13, ...)
+  0b10 = client-initiated, unidirectional (2, 6, 10, 14, ...)
+  0b11 = server-initiated, unidirectional (3, 7, 11, 15, ...)
 
-Stream 0b00 = client-initiated, bidirectional
-Stream 0b01 = server-initiated, bidirectional
-Stream 0b10 = client-initiated, unidirectional
-Stream 0b11 = server-initiated, unidirectional
+For HTTP/3 (RFC 9114 §6):
+  - Stream 2 = client control stream
+  - Stream 3 = server control stream
+  - QPACK encoder streams are 6 (client) and 7 (server)
+  - QPACK decoder streams are 10 (client) and 11 (server)
+  - The first HTTP request/response uses stream 0
 ```
 
 **Independent streams mean:**
@@ -207,8 +214,14 @@ ACK Frame:
 
 Example: ACK for packets 1,2,3,5,6,7,10
   Largest Acknowledged: 10
-  First ACK Range: 0 (10-0 = 10, then...)
-  Ranges: {10-8}, gap, {6-4}, gap, {2-0}
+  First ACK Range: 0 (just packet 10)
+  Then alternating [Gap, ACK Range] pairs:
+    Gap = 2   (packets 8, 9 missing)
+    ACK Range = 2 (packets 5, 6, 7)
+    Gap = 1   (packet 4 missing)
+    ACK Range = 2 (packets 1, 2, 3)
+
+  Equivalently, the acknowledged set is {10}, {5-7}, {1-3}.
 ```
 
 ### Congestion Control

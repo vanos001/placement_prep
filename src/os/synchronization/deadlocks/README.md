@@ -252,7 +252,7 @@ The Banker's Algorithm checks if granting a resource request leads to a **safe s
 **Example:**
 
 ```
-Processes: P0, P1, P2
+Processes: P0, P1, P2, P3, P4
 Resources: A(10), B(5), C(7)
 
 Current allocation:     Max need:        Available:
@@ -260,16 +260,25 @@ Current allocation:     Max need:        Available:
 P0: 0  1  0              7  5  3          3  3  2
 P1: 2  0  0              3  2  2
 P2: 3  0  2              9  0  2
+P3: 2  1  1              2  2  2
+P4: 0  0  2              4  3  3
 
 Safety check: Can all processes finish?
 Need = Max - Allocation:
-P0: 7,4,3  P1: 1,2,2  P2: 6,0,0
+P0: 7,4,3  P1: 1,2,2  P2: 6,0,0  P3: 0,1,1  P4: 4,3,1
 
 1. P1 can run (need 1,2,2 ≤ available 3,3,2)
    After P1 finishes: available = 3,3,2 + 2,0,0 = 5,3,2
-2. P0 can run (need 7,4,3 > available 5,3,2) → skip
-   P2 can run (need 6,0,0 > available 5,3,2) → skip
-   Stuck! → UNSAFE if we grant any more to P0/P2
+2. P3 can run (need 0,1,1 ≤ available 5,3,2)
+   After P3 finishes: available = 5,3,2 + 2,1,1 = 7,4,3
+3. P4 can run (need 4,3,1 ≤ available 7,4,3)
+   After P4 finishes: available = 7,4,3 + 0,0,2 = 7,4,5
+4. P2 can run (need 6,0,0 ≤ available 7,4,5)
+   After P2 finishes: available = 7,4,5 + 3,0,2 = 10,4,7
+5. P0 can run (need 7,4,3 ≤ available 10,4,7)
+   After P0 finishes: available = 10,4,7 + 0,1,0 = 10,5,7
+
+Safe sequence: P1 → P3 → P4 → P2 → P0 ✅ SAFE
 ```
 
 ### 3. Deadlock Detection

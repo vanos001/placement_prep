@@ -51,6 +51,7 @@ graph TD
 
 ```python
 import numpy as np
+from sklearn.base import clone
 from sklearn.tree import DecisionTreeClassifier
 
 class BaggingClassifier:

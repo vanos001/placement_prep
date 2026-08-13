@@ -48,7 +48,7 @@ L2 Cache access           7 ns            -
 RAM access                100 ns          10 GB/s
 SSD random read           100 μs          500 MB/s
 HDD random read           10 ms           100 MB/s
-HDD sequential read       1 ms            200 MB/s
+HDD sequential read       20 ms           200 MB/s
 ```
 
 **Key insight:** Random disk I/O is 10,000-100,000x slower than memory access. The entire purpose of buffer management and file organization is to minimize disk I/O.

@@ -238,4 +238,4 @@ Facebook-style feed (causal consistency):
 - [Lamport Clocks](./lamport.md) — Used to implement causal consistency
 - [Vector Clocks](./vector-clocks.md) — Capturing causal dependencies
 - [Quorum Replication](../replication/quorum.md) — Tuning consistency with quorums
-- [DynamoDB](../replication/primary-backup.md) — Eventual consistency in practice
+- [Primary-Backup Replication](../replication/primary-backup.md) — Eventual consistency in practice

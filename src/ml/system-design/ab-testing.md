@@ -72,11 +72,18 @@ def analyze_experiment(control_metrics, treatment_metrics):
     t_stat, p_value = stats.ttest_ind(treatment_metrics, control_metrics)
     lift = (treatment_metrics.mean() - control_metrics.mean()) / control_metrics.mean()
 
+    # Welch's two-sample t-interval for the mean difference
+    diff = treatment_metrics.mean() - control_metrics.mean()
+    n1, n2 = len(treatment_metrics), len(control_metrics)
+    se_diff = np.sqrt(treatment_metrics.var(ddof=1) / n1 + control_metrics.var(ddof=1) / n2)
+    df_welch = se_diff**4 / ((treatment_metrics.var(ddof=1) / n1)**2 / (n1 - 1) +
+                              (control_metrics.var(ddof=1) / n2)**2 / (n2 - 1))
+    ci = stats.t.interval(0.95, df=df_welch, loc=diff, scale=se_diff)
     return {
         'p_value': p_value,
         'significant': p_value < 0.05,
         'lift': lift,
-        'confidence_interval': stats.t.interval(0.95, df=len(treatment_metrics)-1)
+        'confidence_interval': ci
     }
 ```
 

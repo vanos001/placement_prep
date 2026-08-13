@@ -148,7 +148,7 @@ sequenceDiagram
 ```mermaid
 sequenceDiagram
     participant V as Victim<br/>192.168.1.10
-    participant A as Attacker<br/>192.168.1.666
+    participant A as Attacker<br/>192.168.1.166
     participant GW as Gateway<br/>192.168.1.1
     
     Note over A: Attacker sends fake ARP replies

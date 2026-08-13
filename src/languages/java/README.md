@@ -32,7 +32,7 @@ Java is a class-based, object-oriented programming language designed to have few
 | **Error handling** | Exceptions (checked + unchecked) |
 | **Concurrency** | Threads, locks, java.util.concurrent |
 | **Memory management** | GC (generational) |
-| **Latest LTS** | Java 21 (2023) |
+| **Latest LTS** | Java 25 (2025) |
 
 ## JVM Architecture
 

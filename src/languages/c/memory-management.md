@@ -212,7 +212,7 @@ A memory leak occurs when you allocate memory but never free it:
 #include <stdlib.h>
 #include <string.h>
 
-// LEAK: Allocates but never frees
+// Caller-owned: returns heap memory the caller must free
 char* create_greeting(const char *name) {
     char *greeting = malloc(100);
     if (greeting == NULL) return NULL;

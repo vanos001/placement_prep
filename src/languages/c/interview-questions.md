@@ -252,8 +252,8 @@ int main() {
     int *start = &arr[0];
     int *end = &arr[4];
     ptrdiff_t distance = end - start;  // 4 (elements, not bytes)
-    printf("Distance: %ld elements\n", distance);
-    printf("Bytes apart: %ld\n", (char*)end - (char*)start);  // 16 bytes
+    printf("Distance: %td elements\n", distance);
+    printf("Bytes apart: %td\n", (ptrdiff_t)((char*)end - (char*)start));  // 16 bytes
     
     // Array indexing is pointer arithmetic: arr[i] == *(arr + i)
     for (int i = 0; i < 5; i++) {

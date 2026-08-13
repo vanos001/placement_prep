@@ -85,9 +85,9 @@ def soft_softmax(logits, temperature):
 # Example
 logits = torch.tensor([5.0, 3.0, 1.0, 0.5])
 
-print("T=1:", soft_softmax(logits, 1.0))   # [0.84, 0.12, 0.02, 0.01]
-print("T=4:", soft_softmax(logits, 4.0))   # [0.38, 0.29, 0.19, 0.14]
-print("T=10:", soft_softmax(logits, 10.0)) # [0.30, 0.27, 0.23, 0.21]
+print("T=1:", soft_softmax(logits, 1.0))   # [0.86, 0.12, 0.02, 0.01]
+print("T=4:", soft_softmax(logits, 4.0))   # [0.43, 0.26, 0.16, 0.14]
+print("T=10:", soft_softmax(logits, 10.0)) # [0.32, 0.26, 0.21, 0.20]
 ```
 
 ## Training Procedure

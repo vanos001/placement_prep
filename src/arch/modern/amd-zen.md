@@ -146,7 +146,7 @@ AMD's 3D stacking technology:
   - Stacks additional L3 cache on top of the CCD
   - 5800X3D: 96 MB L3 (32 MB + 64 MB stacked)
   - 7800X3D: 96 MB L3 (32 MB + 64 MB stacked)
-  - 7950X3D: 128 MB L3 (two CCDs with V-Cache)
+  - 7950X3D: 128 MB L3 (one CCD has V-Cache 96 MB, the other standard 32 MB)
 
 Benefits:
   - 15-25% gaming performance improvement

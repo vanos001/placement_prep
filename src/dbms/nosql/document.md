@@ -223,7 +223,7 @@ Another popular document database with unique features:
 | **Replication** | Replica sets | Multi-master replication |
 | **Conflict resolution** | Last-write-wins | Application-defined |
 | **API** | Binary protocol | HTTP/REST |
-| **Offline** | No | Yes (Couchbase Lite) |
+| **Offline** | No | Yes (PouchDB) |
 
 ## Interview Questions
 
@@ -251,6 +251,7 @@ Rule of thumb: Embed if data is always accessed together and the relationship is
 ### Q3: How does MongoDB handle transactions?
 **Answer:** MongoDB supports multi-document ACID transactions since version 4.0:
 ```javascript
+const session = db.getMongo().startSession();
 session.startTransaction()
 try {
   db.accounts.updateOne({ _id: 1 }, { $inc: { balance: -100 } }, { session })

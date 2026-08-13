@@ -219,7 +219,7 @@ Caching:
 | Protocol | TCP | TCP | QUIC (UDP) |
 | Multiplexing | No (head-of-line blocking) | Yes (single connection) | Yes |
 | Header Compression | No | HPACK | QPACK |
-| Server Push | No | Yes | Yes |
+| Server Push | No | Yes (deprecated in Chrome 2022) | Yes (rarely used) |
 | Connection | One per request (keep-alive) | Single multiplexed | Single multiplexed |
 | TLS | Optional | Often used | Built-in |
 

@@ -86,7 +86,7 @@ Useful checks:
 - Statistics are current enough for cardinality estimates.
 - Hash joins fit memory or spill predictably.
 - A merge join can benefit from existing ordering.
-- Functions or casts on join columns do not prevent index use.
+- Functions or casts on join columns **do** prevent index use (unless a matching expression index exists).
 - Filters are pushed down without changing outer-join semantics.
 
 ## Interview questions

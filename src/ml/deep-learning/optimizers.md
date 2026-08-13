@@ -30,12 +30,12 @@ class SGDMomentum:
         self.velocity = {}
     
     def update(self, params, grads):
-        for key, (param, grad) in enumerate(zip(params, grads)):
-            if key not in self.velocity:
-                self.velocity[key] = np.zeros_like(param)
-            
-            self.velocity[key] = self.momentum * self.velocity[key] + grad
-            param -= self.lr * self.velocity[key]
+        for i, (param, grad) in enumerate(zip(params, grads)):
+            if i not in self.velocity:
+                self.velocity[i] = np.zeros_like(param)
+
+            self.velocity[i] = self.momentum * self.velocity[i] + grad
+            param -= self.lr * self.velocity[i]
 ```
 
 **Why momentum?**: Accelerates convergence in consistent gradient directions, dampens oscillations.

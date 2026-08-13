@@ -210,7 +210,7 @@ Table storage:
   Base:       16384 (main data file)
   FSM:        16384_fsm (free space map)
   VM:         16384_vm (visibility map)
-  TOAST:      16384 (toast table for large values)
+  TOAST:      16384_toast (toast table for large values; file uses the TOAST table's own OID, not the main table's OID)
 ```
 
 ## Interview Questions

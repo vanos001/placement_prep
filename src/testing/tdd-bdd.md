@@ -422,6 +422,8 @@ Feature: Password Reset
 
 ```python
 # TDD: Unit-level implementation
+from datetime import datetime, timedelta
+
 class TestPasswordResetService:
     def test_generates_unique_token(self):
         service = PasswordResetService()
@@ -432,6 +434,7 @@ class TestPasswordResetService:
     def test_token_expires_after_24_hours(self):
         service = PasswordResetService()
         token = service.generate_token("alice@test.com")
+        now = datetime.now()
 
         # 23 hours — still valid
         assert service.is_valid(token, now + timedelta(hours=23))
@@ -445,7 +448,9 @@ class TestPasswordResetService:
         service.request_reset("alice@test.com")
 
         email_service.send.assert_called_once()
-        sent_email = email_service.send.call_args
+        sent_args, sent_kwargs = email_service.send.call_args
+        # access the email object via sent_args[0] or sent_kwargs["email"], depending on signature
+        sent_email = sent_args[0]
         assert "alice@test.com" in sent_email.to
         assert "/reset" in sent_email.body
 ```

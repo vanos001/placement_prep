@@ -127,7 +127,7 @@ ERE is the dialect used by `grep -E` (or `egrep`), `awk`, and `sed -E`. It makes
 |---------|-----|-----|
 | `+` (one or more) | `\+` | `+` |
 | `?` (zero or one) | `\?` | `?` |
-| `|` (alternation) | `\|` | `|` |
+| `|` (alternation) | `\|` (GNU ext) | `|` |
 | `{m,n}` (repetition) | `\{m,n\}` | `{m,n}` |
 | `()` (grouping) | `\(\)` | `()` |
 | Backreferences | `\1`-`\9` | Not standard |
@@ -140,7 +140,7 @@ grep -E 'cat|dog' file    # "cat" or "dog"
 grep -E 'a{2,4}' file    # 2 to 4 'a's
 grep -E '(ab)+' file      # one or more "ab"
 
-# Same in BRE:
+# Same in BRE (GNU extensions — not portable POSIX BRE):
 grep 'a\+' file
 grep 'colou\?r' file
 grep 'cat\|dog' file

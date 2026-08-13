@@ -126,7 +126,7 @@ params = {
     'max_depth': -1,            # -1 means no limit (controlled by num_leaves)
     'learning_rate': 0.05,
     'feature_fraction': 0.8,    # Column sampling
-    'bagging_fraction': 0.8,    # Row sampling (GOSS)
+    'bagging_fraction': 0.8,    # Row sampling (random subsampling; GOSS is separate — enabled via boosting_type='goss')
     'bagging_freq': 5,
     'min_child_samples': 20,    # Min samples in a leaf
     'lambda_l1': 0.1,
@@ -230,7 +230,7 @@ A:
 1. **Categorical features**: Specify `categorical_feature` parameter — LightGBM uses optimal split finding for categoricals
 2. **num_leaves**: Start with 127, tune down if overfitting
 3. **learning_rate**: 0.05 with 2000+ rounds and early stopping
-4. **GOSS**: `bagging_fraction=0.8, bagging_freq=5`
+4. **GOSS**: Enable via `boosting_type='goss'` (uses `top_rate`/`other_rate`); `bagging_fraction`/`bagging_freq` are for random subsampling, not GOSS
 5. **EFB**: Automatically applied for sparse features
 6. **Regularization**: `min_child_samples=100` (large dataset), `lambda_l2=10`
 7. **Feature fraction**: `feature_fraction=0.7` for decorrelation

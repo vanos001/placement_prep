@@ -90,14 +90,16 @@ tRP (Row Precharge): Time to close a row before opening another (~14 ns DDR4)
 
 ## DRAM Generations
 
-| Generation | Voltage | Data Rate | Prefetch | Bandwidth/Chip |
-|------------|---------|-----------|----------|----------------|
-| SDRAM | 3.3V | 100-133 MHz | 1n | 0.8-1.1 GB/s |
-| DDR | 2.5V | 200-400 MHz | 2n | 3.2 GB/s |
-| DDR2 | 1.8V | 400-800 MHz | 4n | 6.4 GB/s |
-| DDR3 | 1.5V | 800-2133 MHz | 8n | 17 GB/s |
-| DDR4 | 1.2V | 1600-3200 MHz | 8n | 25.6 GB/s |
-| DDR5 | 1.1V | 3200-6400 MHz | 16n | 51.2 GB/s |
+| Generation | Voltage | Data Rate (MT/s) | Prefetch | Bandwidth/DIMM (64-bit) |
+|------------|---------|------------------|----------|-------------------------|
+| SDRAM | 3.3V | 100-133 MT/s | 1n | 0.8-1.1 GB/s |
+| DDR | 2.5V | 200-400 MT/s | 2n | 1.6-3.2 GB/s |
+| DDR2 | 1.8V | 400-800 MT/s | 4n | 3.2-6.4 GB/s |
+| DDR3 | 1.5V | 800-2133 MT/s | 8n | 6.4-17 GB/s |
+| DDR4 | 1.2V | 1600-3200 MT/s | 8n | 12.8-25.6 GB/s |
+| DDR5 | 1.1V | 3200-6400 MT/s | 16n | 25.6-51.2 GB/s |
+
+(Note: per-chip bandwidth for an x8 DDR4-3200 chip is ~3.2 GB/s; the values above are per-DIMM/per-channel.)
 
 ## DRAM vs SRAM
 

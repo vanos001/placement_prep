@@ -90,7 +90,7 @@ Given points: (2,3), (5,4), (9,6), (4,7), (8,1), (7,2), (6,8), (1,9)
 
 ```
 1. At root (5,4): dist=1.0, best=(5,4)
-   Split on x: target x=5, go left (x<5) first
+   Split on x: target x=5, diff = 0 → code's ternary "diff < 0 ? left : right" sends us right first
 2. At (4,7): dist=2.24, best=(5,4) (unchanged)
    Split on y: target y=5, go left (y<7) first
 3. At (2,3): dist=3.61, best=(5,4) (unchanged)

@@ -2,7 +2,7 @@
 
 ## Overview
 
-**Project Loom** (JDK 19 preview, JDK 21 production, JDK 25 structured concurrency final) introduces **virtual threads** — JVM-managed lightweight threads that make high-throughput concurrency as simple as synchronous code, without reactive complexity. It flips concurrency from OS-managed to JVM-managed.
+**Project Loom** (JDK 19 preview, JDK 21 production, JDK 25 structured concurrency in 5th preview — JEP 505, not yet finalized) introduces **virtual threads** — JVM-managed lightweight threads that make high-throughput concurrency as simple as synchronous code, without reactive complexity. It flips concurrency from OS-managed to JVM-managed.
 
 Three innovations:
 
@@ -70,7 +70,7 @@ Policies:
 - **ShutdownOnFailure**: first failure cancels all other subtasks — fail-fast for transactional workflows (e.g., fetch user + orders + inventory, if any fails, cancel others).
 - **ShutdownOnSuccess**: first success wins, cancels others — race pattern (e.g., lookup cache, DB, remote service — return first).
 
-JDK 25 finalizes `StructuredTaskScope` API with `Joiner.allSuccessfulOrThrow()` etc.
+Note: As of JDK 25 (Sept 2025), structured concurrency is still in **5th Preview** (JEP 505). The `ShutdownOnFailure`/`ShutdownOnSuccess` API shown above was removed in JEP 505 (JDK 24+) in favor of a new `StructuredTaskScope.Open` + `Joiner` API (e.g., `Joiner.allSuccessfulOrThrow()`). Until finalized, expect API churn.
 
 ## Scoped Values — Replacing ThreadLocal
 

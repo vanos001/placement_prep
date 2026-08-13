@@ -209,11 +209,11 @@ kubectl apply -f green-service.yaml
 # Test green
 kubectl port-forward svc/green-service 8080:80
 
-# Switch traffic (update ingress or service selector)
-kubectl patch ingress my-ingress -p '{"spec":{"rules":[{"http":{"paths":[{"backend":{"serviceName":"green-service","servicePort":80}}]}}]}}'
+# Switch traffic (update ingress or service selector) — networking.k8s.io/v1 syntax
+kubectl patch ingress my-ingress -p '{"spec":{"rules":[{"http":{"paths":[{"backend":{"service":{"name":"green-service","port":{"number":80}}}}]}}]}}'
 
 # Rollback if needed
-kubectl patch ingress my-ingress -p '{"spec":{"rules":[{"http":{"paths":[{"backend":{"serviceName":"blue-service","servicePort":80}}]}}]}}'
+kubectl patch ingress my-ingress -p '{"spec":{"rules":[{"http":{"paths":[{"backend":{"service":{"name":"blue-service","port":{"number":80}}}}]}}]}}'
 ```
 
 **Pros**: Instant cutover, easy rollback, full testing before switch

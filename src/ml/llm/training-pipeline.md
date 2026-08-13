@@ -428,10 +428,14 @@ class DPOTrainer:
         labels_shifted = labels[:, 1:]
         log_probs_shifted = log_probs[:, :-1, :]
         
+        # Clamp negative labels (-100 = ignore sentinel) to a safe non-negative value
+        # before gather: torch.gather with negative indices has undefined behavior
+        # (it wraps around in practice, which can read garbage or NaN at masked positions).
+        safe_labels = labels_shifted.clamp(min=0)
         token_log_probs = torch.gather(
-            log_probs_shifted, dim=-1, index=labels_shifted.unsqueeze(-1)
+            log_probs_shifted, dim=-1, index=safe_labels.unsqueeze(-1)
         ).squeeze(-1)
-        
+
         # Mask padding
         mask = (labels_shifted != -100).float()
         return (token_log_probs * mask).sum(dim=1)

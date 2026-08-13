@@ -198,6 +198,10 @@ class BlockingQueue:
         self._lock = threading.Lock()
         self._not_empty = threading.Condition(self._lock)
         self._not_full = threading.Condition(self._lock)
+        # Both Conditions share the same underlying lock, so notify() on one
+        # can be called from inside a `with` block on the other. This is valid
+        # but unconventional; an equivalent simpler design uses a single
+        # Condition with notify_all().
     
     def put(self, item):
         with self._not_full:

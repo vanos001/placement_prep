@@ -56,22 +56,22 @@ sequenceDiagram
     participant P3 as Process 3 (C=0)
     
     P1->>P1: Event A (C=1)
-    P1->>P2: msg1 (C=1)
-    P2->>P2: Receive (C=max(0,1)+1=2)
-    P2->>P2: Event B (C=3)
-    P2->>P3: msg2 (C=3)
-    P3->>P3: Receive (C=max(0,3)+1=4)
-    P3->>P3: Event C (C=5)
-    P1->>P1: Event D (C=2)
+    P1->>P2: msg1 (C=2)        # send increments first (matches Lamport 1978 + Python impl)
+    P2->>P2: Receive (C=max(0,2)+1=3)
+    P2->>P2: Event B (C=4)
+    P2->>P3: msg2 (C=5)        # send increments first
+    P3->>P3: Receive (C=max(0,5)+1=6)
+    P3->>P3: Event C (C=7)
+    P1->>P1: Event D (C=3)     # P1's counter was 2 after the send; local event → 3
 ```
 
 ```
 Result:
-  L(A) = 1, L(B) = 3, L(C) = 5, L(D) = 2
+  L(A) = 1, L(B) = 4, L(C) = 7, L(D) = 3
 
   A → B → C (causal chain) → L(A) < L(B) < L(C) ✓
   A → D (same process) → L(A) < L(D) ✓
-  D || B (concurrent) → L(D)=2 < L(B)=3 (clock says D before B, but they're concurrent!)
+  D || B (concurrent) → L(D)=3 < L(B)=4 (clock says D before B, but they're concurrent!)
 ```
 
 ### Why Lamport Clocks Aren't Enough

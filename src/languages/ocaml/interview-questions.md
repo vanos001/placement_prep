@@ -37,8 +37,8 @@ type shape =
 (* This is fine *)
 let id x = x          (* 'a -> 'a *)
 
-(* This is NOT fine *)
-let r = ref []        (* Error: cannot generalize 'a *)
+(* Not an error, but r becomes monomorphic: '_a list ref *)
+let r = ref []
 
 (* Solution: use a function *)
 let make_ref () = ref []  (* unit -> 'a list ref *)
@@ -229,7 +229,7 @@ let f (x : [< `Red | `Green | `Blue]) = match x with
 
 ```ocaml
 (* Labeled arguments *)
-let ~name ~age = { name; age }
+let make ~name ~age = { name; age }
 make ~name:"Alice" ~age:25
 
 (* Optional arguments *)

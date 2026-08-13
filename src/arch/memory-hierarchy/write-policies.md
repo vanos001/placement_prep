@@ -25,7 +25,7 @@ flowchart LR
 | No dirty bits needed | Slower writes |
 | Easy to implement | Bus contention on write-heavy workloads |
 
-**Used in**: L1 instruction caches (read-only), some embedded systems, write-through L1 with write-back L2 (common in modern CPUs).
+**Used in**: L1 instruction caches (read-only), some embedded microcontrollers, and older/low-end designs where simplicity beats performance. Modern high-performance x86 (Intel since Pentium Pro, AMD since K7/K8) and ARM Cortex-A series use **write-back** L1D.
 
 ### Write-Back
 

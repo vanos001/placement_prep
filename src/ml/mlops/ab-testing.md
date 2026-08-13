@@ -47,7 +47,10 @@ def required_sample_size(baseline_rate, mde, alpha=0.05, power=0.8):
     z_alpha = norm.ppf(1 - alpha / 2)
     z_beta = norm.ppf(power)
 
-    n = ((z_alpha + z_beta) ** 2 * (p1 * (1 - p1) + p2 * (1 - p2))) / (p1 - p2) ** 2
+    # Standard two-proportion z-test sample-size formula (pooled variance for z_alpha)
+    p_bar = (p1 + p2) / 2
+    n = ((z_alpha * np.sqrt(2 * p_bar * (1 - p_bar)) +
+          z_beta * np.sqrt(p1 * (1 - p1) + p2 * (1 - p2))) ** 2) / (p1 - p2) ** 2
     return int(np.ceil(n))
 
 # Example: 5% baseline conversion, want to detect 10% relative lift

@@ -268,11 +268,11 @@ When to use NoSQL:
 ```
            Consistency
               /\
-             /  \
+          CA /  \ CP
             /    \
-           / CP   \
-          /________\
-         /    CA    \
+           /______\
+          /        \
+         /    AP    \
         /____________\
   Availability    Partition Tolerance
 

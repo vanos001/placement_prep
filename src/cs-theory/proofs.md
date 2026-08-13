@@ -90,4 +90,4 @@ A: There are 366 possible birthdays (including Feb 29). With 367 people and 366 
 ## References
 
 - [MIT OCW 6.042J — Mathematics for CS](https://ocw.mit.edu/courses/6-042j-mathematics-for-computer-science-fall-2010/)
-- [How to Prove It — Velleman](https://www.cambridge.org/core/books/how-to-prove-it/50ED02D5B4D2B3B3B3B3B3B3B3B3B3B3)
+- How to Prove It: A Structured Approach (2nd ed.) — Daniel J. Velleman, Cambridge University Press, ISBN 978-0521675994

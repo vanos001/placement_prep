@@ -31,7 +31,7 @@
 
 ### GDDR5X (2016)
 - Data rate: up to 14 Gbps/pin
-- PAM4 signaling (first in consumer memory)
+- NRZ-style (POD) signaling with 4N-prefetch / pseudo-QDR
 - Used in: NVIDIA GTX 1080 Ti
 
 ### GDDR6 (2018)
@@ -41,8 +41,8 @@
 - Used in: NVIDIA RTX 30 series, AMD RX 6000 series
 
 ### GDDR6X (2020)
-- Data rate: up to 24 Gbps/pin (effective 48 Gbps with PAM4)
-- **PAM4 signaling**: 4 voltage levels per symbol = 2 bits per symbol
+- Data rate: up to 24 Gbps/pin (PAM4 signalling, 12 Gbaud symbol rate)
+- **PAM4 signaling**: 4 voltage levels per symbol = 2 bits per symbol (first in consumer memory)
 - Used in: NVIDIA RTX 3090, RTX 4090
 
 ## PAM4 Signaling (GDDR6X)

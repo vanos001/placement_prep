@@ -135,7 +135,7 @@ Registers are the **fastest storage** in the CPU, accessed in a single clock cyc
 
 | Architecture | GPRs | FP/Vector | Total |
 |-------------|------|-----------|-------|
-| x86-64 | 16 | 16 (XMM) + 32 (ZMM) | 64 |
+| x86-64 | 16 | 16 (SSE/AVX) or 32 (AVX-512) | 48 (with AVX-512) |
 | ARM64 (AArch64) | 31 | 32 (V/NEON/SVE) | 63 |
 | RISC-V (RV64I) | 31 | 32 (F/D) | 63 |
 | MIPS | 32 | 32 | 64 |
@@ -195,7 +195,7 @@ Out-of-Order:      More reorder capacity = better ILP extraction
 | Depth | Clock Rate | Branch Penalty | Example |
 |-------|-----------|----------------|---------|
 | Shallow (5-10) | Lower | ~5 cycles | ARM Cortex-M |
-| Medium (12-15) | Medium | ~12 cycles | Intel Skylake |
+| Medium (12-15) | Medium | ~16-19 cycles | Intel Skylake |
 | Deep (20+) | Higher | ~20 cycles | Intel Pentium 4 (NetBurst) |
 
 ## Interview Focus

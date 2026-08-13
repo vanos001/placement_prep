@@ -267,7 +267,7 @@ Ethernet Header (14 bytes):
 
 IPv4 Header (20 bytes):
   Version: 4, IHL: 5
-  Total Length: 52
+  Total Length: 57
   Protocol: 17 (UDP)
   Src IP: 192.168.1.100
   Dst IP: 8.8.8.8
@@ -275,17 +275,17 @@ IPv4 Header (20 bytes):
 UDP Header (8 bytes):
   Source Port: 43210
   Destination Port: 53
-  Length: 32
+  Length: 37
   Checksum: 0xABCD
 
-DNS Query (24 bytes):
+DNS Query (29 bytes):
   Transaction ID: 0x1234
   Flags: 0x0100 (standard query)
   Questions: 1
   Query: example.com A
 
-Total UDP payload: 24 bytes
-Total datagram: 8 + 24 = 32 bytes ✓
+Total UDP payload: 29 bytes
+Total datagram: 8 + 29 = 37 bytes ✓
 ```
 
 ### Checksum Verification (Wireshark)

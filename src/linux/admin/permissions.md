@@ -343,12 +343,15 @@ find / -perm -1000 -type d 2>/dev/null
 │             │       │                │ delete       │
 │                                                     │
 │  Display:                                            │
-│  SUID on  executable: -rws------                    │
-│  SUID off executable: -rwS------ (capital S = error)│
-│  SGID on  executable: ---rws---                     │
-│  SGID off executable: ---rwS--- (capital S = error) │
-│  Sticky on  directory: ------rwt                    │
-│  Sticky off directory: ------rwT (capital T = error)│
+│  SUID on  executable: -rws------                              │
+│  SUID off executable: -rwS------ (capital S = SUID set        │
+│                                            without execute)   │
+│  SGID on  executable: ---rws---                              │
+│  SGID off executable: ---rwS--- (capital S = SGID set        │
+│                                             without execute)  │
+│  Sticky on  directory: ------rwt                             │
+│  Sticky off directory: ------rwT (capital T = sticky set     │
+│                                             without others-x) │
 └─────────────────────────────────────────────────────┘
 ```
 

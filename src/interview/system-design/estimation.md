@@ -231,7 +231,7 @@ Redis instances needed = 350,000 / 100,000 ≈ 4 instances
 ## Interview Tips
 
 1. **Always start with assumptions** — "Let me assume 100M DAU..."
-2. **Round aggressively** — 86,400 ≈ 100,000; 365 ≈ 400
+2. **Round aggressively** — 86,400 ≈ 100,000; 365 ≈ 360 (or 365 ≈ 400 for a 10% safety margin)
 3. **Show your work** — the process matters more than the answer
 4. **Use powers of 10** — makes mental math easy
 5. **State units clearly** — "200 MB/day" not just "200"

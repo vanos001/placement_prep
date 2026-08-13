@@ -189,7 +189,7 @@ The standard block size is √N, but this can be tuned:
 |---|---|---|
 | √N | O((N+Q)√N) | Standard |
 | N/√Q | O(N√Q) | Better when Q << N |
-| N^(2/3) | O(N^(2/3) × Q^(1/2)) | For Mo's with updates |
+| N^(2/3) | O((N+Q) · N^(2/3)) ≈ O(N^(5/3)) when N=Q | For Mo's with updates (3D Mo's) |
 
 ```cpp
 // Optimized block size

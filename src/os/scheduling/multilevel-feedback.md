@@ -60,7 +60,7 @@ After a fixed time period, promote processes from lower queues to prevent starva
 |---------|------|---------|-------|
 | P1 | I/O-bound | 0 | 1 (CPU) + 5 (I/O) + 1 (CPU) |
 | P2 | CPU-bound | 0 | 20 |
-| P3 | Interactive | 2 | 2 (CPU) + 3 (I/O) + 2 (CPU) |
+| P3 | Interactive | 6 | 2 (CPU) + 3 (I/O) + 2 (CPU) |
 
 **MLFQ Configuration:**
 - Q1: quantum=4, highest priority
@@ -72,10 +72,10 @@ After a fixed time period, promote processes from lower queues to prevent starva
 ```
 Time 0-1:   P1 runs in Q1 (uses 1, yields for I/O → stays in Q1)
 Time 1-5:   P2 runs in Q1 (quantum=4, uses 4 → demoted to Q2)
-Time 5-9:   P1 doing I/O, P2 runs in Q2 (quantum=8, uses 4 more → still Q2)
+Time 5-9:   P1 doing I/O, P2 runs in Q2 (quantum=8, uses 4 more, total Q2=4 → still Q2)
 Time 6:     P3 arrives in Q1, P2 still running in Q2
 Time 9-11:  P3 runs in Q1 (uses 2, yields for I/O → stays in Q1)
-Time 11-15: P2 continues in Q2
+Time 11-15: P2 continues in Q2 (uses 4 more, total Q2=8 → demoted to Q3)
 ...
 ```
 

@@ -259,7 +259,7 @@ public:
     ~Example() = default;
     
     // Explicitly disable operations
-    Example(const Example&&) = delete;  // no rvalue copy
+    Example(const Example&) = delete;  // no copy construction (deleted overload for clarity)
     void operator=(const Example&) = delete;  // no copy assignment
 };
 ```

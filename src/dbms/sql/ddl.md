@@ -217,7 +217,7 @@ TRUNCATE TABLE Employees CASCADE;
 | Speed | Very fast (deallocates pages) | Row-by-row (slower) |
 | Logging | Minimal (page deallocation) | Full row logging |
 | Triggers | Does NOT fire | Fires DELETE triggers |
-| Rollback | Usually not allowed | Always allowed |
+| Rollback | DB-dependent (PostgreSQL: yes; MySQL InnoDB: no) | Always allowed |
 | Auto-increment | Resets to start | Continues from last |
 | Space | Reclaims immediately | May not reclaim |
 
@@ -363,7 +363,7 @@ CREATE POLICY tenant_isolation ON users
 | CREATE | Define new objects | DB-dependent | No |
 | ALTER | Modify structure | DB-dependent | No |
 | DROP | Remove objects | DB-dependent | No |
-| TRUNCATE | Remove all data | Usually no | No |
+| TRUNCATE | Remove all data | DB-dependent | No |
 | RENAME | Change name | DB-dependent | No |
 
 ## Cross-References

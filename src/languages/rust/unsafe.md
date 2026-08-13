@@ -269,7 +269,7 @@ When writing unsafe code, document:
 /// # Returns
 ///
 /// A reference to the value pointed to by `ptr`.
-unsafe fn deref_ptr<T>(ptr: *const T) -> &'static T {
+unsafe fn deref_ptr<'a, T>(ptr: *const T) -> &'a T {
     &*ptr
 }
 ```

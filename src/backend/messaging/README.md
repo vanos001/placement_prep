@@ -85,7 +85,7 @@ sequenceDiagram
 | **Durability** | Disk (configurable) | Memory + Disk | Optional (AOF/RDB) | JetStream |
 | **Throughput** | Very high (MB/s per partition) | Medium (K msg/s) | Very high | Very high |
 | **Ordering** | Per-partition | Per-queue | Per-stream | Per-subject |
-| **Replay** | Yes (offset-based) | No | Yes (ID-based) | JetStream |
+| **Replay** | Yes (offset-based) | Queues: No; Streams: Yes (offset-based, RabbitMQ 3.9+) | Yes (ID-based) | JetStream |
 | **Latency** | Low ms | Low ms | Sub-ms | Sub-ms |
 | **Consumer groups** | Yes | Yes (competing consumers) | Yes | Queue groups |
 | **Best for** | Event streaming, logs | Task queues, RPC | Caching + streams | Lightweight pub/sub |

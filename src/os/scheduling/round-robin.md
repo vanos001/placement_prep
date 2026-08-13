@@ -129,6 +129,7 @@ def round_robin(processes, quantum):
     current_time = 0
     remaining = {p[0]: p[2] for p in processes}
     arrival_map = {p[0]: p[1] for p in processes}
+    burst_map = {p[0]: p[2] for p in processes}
     results = {}
     idx = 0  # Next process to arrive
     

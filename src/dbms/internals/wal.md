@@ -64,7 +64,7 @@ Every log record gets a monotonically increasing **LSN** — a byte offset into 
 | **Dirty page tracking** | Each page stores `pageLSN` (LSN of last modification) |
 | **Checkpoint** | Records `maxLSN` to know where recovery must start |
 | **Replication** | Followers track `replayLSN` to know what's been applied |
-| **MVCC** | Snapshot isolation based on LSN at snapshot time |
+| **MVCC** | Snapshot isolation based on transaction IDs (XIDs) at snapshot time |
 
 ```mermaid
 flowchart LR

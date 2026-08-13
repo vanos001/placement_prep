@@ -135,7 +135,7 @@ With 2% L1 miss rate:
 Effective CPI = 1.0 + 1.5 × 0.02 × 10 = 1.30
 ```
 
-**34% CPI improvement** just by reducing L1 miss rate from 5% to 2%!
+**~26% CPI improvement** (`(1.75 − 1.30) / 1.75 = 0.257`) just by reducing L1 miss rate from 5% to 2%!
 
 ## Multi-Cycle Instructions
 
@@ -209,7 +209,7 @@ Concrete: for 10^9 instructions,
 
 - ❌ Assuming clock rate alone determines performance
 - ❌ Not accounting for CPI differences between processors
-- ❌ Forting that IC depends on the ISA (RISC vs CISC)
+- ❌ Forgetting that IC depends on the ISA (RISC vs CISC)
 - ❌ Not considering memory stall cycles in CPI
 - ❌ Using MIPS as a performance comparison metric
 

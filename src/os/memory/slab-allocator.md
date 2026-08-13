@@ -43,15 +43,16 @@ graph TD
 
 Without slab allocator:
 ```
-Kernel needs to allocate task_struct (8KB):
-1. Call buddy system for 2 pages (8KB)
-2. Use the 8KB for task_struct
+Kernel needs to allocate task_struct (~6 KB, 5824 bytes on typical x86_64 configs):
+1. Call buddy system for 2 pages (8 KB) — the smallest power-of-two allocation
+   that fits a 5824-byte object
+2. Use the 8 KB for one task_struct (wasting ~37% of the second page)
 3. When done, free 2 pages back to buddy
 
 Problems:
 - Allocation overhead: buddy search + splitting
-- Internal fragmentation: 8KB object in 8KB pages = 0%, but 
-  600B object needs 1 page (4KB) = 85% waste!
+- Internal fragmentation: 5824 B object in 8 KB (2 pages) = ~28% waste
+- A 600 B object needs 1 page (4 KB) = 85% waste!
 - Repeated alloc/free of same objects is slow
 - Cache lines polluted during allocation
 ```
@@ -59,9 +60,10 @@ Problems:
 With slab allocator:
 ```
 Pre-allocate a "slab" of pages containing many task_structs:
-- 1 page (4KB) can hold 0 task_structs (too big, need 2 pages)
-- 2 pages (8KB) can hold 1 task_struct (still wasteful)
-- Better: use multiple pages to hold many objects
+- 1 page (4 KB) holds 0 full task_structs (5824 B > 4096 B)
+- 2 pages (8 KB) hold 1 task_struct (still ~28% waste per object)
+- Better: pack multiple slabs together — 8 pages (32 KB) hold 5 task_structs
+  (5 × 5824 = 29 120 B), dropping per-object overhead to ~9%
 
 Cache the slab: when task_struct is freed, don't return to buddy.
 Next allocation comes from cached slab → O(1) allocation!
