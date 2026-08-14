@@ -293,4 +293,4 @@ REST APIs:
 - [How WhatsApp Works](./whatsapp.md) — Consumer messaging with E2EE
 - [Chat System Design](../chat.md) — Interview-format overview
 - [Notification System](../notifications.md) — Push notification patterns
-- [WebSockets](../../web-development/websockets.md) — Protocol details
+- [WebSockets](../../../web-development/websockets.md) — Protocol details

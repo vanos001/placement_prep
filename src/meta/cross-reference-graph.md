@@ -19,15 +19,15 @@ mdBook output rather than committed as a large generated artifact.
 
 ## Local generation
 
-From the repository root, build the book and then run:
+After a successful `mdbook build`, regenerate the graph from the repository root:
 
 ```bash
-python3 scripts/generate-cross-reference-graph.py \\
-  --output book/meta/cross-reference-graph-view.html
+python3 scripts/generate-cross-reference-graph.py \
+  --output src/meta/cross-reference-graph-view.html
 ```
 
 The generated file is not tracked. The deployment workflow runs this command
-automatically after `mdbook build`.
+automatically after `mdbook build`. Current graph size: **~1,880 nodes, ~7,500+ internal links** (estimated growth from 1,723 nodes / 7,405 links as of 2026-08-13).
 
 ## Graph scope
 

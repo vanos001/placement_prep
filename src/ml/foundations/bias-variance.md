@@ -215,7 +215,7 @@ graph TD
 
 **Reduces variance** by averaging multiple high-variance models:
 
-\[\text{Var}(\bar{X}) = \rho \sigma^2 + \frac{(1-\rho)\sigma^2}{n}\]
+\\[\text{Var}(\bar{X}) = \rho \sigma^2 + \frac{(1-\rho)\sigma^2}{n}\\]
 
 Where ρ is correlation between models. Random Forest reduces ρ via feature randomness.
 

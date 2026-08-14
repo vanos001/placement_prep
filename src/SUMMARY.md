@@ -815,6 +815,7 @@
 - [Chapter 68: Problem Modeling and Abstraction](./dsa/chapters/ch68-problem-modeling.md)
 - [Chapter 69: Correctness Proofs and Loop Invariants](./dsa/chapters/ch69-correctness-proofs.md)
 - [Chapter 70: Computational Models and Complexity Classes](./dsa/chapters/ch70-computational-models.md)
+- [Algorithm Correctness Proofs: Interview Guide](./dsa/chapters/algorithm-proofs.md)
 
 ## Part XI: Mathematics Handbook
 
@@ -864,6 +865,7 @@
 - [Chapter 116: Alien Trick and Parametric Search](./dsa/chapters/ch116-alien-trick-parametric.md)
 - [Chapter 117: Monotone Queue Optimization](./dsa/chapters/ch117-monotone-queue-optimization.md)
 - [Chapter 118: Bitset DP and Memory Optimization](./dsa/chapters/ch118-bitset-dp.md)
+- [Advanced Dynamic Programming Paradigms](./dsa/chapters/advanced-dp.md)
 
 ## Part XV: Advanced String Algorithms
 
@@ -874,6 +876,7 @@
 - [Chapter 121: Lyndon Factorization](./dsa/chapters/ch121-lyndon-factorization.md)
 - [Chapter 122: Edit Distance Variants](./dsa/chapters/ch122-edit-distance-variants.md)
 - [Chapter 123: Regular Expression and Wildcard Matching](./dsa/chapters/ch123-regex-wildcard.md)
+- [String Algorithms: A Unified Guide](./dsa/chapters/string-algorithms.md)
 
 ## Part XVI: Engineering Knowledge
 
@@ -902,6 +905,8 @@
 - [Chapter 134: Consistent Hashing](./dsa/chapters/ch134-consistent-hashing.md)
 - [Chapter 135: De Bruijn Sequences and Morton Codes](./dsa/chapters/ch135-debruijn-morton.md)
 - [Chapter 136: Gray Code and Advanced Bit Tricks](./dsa/chapters/ch136-gray-code-bit-tricks.md)
+- [Competitive Programming Techniques](./dsa/chapters/competitive-programming-techniques.md)
+- [FFT and Polynomial Operations: Practical Guide](./dsa/chapters/fft-and-polynomial.md)
 
 ## Part XVIII: Interview Mastery
 
@@ -912,6 +917,8 @@
 - [Chapter 141: Data Structure Selection Cheat Sheet](./dsa/chapters/ch141-ds-selection.md)
 - [Chapter 142: Company-wise Preparation Guide](./dsa/chapters/ch142-company-handbook.md)
 - [Chapter 143: Knowledge Aids and Quick Reference](./dsa/chapters/ch143-knowledge-aids.md)
+- [Complexity Traps: Where O(n) Hides O(n²)](./dsa/chapters/complexity-traps.md)
+- [DSA Edge Cases: The Silent Bug Source](./dsa/chapters/dsa-edge-cases.md)
 
 ## Part XIX: Graduate Algorithms
 
@@ -950,6 +957,7 @@
 - [Chapter 176: Chinese Remainder Theorem](./dsa/chapters/ch176-chinese-remainder.md)
 - [Chapter 177: Lucas Theorem](./dsa/chapters/ch177-lucas-theorem.md)
 - [Chapter 178: Burnside's Lemma & Pólya Enumeration](./dsa/chapters/ch178-burnsides-lemma.md)
+- [Number Theory Algorithms Toolkit](./dsa/chapters/number-theory-algorithms.md)
 
 ## Appendices
 
@@ -1051,6 +1059,7 @@
   - [Query Cache](./dbms/caching/query-cache.md)
   - [Redis](./dbms/caching/redis.md)
   - [Memcached](./dbms/caching/memcached.md)
+  - [Advanced Caching Strategies](./dbms/caching/advanced-caching.md)
 - [Distributed Databases](./dbms/distributed/README.md)
   - [CAP Theorem](./dbms/distributed/cap.md)
   - [Consistency Models](./dbms/distributed/consistency.md)
@@ -1070,6 +1079,10 @@
   - [LSM Trees](./dbms/internals/lsm-trees.md)
   - [Compaction](./dbms/internals/compaction.md)
   - [Database Engines](./dbms/internals/engines.md)
+  - [Join Algorithms — Deep Dive](./dbms/internals/join-algorithms.md)
+  - [Query Execution Models](./dbms/internals/query-execution.md)
+  - [Storage Engine Internals](./dbms/internals/storage-engine.md)
+  - [Transaction Internals](./dbms/internals/transaction-internals.md)
 
 ---
 
@@ -1431,6 +1444,8 @@
 - [Team Dynamics](./software-engineering/team-dynamics.md)
 - [SE Interview Questions](./software-engineering/interview-questions.md)
 - [Contributing](./software-engineering/CONTRIBUTING.md)
+- [Design Documents, RFCs, and ADRs](./software-engineering/design-docs.md)
+- [Modern Software Engineering Practices](./software-engineering/modern-practices.md)
 
 ---
 
@@ -1445,6 +1460,7 @@
 - [Memory Model](./programming-fundamentals/memory-model.md)
 - [I/O and Serialization](./programming-fundamentals/io-and-serialization.md)
 - [Modules and Packages](./programming-fundamentals/modules-and-packages.md)
+- [Concurrency Basics](./programming-fundamentals/concurrency-basics.md)
 - [PF Interview Questions](./programming-fundamentals/interview-questions.md)
 
 ---
@@ -1473,6 +1489,13 @@
 - [Rate Limiter](./machine-coding/rate-limiter.md)
 - [LRU Cache](./machine-coding/cache-lru.md)
 - [Task Scheduler](./machine-coding/task-scheduler.md)
+- [Booking System](./machine-coding/booking-system.md)
+- [Chess Game](./machine-coding/chess.md)
+- [Leaderboard](./machine-coding/leaderboard.md)
+- [Logger](./machine-coding/logger.md)
+- [Snake and Ladder](./machine-coding/snake-and-ladder.md)
+- [Tic-Tac-Toe](./machine-coding/tic-tac-toe.md)
+- [Vending Machine](./machine-coding/vending-machine.md)
 
 ---
 
@@ -1601,6 +1624,9 @@
 - [WebSockets](./web-development/websockets.md)
 - [HTTP Fundamentals](./web-development/http-fundamentals.md)
 - [Web Dev Interview Questions](./web-development/interview-questions.md)
+- [API Communication Patterns](./web-development/api-communication.md)
+- [Rendering Performance & Core Web Vitals](./web-development/rendering-performance.md)
+- [Web Security Deep Dive](./web-development/security-deep.md)
 
 ---
 
@@ -1611,7 +1637,12 @@
 - [JavaScript Deep Dive](./frontend/javascript-deep-dive.md)
 - [TypeScript](./frontend/typescript.md)
 - [React](./frontend/react.md)
+- [State Management](./frontend/state-management.md)
+- [Frontend Testing](./frontend/testing.md)
 - [Frontend Interview Questions](./frontend/interview-questions.md)
+- [Web Accessibility](./frontend/accessibility.md)
+- [CSS Deep Dive](./frontend/css-deep.md)
+- [Server-Side Rendering, Client-Side Rendering, and Static Generation](./frontend/ssr-csr-ssg.md)
 
 ---
 
@@ -1650,6 +1681,8 @@
 - [Nginx](./web-servers/nginx.md)
 - [Apache](./web-servers/apache.md)
 - [Web Server Interview Questions](./web-servers/interview-questions.md)
+- [Caddy Web Server](./web-servers/caddy.md)
+- [Nginx Deep Dive](./web-servers/nginx-deep.md)
 
 ---
 
@@ -1669,6 +1702,9 @@
 - [Incident Management](./sre/incident-management.md)
 - [Chaos Engineering](./sre/chaos-engineering.md)
 - [SRE Interview Questions](./sre/interview-questions.md)
+- [Capacity Planning for SRE](./sre/capacity-planning.md)
+- [On-Call Best Practices for SRE](./sre/on-call.md)
+- [Reliability Patterns](./sre/reliability-patterns.md)
 
 ---
 
@@ -1693,6 +1729,10 @@
 - [Projects Overview](./projects/README.md)
 - [Project Ideas](./projects/project-ideas.md)
 - [Explaining Projects](./projects/explaining-projects.md)
+- [Backend Project Implementation Guides](./projects/backend-projects.md)
+- [DevOps Project Implementation Guides](./projects/devops-projects.md)
+- [Distributed Systems Project Implementation Guides](./projects/distributed-systems-projects.md)
+- [System Design Project Implementation Guides](./projects/system-design-projects.md)
 
 ---
 

@@ -89,6 +89,7 @@ independently, at-most-once delivery, supports replay from any offset.
 **File:line:** `src/distributed/microservices/observability.md:16`
 **Wrong text:**
 ```mermaid
+graph TD
 O[Observability] --> M[Metrics]
 O --> L[Logging]
 O --> T[Tracing]

@@ -330,7 +330,7 @@ Remote cache (other regions): Pub/sub invalidation via Kafka
 
 ## Cross-References
 
-- [Redis Patterns and Internals](../../redis/patterns-and-internals.md) — Redis-specific implementation details
+- [Redis Patterns and Internals](../../../redis/patterns-and-internals.md) — Redis-specific implementation details
 - [Caching Strategy](../hld/caching-strategy.md) — Interview-format caching patterns
-- [Consistent Hashing](../../distributed/partitioning/consistent-hashing.md) — Hashing deep dive
+- [Consistent Hashing](../../../distributed/partitioning/consistent-hashing.md) — Hashing deep dive
 - [Capacity Planning](../hld/capacity-planning.md) — Estimation techniques

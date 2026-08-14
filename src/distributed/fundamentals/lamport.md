@@ -62,7 +62,7 @@ sequenceDiagram
     P2->>P3: msg2 (C=5)        # send increments first
     P3->>P3: Receive (C=max(0,5)+1=6)
     P3->>P3: Event C (C=7)
-    P1->>P1: Event D (C=3)     # P1's counter was 2 after the send; local event → 3
+    P1->>P1: Event D (C=3)     # P1's counter was 2 after the send#59; local event → 3
 ```
 
 ```

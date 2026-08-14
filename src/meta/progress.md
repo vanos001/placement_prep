@@ -97,6 +97,21 @@
 - Metadata commit `79145d7` was pushed to `origin/dev`; local and remote `dev`
   resolve to the same commit and the working tree is clean.
 
+## Validation & cleanup — 2026-08-15
+
+| Action | Result |
+|---|---|
+| Ran full validation suite (mermaid, links, summary, mathjax) | 7 mermaid errors, 39 broken links, 63 missing SUMMARY entries, 2 unclosed code fences, 2 MathJax delimiter issues |
+| Fixed 7 mermaid diagram errors | Quoted labels in parsers, regularizations; fixed raw semicolons in Paxos/Lamont sequence diagrams; added missing graph type in audit; replaced Note over in flowchart |
+| Fixed 6 broken content links | Corrected relative paths in interview/system-design/real-world/ files (../../ → ../../../) |
+| Added 30 files to SUMMARY.md | DBMS internals, DSA chapters, frontend, projects, SRE, web servers, software engineering |
+| Fixed 2 unclosed code fences | src/cs-theory/complexity-classes.md, src/meta/audit/O.md |
+| Fixed 2 MathJax delimiters | src/ml/foundations/bias-variance.md (single-backslash → double-backslash) |
+| Moved root validate-mermaid.mjs to scripts/ | Was a duplicate heuristic validator at repo root; real parser already in scripts/ |
+| Removed mermaid_report.md | Stale artifact no longer needed |
+| Updated validate-all.sh | Parser lookup path changed from repo root to scripts/ |
+| Updated src/meta/ | status.md, progress.md, coverage_dashboard.md refreshed |
+
 ## Quality bar
 
 A page is not considered integrated merely because it was copied. It must be

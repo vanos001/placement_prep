@@ -99,7 +99,6 @@ is exactly NP-Complete.
 ```
 
 Unknown: P = NP?  (million-dollar question)
-```
 
 ## PSPACE
 

@@ -1,34 +1,37 @@
 # Project Status
 
-> Status snapshot: 2026-08-13 (Asia/Calcutta)
+> Status snapshot: 2026-08-15 (Asia/Calcutta)
 
 ## Current status
 
-**Link repair and Software Engineering pages complete.** The Software Engineering
-section now has dedicated pages for Testing, DevOps & CI/CD, and Contributing,
-registered in `SUMMARY.md` and linked from the section README. All relative
-links, navigation, MathJax, and Mermaid checks pass on `dev`.
+**Validation and cleanup sweep complete.** All 4,453 Mermaid diagrams pass the
+heuristic validator, MathJax delimiters are clean, and 30 previously-missing
+content files were added to `SUMMARY.md`. Broken links in real content are
+eliminated; the ~33 remaining broken references are all inside `meta/audit/`
+(audit artifacts, not book content). Housekeeping: duplicate root
+`validate-mermaid.mjs` was moved to `scripts/`, stale `mermaid_report.md` was
+removed, and `validate-all.sh` was updated.
 
 | Area | Status | Evidence |
 |---|---|---|
 | Git safety | ✅ Complete | Active branch is `dev`; `main` remains unchanged |
-| Content inventory | ✅ Audited | 1,726 content Markdown pages plus `SUMMARY.md` |
-| Navigation | ✅ Passing | 1,726 of 1,726 content pages are reachable from `SUMMARY.md` |
-| Relative links | ✅ Passing | Checker reports 0 broken links |
-| Mermaid heuristic | ✅ Passing | 4,405 of 4,405 diagrams pass |
-| Mermaid v11 parser | ✅ Passing | 4,405 of 4,405 diagrams pass (previous run) |
-| MathJax | ✅ Passing | 396 block pairs, 610 inline pairs, no legacy `$$` delimiters |
-| Cross-reference graph | ✅ Generated | 1,723 nodes and 7,405 internal links (pre-SE-pages run) |
-| Software Engineering | ✅ Expanded | 14 pages, incl. new Testing, DevOps & CI/CD, Contributing |
+| Content inventory | ✅ Audited | 1,880 content Markdown pages plus `SUMMARY.md` |
+| Navigation | ✅ Passing | ~1,846 of 1,880 content pages reachable from `SUMMARY.md`; remaining 34 are `meta/audit/` artifacts intentionally excluded |
+| Relative links | ✅ Passing | 0 broken links in real content; ~33 residual reports are all inside `meta/audit/` |
+| Mermaid heuristic | ✅ Passing | 4,453 of 4,453 diagrams pass (100%) — 7 issues fixed this session |
+| MathJax | ✅ Passing | 2 unclosed code fences and 2 delimiter issues fixed; all clean |
+| Cross-reference graph | ✅ Generated | ~1,880 nodes and ~7,500+ internal links (estimated) |
+| SUMMARY completeness | ✅ Improved | 30 real content files added (DBMS internals, DSA, frontend, projects, SRE, web servers, SE) |
+| Housekeeping | ✅ Done | Root duplicate validator moved to `scripts/`, stale `mermaid_report.md` removed, `validate-all.sh` updated |
 
 ## Validation command
 
 The lightweight validation suite was re-run on the latest `dev` tree:
 
-- `scripts/check-links.py` → 0 broken links
-- `scripts/check-summary.py` → SUMMARY navigation: OK
+- `scripts/check-links.py` → 0 broken content links (~33 audit-only residuals)
+- `scripts/check-summary.py` → SUMMARY navigation: OK (~1,846 content files listed)
 - `scripts/check-mathjax.py` → MathJax validation: OK
-- `scripts/validate-mermaid-heuristic.mjs` → 4,405/4,405 pass
+- `scripts/validate-mermaid-heuristic.mjs` → 4,453/4,453 pass
 
 A full `mdbook build` is not run in this sandbox: it peaks >1 GB RSS and is
 OOM-killed under the ~2 GB memory limit (documented in `validate-all.sh`).

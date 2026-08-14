@@ -10,7 +10,7 @@ Dropout is a **regularization technique** that randomly "drops out" (sets to zer
 graph TD
     A[Training: Randomly zero neurons with probability p] --> B[Each forward pass uses different subnetwork]
     B --> C[Ensemble of 2^n possible networks]
-    D[Inference: Use all neurons, no scaling (inverted dropout scaled at training time)] --> E[Average of all subnetworks]
+    D["Inference: Use all neurons, no scaling (inverted dropout scaled at training time)"] --> E[Average of all subnetworks]
 ```
 
 ### Training Phase

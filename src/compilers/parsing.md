@@ -117,10 +117,10 @@ ASTNode *parse_term(Parser *p) {
 ```mermaid
 flowchart LR
     subgraph LR Family
-        SLR[SLR(1)] --> LALR[LALR(1)]
-        LALR --> CLR[Canonical LR(1)]
+        SLR["SLR(1)"] --> LALR["LALR(1)"]
+        LALR --> CLR["Canonical LR(1)"]
     end
-    SLR ---|weaker| LL[LL(1)]
+    SLR ---|weaker| LL["LL(1)"]
 ```
 
 | Parser | Power | Table Size | Used By |

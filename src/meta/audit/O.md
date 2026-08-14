@@ -527,6 +527,7 @@ The following deeply-audited files had no findings:
 - `llm/{llm-serving,moe,multimodal,sota,vision}/README.md`
 - `ml/{llm,transformers,foundations}/README.md`
 - `frameworks/spring-boot/README.md`
+```
 
 ## Other notes (not flagged as findings)
 

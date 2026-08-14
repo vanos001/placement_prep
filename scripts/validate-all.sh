@@ -38,8 +38,9 @@ node scripts/validate-mermaid-heuristic.mjs || { echo "FAIL: heuristic mermaid";
 echo
 echo "=== [3/6] Mermaid real parser (needs mermaid@11 + jsdom in node_modules) ==="
 PARSER_OK=0
-# Try repo-local node_modules, then MERMAID_DIR (e.g. a scratch dir holding node_modules + validate-mermaid.mjs)
-for base in "$(pwd)" "${MERMAID_DIR:-}"; do
+# Try MERMAID_DIR (a scratch dir holding node_modules + a copy of validate-mermaid.mjs),
+# then scripts/ directory.
+for base in "${MERMAID_DIR:-}" "$(pwd)/scripts"; do
     [ -n "$base" ] || continue
     if [ -d "$base/node_modules/mermaid" ] && [ -d "$base/node_modules/jsdom" ] && [ -f "$base/validate-mermaid.mjs" ]; then
         (cd "$base" && node validate-mermaid.mjs "$REPO/src") || { echo "FAIL: parser mermaid"; fail=1; }

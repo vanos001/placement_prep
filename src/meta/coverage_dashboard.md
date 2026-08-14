@@ -1,7 +1,7 @@
 # Coverage Dashboard
 
 > Auto-generated tracking of content coverage across all subjects.
-> Last updated: 2026-08-13 (dev pull audit + SE section)
+> Last updated: 2026-08-15 (validation & cleanup sweep)
 
 ## Summary
 
@@ -36,11 +36,13 @@
 | **Communication** | **4** | **10+** | **1+** | **NEW** |
 | **Practical Problems** | **6** | **10+** | **3+** | **NEW** |
 | **DBMS Interview Problems** | **6** | **15+** | **2+** | **NEW** |
+| **Search** | **3** | **10+** | **5+** | **NEW** |
+| **SRE** | **4** | **20+** | **8+** | **NEW** |
 
 ## Overall Metrics
 
-- **Total markdown files**: 1,724 (1,723 content pages plus SUMMARY)
-- **Total Mermaid diagrams**: 4,405
+- **Total markdown files**: 1,880 (1,879 content pages plus SUMMARY)
+- **Total Mermaid diagrams**: 4,453 (across 1,179 files)
 - **Total size**: ~30 MB (src/)
 - **Build status**: ✅ Full constrained build clean (mdBook 0.4.52, search index disabled for sandbox); normal search-enabled build is OOM-limited in this sandbox
 

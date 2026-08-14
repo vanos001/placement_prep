@@ -367,7 +367,7 @@ Operation:
 
 ## Cross-References
 
-- [CRDT Fundamentals](../../distributed/fundamentals/crdts.md) — CRDT theory and data structures
-- [Consensus Patterns](../../distributed/consensus/raft.md) — Raft consensus for server coordination
-- [WebSockets](../../web-development/websockets.md) — Real-time bidirectional protocol
+- [CRDT Fundamentals](../../../distributed/fundamentals/crdts.md) — CRDT theory and data structures
+- [Consensus Patterns](../../../distributed/consensus/raft.md) — Raft consensus for server coordination
+- [WebSockets](../../../web-development/websockets.md) — Real-time bidirectional protocol
 - [Chat System](../chat.md) — Real-time connection management patterns
