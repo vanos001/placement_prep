@@ -1422,6 +1422,7 @@
 - [Observability](./backend/observability/README.md)
   - [OpenTelemetry](./backend/observability/opentelemetry.md)
 - [Testing](./backend/testing.md)
+- [Serialization](./backend/serialization.md)
 - [CI/CD](./backend/cicd/README.md)
   - [GitHub Actions](./backend/cicd/github-actions.md)
   - [GitOps](./backend/cicd/gitops.md)
