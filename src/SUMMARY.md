@@ -1708,6 +1708,10 @@
 
 - [Redis Overview](./redis/README.md)
 - [Redis Patterns & Internals](./redis/patterns-and-internals.md)
+- [Redis Data Structures Internals](./redis/data-structures.md)
+- [Redis Cluster Architecture](./redis/cluster-architecture.md)
+- [Redis Persistence](./redis/persistence.md)
+- [Redis Advanced Patterns](./redis/advanced-patterns.md)
 - [Redis Interview Questions](./redis/interview-questions.md)
 
 ---
@@ -1716,6 +1720,8 @@
 
 - [Mobile Overview](./mobile/README.md)
 - [Android](./mobile/android.md)
+- [iOS / Swift](./mobile/ios.md)
+- [Mobile Security](./mobile/mobile-security.md)
 - [Mobile Interview Questions](./mobile/interview-questions.md)
 
 ---
@@ -1725,6 +1731,9 @@
 - [Math Overview](./mathematics/README.md)
 - [Discrete Mathematics](./mathematics/discrete-math.md)
 - [Number Theory](./mathematics/number-theory.md)
+- [Linear Algebra](./mathematics/linear-algebra.md)
+- [Probability & Statistics](./mathematics/probability-statistics.md)
+- [Calculus for Programmers](./mathematics/calculus-for-programmers.md)
 
 ---
 
@@ -1742,12 +1751,19 @@
   - [RDS](./cloud/aws/rds.md)
   - [Lambda](./cloud/aws/lambda.md)
   - [VPC](./cloud/aws/vpc.md)
+- [GCP](./cloud/gcp.md)
+- [Azure](./cloud/azure.md)
 - [Kubernetes](./cloud/kubernetes/README.md)
   - [Pods](./cloud/kubernetes/pods.md)
   - [Services](./cloud/kubernetes/services.md)
   - [Deployments](./cloud/kubernetes/deployments.md)
   - [Ingress](./cloud/kubernetes/ingress.md)
   - [Operators](./cloud/kubernetes/operators.md)
+  - [Scheduling](./cloud/kubernetes/scheduling.md)
+  - [Networking](./cloud/kubernetes/networking.md)
+  - [Security](./cloud/kubernetes/security.md)
+  - [Storage](./cloud/kubernetes/storage.md)
+  - [Debugging K8s](./cloud/kubernetes/debugging.md)
 - [CI/CD](./cloud/cicd/README.md)
   - [Pipelines](./cloud/cicd/pipelines.md)
   - [GitOps](./cloud/cicd/gitops.md)
@@ -1842,6 +1858,12 @@
   - [Embeddings](./llm/llm-serving/embeddings.md)
   - [LLM Evaluation](./llm/llm-serving/evaluation.md)
   - [LLM Security](./llm/llm-serving/security.md)
+- [LLM Engineering](./llm/fundamentals.md)
+  - [Prompt Engineering in Production](./llm/prompt-engineering.md)
+  - [RAG Systems](./llm/rag-systems.md)
+  - [AI Agents Engineering](./llm/agents.md)
+  - [LLM Security & Safety](./llm/llm-security.md)
+  - [LLM Cost Optimization](./llm/cost-optimization.md)
 - [Multimodal Models](./llm/multimodal/README.md)
   - [Vision-Language Models](./llm/multimodal/vlm.md)
   - [GPT-4V](./llm/multimodal/gpt4v.md)
@@ -1953,6 +1975,14 @@
   - [Algorithm Patterns](./interview/coding/patterns.md)
   - [Time Complexity](./interview/coding/complexity.md)
   - [Problem-solving Framework](./interview/coding/framework.md)
+  - [OA Strategies](./interview/coding/oa-strategies.md)
+  - [MCQ Strategies](./interview/coding/mcq-strategies.md)
+  - [Coding Patterns Guide](./interview/coding/coding-patterns-guide.md)
+  - [Pseudocode Reading](./interview/coding/pseudocode-reading.md)
+  - [Pattern: Frequency Counting](./interview/coding/pattern-frequency-counting.md)
+  - [Pattern: Two Pointers](./interview/coding/pattern-two-pointers.md)
+  - [Pattern: Sliding Window](./interview/coding/pattern-sliding-window.md)
+  - [Pattern: Binary Search](./interview/coding/pattern-binary-search.md)
 - [System Design](./interview/system-design/README.md)
   - [Design Framework](./interview/system-design/framework.md)
   - [Probabilistic Data Structures (Bloom, HLL, CMS)](./interview/system-design/probabilistic-data-structures.md)
@@ -1992,6 +2022,17 @@
   - [Dropbox](./interview/system-design/real-world/dropbox.md)
   - [Distributed Lock Manager](./interview/system-design/real-world/distributed-lock.md)
   - [Streaming Analytics Pipeline](./interview/system-design/real-world/streaming-pipeline.md)
+  - [Chat System (Slack-style)](./interview/system-design/real-world/chat-system.md)
+  - [Collaborative Editor](./interview/system-design/real-world/collaborative-editor.md)
+  - [Distributed Cache](./interview/system-design/real-world/distributed-cache.md)
+  - [News Feed (Facebook-style)](./interview/system-design/real-world/news-feed.md)
+  - [Notification System](./interview/system-design/real-world/notification-system.md)
+  - [Search Autocomplete](./interview/system-design/real-world/search-autocomplete.md)
+  - [Ride Hailing](./interview/system-design/real-world/ride-hailing.md)
+  - [URL Shortener (Detailed)](./interview/system-design/real-world/url-shortener.md)
+  - [Video Streaming Platform](./interview/system-design/real-world/video-streaming.md)
+  - [Payment System](./interview/system-design/real-world/payment-system.md)
+  - [Analytics Platform](./interview/system-design/real-world/analytics-platform.md)
   - [High Level Design (HLD)](./interview/system-design/hld/README.md)
     - [Scalability](./interview/system-design/hld/scalability.md)
     - [Load Balancing Design](./interview/system-design/hld/load-balancing-design.md)
@@ -2165,12 +2206,101 @@
 ## TypeScript
 
 - [TypeScript Overview](./languages/typescript/README.md)
+- [TypeScript Interview Questions](./languages/typescript/interview-questions.md)
 
 ## OCaml
 
 - [OCaml Overview](./languages/ocaml/README.md)
 - [OCaml Ecosystem & Tooling](./languages/ocaml/ecosystem.md)
 - [OCaml Interview Questions](./languages/ocaml/interview-questions.md)
+
+---
+
+# Compilers
+
+- [Compiler Overview](./compilers/README.md)
+- [Lexical Analysis](./compilers/lexical-analysis.md)
+- [Parsing](./compilers/parsing.md)
+- [Semantic Analysis](./compilers/semantic-analysis.md)
+- [Intermediate Representation & Optimization](./compilers/intermediate-representation.md)
+- [Code Generation & Linking](./compilers/code-generation.md)
+- [JIT Compilation](./compilers/jit-compilation.md)
+- [Compiler Interview Questions](./compilers/interview-questions.md)
+
+---
+
+# Cryptography
+
+- [Cryptography Overview](./cryptography/README.md)
+- [Symmetric Encryption](./cryptography/symmetric-encryption.md)
+- [Asymmetric Encryption](./cryptography/asymmetric-encryption.md)
+- [Hashing](./cryptography/hashing.md)
+- [TLS](./cryptography/tls.md)
+- [Digital Signatures](./cryptography/digital-signatures.md)
+- [PKI](./cryptography/pki.md)
+- [Practical Web Security](./cryptography/practical-security.md)
+- [Post-Quantum Cryptography](./cryptography/post-quantum.md)
+
+---
+
+# Performance Engineering
+
+- [Performance Engineering Overview](./performance-engineering/README.md)
+- [CPU Profiling](./performance-engineering/cpu-profiling.md)
+- [Memory Profiling](./performance-engineering/memory-profiling.md)
+- [Benchmarking](./performance-engineering/benchmarking.md)
+- [Optimization Techniques](./performance-engineering/optimization-techniques.md)
+- [Latency Analysis](./performance-engineering/latency-analysis.md)
+
+---
+
+# Queueing Theory
+
+- [Queueing Theory Overview](./queueing-theory/README.md)
+- [Fundamentals](./queueing-theory/fundamentals.md)
+- [Applied to Systems](./queueing-theory/applied-systems.md)
+- [Queueing Theory Interview Questions](./queueing-theory/interview-questions.md)
+
+---
+
+# Embedded Systems
+
+- [Embedded Systems Overview](./embedded-systems/README.md)
+- [Peripherals & Protocols](./embedded-systems/peripherals.md)
+- [RTOS](./embedded-systems/rtos.md)
+- [Firmware](./embedded-systems/firmware.md)
+- [Embedded Systems Interview Questions](./embedded-systems/interview-questions.md)
+
+---
+
+# Network Programming
+
+- [Network Programming Overview](./network-programming/README.md)
+- [TCP Sockets](./network-programming/tcp-sockets.md)
+- [UDP Sockets](./network-programming/udp-sockets.md)
+- [Advanced I/O Models](./network-programming/advanced-io.md)
+- [TLS Sockets](./network-programming/tls-sockets.md)
+- [Practical Patterns](./network-programming/practical-patterns.md)
+
+---
+
+# Debugging
+
+- [Debugging Overview](./debugging/README.md)
+- [Debugging Tools](./debugging/tools.md)
+- [Production Debugging](./debugging/production-debugging.md)
+- [Common Bugs](./debugging/common-bugs.md)
+- [Debugging Interview Questions](./debugging/interview-questions.md)
+
+---
+
+# Engineering Trade-offs
+
+- [Trade-offs Overview](./trade-offs/README.md)
+- [Database Trade-offs](./trade-offs/database-tradeoffs.md)
+- [Architecture Trade-offs](./trade-offs/architecture-tradeoffs.md)
+- [Infrastructure Trade-offs](./trade-offs/infrastructure-tradeoffs.md)
+- [Security Trade-offs](./trade-offs/security-tradeoffs.md)
 
 ---
 
