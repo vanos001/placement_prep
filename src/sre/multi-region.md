@@ -46,9 +46,9 @@ graph TB
 ```mermaid
 graph TB
     DNS[Global Load Balancer / DNS]
-    DNS -->|Geo-routing| RegionA[Region A (us-east-1)]
-    DNS -->|Geo-routing| RegionB[Region B (eu-west-1)]
-    DNS -->|Geo-routing| RegionC[Region C (ap-southeast-1)]
+    DNS -->|Geo-routing| RegionA["Region A (us-east-1)"]
+    DNS -->|Geo-routing| RegionB["Region B (eu-west-1)"]
+    DNS -->|Geo-routing| RegionC["Region C (ap-southeast-1)"]
 
     subgraph "Region A"
         App1[App Servers] --> DB1[Database]

@@ -19,8 +19,8 @@ A canary release is a deployment strategy that gradually rolls out a new version
 ```mermaid
 graph TB
     Users[All Users] --> Router[Traffic Router]
-    Router -->|95%| Stable[v1 (Stable)]
-    Router -->|5%| Canary[v2 (Canary)]
+    Router -->|95%| Stable["v1 (Stable)"]
+    Router -->|5%| Canary["v2 (Canary)"]
     Stable --> Metrics[Metrics Collector]
     Canary --> Metrics
     Metrics --> Analyzer[Anomaly Detector]

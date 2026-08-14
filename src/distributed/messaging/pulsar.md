@@ -89,7 +89,7 @@ graph TB
     Topic --- P1[Partition 1]
     Topic --- P2[Partition 2]
 
-    P0 --- L1[Ledger 1 (Active)]
+    P0 --- L1["Ledger 1 (Active)"]
     P0 --- L2[Ledger 2 (Sealed)]
     P0 --- L3[Ledger 3 (Sealed)]
 ```
@@ -177,7 +177,7 @@ graph LR
         S3[S3 / GCS / Azure Blob<br/>Cheap, high capacity]
     end
 
-    BK -->|Offload policy<br/>(size + age)| S3
+    BK -->|"Offload policy<br/>(size + age)"| S3
     Consumer[Consumer] -->|Seamless read| BK
     Consumer -->|Seamless read| S3
 ```

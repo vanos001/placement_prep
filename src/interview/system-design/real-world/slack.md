@@ -178,7 +178,7 @@ graph TB
     NotifySvc --> PrefCheck[User Preferences<br/>per channel/workspace]
     PrefCheck --> Desktop[Desktop Notification]
     PrefCheck --> Mobile[Mobile Push<br/>FCM/APNs]
-    PrefCheck --> Email[Email Digest<br/>(batched)]
+    PrefCheck --> Email["Email Digest<br/>(batched)"]
     PrefCheck --> DND[Do Not Disturb Check]
     PrefCheck --> Mute[Muted Channel Check]
 ```

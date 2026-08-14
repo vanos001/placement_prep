@@ -264,7 +264,7 @@ graph TB
     subgraph "Never Accessed by Buildkite"
         VPC
         Secrets
-        Code[Your Code (unless uploaded)]
+        Code["Your Code (unless uploaded)"]
     end
 ```
 

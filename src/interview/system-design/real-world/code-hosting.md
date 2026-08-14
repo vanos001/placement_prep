@@ -87,7 +87,7 @@ graph TB
 
     subgraph "CI/CD"
         RunnerPool[Runner Orchestrator]
-        Runners[CI Runners<br/>(K8s / VMs)]
+        Runners["CI Runners<br/>(K8s / VMs)"]
     end
 
     subgraph "Messaging"
@@ -127,7 +127,7 @@ graph TB
     Push["git push"] --> GitRouter
     GitRouter --> ReceivePack["git-receive-pack"]
     ReceivePack --> Lock[Lock Repository<br/>Distributed Lock]
-    Lock --> WriteObjects[Write Objects<br/>(loose → pack)]
+    Lock --> WriteObjects["Write Objects<br/>(loose → pack)"]
     WriteObjects --> UpdateRef[Update Refs<br/>(branch pointers)]
     UpdateRef --> Hook[Post-Receive Hook]
     Hook --> Kafka[Kafka]
@@ -211,7 +211,7 @@ graph TB
 graph LR
     Trigger["Push / PR event"] --> Queue[Workflow Queue<br/>Kafka]
     Queue --> Schedule[Runner Orchestrator]
-    Schedule --> Runner[Runner<br/>(Docker/VM)]
+    Schedule --> Runner["Runner<br/>(Docker/VM)"]
     Runner --> Execute[Execute Steps<br/>(checkout, build, test)]
     Execute --> Report[Report Status<br/>back to PR]
 ```

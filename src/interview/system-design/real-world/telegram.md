@@ -48,7 +48,7 @@ graph TB
     subgraph "Clients"
         Phone[Mobile App]
         Desktop[Desktop App]
-        WebApp[Web App (K)]
+        WebApp["Web App (K)"]
         Bot[Bot API]
     end
 
