@@ -28,8 +28,7 @@ flowchart LR
 
 ## Mutation Score
 
-``nMutation Score = (killed mutants / total mutants) × 100%
-```
+> Mutation Score = (killed mutants / total mutants) * 100%
 
 | Score Range | Interpretation |
 -------------|----------------|

@@ -128,7 +128,7 @@ graph TB
     GitRouter --> ReceivePack["git-receive-pack"]
     ReceivePack --> Lock[Lock Repository<br/>Distributed Lock]
     Lock --> WriteObjects["Write Objects<br/>(loose → pack)"]
-    WriteObjects --> UpdateRef[Update Refs<br/>(branch pointers)]
+    WriteObjects --> UpdateRef["Update Refs<br/>(branch pointers)"]
     UpdateRef --> Hook[Post-Receive Hook]
     Hook --> Kafka[Kafka]
     Kafka --> NotifSvc[Notification Service]
@@ -212,7 +212,7 @@ graph LR
     Trigger["Push / PR event"] --> Queue[Workflow Queue<br/>Kafka]
     Queue --> Schedule[Runner Orchestrator]
     Schedule --> Runner["Runner<br/>(Docker/VM)"]
-    Runner --> Execute[Execute Steps<br/>(checkout, build, test)]
+    Runner --> Execute["Execute Steps<br/>(checkout, build, test)"]
     Execute --> Report[Report Status<br/>back to PR]
 ```
 

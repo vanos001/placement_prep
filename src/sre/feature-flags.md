@@ -165,7 +165,7 @@ stateDiagram-v2
 |---------|-------------|----------|---------|-------|
 | **Hosting** | SaaS only | SaaS + self-hosted | Self-hosted | Self-hosted |
 | **Open source** | No | Yes (API) | Yes | Yes |
-| **Pricing** | Enterprise ($$$) | Free tier + paid | Free | Free |
+| **Pricing** | Enterprise (USD) | Free tier + paid | Free | Free |
 | **SDKs** | 15+ languages | 8+ | 10+ | gRPC, REST |
 | **A/B testing** | Yes | No | No | No |
 | **Gradual rollout** | Yes | Yes | Yes | Yes |

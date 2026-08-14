@@ -56,7 +56,7 @@ graph TB
 
     subgraph "Inbound Pipeline"
         MX["MX Servers<br/>(SMTP listeners)"]
-        SpamFilter[Spam Filter<br/>(ML + Rules)]
+        SpamFilter["Spam Filter<br/>(ML + Rules)"]
         MalwareScan[Malware Scanner]
         Classifier[Category Classifier<br/>Primary/Social/Promo]
         IngestSvc[Ingest Service]

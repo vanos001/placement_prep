@@ -90,8 +90,8 @@ graph TB
     Topic --- P2[Partition 2]
 
     P0 --- L1["Ledger 1 (Active)"]
-    P0 --- L2[Ledger 2 (Sealed)]
-    P0 --- L3[Ledger 3 (Sealed)]
+    P0 --- L2["Ledger 2 (Sealed)"]
+    P0 --- L3["Ledger 3 (Sealed)"]
 ```
 
 | Concept | Description |

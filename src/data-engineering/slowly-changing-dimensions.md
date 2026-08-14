@@ -57,7 +57,8 @@ Use when: only the current and immediately previous values matter (e.g., trackin
 
 For attributes that change frequently (daily prices, scores), split them into a separate "mini-dimension" with its own surrogate key, joined at query time.
 
-``ndim_product: product_key, name, category (SCD 2)
+```text
+dim_product: product_key, name, category (SCD 2)
 dim_product_price: product_price_key, product_key, price, effective_date (SCD 2, rapid changes)
 ```
 

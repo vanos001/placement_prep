@@ -16,13 +16,13 @@ graph TD
 
 ## The Ω(n log n) Proof
 
-A binary tree with n! leaves has height h ≥ log₂(n!). By Stirling's approximation:
+A binary tree with n! leaves has height h >= log2(n!). By Stirling's approximation:
 
-``nh ≥ log₂(n!) = log₂(n · (n-1) · ... · 1)
-                ≥ log₂((n/2)^(n/2))        (lower half of terms)
-                = (n/2) · log₂(n/2)
-                = Ω(n log n)
-```
+> h >= log2(n!) = log2(n * (n-1) * ... * 1)
+>                   >= log2((n/2)^(n/2))        (lower half of terms)
+>                   = (n/2) * log2(n/2)
+>                   = Omega(n log n)
+
 
 Therefore, **any** comparison-based sorting algorithm requires Ω(n log n) comparisons in the worst case. This lower bound applies to merge sort, quicksort, heapsort — all of them are optimal up to constants.
 
