@@ -1702,6 +1702,7 @@
 - [Turing Machines](./cs-theory/turing-machines.md)
 - [Computability](./cs-theory/computability.md)
 - [Formal Languages](./cs-theory/formal-languages.md)
+- [Formal Methods](./cs-theory/formal-methods.md)
 - [Comparison Sorting Lower Bound](./cs-theory/comparison-sorting-lower-bound.md)
 
 ---
