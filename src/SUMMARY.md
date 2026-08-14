@@ -131,6 +131,7 @@
   - [Kernel Tracing (ftrace/kprobes)](./os/kernel/tracing.md)
   - [eBPF](./os/kernel/ebpf.md)
   - [io_uring](./os/kernel/io-uring.md)
+- [Advanced OS Topics](./os/advanced-os.md)
 
 ---
 
@@ -1297,6 +1298,7 @@
   - [Apple Silicon](./arch/modern/apple-silicon.md)
   - [Intel Alder Lake](./arch/modern/alder-lake.md)
   - [AMD Zen](./arch/modern/amd-zen.md)
+- [Hardware & Low-Level Deep Dive](./arch/hardware-low-level.md)
 
 ---
 
@@ -1786,6 +1788,7 @@
 - [Canary Releases (Progressive Delivery)](./sre/canary-releases.md)
 - [Feature Flags (Feature Toggles)](./sre/feature-flags.md)
 - [Multi-Region Architecture](./sre/multi-region.md)
+- [Infrastructure & Platform Engineering](./sre/infrastructure-platform-engineering.md)
 
 ---
 
@@ -2223,6 +2226,7 @@
   - [Product vs Service vs Semiconductor vs Cloud Companies](./interview/companies/company-types.md)
   - [FAANG/Big Tech Interview Preparation](./interview/companies/faang-preparation.md)
   - [Recruiter Communication](./interview/companies/recruiter-communication.md)
+- [Interview Meta-Topics](./interview/interview-meta-topics.md)
 
 ---
 

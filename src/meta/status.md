@@ -1,6 +1,6 @@
 # Project Status
 
-> Status snapshot: 2026-08-15 (Asia/Calcutta) — OpenClaw parallel-agent batch
+> Status snapshot: 2026-08-15 (Asia/Calcutta) — all 50 index.md sections have dedicated coverage
 
 ## Current status
 

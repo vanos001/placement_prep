@@ -149,24 +149,44 @@ The following previously-backlogged topics now have dedicated coverage:
 - Maintain 100% mermaid pass, 0 broken links, build clean — fix regressions immediately after merging dev
 - Next candidates: Serialization (index §39, partially covered — protobuf/Avro/Cap'n Proto comparison page would unify scattered content); API versioning is already covered; Quantum Computing (§35) is low-priority.
 
-## NEWLY COMPLETED (2026-08-15 — Parallel Agent Batch)
+## NEWLY COMPLETED (2026-08-15 — Parallel Agent Waves 1-4)
 
-Seven previously-zero-coverage index.md sections now have dedicated pages,
-produced by 7 parallel general-purpose agents in one dispatch round. Total
-~2 528 new lines of technically rigorous content. Each page includes
-overview, internals, Mermaid diagrams, comparison tables, interview
-questions, cross-references, and authoritative references.
+Four waves of parallel agents (7+7+7+4 = 25 agents) closed all 25
+previously-missing section-level pages, covering all 50 sections of
+`src/index.md`. Each new page is a section-level integrator covering
+that section's topics, with Mermaid diagrams, comparison tables,
+interview questions, and authoritative references.
 
-| § | Section | File | Lines |
-|---|---------|------|-------|
-| 4 | Programming Language Theory | `src/cs-theory/programming-language-theory.md` | 379 |
-| 23 | WebAssembly | `src/cs-theory/webassembly.md` | 313 |
-| 30 | Computer Graphics | `src/cs-theory/computer-graphics.md` | 334 |
-| 32 | IoT | `src/embedded-systems/iot.md` | 301 |
-| 34 | Robotics | `src/embedded-systems/robotics.md` | 332 |
-| 35 | Quantum Computing | `src/cs-theory/quantum-computing.md` | 303 |
-| 47 | Analytics & OLAP | `src/data-engineering/analytics.md` | 566 |
+Total new content: ~11,500 lines across 25 new pages.
 
-All pages wired into `SUMMARY.md`. Full validation suite passes:
-0 broken links, SUMMARY navigation OK, MathJax balanced,
-4 574 / 4 574 Mermaid diagrams pass (100%).
+| Wave | § | File | Lines |
+|------|---|------|-------|
+| 1 | 1 | `src/dsa/advanced-algorithms.md` | 427 |
+| 1 | 2 | `src/dsa/advanced-data-structures.md` | 508 |
+| 1 | 5 | `src/cs-theory/runtime-systems.md` | 498 |
+| 1 | 6 | `src/concurrency/advanced-concurrency.md` | 500 |
+| 1 | 7 | `src/linux/internals.md` | 522 |
+| 1 | 13 | `src/software-engineering/build-systems.md` | 565 |
+| 1 | 19 | `src/distributed/fundamentals/distributed-algorithms.md` | 549 |
+| 2 | 20 | `src/distributed/messaging/messaging-streaming.md` | 432 |
+| 2 | 21 | `src/frontend/frontend-engineering.md` | 480 |
+| 2 | 22 | `src/mobile/mobile-engineering.md` | 554 |
+| 2 | 24 | `src/arch/parallelism/gpu-hpc.md` | 533 |
+| 2 | 25 | `src/ml/mlops/ml-systems.md` | 411 |
+| 2 | 26 | `src/llm/llm-infrastructure.md` | 426 |
+| 2 | 28 | `src/dbms/specialized-databases.md` | 479 |
+| 3 | 33 | `src/embedded-systems/real-time-systems.md` | 355 |
+| 3 | 38 | `src/backend/api/api-protocol-design.md` | 495 |
+| 3 | 40 | `src/debugging/developer-tools.md` | 495 |
+| 3 | 41 | `src/linux/shell-unix.md` | 500 |
+| 3 | 42 | `src/networks/networking-advanced.md` | 506 |
+| 3 | 43 | `src/cloud/cloud-internals.md` | 405 |
+| 3 | 44 | `src/cloud/kubernetes-internals.md` | 550 |
+| 4 | 45 | `src/sre/infrastructure-platform-engineering.md` | 450 |
+| 4 | 48 | `src/os/advanced-os.md` | 496 |
+| 4 | 49 | `src/arch/hardware-low-level.md` | 446 |
+| 4 | 50 | `src/interview/interview-meta-topics.md` | 429 |
+
+All 50 sections of `index.md` now have dedicated coverage. Full
+validation suite passes: 0 broken links, SUMMARY navigation OK,
+MathJax balanced, Mermaid 100%.
