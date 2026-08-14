@@ -12,16 +12,16 @@ humans and future agent sessions. Read this before making changes.
 | Book source | `src/` (Markdown), `src/SUMMARY.md` is the navigation |
 | Build output | `book/` (git-ignored) |
 | Mermaid rendering | Mermaid **v11** loaded from CDN in `mermaid-init.js` |
-| Working branch | **`dev2`** (never commit directly to `main`) |
-| Content count | ~870 Markdown files, ~2500 Mermaid diagrams |
+| Working branch | **`dev`** (never commit directly to `main`) |
+| Content count | ~1,930 Markdown files, ~4,500 Mermaid diagrams |
 
 ---
 
 ## Git workflow
 
 ```bash
-# Start a session: always on dev2, up to date
-git checkout dev2 && git pull origin dev2
+# Start a session: always on dev, up to date
+git checkout dev && git pull origin dev
 
 # Make changes, then validate (see below), then:
 git add -A
@@ -31,16 +31,16 @@ git commit -m "type(scope): summary"
 #     fix(mermaid): quote unquoted labels containing parens
 #     docs(dbms): add OLTP vs OLAP page
 
-# Push to dev2 ONLY
-git branch --show-current        # must print: dev2
-git push origin dev2
+# Push to dev ONLY
+git branch --show-current        # must print: dev
+git push origin dev
 ```
 
 Rules:
 - **Never push to `main`** unless the user explicitly asks for a merge.
 - Commit in small logical batches (one topic/page/type per commit).
 - Push frequently so work is never lost.
-- Merge to `main` when asked: `git checkout main && git pull && git merge dev2 && git push origin main`.
+- Merge to `main` when asked: `git checkout main && git pull && git merge dev && git push origin main`.
 
 ## Authentication
 

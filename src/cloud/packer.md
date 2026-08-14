@@ -308,8 +308,6 @@ jobs:
 
 ## Cross-References
 
-- [Terraform / GitOps](../cicd/gitops.md) — Deploy Packer-built images
-- [CI/CD Pipelines](../cicd/pipelines.md) — Integrate Packer in build pipelines
-- [Docker Internals](../../linux/containers/docker-internals.md) — Container vs VM images
-- [Kubernetes](../kubernetes/README.md) — Running Packer-built images in K8s
-- [Kubernetes Deployments](../kubernetes/deployments.md) — Rolling updates with new images
+- [Terraform / GitOps](./cicd/gitops.md) — Deploy Packer-built images
+- [CI/CD Pipelines](./cicd/pipelines.md) — Integrate Packer in build pipelines
+- [Docker Internals](../linux/containers/docker-internals.md) — Container vs VM images

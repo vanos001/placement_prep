@@ -225,8 +225,8 @@ For cross-region connectivity:
 ## Cross-References
 
 - [VPC](./aws/vpc.md) — Network foundation for VPN endpoints
-- [Linux VPN](../../linux/networking/vpn.md) — VPN fundamentals and protocols
-- [WireGuard](../../linux/networking/wireguard.md) — Modern VPN protocol
-- [TLS](../../linux/networking/tls.md) — Encryption fundamentals
+- [Linux VPN](../linux/networking/vpn.md) — VPN fundamentals and protocols
+- [WireGuard](../linux/networking/wireguard.md) — Modern VPN protocol
+- [TLS](../linux/networking/tls.md) — Encryption fundamentals
 - [Disaster Recovery](./disaster-recovery.md) — VPN as DR connectivity
-- [Multi-Region Architecture](../../sre/multi-region.md) — Cross-region VPN design
+- [Multi-Region Architecture](../sre/multi-region.md) — Cross-region VPN design
