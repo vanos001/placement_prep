@@ -1,6 +1,6 @@
 # Project Status
 
-> Status snapshot: 2026-08-15 (Asia/Calcutta) — OpenClaw expansion batch
+> Status snapshot: 2026-08-15 (Asia/Calcutta) — OpenClaw parallel-agent batch
 
 ## Current status
 

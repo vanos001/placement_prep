@@ -148,12 +148,12 @@ Color is more subtle than "RGB triple." Light is a spectrum; the CIE standard ob
 
 ```mermaid
 flowchart TD
-    START["For each pixel:<br/>shoot primary ray"] --> HIT{Ray hits<br/>scene?}
+    START["For each pixel:<br/>shoot primary ray"] --> HIT{"Ray hits scene?"}
     HIT -->|"no"| MISS["Return background<br/>/ sky color"]
-    HIT -->|"yes"| SHADOW{In shadow?<br/>(shadow ray test)}
+    HIT -->|"yes"| SHADOW{"In shadow? (shadow ray test)"}
     SHADOW -->|"yes"| AMB["Ambient term only"]
     SHADOW -->|"no"| DIRECT["Direct lighting<br/>(BRDF · N · L)"]
-    AMB --> RECURSE{Depth < max<br/>and material<br/>reflects/refracts?}
+    AMB --> RECURSE{"Depth < max and material reflects/refracts?"}
     DIRECT --> RECURSE
     RECURSE -->|"yes"| SPAWN["Spawn reflection<br/>+ refraction rays<br/>recurse"]
     SPAWN --> HIT

@@ -14,11 +14,11 @@ The Church–Turing thesis (see [Turing Machines](./turing-machines.md)) asserts
 
 A classical bit is in one of two states, `0` or `1`. A **qubit** is a unit vector in a two-dimensional complex Hilbert space $\mathcal{H} = \mathbb{C}^2$. We fix an orthonormal basis $\{|0\rangle, |1\rangle\}$ (Dirac notation) and write
 
-$$|\psi\rangle = \alpha\,|0\rangle + \beta\,|1\rangle, \qquad \alpha, \beta \in \mathbb{C}, \qquad |\alpha|^2 + |\beta|^2 = 1.$$
+\\[|\psi\rangle = \alpha\,|0\rangle + \beta\,|1\rangle, \qquad \alpha, \beta \in \mathbb{C}, \qquad |\alpha|^2 + |\beta|^2 = 1.\\]
 
 The normalization constraint reflects the probabilistic interpretation: when measured in the computational basis, the qubit yields `0` with probability $|\alpha|^2$ and `1` with probability $|\beta|^2$. The pair $(\alpha, \beta)$ has four real degrees of freedom; the normalization removes one and the global phase (which has no observable consequence) removes another, leaving **two real parameters**. A single qubit's pure state can therefore be visualized as a point on the unit sphere $S^2$, the **Bloch sphere**, with coordinates
 
-$$|\psi\rangle = \cos(\theta/2)\,|0\rangle + e^{i\varphi}\sin(\theta/2)\,|1\rangle.$$
+\\[|\psi\rangle = \cos(\theta/2)\,|0\rangle + e^{i\varphi}\sin(\theta/2)\,|1\rangle.\\]
 
 The Bloch vector $\vec{r} = (\sin\theta\cos\varphi,\; \sin\theta\sin\varphi,\; \cos\theta)$ points to the state on the sphere: $|0\rangle$ at the north pole, $|1\rangle$ at the south, equal superpositions on the equator. Mixed states live *inside* the ball, at radius equal to the state's purity. The Bloch sphere is an indispensable mental model: every single-qubit unitary is a rotation of this sphere, and reading a circuit reduces to composing rotations.
 
@@ -63,11 +63,11 @@ The reversibility constraint is equally important. Quantum gates are unitary, he
 
 Superposition is the property that a qubit can be in any complex linear combination of $|0\rangle$ and $|1\rangle$, not just one or the other. The Hadamard gate $H$ produces the canonical equal superposition:
 
-$$H|0\rangle = \frac{|0\rangle + |1\rangle}{\sqrt{2}}, \qquad H|1\rangle = \frac{|0\rangle - |1\rangle}{\sqrt{2}}.$$
+\\[H|0\rangle = \frac{|0\rangle + |1\rangle}{\sqrt{2}}, \qquad H|1\rangle = \frac{|0\rangle - |1\rangle}{\sqrt{2}}.\\]
 
 Applied to $n$ qubits all initialized to $|0\rangle^{\otimes n}$, a layer of $n$ Hadamards produces a uniform superposition over all $2^n$ basis states:
 
-$$|0\rangle^{\otimes n} \;\xrightarrow{H^{\otimes n}}\; \frac{1}{\sqrt{2^n}}\sum_{x \in \{0,1\}^n} |x\rangle.$$
+\\[|0\rangle^{\otimes n} \;\xrightarrow{H^{\otimes n}}\; \frac{1}{\sqrt{2^n}}\sum_{x \in \{0,1\}^n} |x\rangle.\\]
 
 This is the standard starting point for Shor, Grover, quantum phase estimation, and most quantum algorithms. The crucial subtlety is that *superposition is not parallelism in the classical sense*. A measurement collapses the state to a single basis vector drawn from the Born distribution $|\alpha_x|^2$; you do not get to inspect all $2^n$ amplitudes. Algorithms must exploit interference — the fact that amplitudes are complex numbers that can add constructively or destructively — to amplify the probability of the desired answer before measurement. This is why quantum algorithm design is hard: most naive "try everything at once" approaches do not produce useful interference and offer no speedup over classical random sampling.
 
@@ -75,13 +75,13 @@ This is the standard starting point for Shor, Grover, quantum phase estimation, 
 
 Two qubits are **entangled** when their joint state cannot be written as a tensor product $|\psi\rangle \otimes |\phi\rangle$ of individual qubit states. The canonical example is the Bell state
 
-$$|\Phi^+\rangle = \frac{|00\rangle + |11\rangle}{\sqrt{2}}.$$
+\\[|\Phi^+\rangle = \frac{|00\rangle + |11\rangle}{\sqrt{2}}.\\]
 
 Measuring the first qubit yields `0` or `1` with equal probability; *conditional* on that outcome, the second qubit is *guaranteed* to match. This perfect correlation holds regardless of the spatial separation between the qubits, which is what made Einstein, Podolsky, and Rosen (EPR, 1935) uncomfortable — they called it "spooky action at a distance" and argued it implied quantum mechanics was incomplete. Bell's 1964 theorem and the subsequent experiments (Aspect 1982, Hensen 2015, the 2022 Nobel Prize to Aspect, Clauser, and Zeilinger) showed that **no local hidden-variable theory** can reproduce the correlations predicted by quantum mechanics. Bell's inequality is violated by entangled quantum states but satisfied by any classically correlated ensemble.
 
 The four Bell states form an orthonormal basis of the two-qubit space:
 
-$$|\Phi^\pm\rangle = \tfrac{1}{\sqrt{2}}(|00\rangle \pm |11\rangle), \qquad |\Psi^\pm\rangle = \tfrac{1}{\sqrt{2}}(|01\rangle \pm |10\rangle).$$
+\\[|\Phi^\pm\rangle = \tfrac{1}{\sqrt{2}}(|00\rangle \pm |11\rangle), \qquad |\Psi^\pm\rangle = \tfrac{1}{\sqrt{2}}(|01\rangle \pm |10\rangle).\\]
 
 It is critical to understand that entanglement is *not* classical correlation. A classical mixture of $|00\rangle$ and $|11\rangle$ with probability $1/2$ each also produces matching outcomes on measurement — but it cannot violate Bell's inequality, and it admits a local hidden-variable model. The distinction is in the **interference** statistics: only the coherent superposition $|\Phi^+\rangle$ produces the characteristic $\cos^2(\theta/2)$ correlations when measured along arbitrary axes. This is the same conceptual pitfall as conflating mutex-protected shared state with message passing — see [Memory Models](../concurrency/memory-model.md) for that analogy. Entanglement is a *resource*: it enables teleportation, superdense coding, quantum key distribution, and is the substrate of most quantum speedups.
 
@@ -226,7 +226,7 @@ Superconducting qubits lead on qubit count and gate speed (nanosecond-scale gate
 
 **BQP** (Bounded-error Quantum Polynomial time) is the class of decision problems solvable by a quantum computer in polynomial time with error probability at most $1/3$. It is the quantum analog of BPP. Known inclusions:
 
-$$P \subseteq BPP \subseteq BQP \subseteq PSPACE, \qquad BQP \subseteq PP.$$
+\\[P \subseteq BPP \subseteq BQP \subseteq PSPACE, \qquad BQP \subseteq PP.\\]
 
 Whether $BPP = BQP$ is open — but Shor's factoring algorithm is strong evidence that the inclusion is strict (since factoring is in BQP but is *believed* not to be in BPP, otherwise RSA would already be broken classically). See [Complexity Classes](./complexity-classes.md) for the full landscape. BQP is not known to contain NP, and most complexity theorists believe $NP \not\subseteq BQP$ — Grover's quadratic speedup over brute force is consistent with this, but the absence of any polynomial-time quantum algorithm for SAT after 30 years of effort is telling. The relationship between BQP and the polynomial hierarchy (PH) is also subtle: there exist oracle separations showing BQP is not in PH (Aaronson's "Forrelation" problem, 2010).
 

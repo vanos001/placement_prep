@@ -148,3 +148,25 @@ The following previously-backlogged topics now have dedicated coverage:
 - Update knowledge graph each batch to keep cross-links
 - Maintain 100% mermaid pass, 0 broken links, build clean — fix regressions immediately after merging dev
 - Next candidates: Serialization (index §39, partially covered — protobuf/Avro/Cap'n Proto comparison page would unify scattered content); API versioning is already covered; Quantum Computing (§35) is low-priority.
+
+## NEWLY COMPLETED (2026-08-15 — Parallel Agent Batch)
+
+Seven previously-zero-coverage index.md sections now have dedicated pages,
+produced by 7 parallel general-purpose agents in one dispatch round. Total
+~2 528 new lines of technically rigorous content. Each page includes
+overview, internals, Mermaid diagrams, comparison tables, interview
+questions, cross-references, and authoritative references.
+
+| § | Section | File | Lines |
+|---|---------|------|-------|
+| 4 | Programming Language Theory | `src/cs-theory/programming-language-theory.md` | 379 |
+| 23 | WebAssembly | `src/cs-theory/webassembly.md` | 313 |
+| 30 | Computer Graphics | `src/cs-theory/computer-graphics.md` | 334 |
+| 32 | IoT | `src/embedded-systems/iot.md` | 301 |
+| 34 | Robotics | `src/embedded-systems/robotics.md` | 332 |
+| 35 | Quantum Computing | `src/cs-theory/quantum-computing.md` | 303 |
+| 47 | Analytics & OLAP | `src/data-engineering/analytics.md` | 566 |
+
+All pages wired into `SUMMARY.md`. Full validation suite passes:
+0 broken links, SUMMARY navigation OK, MathJax balanced,
+4 574 / 4 574 Mermaid diagrams pass (100%).

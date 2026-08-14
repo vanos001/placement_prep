@@ -1536,6 +1536,7 @@
 - [Data Lineage](./data-engineering/data-lineage.md)
 - [Data Lakehouses](./data-engineering/lakehouses.md)
 - [Slowly Changing Dimensions](./data-engineering/slowly-changing-dimensions.md)
+- [Analytics & OLAP](./data-engineering/analytics.md)
 
 ---
 
@@ -1704,6 +1705,10 @@
 - [Computability](./cs-theory/computability.md)
 - [Formal Languages](./cs-theory/formal-languages.md)
 - [Formal Methods](./cs-theory/formal-methods.md)
+- [Programming Language Theory](./cs-theory/programming-language-theory.md)
+- [WebAssembly](./cs-theory/webassembly.md)
+- [Computer Graphics](./cs-theory/computer-graphics.md)
+- [Quantum Computing](./cs-theory/quantum-computing.md)
 - [Comparison Sorting Lower Bound](./cs-theory/comparison-sorting-lower-bound.md)
 
 ---
@@ -2390,6 +2395,8 @@
 - [RTOS](./embedded-systems/rtos.md)
 - [Firmware](./embedded-systems/firmware.md)
 - [Embedded Systems Interview Questions](./embedded-systems/interview-questions.md)
+- [IoT](./embedded-systems/iot.md)
+- [Robotics](./embedded-systems/robotics.md)
 
 ---
 
