@@ -141,6 +141,7 @@
 - [Linux Track Overview](./linux/README.md)
 - [Linux Tools for Placement Preparation](./linux/tools.md)
 - [Linux Internals](./linux/internals.md)
+- [Shell & Unix Deep Dive](./linux/shell-unix.md)
 
 
 - [Linux Introduction](./linux/introduction.md)
@@ -1195,6 +1196,7 @@
   - [ping/traceroute](./networks/tools/ping-traceroute.md)
   - [curl](./networks/tools/curl.md)
   - [eBPF Networking](./networks/ebpf-networking.md)
+- [Networking — Advanced](./networks/networking-advanced.md)
 - [Socket Programming](./networks/sockets/README.md)
   - [TCP Sockets](./networks/sockets/tcp.md)
   - [UDP Sockets](./networks/sockets/udp.md)
@@ -1405,6 +1407,7 @@
   - [Rate Limiting](./backend/api/rate-limiting.md)
   - [Webhooks](./backend/api/webhooks.md)
   - [Connection Pools](./backend/api/connection-pools.md)
+  - [API & Protocol Design](./backend/api/api-protocol-design.md)
 - [Authentication & Authorization](./backend/auth/README.md)
   - [JWT](./backend/auth/jwt.md)
   - [OAuth 2.0](./backend/auth/oauth.md)
@@ -1861,6 +1864,7 @@
 - [Cloud Overview](./cloud/overview.md)
 - [Autoscaling](./cloud/autoscaling.md)
 - [Disaster Recovery & Multi-Region](./cloud/disaster-recovery.md)
+- [Cloud Internals](./cloud/cloud-internals.md)
 - [Virtualization](./cloud/virtualization/README.md)
   - [Hypervisors](./cloud/virtualization/hypervisors.md)
   - [VMs vs Containers](./cloud/virtualization/vm-vs-container.md)
@@ -1883,6 +1887,7 @@
   - [Operators](./cloud/kubernetes/operators.md)
   - [Scheduling](./cloud/kubernetes/scheduling.md)
   - [Networking](./cloud/kubernetes/networking.md)
+- [Kubernetes Internals](./cloud/kubernetes-internals.md)
   - [Security](./cloud/kubernetes/security.md)
   - [Storage](./cloud/kubernetes/storage.md)
   - [Debugging K8s](./cloud/kubernetes/debugging.md)
@@ -2411,6 +2416,7 @@
 - [Embedded Systems Interview Questions](./embedded-systems/interview-questions.md)
 - [IoT](./embedded-systems/iot.md)
 - [Robotics](./embedded-systems/robotics.md)
+- [Real-Time Systems](./embedded-systems/real-time-systems.md)
 
 ---
 
@@ -2432,6 +2438,7 @@
 - [Production Debugging](./debugging/production-debugging.md)
 - [Common Bugs](./debugging/common-bugs.md)
 - [Debugging Interview Questions](./debugging/interview-questions.md)
+- [Developer Tools Deep Dive](./debugging/developer-tools.md)
 
 ---
 

@@ -401,5 +401,5 @@ Cloud internals reduce to three layered systems: (1) **virtualization** (KVM + v
 - [Kubernetes Pods](./kubernetes/pods.md) — Container orchestration
 - [Docker](../backend/containers/docker.md) — Container runtime
 - [Cloud Overview](./overview.md) — Service models and regions/AZs
-- [Networking — Advanced](../networks/README.md) — SDN, BGP, congestion control
-- [Operating Systems — Advanced](../os/README.md) — Schedulers, memory management
+- [Networking — Advanced](../networks/networking-advanced.md) — SDN, BGP, congestion control
+- [Operating Systems](../os/overview.md) — Schedulers, memory management

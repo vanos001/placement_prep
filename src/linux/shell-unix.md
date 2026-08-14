@@ -201,7 +201,7 @@ TMPFILE="$(mktemp)"
 signal-disposition table (`task_struct->signal->action[]`). When a
 trapped signal arrives, the kernel queues it and the next return to user
 space runs the handler. `trap '' INT` ignores `SIGINT`; `trap - INT`
-restores the default. Detail: [signals](../os/processes/signals.md).
+restores the default. Detail: [signals](../os/processes/ipc-signals.md).
 
 ```mermaid
 sequenceDiagram
@@ -497,4 +497,4 @@ Cross-references: [shell overview](./shell/overview.md), [bash](./shell/bash.md)
 [fish](./shell/fish.md), [POSIX shell](./shell/posix-shell.md), [scripting](./shell/scripting-fundamentals.md),
 [advanced scripting](./shell/scripting-advanced.md), [sed/awk](./shell/sed-awk.md), [find](./shell/find.md),
 [grep](./shell/grep.md), [xargs](./shell/xargs.md), [regex](./shell/regex.md), [Linux tools](./tools.md),
-[Linux internals](./internals.md), [OS § signals](../os/processes/signals.md), [OS § terminals](../os/io/terminals.md).
+[Linux internals](./internals.md), [OS § signals](../os/processes/ipc-signals.md), [OS § terminals](../os/io/README.md).
