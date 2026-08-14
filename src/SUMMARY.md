@@ -980,6 +980,19 @@
 - [Chapter 179: Fisher-Yates Shuffle and Reservoir Sampling](./dsa/chapters/ch179-fisher-yates-reservoir.md)
 - [Chapter 180: Minimax and Alpha-Beta Pruning](./dsa/chapters/ch180-minimax-alpha-beta.md)
 
+## Part XXI: Advanced Competitive Programming Topics
+
+- [Chapter 181: Fenwick Tree — Advanced Applications](./dsa/chapters/ch181-fenwick-tree-advanced.md)
+- [Chapter 182: Borůvka's MST Algorithm](./dsa/chapters/ch182-boruvka-mst.md)
+- [Chapter 183: DAG Shortest & Longest Paths](./dsa/chapters/ch183-dag-shortest-paths.md)
+- [Chapter 184: Akra-Bazzi Master Theorem](./dsa/chapters/ch184-akra-bazzi.md)
+- [Chapter 185: Sparse Table — Advanced Techniques](./dsa/chapters/ch185-sparse-table-advanced.md)
+- [Chapter 186: Hamiltonian Paths & Cycles](./dsa/chapters/ch186-hamiltonian-paths.md)
+- [Chapter 187: Gray Codes](./dsa/chapters/ch187-gray-codes.md)
+- [Chapter 188: Monotonic Queue/Deque Optimization](./dsa/chapters/ch188-monotonic-queue-dp.md)
+- [Chapter 189: Sweep-Line Geometry](./dsa/chapters/ch189-sweep-line-geometry.md)
+- [Chapter 190: Coordinate Geometry for Competitive Programming](./dsa/chapters/ch190-coordinate-geometry-cp.md)
+
 ---
 
 # Database Management Systems
@@ -1003,6 +1016,8 @@
   - [Stored Procedures](./dbms/sql/stored-procedures.md)
   - [Triggers](./dbms/sql/triggers.md)
   - [Indexes in SQL](./dbms/sql/indexes.md)
+  - [Correlated Subqueries](./dbms/sql/correlated-subqueries.md)
+  - [Hierarchical Queries](./dbms/sql/hierarchical-queries.md)
 - [Normalization](./dbms/normalization/README.md)
   - [1NF](./dbms/normalization/1nf.md)
   - [2NF](./dbms/normalization/2nf.md)
@@ -1083,6 +1098,8 @@
   - [Query Execution Models](./dbms/internals/query-execution.md)
   - [Storage Engine Internals](./dbms/internals/storage-engine.md)
   - [Transaction Internals](./dbms/internals/transaction-internals.md)
+- [NULL Semantics in SQL](./dbms/null-semantics.md)
+- [Query Planner](./dbms/query-planner.md)
 
 ---
 
@@ -1288,6 +1305,7 @@
   - [Gossip Protocol](./distributed/fundamentals/gossip.md)
   - [Conflict-Free Replicated Data Types](./distributed/fundamentals/crdts.md)
   - [Distributed Locks and Fencing Tokens](./distributed/fundamentals/distributed-locks.md)
+  - [Byzantine Faults](./distributed/fundamentals/byzantine-faults.md)
 - [Consensus](./distributed/consensus/README.md)
   - [Paxos](./distributed/consensus/paxos.md)
   - [Raft](./distributed/consensus/raft.md)
@@ -1311,6 +1329,7 @@
   - [Kafka](./distributed/messaging/kafka.md)
   - [RabbitMQ](./distributed/messaging/rabbitmq.md)
   - [Pub/Sub](./distributed/messaging/pubsub.md)
+  - [Apache Pulsar](./distributed/messaging/pulsar.md)
 - [Microservices](./distributed/microservices/README.md)
   - [Service Discovery](./distributed/microservices/discovery.md)
   - [Circuit Breakers](./distributed/microservices/circuit-breakers.md)
@@ -1474,6 +1493,9 @@
 - [Cryptography](./security/cryptography.md)
 - [Secrets Management](./security/secrets-management.md)
 - [Security Interview Questions](./security/interview-questions.md)
+- [Command Injection](./security/command-injection.md)
+- [Prototype Pollution](./security/prototype-pollution.md)
+- [Software Supply Chain Security](./security/supply-chain-security.md)
 
 ---
 
@@ -1508,6 +1530,10 @@
 - [Data Formats](./data-engineering/data-formats.md)
 - [Data Quality](./data-engineering/data-quality.md)
 - [DE Interview Questions](./data-engineering/interview-questions.md)
+- [Cohort Analysis](./data-engineering/cohort-analysis.md)
+- [Data Lineage](./data-engineering/data-lineage.md)
+- [Data Lakehouses](./data-engineering/lakehouses.md)
+- [Slowly Changing Dimensions](./data-engineering/slowly-changing-dimensions.md)
 
 ---
 
@@ -1534,6 +1560,9 @@
 - [Number Systems](./aptitude/number-systems.md)
 - [Logical Reasoning](./aptitude/logical-reasoning.md)
 - [Data Interpretation](./aptitude/data-interpretation.md)
+- [Calculus Basics for Placement Tests](./aptitude/calculus-basics.md)
+- [Compound and Simple Interest](./aptitude/compound-interest.md)
+- [Trigonometry for Aptitude Tests](./aptitude/trigonometry.md)
 
 ---
 
@@ -1545,6 +1574,11 @@
 - [Technical Interview](./placement-preparation/technical-interview.md)
 - [HR Interview](./placement-preparation/hr-interview.md)
 - [Group Discussion](./placement-preparation/group-discussion.md)
+- [Coding Assessments](./placement-preparation/coding-assessments.md)
+- [Cognitive Ability Tests](./placement-preparation/cognitive-tests.md)
+- [Communication Assessment Rounds](./placement-preparation/communication-round.md)
+- [Internship Preparation](./placement-preparation/internships.md)
+- [SQL Interview Rounds](./placement-preparation/sql-rounds.md)
 
 ---
 
@@ -1557,6 +1591,7 @@
 - [Technical Skills](./resume/technical-skills.md)
 - [Common Resume Mistakes](./resume/common-mistakes.md)
 - [ATS Optimization](./resume/ats-optimization.md)
+- [Resume Tailoring Per Role](./resume/resume-tailoring.md)
 
 ---
 
@@ -1611,6 +1646,10 @@
 - [Mocking](./testing/mocking.md)
 - [Test Strategy](./testing/test-strategy.md)
 - [Testing Interview Questions](./testing/interview-questions.md)
+- [Mutation Testing](./testing/mutation-testing.md)
+- [Property-Based Testing](./testing/property-based-testing.md)
+- [Snapshot Testing](./testing/snapshot-testing.md)
+- [Test Pyramids](./testing/test-pyramids.md)
 
 ---
 
@@ -1627,6 +1666,12 @@
 - [API Communication Patterns](./web-development/api-communication.md)
 - [Rendering Performance & Core Web Vitals](./web-development/rendering-performance.md)
 - [Web Security Deep Dive](./web-development/security-deep.md)
+- [Browser Event Loop](./web-development/browser-event-loop.md)
+- [Browser Rendering Pipeline](./web-development/browser-rendering.md)
+- [Code Splitting](./web-development/code-splitting.md)
+- [Service Workers](./web-development/service-workers.md)
+- [Web Workers](./web-development/web-workers.md)
+- [WebRTC](./web-development/webrtc.md)
 
 ---
 
@@ -1653,6 +1698,10 @@
 - [Logic](./cs-theory/logic.md)
 - [Proof Techniques](./cs-theory/proofs.md)
 - [Complexity Classes](./cs-theory/complexity-classes.md)
+- [Turing Machines](./cs-theory/turing-machines.md)
+- [Computability](./cs-theory/computability.md)
+- [Formal Languages](./cs-theory/formal-languages.md)
+- [Comparison Sorting Lower Bound](./cs-theory/comparison-sorting-lower-bound.md)
 
 ---
 
@@ -1672,6 +1721,11 @@
 - [SOLID Deep Dive](./oop-patterns/solid-deep-dive.md)
 - [Creational Patterns](./oop-patterns/design-patterns-creational.md)
 - [Structural & Behavioral Patterns](./oop-patterns/design-patterns-structural-behavioral.md)
+- [Chain of Responsibility Pattern](./oop-patterns/chain-of-responsibility.md)
+- [Flyweight Pattern](./oop-patterns/flyweight.md)
+- [Memento Pattern](./oop-patterns/memento.md)
+- [Service Locator Pattern](./oop-patterns/service-locator.md)
+- [Visitor Pattern](./oop-patterns/visitor.md)
 
 ---
 
@@ -1705,6 +1759,11 @@
 - [Capacity Planning for SRE](./sre/capacity-planning.md)
 - [On-Call Best Practices for SRE](./sre/on-call.md)
 - [Reliability Patterns](./sre/reliability-patterns.md)
+- [Bulkhead Pattern (Failure Isolation)](./sre/bulkheads.md)
+- [Cache Patterns for SRE and Backend Systems](./sre/cache-patterns.md)
+- [Canary Releases (Progressive Delivery)](./sre/canary-releases.md)
+- [Feature Flags (Feature Toggles)](./sre/feature-flags.md)
+- [Multi-Region Architecture](./sre/multi-region.md)
 
 ---
 
@@ -1791,6 +1850,9 @@
   - [RDS](./cloud/aws/rds.md)
   - [Lambda](./cloud/aws/lambda.md)
   - [VPC](./cloud/aws/vpc.md)
+  - [ElastiCache](./cloud/aws/elasticache.md)
+  - [EventBridge](./cloud/aws/eventbridge.md)
+  - [Kinesis](./cloud/aws/kinesis.md)
 - [GCP](./cloud/gcp.md)
 - [Azure](./cloud/azure.md)
 - [Kubernetes](./cloud/kubernetes/README.md)
@@ -1807,11 +1869,14 @@
 - [CI/CD](./cloud/cicd/README.md)
   - [Pipelines](./cloud/cicd/pipelines.md)
   - [GitOps](./cloud/cicd/gitops.md)
+  - [Buildkite](./cloud/cicd/buildkite.md)
 - [Observability](./cloud/observability/README.md)
   - [Logging](./cloud/observability/logging.md)
   - [Monitoring](./cloud/observability/monitoring.md)
   - [Tracing](./cloud/observability/tracing.md)
 - [Cloud Security: IAM & Secrets](./cloud/security/README.md)
+- [Packer](./cloud/packer.md)
+- [Cloud VPN](./cloud/vpn.md)
 
 ---
 
@@ -2073,6 +2138,15 @@
   - [Video Streaming Platform](./interview/system-design/real-world/video-streaming.md)
   - [Payment System](./interview/system-design/real-world/payment-system.md)
   - [Analytics Platform](./interview/system-design/real-world/analytics-platform.md)
+  - [Code Hosting Platform (GitHub-like)](./interview/system-design/real-world/code-hosting.md)
+  - [Email System Design (Gmail-like)](./interview/system-design/real-world/email-system.md)
+  - [Hotel Booking Platform](./interview/system-design/real-world/hotel-booking.md)
+  - [Job Portal: Job Search & Application Platform](./interview/system-design/real-world/job-portal.md)
+  - [LinkedIn: Professional Network Platform](./interview/system-design/real-world/linkedin.md)
+  - [Reddit: Social News Aggregator](./interview/system-design/real-world/reddit.md)
+  - [Slack: Team Messaging Platform](./interview/system-design/real-world/slack.md)
+  - [Spotify: Music Streaming Platform](./interview/system-design/real-world/spotify.md)
+  - [Telegram: Cloud-Synced Instant Messaging](./interview/system-design/real-world/telegram.md)
   - [High Level Design (HLD)](./interview/system-design/hld/README.md)
     - [Scalability](./interview/system-design/hld/scalability.md)
     - [Load Balancing Design](./interview/system-design/hld/load-balancing-design.md)
@@ -2119,6 +2193,9 @@
   - [Meta](./interview/companies/meta.md)
   - [Apple](./interview/companies/apple.md)
   - [Netflix](./interview/companies/netflix.md)
+  - [Product vs Service vs Semiconductor vs Cloud Companies](./interview/companies/company-types.md)
+  - [FAANG/Big Tech Interview Preparation](./interview/companies/faang-preparation.md)
+  - [Recruiter Communication](./interview/companies/recruiter-communication.md)
 
 ---
 
