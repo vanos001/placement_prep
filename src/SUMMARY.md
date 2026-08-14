@@ -140,6 +140,7 @@
 
 - [Linux Track Overview](./linux/README.md)
 - [Linux Tools for Placement Preparation](./linux/tools.md)
+- [Linux Internals](./linux/internals.md)
 
 
 - [Linux Introduction](./linux/introduction.md)
@@ -695,6 +696,8 @@
 # Data Structures & Algorithms
 
 - [DSA Track Overview](./dsa/README.md)
+- [Advanced Algorithms](./dsa/advanced-algorithms.md)
+- [Advanced Data Structures](./dsa/advanced-data-structures.md)
 
 
 ---
@@ -1307,6 +1310,7 @@
   - [Conflict-Free Replicated Data Types](./distributed/fundamentals/crdts.md)
   - [Distributed Locks and Fencing Tokens](./distributed/fundamentals/distributed-locks.md)
   - [Byzantine Faults](./distributed/fundamentals/byzantine-faults.md)
+  - [Distributed Algorithms Overview](./distributed/fundamentals/distributed-algorithms.md)
 - [Consensus](./distributed/consensus/README.md)
   - [Paxos](./distributed/consensus/paxos.md)
   - [Raft](./distributed/consensus/raft.md)
@@ -1373,6 +1377,7 @@
 - [Coroutines](./concurrency/coroutines.md)
 - [Lock-free Data Structures](./concurrency/lock-free.md)
 - [RCU (Read-Copy-Update)](./concurrency/rcu.md)
+- [Advanced Concurrency](./concurrency/advanced-concurrency.md)
 - [ABA Problem and Safe Memory Reclamation](./concurrency/aba-problem.md)
 - [Work-Stealing Scheduler](./concurrency/work-stealing.md)
 - [Memory Model (C++/Java/Go/Rust)](./concurrency/memory-model.md)
@@ -1460,6 +1465,7 @@
 - [Testing](./software-engineering/testing.md)
 - [DevOps & CI/CD](./software-engineering/devops.md)
 - [Documentation](./software-engineering/documentation.md)
+- [Build Systems](./software-engineering/build-systems.md)
 - [Project Management](./software-engineering/project-management.md)
 - [Software Metrics](./software-engineering/metrics.md)
 - [Team Dynamics](./software-engineering/team-dynamics.md)
@@ -1709,6 +1715,7 @@
 - [WebAssembly](./cs-theory/webassembly.md)
 - [Computer Graphics](./cs-theory/computer-graphics.md)
 - [Quantum Computing](./cs-theory/quantum-computing.md)
+- [Runtime Systems](./cs-theory/runtime-systems.md)
 - [Comparison Sorting Lower Bound](./cs-theory/comparison-sorting-lower-bound.md)
 
 ---
