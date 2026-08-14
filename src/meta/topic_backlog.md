@@ -108,9 +108,43 @@ The following previously-backlogged topics now have dedicated coverage:
 - **Edge Computing** — CDN compute, edge functions (covered in cdn/edge.md; could expand with Cloudflare Workers, Fastly Compute@Edge)
 - ~~Observability Deep Dive~~ ✅ Done `backend/observability/opentelemetry.md` (2026-08-12): signals, propagation, Collector, semantic conventions, sampling, cardinality
 
+## NEWLY COMPLETED (2026-08-15 — OpenClaw expansion batch)
+
+- **Master topic index** ✅ `src/index.md` — added the 1 660-line master topic database
+  that was previously missing from the repo, covering all 50 sections from Algorithms
+  through Interview Meta Topics. Wired into `SUMMARY.md` at the top navigation and the
+  Meta section.
+- **Java Virtual Threads deep dive** ✅ `src/languages/java/virtual-threads.md`
+  expanded from 139 → 261 lines. Added JEP timeline (JDK 19 through 25), continuation-
+  on-heap internals, three creation patterns, structured-concurrency API churn note
+  (JEP 499 / 505), scoped-values rationale, migration playbook, comparison table vs
+  goroutines / Kotlin coroutines / Reactor, 8 interview questions.
+- **Python Free-Threaded deep dive** ✅ `src/languages/python/free-threaded.md`
+  expanded from 148 → 235 lines. Added PEP 779, biased-locking internals, immortal
+  objects (PEP 683), per-object critical sections (`Py_BEGIN_CRITICAL_SECTION`),
+  Cython `freethreading=True` directive, C-extension compatibility table, runtime
+  introspection (`sys._is_gil_enabled`, `-X gil=0`), comparison vs Java Loom / Go /
+  Ruby Ractor, 7 interview questions.
+- **Ceph CRUSH/RADOS deep dive** ✅ `src/storage/ceph-crush.md` expanded from
+  181 → 340 lines. Added straw2 bucket algorithm explanation, CRUSH rule step
+  semantics, upmap balancer override, PG peering state machine (Mermaid state
+  diagram), Bluestore internals (WAL/BlockDB/blob sharing), replication vs erasure
+  coding table, upper-layer services (RBD/CephFS/RGW), performance characteristics,
+  comparison vs HDFS/MinIO/S3, 9 interview questions, references to Weil SC 2006
+  paper and doctoral dissertation.
+- **Formal Methods** ✅ `src/cs-theory/formal-methods.md` — new 282-line page
+  covering index.md Section 36. TLA+ (with Counter example, AWS DynamoDB case
+  study), Alloy (with file-system example), Coq (CompCert, Four Colour Theorem),
+  Lean (Mathlib, Verdi), Isabelle/HOL (seL4), Dafny (binary search auto-active
+  verification), model checking (BDD, BMC, partial-order, symmetry), symbolic
+  execution (KLEE/angr/SAGE), abstract interpretation (Astrée, Rust borrow
+  checker), distributed-systems verification workflow, trade-offs table, 8
+  interview questions.
+
 ## Decisions / Notes
 
 - Keep autonomous loop adding topics based on coverage lowest first: Storage (45%) and Concurrency (48%) still lowest → prioritize WAL, LSM compaction (done), next SSTable, BlobDB, RCU (done), memory barriers, work-stealing.
 - After storage/concurrency reaches 60%, move to Frameworks (60%) and Distributed (55%) and Cloud (60%)
 - Update knowledge graph each batch to keep cross-links
 - Maintain 100% mermaid pass, 0 broken links, build clean — fix regressions immediately after merging dev
+- Next candidates: Serialization (index §39, partially covered — protobuf/Avro/Cap'n Proto comparison page would unify scattered content); API versioning is already covered; Quantum Computing (§35) is low-priority.

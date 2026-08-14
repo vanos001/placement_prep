@@ -224,3 +224,33 @@ Six parallel agents are creating comprehensive new sections:
 See the preceding commits for the existing autonomous content-expansion
 batches. This changelog intentionally records the current integration batch
 without rewriting that history.
+
+## 2026-08-15 — OpenClaw expansion batch
+
+Five focused commits pushed to `origin/dev`:
+
+1. `docs(index): add master topic index as authoritative roadmap` —
+   `src/index.md` (1 660 lines, 50 topic sections) added; wired into
+   `SUMMARY.md` top nav and Meta section.
+2. `docs(java): expand virtual-threads page with depth` —
+   `src/languages/java/virtual-threads.md` 139 → 261 lines. JEP timeline,
+   continuation-on-heap internals, structured-concurrency API churn,
+   migration playbook, comparison vs goroutines / Kotlin coroutines /
+   Reactor.
+3. `docs(python): expand free-threaded page with depth` —
+   `src/languages/python/free-threaded.md` 148 → 235 lines. PEP 779,
+   biased-locking internals, immortal objects, Py_BEGIN_CRITICAL_SECTION,
+   Cython freethreading directive, runtime introspection, comparison vs
+   Java Loom / Go / Ruby Ractor.
+4. `docs(storage): expand Ceph CRUSH/RADOS deep dive` —
+   `src/storage/ceph-crush.md` 181 → 340 lines. Straw2 algorithm,
+   CRUSH rules, upmap balancer, PG peering state machine, Bluestore
+   internals, replication vs EC table, upper-layer services.
+5. `docs(cs-theory): add formal methods page` — new
+   `src/cs-theory/formal-methods.md` (282 lines). TLA+, Alloy, Coq,
+   Lean, Isabelle/HOL, Dafny, model checking, symbolic execution,
+   abstract interpretation, distributed-systems verification, 8
+   interview questions.
+
+Every commit was preceded by a clean `mdbook build`; no warnings
+introduced. `token.txt` is in `.gitignore` and was never staged.

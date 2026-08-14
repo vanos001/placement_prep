@@ -1,16 +1,15 @@
 # Project Status
 
-> Status snapshot: 2026-08-15 (Asia/Calcutta)
+> Status snapshot: 2026-08-15 (Asia/Calcutta) — OpenClaw expansion batch
 
 ## Current status
 
-**Validation and cleanup sweep complete.** All 4,453 Mermaid diagrams pass the
-heuristic validator, MathJax delimiters are clean, and 30 previously-missing
-content files were added to `SUMMARY.md`. Broken links in real content are
-eliminated; the ~33 remaining broken references are all inside `meta/audit/`
-(audit artifacts, not book content). Housekeeping: duplicate root
-`validate-mermaid.mjs` was moved to `scripts/`, stale `mermaid_report.md` was
-removed, and `validate-all.sh` was updated.
+**Active expansion in progress.** All 4,453+ Mermaid diagrams still pass the
+heuristic validator, MathJax delimiters are clean, and `mdbook build` completes
+without warnings after every change in this batch. The master topic index
+(`src/index.md`) was added this session, four high-value pages were either
+created from scratch or substantially expanded, and `meta/topic_backlog.md`
+now records the new work.
 
 | Area | Status | Evidence |
 |---|---|---|
