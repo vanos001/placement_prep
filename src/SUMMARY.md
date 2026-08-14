@@ -1003,6 +1003,7 @@
 
 - [DBMS Overview](./dbms/overview.md)
 - [Types of Databases: SQL & NoSQL](./dbms/types-of-databases.md)
+- [Specialized Databases](./dbms/specialized-databases.md)
 - [OLTP vs OLAP & Data Warehousing](./dbms/analytics/README.md)
 - [Relational Model](./dbms/relational-model/README.md)
   - [Keys](./dbms/relational-model/keys.md)
@@ -1281,6 +1282,7 @@
   - [SMT/Hyperthreading](./arch/parallelism/smt.md)
   - [GPU Architecture](./arch/parallelism/gpu.md)
   - [CUDA Programming](./arch/parallelism/cuda.md)
+  - [GPUs & HPC Deep Dive](./arch/parallelism/gpu-hpc.md)
 - [Performance](./arch/performance/README.md)
   - [Amdahl's Law](./arch/performance/amdahl.md)
   - [CPU Performance Equation](./arch/performance/equation.md)
@@ -1335,6 +1337,7 @@
   - [RabbitMQ](./distributed/messaging/rabbitmq.md)
   - [Pub/Sub](./distributed/messaging/pubsub.md)
   - [Apache Pulsar](./distributed/messaging/pulsar.md)
+  - [Messaging & Streaming Overview](./distributed/messaging/messaging-streaming.md)
 - [Microservices](./distributed/microservices/README.md)
   - [Service Discovery](./distributed/microservices/discovery.md)
   - [Circuit Breakers](./distributed/microservices/circuit-breakers.md)
@@ -1697,6 +1700,7 @@
 - [Web Accessibility](./frontend/accessibility.md)
 - [CSS Deep Dive](./frontend/css-deep.md)
 - [Server-Side Rendering, Client-Side Rendering, and Static Generation](./frontend/ssr-csr-ssg.md)
+- [Frontend Engineering Deep Dive](./frontend/frontend-engineering.md)
 
 ---
 
@@ -1837,6 +1841,7 @@
 - [iOS / Swift](./mobile/ios.md)
 - [Mobile Security](./mobile/mobile-security.md)
 - [Mobile Interview Questions](./mobile/interview-questions.md)
+- [Mobile Engineering Deep Dive](./mobile/mobile-engineering.md)
 
 ---
 
@@ -1984,6 +1989,7 @@
   - [AI Agents Engineering](./llm/agents.md)
   - [LLM Security & Safety](./llm/llm-security.md)
   - [LLM Cost Optimization](./llm/cost-optimization.md)
+  - [LLM Infrastructure Deep Dive](./llm/llm-infrastructure.md)
 - [Multimodal Models](./llm/multimodal/README.md)
   - [Vision-Language Models](./llm/multimodal/vlm.md)
   - [GPT-4V](./llm/multimodal/gpt4v.md)
@@ -2050,6 +2056,7 @@
     - [Weights & Biases](./ml/mlops/wandb.md)
     - [Vertex AI](./ml/mlops/vertex.md)
     - [SageMaker](./ml/mlops/sagemaker.md)
+  - [ML Systems Overview](./ml/mlops/ml-systems.md)
 - [Reinforcement Learning](./ml/rl/README.md)
   - [RL Fundamentals](./ml/rl/fundamentals.md)
   - [Q-Learning](./ml/rl/q-learning.md)

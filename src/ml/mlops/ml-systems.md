@@ -327,7 +327,7 @@ Train a small **student** to match a large **teacher**'s soft outputs:
 
 where \\(T\\) is the temperature softening the teacher distribution \\(p_t\\), \\(p_s\\) is the student, and \\(\alpha\\) balances the hard-label and soft-label losses. Distillation often preserves 95%+ of teacher accuracy at under 10% of the FLOPs, and is the dominant technique for shipping cheap production LLMs and mobile vision models.
 
-→ Deep dive: [LLM Quantization](../llm/llm-serving/quantization.md).
+→ Deep dive: [LLM Quantization](../../llm/llm-serving/quantization.md).
 
 ## Edge Deployment
 
@@ -406,6 +406,6 @@ A production ML system is four planes — data/features, training, deployment, o
 - [Feature Store](./feature-store.md) · [Model Registry](./model-registry.md)
 - [Deployment](./deployment.md) · [Canary](./canary.md) · [Shadow](./shadow.md) · [Blue-Green](./blue-green.md)
 - [A/B Testing](./ab-testing.md) · [Monitoring](./monitoring.md) · [Drift Detection](./drift.md) · [CI/CD for ML](./cicd.md)
-- [LLM Serving Overview](../llm/llm-serving/README.md) · [LLM Quantization](../llm/llm-serving/quantization.md)
+- [LLM Serving Overview](../../llm/llm-serving/README.md) · [LLM Quantization](../../llm/llm-serving/quantization.md)
 - [Cloud CI/CD Pipelines](../../cloud/cicd/pipelines.md) · [Cloud Kubernetes](../../cloud/kubernetes/README.md)
 - [SRE SLO/SLI/SLA](../../sre/slo-sli-sla.md) · [SRE Canary Releases](../../sre/canary-releases.md)
