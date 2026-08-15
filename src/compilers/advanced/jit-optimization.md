@@ -31,7 +31,8 @@ C2 (HotSpot's optimizing JIT) uses CHA extensively. The `-XX:+PrintInlining` fla
 
 An **inline cache (IC)** is a form of runtime memoization for dynamic dispatch. At each call site, the engine remembers the **last receiver type** and stores the corresponding method pointer.
 
-``n// V8-style inline cache (monomorphic)
+```
+// V8-style inline cache (monomorphic)
 // Call site: obj.foo()
 //
 // Before first call:  [generic_call_stub]

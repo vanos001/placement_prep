@@ -285,11 +285,11 @@ The ICE (Incremental Correctness Engine) framework, developed by Garg et al., au
 ```mermaid
 flowchart TD
     LEARNER[Learner: Proposes Invariant Candidate] --> TEACHER[Teacher: Checks Candidate]
-    TEACHER -->|Positive| CE_P[Positive Example<br/>(Candidate too weak)]
-    TEACHER -->|Negative| CE_N[Negative Example<br/>(Candidate too strong)]
+    TEACHER -->|Positive| CE_P["Positive Example<br/>(Candidate too weak)"]
+    TEACHER -->|Negative| CE_N["Negative Example<br/>(Candidate too strong)"]
     CE_P --> LEARNER
     CE_N --> LEARNER
-    LEARNER -->|Inconclusive| ICE_D[ICE-D (with Demands)]
+    LEARNER -->|Inconclusive| ICE_D["ICE-D (with Demands)"]
     ICE_D --> LEARNER
 ```
 

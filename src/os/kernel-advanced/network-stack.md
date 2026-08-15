@@ -25,37 +25,37 @@ struct sk_buff {
     // These two are the most important for understanding layout:
     union {
         struct {
-            __u32					skb_refcnt; // reference count
+            __u32                                       skb_refcnt; // reference count
         } __cacheline_aligned_in_smp;
     };
 
-    struct sk_buff		*next;    // linked list
-    struct sk_buff		*prev;
-    struct sock			*sk;      // owning socket
+    struct sk_buff              *next;    // linked list
+    struct sk_buff              *prev;
+    struct sock                 *sk;      // owning socket
 
-    ktime_t				tstamp;   // timestamp (for hardware/software)
-    struct net_device		*dev;  // arriving/leaving device
+    ktime_t                             tstamp;   // timestamp (for hardware/software)
+    struct net_device           *dev;  // arriving/leaving device
 
     // Transport layer header pointer
-    __be16					protocol; // ETH_P_IP, ETH_P_IPV6, etc.
-    __u16					transport_header; // offset from head to transport hdr
-    __u16					network_header;   // offset from head to network hdr
-    __u16					mac_header;       // offset from head to MAC hdr
+    __be16                                      protocol; // ETH_P_IP, ETH_P_IPV6, etc.
+    __u16                                       transport_header; // offset from head to transport hdr
+    __u16                                       network_header;   // offset from head to network hdr
+    __u16                                       mac_header;       // offset from head to MAC hdr
 
     // Data area pointers:
-    sk_buff_data_t			transport_header;
-    sk_buff_data_t			network_header;
-    sk_buff_data_t			mac_header;
+    sk_buff_data_t                      transport_header;
+    sk_buff_data_t                      network_header;
+    sk_buff_data_t                      mac_header;
 
     // The actual data is stored in a separate allocation (or in the skb itself for small packets):
     // "head" points to the start of the buffer
     // "data" points to the current start of packet data
     // "tail" points to the end of packet data
     // "end" points to the end of the buffer
-    unsigned char			*head;
-    unsigned char			*data;
-    unsigned char			*tail;
-    unsigned char			*end;
+    unsigned char                       *head;
+    unsigned char                       *data;
+    unsigned char                       *tail;
+    unsigned char                       *end;
 };
 ```
 
@@ -83,13 +83,13 @@ Paged skbs avoid copying: large payloads stay in the same pages they were DMA'd 
 
 ```c
 struct skb_shared_info {
-    atomic_t	dataref;   // data buffer reference count
-    __u8			tx_flags;  // checksum offload flags
-    unsigned short	gso_size; // for GSO
-    unsigned short	gso_segs; // number of GSO segments
-    unsigned short	gso_type; // SKB_GSO_TCPV4, SKB_GSO_TCPV6, etc.
-    struct sk_buff	*frag_list; // for fragmented skbs
-    skb_frag_t		frags[MAX_SKB_FRAGS]; // page fragment array (17 max)
+    atomic_t    dataref;   // data buffer reference count
+    __u8                        tx_flags;  // checksum offload flags
+    unsigned short      gso_size; // for GSO
+    unsigned short      gso_segs; // number of GSO segments
+    unsigned short      gso_type; // SKB_GSO_TCPV4, SKB_GSO_TCPV6, etc.
+    struct sk_buff      *frag_list; // for fragmented skbs
+    skb_frag_t          frags[MAX_SKB_FRAGS]; // page fragment array (17 max)
 };
 // Located at skb->end (after the skb data buffer)
 ```
@@ -220,26 +220,26 @@ echo ffff > /sys/class/net/eth0/queues/rx-0/rps_cpus
 ```c
 // include/linux/tcp.h
 struct tcp_sock {
-    struct inet_connection_sock	inet_conn;  // extends inet_connection_sock
-    u16		tcp_header_len;  // TCP header size (including options)
-    u16		gso_segs;       // GSO segment count
-    u8		dupack_counter;
+    struct inet_connection_sock inet_conn;  // extends inet_connection_sock
+    u16         tcp_header_len;  // TCP header size (including options)
+    u16         gso_segs;       // GSO segment count
+    u8          dupack_counter;
 
     // Congestion window:
-    u32	snd_cwnd;         // congestion window (in packets, not bytes, legacy)
-    u32	snd_ssthresh;     // slow start threshold
-    u32	snd_nxt;          // next sequence number to send
-    u32	snd_una;          // oldest unacknowledged sequence
-    u32	rcv_nxt;          // next expected receive sequence
+    u32 snd_cwnd;         // congestion window (in packets, not bytes, legacy)
+    u32 snd_ssthresh;     // slow start threshold
+    u32 snd_nxt;          // next sequence number to send
+    u32 snd_una;          // oldest unacknowledged sequence
+    u32 rcv_nxt;          // next expected receive sequence
 
     // RTT estimation:
-    u32	srtt_us;          // smoothed RTT (microseconds)
-    u32	rttvar_us;        // RTT variance
-    u32	rto_min;          // minimum RTO
+    u32 srtt_us;          // smoothed RTT (microseconds)
+    u32 rttvar_us;        // RTT variance
+    u32 rto_min;          // minimum RTO
 
     // BBR-specific:
-    u32	pacing_rate;      // bytes per second
-    u32	delivered;        // total delivered bytes (for BBR)
+    u32 pacing_rate;      // bytes per second
+    u32 delivered;        // total delivered bytes (for BBR)
     // ...
 };
 ```
@@ -343,6 +343,39 @@ fq_codel:
 | Use case | DDoS mitigation, load balancing, filtering | NFV, software routers, L7 proxies |
 
 > **Interview Angle**: "When would you choose XDP over DPDK?" XDP when you need kernel-bypass performance **but** still want the kernel to handle TCP, routing, and socket management. DPDK when you need complete control over all packet processing (L4-L7) and can dedicate CPU cores. For most DDoS mitigation and load balancing, XDP is sufficient and simpler.
+
+## TCP Buffer Autotuning
+
+Linux's TCP buffer autotuning dynamically adjusts socket send and receive buffer sizes based on the connection's congestion window, RTT, and current throughput. This eliminates the need for applications to manually set buffer sizes via `setsockopt(SO_SNDBUF/SO_RCVBUF)` for most workloads.
+
+### Sysctl Parameters
+
+The autotuning bounds are controlled by three-tuple sysctls: `net.ipv4.tcp_rmem` (receive) and `net.ipv4.tcp_wmem` (send), each containing `[min, default, max]` in bytes.
+
+```bash
+net.ipv4.tcp_rmem = 4096 131072 6291456  # min 4KB, default 128KB, max 6MB
+net.ipv4.tcp_wmem = 4096 16384 4194304   # min 4KB, default 16KB, max 4MB
+```
+
+- **min**: Buffer floor — even autotuning won't shrink below this. Also the default if `SO_RCVBUF/SO_SNDBUF` is set explicitly.
+- **default**: Initial buffer size before autotuning kicks in.
+- **max**: Upper bound for autotuned buffers. The actual maximum is also capped by `net.core.rmem_max` and `net.core.wmem_max`.
+
+### Autotuning Mechanism
+
+`net.ipv4.tcp_moderate_rcvbuf = 1` (default) enables receive buffer autotuning. On the receive side, the kernel estimates the required buffer to hold the **bandwidth-delay product** (BDP) plus some headroom: `buffer_target = 2 × cwnd × MSS` (approximately). The receive window advertised in TCP headers (`sk->sk_rcvbuf`) tracks this target, growing as throughput increases and shrinking when the connection is idle.
+
+For high-throughput flows over high-latency paths (e.g., 10 Gbps across a 50ms RTT WAN link), the BDP alone is ~62 MB. The default `tcp_rmem` max of 6 MB would bottleneck such flows. Production high-throughput systems set `tcp_rmem` and `tcp_wmem` max to 16-32 MB and raise `rmem_max`/`wmem_max` accordingly.
+
+### Interaction with Congestion Control
+
+Autotuning interacts with BBR and CUBIC differently. With **CUBIC**, the congestion window grows until loss occurs, and autotuning scales the receive buffer to match the growing cwnd. With **BBR**, the pacing rate and estimated BtlBw drive the buffer requirements. BBR's `PROBE_BW` cycle can cause the cwnd to fluctuate (1.25× gain phase), and autotuning must track these oscillations without over-allocating. The `tcp_moderate_rcvbuf` logic uses an exponential moving average to smooth buffer adjustments.
+
+### When Autotuning Is Disabled
+
+Autotuning is disabled when: (1) the application explicitly sets `SO_SNDBUF` or `SO_RCVBUF` via `setsockopt` — this locks the buffer size (Linux doubles the requested value and caps it at `wmem_max`/`rmem_max`, then disables autotuning for that socket), (2) `tcp_moderate_rcvbuf = 0`, or (3) the socket uses `MSG_ZEROCOPY` for zero-copy sends (buffer management is application-driven). For high-performance applications (DPDK, custom TCP stacks), autotuning is irrelevant since they bypass the kernel stack entirely.
+
+> **Interview Angle**: "A 10 Gbps flow over a 100ms RTT link is only getting 500 Mbps. What would you investigate?" The BDP is ~125 MB. Check `ss -ti` to see the current `sk_rmem_alloc` and receive buffer. If `rcv_space` is capped at the `tcp_rmem` max (default 6 MB), the receiver is advertising a small window, limiting throughput. Fix: increase `net.ipv4.tcp_rmem` max and `net.core.rmem_max` to at least 2× the BDP.
 
 ## Interview Questions
 

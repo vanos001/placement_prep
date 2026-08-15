@@ -56,7 +56,8 @@
   - [Slab Allocator](./os/memory/slab-allocator.md)
 - [Virtual Memory](./os/virtual-memory/README.md)
   - [Demand Paging](./os/virtual-memory/demand-paging.md)
-  - [Page Replacement Algorithms](./os/virtual-memory/page-replacement.md)
+  - [Page Replacement Algorithms](./os/memory/page-replacement.md)
+- [Virtual Memory Page Replacement](./os/virtual-memory/page-replacement.md)
     - [Overview & Comparison](./os/virtual-memory/page-rejection.md)
     - [FIFO](./os/virtual-memory/fifo.md)
     - [LRU](./os/virtual-memory/lru.md)
@@ -1052,6 +1053,7 @@
     - [Saga Pattern](./dbms/transactions/saga.md)
 - [Indexing](./dbms/indexing/README.md)
   - [B-Tree](./dbms/indexing/b-tree.md)
+  - [B-Trees Internals](./dbms/indexing/btrees.md)
   - [B+ Tree](./dbms/indexing/b-plus-tree.md)
   - [Hash Index](./dbms/indexing/hash-index.md)
   - [Bitmap Index](./dbms/indexing/bitmap-index.md)
@@ -1369,6 +1371,7 @@
 - [LSM Compaction Strategies](./storage/lsm-compaction.md)
 - [SSTable Format](./storage/sstable.md)
 - [BlobDB (Key-Value Separation)](./storage/blobdb.md)
+- [Bitcask (Log-Structured KV Store)](./storage/bitcask.md)
 - [Tiered Storage and Data Temperature](./storage/tiered-storage.md)
 
 ---
@@ -2698,6 +2701,24 @@
 - [Advanced Production Engineering Overview](./production-engineering/advanced/README.md)
 - [Advanced Observability](./production-engineering/advanced/observability-advanced.md)
 - [Chaos Engineering & Resilience](./production-engineering/advanced/chaos-resilience.md)
+
+
+---
+
+# Build It Yourself
+
+- [Build-It-Yourself Overview](./projects/build-it-yourself/README.md)
+- [OS Projects](./projects/build-it-yourself/os-projects.md)
+- [Database Projects](./projects/build-it-yourself/database-projects.md)
+- [Distributed Systems Projects](./projects/build-it-yourself/distributed-projects.md)
+- [Networking Projects](./projects/build-it-yourself/networking-projects.md)
+- [Compiler Projects](./projects/build-it-yourself/compiler-projects.md)
+
+---
+
+# Advanced Benchmarking
+
+- [Advanced Benchmarking](./performance-engineering/advanced-benchmarking.md)
 
 # Meta
 

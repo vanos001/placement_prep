@@ -13,8 +13,8 @@ When data doesn't fit in cache (external memory), when we have many cores (paral
 - **I/O cost**: Number of block transfers between disk and memory.
 - **Input size**: $N$ words.
 
-**Scanning** $N$ items: $	ext{scan}(N) = O(N/B)$ I/Os.
-**Sorting** $N$ items: $	ext{sort}(N) = O(\frac{N}{B} \log_{M/B} \frac{N}{B})$ I/Os.
+**Scanning** $N$ items: $       ext{scan}(N) = O(N/B)$ I/Os.
+**Sorting** $N$ items: $        ext{sort}(N) = O(\frac{N}{B} \log_{M/B} \frac{N}{B})$ I/Os.
 
 ### Cache-Oblivious Algorithms
 
@@ -154,7 +154,7 @@ The proof uses a potential function argument: each steal reduces the "potential"
 
 For a weighted graph $G$ with adjacency matrix $A$ and degree matrix $D$:
 
-$$L = D - A$$
+\\[L = D - A\\]
 
 The **normalized Laplacian** is $\mathcal{L} = I - D^{-1/2} A D^{-1/2}$.
 
@@ -174,7 +174,7 @@ The **Fiedler vector** (eigenvector for $\lambda_2$) gives a partition: assign e
 
 **Spectral sparsifier**: A subgraph $H$ of $G$ on $O(n / \epsilon^2)$ edges such that for all vectors $x$:
 
-$$(1-\epsilon) x^T L_G x \leq x^T L_H x \leq (1+\epsilon) x^T L_G x$$
+\\[(1-\epsilon) x^T L_G x \leq x^T L_H x \leq (1+\epsilon) x^T L_G x\\]
 
 This means $H$ preserves all quadratic forms of the Laplacian, which implies it preserves cut values, random walk mixing times, effective resistances, and much more.
 

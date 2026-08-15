@@ -204,7 +204,7 @@ A **lease** is a time-bounded agreement that grants a node the right to perform 
 
 ## Distributed Locks: Advanced Topics
 
-See [distributed locks basics](../fundamental/distributed-locks.md).
+See [distributed locks basics](../fundamentals/distributed-locks.md).
 
 ### Redlock (Antirez / Redis)
 

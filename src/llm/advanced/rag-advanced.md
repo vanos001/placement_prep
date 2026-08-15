@@ -207,14 +207,8 @@ DiskANN (Subramanya et al., 2019, Microsoft) extends the HNSW idea to disk-resid
 ```mermaid
 graph TD
     subgraph "DiskANN Architecture"
-        RAM["RAM""  
-- Vamana graph index (compressed)""  
-- PQ codebook""  
-~10-20% of total index size""]
-        DISK["SSD""  
-- Full-precision vectors""  
-- Pagerank-based reordering""  
-~80-90% of total index size""]
+        RAM["RAM<br/>  - Vamana graph index (compressed)<br/>  - PQ codebook<br/>  ~10-20% of total index size"]
+        DISK["SSD<br/>  - Full-precision vectors<br/>  - Pagerank-based reordering<br/>  ~80-90% of total index size"]
     end
     
     QUERY["Query"] --> RAM --> |"PQ distance estimate + graph navigation"| CANDIDATES["Candidate set"]
@@ -285,12 +279,11 @@ class ProductQuantizer:
 ```mermaid
 graph LR
     subgraph "Index Building"
-        VEC["Vectors (FP32)"  ] --> PQ["PQ Encode"  ] --> STORE["PQ codes (48B/vec)"  
-Store on disk/SSD"  ]
+        VEC["Vectors (FP32)"] --> PQ["PQ Encode"] --> STORE["PQ codes (48B/vec)<br/>  Store on disk/SSD"]
     end
     
     subgraph "Query Time"
-        Q["Query vector"  ] --> TABLES["Build distance tables"  ] --> ANN["HNSW/DiskANN search with PQ distances"  ] --> RERANK2["Re-rank top-100 with FP32 distances"  ]
+        Q["Query vector"] --> TABLES["Build distance tables"] --> ANN["HNSW/DiskANN search with PQ distances"] --> RERANK2["Re-rank top-100 with FP32 distances"]
     end
 ```
 

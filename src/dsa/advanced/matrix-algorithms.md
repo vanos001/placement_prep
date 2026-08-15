@@ -14,13 +14,13 @@ Strassen (1969) showed that two $n \times n$ matrices can be multiplied in $O(n^
 
 For $C = A \times B$ where $A, B, C$ are $2 \times 2$:
 
-$$M_1 = (A_{11} + A_{22})(B_{11} + B_{22})$$
-$$M_2 = (A_{21} + A_{22}) \cdot B_{11}$$
-$$M_3 = A_{11} \cdot (B_{12} - B_{22})$$
-$$M_4 = A_{22} \cdot (B_{21} - B_{11})$$
-$$M_5 = (A_{11} + A_{12}) \cdot B_{22}$$
-$$M_6 = (A_{21} - A_{11}) \cdot (B_{11} + B_{12})$$
-$$M_7 = (A_{12} - A_{22}) \cdot (B_{21} + B_{22})$$
+\\[M_1 = (A_{11} + A_{22})(B_{11} + B_{22})\\]
+\\[M_2 = (A_{21} + A_{22}) \cdot B_{11}\\]
+\\[M_3 = A_{11} \cdot (B_{12} - B_{22})\\]
+\\[M_4 = A_{22} \cdot (B_{21} - B_{11})\\]
+\\[M_5 = (A_{11} + A_{12}) \cdot B_{22}\\]
+\\[M_6 = (A_{21} - A_{11}) \cdot (B_{11} + B_{12})\\]
+\\[M_7 = (A_{12} - A_{22}) \cdot (B_{21} + B_{22})\\]
 
 Then: $C_{11} = M_1 + M_4 - M_5 + M_7$, $C_{12} = M_3 + M_5$, $C_{21} = M_2 + M_4$, $C_{22} = M_1 - M_2 + M_3 + M_6$.
 
@@ -165,7 +165,7 @@ Given a data stream of items, estimate the frequency of each item using sublinea
 
 Maintain a $d \times w$ array of counters initialized to zero. For each item $x$, choose $d$ hash functions $h_i$ (mapping to $[0, w)$) and sign functions $s_i$ (mapping to $\{-1, +1\}$), and update:
 
-$$\text{count}[i][h_i(x)] \mathrel{+}= s_i(x)
+\\[\text{count}[i][h_i(x)] \mathrel{+}= s_i(x)\\]
 
 
 To estimate the frequency of $x$: take the **median** of $|\text{count}[i][h_i(x)]|$ over all $d$ rows.

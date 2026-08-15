@@ -83,7 +83,7 @@ Temporal queries typically filter on **time ranges**, requiring specialized inde
 
 ### Event Time vs. Processing Time
 
-``n```
+```
   Event Timeline:   e1(t=10:00)  e2(t=10:05)  e3(t=10:08)  e4(t=10:15)
   Process Timeline:  e1(10:02)    e2(10:06)    e4(10:16)     e3(10:20)    ← out of order!
 ```

@@ -12,7 +12,7 @@ Bridges enable asset and data transfer between independent blockchains. They loc
 
 ```mermaid
 flowchart LR
-    subgraph Chain A [Source Chain (Ethereum)]
+    subgraph ChainA["Source Chain (Ethereum)"]
         LOCK[Lock Contract]
         USER_A[User]
     end
@@ -21,7 +21,7 @@ flowchart LR
         R2[Relayer/Validator 2]
         R3[Relayer/Validator 3]
     end
-    subgraph Chain B [Destination Chain (Polygon)]
+    subgraph ChainB["Destination Chain (Polygon)"]
         MINT[Mint Contract]
         USER_B[User]
     end
@@ -112,7 +112,7 @@ flowchart TD
         BORROW[1. Borrow $10M from Aave] --> MANIP[2. Manipulate price on low-liquidity pool]
         MANIP --> EXPLOIT[3. Exploit protocol relying on manipulated price]
         EXPLOIT --> REPAY[4. Repay $10M + fee to Aave]
-        REPAY --> PROFIT[5. Keep profit (~$1M)]
+        REPAY --> PROFIT["5. Keep profit (~$1M)"]
     end
 ```
 

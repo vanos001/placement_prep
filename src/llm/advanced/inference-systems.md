@@ -307,18 +307,18 @@ NVIDIA MIG (Multi-Instance GPU) partitions an A100/H100 into up to 7 hardware-is
 
 ```mermaid
 graph TD
-    LB["Load Balancer (round-robin / least-conn)""] --> GW1["Gateway Node 1""]
-    LB --> GW2["Gateway Node 2""]
-    LB --> GWN["Gateway Node N""]
+    LB["Load Balancer (round-robin / least-conn)"] --> GW1["Gateway Node 1"]
+    LB --> GW2["Gateway Node 2"]
+    LB --> GWN["Gateway Node N"]
     
-    GW1 --> W1["Worker: vLLM (A100 × 8)""  "]
-    GW2 --> W2["Worker: vLLM (A100 × 8)""  "]
-    GWN --> WN["Worker: vLLM (A100 × 8)""  "]
+    GW1 --> W1["Worker: vLLM (A100 × 8)"]
+    GW2 --> W2["Worker: vLLM (A100 × 8)"]
+    GWN --> WN["Worker: vLLM (A100 × 8)"]
     
     subgraph "Autoscaling"
-        METRICS["Metrics: GPU util, queue depth, p99 latency""] --> SCALE["Autoscaler (K8s HPA/""  custom)"]
-        SCALE --> |"Scale up"| ADD["Add worker nodes""  "]
-        SCALE --> |"Scale down"| REMOVE["Remove idle workers""  "]
+        METRICS["Metrics: GPU util, queue depth, p99 latency"] --> SCALE["Autoscaler (K8s HPA / custom)"]
+        SCALE --> |"Scale up"| ADD["Add worker nodes"]
+        SCALE --> |"Scale down"| REMOVE["Remove idle workers"]
     end
     
     METRICS --> SCALE

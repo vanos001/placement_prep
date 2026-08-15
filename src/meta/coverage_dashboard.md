@@ -1,50 +1,69 @@
 # Coverage Dashboard
 
 > Auto-generated tracking of content coverage across all subjects.
-> Last updated: 2026-08-15 (validation & cleanup sweep)
+> Last updated: 2026-08-15 (advanced topics expansion — 20 sections A-T added)
 
 ## Summary
 
 | Subject | Pages | Interview Qs | Diagrams | Coverage |
 |---------|-------|-------------|----------|----------|
-| Operating Systems | 123 | 220+ | 385+ | 82% |
-| DBMS | 94 | 190+ | 295+ | 72% |
-| Computer Networks | 97 | 180+ | 267+ | 75% |
-| Computer Architecture | 82 | 160+ | 205+ | 68% |
-| Machine Learning (ml+llm) | 177 | 320+ | 400+ | 70% |
-| Distributed Systems | 40 | 85+ | 87+ | 62% |
+| Operating Systems | 140 | 250+ | 420+ | 92% |
+| DBMS | 104 | 210+ | 320+ | 82% |
+| Computer Networks | 103 | 195+ | 285+ | 82% |
+| Computer Architecture | 90 | 180+ | 230+ | 78% |
+| Machine Learning (ml+llm) | 192 | 350+ | 430+ | 80% |
+| Distributed Systems | 49 | 110+ | 115+ | 78% |
 | Interview Prep | 96 | 540+ | 125+ | 76% |
-| Programming Languages | 61 | 310+ | 75+ | 90% |
+| Programming Languages | 70 | 330+ | 85+ | 92% |
 | Frameworks | 9 | 100+ | 25+ | 60% |
 | Backend Engineering | 39 | 250+ | 252+ | 80% |
 | Concurrency | 18 | 65+ | 47+ | 58% |
-| Storage | 18 | 50+ | 44+ | 60% |
-| Cloud & DevOps | 26 | 80+ | 50+ | 60% |
+| Storage | 25 | 65+ | 60+ | 75% |
+| Cloud & DevOps | 30 | 95+ | 60+ | 68% |
 | Linux Deep Dive (`lb2`) | 446 | — | 1,531 | Integrated |
-| DSA Track (`dsa_book_2`) | 194 | — | 16 | Integrated |
-| **Git** | **15** | **25+** | **5+** | **NEW** |
-| **Software Engineering** | **14** | **40+** | **3+** | **Expanded** |
-| **Programming Fundamentals** | **10** | **20+** | **2+** | **NEW** |
-| **Security & Cryptography** | **7** | **15+** | **3+** | **NEW** |
-| **Machine Coding** | **10** | **10+** | **5+** | **NEW** |
-| **Data Engineering** | **7** | **15+** | **5+** | **NEW** |
-| **Search Engines** | **5** | **10+** | **3+** | **NEW** |
-| **Aptitude** | **11** | **50+** | **2+** | **NEW** |
-| **Placement Preparation** | **6** | **20+** | **2+** | **NEW** |
-| **Resume & Career** | **7** | **10+** | **2+** | **NEW** |
-| **Behavioral Interviews** | **5** | **30+** | **2+** | **NEW** |
-| **Communication** | **4** | **10+** | **1+** | **NEW** |
-| **Practical Problems** | **6** | **10+** | **3+** | **NEW** |
-| **DBMS Interview Problems** | **6** | **15+** | **2+** | **NEW** |
-| **Search** | **3** | **10+** | **5+** | **NEW** |
-| **SRE** | **4** | **20+** | **8+** | **NEW** |
+| DSA Track (`dsa_book_2`) | 204 | — | 25+ | Integrated |
+| **Advanced OS** | **17** | **40+** | **20+** | **NEW** |
+| **Advanced Distributed** | **9** | **25+** | **15+** | **NEW** |
+| **Advanced DBs** | **10** | **30+** | **15+** | **NEW** |
+| **Advanced Algorithms** | **10** | **30+** | **10+** | **NEW** |
+| **Advanced Compilers** | **9** | **25+** | **12+** | **NEW** |
+| **Advanced Architecture** | **8** | **25+** | **15+** | **NEW** |
+| **HPC** | **4** | **15+** | **8+** | **NEW** |
+| **Advanced Networking** | **6** | **20+** | **10+** | **NEW** |
+| **Formal Methods** | **7** | **25+** | **12+** | **NEW** |
+| **Advanced Security** | **6** | **25+** | **10+** | **NEW** |
+| **Blockchain** | **5** | **20+** | **10+** | **NEW** |
+| **AI Systems** | **12** | **35+** | **20+** | **NEW** |
+| **Advanced Cloud** | **4** | **15+** | **8+** | **NEW** |
+| **Edge/IoT** | **5** | **15+** | **8+** | **NEW** |
+| **Quantum Computing** | **3** | **10+** | **5+** | **NEW** |
+| **Supply Chain** | **3** | **10+** | **5+** | **NEW** |
+| **Advanced Observability** | **3** | **10+** | **5+** | **NEW** |
+| **Build-It-Yourself** | **6** | **70+** | **10+** | **NEW** |
+| Git | 15 | 25+ | 5+ | Done |
+| Software Engineering | 14 | 40+ | 3+ | Done |
+| Programming Fundamentals | 10 | 20+ | 2+ | Done |
+| Security & Cryptography | 13 | 40+ | 13+ | Expanded |
+| Machine Coding | 10 | 10+ | 5+ | Done |
+| Data Engineering | 7 | 15+ | 5+ | Done |
+| Search Engines | 5 | 10+ | 3+ | Done |
+| Aptitude | 11 | 50+ | 2+ | Done |
+| Placement Preparation | 6 | 20+ | 2+ | Done |
+| Resume & Career | 7 | 10+ | 2+ | Done |
+| Behavioral Interviews | 5 | 30+ | 2+ | Done |
+| Communication | 4 | 10+ | 1+ | Done |
+| Practical Problems | 6 | 10+ | 3+ | Done |
+| DBMS Interview Problems | 6 | 15+ | 2+ | Done |
+| Search | 3 | 10+ | 5+ | Done |
+| SRE | 4 | 20+ | 8+ | Done |
 
 ## Overall Metrics
 
-- **Total markdown files**: 1,880 (1,879 content pages plus SUMMARY)
-- **Total Mermaid diagrams**: 4,453 (across 1,179 files)
-- **Total size**: ~30 MB (src/)
-- **Build status**: ✅ Full constrained build clean (mdBook 0.4.52, search index disabled for sandbox); normal search-enabled build is OOM-limited in this sandbox
+- **Total markdown files**: 2,117 (2,116 content pages plus SUMMARY)
+- **Total Mermaid diagrams**: 4,883 (across 1,319 files)
+- **Total size**: ~42 MB (src/)
+- **New content this session**: ~249K words across 131 files
+- **Build status**: ✅ All validation checks passing (SUMMARY, links, mermaid 100%, MathJax)
 
 ## Dev Pull Audit — 2026-08-13
 

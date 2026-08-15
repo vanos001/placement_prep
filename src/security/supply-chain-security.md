@@ -360,7 +360,7 @@ go build -trimpath -o app ./...
 bazel build //:app --sandbox_debug
 ```
 
-Tools like `reproducible-builds` (Debian), `diffoscope` (compare two artifacts byte-by-byte), and Bazel/Nix force hermeticity by declaring every input. The Reproducible Builds project (reproducible-builds.org) maintains the canonical guidance; see also [../../compilers/translation-validation-bootstrapping.md](../../compilers/translation-validation-bootstrapping.md) for the related problem of trusting the compiler itself.
+Tools like `reproducible-builds` (Debian), `diffoscope` (compare two artifacts byte-by-byte), and Bazel/Nix force hermeticity by declaring every input. The Reproducible Builds project (reproducible-builds.org) maintains the canonical guidance; see also [./advanced/supply-chain-advanced.md](./advanced/supply-chain-advanced.md) for the related problem of trusting the compiler itself.
 
 ## Build Environment Hardening
 
@@ -395,7 +395,7 @@ No single control suffices. A defense-in-depth strategy combines:
 6. **Consumption policy** — verify provenance, signature, and SBOM before deploying; reject low-Scorecard dependencies.
 7. **Incident readiness** — know how to rotate all signing identities, rebuild from source, and notify downstream consumers within hours.
 
-Cross-references: secrets used in CI live in a secrets manager — see [./secrets-management.md](./secrets-management.md). Identity and authentication of CI principals is covered in [./authentication.md](./authentication.md). Workflow hardening details are in [../backend/cicd/github-actions.md](../backend/cicd/github-actions.md). Git commit signing and object integrity is in [../git/internals.md](../git/internals.md). The deeper question of trusting the compiler itself is in [../../compilers/translation-validation-bootstrapping.md](../../compilers/translation-validation-bootstrapping.md).
+Cross-references: secrets used in CI live in a secrets manager — see [./secrets-management.md](./secrets-management.md). Identity and authentication of CI principals is covered in [./authentication.md](./authentication.md). Workflow hardening details are in [../backend/cicd/github-actions.md](../backend/cicd/github-actions.md). Git commit signing and object integrity is in [../git/internals.md](../git/internals.md). The deeper question of trusting the compiler itself is in [./advanced/supply-chain-advanced.md](./advanced/supply-chain-advanced.md).
 
 ## Interview Questions
 
@@ -445,4 +445,4 @@ Cross-references: secrets used in CI live in a secrets manager — see [./secret
 - Bitumens, Cassidy. *Software Supply Chain Security*. O'Reilly, 2022.
 - SolarWinds postmortem: CISA Alert AA21-076A and the Senate Intelligence Committee report.
 - Log4Shell postmortem: CISA Alert AA21-356A and the Apache Logging Services incident notes.
-- See also: [Authentication](./authentication.md), [Secrets Management](./secrets-management.md), [Web Security](./web-security.md), [GitHub Actions Hardening](../backend/cicd/github-actions.md), [Git Internals](../git/internals.md), [Translation Validation and Bootstrapping](../../compilers/translation-validation-bootstrapping.md), [Interview Questions](./interview-questions.md)
+- See also: [Authentication](./authentication.md), [Secrets Management](./secrets-management.md), [Web Security](./web-security.md), [GitHub Actions Hardening](../backend/cicd/github-actions.md), [Git Internals](../git/internals.md), [Translation Validation and Bootstrapping](./advanced/supply-chain-advanced.md), [Interview Questions](./interview-questions.md)

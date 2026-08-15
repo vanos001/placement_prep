@@ -10,7 +10,7 @@ Beyond the FFT/NTT fundamentals in [Ch 167](../chapters/ch167-fft-ntt.md) and [f
 
 For a sequence $a_0, a_1, a_2, \ldots$, the OGF is:
 
-\[A(x) = \sum_{n=0}^{\infty} a_n x^n\]
+\\[A(x) = \sum_{n=0}^{\infty} a_n x^n\\]
 
 **Key operations**:
 - **Convolution** (product of OGFs): If $C(x) = A(x) \cdot B(x)$, then $c_n = \sum_{k=0}^{n} a_k b_{n-k}$.
@@ -19,7 +19,7 @@ For a sequence $a_0, a_1, a_2, \ldots$, the OGF is:
 
 ### Exponential Generating Functions (EGF)
 
-\[A(x) = \sum_{n=0}^{\infty} a_n \frac{x^n}{n!}\]
+\\[A(x) = \sum_{n=0}^{\infty} a_n \frac{x^n}{n!}\\]
 
 **Key property**: The product of two EGFs corresponds to the **labeled product** (shuffle product). If $A(x)$ counts structures of type $\alpha$ and $B(x)$ counts type $\beta$, then $A(x) \cdot B(x)$ counts ways to partition a labeled set into an $\alpha$-structure and a $\beta$-structure.
 
@@ -55,7 +55,7 @@ A formal power series $A(x) = \sum_{n \geq 0} a_n x^n$ is treated as a formal al
 
 To find $B^{-1}$ given $B$ (with $B[0] = 1$), use Newton iteration:
 
-\[B_{i+1}^{-1} = B_i^{-1} \cdot (2 - B \cdot B_i^{-1}) \pmod{x^{2^{i+1}}}
+\\[B_{i+1}^{-1} = B_i^{-1} \cdot (2 - B \cdot B_i^{-1}) \pmod{x^{2^{i+1}}}\\]
 
 Starting with $B_0^{-1} = 1$, each iteration doubles the number of correct coefficients. Total work: $O(n \log n)$ (geometric series of FFT costs).
 
@@ -83,7 +83,7 @@ NTT is exact (no floating-point errors) and typically 2-3x faster than complex F
 
 **Key idea**: Use the chirp-z transform. The product $c_k = \sum_{j} a_j b_{k-j}$ is equivalent to a convolution with a specific sequence involving powers of a quadratic:
 
-\[c_k = z^{k^2/2} \sum_{j} (a_j \cdot z^{-j^2/2}) \cdot z^{(k-j)^2/2}
+\\[c_k = z^{k^2/2} \sum_{j} (a_j \cdot z^{-j^2/2}) \cdot z^{(k-j)^2/2}\\]
 
 This converts a length-$n$ convolution into a length-$m$ convolution where $m = 2n - 1$ (chosen to be a power of 2 or suitable for NTT).
 
@@ -144,7 +144,7 @@ Given $n$ points $(x_1, y_1), \ldots, (x_n, y_n)$, find the unique polynomial $A
 
 ### Lagrange Interpolation
 
-\[A(x) = \sum_{i=1}^{n} y_i \cdot \prod_{j \neq i} \frac{x - x_j}{x_i - x_j}
+\\[A(x) = \sum_{i=1}^{n} y_i \cdot \prod_{j \neq i} \frac{x - x_j}{x_i - x_j}\\]
 
 Naive: $O(n^2)$. With prefix/suffix products at consecutive integer points: $O(n)$.
 
@@ -154,7 +154,7 @@ The dual of multipoint evaluation. Uses the same product tree, but constructs th
 
 **Key formula**: If $P = P_L \cdot P_R$ (left and right halves), and we know the interpolant on the left half $A_L$ and right half $A_R$:
 
-\[A = A_L \cdot P_R \cdot (P_R^{-1} \bmod P_L) + A_R \cdot P_L \cdot (P_L^{-1} \bmod P_R)
+\\[A = A_L \cdot P_R \cdot (P_R^{-1} \bmod P_L) + A_R \cdot P_L \cdot (P_L^{-1} \bmod P_R)\\]
 
 This requires polynomial inversion and modular multiplication at each level, giving $O(n \log^2 n)$ total.
 
@@ -166,7 +166,7 @@ This requires polynomial inversion and modular multiplication at each level, giv
 
 Given a sequence $s_0, s_1, \ldots, s_{n-1}$, find the **shortest linear recurrence** (LFSR) that generates it:
 
-\[s_i = c_1 s_{i-1} + c_2 s_{i-2} + \cdots + c_L s_{i-L} \quad \text{for } i \geq L
+\\[s_i = c_1 s_{i-1} + c_2 s_{i-2} + \cdots + c_L s_{i-L} \quad \text{for } i \geq L\\]
 
 ### Algorithm
 

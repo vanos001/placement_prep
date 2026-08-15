@@ -8,17 +8,17 @@ Beyond the standard divide-and-conquer and CHT covered in [Ch 86](../chapters/ch
 
 ### Applicable Recurrence
 
-\[dp[i][j] = \min_{k < j} (dp[i-1][k] + C(k, j))\]
+\\[dp[i][j] = \min_{k < j} (dp[i-1][k] + C(k, j))\\]
 
 where $C$ satisfies the **quadrangle inequality** (QI) and **monotonicity of optima**:
 
-\[\text{opt}[i][j-1] \leq \text{opt}[i][j] \leq \text{opt}[i+1][j]\]
+\\[\text{opt}[i][j-1] \leq \text{opt}[i][j] \leq \text{opt}[i+1][j]\\]
 
 ### Quadrangle Inequality
 
 A cost function $C$ satisfies QI if for all $a \leq b \leq c \leq d$:
 
-\[C(a, c) + C(b, d) \leq C(a, d) + C(b, c)\]
+\\[C(a, c) + C(b, d) \leq C(a, d) + C(b, c)\\]
 
 This is equivalent to $C$ being **Monge** (see below). Many natural cost functions satisfy this: distance metrics, tree-based costs, and concave/convex costs in many cases.
 
@@ -158,7 +158,7 @@ When $x$-coordinates are queried in increasing order and lines are added in orde
 
 ### Applicable Recurrence
 
-\[dp[i][j] = \min_{k < i} (dp[k][j-1] + C(k, i))\]
+\\[dp[i][j] = \min_{k < i} (dp[k][j-1] + C(k, i))\\]
 
 where the optimal $k$ for $(i, j)$ is a non-decreasing function of $i$ (for fixed $j$). This is the **monotone opt** property, weaker than Knuth's requirement.
 
@@ -188,7 +188,7 @@ function compute(dp, j, lo, hi, opt_lo, opt_hi):
 
 Covered in [Ch 117](../chapters/ch117-monotone-queue-optimization.md) and [Ch 188](../chapters/ch188-monotonic-queue-dp.md). The key advanced application is when the DP transition is:
 
-\[dp[i] = \min_{j} (dp[j] + f(j, i))
+\\[dp[i] = \min_{j} (dp[j] + f(j, i))\\]
 
 where $f$ has a structure allowing the candidates to be pruned with a monotone queue (e.g., $f(j, i) = (\text{prefix}[i] - \text{prefix}[j])^2$ for convex hull trick, or $f(j, i) = g(j)$ with a sliding window constraint).
 
@@ -200,7 +200,7 @@ where $f$ has a structure allowing the candidates to be pruned with a monotone q
 
 A matrix $A$ is **Monge** if for all $i < k$ and $j < l$:
 
-\[A[i][j] + A[k][l] \leq A[i][l] + A[k][j]\]
+\\[A[i][j] + A[k][l] \leq A[i][l] + A[k][j]\\]
 
 Equivalently, the "row minima are non-decreasing in column index": if $\text{argmin}_j A[i][j] = j_i^*$, then $j_i^* \leq j_{i+1}^*$.
 
@@ -243,7 +243,7 @@ function smawk(rows, cols):
 
 Given two arrays $a[0..n]$ and $b[0..n]$, compute:
 
-\[c[k] = \min_{i+j=k} (a[i] + b[j])
+\\[c[k] = \min_{i+j=k} (a[i] + b[j])\\]
 
 
 This is the discrete analog of the infimal convolution and appears in shortest paths, DP, and optimization.
@@ -268,7 +268,7 @@ No $O(n^{2-\epsilon})$ algorithm is known for general min-plus convolution. It i
 
 Given two functions $f, g: 2^{[n]} \to \mathbb{R}$, compute:
 
-\[(f * g)[S] = \sum_{T \subseteq S} f[T] \cdot g[S \setminus T]
+\\[(f * g)[S] = \sum_{T \subseteq S} f[T] \cdot g[S \setminus T]\\]
 
 
 ### Brute Force
@@ -279,7 +279,7 @@ $O(3^n)$: for each $S$, enumerate all subsets $T$.
 
 **Key idea**: Use **rank** (number of set bits) to separate contributions. Define $f_r[S] = f[S]$ if $|S| = r$, else $0$. Then:
 
-\[(f * g)[S] = \sum_{r=0}^{|S|} (f_r \ast g_{|S|-r})[S]
+\\[(f * g)[S] = \sum_{r=0}^{|S|} (f_r \ast g_{|S|-r})[S]\\]
 
 where $\ast$ is the **pointwise product** (not subset convolution). The Hadamard (pointwise) product is easy: multiply entry-by-entry.
 
@@ -299,12 +299,12 @@ where $\ast$ is the **pointwise product** (not subset convolution). The Hadamard
 
 Given $f: 2^{[n]} \to \mathbb{R}$, compute the **zeta transform**:
 
-\[F[S] = \sum_{T \subseteq S} f[T]
+\\[F[S] = \sum_{T \subseteq S} f[T]\\]
 
 
 and the **Möbius transform** (inverse):
 
-\[f[S] = \sum_{T \subseteq S} (-1)^{|S|-|T|} F[T]
+\\[f[S] = \sum_{T \subseteq S} (-1)^{|S|-|T|} F[T]\\]
 
 
 ### Standard SOS DP
@@ -331,7 +331,7 @@ for i = 0 to n-1:
 
 The Walsh-Hadamard transform is the **analog of FFT over $\mathbb{F}_2^n$**. It operates on functions $f: \{0,1\}^n \to \mathbb{R}$ and uses the XOR convolution structure.
 
-\[(f \oplus g)[S] = \sum_{T} f[T] \cdot g[S \oplus T]
+\\[(f \oplus g)[S] = \sum_{T} f[T] \cdot g[S \oplus T]\\]
 
 
 ```

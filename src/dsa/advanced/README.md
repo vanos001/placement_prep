@@ -60,7 +60,7 @@ mindmap
 |-------|------|---------------|----------|
 | 1 | [network-flow.md](network-flow.md) | [Ch 29: Network Flow](../chapters/ch29-network-flow.md), [Ch 83: Advanced Flow](../chapters/ch83-advanced-flow.md) | Builds on max-flow foundations; min-cost is the natural extension |
 | 2 | [dynamic-trees.md](dynamic-trees.md) | [Ch 98: Splay Trees](../chapters/ch98-splay-trees.md), [Ch 157: Link-Cut Trees](../chapters/ch157-link-cut-trees.md) | Forest data structures needed by advanced flow and tree techniques |
-| 3 | [tree-techniques.md](tree-techniques.md) | [Ch 84: Tree Algorithms Advanced](../chapters/ch84-tree-algorithms.md), [Ch 107: HLD/Centroid](../chapters/ch107-hld-centroid-applications.md) | Decomposition techniques used across all tree problems |
+| 3 | [tree-techniques.md](tree-techniques.md) | [Ch 84: Tree Algorithms Advanced](./tree-techniques.md), [Ch 107: HLD/Centroid](./tree-techniques.md) | Decomposition techniques used across all tree problems |
 | 4 | [dp-optimization.md](dp-optimization.md) | [Ch 86: DP Optimization](../chapters/ch86-dp-optimization.md), [Ch 116: Aliens Trick](../chapters/ch116-alien-trick-parametric.md) | Speed-ups for DP that appear everywhere in CP |
 | 5 | [polynomials.md](polynomials.md) | [Ch 167: FFT/NTT](../chapters/ch167-fft-ntt.md), [Ch 171: Berlekamp-Massey](../chapters/ch171-berlekamp-massey.md) | Algebraic tools underlying fast algorithms |
 | 6 | [matrix-algorithms.md](matrix-algorithms.md) | [Ch 73: Linear Algebra](../chapters/ch73-linear-algebra.md), [Ch 174: Matrix Exponentiation](../chapters/ch174-matrix-exponentiation.md) | Fast matrix ops power graph algorithms and DP |
@@ -85,7 +85,7 @@ mindmap
 
 - **Graph fundamentals**: [Ch 22](../chapters/ch22-graph-fundamentals.md), [Ch 28](../chapters/ch28-advanced-graphs.md)
 - **Network flow**: [Ch 29](../chapters/ch29-network-flow.md), [Ch 83](../chapters/ch83-advanced-flow.md), [Ch 169](../chapters/ch169-min-cost-max-flow.md)
-- **Trees**: [Ch 13](../chapters/ch13-trees.md), [Ch 84](../chapters/ch84-tree-algorithms-advanced.md), [Ch 107](../chapters/ch107-hld-centroid-applications.md), [Ch 108](../chapters/ch108-dsu-on-tree-rerooting.md)
+- **Trees**: [Ch 13](../README.md), [Ch 84](./tree-techniques.md), [Ch 107](./tree-techniques.md), [Ch 108](./tree-techniques.md)
 - **DP**: [Ch 31](../chapters/ch31-dp-patterns.md), [Ch 86](../chapters/ch86-dp-optimization.md), [Ch 113](../chapters/ch113-profile-dp.md), [Ch 116](../chapters/ch116-alien-trick-parametric.md), [Ch 117](../chapters/ch117-monotone-queue-optimization.md), [Ch 118](../chapters/ch118-bitset-dp.md), [Ch 188](../chapters/ch188-monotonic-queue-dp.md)
 - **Polynomials/FFT**: [Ch 167](../chapters/ch167-fft-ntt.md), [Ch 171](../chapters/ch171-berlekamp-massey.md), [fft-and-polynomial.md](../chapters/fft-and-polynomial.md)
 - **Matrices**: [Ch 73](../chapters/ch73-linear-algebra.md), [Ch 174](../chapters/ch174-matrix-exponentiation.md)

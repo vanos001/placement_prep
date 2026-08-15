@@ -144,9 +144,9 @@ PagedAttention (vLLM, Kwon et al. 2023) treats KV cache like virtual memory:
 ```mermaid
 graph TD
     subgraph "Virtual Memory Analogy"
-        VP["Virtual Pages (logical KV blocks)""]
-        PT["Page Table (block_id → physical block)""]
-        PP["Physical Pages (actual GPU memory blocks)""]
+        VP["Virtual Pages (logical KV blocks)"]
+        PT["Page Table (block_id → physical block)"]
+        PP["Physical Pages (actual GPU memory blocks)"]
     end
     
     VP --> PT --> PP
@@ -201,14 +201,14 @@ The key challenge: attention must gather K/V from non-contiguous physical blocks
 ```mermaid
 graph TD
     subgraph "Before Fork"
-        P0["Block 0: [sys_prompt tokens] (refcount=3)""]
+        P0["Block 0: [sys_prompt tokens] (refcount=3)"]
     end
     
     subgraph "After Fork (Beam Search)"
-        P0R["Block 0: shared (refcount=3)""]
-        B1["Block 5: beam 1 tokens (refcount=1)""]
-        B2["Block 6: beam 2 tokens (refcount=1)""]
-        B3["Block 7: beam 3 tokens (refcount=1)""]
+        P0R["Block 0: shared (refcount=3)"]
+        B1["Block 5: beam 1 tokens (refcount=1)"]
+        B2["Block 6: beam 2 tokens (refcount=1)"]
+        B3["Block 7: beam 3 tokens (refcount=1)"]
     end
     
     P0 --> P0R

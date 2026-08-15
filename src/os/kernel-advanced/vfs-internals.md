@@ -6,7 +6,7 @@ The Virtual File System (VFS) is the kernel abstraction layer that unifies all f
 
 ```mermaid
 graph TD
-    SYSCALL["open(\"/home/u/file.txt\", O_RDONLY)"] --> VFS["VFS: path_lookupat()"]
+    SYSCALL["open(#quot;/home/u/file.txt#quot;, O_RDONLY)"] --> VFS["VFS: path_lookupat()"]
     VFS --> DC["Dentry Cache (dcache)"]
     DC -->|"miss"| FS["Filesystem: ->lookup()"]
     FS --> INODE["Inode (struct inode)"]

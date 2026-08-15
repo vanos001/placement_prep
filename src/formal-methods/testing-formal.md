@@ -166,8 +166,8 @@ Property-based testing (PBT) specifies the expected behavior of a function as **
 flowchart TD
     SPEC["Property: forall x ∈ S, P(x) holds"]
     SPEC --> GEN[Generate Random Input x]
-    GEN --> EXEC[Execute Function f(x)]
-    EXEC --> CHECK{P(f(x))?}
+    GEN --> EXEC["Execute Function f(x)"]
+    EXEC --> CHECK{"P(f(x))?"}
     CHECK -->|Yes| GEN
     CHECK -->|No| SHRINK[Shrink Input to Minimal]
     SHRINK --> REPORT[Report Failing Test Case]

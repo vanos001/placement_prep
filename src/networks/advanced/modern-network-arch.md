@@ -23,7 +23,8 @@ TSN is a set of IEEE 802.1 standards that adds deterministic scheduling to stand
 
 The TAS divides time into **gates** — each gate opens for a specific traffic class at a precisely scheduled time:
 
-``nTime →
+```
+Time →
 |--- Control ---|-- AVB ---|--- Best Effort ---|-- Control ---|-- AVB --|
 ^                 ^                              ^               ^
 t0               t1                             t2              t3

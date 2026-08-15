@@ -308,6 +308,42 @@ Before EIP-4844, rollups posted transaction data via calldata at ~16 gas/byte. B
 
 Optimistic rollups assume validity and rely on a 7-day challenge period with fraud proofs. ZK rollups generate cryptographic validity proofs verified on-chain. ZK rollups offer faster finality (minutes vs days) and stronger security guarantees (no assumption about honest challengers), but proof generation is computationally expensive and EVM-equivalence is harder to achieve.
 
+## ZK-Rollups
+
+ZK-rollups are a class of Layer 2 scaling solutions that use **validity proofs** — cryptographic guarantees that every state transition in a batch was computed correctly — as opposed to optimistic rollups, which rely on **fraud proofs** and a challenge window. With validity proofs, the L1 verifier contract checks a succinct proof and accepts the state transition immediately. There is no challenge period, no assumption about honest watchers, and no withdrawal delay (once the proof is verified, finality is instant).
+
+### zkSNARK-Based Rollups
+
+zkSNARKs (Zero-Knowledge Succinct Non-Interactive Arguments of Knowledge) produce small proofs (~200 bytes) that verify in constant time regardless of computation size. However, they require a **trusted setup** ceremony (generating structured reference strings) — if the secret "toxic waste" is leaked, a malicious prover can forge proofs. zkSync (Matter Labs) and Polygon zkEVM use SNARK-based approaches. zkSync Era compiles Solidity to a custom VM (EVM-equivalent), generates proofs with a prover cluster, and posts proofs + compressed calldata to L1. The verification gas cost on L1 is ~200-400K gas per batch, making per-transaction L1 costs negligible at scale.
+
+### zkSTARK-Based Rollups
+
+zkSTARKs (Scalable Transparent ARguments of Knowledge) eliminate the trusted setup by using hash-based polynomial commitments instead of elliptic curve pairings. The trade-off: proofs are much larger (~50-200 KB), though still constant-time to verify. StarkNet (StarkWare) uses the Cairo programming language (not EVM-equivalent, though a Solidity-to-Cairo compiler exists) and STARK proofs. StarkNet's proof generation is parallelized across a prover cluster ("Provence" infrastructure), but proof times for large batches can still reach minutes.
+
+### Proof Generation vs Verification
+
+This asymmetry is the defining characteristic of ZK-rollups: proof **generation** is computationally expensive (seconds to minutes, CPU/GPU intensive), while proof **verification** is cheap (milliseconds, constant gas on L1). This means the L1 verifier does not re-execute transactions — it only checks the proof. A batch of 10,000 transactions that would cost millions in L1 gas to execute directly costs ~300K gas to verify. The prover infrastructure is the bottleneck and operational cost center for ZK-rollup operators.
+
+### Batch Verification and Data Availability
+
+ZK-rollups must post transaction data (or a commitment to it) to L1 for data availability. Without the data, the proofs are useless — even though validity is guaranteed, the state is unrecoverable if data is lost. With EIP-4844 blobs, ZK-rollups post calldata or blob data alongside the proof. Some newer approaches (e.g., validiums) store data off-chain (a DAC — Data Availability Committee) and only post a data commitment on-chain, trading some trust assumptions for 10-100x cost reduction.
+
+### ZK-Rollup Ecosystem
+
+| Project | Proof System | EVM Compatibility | Language | Status |
+|---------|-------------|-------------------|----------|--------|
+| **zkSync Era** | zkSNARK (Boojum) | EVM-equivalent | Solidity | Mainnet |
+| **StarkNet** | zkSTARK | Not EVM (Cairo VM) | Cairo | Mainnet |
+| **Polygon zkEVM** | zkSNARK | EVM-equivalent | Solidity | Mainnet |
+| **Scroll** | zkSNARK | EVM-equivalent | Solidity | Mainnet |
+| **zkSync ZK Stack** | zkSNARK | Hyperchains | Solidity/Rust | Framework |
+
+### ZK-Rollups vs Optimistic Rollups
+
+ZK-rollups offer **faster finality** (proof verified in minutes, not 7 days), **stronger security** (no reliance on honest challengers), and **lighter client verification** (verify proof instead of re-executing). The downsides: proof generation is expensive (prover hardware), EVM-equivalence is harder to achieve (especially with STARKs), and the technology is less mature. Optimistic rollups are simpler to implement, fully EVM-compatible today, and cheaper to operate — but they require 7-day withdrawal delays and rely on at least one honest actor to catch fraud.
+
+> **Interview Angle**: "Why aren't all rollups ZK-rollups if they're provably secure?" Three reasons: (1) proof generation cost and latency — provers are expensive and slow, (2) EVM-equivalence is hard — mapping the EVM's 140+ opcodes into an arithmetic circuit is non-trivial (each "wrong" opcode breaks compatibility), and (3) maturity — ZK tooling, prover infrastructure, and audit expertise are still catching up. The gap is narrowing rapidly.
+
 ## Related Topics
 
 - [Consensus Mechanisms](./consensus-mechanisms.md) — PoS, Casper FFG, validator lifecycle

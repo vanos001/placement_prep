@@ -122,7 +122,7 @@ See [PBFT basics](../consensus/pbft.md). Key production details:
 
 #### Three-Phase Structure
 
-``n``
+```
 Phase 1: PREPARE  → leader sends block to all
 Phase 2: PRECOMMIT → gather `2f + 1` PREPARE votes, build QC (quorum certificate)
 Phase 3: COMMIT    → leader sends PRECOMMIT with QC

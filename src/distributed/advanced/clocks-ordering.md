@@ -32,7 +32,7 @@ With thousands of processes, each vector clock entry is kilobytes in size, and c
 
 ### The Problem
 
-``n```
+```
 1. Server has key "k" at vclock [A:2, B:1]
 2. Client reads "k" → gets vclock [A:2, B:1]
 3. Meanwhile, Server receives write from B → vclock [A:2, B:2]

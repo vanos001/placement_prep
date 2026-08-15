@@ -291,13 +291,13 @@ class AgentScheduler:
 ```mermaid
 graph TD
     subgraph "Injection Vectors"
-        PI["Direct Prompt Injection""  User provides malicious instructions""]
-        TI["Tool/Indirect Injection""  Malicious content in tool outputs (web pages, emails, files)""]
-        II["Training Data Injection""  Malicious content in training data (sleeping agents)""]
-        EII["Encoder Injection""  Invisible text in PDFs/images that gets read by the agent""]
+        PI["Direct Prompt Injection<br/>  User provides malicious instructions"]
+        TI["Tool/Indirect Injection<br/>  Malicious content in tool outputs (web pages, emails, files)"]
+        II["Training Data Injection<br/>  Malicious content in training data (sleeping agents)"]
+        EII["Encoder Injection<br/>  Invisible text in PDFs/images that gets read by the agent"]
     end
     
-    PI --> AGENT["Agent Behavior""  Exfiltrates data, bypasses controls, performs unauthorized actions""]
+    PI --> AGENT["Agent Behavior<br/>  Exfiltrates data, bypasses controls, performs unauthorized actions"]
     TI --> AGENT
     II --> AGENT
     EII --> AGENT

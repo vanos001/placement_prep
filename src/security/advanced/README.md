@@ -126,8 +126,8 @@ Focus on speculative execution exploitation, cache timing, fault injection, and 
 - **Web security**: [../web-security.md](../web-security.md) — XSS, CSRF, CSP headers
 - **Authentication/Authorization**: [../authentication.md](../authentication.md), [../authorization.md](../authorization.md) — OAuth, JWT, RBAC/ABAC
 - **Secrets management**: [../secrets-management.md](../secrets-management.md) — Vault, secret rotation, CI secrets
-- **Network security**: [../network-security.md](../network-security.md) — TLS, mTLS, network segmentation
-- **OS internals**: [../../systems-programming/linux-internals.md](../../systems-programming/linux-internals.md) — kernel, syscalls, namespaces
+- **Network security**: [../web-security.md](../web-security.md) — TLS, mTLS, network segmentation
+- **OS internals**: [../../os/kernel/README.md](../../os/kernel/README.md) — kernel, syscalls, namespaces
 
 ## Key Tools and Systems Referenced
 

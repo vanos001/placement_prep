@@ -10,7 +10,7 @@
 
 The coordinator asks all participants to vote on whether they can commit:
 
-``n
+```
   Coordinator              P1              P2              P3
      │                     │               │               │
      │── PREPARE(T) ───────>│               │               │

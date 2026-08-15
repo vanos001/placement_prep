@@ -171,15 +171,9 @@ ZeRO (Rajbhandari et al., 2020, Microsoft DeepSpeed) partitions the redundant st
 ```mermaid
 graph TD
     subgraph "ZeRO Stages — What Gets Sharded"
-        Z1["ZeRO-1: Shard Optimizer States""
-Memory: ~8P → 8P/N""
-Comm: Same as DP (AllReduce)""]
-        Z2["ZeRO-2: Shard Optimizer + Gradients""
-Memory: ~10P → 10P/N""
-Comm: Reduce-Scatter (gradients)"""]
-        Z3["ZeRO-3: Shard Params + Gradients + Optimizer""
-Memory: ~12P → 12P/N""
-Comm: All-Gather (params) each forward/backward"""]
+        Z1["ZeRO-1: Shard Optimizer States<br/>Memory: ~8P → 8P/N<br/>Comm: Same as DP (AllReduce)"]
+        Z2["ZeRO-2: Shard Optimizer + Gradients<br/>Memory: ~10P → 10P/N<br/>Comm: Reduce-Scatter (gradients)"]
+        Z3["ZeRO-3: Shard Params + Gradients + Optimizer<br/>Memory: ~12P → 12P/N<br/>Comm: All-Gather (params) each forward/backward"]
     end
     
     Z1 --> Z2 --> Z3
@@ -391,12 +385,9 @@ Real-world training combines multiple parallelism strategies:
 ```mermaid
 graph TD
     subgraph "Typical 3D Parallelism Setup (e.g., Megatron-LM)"
-        DP_DIM["Data Parallelism: 16 replicas""
-(processes different data)""]
-        TP_DIM["Tensor Parallelism: 4-way""
-(splits weight matrices)""]
-        PP_DIM["Pipeline Parallelism: 4-way""
-(splits layers)""]
+        DP_DIM["Data Parallelism: 16 replicas<br/>(processes different data)"]
+        TP_DIM["Tensor Parallelism: 4-way<br/>(splits weight matrices)"]
+        PP_DIM["Pipeline Parallelism: 4-way<br/>(splits layers)"]
     end
     
     DP_DIM --> TOTAL["Total: 16 × 4 × 4 = 256 GPUs"]
@@ -455,4 +446,4 @@ Distributed LLM training combines data, tensor, pipeline, and expert parallelism
 - [Quantization Advanced →](quantization-advanced.md) Post-training quantization for efficient training
 - [MoE Architecture →](../moe/architecture.md) Expert parallelism details
 - [Inference Systems →](inference-systems.md) How trained models are served
-- [Deep Learning Systems](../../ml/system-design/model-training.md) General distributed training
+- [Deep Learning Systems](../../llm/llm-serving/pretraining.md) General distributed training

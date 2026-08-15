@@ -117,7 +117,7 @@ Maintain the $k$ smallest hashed values seen. The distinct count is estimated as
 
 For a frequency vector $f = (f_1, \ldots, f_n)$, the $k$-th frequency moment is:
 
-$$F_k = \sum_{i=1}^{n} f_i^k$$
+\\[F_k = \sum_{i=1}^{n} f_i^k\\]
 
 - $F_0$: Number of distinct elements.
 - $F_1$: Total count (trivially computable).

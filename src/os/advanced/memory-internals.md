@@ -267,6 +267,42 @@ swapon /dev/zram0 -prio 100  # higher priority than disk swap
 
 zram is used by default in Android (as compressed swap for low-memory devices) and Chrome OS. The compression ratio depends on the data: typically 2-3x for general workloads, up to 10x for highly compressible data (zeroed pages, repeated patterns). The trade-off: compression/decompression uses CPU cycles (~1-5 µs per 4 KB page), but this is far cheaper than disk I/O (~5-10 ms per page).
 
+## hugetlbfs
+
+While [Transparent Huge Pages](../memory/huge-pages.md) automatically promote 4 KB pages to 2 MB, **hugetlbfs** provides explicit, application-controlled huge page allocation through a pseudo-filesystem interface. Unlike THP, hugetlbfs guarantees that memory is backed by pre-allocated huge pages from a kernel-managed pool — there is no runtime promotion, no compaction delay, and no fallback to 4 KB pages.
+
+The kernel reserves huge pages at boot (or at runtime via `nr_hugepages` sysctl) and manages them in a pool. Applications access them by mounting the `hugetlbfs` filesystem and `mmap`'ing files within it, or by using `mmap(MAP_HUGETLB)` directly without a mount point.
+
+```bash
+# Reserve 1024 × 2 MB = 2 GB of huge pages at runtime
+echo 1024 > /proc/sys/vm/nr_hugepages
+
+# Check available huge pages
+cat /proc/meminfo | grep Huge
+# HugePages_Total:    1024
+# HugePages_Free:     1024
+# Hugepagesize:       2048 kB
+
+# Mount hugetlbfs
+mkdir /mnt/huge
+mount -t hugetlbfs nodev /mnt/huge
+
+# mmap from hugetlbfs
+./my_app --hugepage-file /mnt/huge/my_pool --size 1G
+
+# Or use MAP_HUGETLB directly (no mount needed)
+void *ptr = mmap(NULL, size, PROT_READ|PROT_WRITE,
+                 MAP_PRIVATE|MAP_ANONYMOUS|MAP_HUGETLB, -1, 0);
+```
+
+The **libhugetlbfs** library provides `malloc()` interposition (`LD_PRELOAD=libhugetlbfs.so`) that transparently redirects heap allocations to hugetlbfs-backed memory, requiring zero code changes. This is the easiest way to run unmodified applications (Java, databases) on huge pages.
+
+**DPDK and databases** depend heavily on hugetlbfs. DPDK uses huge pages for its memory pools (`rte_eal_init()` fails without them) because: (1) fewer TLB entries needed for the same memory footprint, (2) page pinning for DMA is cheaper with huge pages, and (3) guaranteed no 4 KB page splitting. PostgreSQL, Redis, and Oracle also recommend hugetlbfs for large buffer pools.
+
+The key difference from THP: hugetlbfs pages are **pre-reserved** and never reclaimed by the kernel. If the pool is exhausted, allocations fail immediately (`ENOMEM`) rather than falling back to 4 KB. This makes hugetlbfs preferable for latency-sensitive workloads where the non-determinism of THP's `khugepaged` scanning and compaction is unacceptable.
+
+> **Interview Angle**: "hugetlbfs vs THP — when would you choose each?" hugetlbfs for guaranteed huge pages with no fallback (DPDK, low-latency trading, databases with fixed memory pools). THP for general-purpose workloads where you want TLB benefits without managing a pool. hugetlbfs requires pre-reservation and can waste memory if over-provisioned; THP adapts dynamically.
+
 ## Interview Questions
 
 1. **"What is KPTI and why does it impact syscall performance?"** Answer hint: KPTI maintains separate user and kernel page tables. Every syscall entry switches from user to kernel page tables (CR3 reload), and every return switches back. Each CR3 reload flushes non-global TLB entries, causing TLB misses on the first memory access after the switch. PCID mitigates this by tagging TLB entries, but there's still the CR3 write overhead (~100-200 cycles per syscall).
@@ -282,3 +318,6 @@ zram is used by default in Android (as compressed swap for low-memory devices) a
 - Corbet, J. "Kernel address space layout randomization." LWN.net, 2005.
 - Corbet, J. "PSI: a framework for real-time pressure stall information." LWN.net, 2018.
 - Hwang et al. "DAMON: Data Access Monitor." Linux Plumbers Conference, 2019.
+- Corbet, J. "Huge pages and hugetlbfs." LWN.net, 2005.
+- `Documentation/vm/hugetlbpage.txt` — hugetlbfs kernel documentation
+- `mm/hugetlb.c` — hugetlbfs implementation
