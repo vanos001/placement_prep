@@ -1,7 +1,7 @@
 # Coverage Dashboard
 
 > Auto-generated tracking of content coverage across all subjects.
-> Last updated: 2026-08-15 (advanced topics expansion — 20 sections A-T added)
+> Last updated: 2026-08-16 (validation re-run, meta sync)
 
 ## Summary
 

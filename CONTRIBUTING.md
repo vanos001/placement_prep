@@ -38,7 +38,7 @@ Brief introduction (2-3 sentences) explaining what the topic is and why it matte
 
 ## Cross-References
 
-- [Related Topic](../dsa/sorting/overview.md) — Brief context.
+- [Related Topic](src/dsa/README.md) — Brief context.
 ```
 
 ### Style Rules

@@ -1,6 +1,6 @@
 # Project Status
 
-> Status snapshot: 2026-08-15 — 1,528 advanced topics added across 20 sections
+> Status snapshot: 2026-08-16 — all validation passing, meta updated
 
 ## Current status
 
