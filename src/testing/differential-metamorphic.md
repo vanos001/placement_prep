@@ -297,4 +297,4 @@ A: Differential requires ≥2 implementations and finds disagreements. Metamorph
 - Chen, T. Y., Cheung, S. C., Yiu, S. M. (1998). *Metamorphic Testing: A New Approach for Generating Next Test Cases*. HKUST.
 - Chen, T. Y. (2018). *Metamorphic Testing: A Review of Challenges and Opportunities*. ACM Computing Surveys.
 - Segura, S. et al. (2024). *Metamorphic Testing 2.0*. Journal of Systems and Software.
-- See also: [Property-Based Testing](./property-based-testing.md), [Mutation Testing](./mutation-testing.md), [Fuzzing](./fuzzing.md), [Formal Methods](../cs-theory/formal-methods.md)
+- See also: [Property-Based Testing](./property-based-testing.md), [Mutation Testing](./mutation-testing.md), [Formal Methods](../cs-theory/formal-methods.md)

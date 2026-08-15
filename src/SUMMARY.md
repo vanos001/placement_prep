@@ -1090,6 +1090,7 @@
   - [Consensus](./dbms/distributed/consensus.md)
   - [Paxos](./dbms/distributed/paxos.md)
   - [Raft](./dbms/distributed/raft.md)
+  - [FoundationDB](./dbms/distributed/foundationdb.md)
 - [NoSQL](./dbms/nosql/README.md)
   - [Key-Value Stores](./dbms/nosql/key-value.md)
   - [Document Stores](./dbms/nosql/document.md)
@@ -1459,6 +1460,7 @@
 - [GitHub & Code Review](./git/github.md)
 - [Git Interview Questions](./git/interview-questions.md)
 - [Git Cheat Sheet](./git/cheat-sheet.md)
+- [Sparse Checkout & Git Hosting Architecture](./git/sparse-checkout-hosting.md)
 
 ---
 
@@ -1478,6 +1480,7 @@
 - [Software Metrics](./software-engineering/metrics.md)
 - [Team Dynamics](./software-engineering/team-dynamics.md)
 - [SE Interview Questions](./software-engineering/interview-questions.md)
+- [Onion Architecture & Event Storming](./software-engineering/onion-event-storming.md)
 - [Contributing](./software-engineering/CONTRIBUTING.md)
 - [Design Documents, RFCs, and ADRs](./software-engineering/design-docs.md)
 - [Modern Software Engineering Practices](./software-engineering/modern-practices.md)
@@ -1667,6 +1670,7 @@
 - [Property-Based Testing](./testing/property-based-testing.md)
 - [Snapshot Testing](./testing/snapshot-testing.md)
 - [Test Pyramids](./testing/test-pyramids.md)
+- [Differential & Metamorphic Testing](./testing/differential-metamorphic.md)
 
 ---
 
@@ -1789,6 +1793,7 @@
 - [Feature Flags (Feature Toggles)](./sre/feature-flags.md)
 - [Multi-Region Architecture](./sre/multi-region.md)
 - [Infrastructure & Platform Engineering](./sre/infrastructure-platform-engineering.md)
+- [FMEA & Fault Trees](./sre/fmea-fault-trees.md)
 
 ---
 
@@ -1998,6 +2003,7 @@
   - [LLM Security & Safety](./llm/llm-security.md)
   - [LLM Cost Optimization](./llm/cost-optimization.md)
   - [LLM Infrastructure Deep Dive](./llm/llm-infrastructure.md)
+  - [Tool Poisoning & Deterministic vs Autonomous Workflows](./llm/agents/tool-poisoning-workflows.md)
 - [Multimodal Models](./llm/multimodal/README.md)
   - [Vision-Language Models](./llm/multimodal/vlm.md)
   - [GPT-4V](./llm/multimodal/gpt4v.md)
@@ -2374,6 +2380,7 @@
 - [Code Generation & Linking](./compilers/code-generation.md)
 - [JIT Compilation](./compilers/jit-compilation.md)
 - [Compiler Interview Questions](./compilers/interview-questions.md)
+- [Partial Evaluation & MLIR](./compilers/partial-evaluation-mlir.md)
 
 ---
 
@@ -2388,6 +2395,7 @@
 - [PKI](./cryptography/pki.md)
 - [Practical Web Security](./cryptography/practical-security.md)
 - [Post-Quantum Cryptography](./cryptography/post-quantum.md)
+- [Zero-Knowledge Proofs (SNARKs & STARKs)](./cryptography/zk-proofs.md)
 
 ---
 

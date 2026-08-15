@@ -6,7 +6,7 @@ This page covers two critical topics from the AI Agents section (§27) of the ma
 
 **Deterministic workflows versus autonomous agents** is the central architectural decision in agent design: whether the LLM simply fills slots in a developer-defined code path (a workflow) or whether it autonomously decides which action to take next via a tool-calling loop (an agent). This choice profoundly shapes determinism, cost, latency, debuggability, and reliability. The two topics are deeply related: autonomous agents that call arbitrary external tools are far more exposed to tool poisoning than deterministic workflows that invoke a fixed, vetted sequence of calls.
 
-We cite the OWASP Top 10 for LLM Applications (2025), Anthropic's "Building Effective Agents" guidance, LangChain/LangGraph documentation, and emerging agent-security frameworks from 2024–2025. For the broader attack taxonomy see [LLM Security](../llm-security.md), and for injection-resistant prompting techniques see [Prompt Engineering](../prompt-engineering.md). The [Agents README](./README.md) indexes sibling agent topics in this section.
+We cite the OWASP Top 10 for LLM Applications (2025), Anthropic's "Building Effective Agents" guidance, LangChain/LangGraph documentation, and emerging agent-security frameworks from 2024–2025. For the broader attack taxonomy see [LLM Security](../llm-security.md), and for injection-resistant prompting techniques see [Prompt Engineering](../prompt-engineering.md). The [Agents README](../agents.md) indexes sibling agent topics in this section.
 
 ## Tool Poisoning: Definition and Threat Model
 
@@ -298,7 +298,7 @@ The workflow-versus-agent decision is the first architectural choice in any agen
 
 ## Cross-References
 
-- [Agents README](./README.md) — sibling agent topics in this section
+- [Agents README](../agents.md) — sibling agent topics in this section
 - [LLM Security](../llm-security.md) — broader attack taxonomy including prompt injection and data leakage
 - [Prompt Engineering](../prompt-engineering.md) — injection-resistant prompting and structured outputs
 - [RAG Systems](../rag-systems.md) — retrieval as an indirect-injection surface
