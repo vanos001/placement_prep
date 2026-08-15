@@ -2381,6 +2381,11 @@
 - [JIT Compilation](./compilers/jit-compilation.md)
 - [Compiler Interview Questions](./compilers/interview-questions.md)
 - [Partial Evaluation & MLIR](./compilers/partial-evaluation-mlir.md)
+- [Advanced Parsing (Pratt, PEG, Earley/GLR, tree-sitter, Attribute Grammars)](./compilers/parsing-advanced.md)
+- [Loop Optimizations Deep Dive (SCEV, rotation, peeling, LCSSA, SW pipelining)](./compilers/loop-optimizations-deep.md)
+- [Scalar Optimizations Deep Dive (PRE, SCCP, jump threading, VRP, tail dup)](./compilers/scalar-optimizations-deep.md)
+- [IPA, Attributor & Codegen Deep Dive](./compilers/ipa-attributor-codegen-deep.md)
+- [Translation Validation (Alive2) & Compiler Bootstrapping](./compilers/translation-validation-bootstrapping.md)
 
 ---
 
