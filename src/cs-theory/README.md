@@ -10,6 +10,11 @@ Foundational computer science theory for interviews.
 | [Logic](./logic.md) | Propositional & predicate logic, truth tables |
 | [Proof Techniques](./proofs.md) | Induction, contradiction, pigeonhole |
 | [Complexity Classes](./complexity-classes.md) | P, NP, NP-complete, reductions |
+| [Turing Machines](./turing-machines.md) | Turing machine model, decidability |
+| [Computability](./computability.md) | Halting problem, recursion theory |
+| [Formal Languages](./formal-languages.md) | Regular, context-free, Chomsky hierarchy |
+| [Formal Methods](./formal-methods.md) | TLA+, Alloy, Coq, model checking, abstract interpretation |
+| [Comparison Sorting Lower Bound](./comparison-sorting-lower-bound.md) | Ω(n log n) information-theoretic bound |
 
 ## Why CS Theory Matters
 

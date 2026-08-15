@@ -2,6 +2,7 @@
 
 [Introduction](./introduction.md)
 [Glossary](./glossary.md)
+[Master Topic Index](./index.md)
 
 ---
 
@@ -55,7 +56,8 @@
   - [Slab Allocator](./os/memory/slab-allocator.md)
 - [Virtual Memory](./os/virtual-memory/README.md)
   - [Demand Paging](./os/virtual-memory/demand-paging.md)
-  - [Page Replacement Algorithms](./os/virtual-memory/page-replacement.md)
+  - [Page Replacement Algorithms](./os/memory/page-replacement.md)
+- [Virtual Memory Page Replacement](./os/virtual-memory/page-replacement.md)
     - [Overview & Comparison](./os/virtual-memory/page-rejection.md)
     - [FIFO](./os/virtual-memory/fifo.md)
     - [LRU](./os/virtual-memory/lru.md)
@@ -130,6 +132,7 @@
   - [Kernel Tracing (ftrace/kprobes)](./os/kernel/tracing.md)
   - [eBPF](./os/kernel/ebpf.md)
   - [io_uring](./os/kernel/io-uring.md)
+- [Advanced OS Topics](./os/advanced-os.md)
 
 ---
 
@@ -139,6 +142,8 @@
 
 - [Linux Track Overview](./linux/README.md)
 - [Linux Tools for Placement Preparation](./linux/tools.md)
+- [Linux Internals](./linux/internals.md)
+- [Shell & Unix Deep Dive](./linux/shell-unix.md)
 
 
 - [Linux Introduction](./linux/introduction.md)
@@ -694,6 +699,8 @@
 # Data Structures & Algorithms
 
 - [DSA Track Overview](./dsa/README.md)
+- [Advanced Algorithms](./dsa/advanced-algorithms.md)
+- [Advanced Data Structures](./dsa/advanced-data-structures.md)
 
 
 ---
@@ -999,6 +1006,7 @@
 
 - [DBMS Overview](./dbms/overview.md)
 - [Types of Databases: SQL & NoSQL](./dbms/types-of-databases.md)
+- [Specialized Databases](./dbms/specialized-databases.md)
 - [OLTP vs OLAP & Data Warehousing](./dbms/analytics/README.md)
 - [Relational Model](./dbms/relational-model/README.md)
   - [Keys](./dbms/relational-model/keys.md)
@@ -1045,6 +1053,7 @@
     - [Saga Pattern](./dbms/transactions/saga.md)
 - [Indexing](./dbms/indexing/README.md)
   - [B-Tree](./dbms/indexing/b-tree.md)
+  - [B-Trees Internals](./dbms/indexing/btrees.md)
   - [B+ Tree](./dbms/indexing/b-plus-tree.md)
   - [Hash Index](./dbms/indexing/hash-index.md)
   - [Bitmap Index](./dbms/indexing/bitmap-index.md)
@@ -1083,6 +1092,7 @@
   - [Consensus](./dbms/distributed/consensus.md)
   - [Paxos](./dbms/distributed/paxos.md)
   - [Raft](./dbms/distributed/raft.md)
+  - [FoundationDB](./dbms/distributed/foundationdb.md)
 - [NoSQL](./dbms/nosql/README.md)
   - [Key-Value Stores](./dbms/nosql/key-value.md)
   - [Document Stores](./dbms/nosql/document.md)
@@ -1190,6 +1200,7 @@
   - [ping/traceroute](./networks/tools/ping-traceroute.md)
   - [curl](./networks/tools/curl.md)
   - [eBPF Networking](./networks/ebpf-networking.md)
+- [Networking — Advanced](./networks/networking-advanced.md)
 - [Socket Programming](./networks/sockets/README.md)
   - [TCP Sockets](./networks/sockets/tcp.md)
   - [UDP Sockets](./networks/sockets/udp.md)
@@ -1277,6 +1288,7 @@
   - [SMT/Hyperthreading](./arch/parallelism/smt.md)
   - [GPU Architecture](./arch/parallelism/gpu.md)
   - [CUDA Programming](./arch/parallelism/cuda.md)
+  - [GPUs & HPC Deep Dive](./arch/parallelism/gpu-hpc.md)
 - [Performance](./arch/performance/README.md)
   - [Amdahl's Law](./arch/performance/amdahl.md)
   - [CPU Performance Equation](./arch/performance/equation.md)
@@ -1289,6 +1301,7 @@
   - [Apple Silicon](./arch/modern/apple-silicon.md)
   - [Intel Alder Lake](./arch/modern/alder-lake.md)
   - [AMD Zen](./arch/modern/amd-zen.md)
+- [Hardware & Low-Level Deep Dive](./arch/hardware-low-level.md)
 
 ---
 
@@ -1306,6 +1319,7 @@
   - [Conflict-Free Replicated Data Types](./distributed/fundamentals/crdts.md)
   - [Distributed Locks and Fencing Tokens](./distributed/fundamentals/distributed-locks.md)
   - [Byzantine Faults](./distributed/fundamentals/byzantine-faults.md)
+  - [Distributed Algorithms Overview](./distributed/fundamentals/distributed-algorithms.md)
 - [Consensus](./distributed/consensus/README.md)
   - [Paxos](./distributed/consensus/paxos.md)
   - [Raft](./distributed/consensus/raft.md)
@@ -1330,6 +1344,7 @@
   - [RabbitMQ](./distributed/messaging/rabbitmq.md)
   - [Pub/Sub](./distributed/messaging/pubsub.md)
   - [Apache Pulsar](./distributed/messaging/pulsar.md)
+  - [Messaging & Streaming Overview](./distributed/messaging/messaging-streaming.md)
 - [Microservices](./distributed/microservices/README.md)
   - [Service Discovery](./distributed/microservices/discovery.md)
   - [Circuit Breakers](./distributed/microservices/circuit-breakers.md)
@@ -1356,6 +1371,7 @@
 - [LSM Compaction Strategies](./storage/lsm-compaction.md)
 - [SSTable Format](./storage/sstable.md)
 - [BlobDB (Key-Value Separation)](./storage/blobdb.md)
+- [Bitcask (Log-Structured KV Store)](./storage/bitcask.md)
 - [Tiered Storage and Data Temperature](./storage/tiered-storage.md)
 
 ---
@@ -1372,6 +1388,7 @@
 - [Coroutines](./concurrency/coroutines.md)
 - [Lock-free Data Structures](./concurrency/lock-free.md)
 - [RCU (Read-Copy-Update)](./concurrency/rcu.md)
+- [Advanced Concurrency](./concurrency/advanced-concurrency.md)
 - [ABA Problem and Safe Memory Reclamation](./concurrency/aba-problem.md)
 - [Work-Stealing Scheduler](./concurrency/work-stealing.md)
 - [Memory Model (C++/Java/Go/Rust)](./concurrency/memory-model.md)
@@ -1396,6 +1413,7 @@
   - [Rate Limiting](./backend/api/rate-limiting.md)
   - [Webhooks](./backend/api/webhooks.md)
   - [Connection Pools](./backend/api/connection-pools.md)
+  - [API & Protocol Design](./backend/api/api-protocol-design.md)
 - [Authentication & Authorization](./backend/auth/README.md)
   - [JWT](./backend/auth/jwt.md)
   - [OAuth 2.0](./backend/auth/oauth.md)
@@ -1421,6 +1439,7 @@
 - [Observability](./backend/observability/README.md)
   - [OpenTelemetry](./backend/observability/opentelemetry.md)
 - [Testing](./backend/testing.md)
+- [Serialization](./backend/serialization.md)
 - [CI/CD](./backend/cicd/README.md)
   - [GitHub Actions](./backend/cicd/github-actions.md)
   - [GitOps](./backend/cicd/gitops.md)
@@ -1444,6 +1463,7 @@
 - [GitHub & Code Review](./git/github.md)
 - [Git Interview Questions](./git/interview-questions.md)
 - [Git Cheat Sheet](./git/cheat-sheet.md)
+- [Sparse Checkout & Git Hosting Architecture](./git/sparse-checkout-hosting.md)
 
 ---
 
@@ -1458,10 +1478,12 @@
 - [Testing](./software-engineering/testing.md)
 - [DevOps & CI/CD](./software-engineering/devops.md)
 - [Documentation](./software-engineering/documentation.md)
+- [Build Systems](./software-engineering/build-systems.md)
 - [Project Management](./software-engineering/project-management.md)
 - [Software Metrics](./software-engineering/metrics.md)
 - [Team Dynamics](./software-engineering/team-dynamics.md)
 - [SE Interview Questions](./software-engineering/interview-questions.md)
+- [Onion Architecture & Event Storming](./software-engineering/onion-event-storming.md)
 - [Contributing](./software-engineering/CONTRIBUTING.md)
 - [Design Documents, RFCs, and ADRs](./software-engineering/design-docs.md)
 - [Modern Software Engineering Practices](./software-engineering/modern-practices.md)
@@ -1534,6 +1556,7 @@
 - [Data Lineage](./data-engineering/data-lineage.md)
 - [Data Lakehouses](./data-engineering/lakehouses.md)
 - [Slowly Changing Dimensions](./data-engineering/slowly-changing-dimensions.md)
+- [Analytics & OLAP](./data-engineering/analytics.md)
 
 ---
 
@@ -1650,6 +1673,7 @@
 - [Property-Based Testing](./testing/property-based-testing.md)
 - [Snapshot Testing](./testing/snapshot-testing.md)
 - [Test Pyramids](./testing/test-pyramids.md)
+- [Differential & Metamorphic Testing](./testing/differential-metamorphic.md)
 
 ---
 
@@ -1688,6 +1712,7 @@
 - [Web Accessibility](./frontend/accessibility.md)
 - [CSS Deep Dive](./frontend/css-deep.md)
 - [Server-Side Rendering, Client-Side Rendering, and Static Generation](./frontend/ssr-csr-ssg.md)
+- [Frontend Engineering Deep Dive](./frontend/frontend-engineering.md)
 
 ---
 
@@ -1701,6 +1726,12 @@
 - [Turing Machines](./cs-theory/turing-machines.md)
 - [Computability](./cs-theory/computability.md)
 - [Formal Languages](./cs-theory/formal-languages.md)
+- [Formal Methods](./cs-theory/formal-methods.md)
+- [Programming Language Theory](./cs-theory/programming-language-theory.md)
+- [WebAssembly](./cs-theory/webassembly.md)
+- [Computer Graphics](./cs-theory/computer-graphics.md)
+- [Quantum Computing](./cs-theory/quantum-computing.md)
+- [Runtime Systems](./cs-theory/runtime-systems.md)
 - [Comparison Sorting Lower Bound](./cs-theory/comparison-sorting-lower-bound.md)
 
 ---
@@ -1764,6 +1795,8 @@
 - [Canary Releases (Progressive Delivery)](./sre/canary-releases.md)
 - [Feature Flags (Feature Toggles)](./sre/feature-flags.md)
 - [Multi-Region Architecture](./sre/multi-region.md)
+- [Infrastructure & Platform Engineering](./sre/infrastructure-platform-engineering.md)
+- [FMEA & Fault Trees](./sre/fmea-fault-trees.md)
 
 ---
 
@@ -1822,6 +1855,7 @@
 - [iOS / Swift](./mobile/ios.md)
 - [Mobile Security](./mobile/mobile-security.md)
 - [Mobile Interview Questions](./mobile/interview-questions.md)
+- [Mobile Engineering Deep Dive](./mobile/mobile-engineering.md)
 
 ---
 
@@ -1841,6 +1875,7 @@
 - [Cloud Overview](./cloud/overview.md)
 - [Autoscaling](./cloud/autoscaling.md)
 - [Disaster Recovery & Multi-Region](./cloud/disaster-recovery.md)
+- [Cloud Internals](./cloud/cloud-internals.md)
 - [Virtualization](./cloud/virtualization/README.md)
   - [Hypervisors](./cloud/virtualization/hypervisors.md)
   - [VMs vs Containers](./cloud/virtualization/vm-vs-container.md)
@@ -1863,6 +1898,7 @@
   - [Operators](./cloud/kubernetes/operators.md)
   - [Scheduling](./cloud/kubernetes/scheduling.md)
   - [Networking](./cloud/kubernetes/networking.md)
+- [Kubernetes Internals](./cloud/kubernetes-internals.md)
   - [Security](./cloud/kubernetes/security.md)
   - [Storage](./cloud/kubernetes/storage.md)
   - [Debugging K8s](./cloud/kubernetes/debugging.md)
@@ -1969,6 +2005,8 @@
   - [AI Agents Engineering](./llm/agents.md)
   - [LLM Security & Safety](./llm/llm-security.md)
   - [LLM Cost Optimization](./llm/cost-optimization.md)
+  - [LLM Infrastructure Deep Dive](./llm/llm-infrastructure.md)
+  - [Tool Poisoning & Deterministic vs Autonomous Workflows](./llm/agents/tool-poisoning-workflows.md)
 - [Multimodal Models](./llm/multimodal/README.md)
   - [Vision-Language Models](./llm/multimodal/vlm.md)
   - [GPT-4V](./llm/multimodal/gpt4v.md)
@@ -2035,6 +2073,7 @@
     - [Weights & Biases](./ml/mlops/wandb.md)
     - [Vertex AI](./ml/mlops/vertex.md)
     - [SageMaker](./ml/mlops/sagemaker.md)
+  - [ML Systems Overview](./ml/mlops/ml-systems.md)
 - [Reinforcement Learning](./ml/rl/README.md)
   - [RL Fundamentals](./ml/rl/fundamentals.md)
   - [Q-Learning](./ml/rl/q-learning.md)
@@ -2196,6 +2235,7 @@
   - [Product vs Service vs Semiconductor vs Cloud Companies](./interview/companies/company-types.md)
   - [FAANG/Big Tech Interview Preparation](./interview/companies/faang-preparation.md)
   - [Recruiter Communication](./interview/companies/recruiter-communication.md)
+- [Interview Meta-Topics](./interview/interview-meta-topics.md)
 
 ---
 
@@ -2343,6 +2383,12 @@
 - [Code Generation & Linking](./compilers/code-generation.md)
 - [JIT Compilation](./compilers/jit-compilation.md)
 - [Compiler Interview Questions](./compilers/interview-questions.md)
+- [Partial Evaluation & MLIR](./compilers/partial-evaluation-mlir.md)
+- [Advanced Parsing (Pratt, PEG, Earley/GLR, tree-sitter, Attribute Grammars)](./compilers/parsing-advanced.md)
+- [Loop Optimizations Deep Dive (SCEV, rotation, peeling, LCSSA, SW pipelining)](./compilers/loop-optimizations-deep.md)
+- [Scalar Optimizations Deep Dive (PRE, SCCP, jump threading, VRP, tail dup)](./compilers/scalar-optimizations-deep.md)
+- [IPA, Attributor & Codegen Deep Dive](./compilers/ipa-attributor-codegen-deep.md)
+- [Translation Validation (Alive2) & Compiler Bootstrapping](./compilers/translation-validation-bootstrapping.md)
 
 ---
 
@@ -2357,6 +2403,7 @@
 - [PKI](./cryptography/pki.md)
 - [Practical Web Security](./cryptography/practical-security.md)
 - [Post-Quantum Cryptography](./cryptography/post-quantum.md)
+- [Zero-Knowledge Proofs (SNARKs & STARKs)](./cryptography/zk-proofs.md)
 
 ---
 
@@ -2387,6 +2434,9 @@
 - [RTOS](./embedded-systems/rtos.md)
 - [Firmware](./embedded-systems/firmware.md)
 - [Embedded Systems Interview Questions](./embedded-systems/interview-questions.md)
+- [IoT](./embedded-systems/iot.md)
+- [Robotics](./embedded-systems/robotics.md)
+- [Real-Time Systems](./embedded-systems/real-time-systems.md)
 
 ---
 
@@ -2408,6 +2458,7 @@
 - [Production Debugging](./debugging/production-debugging.md)
 - [Common Bugs](./debugging/common-bugs.md)
 - [Debugging Interview Questions](./debugging/interview-questions.md)
+- [Developer Tools Deep Dive](./debugging/developer-tools.md)
 
 ---
 
@@ -2421,11 +2472,260 @@
 
 ---
 
+
+---
+
+# Advanced Operating Systems Deep Dive
+
+- [Advanced OS Overview](./os/advanced/README.md)
+- [Kernel Architectures](./os/advanced/kernel-architectures.md)
+- [Virtualization Internals](./os/advanced/virtualization.md)
+- [Fast I/O (DPDK, SPDK, io_uring)](./os/advanced/fast-io.md)
+- [Scheduler Internals](./os/advanced/scheduler-internals.md)
+- [Synchronization Primitives](./os/advanced/sync-primitives.md)
+- [Memory Models](./os/advanced/memory-models.md)
+- [Memory Internals](./os/advanced/memory-internals.md)
+- [I/O Internals](./os/advanced/io-internals.md)
+
+---
+
+# Linux Kernel Deep Dive
+
+- [Kernel Advanced Overview](./os/kernel-advanced/README.md)
+- [Boot Process](./os/kernel-advanced/boot-process.md)
+- [Tracing & Probes](./os/kernel-advanced/tracing-probes.md)
+- [eBPF Deep Dive](./os/kernel-advanced/ebpf-deep.md)
+- [Namespaces & Cgroups](./os/kernel-advanced/namespaces-cgroups.md)
+- [VFS Internals](./os/kernel-advanced/vfs-internals.md)
+- [Network Stack](./os/kernel-advanced/network-stack.md)
+- [Block Layer](./os/kernel-advanced/block-layer.md)
+
+---
+
+# Advanced Distributed Systems
+
+- [Advanced Distributed Overview](./distributed/advanced/README.md)
+- [Impossibility & Failure Models](./distributed/advanced/impossibility-models.md)
+- [Quorum Systems](./distributed/advanced/quorum-systems.md)
+- [Clocks & Consistency Models](./distributed/advanced/clocks-ordering.md)
+- [CRDTs Deep Dive](./distributed/advanced/crdt-deep.md)
+- [Distributed Snapshots & Mutual Exclusion](./distributed/advanced/distributed-snapshots.md)
+- [Advanced Consensus](./distributed/advanced/consensus-advanced.md)
+- [Advanced Replication](./distributed/advanced/replication-advanced.md)
+- [Membership & Hashing](./distributed/advanced/membership-hashing.md)
+- [Distributed Transactions](./distributed/advanced/distributed-transactions.md)
+
+---
+
+# Advanced Distributed Storage
+
+- [Advanced Storage Overview](./storage/advanced/README.md)
+- [Distributed File Systems](./storage/advanced/distributed-fs.md)
+- [Erasure Coding Deep Dive](./storage/advanced/erasure-coding-deep.md)
+- [Storage Engines](./storage/advanced/storage-engines.md)
+- [Deduplication & CAS](./storage/advanced/dedup-cas.md)
+- [Tiered & Persistent Storage](./storage/advanced/tiered-persistent.md)
+- [Storage Internals](./storage/advanced/storage-internals.md)
+
+---
+
+# Advanced Database Systems
+
+- [Advanced DB Overview](./dbms/advanced/README.md)
+- [Query Optimizers](./dbms/advanced/query-optimizers.md)
+- [Execution Engines](./dbms/advanced/execution-engines.md)
+- [Advanced Indexing](./dbms/advanced/index-advanced.md)
+- [Advanced Concurrency Control](./dbms/advanced/concurrency-advanced.md)
+- [Distributed Databases](./dbms/advanced/distributed-databases.md)
+- [Vector Databases](./dbms/advanced/vector-databases.md)
+- [Graph Databases](./dbms/advanced/graph-databases.md)
+- [Temporal & Streaming Databases](./dbms/advanced/temporal-streaming.md)
+- [Approximate Query Processing & Privacy](./dbms/advanced/approximate-privacy.md)
+
+---
+
+# Advanced Algorithms
+
+- [Advanced Algorithms Overview](./dsa/advanced/README.md)
+- [Network Flow](./dsa/advanced/network-flow.md)
+- [Dynamic Trees](./dsa/advanced/dynamic-trees.md)
+- [Tree Techniques](./dsa/advanced/tree-techniques.md)
+- [DP Optimization](./dsa/advanced/dp-optimization.md)
+- [Polynomials & FFT](./dsa/advanced/polynomials.md)
+- [Matrix Algorithms](./dsa/advanced/matrix-algorithms.md)
+- [Streaming & Sublinear Algorithms](./dsa/advanced/streaming-sublinear.md)
+- [Approximation & FPT](./dsa/advanced/approximation-fpt.md)
+- [Parallel & Graph Algorithms](./dsa/advanced/parallel-graph-algorithms.md)
+
+---
+
+# Advanced Programming Languages & Compilers
+
+- [Advanced Compilers Overview](./compilers/advanced/README.md)
+- [Formal Semantics](./compilers/advanced/formal-semantics.md)
+- [Type Systems](./compilers/advanced/type-systems.md)
+- [Compilation Techniques](./compilers/advanced/compilation-techniques.md)
+- [Type Inference](./compilers/advanced/type-inference.md)
+- [Garbage Collection](./compilers/advanced/garbage-collection.md)
+- [JIT & Runtime Optimization](./compilers/advanced/jit-optimization.md)
+- [Compiler Optimizations](./compilers/advanced/compiler-optimizations.md)
+- [WebAssembly & Runtimes](./compilers/advanced/wasm-runtimes.md)
+
+---
+
+# Advanced Computer Architecture
+
+- [Advanced Architecture Overview](./arch/advanced/README.md)
+- [Out-of-Order Execution](./arch/advanced/ooo-execution.md)
+- [Advanced Branch Prediction](./arch/advanced/branch-prediction-advanced.md)
+- [Side Channels & Transient Execution](./arch/advanced/side-channels.md)
+- [Cache Coherence Advanced](./arch/advanced/cache-coherence-advanced.md)
+- [Advanced Memory Systems](./arch/advanced/memory-system-advanced.md)
+- [Modern Interconnects (CXL, Chiplets)](./arch/advanced/modern-interconnects.md)
+- [Accelerators & GPUs](./arch/advanced/accelerators.md)
+
+---
+
+# High-Performance Computing
+
+- [HPC Overview](./hpc/README.md)
+- [MPI & Parallelism](./hpc/mpi-parallelism.md)
+- [Collective Communication & Distributed Training](./hpc/collective-communication.md)
+- [HPC Infrastructure](./hpc/hpc-infra.md)
+
+---
+
+# Networking Research
+
+- [Advanced Networking Overview](./networks/advanced/README.md)
+- [Programmable Networks (P4, SmartNICs)](./networks/advanced/programmable-networks.md)
+- [Advanced Congestion Control](./networks/advanced/congestion-control-advanced.md)
+- [Modern Network Architecture](./networks/advanced/modern-network-arch.md)
+- [Data Center Topology](./networks/advanced/datacenter-topology.md)
+- [Emerging Networks](./networks/advanced/emerging-networks.md)
+
+---
+
+# Formal Methods & Verification
+
+- [Formal Methods Overview](./formal-methods/README.md)
+- [Model Checking](./formal-methods/model-checking.md)
+- [Temporal Logic](./formal-methods/temporal-logic.md)
+- [Program Verification](./formal-methods/program-verification.md)
+- [Verified Systems](./formal-methods/verified-systems.md)
+- [Testing & Formal Methods](./formal-methods/testing-formal.md)
+- [Distributed & Concurrency Verification](./formal-methods/distributed-verification.md)
+
+---
+
+# Security Research
+
+- [Advanced Security Overview](./security/advanced/README.md)
+- [Microarchitectural Attacks](./security/advanced/microarch-attacks.md)
+- [Supply Chain Security](./security/advanced/supply-chain-advanced.md)
+- [Sandboxing](./security/advanced/sandboxing.md)
+- [Side-Channel Resistant Crypto](./security/advanced/side-channel-resistant.md)
+- [Advanced Cryptography](./security/advanced/crypto-advanced.md)
+
+---
+
+# Blockchain & Decentralized Systems
+
+- [Blockchain Overview](./blockchain/README.md)
+- [Consensus Mechanisms](./blockchain/consensus-mechanisms.md)
+- [Ethereum Internals](./blockchain/ethereum-internals.md)
+- [Blockchain Security](./blockchain/blockchain-security.md)
+- [Decentralized Infrastructure](./blockchain/decentralized-infra.md)
+
+---
+
+# AI Systems
+
+- [AI Systems Advanced Overview](./llm/advanced/README.md)
+- [Transformer Internals](./llm/advanced/transformer-internals.md)
+- [Advanced Training](./llm/advanced/training-advanced.md)
+- [Advanced Quantization](./llm/advanced/quantization-advanced.md)
+- [Inference Systems](./llm/advanced/inference-systems.md)
+- [Advanced RAG](./llm/advanced/rag-advanced.md)
+- [Agent Systems](./llm/advanced/agent-systems.md)
+
+---
+
+# AI + Distributed Systems
+
+- [AI Distributed Overview](./llm/advanced/distributed/README.md)
+- [Distributed AI Infrastructure](./llm/advanced/distributed/distributed-ai-infra.md)
+- [Distributed RAG](./llm/advanced/distributed/distributed-rag.md)
+- [Disaggregated Inference](./llm/advanced/distributed/disaggregated-inference.md)
+- [Distributed Training](./llm/advanced/distributed/distributed-training.md)
+
+---
+
+# Advanced Cloud & Serverless
+
+- [Advanced Cloud Overview](./cloud/advanced/README.md)
+- [Serverless Deep Dive](./cloud/advanced/serverless.md)
+- [Multi-Cloud & Disaggregation](./cloud/advanced/multi-cloud-advanced.md)
+- [Cloud Scheduling](./cloud/advanced/cloud-scheduling.md)
+
+---
+
+# Edge, IoT & Cyber-Physical Systems
+
+- [Edge Computing Overview](./edge/README.md)
+- [Edge Computing](./edge/edge-computing.md)
+- [IoT Protocols](./edge/iot-protocols.md)
+- [Embedded AI](./edge/embedded-ai.md)
+- [Real-Time Systems](./edge/real-time-systems.md)
+
+---
+
+# Quantum Computing
+
+- [Quantum Computing Overview](./quantum/README.md)
+- [Quantum Fundamentals](./quantum/quantum-fundamentals.md)
+- [Quantum Advanced Topics](./quantum/quantum-advanced.md)
+
+---
+
+# Software Supply Chain & Build Systems
+
+- [Supply Chain Overview](./supply-chain/README.md)
+- [Build Systems](./supply-chain/build-systems.md)
+- [Software Supply Chain Security](./supply-chain/software-supply-chain.md)
+
+---
+
+# Advanced Observability & Production Systems
+
+- [Advanced Production Engineering Overview](./production-engineering/advanced/README.md)
+- [Advanced Observability](./production-engineering/advanced/observability-advanced.md)
+- [Chaos Engineering & Resilience](./production-engineering/advanced/chaos-resilience.md)
+
+
+---
+
+# Build It Yourself
+
+- [Build-It-Yourself Overview](./projects/build-it-yourself/README.md)
+- [OS Projects](./projects/build-it-yourself/os-projects.md)
+- [Database Projects](./projects/build-it-yourself/database-projects.md)
+- [Distributed Systems Projects](./projects/build-it-yourself/distributed-projects.md)
+- [Networking Projects](./projects/build-it-yourself/networking-projects.md)
+- [Compiler Projects](./projects/build-it-yourself/compiler-projects.md)
+
+---
+
+# Advanced Benchmarking
+
+- [Advanced Benchmarking](./performance-engineering/advanced-benchmarking.md)
+
 # Meta
 
 - [Status](./meta/status.md)
 - [Progress](./meta/progress.md)
 - [Changelog](./meta/changelog.md)
+- [Master Topic Index](./index.md)
 - [Cross-Reference Graph](./meta/cross-reference-graph.md)
 - [Coverage Dashboard](./meta/coverage_dashboard.md)
 - [Topic Backlog](./meta/topic_backlog.md)

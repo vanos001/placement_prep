@@ -2,7 +2,7 @@
 
 > Auto-maintained by research agents. Topics discovered during expansion that need coverage.
 > Priority: HIGH (interview-critical) | MEDIUM (important) | LOW (nice-to-have)
-> Last updated: 2026-08-13 (dev pull audit)
+> Last updated: 2026-08-16 (validation re-run, meta sync)
 
 ## Dev pull audit — 2026-08-13
 
@@ -108,9 +108,85 @@ The following previously-backlogged topics now have dedicated coverage:
 - **Edge Computing** — CDN compute, edge functions (covered in cdn/edge.md; could expand with Cloudflare Workers, Fastly Compute@Edge)
 - ~~Observability Deep Dive~~ ✅ Done `backend/observability/opentelemetry.md` (2026-08-12): signals, propagation, Collector, semantic conventions, sampling, cardinality
 
+## NEWLY COMPLETED (2026-08-15 — OpenClaw expansion batch)
+
+- **Master topic index** ✅ `src/index.md` — added the 1 660-line master topic database
+  that was previously missing from the repo, covering all 50 sections from Algorithms
+  through Interview Meta Topics. Wired into `SUMMARY.md` at the top navigation and the
+  Meta section.
+- **Java Virtual Threads deep dive** ✅ `src/languages/java/virtual-threads.md`
+  expanded from 139 → 261 lines. Added JEP timeline (JDK 19 through 25), continuation-
+  on-heap internals, three creation patterns, structured-concurrency API churn note
+  (JEP 499 / 505), scoped-values rationale, migration playbook, comparison table vs
+  goroutines / Kotlin coroutines / Reactor, 8 interview questions.
+- **Python Free-Threaded deep dive** ✅ `src/languages/python/free-threaded.md`
+  expanded from 148 → 235 lines. Added PEP 779, biased-locking internals, immortal
+  objects (PEP 683), per-object critical sections (`Py_BEGIN_CRITICAL_SECTION`),
+  Cython `freethreading=True` directive, C-extension compatibility table, runtime
+  introspection (`sys._is_gil_enabled`, `-X gil=0`), comparison vs Java Loom / Go /
+  Ruby Ractor, 7 interview questions.
+- **Ceph CRUSH/RADOS deep dive** ✅ `src/storage/ceph-crush.md` expanded from
+  181 → 340 lines. Added straw2 bucket algorithm explanation, CRUSH rule step
+  semantics, upmap balancer override, PG peering state machine (Mermaid state
+  diagram), Bluestore internals (WAL/BlockDB/blob sharing), replication vs erasure
+  coding table, upper-layer services (RBD/CephFS/RGW), performance characteristics,
+  comparison vs HDFS/MinIO/S3, 9 interview questions, references to Weil SC 2006
+  paper and doctoral dissertation.
+- **Formal Methods** ✅ `src/cs-theory/formal-methods.md` — new 282-line page
+  covering index.md Section 36. TLA+ (with Counter example, AWS DynamoDB case
+  study), Alloy (with file-system example), Coq (CompCert, Four Colour Theorem),
+  Lean (Mathlib, Verdi), Isabelle/HOL (seL4), Dafny (binary search auto-active
+  verification), model checking (BDD, BMC, partial-order, symmetry), symbolic
+  execution (KLEE/angr/SAGE), abstract interpretation (Astrée, Rust borrow
+  checker), distributed-systems verification workflow, trade-offs table, 8
+  interview questions.
+
 ## Decisions / Notes
 
 - Keep autonomous loop adding topics based on coverage lowest first: Storage (45%) and Concurrency (48%) still lowest → prioritize WAL, LSM compaction (done), next SSTable, BlobDB, RCU (done), memory barriers, work-stealing.
 - After storage/concurrency reaches 60%, move to Frameworks (60%) and Distributed (55%) and Cloud (60%)
 - Update knowledge graph each batch to keep cross-links
 - Maintain 100% mermaid pass, 0 broken links, build clean — fix regressions immediately after merging dev
+- Next candidates: Serialization (index §39, partially covered — protobuf/Avro/Cap'n Proto comparison page would unify scattered content); API versioning is already covered; Quantum Computing (§35) is low-priority.
+
+## NEWLY COMPLETED (2026-08-15 — Parallel Agent Waves 1-4)
+
+Four waves of parallel agents (7+7+7+4 = 25 agents) closed all 25
+previously-missing section-level pages, covering all 50 sections of
+`src/index.md`. Each new page is a section-level integrator covering
+that section's topics, with Mermaid diagrams, comparison tables,
+interview questions, and authoritative references.
+
+Total new content: ~11,500 lines across 25 new pages.
+
+| Wave | § | File | Lines |
+|------|---|------|-------|
+| 1 | 1 | `src/dsa/advanced-algorithms.md` | 427 |
+| 1 | 2 | `src/dsa/advanced-data-structures.md` | 508 |
+| 1 | 5 | `src/cs-theory/runtime-systems.md` | 498 |
+| 1 | 6 | `src/concurrency/advanced-concurrency.md` | 500 |
+| 1 | 7 | `src/linux/internals.md` | 522 |
+| 1 | 13 | `src/software-engineering/build-systems.md` | 565 |
+| 1 | 19 | `src/distributed/fundamentals/distributed-algorithms.md` | 549 |
+| 2 | 20 | `src/distributed/messaging/messaging-streaming.md` | 432 |
+| 2 | 21 | `src/frontend/frontend-engineering.md` | 480 |
+| 2 | 22 | `src/mobile/mobile-engineering.md` | 554 |
+| 2 | 24 | `src/arch/parallelism/gpu-hpc.md` | 533 |
+| 2 | 25 | `src/ml/mlops/ml-systems.md` | 411 |
+| 2 | 26 | `src/llm/llm-infrastructure.md` | 426 |
+| 2 | 28 | `src/dbms/specialized-databases.md` | 479 |
+| 3 | 33 | `src/embedded-systems/real-time-systems.md` | 355 |
+| 3 | 38 | `src/backend/api/api-protocol-design.md` | 495 |
+| 3 | 40 | `src/debugging/developer-tools.md` | 495 |
+| 3 | 41 | `src/linux/shell-unix.md` | 500 |
+| 3 | 42 | `src/networks/networking-advanced.md` | 506 |
+| 3 | 43 | `src/cloud/cloud-internals.md` | 405 |
+| 3 | 44 | `src/cloud/kubernetes-internals.md` | 550 |
+| 4 | 45 | `src/sre/infrastructure-platform-engineering.md` | 450 |
+| 4 | 48 | `src/os/advanced-os.md` | 496 |
+| 4 | 49 | `src/arch/hardware-low-level.md` | 446 |
+| 4 | 50 | `src/interview/interview-meta-topics.md` | 429 |
+
+All 50 sections of `index.md` now have dedicated coverage. Full
+validation suite passes: 0 broken links, SUMMARY navigation OK,
+MathJax balanced, Mermaid 100%.

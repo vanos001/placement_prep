@@ -2,7 +2,7 @@
 
 > Cross-topic relationships for navigation and study planning.
 > Auto-updated by research agents.
-> Last updated: 2026-08-12
+> Last updated: 2026-08-16 (advanced A-T sections, validation re-run)
 
 ## Core Relationships
 
@@ -501,4 +501,115 @@ Placement Preparation
   → System Design ↔ Distributed Systems, Backend
   → Coding Round ↔ DSA, Competitive Programming
   → Behavioral ↔ Communication, Resume
+```
+
+## Advanced Sections A-T Edges — 2026-08-15
+
+### A: Advanced OS ↔ Other Topics
+
+```
+NUMA & Memory Domains
+  → NUMA (OS/Memory) → Linux NUMA policies, autonuma, CFS bandwidth
+  → CPU Topology (Architecture) → CCX, chiplets, mesh interconnect
+  → Memory Model (Concurrency) → acquire/release, seq_cst on weak ARM
+
+Container Isolation & Seccomp
+  → Linux namespaces (OS) → user, mount, network, PID
+  → cgroups v2 (OS) → resource limits, eBPF
+  → Kubernetes security (Cloud) → pod security standards, seccomp profiles
+
+Capability-Based Security
+  → POSIX capabilities (Linux) → ambient, inheritable, permitted sets
+  → seccomp-bpf (OS/Kernel) → syscall filtering
+  → Security Research (L) → sandboxing, least privilege
+```
+
+### B: Linux Kernel ↔ Other Topics
+
+```
+eBPF & Tracing
+  → XDP/TC (Networks) → packet processing at L2/L3
+  → BPF Maps → kernel-userspace data sharing
+  → Perf → hardware performance counters
+  → Tracing (OS/Kernel) → ftrace, kprobes, tracepoints
+
+io_uring & Async I/O
+  → Async/Await (PL) → futures, completion-based I/O
+  → Rust Tokio (Languages) → io_uring driver
+  → Storage I/O path → NVMe, block layer, page cache
+```
+
+### C: Distributed Systems ↔ D/E/O/N
+
+```
+Consensus Protocols
+  → Raft (Distributed) → Multi-Raft, etcd
+  → Paxos (Distributed) → Multi-Paxos, Google Chubby
+  → Byzantine Fault Tolerance (Blockchain M) → PBFT, HotStuff
+
+Consistency Models
+  → Linearizability (Formal Methods K) → TLA+ specification
+  → Serializability (DBMS E) → 2PL, S2PL, OCC
+  → Eventual Consistency → CRDTs, Dynamo-style
+
+Distributed Transactions
+  → 2PC/3PC (DBMS) → atomic commit
+  → Saga (Backend) → choreography vs orchestration
+  → CDC/Outbox (Backend) → event-driven consistency
+```
+
+### F: Advanced Algorithms ↔ DSA/ML
+
+```
+Approximation Algorithms
+  → NP-Hard Problems (DSA) → vertex cover, TSP, set cover
+  → Load Balancing (Distributed) → consistent hashing, power of 2 choices
+
+Randomized Algorithms
+  → Probabilistic Structures → Bloom, HLL, CMS
+  → Monte Carlo Methods (ML) → MCMC, importance sampling
+  → Quicksort/Hashing (DSA) → average-case analysis
+```
+
+### G: PL/Compilers ↔ Architecture/Languages
+
+```
+Type Systems
+  → Rust Ownership (Languages) → borrow checker, lifetimes
+  → Haskell Type Classes → higher-kinded types
+  → C++ Templates → compile-time polymorphism, concepts
+
+SSA & IR Optimization
+  → LLVM IR → instruction selection, register allocation
+  → JIT Compilation (V8/PyPy/Java) → tiered compilation
+  → Dataflow Analysis → liveness, reaching definitions
+```
+
+### N: AI Systems ↔ Architecture/Distributed
+
+```
+LLM Inference
+  → GPU Architecture (H) → tensor cores, memory bandwidth
+  → KV Cache (LLM) → PagedAttention, vLLM
+  → Quantization → INT8/INT4, GPTQ, AWQ
+  → Distributed Serving → tensor/pipeline/data parallelism
+
+RAG & Vector Search
+  → Vector DBs (DBMS E) → HNSW, IVF-PQ
+  → Embedding Models (ML) → sentence-transformers, ColBERT
+  → Chunking Strategies → fixed, semantic, recursive
+```
+
+### P: Cloud/Serverless ↔ Backend/Distributed
+
+```
+Serverless Architecture
+  → FaaS (Cloud) → AWS Lambda, Cold/Warm Start
+  → Event-Driven (Backend) → SQS, EventBridge
+  → Edge Computing (Q) → CDN compute, Cloudflare Workers
+
+Service Mesh & Observability
+  → xDS Protocol (Backend) → Envoy configuration
+  → OpenTelemetry (Backend) → traces, metrics, logs
+  → eBPF (Kernel B) → Cilium, network observability
 ```

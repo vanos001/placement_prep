@@ -224,3 +224,63 @@ Six parallel agents are creating comprehensive new sections:
 See the preceding commits for the existing autonomous content-expansion
 batches. This changelog intentionally records the current integration batch
 without rewriting that history.
+
+## 2026-08-15 — Massive advanced topics expansion (1,500+ topics across 20 sections)
+
+Two commits pushed to `origin/dev`:
+
+1. `docs: add 1,500+ advanced topics across 20 sections (A-T)` (`fa3dc05`) —
+   131 new markdown files across 20 directories covering topics 1-1500 from
+   the master specification. ~249K words total. Sections: Advanced OS,
+   Linux Kernel, Distributed Systems, Distributed Storage, Advanced DBs,
+   Advanced Algorithms, PL/Compilers, Computer Architecture, HPC,
+   Networking Research, Formal Methods, Security Research, Blockchain,
+   AI Systems, AI+Distributed, Cloud/Serverless, Edge/IoT, Quantum
+   Computing, Supply Chain/Build Systems, Observability.
+2. `fix: resolve all validation errors and add gap content` (`3c41f0b`) —
+   Added Build-It-Yourself track (34 implementation projects across 5 domains),
+   Advanced Benchmarking section (methodology, pitfalls, statistics, tools,
+   flame graphs), fixed 3 missing topics (hugetlbfs, TCP autotuning, zk-rollups),
+   fixed 3 missing SUMMARY entries, 11 broken links, 13 mermaid errors, 3
+   legacy MathJax delimiters, 6 unclosed code fences, 26 single-backslash
+   delimiters.
+
+### Validation after expansion
+
+- Link checker: **0 broken links**
+- SUMMARY checker: **OK** (2,117 content files, all reachable)
+- Mermaid heuristic: **4,883 / 4,883 passed (100%)** — 478 new diagrams
+- MathJax: **OK** (0 legacy delimiters, 0 unclosed fences, 0 unbalanced)
+
+Every commit was preceded by a clean validation run. `main` unchanged;
+all work on `dev`.
+
+## 2026-08-15 — OpenClaw expansion batch
+
+Five focused commits pushed to `origin/dev`:
+
+1. `docs(index): add master topic index as authoritative roadmap` —
+   `src/index.md` (1 660 lines, 50 topic sections) added; wired into
+   `SUMMARY.md` top nav and Meta section.
+2. `docs(java): expand virtual-threads page with depth` —
+   `src/languages/java/virtual-threads.md` 139 → 261 lines. JEP timeline,
+   continuation-on-heap internals, structured-concurrency API churn,
+   migration playbook, comparison vs goroutines / Kotlin coroutines /
+   Reactor.
+3. `docs(python): expand free-threaded page with depth` —
+   `src/languages/python/free-threaded.md` 148 → 235 lines. PEP 779,
+   biased-locking internals, immortal objects, Py_BEGIN_CRITICAL_SECTION,
+   Cython freethreading directive, runtime introspection, comparison vs
+   Java Loom / Go / Ruby Ractor.
+4. `docs(storage): expand Ceph CRUSH/RADOS deep dive` —
+   `src/storage/ceph-crush.md` 181 → 340 lines. Straw2 algorithm,
+   CRUSH rules, upmap balancer, PG peering state machine, Bluestore
+   internals, replication vs EC table, upper-layer services.
+5. `docs(cs-theory): add formal methods page` — new
+   `src/cs-theory/formal-methods.md` (282 lines). TLA+, Alloy, Coq,
+   Lean, Isabelle/HOL, Dafny, model checking, symbolic execution,
+   abstract interpretation, distributed-systems verification, 8
+   interview questions.
+
+Every commit was preceded by a clean `mdbook build`; no warnings
+introduced. `token.txt` is in `.gitignore` and was never staged.
