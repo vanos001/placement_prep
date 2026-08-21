@@ -529,6 +529,7 @@
 - [Systemtap](./linux/observability/systemtap.md)
 - [Tracepoints](./linux/observability/tracepoints.md)
 - [Bpftrace Recipes](./linux/observability/bpftrace-recipes.md)
+- [eBPF for Observability](./linux/observability/ebpf-observability.md)
 
 ---
 
@@ -1512,6 +1513,9 @@
 - [Contributing](./software-engineering/CONTRIBUTING.md)
 - [Design Documents, RFCs, and ADRs](./software-engineering/design-docs.md)
 - [Modern Software Engineering Practices](./software-engineering/modern-practices.md)
+- [Domain-Driven Design (DDD)](./software-engineering/ddd.md)
+- [Hexagonal Architecture](./software-engineering/hexagonal-architecture.md)
+- [Clean Architecture](./software-engineering/clean-architecture.md)
 
 ---
 
@@ -1804,6 +1808,7 @@
 - [Web Servers Overview](./web-servers/README.md)
 - [Nginx](./web-servers/nginx.md)
 - [Apache](./web-servers/apache.md)
+- [Envoy Proxy](./web-servers/envoy.md)
 - [Web Server Interview Questions](./web-servers/interview-questions.md)
 - [Caddy Web Server](./web-servers/caddy.md)
 - [Nginx Deep Dive](./web-servers/nginx-deep.md)
@@ -1953,6 +1958,12 @@
   - [Monitoring](./cloud/observability/monitoring.md)
   - [Tracing](./cloud/observability/tracing.md)
 - [Cloud Security: IAM & Secrets](./cloud/security/README.md)
+- [Istio Service Mesh](./cloud/istio.md)
+- [Linkerd Service Mesh](./cloud/linkerd.md)
+- [Jaeger (Distributed Tracing)](./cloud/observability/jaeger.md)
+- [Loki (Log Aggregation)](./cloud/observability/loki.md)
+- [ELK Stack](./cloud/observability/elk-stack.md)
+- [Fluentd and Fluent Bit](./cloud/observability/fluentd.md)
 - [Packer](./cloud/packer.md)
 - [Cloud VPN](./cloud/vpn.md)
 
@@ -2458,6 +2469,7 @@
 # Performance Engineering
 
 - [Performance Engineering Overview](./performance-engineering/README.md)
+- [Flame Graphs](./performance-engineering/flamegraph.md)
 - [CPU Profiling](./performance-engineering/cpu-profiling.md)
 - [Memory Profiling](./performance-engineering/memory-profiling.md)
 - [Benchmarking](./performance-engineering/benchmarking.md)
