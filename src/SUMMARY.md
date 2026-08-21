@@ -1179,6 +1179,8 @@
   - [DNS Record Types](./networks/dns/record-types.md)
   - [DNS Caching](./networks/dns/caching.md)
   - [DNS Security](./networks/dns/security.md)
+- [DNSSEC](./networks/dns/dnssec.md)
+- [DNS over HTTPS (DoH)](./networks/dns/doh.md)
 - [HTTP](./networks/http/README.md)
   - [HTTP/1.1](./networks/http/http1.md)
   - [HTTP/2](./networks/http/http2.md)
@@ -1552,6 +1554,7 @@
 - [Mutual TLS (mTLS)](./security/mtls.md)
 - [HashiCorp Vault](./security/vault.md)
 - [OAuth 2.0 Internals](./security/oauth2-internals.md)
+- [SSH Tunneling](./security/ssh-tunneling.md)
 - [Cryptography](./security/cryptography.md)
 - [Secrets Management](./security/secrets-management.md)
 - [Security Interview Questions](./security/interview-questions.md)
@@ -1745,6 +1748,8 @@
 - [Service Workers](./web-development/service-workers.md)
 - [Web Workers](./web-development/web-workers.md)
 - [WebRTC](./web-development/webrtc.md)
+- [Intersection Observer](./web-development/intersection-observer.md)
+- [Mutation Observer](./web-development/mutation-observer.md)
 
 ---
 
@@ -1988,6 +1993,10 @@
 - [Loki (Log Aggregation)](./cloud/observability/loki.md)
 - [ELK Stack](./cloud/observability/elk-stack.md)
 - [Fluentd and Fluent Bit](./cloud/observability/fluentd.md)
+- [React Internals](./frontend/react-internals.md)
+- [Svelte](./frontend/svelte.md)
+- [IndexedDB](./frontend/indexed-db.md)
+- [Cache API](./frontend/cache-api.md)
 - [Packer](./cloud/packer.md)
 - [Cloud VPN](./cloud/vpn.md)
 
@@ -2728,6 +2737,9 @@
 - [Modern Network Architecture](./networks/advanced/modern-network-arch.md)
 - [Data Center Topology](./networks/advanced/datacenter-topology.md)
 - [Geneve Overlay Network](./networks/advanced/geneve.md)
+- [STUN and TURN (NAT Traversal)](./networks/advanced/stun-turn.md)
+- [MPLS](./networks/advanced/mpls.md)
+- [IP Multicast](./networks/advanced/multicast.md)
 - [Emerging Networks](./networks/advanced/emerging-networks.md)
 
 ---
