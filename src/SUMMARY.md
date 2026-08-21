@@ -2543,6 +2543,10 @@
 - [Deduplication & CAS](./storage/advanced/dedup-cas.md)
 - [Tiered & Persistent Storage](./storage/advanced/tiered-persistent.md)
 - [Storage Internals](./storage/advanced/storage-internals.md)
+- [S3 Object Storage Internals](./storage/advanced/s3-internals.md)
+- [MinIO Architecture](./storage/advanced/minio-architecture.md)
+- [HDFS Internals](./storage/advanced/hdfs-internals.md)
+- [Colossus (Google's successor to GFS)](./storage/advanced/colossus.md)
 
 ---
 
@@ -2553,6 +2557,8 @@
 - [Cascades Optimizer](./dbms/advanced/cascades-optimizer.md)
 - [Volcano Optimizer](./dbms/advanced/volcano-optimizer.md)
 - [Vectorized Execution](./dbms/advanced/vectorized-execution.md)
+- [CockroachDB Architecture](./dbms/advanced/cockroachdb.md)
+- [Calvin — Deterministic Database](./dbms/advanced/calvin.md)
 - [Execution Engines](./dbms/advanced/execution-engines.md)
 - [Advanced Indexing](./dbms/advanced/index-advanced.md)
 - [Advanced Concurrency Control](./dbms/advanced/concurrency-advanced.md)
@@ -2588,6 +2594,9 @@
 - [Type Inference](./compilers/advanced/type-inference.md)
 - [Garbage Collection](./compilers/advanced/garbage-collection.md)
 - [JIT & Runtime Optimization](./compilers/advanced/jit-optimization.md)
+- [MLIR](./compilers/advanced/mlir.md)
+- [LLVM IR](./compilers/advanced/llvm-ir.md)
+- [Cranelift](./compilers/advanced/cranelift.md)
 - [Compiler Optimizations](./compilers/advanced/compiler-optimizations.md)
 - [WebAssembly & Runtimes](./compilers/advanced/wasm-runtimes.md)
 
@@ -2603,6 +2612,9 @@
 - [Advanced Memory Systems](./arch/advanced/memory-system-advanced.md)
 - [Modern Interconnects (CXL, Chiplets)](./arch/advanced/modern-interconnects.md)
 - [Accelerators & GPUs](./arch/advanced/accelerators.md)
+- [TPU Architecture](./arch/advanced/tpu-architecture.md)
+- [Tensor Cores](./arch/advanced/tensor-cores.md)
+- [Systolic Arrays](./arch/advanced/systolic-arrays.md)
 
 ---
 
