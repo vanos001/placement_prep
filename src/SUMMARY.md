@@ -1959,6 +1959,8 @@
   - [Cross-Validation](./ml/foundations/cross-validation.md)
   - [Feature Engineering](./ml/foundations/feature-engineering.md)
   - [Evaluation Metrics](./ml/foundations/evaluation.md)
+  - [Contrastive Learning](./ml/foundations/contrastive-learning.md)
+  - [Self-Supervised Learning](./ml/foundations/self-supervised.md)
 - [Classical ML](./ml/classical/README.md)
   - [Linear Regression](./ml/classical/linear-regression.md)
   - [Logistic Regression](./ml/classical/logistic-regression.md)
@@ -1980,6 +1982,7 @@
   - [Activation Functions](./ml/deep-learning/activation.md)
   - [CNNs](./ml/deep-learning/cnn.md)
   - [RNNs & LSTMs](./ml/deep-learning/rnn-lstm.md)
+  - [GRU (Gated Recurrent Unit)](./ml/deep-learning/gru.md)
   - [Batch Normalization](./ml/deep-learning/batch-norm.md)
   - [Dropout](./ml/deep-learning/dropout.md)
   - [Optimizers](./ml/deep-learning/optimizers.md)
@@ -2728,6 +2731,15 @@
 - [QLoRA](./llm/advanced/qlora.md)
 - [Paged Attention](./llm/advanced/paged-attention.md)
 - [Mixture of Experts](./llm/advanced/mixture-of-experts.md)
+- [FAISS](./llm/advanced/faiss.md)
+- [Milvus](./llm/advanced/milvus.md)
+- [PGVector](./llm/advanced/pgvector.md)
+- [vLLM Internals](./llm/advanced/vllm-internals.md)
+- [SGLang](./llm/advanced/sglang.md)
+- [TensorRT-LLM](./llm/advanced/tensorrt-llm.md)
+- [Triton Inference Server](./llm/advanced/triton-inference-server.md)
+- [Position Encoding (RoPE, ALiBi)](./llm/advanced/position-encoding.md)
+- [KV Cache Compression](./llm/advanced/kv-cache-compression.md)
 
 ---
 
