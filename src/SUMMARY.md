@@ -2700,6 +2700,11 @@
 - [Inference Systems](./llm/advanced/inference-systems.md)
 - [Advanced RAG](./llm/advanced/rag-advanced.md)
 - [Agent Systems](./llm/advanced/agent-systems.md)
+- [Flash Attention](./llm/advanced/flash-attention.md)
+- [LoRA](./llm/advanced/lora.md)
+- [QLoRA](./llm/advanced/qlora.md)
+- [Paged Attention](./llm/advanced/paged-attention.md)
+- [Mixture of Experts](./llm/advanced/mixture-of-experts.md)
 
 ---
 
@@ -2710,6 +2715,13 @@
 - [Distributed RAG](./llm/advanced/distributed/distributed-rag.md)
 - [Disaggregated Inference](./llm/advanced/distributed/disaggregated-inference.md)
 - [Distributed Training](./llm/advanced/distributed/distributed-training.md)
+- [Ring AllReduce](./llm/advanced/distributed/ring-allreduce.md)
+- [Megatron-LM (Tensor Parallelism)](./llm/advanced/distributed/megatron.md)
+- [Pipeline Parallelism](./llm/advanced/distributed/pipeline-parallelism.md)
+- [Expert Parallelism](./llm/advanced/distributed/expert-parallelism.md)
+- [Data Parallelism](./llm/advanced/distributed/data-parallelism.md)
+- [Model Parallelism Overview](./llm/advanced/distributed/model-parallelism.md)
+- [FSDP (Fully Sharded Data Parallel)](./llm/advanced/distributed/fsdp.md)
 
 ---
 
