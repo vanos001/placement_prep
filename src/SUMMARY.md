@@ -1361,6 +1361,9 @@
 - [Messaging](./distributed/messaging/README.md)
   - [Message Queues](./distributed/messaging/queues.md)
   - [Kafka](./distributed/messaging/kafka.md)
+  - [Kafka Connect](./distributed/messaging/kafka-connect.md)
+  - [Kafka Streams](./distributed/messaging/kafka-streams.md)
+  - [Schema Registry](./distributed/messaging/schema-registry.md)
   - [RabbitMQ](./distributed/messaging/rabbitmq.md)
   - [Pub/Sub](./distributed/messaging/pubsub.md)
   - [Apache Pulsar](./distributed/messaging/pulsar.md)
@@ -1584,6 +1587,15 @@
 - [Data Lakehouses](./data-engineering/lakehouses.md)
 - [Slowly Changing Dimensions](./data-engineering/slowly-changing-dimensions.md)
 - [Analytics & OLAP](./data-engineering/analytics.md)
+- [Spark Internals](./data-engineering/spark-internals.md)
+- [Apache Flink](./data-engineering/flink.md)
+- [Apache Airflow](./data-engineering/airflow.md)
+- [Dagster](./data-engineering/dagster.md)
+- [ClickHouse](./data-engineering/clickhouse.md)
+- [Apache Druid](./data-engineering/druid.md)
+- [Apache Pinot](./data-engineering/pinot.md)
+- [Trino](./data-engineering/trino.md)
+- [Debezium (Change Data Capture)](./data-engineering/debezium.md)
 
 ---
 
