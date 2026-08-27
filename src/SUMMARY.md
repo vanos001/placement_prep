@@ -1870,6 +1870,7 @@
 - [Multi-Region Architecture](./sre/multi-region.md)
 - [Infrastructure & Platform Engineering](./sre/infrastructure-platform-engineering.md)
 - [FMEA & Fault Trees](./sre/fmea-fault-trees.md)
+- [Metrics Cardinality Explosions](./sre/metrics-cardinality.md)
 
 ---
 
@@ -1949,6 +1950,7 @@
 
 - [Cloud Overview](./cloud/overview.md)
 - [Autoscaling](./cloud/autoscaling.md)
+- [Spot & Preemptible Instances](./cloud/spot-preemptible.md)
 - [Disaster Recovery & Multi-Region](./cloud/disaster-recovery.md)
 - [Cloud Internals](./cloud/cloud-internals.md)
 - [Virtualization](./cloud/virtualization/README.md)
@@ -2655,6 +2657,7 @@
 - [Membership & Hashing](./distributed/advanced/membership-hashing.md)
 - [Distributed Transactions](./distributed/advanced/distributed-transactions.md)
 - [Leases](./distributed/advanced/leases.md)
+- [Kademlia DHT](./distributed/advanced/kademlia-dht.md)
 
 ---
 
@@ -2717,11 +2720,15 @@
 - [Dynamic Trees](./dsa/advanced/dynamic-trees.md)
 - [Tree Techniques](./dsa/advanced/tree-techniques.md)
 - [DP Optimization](./dsa/advanced/dp-optimization.md)
+- [Aliens Trick (Lagrangian DP)](./dsa/advanced/aliens-trick.md)
+- [Convex Hull Trick & Li Chao Tree](./dsa/advanced/convex-hull-trick.md)
+- [Centroid Decomposition](./dsa/advanced/centroid-decomposition.md)
 - [Polynomials & FFT](./dsa/advanced/polynomials.md)
 - [Matrix Algorithms](./dsa/advanced/matrix-algorithms.md)
 - [Streaming & Sublinear Algorithms](./dsa/advanced/streaming-sublinear.md)
 - [Approximation & FPT](./dsa/advanced/approximation-fpt.md)
 - [Parallel & Graph Algorithms](./dsa/advanced/parallel-graph-algorithms.md)
+- [Parallel Sorting](./dsa/advanced/parallel-sorting.md)
 
 ---
 
@@ -2758,6 +2765,7 @@
 - [Advanced Branch Prediction](./arch/advanced/branch-prediction-advanced.md)
 - [Side Channels & Transient Execution](./arch/advanced/side-channels.md)
 - [RowHammer](./arch/advanced/rowhammer.md)
+- [Hardware Prefetching](./arch/advanced/hardware-prefetching.md)
 - [Cache Coherence Advanced](./arch/advanced/cache-coherence-advanced.md)
 - [Advanced Memory Systems](./arch/advanced/memory-system-advanced.md)
 - [Modern Interconnects (CXL, Chiplets)](./arch/advanced/modern-interconnects.md)
@@ -2777,6 +2785,7 @@
 - [MPI & Parallelism](./hpc/mpi-parallelism.md)
 - [Collective Communication & Distributed Training](./hpc/collective-communication.md)
 - [HPC Infrastructure](./hpc/hpc-infra.md)
+- [Slurm & HPC Scheduling](./hpc/slurm-scheduling.md)
 
 ---
 
@@ -2820,6 +2829,7 @@
 - [Sandboxing](./security/advanced/sandboxing.md)
 - [Side-Channel Resistant Crypto](./security/advanced/side-channel-resistant.md)
 - [Exploit Mitigations & Memory Safety](./security/advanced/exploit-mitigations.md)
+- [SPIFFE/SPIRE Workload Identity](./security/advanced/spiffe-spire.md)
 - [Advanced Cryptography](./security/advanced/crypto-advanced.md)
 
 ---
@@ -2832,6 +2842,7 @@
 - [Blockchain Security](./blockchain/blockchain-security.md)
 - [Decentralized Infrastructure](./blockchain/decentralized-infra.md)
 - [MEV and Proposer-Builder Separation](./blockchain/mev-pbs.md)
+- [Nakamoto Consensus](./blockchain/nakamoto-consensus.md)
 
 ---
 
@@ -2904,6 +2915,7 @@
 - [Quantum Fundamentals](./quantum/quantum-fundamentals.md)
 - [Quantum Advanced Topics](./quantum/quantum-advanced.md)
 - [Quantum Error Correction](./quantum/quantum-error-correction.md)
+- [Quantum Key Distribution & BB84](./quantum/quantum-key-distribution.md)
 
 ---
 
