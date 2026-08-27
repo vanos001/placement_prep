@@ -1361,6 +1361,7 @@
   - [Multi-primary](./distributed/replication/multi-primary.md)
   - [Chain Replication](./distributed/replication/chain.md)
   - [Quorum](./distributed/replication/quorum.md)
+  - [Viewstamped Replication](./distributed/replication/viewstamped-replication.md)
 - [Partitioning](./distributed/partitioning/README.md)
   - [Hash Partitioning](./distributed/partitioning/hash.md)
   - [Range Partitioning](./distributed/partitioning/range.md)
@@ -2639,6 +2640,7 @@
 - [Impossibility & Failure Models](./distributed/advanced/impossibility-models.md)
 - [Quorum Systems](./distributed/advanced/quorum-systems.md)
 - [Clocks & Consistency Models](./distributed/advanced/clocks-ordering.md)
+- [Hybrid Logical Clocks](./distributed/advanced/hybrid-logical-clocks.md)
 - [CRDTs Deep Dive](./distributed/advanced/crdt-deep.md)
 - [Distributed Snapshots & Mutual Exclusion](./distributed/advanced/distributed-snapshots.md)
 - [Anti-Entropy Protocols](./distributed/advanced/anti-entropy.md)
@@ -2649,6 +2651,7 @@
 - [Advanced Replication](./distributed/advanced/replication-advanced.md)
 - [Membership & Hashing](./distributed/advanced/membership-hashing.md)
 - [Distributed Transactions](./distributed/advanced/distributed-transactions.md)
+- [Leases](./distributed/advanced/leases.md)
 
 ---
 
@@ -2674,6 +2677,7 @@
 - [Query Optimizers](./dbms/advanced/query-optimizers.md)
 - [Cascades Optimizer](./dbms/advanced/cascades-optimizer.md)
 - [Volcano Optimizer](./dbms/advanced/volcano-optimizer.md)
+- [Cardinality Estimation](./dbms/advanced/cardinality-estimation.md)
 - [Vectorized Execution](./dbms/advanced/vectorized-execution.md)
 - [CockroachDB Architecture](./dbms/advanced/cockroachdb.md)
 - [YugabyteDB Architecture](./dbms/advanced/yugabytedb.md)
@@ -2730,6 +2734,7 @@
 - [Register Allocation](./compilers/advanced/register-allocation.md)
 - [Escape Analysis](./compilers/advanced/escape-analysis.md)
 - [Alias Analysis](./compilers/advanced/alias-analysis.md)
+- [Abstract Interpretation](./compilers/advanced/abstract-interpretation.md)
 - [Peephole Optimization](./compilers/advanced/peephole-optimization.md)
 - [ZGC (Z Garbage Collector)](./compilers/advanced/zgc.md)
 - [G1GC (Garbage-First)](./compilers/advanced/g1gc.md)
@@ -2746,9 +2751,11 @@
 - [Out-of-Order Execution](./arch/advanced/ooo-execution.md)
 - [Advanced Branch Prediction](./arch/advanced/branch-prediction-advanced.md)
 - [Side Channels & Transient Execution](./arch/advanced/side-channels.md)
+- [RowHammer](./arch/advanced/rowhammer.md)
 - [Cache Coherence Advanced](./arch/advanced/cache-coherence-advanced.md)
 - [Advanced Memory Systems](./arch/advanced/memory-system-advanced.md)
 - [Modern Interconnects (CXL, Chiplets)](./arch/advanced/modern-interconnects.md)
+- [Chiplets & UCIe](./arch/advanced/chiplets-ucie.md)
 - [Accelerators & GPUs](./arch/advanced/accelerators.md)
 - [CUDA Programming Model](./arch/advanced/cuda-programming.md)
 - [ROCm](./arch/advanced/rocm.md)
@@ -2772,6 +2779,7 @@
 - [Advanced Networking Overview](./networks/advanced/README.md)
 - [Programmable Networks (P4, SmartNICs)](./networks/advanced/programmable-networks.md)
 - [Advanced Congestion Control](./networks/advanced/congestion-control-advanced.md)
+- [Data-Center TCP and Incast Collapse](./networks/advanced/datacenter-tcp.md)
 - [Modern Network Architecture](./networks/advanced/modern-network-arch.md)
 - [Data Center Topology](./networks/advanced/datacenter-topology.md)
 - [Geneve Overlay Network](./networks/advanced/geneve.md)
@@ -2790,6 +2798,7 @@
 - [Program Verification](./formal-methods/program-verification.md)
 - [Verified Systems](./formal-methods/verified-systems.md)
 - [Testing & Formal Methods](./formal-methods/testing-formal.md)
+- [Symbolic Execution & Concolic Testing](./formal-methods/symbolic-execution.md)
 - [Distributed & Concurrency Verification](./formal-methods/distributed-verification.md)
 
 ---
@@ -2801,6 +2810,7 @@
 - [Supply Chain Security](./security/advanced/supply-chain-advanced.md)
 - [Sandboxing](./security/advanced/sandboxing.md)
 - [Side-Channel Resistant Crypto](./security/advanced/side-channel-resistant.md)
+- [Exploit Mitigations & Memory Safety](./security/advanced/exploit-mitigations.md)
 - [Advanced Cryptography](./security/advanced/crypto-advanced.md)
 
 ---
