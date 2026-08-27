@@ -1407,10 +1407,13 @@
 - [Erasure Coding](./storage/erasure-coding.md)
 - [Write-Ahead Log (WAL)](./storage/wal.md)
 - [LSM Compaction Strategies](./storage/lsm-compaction.md)
+- [Bloom Filters in Storage Engines](./storage/bloom-filters.md)
 - [SSTable Format](./storage/sstable.md)
 - [BlobDB (Key-Value Separation)](./storage/blobdb.md)
 - [Bitcask (Log-Structured KV Store)](./storage/bitcask.md)
 - [Tiered Storage and Data Temperature](./storage/tiered-storage.md)
+- [Persistent Memory](./storage/persistent-memory.md)
+- [Computational Storage](./storage/computational-storage.md)
 
 ---
 
@@ -2678,6 +2681,8 @@
 - [Cascades Optimizer](./dbms/advanced/cascades-optimizer.md)
 - [Volcano Optimizer](./dbms/advanced/volcano-optimizer.md)
 - [Cardinality Estimation](./dbms/advanced/cardinality-estimation.md)
+- [Worst-Case Optimal Joins](./dbms/advanced/worst-case-optimal-joins.md)
+- [Sketch Algorithms in Analytics](./dbms/advanced/sketch-algorithms.md)
 - [Vectorized Execution](./dbms/advanced/vectorized-execution.md)
 - [CockroachDB Architecture](./dbms/advanced/cockroachdb.md)
 - [YugabyteDB Architecture](./dbms/advanced/yugabytedb.md)
@@ -2701,6 +2706,7 @@
 - [Graph Databases](./dbms/advanced/graph-databases.md)
 - [Temporal & Streaming Databases](./dbms/advanced/temporal-streaming.md)
 - [Approximate Query Processing & Privacy](./dbms/advanced/approximate-privacy.md)
+- [Encrypted Databases & Secure Query Processing](./dbms/advanced/encrypted-databases.md)
 
 ---
 
@@ -2780,9 +2786,12 @@
 - [Programmable Networks (P4, SmartNICs)](./networks/advanced/programmable-networks.md)
 - [Advanced Congestion Control](./networks/advanced/congestion-control-advanced.md)
 - [Data-Center TCP and Incast Collapse](./networks/advanced/datacenter-tcp.md)
+- [Time Synchronization (NTP, PTP, TrueTime)](./networks/advanced/time-synchronization.md)
 - [Modern Network Architecture](./networks/advanced/modern-network-arch.md)
 - [Data Center Topology](./networks/advanced/datacenter-topology.md)
 - [Geneve Overlay Network](./networks/advanced/geneve.md)
+- [Cilium and eBPF Kubernetes Networking](./networks/advanced/cilium-ebpf.md)
+- [SR-IOV and Network Virtualization Offload](./networks/advanced/sr-iov-networking.md)
 - [STUN and TURN (NAT Traversal)](./networks/advanced/stun-turn.md)
 - [MPLS](./networks/advanced/mpls.md)
 - [IP Multicast](./networks/advanced/multicast.md)
@@ -2822,6 +2831,7 @@
 - [Ethereum Internals](./blockchain/ethereum-internals.md)
 - [Blockchain Security](./blockchain/blockchain-security.md)
 - [Decentralized Infrastructure](./blockchain/decentralized-infra.md)
+- [MEV and Proposer-Builder Separation](./blockchain/mev-pbs.md)
 
 ---
 
@@ -2893,6 +2903,7 @@
 - [Quantum Computing Overview](./quantum/README.md)
 - [Quantum Fundamentals](./quantum/quantum-fundamentals.md)
 - [Quantum Advanced Topics](./quantum/quantum-advanced.md)
+- [Quantum Error Correction](./quantum/quantum-error-correction.md)
 
 ---
 
