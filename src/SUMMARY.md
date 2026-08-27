@@ -2754,6 +2754,8 @@
 - [jemalloc](./compilers/advanced/jemalloc.md)
 - [mimalloc](./compilers/advanced/mimalloc.md)
 - [Compiler Optimizations](./compilers/advanced/compiler-optimizations.md)
+- [Profile-Guided Optimization](./compilers/advanced/profile-guided-optimization.md)
+- [Inline Caches & Hidden Classes](./compilers/advanced/inline-caches.md)
 - [WebAssembly & Runtimes](./compilers/advanced/wasm-runtimes.md)
 
 ---
@@ -2770,6 +2772,7 @@
 - [Advanced Memory Systems](./arch/advanced/memory-system-advanced.md)
 - [Modern Interconnects (CXL, Chiplets)](./arch/advanced/modern-interconnects.md)
 - [Chiplets & UCIe](./arch/advanced/chiplets-ucie.md)
+- [CXL Memory: Pooling, Tiering, and Stranding](./arch/advanced/cxl-memory-pooling.md)
 - [Accelerators & GPUs](./arch/advanced/accelerators.md)
 - [CUDA Programming Model](./arch/advanced/cuda-programming.md)
 - [ROCm](./arch/advanced/rocm.md)
@@ -2805,6 +2808,7 @@
 - [MPLS](./networks/advanced/mpls.md)
 - [IP Multicast](./networks/advanced/multicast.md)
 - [Emerging Networks](./networks/advanced/emerging-networks.md)
+- [Encrypted DNS: DoT, DoH, DoQ, and ODoH](./networks/advanced/encrypted-dns.md)
 
 ---
 
@@ -2831,6 +2835,7 @@
 - [Exploit Mitigations & Memory Safety](./security/advanced/exploit-mitigations.md)
 - [SPIFFE/SPIRE Workload Identity](./security/advanced/spiffe-spire.md)
 - [Advanced Cryptography](./security/advanced/crypto-advanced.md)
+- [Confidential Computing & TEEs](./security/advanced/confidential-computing.md)
 
 ---
 
@@ -2903,6 +2908,7 @@
 
 - [Edge Computing Overview](./edge/README.md)
 - [Edge Computing](./edge/edge-computing.md)
+- [MQTT Protocol Internals](./edge/mqtt-internals.md)
 - [IoT Protocols](./edge/iot-protocols.md)
 - [Embedded AI](./edge/embedded-ai.md)
 - [Real-Time Systems](./edge/real-time-systems.md)
@@ -2924,6 +2930,10 @@
 - [Supply Chain Overview](./supply-chain/README.md)
 - [Build Systems](./supply-chain/build-systems.md)
 - [Software Supply Chain Security](./supply-chain/software-supply-chain.md)
+- [SBOM and SLSA](./supply-chain/sbom-slsa.md)
+- [Sigstore and Artifact Signing](./supply-chain/sigstore-signing.md)
+- [Reproducible & Hermetic Builds](./supply-chain/reproducible-builds.md)
+- [Bazel & Build Graphs](./supply-chain/bazel-build-graphs.md)
 
 ---
 
