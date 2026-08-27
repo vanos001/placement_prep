@@ -1952,6 +1952,7 @@
 - [Cloud Overview](./cloud/overview.md)
 - [Autoscaling](./cloud/autoscaling.md)
 - [Spot & Preemptible Instances](./cloud/spot-preemptible.md)
+- [Carbon-Aware & Energy-Aware Scheduling](./cloud/carbon-aware-scheduling.md)
 - [Disaster Recovery & Multi-Region](./cloud/disaster-recovery.md)
 - [Cloud Internals](./cloud/cloud-internals.md)
 - [Virtualization](./cloud/virtualization/README.md)
@@ -2685,6 +2686,8 @@
 - [Cascades Optimizer](./dbms/advanced/cascades-optimizer.md)
 - [Volcano Optimizer](./dbms/advanced/volcano-optimizer.md)
 - [Cardinality Estimation](./dbms/advanced/cardinality-estimation.md)
+- [Bw-Tree and ART](./dbms/advanced/bwtree-art.md)
+- [Data Lineage and Provenance](./dbms/advanced/data-lineage-provenance.md)
 - [Worst-Case Optimal Joins](./dbms/advanced/worst-case-optimal-joins.md)
 - [Sketch Algorithms in Analytics](./dbms/advanced/sketch-algorithms.md)
 - [Vectorized Execution](./dbms/advanced/vectorized-execution.md)
@@ -2760,6 +2763,8 @@
 - [Compiler Optimizations](./compilers/advanced/compiler-optimizations.md)
 - [Profile-Guided Optimization](./compilers/advanced/profile-guided-optimization.md)
 - [Inline Caches & Hidden Classes](./compilers/advanced/inline-caches.md)
+- [Binary Rewriting & Instrumentation](./compilers/advanced/binary-rewriting.md)
+- [Superoptimization](./compilers/advanced/superoptimization.md)
 - [WebAssembly & Runtimes](./compilers/advanced/wasm-runtimes.md)
 
 ---
@@ -2772,6 +2777,7 @@
 - [Side Channels & Transient Execution](./arch/advanced/side-channels.md)
 - [RowHammer](./arch/advanced/rowhammer.md)
 - [Hardware Prefetching](./arch/advanced/hardware-prefetching.md)
+- [DRAM Controllers & Scheduling](./arch/advanced/dram-controllers.md)
 - [Cache Coherence Advanced](./arch/advanced/cache-coherence-advanced.md)
 - [Advanced Memory Systems](./arch/advanced/memory-system-advanced.md)
 - [Modern Interconnects (CXL, Chiplets)](./arch/advanced/modern-interconnects.md)
@@ -2814,6 +2820,8 @@
 - [IP Multicast](./networks/advanced/multicast.md)
 - [Emerging Networks](./networks/advanced/emerging-networks.md)
 - [Encrypted DNS: DoT, DoH, DoQ, and ODoH](./networks/advanced/encrypted-dns.md)
+- [Network Verification (Batfish, Minesweeper)](./networks/advanced/network-verification.md)
+- [SRv6: Segment Routing over IPv6](./networks/advanced/srv6.md)
 
 ---
 
