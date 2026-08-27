@@ -1340,6 +1340,10 @@
   - [Distributed Algorithms Overview](./distributed/fundamentals/distributed-algorithms.md)
   - [Spanner Architecture](./distributed/fundamentals/spanner.md)
   - [TrueTime](./distributed/fundamentals/truetime.md)
+  - [Megastore: Entity Groups with Paxos](./distributed/fundamentals/megastore.md)
+  - [Percolator: Incremental Processing with Transactions](./distributed/fundamentals/percolator.md)
+  - [Tail Latency: The Tail at Scale](./distributed/fundamentals/tail-latency.md)
+  - [SWIM and Failure Detection](./distributed/fundamentals/swim-membership.md)
   - [Bully Leader Election](./distributed/fundamentals/bully.md)
   - [ZooKeeper](./distributed/fundamentals/zookeeper.md)
 - [Consensus](./distributed/consensus/README.md)
@@ -1380,6 +1384,9 @@
   - [Circuit Breakers](./distributed/microservices/circuit-breakers.md)
   - [API Gateways](./distributed/microservices/api-gateways.md)
   - [Observability](./distributed/microservices/observability.md)
+- [Testing Distributed Systems](./distributed/testing/README.md)
+  - [Jepsen: Fault Injection and Correctness Checking](./distributed/testing/jepsen.md)
+  - [Deterministic Simulation Testing](./distributed/testing/deterministic-simulation.md)
 
 ---
 
@@ -2848,6 +2855,7 @@
 - [Data Parallelism](./llm/advanced/distributed/data-parallelism.md)
 - [Model Parallelism Overview](./llm/advanced/distributed/model-parallelism.md)
 - [FSDP (Fully Sharded Data Parallel)](./llm/advanced/distributed/fsdp.md)
+- [GPU Cluster Scheduling](./llm/advanced/distributed/gpu-cluster-scheduling.md)
 
 ---
 
