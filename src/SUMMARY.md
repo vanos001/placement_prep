@@ -1799,6 +1799,7 @@
 - [Computability](./cs-theory/computability.md)
 - [Formal Languages](./cs-theory/formal-languages.md)
 - [Formal Methods](./cs-theory/formal-methods.md)
+- [Datalog and Fixpoint Engines](./cs-theory/datalog-fixpoint-engines.md)
 - [Programming Language Theory](./cs-theory/programming-language-theory.md)
 - [WebAssembly](./cs-theory/webassembly.md)
 - [Computer Graphics](./cs-theory/computer-graphics.md)
@@ -2631,6 +2632,7 @@
 - [KSM Page Merging](./os/advanced/ksm-page-merging.md)
 - [CRIU Checkpoint/Restore](./os/advanced/criu-checkpoint-restore.md)
 - [seccomp & BPF Filters](./os/advanced/seccomp-bpf.md)
+- [PSI: Pressure Stall Information](./os/advanced/psi-pressure-stall-information.md)
 
 ---
 
@@ -2698,10 +2700,13 @@
 - [Data Lineage and Provenance](./dbms/advanced/data-lineage-provenance.md)
 - [Worst-Case Optimal Joins](./dbms/advanced/worst-case-optimal-joins.md)
 - [Sketch Algorithms in Analytics](./dbms/advanced/sketch-algorithms.md)
+- [Approximate Membership Filters: Cuckoo, Quotient, XOR, Binary Fuse](./dbms/advanced/membership-filters.md)
+- [Roaring Bitmaps: Compressed Set Algebra for Query Engines](./dbms/advanced/roaring-bitmaps.md)
 - [Vectorized Execution](./dbms/advanced/vectorized-execution.md)
 - [CockroachDB Architecture](./dbms/advanced/cockroachdb.md)
 - [YugabyteDB Architecture](./dbms/advanced/yugabytedb.md)
 - [TiDB Architecture](./dbms/advanced/tidb.md)
+- [TiDB Internals: TiKV, PD, and the Multi-Raft Storage Stack](./dbms/advanced/tidb-internals.md)
 - [FoundationDB Architecture Deep Dive](./dbms/advanced/foundationdb-deep-dive.md)
 - [Spanner SQL Execution](./dbms/advanced/spanner-sql.md)
 - [Snowflake Architecture](./dbms/advanced/snowflake.md)
@@ -2723,6 +2728,7 @@
 - [Vector Databases](./dbms/advanced/vector-databases.md)
 - [Graph Databases](./dbms/advanced/graph-databases.md)
 - [Temporal & Streaming Databases](./dbms/advanced/temporal-streaming.md)
+- [Time-Series Database Internals](./dbms/advanced/tsdb-internals.md)
 - [Approximate Query Processing & Privacy](./dbms/advanced/approximate-privacy.md)
 - [Encrypted Databases & Secure Query Processing](./dbms/advanced/encrypted-databases.md)
 
@@ -2781,6 +2787,8 @@
 - [Inline Caches & Hidden Classes](./compilers/advanced/inline-caches.md)
 - [Binary Rewriting & Instrumentation](./compilers/advanced/binary-rewriting.md)
 - [Superoptimization](./compilers/advanced/superoptimization.md)
+- [E-Graphs and Equality Saturation](./compilers/advanced/e-graphs-equality-saturation.md)
+- [Regex Engine Internals: Backtracking Machines, Automata, and the Linear-Time Divide](./compilers/advanced/regex-engine-internals.md)
 - [WebAssembly & Runtimes](./compilers/advanced/wasm-runtimes.md)
 
 ---
@@ -2844,6 +2852,9 @@
 - [SRv6: Segment Routing over IPv6](./networks/advanced/srv6.md)
 - [P4 & Programmable Data Planes](./networks/advanced/p4-programmable-dataplane.md)
 - [In-Band Telemetry: INT, IOAM, and the Metadata Stack](./networks/advanced/in-band-telemetry.md)
+- [TSN, Standard by Standard: The IEEE 802.1 Toolbox](./networks/advanced/tsn-time-sensitive-networking.md)
+- [FD.io VPP: Vector Packet Processing in User Space](./networks/advanced/fdio-vpp.md)
+- [L4 Load-Balancing Internals: Data Paths, Maglev Hashing, and Replica State](./networks/advanced/l4-load-balancing-internals.md)
 
 ---
 
