@@ -197,7 +197,8 @@ def run(use_codel):
 p50, p99, drops = run(use_codel=False)
 print(f"tail-drop: p50={p50:6.1f} ms  p99={p99:6.1f} ms  drops={drops}")
 p50, p99, drops = run(use_codel=True)
-print(f"CoDel   : p50={p50:6.1f} ms  p99={p99:6.1f} ms  drops={drops}")```
+print(f"CoDel   : p50={p50:6.1f} ms  p99={p99:6.1f} ms  drops={drops}")
+```
 
 Real output:
 
