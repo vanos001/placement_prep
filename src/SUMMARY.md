@@ -175,6 +175,8 @@
 - [udev Internals](./linux/admin/udev.md)
 - [Sysvinit](./linux/admin/sysvinit.md)
 - [Users Groups](./linux/admin/users-groups.md)
+- [D-Bus — The Linux Desktop IPC Bus](./linux/admin/dbus.md)
+- [systemd Internals — Units, the Dependency Graph, and Activation](./linux/admin/systemd-internals.md)
 
 ---
 
@@ -330,9 +332,12 @@
 - [Shared Memory](./linux/kernel/core/ipc/shared-memory.md)
 - [Namespace](./linux/kernel/core/processes/namespace.md)
 - [System Calls](./linux/kernel/core/processes/system-calls.md)
+- [Linux Kernel Boot — From Power-On to PID 1](./linux/kernel/core/kernel-boot.md)
 - [Data Structures](./linux/kernel/data-structures.md)
 - [Crash Dump](./linux/kernel/debugging/crash-dump.md)
 - [Kunit](./linux/kernel/debugging/kunit.md)
+- [Linux perf Events — Performance Monitoring Interface](./linux/kernel/debugging/perf-events.md)
+- [Kernel Sanitizers — KASAN, UBSAN, MSAN, KFENCE](./linux/kernel/debugging/sanitizers.md)
 
 ### Tracing
 
@@ -699,6 +704,9 @@
 - [Power Management](./linux/kernel/power/power-management.md)
 - [Bpf Lsm](./linux/kernel/security/bpf-lsm.md)
 - [Tpm](./linux/kernel/security/tpm.md)
+- [AppArmor and SELinux — The Two Linux MAC Systems](./linux/kernel/security/apparmor-selinux.md)
+- [Linux Capabilities — Fine-Grained Privilege Decomposition](./linux/kernel/security/linux-capabilities.md)
+- [seccomp — Secure Computing Mode](./linux/kernel/security/seccomp.md)
 - [Mutex Design](./linux/kernel/sync/mutex-design.md)
 - [Preempt Count](./linux/kernel/sync/preempt-count.md)
 - [Cachestat](./linux/performance/cachestat.md)
@@ -1150,6 +1158,10 @@
   - [ARP](./networks/tcp-ip/arp.md)
   - [RARP](./networks/tcp-ip/rarp.md)
   - [DHCP](./networks/tcp-ip/dhcp.md)
+  - [ICMPv6 and the Neighbor Discovery Protocol](./networks/tcp-ip/icmpv6-ndp.md)
+  - [IPv6 Internals — Protocol, Header, Extension Headers and Transition](./networks/tcp-ip/ipv6-internals.md)
+  - [NAT66 and NPTv6 — IPv6-to-IPv6 Translation](./networks/tcp-ip/nat66.md)
+  - [IPv6 Address Autoconfiguration — SLAAC and DHCPv6](./networks/tcp-ip/slaac-dhcpv6.md)
 - [TCP](./networks/tcp/README.md)
   - [TCP Header](./networks/tcp/header.md)
   - [Three-way Handshake](./networks/tcp/three-way.md)
@@ -1193,12 +1205,17 @@
   - [WebSocket](./networks/http/websocket.md)
   - [REST](./networks/http/rest.md)
   - [gRPC](./networks/http/grpc.md)
+  - [HPACK — HTTP/2 Header Compression (RFC 7541)](./networks/http/hpack.md)
+  - [QUIC Protocol Internals (RFC 9000)](./networks/http/quic-internals.md)
+  - [WebSocket Protocol Internals (RFC 6455)](./networks/http/websocket-protocol.md)
 - [Routing](./networks/routing/README.md)
   - [Static vs Dynamic Routing](./networks/routing/static-vs-dynamic.md)
   - [BGP](./networks/routing/bgp.md)
   - [OSPF](./networks/routing/ospf.md)
   - [RIP](./networks/routing/rip.md)
   - [IS-IS](./networks/routing/isis.md)
+  - [BGP Deep Dive — Path Vectors, AS Relationships, and Internet Routing](./networks/routing/bgp-deep.md)
+  - [OSPF Deep Dive — Link State, Areas, and the SPF Engine](./networks/routing/ospf-deep.md)
 - [Security](./networks/security/README.md)
   - [TLS](./networks/security/tls.md)
   - [TLS Deep Dive](./networks/security/tls-deep-dive.md)
@@ -1440,6 +1457,14 @@
 - [Rust Ownership](./concurrency/rust-ownership.md)
 - [Java Concurrency](./concurrency/java.md)
 - [Python GIL](./concurrency/python-gil.md)
+- [Actor Model Deep Dive](./concurrency/actor-model-deep.md)
+- [Atomic Primitives — Hardware, Memory Ordering, C11, and C++ `std::atomic`](./concurrency/atomic-primitives.md)
+- [Concurrent Hash Maps — Striping, Lock-Free Reads, Tree Bins, Copy-on-Write](./concurrency/concurrent-hashmap.md)
+- [Concurrent Queues — SPSC, MPSC, MPMC, and the LMAX Disruptor](./concurrency/concurrent-queues.md)
+- [Communicating Sequential Processes (CSP)](./concurrency/csp-model.md)
+- [Deadlock Detection and Prevention](./concurrency/deadlock-detection.md)
+- [Lock-Free Data Structures — Progress, CAS, and Safe Reclamation](./concurrency/lock-free-structures.md)
+- [Software Transactional Memory](./concurrency/software-transactional-memory.md)
 
 ---
 
@@ -1457,6 +1482,12 @@
   - [Webhooks](./backend/api/webhooks.md)
   - [Connection Pools](./backend/api/connection-pools.md)
   - [API & Protocol Design](./backend/api/api-protocol-design.md)
+  - [API Caching Deep Dive — HTTP Caching, Conditional Requests, CDNs, and `stale-while-revalidate`](./backend/api/api-caching.md)
+  - [API Idempotency Deep Dive — Idempotency Keys, Dedup Tables, and the At-Least-Once Problem](./backend/api/api-idempotency.md)
+  - [API Pagination Deep Dive — Offset, Cursor, Keyset, and the Relay Connection Model](./backend/api/api-pagination.md)
+  - [API Versioning Deep Dive — URL Path, Header, Query, and the Deprecation Lifecycle](./backend/api/api-versioning.md)
+  - [OpenAPI Specification (formerly Swagger)](./backend/api/openapi-spec.md)
+  - [Server-Sent Events (SSE) — One-Way Push over HTTP](./backend/api/server-sent-events.md)
 - [Authentication & Authorization](./backend/auth/README.md)
   - [JWT](./backend/auth/jwt.md)
   - [OAuth 2.0](./backend/auth/oauth.md)
@@ -1481,6 +1512,23 @@
   - [TCC (Try-Confirm-Cancel) Transactions](./backend/patterns/tcc.md)
   - [Exactly-Once Processing](./backend/patterns/exactly-once.md)
   - [Distributed Transactions](./backend/patterns/distributed-transactions.md)
+  - [Anti-Corruption Layer Deep Dive](./backend/patterns/anti-corruption-layer-deep.md)
+  - [Backpressure Pattern](./backend/patterns/backpressure-pattern.md)
+  - [Backend for Frontend Pattern](./backend/patterns/bff-pattern.md)
+  - [Bulkhead Pattern Deep Dive](./backend/patterns/bulkhead-deep.md)
+  - [Circuit Breaker Deep Dive](./backend/patterns/circuit-breaker-deep.md)
+  - [Database Connection Pool Deep Dive](./backend/patterns/connection-pool-deep.md)
+  - [CQRS Deep Dive](./backend/patterns/cqrs-deep.md)
+  - [Event-Driven Architecture Deep Dive](./backend/patterns/event-driven-architecture-deep.md)
+  - [Event Sourcing Deep Dive](./backend/patterns/event-sourcing-deep.md)
+  - [Graceful Degradation and Fallback Patterns](./backend/patterns/graceful-degradation.md)
+  - [Health Check Patterns](./backend/patterns/health-check-patterns.md)
+  - [Monolith to Microservices Migration Deep Dive](./backend/patterns/monolith-to-microservices.md)
+  - [Progressive Delivery](./backend/patterns/progressive-delivery.md)
+  - [Rate Limiting Pattern](./backend/patterns/rate-limiting-pattern.md)
+  - [Retry and Timeout Patterns](./backend/patterns/retry-timeout.md)
+  - [Sidecar and Ambassador Patterns](./backend/patterns/sidecar-ambassador.md)
+  - [Strangler Fig Pattern](./backend/patterns/strangler-fig.md)
 - [Observability](./backend/observability/README.md)
   - [OpenTelemetry](./backend/observability/opentelemetry.md)
 - [Testing](./backend/testing.md)
@@ -1488,6 +1536,9 @@
 - [CI/CD](./backend/cicd/README.md)
   - [GitHub Actions](./backend/cicd/github-actions.md)
   - [GitOps](./backend/cicd/gitops.md)
+- [Apache Avro — Schema-First Binary Serialization](./backend/serialization/avro.md)
+- [MessagePack and CBOR — Compact Binary JSON Replacements](./backend/serialization/msgpack-cbor.md)
+- [Protocol Buffers — Wire Encoding Deep Dive](./backend/serialization/protobuf-encoding.md)
 
 ---
 
@@ -1509,6 +1560,7 @@
 - [Git Interview Questions](./git/interview-questions.md)
 - [Git Cheat Sheet](./git/cheat-sheet.md)
 - [Sparse Checkout & Git Hosting Architecture](./git/sparse-checkout-hosting.md)
+- [Git LFS (Large File Storage)](./git/lfs.md)
 
 ---
 
@@ -1744,6 +1796,14 @@
 - [Snapshot Testing](./testing/snapshot-testing.md)
 - [Test Pyramids](./testing/test-pyramids.md)
 - [Differential & Metamorphic Testing](./testing/differential-metamorphic.md)
+- [Accessibility Testing](./testing/accessibility-testing.md)
+- [Chaos Testing](./testing/chaos-testing.md)
+- [Contract Testing](./testing/contract-testing.md)
+- [Cypress](./testing/cypress.md)
+- [Fuzz Testing](./testing/fuzz-testing.md)
+- [Playwright](./testing/playwright.md)
+- [Testcontainers](./testing/testcontainers.md)
+- [Visual Regression Testing](./testing/visual-regression.md)
 
 ---
 
@@ -1768,6 +1828,10 @@
 - [WebRTC](./web-development/webrtc.md)
 - [Intersection Observer](./web-development/intersection-observer.md)
 - [Mutation Observer](./web-development/mutation-observer.md)
+- [Canvas 2D API](./web-development/canvas-api.md)
+- [WebCodecs](./web-development/webcodecs.md)
+- [WebGPU](./web-development/webgpu.md)
+- [WebTransport](./web-development/webtransport.md)
 
 ---
 
@@ -1806,6 +1870,9 @@
 - [Quantum Computing](./cs-theory/quantum-computing.md)
 - [Runtime Systems](./cs-theory/runtime-systems.md)
 - [Comparison Sorting Lower Bound](./cs-theory/comparison-sorting-lower-bound.md)
+- [The Curry–Howard Correspondence — Proofs as Programs, Propositions as Types](./cs-theory/curry-howard.md)
+- [Gödel's Incompleteness Theorems — Arithmetic, Self-Reference, and the Limits of Formal Systems](./cs-theory/godel-incompleteness.md)
+- [The Lambda Calculus — A Turing-Complete Minimal Language](./cs-theory/lambda-calculus.md)
 
 ---
 
@@ -1874,6 +1941,10 @@
 - [Infrastructure & Platform Engineering](./sre/infrastructure-platform-engineering.md)
 - [FMEA & Fault Trees](./sre/fmea-fault-trees.md)
 - [Metrics Cardinality Explosions](./sre/metrics-cardinality.md)
+- [FinOps and Cloud Cost Optimization](./sre/finops-cloud-cost.md)
+- [Load Testing Strategies](./sre/load-testing-strategies.md)
+- [Postmortem and Incident Response Culture](./sre/postmortem-culture.md)
+- [SLO, SLA, SLI, and Error Budgets](./sre/slo-error-budget.md)
 
 ---
 
@@ -1935,6 +2006,14 @@
 - [Mobile Security](./mobile/mobile-security.md)
 - [Mobile Interview Questions](./mobile/interview-questions.md)
 - [Mobile Engineering Deep Dive](./mobile/mobile-engineering.md)
+- [Android OS Internals](./mobile/android-internals.md)
+- [Mobile Crash Reporting: Crashlytics, Sentry, Bugsnag](./mobile/crash-reporting.md)
+- [Flutter and Dart](./mobile/flutter-dart.md)
+- [Mobile Databases: SQLite, Realm, Core Data, Room](./mobile/mobile-databases.md)
+- [Mobile Security Deep Dive: Jailbreak/Root Detection, App Attestation, Code Signing](./mobile/mobile-security-deep.md)
+- [Mobile Push Notifications: APNs and FCM Deep Dive](./mobile/push-notifications.md)
+- [Progressive Web Apps (PWA)](./mobile/pwa.md)
+- [React Native](./mobile/react-native.md)
 
 ---
 
@@ -2240,6 +2319,11 @@
   - [Edge ML / On-device](./ml/advanced/edge.md)
   - [Quantization (Advanced)](./ml/advanced/quantization.md)
   - [Pruning](./ml/advanced/pruning.md)
+  - [Edge Inference: TFLite Micro, ONNX Runtime Mobile, TensorRT, Coral Edge TPU](./ml/advanced/edge-inference.md)
+  - [Federated Learning: Systems and Algorithms](./ml/advanced/federated-learning.md)
+  - [Model Compression: Pruning, Distillation, Low-Rank Decomposition](./ml/advanced/model-compression.md)
+  - [Quantization-Aware Training and Post-Training Quantization](./ml/advanced/quantization-aware-training.md)
+  - [TinyML: Machine Learning on Microcontrollers](./ml/advanced/tinyml.md)
 
 ---
 
@@ -2428,6 +2512,7 @@
 - [Performance](./languages/c/performance.md)
 - [C Ecosystem & Tooling](./languages/c/ecosystem.md)
 - [C Interview Questions](./languages/c/interview-questions.md)
+- [The C11 / C++11 Memory Model](./languages/c/memory-model.md)
 
 ## C++
 
@@ -2440,6 +2525,8 @@
 - [Modern C++](./languages/cpp/modern-cpp.md)
 - [C++ Ecosystem & Tooling](./languages/cpp/ecosystem.md)
 - [C++ Interview Questions](./languages/cpp/interview-questions.md)
+- [C++ Smart Pointers and Move Semantics](./languages/cpp/smart-pointers-move.md)
+- [C++ Templates and Compile-Time Metaprogramming](./languages/cpp/templates-metaprogramming.md)
 
 ## Rust
 
@@ -2454,6 +2541,12 @@
 - [Unsafe Rust](./languages/rust/unsafe.md)
 - [Rust Ecosystem & Tooling](./languages/rust/ecosystem.md)
 - [Rust Interview Questions](./languages/rust/interview-questions.md)
+- [Rust async/await — Futures, Pinning, Executors](./languages/rust/async-async.md)
+- [Rust async/await Deep Dive](./languages/rust/async-deep.md)
+- [Rust Error Handling: a Deep Dive](./languages/rust/error-handling-deep.md)
+- [Rust Procedural Macros](./languages/rust/procedural-macros.md)
+- [Rust Traits and Generics: a Deep Dive](./languages/rust/traits-generics.md)
+- [Unsafe Rust: a Deep Dive](./languages/rust/unsafe-rust.md)
 
 ## Python
 
@@ -2468,6 +2561,9 @@
 - [Performance](./languages/python/performance.md)
 - [Python Ecosystem & Tooling](./languages/python/ecosystem.md)
 - [Python Interview Questions](./languages/python/interview-questions.md)
+- [Python Data Model and Metaclasses Deep Dive](./languages/python/data-model-metaclasses-deep.md)
+- [Python Decorators and Metaclasses](./languages/python/decorators-metaclasses.md)
+- [Python GIL and asyncio Deep Dive](./languages/python/gil-asyncio-deep.md)
 
 ## Go
 
@@ -2478,6 +2574,10 @@
   - [Web Frameworks (Gin/Echo/Fiber)](./languages/go/web-frameworks.md)
   - [Go Ecosystem & Tooling](./languages/go/ecosystem.md)
 - [Go Interview Questions](./languages/go/interview-questions.md)
+- [Go Channels and `select` — Deep Dive](./languages/go/channels-select-deep.md)
+- [Go Concurrency Deep Dive — Scheduler, Channels, Memory Model](./languages/go/concurrency-deep.md)
+- [Go Generics and Error Handling — Deep Dive](./languages/go/generics-error-handling.md)
+- [Go Modules and Interfaces](./languages/go/modules-interfaces.md)
 
 ## Java
 
@@ -2487,6 +2587,14 @@
 - [Virtual Threads (Project Loom)](./languages/java/virtual-threads.md)
 - [Java Ecosystem & Tooling](./languages/java/ecosystem.md)
 - [Java Interview Questions](./languages/java/interview-questions.md)
+- [Java Concurrency Deep Dive: java.util.concurrent and Beyond](./languages/java/java-concurrent-deep.md)
+- [JVM Bytecode](./languages/java/jvm-bytecode.md)
+- [JVM Class Loaders](./languages/java/jvm-classloader.md)
+- [JIT Compilation in HotSpot](./languages/java/jvm-jit.md)
+- [The Java Memory Model (JMM)](./languages/java/jvm-memory-model.md)
+- [Quarkus and Micronaut: Build-Time-Native Java Frameworks](./languages/java/quarkus-micronaut.md)
+- [Reactive Programming in Java](./languages/java/reactive-programming.md)
+- [Spring Boot Internals](./languages/java/spring-boot-internals.md)
 
 ## JavaScript
 
@@ -2505,6 +2613,9 @@
 - [OCaml Overview](./languages/ocaml/README.md)
 - [OCaml Ecosystem & Tooling](./languages/ocaml/ecosystem.md)
 - [OCaml Interview Questions](./languages/ocaml/interview-questions.md)
+- [Erlang/OTP — The BEAM VM, Actor Model, and Behaviors](./languages/erlang/erlang-otp.md)
+- [Kotlin Coroutines — Structured Concurrency](./languages/kotlin/coroutines.md)
+- [Swift Concurrency — async/await, Actors, and Structured Concurrency](./languages/swift/concurrency.md)
 
 ---
 
@@ -2548,6 +2659,18 @@
 
 ---
 - [WireGuard Protocol](./cryptography/wireguard-protocol.md)
+- [ARM TrustZone — The ARM Security Extension](./cryptography/arm-trustzone.md)
+- [Code-Based Cryptography](./cryptography/code-based-crypto.md)
+- [ML-DSA (Dilithium) — NIST FIPS 204](./cryptography/dilithium-mldsa.md)
+- [Garbled Circuits — Yao's Protocol](./cryptography/garbled-circuits.md)
+- [Hardware Security Modules (HSMs) and PKCS#11](./cryptography/hsm-pkcs11.md)
+- [Intel SGX (Software Guard Extensions)](./cryptography/intel-sgx.md)
+- [ML-KEM (Kyber) — NIST FIPS 203](./cryptography/kyber-mlkem.md)
+- [Lattice Cryptography Foundations](./cryptography/lattice-cryptography.md)
+- [Oblivious Transfer (OT)](./cryptography/oblivious-transfer.md)
+- [Secure Multi-Party Computation (MPC)](./cryptography/secure-multiparty-computation.md)
+- [TPM 2.0 (Trusted Platform Module)](./cryptography/tpm-2.0.md)
+- [ZK-STARKs — Scalable, Transparent ARguments of Knowledge](./cryptography/zk-starks.md)
 
 # Performance Engineering
 
@@ -2567,6 +2690,8 @@
 - [Fundamentals](./queueing-theory/fundamentals.md)
 - [Applied to Systems](./queueing-theory/applied-systems.md)
 - [Queueing Theory Interview Questions](./queueing-theory/interview-questions.md)
+- [Erlang B and Erlang C Models](./queueing-theory/erlang-models.md)
+- [The M/M/1 Queue and Little's Law](./queueing-theory/mm1-queue.md)
 
 ---
 
@@ -2580,6 +2705,10 @@
 - [IoT](./embedded-systems/iot.md)
 - [Robotics](./embedded-systems/robotics.md)
 - [Real-Time Systems](./embedded-systems/real-time-systems.md)
+- [Embedded Linux: Build Systems, Kernel, Rootfs, Device Tree, Boot](./embedded-systems/embedded-linux.md)
+- [Embedded Communication Protocols: I2C, SPI, UART, CAN, Modbus, 1-Wire](./embedded-systems/embedded-protocols.md)
+- [FreeRTOS Deep Dive: TCB, Lists, port.c, and the Rest](./embedded-systems/freertos.md)
+- [RTOS Internals: Scheduler, Ready List, Context Switch, IPC](./embedded-systems/rtos-internals.md)
 
 ---
 
@@ -2686,6 +2815,7 @@
 - [MinIO Architecture](./storage/advanced/minio-architecture.md)
 - [HDFS Internals](./storage/advanced/hdfs-internals.md)
 - [Colossus (Google's successor to GFS)](./storage/advanced/colossus.md)
+- [LSM-Tree Compaction Deep Dive](./storage/advanced/lsm-tree-deep.md)
 
 ---
 
@@ -2731,6 +2861,12 @@
 - [Time-Series Database Internals](./dbms/advanced/tsdb-internals.md)
 - [Approximate Query Processing & Privacy](./dbms/advanced/approximate-privacy.md)
 - [Encrypted Databases & Secure Query Processing](./dbms/advanced/encrypted-databases.md)
+- [MVCC (Multi-Version Concurrency Control) Internals](./dbms/advanced/mvcc-internals.md)
+- [Optimistic Concurrency Control (OCC)](./dbms/advanced/optimistic-concurrency.md)
+- [Database Replication Strategies](./dbms/advanced/replication-strategies.md)
+- [Write-Ahead Log (WAL) Internals](./dbms/advanced/wal-internals.md)
+- [Database Indexing Strategy](./dbms/indexing-strategy.md)
+- [Query Optimization Deep Dive](./dbms/query-optimization-deep.md)
 
 ---
 
@@ -2790,6 +2926,11 @@
 - [E-Graphs and Equality Saturation](./compilers/advanced/e-graphs-equality-saturation.md)
 - [Regex Engine Internals: Backtracking Machines, Automata, and the Linear-Time Divide](./compilers/advanced/regex-engine-internals.md)
 - [WebAssembly & Runtimes](./compilers/advanced/wasm-runtimes.md)
+- [Dependent Types](./compilers/advanced/dependent-types.md)
+- [Linear Types](./compilers/advanced/linear-types.md)
+- [Refinement Types Internals](./compilers/advanced/refinement-types-internals.md)
+- [Session Types](./compilers/advanced/session-types.md)
+- [WebAssembly Component Model](./compilers/advanced/wasm-component-model.md)
 
 ---
 
@@ -2815,6 +2956,10 @@
 - [TPU Architecture](./arch/advanced/tpu-architecture.md)
 - [Tensor Cores](./arch/advanced/tensor-cores.md)
 - [Systolic Arrays](./arch/advanced/systolic-arrays.md)
+- [DRM/KMS — The Linux Direct Rendering Manager & Kernel Mode Setting](./arch/advanced/drm-kms.md)
+- [Mesa 3D — The Open-Source OpenGL & Vulkan Implementation](./arch/advanced/mesa-graphics.md)
+- [PipeWire — The Modern Linux Multimedia Server](./arch/advanced/pipewire.md)
+- [Wayland — The Modern Linux Display Protocol](./arch/advanced/wayland.md)
 
 ---
 
@@ -2826,6 +2971,7 @@
 - [HPC Infrastructure](./hpc/hpc-infra.md)
 - [Slurm & HPC Scheduling](./hpc/slurm-scheduling.md)
 - [GPUDirect Networking](./hpc/gpudirect-networking.md)
+- [OpenMP](./hpc/openmp.md)
 
 ---
 
@@ -2855,6 +3001,10 @@
 - [TSN, Standard by Standard: The IEEE 802.1 Toolbox](./networks/advanced/tsn-time-sensitive-networking.md)
 - [FD.io VPP: Vector Packet Processing in User Space](./networks/advanced/fdio-vpp.md)
 - [L4 Load-Balancing Internals: Data Paths, Maglev Hashing, and Replica State](./networks/advanced/l4-load-balancing-internals.md)
+- [Differentiated Services (DiffServ) QoS](./networks/advanced/diffserv-qos.md)
+- [SDN and OpenFlow Deep Dive — Separating Control from Data Plane](./networks/advanced/sdn-openflow.md)
+- [Traffic Shaping and Policing](./networks/advanced/traffic-shaping.md)
+- [VLANs and Spanning Tree Protocol — 802.1Q, STP, RSTP, MSTP](./networks/advanced/vlan-stp.md)
 
 ---
 
@@ -2869,6 +3019,10 @@
 - [Testing & Formal Methods](./formal-methods/testing-formal.md)
 - [Symbolic Execution & Concolic Testing](./formal-methods/symbolic-execution.md)
 - [Distributed & Concurrency Verification](./formal-methods/distributed-verification.md)
+- [Coq and Lean: Interactive Theorem Provers](./formal-methods/coq-lean.md)
+- [SAT and SMT Solvers](./formal-methods/sat-smt-solvers.md)
+- [Separation Logic: Reasoning about Pointer Programs](./formal-methods/separation-logic.md)
+- [TLA+: Specifying Distributed Systems](./formal-methods/tla-plus.md)
 
 ---
 
@@ -2899,6 +3053,18 @@
 - [Decentralized Infrastructure](./blockchain/decentralized-infra.md)
 - [MEV and Proposer-Builder Separation](./blockchain/mev-pbs.md)
 - [Nakamoto Consensus](./blockchain/nakamoto-consensus.md)
+- [Cross-Chain Bridge Protocols](./blockchain/bridge-protocols.md)
+- [Chainlink Oracle Network](./blockchain/chainlink-oracles.md)
+- [DeFi Protocol Architectures](./blockchain/defi-protocols.md)
+- [ERC Token Standards](./blockchain/erc-standards.md)
+- [EVM Internals](./blockchain/evm-internals.md)
+- [IPFS and Filecoin](./blockchain/ipfs-filecoin.md)
+- [Lightning Network](./blockchain/lightning-network.md)
+- [Optimistic Rollups](./blockchain/optimistic-rollups.md)
+- [Smart Contract Security](./blockchain/smart-contract-security.md)
+- [Solidity](./blockchain/solidity.md)
+- [The Graph Protocol](./blockchain/the-graph.md)
+- [ZK Rollups](./blockchain/zk-rollups.md)
 
 ---
 
@@ -2943,6 +3109,8 @@
 - [Model Parallelism Overview](./llm/advanced/distributed/model-parallelism.md)
 - [FSDP (Fully Sharded Data Parallel)](./llm/advanced/distributed/fsdp.md)
 - [GPU Cluster Scheduling](./llm/advanced/distributed/gpu-cluster-scheduling.md)
+- [Differential Privacy](./llm/advanced/differential-privacy.md)
+- [Homomorphic Encryption](./llm/advanced/homomorphic-encryption.md)
 
 ---
 
@@ -2963,6 +3131,10 @@
 - [IoT Protocols](./edge/iot-protocols.md)
 - [Embedded AI](./edge/embedded-ai.md)
 - [Real-Time Systems](./edge/real-time-systems.md)
+- [Bluetooth Low Energy Deep Dive](./edge/ble-deep.md)
+- [IoT Protocol Deep Dive: MQTT, CoAP, AMQP, LwM2M](./edge/iot-protocols-deep.md)
+- [LoRaWAN Deep Dive](./edge/lorawan.md)
+- [Thread and Matter Deep Dive](./edge/thread-matter.md)
 
 ---
 
