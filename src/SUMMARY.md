@@ -1372,6 +1372,7 @@
   - [Conflict-Free Replicated Data Types](./distributed/fundamentals/crdts.md)
   - [Distributed Locks and Fencing Tokens](./distributed/fundamentals/distributed-locks.md)
   - [Byzantine Faults](./distributed/fundamentals/byzantine-faults.md)
+- [Reliable Broadcast: Bracha and the Broadcast/Consensus Split](./distributed/fundamentals/reliable-broadcast.md)
   - [Distributed Algorithms Overview](./distributed/fundamentals/distributed-algorithms.md)
   - [Spanner Architecture](./distributed/fundamentals/spanner.md)
   - [TrueTime](./distributed/fundamentals/truetime.md)
@@ -1472,7 +1473,7 @@
 - [ABA Problem and Safe Memory Reclamation](./concurrency/aba-problem.md)
 - [Work-Stealing Scheduler](./concurrency/work-stealing.md)
 - [Memory Model (C++/Java/Go/Rust)](./concurrency/memory-model.md)
-- [Transactional Memory](./concurrency/transactional-memory.md)
+- [Transactional Memory: STM, HTM, and the Fallback Path](./concurrency/transactional-memory.md)
 - [Go Channels](./concurrency/go-channels.md)
 - [Rust Ownership](./concurrency/rust-ownership.md)
 - [Java Concurrency](./concurrency/java.md)
@@ -1484,6 +1485,8 @@
 - [Communicating Sequential Processes (CSP)](./concurrency/csp-model.md)
 - [Deadlock Detection and Prevention](./concurrency/deadlock-detection.md)
 - [Lock-Free Data Structures — Progress, CAS, and Safe Reclamation](./concurrency/lock-free-structures.md)
+- [Flat Combining](./concurrency/flat-combining.md)
+- [Wait-Free Hierarchy and Consensus Numbers](./concurrency/wait-free-hierarchy.md)
 - [Software Transactional Memory](./concurrency/software-transactional-memory.md)
 
 ---
@@ -2114,6 +2117,7 @@
 - [eBPF Verifier](./linux/kernel/tracing/ebpf-verifier.md)
 - [BPF Maps and Types](./linux/kernel/tracing/bpf-maps-types.md)
 - [ftrace Internals](./linux/kernel/tracing/ftrace-internals.md)
+- [BPF Trampolines](./linux/kernel/tracing/bpf-trampolines.md)
 - [kprobes and uprobes](./linux/kernel/tracing/kprobes-uprobes.md)
 - [CI/CD](./cloud/cicd/README.md)
   - [Pipelines](./cloud/cicd/pipelines.md)
@@ -2846,6 +2850,8 @@
 - [HDFS Internals](./storage/advanced/hdfs-internals.md)
 - [Colossus (Google's successor to GFS)](./storage/advanced/colossus.md)
 - [LSM-Tree Compaction Deep Dive](./storage/advanced/lsm-tree-deep.md)
+- [Crash Consistency: The fsync Ladder](./storage/advanced/crash-consistency.md)
+- [SSD FTL Internals: Mapping, GC, and Write Amplification](./storage/advanced/ssd-ftl.md)
 
 ---
 
@@ -2858,6 +2864,7 @@
 - [Cardinality Estimation](./dbms/advanced/cardinality-estimation.md)
 - [Adaptive Query Execution: Re-Optimizing the Plan While It Runs](./dbms/advanced/adaptive-query-execution.md)
 - [Bw-Tree and ART](./dbms/advanced/bwtree-art.md)
+- [B-Tree Latching: Crabbing, Right-Links, and Restarts](./dbms/internals/btree-latching.md)
 - [Data Lineage and Provenance](./dbms/advanced/data-lineage-provenance.md)
 - [Worst-Case Optimal Joins](./dbms/advanced/worst-case-optimal-joins.md)
 - [Sketch Algorithms in Analytics](./dbms/advanced/sketch-algorithms.md)
@@ -2875,6 +2882,7 @@
 - [Databricks Architecture](./dbms/advanced/databricks.md)
 - [Snapshot Isolation](./dbms/advanced/snapshot-isolation.md)
 - [Serializable Snapshot Isolation (SSI)](./dbms/advanced/serializable-snapshot-isolation.md)
+- [Key-Range and Predicate Locking](./dbms/advanced/key-range-locking.md)
 - [Learned Indexes](./dbms/advanced/learned-indexes.md)
 - [Learned Query Optimization](./dbms/advanced/learned-query-optimization.md)
 - [Memcached Internals](./dbms/advanced/memcached.md)
@@ -2934,6 +2942,7 @@
 - [Compilation Techniques](./compilers/advanced/compilation-techniques.md)
 - [Type Inference](./compilers/advanced/type-inference.md)
 - [Garbage Collection](./compilers/advanced/garbage-collection.md)
+- [GC Write Barriers and the Tricolor Abstraction](./compilers/advanced/gc-write-barriers.md)
 - [JIT & Runtime Optimization](./compilers/advanced/jit-optimization.md)
 - [Deoptimization & OSR](./compilers/advanced/deoptimization-osr.md)
 - [Auto-Vectorization Internals](./compilers/advanced/auto-vectorization-deep.md)

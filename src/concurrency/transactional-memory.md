@@ -1,278 +1,251 @@
-# Transactional Memory
+# Transactional Memory: Atomicity Beyond Locks
 
-## Overview
+The lock-free data structures page shows how far you can push atomic
+instructions - and how much complexity it costs (ABA, reclamation,
+subtly broken algorithms). Transactional memory proposes the other end
+of the trade: write code as if it holds *one big lock* over a critical
+section, and let the system detect conflicts and roll back. This page
+covers both flavors - software (STM) and hardware (HTM) - their
+conflict-detection designs, the fallback paths that made HTM shippable,
+and an honest assessment of why TM lost as a mainstream programming
+interface while its ideas quietly shipped inside runtimes, locks, and
+databases.
 
-Transactional Memory (TM) applies database transaction concepts to shared memory operations. Instead of locks, you define a block of code as a transaction that executes atomically and in isolation. If conflicts are detected, the transaction retries. TM simplifies concurrent programming by eliminating manual lock management, deadlocks, and priority inversion.
+Related pages: [lock-free structures](./lock-free-structures.md) (the
+complexity TM tries to replace), [hazard pointers](./hazard-pointers.md)
+(reclamation, which TM sidesteps by construction), and
+[flat combining](./flat-combining.md) (the middle ground).
 
-## Core Concepts
+## What TM promises
 
-### Lock-Based vs Transactional
+A `transaction { ... }` block behaves as if executed atomically and in
+isolation against all others: no deadlocks (system rolls back instead of
+blocking), no lock ordering to design, composable (two transactions can
+concatenate into one - the property locks never had). The costs are
+equally fundamental: wasted work on abort, memory overhead for undo/redo
+logs, and the need for every memory access inside the transaction to be
+instrumented or hardware-tracked.
 
-```mermaid
-graph TD
-    subgraph Locks[Lock-Based Programming]
-        L1["lock(A)"]
-        L2["lock(B)"]
-        L3[modify A and B]
-        L4["unlock(B)"]
-        L5["unlock(A)"]
-        L1 --> L2 --> L3 --> L4 --> L5
-        L6[Deadlock risk if another thread locks B then A!]
-    end
+## STM: versioning and conflict detection in software
 
-    subgraph TM[Transactional Memory]
-        T1["atomic #123;"]
-        T2[  modify A]
-        T3[  modify B]
-        T4["#125;"]
-        T1 --> T2 --> T3 --> T4
-        T5["No deadlock, automatic conflict detection"]
-    end
+Two designs dominate the literature, differing on *when* a writer's
+view is consistent:
+
+- **Lazy acquisition / commit-time locking (TL2-style, "mostly
+  locking")**: reads record (address, expected version); writes buffer
+  into a local write set. At commit: lock all written addresses (by
+  CAS on their lock words), increment their version stamps, validate
+  the read set still matches, apply. Aborts cost nothing but buffer
+  space; conflicts surface only at commit.
+- **Eager acquisition / early locking**: acquire write locks as you
+  write, with undo logs for rollback. Conflicts detected earlier (less
+  wasted work), but a transaction holds locks while running - the
+  deadlock-avoidance machinery (the thing TM was supposed to remove)
+  sneaks back in as contention on the write locks.
+
+Read validation is the subtle part: a reader must detect that some
+address it read was concurrently written (version check per read, or
+one global-clock check at commit in TL2's optimization). The demo below
+implements a miniature TL2 with read/write sets and shows a conflict
+abort and a successful commit on a deterministic schedule.
+
+## HTM: Intel TSX and its cautionary tale
+
+Hardware TM (Intel TSX, 2013) made the transaction a CPU feature:
+`XBEGIN` starts a transactional region; the CPU tracks the read/write
+sets in the cache coherence protocol itself and commits atomically if
+no other core touched them - zero instrumentation on the fast path,
+roughly an order of magnitude better than STM.
+
+The deployment history is the lesson. TSX worked, then firmware
+disabled it on broad CPU generations after erratum discoveries, was
+re-enabled in "TSX-ND" (new data) form on select parts, and was dropped
+entirely from later cores. Production code therefore *must* treat HTM
+as an opportunistic accelerator over a correct lock path: retry N
+times (with exponential backoff), then take the fallback lock. This
+"hybrid TM" pattern (and lock elision generally) is what actually
+shipped: in glibc's pthread mutexes (lock elision) and inside
+lock-free library internals - not in the source language.
+
+| dimension      | STM                          | HTM (TSX-style)             |
+|----------------|------------------------------|------------------------------|
+| fast-path cost | read/write sets + validation | none (coherence tracking)   |
+| capacity       | RAM-sized                    | cache/L1-sized (tiny)       |
+| abort cause    | version mismatch             | capacity, interrupts, syscalls |
+| fallback       | another STM strategy         | the lock the code replaced  |
+| shipped as     | research runtimes, some DBs  | glibc elision, libraries    |
+
+## Why TM didn't win, and where its ideas live
+
+Three structural reasons, each an interview-worthy argument:
+
+1. **I/O and system calls cannot roll back** - transactions are memory-
+   shaped, and real programs cross those boundaries constantly; the
+   programmer redesigns around them, at which point TM's composability
+   pitch weakens.
+2. **Semantic visibility gap**: transactions see *some* other
+   transactions' effects only at commit - debugging tools, crash
+   recovery, and I/O interplay all become subtle.
+3. **The hardware bet inverted**: TM needed coherence-level support to
+   be fast; when the silicon bet was withdrawn, the STM path was
+   10-30x slower than well-written locks.
+
+The surviving descendants: bounded speculation inside lock
+implementations (elision), snapshot isolation in databases (read sets
+validated at commit - the same structure as STM validation), and
+optimistic concurrency control in memory engines (the MVCC machinery
+in [mvcc internals](../../dbms/advanced/mvcc-internals.md) is STM's
+read-validation problem wearing a data-model hat).
+
+## The demo: a miniature TL2
+
+```python
+#!/usr/bin/env python3
+"""Miniature TL2-style STM: global version clock, per-address lock
+words, read/write sets, commit-time validation. Deterministic schedule
+showing (1) a clean commit, (2) a read-validation abort, (3) a write
+conflict abort. Pure stdlib."""
+
+GLB = 0                     # global version clock
+LOCKS = {}                  # address -> owner (None = free)
+STAMPS = {}                 # address -> version stamp
+
+def addr_read(mem, addr, txn):
+    # read lock words must be free-or-mine, stamp <= txn.read_version
+    owner = LOCKS.get(addr)
+    if owner is not None and owner != txn.name:
+        txn.abort_reason = "read of write-locked address"
+        return None
+    if STAMPS.get(addr, 0) > txn.read_version:
+        txn.abort_reason = "read validation failed (stamp ahead)"
+        return None
+    txn.read_set[addr] = mem.get(addr, 0)
+    return mem.get(addr, 0)
+
+
+def addr_write(txn, addr, value):
+    txn.write_set[addr] = value
+
+
+class Txn:
+    def __init__(self, name):
+        self.name = name
+        self.read_version = GLB
+        self.read_set, self.write_set = {}, {}
+        self.abort_reason = None
+
+
+def commit(mem, txn):
+    global GLB
+    # 1. lock write set; on each acquisition also check the stamp:
+    #    if the address moved past our read_version, a concurrent writer
+    #    committed first -> first-committer-wins abort
+    acquired = []
+    for addr in txn.write_set:
+        if LOCKS.get(addr) is not None:
+            for a in acquired:
+                LOCKS[a] = None
+            txn.abort_reason = f"write conflict on {addr}"
+            return False
+        if STAMPS.get(addr, 0) > txn.read_version:
+            for a in acquired:
+                LOCKS[a] = None
+            txn.abort_reason = f"write-write conflict on {addr} (stamp ahead)"
+            return False
+        LOCKS[addr] = txn.name
+        acquired.append(addr)
+    # 2. validate read set (all stamps <= read_version)
+    for addr in txn.read_set:
+        if STAMPS.get(addr, 0) > txn.read_version:
+            for a in acquired:
+                LOCKS[a] = None
+            txn.abort_reason = "read-set validation failed at commit"
+            return False
+    # 3. apply and bump stamps to new global clock
+    GLB += 1
+    for addr, v in txn.write_set.items():
+        mem[addr] = v
+        STAMPS[addr] = GLB
+    for a in acquired:
+        LOCKS[a] = None
+    return True
+
+
+mem = {"x": 0, "y": 0}
+print(f"start: mem={mem} global clock={GLB}")
+
+t1 = Txn("t1")
+v = addr_read(mem, "x", t1)
+addr_write(t1, "y", v + 10)
+ok = commit(mem, t1)
+print(f"t1 (read x, write y=x+10): commit={ok} mem={mem} clock={GLB}")
+assert ok
+
+t2 = Txn("t2")
+v = addr_read(mem, "x", t2)
+addr_read(mem, "y", t2)                # t2 reads y in its read set
+addr_write(t2, "x", v + 1)
+# concurrent t3 commits a write to y BEFORE t2 commits -> validation fail
+t3 = Txn("t3")
+addr_write(t3, "y", 999)
+ok3 = commit(mem, t3)
+print(f"t3 (write y=999): commit={ok3} mem={mem} clock={GLB}")
+ok2 = commit(mem, t2)
+print(f"t2 (read x,y; write x): commit={ok2} reason='{t2.abort_reason}'")
+assert not ok2 and "validation" in (t2.abort_reason or "")
+
+t4 = Txn("t4")
+addr_write(t4, "x", 5)
+t5 = Txn("t5")
+addr_write(t5, "x", 7)          # t5 started BEFORE t4 commits
+ok4 = commit(mem, t4)
+ok5 = commit(mem, t5)
+print(f"t4 commit={ok4}; t5 (same addr, started earlier) commit={ok5} "
+      f"reason='{t5.abort_reason}'")
+assert ok4 and not ok5 and "stamp ahead" in t5.abort_reason
+print("assertions passed: clean commit, validation abort, write-write conflict")
 ```
 
-### Transaction Properties (ACID for Memory)
-
-```mermaid
-graph TD
-    ACID[Memory Transaction] --> A[Atomicity: All or nothing]
-    ACID --> C[Consistency: Valid state transition]
-    ACID --> I[Isolation: No partial effects visible]
-    ACID --> D[Durability: N/A for memory, applies to databases]
-
-    A --> A1[If conflict, rollback and retry]
-    I --> I1[Other threads see pre-transaction or post-transaction state]
+```text
+start: mem={'x': 0, 'y': 0} global clock=0
+t1 (read x, write y=x+10): commit=True mem={'x': 0, 'y': 10} clock=1
+t3 (write y=999): commit=True mem={'x': 0, 'y': 999} clock=2
+t2 (read x,y; write x): commit=False reason='read-set validation failed at commit'
+t4 commit=True; t5 (same addr, started earlier) commit=False reason='write-write conflict on x (stamp ahead)'
+assertions passed: clean commit, validation abort, write-write conflict
 ```
 
-## Hardware Transactional Memory (HTM)
+The three outcomes are the whole STM story: uncontended transactions
+commit with two clock bumps; a read validated at commit fails if any
+read address's stamp moved (t2's y); and write-write conflicts resolve
+at first-committer-wins (t5) - exactly the SI write-conflict rule in
+[snapshot isolation](../../dbms/advanced/snapshot-isolation.md).
 
-### Intel TSX (Transactional Synchronization Extensions)
+## Interview probes
 
-```mermaid
-graph TD
-    BEGIN[XBEGIN] --> EXEC[Execute transaction]
-    EXEC --> COMMIT{XEND}
-    COMMIT -->|Success| DONE[Changes committed atomically]
-    EXEC -->|Conflict| ABORT[Abort: rollback changes]
-    ABORT --> RETRY[Retry or fallback to lock]
-```
+- Prove that TL2's commit-time validation plus write locking gives
+  serializability (sketch the serialization-point argument at the
+  global clock bump).
+- Why does HTM capacity abort push implementations toward small
+  transactions, and what does that do to the composability pitch?
+- Design the fallback ladder for an elided mutex: how many retries,
+  what backoff, and which abort code means "never retry"?
+- Where does SI's write-conflict rule appear in the STM demo, and what
+  would change under serializable validation (SSI-style)?
 
-```c
-// Intel TSX example
-#include <immintrin.h>
+## References
 
-void update_shared_data(int* shared, int value) {
-    int status;
-    while (1) {
-        status = _xbegin();
-        if (status == _XBEGIN_STARTED) {
-            // Transaction body
-            *shared = value;
-            *shared += 10;
-            _xend();  // Commit
-            return;
-        }
-        // Transaction aborted, retry or fallback
-        if ((status & _XABORT_RETRY) == 0)
-            break;  // Permanent failure, use lock fallback
-    }
-    // Fallback: use lock
-    pthread_mutex_lock(&fallback_lock);
-    *shared = value;
-    *shared += 10;
-    pthread_mutex_unlock(&fallback_lock);
-}
-```
-
-### How HTM Works
-
-```mermaid
-graph TD
-    CPU[CPU Core] --> L1[L1 Cache]
-    L1 -->|Transactional read/write| TRACK[Track read/write sets]
-    TRACK --> CONFLICT{Conflict detected?}
-    CONFLICT -->|No: another core wrote to our read set| ABORT[Abort transaction]
-    CONFLICT -->|Yes: we wrote to another's read set| ABORT
-    CONFLICT -->|No conflicts| COMMIT[Commit: make changes visible]
-```
-
-The CPU tracks which cache lines the transaction reads and writes. If another core modifies a cache line in the read set, the transaction aborts. On commit, all changes become visible atomically.
-
-## Software Transactional Memory (STM)
-
-### Haskell STM
-
-```haskell
-import Control.Concurrent.STM
-
--- STM variables
-type Account = TVar Int
-
-transfer :: Account -> Account -> Int -> STM ()
-transfer from to amount = do
-    balance <- readTVar from
-    when (balance < amount) retry  -- Block until balance sufficient
-    writeTVar from (balance - amount)
-    writeTVar to . (+ amount) =<< readTVar to
-
--- Run transaction atomically
-main :: IO ()
-main = atomically $ transfer accountA accountB 100
-```
-
-### Clojure STM
-
-```clojure
-(def account-a (ref 1000))
-(def account-b (ref 2000))
-
-(defn transfer [from to amount]
-  (dosync  ; STM transaction
-    (let [balance @from]
-      (when (>= balance amount)
-        (alter from - amount)
-        (alter to + amount)))))
-
-(transfer account-a account-b 100)
-```
-
-### Retry and Choice (Haskell STM)
-
-```haskell
--- retry: abort and block until TVar changes
--- orElse: try first, if retry, try second
-
-readWithTimeout :: TVar (Maybe a) -> STM a
-readWithTimeout tvar = do
-    val <- readTVar tvar
-    case val of
-        Just x  -> return x
-        Nothing -> retry  -- Blocks until TVar changes
-
--- orElse: try first transaction, if it retries, try second
-tryBoth :: STM a -> STM a -> STM a
-tryBoth first second = first `orElse` second
-```
-
-## Optimistic vs Pessimistic Concurrency
-
-```mermaid
-graph TD
-    PC[Pessimistic: Locks] -->|Acquire lock first| PC1[Read/write safely]
-    PC -->|If lock unavailable| PC2[Block/wait]
-
-    OC[Optimistic: TM] -->|Execute without locks| OC1[Track reads/writes]
-    OC -->|On commit| OC2{Conflict?}
-    OC2 -->|No| OC3[Commit success]
-    OC2 -->|Yes| OC4[Rollback and retry]
-
-    PC --> BEST1[Best when conflicts are frequent]
-    OC --> BEST2[Best when conflicts are rare]
-```
-
-| Aspect | Pessimistic (Locks) | Optimistic (TM) |
-|--------|-------------------|-----------------|
-| Approach | Prevent conflicts | Detect and retry |
-| Blocking | Yes | No (but retries) |
-| Deadlock | Possible | Impossible |
-| Overhead | Lock acquire/release | Read/write tracking |
-| Best for | High contention | Low contention |
-
-## Practical STM Implementation
-
-### Read Set and Write Set
-
-```mermaid
-graph TD
-    TX[Transaction] --> RS[Read Set: locations read]
-    TX --> WS[Write Set: locations written]
-
-    RS --> R1[addr A: value 5]
-    RS --> R2[addr B: value 10]
-    WS --> W1[addr B: value 15]
-    WS --> W2[addr C: value 20]
-
-    VALIDATE{Validate on commit}
-    VALIDATE --> CHECK1[All reads still have same values?]
-    CHECK1 -->|Yes| COMMIT[Commit writes to memory]
-    CHECK1 -->|No| ABORT[Abort and retry]
-```
-
-### Commit Protocol
-
-```mermaid
-sequenceDiagram
-    participant T as Transaction
-    participant Mem as Shared Memory
-
-    T->>T: Begin transaction
-    T->>T: Track reads in read set
-    T->>T: Buffer writes in write set
-
-    Note over T: ... execute transaction body ...
-
-    T->>Mem: Acquire locks on write set
-    T->>Mem: Validate read set (no changes?)
-    alt Read set valid
-        T->>Mem: Apply writes
-        T->>Mem: Release locks
-        T->>T: Commit successful
-    else Read set invalid
-        T->>Mem: Release locks
-        T->>T: Rollback and retry
-    end
-```
-
-## Conflict Detection Strategies
-
-```mermaid
-graph TD
-    DETECTION[Conflict Detection] --> EAGER[Eager: detect on every access]
-    DETECTION --> LAZY[Lazy: detect at commit time]
-
-    EAGER --> E1[Abort early, less wasted work]
-    EAGER --> E2[Higher per-access overhead]
-    LAZY --> L1[More work may be wasted]
-    LAZY --> L2[Lower per-access overhead]
-```
-
-| Strategy | When Detected | Pros | Cons |
-|----------|---------------|------|------|
-| Eager | On every read/write | Early abort, less waste | Higher overhead |
-| Lazy | At commit time | Lower overhead | More wasted work |
-
-## Interview Questions
-
-1. **Q: What is Transactional Memory?**
-   A: TM applies database transaction concepts to shared memory. Code blocks are executed as atomic transactions. If conflicts are detected (another thread modified shared data), the transaction rolls back and retries. It eliminates manual lock management and deadlocks.
-
-2. **Q: How does Hardware Transactional Memory work?**
-   A: The CPU tracks which cache lines a transaction reads and writes. If another core modifies a cache line in the transaction's read set, the transaction aborts. On commit, all changes become visible atomically. Intel TSX is an example.
-
-3. **Q: What is the difference between optimistic and pessimistic concurrency?**
-   A: Pessimistic (locks) prevents conflicts by acquiring exclusive access first. Optimistic (TM) executes without locks and detects conflicts at commit time. Pessimistic is better for high contention; optimistic is better when conflicts are rare.
-
-4. **Q: What is the ABA problem in the context of STM?**
-   A: A value changes from A to B back to A. The STM sees the same value and commits, but the underlying state may have changed. STM systems handle this by tracking version numbers or using write logs that capture the full transaction state.
-
-5. **Q: Why isn't Transactional Memory widely used?**
-   A: Hardware TM (Intel TSX) had reliability issues and was disabled on some CPUs. Software TM has high overhead from tracking reads/writes. Most programmers find locks + async/await sufficient. However, TM is conceptually elegant and may see renewed interest with better hardware support.
-
-## Common Mistakes
-
-- Putting I/O inside transactions — can't roll back side effects (print, network call).
-- Assuming TM is always faster — under high contention, lock-based can be more efficient.
-- Not handling transaction aborts — must have a fallback strategy.
-- Irreversible operations in transactions — file deletion, external API calls.
-- Ignoring performance overhead of read/write tracking.
-
-## Summary
-
-Transactional Memory simplifies concurrent programming by replacing locks with atomic transactions. Hardware TM (Intel TSX) uses CPU cache coherence for conflict detection. Software TM tracks read/write sets in software. Key trade-offs: optimistic (TM) vs pessimistic (locks), eager vs lazy conflict detection. While not widely adopted in practice, TM is an important concept for understanding concurrency models.
-
-## Cross-References
-
-- [Lock-Free](./lock-free.md) — Alternative lock-free approach
-- [Concurrency Overview](./overview.md) — Synchronization primitives
-- [Java Concurrency](./java.md) — Java's concurrency utilities
-- [DBMS Transactions](../dbms/transactions/acid.md)
-- [DBMS Two-Phase Commit](../dbms/transactions/two-phase-commit.md)
+1. Herlihy & Moss, "Transactional memory: architectural support for
+   lock-free data structures", ISCA 1993,
+   [doi:10.1145/165123.165164](https://doi.org/10.1145/165123.165164) -
+   the original HTM proposal and its cache-coherence design.
+2. Dice, Shalev, Shavit, "Transactional locking II" (TL2), DISC 2006 -
+   the global-clock versioning scheme the demo implements (author
+   pages/tech reports are the canonical source; search-verified).
+3. Harris, Marlow, Peyton-Jones, Herlihy, "Composable memory
+   transactions", PPoPP 2005,
+   [doi:10.1145/1065944.1065952](https://doi.org/10.1145/1065944.1065952)
+   - the composability argument and retry/orelse semantics (Haskell STM
+   write-up: [Beautiful Concurrency](https://research.microsoft.com/en-us/um/people/simonpj/papers/STM/beautiful.pdf)).
+4. [Lock-free structures (this repo)](./lock-free-structures.md) - the
+   manual discipline TM automates.
