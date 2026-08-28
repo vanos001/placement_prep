@@ -14,7 +14,7 @@ example numerically, and runs a repair-bandwidth simulator.
 Baselines first: the RS/erasure-coding machinery, coding-theory review,
 and the systems context live in [erasure coding deep dive](./erasure-coding-deep.md)
 and [erasure coding](../erasure-coding.md); the Ceph/HDFS placement
-mechanics in [ceph-crush](./ceph-crush.md) and
+mechanics in [ceph-crush](../ceph-crush.md) and
 [hdfs-internals](./hdfs-internals.md).
 
 ## The repair problem, precisely

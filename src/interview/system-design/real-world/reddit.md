@@ -56,7 +56,7 @@ graph TB
     subgraph "Edge"
         LB[Load Balancer]
         CDN[CDN / Media]
-        GW[API Gateway]<br/>Rate Limiter]
+        GW["API Gateway<br/>Rate Limiter"]
     end
 
     subgraph "Core Services"
@@ -178,7 +178,7 @@ Vote manipulation (bot upvoting, vote brigading) is a critical concern.
 ```mermaid
 graph LR
     VoteReq["Vote Request"] --> RateLimit[Rate Limiter<br/>per user/IP]
-    RateLimit --> Dedup["Vote Dedup Check<br/>(has this user already voted?")]
+    RateLimit --> Dedup["Vote Dedup Check<br/>(has this user already voted?)"]
     Dedup --> Fraud["Fraud Detection<br/>(bot score, vote velocity)"]
     Fraud --> Record["Record Vote"]
     Record --> Kafka["Publish to Kafka"]

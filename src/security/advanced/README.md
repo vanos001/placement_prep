@@ -8,8 +8,7 @@ These topics separate candidates who can *talk* about security from those who ca
 
 ```mermaid
 mindmap
-  root((Advanced Security
-  Topics 991-1060))
+  root((Advanced Security Topics 991-1060))
     Microarch Attacks
       Spectre v1-v4, BHB, RSB
       Meltdown, Foreshadow, MDS
@@ -43,7 +42,7 @@ mindmap
       Kubernetes Pod Security
       Network Policies
       Container Escape Techniques
-      WebAssembly (WASM) Sandbox
+      WebAssembly / WASM Sandbox
       WASI Capability Model
       Browser Site Isolation & Process Model
     Side-Channel Resistant
@@ -51,7 +50,7 @@ mindmap
       Power: SPA, DPA, CPA
       EM Side Channels & Acoustic
       Fault Injection: Voltage/Clock/Glitch
-      Differential Fault Analysis (DFA)
+      Differential Fault Analysis - DFA
       Constant-Time Programming
       Blinding & Masking Techniques
       CRYSTALS Constant-Time Implementations
@@ -62,8 +61,8 @@ mindmap
       Polynomial Commitments: KZG, FRI
       Multi-Party Computation
       Garbled Circuits & Secret Sharing
-      Homomorphic Encryption (FHE)
-      Searchable Encryption (SSE, PEKS)
+      Homomorphic Encryption - FHE
+      Searchable Encryption - SSE / PEKS
       Private Information Retrieval
       Differential Privacy
 ```

@@ -10,11 +10,10 @@ timestamps with no trap at all in the common case. This page covers how the
 vDSO works mechanically, when it falls back to real syscalls, and why its
 predecessor, the vsyscall page, became a hardening liability.
 
-Related pages: [Fast I/O](../../advanced/fast-io.md) covers the broader
-syscall-bypass landscape (io_uring, batching); [Page-Table Isolation](
-../../performance/page-table-isolation.md) explains the mitigation that made
+Related pages: [Fast I/O](../../../os/advanced/fast-io.md) covers the broader
+syscall-bypass landscape (io_uring, batching); [Page-Table Isolation](../../performance/page-table-isolation.md) explains the mitigation that made
 raw syscalls expensive enough for the vDSO to matter this much; the syscall
-entry surface itself is described in [syscalls](../../../sysprog/syscalls.md).
+entry surface itself is described in [syscalls](../../sysprog/syscalls.md).
 
 ## What the vDSO actually is
 
@@ -240,8 +239,7 @@ vsyscall modes (fixed page 0xffffffffff600000, never randomized):
   clocks are a legitimate cheap substitute where nanosecond precision is not
   required.
 - **Where this does not apply**: cross-node distributed clocks are a different
-  problem entirely - see [hybrid logical clocks](
-  ../../../distributed/advanced/hybrid-logical-clocks.md) and [clocks and
+  problem entirely - see [hybrid logical clocks](../../../distributed/advanced/hybrid-logical-clocks.md) and [clocks and
   ordering](../../../distributed/advanced/clocks-ordering.md).
 
 ## References

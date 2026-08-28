@@ -118,7 +118,7 @@ Slack maintains persistent WebSocket connections for real-time delivery. With 38
 sequenceDiagram
     participant Client
     participant ConnMgr[Connection Manager]
-    participant Registry[Connection Registry<br/>Redis]
+    participant Registry as Connection Registry<br/>Redis
     participant MsgSvc[Message Service]
 
     Client->>ConnMgr: WebSocket connect

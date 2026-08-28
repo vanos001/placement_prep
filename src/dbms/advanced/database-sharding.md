@@ -109,7 +109,7 @@ The standard approach is **two-phase commit (2PC)**:
 
 2PC's overhead: 2 RTTs per shard, plus lock hold time. For OLTP workloads, this is acceptable (most transactions touch one shard). For workloads where many transactions touch multiple shards, sharding may not be the right approach.
 
-Alternative: **Saga pattern** (compensating transactions, eventual consistency). Used when 2PC is too slow; see [TCC page](../backend/patterns/tcc.md).
+Alternative: **Saga pattern** (compensating transactions, eventual consistency). Used when 2PC is too slow; see [TCC page](../../backend/patterns/tcc.md).
 
 ## Rebalancing
 

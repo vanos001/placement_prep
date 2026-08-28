@@ -10,8 +10,8 @@ The result: one journaling layer, checksums on every block, and
 per-PG compression. This page walks the write path, the allocator
 machinery, and the failure modes that dominate BlueStore operations.
 
-Ecosystem context: [Ceph architecture](./ceph.md) and
-[CRUSH placement](./ceph-crush.md) for the layers above (mon/osd/pg),
+Ecosystem context: [Ceph architecture](../ceph.md) and
+[CRUSH placement](../ceph-crush.md) for the layers above (mon/osd/pg),
 and [lsm-tree internals](../../storage/advanced/lsm-tree-deep.md) for
 the RocksDB engine at BlueStore's metadata core.
 

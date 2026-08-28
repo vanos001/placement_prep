@@ -154,7 +154,7 @@ End-to-end integration tests bring both services up, drive a real HTTP call from
 | **What is tested** | Both services up, real network call, real DB | Each side in isolation against a JSON contract |
 | **Speed** | 5–30 seconds per test | <100 ms per interaction |
 | **Stability** | Breaks when DB, network, auth, or either service changes | Breaks only when contract is violated |
-| **Blast radius** | One pair per test, but \(O(N^2)\) tests for \(N\) services | Linear in pairs, runs in CI of each side independently |
+| **Blast radius** | One pair per test, but \\(O(N^2)\\) tests for \\(N\\) services | Linear in pairs, runs in CI of each side independently |
 | **Coverage** | Catches integration bugs the contract misses (timing, TLS, headers added by middleware) | Catches contract violations only |
 | **Cost of false positive** | High (whole pipeline blocked on a real environment issue) | Low (violation points to a specific field in a specific contract) |
 | **What it does NOT catch** | (when tests are written per side) | Latency, partial-failure, real-network edge cases |
@@ -200,7 +200,7 @@ When a consumer changes its requirement, the new pact is published. The provider
 ## Interview Questions
 
 **Q1: What is consumer-driven contract testing, and what problem does it solve?**
-A: A technique where the consumer of a service writes a contract (request + expected response with matchers) and the provider verifies its implementation honors it. It replaces end-to-end integration tests, which require both services up, with two isolated tests against a shared JSON artifact. It solves the combinatorial explosion of pairwise integration tests in microservices — \(O(N^2)\) end-to-end pairs become \(O(N)\) contract tests per service.
+A: A technique where the consumer of a service writes a contract (request + expected response with matchers) and the provider verifies its implementation honors it. It replaces end-to-end integration tests, which require both services up, with two isolated tests against a shared JSON artifact. It solves the combinatorial explosion of pairwise integration tests in microservices — \\(O(N^2)\\) end-to-end pairs become \\(O(N)\\) contract tests per service.
 
 **Q2: Describe the Pact flow end to end.**
 A: Consumer unit test sets up expectations on a Pact mock server, calls the real production client against the mock, asserts on the response. Pact captures the interaction into a JSON file. The consumer pipeline publishes the pact to the broker with a version and branch tag. The broker fires a webhook to the provider's CI. The provider CI pulls the pact, starts the real provider, sets up the named provider states, replays each request, and matches the response. Verification result is published back to the broker. The consumer pipeline asks `can-i-deploy?` — the broker answers based on whether the consumer's pacts are verified against the production version of the provider.

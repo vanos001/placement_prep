@@ -12,8 +12,7 @@ epoch-based reclamation - on one worked trace, so the retention trade-offs
 are visible instead of hand-waved.
 
 Sibling treatments: the kernel's take on the same problem is
-[RCU](./rcu.md) (and its [kernel-side implementation](
-../linux/kernel/sync/rcu.md), which add scheduler and memory-barrier
+[RCU](./rcu.md) (and its [kernel-side implementation](../linux/kernel/sync/rcu.md), which add scheduler and memory-barrier
 machinery user-space schemes do not need). Hazard pointers appear
 everywhere modern lock-free libraries ship - Folly, liburcu, Java's
 `VarHandle`-based libraries, .NET's `ConcurrentDictionary` internals.

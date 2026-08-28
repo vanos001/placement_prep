@@ -155,4 +155,4 @@ This is the basis for serving reads from local Observers in multi-region HDFS de
 - [HDFS High Availability](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HDFSHighAvailabilityWithNFS.html)
 - [HDFS Observer NameNode (CloudNYU)](https://www.youtube.com/watch?v=cloud-nyu-observer-nn)
 - [Apache Hadoop source code](https://github.com/apache/hadoop)
-- Konstantin Shvachko, "[The Hadoop Distributed File System](https://research.google/pubs/pub36022/)" (MSST 2010)
+- Konstantin Shvachko, "[The Hadoop Distributed File System](https://doi.org/10.1109/MSST.2010.5496972)" (MSST 2010)

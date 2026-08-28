@@ -9,9 +9,9 @@ only if the copy rate beats the dirtying rate. This page builds the
 pre-copy/post-copy machinery, the convergence math, and the container
 variant.
 
-Foundation pages: [virtualization internals](./virtualization.md) for
+Foundation pages: [virtualization internals](../../os/advanced/virtualization.md) for
 the shadow/EPT context that dirty tracking rides on, [CRIU
-checkpoint/restore](../advanced/criu-checkpoint-restore.md) for the
+checkpoint/restore](../../os/advanced/criu-checkpoint-restore.md) for the
 container-state serialization this composes with, and
 [seccomp/TEE](../../security/advanced/remote-attestation.md) for the
 confidential-compute migration flow.
@@ -167,7 +167,7 @@ for dr, name in ((DIRTY_RATE, "steady"), (DIRTY_RATE_HOT, "hot-loop")):
 
 ## Containers: CRIU-based migration
 
-Container migration composes [CRIU](../advanced/criu-checkpoint-restore.md)
+Container migration composes [CRIU](../../os/advanced/criu-checkpoint-restore.md)
 with the same strategies: checkpoint the process tree (memory, fds,
 namespaces), transfer the image, restore on the destination. The
 complications are container-specific - external connections need TCP
@@ -204,5 +204,5 @@ availability at a fraction of the complexity.
 3. [QEMU migration documentation](https://www.qemu.org/docs/master/devel/migration/main.html)
    - the shipped implementation: throttling, post-copy, TLS, and
    multifd parallel streams.
-4. [CRIU checkpoint/restore (this repo)](../advanced/criu-checkpoint-restore.md)
+4. [CRIU checkpoint/restore (this repo)](../../os/advanced/criu-checkpoint-restore.md)
    - the container-side serialization machinery.

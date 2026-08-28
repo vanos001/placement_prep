@@ -304,7 +304,7 @@ This is exactly trTCM: 10 Mb/s CIR with 100 KB CBS, 20 Mb/s PIR with 100 KB EBS.
 6. Linux man-pages. *tc(8), tc-tbf(8), tc-htb(8), tc-cbq(8), tc-police(8), tc-filter(8)*. — [https://man7.org/linux/man-pages/man8/tc.8.html](https://man7.org/linux/man-pages/man8/tc.8.html)
 7. Devera, M. (Martin Devera, "iker"). *HTB Home Page*. — The original HTB author's documentation. [http://luxik.cdi.cz/~devik/qos/htb/](http://luxik.cdi.cz/~devik/qos/htb/)
 8. Nichols, K., Jacobson, V. *Controlling High Bandwidth Aggregates in the Network*. ACM CCR, 1998 (cited for RED/WRED background, the policer companion). — [http://www.icir.org/floyd/papers/early.pdf](http://www.icir.org/floyd/papers/early.pdf)
-9. IEEE 802.1Qaz. *Congestion Management*. (For DCBX/PFC, the data-centre complement to DiffServ shaping.) — [https://1.ieee802.org/802/802.1/802.1az/](https://1.ieee802.org/802/802.1/802.1az/)
+9. IEEE 802.1Qaz. *Congestion Management*. (For DCBX/PFC, the data-centre complement to DiffServ shaping.) — [https://en.wikipedia.org/wiki/IEEE_802.1Qaz](https://en.wikipedia.org/wiki/IEEE_802.1Qaz)
 10. Wikipedia: [Token bucket](https://en.wikipedia.org/wiki/Token_bucket), [Leaky bucket](https://en.wikipedia.org/wiki/Leaky_bucket), [Committed information rate](https://en.wikipedia.org/wiki/Committed_information_rate).
 
 ## Interview Questions

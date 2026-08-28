@@ -232,7 +232,7 @@ graph LR
     end
 
     subgraph "Output"
-        SurgeCache[(Redis<br/>surge:{h3_hex})]
+        SurgeCache[("Redis<br/>surge:{h3_hex}")]
         PricingSvc[Pricing Service<br/>Reads surge at request time]
     end
 

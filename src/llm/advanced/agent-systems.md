@@ -52,10 +52,10 @@ This **Plan-Act-Observe-Think** loop is the core of every agent framework. The k
 ```mermaid
 graph TD
     subgraph "Agent Memory System"
-        CONV["Conversation Buffer""  Last N turns (context window)""]
-        SHORT["Working Memory""  Current task state, variables""]
-        LONG["Long-term Memory (Vector DB)""  Past interactions, facts""]
-        PROC["Procedural Memory""  Tool usage patterns, learned workflows""]
+        CONV["Conversation Buffer<br/>Last N turns (context window)"]
+        SHORT["Working Memory<br/>Current task state, variables"]
+        LONG["Long-term Memory (Vector DB)<br/>Past interactions, facts"]
+        PROC["Procedural Memory<br/>Tool usage patterns, learned workflows"]
     end
     
     QUERY["Agent query: What do I know about X?"] --> SHORT
@@ -215,7 +215,7 @@ class SafeToolExecutor:
 ```mermaid
 graph TD
     subgraph "Orchestrator Pattern (Single Controller)"
-        ORCH["Orchestrator Agent""  Delegates to specialists""] --> A1["Code Agent"]
+        ORCH["Orchestrator Agent<br/>Delegates to specialists"] --> A1["Code Agent"]
         ORCH --> A2["Research Agent"]
         ORCH --> A3["Review Agent"]
         ORCH --> AN["Agent N"]
@@ -231,7 +231,7 @@ graph TD
     
     subgraph "Debate Pattern (Adversarial Agents)"
         D1["Proposer"] <--> |"Argue"| D2["Critic"]
-        D2 --> D3["Judge Agent (decides)""]
+        D2 --> D3["Judge Agent (decides)"]
     end
 ```
 
@@ -371,15 +371,15 @@ The Model Context Protocol (MCP, by Anthropic) is an open standard for connectin
 ```mermaid
 graph TD
     subgraph "MCP Architecture"
-        HOST["MCP Host (e.g., Claude Desktop, IDE)""]
-        CLIENT["MCP Client (within host)"  "]
-        SERVER["MCP Server (per tool/data source)"  "]
+        HOST["MCP Host (e.g., Claude Desktop, IDE)"]
+        CLIENT["MCP Client (within host)"]
+        SERVER["MCP Server (per tool/data source)"]
         
         HOST --> CLIENT
         CLIENT <-->|"JSON-RPC over stdio/SSE"| SERVER
-        SERVER --> TOOL["Tool Implementation"  "]
-        SERVER --> RES["Resource (files, DBs, APIs)"  "]
-        SERVER --> PROMPT["Prompt Templates"  "]
+        SERVER --> TOOL["Tool Implementation"]
+        SERVER --> RES["Resource (files, DBs, APIs)"]
+        SERVER --> PROMPT["Prompt Templates"]
     end
 ```
 
@@ -426,14 +426,14 @@ graph TD
 ```mermaid
 graph TD
     subgraph "AI Coding Agent Architecture"
-        TASK["User: 'Fix the auth bug in login flow'""] --> PLAN2["Plan: Read code → identify bug → write fix → run tests""]
+        TASK["User: 'Fix the auth bug in login flow'"] --> PLAN2["Plan: Read code → identify bug → write fix → run tests"]
         
-        PLAN2 --> READ["Read files""  grep, read, AST parse""]
-        READ --> UNDERSTAND["Understand codebase""  Build mental model of structure""]
-        UNDERSTAND --> EDIT["Edit files""  Apply targeted changes""]
-        EDIT --> TEST["Run tests/lint""  Verify correctness""]
-        TEST --> |"Pass"| DONE["Done: Summarize changes""]
-        TEST --> |"Fail"| DEBUG["Debug: Read errors, adjust""]
+        PLAN2 --> READ["Read files<br/>grep, read, AST parse"]
+        READ --> UNDERSTAND["Understand codebase<br/>Build mental model of structure"]
+        UNDERSTAND --> EDIT["Edit files<br/>Apply targeted changes"]
+        EDIT --> TEST["Run tests/lint<br/>Verify correctness"]
+        TEST --> |"Pass"| DONE["Done: Summarize changes"]
+        TEST --> |"Fail"| DEBUG["Debug: Read errors, adjust"]
         DEBUG --> EDIT
     end
 ```
@@ -556,16 +556,16 @@ Production agent systems need comprehensive observability beyond standard LLM lo
 ```mermaid
 graph TD
     subgraph "Agent Observability Stack"
-        LOGS["Structured Logs""  Every thought, action, observation, tool call""]
-        TRACES["Distributed Traces""  End-to-end request flow with timing""]
-        METRICS["Metrics""  Completion rate, step count, token usage, cost, latency""]
-        ALERTS["Alerts""  Stuck agents, budget exceeded, safety violations""]
+        LOGS["Structured Logs<br/>Every thought, action, observation, tool call"]
+        TRACES["Distributed Traces<br/>End-to-end request flow with timing"]
+        METRICS["Metrics<br/>Completion rate, step count, token usage, cost, latency"]
+        ALERTS["Alerts<br/>Stuck agents, budget exceeded, safety violations"]
     end
     
-    LOGS --> DASH["Agent Dashboard""  Replay conversations, debug failures, audit actions""]
+    LOGS --> DASH["Agent Dashboard<br/>Replay conversations, debug failures, audit actions"]
     TRACES --> DASH
     METRICS --> DASH
-    ALERTS --> ONCALL["On-Call Response""  Investigate and fix agent issues""]
+    ALERTS --> ONCALL["On-Call Response<br/>Investigate and fix agent issues"]
 ```
 
 Key observability signals:

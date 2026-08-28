@@ -197,7 +197,7 @@ HBase's strength is the Hadoop ecosystem integration; Cassandra's is raw write t
 
 ## References
 
-- Chang et al., "[Bigtable: A Distributed Storage System for Structured Data](https://research.google/pubs/pub37806/)" (OSDI 2006) — HBase's inspiration
+- Chang et al., "[Bigtable: A Distributed Storage System for Structured Data](https://research.google/pubs/bigtable-a-distributed-storage-system-for-structured-data/)" (OSDI 2006) — HBase's inspiration
 - [Apache HBase documentation](https://hbase.apache.org/book.html)
 - [HBase Architecture documentation](https://hbase.apache.org/book.html#arch.overview)
 - [HBase RegionServer](https://hbase.apache.org/book.html#regions.arch)

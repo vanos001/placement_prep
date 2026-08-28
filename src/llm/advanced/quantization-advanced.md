@@ -284,8 +284,7 @@ Experts are distributed across GPUs. Each GPU holds a subset of experts. Tokens 
 ```mermaid
 graph TD
     subgraph "Expert Parallelism (4 GPUs, 8 experts)"
-        GPU0["GPU 0: Expert 0, 1"
-Tokens routed here by router"]
+        GPU0["GPU 0: Expert 0, 1<br/>Tokens routed here by router"]
         GPU1["GPU 1: Expert 2, 3"]
         GPU2["GPU 2: Expert 4, 5"]
         GPU3["GPU 3: Expert 6, 7"]
@@ -294,11 +293,10 @@ Tokens routed here by router"]
         A2A2["All-to-All: Combine"]
     end
     
-    INPUT["Tokens (all GPUs)"
-with expert assignments] --> A2A1
+    INPUT["Tokens (all GPUs)<br/>with expert assignments"] --> A2A1
     A2A1 --> GPU0 & GPU1 & GPU2 & GPU3
     GPU0 & GPU1 & GPU2 & GPU3 --> A2A2
-    A2A2 --> OUTPUT["Expert outputs (routed back)""]
+    A2A2 --> OUTPUT["Expert outputs (routed back)"]
 ```
 
 **Communication cost**: All-to-all dispatch and combine each transfer O(batch × hidden_dim) data. For large batch sizes, this is dominated by bandwidth (not latency), making EP efficient on NVLink-connected GPUs.

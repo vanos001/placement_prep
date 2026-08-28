@@ -167,7 +167,7 @@ Cooperative groups let you synchronize at any granularity (warp, block, cluster 
 - **HIP** (AMD): CUDA-like API for AMD GPUs. Drop-in for most CUDA code via `hipify-perl`. Used in PyTorch's ROCm backend.
 - **SYCL** (Intel): a C++ abstraction over multiple accelerators (NVIDIA, AMD, Intel). Code is portable across vendors.
 - **OpenACC**: directive-based (like OpenMP but for GPUs). Higher-level than CUDA but slower.
-- **OpenMP target**: see [OpenMP page](../hpc/openmp.md).
+- **OpenMP target**: see [OpenMP page](../../hpc/openmp.md).
 - **Triton** (OpenAI): a Python-based DSL for writing GPU kernels. Used in modern ML frameworks.
 
 For ML libraries (PyTorch, TensorFlow), the back-end is usually CUDA-specific code (cuBLAS, cuDNN), with HIP, SYCL, and OpenMP as alternatives for portability.

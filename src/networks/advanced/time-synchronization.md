@@ -11,7 +11,7 @@ time it is, and each fails differently when they don't:
   auth in both directions.
 - **Expiry**: leases, caches, and rate-limit windows are timeouts against a
   shared clock; skew converts them into correctness bugs
-  (see [Leases](../distributed/advanced/leases.md)).
+  (see [Leases](../../distributed/advanced/leases.md)).
 
 The engineering problem is precise: quartz clocks drift tens of parts per
 million (a few seconds per day), so every machine needs a continuous stream of
@@ -21,8 +21,8 @@ protocol stack that does this - NTP's timestamp algebra, Marzullo's
 fault-tolerant intersection, PTP's hardware-grade variant, and the Linux
 daemons that implement them. The logical-clock alternatives that sidestep
 physical time entirely are covered in
-[Clocks & Ordering](../distributed/advanced/clocks-ordering.md) and
-[Hybrid Logical Clocks](../distributed/advanced/hybrid-logical-clocks.md).
+[Clocks & Ordering](../../distributed/advanced/clocks-ordering.md) and
+[Hybrid Logical Clocks](../../distributed/advanced/hybrid-logical-clocks.md).
 
 ## NTP: The Four-Timestamp Exchange
 
@@ -128,7 +128,7 @@ its own free-running, nanosecond-resolution time; the kernel's
 
 Application-side timestamping uses `SO_TIMESTAMPING` to get hardware RX/TX
 stamps on sockets - see
-[SO_TIMESTAMPING: Network Packet Timestamping](../linux/kernel/networking/timestamping.md)
+[SO_TIMESTAMPING: Network Packet Timestamping](../../linux/kernel/networking/timestamping.md)
 for that layer. For plain NTP, the modern choice is
 [chrony](https://chrony-project.org/documentation.html) over the classic ntpd:
 
@@ -165,20 +165,20 @@ a one-second step is a step function through every timestamp a system computes:
 - **The long game**: CGPM 2022 Resolution 2 commits metrologists to abolishing
   leap seconds by 2035 - until then, every system that touches wall time still
   needs a policy. Distribution-level notes live in
-  [Hybrid Logical Clocks](../distributed/advanced/hybrid-logical-clocks.md), and
+  [Hybrid Logical Clocks](../../distributed/advanced/hybrid-logical-clocks.md), and
   [Mills' leap-second page](https://www.eecis.udel.edu/~mills/leap.html) covers
   the mechanics.
 
 ## Bounding Error Instead of Trusting Clocks
 
 NTP gives you a number with no error bar. Google's TrueTime, the engine under
-[Spanner](../distributed/fundamentals/spanner.md), is the counter-move: each
+[Spanner](../../distributed/fundamentals/spanner.md), is the counter-move: each
 machine keeps a correctness *interval* `[earliest, latest]` from GPS and atomic
 clock masters (1-7 ms wide typically), and the commit protocol *waits out* the
 uncertainty before acknowledging a write, buying external consistency with
 bounded - not zero - clock error. The full mechanism,
 commit-wait proof, and the critique of "bold engineering workaround" are in
-[TrueTime](../distributed/fundamentals/truetime.md); the takeaway here is the
+[TrueTime](../../distributed/fundamentals/truetime.md); the takeaway here is the
 shape: NTP's job is feeding CLOCK_REALTIME to every process, TrueTime's job is
 making the *uncertainty* itself a first-class API value.
 
@@ -192,7 +192,7 @@ holder, not the average; and Chubby-style systems extend leases by the observed
 maximum clock error, so time noise shows up as longer leases rather than split
 brains. The full treatment - Gray & Cheriton's original argument, safety
 analysis, failure modes - is in
-[Leases](../distributed/advanced/leases.md).
+[Leases](../../distributed/advanced/leases.md).
 
 ## Interview Angle
 

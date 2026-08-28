@@ -12,8 +12,7 @@ latch-free variants) that modern engines actually ship.
 
 Related pages: [B-trees](../indexing/b-tree.md) (the structure being
 latched), [Bw-tree and ART](../advanced/bwtree-art.md) (the lock-free
-alternative design point), and [MVCC garbage collection](
-../advanced/mvcc-garbage-collection.md) for the logical-lock layer
+alternative design point), and [MVCC garbage collection](../advanced/mvcc-garbage-collection.md) for the logical-lock layer
 latches coexist with.
 
 ## Latches vs locks, precisely
@@ -91,8 +90,7 @@ The cleverness is all in the edge cases:
   off-thread). Bounded dirt beats synchronized merge storms.
 - **Latch-free trees** (Bw-tree: delta records + a mapping table;
  ART with RCUs): the entire latch layer disappears in favor of
-  compare-and-swap on a page-pointer indirection - [Bw-tree and ART](
-  ../advanced/bwtree-art.md) covers that design point in depth; the
+  compare-and-swap on a page-pointer indirection - [Bw-tree and ART](../advanced/bwtree-art.md) covers that design point in depth; the
   cost is mapping-table indirection and epoch-based reclamation.
 
 ## The demo: latch hold time and right-link rescue

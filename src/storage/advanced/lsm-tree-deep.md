@@ -2,7 +2,7 @@
 
 The Log-Structured Merge Tree (LSM-tree), introduced by O'Neil et al. in 1996, is the storage engine behind nearly every modern write-heavy database: RocksDB (used in MySQL/MyRocks, CockroachDB, TiKV, Fess FoundationDB, MongoDB WiredTiger), Cassandra/ScyllaDB, HBase, LevelDB, and SQLite's LSM mode. The basic structure is simple — a MemTable in RAM, immutable SSTables on disk organized into levels — but the **compaction** strategy is what actually determines performance. This page is about the four major compaction styles, the write-amplification formula, and the subtle interactions with Bloom filters that bite at scale.
 
-For the basic structure (memtable, L0, SSTable format) see [the LSM internals page](../dbms/internals/lsm-trees.md). For compaction alternatives at a glance, see [LSM compaction overview](../storage/lsm-compaction.md).
+For the basic structure (memtable, L0, SSTable format) see [the LSM internals page](../../dbms/internals/lsm-trees.md). For compaction alternatives at a glance, see [LSM compaction overview](../lsm-compaction.md).
 
 ## Why Compaction Exists
 

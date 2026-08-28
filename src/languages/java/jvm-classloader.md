@@ -237,5 +237,5 @@ Module-path loading is still a class loader concept underneath — `jdk.internal
 - OSGi Core specification, §3 (Module Lifecycle and Class Loading): <https://docs.osgi.org/specification/osgi.core/8.0.0/framework.module.lifecycle.html>
 - OSGi "Class Loading and Visibility" deep dive: <https://blog.osgi.org/2011/10/osgi-and-java-modules-part-2.html>
 - Tomcat 10 `WebappClassLoaderBase` documentation: <https://tomcat.apache.org/tomcat-10.1-doc/class-loader-howto.html>
-- JBoss Modules user guide: <https://docs.jboss.org/author/display/MODULES/Home>
+- JBoss Modules user guide: <https://github.com/jboss-modules/jboss-modules>
 - Aleksey Shipilev on `ConstantValue` and `<clinit>` semantics: <https://shipilev.net/jvm/anatomy-quarks/>

@@ -567,6 +567,6 @@ graph TB
 ## Related Topics
 
 - [Debugging Overview](./overview.md) — tool selection guide
-- [GDB](./overview.md#gdb-the-gnu-debugger) — interactive debugging
+- [GDB](./overview.md#gdb--the-gnu-debugger) — interactive debugging
 - [Sanitizers](./sanitizers.md) — compile-time bug detection
 - [Kernel Modules](../kernel/modules.md) — common source of kernel crashes

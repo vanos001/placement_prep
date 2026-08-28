@@ -172,7 +172,6 @@ graph LR
         FileSvc -->|"Redirect to CDN"| CDN[CDN / Direct DC]
         CDN --> Recipient
     end
-end
 ```
 
 **Upload flow:** Files are uploaded in 512KB chunks with resumable support. Files are stored in Telegram's own data centers (not a cloud provider). For delivery, recipients receive a CDN URL that may route through the nearest Telegram DC or a CDN edge node.

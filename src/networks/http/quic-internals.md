@@ -1,10 +1,12 @@
-# QUIC Protocol Internals (RFC 9000)
+# QUIC Protocol Internals (RFC 9000 / 9001 / 9002)
 
 > Prerequisites: skim [QUIC](./quic.md) for the high-level "why UDP" pitch.
 > This page goes one layer deeper: packet formats, frame types, packet
-> number encryption, the loss-detection state machine, and connection
-> migration mechanics. Every byte diagram below is reproduced from the
-> normative text of RFC 9000.
+> number encryption and decoding, the loss-detection state machine, and
+> connection migration mechanics. Frame-type values, byte diagrams, and
+> cryptographic constants below are checked against the normative text
+> of RFC 9000 and RFC 9001 (the working examples in §12 reproduce the
+> test vectors printed in the RFCs themselves).
 
 ## 1. Where QUIC Lives in the Stack
 
@@ -38,8 +40,11 @@ waiting for every OS in the world to upgrade its TCP stack.
 The "packet protection" box is the trick: unlike TCP+TLS, where TLS just
 runs over an opaque byte stream, QUIC *interleaves* its transport
 handshake with the TLS handshake using a dedicated `CRYPTO` frame. The
-TLS record layer is not used at all — QUIC replaces it. See RFC 9001
-§1.
+TLS record layer is not used at all — QUIC replaces it (RFC 9001 §1).
+QUIC authenticates the entire header and encrypts almost everything
+except what receivers physically need in the clear: the header form,
+fixed bit, packet type, connection IDs, length, and the packet number
+truncation width.
 
 ## 2. Long vs Short Header Packets
 
@@ -47,65 +52,109 @@ QUIC distinguishes two packet classes by the high bit of byte 0:
 
 - **Long header packets** (high bit = 1) — used during handshake and
   0-RTT. They carry the version, the full source and destination
-  connection IDs, and a variable-length length field.
+  connection IDs, and a length field.
 - **Short header packets** (high bit = 0) — used after the handshake
   completes. The version, length, and source connection ID are elided
   (the peer already knows them).
 
-### Long header format (Initial, 0-RTT, Handshake, Retry)
+### Long header format (RFC 9000 §17.2)
+
+Byte 0 layout: `1` (header form) | `1` (fixed bit) | 2-bit long packet
+type | 4 type-specific bits. The long packet type values are Initial =
+`0x0`, 0-RTT = `0x1`, Handshake = `0x2`, Retry = `0x3`. After byte 0
+follow the version and connection IDs; everything else is
+type-specific. The single most commonly botched detail is the field
+*order* — the length field comes **before** the packet number:
 
 ```
+Initial Packet (RFC 9000 §17.2.2):
  0                   1                   2                   3
  0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
 +-+-+-+-+-+-+-+-+
-|1|1| Form Bits |   ← high bit=1 (long), next 2 bits = packet type
+|1|1|Type=0x0|RR|PP|   ← RR = reserved (2 bits), PP = PN length (2 bits)
 +-+-+-+-+-+-+-+-+
 |                    Version (32 bits)                          |
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-| DCID Len (8)  |   Destination Connection ID (variable…)       |
+| DCID Len (8)  |   Destination Connection ID (0..160 bits)     |
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-| SCID Len (8)  |   Source Connection ID (variable…)           |
+| SCID Len (8)  |   Source Connection ID (0..160 bits)          |
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-|              Packet Number (variable-length int)             |
+|                    Token Length (varint)                      |
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-|   Payload Length (variable-length int)                       |
+|                    Token (…)                                  |
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-|   Packet Payload  (AEAD-encrypted frames)                    |
+|                    Length (varint) — covers PN + payload      |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|                    Packet Number (1-4 bytes, protected)       |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|                    Protected Payload (AEAD-encrypted frames)  |
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 ```
 
-The 2-bit `Form Bits` field distinguishes Initial (00), 0-RTT (01),
-Handshake (10), Retry (11). Note `Retry` packets are *not* encrypted —
-they carry a 16-byte integrity tag computed with AEAD_AES_128_GCM
-using a hardcoded key derived from the string `"quic tls retry"` (RFC
-9001 §5.8). This stops off-path attackers from injecting fake Retry
-packets.
+0-RTT and Handshake packets are identical except they omit the Token
+fields. Retry packets (§17.2.5) are the outlier: they carry **no
+packet number, no length, and no payload at all** — just the header,
+DCID, SCID, an opaque Retry Token, and a 128-bit Retry Integrity Tag.
 
-### Short header format (1-RTT)
+### Retry integrity (RFC 9001 §5.8)
+
+The Retry Integrity Tag is the output of AEAD_AES_128_GCM over an
+empty plaintext, with fixed, RFC-assigned parameters:
+
+- key K = `0xbe0c690b9f66575a1d766b54e368c84e` (128 bits)
+- nonce N = `0x461599d35d632bf2239825bb` (96 bits)
+- both derived by HKDF-Expand-Label from the secret
+  `0xd9c9943e6101fd200021506bcc02814c73030f25c79d71ce876eca876e6fca8e`
+  with labels `"quic key"` and `"quic iv"` respectively
+- associated data = the *Retry Pseudo-Packet*: the Retry packet minus
+  the integrity tag, **prepended** with the ODCID (the DCID of the
+  Initial packet this Retry responds to)
+
+Embedding the client's original DCID in the pseudo-packet is what
+stops off-path attackers from injecting fake Retry packets: only an
+endpoint that actually observed the client's Initial can compute a
+valid tag.
+
+### Short header format (RFC 9000 §17.3)
 
 ```
  0                   1                   2                   3
  0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
 +-+-+-+-+-+-+-+-+
-|0|1|P|  K  |RR |
-+-+-+-+-+-+-+-+-+
-|   DCID (variable length, up to 20 bytes)                      |
+|0|1|S|RR|K|PP|   ← S = spin, RR = reserved (2), K = key phase,
++-+-+-+-+-+-+-+-+     PP = packet number length (2)
+|   DCID (0..20 bytes, as chosen by the peer)                   |
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-|  Packet Number (1, 2, or 4 bytes, truncated)                 |
+|  Packet Number (1, 2, 3, or 4 bytes, truncated + protected)   |
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-|   Packet Payload (AEAD-encrypted frames)                      |
+|   Protected Payload (AEAD-encrypted frames)                   |
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 ```
 
-- `P` (1 bit) — spin bit, optional heartbeat for path measurement
-  (RFC 9306).
-- `K` (1 bit) — set when the key phase has flipped, signalling a
-  key-update.
-- `RR` (2 bits) — reserved, must be 0 unless the peer negotiated the
-  use of those bits via `grease_quic_bit`.
+- `S` — the **latency spin bit** (RFC 9000 §17.4). The server reflects
+  the value it received; the client flips it once per RTT, so an
+  on-path observer can measure the interval between toggle events to
+  estimate RTT. It is optional: endpoints must disable it for at least
+  one in every 16 paths (or connection IDs) so spin-disabled
+  connections are commonly observed, and administrators must be able
+  to turn it off globally or per connection.
+- `K` — the **key phase bit**, toggled to signal a key update
+  (RFC 9001 §6).
+- `RR` — reserved bits; a sender MAY set them to any value
+  (in-packet greasing), and a receiver MUST ignore them.
+- `PP` — packet number length minus 1: packet numbers are encoded in
+  **1, 2, 3, or 4 bytes** (two of the four 2-bit encodings' full
+  ranges are legal; 3-byte packet numbers do occur).
 
-The DCID is the *only* identifier that survives NAT rebinding, because
-the SCID is not sent in short-header packets.
+The fixed bit itself can be greased too: the `grease_quic_bit`
+transport parameter (0x2ab2, RFC 9287) signals "I will accept packets
+with the QUIC (fixed) bit cleared to 0", letting future versions
+repurpose that bit without ossifying it. This is *the fixed bit*
+(0x40), not the reserved bits — reserved-bit greasing needs no
+negotiation at all.
+
+The DCID is the *only* identifier that survives NAT rebinding in the
+short header, because the SCID is not sent there.
 
 ## 3. Connection IDs — More than an Address
 
@@ -115,19 +164,23 @@ Wi-Fi to 5G — the connection dies. QUIC introduces **connection IDs
 (CIDs)** that are *end-to-end meaningful* and decoupled from the IP
 tuple.
 
-Each side picks one or more CIDs for itself. The client puts its chosen
-DCID in the Initial; the server replies with its own SCID. New CIDs are
-issued with `NEW_CONNECTION_ID` frames, each tagged with a sequence
-number and an optional 16-byte stateless reset token. The retired ones
-go out with `RETIRE_CONNECTION_ID`. A connection can have up to 8
-active CIDs on either side at once (RFC 9000 §5.1.1).
+Each side issues CIDs for its peer to use as *destination* IDs. New
+CIDs travel in `NEW_CONNECTION_ID` frames, each carrying a sequence
+number, a `Retire Prior To` value, and a 16-byte stateless reset
+token. The peer retires old ones with `RETIRE_CONNECTION_ID`. How many
+CIDs each side must issue is bounded by the peer's
+`active_connection_id_limit` transport parameter — the default is 2,
+and values below 2 are invalid (RFC 9000 §18.2). There is no fixed
+"8 active CIDs" constant in the spec; the cap is whatever the peer
+advertised.
 
 The clever bit is that CIDs are *routing keys*. A QUIC-aware load
-balancer can read the DCID straight out of the cleartext long-header
-(or out of the short header, which is also unencrypted for the CID
-portion) and route the datagram to the right backend *without*
-terminating TLS. This is the foundation of things like the *QUIC-LB*
-draft, which encodes a backend identifier inside the CID layout.
+balancer can read the DCID straight out of the cleartext header and
+route the datagram to the right backend *without* terminating TLS.
+This is the foundation of QUIC-LB — the IETF load-balancing design
+(draft-ietf-quic-load-balancers) that encodes a backend identifier
+inside the CID layout so that stateless routers can demultiplex
+handshakes.
 
 ```
             client                       LB                       backend
@@ -142,74 +195,98 @@ draft, which encodes a backend identifier inside the CID layout.
               │<─────────────────────────│                           │
 ```
 
-Stateless reset tokens are a fallback: if a backend has lost all state
-for a connection (e.g., it crashed and rebooted) but the client keeps
-sending packets, the backend can reply with a *stateless reset* — a
-short packet whose last 16 bytes are an HMAC of the connection's reset
-token. The client recognizes its own token, aborts the connection
-cleanly, and frees its state.
+Stateless reset tokens are a fallback: if an endpoint loses all state
+for a connection (e.g., it crashed and rebooted) but the peer keeps
+sending packets, it can reply with a **stateless reset**
+(RFC 9000 §10.3) — a minimal packet that begins with the fixed bits
+`0b01` followed by unpredictable bytes, and whose **last 16 bytes are
+the stateless reset token itself** (distributed earlier inside the
+encrypted `NEW_CONNECTION_ID` frame). The peer recognises its token
+and immediately terminates the connection. Nothing is HMACed on the
+wire — the "authentication" is simply knowing a 16-byte value that was
+never sent in the clear for this connection.
 
-## 4. Packet Number Encryption (Header Protection)
+## 4. Packet Protection and Header Protection (RFC 9001 §5.4)
 
 Even the *packet number* is encrypted in QUIC. This is what prevents
 passive observers from linking a 0-RTT packet to the corresponding
-handshake — a property called **packet number confidentiality**.
+handshake — a property called **packet number confidentiality**. Header
+protection is a QUIC-specific design (RFC 9001 §5.4) — TLS 1.3 record
+padding has nothing to do with it.
 
-The mechanism is **header protection**, borrowed from TLS 1.3's record
-padding scheme. For every packet, the AEAD produces a 16-byte
-authentication tag. The 5 bytes right before that tag are taken and run
-through a mask function — either `AES-ECB` of a 5-byte sample, or
-ChaCha20 keystream — and XORed into the high bits of the packet
-number and the reserved bits. So the plaintext packet number lives in
-the clear only after the receiver has decrypted the payload (because
-the mask requires the AEAD output as input).
+The mechanics:
+
+1. The AEAD encrypts the payload (header protection is applied *after*
+   packet protection).
+2. A **16-byte sample of ciphertext** is taken starting at an offset of
+   4 bytes after the *start* of the packet number field — i.e., the
+   receiver that doesn't yet know the PN length just samples the first
+   16 bytes after the longest possible 4-byte PN. This is the
+   *beginning* of the protected payload, not the tail.
+3. The sample is encrypted with a separate **header protection key**
+   (derived with the `"quic hp"` label): AES-based suites compute
+   `AES-ECB(hp_key, sample)`, ChaCha20 suites run ChaCha20 with the
+   sample as plaintext. Either way the output is a **5-byte mask**.
+4. The mask is XORed in: long headers unmask the low 4 bits of byte 0
+   plus the PN bytes; short headers unmask the low 5 bits (which
+   includes the key phase) plus the PN bytes. Leftover mask bytes are
+   unused when the PN is shorter than 4 bytes.
 
 ```
    ciphertext packet bytes:
-   +----------+----------+----------+----------+----------+
-   | hdr      | pn       | ... encrypted payload ... | tag(16)|
-   +----------+----------+----------+----------+----------+
-                                  sample = last 16 bytes of ciphertext payload
-                                  mask   = header_protection(sample)
-                                  pn[0..n] ^= mask[0..n]
+   +----------+----------+-----------------------------+----------+
+   | hdr      | pn(1-4)  | protected payload ...       | tag (16) |
+   +----------+----------+-----------------------------+----------+
+                          ^
+                          sample = 16 bytes starting right after the
+                                   packet number field (as the receiver
+                                   sees it: PN assumed 4 bytes long)
+                          mask   = header_protection(hp_key, sample)
+                          hdr/pn ^= mask (5 bytes, LSB-aligned)
 ```
 
-Because packet numbers are truncated to the smallest width that
-distinguishes them from recently-seen numbers (1, 2, or 4 bytes), the
-mask only covers those low bytes. After decryption, the receiver
-reconstructs the full 62-bit packet number by extrapolating from the
-largest previously observed value (RFC 9000 §17.3 / Appendix A).
+Because only the low bits of the PN are hidden, packet numbers are
+truncated to the smallest width that still decodes — a sender must
+leave the top bits implicit, and the receiver reconstructs the full
+62-bit number from `largest_pn + 1` (RFC 9000 §17.1 and Appendix A,
+worked through in §12 below).
 
-## 5. Frame Types
+## 5. Frame Types (RFC 9000 §12.4 / §19)
 
-Inside an encrypted packet payload lives a sequence of frames. The
-important ones:
+Inside a protected packet payload lives a sequence of complete frames.
+The complete list of v1 types (RFC 9000 Table 3):
 
-| Type byte | Frame       | Notes                                                          |
-|----------:|-------------|----------------------------------------------------------------|
-| 0x00      | PADDING     | Pure zero bytes, only used to pad a datagram to MTU size.      |
-| 0x01      | PING        | Triggers an immediate ACK; used for keepalive and anti-amplify. |
-| 0x02-0x03 | ACK         | Carries ACK ranges; E bit (0x03) signals ECN echo counts.      |
-| 0x04-0x06 | RESET_STREAM| One stream aborted, with final offset + error code.            |
-| 0x07      | STOP_SENDING| Tell peer to stop sending on a stream.                          |
-| 0x08      | CRYPTO      | Carries TLS handshake bytes; offset+length+data.               |
-| 0x09-0x0f | NEW_TOKEN   | Server-issued token for address validation (future 0-RTT).     |
-| 0x10-0x14 | STREAM      | Per-stream data, with FIN bit.                                 |
-| 0x15-0x18 | MAX_DATA    | Bump connection-level flow-control window.                      |
-| 0x19-0x1c | MAX_STREAMS| Bump the count of allowed bidir/unidir streams.                 |
-| 0x1d-0x1e | BLOCKED    | Signal that we are blocked on flow control.                    |
-| 0x1f-0x24 | STREAM_BLOCKED / STREAM_RESET | Per-stream flow-control signals.            |
-| 0x25-0x26 | STOP_SENDING| (one variant)                                                  |
-| 0x2c-0x2d | NEW_CONNECTION_ID | New CID + stateless reset token + retire-prior-to.       |
-| 0x2e-0x2f | RETIRE_CONNECTION_ID | "You can drop CID with sequence N".                     |
-| 0x30-0x31 | PATH_CHALLENGE / PATH_RESPONSE | 8-byte random, for path validation.            |
-| 0x32-0x33 | CONNECTION_CLOSE | Transport-level or application-level close.                 |
-| 0x34      | HANDSHAKE_DONE| Sent by server once the TLS Finished is verified.              |
+| Type byte | Frame                 | Notes                                                            |
+|-----------|-----------------------|------------------------------------------------------------------|
+| 0x00      | PADDING               | Zero bytes; also consumes congestion window (§13.2.7).           |
+| 0x01      | PING                  | Ack-eliciting keepalive; no fields.                              |
+| 0x02-0x03 | ACK                   | ACK ranges; 0x03 carries ECN counts. Not ack-eliciting.          |
+| 0x04      | RESET_STREAM          | Abruptly terminate one stream: error code + final size.          |
+| 0x05      | STOP_SENDING          | Ask the peer to stop sending on a stream.                        |
+| 0x06      | CRYPTO                | TLS handshake bytes, with offset for out-of-order delivery.      |
+| 0x07      | NEW_TOKEN             | Server-issued token for future address validation (0-RTT).       |
+| 0x08-0x0f | STREAM                | Data on a stream; bits 0x04 = OFFSET, 0x02 = LEN, 0x01 = FIN.    |
+| 0x10      | MAX_DATA              | Raise connection-level flow-control limit.                       |
+| 0x11      | MAX_STREAM_DATA       | Raise stream-level flow-control limit.                           |
+| 0x12-0x13 | MAX_STREAMS           | Raise stream-count limit (0x12 bidi, 0x13 unidir).               |
+| 0x14      | DATA_BLOCKED          | Connection-level flow control blocked.                           |
+| 0x15      | STREAM_DATA_BLOCKED   | Stream-level flow control blocked.                               |
+| 0x16-0x17 | STREAMS_BLOCKED       | Stream-count limit reached (0x16 bidi, 0x17 unidir).             |
+| 0x18      | NEW_CONNECTION_ID     | New CID + sequence + Retire Prior To + stateless reset token.    |
+| 0x19      | RETIRE_CONNECTION_ID  | Drop the CID with the given sequence number.                     |
+| 0x1a      | PATH_CHALLENGE        | 8 unpredictable bytes, for path validation.                      |
+| 0x1b      | PATH_RESPONSE         | Echo the 8 challenge bytes back on the same path.                |
+| 0x1c-0x1d | CONNECTION_CLOSE      | 0x1c = transport error, 0x1d = application error.                |
+| 0x1e      | HANDSHAKE_DONE        | Sent by the server once the handshake is confirmed.              |
 
-Each STREAM frame (0x08-0x0f subtypes vary by flags) carries a stream
-ID, an offset, a length, and (optionally) the FIN bit. Streams are
-identified by a 62-bit integer whose low two bits encode
-directionality:
+A payload must contain at least one frame; receiving a packet with zero
+frames is a PROTOCOL_VIOLATION. The 3-bit sub-encoding inside the
+STREAM type byte is worth memorising: `0x08` bare, `+0x01` FIN,
+`+0x02` length present, `+0x04` offset present — e.g. `0x0b` =
+STREAM with offset + length + FIN.
+
+Streams are identified by a 62-bit integer whose low two bits encode
+directionality and initiator (RFC 9000 §2.1):
 
 - bit 0 = 0 → client-initiated; = 1 → server-initiated
 - bit 1 = 0 → bidirectional; = 1 → unidirectional
@@ -240,23 +317,27 @@ A 1-RTT timeline:
                                             <────  1-RTT [ HANDSHAKE_DONE + app frames ]
 ```
 
-The single round-trip for the full TLS 1.3 handshake is the 1-RTT
-case. 0-RTT is the optimisation where the client, having cached the
-server's transport parameters and a TLS session ticket from a previous
-connection, sends a `0-RTT` packet *in the same datagram* as its
-Initial. Inside that 0-RTT packet are application STREAM frames —
-already encrypted under keys derived from the resumption master
-secret.
+QUIC packets of different types may be coalesced into one UDP datagram
+(RFC 9000 §12.2), so the client's first datagram can carry Initial
+packets; once 1-RTT keys exist, everything switches to short header
+packets.
 
-The catch is replay. TLS 1.3's 0-RTT data is encrypted under a
-forward-secure key, but a network attacker can capture the 0-RTT
-packet and replay it to the server later. Servers must therefore (a)
-only accept 0-RTT data whose transcript hash matches what they
-issued, and (b) only let through idempotent operations in that
-window. The defense-in-depth mechanism is a *strike register* — a
-bounded bloom filter or single-use token table — that detects
-duplicate 0-RTT packets within a replay window (RFC 8446 §8 + RFC
-9001 §8).
+0-RTT is the optimisation where the client, having cached the server's
+transport parameters and a TLS session ticket from a previous
+connection, sends application STREAM frames immediately in 0-RTT
+packets (which may be coalesced with the Initial). The cryptographic
+detail that matters: **0-RTT keys are derived from the resumption
+secret and are *not* forward-secure** (RFC 8446 §2.2, RFC 9001 §4.2.1)
+— anyone who later compromises the PSK can decrypt recorded 0-RTT
+data. That is precisely why replay protection exists.
+
+The replay story has two halves. First, single-use tickets: a server
+that hands out each session ticket once can reject replays, which is
+why TLS 1.3 defines the per-ticket `max_early_data_size` and a
+recommended ticket age check with a tolerance window. Second,
+application discipline: servers must only accept 0-RTT for operations
+that are safe to replay (RFC 9001 §8); treating 0-RTT like 1-RTT for
+mutating requests is the classic integration bug.
 
 ## 7. Loss Detection (RFC 9002)
 
@@ -269,30 +350,26 @@ The big idea is **per-packet-number tracking plus a Probe Timeout
 
 1. Every packet is acked individually via the ACK frame, which carries
    the largest acked PN plus a list of *ranges* of acked PNs.
-2. *Ack-induced loss detection* — if a packet is sent and N packets
-   with higher PNs are acked, the original is declared lost
-   (RFC 9002 §6.1). The threshold `packet_threshold` defaults to 3.
+2. *Packet-threshold loss detection* — if a packet is sent and 3 or
+   more packets with higher PNs are acked (`kPacketThreshold = 3`),
+   the original is declared lost (RFC 9002 §6.1).
 3. *Time-threshold loss detection* — if a packet is unacked for longer
-   than `RTT * (9/8)` it's declared lost. The `1/8` factor is a
-   safety margin against reordering.
+   than `kTimeThreshold * smoothed_rtt` with `kTimeThreshold = 9/8`,
+   it's declared lost. The 1/8 margin is a safety factor against
+   reordering.
 4. *Probe Timeout (PTO)* — if no ack is received for
    `smoothed_rtt + max(4*rttvar, kGranularity) + max_ack_delay`, send
-   *probe* packets (a PING plus an ack-eliciting frame) in pairs to
-   elicit an immediate ACK. PTO does not declare loss — it just
-   keeps the loss-detection clock alive.
-
-PTO is what makes QUIC robust to reordering-induced spurious timeouts:
-the sender doesn't conclude that a packet was lost just because its
-retransmission timer fired. It sends a probe, gets an ACK back,
-updates RTT, and only then decides whether to declare loss.
+   *probe* packets (ack-eliciting frames) to elicit an immediate ACK.
+   PTO does not declare loss — it keeps the loss-detection clock alive
+   by forcing the peer to acknowledge.
 
 ```
    send PN=42  ────────────────────────────────────────────────
               t                                  t+PTO
               │                                   │
-              │  no ack...                        │  send PING + PING probe pair
+              │  no ack...                        │  send probe (ack-eliciting)
               │                                   │
-   ack PN=43..50 arrives at t+RTT ─────>  declare PN=42 lost (k=3 packets acked above)
+   ack PN=43..50 arrives ─────>  declare PN=42 lost (3 packets acked above)
                                               └─> retransmit its frames in new packets
 ```
 
@@ -323,10 +400,10 @@ In practice most production QUIC stacks ship multiple controllers:
 The sender also has a hard **anti-amplification limit** (RFC 9000
 §8.1): until the client proves it owns the source address, the server
 may not send more than 3× the bytes it has received. This blocks
-reflection-style amplification attacks. The limit is lifted once the
-client sends a Handshake packet that completes the address-validation
-step, or once the server has issued a NEW_TOKEN and the client echoes
-it back.
+reflection-style amplification attacks. Validation completes when the
+server sees a HANDSHAKE_DONE-eligible path (or the client echoes a
+NEW_TOKEN on the new path); the limit is enforced per path, not per
+connection.
 
 ## 9. Connection Migration
 
@@ -339,21 +416,34 @@ flow is:
 2. The server replies to the new path, but it must *validate* that
    path before sending more than 3× the bytes received — i.e., the
    anti-amplification limit kicks in again for the new path.
-3. Validation: server sends a `PATH_CHALLENGE` containing 8 random
-   bytes. Client must echo them back in a `PATH_RESPONSE` on the
-   same path. Only then is the path "validated".
+3. Validation: server sends a `PATH_CHALLENGE` containing 8
+   unpredictable bytes. Client must echo them back in a
+   `PATH_RESPONSE` on the same path. Only then is the path "validated".
 4. Once validated, the server can use the new path freely, and the
    connection survives the migration.
 
-There are also non-trivial gotchas:
+What the spec actually requires of the congestion controller after
+validation (RFC 9000 §9.4): the controller and RTT estimator **must be
+reset to initial values** for the new path — *unless* the address
+change is port-only (the classic NAT-rebinding case), where the
+endpoint MAY retain its state. There is no "shrink cwnd to half"
+recommendation; plain reset is the normative behaviour, and carrying
+an old path's cwnd onto a wildly different path is explicitly warned
+against.
+
+Other gotchas:
 
 - Path MTU can differ between paths. QUIC re-measures PMTU on the new
-  path using DPLPMTUD (RFC 8899).
-- RTT estimates for the new path start fresh; the congestion
-  controller must not assume the old RTT.
-- A client that's behind NAT can spontaneously migrate without ever
+  path using DPLPMTUD (RFC 8899, integrated into QUIC at RFC 9000
+  §14.3).
+- A client behind NAT can spontaneously migrate without ever
   noticing — the migration is transparent. Servers should treat
-  migration as the rule, not the exception.
+  NAT rebindings as routine.
+- Non-migrating connections also deserve care: an endpoint that
+  changes the DCID it sends *without* migrating should expect the
+  peer's LB tier to re-hash it (that is exactly what new CIDs are
+  for — "intent to change path" vs "privacy rebinding" is signaled by
+  `NEW_CONNECTION_ID` / `Retire Prior To`, not by IP changes alone).
 
 ## 10. Comparison to TCP + TLS
 
@@ -376,9 +466,10 @@ transport stack in userspace.
 
 ## 11. Common Pitfalls
 
-1. **0-RTT for mutating requests.** Replays can do real damage. Limit
-   0-RTT to GET; do an anti-replay strike check before processing any
-   other method.
+1. **0-RTT for mutating requests.** Replays can do real damage, and
+   0-RTT keys are not forward-secure. Limit 0-RTT to idempotent
+   requests; check ticket age and single-use state before processing
+   anything else.
 2. **Forgetting the anti-amplification limit.** A server that sends
    more than 3× received bytes before validation can be abused as an
    amplification reflector. Implementations must enforce the cap per
@@ -387,13 +478,69 @@ transport stack in userspace.
    intentionally changes the DCID while migrating, the server should
    *also* validate the new path with PATH_CHALLENGE; otherwise an
    on-path attacker can hijack the connection.
-4. **Tiny initial congestion windows on resumption.** Some
-   implementations reset cwnd to 10 MSS after migration. That kills
-   throughput for large uploads — instead, the spec recommends
-   cwnd = max(2 * MSS, cwnd_before / 2).
-5. **Trusting the spin bit for path measurement.** The spin bit (P
-   in the short header) is opt-in and observers can spoof it; it's a
-   hint, not a source of truth.
+4. **Carrying congestion state across paths.** RFC 9000 §9.4 requires
+   resetting cwnd and the RTT estimator to initial values on a
+   validated path change (port-only NAT rebinding excepted). Keeping
+   the old cwnd makes the sender transmit too aggressively on the new
+   path until the estimator adapts.
+5. **Trusting the spin bit for path measurement.** The spin bit is
+   opt-in, disabled for at least 1/16 of connections, and observers
+   can see it but never forge meaningful toggles into the RTT estimate
+   of a well-implemented endpoint; treat it as a hint, not a source of
+   truth.
+6. **Assuming packet numbers are 1, 2, or 4 bytes.** The 3-byte
+   encoding is legal and real (a 2-bit length field with four
+   values); a decoder that only handles 1/2/4 will desynchronise on
+   long-lived connections where PN gaps land in the 3-byte range.
+
+## 12. Packet Number Decoding — Worked Example (RFC 9000 Appendix A)
+
+The receiver recovers a full 62-bit packet number from a truncated
+field using the window centered on `expected_pn = largest_pn + 1`:
+
+```python
+# RFC 9000 Appendix A - packet number decoding (transcribed from Figure 47)
+def decode_pn(largest_pn, truncated_pn, pn_nbits):
+    expected_pn = largest_pn + 1
+    pn_win = 1 << pn_nbits
+    pn_hwin = pn_win // 2
+    pn_mask = pn_win - 1
+    candidate = (expected_pn & ~pn_mask) | truncated_pn
+    if (candidate <= expected_pn - pn_hwin
+            and candidate < (1 << 62) - pn_win):
+        return candidate + pn_win
+    if (candidate > expected_pn + pn_hwin
+            and candidate >= pn_win):
+        return candidate - pn_win
+    return candidate
+
+# Worked example from RFC 9000 Appendix A:
+assert decode_pn(0xa82f30ea, 0x9b32, 16) == 0xa82f9b32
+
+print(hex(decode_pn(0xa82f30ea, 0x9b32, 16)))
+print(hex(decode_pn(0xa82f30ea, 0x01, 8)))
+print(hex(decode_pn(0x00ffffff, 0xff, 8)))
+print(hex(decode_pn(0x0100, 0x00, 8)))
+```
+
+Real output:
+
+```
+0xa82f9b32
+0xa82f3101
+0xffffff
+0x100
+```
+
+The first line is the RFC's own worked example: with the largest
+authenticated PN at `0xa82f30ea`, a 16-bit field containing `0x9b32`
+decodes to `0xa82f9b32`. The second shows the window logic: truncated
+`0x01` is inside the "came before expected" half of the 8-bit window,
+so it is interpreted as `+256` relative to the naive reconstruction.
+Lines 3-4 confirm behaviour at window boundaries: a truncation of
+`0xff` just below `0x1000000` snaps back to `0xffffff`, not
+`0x10000ff`, and a fresh packet right after a roll-over decodes
+exactly.
 
 ## References
 
@@ -401,11 +548,16 @@ transport stack in userspace.
   https://www.rfc-editor.org/rfc/rfc9000.html
 - RFC 9001 — *Using TLS to Secure QUIC*. https://www.rfc-editor.org/rfc/rfc9001.html
 - RFC 9002 — *QUIC Loss Detection and Congestion Control*. https://www.rfc-editor.org/rfc/rfc9002.html
-- RFC 9369 — *Version-Independent QUIC*. (Defines the fixed bits in
-  long headers so that v1 and v2 packets are distinguishable.)
+- RFC 9287 — *Greasing the QUIC Bit* (the `grease_quic_bit` transport
+  parameter, 0x2ab2). https://www.rfc-editor.org/rfc/rfc9287.html
+- RFC 9369 — *QUIC Version 2* (v2 header forms and type codes).
   https://www.rfc-editor.org/rfc/rfc9369.html
-- RFC 9306 — *Datagram Packetization Layer (DPLPMTUD) for QUIC* and
-  the spin bit. https://www.rfc-editor.org/rfc/rfc9306.html
+- RFC 8899 — *Datagram Packetization Layer Path MTU Discovery*
+  (DPLPMTUD). https://www.rfc-editor.org/rfc/rfc8899.html
+- QUIC-LB — *draft-ietf-quic-load-balancers* (CID-based routing).
+  https://datatracker.ietf.org/doc/draft-ietf-quic-load-balancers/
+- RFC 8446 — *The Transport Layer Security (TLS) Protocol Version 1.3*
+  (0-RTT semantics and replay risks). https://www.rfc-editor.org/rfc/rfc8446.html
 - IETF QUIC WG — *WG wiki and drafts archive.*
   https://datatracker.ietf.org/wg/quic/about/
 - Cloudflare — *"Cubic and BBR in quiche"*.

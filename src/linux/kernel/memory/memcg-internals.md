@@ -166,7 +166,7 @@ The `memory.events` file is the operational fire alarm: `high` climbing means
 throttling is already happening (latency is being paid), `max` means charges
 failed, `oom_kill` means processes died. Alerting on `high` rate is the earliest
 honest signal a container is under-sized — before PSI stalls show up in
-[psi](../../processes/psi.md) tail latencies.
+[psi](../processes/psi.md) tail latencies.
 
 ## Production Failure Modes
 
@@ -367,7 +367,7 @@ both `swap` and `max` events.
 - [Page reclaim](reclaim.md) — the LRU/workingset machinery memcg reclaim calls into
 - [The OOM killer](oom-killer.md) — global selection vs cgroup-scoped selection
 - [Slab allocator](slab-allocator.md) — what `obj_cgroup`-charged SLUB pools are
-- [PSI](../../processes/psi.md) — the pressure stalls high-throttle sleep feeds
+- [PSI](../processes/psi.md) — the pressure stalls high-throttle sleep feeds
 - [Containers and cgroups v2](../../containers/cgroups-v2.md) — runtime-side view
 
 ## References

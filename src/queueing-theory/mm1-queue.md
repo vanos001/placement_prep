@@ -146,7 +146,7 @@ The **non-linear blow-up**: latency is proportional to 1/(1−ρ). A 50% increas
 
 ### The Statement
 
-**Theorem (Little, 1961; Stidham, 1972 generalisation).** *For any queueing system in statistical equilibrium — with arbitrary arrival process, arbitrary service time distribution, arbitrary scheduling discipline, arbitrary topology — the long-run time-average number of customers L in the system equals the long-run arrival rate λ times the long-run average time W each customer spends in the system:*
+**Theorem (Little, 1961; Stidham, 1974 generalisation).** *For any queueing system in statistical equilibrium — with arbitrary arrival process, arbitrary service time distribution, arbitrary scheduling discipline, arbitrary topology — the long-run time-average number of customers L in the system equals the long-run arrival rate λ times the long-run average time W each customer spends in the system:*
 
 ```
 L = λ W

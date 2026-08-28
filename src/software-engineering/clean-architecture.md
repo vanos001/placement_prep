@@ -270,7 +270,7 @@ Both patterns isolate the business logic. Clean Architecture's 4 layers are more
 
 - Robert C. Martin, "[Clean Architecture: A Craftsman's Guide to Software Structure and Design](https://www.oreilly.com/library/view/clean-architecture-a/9780134494272/)" (Prentice Hall 2017)
 - [The Clean Architecture blog post](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html) (Uncle Bob, 2012)
-- [Clean Architecture with Python (Pydantic)](https://whitebeam.digital/insights/clean-architecture-python/)
+- [Clean Architecture with Python (Pydantic)](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html)
 - [Clean Architecture in Go](https://github.com/bxcodec/go-clean-arch) (popular reference impl)
 - [Hexagonal vs Clean Architecture (Jason Taylor)](https://jasonpearce.github.io/2017/03/02/hexagonal-clean-architecture.html)
 - [LWN: Clean Architecture overview (2022)](https://lwn.net/Articles/856675/)

@@ -17,12 +17,7 @@ graph TD
     end
 
     subgraph "Advanced RAG"
-        Q2["Query"] --> PRE["Query Preprocessing""  
-Rewrite, expand, decompose"] --> MULTI["Multi-Stage Retrieval""  
-Keyword + Vector + Knowledge Graph"] --> RERANK["Reranker""  
-Cross-encoder scoring"] --> COMPRESS["Context Compression""  
-Extract relevant passages"] --> LLM2["LLM Generate""  
-With citations"]
+        Q2["Query"] --> PRE["Query Preprocessing<br/>Rewrite, expand, decompose"] --> MULTI["Multi-Stage Retrieval<br/>Keyword + Vector + Knowledge Graph"] --> RERANK["Reranker<br/>Cross-encoder scoring"] --> COMPRESS["Context Compression<br/>Extract relevant passages"] --> LLM2["LLM Generate<br/>With citations"]
     end
 ```
 

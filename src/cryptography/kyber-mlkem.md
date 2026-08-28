@@ -1,6 +1,6 @@
 # ML-KEM (Kyber) — NIST FIPS 203
 
-ML-KEM (Module-Lattice-Based Key Encapsulation Mechanism) is the NIST FIPS 203 (2024) standard for post-quantum key exchange. It originated as the CRYSTALS-Kyber submission by Bos, Ducas, Kiltz, Lyubashevsky, van Saarloos, and others, and was selected by NIST in 2022 as the primary PQC KEM. This page covers the underlying Module-LWE problem, the public-key encryption scheme (PKE), the Fujisaki-Okamoto-style KEM transform, parameter sets, and how ML-KEM compares to RSA and ECDH.
+ML-KEM (Module-Lattice-Based Key Encapsulation Mechanism) is the NIST FIPS 203 (2024) standard for post-quantum key exchange. It originated as the CRYSTALS-Kyber submission by Bos, Ducas, Kiltz, Lepoint, Lyubashevsky, Schanck, Schwabe, Seiler, and Stehlé, and was selected by NIST in 2022 as the primary PQC KEM. This page covers the underlying Module-LWE problem, the public-key encryption scheme (PKE), the Fujisaki-Okamoto-style KEM transform, parameter sets, and how ML-KEM compares to RSA and ECDH.
 
 ## Why ML-KEM Exists
 
@@ -13,7 +13,7 @@ Pre-quantum key-exchange primitives (RSA-OAEP, ECDH) are all broken by Shor's al
 
 ## The Module-LWE Problem
 
-ML-KEM's hardness is Module Learning-With-Errors over the ring `R_q = Z_q[X] / (X^256 + 1)` (called `Z_17` `q = 3329` in ML-KEM).
+ML-KEM's hardness is Module Learning-With-Errors over the ring `R_q = Z_3329[X] / (X^256 + 1)` — q = 3329 and n = 256 for every parameter set (the polynomial modulus is always X^256 + 1; only the module rank `k` changes between ML-KEM-512/768/1024).
 
 ### Recall (plain) LWE
 
@@ -103,7 +103,7 @@ The residual `eᵀ·r + e2 - sᵀ·e1` is a sum of products of small numbers, so
 This is illustrative only — parameters are *not* secure.
 
 ```
-ring:    Z_17[X] / (X^4 + 1)
+ring:    Z_17[X] / (X^4 + 1)   ← toy ring (q=17, n=4); the real ring is Z_3329[X]/(X^256 + 1)
 A:       [6, 11, 5, 4]   (as polynomial a(X) = 6 + 11X + 5X² + 4X³)
 s:       [-1, 0, 1, 0]   (small)
 e:       [ 1, 1, 0,-1]
@@ -166,11 +166,13 @@ ML-KEM-768's hashing uses **SHA3-256** and **SHAKE-256** extensively — these h
 
 ## ML-KEM Parameter Sets (FIPS 203)
 
-| Parameter set | `n` | `k` | `q`   | `η₁` | `η₂` | `d_u` | `d_v` | pk (B) | ct (B) | Security |
-|---------------|-----|-----|-------|------|------|-------|-------|--------|--------|----------|
-| ML-KEM-512     | 256 | 2  | 3329 | 3    | 2    | 10    | 4     | 800    | 768    | AES-128  |
-| ML-KEM-768     | 256 | 3  | 3329 | 2    | 2    | 10    | 4     | 1184   | 1088   | AES-192  |
-| ML-KEM-1024    | 256 | 4  | 3329 | 2    | 2    | 11    | 5     | 1568   | 1568   | AES-256  |
+| Parameter set | `n` | `k` | `q`   | `η₁` | `η₂` | `d_u` | `d_v` | sk (B) | pk (B) | ct (B) | Security |
+|---------------|-----|-----|-------|------|------|-------|-------|--------|--------|--------|----------|
+| ML-KEM-512     | 256 | 2  | 3329 | 3    | 2    | 10    | 4     | 1632   | 800    | 768    | AES-128  |
+| ML-KEM-768     | 256 | 3  | 3329 | 2    | 2    | 10    | 4     | 2400   | 1184   | 1088   | AES-192  |
+| ML-KEM-1024    | 256 | 4  | 3329 | 2    | 2    | 11    | 5     | 3168   | 1568   | 1568   | AES-256  |
+
+(The secret-key sizes follow FIPS 203: `dk = 768·k + 96` bytes; encapsulation keys are `ek = 384·k + 32`, ciphertexts `⌈d_u·k·n/8⌉ + ⌈d_v·n/8⌉` — e.g. ML-KEM-768: `10·3·256/8 + 4·256/8 = 960 + 128 = 1088`.)
 
 These are the post-quantum security levels NIST defined for the PQC process:
 

@@ -32,7 +32,7 @@ CXL runs over the **PCIe 5.0 physical layer** but replaces the transaction layer
 ```mermaid
 graph TB
     subgraph "CXL over PCIe 5.0 Physical Layer"
-        CXL1["CXL.io (Equivalent to PCIe")]
+        CXL1["CXL.io (Equivalent to PCIe)"]
         CXL2["CXL.cache<br/>(Coherent caching)"]
         CXL3["CXL.mem<br/>(Memory access)"]
     end

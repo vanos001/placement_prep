@@ -92,15 +92,15 @@ def flash_attention_tiled(Q, K, V, block_size=128):
 ```mermaid
 graph TD
     subgraph "GPU Memory Hierarchy"
-        HBM["HBM (80-192 GB, ~2 TB/s)""]
-        SRAM["SRAM (192 KB/SM, ~19 TB/s)""]
-        REG["Registers (256 KB/SM, ~80 TB/s)""]
+        HBM["HBM (80-192 GB, ~2 TB/s)"]
+        SRAM["SRAM (192 KB/SM, ~19 TB/s)"]
+        REG["Registers (256 KB/SM, ~80 TB/s)"]
     end
     
     subgraph "FlashAttention Strategy"
-        LOAD1["Load Q, K, V blocks from HBM → SRAM""]
-        COMPUTE["Compute attention in SRAM (tiled)""]
-        WRITEBACK["Write output blocks SRAM → HBM""]
+        LOAD1["Load Q, K, V blocks from HBM → SRAM"]
+        COMPUTE["Compute attention in SRAM (tiled)"]
+        WRITEBACK["Write output blocks SRAM → HBM"]
     end
     
     LOAD1 --> COMPUTE --> WRITEBACK
@@ -292,12 +292,12 @@ SGLang implements prefix caching using a **radix tree** (compressed trie) over t
 
 ```mermaid
 graph TD
-    ROOT["Root""] 
-    ROOT --> SYS[""You are a" (shared by all)""]
-    SYS --> SP1[""helpful" (shared)""]
-    SYS --> SP2[""friendly" (alternate prefix)""]
-    SP1 --> SP1B[""assistant. User: Explain X" (shared)""]
-    SP1 --> SP1C[""assistant. User: Write Y" (shared)""]
+    ROOT["Root"]
+    ROOT --> SYS["'You are a' (shared by all)"]
+    SYS --> SP1["'helpful' (shared)"]
+    SYS --> SP2["'friendly' (alternate prefix)"]
+    SP1 --> SP1B["'assistant. User: Explain X' (shared)"]
+    SP1 --> SP1C["'assistant. User: Write Y' (shared)"]
 ```
 
 Common prefixes are automatically detected and their KV cache is shared. SGLang reports 2-5× throughput improvement for workloads with shared system prompts.

@@ -20,7 +20,7 @@ The two compilers — **C1** (`-client`, historically) and **C2** (`-server`) �
                 runtime throughput
 ```
 
-Since JDK 8u (and default since JDK 10), **tiered compilation** chains them: interpreter → C1-with-profiling → C2. The interpreter is warm-up, C1 captures profile data quickly at low cost, then C2 recompiles the genuinely hot methods with the profile in hand. C2's biggest win comes from being able to inline across virtual calls when the profile says "this call site is monomorphic — it always dispatches to class `Foo`".
+Opt-in since JDK 7 and the default for the HotSpot server VM since JDK 8, **tiered compilation** chains them: interpreter → C1-with-profiling → C2. The interpreter is warm-up, C1 captures profile data quickly at low cost, then C2 recompiles the genuinely hot methods with the profile in hand. C2's biggest win comes from being able to inline across virtual calls when the profile says "this call site is monomorphic — it always dispatches to class `Foo`".
 
 ## Compilation Tiers and Levels
 

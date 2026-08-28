@@ -172,11 +172,13 @@ The trick: knowing `t_1` (the *high bits* of `t`), `A`, and the response `z`, th
 
 ## ML-DSA Parameter Sets (FIPS 204)
 
-| Parameter set | `n` | `(k, ℓ)` | `q`    | `(γ_1, γ_2)` | d | β | pk (B) | sig (B) | Security |
-|---------------|-----|----------|--------|---------------|---|---|--------|---------|----------|
-| ML-DSA-44     | 256 | (4, 4)   | 8380417| (2^17, 2^16)  | 13| 78| 1312   | 2420    | AES-128  |
-| ML-DSA-65     | 256 | (6, 5)   | 8380417| (2^19, 2^17)  | 18| 88| 1952   | 3293    | AES-192  |
-| ML-DSA-87     | 256 | (8, 7)   | 8380417| (2^19, 2^17)  | 18|120| 2592   | 4595    | AES-256  |
+| Parameter set | `n` | `(k, ℓ)` | `q`    | `(γ_1, γ_2)` | d | β | sk (B) | pk (B) | sig (B) | Security |
+|---------------|-----|----------|--------|---------------|---|---|--------|--------|---------|----------|
+| ML-DSA-44     | 256 | (4, 4)   | 8380417| (2^17, (q−1)/88) | 13| 78 | 2560 | 1312   | 2420    | AES-128  |
+| ML-DSA-65     | 256 | (6, 5)   | 8380417| (2^19, (q−1)/32) | 13| 196| 4032 | 1952   | 3309    | AES-192  |
+| ML-DSA-87     | 256 | (8, 7)   | 8380417| (2^19, (q−1)/32) | 13| 120| 4896 | 2592   | 4627    | AES-256  |
+
+Note the asymmetry in γ₂: ML-DSA-44 rounds with (q−1)/88 = 95232, while ML-DSA-65/87 use (q−1)/32 = 261888 — the wider rounding range of the smaller parameter set is what keeps its verification equation tight with η = 2 (FIPS 204 Table 1). β = τ·η throughout: 39·2 = 78, 49·4 = 196, 60·2 = 120.
 
 Notes on the parameters:
 
@@ -192,8 +194,8 @@ Notes on the parameters:
 | ECDSA P-256  | 33 B    | 64 B     | 130       | 320         | ECDLP                    | broken  |
 | Ed25519      | 32 B    | 64 B     | 50        | 1500 (batched: 1.5×)  | ECDLP          | broken  |
 | ML-DSA-44    | 1312 B  | 2420 B   | 240       | 90          | Module-SIS               | safe    |
-| ML-DSA-65    | 1952 B  | 3293 B   | 350       | 130         | Module-SIS               | safe    |
-| ML-DSA-87    | 2592 B  | 4595 B   | 500       | 200         | Module-SIS               | safe    |
+| ML-DSA-65    | 1952 B  | 3309 B   | 350       | 130         | Module-SIS               | safe    |
+| ML-DSA-87    | 2592 B  | 4627 B   | 500       | 200         | Module-SIS               | safe    |
 | SLH-DSA-128f | 32 B    | 17088 B  | 12000     | 12000       | SHA-3 collision          | safe    |
 
 (Sources: pq-crystals benchmarks; FIPS 204 spec; FIPS 205 spec.)
@@ -212,7 +214,7 @@ Key implementation concerns:
 
 1. **Constant-time rejection sampling.** The decision `‖z‖_∞ ≥ γ_2 - β` must not leak timing. Naive implementations can leak acceptance probability per attempt.
 2. **The `SHAKE` seed-expansion.** `A`, `s_1`, `s_2`, `y` are all derived from SHAKE-128 / SHAKE-256. These are the dominant cost — a sign operation runs ~5 KB of SHAKE input.
-3. **NTT-domain arithmetic.** All matrix-vector products happen in NTT form. Dilithium's `q = 2^23 - 2^13 + 1` admits a 256-element NTT using a primitive root `g = 1757193` (per FIPS 204 Appendix A).
+3. **NTT-domain arithmetic.** All matrix-vector products happen in NTT form. Dilithium's `q = 2^23 - 2^13 + 1` admits a 256-element NTT using ζ = 1753, a 512th root of unity modulo q (FIPS 204 §2.5 and Table 1; the zetas[1..255] table in Appendix B is derived from it, and Appendix A discusses Montgomery form for the zetas).
 4. **Verification batchedness.** Dilithium verification is *not* naturally batchable like Ed25519, because each verification involves a separate hash.
 
 ## Standards Status and Real-World Use
@@ -223,9 +225,9 @@ ML-DSA was standardized in **FIPS 204 (August 2024)** alongside FIPS 203 (ML-KEM
 - **ML-DSA-87** for higher assurance.
 - Hybrid deployment (e.g., ML-DSA-65 + Ed25519) during the transition period; standardized in IETF drafts (`draft-ietf-lamps-pq-hybrid-x509`).
 
-Production deployments: Cloudflare's code signing (2024+), AWS KMS (2024), Signal's PQXDH (uses ML-KEM, not ML-DSA — they kept Ed25519 for signatures due to bandwidth). Many TLS certificate authorities (DigiCert, Sectigo, Let's Encrypt) are planning ML-DSA / hybrid certificate issuance in 2025–2026.
+Production deployments as of mid-2026 remain mostly pilot-stage: cloud KMS services and code-signing vendors have been adding ML-DSA signing APIs during 2024–2025, and Signal's PQXDH uses ML-KEM (not ML-DSA — they kept Ed25519 for signatures due to bandwidth). Verify vendor documentation for current status before citing specific deployments; certificate-authority issuance (DigiCert, Sectigo and others have published migration plans) is expected to ramp through 2026–2030 alongside the CNSA 2.0 timeline.
 
-The NSA's CNSA 2.0 suite mandates ML-DSA-65 (or higher) for new national-security systems starting 2030.
+The NSA's CNSA 2.0 suite specifies **ML-DSA-87** (paired with ML-KEM-1024) as its lattice signature for national-security systems, with software/firmware signing expected to transition first and full transition by 2033.
 
 ## References
 

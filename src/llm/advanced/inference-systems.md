@@ -12,13 +12,13 @@ Production LLM systems span the full lifecycle from data curation through prefer
 
 ```mermaid
 graph TD
-    RAW["Raw Web Data (CommonCrawl, etc.)"" 10-100 TB"] --> FILTER["Quality Filtering"" URL/page quality, language ID, classifier"]
-    FILTER --> DEDUP["Deduplication"" Exact + fuzzy + semantic"]
-    DEDUP --> CONTAM["Contamination Removal"" Benchmark/benchmark-like filtering"]
-    CONTAM --> DECONT["Decontamination"" N-gram overlap removal"]
-    DECONT --> MIX["Data Mixing"" Domain-weighted sampling"]
-    MIX --> TOKEN["Tokenization & Packing"" EOT-aware packing"]
-    TOKEN --> SHARD["Sharded Training Datasets"" ~10 TB processed"]
+    RAW["Raw Web Data (CommonCrawl, etc.)<br/>10-100 TB"] --> FILTER["Quality Filtering<br/>URL/page quality, language ID, classifier"]
+    FILTER --> DEDUP["Deduplication<br/>Exact + fuzzy + semantic"]
+    DEDUP --> CONTAM["Contamination Removal<br/>Benchmark/benchmark-like filtering"]
+    CONTAM --> DECONT["Decontamination<br/>N-gram overlap removal"]
+    DECONT --> MIX["Data Mixing<br/>Domain-weighted sampling"]
+    MIX --> TOKEN["Tokenization & Packing<br/>EOT-aware packing"]
+    TOKEN --> SHARD["Sharded Training Datasets<br/>~10 TB processed"]
 ```
 
 ### Dataset Deduplication
@@ -80,16 +80,16 @@ Synthetic data generation uses strong models to create training data for smaller
 
 ```mermaid
 graph TD
-    TEACHER["Teacher Model (GPT-4, Claude, etc.)""  "] --> GEN["Generate Responses""  "]
-    GEN --> FILTER2["Quality Filtering""  "]
-    FILTER2 --> DIVERSE["Diversity Filtering""  "]
-    DIVERSE --> STUDENT["Student Training Data""  "]
+    TEACHER["Teacher Model (GPT-4, Claude, etc.)"] --> GEN["Generate Responses"]
+    GEN --> FILTER2["Quality Filtering"]
+    FILTER2 --> DIVERSE["Diversity Filtering"]
+    DIVERSE --> STUDENT["Student Training Data"]
     
     subgraph "Generation Strategies"
-        S1["Self-Instruct: Model generates its own instructions""  "]
-        S2["Evol-Instruct: Iteratively increase complexity""  "]
-        S3["Reverse instruction: Generate Q from A pairs""  "]
-        S4["Domain-specific: Generate data for target domain""  "]
+        S1["Self-Instruct: Model generates its own instructions"]
+        S2["Evol-Instruct: Iteratively increase complexity"]
+        S3["Reverse instruction: Generate Q from A pairs"]
+        S4["Domain-specific: Generate data for target domain"]
     end
     
     GEN --> S1 & S2 & S3 & S4
@@ -112,11 +112,11 @@ graph TD
 ```mermaid
 graph TD
     subgraph "RLHF Pipeline"
-        SFT["Step 1: SFT Model""  "] --> GEN_PREF["Step 2: Generate Pairs""  "]
-        GEN_PREF --> HUMAN["Step 3: Human Annotations""  "]
-        HUMAN --> REWARD["Step 4: Train Reward Model""  "]
-        REWARD --> PPO["Step 5: PPO Optimization""  "]
-        PPO --> ALIGNED["Aligned Model""  "]
+        SFT["Step 1: SFT Model"] --> GEN_PREF["Step 2: Generate Pairs"]
+        GEN_PREF --> HUMAN["Step 3: Human Annotations"]
+        HUMAN --> REWARD["Step 4: Train Reward Model"]
+        REWARD --> PPO["Step 5: PPO Optimization"]
+        PPO --> ALIGNED["Aligned Model"]
     end
 ```
 
@@ -235,15 +235,15 @@ A well-trained reward model correlates ~0.7-0.85 with human preferences on held-
 ```mermaid
 graph TD
     subgraph "vLLM Architecture"
-        REQ["Incoming Requests""] --> SCHED["Scheduler""  "]
-        SCHED --> CACHE["KV Cache Manager""  "]
-        CACHE --> EXEC["GPU Worker (PagedAttention)""  "]
-        EXEC --> OUTPUT["Token Outputs""]
+        REQ["Incoming Requests"] --> SCHED["Scheduler"]
+        SCHED --> CACHE["KV Cache Manager"]
+        CACHE --> EXEC["GPU Worker (PagedAttention)"]
+        EXEC --> OUTPUT["Token Outputs"]
         
         subgraph "Scheduler Decisions"
-            PREEMPT["Preemption Policy""  "]
-            PRIOR["Priority Scheduling""  "]
-            SWAP["CPU-GPU KV Swap""  "]
+            PREEMPT["Preemption Policy"]
+            PRIOR["Priority Scheduling"]
+            SWAP["CPU-GPU KV Swap"]
         end
         
         SCHED --> PREEMPT & PRIOR & SWAP
@@ -367,18 +367,15 @@ Different models handle different types of requests based on complexity, cost, a
 
 ```mermaid
 graph TD
-    REQ_ALL["All Incoming Requests""] --> CLASS["Request Classifier""  "]
+    REQ_ALL["All Incoming Requests"] --> CLASS["Request Classifier"]
     
-    CLASS --> |"Simple (FAQ, summarization)""  "| SMALL["Small Model (8B)""  $0.10/1M tokens
-Fast, cheap""]
-    CLASS --> |"Medium (code, analysis)""  "| MED["Medium Model (70B)""  $1.00/1M tokens
-Balanced""]
-    CLASS --> |"Complex (reasoning, math)""  "| LARGE["Large Model (405B)""  $10/1M tokens
-Best quality""]
+    CLASS --> |"Simple (FAQ, summarization)"| SMALL["Small Model (8B)<br/>$0.10/1M tokens<br/>Fast, cheap"]
+    CLASS --> |"Medium (code, analysis)"| MED["Medium Model (70B)<br/>$1.00/1M tokens<br/>Balanced"]
+    CLASS --> |"Complex (reasoning, math)"| LARGE["Large Model (405B)<br/>$10/1M tokens<br/>Best quality"]
     
-    SMALL --> FALLBACK["Fallback: If confidence < threshold, escalate""  "]
+    SMALL --> FALLBACK["Fallback: If confidence < threshold, escalate"]
     FALLBACK --> MED
-    MED --> FALLBACK2["Fallback: If confidence < threshold, escalate""  "]
+    MED --> FALLBACK2["Fallback: If confidence < threshold, escalate"]
     FALLBACK2 --> LARGE
 ```
 

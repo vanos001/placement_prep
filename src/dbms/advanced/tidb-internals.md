@@ -34,12 +34,13 @@ TiKV is an ordered map of bytes. TiDB maps SQL objects into that map with short 
 row of table t=10, handle 42   ->  key: t10_r42
 index i=1 on (a,b), values (7,'x')  ->  key: t10_i1{7,'x'}42   (handle appended)
 cluster metadata               ->  key: m...     (schema, DDL jobs, stats)
-MVCC version of any key above  ->  user_key ++ 8-byte big-endian commit_ts
+MVCC version of any key above  ->  user_key ++ ~ts  (8-byte big-endian commit_ts with every bit INVERTED)
 ```
 
 Details that matter in practice:
 
 - Integers are encoded in a signed-flip big-endian form so that byte order equals numeric order — that is what makes range scans and index seeks work on raw bytes.
+- The MVCC timestamp is appended **bitwise-inverted** (`~commit_ts`, memcomparable encoding): this makes *newer* versions sort *before* older ones for the same user key, so a snapshot read can find the newest visible version with the first matching record it meets in the `write` CF. Forgetting the inversion is the classic TiKV re-implementation bug — without it, scans walk versions oldest-first.
 - Variable-length index values are padded to fixed-size chunks so that `t10_i1{7,...}` and `t10_i1{77,...}` cannot become prefix-ambiguous.
 - With a clustered primary key (default for new tables since TiDB v5.0), the primary key value *is* the row handle: one key instead of an index entry plus a hidden `_tidb_rowid`. Non-clustered tables pay two keys per row.
 

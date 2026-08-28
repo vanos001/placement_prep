@@ -9,7 +9,7 @@ does the metadata live*, and *how do stripes of file data map to storage
 servers*. Knowing the answers by heart is the fastest way to reason about
 new systems too, because the design space is genuinely small.
 
-Related pages: [ceph](./ceph.md) and [ceph-crush](./ceph-crush.md) (the
+Related pages: [ceph](../ceph.md) and [ceph-crush](../ceph-crush.md) (the
 commodity-cluster design that became the default cloud-native answer),
 [hdfs-internals](./hdfs-internals.md) (the big-data cousin with its own
 name-node trade-offs), and [nfs](../../linux/kernel/filesystems/nfs.md)
@@ -203,6 +203,6 @@ striping, failover, scrubbing - is engineering around that choice.
    [docs.beegfs.io](https://docs.beegfs.io/latest/) (bot-blocked to
    scripted probes; canonical and search-verified) - the symmetric
    metadata architecture.
-5. [Ceph CRUSH (this repo)](./ceph-crush.md) and
-   [Ceph architecture (this repo)](./ceph.md) - the commodity-cluster
+5. [Ceph CRUSH (this repo)](../ceph-crush.md) and
+   [Ceph architecture (this repo)](../ceph.md) - the commodity-cluster
    alternative and its placement math.

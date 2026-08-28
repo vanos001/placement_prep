@@ -188,6 +188,6 @@ Redis Pub/Sub is for ephemeral broadcasts where missing messages is OK. Redis St
 - [Redis SUBSCRIBE command](https://redis.io/commands/subscribe/)
 - [Redis PUBLISH command](https://redis.io/commands/publish/)
 - [Redis PSUBSCRIBE command](https://redis.io/commands/psubscribe/)
-- [Redis Streams (the durable alternative)](https://redis.io/docs/data/streams/)
+- [Redis Streams (the durable alternative)](https://redis.io/docs/latest/develop/data-types/streams/)
 - [Redis Pub/Sub performance benchmarks](https://redis.io/docs/reference/optimization/latency/)
 - [LWN: Redis internals (2018)](https://lwn.net/Articles/750830/)

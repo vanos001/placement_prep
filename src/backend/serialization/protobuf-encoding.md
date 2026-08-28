@@ -147,7 +147,8 @@ Practical ranges:
 - 2048–2^29−1 → tags take 3-4 bytes. Allowed but expensive.
 - 19000–19999 are reserved by the implementation; the compiler rejects
   them.
-- 0 is reserved as "end of message" sentinel in some implementations;
+- 0 is not a valid field number at all (tag bytes of 0x00 are rejected
+  by conforming parsers — a zero tag would be a 0-length field number);
   never use it.
 
 ## 5. The Length-Prefixed Records (wire type 2)
@@ -192,21 +193,25 @@ length-delimited record, back-to-back, with no per-element tag:
    repeated int32 xs = 7 [packed=true];   // values: 3, 270, 86942
 
    wire:
-   3A 06 03 8E 03 9E A2 06
+   3A 06 03 8E 02 9E A7 05
    ── ── ── ────── ────────
-   │  │  │  │      └─ 86942 varint (9E A2 06)
-   │  │  │  └─ 270 varint (8E 03)
+   │  │  │  │      └─ 86942 varint (9E A7 05)
+   │  │  │  └─ 270 varint (8E 02)
    │  │  └─ 3 varint
    │  └─ length 6
    └─ tag = (7 << 3) | 2 = 0x3A
 ```
 
+(These are the encodings from Google's own protobuf developer docs:
+270 = 0b100001110 → continuation groups 0x0E | 0x02 → `8E 02`, and
+86942 = 0b10101001110011110 → `9E A7 05`.)
+
 Compare to the non-packed alternative, where every element carries its
 own 1-byte tag (here `0x38`):
 
 ```
-   non-packed:  38 03 38 8E 03 38 9E A2 06   = 9 bytes
-   packed:      3A 06 03 8E 03 9E A2 06      = 8 bytes
+   non-packed:  38 03 38 8E 02 38 9E A7 05   = 9 bytes
+   packed:      3A 06 03 8E 02 9E A7 05      = 8 bytes
 ```
 
 For a 1000-element list, the savings are ~1 kB. Packed encoding also

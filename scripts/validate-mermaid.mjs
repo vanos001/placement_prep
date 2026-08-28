@@ -10,7 +10,15 @@ const ROOT = process.argv[2] || 'src'; // pass the repo's src dir, or run from r
 const dom = new JSDOM('<!DOCTYPE html><html><body></body></html>', { pretendToBeVisual: true });
 global.window = dom.window;
 global.document = dom.window.document;
-global.navigator = { userAgent: 'node.js', language: 'en-US' };
+// Node >= 21 exposes a read-only global `navigator`; skip if not writable.
+try {
+  global.navigator = { userAgent: 'node.js', language: 'en-US' };
+} catch {
+  Object.defineProperty(global, 'navigator', {
+    value: { userAgent: 'node.js', language: 'en-US' },
+    configurable: true, writable: true,
+  });
+}
 global.DOMParser = dom.window.DOMParser;
 global.Node = dom.window.Node;
 global.Element = dom.window.Element;
@@ -126,6 +134,22 @@ if (results.errors.length > 0) {
   }
 }
 
-writeFileSync('/home/user/mermaid-validate/report.json', JSON.stringify({ results, byFile }, null, 2));
-console.log('\nReport written to report.json');
-process.exitCode = results.failed > 0 ? 1 : 0;
+// Write the report next to this script (or to --out <path>), creating the
+// directory if needed. A hardcoded relative/foreign path here used to crash
+// the script with ENOENT *after* parsing, making the exit code unreliable.
+import { mkdirSync } from 'fs';
+const outArgIdx = process.argv.indexOf('--out');
+const outPath = outArgIdx !== -1 && process.argv[outArgIdx + 1]
+  ? process.argv[outArgIdx + 1]
+  : new URL('./mermaid-validate-report.json', import.meta.url).pathname;
+let reportWritten = false;
+try {
+  mkdirSync(new URL('.', `file://${outPath}`).pathname, { recursive: true });
+  writeFileSync(outPath, JSON.stringify({ results, byFile }, null, 2));
+  console.log(`\nReport written to ${outPath}`);
+  reportWritten = true;
+} catch (e) {
+  console.error(`\nERROR: could not write report to ${outPath}: ${e.message}`);
+  console.error('The parse results above are still valid, but the run fails because the report could not be persisted.');
+}
+process.exitCode = results.failed > 0 || !reportWritten ? 1 : 0;

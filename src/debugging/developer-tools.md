@@ -153,12 +153,12 @@ ASan reserves a **shadow memory** region where every 8 bytes of application memo
 flowchart LR
     APP["App memory 8 bytes"] -->|"maps 8:1"| SHADOW["Shadow byte"]
     SHADOW -->|"0xFF"| POISON["Poisoned / redzone"]
-    SHADOW -->"0x00" --> OK["Addressable"]
-    SHADOW -->"0x01..0x07" --> PARTIAL["First N bytes valid"]
-    SHADOW -->"0xFD" --> FREED["Freed / quarantine"]
+    SHADOW -->|"0x00"| OK["Addressable"]
+    SHADOW -->|"0x01..0x07"| PARTIAL["First N bytes valid"]
+    SHADOW -->|"0xFD"| FREED["Freed / quarantine"]
     LOAD["Instrumented load"] --> CHECK["Read shadow byte"]
     CHECK -->|"poisoned"| TRAP["Report + abort"]
-    CHECK -->"ok" --> MEM["Proceed with access"]
+    CHECK -->|"ok"| MEM["Proceed with access"]
 ```
 
 Compile: `gcc -g -fsanitize=address -fno-omit-frame-pointer -O1`. The 2× slowdown is acceptable in CI; many projects ship ASan-enabled canaries to detect memory bugs in production traffic.

@@ -426,5 +426,5 @@ for no throughput gain.
 - [Connection Pools](../api/connection-pools.md) — the introductory counterpart.
 - [Bulkhead Pattern](./bulkhead-deep.md) — per-tenant or per-dependency pools are bulkheads; the same sizing discipline applies.
 - [Circuit Breaker Deep Dive](./circuit-breaker-deep.md) — the failure-side companion; pools are the capacity side.
-- [PostgreSQL Internals: WAL](../dbms/advanced/wal-internals.md) — why PostgreSQL connections are heavyweight (per-process backends).
+- [PostgreSQL Internals: WAL](../../dbms/advanced/wal-internals.md) — why PostgreSQL connections are heavyweight (per-process backends).
 - [Health Check Patterns](./health-check-patterns.md) — the validation-query counterpart at the application level.

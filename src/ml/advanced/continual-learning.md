@@ -10,7 +10,7 @@ you can run, covers the three mitigation families (regularization, replay,
 architecture), and shows where the modern LLM answer - parameter-efficient
 adaptation - sits in that taxonomy.
 
-Broader serving context: [RLHF/DPO](../llm-serving/rlhf.md) pipelines face
+Broader serving context: [RLHF/DPO](../../llm/llm-serving/rlhf.md) pipelines face
 the same problem (alignment updates eroding base-model capability), and
 [model compression](./model-compression.md) interacts with it (quantized
 weights have less headroom to absorb drift).
@@ -233,5 +233,5 @@ pretraining-metric clothing).
 3. Hu et al., "LoRA: Low-Rank Adaptation of Large Language Models",
    [arXiv:2106.09685](https://arxiv.org/abs/2106.09685) - the
    architectural answer now standard in LLM fine-tuning.
-4. [RLHF (this repo)](../llm-serving/rlhf.md) - the KL-to-reference
+4. [RLHF (this repo)](../../llm/llm-serving/rlhf.md) - the KL-to-reference
    tether as the same idea in policy optimization.

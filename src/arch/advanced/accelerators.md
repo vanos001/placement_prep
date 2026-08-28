@@ -7,12 +7,12 @@ The CPU is no longer the only game in town. Data centers are increasingly domina
 ```mermaid
 graph TB
     subgraph "The Accelerator Spectrum"
-        FPGA["FPGA<br/>(Reconfigurable)"
-        CGRA["CGRA<br/>(Coarse-Grained Reconfigurable)"
-        GPU["GPU<br/>(SIMT Parallel)"
-        TPU["TPU/ASIC<br/>(Fixed-Function)"
-        DPU["DPU/Smart NIC<br/>(Infrastructure)"
-        CS["Computational Storage<br/>(Near-Data Processing)"
+        FPGA["FPGA<br/>(Reconfigurable)"]
+        CGRA["CGRA<br/>(Coarse-Grained Reconfigurable)"]
+        GPU["GPU<br/>(SIMT Parallel)"]
+        TPU["TPU/ASIC<br/>(Fixed-Function)"]
+        DPU["DPU/Smart NIC<br/>(Infrastructure)"]
+        CS["Computational Storage<br/>(Near-Data Processing)"]
     end
     FPGA --> |"more flexible"| GPU
     GPU --> |"more specialized"| TPU

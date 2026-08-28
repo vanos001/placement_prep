@@ -29,7 +29,7 @@ graph TB
         App2 --> DB2[Replica DB]
     end
     DB1 -->|Async Replication| DB2
-    DNS[Global DNS] -->|100%| Region A
+    DNS[Global DNS] -->|"100%"| LB1
 ```
 
 | Aspect | Details |

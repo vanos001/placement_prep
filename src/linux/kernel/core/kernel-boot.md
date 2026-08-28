@@ -1,6 +1,6 @@
 # Linux Kernel Boot — From Power-On to PID 1
 
-This page traces the boot of a Linux system at the level of the source code: what runs when, who hands off to whom, and which initcall level is responsible for what subsystem. It is the "what actually happens between reset and `login:`" companion to the more user-visible [Boot Process](boot-process.md) page.
+This page traces the boot of a Linux system at the level of the source code: what runs when, who hands off to whom, and which initcall level is responsible for what subsystem. It is the "what actually happens between reset and `login:`" companion to the more user-visible [Boot Process](../boot-process.md) page.
 
 The chain has five distinct phases, each with its own primitive and conventions:
 
@@ -262,7 +262,7 @@ Once `/sbin/init` (systemd) is exec'd as PID 1, the kernel's involvement is esse
 - **RCU** threads (`rcu_sched`, `rcu_bh`).
 - **per-CPU idle tasks** (PID 0 on each CPU).
 
-systemd as PID 1 takes over boot orchestration: it parses `/proc/cmdline`, picks up `systemd.unit=` overrides, activates `default.target`, and runs the [systemd transaction](systemd-internals.md). From here on, "the boot" is a userspace story; the kernel is just a service provider.
+systemd as PID 1 takes over boot orchestration: it parses `/proc/cmdline`, picks up `systemd.unit=` overrides, activates `default.target`, and runs the [systemd transaction](../../admin/systemd-internals.md). From here on, "the boot" is a userspace story; the kernel is just a service provider.
 
 ## References
 

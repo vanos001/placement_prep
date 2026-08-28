@@ -88,8 +88,7 @@ enter when all reply.
   voter held by B, B waits on a voter held by A. The fixes (timestamp-based
   abort of pending grants, i.e. probe-and-kill) add complexity that mostly
   cancelled the message savings in practice. Maekawa matters today as the
-  intellectual ancestor of quorum systems - see [quorum systems](
-  ../advanced/quorum-systems.md) for the modern treatment.
+  intellectual ancestor of quorum systems - see [quorum systems](../advanced/quorum-systems.md) for the modern treatment.
 
 ### Comparison table
 

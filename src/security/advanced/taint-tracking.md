@@ -83,7 +83,7 @@ negative) or taint the branch and explode in false positives. Timing
 makes it worse: even a constant-time program leaks through cache sets -
 which is why covert channels are formally *out of scope* for IFC (they
 cannot be eliminated without eliminating concurrency itself) and why
-[constant-time crypto](../../security/advanced/constant-time.md) is its
+[constant-time crypto](./side-channel-resistant.md) is its
 own discipline.
 
 ## The demo: lattice IFC + dynamic taint on one toy IR
@@ -255,7 +255,7 @@ on the explicit log(pw) and waves the implicit leak through.
   confinement answers to side-channel versions of the implicit-flow
   problem; work on Spectre-safe IFC in JS engines continues.
 - **Kernels**: seccomp + namespace confinement
-  ([seccomp](../../linux/kernel/seccomp-bpf.md)) handle the "who can
+  ([seccomp](../../os/advanced/seccomp-bpf.md)) handle the "who can
   call" axis; IFC systems (Flume lineage) cover "where data went", and
   production designs usually layer both.
 - **Android**: TaintDroid's findings drove platform-level permission

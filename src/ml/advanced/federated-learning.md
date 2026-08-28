@@ -137,7 +137,7 @@ Trade-off: the clipping norm `S` is a hyperparameter; setting it too tight destr
 
 ### Fully Homomorphic / MPC Aggregation
 
-For the strictest threat model (server colludes with subset of clients), FL + FHE provides the strongest guarantee: clients encrypt their updates under a shared public key, the server computes the sum ciphertext homomorphically, and only the decryption (an aggregate sum) is revealed. Apple's iOS 14+ "Private Set Intersection" features use this. Throughput is the bootstrapping-bottleneck cost discussed in the [Homomorphic Encryption](../llm/advanced/homomorphic-encryption.md) chapter.
+For the strictest threat model (server colludes with subset of clients), FL + FHE provides the strongest guarantee: clients encrypt their updates under a shared public key, the server computes the sum ciphertext homomorphically, and only the decryption (an aggregate sum) is revealed. Apple's iOS 14+ "Private Set Intersection" features use this. Throughput is the bootstrapping-bottleneck cost discussed in the [Homomorphic Encryption](../../llm/advanced/homomorphic-encryption.md) chapter.
 
 ## Frameworks
 

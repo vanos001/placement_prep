@@ -13,7 +13,7 @@ humans and future agent sessions. Read this before making changes.
 | Build output | `book/` (git-ignored) |
 | Mermaid rendering | Mermaid **v11** loaded from CDN in `mermaid-init.js` |
 | Working branch | **`dev`** (never commit directly to `main`) |
-| Content count | ~1,930 Markdown files, ~4,500 Mermaid diagrams |
+| Content count | ~2,640 Markdown files, ~4,875 Mermaid diagrams |
 
 ---
 
@@ -75,6 +75,23 @@ mdbook serve --open          # http://localhost:3000
 ---
 
 ## Validation (run before every commit)
+
+### Agent-batch fast lane (<5 seconds total)
+
+Before every commit, run these four together — they catch the most common
+batch defects (broken links, orphaned pages, bad math delimiters, obviously
+malformed diagrams) and finish almost instantly:
+
+```bash
+node scripts/validate-mermaid-heuristic.mjs   # heuristic mermaid (fast)
+python3 scripts/check-links.py .              # relative links AND #anchors
+python3 scripts/check-summary.py src          # SUMMARY reachability
+python3 scripts/check-mathjax.py .            # math delimiters
+```
+
+All four must exit 0. The heuristic mermaid check is NOT sufficient on its
+own (it passed 100% while 25 diagrams failed the real parser) — run the real
+parser per batch as below.
 
 ### One-shot suite (recommended)
 

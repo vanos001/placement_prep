@@ -50,7 +50,9 @@ the pattern of flips (the *syndrome*) names the culprit:
 The (+1, +1) case cannot distinguish "no error" from "two errors", so the code
 fails on 2 or more simultaneous flips. With independent flip probability p per
 qubit, logical failure is 3p^2 - 2p^3, which beats the raw qubit's p exactly
-when p < 1/3 - and for small p the win is quadratic: 1% raw becomes ~0.03%
+when p < 1/2 (since 3p^2 - 2p^3 < p reduces to p(2p-1)(p-1) < 0, which for
+0 < p < 1 holds precisely when 2p - 1 > 0) - and for small p the win is
+quadratic: 1% raw becomes ~0.03%
 logical (the runnable simulation below reproduces both facts). The gap this
 code leaves: a phase flip (Z error) rotates the sign of beta and is invisible
 to Z-parity checks. Fixing that took one more idea.

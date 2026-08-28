@@ -11,9 +11,8 @@ quote flow, the TEE-specific variants (SGX DCAP, SEV-SNP, ARM CCA), and the
 failure modes that make real deployments harder than the protocol diagrams.
 
 Related pages in this repo: [TPM 2.0](../../cryptography/tpm-2.0.md) covers
-the TPM key hierarchy itself; [ARM CCA](../../arch/advanced/arm-cca.md) and
-the confidential-computing pages under [arch/advanced](
-../../arch/advanced/) cover the hardware-enforcement side that attestation
+the TPM key hierarchy itself; [ARM CCA](../../arch/advanced/arm-cca-realms.md) and
+the confidential-computing pages under [arch/advanced](../../arch/advanced/README.md) cover the hardware-enforcement side that attestation
 describes; [secure boot](../../linux/security/secure-boot.md) is the
 local-verification cousin.
 

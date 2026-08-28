@@ -94,7 +94,7 @@ The surviving descendants: bounded speculation inside lock
 implementations (elision), snapshot isolation in databases (read sets
 validated at commit - the same structure as STM validation), and
 optimistic concurrency control in memory engines (the MVCC machinery
-in [mvcc internals](../../dbms/advanced/mvcc-internals.md) is STM's
+in [mvcc internals](../dbms/advanced/mvcc-internals.md) is STM's
 read-validation problem wearing a data-model hat).
 
 ## The demo: a miniature TL2
@@ -219,7 +219,7 @@ The three outcomes are the whole STM story: uncontended transactions
 commit with two clock bumps; a read validated at commit fails if any
 read address's stamp moved (t2's y); and write-write conflicts resolve
 at first-committer-wins (t5) - exactly the SI write-conflict rule in
-[snapshot isolation](../../dbms/advanced/snapshot-isolation.md).
+[snapshot isolation](../dbms/advanced/snapshot-isolation.md).
 
 ## Interview probes
 

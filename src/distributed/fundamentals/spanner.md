@@ -101,7 +101,7 @@ Execution
   │ - Final results aggregated by a single-stage "result" worker
 ```
 
-The query engine vectorizes execution (similar to other modern SQL engines — see the [Vectorized Execution](../dbms/advanced/vectorized-execution.md) page) and pushes filters and projections down to the storage layer for early pruning.
+The query engine vectorizes execution (similar to other modern SQL engines — see the [Vectorized Execution](../../dbms/advanced/vectorized-execution.md) page) and pushes filters and projections down to the storage layer for early pruning.
 
 ## Schema and Data Types
 

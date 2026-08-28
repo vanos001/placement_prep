@@ -230,7 +230,7 @@ Redis Streams are simpler than Kafka (no brokers, no ZooKeeper, no consumer offs
 
 ## References
 
-- [Redis Streams documentation](https://redis.io/docs/data/streams/)
+- [Redis Streams documentation](https://redis.io/docs/latest/develop/data-types/streams/)
 - [Redis XADD command](https://redis.io/commands/xadd/)
 - [Redis XREADGROUP command](https://redis.io/commands/xreadgroup/)
 - [Redis XPENDING command](https://redis.io/commands/xpending/)

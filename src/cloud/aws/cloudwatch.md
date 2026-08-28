@@ -239,7 +239,7 @@ For real-time alerting, CloudWatch may be too slow; consider Prometheus + Grafan
 | AWS integration | First-class | Limited | First-class | First-class |
 | Cost model | Per-metric + per-GB logs | Free (self-hosted) | Per-host | Per-host |
 | Multi-cloud | Limited | Excellent | Yes | Yes |
-| Custom metrics cost | $$$ | Free | $ | $$ |
+| Custom metrics cost | `$$$` | Free | `$` | `$$` |
 | Best for | AWS-native | Multi-cloud, self-hosted | Enterprise | APM |
 
 CloudWatch is the choice for AWS-only deployments; Prometheus for multi-cloud self-hosted; Datadog for enterprise with budget.

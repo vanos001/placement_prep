@@ -12,8 +12,7 @@ storage-system design question every tracing backend is really solving.
 
 The user-facing surface: [OpenTelemetry](../observability/opentelemetry.md)
 covers the SDK/API semantics; [SLOs and error budgets](../../sre/slo-error-budget.md)
-consume the percentiles tracing measures; [load-testing strategies](
-../../sre/load-testing-strategies.md) generate the traffic that carries
+consume the percentiles tracing measures; [load-testing strategies](../../sre/load-testing-strategies.md) generate the traffic that carries
 the traces.
 
 ## The trace model and propagation

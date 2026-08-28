@@ -8,7 +8,7 @@ DPDK (originally Intel, now Linux Foundation) is a set of user-space libraries a
 
 1. **PMD (Poll Mode Drivers)**: NIC drivers that poll for packets instead of using interrupts. The CPU continuously checks the NIC's receive descriptor rings, eliminating interrupt overhead and the associated context switch. No `softirq`, no `napi`, no sk_buff allocation.
 
-2. **UIO / VFIO hugepage mapping**: The NIC's MMIO registers and DMA ring buffers are mapped directly into user space via VFIO with IOMMU protection (see [virtualization.md](./virtualization.md#vfio--virtual-function-i-o)). The application reads and writes NIC registers directly.
+2. **UIO / VFIO hugepage mapping**: The NIC's MMIO registers and DMA ring buffers are mapped directly into user space via VFIO with IOMMU protection (see [virtualization.md](./virtualization.md#vfio--virtual-function-io)). The application reads and writes NIC registers directly.
 
 3. **Huge pages**: All memory used for packet buffers comes from huge pages (2 MB or 1 GB), eliminating TLB misses that would be catastrophic at 10+ Mpps.
 

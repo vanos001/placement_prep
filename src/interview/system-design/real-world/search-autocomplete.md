@@ -161,7 +161,7 @@ The base trie provides globally popular suggestions. Personalization adjusts ran
 ```mermaid
 graph LR
     subgraph "Request"
-        User[User types "san"]
+        User["User types 'san'"]
     end
 
     subgraph "Base Suggestions"

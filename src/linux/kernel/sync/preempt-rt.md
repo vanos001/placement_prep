@@ -61,7 +61,7 @@ chain-walk algorithm covered in [rt_mutex internals](./rtmutex-pi-futex.md).
 
 ## Conversion 2: threaded interrupt handlers
 
-The top/bottom-half split ([interrupt handling](./interrupts/top-bottom-halves.md))
+The top/bottom-half split ([interrupt handling](../interrupts/top-bottom-halves.md))
 gets a structural reinterpretation: on RT, almost every device IRQ handler
 runs as a schedulable kernel thread (`irq/<n>-<dev>`), which the RT
 scheduler can prioritize, migrate and preempt. The primary handler keeps
