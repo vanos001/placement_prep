@@ -238,7 +238,7 @@ every production fix converges on: keep the burst under the buffer within a coup
 ## References
 
 - [DCTCP: Data Center TCP, Alizadeh et al., SIGCOMM 2010](https://doi.org/10.1145/1851182.1851192)
-- [DCQCN: Congestion Control for Large-Scale RDMA Deployments, Zhu et al., SIGCOMM 2015](https://doi.org/10.1145/2785956.2787508)
+- [DCQCN: Congestion Control for Large-Scale RDMA Deployments, Zhu et al., SIGCOMM 2015](https://doi.org/10.1145/2829988.2787484)
 - [HPCC: High Precision Congestion Control, Li et al., NSDI 2019](https://doi.org/10.1145/3341302.3342085)
 - [Swift: Delay is Simple and Effective for Congestion Control in the Data Center, SIGCOMM 2020](https://doi.org/10.1145/3387514.3406591)
 - [Linux ip-route(8): per-route rto_min and other TCP metrics](https://man7.org/linux/man-pages/man8/ip-route.8.html)
