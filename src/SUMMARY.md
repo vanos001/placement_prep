@@ -429,6 +429,7 @@
 - [Modules](./linux/kernel/modules.md)
 - [Af Packet](./linux/kernel/networking/af-packet.md)
 - [AF_XDP Internals](./linux/kernel/networking/af-xdp-internals.md)
+- [Zero-Copy Data Paths: sendfile, splice, MSG_ZEROCOPY, io_uring](./linux/kernel/networking/zero-copy-data-paths.md)
 - [Bonding](./linux/kernel/networking/bonding.md)
 - [Bridging](./linux/kernel/networking/bridging.md)
 - [Devlink](./linux/kernel/networking/devlink.md)
@@ -2536,6 +2537,7 @@
 - [Ed25519](./cryptography/ed25519.md)
 - [Argon2 (Memory-Hard Password Hashing)](./cryptography/argon2.md)
 - [Threshold Signatures (FROST)](./cryptography/threshold-signatures.md)
+- [BLS Signatures](./cryptography/bls-signatures.md)
 - [PKI](./cryptography/pki.md)
 - [Practical Web Security](./cryptography/practical-security.md)
 - [X.509 Certificates](./cryptography/x509-certificates.md)
@@ -2626,6 +2628,9 @@
 - [Memory Models](./os/advanced/memory-models.md)
 - [Memory Internals](./os/advanced/memory-internals.md)
 - [I/O Internals](./os/advanced/io-internals.md)
+- [KSM Page Merging](./os/advanced/ksm-page-merging.md)
+- [CRIU Checkpoint/Restore](./os/advanced/criu-checkpoint-restore.md)
+- [seccomp & BPF Filters](./os/advanced/seccomp-bpf.md)
 
 ---
 
@@ -2674,6 +2679,7 @@
 - [Tiered & Persistent Storage](./storage/advanced/tiered-persistent.md)
 - [Storage Internals](./storage/advanced/storage-internals.md)
 - [ZNS & Zoned Storage](./storage/advanced/zns-zoned-storage.md)
+- [T10 PI: End-to-End Data Integrity](./storage/advanced/t10-pi-data-integrity.md)
 - [S3 Object Storage Internals](./storage/advanced/s3-internals.md)
 - [MinIO Architecture](./storage/advanced/minio-architecture.md)
 - [HDFS Internals](./storage/advanced/hdfs-internals.md)
@@ -2709,6 +2715,7 @@
 - [Online Schema Change](./dbms/advanced/online-schema-change.md)
 - [Calvin — Deterministic Database](./dbms/advanced/calvin.md)
 - [Execution Engines](./dbms/advanced/execution-engines.md)
+- [Data-Centric Query Compilation](./dbms/advanced/query-compilation.md)
 - [Advanced Indexing](./dbms/advanced/index-advanced.md)
 - [Advanced Concurrency Control](./dbms/advanced/concurrency-advanced.md)
 - [Distributed Databases](./dbms/advanced/distributed-databases.md)
@@ -2754,6 +2761,7 @@
 - [JIT & Runtime Optimization](./compilers/advanced/jit-optimization.md)
 - [Deoptimization & OSR](./compilers/advanced/deoptimization-osr.md)
 - [Auto-Vectorization Internals](./compilers/advanced/auto-vectorization-deep.md)
+- [Polyhedral Compilation](./compilers/advanced/polyhedral-compilation.md)
 - [MLIR](./compilers/advanced/mlir.md)
 - [LLVM IR](./compilers/advanced/llvm-ir.md)
 - [Cranelift](./compilers/advanced/cranelift.md)
@@ -2762,6 +2770,7 @@
 - [Alias Analysis](./compilers/advanced/alias-analysis.md)
 - [Abstract Interpretation](./compilers/advanced/abstract-interpretation.md)
 - [Verified Compilation & CompCert](./compilers/advanced/verified-compilation.md)
+- [CompCert: Inside the Machine-Checked Compiler](./compilers/advanced/compcert-verified-compilation.md)
 - [Peephole Optimization](./compilers/advanced/peephole-optimization.md)
 - [ZGC (Z Garbage Collector)](./compilers/advanced/zgc.md)
 - [G1GC (Garbage-First)](./compilers/advanced/g1gc.md)
@@ -2808,6 +2817,7 @@
 - [Collective Communication & Distributed Training](./hpc/collective-communication.md)
 - [HPC Infrastructure](./hpc/hpc-infra.md)
 - [Slurm & HPC Scheduling](./hpc/slurm-scheduling.md)
+- [GPUDirect Networking](./hpc/gpudirect-networking.md)
 
 ---
 
@@ -2825,6 +2835,7 @@
 - [Cilium and eBPF Kubernetes Networking](./networks/advanced/cilium-ebpf.md)
 - [SR-IOV and Network Virtualization Offload](./networks/advanced/sr-iov-networking.md)
 - [STUN and TURN (NAT Traversal)](./networks/advanced/stun-turn.md)
+- [Overlay Mesh VPNs (Tailscale, Nebula, DERP)](./networks/advanced/overlay-mesh-vpns.md)
 - [MPLS](./networks/advanced/mpls.md)
 - [IP Multicast](./networks/advanced/multicast.md)
 - [Emerging Networks](./networks/advanced/emerging-networks.md)
@@ -2861,6 +2872,7 @@
 - [Sanitizer Internals](./security/advanced/sanitizer-internals.md)
 - [SPIFFE/SPIRE Workload Identity](./security/advanced/spiffe-spire.md)
 - [Advanced Cryptography](./security/advanced/crypto-advanced.md)
+- [FIDO2 & WebAuthn](./security/advanced/fido2-webauthn.md)
 - [Confidential Computing & TEEs](./security/advanced/confidential-computing.md)
 
 ---
