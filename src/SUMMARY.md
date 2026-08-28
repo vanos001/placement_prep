@@ -2544,6 +2544,7 @@
 - [Zero-Knowledge Proofs (SNARKs & STARKs)](./cryptography/zk-proofs.md)
 
 ---
+- [WireGuard Protocol](./cryptography/wireguard-protocol.md)
 
 # Performance Engineering
 
@@ -2672,6 +2673,7 @@
 - [Deduplication & CAS](./storage/advanced/dedup-cas.md)
 - [Tiered & Persistent Storage](./storage/advanced/tiered-persistent.md)
 - [Storage Internals](./storage/advanced/storage-internals.md)
+- [ZNS & Zoned Storage](./storage/advanced/zns-zoned-storage.md)
 - [S3 Object Storage Internals](./storage/advanced/s3-internals.md)
 - [MinIO Architecture](./storage/advanced/minio-architecture.md)
 - [HDFS Internals](./storage/advanced/hdfs-internals.md)
@@ -2701,6 +2703,7 @@
 - [Snapshot Isolation](./dbms/advanced/snapshot-isolation.md)
 - [Serializable Snapshot Isolation (SSI)](./dbms/advanced/serializable-snapshot-isolation.md)
 - [Learned Indexes](./dbms/advanced/learned-indexes.md)
+- [Learned Query Optimization](./dbms/advanced/learned-query-optimization.md)
 - [Memcached Internals](./dbms/advanced/memcached.md)
 - [Database Sharding](./dbms/advanced/database-sharding.md)
 - [Online Schema Change](./dbms/advanced/online-schema-change.md)
@@ -2709,6 +2712,7 @@
 - [Advanced Indexing](./dbms/advanced/index-advanced.md)
 - [Advanced Concurrency Control](./dbms/advanced/concurrency-advanced.md)
 - [Distributed Databases](./dbms/advanced/distributed-databases.md)
+- [The RUM Conjecture](./dbms/advanced/rum-conjecture.md)
 - [Vector Databases](./dbms/advanced/vector-databases.md)
 - [Graph Databases](./dbms/advanced/graph-databases.md)
 - [Temporal & Streaming Databases](./dbms/advanced/temporal-streaming.md)
@@ -2733,6 +2737,7 @@
 - [Approximation & FPT](./dsa/advanced/approximation-fpt.md)
 - [Parallel & Graph Algorithms](./dsa/advanced/parallel-graph-algorithms.md)
 - [Parallel Sorting](./dsa/advanced/parallel-sorting.md)
+- [Spectral Sparsification & Laplacian Solvers](./dsa/advanced/spectral-sparsification.md)
 
 ---
 
@@ -2747,6 +2752,8 @@
 - [Type Inference](./compilers/advanced/type-inference.md)
 - [Garbage Collection](./compilers/advanced/garbage-collection.md)
 - [JIT & Runtime Optimization](./compilers/advanced/jit-optimization.md)
+- [Deoptimization & OSR](./compilers/advanced/deoptimization-osr.md)
+- [Auto-Vectorization Internals](./compilers/advanced/auto-vectorization-deep.md)
 - [MLIR](./compilers/advanced/mlir.md)
 - [LLVM IR](./compilers/advanced/llvm-ir.md)
 - [Cranelift](./compilers/advanced/cranelift.md)
@@ -2784,6 +2791,8 @@
 - [Chiplets & UCIe](./arch/advanced/chiplets-ucie.md)
 - [CXL Memory: Pooling, Tiering, and Stranding](./arch/advanced/cxl-memory-pooling.md)
 - [Accelerators & GPUs](./arch/advanced/accelerators.md)
+- [DPU & SmartNIC Offload](./arch/advanced/dpu-smartnic-offload.md)
+- [ARM CCA & Realms](./arch/advanced/arm-cca-realms.md)
 - [CUDA Programming Model](./arch/advanced/cuda-programming.md)
 - [ROCm](./arch/advanced/rocm.md)
 - [TPU Architecture](./arch/advanced/tpu-architecture.md)
@@ -2822,6 +2831,8 @@
 - [Encrypted DNS: DoT, DoH, DoQ, and ODoH](./networks/advanced/encrypted-dns.md)
 - [Network Verification (Batfish, Minesweeper)](./networks/advanced/network-verification.md)
 - [SRv6: Segment Routing over IPv6](./networks/advanced/srv6.md)
+- [P4 & Programmable Data Planes](./networks/advanced/p4-programmable-dataplane.md)
+- [In-Band Telemetry: INT, IOAM, and the Metadata Stack](./networks/advanced/in-band-telemetry.md)
 
 ---
 
@@ -2847,6 +2858,7 @@
 - [Sandboxing](./security/advanced/sandboxing.md)
 - [Side-Channel Resistant Crypto](./security/advanced/side-channel-resistant.md)
 - [Exploit Mitigations & Memory Safety](./security/advanced/exploit-mitigations.md)
+- [Sanitizer Internals](./security/advanced/sanitizer-internals.md)
 - [SPIFFE/SPIRE Workload Identity](./security/advanced/spiffe-spire.md)
 - [Advanced Cryptography](./security/advanced/crypto-advanced.md)
 - [Confidential Computing & TEEs](./security/advanced/confidential-computing.md)
