@@ -61,7 +61,7 @@ Caching at the edge reduces bandwidth costs and latency for frequently accessed 
 
 Many edge deployments operate in environments with unreliable connectivity—satellite links, mobile vehicles, remote sensors. **Delay-Tolerant Networking (DTN)** provides store-and-forward semantics:
 
-- **Bundle Protocol (RFC 5050)**: messages are bundled with metadata and forwarded opportunistically
+- **Bundle Protocol (BPv6 RFC 5050, superseded by BPv7 RFC 9171)**: messages are bundled with metadata and forwarded opportunistically
 - ** custody transfer**: intermediate nodes acknowledge receipt, taking responsibility for delivery
 - **proactive caching**: nodes pre-fetch likely-needed data during connectivity windows
 
