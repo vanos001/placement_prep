@@ -86,20 +86,16 @@ Benchmark: PGM-Index is ~2.5× smaller than a B+ tree on integers, with comparab
 
 ### ALEX
 
-ALEX (Adaptive Learned Index, Ding et al., 2020) is a learned index designed for read-write workloads. It uses a hybrid structure: a learned model per "node" plus an LSM-tree-like structure for inserts.
+ALEX (Adaptive Learned Index, Ding et al., 2020) is a learned index designed for read-write workloads. It uses a hybrid structure: a learned model per "node" plus a **gapped array** leaf layout (slots with gaps so inserts shift a few keys instead of rebuilding pages).
 
 ALEX's design choices:
 - The model is piecewise-linear with a tunable segment count.
 - Inserts go to a small gapped array; the model is rebalanced periodically.
 - Deletes are tombstones (lazy deletion).
 
-### Google's "Google Learned Index" (BTRA, 2019)
+### What actually ships (the verifiable set)
 
-Google's production learned index for internal use. Not open-sourced; described in a 2019 paper. Used for Bigtable tablet key lookup.
-
-### DuckDB
-
-DuckDB (an in-process analytical database) uses learned indexes for its ART (Adaptive Radix Tree) replacement. The learned index handles point queries; the ART handles range queries.
+Published, verifiable deployments of learned indexes are rarer than the papers suggest. Kraska's original work came out of Google Research, and Google has described learned models inside its own storage stacks, but the specific systems above this line are the ones with public documentation. When evaluating vendor claims about learned indexes, ask which of these are documented: model retraining policy, the error bound at lookup time, and what happens to tail latency when a segment's distribution drifts.
 
 ## When Learned Indexes Help
 
@@ -139,7 +135,7 @@ The realistic view: learned indexes are a niche optimization for specific worklo
 ## References
 
 - Kraska et al., "[The Case for Learned Index Structures](https://dl.acm.org/doi/10.1145/3183713.3183736)" (SIGMOD 2018)
-- Ferragina & Vinciguerva, "[The PGM-index: a fully-dynamic compressed learned index with O(log n) operations](https://arxiv.org/abs/1910.08070)" (2020)
+- Ferragina & Vinciguerra, "[The PGM-index: a fully-dynamic compressed learned index with provably worst-case update time](https://vldb.org/pvldb/vol13/p1162-ferragina.pdf)" (PVLDB 13(8), 2020)
 - Ding et al., "[ALEX: An Updatable Adaptive Learned Index](https://dl.acm.org/doi/10.1145/3318464.3380516)" (SIGMOD 2020)
 - Galakatos et al., "[Fitting Trees: A Data-Aware Index Structure](https://www.cs.cmu.edu/~huanrao/papers/sigmod19.pdf)" (SIGMOD 2019)
 - [PGM-Index GitHub](https://github.com/gvinciguerra/PGM-index)

@@ -165,25 +165,24 @@ Combining IVF with PQ: first use IVF to narrow to `nprobe` clusters, then use PQ
 
 HNSW and IVF keep all vectors in memory. For billion-scale collections with 768-dim vectors, this requires ~3TB of RAM — prohibitively expensive.
 
-### DiskANN (Jayaram Subramanya et al., SIGMOD 2019)
+### DiskANN (Jayaram Subramanya et al., NeurIPS 2019)
 
-DiskANN builds an **HNSW-like graph** optimized for SSD access:
+DiskANN builds a **Vamana graph** optimized for SSD access (a single-layer proximity graph with bounded degree R -- no HNSW-style hierarchy):
 
-1. **Vamana graph**: A disk-friendly proximity graph (similar to HNSW layer 0) with degree bounded by **R** (typically 64-128).
-2. **PQ-compressed vectors on disk**: Full-precision vectors are replaced by PQ codes on SSD. Centroid tables are memory-resident.
-3. **Memory-resident metadata**: Only the graph structure (node → neighbor list) and PQ centroid tables are in memory (~30-40 bytes/vector).
-4. **SSD-aware access**: Search follows graph edges, fetching PQ-compressed vectors from SSD. Prefetching hides SSD latency.
+1. **Vamana graph**: A disk-friendly proximity graph with degree bounded by **R** (typically 32-64; the paper's 1B-point builds use R=64), tunable via the **alpha** pruning parameter (alpha=1 gives a compact graph, alpha=1.5 adds long-range edges to shrink diameter).
+2. **PQ-compressed codes in DRAM**: Each vector's product-quantization code is memory-resident and used to estimate distances cheaply during beam search -- this is the search's scoring signal.
+3. **Graph + full vectors on SSD**: Adjacency lists and the full-precision vectors live on a single NVMe SSD; each hop fetches a node's neighbor list and vectors at 4KB-page granularity, with prefetching to hide latency.
 
 ```
-Memory: graph (R neighbors × 4B) + PQ lookup tables
-SSD: PQ-compressed vectors (4-16 bytes per vector)
+DRAM : PQ codes (~m bytes per vector; m=96 for 96-dim blocks)
+SSD  : adjacency lists (R x 4B per node) + full-precision vectors (d x 4B)
 
-For 1B vectors, d=768, m=96 (96 sub-vectors, ~8 bytes per vector):
-  Memory: 1B × (128 × 4 + 96 × 256 × 4) ≈ 100 GB (graph + centroids)
-  SSD: 1B × 8 bytes = 8 GB
+For 1B vectors, d=768, m=96:
+  DRAM: 1B x 96 B  ~ 96 GB (PQ codes)
+  SSD : 1B x (64 x 4 + 3072) B ~ 3.3 TB (graph + full vectors)
 ```
 
-DiskANN achieves **sub-5ms QPS** for billion-scale search on a single server with NVMe SSD. It is used in **Azure AI Search**.
+With this layout, the published results serve billion-point workloads from one server with single-digit-millisecond latencies at thousands of queries per second on an NVMe SSD; DiskANN ships in **Azure AI Search** and Microsoft's vector-search ecosystem.
 
 ## Vector Index Maintenance
 

@@ -1390,8 +1390,10 @@
 - [Byzantine Quorum Systems: Masking, Disseminating, and the Q2 Conditions](./distributed/advanced/byzantine-quorum-systems.md)
   - [Vector Clocks](./distributed/fundamentals/vector-clocks.md)
   - [Gossip Protocol](./distributed/fundamentals/gossip.md)
+  - [Gossip Dissemination Dynamics: Push, Pull, and the O(log N) Tail](./distributed/fundamentals/gossip-protocols.md)
   - [Conflict-Free Replicated Data Types](./distributed/fundamentals/crdts.md)
   - [Distributed Locks and Fencing Tokens](./distributed/fundamentals/distributed-locks.md)
+  - [Fencing Tokens: Enforcing Expiry Where the Data Lives](./distributed/fundamentals/fencing-tokens.md)
   - [Byzantine Faults](./distributed/fundamentals/byzantine-faults.md)
 - [Reliable Broadcast: Bracha and the Broadcast/Consensus Split](./distributed/fundamentals/reliable-broadcast.md)
   - [Distributed Algorithms Overview](./distributed/fundamentals/distributed-algorithms.md)
@@ -1736,6 +1738,10 @@
 - [Search Fundamentals](./search/fundamentals.md)
 - [Elasticsearch](./search/elasticsearch.md)
 - [Vector Search](./search/vector-search.md)
+- [HNSW: Hierarchical Navigable Small World Graphs](./search/hnsw.md)
+- [DiskANN / Vamana: Billion-Scale ANN on a Single SSD Node](./search/diskann.md)
+- [IVF-PQ: Quantized Vector Search at Billion Scale](./search/ivf-pq-quantization.md)
+- [Reranking and Hybrid Fusion](./search/reranking.md)
 - [Search Interview Questions](./search/interview-questions.md)
 
 ---
@@ -1921,6 +1927,7 @@
 - [The Curry–Howard Correspondence — Proofs as Programs, Propositions as Types](./cs-theory/curry-howard.md)
 - [Gödel's Incompleteness Theorems — Arithmetic, Self-Reference, and the Limits of Formal Systems](./cs-theory/godel-incompleteness.md)
 - [The Lambda Calculus — A Turing-Complete Minimal Language](./cs-theory/lambda-calculus.md)
+- [Delimited Continuations: Prompts, shift/reset, One-Shot Control](./cs-theory/delimited-continuations.md)
 
 ---
 
@@ -3119,6 +3126,7 @@
 - [Petri Nets: Token Semantics for Concurrent Systems](./formal-methods/petri-nets.md)
 - [Probabilistic Model Checking: DTMCs, MDPs, and PCTL](./formal-methods/probabilistic-model-checking.md)
 - [Program Verification](./formal-methods/program-verification.md)
+- [Hoare Logic and Weakest Preconditions](./formal-methods/wp-hoare-logic.md)
 - [Verified Systems](./formal-methods/verified-systems.md)
 - [seL4 Kernel Verification](./formal-methods/sel4-verification.md)
 - [Testing & Formal Methods](./formal-methods/testing-formal.md)
@@ -3126,6 +3134,7 @@
 - [Specification Mining](./formal-methods/specification-mining.md)
 - [Distributed & Concurrency Verification](./formal-methods/distributed-verification.md)
 - [Coq and Lean: Interactive Theorem Provers](./formal-methods/coq-lean.md)
+- [Isabelle/HOL: The LCF-Style Kernel Architecture](./formal-methods/isabelle-hol.md)
 - [SAT and SMT Solvers](./formal-methods/sat-smt-solvers.md)
 - [Alloy: Bounded Relational Analysis](./formal-methods/alloy.md)
 - [Separation Logic: Reasoning about Pointer Programs](./formal-methods/separation-logic.md)
@@ -3209,6 +3218,7 @@
 - [Triton Inference Server](./llm/advanced/triton-inference-server.md)
 - [Position Encoding (RoPE, ALiBi)](./llm/advanced/position-encoding.md)
 - [KV Cache Compression](./llm/advanced/kv-cache-compression.md)
+- [Attention Kernel Variants: MQA, GQA, and MLA](./llm/advanced/attention-kernel-variants.md)
 
 ---
 

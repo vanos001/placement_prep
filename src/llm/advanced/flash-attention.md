@@ -94,7 +94,7 @@ Flash Attention 3 targets Hopper (H100) hardware features:
 
 3. **Warp-specialized kernels**: one warp handles data movement, another handles compute. The producer-consumer pattern maximizes overlap.
 
-Flash 3 achieves 1.5-2× the speed of Flash 2 on H100 for N > 4096, and is the default in PyTorch 2.3+ and `flash-attn` package 2.5+.
+Flash 3 achieves 1.5-2× the speed of Flash 2 on H100 for N > 4096 (numbers from the paper's headline benchmarks). Unlike FlashAttention-2, FA3 is not what PyTorch's `scaled_dot_product_attention` ships by default -- it is distributed as a separate Hopper-targeted module in the `flash-attn` project (`flash_attn_interface`), so adopting it means an explicit code change, not a version bump.
 
 ## Production Use
 
@@ -146,8 +146,8 @@ out = flash_v3(Q, K, V, causal=True)
 
 - Tri Dao et al., "[FlashAttention: Fast and Memory-Efficient Exact Attention with IO-Awareness](https://arxiv.org/abs/2205.14135)" (NeurIPS 2022)
 - Tri Dao, "[FlashAttention-2: Faster Attention with Better Parallelism and Work Partitioning](https://arxiv.org/abs/2307.08691)" (2023)
-- Jay Shah et al., "[FlashAttention-3: Fast and Accurate Attention with Asynchrony and Low-Precision](https://arxiv.org/abs/2407.08691)" (2024)
+- Jay Shah et al., "[FlashAttention-3: Fast and Accurate Attention with Asynchrony and Low-Precision](https://arxiv.org/abs/2407.08608)" (2024)
 - [flash-attn GitHub repository](https://github.com/Dao-AILab/flash-attention)
 - [PyTorch SDPA documentation](https://pytorch.org/docs/stable/generated/torch.nn.functional.scaled_dot_product_attention.html)
-- [Tri Dao's blog: How Flash Attention works](https://tridao.me/posts/2023-flash-attention/)
+- [Tri Dao: FlashAttention-2 paper (PDF)](https://tridao.me/publications/flash2/flash2.pdf)
 - [Hugging Face: How to use Flash Attention with transformers](https://huggingface.co/docs/transformers/perf_infer_gpu_one#flashattention)
