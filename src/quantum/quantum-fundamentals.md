@@ -194,7 +194,7 @@ Amplitude amplification:
 5. Measure: high probability of getting the target
 ```
 
-Grover's algorithm is **optimal**—no quantum algorithm can do unstructured search in fewer than O(√N) queries. It has practical applications for NP problems where quantum computers can achieve quadratic speedup (e.g., SAT solving, graph coloring).
+Grover's algorithm is **optimal**—no quantum algorithm can do unstructured search in fewer than Ω(√N) queries (the BBBV lower bound; O(√N) is what Grover achieves, matching the bound up to constants). It has practical applications for NP problems where quantum computers can achieve quadratic speedup (e.g., SAT solving, graph coloring).
 
 ### Shor's Factoring Algorithm
 

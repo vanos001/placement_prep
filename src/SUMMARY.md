@@ -1919,6 +1919,7 @@
 - [Formal Methods](./cs-theory/formal-methods.md)
 - [Datalog and Fixpoint Engines](./cs-theory/datalog-fixpoint-engines.md)
 - [Programming Language Theory](./cs-theory/programming-language-theory.md)
+- [Hindley-Milner Type Inference](./cs-theory/hindley-milner.md)
 - [WebAssembly](./cs-theory/webassembly.md)
 - [Computer Graphics](./cs-theory/computer-graphics.md)
 - [Quantum Computing](./cs-theory/quantum-computing.md)
@@ -2873,6 +2874,7 @@
 - [Distributed Transactions](./distributed/advanced/distributed-transactions.md)
 - [Leases](./distributed/advanced/leases.md)
 - [Kademlia DHT](./distributed/advanced/kademlia-dht.md)
+- [Distributed Hash Tables: Ring Geometry, Stabilization, and What Actually Shipped](./distributed/fundamentals/dhts.md)
 
 ---
 
@@ -3084,6 +3086,7 @@
 - [Advanced Congestion Control](./networks/advanced/congestion-control-advanced.md)
 - [Data-Center TCP and Incast Collapse](./networks/advanced/datacenter-tcp.md)
 - [fq_codel and TCP Pacing: Queue Discipline as Congestion Control](./networks/advanced/fq-codel-pacing.md)
+- [Fair Queuing and Packet Scheduling](./networks/advanced/fair-queuing.md)
 - [RDMA Congestion Control: PFC, DCQCN, and the Lossless Trap](./networks/advanced/rdma-congestion-control.md)
 - [Learning-Based Congestion Control: Copa and PCC](./networks/advanced/learning-congestion-control.md)
 - [GNSS Timing and Holdover](./networks/advanced/gnss-timing.md)
@@ -3274,6 +3277,7 @@
 
 - [Quantum Computing Overview](./quantum/README.md)
 - [Quantum Fundamentals](./quantum/quantum-fundamentals.md)
+- [Grover's Search and Amplitude Amplification](./quantum/grovers-search.md)
 - [Quantum Advanced Topics](./quantum/quantum-advanced.md)
 - [Quantum Error Correction](./quantum/quantum-error-correction.md)
 - [Quantum Key Distribution & BB84](./quantum/quantum-key-distribution.md)
