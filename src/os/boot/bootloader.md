@@ -10,16 +10,32 @@ Without a bootloader, the CPU would have no way to find and load the kernel — 
 
 ## Boot Process Overview
 
-```mermaid
-graph TD
-    A[Power On] --> B[Firmware: BIOS/UEFI]
-    B --> C[Bootloader: GRUB]
-    C --> D[Load Kernel Image<br/>vmlinuz]
-    D --> E[Load initramfs/initrd]
-    E --> F[Kernel Initialization]
-    F --> G[Mount Root Filesystem]
-    G --> H[Execute Init System<br/>systemd / PID 1]
-    H --> I[User Space Services]
+```text
+Power On
+  |
+  v
+Firmware (BIOS/UEFI)
+  |
+  v
+Bootloader (GRUB)
+  |
+  v
+Load kernel image (vmlinuz)
+  |
+  v
+Load initramfs/initrd
+  |
+  v
+Kernel initialization
+  |
+  v
+Mount root filesystem
+  |
+  v
+Execute init system (systemd, PID 1)
+  |
+  v
+User-space services
 ```
 
 ---
@@ -187,14 +203,26 @@ The kernel can't access these without the appropriate drivers, but the drivers a
 
 ### initramfs Boot Sequence
 
-```mermaid
-graph TD
-    A[GRUB loads kernel + initramfs] --> B[Kernel unpacks initramfs<br/>into rootfs tmpfs]
-    B --> C[Execute /init script]
-    C --> D[Load required kernel modules<br/>e.g., dm-crypt, lvm, ahci]
-    D --> E[Discover and mount<br/>real root filesystem]
-    E --> F[pivot_root or switch_root<br/>to real rootfs]
-    F --> G[Execute /sbin/init<br/>systemd]
+```text
+GRUB loads kernel + initramfs
+  |
+  v
+Kernel unpacks initramfs into rootfs tmpfs
+  |
+  v
+Execute /init
+  |
+  v
+Load required kernel modules (dm-crypt, lvm, ahci, ...)
+  |
+  v
+Discover and mount the real root filesystem
+  |
+  v
+pivot_root / switch_root to the real rootfs
+  |
+  v
+Execute /sbin/init (systemd)
 ```
 
 ### Inspect initramfs

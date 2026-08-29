@@ -184,8 +184,10 @@ Requires shared memory (e.g., shared libraries mapped into both processes, memor
 // Flush+Reload (requires shared memory access)
 void flush_reload_probe(uint8_t *shared_line) {
     uint64_t t1, t2;
-    // Flush: clflush is a serializing instruction
-    asm volatile("clflush (%0)" :: "r"(shared_line) : "memory");
+    // CLFLUSH invalidates the line cache-coherently but is NOT a
+    // serializing instruction (Intel SDM Vol. 3A, CLFLUSH entry) — the
+    // flush must be fenced so it completes before any later reload:
+    asm volatile("mfence; clflush (%0); mfence" :: "r"(shared_line) : "memory");
     // Wait for victim to potentially access the line
     // ... victim runs ...
     // Reload and time
