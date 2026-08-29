@@ -375,6 +375,7 @@
 - [Dentry](./linux/kernel/filesystems/dentry.md)
 - [Transparent Huge Pages](./linux/kernel/memory/thp.md)
 - [DAX: Direct Access Without the Page Cache](./linux/kernel/memory/dax.md)
+- [hugetlbfs and Huge Pages: TLB Economics in the Kernel](./linux/kernel/memory/hugetlb.md)
 - [RCU-Walk Pathname Lookup](./linux/kernel/filesystems/rcu-walk-path-lookup.md)
 - [Devtmpfs](./linux/kernel/filesystems/devtmpfs.md)
 - [Erofs](./linux/kernel/filesystems/erofs.md)
@@ -382,6 +383,7 @@
 - [Ext4](./linux/kernel/filesystems/ext4.md)
 - [F2fs](./linux/kernel/filesystems/f2fs.md)
 - [File Ops](./linux/kernel/filesystems/file-ops.md)
+- [File Descriptor Passing: SCM_RIGHTS Mechanics](./linux/kernel/filesystems/fd-passing.md)
 - [Fscrypt](./linux/kernel/filesystems/fscrypt.md)
 - [Fuse](./linux/kernel/filesystems/fuse.md)
 - [Watching the Filesystem: dnotify, inotify, fanotify and the fsnotify Backend](./linux/kernel/filesystems/fsnotify-inotify-fanotify.md)
@@ -2077,6 +2079,7 @@
 
 - [Cloud Overview](./cloud/overview.md)
 - [Autoscaling](./cloud/autoscaling.md)
+- [Resource Disaggregation in the Datacenter](./cloud/resource-disaggregation.md)
 - [Spot & Preemptible Instances](./cloud/spot-preemptible.md)
 - [Carbon-Aware & Energy-Aware Scheduling](./cloud/carbon-aware-scheduling.md)
 - [Disaster Recovery & Multi-Region](./cloud/disaster-recovery.md)
@@ -3005,6 +3008,7 @@
 - [Superoptimization](./compilers/advanced/superoptimization.md)
 - [E-Graphs and Equality Saturation](./compilers/advanced/e-graphs-equality-saturation.md)
 - [Regex Engine Internals: Backtracking Machines, Automata, and the Linear-Time Divide](./compilers/advanced/regex-engine-internals.md)
+- [Devirtualization: CHA, Speculation, and Guards](./compilers/advanced/devirtualization.md)
 - [WebAssembly & Runtimes](./compilers/advanced/wasm-runtimes.md)
 - [Dependent Types](./compilers/advanced/dependent-types.md)
 - [Linear Types](./compilers/advanced/linear-types.md)
@@ -3112,6 +3116,7 @@
 - [seL4 Kernel Verification](./formal-methods/sel4-verification.md)
 - [Testing & Formal Methods](./formal-methods/testing-formal.md)
 - [Symbolic Execution & Concolic Testing](./formal-methods/symbolic-execution.md)
+- [Specification Mining](./formal-methods/specification-mining.md)
 - [Distributed & Concurrency Verification](./formal-methods/distributed-verification.md)
 - [Coq and Lean: Interactive Theorem Provers](./formal-methods/coq-lean.md)
 - [SAT and SMT Solvers](./formal-methods/sat-smt-solvers.md)
@@ -3135,6 +3140,7 @@
 - [Exploit Mitigations & Memory Safety](./security/advanced/exploit-mitigations.md)
 - [Sanitizer Internals](./security/advanced/sanitizer-internals.md)
 - [SPIFFE/SPIRE Workload Identity](./security/advanced/spiffe-spire.md)
+- [Credential Rotation and Short-Lived Identity](./security/advanced/credential-rotation.md)
 - [Advanced Cryptography](./security/advanced/crypto-advanced.md)
 - [FIDO2 & WebAuthn](./security/advanced/fido2-webauthn.md)
 - [Confidential Computing & TEEs](./security/advanced/confidential-computing.md)
@@ -3148,9 +3154,11 @@
 - [Ethereum Internals](./blockchain/ethereum-internals.md)
 - [Verkle Trees](./blockchain/verkle-trees.md)
 - [Data Availability and Sampling](./blockchain/data-availability.md)
+- [Modular Blockchains: The Layered Stack](./blockchain/modular-blockchains.md)
 - [Blockchain Security](./blockchain/blockchain-security.md)
 - [Decentralized Infrastructure](./blockchain/decentralized-infra.md)
 - [MEV and Proposer-Builder Separation](./blockchain/mev-pbs.md)
+- [Mempools: Admission, Eviction, and Order Flow](./blockchain/mempools.md)
 - [Nakamoto Consensus](./blockchain/nakamoto-consensus.md)
 - [Cross-Chain Bridge Protocols](./blockchain/bridge-protocols.md)
 - [Chainlink Oracle Network](./blockchain/chainlink-oracles.md)
@@ -3211,6 +3219,7 @@
 - [Model Parallelism Overview](./llm/advanced/distributed/model-parallelism.md)
 - [FSDP (Fully Sharded Data Parallel)](./llm/advanced/distributed/fsdp.md)
 - [GPU Cluster Scheduling](./llm/advanced/distributed/gpu-cluster-scheduling.md)
+- [Prefill/Decode Disaggregation](./llm/advanced/distributed/prefill-decode-disaggregation.md)
 - [Differential Privacy](./llm/advanced/differential-privacy.md)
 - [Homomorphic Encryption](./llm/advanced/homomorphic-encryption.md)
 
@@ -3260,6 +3269,7 @@
 - [SBOM and SLSA](./supply-chain/sbom-slsa.md)
 - [SBOM Formats: SPDX vs CycloneDX](./supply-chain/spdx-cyclonedx.md)
 - [Dependency Confusion: Anatomy and Defenses](./supply-chain/dependency-confusion.md)
+- [Ephemeral CI Runners](./supply-chain/ephemeral-ci-runners.md)
 - [Sigstore and Artifact Signing](./supply-chain/sigstore-signing.md)
 - [Reproducible & Hermetic Builds](./supply-chain/reproducible-builds.md)
 - [Bazel & Build Graphs](./supply-chain/bazel-build-graphs.md)
@@ -3289,6 +3299,7 @@
 # Advanced Benchmarking
 
 - [Advanced Benchmarking](./performance-engineering/advanced-benchmarking.md)
+- [Continuous Profiling in Production](./performance-engineering/continuous-profiling.md)
 
 # Meta
 
