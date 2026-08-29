@@ -342,6 +342,7 @@
 - [Kunit](./linux/kernel/debugging/kunit.md)
 - [Linux perf Events — Performance Monitoring Interface](./linux/kernel/debugging/perf-events.md)
 - [Kernel Sanitizers — KASAN, UBSAN, MSAN, KFENCE](./linux/kernel/debugging/sanitizers.md)
+- [debugfs - The Kernel's Ad-Hoc Debugging Filesystem](./linux/kernel/debugging/debugfs.md)
 - [Coredumps: From SIGSEGV to a Debuggable File](./linux/kernel/debugging/coredumps.md)
 
 ### Tracing
@@ -2097,6 +2098,7 @@
 - [Carbon-Aware & Energy-Aware Scheduling](./cloud/carbon-aware-scheduling.md)
 - [Disaster Recovery & Multi-Region](./cloud/disaster-recovery.md)
 - [Cloud Internals](./cloud/cloud-internals.md)
+- [Noisy Neighbors & Performance Isolation](./cloud/noisy-neighbors.md)
 - [Virtualization](./cloud/virtualization/README.md)
   - [Hypervisors](./cloud/virtualization/hypervisors.md)
   - [VMs vs Containers](./cloud/virtualization/vm-vs-container.md)
@@ -3073,6 +3075,7 @@
 - [Collective Communication & Distributed Training](./hpc/collective-communication.md)
 - [NCCL Internals: Topology Discovery, Channels, and Protocols](./hpc/nccl-internals.md)
 - [HPC Infrastructure](./hpc/hpc-infra.md)
+- [Kokkos: Performance Portability by Execution and Memory Space Mapping](./hpc/kokkos.md)
 - [Slurm & HPC Scheduling](./hpc/slurm-scheduling.md)
 - [GPUDirect Networking](./hpc/gpudirect-networking.md)
 - [NVLink and NVSwitch: GPU Interconnect Fabric](./hpc/nvlink-nvswitch.md)
@@ -3293,6 +3296,7 @@
 - [Supply Chain Overview](./supply-chain/README.md)
 - [Build Systems](./supply-chain/build-systems.md)
 - [Software Supply Chain Security](./supply-chain/software-supply-chain.md)
+- [Artifact Registries: Inside the Pull and Push Path](./supply-chain/artifact-registries.md)
 - [SBOM and SLSA](./supply-chain/sbom-slsa.md)
 - [SBOM Formats: SPDX vs CycloneDX](./supply-chain/spdx-cyclonedx.md)
 - [Dependency Confusion: Anatomy and Defenses](./supply-chain/dependency-confusion.md)
