@@ -167,10 +167,10 @@ The sandbox is not absolute: WASM is a *processor isolation* layer, not a *kerne
 
 Two generations exist:
 
-- **WASI preview1** (`wasi_snapshot_preview1`): the original 2019 snapshot, exposing 44 functions like `fd_read`, `fd_write`, `path_open`, `clock_time_get`, `random_get`. It is conceptually POSIX-shaped (every WASI program looks like a Unix process) but uses capability handles everywhere. It is widely deployed: Wasmtime, wasmer, WAMR, and Node's `--experimental-wasi` all support it. Emscripten, Rust's `wasm32-wasi` target, and Zig all target preview1.
+- **WASI preview1** (`wasi_snapshot_preview1`): the original 2019 snapshot, exposing 46 functions like `fd_read`, `fd_write`, `path_open`, `clock_time_get`, `random_get`. It is conceptually POSIX-shaped (every WASI program looks like a Unix process) but uses capability handles everywhere. It is widely deployed: Wasmtime, wasmer, WAMR, and Node's `--experimental-wasi` all support it. Emscripten, Rust's `wasm32-wasi` target, and Zig all target preview1.
 - **WASI preview2** (the **Component Model** interface): the next generation, stabilized through 2023–2024. Preview2 is built on the Component Model's interface type system: instead of 44 fixed POSIX-ish functions, a component imports *typed interfaces* (WASI-IO, WASI-CLI, WASI-FS, WASI-Sockets, WASI-Clocks, WASI-Random) described in WIT (WebAssembly Interface Type) files. This is modular — a component can import only `wasi:clocks` and nothing else — and interface-typed (passing `string`, `list<u8>`, records, variants across the boundary with a canonical ABI).
 
-The transition from preview1 to preview2 is via **adapter modules**: a preview1 module can be wrapped to run on a preview2 host by a small adapter that translates the 44 POSIX calls into the new typed interfaces. This lets the large existing body of preview1 modules (`wasm32-wasi` Rust crates, Emscripten outputs) keep running while the ecosystem migrates.
+The transition from preview1 to preview2 is via **adapter modules**: a preview1 module can be wrapped to run on a preview2 host by a small adapter that translates the 46 POSIX calls into the new typed interfaces. This lets the large existing body of preview1 modules (`wasm32-wasi` Rust crates, Emscripten outputs) keep running while the ecosystem migrates.
 
 ## WASI vs Containers
 

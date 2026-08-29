@@ -148,7 +148,7 @@ A `GET` with the `Observe` option (option number 6) registers the client for fut
 
 ### DTLS and OSCORE
 
-CoAP secures the transport with **DTLS** (typically AES-CCM over UDP, RFC 9200 series) or, more recently, **OSCORE** (RFC 8613), which provides end-to-end object security independent of the transport and survives proxying. OSCORE is preferred when intermediaries (CoAP caches, border routers) terminate the transport.
+CoAP secures the transport with **DTLS** (RFC 6347, with the constrained-device cipher profiles from RFC 7252 Section 9 and RFC 7925) or, more recently, **OSCORE** (RFC 8613), which provides end-to-end object security independent of the transport and survives proxying. OSCORE is preferred when intermediaries (CoAP caches, border routers) terminate the transport.
 
 ## AMQP 1.0
 
