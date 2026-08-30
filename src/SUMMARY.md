@@ -2992,6 +2992,8 @@
 - [Approximation & FPT](./dsa/advanced/approximation-fpt.md)
 - [Parallel & Graph Algorithms](./dsa/advanced/parallel-graph-algorithms.md)
 - [Parallel Sorting](./dsa/advanced/parallel-sorting.md)
+- [The PRAM Computational Model](./dsa/advanced/pram-computational-model.md)
+- [Reservoir Sampling: Fair Coin Flips for Infinite Streams](./dsa/advanced/streaming-sampling.md)
 - [Spectral Sparsification & Laplacian Solvers](./dsa/advanced/spectral-sparsification.md)
 
 ---
@@ -3105,6 +3107,7 @@
 - [Data-Center TCP and Incast Collapse](./networks/advanced/datacenter-tcp.md)
 - [fq_codel and TCP Pacing: Queue Discipline as Congestion Control](./networks/advanced/fq-codel-pacing.md)
 - [Fair Queuing and Packet Scheduling](./networks/advanced/fair-queuing.md)
+- [The TCP Outcast Problem: When Loss Synchronization Picks a Victim](./networks/advanced/tcp-outcast-problem.md)
 - [RDMA Congestion Control: PFC, DCQCN, and the Lossless Trap](./networks/advanced/rdma-congestion-control.md)
 - [Learning-Based Congestion Control: Copa and PCC](./networks/advanced/learning-congestion-control.md)
 - [GNSS Timing and Holdover](./networks/advanced/gnss-timing.md)
@@ -3296,6 +3299,7 @@
 - [Intermittent Connectivity & Disconnect-Tolerant Systems](./edge/intermittent-connectivity.md)
 - [LoRaWAN Deep Dive](./edge/lorawan.md)
 - [Thread and Matter Deep Dive](./edge/thread-matter.md)
+- [Drone Fleets: Networking Swarms in the Sky](./edge/drone-fleet-networking.md)
 
 ---
 
