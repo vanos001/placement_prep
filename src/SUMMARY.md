@@ -1104,6 +1104,7 @@
 - [Indexing](./dbms/indexing/README.md)
   - [B-Tree](./dbms/indexing/b-tree.md)
   - [B-Trees Internals](./dbms/indexing/btrees.md)
+  - [Adaptive Radix Tree (ART): Main-Memory Indexing](./dbms/advanced/adaptive-radix-tree.md)
   - [B+ Tree](./dbms/indexing/b-plus-tree.md)
   - [Hash Index](./dbms/indexing/hash-index.md)
   - [Bitmap Index](./dbms/indexing/bitmap-index.md)
@@ -2994,6 +2995,8 @@
 - [Parallel Sorting](./dsa/advanced/parallel-sorting.md)
 - [The PRAM Computational Model](./dsa/advanced/pram-computational-model.md)
 - [Reservoir Sampling: Fair Coin Flips for Infinite Streams](./dsa/advanced/streaming-sampling.md)
+- [K Shortest Paths: Ranking the Deviations from Optimal](./dsa/advanced/k-shortest-paths.md)
+- [Cuckoo Hashing: Worst-Case O(1) Lookups via Kick-and-Evict](./dsa/advanced/cuckoo-hashing.md)
 - [Spectral Sparsification & Laplacian Solvers](./dsa/advanced/spectral-sparsification.md)
 
 ---
@@ -3108,6 +3111,7 @@
 - [fq_codel and TCP Pacing: Queue Discipline as Congestion Control](./networks/advanced/fq-codel-pacing.md)
 - [Fair Queuing and Packet Scheduling](./networks/advanced/fair-queuing.md)
 - [The TCP Outcast Problem: When Loss Synchronization Picks a Victim](./networks/advanced/tcp-outcast-problem.md)
+- [In-Band Network Telemetry: The Packet That Carries Its Own Measurements](./networks/advanced/in-band-network-telemetry.md)
 - [RDMA Congestion Control: PFC, DCQCN, and the Lossless Trap](./networks/advanced/rdma-congestion-control.md)
 - [Learning-Based Congestion Control: Copa and PCC](./networks/advanced/learning-congestion-control.md)
 - [GNSS Timing and Holdover](./networks/advanced/gnss-timing.md)
@@ -3131,6 +3135,7 @@
 - [SRv6: Segment Routing over IPv6](./networks/advanced/srv6.md)
 - [P4 & Programmable Data Planes](./networks/advanced/p4-programmable-dataplane.md)
 - [In-Band Telemetry: INT, IOAM, and the Metadata Stack](./networks/advanced/in-band-telemetry.md)
+- [In-Band Network Telemetry: The Packet That Carries Its Own Measurements](./networks/advanced/in-band-network-telemetry.md)
 - [TSN, Standard by Standard: The IEEE 802.1 Toolbox](./networks/advanced/tsn-time-sensitive-networking.md)
 - [FD.io VPP: Vector Packet Processing in User Space](./networks/advanced/fdio-vpp.md)
 - [L4 Load-Balancing Internals: Data Paths, Maglev Hashing, and Replica State](./networks/advanced/l4-load-balancing-internals.md)
