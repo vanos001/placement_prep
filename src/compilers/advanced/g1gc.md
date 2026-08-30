@@ -143,6 +143,6 @@ Tools like GCViewer, GCEasy, and Java Flight Recorder (JFR) parse these logs to 
 - [HotSpot G1GC source code](https://github.com/openjdk/jdk/tree/master/src/hotspot/share/gc/g1)
 - Monika Beck et al., "[The Garbage-First Garbage Collector](https://www.researchgate.net/publication/220832694_The_Garbage-first_Garbage_Collector)" (SIGOPS 2008)
 - [Java 9+ G1GC tuning guide](https://docs.oracle.com/en/java/javase/21/gctuning/garbage-first-garbage-collector-tuning.html)
-- [G1GC vs ZGC vs Shenandoah comparison](https://malloc.se/blog/zgc-jdk21)
+- [Generational ZGC (JEP 439, JDK 21)](https://openjdk.org/jeps/439)
 - [JEP 377: ZGC production (Java 15)](https://openjdk.org/jeps/377)
 - [LWN: G1GC in modern Java (2020)](https://lwn.net/Articles/816426/)

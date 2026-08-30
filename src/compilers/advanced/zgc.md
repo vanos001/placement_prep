@@ -163,6 +163,6 @@ For most workloads, either works. ZGC is the more recent and more optimized for 
 - [Generational ZGC (JEP 439)](https://openjdk.org/jeps/439) (Java 21)
 - [ZGC source code](https://github.com/openjdk/jdk/tree/master/src/hotspot/share/gc/z)
 - Per Liden, "[ZGC: The Z Garbage Collector](https://cr.openjdk.org/~pliden/slides/ZGC-DevTrack-JavaOne-2018.pdf)" (JavaOne 2018)
-- [Shenandoah documentation (Red Hat)](https://wiki.openjdk.org/display/HotSpot/Shenandoah)
+- [Shenandoah documentation (Red Hat)](https://wiki.openjdk.org/display/shenandoah/Main)
 - [Aleksey Shipilev: Java GC comparison](https://shipilev.net/jvm/anatomy-quark/3-gc-pause/)
 - [LWN: ZGC for Java (2020)](https://lwn.net/Articles/816455/)
