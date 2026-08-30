@@ -378,6 +378,7 @@
 - [DAX: Direct Access Without the Page Cache](./linux/kernel/memory/dax.md)
 - [hugetlbfs and Huge Pages: TLB Economics in the Kernel](./linux/kernel/memory/hugetlb.md)
 - [Bootloaders: Reset Vector to Kernel Entry](./linux/kernel/boot/bootloaders.md)
+- [memblock: Early Boot Memory Allocation](./linux/kernel/boot/memblock-early-allocators.md)
 - [RCU-Walk Pathname Lookup](./linux/kernel/filesystems/rcu-walk-path-lookup.md)
 - [Devtmpfs](./linux/kernel/filesystems/devtmpfs.md)
 - [Erofs](./linux/kernel/filesystems/erofs.md)
@@ -3113,6 +3114,7 @@
 - [Emerging Networks](./networks/advanced/emerging-networks.md)
 - [Encrypted DNS: DoT, DoH, DoQ, and ODoH](./networks/advanced/encrypted-dns.md)
 - [Network Verification (Batfish, Minesweeper)](./networks/advanced/network-verification.md)
+- [Sub-Second Failover: BFD, IP Fast Reroute, and Repair Paths](./networks/advanced/fast-failover.md)
 - [SRv6: Segment Routing over IPv6](./networks/advanced/srv6.md)
 - [P4 & Programmable Data Planes](./networks/advanced/p4-programmable-dataplane.md)
 - [In-Band Telemetry: INT, IOAM, and the Metadata Stack](./networks/advanced/in-band-telemetry.md)
@@ -3291,6 +3293,7 @@
 - [Quantum Advanced Topics](./quantum/quantum-advanced.md)
 - [Quantum Error Correction](./quantum/quantum-error-correction.md)
 - [Quantum Key Distribution & BB84](./quantum/quantum-key-distribution.md)
+- [Shor's Algorithm: Factoring via Quantum Order Finding](./quantum/shors-algorithm.md)
 
 ---
 
