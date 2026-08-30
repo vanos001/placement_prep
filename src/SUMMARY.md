@@ -1857,6 +1857,7 @@
 - [Contract Testing](./testing/contract-testing.md)
 - [Cypress](./testing/cypress.md)
 - [Fuzz Testing](./testing/fuzz-testing.md)
+- [syzkaller: Coverage-Guided Kernel Syscall Fuzzing](./testing/syzkaller-kernel-fuzzing.md)
 - [Playwright](./testing/playwright.md)
 - [Testcontainers](./testing/testcontainers.md)
 - [Visual Regression Testing](./testing/visual-regression.md)
@@ -1933,6 +1934,7 @@
 - [Gödel's Incompleteness Theorems — Arithmetic, Self-Reference, and the Limits of Formal Systems](./cs-theory/godel-incompleteness.md)
 - [The Lambda Calculus — A Turing-Complete Minimal Language](./cs-theory/lambda-calculus.md)
 - [Delimited Continuations: Prompts, shift/reset, One-Shot Control](./cs-theory/delimited-continuations.md)
+- [Monads and Effect Systems](./cs-theory/monads-effects.md)
 
 ---
 
@@ -3011,6 +3013,7 @@
 - [Polyhedral Compilation](./compilers/advanced/polyhedral-compilation.md)
 - [MLIR](./compilers/advanced/mlir.md)
 - [LLVM IR](./compilers/advanced/llvm-ir.md)
+- [SSA Form: Dominators, Phi Placement, and Destruction](./compilers/advanced/ssa-form.md)
 - [Cranelift](./compilers/advanced/cranelift.md)
 - [Register Allocation](./compilers/advanced/register-allocation.md)
 - [Escape Analysis](./compilers/advanced/escape-analysis.md)
@@ -3216,6 +3219,7 @@
 - [Advanced Training](./llm/advanced/training-advanced.md)
 - [Advanced Quantization](./llm/advanced/quantization-advanced.md)
 - [Inference Systems](./llm/advanced/inference-systems.md)
+- [RLAIF: Scaling Alignment Feedback with AI Raters](./llm/advanced/rlaif.md)
 - [Advanced RAG](./llm/advanced/rag-advanced.md)
 - [Dataset Deduplication for LLM Training](./llm/advanced/dataset-deduplication.md)
 - [Agent Systems](./llm/advanced/agent-systems.md)
@@ -3299,6 +3303,7 @@
 - [Quantum Error Correction](./quantum/quantum-error-correction.md)
 - [Quantum Key Distribution & BB84](./quantum/quantum-key-distribution.md)
 - [Shor's Algorithm: Factoring via Quantum Order Finding](./quantum/shors-algorithm.md)
+- [Deutsch-Jozsa and Bernstein-Vazirani: The First Quantum Algorithms](./quantum/deutsch-jozsa-bv.md)
 
 ---
 
