@@ -1105,6 +1105,7 @@
   - [B-Tree](./dbms/indexing/b-tree.md)
   - [B-Trees Internals](./dbms/indexing/btrees.md)
   - [Adaptive Radix Tree (ART): Main-Memory Indexing](./dbms/advanced/adaptive-radix-tree.md)
+  - [FSST: Fast Random-Access String Compression](./dbms/advanced/fsst-string-compression.md)
   - [B+ Tree](./dbms/indexing/b-plus-tree.md)
   - [Hash Index](./dbms/indexing/hash-index.md)
   - [Bitmap Index](./dbms/indexing/bitmap-index.md)
@@ -2997,6 +2998,9 @@
 - [Reservoir Sampling: Fair Coin Flips for Infinite Streams](./dsa/advanced/streaming-sampling.md)
 - [K Shortest Paths: Ranking the Deviations from Optimal](./dsa/advanced/k-shortest-paths.md)
 - [Cuckoo Hashing: Worst-Case O(1) Lookups via Kick-and-Evict](./dsa/advanced/cuckoo-hashing.md)
+- [Zip Trees: A Skip List That Pretends to Be a Tree](./dsa/advanced/zip-trees.md)
+- [Fractional Cascading: One Binary Search, Many Lists](./dsa/advanced/fractional-cascading.md)
+- [Cache-Oblivious Algorithms](./dsa/advanced/cache-oblivious-algorithms.md)
 - [Spectral Sparsification & Laplacian Solvers](./dsa/advanced/spectral-sparsification.md)
 
 ---
