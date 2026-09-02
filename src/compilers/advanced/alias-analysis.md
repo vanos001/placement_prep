@@ -180,7 +180,7 @@ HotSpot's escape analysis includes alias analysis for objects. The C2 compiler's
 - Steensgaard, "[Points-to Analysis in Almost Linear Time](https://www.cs.utexas.edu/~spec/papers/p32-steensgaard.pdf)" (POPL 1996)
 - [LLVM Alias Analysis documentation](https://llvm.org/docs/AliasAnalysis.html)
 - [LLVM's Type-based Alias Analysis (TBAA)](https://llvm.org/docs/LangRef.html#tbaa-metadata)
-- [GCC alias analysis source](https://github.com/gcc-mirror/gcc/blob/master/gcc/alias.c)
+- [GCC alias analysis source](https://github.com/gcc-mirror/gcc/blob/master/gcc/alias.cc)
 - [Clang and strict aliasing](https://clang.llvm.org/docs/LanguageExtensions.html#strict-aliasing)
 - Hind & Pioli, "[Which Pointer Analysis Should I Use?](https://www.cs.cornell.edu/courses/cs711/2005fa/papers/hind-pioli.pdf)" (ICSE 2000)
 - [LWN: Alias analysis in modern compilers (2020)](https://lwn.net/Articles/817835/)

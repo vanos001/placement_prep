@@ -6,19 +6,13 @@ The query planner (or query optimizer) translates a SQL statement into an execut
 
 ```mermaid
 graph LR
-    SQL[SQL String] --> PARSE[Parser
-AST]
-    PARSE --> BIND[Binder
-Resolve Names]
-    BIND --> REWRITE[Rewriter
-Apply Rules]
-    REWRITE --> PLAN[Planner
-Generate Plans]
-    PLAN --> COST[Cost Model
-Estimate Costs]
+    SQL[SQL String] --> PARSE["Parser<br/>AST"]
+    PARSE --> BIND["Binder<br/>Resolve Names"]
+    BIND --> REWRITE["Rewriter<br/>Apply Rules"]
+    REWRITE --> PLAN["Planner<br/>Generate Plans"]
+    PLAN --> COST["Cost Model<br/>Estimate Costs"]
     COST --> BEST[Choose Lowest Cost Plan]
-    BEST --> EXEC[Executor
-Run Plan]
+    BEST --> EXEC["Executor<br/>Run Plan"]
 
     style PLAN fill:#c8e6c9
     style COST fill:#bbdefb

@@ -182,5 +182,5 @@ Without a `.link` rule, systemd uses predictable naming: `enp3s0` (PCI bus 3, sl
 - [udevadm(8)](https://www.freedesktop.org/software/systemd/man/udevadm.html)
 - Greg Kroah-Hartman, "[udev: A Userspace Implementation of devfs](https://www.kernel.org/pub/linux/utils/kernel/hotplug/udev-ols.pdf)" (OLS 2003)
 - Kay Sievers, "[Persistent Device Naming](https://systemd.io/PERSISTENT_DEVICE_NAMING/)"
-- [LWN: "Revising the udev rules" (2012)](https://lwn.net/Articles/490336/)
+- [udev(7) man page — rule matching, device properties, RUN+](https://man7.org/linux/man-pages/man7/udev.7.html)
 - systemd source: [`src/udevd`](https://github.com/systemd/systemd/tree/main/src/udevd)

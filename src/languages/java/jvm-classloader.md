@@ -235,7 +235,7 @@ Module-path loading is still a class loader concept underneath — `jdk.internal
 - JEP 320 — Remove the JDK and JRE Fab/Ext Mechanisms: <https://openjdk.org/jeps/320>
 - JEP 463 — Launch Multi-File Source-Code Programs (uses the app loader context): <https://openjdk.org/jeps/463>
 - OSGi Core specification, §3 (Module Lifecycle and Class Loading): <https://docs.osgi.org/specification/osgi.core/8.0.0/framework.module.lifecycle.html>
-- OSGi "Class Loading and Visibility" deep dive: <https://blog.osgi.org/2011/10/osgi-and-java-modules-part-2.html>
+- OSGi "Class Loading and Visibility" deep dive: - [OSGi Core Specification](https://docs.osgi.org/specification/) — the framework and class-loading/visibility model (the 2011 blog series it replaces is offline)
 - Tomcat 10 `WebappClassLoaderBase` documentation: <https://tomcat.apache.org/tomcat-10.1-doc/class-loader-howto.html>
 - JBoss Modules user guide: <https://github.com/jboss-modules/jboss-modules>
 - Aleksey Shipilev on `ConstantValue` and `<clinit>` semantics: <https://shipilev.net/jvm/anatomy-quarks/>

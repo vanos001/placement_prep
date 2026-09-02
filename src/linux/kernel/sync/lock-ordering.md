@@ -557,15 +557,12 @@ Lock inversion commonly occurs in:
 ```mermaid
 graph TD
     A[Lock Inversion Risk] --> B{Can you determine order at compile time?}
-    B -->|Yes| C[Define global ordering
-Always acquire in same order]
+    B -->|Yes| C["Define global ordering<br/>Always acquire in same order"]
     B -->|No| D{Can you use trylock?}
     D -->|Yes| E[trylock + retry pattern]
     D -->|No| F{Can you restructure?}
-    F -->|Yes| G[Flatten hierarchy
-Use RCU for reads]
-    F -->|No| H[Use lockdep subclasses
-Document carefully]
+    F -->|Yes| G["Flatten hierarchy<br/>Use RCU for reads"]
+    F -->|No| H["Use lockdep subclasses<br/>Document carefully"]
 ```
 
 ## Advanced: Lock Ordering with RCU

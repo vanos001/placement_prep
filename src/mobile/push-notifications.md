@@ -414,7 +414,7 @@ forwards to APNs for iOS, but you lose direct control over APNs features like
 - [Apple Developer — Establishing a Connection to APNs (JWT provider tokens)](https://developer.apple.com/documentation/usernotifications/setting_up_a_remote_notification_server/establishing_a_certificate-based_connection_to_apns)
 - [Firebase Cloud Messaging — HTTP v1 protocol](https://firebase.google.com/docs/cloud-messaging/http-server-ref)
 - [Firebase — Send messages to topics](https://firebase.google.com/docs/cloud-messaging/send-message#topic_messages)
-- [Firebase — Migrate from legacy XMPP/HTTP to HTTP v1](https://firebase.google.com/docs/cloud-messaging/migrate-v1)
+- [Firebase Cloud Messaging — HTTP v1 API documentation](https://firebase.google.com/docs/cloud-messaging)
 - [RFC 8291 — Voluntary Application Server Identification (VAPID) for Web Push](https://www.rfc-editor.org/rfc/rfc8291)
 - [RFC 8030 — Generic Event Delivery Using HTTP Push](https://www.rfc-editor.org/rfc/rfc8030)
 - [Apple Developer — Local and Remote Programming Guide — The APNs payload keys](https://developer.apple.com/library/archive/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/ModifyingthePayload.html)

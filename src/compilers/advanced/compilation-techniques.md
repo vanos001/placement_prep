@@ -235,8 +235,7 @@ const Grid = comptime blk: {
 flowchart LR
     A[Source with<br/>closures & HOFs] --> B[CPS Transform]
     B --> C[Closure Conversion]
-    C --> D[Lambda Lifting /
-/> Defunctionalization]
+    C --> D["Lambda Lifting<br/>Defunctionalization"]
     D --> E[First-Order IR]
     E --> F[Standard SSA<br/>Optimizations]
     F --> G[Code Generation]

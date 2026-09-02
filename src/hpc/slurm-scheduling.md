@@ -141,5 +141,6 @@ The convergence trend is real: AI training workloads pushed Slurm to add contain
 - SchedMD Slurm documentation, "Quick Start Administrator" and `slurm.conf` man page (scheduler parameters, PriorityType): <https://slurm.schedmd.com/quickstart_admin.html>
 - SchedMD documentation, "Scheduling Configuration Guide" (backfill and reservations): <https://slurm.schedmd.com/sched_config.html>
 - SchedMD documentation, "Priority/multifactor" (fairshare, decay half-life): <https://slurm.schedmd.com/priority_multifactor.html>
-- Mu'alem and Feitelson, "Utilization, predictability, workloads, and user runtime estimates in scheduling the NASA iPSC/860" (JPDC 2001 - the runtime-estimate/backfill foundation): <https://doi.org/10.1016/S0743-7315(00)00003-2>
+- Mu'alem and Feitelson, "Utilization, predictability, workloads, and user runtime estimates in scheduling the IBM SP2 with backfilling" (IEEE TPDS 12(6), 2001 - the runtime-estimate/backfill foundation): <https://doi.org/10.1109/71.932708>
+- Feitelson and Nitzberg, "Job characteristics of a production parallel scientific workload on the NASA Ames iPSC/860" (JSSPP 1995 - the NASA iPSC/860 trace behind the Parallel Workloads Archive): <https://doi.org/10.1007/3-540-60153-8_38>
 - Parallel Workloads Archive (real HPC job traces used to validate schedulers): <https://www.cs.huji.ac.il/labs/parallel/workload/>

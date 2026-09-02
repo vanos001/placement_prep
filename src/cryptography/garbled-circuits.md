@@ -204,8 +204,8 @@ A: Modern garbling schemes are *deterministic* given a fixed random tape (this i
 ## References
 
 - Yao, A. C.-C. — *"How to Generate and Exchange Secrets"* (1986), FOCS. The foundational paper that introduced garbled circuits. https://doi.org/10.1109/SFCS.1986.25
-- Beaver, D., Micali, S., Rogaway, P. — *"The Round Complexity of Secure Protocols"* (1990), STOC. Introduces point-and-permute. https://doi.org/10.1145/93553.93557
-- Bellare, M., Hoang, V. T., Rogaway, P. — *"Foundations of Garbled Circuits"* (2012), CCS. Formal definition of garbling schemes; basis of all modern analysis. https://doi.org/10.1145/2382192.2382196
+- Beaver, D., Micali, S., Rogaway, P. — *"The Round Complexity of Secure Protocols"* (1990), STOC. Introduces point-and-permute. https://doi.org/10.1145/100216.100287
+- Bellare, M., Hoang, V. T., Rogaway, P. — *"Foundations of Garbled Circuits"* (2012), CCS. Formal definition of garbling schemes; basis of all modern analysis. https://doi.org/10.1145/2382196.2382279
 - Kolesnikov, V., Schneider, T. — *"Improved Garbled Circuit: Free XOR Gates and Applications"* (2008), ICALP. The free-XOR optimisation. https://doi.org/10.1007/978-3-540-70583-3_28
 - Zahur, S., Rosulek, M., Evans, D. — *"Two Halves Make a Whole: Reducing Data Transfer in Garbled Circuits using Half-Gates"* (2015), EUROCRYPT. The half-gate optimisation, matching the lower bound. https://eprint.iacr.org/2014/756
 - Rose, L., Lecuyer, R., Vaikuntanathan, V. — *"Limits on Garbled Circuits"*, (formal lower bound; Lugrin, Rose, Schröder, 2018). https://eprint.iacr.org/2018/904
@@ -214,4 +214,4 @@ A: Modern garbling schemes are *deterministic* given a fixed random tape (this i
 - Ishai, Y., Kilian, J., Nissim, K., Petrank, E. — *"Extending Oblivious Transfers Efficiently"* (2003), CRYPTO. OT extension that makes Yao scalable. https://doi.org/10.1007/978-3-540-45146-4_2
 - Zhu, R., Huang, Y. — *"Faster Garbled Circuit Implementation"* (2017). Modern benchmarks for BHR-dual, privacy-free, and half-gate garbling. https://eprint.iacr.org/2017/323
 - Zahur, S., Rosulek, M. — *"Three Halves Make a Whole: Fast Private Set Intersection using Half-Gates"* (2021), EUROCRYPT. Application of half-gates to PSI. https://eprint.iacr.org/2021/929
-- Demmler, C., Schneider, T., Zohner, M. — *"ABY — A Framework for Efficient Mixed-Protocol Secure Two-Party Computation"* (2015), NDSS. Reference implementation. https://doi.org/10.14722/ndss.2015.23249
+- Demmler, C., Schneider, T., Zohner, M. — *"ABY — A Framework for Efficient Mixed-Protocol Secure Two-Party Computation"* (2015), NDSS. Reference implementation. https://doi.org/10.14722/ndss.2015.23113

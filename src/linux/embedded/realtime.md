@@ -579,24 +579,15 @@ echo 1 > /sys/kernel/debug/tracing/events/preemptirq/preempt_enable/enable
 
 ```mermaid
 flowchart TD
-    SPIKE[Latency Spike Detected] --> HW{hwlatdetect shows
-hardware latency?}
-    HW -->|Yes| SMI[Check BIOS SMI settings,
-disable C-states]
-    HW -->|No| IRQ{preemptirqsoff tracer
-shows IRQ-off > threshold?}
-    IRQ -->|Yes| IRQSRC[Identify IRQ source:
-/proc/irq/N/handler]
-    IRQ -->|No| PREEMPT{preemptoff tracer
-shows preempt-off?}
-    PREEMPT -->|Yes| SPINLOCK[Find spinlock holder:
-lockdep + ftrace]
-    PREEMPT -->|No| SCHED{sched_switch shows
-scheduling delay?}
-    SCHED -->|Yes| PRIO[Check RT priority,
-CPU isolation, NUMA]
-    SCHED -->|No| UNKNOWN[Enable all tracers,
-run longer test]
+    SPIKE[Latency Spike Detected] --> HW{"hwlatdetect shows<br/>hardware latency?"}
+    HW -->|Yes| SMI["Check BIOS SMI settings,<br/>disable C-states"]
+    HW -->|No| IRQ{"preemptirqsoff tracer<br/>shows IRQ-off > threshold?"}
+    IRQ -->|Yes| IRQSRC["Identify IRQ source:<br/>/proc/irq/N/handler"]
+    IRQ -->|No| PREEMPT{"preemptoff tracer<br/>shows preempt-off?"}
+    PREEMPT -->|Yes| SPINLOCK["Find spinlock holder:<br/>lockdep + ftrace"]
+    PREEMPT -->|No| SCHED{"sched_switch shows<br/>scheduling delay?"}
+    SCHED -->|Yes| PRIO["Check RT priority,<br/>CPU isolation, NUMA"]
+    SCHED -->|No| UNKNOWN["Enable all tracers,<br/>run longer test"]
 ```
 
 ---

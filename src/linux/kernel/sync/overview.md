@@ -369,15 +369,11 @@ With `PREEMPT_RT`, the synchronization landscape changes significantly:
 ```mermaid
 graph TD
     A[Kernel Preemption Model] --> B{PREEMPT_NONE?}
-    B -->|Yes| C[Spinlocks rarely needed in process context
-    No preemption = no races between process threads]
+    B -->|Yes| C["Spinlocks rarely needed in process context<br/>No preemption = no races between process threads"]
     B -->|No| D{PREEMPT_FULL?}
-    D -->|Yes| E[All spinlock-held regions are non-preemptible
-    Process context can be preempted elsewhere]
+    D -->|Yes| E["All spinlock-held regions are non-preemptible<br/>Process context can be preempted elsewhere"]
     D -->|No| F{PREEMPT_RT?}
-    F -->|Yes| G[spinlock_t becomes sleeping lock
-    raw_spinlock_t remains true spinlock
-    Most IRQs are threaded]
+    F -->|Yes| G["spinlock_t becomes sleeping lock<br/>raw_spinlock_t remains true spinlock<br/>Most IRQs are threaded"]
 ```
 
 ### Preemption and Atomic Context
@@ -415,19 +411,14 @@ See [Lockdep](lockdep.md) for the most important of these.
 ```mermaid
 graph TD
     A[Suspected synchronization bug] --> B{What symptom?}
-    B -->|Deadlock/hang| C[Enable CONFIG_PROVE_LOCKING
-Check dmesg for lockdep warnings]
-    B -->|Data corruption| D[Enable CONFIG_KCSAN
-Check for data-race reports]
-    B -->|Use-after-free| E[Enable CONFIG_KASAN
-Check KASAN reports]
-    B -->|Performance issue| F[Use perf lock record
-Analyze contention with lockstat]
+    B -->|Deadlock/hang| C["Enable CONFIG_PROVE_LOCKING<br/>Check dmesg for lockdep warnings"]
+    B -->|Data corruption| D["Enable CONFIG_KCSAN<br/>Check for data-race reports"]
+    B -->|Use-after-free| E["Enable CONFIG_KASAN<br/>Check KASAN reports"]
+    B -->|Performance issue| F["Use perf lock record<br/>Analyze contention with lockstat"]
     C --> G[Fix lock ordering]
     D --> H[Add proper locking/barriers]
     E --> I[Fix lifetime/RCU usage]
-    F --> J[Reduce contention:
-finer locks, RCU, per-CPU data]
+    F --> J["Reduce contention:<br/>finer locks, RCU, per-CPU data"]
 ```
 
 ### Common Synchronization Bug Patterns

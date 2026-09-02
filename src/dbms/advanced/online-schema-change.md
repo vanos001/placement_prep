@@ -153,7 +153,7 @@ CockroachDB's schema changes are documented as the "online schema change" algori
 
 ## References
 
-- [Percona Toolkit: pt-online-schema-change documentation](https://docs.peranda.com/percona-toolkit/pt-online-schema-change.html)
+- [Percona Toolkit: pt-online-schema-change documentation](https://docs.percona.com/percona-toolkit/pt-online-schema-change.html)
 - [GitHub gh-ost: Online Schema Change for MySQL](https://github.com/github/gh-ost)
 - [MySQL 8.0: Online DDL Operations](https://dev.mysql.com/doc/refman/8.0/en/innodb-online-ddl-operations.html)
 - [PostgreSQL: Altering Tables Online](https://www.postgresql.org/docs/current/sql-altertable.html)

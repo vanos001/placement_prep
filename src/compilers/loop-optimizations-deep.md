@@ -455,7 +455,7 @@ The `-debug-only=<pass>` flag is gated on LLVM being built in `Debug` or `RelWit
 - LLVM `LoopRotate` pass: <https://llvm.org/doxygen/LoopRotate_8cpp.html>
 - LLVM `MachinePipeliner` (software pipelining): <https://llvm.org/doxygen/MachinePipeliner_8cpp.html>
 - Lam, M. (1988). *Software Pipelining: An Effective Scheduling Technique for VLIW Machines*. PLDI '88. <https://doi.org/10.1145/53990.54007>
-- Rau, B. R. (1994). *Iterative Modulo Scheduling*. MICRO 27. <https://doi.org/10.1109/MICRO.1994.342852>
+- Rau, B. R. (1994). *Iterative Modulo Scheduling*. MICRO 27. <https://doi.org/10.1109/MICRO.1994.717412>
 - GCC optimization flags: `-fpeel-loops`, `-fmodulo-sched`, `-fmodulo-sched-allow-regmoves`. GCC manual: <https://gcc.gnu.org/onlinedocs/gcc/Optimize-Options.html>
 - Aho, Lam, Sethi, Ullman. *Compilers: Principles, Techniques, and Tools* (Dragon Book), 2nd Ed., Chapter 10 (Loop Optimizations).
 - Muchnick, S. (1997). *Advanced Compiler Design and Implementation*. Morgan Kaufmann. Chapters 15–16 (Loop Transformations, Software Pipelining).

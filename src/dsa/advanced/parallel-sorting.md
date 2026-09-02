@@ -158,23 +158,23 @@ if True:
     sort_demo()
 ```
 
-Output (measured on a 4-core container; absolute times vary, ratios are the point):
+Illustrative output (measured on a 4-core container). Unlike the deterministic demos elsewhere in this book, the wall-clock lines below are *machine-dependent* — absolute times and even the speedup ratios will differ on your hardware; the byte-exact reproducible line is the final correctness check, `par==seq: True | seq2==seq: True`:
 
 ```text
 n=4,000,000 procs=4 (shared memory, zero payload IPC)
-sequential C sorted()           :  1.197 s
-sequential pure-python pipeline :  2.935 s
-parallel pipeline (4 workers)   :  2.604 s
-speedup vs pure-python pipeline :  1.13x
-speedup vs C sorted()           :  0.46x  <- Amdahl in action
-par==seq: True | seq2==seq: True
+sequential C sorted()           :  1.197 s   (illustrative)
+sequential pure-python pipeline :  2.935 s   (illustrative)
+parallel pipeline (4 workers)   :  2.604 s   (illustrative)
+speedup vs pure-python pipeline :  1.13x     (illustrative)
+speedup vs C sorted()           :  0.46x     (illustrative)  <- Amdahl in action
+par==seq: True | seq2==seq: True            <- deterministic, reproducible
 ```
 
 ## Reading the Numbers Honestly
 
-The parallel pipeline is *correct* and only 1.1x faster than one process doing identical work, and 0.45x the speed of C `sorted()`. Three forces produce this, and each one is a permanent fact of parallel programming:
+The parallel pipeline is *correct* and, in the sample run, only 1.1x faster than one process doing identical work, and 0.46x the speed of C `sorted()`. Three forces produce this, and each one is a permanent fact of parallel programming:
 
-1. **Amdahl's law on the control path.** Sampling, pivot selection, offsets, and pool startup are serial; the per-element Python loops (generate, bisect, scatter) dominate and are parallelized, but `sorted()` itself is C code - the fastest phase is the one that parallelizes least well from Python. The 0.45x line is the whole lesson: parallelism is relative to the *implementation quality of the sequential baseline*, not to a textbook work count.
+1. **Amdahl's law on the control path.** Sampling, pivot selection, offsets, and pool startup are serial; the per-element Python loops (generate, bisect, scatter) dominate and are parallelized, but `sorted()` itself is C code - the fastest phase is the one that parallelizes least well from Python. The 0.46x line in the sample run is the whole lesson: parallelism is relative to the *implementation quality of the sequential baseline*, not to a textbook work count.
 2. **Interpreter overhead per element.** The scatter loop executes 4M interpreted iterations with attribute lookups; the C sort executes the same work in compiled code. Languages matter: the identical algorithm in C++ with `std::sort` on 4 cores would beat single-core `std::sort` by 3-3.8x, which is exactly what PBBS and Intel's parallel-mode benchmarks report.
 3. **Memory bandwidth.** Scatter is a random-ish write pattern across 32 MB of buffers; four cores contend for the same DRAM channels. Near `n * sizeof(key)` = L3 size x several, bandwidth - not cores - becomes the ceiling, which is why sample sort's cache-friendliness (sequential bucket writes, then independent sorts) is a bigger real-world win than its span.
 
@@ -182,7 +182,7 @@ The transferable takeaways: partition by sampled pivots so no merge phase exists
 
 ## References
 
-- Guy Blelloch and Bruce Maggs, "Parallel Algorithms" (CMU lecture notes - work/span, parallel merge): <https://www.cs.cmu.edu/~guyb/papers/BM13.pdf>
+- CMU 15-210, "Parallel and Sequential Data Structures and Algorithms" (course notes — work/span, parallel merge; includes the Blelloch-Maggs "Parallel Algorithms" material): <https://www.cs.cmu.edu/~15210/>
 - Problem Based Benchmark Suite (PBBS) - comparison sort specification and reference implementations: <https://github.com/cmuparlay/pbbsbench>
 - Sanders, Mehlhorn, Dietzfelbinger, "Sequential and Parallel Sorting" (Encyclopedia of Parallel Computing - sample sort and splitter selection): <https://link.springer.com/referenceworkentry/10.1007/978-0-387-09766-4_77>
 - cppreference, "Execution policies" (std::sort par/par_unseq semantics): <https://en.cppreference.com/w/cpp/algorithm/execution_policy>

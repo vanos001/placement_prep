@@ -109,8 +109,15 @@ type(scope): summary
 # Individual checks
 ./scripts/validate-mermaid-heuristic.mjs    # Fast Mermaid checks (no deps)
 python3 scripts/check-links.py .             # Broken links
-python3 scripts/check-summary.py src          # SUMMARY completeness
+python3 scripts/check-summary.py src          # SUMMARY completeness + duplicate destinations
 python3 scripts/check-mathjax.py .            # MathJax validation
+
+# Network-dependent checks (run in CI and weekly; opt-in locally)
+python3 scripts/check-doi.py src              # Resolve every DOI via the doi.org Handle API
+python3 scripts/check-links.py --external .   # Probe all external URLs (bot-blocker aware)
+
+# Strict mode (CI): a skipped real-mermaid-parser step FAILS the build
+STRICT=1 ./scripts/validate-all.sh .
 ```
 
 See [`scripts/README.md`](scripts/README.md) for full documentation of all scripts.

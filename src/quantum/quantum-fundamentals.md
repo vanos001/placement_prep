@@ -58,9 +58,9 @@ Quantum gates are **unitary matrices** acting on qubit states. Unitarity preserv
 
 | Gate | Matrix | Effect |
 |------|--------|--------|
-| X (NOT) | [[0,1],[1,0]] | Flips |0⟩↔|1⟩ |
+| X (NOT) | [[0,1],[1,0]] | Flips \|0⟩↔\|1⟩ |
 | H (Hadamard) | 1/√2 [[1,1],[1,-1]] | Creates equal superposition |
-| Z (Phase) | [[1,0],[0,-1]] | Applies π phase to |1⟩ |
+| Z (Phase) | [[1,0],[0,-1]] | Applies π phase to \|1⟩ |
 | S | [[1,0],[0,i]] | π/2 phase gate |
 | T | [[1,0],[0,e^(iπ/4)]] | π/4 phase gate (universal with H+CNOT) |
 | Rz(θ) | [[1,0],[0,e^(iθ)]] | Arbitrary phase rotation |
@@ -72,10 +72,10 @@ The **Hadamard gate** is particularly important: H|0⟩ = (|0⟩+|1⟩)/√2 cre
 
 | Gate | Action | Importance |
 |------|--------|------------|
-| CNOT (CX) | Flips target qubit if control is |1⟩ | Entanglement, universal with single-qubit gates |
-| Toffoli (CCX) | Flips target if both controls are |1⟩ | Reversible AND; universal for classical reversible computing |
+| CNOT (CX) | Flips target qubit if control is \|1⟩ | Entanglement, universal with single-qubit gates |
+| Toffoli (CCX) | Flips target if both controls are \|1⟩ | Reversible AND; universal for classical reversible computing |
 | SWAP | Exchanges two qubit states | Useful in circuit optimization |
-| CZ | Applies Z to target if control is |1⟩ | Alternative entangling gate |
+| CZ | Applies Z to target if control is \|1⟩ | Alternative entangling gate |
 
 **Universality**: any quantum computation can be decomposed into a sequence of single-qubit rotations + CNOT gates (or any other entangling two-qubit gate). This is analogous to NAND-universality in classical computing.
 

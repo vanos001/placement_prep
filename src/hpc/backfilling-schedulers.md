@@ -15,17 +15,17 @@ Backfilling's insight is that you can keep FIFO *accountability* while recoverin
 The canonical policies differ in how many guarantees they hand out. **Conservative backfilling** gives every queued job a reservation at the moment it enters the queue: walking the queue in FCFS order, each job's start time is the earliest minute when its node count can be assembled given running jobs' (estimated) finish times and the reservations already promised ahead of it. A backfill candidate may start now only if starting it cannot push *any* reservation later — checked by recomputing the reservation timeline with the candidate hypothetically occupying its nodes. **EASY backfilling** (the variant analyzed for the IBM SP2 by Mu'alem & Feitelson, IEEE TPDS 2001, doi 10.1109/71.932708) makes exactly one reservation — for the queue head — and lets any job backfill that does not delay it. EASY is what "production backfilling" almost always means; conservative buys stronger fairness guarantees at the price of a more rigid timeline that cannot exploit late-arriving slack.
 
 ```text
-backfill window, 8-node machine, head job H needs 6 nodes at time T
-     nodes: 8 7 6 5 4 3 2 1 0
-running:  A A A A A A A A          (A ends ~T-20, frees 2)
-free now:                    2 nodes
-head H (6 nodes): reservation computed at T (when A ends + 4 more nodes free)
-                    <---- slack window ---->
-candidate B (2 nodes, est 15 <= T-now):  fits inside slack -> BACKFILL ok
-candidate C (3 nodes, est 40 > T-now):   would still hold 3 nodes at T
-                                          -> H would wait -> REJECT
-candidate D (1 node,  est 60 > T-now):   2 free + D takes 1 = 1 short of 6
-                                          -> H waits -> REJECT
+backfill window, 8-node machine, now = 0, head job H needs 6 nodes
+     nodes:   8  7  6  5  4  3  2  1  0
+running:      A  A  A  A  .  .  .  .    A holds 4 nodes, estimated to end at T (in 40 min)
+free now:                        2 nodes
+head H (6 nodes): reservation at T   (A frees 4 at T; 4 + 2 free = 6)
+                   <---- slack window: now .. T ---->
+candidate B (2 nodes, est 15 <= T-now):  ends at 15 < T, nodes return -> BACKFILL ok
+candidate C (2 nodes, est 50 > T-now):   still holds both free nodes at T
+                                          -> free at T = 4 < 6 -> H waits -> REJECT
+candidate D (1 node, est 60 > T-now):    still holds its node at T
+                                          -> free at T = 4 + 1 = 5, one short of 6 -> REJECT
 rule: candidate may run iff (its estimated finish) fits inside the
       reservation slack, or leftover capacity at T still covers H
 ```
@@ -34,7 +34,7 @@ The two policy knobs interact with queue order. Both variants typically pair wit
 
 ## Estimates Are the Fuel (and the Failure Mode)
 
-Every reservation is computed from *claimed* runtimes, so estimate accuracy is a schedulability property, not a nicety. Under-estimates poison the machine: a job that blows its estimate holds nodes past its reservation, invalidating every promise made on top of it (production systems therefore kill at the walltime limit — an under-estimated job gets killed, not forgiven). Over-estimates waste differently: a head job claiming 10 hours with a 30-minute actual blocks (or delays) backfills that would have fit. The Feitelson & Weil IPPS'98 study found users systematically inflate estimates, and that *truncating* them (cap estimates at some multiple of the observed mean) measurably improved slowdown without touching user code. The standard fairness metric, bounded slowdown (BSLD = max(wait/run, c) with a small constant c to protect short jobs), is the lens all of these studies share — the demo below reports mean and max BSLD alongside makespan and utilization so the trade-offs are visible per policy.
+Every reservation is computed from *claimed* runtimes, so estimate accuracy is a schedulability property, not a nicety. Under-estimates poison the machine: a job that blows its estimate holds nodes past its reservation, invalidating every promise made on top of it (production systems therefore kill at the walltime limit — an under-estimated job gets killed, not forgiven). Over-estimates waste differently: a head job claiming 10 hours with a 30-minute actual blocks (or delays) backfills that would have fit. The Feitelson & Weil IPPS'98 study found users systematically inflate estimates, and that *truncating* them (cap estimates at some multiple of the observed mean) measurably improved slowdown without touching user code. The standard fairness metric, bounded slowdown (BSLD = max(wait/run, c) — a small constant floor c, classically a run-time threshold τ on the order of ten seconds, so sub-minute jobs cannot dominate the averages; the demo below uses c = 1), is the lens all of these studies share — the demo reports mean and max BSLD alongside makespan and utilization so the trade-offs are visible per policy.
 
 | Failure mode | Mechanism | Classic remedy |
 |--------------|-----------|----------------|
@@ -161,7 +161,8 @@ for pol in ("fcfs", "easy", "conservative"):
     mk, bf, starts = simulate(pol)
     results[pol] = starts
     waits = {j[0]: starts[j[0]] - j[1] for j in JOBS}
-    bsld = [max(waits[j[0]] / j[3], 1.0) for j in JOBS]
+    BSLD_C = 1.0    # floor c from the BSLD definition above
+    bsld = [max(waits[j[0]] / j[3], BSLD_C) for j in JOBS]
     print(f"{pol:<14}{mk:>9}{100 * busy / (N * mk):>7.1f}{bf:>10}{sum(bsld)/len(bsld):>11.2f}{max(bsld):>10.2f}{max(waits.values()):>10}")
 print()
 print("per-job wait (min):")

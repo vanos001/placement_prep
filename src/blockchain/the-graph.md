@@ -329,7 +329,7 @@ Disputes are typically resolved by Fishermen — independent actors watching for
 |-----------|---------------------------|------------------------------------------|---------------------------|
 | **Source** | Any (push from your services) | EVM RPC + custom indexer | EVM logs + ABI |
 | **Schema** | Dynamic mappings (JSON) | Custom per-dapp | GraphQL schema + WASM mappings |
-| **Query language** | Lucene, ES|QL, Kibana | REST/JSON-RPC | GraphQL |
+| **Query language** | Lucene, ES\|QL, Kibana | REST/JSON-RPC | GraphQL |
 | **Writes** | Synchronous; client pushes | Via your off-chain indexer | Async from chain events |
 | **Pricing** | Per-node compute + storage | Per-call metered | Per-query fee in GRT |
 | **Replication** | Self-managed primary/replica | AWS-multi-AZ | Decentralized parallel indexers |

@@ -246,5 +246,5 @@ Hospitals cannot share patient data (HIPAA in the US, GDPR in Europe). FL trains
 - Sai Praneeth Karimireddy, Satyen Kale, Mehryar Mohri, Sashank Reddi, Sebastian Stich, Ananda Theertha Suresh, "[Scaffold: Stochastic Controlled Averaging for Federated Learning](https://arxiv.org/abs/1910.06378)" (ICML 2020)
 - S. Reddi, Z. Charles, M. Zaheer, et al., "[Adaptive Federated Optimization](https://arxiv.org/abs/2003.00295)" (ICLR 2021) — FedAdam
 - [Flower: A Friendly Federated Learning Framework](https://flower.dev/) — framework-agnostic FL
-- Rieke et al., "[The Future of Digital Health with Federated Learning](https://www.nature.com/articles/s41746-021-00457-5)" (NPJ Digital Medicine 2021) — healthcare FL survey
+- Rieke et al., "[The Future of Digital Health with Federated Learning](https://www.nature.com/articles/s41746-020-00323-1)" (npj Digital Medicine, September 2020, doi 10.1038/s41746-020-00323-1) — healthcare FL survey
 - Eugene Bagdasaryan, Arjun Veerubhotla, Praneeth Vepakomma, et al., "[How to Backdoor Federated Learning](https://arxiv.org/abs/1907.02933)" (AISTATS 2020)

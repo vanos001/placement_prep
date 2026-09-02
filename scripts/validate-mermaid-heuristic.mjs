@@ -18,6 +18,14 @@
  *   - raw ';' inside sequenceDiagram message/note text (breaks the lexer)
  *   - bare '...' lines and unrecognized prose lines in sequence diagrams
  *   - unquoted subgraph titles containing '=' or spaces
+ *
+ * Regression-hardened (research-branch review §V.2): the whole-block even-quote
+ * count passed a diagram with six unclosed `ID["label` lines (6 is even).
+ * Two per-line checks close that false-negative class:
+ *   - unclosed double quote on any single line (all diagram types)
+ *   - unbalanced [ ( { on a single flowchart line, with complete quoted
+ *     segments neutralized first (an unclosed quote keeps its brackets
+ *     visible, so `ID["label` is caught by both checks)
  */
 import { readFileSync, readdirSync, statSync, writeFileSync } from 'fs';
 import { join, relative } from 'path';
@@ -104,6 +112,14 @@ function validateBlock(block, filePath) {
     if (/\\"/.test(trimmed)) {
       return { ok: false, error: `Escaped quote (\\") inside mermaid label — use #quot; entity instead: "${trimmed.substring(0, 60)}"` };
     }
+    // Per-line unclosed double quote. A whole-block parity check cannot see a
+    // diagram whose every node line is unclosed (even total count).
+    if (!trimmed.startsWith('%%')) {
+      const q = (trimmed.match(/"/g) || []).length;
+      if (q % 2 !== 0) {
+        return { ok: false, error: `Unclosed double quote on line (label not terminated): "${trimmed.substring(0, 60)}"` };
+      }
+    }
   }
 
   if (isGraph) {
@@ -149,6 +165,17 @@ function validateGraph(block, content) {
     // Quoted segments are opaque to the parser — remove them before checking
     // unquoted labels/arrows so we don't report false positives.
     const stripped = trimmed.replace(/"[^"]*"/g, '""');
+
+    // Per-line bracket balance. Complete quoted segments are already neutralized
+    // ("..." -> ""), so an unbalanced [ inside an unclosed quote stays visible:
+    // `FPGA["Xilinx...` has one [ and zero ] -> caught here.
+    for (const [open, close] of [['[', ']'], ['(', ')'], ['{', '}']]) {
+      const o = (stripped.match(new RegExp('\\' + open, 'g')) || []).length;
+      const c = (stripped.match(new RegExp('\\' + close, 'g')) || []).length;
+      if (o !== c) {
+        return { ok: false, error: `Unbalanced '${open}${close}' on line (${o} open vs ${c} close): "${trimmed.substring(0, 60)}"` };
+      }
+    }
 
     // Note over / Note: are sequence-diagram syntax, invalid in graphs
     if (/^Note(\s+over)?\s*[:]/.test(trimmed) || /^Note\s+over\s+\S+[:,]/.test(trimmed)) {

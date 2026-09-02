@@ -7,32 +7,20 @@ A side-channel attack exploits physical or logical information leakage from a cr
 ```mermaid
 flowchart TD
     subgraph Attacks[Side-Channel Attack Classes]
-        Timing[Timing Attacks
-Cache / Branch / Algorithm]
-        Power[Power Analysis
-SPA / DPA / CPA]
-        EM[EM Radiation
-Near-field probes]
-        Acoustic[Acoustic Emanations
-CPU coil whine]
-        Fault[Fault Injection
-Voltage / Clock / Glitch]
-        CacheMicro[Cache Attacks
-Prime+Probe / Flush+Reload]
+        Timing["Timing Attacks<br/>Cache / Branch / Algorithm"]
+        Power["Power Analysis<br/>SPA / DPA / CPA"]
+        EM["EM Radiation<br/>Near-field probes"]
+        Acoustic["Acoustic Emanations<br/>CPU coil whine"]
+        Fault["Fault Injection<br/>Voltage / Clock / Glitch"]
+        CacheMicro["Cache Attacks<br/>Prime+Probe / Flush+Reload"]
     end
     subgraph Defenses[Countermeasures]
-        CT[Constant-Time Code
-No secret branches/memory]
-        Masking[Masking
-Boolean / Arithmetic shares]
-        Blinding[Algorithm Blinding
-RSA blinding / EC blinding]
-        Shuffling[Operation Shuffling
-Randomize execution order]
-        Sensor[Physical Sensors
-Voltage / clock / temp monitors]
-        Hiding[Power Hiding
-Constant-current / noise insertion]
+        CT["Constant-Time Code<br/>No secret branches/memory"]
+        Masking["Masking<br/>Boolean / Arithmetic shares"]
+        Blinding["Algorithm Blinding<br/>RSA blinding / EC blinding"]
+        Shuffling["Operation Shuffling<br/>Randomize execution order"]
+        Sensor["Physical Sensors<br/>Voltage / clock / temp monitors"]
+        Hiding["Power Hiding<br/>Constant-current / noise insertion"]
     end
     Attacks --> Defenses
 ```

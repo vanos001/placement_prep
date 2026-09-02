@@ -196,10 +196,10 @@ A: On a 2024-class Xeon with AES-NI and AVX-512: ~`3 \\times 10^7` OTs / sec / c
 ## References
 
 - Rabin, M. O. — *"How to Exchange Secrets by Oblivious Transfer"* (1981), Harvard Tech Report TR-81. The original probabilistic OT. https://eprint.iacr.org/2005/106
-- Even, S., Goldreich, O., Lempel, A. — *"A Randomized Protocol for Signing Contracts"* (1985), Communications of the ACM. The 1-out-of-2 OT definition. https://doi.org/10.1145/3979.3982
+- Even, S., Goldreich, O., Lempel, A. — *"A Randomized Protocol for Signing Contracts"* (1985), Communications of the ACM. The 1-out-of-2 OT definition. https://doi.org/10.1145/3812.3818
 - Naor, M., Pinkas, B. — *"Efficient Oblivious Transfer Protocols"* (2001), SODA. The DDH-based OT construction. https://dl.acm.org/doi/10.5555/365411.365452
 - Ishai, Y., Kilian, J., Nissim, K., Petrank, E. — *"Extending Oblivious Transfers Efficiently"* (2003), CRYPTO. The OT extension (IKNY). https://doi.org/10.1007/978-3-540-45146-4_2
-- Beaver, D. — *"Correlated Pseudorandomness and the Complexity of Private Computation"* (1996), STOC. Foundation for OT-based MPC and pre-processing. https://doi.org/10.1145/237814.237851
+- Beaver, D. — *"Correlated Pseudorandomness and the Complexity of Private Computation"* (1996), STOC. Foundation for OT-based MPC and pre-processing. https://doi.org/10.1145/237814.237996
 - Kilian, J. — *"Founding Cryptography on Oblivious Transfer"* (1988), STOC. Shows OT is complete for MPC. https://doi.org/10.1145/62212.62231
 - Nielsen, J. B., Nordholt, P. S., Orlandi, C., Burra, S. S. — *"A New Approach to Practical Active-Secure Two-Party Computation"* (2012), CRYPTO. Active-secure OT extension. https://eprint.iacr.org/2011/691
 - Keller, M., Orsini, E., Scholl, P. — *"MASCOT: Faster Maliciously Secure Two-Party Computation"* (2016), CCS. SPDZ pre-processing via OT extension. https://eprint.iacr.org/2016/450

@@ -207,7 +207,7 @@ counts.
 - Maekawa, M. *A √N Algorithm for Mutual Exclusion in Decentralized
   Systems*. ACM TOCS 3(2), 1985 — the voting-set alternative that
   motivated the permission/token taxonomy.
-  https://doi.org/10.1145/3232.3233 (verified via Crossref)
+  https://doi.org/10.1145/214438.214445
 - Raynal, M. *Algorithms for Mutual Exclusion* (MIT Press, 1986) —
   the book treatment of both families.
 

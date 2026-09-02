@@ -143,6 +143,6 @@ Use **consistent hashing** when:
 - [Rendezvous Hashing at Google (Cloud Pub/Sub)](https://cloud.google.com/pubsub/architecture)
 - [Apache Ignite: Affinity-based key routing](https://ignite.apache.org/docs/latest/key-value-store/collocated-affinity)
 - [Cloudflare Load Balancing with HRW](https://blog.cloudflare.com/common-hash-conflcit-and-solutions/)
-- [HRW implementation in Rust](https://github.com/kitbag-com/rendezvous-hash-rs)
+- [HRW implementation in Rust (rendezvous_hash crate)](https://github.com/sile/rendezvous_hash)
 - [Comparison: HRW vs Consistent Hashing](https://www.eecs.umich.edu/~rvs/pubs/HRW.pdf)
 - [LWN: Rendezvous hashing (2014)](https://lwn.net/Articles/609615/)

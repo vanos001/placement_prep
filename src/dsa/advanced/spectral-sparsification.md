@@ -340,7 +340,7 @@ How to read it, honestly:
 
 1. A. A. Benczur, D. R. Karger. *Randomized Approximation Schemes for Cuts and Flows in
    Capacitated Graphs.* SIAM J. Comput. 44(2):290-319, 2015 (journal version of FOCS 1996).
-   DOI: 10.1137/140971192; record: https://dblp.org/rec/journals/siamcomp/BenczurK15.html
+   DOI: 10.1137/070705970; record: https://dblp.org/rec/journals/siamcomp/BenczurK15.html
 2. D. A. Spielman, N. Srivastava. *Graph Sparsification by Effective Resistances.*
    arXiv:0803.0929 (2008); journal version SIAM J. Comput. 40(6):1913-1926, 2011.
    https://arxiv.org/abs/0803.0929

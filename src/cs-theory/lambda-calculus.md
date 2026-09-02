@@ -209,6 +209,6 @@ A: Untyped λ-calculus admits self-application (`x x`), which enables recursion 
 - [Church, *An Unsolvable Problem of Elementary Number Theory* (1936)](https://www.jstor.org/stable/2371045) — the original undecidability proof via λ-definability.
 - [Turing, *On Computable Numbers* (1936)](https://www.cs.virginia.edu/~robins/Turing_Paper_1936.pdf) — the parallel proof, with reference to Church's paper.
 - [Girard, Taylor, & Silva, *Proofs and Types* (1989)](http://www.paultaylor.eu/stable/Proofs+Types.html) — System F, F-ω, and the strong normalization theorem.
-- [Wadler & Blott, *Type Classes* (1989)](https://doi.org/10.1145/99370.99395) — making ad-hoc polymorphism practical in System F-ω.
+- [Wadler & Blott, *Type Classes* (1989)](https://doi.org/10.1145/75277.75283) — making ad-hoc polymorphism practical in System F-ω.
 - [Sørensen & Urzyczyn, *Lectures on the Curry–Howard Isomorphism*](https://www.cambridge.org/core/books/lectures-on-the-curryhoward-isomorphism/) — connects untyped, typed, and polymorphic calculi to logics.
 - See also: [Turing Machines](./turing-machines.md), [Computability](./computability.md), [Curry–Howard Correspondence](./curry-howard.md), [Programming Language Theory](./programming-language-theory.md)

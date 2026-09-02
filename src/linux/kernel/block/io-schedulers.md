@@ -417,8 +417,7 @@ graph TD
     H --> I["Select next queue<br>by service delivered"]
     I --> E
     G --> J{Device idle?}
-    J -- Yes --> K[Wait slice_idle µs
-    for more I/O]
+    J -- Yes --> K["Wait slice_idle µs<br/>for more I/O"]
     J -- No --> L[Continue dispatch]
 ```
 

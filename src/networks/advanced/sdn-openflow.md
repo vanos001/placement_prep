@@ -278,4 +278,4 @@ P4 was a natural evolution of OpenFlow, both standardized by the ONF.
 - Diego Kreutz, Fernando M. V. Ramos, Paulo E. Verissimo, et al.,
   "Software-Defined Networking: A Comprehensive Survey,"
   *Proc. IEEE* 103(1):14-76, 2015.
-  <https://doi.org/10.1109/JPROC.2014.2376991>
+  <https://doi.org/10.1109/JPROC.2014.2371999>

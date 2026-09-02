@@ -264,7 +264,7 @@ Fluent Bit and Promtail are similar; the choice depends on the backend (Elastics
 - [Fluent Bit documentation](https://docs.fluentbit.io/manual)
 - [Fluentd GitHub repository](https://github.com/fluent/fluentd)
 - [Fluent Bit GitHub repository](https://github.com/fluent/fluent-bit)
-- [Fluent Bit vs Fluentd comparison (Fluent blog)](https://www.fluent.co/blog/fluent-bit-vs-fluentd/)
+- [Fluent Bit vs Fluentd comparison (Fluent Bit blog)](https://fluentbit.io/blog/2020/02/25/fluent-bit-vs-fluentd/)
 - [Fluent Bit Kubernetes DaemonSet](https://docs.fluentbit.io/manual/installation/kubernetes)
 - [Vector: alternative log collector](https://vector.dev/)
 - [LWN: Fluent Bit overview (2021)](https://lwn.net/Articles/856775/)

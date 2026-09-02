@@ -398,10 +398,8 @@ flowchart LR
         ServerEntry[Entry Store] --> Sign[CA / SVID Signer]
     end
     subgraph Node[Compute Node]
-        Agent[SPIRE Agent] -->|Workload API gRPC| WorkloadA[Workload A
-SVID: spiffe://org/ns/prod/sa/web]
-        Agent -->|Workload API gRPC| WorkloadB[Workload B
-SVID: spiffe://org/ns/prod/sa/db]
+        Agent[SPIRE Agent] -->|Workload API gRPC| WorkloadA["Workload A<br/>SVID: spiffe://org/ns/prod/sa/web"]
+        Agent -->|Workload API gRPC| WorkloadB["Workload B<br/>SVID: spiffe://org/ns/prod/sa/db"]
     end
     Agent <-->|Attestation + SVID rotation| ControlPlane
     WorkloadA <-->|mTLS auto-rotated certs| WorkloadB
@@ -446,16 +444,12 @@ An IAP sits in front of an application (or API) and makes access control decisio
 
 ```mermaid
 flowchart LR
-    User[User / Service] -->|JWT / mTLS| IAP[Identity-Aware Proxy
-Pomerium / BeyondCorp]
-    IAP -->|verify identity| IdP[Identity Provider
-Google OIDC / Okta / Azure AD]
-    IAP -->|check policy| PolicyEngine[Policy Engine
-OPA / Cedar / Casbin]
+    User[User / Service] -->|JWT / mTLS| IAP["Identity-Aware Proxy<br/>Pomerium / BeyondCorp"]
+    IAP -->|verify identity| IdP["Identity Provider<br/>Google OIDC / Okta / Azure AD"]
+    IAP -->|check policy| PolicyEngine["Policy Engine<br/>OPA / Cedar / Casbin"]
     PolicyEngine -->|allow| App[Application]
     PolicyEngine -->|deny| User
-    User -->|fetch secret| Vault[Secrets Engine
-Vault / AWS Secrets]
+    User -->|fetch secret| Vault["Secrets Engine<br/>Vault / AWS Secrets"]
 ```
 
 ### Implementation Tools

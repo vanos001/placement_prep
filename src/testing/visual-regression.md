@@ -36,7 +36,7 @@ The naive diff — count the pixels whose RGB differs by even one channel — is
 
 | Threshold type          | How it works                                                | Typical value      |
 |-------------------------|-------------------------------------------------------------|--------------------|
-| **Per-pixel RGB delta** | Sum `|Δr| + |Δg| + |Δb|` per pixel, count pixels where this exceeds tolerance | `<= 0.2` channel diff tolerated |
+| **Per-pixel RGB delta** | Sum `\|Δr\| + \|Δg\| + \|Δb\|` per pixel, count pixels where this exceeds tolerance | `<= 0.2` channel diff tolerated |
 | **Per-pixel ratio**     | `changedPixels / totalPixels` ≤ ratio                       | `maxDiffPixelRatio: 0.01` (1%) |
 | **Per-pixel count**     | Hard count of changed pixels                                | `maxDiffPixels: 2500` (50×50 box) |
 | **Per-region**          | Divide image into N×M cells; report any cell with diff > cell threshold | e.g. 32×32 grid, 5% per cell |

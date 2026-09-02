@@ -174,5 +174,5 @@ MPLS remains the dominant protocol in service provider backbones; SR is the mode
 - [RFC 3209: RSVP-TE](https://datatracker.ietf.org/doc/html/rfc3209)
 - [RFC 4364: BGP/MPLS IP VPNs](https://datatracker.ietf.org/doc/html/rfc4364)
 - [RFC 8402: Segment Routing](https://datatracker.ietf.org/doc/html/rfc8402)
-- [MPLS: A Tutorial (Juniper)](https://www.juniper.net/documentation/en_US/learning-resources/topics/topic-map/mpls-overview.html)
+- [MPLS: A Tutorial (Juniper)](https://www.juniper.net/documentation/us/en/software/junos/mpls/topics/topic-map/mpls-overview.html)
 - [LWN: MPLS overview (2020)](https://lwn.net/Articles/820133/)

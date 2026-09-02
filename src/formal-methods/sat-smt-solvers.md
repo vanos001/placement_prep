@@ -221,7 +221,7 @@ You probably should not reach for SMT when: the property is naturally a temporal
 ## References
 
 - Armin Biere, Marijn Heule, Hans van Maaren, Toby Walsh (eds.). *Handbook of Satisfiability*, 2nd edition, IOS Press 2021. The canonical reference; covers DPLL, CDCL, proof complexity, and applications. https://easychair.org/publications/openaccess/qhC
-- Joao Marques-Silva and Karem Sakallah. **GRASP: A Search Algorithm for Propositional Satisfiability**. IEEE TC 1999. The original CDCL paper. https://doi.org/10.1109/12.799831
+- Joao Marques-Silva and Karem Sakallah. **GRASP: A Search Algorithm for Propositional Satisfiability**. IEEE TC 1999. The original CDCL paper. https://doi.org/10.1109/12.769433
 - Robert Nieuwenhuis, Albert Oliveras, Cesare Tinelli. **Solving SAT and SAT Modulo Theories: From an Abstract Davis-Putnam-Logemann-Loveland Procedure to DPLL(T)**. JACM 2006. The foundational DPLL(T) reference. https://dl.acm.org/doi/10.1145/1160538.1160539
 - Daniel Kröning and Ofer Strichman. *Decision Procedures: An Algorithmic Point of View*, 2nd edition, Springer 2016. The standard textbook; covers all the major SMT theories. https://link.springer.com/book/10.1007/978-3-662-53590-1
 - The Microsoft Z3 documentation and tutorials. https://microsoft.github.io/z3guide/ and https://github.com/Z3prover/z3

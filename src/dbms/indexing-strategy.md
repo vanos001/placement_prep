@@ -391,7 +391,7 @@ cost.
 - PostgreSQL Documentation, "[Index-Only Scans](https://www.postgresql.org/docs/current/indexes-index-only-scans.html)" — the visibility map precondition and the `Heap Fetches` explain output.
 - Markus Winand, *Use The Index, Luke!*, "[The Where Clause](https://use-the-index-luke.com/sql/where-clause)" — the canonical statement of the "index the WHERE, not the SELECT" principle, with worked examples.
 - Markus Winand, *SQL Performance Explained*, [use-the-index-luke.com](https://use-the-index-luke.com/) — the book form of the site. Chapters on concatenation, range, and partial indexes are required reading for any engineer touching a database.
-- PostgreSQL Documentation, "[BRIN Indexes](https://www.postgresql.org/docs/current/brin-intro.html)" — block-range index internals and the `pages_per_range` knob.
+- PostgreSQL Documentation, "[BRIN Indexes](https://www.postgresql.org/docs/current/brin.html)" — block-range index internals and the `pages_per_range` knob.
 - PostgreSQL Documentation, "[GIN Indexes](https://www.postgresql.org/docs/current/gin-intro.html)" and "[GiST Indexes](https://www.postgresql.org/docs/current/gist-intro.html)" — fastupdate, pending lists, and lossy operators.
 
 ## Related Topics

@@ -62,12 +62,13 @@ placement_prep/
 │   ├── ...                # 50+ topic directories
 │   └── meta/              # Internal tracking pages
 └── scripts/               # Validation & tooling
-    ├── validate-all.sh           # Full validation suite
+    ├── validate-all.sh           # Full validation suite (STRICT=1 / EXTERNAL=1 modes)
     ├── validate-mermaid.mjs       # Real Mermaid v11 parser
     ├── validate-mermaid-heuristic.mjs  # Fast heuristic checks
-    ├── check-links.py             # Broken link finder
-    ├── check-summary.py           # SUMMARY completeness
+    ├── check-links.py             # Broken link finder (--external: probe URLs)
+    ├── check-summary.py           # SUMMARY completeness + duplicate detection
     ├── check-mathjax.py           # MathJax validation
+    ├── check-doi.py               # Resolve every DOI via doi.org Handle API
     └── USEFUL_COMMANDS.md        # Workflow reference for humans & agents
 ```
 

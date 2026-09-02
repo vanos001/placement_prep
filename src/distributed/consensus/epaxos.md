@@ -113,4 +113,4 @@ EPaxos's central insight — that conflict-aware consensus can run faster than c
 - [LWN: "Egalitarian Paxos and the limits of leaderless consensus" (2014)](https://lwn.net/Articles/619438/)
 - Aapo Kojola, "EPaxos revisited" (blog series, 2022)
 - [Pompeii: Modern EPaxos implementation in Rust](https://github.com/keir/pompeii)
-- [Iulian Moraru's EPaxos slides](https://www.cs.cmu.edu/~iuliann/epaxos_talk.pdf)
+- Moraru, Andersen & Kaminsky, "[There Is More Consensus in Egalitarian Parliaments](https://doi.org/10.1145/2517349.2517350)" (SOSP 2013, doi 10.1145/2517349.2517350 — the original EPaxos paper; the old talk PDF link is dead)

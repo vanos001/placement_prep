@@ -224,8 +224,9 @@ Two fields control timing:
 |----------------|---------|-------------------------------------------------|
 | `duration`     | 2160h (90d) for ACME; CA-dependent otherwise | Cert validity window           |
 | `renewBefore`   | 1/3 of duration (30d for 90d)  | When to start renewal attempts                |
-| `renewBefore` can be 1/3 .. 2/3 of duration per cert-manager validation rules — values outside this range are rejected |
 | `revisionHistoryLimit` | 1 | How many old CertificateRequests to retain |
+
+Note: `renewBefore` can be 1/3 .. 2/3 of duration per cert-manager validation rules — values outside this range are rejected.
 
 cert-manager runs a renewal loop every minute. For every Certificate, it computes `notAfter - now < renewBefore`; if true, it kicks off a new issuance cycle. After a successful renewal, the *new* `tls.key`+`tls.crt` are written atomically to the Secret, replacing the old ones. Pods that mount the Secret will see the new bytes — but only after a Pod restart or a manual reload, unless you've plumbed `inotify`/`fsnotify` or use a sidecar that reloads (e.g., `nginx-ingress` watches and reloads automatically; a `python` app does not).
 

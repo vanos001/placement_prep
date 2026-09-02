@@ -10,28 +10,18 @@ flowchart TD
         App[Untrusted Code]
     end
     subgraph Sandbox[Sandboxing Layers — Defense in Depth]
-        App --> Seccomp[seccomp-bpf
-Syscall filter]
-        App --> Landlock[Landlock
-Filesystem + Network access]
-        App --> LSM[LSM Hooks
-AppArmor / SELinux]
-        App --> NS[Namespaces
-pid/mnt/net/user/uts/ipc/cgroup]
-        App --> Cgroup[cgroups v2
-CPU/memory/IO/pids limits]
+        App --> Seccomp["seccomp-bpf<br/>Syscall filter"]
+        App --> Landlock["Landlock<br/>Filesystem + Network access"]
+        App --> LSM["LSM Hooks<br/>AppArmor / SELinux"]
+        App --> NS["Namespaces<br/>pid/mnt/net/user/uts/ipc/cgroup"]
+        App --> Cgroup["cgroups v2<br/>CPU/memory/IO/pids limits"]
     end
     subgraph Kernel[Kernel Enforcers]
-        Seccomp --> BPF[BPF Verifier
-+ Interpreter]
-        LSM --> Hooks[LSM Hooks
-security_* before each op]
-        NS --> Isolation[Isolated
-resource views]
-        Cgroup --> Limits[Resource
-accounting + enforcement]
-        Landlock --> LandlockHooks[Landlock inode hooks
-file_open / socket_bind]
+        Seccomp --> BPF["BPF Verifier<br/>+ Interpreter"]
+        LSM --> Hooks["LSM Hooks<br/>security_* before each op"]
+        NS --> Isolation["Isolated<br/>resource views"]
+        Cgroup --> Limits["Resource<br/>accounting + enforcement"]
+        Landlock --> LandlockHooks["Landlock inode hooks<br/>file_open / socket_bind"]
     end
 ```
 

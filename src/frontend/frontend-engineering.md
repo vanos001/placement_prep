@@ -112,14 +112,10 @@ React 16 replaced the stack-based reconciler with **Fiber** — a linked-list tr
 ```mermaid
 graph LR
     STATE["setState / dispatch"] --> SCH["Schedule update"]
-    SCH --> REND["Render phase
-    (begin work)"]
-    REND --> DIFF["Diff children
-    reconcileChildren"]
-    DIFF --> SIDE["Side-effect list
-    (effectTag)"]
-    SIDE --> COMMIT["Commit phase
-    (mutation, layout, passive)"]
+    SCH --> REND["Render phase<br/>(begin work)"]
+    REND --> DIFF["Diff children<br/>reconcileChildren"]
+    DIFF --> SIDE["Side-effect list<br/>(effectTag)"]
+    SIDE --> COMMIT["Commit phase<br/>(mutation, layout, passive)"]
     COMMIT --> DOM["Real DOM"]
     DOM --> PAINT["Browser paint"]
 

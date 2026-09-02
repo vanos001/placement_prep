@@ -1,6 +1,6 @@
 # Secure Multi-Party Computation (MPC)
 
-Secure multi-party computation (MPC) lets `n` mutually-distrusting parties jointly compute a function `f(x_1, ..., x_n)` of their private inputs while revealing *only* the output — nothing about any individual input beyond what the output already implies. The question was posed by Yao in 1982 as the *millionaires' problem*: two billionaires want to learn who is richer without disclosing their wealth. Since then, MPC has graduated from a theoretical curiosity to production infrastructure: it backs privacy-preserving analytics at Google, ad-conversion measurement across ad platforms, threshold custody at every major crypto exchange, and the BEPSE / Visa-Eagle-ACME systems for fraud detection across banks. This page covers the four canonical constructions — Yao's garbled circuits, the GMW protocol, the BGW protocol, and the SPDZ family — explains how secret sharing and oblivious transfer fit in, and gives the engineering trade-offs that determine which protocol to use in which setting.
+Secure multi-party computation (MPC) lets `n` mutually-distrusting parties jointly compute a function `f(x_1, ..., x_n)` of their private inputs while revealing *only* the output — nothing about any individual input beyond what the output already implies. The question was posed by Yao in 1982 as the *millionaires' problem*: two billionaires want to learn who is richer without disclosing their wealth. Since then, MPC has graduated from a theoretical curiosity to production infrastructure: it backs privacy-preserving analytics at Google, ad-conversion measurement across ad platforms, threshold custody at every major crypto exchange, and deployments such as the 2009 Danish sugar-beet auction (the first commercial MPC use, Partisia), the Sharemind/X-Road tax-fraud study with Estonia's Statistics Office (2015), the Boston Women's Workforce Council wage-gap study (2017), and Google's Password Checkup breach alerting (2019). This page covers the four canonical constructions — Yao's garbled circuits, the GMW protocol, the BGW protocol, and the SPDZ family — explains how secret sharing and oblivious transfer fit in, and gives the engineering trade-offs that determine which protocol to use in which setting.
 
 ## The MPC Model
 
@@ -29,12 +29,19 @@ For `n` parties tolerating `t` corruptions, the dealer picks a random polynomial
 - **Multiplication is non-local**: `f(X)g(X)` has degree `2t`, so re-sharing to reduce the degree back to `t` requires interaction. This is the central difficulty of BGW.
 
 ```python
-# Shamir secret sharing (n=5, t=2), illustrative
+# Shamir secret sharing (n=5, t=2), deterministic demo
 import random, sympy
 p = sympy.nextprime(2**64)
 
-def share(s, n, t, p):
-    coeffs = [s] + [random.randrange(p) for _ in range(t)]
+def horner(coeffs, x, p):
+    acc = 0
+    for c in reversed(coeffs):          # evaluate f(x) mod p
+        acc = (acc * x + c) % p
+    return acc
+
+def share(s, n, t, p, seed=2026):
+    rng = random.Random(seed)           # fixed seed -> reproducible shares
+    coeffs = [s] + [rng.randrange(p) for _ in range(t)]
     return [(i, horner(coeffs, i, p)) for i in range(1, n+1)]
 
 def reconstruct(shares, p):
@@ -48,7 +55,21 @@ def reconstruct(shares, p):
             den = (den * (xi - xj)) % p
         secret = (secret + yi * pow(den, -1, p) * num) % p
     return secret % p
+
+shares = share(0xC0FFEE, 5, 2, p)
+print("shares:", [(i, hex(y)) for i, y in shares])
+print("reconstruct(any 3 of 5):", hex(reconstruct(shares[:3], p)))
+print("reconstruct(any 2 of 5):", hex(reconstruct(shares[:2], p)))
+assert reconstruct(shares[:3], p) == 0xC0FFEE
 ```
+
+```text
+shares: [(1, '0xb897c709a3b7755a'), (2, '0xfa75f792d448d67e'), (3, '0xc59a919b9275235a'), (4, '0x1a059523de3c5bee'), (5, '0xf7b7022bb79e8054')]
+reconstruct(any 3 of 5): 0xc0ffee
+reconstruct(any 2 of 5): 0x76b9968073261436
+```
+
+Any 3 of the 5 shares recover `0xC0FFEE` exactly; any 2 interpolate to a value that is uniform and independent of the secret (`0x76b9968073261436` here — it carries no information, which is the guarantee, not a bug).
 
 ### Additive (a.k.a. CN) Sharing
 
@@ -202,7 +223,7 @@ A: In Shamir-style secret sharing with `t < n/2`, the shares are uniformly rando
 A: Donald Beaver (1991) introduced the technique of pre-computing `(a, b, c=ab)` triples where `a, b` are random, unknown field elements shared among parties. To multiply `x, y`, parties open `\rho = x-a`, `\sigma = y-b` and locally compute `xy = c + \rho b + \sigma a + \rho\sigma`. The triple is consumed once; the round cost is one round-trip. Almost every modern arithmetic MPC protocol (SPDZ, Overdrive, MASCOT, ABY3) is structured as "compute Beaver triples somehow, then use them in the same way Beaver described."
 
 **Q3: What's the role of oblivious transfer in MPC?**
-A: OT is *complete* for MPC: any secure computation can be reduced to OTs alone (Kilian 1991). Concretely, every AND-gate in GMW needs 1-out-of-4 OT per pair of parties; every input-wire label of the evaluator in Yao needs a 1-out-of-2 OT. OT extension (Ishai-Kilian-Nissim-Petrovic 2003) makes OT cheap enough (a few hash calls per OT after a one-time 128 base-OT setup) that OT is no longer the bottleneck. See [Oblivious Transfer](./oblivious-transfer.md) for the construction.
+A: OT is *complete* for MPC: any secure computation can be reduced to OTs alone (Kilian 1991). Concretely, every AND-gate in GMW needs 1-out-of-4 OT per pair of parties; every input-wire label of the evaluator in Yao needs a 1-out-of-2 OT. OT extension (Ishai-Kilian-Nissim-Petrank 2003) makes OT cheap enough (a few hash calls per OT after a one-time 128 base-OT setup) that OT is no longer the bottleneck. See [Oblivious Transfer](./oblivious-transfer.md) for the construction.
 
 **Q4: What's the state of the art on malicious security without honest majority?**
 A: SPDZ remains the reference. The latest work (Keller-Rosulek-Scholl, *pseudo-random OT correlation / VOLE*, Eurocrypt 2022) reframes the triple-generation step as generating pseudorandom *vector-OLE correlations*; this gives roughly 5× throughput over classic SPDZ MASCOT. Other directions: silent-OT (Boyle et al., 2019) which compresses the offline phase with LPN-style codes, and the *evil-Morty* line of maliciously-secure Yao-garbling work that pushes cut-and-choose down to a constant factor overhead.
@@ -242,5 +263,5 @@ A: State-of-the-art 2-party systems (CrypTFlow2, CryptGPU, Piranha) handle billi
 - Mohassel, P., Rindal, P. — *"ABY3: A Mixed Protocol Framework for Machine Learning"* (2018), CCS. Three-party honest-majority MPC for ML. https://eprint.iacr.org/2018/403
 - Boyle, E., Couteau, G., Gilboa, N., Ishai, Y., Kohl, L., Scholl, M. — *"Efficient Pseudorandom Correlation Generators: Silent OT Extension and More"* (2019), CRYPTO. Silent-OT / LPN-based triple generation. https://eprint.iacr.org/2019/1088
 - Chandran, N., Gupta, D., Rindal, P., et al. — *"Fast Secure Computation of Set Intersection*" and follow-ups (2021), CCS. State-of-the-art PSI. https://eprint.iacr.org/2021/1243
-- Lindell, Y. — *"Secure Multiparty Computation (MPC)*", Communications of the ACM 2020 — accessible survey of applications and theory. https://doi.org/10.1145/3378126
+- Lindell, Y. — *"Secure Multiparty Computation (MPC)*", Communications of the ACM 2020 — accessible survey of applications and theory. https://doi.org/10.1145/3387108
 - Evans, D., Kolesnikov, V., Rosulek, M. — *"A Pragmatic Introduction to Secure Multi-Party Computation"*, Foundations and Trends in Privacy and Security vol. 3 (2018). https://eprint.iacr.org/2020/300

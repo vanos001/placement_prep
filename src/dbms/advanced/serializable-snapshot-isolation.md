@@ -152,5 +152,5 @@ When NOT to use SSI:
 - [PostgreSQL SSI implementation (source)](https://github.com/postgres/postgres/blob/master/src/backend/storage/lmgr/predicate.c)
 - [PostgreSQL: Transaction Isolation (SSI)](https://www.postgresql.org/docs/current/transaction-iso.html)
 - Fekete et al., "[Making Snapshot Isolation Serializable](https://www.eecs.harvard.edu/~margo/papers/fekete-sigmod2005.pdf)" (SIGMOD 2005)
-- [CockroachDB: SSI and HLC integration](https://www.cockroachlabs.com/blog/serializable-lockless-database-transactions/)
+- [CockroachDB docs: transaction layer (SSI + hybrid-logical clocks)](https://www.cockroachlabs.com/docs/stable/architecture/transaction-layer)
 - [LWN: SSI in PostgreSQL (2011)](https://lwn.net/Articles/460358/)

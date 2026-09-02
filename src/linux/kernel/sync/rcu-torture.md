@@ -17,10 +17,10 @@ Loading `rcutorture` spawns the task family (all names verified from `kernel/rcu
 | Task | Role |
 |------|------|
 | `rcu_torture_writer` | Replaces the current object on a timer, drives it through the pipe; owns the state machine (`RTWS_DELAY`, `RTWS_REPLACE`, `RTWS_DEF_FREE`, `RTWS_EXP_SYNC`, `RTWS_COND_GET`, ...) that cycles through grace-period-wait styles |
-| `rcu_torture_reader` / `rcu_torture_reader_task` family | Take read-side critical sections of varying flavor (plain `rcu_read_lock()`, BH, SRCU, preemption-enabled variants), snapshot the pointer, and run the pipe check at section end |
+| `rcu_torture_reader` | Take read-side critical sections of varying flavor (plain `rcu_read_lock()`, BH, SRCU, preemption-enabled variants), snapshot the pointer, and run the pipe check at section end (one kthread per reader; the accompanying `rcu_torture_reader_do_mbchk()` cross-checks concurrent readers) |
 | `rcu_torture_fakewriter` | Exists only to wait for grace periods without publishing — diluting writer activity so reader pressure dominates, and exercising GP machinery with no payload traffic |
 | `rcu_torture_stats` | Periodically prints the `Reader Pipe:` / `Reader Batch:` histograms and writer-state |
-| `rcu_torture_fwd` | Forward-progress prober: verifies that grace periods *complete* under adversarial scheduling (`fwd_progress`, `fwd_progress_div`, `fwd_progress_holdoff` module params) |
+| `rcu_torture_fwd_prog` | Forward-progress prober: verifies that grace periods *complete* under adversarial scheduling (`fwd_progress`, `fwd_progress_div`, `fwd_progress_holdoff` module params) |
 | `rcu_torture_stall` | Deliberately holds a CPU inside an RCU read-side critical section (or across `cond_resched()` boundaries) to trigger and validate RCU stall warnings |
 | `rcu_torture_boost` / `rcu_torture_barrier` / `rcu_torture_updown` | Specialized stress: RCU-boost priority inversion, `call_rcu()` barrier semantics, and up/down (hrtimer) readers |
 
@@ -28,7 +28,7 @@ Key module parameters (registration via the `torture_param()` macro, description
 
 ## Torture Types and Scenarios
 
-`torture_type` selects the primitive under test — values verified in the source: `rcu`, `busted` (the self-confessed broken control), `srcu`, `srcud`, `tasks`, `tasks-rude`, `tasks-tracing`, plus a `busted` variant used for negative testing. Each type defines the same operation interface (`readlock`, `readunlock`, `deferred_free`, `get_gp_state`, ...), which is why one harness exercises seven primitives with identical instrumentation.
+`torture_type` selects the primitive under test — all ten values verified in the source: `rcu`, `busted` (the self-confessed broken control), `srcu`, `srcud`, `busted_srcud` (the broken SRCU control), `trivial` (CONFIG_PREEMPT=n-only testing), `trivial-preempt`, `tasks`, `tasks-rude`, `tasks-tracing`. Each type defines the same operation interface (`readlock`, `readunlock`, `deferred_free`, `get_gp_state`, ...), which is why one harness exercises ten primitives with identical instrumentation.
 
 A *scenario* is one Kconfig fragment plus boot arguments — one hypothesis about an environment that could break RCU. The canonical list lives in `tools/testing/selftests/rcutorture/configs/rcu/CFLIST`: `TREE01` through `TREE09` (plus more), `SRCU-N`, `SRCU-P`, `TINY01`, and friends. `TREE04`, for example, is exactly this fragment (fetched from the tree): `CONFIG_SMP=y`, `CONFIG_NR_CPUS=8`, `CONFIG_PREEMPT_LAZY=y`, with `CONFIG_PREEMPT_NONE/VOLUNTARY/PREEMPT/PREEMPT_DYNAMIC` all `=n`, and the self-check marker `#CHECK#CONFIG_TREE_RCU=y` that the harness verifies after the build. The scenarios span the preemption matrix, CPU counts from tiny to large, and debug-option combinations; running the full set is the closest thing RCU has to a proof.
 
@@ -52,7 +52,7 @@ A typical invocation — `kvm.sh --configs "TREE04 TREE09" --duration 30 --kconf
 
 ## Stall Warnings and Forward Progress
 
-Two companion mechanisms turn "hung" into "diagnosed". The **RCU CPU stall detector** (documented in `Documentation/RCU/stallwarn.rst`, options verified there: `rcu_cpu_stall_timeout`, `rcu_cpu_stall_suppress`, `rcu_cpu_stall_cputime`) prints a volumetric warning when a grace period appears stuck — naming the CPU blocking progress and the task holding the read-side critical section. `rcutorture`'s `rcu_torture_stall` task manufactures exactly this condition on demand, so the warning path itself is exercised every run rather than only in production incidents. Forward progress is the other half: a grace period that *eventually* completes but only under luck is still a bug, and the `rcu_torture_fwd` task's params (`fwd_progress`, `fwd_progress_div`, `fwd_progress_holdoff`) exist to catch livelocks under heavy load, nohz_full configurations, and hrtimer pressure — the class of failure that simple timeout-based testing misses because the system was never actually dead, just starving.
+Two companion mechanisms turn "hung" into "diagnosed". The **RCU CPU stall detector** (documented in `Documentation/RCU/stallwarn.rst`, options verified there: `rcu_cpu_stall_timeout`, `rcu_cpu_stall_suppress`, `rcu_cpu_stall_cputime`) prints a volumetric warning when a grace period appears stuck — naming the CPU blocking progress and the task holding the read-side critical section. `rcutorture`'s `rcu_torture_stall` task manufactures exactly this condition on demand, so the warning path itself is exercised every run rather than only in production incidents. Forward progress is the other half: a grace period that *eventually* completes but only under luck is still a bug, and the `rcu_torture_fwd_prog` task's params (`fwd_progress`, `fwd_progress_div`, `fwd_progress_holdoff`) exist to catch livelocks under heavy load, nohz_full configurations, and hrtimer pressure — the class of failure that simple timeout-based testing misses because the system was never actually dead, just starving.
 
 ## Worked Demo
 

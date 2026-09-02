@@ -93,8 +93,8 @@ Sampling m sifted bits tests for her: P(detect) = 1 - (3/4)^m.
 """
 import random
 
-N = 20_000
-TRIALS = 2_000
+N = 2_000
+TRIALS = 200
 SEED = 20260827
 
 def run(eavesdrop: bool, m: int, rng: random.Random):
@@ -137,21 +137,20 @@ for m in (1, 2, 4, 8, 16, 32):
     print(f"{m:>4} {det / TRIALS:>9.4f} {1 - 0.75 ** m:>19.4f}")
 ```
 
-Output (QBER lands on the predicted 25%, sifting on 50%, and the detection
-curve tracks `1 - (3/4)^m` within noise):
+Output (runs in about a second; QBER lands on the predicted 25%, sifting on 50%, and the detection curve tracks `1 - (3/4)^m` within sampling noise):
 
 ```text
-BB84 intercept-resend simulation: n=20000 qubits, 2000 runs
+BB84 intercept-resend simulation: n=2000 qubits, 200 runs
 no Eve     : sifting fraction=0.500  QBER=0.0000  detection(m=20)=0.0000
-with Eve   : sifting fraction=0.500  QBER=0.2499  detection(m=20)=0.9965
+with Eve   : sifting fraction=0.501  QBER=0.2492  detection(m=20)=1.0000
 
 Detection probability vs number of compared sifted bits m (with Eve):
    m  measured  analytic 1-(3/4)^m
-   1    0.2435              0.2500
-   2    0.4475              0.4375
-   4    0.6875              0.6836
-   8    0.9050              0.8999
-  16    0.9905              0.9900
+   1    0.2700              0.2500
+   2    0.4100              0.4375
+   4    0.7050              0.6836
+   8    0.8950              0.8999
+  16    0.9850              0.9900
   32    1.0000              0.9999
 ```
 

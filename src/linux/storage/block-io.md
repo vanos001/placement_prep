@@ -524,17 +524,12 @@ io_uring_prep_read(sqe, fd, buf, 4096, offset);
 
 ```mermaid
 graph TD
-    A[Application write] --> B[Page cache
-    dirty page]
-    B --> C{Dirty ratio
-    exceeded?}
+    A[Application write] --> B["Page cache<br/>dirty page"]
+    B --> C{"Dirty ratio<br/>exceeded?"}
     C -- No --> D[Continue]
-    C -- Yes --> E[Kwriteback
-    thread wakes]
-    E --> F[Select dirty pages
-    by age/priority]
-    F --> G[Create bio for
-    writeback]
+    C -- Yes --> E["Kwriteback thread wakes"]
+    E --> F["Select dirty pages<br/>by age/priority"]
+    F --> G["Create bio for<br/>writeback"]
     G --> H[submit_bio]
     H --> I[Block layer]
     I --> J[Device]

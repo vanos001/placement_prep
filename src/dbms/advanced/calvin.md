@@ -146,7 +146,7 @@ Production sequencers use a hybrid: FIFO within a priority class, with class-bas
 
 ## References
 
-- Thomson et al., "[Calvin: Fast Distributed Transactions for Partitioned Data Stores](https://cs.yale.edu/homes/thomson/papers/calvin-sigmod12.pdf)" (SIGMOD 2012)
+- Thomson et al., "[Calvin: Fast Distributed Transactions for Partitioned Data Stores](https://doi.org/10.1145/2213836.2213838)" (SIGMOD 2012; doi 10.1145/2213836.2213838 — the old cs.yale.edu PDF link is dead)
 - Alexander Thomson, "[Calvin: The Sequel](https://www.youtube.com/watch?v=Calvin-talk)" (talk)
 - [FaunaDB: How Calvin Works in Production](https://fauna.com/blog/calvin-consistency-without-compromise)
 - [FoundationDB: A Distributed Key-Value Store with Sequencer Layer](https://apple.github.io/foundationdb/)

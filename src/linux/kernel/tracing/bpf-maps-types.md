@@ -104,8 +104,7 @@ purpose.
 | Type | Purpose |
 |------|---------|
 | `BPF_MAP_TYPE_SOCKMAP` | Maps `sk_buff` to a `struct sock*`; redirect `sendmsg`/`recvmsg`. |
-| `BPF_MAP_TYPE_SOCKHASH` | Same as SOCKMAP but uses arbitrary key (not 4-tuple). |
-| `BPF_MAP_TYPE_SOCKHASH` family — `bpf_sk_redirect_map()` etc. |
+| `BPF_MAP_TYPE_SOCKHASH` | Same as SOCKMAP but uses arbitrary key (not 4-tuple); the SOCKHASH family redirects via `bpf_sk_redirect_hash()` (SOCKMAP's counterpart is `bpf_sk_redirect_map()`). |
 | `BPF_MAP_TYPE_REUSEPORT_SOCKARRAY` | SO_REUSEPORT attach points. |
 | `BPF_MAP_TYPE_SK_STORAGE` | Per-socket local storage. |
 | `BPF_MAP_TYPE_DEVMAP` | Maps ifindex → `struct net_device*`; used by XDP redirect. |
