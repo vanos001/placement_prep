@@ -206,12 +206,9 @@ For a different example: n=4, c=3 (3 colors):
 
 **Problem**: Color the faces of a cube with 3 colors. How many distinct colorings?
 
-**Setup**: The rotation group of a cube has 24 elements:
-- 1 identity
-- 6 face rotations (90° and 270° around 3 axes): 4 cycles of length 1 + 1 cycle of length 4... no, let me think again.
+**Setup**: The rotation group of a cube has 24 elements, classified by the axis of rotation. Acting on the 6 faces:
 
-Actually, the rotation group of a cube (acting on 6 faces):
-1. **Identity** (1): 6 cycles of length 1 → c = 6
+1. **Identity** (1 rotation): 6 cycles of length 1 → c = 6
 2. **90° face rotation** (6): 2 fixed faces + 1 cycle of 4 → c = 3
 3. **180° face rotation** (3): 2 fixed faces + 2 cycles of 2 → c = 4
 4. **120° vertex rotation** (8): 2 cycles of 3 → c = 2

@@ -297,64 +297,48 @@ Odd days = Total days mod 7
 
 ### Finding the Day
 
-**Example:** What day was January 1, 2000?
+**Method — Odd Days.** Count the total number of "odd days" (days beyond complete weeks) up to the target date, then add that count to the known day-of-week of the starting reference.
+
+**Reference:** Jan 1, 1 AD (proleptic Gregorian) was a **Monday**.
+
+**Odd-days table:**
+
+| Period | Odd Days |
+|---|---|
+| 1 ordinary year (365 d) | 1 |
+| 1 leap year (366 d) | 2 |
+| 100 years | 5 |
+| 200 years | 3 |
+| 300 years | 1 |
+| 400 years | 0 |
+
+(100 years = 24 leap + 76 ordinary → 24·2 + 76·1 = 124 → 124 mod 7 = 5. Every 400-year cycle is exactly 0 odd days, which is why the Gregorian calendar repeats every 400 years.)
+
+**Worked example:** What day of the week was **January 1, 2000**?
 
 ```
-From Jan 1, 1 AD to Jan 1, 2000:
-1600 years = 0 odd days
-300 years = 300 × 5/4 → actually:
-  1700, 1800, 1900 = 3 non-leap centuries
-  300 years = 300 + 3 (for 3 leap century adjustments)
-  Switching to a simpler approach:
+Years completed before Jan 1, 2000: 1999
+Split: 1999 = 1600 + 399
 
-2000 - 1 = 1999 years
-= 1600 + 399
-1600 years → 0 odd days
-399 years = 300 + 99
-300 years → 5 × 3 = 15 odd days → 1 odd day (15 mod 7 = 1)
-Wait, 100 years = 5 odd days, so 300 years = 15 mod 7 = 1
-99 years: 99/4 = 24 leap years, 75 ordinary years
-99 years → 75 + 24×2 = 75 + 48 = 123 odd days → 123 mod 7 = 4
+1600 years → 0 odd days  (multiple of 400)
+399 years  → 399 + ⌊399/4⌋ − ⌊399/100⌋ + ⌊399/400⌋
+            = 399 + 99 − 3 + 0
+            = 495  →  495 mod 7 = 5  odd days
 
-Total odd days = 0 + 1 + 4 = 5
-Jan 1, 2000 = Sunday + 5 = Friday? Let me verify.
-
-Actually, the standard result: Jan 1, 2000 was a Saturday.
-Let me recalculate.
-
-1999 complete years before Jan 1, 2000:
-Odd days in 1999 years:
-= 1999 + ⌊1999/4⌋ - ⌊1999/100⌋ + ⌊1999/400⌋
-= 1999 + 499 - 19 + 4
-= 2483
-2483 mod 7 = 2483 - 354×7 = 2483 - 2478 = 5
-
-Days: Sunday(0) + 5 = Friday
-
-But Jan 1, 2000 was actually Saturday. Let me recheck.
-
-If Jan 1, 1 AD was Monday:
-Day = (Monday + 5) mod 7 = Saturday? 
-Monday(1) + 5 = Saturday(6). Hmm.
-
-Actually, this is getting complicated. Let me use a simpler example.
+Total odd days = 0 + 5 = 5
+Jan 1, 1 AD was Monday (day 1).
+Monday + 5 = Saturday  ✓  (historically, Jan 1, 2000 was a Saturday)
 ```
 
-**Simpler Example:** If today is Wednesday, what day is it 100 days later?
+**Cross-check using the 400-year rule:** 2000 is a multiple of 400, so Jan 1, 2000 has the same day-of-week as Jan 1, 2000 − 1600 = Jan 1, 400, which by the 400-year cycle is also a Saturday.
 
-```
-100 mod 7 = 2
-Wednesday + 2 = Friday
-```
-
-**Example:** January 1, 2024 was Monday. What day is December 31, 2024?
+**Example (leap year):** January 1, 2024 was a Monday. What day is December 31, 2024?
 
 ```
 2024 is a leap year → 366 days
-Jan 1 to Dec 31 = 365 days
+Jan 1 to Dec 31 = 365 days after Jan 1
 365 mod 7 = 1
-Monday + 1 = Tuesday
-Dec 31, 2024 = Tuesday
+Monday + 1 = Tuesday  →  Dec 31, 2024 = Tuesday
 ```
 
 ## Series & Patterns
@@ -407,8 +391,18 @@ For clock times:
 ```
 Mirror of 3:00 → 9:00
 Mirror of 4:30 → 7:30
-Formula: Mirror of H:M → (12-H):(60-M) for hour hand consideration
 ```
+
+**Formula:** Mirror of H:M = `11:60 − H:M` (clock-arithmetic subtraction; equivalently `(11 − H) mod 12` hours and `(60 − M)` minutes, treating the result modulo 12 hours).
+
+**Verification:**
+- 3:00 → `(11−3):(60−0)` = `8:60` = `9:00` ✓
+- 4:30 → `(11−4):(60−30)` = `7:30` ✓
+- 6:00 → `(11−6):(60−0)` = `5:60` = `6:00` ✓ (6:00 is symmetric)
+- 12:00 → `(11−0):(60−0)` = `11:60` = `12:00` ✓ (12:00 is symmetric)
+- 5:30 → `(11−5):(60−30)` = `6:30` ✓
+
+> ⚠️ **Common mistake:** the formula `(12 − H):(60 − M)` is *incorrect* — for 4:30 it gives `8:30`, but the correct mirror time is `7:30`. Always use `11:60 − H:M` (or equivalently subtract one extra hour to account for the hour hand's continuous motion through the next hour).
 
 ### Water Image
 
@@ -428,26 +422,19 @@ Conclusion does NOT follow.
 ```
 
 ### Q2: Coding
-If COMPUTER = EQRRVGTV, then PROGRAM = ?
+If TIGER = UJHFS, then PROGRAM = ?
 
 **Solution:**
 ```
-Each letter shifted by +2:
-C→E, O→Q, M→O, P→R, U→W, T→V, E→G, R→T
-Wait, COMPUTER → EQRRVGTV
-C(+2)=E, O(+2)=Q, M(+2)=O, P(+2)=R, U(+2)=W, T(+2)=V, E(+2)=G, R(+2)=T
-COMPUTER = E O R R W V G T → EORRWVGT ≠ EQRRVGTV
-Let me recheck: C+2=E ✓, O+2=Q ✓, M+2=O... but COMPUTER has M at position 3.
-C=3+2=5=E, O=15+2=17=Q, M=13+2=15=O, P=16+2=18=R, U=21+2=23=W, T=20+2=22=V, E=5+2=7=G, R=18+2=20=T
-COMPUTER → EORRWVGT (off by a transpose from the expected EQRRVGTV)
+Each letter is shifted forward by +1:
+T(+1)=U, I(+1)=J, G(+1)=H, E(+1)=F, R(+1)=S  →  UJHFS  ✓
 
-The given code is EQRRVGTV. Reversing the positions of the last 4 letters in our derivation: EORR + WVTG → rearranged → EQRRVGTV requires a different rule. The shift sequence must be positional rather than a constant +2.
-
-A cleaner example:
-
-If TIGER = UJHFS (+1 to each letter):
+Apply the same rule to PROGRAM:
+P→Q, R→S, O→P, G→H, R→S, A→B, M→N
 PROGRAM = QSPHSBN
 ```
+
+> **Why a constant shift works:** the rule is a simple Caesar cipher with shift = +1. Each letter's alphabet index (A=1, …, Z=26, wrapping) is incremented by the same amount. The same rule applied to any input word produces a deterministic, verifiable output.
 
 ### Q3: Blood Relation
 A's mother is B's daughter. C is B's son. How is A related to C?

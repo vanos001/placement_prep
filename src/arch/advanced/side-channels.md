@@ -207,7 +207,7 @@ Mitigation: RSB stuffing (insert dummy CALL/RET pairs on context switch)
 
 ## Meltdown Variants
 
-### Meltdown (CVE-2017-5759)
+### Meltdown (CVE-2017-5754)
 
 **Mechanism**: Exploit **out-of-order execution of faulting loads**. Unlike Spectre (which uses branch misprediction), Meltdown uses the fact that loads execute before permission checks complete.
 

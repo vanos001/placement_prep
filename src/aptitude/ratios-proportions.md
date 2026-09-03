@@ -344,35 +344,25 @@ C = (5/17) × 42000 = ₹12,353 (approx)
 ```
 
 ### Q5: Age Problem
-The ratio of present ages of A and B is 7:9. After 4 years, the ratio will be 5:6. Find their present ages.
+The ratio of present ages of A and B is 5:3. After 6 years, the ratio of their ages will be 3:2. Find their present ages.
 
 **Solution:**
 ```
-Let ages be 7x and 9x.
-(7x+4)/(9x+4) = 5/6
-6(7x+4) = 5(9x+4)
-42x + 24 = 45x + 20
-3x = 4 → x = 4/3  (fractional — original problem data may be inconsistent; redo with cleaner numbers below)
+Let the present ages be 5x and 3x.
+
+(5x + 6) / (3x + 6) = 3 / 2
+
+Cross-multiply:
+  2 · (5x + 6) = 3 · (3x + 6)
+  10x + 12    = 9x + 18
+  x           = 6
+
+Present ages:
+  A = 5x = 30
+  B = 3x = 18
 ```
 
-Actually:
-```
-42x + 24 = 45x + 20
-4 = 3x → x = 4/3
-A = 28/3, B = 36/3 = 12
-```
-
-Let me use a cleaner problem:
-
-**Revised Q5:** Ratio of A and B's ages is 5:3. After 6 years, ratio is 3:2. Find ages.
-
-**Solution:**
-```
-(5x+6)/(3x+6) = 3/2
-10x + 12 = 9x + 18
-x = 6
-A = 30, B = 18
-```
+**Sanity check:** After 6 years: A = 36, B = 24 → 36 : 24 = 3 : 2 ✓.
 
 ### Q6: Chain Rule
 If 6 men or 10 women can reap a field in 20 days, how many days will 12 men and 5 women take?

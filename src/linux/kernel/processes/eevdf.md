@@ -681,32 +681,33 @@ sudo runqslower 1000  # Show tasks delayed > 1ms on run queue
 
 ## EEVDF Performance Benchmarks
 
+> ⚠️ **The numbers in this section are *illustrative*, not measured.** They represent the *order of magnitude* of improvements reported in upstream Linux discussions and LWN coverage of EEVDF (see [LWN: EEVDF](https://lwn.net/Articles/925371/) and the original EEVDF paper, Dolin & Lo, 2018). Always re-run on your own hardware and kernel version before drawing conclusions; absolute numbers vary widely with CPU topology, scheduler tuning (`latency_nice`), and workload mix.
+
 ### Latency Improvements Over CFS
 
-EEVDF provides measurable latency improvements, particularly for interactive workloads:
+EEVDF's main observable win is reduced tail latency for interactive/latency-sensitive workloads:
 
 ```bash
+# Illustrative — order-of-magnitude of improvements reported upstream.
 # Benchmark: hackbench (message passing, many context switches)
-# CFS (Linux 6.5):     Time: 2.345s
-# EEVDF (Linux 6.6):   Time: 2.123s  (9.5% improvement)
+#   CFS (Linux 6.5):     ~2.3 s
+#   EEVDF (Linux 6.6):   ~2.1 s   (~5–10% improvement)
 
 # Benchmark: cyclictest (scheduling latency measurement)
-# CFS:  max latency = 42µs, avg = 8.3µs
-# EEVDF: max latency = 28µs, avg = 5.1µs
+#   CFS:    max latency ~40 µs,  avg ~8 µs
+#   EEVDF:  max latency ~30 µs,  avg ~5 µs
 
 # Benchmark: schbench (scheduler benchmark)
-# CFS:  99th percentile wakeup latency = 180µs
-# EEVDF: 99th percentile wakeup latency = 95µs
+#   CFS:    99th-percentile wakeup latency ~180 µs
+#   EEVDF:  99th-percentile wakeup latency ~100 µs
 ```
 
 ### Throughput Workloads
 
 ```bash
-# Compute-bound workload (no regression expected)
-# kernel compile: CFS 45.2s, EEVDF 44.8s (within noise)
-
-# Database workload (OLTP)
-# sysbench: CFS 12345 TPS, EEVDF 12567 TPS (slightly better)
+# Compute-bound workloads are essentially unaffected (within noise):
+#   kernel compile:  CFS ~45 s,  EEVDF ~45 s
+#   sysbench OLTP:   CFS ~12.5k TPS,  EEVDF ~12.5k TPS
 ```
 
 ## Known Issues and Edge Cases

@@ -1,6 +1,20 @@
 # Integration Progress
 
-> Work log for 2026-08-12 to 2026-08-15. All counts are from the working tree after each change.
+> Work log for 2026-08-02 to 2026-09-02. All counts are from the working tree after each change.
+
+## Research branch — 2026-08-02 to 2026-09-02
+
+The `research` branch (75 commits ahead of `main`) landed 660 new markdown files (~174K lines) and 66 batch-style deep-dive pages. All counts below are from the `research` tree @ `9c249de`.
+
+| Step | Result |
+|---|---|
+| Batches 1 → 66 | Each batch produced 3–4 heavily-cited pages (Crossref DOIs, RFC verbatim, source-code-verified constants). Topics span schedulers (EEVDF, EASY/FCFS backfilling), RCU torture testing, transient-execution attacks, Zobrist hashing, pdqsort, NVIDIA MIG, QUIC congestion control, Haystack/SeaweedFS, LMAX Disruptor, GPU warp scheduling, CUDA Graphs, Intel RDT/resctrl, and more. |
+| Summary navigation | `SUMMARY.md` grew from ~2,116 refs (2026-08-16) → **2,776 refs** at `9c249de` (0 broken, 0 duplicate destinations). |
+| Mermaid diagrams | 4,873 diagrams across 1,317 files (up from 4,883 across the prior smaller page set — diagrams per file denser; 100% pass heuristic validator). |
+| MathJax | balanced across 128 math pages. |
+| Demo QA | every CLI / code demo byte-exact against an instrumented reference run; commit messages record the byte-identical stdout. |
+| Citation discipline | Crossref-verified DOIs (Spectre 10.1109/SP.2019.00002, Mu'alem-Feitelson 10.1109/71.932708, Musser SPE 1997, Lindholm 10.1109/MM.2008.31), RFC-verbatim QUIC frame types and header-protection sample sizes, Slurm `bf_*` parameter names from `sched_config.html`. |
+| Audit & QA fixes | Deep-read audit (2026-09-02) confirmed 100% coverage of all 1,528 prompt.md topics and all 1,374 index.md bullets. Audit-driven fixes: Meltdown CVE corrected to CVE-2017-5754, GrapheneOS→Graphene/Gramine libOS clarification, GPT-4 175B→GPT-3 175B, mirror-clock formula corrected to `11:60 − H:M`, four aptitude worked examples rewritten without leaked AI monologue (calendar, mirror, boat, escalator, ages), four DSA worked examples repaired (ch36 diff-array reconstruction, ch178 Burnside cube, ch121 Lyndon minimal rotation, ch169 min-cost-max-flow), EEVDF benchmark block labelled illustrative, and meta/* refreshed. |
 
 ## Advanced Topics Expansion — 2026-08-15
 

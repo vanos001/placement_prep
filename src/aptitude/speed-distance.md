@@ -176,28 +176,26 @@ T_up/T_down = 10/6 = 5/3
 
 ### Finding Distance (Boat Problem)
 
-**Problem:** A boat takes 4 hours to go 20 km downstream and return. Speed in still water is 8 km/h. Find stream speed.
+**Problem:** A boat goes 16 km upstream in 4 hours and 16 km downstream in 2 hours. Find the speed of the stream and the speed of the boat in still water.
 
 **Solution:**
 ```
-20/(8+v) + 20/(8-v) = 4
-20(8-v) + 20(8+v) = 4(64-v²)
-160 + 160 = 256 - 4v²
-320 = 256 - 4v²
-4v² = -64 → No real solution (check: this means the problem setup is inconsistent)
+Let b = boat speed in still water, s = stream speed.
+Upstream speed   = b − s = 16 km / 4 h = 4 km/h
+Downstream speed = b + s = 16 km / 2 h = 8 km/h
+
+Solve the two equations:
+  b − s = 4
+  b + s = 8
+  → b = 6 km/h, s = 2 km/h
+
+Stream speed = 2 km/h
+Still-water speed = 6 km/h
 ```
 
-Let me use a better example:
+**Sanity check:** With b=6, s=2: upstream = 4 km/h → 16/4 = 4 h ✓; downstream = 8 km/h → 16/8 = 2 h ✓.
 
-**Problem:** A boat goes 16 km upstream in 4 hours and 16 km downstream in 2 hours. Find the speed of the stream.
-
-**Solution:**
-```
-Upstream speed = 16/4 = 4 km/h
-Downstream speed = 16/2 = 8 km/h
-Stream speed = (8-4)/2 = 2 km/h
-Still water speed = (8+4)/2 = 6 km/h
-```
+> **Key relations:** If `u` = upstream speed and `d` = downstream speed, then `b = (u+d)/2` and `s = (d−u)/2`.
 
 ## Circular Motion
 
@@ -378,53 +376,40 @@ Average speed = 200/9 = 22.22 km/h
 ```
 
 ### Q8: Escalator
-Walking up a moving escalator, a person takes 30 steps. Walking at twice the speed, takes 20 steps. How many visible steps?
+
+**Problem:** A person walks up an escalator that is moving *down*. Walking at normal speed they count 30 steps before reaching the top; walking at twice the speed they count 20 steps. How many steps are visible on the escalator?
 
 **Solution:**
+
 ```
-Let escalator moves e steps while person takes 30 steps (at speed p)
-Total steps N = 30 + 30e/p
-At 2p speed: N = 20 + 20e/(2p) = 20 + 10e/p
-30 + 30e/p = 20 + 10e/p
-10 = -20e/p → e/p = -0.5 → This means escalator helps
-N = 30 + 30(-0.5) = 30 - 15 = 15
-Or: N = 20 + 10(-0.5) = 20 - 5 = 15 ✓
-Visible steps = 15... but wait, this seems small.
+Let N = visible steps on the escalator
+Let e = escalator speed (steps/sec), p = person's normal walking speed (steps/sec)
+Sign convention: walking up is positive, so a downward escalator
+contributes −e per second of progress.
+
+At speed p:
+  Time to reach top   = 30 / p seconds
+  Steps contributed by escalator during that time = −e · (30 / p)
+  N = 30 − 30·(e/p)                         ... (1)
+
+At speed 2p:
+  Time to reach top   = 20 / (2p) = 10 / p seconds
+  Steps contributed by escalator = −e · (10 / p)
+  N = 20 − 10·(e/p)                         ... (2)
+
+Equate (1) and (2):
+  30 − 30·(e/p) = 20 − 10·(e/p)
+  10 = 20·(e/p)
+  e/p = 1/2      (escalator runs at half the person's normal walking speed)
+
+Substitute back into (1):
+  N = 30 − 30·(1/2) = 30 − 15 = 15
+  Cross-check with (2):  N = 20 − 10·(1/2) = 15  ✓
+
+Visible steps on the escalator = 15.
 ```
 
-Now consider the opposite case: escalator moves down while person walks up:
-```
-N = 30 - 30e/p (net progress per step is 1-e/p)
-At 2p: N = 20 - 20e/(2p) = 20 - 10e/p
-30 - 30e/p = 20 - 10e/p → 10 = 20e/p → e/p = 0.5
-N = 30 - 15 = 15 ✓
-Total visible steps = 15
-```
-
-The above was for an escalator going down (opposing the person). Now redo for an escalator going up (assisting):
-
-If the person walks up and the escalator also goes up:
-```
-At speed p: person takes 30 steps, escalator moves e×(30/p) steps
-Total = 30 + 30e/p
-At speed 2p: person takes 20 steps, escalator moves e×(20/2p) = 10e/p steps
-Total = 20 + 10e/p
-30 + 30e/p = 20 + 10e/p → 10 = -20e/p → e/p = -0.5 (negative = going down)
-```
-
-The escalator is going down. Total visible = 15 steps. This is actually a valid problem — the escalator is going down and the person is walking up.
-
-Let me use a cleaner example:
-
-**Revised Q8:** A person walking up a stationary escalator counts 50 steps. On a moving escalator going down, they count 30 steps. How many steps are visible?
-
-**Solution:**
-```
-Let escalator adds/removes e steps while person takes 30
-50 = 30 + 30e/p → 20 = 30e/p → e/p = 2/3
-Or: 50 = 30 + 30(2/3) = 30 + 20 = 50 ✓
-Visible steps = 50
-```
+**Why the count drops when walking faster:** when the person walks faster, they spend less time on the escalator, so the downward escalator has less time to "subtract" steps. Yet they still reach the top — meaning fewer of their own steps are needed. The two effects reconcile at a single value of N, which is what the equation solves for.
 
 ## Summary Table
 

@@ -193,20 +193,19 @@ The practical method of choice for large-scale problems. Based on the simplex me
          1/4         2/1
 ```
 
-Format: capacity/cost. Let me rewrite clearly:
+**Edge list** (format: capacity/cost):
 
 ```
-Edges:
 s → a: cap=2, cost=3
 s → b: cap=4, cost=1
 a → t: cap=3, cost=2
 b → c: cap=1, cost=4
-c → a: cap=2, cost=1  (backward edge in original? No, let me make it a forward edge)
+c → a: cap=2, cost=1
 c → d: cap=1, cost=2
 d → t: cap=2, cost=1
 ```
 
-### Clean Example
+### Worked Example
 
 ```
 Graph:

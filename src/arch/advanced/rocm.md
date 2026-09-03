@@ -139,7 +139,7 @@ The `--device=/dev/kfd --device=/dev/dri --group-add=video` flags give the conta
 | Memory bandwidth | H100: 3.35 TB/s | MI300X: 5.3 TB/s |
 | Memory capacity | H100: 80 GB | MI300X: 192 GB |
 
-ROCm's advantage: memory capacity (MI300X has 2.4× the HBM of H100). This makes MI300X the choice for LLM inference where the model exceeds 80 GB (e.g., GPT-4 175B at 350 GB in fp16 needs 5 H100s but fits on 2 MI300Xs).
+ROCm's advantage: memory capacity (MI300X has 2.4× the HBM of H100). This makes MI300X the choice for LLM inference where the model exceeds 80 GB (e.g., GPT-3 175B at ~350 GB in fp16 needs 5 H100s but fits on 2 MI300Xs).
 
 CUDA's advantage: better ecosystem, faster compute, and the fact that most ML researchers have NVIDIA hardware.
 

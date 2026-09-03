@@ -115,7 +115,7 @@ Performance: seL4 IPC is ~100 ns on ARM Cortex-A53, ~150 ns on x86-64. This is w
 
 ## Library OS — Brief Deep Dive
 
-A Library OS (libOS) links the operating system functionality directly into the application as a user-space library. Rather than making system calls, the application calls libOS functions that manage resources. GrapheneOS and gVisor's Sentry use libOS principles to provide compatibility layers. In the exokernel model, the libOS *is* the OS; in container runtimes like gVisor, the libOS translates POSIX semantics to host kernel primitives, providing a compatibility and isolation layer without full virtualization.
+A Library OS (libOS) links the operating system functionality directly into the application as a user-space library. Rather than making system calls, the application calls libOS functions that manage resources. **Graphene** (later renamed **Gramine**), a user-space library OS designed to run unmodified Linux applications inside Intel SGX enclaves, and gVisor's Sentry use libOS principles to provide compatibility layers. In the exokernel model, the libOS *is* the OS; in container runtimes like gVisor, the libOS translates POSIX semantics to host kernel primitives, providing a compatibility and isolation layer without full virtualization. (Note: GrapheneOS is a separate, unrelated project — a hardened Android mobile OS — and should not be confused with Graphene/Gramine.)
 
 ## Comparison
 

@@ -328,14 +328,19 @@ class LyndonFactorization {
 
 ### 1. Minimal String Rotation
 
-The minimal rotation of a string is the lexicographically smallest among all its rotations. Using Lyndon factorization on `s + s`, the first factor gives the answer.
+The minimal rotation of a string is the lexicographically smallest among all its rotations. Using Lyndon factorization on `s + s`, the first factor that begins within the first `n` positions gives the answer.
 
-**Example:** `"cabcab"` → double to `"cabcabcabcab"` → Lyndon factorization gives factors starting at positions that include 3 → minimal rotation starts at index 3, giving `"abccab"` → wait, let me recheck.
+**Example:** `"cabcab"` (length 6). Its distinct rotations are:
 
-Actually for `"cabcab"`:
-- Doubled: `"cabcabcabcab"`
-- Lyndon factorization: The first Lyndon factor of the doubled string that starts within the first `n` positions gives the minimal rotation.
-- Minimal rotation of `"cabcab"` is `"abccab"` → No, rotations are: cabcab, abcabc, bcabca, cabcab, abcabc, bcabca. The unique ones are: abcabc, bcabca, cabcab. Minimal is "abcabc" starting at index 1.
+| Start | Rotation |
+|---|---|
+| 0 | `cabcab` |
+| 1 | `abcabc` |
+| 2 | `bcabca` |
+
+(Starts 3, 4, 5 repeat rotations 0, 1, 2 respectively because the string has period 3.)
+
+The lexicographically smallest rotation is `"abcabc"`, starting at index 1. Running Lyndon factorization on the doubled string `"cabcabcabcab"` and taking the first factor whose start index is `< 6` yields start = 1 → minimal rotation = `"abcabc"`.
 
 ### 2. String Periodicity
 

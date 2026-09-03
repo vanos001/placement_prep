@@ -1,7 +1,9 @@
 # Coverage Dashboard
 
 > Auto-generated tracking of content coverage across all subjects.
-> Last updated: 2026-08-16 (validation re-run, meta sync)
+> Last updated: 2026-09-02 (research branch @ `9c249de`; refreshed post-audit).
+>
+> **Branch note:** `research` is 75 commits ahead of `main` and adds 660 new markdown files since the 2026-08-16 snapshot. The repository now contains **2,777 markdown pages** under `src/` (2,776 reachable from `SUMMARY.md`), **4,873 Mermaid diagrams** across 1,317 files, and 128 MathJax-bearing pages — all validation green. The per-subject page counts below are point-in-time from the 2026-08-16 dashboard run; the research-branch additions primarily landed in the "Advanced …" rows (A–T sections) plus Linux, DSA, networking, storage, and distributed-systems deep dives.
 
 ## Summary
 

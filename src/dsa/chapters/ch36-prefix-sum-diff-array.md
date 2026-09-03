@@ -314,78 +314,52 @@ Operations on `diff[]` (size 8, initialized to 0):
 `diff = [0, 5, 0, 0, 0, -5, 0, 0]`
 
 **After `rangeUpdate(2, 5, 3)`:**
-`diff = [0, 5, 3, 0, 0, -8, 0, 0]`
+`diff = [0, 5, 3, 0, 0, -5, -3, 0]`
 
 **After `rangeUpdate(0, 2, 2)`:**
-`diff = [2, 5, 3, 0, 0, -8, 0, 0]`
+`diff = [2, 5, 3, -2, 0, -5, -3, 0]`
 
-**Reconstruction (prefix sum of diff):**
+**Reconstruction (prefix sum of `diff`):**
+
+The diff array is updated using the rule: to add `v` to range `[l, r]`, do `diff[l] += v` and `diff[r+1] -= v`.
+
+Tracking the three updates:
+
+| Update | Range | Value | `diff[l] +=` | `diff[r+1] -=` |
+|---|---|---|---|---|
+| 1 | [1, 4] | +5 | `diff[1] += 5` | `diff[5] -= 5` |
+| 2 | [2, 5] | +3 | `diff[2] += 3` | `diff[6] -= 3` |
+| 3 | [0, 2] | +2 | `diff[0] += 2` | `diff[3] -= 2` |
+
+After all three updates, `diff = [2, 5, 3, -2, 0, -5, -3]` (size 7; index 7 holds the trailing sentinel `0` for the exclusive `r+1` of update 2).
+
+Prefix-sum reconstruction (`result[i] = result[i-1] + diff[i]`, with `result[-1] = 0`):
 
 | i | diff[i] | result[i] |
 |---|---------|-----------|
-| 0 | 2       | 2         |
-| 1 | 5       | 7         |
-| 2 | 3       | 10        |
-| 3 | 0       | 10        |
+| 0 |  2  | 2  |
+| 1 |  5  | 7  |
+| 2 |  3  | 10 |
+| 3 | -2  | 8  |
+| 4 |  0  | 8  |
+| 5 | -5  | 3  |
+| 6 | -3  | 0  |
 
-Wait — let me redo this carefully:
+**Result: `[2, 7, 10, 8, 8, 3, 0]` ✓** — matches the expected output of the demo above.
 
-| i | diff[i] | result[i] = result[i-1] + diff[i] |
-|---|---------|-------------------------------------|
-| 0 | 2       | 2                                   |
-| 1 | 5       | 2 + 5 = 7                           |
-| 2 | 3       | 7 + 3 = 10                          |
-| 3 | 0       | 10 + 0 = 10                         |
-| 4 | 0       | 10 + 0 = 10                         |
-| 5 | -8      | 10 + (-8) = 2                       |
-| 6 | 0       | 2 + 0 = 2                           |
+**Manual cross-check** (per index, sum the updates that cover it):
 
-Manual verification of the result:
-- Index 0: +2 = 2 ✓
-- Index 1: +5 +2 = 7 ✓
-- Index 2: +5 +3 +2 = 10 ✓
-- Index 3: +5 +3 = 8
-- Index 4: +5 +3 = 8
-- Index 5: +3 = 3
-- Index 6: 0
+| i | Covered by | Sum |
+|---|---|---|
+| 0 | update 3 (+2) | 2  |
+| 1 | updates 1 (+5), 3 (+2) | 7  |
+| 2 | updates 1 (+5), 2 (+3), 3 (+2) | 10 |
+| 3 | updates 1 (+5), 2 (+3) | 8  |
+| 4 | updates 1 (+5), 2 (+3) | 8  |
+| 5 | update 2 (+3) | 3  |
+| 6 | (none) | 0  |
 
-The discrepancy is because `diff[3]` should be 0 but the reconstruction gives 10. Let me recheck...
-
-Actually the diff array after all operations:
-- `diff[0] = 2` (from update 3)
-- `diff[1] = 5` (from update 1)
-- `diff[2] = 3` (from update 2)
-- `diff[3] = 0`
-- `diff[4] = 0`
-- `diff[5] = -5 + (-3) = -8`
-- `diff[6] = 0`
-
-Reconstruction: [2, 7, 10, 10, 10, 2, 2]
-
-But expected: [2, 7, 10, 8, 8, 3, 0]
-
-The issue is the diff indices: for an update `add v to [l, r]`, we do `diff[l] += v` and `diff[r+1] -= v`. Re-deriving:
-
-Update 1: add 5 to [1,4] → diff[1]+=5, diff[5]-=5
-Update 2: add 3 to [2,5] → diff[2]+=3, diff[6]-=3
-Update 3: add 2 to [0,2] → diff[0]+=2, diff[3]-=2
-
-So diff = [2, 5, 3, -2, 0, -5, -3]
-
-Reconstruction:
-| i | diff | result |
-|---|------|--------|
-| 0 | 2    | 2      |
-| 1 | 5    | 7      |
-| 2 | 3    | 10     |
-| 3 | -2   | 8      |
-| 4 | 0    | 8      |
-| 5 | -5   | 3      |
-| 6 | -3   | 0      |
-
-Result: [2, 7, 10, 8, 8, 3, 0] ✓
-
-I had an error in my manual trace above. Let me present the corrected version in the chapter.
+Both methods agree → `[2, 7, 10, 8, 8, 3, 0]`.
 
 ---
 
