@@ -2506,6 +2506,7 @@
     - [Load Balancing Design](./interview/system-design/hld/load-balancing-design.md)
     - [Caching Strategy](./interview/system-design/hld/caching-strategy.md)
     - [Database Design](./interview/system-design/hld/database-design.md)
+    - [Globally Unique ID Generation](./interview/system-design/hld/id-generation.md)
     - [Messaging Systems](./interview/system-design/hld/messaging-systems.md)
     - [High Availability](./interview/system-design/hld/availability.md)
     - [Consistency Tradeoffs](./interview/system-design/hld/consistency-tradeoffs.md)

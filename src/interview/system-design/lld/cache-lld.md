@@ -360,6 +360,62 @@ class TTLCache:
             self._ttl[key] = time.time() + (ttl or self._default_ttl)
 ```
 
+## Concurrency: From Single-Lock LRU to Sharded, Near-Lock-Free
+
+The implementations above are correct, but the lock hides a scaling ceiling that interviewers expect you to articulate.
+
+### The single lock is the throughput ceiling
+
+Every `get` and `put` takes the same lock — and note that a `get` is a *write*: `moveToFront` mutates the list. There are no read-only operations on an LRU cache, so read-heavy workloads serialize exactly like write-heavy ones. The LRU list is a serialization point **by design**: it imposes one total order on all accesses, and a total order requires mutual exclusion. Under contention, the cost isn't the critical section itself (a few pointer updates) but the cache-line ping-pong on the lock and head/tail pointers as every core fights for the same words. The escape routes are: (1) split the key space so different keys hit different structures, (2) relax the "least recently used" guarantee so reads stop mutating shared state, or (3) both.
+
+### Striped (Segmented) LRU
+
+The classic first fix — the design Java's `ConcurrentHashMap` used before JDK 8: N independent segments, each a complete `(map + list + lock)` mini-cache:
+
+```python
+class StripedLRUCache:
+    def __init__(self, capacity: int, segments: int = 16):
+        self._segments = [LRUCache(capacity // segments) for _ in range(segments)]
+
+    def _seg(self, key) -> LRUCache:
+        return self._segments[hash(key) & (len(self._segments) - 1)]
+
+    def get(self, key):  return self._seg(key).get(key)
+    def put(self, key, value): self._seg(key).put(key, value)
+```
+
+- **Segment count**: power of two (so the index is a mask), roughly 4–16× the core count. Too few → threads still collide; too many → memory overhead per segment and coarser capacity accounting.
+- **Capacity becomes approximate.** Each segment evicts within itself, so the global LRU is lost: a segment can evict a globally-hot key while another segment hoards cold ones. Sizing is per-segment (`capacity / N`), and `size()` needs an approximate counter (sum of per-segment counts) unless you pay for a global atomic.
+- **Resize is per-segment** and only touches one lock — but rehashing moves keys between buckets *within* a segment, never between segments, because the segment choice must be stable.
+- Keys hash independently per segment, so contention drops roughly by N for uniform access; skew (one celebrity key) is unaffected — a single hot key still serializes its segment, which is why point (2) below exists.
+
+### Approximate LRU: drop the list, keep the policy
+
+The deeper fix recognizes that a strictly-consistent LRU list is what costs you. Approximate policies preserve most of the hit rate with far less coordination:
+
+- **Atomic timestamp + lazy eviction.** Each entry stores `last_access` updated with an atomic store on every read — no list mutation, no lock. When capacity is hit, the inserter evicts an *approximately* least-recently-used victim (e.g., samples a handful of entries and takes the oldest, or drains a small victim pool). Accesses stay contention-free; only eviction pays.
+- **Redis's sampled LRU.** Redis documents exactly this reasoning: "The Redis LRU algorithm uses an approximation of the least recently used keys rather than calculating them exactly. It samples a small number of keys at random and then evicts the ones with the longest time since last access. From Redis 3.0 onwards, the algorithm also tracks a pool of good candidates for eviction." The number of samples is tunable (`maxmemory-samples 5` by default; raise to 10 "at the cost of some additional CPU usage"), and Redis is explicit about the trade: "The reason Redis does not use a true LRU implementation is because it costs more memory." A true LRU needs a linked-list pointer pair (and the cache-hostile writes) per key; sampling needs a few bits of per-key timestamp and a probe.
+- **Batched reordering (Caffeine's read buffer).** Caffeine's design notes state the problem the same way: "Typical caches lock on each operation to safely reorder the entry in the access queue. An alternative is to store each reorder operation in a buffer and apply the changes in batches. This could be viewed as a write-ahead log for the page replacement policy." Reads append to a **striped ring buffer** (stripes chosen by thread-hash to cut contention) and a single drainer replays the reorderings onto the LRU list. The read buffer "is allowed to be lossy" — a dropped access event slightly skews eviction but never correctness — while the *write* buffer "cannot be lost, so it must be implemented as an efficient bounded queue." This is the near-lock-free shape: reads never take the list lock, they enqueue; the list is maintained by one drainer thread per cache.
+
+**W-TinyLFU in one paragraph.** Caffeine doesn't actually evict by plain LRU; it uses Window TinyLfu: the access queue is split into "an admission window that evicts to the main spaces if accepted by the TinyLfu policy. TinyLfu estimates the frequency of the window's victim and the main's victim, choosing to retain the entry with the highest historic usage," with counts kept in a 4-bit Count-Min sketch ("8 bytes per cache entry"). The window/main split is adaptive — "A large window is favored if recency-biased and a smaller one by frequency-biased. Caffeine uses hill climbing to sample the hit rate, adjust, and configure itself to the optimal balance." The design lesson for interviews: recency (LRU) and frequency (LFU) fail on different workloads, and a sketch-based admission filter gets near-optimal hit rates on both at O(1) cost and tiny memory.
+
+### LFU with O(1) Frequency Buckets
+
+The LFU variant above already uses frequency buckets; the concurrency question is where the locks go. The two-doubly-linked-list structure: a vertical list of frequency buckets, each holding a horizontal list of keys with that count; a hash maps key → node. `get` unlinks the node from bucket *f* and pushes it to the head of bucket *f+1*; eviction takes the tail of the lowest non-empty bucket — O(1) everywhere, with `min_freq` advancing only when a bucket empties.
+
+- **One lock around the whole structure** is the correct baseline: all operations are O(1) pointer surgery, so the critical sections are tiny.
+- **Striping across keys** (per-segment LFU) inherits the striped-LRU analysis, with one trap: a promotion moves a node *between* two buckets, which may live in different segments — either keep buckets segment-local (recompute the key's segment as part of its identity) or impose a lock order by frequency index to avoid deadlock.
+- **Decay/aging is not optional.** Unbounded counters make early-hot items immortal. Classic fix: periodically halve all counts. Redis's LFU mode (also documented on the eviction page) instead uses a logarithmic counter — "The counter logarithm factor changes how many hits are needed to saturate the frequency counter, which is just in the range 0-255" (`lfu-log-factor`) — plus time-based decay: "the amount of minutes a counter should be decayed, when sampled and found to be older than that value. A special value of 0 means: we will never decay the counter" (`lfu-decay-time`).
+
+### Eviction-Callback Races
+
+Real caches do work on eviction — write-back to a store, metrics, teardown. Two ordering choices, both with traps:
+
+1. **Remove-then-callback** (the right default): atomically remove the entry from map and list *inside* the lock, then deliver the callback *outside* it. Guarantees the listener sees a genuinely-evicted entry and keeps user code off the cache's lock (a listener that calls back into the cache under the lock is a deadlock factory). The race that remains: between removal and callback, another thread may `put` the same key again. If the callback writes the *stale* value to the backing store (write-back caches do exactly this), it clobbers the fresh value — a lost update. Fix: attach a per-entry generation/version; the callback acts only if the key still maps to that generation, or route callbacks through a single-drainer queue so stale events are detected at drain time.
+2. **Reinsertion loops.** A listener that reloads on eviction (evict → callback → `put(reloaded)`) can livelock: the reload itself becomes the next eviction victim. Guard with a flag or queue that suppresses reload for entries evicted as part of a reload chain, or make reload asynchronous so it doesn't compete for the same capacity accounting.
+
+The interview summary: correctness needs *atomicity of removal* and *happens-before between evict and callback*; throughput needs reads to stop mutating shared state; and both are achieved by the same move — decouple the hot path (map lookup + timestamp/buffer append) from the policy path (list/sketch maintenance on a drainer).
+
 ## Design Patterns Used
 
 | Pattern | Where | Why |
@@ -401,9 +457,17 @@ class TTLCache:
 - ❌ Not handling the capacity correctly (check after adding)
 - ❌ Off-by-one errors in eviction
 
+## References
+
+- [Redis: Key eviction](https://redis.io/docs/latest/develop/reference/eviction/) — approximated LRU (sampling, eviction pool, `maxmemory-samples`) and LFU mode (`lfu-log-factor`, `lfu-decay-time`).
+- [Caffeine wiki: Design](https://github.com/ben-manes/caffeine/wiki/Design) — access/write queues, striped read buffer, Window TinyLfu admission with 4-bit Count-Min sketch, adaptivity.
+- Gil Einziger, Roy Friedman, Ben Manes. "TinyLFU: A Highly Efficient Cache Admission Policy." *ACM Transactions on Storage*, 2017. [DOI 10.1145/3149371](https://doi.org/10.1145/3149371) — the TinyLFU/W-TinyLFU policy Caffeine implements.
+
 ## Cross-References
 
 - [Design Patterns](./design-patterns.md) — Strategy pattern
 - [Concurrency Design](./concurrency-design.md) — Thread-safe implementation
+- [Key-Value Store LLD](./key-value-store-lld.md) — Redis-class store design (eviction, TTLs, persistence)
+- [Distributed Cache](../real-world/distributed-cache.md) — the fleet-level version of this problem
 - [HLD: Caching Strategy](../hld/caching-strategy.md) — Caching concepts
 - [HLD: Database Design](../hld/database-design.md) — Cache-aside pattern
