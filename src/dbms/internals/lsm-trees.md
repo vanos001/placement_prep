@@ -266,7 +266,56 @@ sequenceDiagram
 
 **Problem:** Tombstones consume space until compaction runs. A "range tombstone" (`DELETE WHERE key BETWEEN 100 AND 200`) is more efficient than individual tombstones.
 
-### LSM in Different Databases
+## LSM vs B+ Tree: The Full Tradeoff
+
+The table at the top of this page says LSM wins writes and B-trees win reads; that is the folk summary. The real comparison is three amplification ratios plus a latency distribution, and every one of them is computable. (The theoretical frame is the [RUM Conjecture](../advanced/rum-conjecture.md): read, update, and memory overhead are mutually exclusive minima, so the question is never "which is better" but "which two overheads did each structure pin, and what floor does that force on the third.")
+
+### Write amplification, computed
+
+**B+tree:** an update to a record rewrites the leaf page it lives on (read-modify-write) plus a WAL record. Worst case per logical update: one full page write, so WAF ≈ `page_size / record_size` (a 16 KiB page holding 200-byte records ⇒ ~80 bytes written per byte changed, before fill-factor slack), plus WAL. Crucially this cost is **independent of dataset size** and mostly absorbed by the buffer pool for hot pages — but it is random I/O, the pattern spinning disks and early SSDs hated.
+
+**Leveled LSM:** every byte gets written once to WAL + memtable, flushed to L0, then rewritten each time it is merged across a level boundary. With size ratio `T` and `L = log_T(N / L0)` levels, a record is rewritten ~`T` times per level crossing, giving:
+
+```
+WAF_leveled ≈ 1 + T × L          (T=10, 5 levels ⇒ ~50x, observed 10–30x when
+                                  compaction work is shared/compacted lazily)
+WAF_tiered  ≈ 1 + L              (tiered merges each run once per tier:
+                                  ~T less write amp, ~T more read amp)
+```
+
+So the fundamental comparison is: **B+tree write amplification is large-per-update but constant and random; LSM write amplification is amortized, sequential, and grows logarithmically with data size** — and it is a *budget* you pay in background I/O rather than on the write path. That is exactly the property write-heavy ingest wants, and it is why Facebook migrated UDB from InnoDB to MyRocks (completed 2017), citing space and write amplification — with a reported **62.3% instance-size reduction**.
+
+### Read amplification
+
+**B+tree:** depth `d = log_F(N)` — 3–5 levels for most OLTP datasets; a point lookup is `d` page reads when cold, ~1 when the upper levels are cached. Range scans walk the leaf chain sequentially. Read cost is essentially independent of how much you've written recently.
+
+**LSM:** a point lookup must check L0 (up to ~`T` overlapping files), then one file per level, with Bloom filters collapsing the misses: expected reads ≈ `L0_files + Σ FPR(level) + 1` (with the 10-bits-per-key filter from earlier, FPR ≈ 1%). The **T-tiered/leveled trade shows up here**: leveled has one run per level (read amp ~L, write amp ~T·L); tiered stacks T runs per level (read amp ~T·L, write amp ~L). Bloom filters, block cache, and fence pointers are MO investments that buy the read path back — the RUM triangle moving a knob inside one structure.
+
+### Space amplification
+
+**B+tree:** splits leave leaves half-empty after random inserts (50–70% fill ⇒ ~1.4–2.0x slack), plus inner-node overhead. Bounded, always.
+
+**LSM:** dead versions and tombstones live until a compaction reaches them; in steady state, leveled compaction's overlap bound is `T/(T-1)` (~1.11x at T=10) plus per-file metadata — but the bound only holds **if compaction keeps up**. A compaction backlog is unbounded space amplification (and the disk-full outage that follows), which is why compaction lag is a first-order production metric.
+
+### Latency tail
+
+The B+tree's write cost is paid inline and is small but *predictable*; occasional page splits are the only spike. The LSM's write path is uniformly fast, and the cost reappears as **compaction spikes**: L0 buildup triggers write stalls (RocksDB documents its stall conditions explicitly), merges saturate shared I/O, and read p99 degrades while compaction runs. Engineering responses: a **rate limiter** to pace compaction I/O, reserved bandwidth for flush vs compaction threads, and scheduler designs like bLSM (SIGMOD 2012) that pace merges specifically to bound operation latency. Read the two tails correctly: B+tree gives you a tight distribution around a slower median; LSM gives you a faster median with fatter tails you must actively manage.
+
+### When each wins
+
+| Dimension | B+tree (InnoDB, PostgreSQL heap+index) | Leveled LSM (RocksDB, Pebble, Cassandra) |
+|---|---|---|
+| Write-heavy ingest (50k+ ops/s, appends) | random leaf rewrites, checkpoint spikes | sequential flushes, WAF ≈ T·L paid in background |
+| Point lookups (warm) | 1–3 page reads, no FPR surprises | bloom + block cache ≈ parity; cold misses probe L levels |
+| Range scans | sequential leaf chain, strictly better | merge iterator over L runs, slower |
+| Space | bounded slack (1.4–2.0x) | tight in steady state, unbounded if compaction lags |
+| Latency tail | tight, slow-ish median | fast median, compaction-spike tails |
+| Deletes/updates | in-place, immediately done | tombstones + dead versions until bottom level |
+| Predictability | workload-independent depth | depends on compaction keeping up with W |
+
+The decision procedure: sustained write rates that approach or exceed compaction capacity (write-heavy ingest, high-churn mutable state, streams) favor the LSM — but budget background I/O the way you budget any other resource, and monitor compaction backlog as an SLO. Read-dominated workloads, large range scans, transactional workloads that need tight tails, and datasets small enough that everything is cached anyway favor the B+tree. The hybrid era is real: RocksDB-derived engines run petabyte systems (MyRocks at Meta; CockroachDB's Pebble; TiKV), while the default OLTP engines people actually transact on remain B+tree-based — and delta-update trees like the Bw-tree (see [Bw-Tree and ART](../advanced/bwtree-art.md)) occupy the middle ground by softening the B+tree's update path without abandoning its read structure. The one durable lesson from the RUM frame: every hardware generation re-opens the question — NVMe's reduced read/write asymmetry is exactly why the debate is alive again.
+
+## LSM in Different Databases
 
 ```mermaid
 flowchart TD
@@ -316,6 +365,8 @@ flowchart TD
 - [Key-Value Stores](../nosql/key-value.md) — LSM trees are the backbone of KV stores
 - [Column-family Stores](../nosql/column-family.md) — Cassandra and HBase use LSM trees
 - [B-Tree](../indexing/b-tree.md) — The alternative to LSM for read-heavy workloads
+- [The RUM Conjecture](../advanced/rum-conjecture.md) — the read/update/space overhead frame that makes the LSM-vs-B-tree tradeoff precise
+- [Bw-Tree and ART](../advanced/bwtree-art.md) — delta-updating trees: the middle ground between the two corners
 
 ## Interview Questions
 
@@ -390,3 +441,13 @@ A: Write amplification = total bytes written to disk / bytes written by applicat
 - **Write amplification**: Key tradeoff — LSM trades write amplification for write throughput
 - **RocksDB**: Most popular LSM engine; supports level-based, universal, and FIFO compaction
 - **LevelDB**: Simpler predecessor by Google; single-threaded compaction
+- **LSM vs B+ tree**: B-tree pays constant, random, in-line write amplification (page rewrites + WAL) and reads in log-depth; LSM pays amortized, sequential, background write amplification (≈ T×L) and reads across levels with Bloom filters — pick by workload mix and latency-tail tolerance, not doctrine
+- **Compaction stalls**: the LSM's deferred cost becoming visible; rate-limit compaction and monitor backlog as an SLO
+
+## References
+
+1. P. O'Neil, E. Cheng, D. Gawlick, E. O'Neil. *The Log-Structured Merge-Tree (LSM-Tree).* Acta Informatica 33(4), 1996. DOI: [10.1007/s002360050048](https://doi.org/10.1007/s002360050048) — the original leveling/tiering cost model.
+2. R. Sears, R. Ramakrishnan. *bLSM: A General Purpose Log Structured Merge Tree.* SIGMOD 2012. DOI: [10.1145/2213836.2213862](https://doi.org/10.1145/2213836.2213862) — merge pacing to bound latency.
+3. W. Matsunobu, S. Dong, H. Lee. *MyRocks: LSM-Tree Database Storage Engine Serving Facebook's Social Graph.* PVLDB 13(12), 2020. DOI: [10.14778/3415478.3415546](https://doi.org/10.14778/3415478.3415546) — UDB migration from InnoDB (2017); 62.3% instance-size reduction.
+4. RocksDB Wiki: [Write Stalls](https://github.com/facebook/rocksdb/wiki/Write-Stalls) and [Rate-Limiter](https://github.com/facebook/rocksdb/wiki/Rate-Limiter) — stall conditions and compaction I/O pacing.
+5. M. Athanassoulis, M. S. Kester, L. M. Maas. *Designing Access Methods: The RUM Conjecture.* EDBT 2016. DOI: [10.5441/002/edbt.2016.42](https://doi.org/10.5441/002/edbt.2016.42) — the theoretical frame for the LSM-vs-B+tree comparison.

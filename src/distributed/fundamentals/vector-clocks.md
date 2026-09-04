@@ -107,6 +107,116 @@ Optimizations:
   - Interval-tree clocks (dynamic process sets)
 ```
 
+### Truncation and Pruning: The Cost Nobody Mentions
+
+Everything above assumes the vector is bounded by the N processes you drew in
+the diagram. Production key-value stores learned the hard way that the real
+bound is **the number of distinct writers that have ever mutated the object**
+— and that number is unbounded in exactly the workloads vector clocks exist
+for.
+
+Why clocks grow. A vector clock gets one `(actor, counter)` entry the first
+time that actor writes the object, and the entry can never be removed while
+the actor's contribution might still be needed to order versions. If the
+actor set is the storage nodes, growth is capped at N and mostly harmless.
+Two things break the cap:
+
+1. **Failure-tail coordination.** Dynamo's paper (§4.4) notes that writes
+   are "usually handled by one of the top N nodes in the preference list,"
+   but during partitions or multiple failures, writes are coordinated by
+   *fallback* nodes outside the top N — each episode can add new entries
+   to clocks for hot keys.
+2. **Client-generated writes.** If clients (or devices) act as clock
+   actors — the natural design when a client does read-modify-write
+   offline, or every browser tab is a writer — the clock grows with the
+   number of clients that ever touched the object. A shared shopping cart
+   edited by 50,000 customers over a year carries a 50,000-entry clock
+   shipped with every read and write. This is the "big vector clock"
+   problem: the clock, not the value, becomes the object's dominant
+   storage and bandwidth cost.
+
+How Dynamo truncates (SOSP 2007). Dynamo stores a **timestamp alongside each
+`(node, counter)` pair** recording when that node last updated the object:
+
+> "When the number of (node, counter) pairs in the vector clock reaches a
+> threshold (say 10), the oldest pair is removed from the clock. Clearly,
+> this truncation scheme can lead to inefficiencies in reconciliation as
+> the descendant relationships cannot be derived accurately."
+
+Note what Amazon is admitting: causality metadata is knowingly corrupted
+past a size threshold, and the paper reports the resulting reconciliation
+inefficiency had "not surfaced in production." The scheme is viable because
+Dynamo keeps actors server-side — the threshold binds only during
+failure-tail episodes, and cart clients merge siblings at read time.
+
+How Riak prunes (count + age guards). Riak's vclock pruning
+(`vclock:prune/3` in `riak_core`) is the same idea with three guards that
+Dynamo's one-line description glosses over:
+
+```text
+prune(clock, now, bucket_props):        # entries pre-sorted by timestamp,
+                                        # then node ID (deterministic order)
+  loop:
+    if len(clock) <= small_vclock: keep        # too small to be worth pruning
+    if now - oldest_ts < young_vclock: keep    # clock is "hot"; pruning now
+                                               # would create siblings immediately
+    if len(clock) > big_vclock                 # the "big clock" size guard
+       or now - oldest_ts > old_vclock:        # or the oldest entry is stale
+         drop the oldest entry; repeat loop
+    else: keep
+```
+
+The guards re-arm after every drop: the loop stops as soon as the clock is
+small again or its oldest surviving entry is still young. The
+`young_vclock` guard is the subtle one — a recently extended clock is left
+alone because pruning still-active writers' entries converts their very
+next write into a false sibling. Pruning waits until the entries it would
+drop are cold.
+
+What truncation costs: resurrected siblings. The failure mode is precise.
+Suppose the stored clock is `[(A,3), (B,2), (C,1)]` and truncation drops the
+oldest entry `(C,1)`, leaving `[(A,3), (B,2)]`. Now replica R — which never
+saw the truncation, e.g. it was partitioned — accepts a new write from C that
+descends from the un-pruned state: `[(A,3), (B,2), (C,2)]`. When R compares
+this clock to its stored clock:
+
+- stored `[(A,3),(B,2)]` does **not** descend from `[(A,3),(B,2),(C,2)]` —
+  the incoming clock has an entry `(C,2)` the stored clock cannot account for
+- incoming does not descend from stored either (stored's A and B counters are
+  equal, not smaller)
+
+Neither dominates, so the clocks are declared **concurrent** and a sibling
+is born — even though C's write is a true causal descendant of everything
+stored. The pruned clock *forgets* that C's first write was already
+absorbed, so C's second write looks like first contact from a stranger.
+Truncation flattens real causal history into false concurrency, and the
+cost lands in read repair, sibling resolution, and application-visible
+conflicts that never actually happened. (Bounded clocks attack this
+directly —
+[Dotted Version Vectors](../advanced/interval-tree-clocks.md) are Riak 2.x's
+answer and the default for typed buckets (`dvv_enabled=true`): each write
+stamps a minimal *dot* instead of bumping a shared counter slot, and DVVs
+de-duplicate updates, so sibling count stays proportional to genuinely
+concurrent updates rather than to delivery order. The dot structure is
+formalized in the authors' PODC'12 brief announcement
+[10.1145/2332432.2332497].)
+
+Practical guidance, distilled from what these systems actually do:
+
+- **Keep actors server-side.** Coordinate every write through a vnode or
+  coordinator so the actor set is the cluster, not the client fleet; clocks
+  then grow with nodes (bounded, small) instead of clients (unbounded).
+- **Bound the clock by both size and age** (Riak's `big_vclock`/`old_vclock`),
+  and skip pruning clocks that are small or young — pruning hot clocks is
+  what manufactures siblings.
+- **Prune deterministically** (sort by timestamp + actor ID first) so all
+  replicas reach the same decision; a divergent prune is worse than the
+  growth it relieved.
+- **Accept the semantics you are buying:** once you truncate, descendant
+  relationships for dropped actors are lost, and the sibling resolver must
+  be safe on values that are genuinely causally ordered — one more reason
+  CRDT merges, not LWW patches, are the safe resolver.
+
 ## Examples
 
 ### Example 1: Conflict Detection in Replicated Data
@@ -255,6 +365,7 @@ print(p1.compare(p2))  # 'concurrent'
 ## Cross-References
 
 - [Lamport Clocks](./lamport.md) — Simpler logical clocks (no concurrency detection)
+- [Interval Tree Clocks and Dotted Version Vectors](../advanced/interval-tree-clocks.md) — Bounded, fork-safe successors to vector clocks
 - [Time and Ordering](./time.md) — The broader problem of ordering events
 - [Consistency Models](./consistency.md) — Causal consistency uses vector clocks
 - [Quorum Replication](../replication/quorum.md) — Version vectors in Dynamo-style systems

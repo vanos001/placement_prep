@@ -2891,6 +2891,7 @@
 
 - [Advanced Distributed Overview](./distributed/advanced/README.md)
 - [Impossibility & Failure Models](./distributed/advanced/impossibility-models.md)
+- [Hot Keys, Salting, and Sharded Counters](./distributed/advanced/hot-keys-and-sharded-counters.md)
 - [Quorum Systems](./distributed/advanced/quorum-systems.md)
 - [Clocks & Consistency Models](./distributed/advanced/clocks-ordering.md)
 - [Hybrid Logical Clocks](./distributed/advanced/hybrid-logical-clocks.md)
@@ -2985,6 +2986,7 @@
 - [Advanced Concurrency Control](./dbms/advanced/concurrency-advanced.md)
 - [Distributed Databases](./dbms/advanced/distributed-databases.md)
 - [The RUM Conjecture](./dbms/advanced/rum-conjecture.md)
+- [Materialized View Maintenance and Incremental Computation](./dbms/advanced/incremental-view-maintenance.md)
 - [Vector Databases](./dbms/advanced/vector-databases.md)
 - [Graph Databases](./dbms/advanced/graph-databases.md)
 - [Graph Query Languages: Cypher, SPARQL, Gremlin, GQL](./dbms/advanced/graph-query-languages.md)

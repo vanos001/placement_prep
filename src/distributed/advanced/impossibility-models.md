@@ -1,6 +1,6 @@
 # Impossibility Models & Failure Detectors
 
-> **Reference papers**: Fischer, Lynch & Paterson (1985); Dwork, Lynch & Stockmeyer (1988); Chandra & Toueg (1996)
+> **Reference papers**: Fischer, Lynch & Paterson (1985); Dwork, Lynch & Stockmeyer (1988); Chandra & Toueg (1996); Akkoyunlu, Ekanadham & Huber (1975, DOI 10.1145/800213.806523 — the "two armies" problem); Gray (1978, DOI 10.1007/3-540-08755-9_9 — "Two Generals" and commit blocking)
 
 ## FLP Impossibility: Proof Sketch
 
@@ -36,6 +36,77 @@ The key step uses the **bivalency lemma**: from any bivalent configuration `C`, 
 5. Therefore, no protocol can guarantee termination
 
 > **Interview Angle**: "How does FLP differ from CAP?" FLP is about async + 1 crash; CAP is about network partition + availability vs consistency. FLP says you *can't* guarantee both safety and liveness; CAP says during a partition you must choose which to sacrifice. FLP is a theorem (proven); CAP is a tradeoff framework (with caveats like PACELC).
+
+## The Two Generals Problem
+
+The oldest impossibility result in the field predates FLP by a decade. Two
+armies (generals) encamp on hills on either side of a valley; only a
+messenger channel crosses it, and **each messenger may be captured (message
+loss, unbounded)**. Both generals must agree on a coordinated attack time;
+if only one attacks, both lose. The result (Akkoyunlu, Ekanadham & Huber,
+SOSP 1975, where the problem first appears as "two armies"; James Gray's
+1978 *Notes on Data Base Operating Systems* popularized the "Two Generals"
+framing and connected it to database commit): **no finite protocol lets both
+generals reach *certainty* of agreement under unbounded message loss.**
+
+The argument is an infinite regress, and it is worth being able to produce
+on a whiteboard:
+
+1. Suppose some protocol terminates after a finite number of messages, and
+   consider the **last** message `m` sent.
+2. The sender of `m` cannot know whether `m` arrived. If it was captured,
+   the receiver never learns the final state of the agreement.
+3. So the sender of the last message is never certain. Sending one more
+   acknowledgment only moves the problem — *that* acknowledgment can be
+   lost too, and its sender inherits the doubt. To restore certainty you
+   need one more message, forever.
+4. Therefore any protocol that stops leaves the sender of its last message
+   uncertain: with certainty required, no finite protocol exists. **Bounded
+   confidence demands unbounded messages; unbounded messages are
+   unavailable.** Hence deterministic agreement under unbounded loss is
+   impossible.
+
+Why it matters: Two Generals is the **base case** that commit protocols and
+consensus inherit. A distributed commit (2PC) has exactly this shape at its
+commit point — the coordinator's decision message can be lost after the
+participant voted "yes," and no number of acknowledgments removes the
+window where the participant blocks not knowing the outcome. Consensus
+escapes only by changing the failure model.
+
+Contrast with FLP — the two results are siblings, not duplicates:
+
+| | Two Generals | FLP |
+|---|---|---|
+| Failure model | **Message loss** (unreliable links), no crashes needed | **Reliable links**, but no bound on delay; one crash |
+| Timing assumptions | None needed — impossibility holds even in a synchronous system with loss | Fully asynchronous |
+| What's impossible | Certain agreement over a lossy channel | Deterministic termination of consensus |
+| Escape | Retry + acceptance of residual doubt, or reliable links | Partial synchrony / failure detectors |
+
+The models compose in real networks: TCP converts loss into *delay*
+(retransmission), which is why protocols like Raft may assume reliable,
+eventually-delivered links — someone below them pays the Two Generals cost
+in unbounded retries.
+
+The practical answers are all probabilistic or assumption-based:
+
+- **Probabilistic guarantees.** With per-message loss probability `p`, an
+  exchange needing `k` successful round trips fails with probability at
+  most `1 - (1 - p²)^k` — certainty is impossible, but `1 - 10⁻¹²`
+  confidence takes a modest, bounded `k`.
+- **Timeouts + retries.** Retransmit until acked; the channel becomes
+  "reliable with unbounded delay," which converts the problem into the
+  asynchrony FLP addresses.
+- **Idempotency + deduplication.** Retries make delivery *at-least-once*;
+  sequence numbers/idempotency keys recover *effectively-once* semantics.
+  Retry + timeout + idempotent apply is the production answer to Two
+  Generals — what 2PC's coordinator does at the commit point, and what
+  Kafka producers do with `enable.idempotence`.
+
+> **Interview Angle**: "Is the Two Generals problem solved by TCP?" No —
+> TCP hides loss by retrying forever, converting loss into delay. The
+> impossibility moves up a level: agreement protocols now face unbounded
+> delay (asynchrony), where FLP applies. You choose which impossibility to
+> live under, not whether to.
 
 ## System Synchrony Classes
 
