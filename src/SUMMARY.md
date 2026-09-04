@@ -1083,6 +1083,7 @@
   - [Temporal SQL Patterns](./dbms/sql/temporal-sql-patterns.md)
   - [JSON and Arrays: Semi-Structured SQL](./dbms/sql/json-arrays.md)
   - [Full-Text Search in SQL](./dbms/sql/full-text-search.md)
+  - [Statistical SQL: Percentiles, Ranking, and Correlation](./dbms/sql/statistical-sql.md)
   - [Normalization](./dbms/normalization/README.md)
   - [1NF](./dbms/normalization/1nf.md)
   - [2NF](./dbms/normalization/2nf.md)
