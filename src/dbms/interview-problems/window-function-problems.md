@@ -111,6 +111,111 @@ vendor syntax.
 - Ignoring null ordering and database-specific defaults.
 - Sorting large partitions without an appropriate access path or memory budget.
 
+## Deduplication: keep one row per key
+
+The most production-used window trick: pick the surviving row per key when
+"duplicate" means equal business keys but different technical rows
+(late-arriving CDC events, double-submits, source-system re-emits):
+
+```sql
+WITH deduped AS (
+  SELECT *,
+         ROW_NUMBER() OVER (
+           PARTITION BY user_id, product_id          -- business key
+           ORDER BY updated_at DESC, event_id DESC   -- newest wins, deterministic
+         ) AS rn
+  FROM inventory_changes
+)
+SELECT * FROM deduped WHERE rn = 1;
+```
+
+This is a *top-1 per group* — the same machinery as the ranking problems
+above — but in a different costume, and interviews use the costume to check
+whether you recognize it. Note what it is *not*: it does not enforce
+uniqueness (write-time constraints do that — see
+[Indexes in SQL](../sql/indexes.md)); it repairs a batch or a report.
+
+## Month-over-month with LAG: the edge cases are the question
+
+```sql
+WITH monthly AS (
+  SELECT date_trunc('month', order_ts) AS month,
+         sum(amount) AS revenue
+  FROM orders
+  GROUP BY 1
+),
+with_prev AS (
+  SELECT month, revenue,
+         LAG(revenue) OVER (ORDER BY month) AS prev_revenue
+  FROM monthly
+)
+SELECT month, revenue, prev_revenue,
+       CASE
+         WHEN prev_revenue IS NULL  THEN NULL                -- first month
+         WHEN prev_revenue = 0      THEN NULL                -- div-by-zero guard
+         ELSE round(100.0 * (revenue - prev_revenue) / prev_revenue, 1)
+       END AS mom_pct
+FROM with_prev;
+```
+
+The interviewer is not testing the formula; they are testing the guards.
+Zero denominators (a no-revenue month), NULL on the first row, and
+*missing months* (LAG crosses a gap and pairs December with October) are
+the three standard answers. The missing-month fix is calendar sparsening —
+join against a generated month series before the LAG.
+
+## Median without PERCENTILE_CONT
+
+Engines without `PERCENTILE_CONT` (and some versions' plans for it) compute
+medians with ordered windows:
+
+```sql
+WITH r AS (
+  SELECT salary,
+         ROW_NUMBER() OVER (ORDER BY salary)  AS rn,
+         COUNT(*)  OVER ()                    AS n
+  FROM salaries
+)
+SELECT round(avg(salary), 2) AS median
+FROM r
+WHERE rn IN ((n + 1) / 2, (n + 2) / 2);   -- middle row, or both middles
+```
+
+The `IN` trick with integer division handles both parities: odd n picks one
+row, even n averages the two middle rows. `COUNT(*) OVER ()` (an empty
+window spec — the *entire partition* frame) is worth pointing out
+explicitly; interviewers listen for it. Per-group medians: add
+`PARTITION BY department` to both window functions and filter
+`rn BETWEEN (n+1)/2 AND (n+2)/2` — say "between," not "in," or even-length
+groups lose their upper middle.
+
+## LAST_VALUE: the default-frame bug, live
+
+```sql
+-- WRONG: returns the current row's value for every row
+SELECT user_id, event_time,
+       LAST_VALUE(event_time) OVER (PARTITION BY user_id ORDER BY event_time) AS last_seen
+FROM events;
+
+-- RIGHT: frame must extend to partition end
+SELECT user_id, event_time,
+       LAST_VALUE(event_time) OVER (
+         PARTITION BY user_id ORDER BY event_time
+         ROWS BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLOWING
+       ) AS last_seen
+FROM events;
+```
+
+Why the first query "runs fine": with an ORDER BY, the default frame is
+`RANGE BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW`, so the window *ends at
+the current row* — LAST_VALUE sees a window whose last row is the current
+row. The fix generalizes (FIRST_VALUE is frame-safe by accident,
+LAST_VALUE is not), and the full frame-mode mechanics — including the
+RANGE-ties variant that makes even the "RIGHT" version group same-
+timestamp rows — are in
+[Window Functions](../sql/window-functions.md) and
+[SQL Interview Traps](./interview-traps.md).
+
 ## Interview questions
 
 **Window function versus GROUP BY?**

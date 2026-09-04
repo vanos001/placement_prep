@@ -265,6 +265,95 @@ SELECT month, revenue,
 FROM MonthlyRevenue;
 ```
 
+### Frame Semantics Deep Dive: why the frame mode changes the *answer*
+
+The three modes do not just pick different row sets — they pick different
+answers to the same query, and the difference is exactly ties. Over
+salaries `(100, 100, 200)` with `BETWEEN 1 PRECEDING AND CURRENT ROW`:
+
+- **ROWS** counts physical rows. Frames are (1, 2, 2) rows: the previous
+  row plus current, regardless of values.
+- **RANGE** counts *peers within a value range* — all rows whose ORDER BY
+  value falls in `[current - 1, current]`. Frames become (2, 2, 1): both
+  `100`s fall in each other's range and always travel together; the `200`
+  is alone. This is also why a running `SUM ... ORDER BY ts` (default
+  RANGE frame) aggregates *all same-timestamp rows together* instead of
+  one at a time — the running total "jumps" at ties. That is usually what
+  you want for event-time correctness and usually *not* what you expect.
+- **GROUPS** counts peer *groups*. `GROUPS BETWEEN 1 PRECEDING AND CURRENT
+  ROW` over the same data yields (2, 2, 3): the previous distinct value's
+  whole group plus all current peers — the only mode that means "the
+  previous *value*, all its copies," and the right choice for time-series
+  with duplicated timestamps.
+
+The **EXCLUDE** clause (SQL standard, PostgreSQL 11+, DuckDB, SQLite)
+removes part of the frame from the aggregate — the canonical use is
+`EXCLUDE CURRENT ROW` to compute "average of everyone *else*" per row:
+
+```sql
+SELECT name, salary,
+  ROUND(AVG(salary) OVER (ORDER BY department
+         ROWS BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLOWING
+         EXCLUDE CURRENT ROW), 2) AS peers_avg
+FROM Employees;   -- each row sees the whole partition minus itself
+```
+
+`EXCLUDE GROUP` removes the current row *and its peers* (ties),
+`EXCLUDE TIES` removes only the peers, keeping the current row —
+cohort-vs-self comparisons without self-joins.
+
+### Frame choice = performance choice
+
+Engines implement frames in two regimes, and picking the cheaper one is a
+genuine optimization skill:
+
+- **Running aggregates**: frames that only ever *extend* forward
+  (`UNBOUNDED PRECEDING..CURRENT ROW` in ROWS/RANGE with no lower re-reads)
+  allow the engine to keep a running sum and O(1) per row — the whole
+  window clause costs one sorted scan.
+- **Recomputation frames**: sliding frames (`2 PRECEDING..1 FOLLOWING`)
+  that add and *drop* rows per step either maintain a removable buffer
+  (sum/min/max can subtract/evict; average can subtract) or re-aggregate
+  the whole frame per row — engines that cannot evict (and aggregate
+  functions that cannot invert, like `MIN` under removal, or
+  `string_agg`) degenerate to O(n·frame). SQL Server exposes this directly
+  as the difference between its fast "window spool" plans and the
+  slower re-seek plans visible in `EXPLAIN`'s `Window Spool` operators.
+
+Rule of thumb: make the frame `ROWS` when ties don't matter, `RANGE`/
+`GROUPS` when they do, keep the lower bound `UNBOUNDED PRECEDING` when the
+metric is cumulative, and prefer *invertible* aggregates for sliding
+windows.
+
+## How Window Functions Execute (and Why They Sort)
+
+Window functions are the clearest case of *syntax implying a plan shape*:
+
+1. **Partition-by-sort.** The executor sorts (or hash-partitions, then
+   sorts within) input rows by `(PARTITION BY..., ORDER BY...)`. This is
+   the dominant cost — O(n log n) plus a spill risk on large partitions
+   (see [Execution Plans](../query-processing/execution-plans.md)). The
+   planner reuses one sort for all functions sharing the same window
+   specification; each distinct `PARTITION/ORDER` combination adds another
+   sort stage. That is the concrete reason to use the WINDOW clause to
+   standardize window specs wherever semantics allow.
+2. **Buffer + emit.** A `WindowAgg` operator reads each partition into
+   memory (or a tuplestore on disk when the partition exceeds
+   `work_mem`), then emits rows with computed frame values. Peak memory is
+   *partition-sized* — one giant partition (a NULL partition key, a
+   single tenant) is the classic OOM generator, the same failure shape as
+   the skew problems in [Adaptive Query Execution](../advanced/adaptive-query-execution.md).
+3. **Pipelining is broken.** Window functions are pipeline breakers: no
+   row can leave before its partition is fully read (a frame may reach
+   `UNBOUNDED FOLLOWING`). Streaming engines therefore re-emit revised
+   rows or restrict supported window types — the batch/streaming contrast
+   in [Stream Processing](../../data-engineering/stream-processing.md).
+4. **Parallel and distributed engines** split by partition: Postgres
+   parallelizes only the sort below the window node; Spark/Trino
+   partition-and-exchange by the partition key (watch for the shuffle) and
+   warn on skew. Writing `PARTITION BY` well is writing *distribution*
+   well at scale.
+
 ## Named Windows (WINDOW Clause)
 
 Define reusable window specifications.
