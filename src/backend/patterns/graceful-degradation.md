@@ -244,6 +244,74 @@ async def set_write_state(payload: dict):
 
 The rule: **read paths must not depend on the write path's health**. This is an architectural constraint, not a runtime trick — the read path must hit a read replica or a cache that survives a primary-database failover.
 
+## Brownouts: Serving Degraded-on-Purpose
+
+Everything above decides degradation *per dependency, per request*: one breaker opens here, one cache goes stale there. A **brownout** is the coordinated, fleet-wide version of the same idea: under sustained overload, the system as a whole drops into a pre-agreed reduced-service mode — deliberately disabling non-essential work everywhere at once — instead of letting latency decay into timeouts, retry storms, and crash loops. The name comes from the power grid (Klein, Maggio, Årzén, and Hernández-Rodriguez coined it for cloud applications at ICSE 2014): a brownout is an *intentional* partial reduction in delivered power that keeps the grid alive, as opposed to an uncontrolled blackout. In the paper's formulation, an application is built from **dimmable components** — recommendations, personalization, reviews, image quality — each with fidelity levels from "fully on" to "off". The service's utility is the core response plus whatever the dimmers are currently delivering; overload control means choosing dimmer levels so the *core* stays within its response-time SLO while the optional parts absorb the squeeze.
+
+Three ideas get conflated in interviews; keep them separate:
+
+| Mechanism | Question it answers | Unit of action | What the user sees |
+|---|---|---|---|
+| [Load shedding](../../interview/system-design/backpressure.md) | "Who gets in at all?" | per-request admission decision | an explicit 429/503 |
+| Graceful degradation (this page) | "What do we serve when a piece is missing?" | per-call fallback | page without the failed slot |
+| **Brownout** | "Which features do we keep paying for right now?" | a global config-driven *mode* | every request succeeds, with fewer features |
+
+Load shedding and per-request degradation are reactive and local. A brownout is **coordinated**: recommendations, personalization, analytics, image quality, and search facets are switched off *first and together*, across every instance, by one decision — because the point is capacity relief. Killing recommendations on a homepage view doesn't just fix one slot; it removes the most expensive fan-out on the page and frees that CPU for checkout.
+
+### The degradation ladder
+
+A brownout is only safe if the "reduced mode" is designed in advance. The practical artifact is a **degradation ladder**: a pre-agreed, ordered list of rungs, where each rung names exactly which dimmers drop and roughly how much load that relieves.
+
+| Level | Name | What turns off | Rough relief |
+|---|---|---|---|
+| L0 | Normal | nothing | — |
+| L1 | Trim extras | analytics pings, search facets, image quality, page-size limits | a few % |
+| L2 | De-personalize | recommendations, personalization → generic cached content | 10–30% of fan-out |
+| L3 | Cache-only reads | serve reads from cache/CDN only; pause background recompute | DB read load |
+| L4 | Core journeys only | browsing minimal; async features (notifications, exports) disabled | large |
+| L5 | Read-only / static | write path closed ([degrade to read-only](#the-degrade-to-read-only-pattern)); static pages | maximum |
+
+"Pre-agreed" is the load-bearing word: the rungs are chosen in a calm design review *with product and business owners* (because they decide what revenue-critical means), implemented as named configuration states, and rehearsed — a rung you have never loaded is a rung that will fail to load. At 3 a.m. the operator (or the automation) should be choosing *a number*, not designing a feature flag matrix.
+
+### How to decide what is droppable
+
+For each feature, three questions: (1) **Which SLO does it serve?** A recommendation slot serves engagement; order placement serves the availability SLO the business actually sold. (2) **Business priority if degraded?** Generic "popular near you" content is an acceptable substitute for personalization; a half-charged payment is not. (3) **Cost of serving?** The brownout's whole mechanism is freeing capacity, so expensive-to-serve-and-optional features (recommendations, faceted search, live map redraws) dim first, and cheap-to-serve-and-critical features (auth, cart, payment) never dim. The recurring heuristic: *anything that can render something generic and slightly stale is dimmable; anything on the money path or with correctness constraints is not.*
+
+### Static vs. adaptive brownouts
+
+The simplest brownout is **static**: a trigger moves the system to rung N and it stays there until a human or a simple rule moves it back. Deterministic, rehearseable, and easy to reason about in an incident. The research line starting with the ICSE'14 paper explores **adaptive** brownouts: a controller observes latency SLOs and continuously recomputes dimmer levels — the paper's controllers use dynamic programming and beam search over the utility-vs-latency trade-off, and later work (surveyed in Xu and Buyya's ACM Computing Surveys taxonomy) extends the idea down to microservice granularity and adds energy as a second objective. Adaptive control extracts more utility per unit of latency, but it decides with model assumptions about your traffic; static rungs decide with a human's pre-commitment. Most production systems converge on static rungs with *automatic entry* and *deliberately slower, progressive exit*.
+
+### Client-side coordination
+
+A server-side brownout is incomplete until clients cooperate, or at least don't fight it:
+
+- **Mark degraded responses.** Return `200` with a mode marker — a response header (e.g., a brownout/`degraded` flag) or the `degraded` list in the body shown earlier — so clients render fallbacks ("popular near you", a static map thumbnail) instead of treating the missing data as a bug to retry. If clients treat a degraded `200` as an error and retry, they undo the relief the brownout bought; retries against a brownout must be idempotent and rate-limited.
+- **Cache pre-computed degraded pages.** Pre-render the generic version of hot pages (homepage, top category pages) and serve them from the CDN when a rung ≥ L2 is active. This must be an explicit contract — the degraded page is *supposed* to be stale and generic — not an accident where a cache silently serves something wrong (AWS's Builders' Library piece on avoiding fallback is the canonical warning about implicit fallbacks).
+
+### Failure modes of brownouts themselves
+
+1. **Stuck brownout.** Entering is a config change; *knowing when to leave* is the hard problem. The trigger metric is self-masking: you shed optional load, latency improves, and the system concludes it's healthy while still brown. Exit criteria therefore need hysteresis on both sides — e.g., enter at p99 > 400 ms for 5 minutes, exit only after p99 < 300 ms for 15 minutes — plus an explicit probe: try re-enabling one rung and watch whether the SLO holds. Never exit all rungs at once.
+2. **Thundering herd on brownout exit.** Re-enabling recommendations re-adds expensive fan-out across the whole fleet simultaneously, onto caches that went cold during the brownout. Re-enable progressively: one rung at a time, canary a subset first ([cells](../../sre/cell-architecture.md) are the natural canary unit), let caches warm between steps, and ramp rate-limited.
+3. **Stale config keeps you brown.** Brownout state is configuration, and configuration systems fail. If every reader uses last-known-good config, a config-store outage can pin the fleet at L2 for days — and nobody notices, because degraded pages still render. Mitigations: make brownout state observable (a status dashboard plus an alarm on *brownout age*), time-bound every rung entry (auto-expire unless actively renewed), and make the fail-fresh default for config reads L0.
+4. **Brownout as a chronic condition.** If every traffic peak ends in L2, the ladder is quietly doing [capacity planning](../../sre/capacity-planning.md)'s job. Treat recurring brownouts as a capacity signal with a budget ("no more than N minutes in ≥ L2 per month"), not as a feature.
+
+### Worked interview scenario: Black Friday for a food-delivery app
+
+*"Black Friday lunch will do 10× normal orders between 11:00 and 14:00. Design the degradation plan."*
+
+Constraint to state first: **order placement and payment are never dimmable** — they're protected by admission control and headroom, not by the ladder. Everything else gets a rung:
+
+| Rung | Changes | Preserved |
+|---|---|---|
+| L0 | Full app: personalized recs, live-tracking map (5 s refresh), photos, promos, faceted search | all |
+| L1 | Tracking refresh 5 s → 30 s; thumbnails only; analytics sampled | ordering, search |
+| L2 | Recs off → "popular near you"; search facets off; promo banners off | ordering, search |
+| L3 | Discovery from CDN snapshots (menus ≤ 15 min old); order history from cache | browse → order path |
+| L4 | Ordering + order tracking only; signups, group ordering, support chat paused | checkout, tracking |
+| L5 | Read-only: browsing works, cart disabled with clear messaging | none (disaster rung) |
+
+Walk the interviewer through: **entry** is automatic (p99 and queue-depth triggers) because sub-minute reaction is needed; **exit** during the event window is manual with a 10-minute soak per rung, because that's when human judgment beats a controller; the brownout controller publishes the current rung and every service reads it as config; every rung transition emits a metric so the postmortem can reconstruct time-in-rung. The candidate takeaway to say out loud: the ladder converts an unbounded overload into a bounded product decision made in advance.
+
 ## Comparison to Fail-Fast
 
 Fail-fast is the opposite philosophy: instead of substituting, **return the error immediately**. Both have a place:
@@ -304,6 +372,10 @@ Flags give operators a manual kill switch on top of the breaker's automatic one.
 - Microsoft: *Pattern: Health Endpoint Monitoring* — https://learn.microsoft.com/en-us/azure/architecture/patterns/health-endpoint-monitoring
 - Martin Fowler: *Circuit Breaker* — https://martinfowler.com/bliki/CircuitBreaker.html
 - LaunchDarkly: *Defaults and offline mode* — https://docs.launchdarkly.com/sdk/concepts/flags
+- Klein, Maggio, Årzén, Hernández-Rodriguez: *Brownout: Building More Robust Cloud Applications*, ICSE 2014 — https://doi.org/10.1145/2568225.2568227 (dimmable components; DP and beam-search controllers)
+- Xu & Buyya: *Brownout Approach for Adaptive Management of Resources and Applications in Cloud Computing Systems: A Taxonomy and Future Directions*, ACM Computing Surveys 2019 — https://doi.org/10.1145/3234151
+- Xu, Dastjerdi & Buyya: *Energy Efficient Scheduling of Cloud Application Components with Brownout* (microservice-granularity dimming) — https://arxiv.org/abs/1608.02707
+- AWS Builders' Library: *Avoiding Fallback in Distributed Systems* — https://aws.amazon.com/builders-library/avoiding-fallback-in-distributed-systems/
 
 ## Related Topics
 
@@ -312,3 +384,8 @@ Flags give operators a manual kill switch on top of the breaker's automatic one.
 - [Progressive Delivery](./progressive-delivery.md) — feature flags as both rollout and degradation tools
 - [Idempotency](./idempotency.md) — required when retrying fallback paths
 - [Microservices](./microservices.md) — service boundaries across which degradation composes
+- [Bulkhead Deep Dive](./bulkhead-deep.md) — the resource isolation that keeps dimmable features from starving core ones
+- [Cell-Based Architecture](../../sre/cell-architecture.md) — per-cell brownouts: degrade one cell instead of the whole fleet
+- [Reliability Patterns](../../sre/reliability-patterns.md) — the circuit-breaker/backoff toolkit that feeds degradation decisions
+- [Backpressure](../../interview/system-design/backpressure.md) — load shedding: the admission-control sibling of the brownout
+- [Capacity Planning](../../sre/capacity-planning.md) — recurring brownouts are a capacity signal

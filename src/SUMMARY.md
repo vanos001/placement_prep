@@ -1085,6 +1085,7 @@
   - [Full-Text Search in SQL](./dbms/sql/full-text-search.md)
   - [Statistical SQL: Percentiles, Ranking, and Correlation](./dbms/sql/statistical-sql.md)
   - [EXISTS vs IN: Semi and Anti Joins Done Right](./dbms/sql/exists-vs-in.md)
+  - [LATERAL Joins and CROSS APPLY: Correlated Joins Done Right](./dbms/sql/lateral-joins.md)
   - [Value Window Functions: FIRST_VALUE, LAST_VALUE, NTH_VALUE and Frame Traps](./dbms/sql/value-functions.md)
   - [Normalization](./dbms/normalization/README.md)
   - [1NF](./dbms/normalization/1nf.md)
