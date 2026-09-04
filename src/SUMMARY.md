@@ -1130,6 +1130,7 @@
     - [Sort-Merge Join](./dbms/query-processing/sort-merge.md)
   - [Cost Estimation](./dbms/query-processing/cost-estimation.md)
   - [Execution Plans](./dbms/query-processing/execution-plans.md)
+  - [Plan Caching, Parameter Sniffing, and Plan Instability](./dbms/query-processing/plan-caching.md)
 - [Storage](./dbms/storage/README.md)
   - [File Organization](./dbms/storage/file-organization.md)
   - [Buffer Management](./dbms/storage/buffer-management.md)
@@ -1412,6 +1413,7 @@
   - [Percolator: Incremental Processing with Transactions](./distributed/fundamentals/percolator.md)
   - [Tail Latency: The Tail at Scale](./distributed/fundamentals/tail-latency.md)
   - [SWIM and Failure Detection](./distributed/fundamentals/swim-membership.md)
+- [Distributed Cron: Scheduling Jobs Across a Cluster](./distributed/fundamentals/distributed-cron.md)
 - [Failure Detectors](./distributed/fundamentals/failure-detectors.md)
   - [Bully Leader Election](./distributed/fundamentals/bully.md)
   - [ZooKeeper](./distributed/fundamentals/zookeeper.md)
@@ -1842,6 +1844,7 @@
 - [Join Problems](./dbms/interview-problems/join-problems.md)
 - [Optimization Problems](./dbms/interview-problems/optimization-problems.md)
 - [Concurrency Scenarios](./dbms/interview-problems/concurrency-scenarios.md)
+- [SQL Interview Traps](./dbms/interview-problems/interview-traps.md)
 
 ---
 
@@ -2006,6 +2009,7 @@
 - [On-Call Best Practices for SRE](./sre/on-call.md)
 - [Reliability Patterns](./sre/reliability-patterns.md)
 - [Bulkhead Pattern (Failure Isolation)](./sre/bulkheads.md)
+- [Cell-Based Architecture and Blast-Radius Isolation](./sre/cell-architecture.md)
 - [Cache Patterns for SRE and Backend Systems](./sre/cache-patterns.md)
 - [Canary Releases (Progressive Delivery)](./sre/canary-releases.md)
 - [Feature Flags (Feature Toggles)](./sre/feature-flags.md)
