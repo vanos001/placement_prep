@@ -142,7 +142,7 @@ without serializing reads the way writers-preference does.
 - **Datastore layer**: fairness reappears as *lock queues with admission
   control* (SQL Server lock manager grants, InnoDB's
   `innodb_lock_schedule`-style FIFO-first behavior) and as the
-  [distributed version](../internals/btree-latching.md) — latch
+  [distributed version](../dbms/internals/btree-latching.md) — latch
   shunning and latch modes exist precisely because a convoy inside a
   buffer-pool latch path multiplies into every query.
 
@@ -192,7 +192,7 @@ without serializing reads the way writers-preference does.
 - [Readers-Writers](./readers-writers.md) — the classic starvation variants and turnstile fixes.
 - [Thread Pools](./thread-pools.md) — scheduling context where convoys form.
 - [Lock-based Protocols](../dbms/transactions/lock-based.md) — database lock queues and grant ordering.
-- [B-Tree Latching](../internals/btree-latching.md) — latch modes and the last-page-insert convoy.
+- [B-Tree Latching](../dbms/internals/btree-latching.md) — latch modes and the last-page-insert convoy.
 - [Deadlock Detection](./deadlock-detection.md) — the other failure mode of contended lock graphs.
 - [Queueing Theory Fundamentals](../queueing-theory/fundamentals.md) — arrival/service math behind starvation analysis.
 
