@@ -72,6 +72,118 @@ Peak Load = Base Load × Growth Multiplier × Seasonal Factor × Safety Buffer
 Example: 1000 RPS base × 1.5 (growth) × 3 (seasonal) × 1.3 (safety) = 5,850 RPS peak
 ```
 
+## Queue Sizing for Bounded Latency
+
+Little's Law (`L = λ × W`) does double duty in capacity planning: it sizes the
+*steady-state* in-flight population (Step 2 above) and it caps the *queue* in front
+of every bounded resource. A queue is a capacity buffer, and its length must be
+derived from a latency budget, not from "more is safer":
+
+```
+queue_capacity = λ_peak × W_queue_max
+
+Example: 5,000 req/s peak, willing to wait at most 100 ms queued:
+queue_capacity = 5000 × 0.1 = 500 requests — beyond that, reject fast
+```
+
+A deeper queue does not add throughput (the servers set that); it adds *waiting*. The
+utilization target is the other half of the decision, and this is where tail latency
+is won or lost. For a single bottleneck resource (the M/M/1 model, derived in
+[queueing fundamentals](../queueing-theory/fundamentals.md) and
+[the M/M/1 page](../queueing-theory/mm1-queue.md)), average wait in queue scales as
+`W_q = (ρ / (1 − ρ)) × S`:
+
+| Utilization ρ | Mean queue wait (× service time) |
+|---------------|----------------------------------|
+| 0.50          | 1×                               |
+| 0.80          | 4×                               |
+| 0.90          | 9×                               |
+| 0.95          | 19×                              |
+
+This is why utilization targets above ~0.8 blow up tail latency: at 85% utilization a
+request that arrives behind one slow one waits multiples of the service time, and p99
+degrades long before throughput does. It is also why the industry rule of thumb is to
+run latency-sensitive services at ρ = 0.6–0.7 — "provision for peak / 0.6" and the
+2x headroom rule below are the same statement in different units. The pool-sizing
+applications (connections, threads) are worked through in
+[applied queueing theory](../queueing-theory/applied-systems.md); here the takeaway is
+the planning rule: **queue capacity and utilization targets are latency-budget
+decisions made during capacity planning, not afterthoughts discovered in load tests.**
+
+## Database Capacity Estimation
+
+### Working Set vs RAM: the Hit-Rate Cliff
+
+A database is fast while its hot working set fits in RAM (buffer pool / shared
+buffers) and an order of magnitude slower the moment it does not — there is no gentle
+degradation between the two regimes. Capacity planning for a datastore therefore
+starts from the working set, not from QPS:
+
+- Estimate the **hot working set** from the access distribution (a small fraction of
+  rows usually carries most reads); size the buffer pool to hold it plus margin, not
+  the whole dataset. PostgreSQL's own
+  [guidance](https://www.postgresql.org/docs/current/runtime-config-resource.html)
+  makes the point concretely: the `shared_buffers` default (128 MB) is a conservative
+  floor, and on a dedicated server "a reasonable starting value is 25% of the memory
+  in your system" — i.e., cache sizing is a deliberate capacity decision, not a
+  default.
+- Watch the **leading indicator**: buffer-pool hit ratio trending down, or storage
+  read IOPS climbing while QPS is flat, means the working set has outgrown RAM — you
+  are planning a memory upgrade (or sharding) months ahead of the outage, which is
+  exactly what capacity planning is for.
+
+### The Connection Pool Is a Queue
+
+Every connection pool — app-side and the server's `max_connections` — is a queueing
+system, and oversizing it makes latency *worse*: more concurrent queries means more
+contention for the same cores and cache. Plan connections like any other constrained
+resource: total app-side pool ≤ a budget derived from DB capacity (a common starting
+point is HikariCP's `cores × 2 + spindles` per DB node), divided across instances,
+minus reserved connections for admin and replication. The failure mode and the math
+are in [applied queueing theory](../queueing-theory/applied-systems.md) — the capacity
+planning move is to treat `max_connections` as a shared budget across the whole fleet,
+not a per-instance setting.
+
+### Replication Lag as a Capacity Signal
+
+Read replicas only add capacity while they can keep up: `pg_stat_replication`'s replay
+lag ([PostgreSQL monitoring](https://www.postgresql.org/docs/current/monitoring-stats.html))
+is the gauge. If lag grows with traffic, read scaling is exhausted — adding more read
+traffic to replicas does not add capacity, it widens the staleness window (reads
+served from further behind) and lengthens failover RPO. Budget lag like an SLO (e.g.
+p99 replay lag < 1 s at peak) and treat sustained growth as a sharding trigger.
+
+## Kafka Cluster Capacity
+
+Kafka's capacity unit is the **partition**, and it is simultaneously the unit of
+parallelism and the unit of fixed cost: open file handles, replication-fetcher
+buffers, controller metadata, and leader-election time all scale with partition
+count. Two planning facts from the
+[Kafka documentation](https://kafka.apache.org/documentation/):
+
+- The request path is partition-shaped — brokers cap partitions served per request
+  (`max.request.partition.size.limit`, default 2000), one of several reasons clusters
+  are planned with partition counts per broker (order of 2–4k) as an explicit design
+  target rather than an accident.
+- Partition count is expensive to change *after* the fact: adding partitions to a
+  keyed topic re-shards keys and breaks per-key ordering guarantees. Over-provision
+  partitions up front; this is headroom you cannot buy reactively.
+
+Throughput planning works in bytes, and must account for replication: with
+replication factor 3, every client byte is written to disk and shipped over the
+network three times. `BytesInPerSec` measures client ingress per broker,
+`ReplicationBytesInPerSec` the replica traffic ([monitoring
+metrics](https://kafka.apache.org/43/operations/monitoring/)); the broker ceiling is
+the smaller of its NIC and disk budget, and consumer fan-out multiplies reads (each
+consumer group re-reads everything it subscribes to).
+
+The leading overload signal is **ISR shrinkage**: `UnderReplicatedPartitions` should
+sit at 0, and `IsrShrinksPerSec` / `IsrExpandsPerSec` should be ~0 outside broker
+restarts. Sustained ISR shrink at constant traffic means followers cannot keep up
+(disk or network saturated) — the cluster is out of capacity *before* producers see
+any error. Deep-dive: [Kafka internals](../distributed/messaging/kafka.md) and
+[Kafka for interviews](../backend/messaging/kafka.md).
+
 ## Resource Right-Sizing
 
 ### Over-provisioning vs. Under-provisioning
@@ -209,11 +321,46 @@ Plan for 2x your current peak load. This provides:
 
 For databases and other hard-to-scale systems, N+2 is standard. For stateless services, N+1 with auto-scaling is typically sufficient.
 
+### Headroom Is Measured on the Bottleneck Resource
+
+N+1 is a statement about a *resource*, and CPU is only the most visible proxy. If a
+service runs at 40% CPU but its database connection pool sits at 90%, the service has
+10% headroom, not 60% — the next incident will be connection exhaustion, and the CPU
+chart will look calm the whole time. The planning procedure:
+
+1. For each tier, list the constrained resources: CPU, memory, DB connections, Kafka
+   partitions, file descriptors, ephemeral ports/conntrack, thread pools.
+2. Compute headroom per resource: `(capacity − peak_demand) / capacity`.
+3. **The service's headroom is the minimum across resources** — plan procurement and
+   alerts against that.
+
+N+1 then becomes concrete arithmetic. Example: a 3-zone service must serve 9,000 RPS
+total and survive one zone down, so each zone needs capacity for 4,500 RPS (peak /
+(N−1)); if per-instance capacity is 750 RPS that is 6 instances per zone, not 4 —
+and the same per-zone computation must be repeated for the DB connection budget,
+since 6 instances × 10 connections each changes the database side of the plan too.
+The common interview miss is stating "N+1" as a slogan and sizing only the CPU leg.
+
+### Predictive Scaling Pitfalls
+
+Forecasts are tempting to wire directly into autoscalers, and the two clocks matter
+there more than anywhere else: a model refit weekly is unvalidated for decisions made
+every 15 seconds. Use forecasts to set `minReplicas`/`maxReplicas` bounds and
+to schedule pre-warming ahead of predictable peaks; let the reactive HPA fill the gap
+in real time. The classic failure modes — forecasting the mean and missing the diurnal
+peak, models going stale after a product change, and feedback loops where the scaled
+metric is itself affected by scaling — are catalogued in
+[workload forecasting](./workload-forecasting.md).
+
 ## References
 
-- [Google SRE Book — Chapter on Capacity Planning](https://sre.google/sre-book/forward-facing-capacity-planning/)
+- [Google SRE Workbook — Managing Load](https://sre.google/workbook/managing-load/) (capacity planning, load testing, predictable spikes)
+- [Google SRE Book — Handling Overload](https://sre.google/sre-book/handling-overload/)
 - [Kubernetes HPA Documentation](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/)
 - [Karpenter](https://karpenter.sh/) — Kubernetes-native cluster autoscaling
+- [Apache Kafka Documentation](https://kafka.apache.org/documentation/) — broker configs (`max.request.partition.size.limit`, `num.partitions`) and [monitoring metrics](https://kafka.apache.org/43/operations/monitoring/) (`UnderReplicatedPartitions`, `IsrShrinksPerSec`, `BytesInPerSec`)
+- [PostgreSQL — Server Configuration: Resource Consumption](https://www.postgresql.org/docs/current/runtime-config-resource.html) and [pg_stat_replication monitoring](https://www.postgresql.org/docs/current/monitoring-stats.html)
+- [HikariCP Wiki — About Pool Sizing](https://github.com/brettwooldridge/HikariCP/wiki/About-Pool-Sizing)
 
 ## Interview Questions
 
@@ -231,3 +378,12 @@ For databases and other hard-to-scale systems, N+2 is standard. For stateless se
 
 ### Q5: How do you handle a sudden traffic spike that exceeds your capacity?
 **Answer**: Defense in depth: (1) **HPA auto-scales** pods up (fast, ~15-30 seconds). (2) If nodes are needed, **cluster autoscaler** provisions new nodes (slow, 2-5 minutes). (3) **Rate limiting** and **circuit breakers** protect downstream services from cascading failure. (4) **Graceful degradation**: serve cached/stale responses, disable non-critical features. (5) **CDN and edge caching** absorb read-heavy spikes. (6) **Queue-based load leveling**: requests queue in Kafka/SQS and are processed at the system's sustainable rate. After the event, I'd analyze the spike, adjust capacity planning, and potentially add predictive scaling based on patterns.
+
+### Q6: Why do SREs target 60-70% utilization instead of 90%+?
+**Answer**: Because queue wait explodes nonlinearly near saturation: for a single
+bottleneck resource, mean queue wait is `(ρ/(1−ρ)) × service_time` — 4× service time
+at 80% utilization, 9× at 90%, 19× at 95%. Tail latency degrades long before
+throughput does, and bursts that briefly push ρ toward 1.0 drain slowly at high
+utilization. Targeting ρ ≈ 0.6–0.7 is the same decision as the N+1/2x headroom rules:
+it buys back the tail of the latency distribution and absorbs a single failure without
+an SLO breach.

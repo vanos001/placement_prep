@@ -72,6 +72,49 @@ Cons:
 
 This is the basis of Vitess (for MySQL), CockroachDB's range metadata, and TiKV's PD.
 
+## Directory-Based Sharding in Depth
+
+The three strategies above answer "where does key *k* live?" three ways:
+**compute** it (hash), **navigate** to it (range), or **look it up**
+(directory). The directory deserves its own treatment because it is the only
+one that can express *arbitrary* placement — geo rules (EU users on EU shards),
+per-tenant isolation, VIP tenants on dedicated hardware — and the only one
+where adding a shard is pure metadata: the directory starts assigning new keys
+to it, and no old key is remapped.
+
+The price is that the directory is itself a distributed system:
+
+- **Extra hop.** Every first touch of a key needs a lookup. Production
+  directories are cached aggressively (client-side and router-side), and the
+  lookup is only paid on cold keys; key access is Zipfian, so steady-state hit
+  rates are high. The hop you cannot cache away is the lookup right after a
+  move, when routes churn.
+- **HA and consistency.** A single-node directory is a SPOF; production
+  directories are consensus-replicated (ZooKeeper, etcd — see
+  [etcd](../../cloud/etcd.md)) and become the correctness anchor of the whole
+  cluster: directory entries must change atomically with data moves, or the
+  directory *lies* (see "Shard Metadata Correctness" below).
+- **Two implementation shapes.** A *computed* directory — a deterministic
+  function of the key (hash, bit-reversal) — costs nothing per query but can
+  only change by remapping keys. A *stored* directory — a real table mapping
+  key → shard — can encode any placement, but must itself be replicated and
+  kept transactional with the data it points to.
+
+Who actually does this:
+
+- **Vitess** formalizes both shapes as vindexes: Functional vindexes
+  pre-establish the column-value → keyspace-ID mapping "typically through an
+  algorithmic function," while Lookup vindexes store the mapping in a lookup
+  table — literally a directory — with `consistent_lookup_unique` variants
+  that keep the map and the data in sync across shard moves.
+- **MongoDB** keeps a directory at chunk granularity: config servers "store
+  the metadata for a sharded cluster" including the list of chunks on every
+  shard, and every mongos consults (a cache of) that map to route.
+
+The tradeoff in one sentence: hash and range make placement *computable* and
+fast but rigid; a directory makes placement *arbitrary* and elastic, but
+inserts a second distributed system between the client and the data.
+
 ## The Routing Layer
 
 Clients don't talk directly to shards; they go through a router that maps keys to shards:
@@ -90,6 +133,107 @@ Production routers:
 - **CockroachDB**: the SQL layer is the router; it translates SQL to per-range KV ops.
 - **TiDB**: the TiDB nodes are routers; TiKV is the storage layer.
 - **MongoDB**: mongos is the router; mongod is the per-shard storage.
+
+## Virtual Shards and Vnodes
+
+Direct key→node mappings make every topology change a repartition, so every
+mature design inserts an indirection layer: map keys to a **large fixed number
+of virtual shards** (vnodes, buckets, slots, regions), and map virtual shards
+to physical nodes as *metadata*:
+
+```text
+key --hash--> bucket 0..16383 (fixed forever) --routing table--> node (changes freely)
+```
+
+The consequences compound:
+
+- **Steady-state rebalance = moving vnode ownership.** A node joining steals
+  roughly 1/(N+1) of the vnode space from every other node — small, parallel,
+  throttled moves instead of a big-bang repartition; a node leaving is the
+  reverse.
+- **Splitting a hot shard = reassigning part of its vnodes**, not redesigning
+  the key space.
+- **The vnode becomes the unit of migration, throttling, and correctness.**
+  This is exactly MongoDB's chunk, TiKV's region (96 MiB Raft groups — see
+  [TiDB Internals](./tidb-internals.md)), CockroachDB's range, and Redis
+  Cluster's 16,384 hash slots (slot = CRC16(key) mod 16384).
+
+Vnode count is a real tradeoff. Too few: balance is coarse — one hot vnode is
+one unmovable hotspot, and every move is huge. Too many: the metadata table
+grows, and per-vnode bookkeeping (heartbeats, consensus groups) eats memory.
+It is the same granularity argument as choosing shuffle-partition counts in
+distributed query execution — see
+[Distributed Query Execution](./distributed-query-execution.md). The
+assignment math that minimizes disruption when the vnode space itself must
+change is [consistent hashing](../../distributed/partitioning/consistent-hashing.md)
+(and its minimal-disruption cousin, jump consistent hashing); the machinery
+that moves the *data* behind an ownership change is the migration protocol in
+[Online Resharding and Shard Migration](./online-resharding.md).
+
+## Routing Tiers: Proxy, Smart Client, or Coordinator
+
+Someone must hold the vnode→node table and answer "where does this query go?"
+Three production tiers:
+
+| Tier | Who holds the map | Examples | Extra hop | Core tradeoff |
+|---|---|---|---|---|
+| Stateless proxy | router process | mongos, Vitess vtgate, TiDB server | yes (1) | one place to upgrade and audit; a proxy fleet to run; clients stay dumb |
+| Smart client / driver | the client library | Redis Cluster clients (learn the slot map, self-heal on redirect) | no | every language reimplements routing; stale maps until refresh; upgrades require client deploys |
+| Coordinator per node | every server node | CockroachDB, TiDB (any node accepts any query) | no | metadata ships everywhere; every node is trusted with the full map |
+
+The tiers differ most in how **staleness** behaves. A proxy refreshes its
+metadata centrally: mongos "tracks what data is on which shard by caching the
+metadata from the config servers," and re-fetches when a shard reports the
+route it used is out of date. A smart client heals itself: a node that
+receives a key it no longer owns replies with a redirect for that slot, and
+the client updates its map and retries (Redis Cluster's MOVED redirect); while
+a slot is mid-migration the protocol uses a temporary redirect so clients do
+not cache a route that is about to change again. A coordinator-tier node
+refreshes from replicated descriptors and forwards to the new owner — the
+redirect never leaves the cluster.
+
+Tier choice follows trust and latency budgets: proxies dominate where many
+heterogeneous clients exist (polyglot services, legacy apps that must not know
+about sharding); smart clients where an extra hop is unacceptable (caches,
+latency-sensitive reads); coordinator tiers where the storage system already
+replicates full metadata to every node anyway.
+
+## Shard Metadata Correctness: Stale Routes, Handoffs, Fencing
+
+The routing table is a **cache of the truth**, and the truth lives in the
+metadata plane (config servers, PD, the topology service). Every routing
+failure decomposes into "the route lagged the data":
+
+- **Read on the old owner.** A client with a stale route reads a row that has
+  already been copied out. If the move used copy-then-cutover with dual-write
+  or quiesce (the standard handoff, detailed in
+  [Online Resharding](./online-resharding.md)), the old owner is still current
+  — the stale read is a stale *route*, not stale data. The cost is one
+  redirect, not corruption.
+- **Write on the old owner.** The dangerous case: if the old owner still
+  accepts writes after ownership flipped, both shards accept writes to the
+  same key — split-brain. The defense is the **fencing epoch**: metadata
+  changes bump a version number, every operation carries the version it
+  believed, and a node whose version is behind rejects the operation and
+  triggers a metadata refresh. MongoDB makes the version check explicit —
+  shard and router "must have the same version of the chunks metadata. If the
+  metadata is not up-to-date, the operation fails with the StaleConfig error
+  and the metadata refresh process is triggered" — and TiKV region epochs and
+  CockroachDB range generations are the same idea one layer down. The general
+  primitive is the fencing token (see
+  [Distributed Locks and Fencing Tokens](../../distributed/fundamentals/fencing-tokens.md)).
+- **Two-phase handoff, from the router's seat.** Phase 1 (copy): the old owner
+  is still authoritative; the new owner is a follower; routes are unchanged.
+  Phase 2 (cutover): a metadata transaction flips ownership atomically and
+  bumps the epoch; in-flight operations carrying the old epoch are rejected or
+  redirected; clients refresh and retry. The window of wrong answers is thus
+  bounded by one round trip plus one metadata refresh — *not* by the duration
+  of the copy, which can run for hours.
+
+The design-review question to ask of any sharded system: **what version does a
+routing decision carry, and what does a node do when it learns its version is
+behind?** If the answer is "nothing — it trusts its local map," you do not
+have a routing tier; you have a split-brain in waiting.
 
 ## Cross-Shard Transactions
 
@@ -196,9 +340,12 @@ Vitess is the migration path for existing MySQL deployments that need sharding. 
 ## References
 
 - [Vitess documentation](https://vitess.io/docs/)
+- [Vitess: Vindexes](https://vitess.io/docs/20.0/reference/features/vindexes/) — functional vs. lookup vindexes and consistent lookup variants.
 - [CockroachDB: Sharding architecture](https://www.cockroachlabs.com/docs/stable/architecture/overview.html)
 - [TiDB architecture](https://docs.pingcap.com/tidb/stable/tidb-architecture)
 - [MongoDB sharding documentation](https://www.mongodb.com/docs/manual/sharding/)
+- [MongoDB: Config Servers](https://www.mongodb.com/docs/manual/core/sharded-cluster-config-servers/), [Query Router (mongos)](https://www.mongodb.com/docs/manual/core/sharded-cluster-query-router/), and [Sharded Cluster Metadata](https://www.mongodb.com/docs/manual/core/sharded-cluster-metadata/) — the chunk directory, mongos metadata caching, and the StaleConfig version check.
+- [Redis Cluster: scaling and hash slots](https://redis.io/docs/latest/operate/oss_and_stack/management/scaling/) — 16,384 slots, slot redirects, client slot-map learning.
 - Jeremy Cole, "[Database Sharding at GitHub](https://github.blog/2021-09-09-sharding-github-database/)" (GitHub blog 2021)
 - [DynamoDB sharding design](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/bp-partition-key-design.html)
 - [Sharding patterns (Microsoft Azure)](https://learn.microsoft.com/en-us/azure/architecture/best-practices/data-partitioning-strategies)
