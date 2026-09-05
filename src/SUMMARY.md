@@ -2490,6 +2490,8 @@
   - [Video Streaming Platform](./interview/system-design/real-world/video-streaming.md)
   - [Payment System](./interview/system-design/real-world/payment-system.md)
   - [Analytics Platform](./interview/system-design/real-world/analytics-platform.md)
+  - [Usage Metering and Billing System](./interview/system-design/real-world/billing-metering.md)
+  - [Experimentation Platform (A/B Testing Infrastructure)](./interview/system-design/real-world/experimentation-platform.md)
   - [Code Hosting Platform (GitHub-like)](./interview/system-design/real-world/code-hosting.md)
   - [Email System Design (Gmail-like)](./interview/system-design/real-world/email-system.md)
   - [Hotel Booking Platform](./interview/system-design/real-world/hotel-booking.md)

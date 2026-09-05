@@ -99,6 +99,54 @@ PostgreSQL 11+ has similar instant capabilities for certain ALTER operations:
 - Adding a column with a default value (12+).
 - Adding a NOT NULL constraint that's already enforced (12+).
 
+## Online Index Builds and the Lock Spectrum
+
+The native-DDL summary above hides a spectrum. Every engine's "online" story is really an answer to two questions: which moments still take a blocking lock, and what happens when those moments queue behind long-running transactions. Index builds are the case study — the operation you run most often on a live table — and the three big engines solve it three different ways.
+
+### PostgreSQL: CREATE INDEX CONCURRENTLY
+
+`CREATE INDEX CONCURRENTLY` builds an index without blocking writes by paying with time. The index is entered into the system catalogs as an "invalid" index in one transaction, then two table scans happen in two more transactions; before each scan, the build must wait for existing transactions that have modified the table to terminate. After the second scan it must additionally wait out every transaction whose snapshot predates that scan — including transactions from concurrent index builds on other tables, if the indexes involved are partial or have columns that are not simple column references — before finally marking the index valid. Two scans are the minimum for a no-lock build: the first captures a snapshot of the table, the second picks up rows that changed while it ran, and the waits before each scan are what bound what the second scan has to catch up.
+
+Three consequences. **Failure is sticky**: if a problem arises while scanning — a deadlock, or a uniqueness violation while building a unique index — the command fails but leaves behind an INVALID index, which queries ignore ("it might be incomplete") but which still consumes update overhead on every write; `\d` reports it as INVALID, and the recommended recovery is to drop it and run `CREATE INDEX CONCURRENTLY` again. **It cannot run inside a transaction block** (a regular `CREATE INDEX` can) — the multi-transaction dance above is the reason. And **unique builds enforce early**: the uniqueness constraint is already being checked against other transactions from the moment the second scan begins, so applications can see uniqueness violations before the index is usable — or even when the build ultimately fails.
+
+The production stall: the build waits for every transaction that could potentially modify or use the table. A day-old reporting query, an idle `BEGIN` in a console session, or an abandoned prepared transaction parks the build at its wait phase indefinitely — the table keeps taking writes that the second scan will have to chase, and the new index is unusable until the old transactions die. When a concurrent build looks stuck, look for the oldest transaction on the table, not for the index builder.
+
+### InnoDB: ALGORITHM, LOCK, the Online Log, and the MDL Stall
+
+`ALTER TABLE` on InnoDB picks one of three algorithms: `COPY` rebuilds the table row by row and permits no concurrent DML; `INPLACE` avoids the copy but may still rebuild in place, taking an exclusive metadata lock briefly during the preparation and execution phases while typically permitting concurrent DML; `INSTANT` (8.0.12+) modifies metadata in the data dictionary only. The `LOCK` clause is the concurrency contract you request: `LOCK=NONE` permits queries and DML, `LOCK=SHARED` permits queries only, `LOCK=EXCLUSIVE` blocks both, and if the requested level is not available the operation halts immediately — which is exactly why you should spell out `, ALGORITHM=INPLACE, LOCK=NONE` on hot tables rather than letting a "safe-looking" statement silently degrade to a locking path.
+
+An online index build reads the table and fills the new index while DML continues; the concurrent changes are recorded in a temporary online log — one per index being created or table being altered — and applied to the new index as the build drains it. The log is bounded by `innodb_online_alter_log_max_size` (default 134217728 bytes = 128 MiB); if concurrent DML overflows it, the ALTER fails with `DB_ONLINE_LOG_TOO_BIG` and uncommitted concurrent DML is rolled back. Raising the limit buys headroom at the cost of a longer final apply window — the locked phase at the end when the log drains. And DML wins at the end: if concurrent transactions wrote values the new definition rejects (a duplicate while a unique index builds, a NULL while a primary key is added), the operation fails at the very end, the changes made by concurrent DML take precedence, and the ALTER is effectively rolled back.
+
+`INSTANT ADD COLUMN` is the flagship: metadata-only, no rebuild, since 8.0.12; any position in the table, plus instant `DROP COLUMN`, since 8.0.29. Limits worth memorizing: no INSTANT on `ROW_FORMAT=COMPRESSED` tables, tables with a FULLTEXT index, or the data-dictionary tablespace; MySQL checks the max row size when adding; each instant add/drop consumes a row version and the limit is 64 versions per table (`INFORMATION_SCHEMA.INNODB_TABLES.TOTAL_ROW_VERSIONS`, reset to 0 by a table-rebuilding ALTER or `OPTIMIZE TABLE`) — after which INSTANT is rejected and a COPY/INPLACE rebuild is required.
+
+The failure mode that gets people is the brief exclusive metadata lock at the start and end of an otherwise-online DDL. The DDL must wait for every transaction touching the table to finish, and while it waits, every subsequent query on that table queues behind it — the wait is not brief if the blocker isn't leaving. `lock_wait_timeout` (default 31536000 seconds — one year) governs how long the DDL waits before giving up with `ER_LOCK_WAIT_TIMEOUT`, so a single uncommitted `autocommit=0` session can hold a hot table hostage:
+
+```text
+t=0     session A opens a transaction on orders, then idles
+t=10:00 ALTER TABLE orders ADD INDEX ..., ALGORITHM=INPLACE starts;
+        it needs a brief exclusive metadata lock and waits for session A
+t=10:00 every new SELECT on orders queues behind the pending exclusive
+        MDL — latency climbs, connection pools exhaust
+t=14:00 performance_schema.metadata_locks identifies session A;
+        killing it drains the queue
+```
+
+The defense is operational: keep transactions short, set a sane `lock_wait_timeout` on DDL sessions, and check `performance_schema.metadata_locks` (it shows which sessions hold locks and which are blocked) before blaming InnoDB.
+
+### SQL Server: ONLINE = ON and the Temp Mapping Index
+
+SQL Server's `ONLINE = ON` index build works on source and target structures at once: user INSERT/UPDATE/DELETE on the source are applied to both the preexisting indexes and the target being built; the target is marked write-only and isn't used until the operation commits. For operations that create, drop, or rebuild a clustered index, the engine also maintains a temporary mapping index, which concurrent transactions use to determine which records to clean up in the new indexes when source rows are updated or deleted. The operation runs in three phases — preparation (a snapshot of the table is defined via row versioning; concurrent writes are blocked for a short period), build (data is scanned, sorted, and bulk-loaded into the target while DML applies to both), and final (all uncommitted write transactions must complete first; a schema-modification lock replaces the source with the target for a short window). Same lesson as InnoDB: online means concurrent DML with brief boundary locks, not lock-free.
+
+Two SQL Server gotchas. `ONLINE = ON` is not available in every edition — the documentation's own example says "Set ONLINE = OFF to execute this example on editions other than Enterprise Edition", which quietly turns a planned online operation into a blocking one if you're not on the right SKU. And clustered index operations on tables with `image`/`ntext`/`text` LOB columns must run offline. Since the resumable option (`RESUMABLE = ON`), an interrupted build can pause and resume after failures or disk exhaustion instead of restarting — the same capability gh-ost gives MySQL.
+
+### Verification and the Failure Protocol
+
+Whatever the mechanism, a migration is not done until the data is verified:
+
+1. **Count and checksum.** Compare row counts between the source and the shadow structure (or between primary and replica); per-chunk checksums catch silent divergence that counts miss.
+2. **Check the index state.** PostgreSQL: an INVALID leftover index is ignored by queries but taxes every write — drop it and rebuild. MySQL: a failed online DDL rolls back, but a repeated failure usually means the workload conflicts with the new definition (log overflow, or DML producing values the new definition rejects).
+3. **Fall back to the external tools** when the native path can't give you the guarantees you need: [pt-online-schema-change](#pt-online-schema-change-percona) and [gh-ost](#gh-ost-github-online-schema-change) take over for operations that can't run INPLACE/INSTANT (type changes force COPY), for tables where even the brief MDL window at the DDL boundaries is unacceptable, and for busy tables that would overflow the online log.
+
 ## The Consistency Challenge
 
 During a long migration, the original table is being written to. The shadow table must stay in sync:
@@ -161,3 +209,12 @@ CockroachDB's schema changes are documented as the "online schema change" algori
 - Ian G. et al., "[F1: A Distributed SQL Database That Scales](http://research.google.com/pubs/pub41344.pdf)" (VLDB 2013) — Google's online schema change algorithm
 - [Shlomi Noach: gh-ost design](https://github.com/github/gh-ost/blob/master/doc/why-trigger-issues.md)
 - [LWN: Online schema migration (2018)](https://lwn.net/Articles/768260/)
+- [PostgreSQL: CREATE INDEX](https://www.postgresql.org/docs/current/sql-createindex.html) — the CONCURRENTLY two-scan/wait-phase description, INVALID-index-on-failure semantics, and the transaction-block prohibition.
+- [MySQL 8.0: ALTER TABLE Statement](https://dev.mysql.com/doc/refman/8.0/en/alter-table.html) — COPY/INPLACE/INSTANT algorithm semantics and the brief exclusive metadata lock in the preparation/execution phases.
+- [MySQL 8.0: Online DDL Performance and Concurrency](https://dev.mysql.com/doc/refman/8.0/en/innodb-online-ddl-performance.html) — `LOCK=NONE/SHARED/DEFAULT/EXCLUSIVE` clause semantics.
+- [MySQL 8.0: Online DDL Failure Conditions](https://dev.mysql.com/doc/refman/8.0/en/innodb-online-ddl-failure-conditions.html) — the exclusive-lock wait at the initial/final phases, `DB_ONLINE_LOG_TOO_BIG`, and the DML-takes-precedence rollback.
+- [MySQL 8.0: InnoDB Startup Options and System Variables](https://dev.mysql.com/doc/refman/8.0/en/innodb-parameters.html) — `innodb_online_alter_log_max_size` (default 128 MiB) and the overflow behavior.
+- [MySQL 8.0: Metadata Locking](https://dev.mysql.com/doc/refman/8.0/en/metadata-locking.html) — MDLs held to transaction end, DDL blocked until release, and the `performance_schema.metadata_locks` table.
+- [MySQL 8.0: Server System Variables](https://dev.mysql.com/doc/refman/8.0/en/server-system-variables.html) — `lock_wait_timeout` (default 31536000 s, `ER_LOCK_WAIT_TIMEOUT`).
+- [Microsoft: Perform index operations online](https://learn.microsoft.com/en-us/sql/relational-databases/indexes/perform-index-operations-online) and [Microsoft: How online index operations work](https://learn.microsoft.com/en-us/sql/relational-databases/indexes/how-online-index-operations-work) — source/target/temporary-mapping-index structures, the three phases with their lock modes, and the edition note.
+- [Microsoft: Guidelines for online index operations](https://learn.microsoft.com/en-us/sql/relational-databases/indexes/guidelines-for-online-index-operations) — LOB restrictions and resumable (`RESUMABLE = ON`) index operations.
