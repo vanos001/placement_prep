@@ -3,6 +3,57 @@
 This file records meaningful content and validation changes to the placement
 preparation book. Dates use the project timezone, Asia/Calcutta.
 
+## 2026-09-19 — Independent review and fix pass
+
+Full audit of the `research` tree, then repair of every defect it found. Net result:
+the book's own validators are now stronger than the ones that missed these bugs.
+
+- **Code fences (11 lines / 7 files)** — fences abbreviated to a bare double backtick, and the mangled
+  double-backtick-plus-`n` form
+  left an orphaned closer that *opened* a runaway code block, so following prose,
+  headings and tables rendered as code. Repaired in `cloud-scheduling`,
+  `hpc-infra`, `trigonometry`, `approximate-privacy`, `applied-systems`,
+  `reliability-patterns`, `monotonic-queue-dp`; a stray mangled fence token deleted from
+  `approximate-privacy.md:75`. Verified over all 33,152 fenced blocks.
+- **`documentation.md` nested fences (4 blocks)** — ```` ```markdown ```` templates
+  containing ```` ```bash ```` samples were invalid CommonMark; the inner fence closed
+  the outer block, producing 25 phantom code blocks and swallowing the section's
+  headings. Outer fences widened to 4 backticks and verified with a real mdBook build.
+- **`profit-loss.md`** — replaced two wrong same-selling-price formulas (one
+  contradicts its own proof) with the exact `Loss% = x²/100` result and the general
+  `Net% = (100y − 100x + 2xy)/(200 + x − y)`; brute-force verified over 36 pairs.
+  The vacuous "Trick 4" became a derived breakeven `y = 100x/(100 + 2x)`.
+- **`time-work.md`** — worked example rewritten so its premise, arithmetic and
+  conclusion agree, with an explicit consistency check.
+- **`ppo.md` MathJax/link collision** — `H[\pi_\theta](s)` inside display math was
+  parsed as a Markdown link, rendering `H<a href="s">…</a>`. Rewritten with
+  `\lbrack`/`\rbrack`; render-verified.
+- **48 site-root-absolute links** — `[x](/a/b)` never resolves in an mdBook and was
+  invisible to `check-links.py`. Repointed or removed.
+- **URL repairs** — `docs.yugabyte.compreview/...` ×3, a dead Cloudflare
+  consistent-hashing blog, a URL containing a literal space (X100/MonetDB), and a
+  duplicated "Linux Unplugged" entry that actually pointed at Late Night Linux.
+- **Stale/incorrect counts** — kernel size unified on ~40M lines (Linux 6.14) across
+  the 7 pages that disagreed; page/diagram/math counts refreshed in README, `status`,
+  `progress`, `coverage_dashboard` and the cross-reference graph.
+- **"prompt.md" claim retracted** — `meta/status.md` asserted full coverage of 1,528
+  `prompt.md` topics, but no `prompt.md` exists in the repository.
+- **Structure** — `page-rejection.md` → `page-replacement-overview.md`; two
+  `SUMMARY.md` indentation jumps fixed; collision labels disambiguated for the three
+  page-replacement and two query-optimization pages; `mobile/README.md` expanded
+  into a landing page.
+- **Tooling** — new `scripts/check-fences.py` (wired in as validate step 2/7);
+  `check-links.py` now catches site-root-absolute and non-`.md` targets and no longer
+  mistakes C++/Go samples such as `Sum[int](myInts)` for links; `check-mathjax.py`
+  detects `](` inside math spans and drops an always-true condition.
+- **CI** — added `.github/workflows/validate.yml` (push/PR, `STRICT=1`) and
+  `external-checks.yml` (weekly report-only). Previously the only workflow was a
+  `main`-only Pages deploy, so `research` had never been built by CI despite the
+  README/CONTRIBUTING claims.
+- **Known backlog** — 758 dead external URLs (647 × HTTP 404, mostly invalid
+  `docs.kernel.org` deep paths), catalogued in `scripts/dead-links-report.txt`.
+  Internal links, anchors, SUMMARY, Mermaid, MathJax, fences and all 491 DOIs are clean.
+
 ## 2026-08-13 — Software Engineering: dedicated Testing, DevOps, and Contributing pages
 
 - Added `software-engineering/testing.md` (levels, types, TDD/BDD, strategy),
@@ -248,8 +299,8 @@ Two commits pushed to `origin/dev`:
 ### Validation after expansion
 
 - Link checker: **0 broken links**
-- SUMMARY checker: **OK** (2,117 content files, all reachable)
-- Mermaid heuristic: **4,883 / 4,883 passed (100%)** — 478 new diagrams
+- SUMMARY checker: **OK** (2,117 content files, all reachable at that snapshot; now 2,809)
+- Mermaid heuristic: **4,883 / 4,883 passed (100%)** — 478 new diagrams (now 4,889 / 4,889)
 - MathJax: **OK** (0 legacy delimiters, 0 unclosed fences, 0 unbalanced)
 
 Every commit was preceded by a clean validation run. `main` unchanged;

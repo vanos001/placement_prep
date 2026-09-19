@@ -564,4 +564,4 @@ int pinctrl_gpio_direction_output(unsigned gpio, int value);
 - [LWN: The pin control subsystem (2012)](https://lwn.net/Articles/503785/)
 - [pinctrl API reference](https://elixir.bootlin.com/linux/latest/source/include/linux/pinctrl/consumer.h)
 - [Device tree pinctrl examples](https://github.com/torvalds/linux/tree/master/Documentation/devicetree/bindings/pinctrl)
-- See also: [GPIO](/kernel/drivers/gpio), [Device Tree](/embedded/device-tree), [Device Tree Overlays](/embedded/dt-overlays)
+- See also: [GPIO](./gpio.md), [Device Tree](../../embedded/device-tree.md), [Device Tree Overlays](../../embedded/dt-overlays.md)

@@ -6,7 +6,8 @@
 - Basic data structures (prefix sums, segment trees, DSU)
 
 ## Interview Frequency: ★★
-## Google, Amazon — advanced algorithmic techniques
+
+Parallel binary search appears at **Google** and **Amazon** in advanced algorithmic rounds, and frequently in competitive programming. It is the standard trick when many independent binary searches share the same monotone predicate and each check is expensive: instead of running `q` searches separately, you process all of them level by level, applying one combined sweep of the predicate per round.
 
 ---
 

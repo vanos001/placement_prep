@@ -50,7 +50,9 @@ This works because the database itself is a queueing system. More connections th
 
 ### CPU-Bound Tasks
 
-``n_threads = number_of_cores```
+```
+n_threads = number_of_cores
+```
 
 Adding more threads than cores for CPU-bound work causes context switching overhead without benefit.
 

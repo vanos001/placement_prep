@@ -435,10 +435,10 @@ CONFIG_DAX_DRIVER=y        # DAX device drivers
 
 - **iomap** is a *library* used by filesystems, not a filesystem itself.
 - **buffer_head** is the legacy alternative; iomap is replacing it.
-- **[DAX](/kernel/filesystems/dax)** depends on iomap for persistent memory mapping.
-- **[io_uring](/kernel/io)** async I/O integrates with iomap direct I/O.
-- **[Block layer](/kernel/block)** receives bios built by iomap.
-- **[Folio](/kernel/memory/folios)** is the modern page-cache unit used by iomap.
+- **[DAX](../memory/dax.md)** depends on iomap for persistent memory mapping.
+- **[io_uring](../apis/io-uring-internals.md)** async I/O integrates with iomap direct I/O.
+- **[Block layer](../block/overview.md)** receives bios built by iomap.
+- **[Folio](../memory/page-cache.md)** is the modern page-cache unit used by iomap.
 
 ---
 
@@ -650,7 +650,7 @@ static const struct address_space_operations myfs_aops = {
 - [LWN: iomap buffered I/O (2020)](https://lwn.net/Articles/814956/)
 - [Darrick Wong's iomap talk (LSFMM 2022)](https://lpc.events/event/16/contributions/1253/)
 - [XFS wiki: iomap](https://xfs.wiki.kernel.org/)
-- See also: [Block I/O](/kernel/block), [DAX](/kernel/filesystems/dax), [Folios](/kernel/memory/folios), [io_uring](/kernel/io)
+- See also: [Block I/O](../block/overview.md), [DAX](../memory/dax.md), [Folios](../memory/page-cache.md), [io_uring](../apis/io-uring-internals.md)
 
 ## References
 

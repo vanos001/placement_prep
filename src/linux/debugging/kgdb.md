@@ -926,4 +926,4 @@ echo 30 > /proc/sys/kernel/hung_task_timeout_secs
 ```
 
 ## Further Reading
-- See also: [kprobes](/debugging/kprobes), [ftrace](/debugging/ftrace), [crash](/debugging/crash), [perf](/performance/perf)
+- See also: [kprobes](../observability/kprobes.md), [ftrace](./ftrace.md), [crash](./crash-dump.md), [perf](./perf.md)

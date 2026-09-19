@@ -342,6 +342,8 @@ Page replacement is one of the most-tested OS topics in interviews, and the same
 
 ## Cross-References
 
+- [Page Replacement: Interview Guide](../virtual-memory/page-replacement.md) — compact revision view with worked interview Q&A
+- [Page Replacement Overview & Comparison](../virtual-memory/page-replacement-overview.md) — side-by-side comparison of every algorithm
 - [Memory Management Overview](./README.md) — broader memory management context (allocation, paging, segmentation)
 - [Virtual Memory Overview](../virtual-memory/README.md) — demand paging and virtual address translation
 - [Working Set Model](../virtual-memory/working-set.md) — Denning's model in depth, thrashing, and load control

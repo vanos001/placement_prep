@@ -37,7 +37,8 @@ srun python train.py --config config.yaml
 
 Many MPI jobs require **all ranks to run simultaneously** — if even one rank is descheduled, the others spin-wait or block on communication, wasting resources. Gang scheduling ensures that all tasks of a job are scheduled together (or none at all):
 
-``nTime Slots →
+```
+Time Slots →
 Slot 1: [===== Job A (all 64 nodes) =====]
 Slot 2: [=== Job B (32 nodes) ===][Job C (32 nodes)]
 Slot 3: [=== Job B (32 nodes) ===][Job D (32 nodes)]
@@ -53,7 +54,8 @@ Slurm implements gang scheduling via the `schedule/gang` plugin. It coordinates 
 
 Consider a job queue: Job A needs 64 nodes for 8 hours (scheduled next), followed by Job B (4 nodes, 1 hour), Job C (8 nodes, 2 hours). Job B and C could start now on idle nodes — but only if they finish before Job A's start time. **Backfilling** identifies such opportunities:
 
-``nAlgorithm: Conservative Backfilling
+```
+Algorithm: Conservative Backfilling
 1. Find the highest-priority job that cannot start now → Job A (needs 64 nodes)
 2. Estimate Job A's start time T_A (when 64 nodes free up)
 3. For each lower-priority job J:

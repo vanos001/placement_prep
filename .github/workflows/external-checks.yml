@@ -1,0 +1,50 @@
+name: External link & DOI checks
+
+# Probes every external URL in the book plus every DOI via the doi.org Handle
+# API. Kept out of the per-push workflow on purpose:
+#   * it makes ~6,500 outbound requests (slow, and rude to run on every commit),
+#   * third-party hosts block automation unpredictably,
+#   * the repo currently has a known backlog of dead links (758 as of
+#     2026-09-19, catalogued in scripts/dead-links-report.txt), so this reports
+#     rather than blocks.
+#
+# DOIs are expected to be clean — the review verified 491/491 resolve. External
+# URLs are NOT clean yet, so this job surfaces the list as an artifact instead of
+# failing the build. Flip `continue-on-error` to false once the backlog is paid
+# down.
+
+on:
+  schedule:
+    - cron: '0 6 * * 1'   # Mondays 06:00 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  external:
+    name: Probe external URLs and DOIs
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Resolve every DOI
+        run: python3 scripts/check-doi.py src | tee doi-report.txt
+
+      - name: Probe every external URL
+        run: python3 scripts/check-links.py --external src | tee external-links-report.txt
+
+      - name: Upload reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: external-check-reports
+          path: |
+            doi-report.txt
+            external-links-report.txt
+          if-no-files-found: ignore

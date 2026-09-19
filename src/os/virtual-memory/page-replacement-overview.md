@@ -436,6 +436,7 @@ Page replacement is a fundamental virtual memory concept. The choice of algorith
 
 ## Cross References
 
-- [Page Replacement](page-replacement.md)
+- [Page Replacement: Interview Guide](./page-replacement.md) — compact revision view with worked interview Q&A
+- [Page Replacement Algorithms (deep dive)](../memory/page-replacement.md) — ARC, LIRS, CLOCK-Pro and kernel implementation
 - [Thrashing](thrashing.md)
 - [Working Set](working-set.md)

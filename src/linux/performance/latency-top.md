@@ -456,9 +456,9 @@ perf lock report
 - **LatencyTOP** provides a high-level latency breakdown by kernel function.
 - **perf** offers detailed profiling and scheduling analysis.
 - **ftrace** is the underlying tracing infrastructure.
-- **[BPF/bpftrace](/performance/bpf)** provides programmable, low-overhead tracing.
-- **[perf sched](/performance/perf)** is the modern scheduler analysis tool.
-- **[ftrace](/debugging/ftrace)** is the kernel function tracer.
+- **[BPF/bpftrace](../observability/bpftrace-recipes.md)** provides programmable, low-overhead tracing.
+- **[perf sched](./perf-advanced.md)** is the modern scheduler analysis tool.
+- **[ftrace](../debugging/ftrace.md)** is the kernel function tracer.
 
 ---
 
@@ -798,4 +798,4 @@ graph TD
 - [Kernel docs: sched-stats](https://www.kernel.org/doc/html/latest/scheduler/sched-stats.html)
 - [BPF Performance Tools (Brendan Gregg)](http://www.brendangregg.com/bpf-performance-tools-book.html)
 - [perf sched documentation](https://man7.org/linux/man-pages/man1/perf-sched.1.html)
-- See also: [perf](/performance/perf), [ftrace](/debugging/ftrace), [BPF](/performance/bpf), [Scheduler](/kernel/scheduler)
+- See also: [perf](./perf-advanced.md), [ftrace](../debugging/ftrace.md), [BPF](../observability/bpftrace-recipes.md), [Scheduler](../kernel/processes/scheduler.md)

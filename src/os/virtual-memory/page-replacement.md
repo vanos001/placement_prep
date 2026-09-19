@@ -1,4 +1,10 @@
-# Page Replacement Algorithms
+# Page Replacement: Interview Guide
+
+> This is the compact, interview-oriented overview. For the full treatment —
+> Belady's optimality proof, ARC/LIRS/CLOCK-Pro, and kernel implementation — see
+> [Page Replacement Algorithms (deep dive)](../memory/page-replacement.md); for a
+> side-by-side comparison of every algorithm, see
+> [Page Replacement Overview & Comparison](./page-replacement-overview.md).
 
 ## Overview
 
@@ -182,8 +188,11 @@ Linux uses a **multi-generational LRU** (MGLRU):
 
 ## Cross References
 
+- [Page Replacement Overview & Comparison](./page-replacement-overview.md) — side-by-side comparison of every algorithm
+- [Page Replacement Algorithms (deep dive)](../memory/page-replacement.md) — ARC, LIRS, CLOCK-Pro and kernel implementation
 - [LRU](lru.md)
 - [FIFO](fifo.md)
 - [Clock Algorithm](clock.md)
 - [Optimal](optimal.md)
+- [LFU](lfu.md)
 - [Buffer Pool](../../dbms/caching/buffer-pool.md)

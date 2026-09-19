@@ -101,9 +101,27 @@ def strip_fenced(content):
     return '\n'.join(out)
 
 
+def strip_code(content):
+    """Remove fenced code blocks AND inline-code spans before link scanning.
+
+    Inline spans matter: C++/Go samples such as `(*((void**)obj))[offset](obj)`
+    and `Sum[int](myInts)` contain substrings that look exactly like Markdown
+    links, so a naive scan reports them as broken targets.
+    """
+    return re.sub(r'`+[^`\n]*`+', '', strip_fenced(content))
+
+
+# Targets that legitimately do not exist in the source tree because a build step
+# creates them. Keep this list short and explain each entry.
+GENERATED_ASSET_ALLOWLIST = {
+    # Produced by scripts/generate-cross-reference-graph.py in CI, into book/meta/.
+    'cross-reference-graph-view.html',
+}
+
+
 def external_urls(path):
     """All external http(s) URLs in markdown links + <> autolinks, outside fences."""
-    content = strip_fenced(open(path).read())
+    content = strip_code(open(path).read())
     urls = set()
     for m in re.finditer(r'\[[^\]]*\]\((https?://[^)\s]+)\)', content):
         urls.add(m.group(1).rstrip('.'))
@@ -177,27 +195,55 @@ def _check_external_url_inner(url):
 
 
 def check(path):
+    """Validate every non-external link in one file.
+
+    Covers the classes the original single-pass version missed (research-branch
+    review §V.1):
+      * site-root-absolute targets like `/containers/namespaces` — mdBook has no
+        site-root links, so these 404 on the published site. The old code only
+        acted on targets ending in `.md` or `/`, so `/a/b` fell through silently.
+      * non-`.md`, non-directory relative targets (images, assets, stray words)
+      * content inside fenced code blocks is skipped so example links aren't
+        reported
+    """
     base = os.path.dirname(path)
-    content = open(path).read()
+    content = strip_code(open(path).read())
     bad = []
     for m in re.finditer(r'\[[^\]]*\]\(([^)]+)\)', content):
         r = m.group(1).strip()
-        if r.startswith(('http://', 'https://', '#', 'mailto:')):
+        if r.startswith(('http://', 'https://', '#', 'mailto:', 'tel:', 'data:')):
             continue
+
+        # Site-root-absolute link: never resolvable in an mdBook.
+        if r.startswith('/'):
+            bad.append((r, r, 'site-root-absolute link (no such path in an mdBook)'))
+            continue
+
         frag = None
         if '#' in r:
             r_nofrag, frag = r.split('#', 1)
         else:
             r_nofrag = r
-        target = r_nofrag.split('?')[0]
+        target = r_nofrag.split('?')[0].strip()
+        if not target:
+            continue
         full = os.path.normpath(os.path.join(base, target))
-        if target.endswith('.md') and not os.path.exists(full):
-            bad.append((r, full, 'missing file'))
-        elif target.endswith('/') and not os.path.isdir(full):
-            bad.append((r, full, 'missing dir'))
-        elif frag and target.endswith('.md') and os.path.exists(full):
-            if frag not in heading_ids(full):
+
+        if target.endswith('.md'):
+            if not os.path.exists(full):
+                bad.append((r, full, 'missing file'))
+            elif frag and frag not in heading_ids(full):
                 bad.append((r, full, 'missing anchor'))
+        elif target.endswith('/'):
+            if not os.path.isdir(full):
+                bad.append((r, full, 'missing dir'))
+        else:
+            # Any other relative target (asset, image, extensionless path) must
+            # still exist on disk, unless a build step generates it.
+            if os.path.basename(target) in GENERATED_ASSET_ALLOWLIST:
+                continue
+            if not os.path.exists(full):
+                bad.append((r, full, 'missing target'))
     return bad
 
 

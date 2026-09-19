@@ -337,9 +337,9 @@ Modern microkernels (seL4, Zircon/Fuchsia) have dramatically reduced these costs
 The debate's outcome is clear:
 
 ```
-Linux (2024)                          MINIX (2024)
+Linux (2025)                          MINIX (2025)
 ─────────────                         ─────────────
-~28 million lines of code             ~16,000 lines of code
+~40 million lines of code             ~16,000 lines of code
 Powers 4+ billion devices             Teaching tool
 100% of supercomputers                Limited real-world use
 ~2,500 active contributors            Small community
@@ -504,7 +504,7 @@ seL4 — The World's First Formally Verified OS Kernel
 
 This validates Tanenbaum's argument that microkernels
 can be proven correct — something impossible for
-Linux's 28 million lines of code.
+Linux's 40 million lines of code.
 ```
 
 ## Lessons from the Debate

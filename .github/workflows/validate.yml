@@ -1,0 +1,66 @@
+name: Validate
+
+# The research-branch review found that CONTRIBUTING.md, scripts/README.md and
+# the README badge all claimed these checks "run in CI and weekly", but the only
+# workflow was a Pages deploy triggered on `main` — so the 93 commits that lived
+# on `research` had never been built or validated by CI at all.
+#
+# The fast checks run on every push and PR. Network-dependent checks live in
+# external-checks.yml (weekly + manual) because they probe ~6,500 third-party
+# URLs and are inherently flaky.
+
+on:
+  push:
+    branches: [research, dev]
+  pull_request:
+    branches: [main, research, dev]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: validate-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    name: Content validation
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup mdBook
+        uses: peaceiris/actions-mdbook@v2
+        with:
+          mdbook-version: 'latest'
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Mermaid parser dependencies
+        # Pinned so the "real parser" step is reproducible; the review noted the
+        # environment previously could not be reconstructed from a fresh clone
+        # because package.json was gitignored.
+        run: |
+          cd scripts
+          npm init -y >/dev/null 2>&1 || true
+          npm install --no-save mermaid@11.4.1 jsdom@25.0.1
+
+      - name: Run validation suite (STRICT)
+        env:
+          STRICT: '1'
+          MERMAID_DIR: ${{ github.workspace }}/scripts
+        run: ./scripts/validate-all.sh .
+
+      - name: Upload Mermaid report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: mermaid-validation-report
+          path: |
+            mermaid-validation-report.json
+            scripts/mermaid-validate-report.json
+          if-no-files-found: ignore

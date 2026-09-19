@@ -4,7 +4,7 @@
 
 The Linux kernel is not a monolithic block of code—it is organized into **subsystems**, each responsible for a specific aspect of operating system functionality. Understanding the subsystem structure is essential for navigating the kernel source, finding the right people to contact, and knowing where your contributions belong.
 
-As of Linux 6.x, the kernel source tree contains over 30 million lines of code across more than 60,000 files. No single person understands all of it. Instead, each subsystem is maintained by one or more maintainers who have deep expertise in their area. This chapter maps the major subsystems, their maintainers, directory structure, and how to contribute to each.
+As of Linux 6.14 (2025), the kernel source tree contains over 40 million lines of code across tens of thousands of files. No single person understands all of it. Instead, each subsystem is maintained by one or more maintainers who have deep expertise in their area. This chapter maps the major subsystems, their maintainers, directory structure, and how to contribute to each.
 
 ## Kernel Source Tree Overview
 

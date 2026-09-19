@@ -447,7 +447,7 @@ CONFIG_NETDEVSIM=m        # Virtual devlink device for testing
 - **devlink** sits between device drivers and user-space management tools.
 - **ethtool** handles per-port link settings; devlink handles device-level config.
 - **ip link** manages network namespace interfaces; devlink manages hardware.
-- **[SR-IOV](/kernel/networking/sriov)** VFs are created via devlink parameters.
+- **SR-IOV** VFs are created via devlink parameters.
 - **switchdev** drivers use devlink for ASIC-level resource management.
 
 ---
@@ -702,4 +702,4 @@ tcpdump -i nlmon0 -w /tmp/nlmon.pcap
 - [LWN: Devlink introduction (2017)](https://lwn.net/Articles/727176/)
 - [iproute2 devlink source](https://github.com/iproute2/iproute2/blob/main/devlink/)
 - [Devlink health reporters design](https://lore.kernel.org/netdev/20190312144841.16685-1-jiri@resnulli.us/)
-- See also: [Netlink](/kernel/networking/netlink), [ethtool](/kernel/networking/ethtool), [SR-IOV](/kernel/networking/sriov)
+- See also: [Netlink](./netlink.md), ethtool, SR-IOV

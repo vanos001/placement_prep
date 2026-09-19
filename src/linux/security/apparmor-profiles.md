@@ -648,4 +648,4 @@ sudo systemctl disable apparmor
 - [Ubuntu AppArmor documentation](https://ubuntu.com/server/docs/security-apparmor)
 - [SUSE AppArmor documentation](https://documentation.suse.com/sles/15-SP4/html/SLES-all/cha-apparmor.html)
 - [AppArmor core policy reference](https://gitlab.com/apparmor/apparmor/-/wikis/AppArmor_Core_Policy_Reference)
-- See also: [SELinux](/security/selinux), [Seccomp](/security/seccomp), [Landlock](/security/landlock), [LSM](/security/lsm)
+- See also: [SELinux](./selinux.md), [Seccomp](./seccomp.md), [Landlock](./landlock.md), [LSM](./mac.md)

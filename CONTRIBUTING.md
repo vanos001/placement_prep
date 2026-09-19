@@ -68,6 +68,27 @@ Diagrams use **Mermaid v11** (loaded from CDN). Common pitfalls:
 
 Always validate diagrams: `node scripts/validate-mermaid-heuristic.mjs`
 
+**Code fences.** A fenced block may contain other fences only if the outer fence
+is **longer**:
+
+    ````markdown          <-- 4 backticks
+    # Template
+    ```bash                <-- inner fence stays literal
+    ls
+    ```
+    ````
+
+    ```markdown            <-- 3 backticks: the inner ``` will CLOSE this early
+    # Template
+    ```bash
+    ls
+    ```
+    ```
+
+Never write a fence as ``` `` ``` or ``` ``n ``` — both have shipped before and
+swallow following prose into a code block. `scripts/check-fences.py` catches all
+three cases.
+
 ## Adding a New Page
 
 1. Create the `.md` file in the appropriate directory under `src/`
@@ -107,14 +128,13 @@ type(scope): summary
 ./scripts/validate-all.sh .
 
 # Individual checks
-./scripts/validate-mermaid-heuristic.mjs    # Fast Mermaid checks (no deps)
-python3 scripts/check-links.py .             # Broken links
+python3 scripts/check-fences.py src           # Malformed / nested code fences
+./scripts/validate-mermaid-heuristic.mjs      # Fast Mermaid checks (no deps)
+python3 scripts/check-links.py src            # Broken links + anchors
 python3 scripts/check-summary.py src          # SUMMARY completeness + duplicate destinations
 python3 scripts/check-mathjax.py .            # MathJax validation
-
-# Network-dependent checks (run in CI and weekly; opt-in locally)
 python3 scripts/check-doi.py src              # Resolve every DOI via the doi.org Handle API
-python3 scripts/check-links.py --external .   # Probe all external URLs (bot-blocker aware)
+python3 scripts/check-links.py --external src # Probe all external URLs (bot-blocker aware)
 
 # Strict mode (CI): a skipped real-mermaid-parser step FAILS the build
 STRICT=1 ./scripts/validate-all.sh .

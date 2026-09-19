@@ -10,7 +10,7 @@ The `research` branch (75 commits ahead of `main`) landed 660 new markdown files
 |---|---|
 | Batches 1 → 66 | Each batch produced 3–4 heavily-cited pages (Crossref DOIs, RFC verbatim, source-code-verified constants). Topics span schedulers (EEVDF, EASY/FCFS backfilling), RCU torture testing, transient-execution attacks, Zobrist hashing, pdqsort, NVIDIA MIG, QUIC congestion control, Haystack/SeaweedFS, LMAX Disruptor, GPU warp scheduling, CUDA Graphs, Intel RDT/resctrl, and more. |
 | Summary navigation | `SUMMARY.md` grew from ~2,116 refs (2026-08-16) → **2,776 refs** at `9c249de` (0 broken, 0 duplicate destinations). |
-| Mermaid diagrams | 4,873 diagrams across 1,317 files (up from 4,883 across the prior smaller page set — diagrams per file denser; 100% pass heuristic validator). |
+| Mermaid diagrams | 4,889 diagrams across 1,328 files, 100% passing the real `mermaid@11` parser (not only the heuristic). |
 | MathJax | balanced across 128 math pages. |
 | Demo QA | every CLI / code demo byte-exact against an instrumented reference run; commit messages record the byte-identical stdout. |
 | Citation discipline | Crossref-verified DOIs (Spectre 10.1109/SP.2019.00002, Mu'alem-Feitelson 10.1109/71.932708, Musser SPE 1997, Lindholm 10.1109/MM.2008.31), RFC-verbatim QUIC frame types and header-protection sample sizes, Slurm `bf_*` parameter names from `sched_config.html`. |
@@ -36,7 +36,7 @@ The `research` branch (75 commits ahead of `main`) landed 660 new markdown files
 | check-links.py | Fixed 11 broken links in new files (wrong relative paths) |
 | validate-mermaid-heuristic.mjs | Fixed 13 mermaid errors (unquoted labels, unmatched quotes, escaped quotes, markdown in blocks) |
 | check-mathjax.py | Fixed 3 legacy \$ delimiters, 6 unclosed code fences, 26 single-backslash delimiters |
-| Final validation | SUMMARY OK, 0 broken links, 4,883/4,883 mermaid pass, MathJax OK |
+| Final validation | SUMMARY OK (2,809/2,809 reachable, 0 duplicates), 0 broken internal links/anchors, 4,889/4,889 mermaid pass, MathJax OK, 33,152 fences clean. External URLs: 758 dead — see `scripts/dead-links-report.txt`. |
 
 ## Previous Sessions
 

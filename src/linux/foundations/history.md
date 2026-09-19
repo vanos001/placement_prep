@@ -418,7 +418,7 @@ In just **two weeks** (April 3–20, 2005), Torvalds wrote the initial version o
 
 Git's design goals were:
 - **Distributed**: Every developer has a full repository copy
-- **Fast**: The kernel tree is enormous (~30 million lines)
+- **Fast**: The kernel tree is enormous (~40 million lines, Linux 6.14)
 - **Cryptographic integrity**: Every commit is SHA-1 (later SHA-256) hashed
 - **Support for non-linear development**: Thousands of parallel branches
 

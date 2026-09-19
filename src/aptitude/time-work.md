@@ -96,7 +96,7 @@ B alone = 35/2 = 17.5 days
 
 ### "A works for x days, then B joins"
 
-**Problem:** A starts a job and works alone for 4 days. Then B joins and they finish in 3 more days. A alone takes 10 days, B alone takes 15 days. Verify.
+**Problem:** A alone can do a job in 10 days, B alone in 15 days. A starts alone and works for 4 days; then B joins. How long does the job take in total?
 
 **Solution:**
 ```
@@ -109,7 +109,12 @@ A+B together = 5 units/day → 18/5 = 3.6 days
 Total time = 4 + 3.6 = 7.6 days
 ```
 
-If instead A works 3 days alone and then B joins for 3 more days: 3×3 + 5×3 = 9 + 15 = 24 units, leaving 6 units unfinished — so the problem data must be consistent.
+**Consistency check.** The premise must always leave work for the final phase, and
+the "join time" is an *output*, not an input. If A worked 3 days before B joined,
+the pair would need (30 − 9)/5 = 4.2 days, for 7.2 days total. If A worked 9 days
+(27 units), only 3 units remain — the last 0.6 days. A problem that *asserts* B
+joins "for exactly 3 more days" without checking that 5 × 3 ≤ remaining work is
+over-specified and internally inconsistent.
 
 ## Efficiency Concept
 

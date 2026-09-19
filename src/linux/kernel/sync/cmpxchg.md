@@ -643,4 +643,4 @@ On x86, `atomic_add_return()` uses `LOCK XADD` (a single instruction) rather tha
 - [Intel SDM Vol. 2: CMPXCHG instruction](https://www.intel.com/sdm)
 - [ARM Architecture Reference Manual: LDXR/STXR]
 - [Hans Boehm: Can Seqlocks Get Along With Programming Language Memory Models?](https://www.hpl.hp.com/techreports/2012/HPL-2012-68.html)
-- See also: [Spinlocks](/kernel/sync/spinlock), [Memory Barriers](/kernel/sync/barriers), [RCU](/kernel/sync/rcu), [Atomic Operations](/kernel/sync/atomic)
+- See also: [Spinlocks](./spinlocks.md), [Memory Barriers](../memory/barriers.md), [RCU](./rcu.md), [Atomic Operations](./atomic-ops.md)

@@ -602,9 +602,9 @@ sudo ./page-types -p <pid> --idle
 ## Relation to Other Memory Features
 
 - **Idle page tracking** identifies *which* pages are cold.
-- **[LRU lists](/kernel/memory)** use age-based heuristics for reclaim order.
-- **[DAMON](/kernel/memory/damon)** automates the mark-wait-act cycle.
-- **[hugetlb](/kernel/memory/hugetlb)** pages have separate idle semantics.
+- **[LRU lists](./overview.md)** use age-based heuristics for reclaim order.
+- **[DAMON](./damon.md)** automates the mark-wait-act cycle.
+- **[hugetlb](./hugetlb.md)** pages have separate idle semantics.
 - **[Memory compaction](./compaction.md)** operates on reclaimable pages, including idle pages.
 - **[Page reclaim](./reclaim.md)** uses access patterns similar to idle tracking.
 - **[GUP](./gup.md)** — pinned pages cannot be tracked for idle (they're always "active").

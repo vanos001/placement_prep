@@ -5,7 +5,8 @@
 - Basic data structures (arrays, linked lists, trees, hash tables)
 
 ## Interview Frequency: ★★★
-## Google, Amazon, Microsoft — core C++ knowledge
+
+STL internals are core C++ knowledge at **Google**, **Amazon**, and **Microsoft**, and at most trading firms that interview in C++. You are expected to know that `std::vector` amortises to O(1) amortised push-back via geometric growth, that `std::map` is a red-black tree while `std::unordered_map` is a bucketed hash table with node-based storage, and why iterator invalidation rules differ between them. These questions are usually asked as a follow-up to "why did you pick this container?" 
 
 ---
 

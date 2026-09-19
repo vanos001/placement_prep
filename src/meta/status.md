@@ -1,34 +1,55 @@
 # Project Status
 
-> Status snapshot: 2026-09-02 (research branch @ `9c249de`) — all validation passing, meta refreshed to include research-branch deep-dive batches.
+> Status snapshot: 2026-09-19 (research branch @ `506338b`+) — validation passing, plus an independent deep review and fix pass (see "Deep review & fix pass" below).
 
 ## Current status
 
-**Research branch complete and audited.** The `research` branch is **75 commits ahead of `main`**, adding **660 new markdown files** (~174K lines) on top of the major expansion that landed on `dev`/`main` in mid-August. The repository now contains **2,777 markdown pages** under `src/`, all reachable from `SUMMARY.md`. All validation checks pass on `research`.
+**Research branch complete, independently reviewed, and repaired.** The `research`
+branch is **93 commits ahead of `main`** (a strict superset: 0 commits and 0 files
+exist on `main` but not here), adding **692 new markdown files**. The repository
+contains **2,809 content pages** under `src/` (+`SUMMARY.md`), all reachable from
+`SUMMARY.md` with 0 duplicate destinations.
+
+A full external review on 2026-09-19 re-ran every validator from scratch, added a
+real `mermaid@11` parse, probed all ~6,500 external URLs, resolved every DOI, and
+read high-value pages by hand. It found and fixed: a code-fence corruption class
+that rendered prose as code, wrong worked-example mathematics, a MathJax/link
+collision, 48 site-root-absolute links, malformed URLs, conflicting kernel sizes,
+stale counts in this file, and missing CI. See "Deep review & fix pass".
 
 | Area | Status | Evidence |
 |---|---|---|
-| Git safety | ✅ Complete | Active development on `research`; `main` (== `dev`, `6f7e79b`) untouched by research commits; research is a clean 75-commit superset. |
-| Content inventory | ✅ Expanded | **2,777** content markdown pages under `src/` (up from 2,117 at the 2026-08-16 snapshot). |
-| Navigation | ✅ Passing | All 2,776 of 2,777 content pages reachable from `SUMMARY.md` (1 excluded: `SUMMARY.md` itself); 0 duplicate destinations. |
-| Relative links | ✅ Passing | 0 broken links / anchors. |
-| Mermaid heuristic | ✅ Passing | 4,873 of 4,873 diagrams across 1,317 files (100%). |
-| MathJax | ✅ Passing | 0 issues across all 128 math-bearing pages. |
-| Advanced topics | ✅ Complete | All 1,528 prompt.md topics (A–T) and all 1,374 index.md bullets covered (verified by deep-read audit on 2026-09-02). |
+| Git safety | ✅ Complete | Active development on `research`; `main` (== `dev`, `6f7e79b`) untouched by research commits; research is a clean 93-commit superset. |
+| Content inventory | ✅ Expanded | **2,809** content markdown pages under `src/` (up from 2,117 at the 2026-08-16 snapshot). |
+| Navigation | ✅ Passing | All 2,809 content pages reachable from `SUMMARY.md` (1 excluded: `SUMMARY.md` itself); 0 duplicate destinations. |
+| Internal links | ✅ Passing | 0 broken links / anchors (24,754 links), including site-root-absolute and non-`.md` targets. |
+| Mermaid | ✅ Passing | 4,889 of 4,889 diagrams across 1,328 files (100%) — verified with the real `mermaid@11` parser, not only the heuristic. |
+| MathJax | ✅ Passing | 0 issues across all 128 math-bearing pages, including 0 math spans containing a literal `](` (which renders as a link). |
+| Fence integrity | ✅ New | 0 malformed or nested code fences (33,152 blocks scanned by `scripts/check-fences.py`). |
+| Advanced topics | ⚠️ Partially verified | All 1,374 `src/index.md` bullets covered. The earlier "all 1,528 `prompt.md` topics" claim could not be reproduced — **no `prompt.md` exists in the repository**, so that figure is unverifiable and is no longer asserted. |
 | Build-it-yourself | ✅ Complete | 34 implementation projects across 5 domains. |
 | Benchmarking | ✅ Complete | Methodology, pitfalls, statistics, tool comparison. |
-| Research batches | ✅ Complete | 75 research commits (2026-08-02 → 2026-09-02), 66+ "batch" deep-dive pages with Crossref-verified DOIs, RFC-cited networking pages, and byte-exact demo QA. |
+| Research batches | ✅ Complete | 93 research commits (2026-08-02 → 2026-09-05), 66+ "batch" deep-dive pages with Crossref-verified DOIs, RFC-cited networking pages, and byte-exact demo QA. |
 
 ## Validation commands
 
-The lightweight validation suite re-run on the `research` tree (2026-09-02):
+The validation suite re-run on the `research` tree during the 2026-09-19 review:
 
-- `scripts/check-summary.py` → 2,776/2,777 reachable, 0 duplicate destinations
-- `scripts/check-links.py` → 0 broken links/anchors
-- `scripts/check-mathjax.py` → balanced across 128 math pages
-- `scripts/validate-mermaid-heuristic.mjs` → 4,873/4,873 pass (100%)
+- `scripts/check-summary.py` → 2,809/2,809 reachable, 0 duplicate destinations
+- `scripts/check-links.py` → 0 broken links/anchors (24,754 links)
+- `scripts/check-fences.py` → 0 problems across 33,152 fenced blocks
+- `scripts/check-mathjax.py` → balanced across 128 math pages, 0 link-in-math hazards
+- `scripts/validate-mermaid-heuristic.mjs` → 4,889/4,889 pass (100%)
+- real `mermaid@11` parse → 4,889/4,889 pass (100%)
+- `scripts/check-doi.py` → 491/491 DOIs resolve
 
-> mdBook build and real-Mermaid (mermaid@11 + jsdom) parse were not re-run in the audit sandbox (binaries not installed); both are expected to be exercised in CI.
+> **External URLs are not clean.** A probe of ~6,500 external links found **758 dead**
+> (647 × HTTP 404, mostly `docs.kernel.org` paths that were never valid). This is
+> tracked in `scripts/dead-links-report.txt` and re-probed weekly by the
+> `external-checks` workflow; it needs human triage rather than a code fix.
+>
+> The full mdBook build peaks above the sandbox memory limit used for review, so it
+> is exercised in CI (`.github/workflows/validate.yml`) rather than locally.
 
 ## Research-branch additions (2026-08-02 → 2026-09-02)
 
@@ -78,3 +99,75 @@ The research branch added 75 commits and 660 new files. Highlights:
 - Development work is performed on `research` (and `dev` before promotion).
 - Release promotion to `main` occurs only after validation.
 - Credentials are read only at command time and are not stored in repository files, commits, or documentation.
+
+## Deep review & fix pass — 2026-09-19
+
+An independent review of the whole tree (own tooling, real Mermaid parser, live
+HTTP probing, DOI resolution, manual page reads) produced the following fixes.
+Each is verified, not asserted.
+
+### Correctness
+
+| Defect | Fix |
+|---|---|
+| 11 fence lines written as `` `` `` / `` ``n `` , whose orphaned closers **opened** runaway code blocks that swallowed prose, headings and tables as code | Restored to well-formed fences in `cloud-scheduling`, `hpc-infra`, `trigonometry`, `approximate-privacy`, `applied-systems`, `reliability-patterns`, `monotonic-queue-dp` |
+| `documentation.md`: 4 ` ```markdown ` templates containing ` ```bash ` samples were invalid CommonMark — inner fences closed the outer block, so `### README Best Practices` and friends rendered as code (25 phantom code blocks) | Outer fences widened to ` ````markdown `; verified with a real mdBook build (25 → 19 blocks, headings now `<h3>`) |
+| `profit-loss.md`: two wrong formulas for same-SP/different-% (`(x−y)²/(200+x−y)` gives 0 when x=y) plus a proof that contradicted its own conclusion | Corrected to `(100y − 100x + 2xy)/(200 + x − y)`; verified against brute force over 36 (x, y) pairs (max deviation 1.4e-14); proof rewritten to the exact `x²/100` result |
+| `time-work.md`: worked example whose premise and arithmetic disagreed, followed by a non-sequitur | Made self-consistent and replaced the trailing paragraph with a real consistency check |
+| `ppo.md`: `H[\pi_\theta](s)` inside `\\[...\\]` — Markdown parsed it as a link, so mdBook emitted `H<a href="s">\pi_\theta</a>` and broke the equation | Rewritten with `\lbrack`/`\rbrack`; verified by rendering before/after |
+| Linux kernel size given as 28M / 30M / 40M across 7 pages | Unified on ~40M lines (Linux 6.14, 2025) with the measurement scope stated |
+| 5 empty `## Interview Frequency` sections (heading immediately followed by a heading) | Converted the stray heading into prose in the book's canonical style |
+
+### Links
+
+| Defect | Fix |
+|---|---|
+| 48 site-root-absolute links (`[Namespaces](/containers/namespaces)`) — always 404 on the published site, and invisible to `check-links.py` | Repointed to real relative targets; 29 that had no existing target were unlinked or redirected to the correct page |
+| `https://docs.yugabyte.compreview/preview/...` ×3, `blog.cloudflare.com/common-hash-conflcit-...`, a URL with a literal space (`~kapil sigmod/x100.pdf`) | Fixed; replacements probed live (all 200) |
+| `linux/reference/further-reading.md` listed "Linux Unplugged" twice, the second pointing at Late Night Linux | Second entry corrected to *Late Night Linux* |
+
+### Structure
+
+- Renamed `os/virtual-memory/page-rejection.md` → `page-replacement-overview.md`
+  (the filename was a typo for "replacement" and the SUMMARY label hid it).
+- Fixed both `SUMMARY.md` indentation jumps (4-space children among 2-space
+  siblings) that mis-nested the page-replacement and query-processing groups.
+- Disambiguated the three page-replacement pages and the two query-optimization
+  pages with distinct nav labels and mutual cross-links; retitled the thin page
+  `Page Replacement: Interview Guide` since its H1 collided with the deep dive.
+- Expanded `mobile/README.md` from 373 bytes to a full section landing page.
+
+### Tooling & process
+
+- **New `scripts/check-fences.py`** — catches malformed openers, unclosed fences
+  and nested fences with CommonMark-correct length rules. Wired into
+  `validate-all.sh` as step 2/7. Positive controls confirm it rejects all three
+  bug classes and accepts 4-backtick nesting.
+- **Hardened `scripts/check-links.py`** — now flags site-root-absolute links and
+  non-`.md` relative targets, and strips inline code so C++/Go samples like
+  `Sum[int](myInts)` are not misread as links. Explicit allowlist for the
+  CI-generated `cross-reference-graph-view.html`.
+- **Hardened `scripts/check-mathjax.py`** — detects `](` inside math spans (the
+  `ppo.md` bug class), and its always-true `if dollars == line.count("$$")`
+  condition is gone (deduplication already happens downstream).
+- **CI restored** — `.github/workflows/validate.yml` (push/PR, runs the suite with
+  `STRICT=1`) and `.github/workflows/external-checks.yml` (weekly + manual, report
+  only). The review noted the README, CONTRIBUTING and `scripts/README.md` all
+  claimed CI validation while the only workflow was a `main`-only Pages deploy.
+- `book.toml` edit links now point at `research` (a strict superset of `main`), so
+  they resolve for research-only pages instead of 404ing.
+- `.gitignore` no longer hides `package.json`/`Cargo.toml`, which had made the
+  Mermaid-parser toolchain unreproducible from a fresh clone; added the real-parser
+  report path.
+- `scripts/dead-links-report.txt` — the 758 dead external URLs grouped by file, as
+  an actionable backlog.
+
+### Deliberately not changed
+
+- The 74 colliding-topic page groups (`backend/` vs `distributed/`, `os/` vs
+  `concurrency/`, …). Spot-checks showed the duplicates **agree** in substance, so
+  merging them is an editorial decision, not a correctness fix.
+- `IEEE TBD, 2021` in `vector-databases.md` and `rag-advanced.md` is **not** a
+  placeholder: TBD = *IEEE Transactions on Big Data*.
+- The `####` sub-headings under `##` sections in `linux/reference/further-reading.md`
+  are a consistent file-local style (all 79 entries), not a stray level skip.

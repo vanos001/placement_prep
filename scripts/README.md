@@ -10,7 +10,7 @@ navigation** so every change is verified before commit.
 |---|---|---|
 | mdBook (0.4.x) | `validate-all.sh` | `curl -sL https://github.com/rust-lang/mdBook/releases/download/v0.4.40/mdbook-v0.4.40-x86_64-unknown-linux-gnu.tar.gz -o mdbook.tar.gz && tar xzf mdbook.tar.gz` |
 | Node.js ≥ 18 + npm | `validate-mermaid.mjs` (real parser) | — |
-| Python 3 | `check-links.py`, `check-summary.py`, `check-mathjax.py`, graph generator | — |
+| Python 3 | `check-links.py`, `check-summary.py`, `check-mathjax.py`, `check-fences.py`, graph generator | — |
 
 For the **real Mermaid parser** validator, install once:
 
@@ -27,7 +27,8 @@ npm install mermaid@11 jsdom   # in a scratch dir, NOT committed
 ./scripts/validate-all.sh /path/to/repo          # everything, best-effort
 ./scripts/validate-mermaid-heuristic.mjs         # fast heuristic checks (run from repo root)
 node /tmp/mermaid-validate/validate.mjs /path/to/repo/src   # real Mermaid v11 parser
-./scripts/check-links.py /path/to/repo           # broken relative links
+./scripts/check-links.py /path/to/repo           # broken relative links + anchors
+python3 scripts/check-fences.py src              # malformed / nested code fences
 ./scripts/check-summary.py /path/to/repo/src     # SUMMARY completeness
 python3 scripts/check-mathjax.py /path/to/repo   # MathJax source/config check
 python3 scripts/check-mathjax.py /path/to/repo --book-dir book # generated HTML check

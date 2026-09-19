@@ -2,7 +2,7 @@
 
 ## Introduction
 
-Continuous Integration and Continuous Delivery (CI/CD) for the Linux kernel is a massive undertaking. The kernel is one of the largest and most complex open-source projects, with over 28 million lines of code, thousands of configuration options, and hundreds of target architectures. Testing it requires specialized infrastructure that can build, boot, and stress-test kernels across diverse hardware.
+Continuous Integration and Continuous Delivery (CI/CD) for the Linux kernel is a massive undertaking. The kernel is one of the largest and most complex open-source projects, with over 40 million lines of code (Linux 6.14, 2025), thousands of configuration options, and hundreds of target architectures. Testing it requires specialized infrastructure that can build, boot, and stress-test kernels across diverse hardware.
 
 This chapter covers the major CI/CD systems used by the kernel community, from Intel's 0-Day bot to the community-driven KernelCI, and practical approaches for CI/CD in kernel module development.
 

@@ -72,7 +72,6 @@ class HyperLogLog:
 
 Count-Min Sketch (Cormode & Muthukrishnan, 2005) estimates the **frequency** of items in a stream:
 
-``n``
 
 ```
 CMS parameters: width w, depth d

@@ -57,6 +57,7 @@ def source_check(repo: Path) -> tuple[dict, list[str]]:
     raw_single = 0
     unclosed_fences: list[str] = []
     imbalanced: list[str] = []
+    math_link_hazards: list[str] = []
 
     for path in files:
         rel = path.relative_to(repo).as_posix()
@@ -73,6 +74,21 @@ def source_check(repo: Path) -> tuple[dict, list[str]]:
                 continue
 
             line = strip_inline_code(raw_line)
+
+            # Markdown link syntax is parsed BEFORE MathJax ever sees the page, so
+            # a literal "](" inside a math span becomes an <a href> and corrupts
+            # the equation (research-branch review: ppo.md rendered
+            # "H<a href=\"s\">\\pi_\\theta</a>"). Math should use \\rbrack /
+            # \\lbrack, or simply not put a closing bracket immediately in front
+            # of an opening parenthesis.
+            if "\\" in line and ("\\(" in line or "\\[" in line or "$$" in line):
+                for span in re.findall(r"\\\(.*?\\\)", line) + re.findall(r"\\\[.*?\\\]", line):
+                    if "](" in span:
+                        math_link_hazards.append(
+                            f"{rel}:{line_number}: '](' inside a math span is parsed as a "
+                            f"Markdown link and breaks rendering -> {span.strip()[:60]!r}"
+                        )
+
             bo += line.count(BLOCK_OPEN)
             bc += line.count(BLOCK_CLOSE)
             io += line.count(INLINE_OPEN)
@@ -89,9 +105,10 @@ def source_check(repo: Path) -> tuple[dict, list[str]]:
             )
 
             if dollars:
-                # Keep the location of the first legacy delimiter for a useful error.
-                if dollars == line.count("$$"):
-                    errors.append(f"{rel}:{line_number}: legacy $$ delimiter; use escaped \\\\[ ... \\\"]")
+                # Record the location of the legacy delimiter. Duplicates are
+                # removed after the walk (dict.fromkeys), so record every line
+                # rather than gating on a condition that is always true.
+                errors.append(f"{rel}:{line_number}: legacy $$ delimiter; use escaped \\\\[ ... \\\"]")
 
         if in_fence:
             unclosed_fences.append(rel)
@@ -133,7 +150,9 @@ def source_check(repo: Path) -> tuple[dict, list[str]]:
         "raw_single": raw_single,
         "unclosed_fences": len(unclosed_fences),
         "imbalanced_pages": len(imbalanced),
+        "math_link_hazards": len(math_link_hazards),
     }
+    errors.extend(math_link_hazards)
     return stats, errors
 
 
@@ -175,6 +194,7 @@ def main() -> int:
     print(f"Single-backslash delimiters outside code: {stats['raw_single']}")
     print(f"Unclosed code fences: {stats['unclosed_fences']}")
     print(f"Pages with unbalanced delimiters: {stats['imbalanced_pages']}")
+    print(f"Math spans containing a literal '](' (renders as a link): {stats['math_link_hazards']}")
     if generated["checked"]:
         print(f"Generated HTML files: {generated['html_files']}")
         print(f"HTML files with MathJax runtime: {generated['mathjax_html_files']}")

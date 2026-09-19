@@ -650,7 +650,7 @@ linux/
 └── virt/           # Virtualization (KVM)
 ```
 
-The kernel tree contains over **40 million lines of code** (as of 2025), with the `drivers/` directory alone accounting for over 60% of the total. The `Documentation/` directory contains thousands of files covering every subsystem and API.
+The kernel tree contains over **40 million lines of code** (Linux 6.14, 2025) counting the whole source tree — `drivers/`, `arch/`, `Documentation/`, `tools/` and all; the `drivers/` directory alone accounts for over 60% of the total. The `Documentation/` directory contains thousands of files covering every subsystem and API.
 
 ### Key Files
 

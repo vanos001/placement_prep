@@ -208,26 +208,52 @@ Net loss = 4% of (total CP)
 **Proof:**
 ```
 SP₁ = SP₂ = S (same selling price)
-CP₁ = S × 100/(100+x)
-CP₂ = S × 100/(100-x)
-Total CP = S[100/(100+x) + 100/(100-x)]
-= S × [100(100-x) + 100(100+x)] / [(100+x)(100-x)]
-= S × 20000 / (10000-x²)
-Total SP = 2S
-Loss = Total CP - Total SP = 2S × x²/(10000-x²)
-Loss% (as fraction of CP) = [x²/(10000-x²)] × 100
+CP₁ = S × 100/(100+x)          [x% profit:  SP = CP(100+x)/100  →  CP = 100S/(100+x)]
+CP₂ = S × 100/(100-x)          [x% loss:    SP = CP(100-x)/100  →  CP = 100S/(100-x)]
 
-When x is small, 10000-x² ≈ 10000, so Loss% ≈ x²/100.
-Note: For the standard interview shortcut, **Loss% = x²/100** is the exact answer when "two items at same SP, one at x% profit and one at x% loss" — both items are referenced to their CP, and the calculation simplifies to x²/100 exactly (not approximately). The formula above is the corresponding expression when SP is held fixed and CP varies.
+Total CP = S[100/(100+x) + 100/(100-x)]
+         = S × 100[(100-x) + (100+x)] / [(100+x)(100-x)]
+         = S × 100 × 200 / (10000-x²)
+         = S × 20000 / (10000-x²)
+Total SP = 2S
+
+Loss = Total CP - Total SP
+     = S[20000/(10000-x²) - 2]
+     = S[2x²/(10000-x²)]
+
+Loss% = Loss / Total CP × 100
+      = [S·2x²/(10000-x²)] / [S·20000/(10000-x²)] × 100
+      = (2x²/20000) × 100
+      = x²/100          ← exact, not an approximation
 ```
+
+The loss is always divided by **total CP**, not by total SP — that single step is
+where most shortcuts go wrong.
 
 ### Different Percentages
 
-If one is sold at x% profit and other at y% loss, and SP is same:
+If one item is sold at x% profit and another at y% loss, and both have the **same
+selling price** S:
 ```
-Net loss% = (x-y)² / (200+x-y)   [if x < y, it's a loss]
-Or use: Net effect = 2xy/(x+y) loss if x=y, general formula is complex.
+Total CP = 100S × [1/(100+x) + 1/(100-y)] = 100S(200+x-y) / [(100+x)(100-y)]
+Total SP = 2S
+
+Net result% = (100y - 100x + 2xy) / (200 + x - y)
 ```
+
+Positive result = net **loss**; negative result = net **profit**.
+
+**Sanity check:** setting x = y reduces this to `2x²/200 = x²/100`, matching the
+equal-percentage case above.
+
+**Example:** same SP, one at 20% profit and one at 30% loss:
+```
+Net% = (100×30 - 100×20 + 2×20×30) / (200 + 20 - 30)
+     = (3000 - 2000 + 1200) / 190
+     = 2200/190 = 11.58%  → net loss of 11.58%
+```
+Direct check with S = ₹100: CP₁ = 10000/120 = ₹83.33, CP₂ = 10000/70 = ₹142.86;
+total CP = ₹226.19, total SP = ₹200 → loss = ₹26.19 → 26.19/226.19 = 11.58% ✓
 
 ## Tricks & Shortcuts
 
@@ -258,13 +284,17 @@ From these two:
 CP = (100×A)/(100+x) and CP = (100×B)/(100-y)
 ```
 
-### Trick 4: Equal Profit and Loss Amount
+### Trick 4: Breakeven for Two Items Sold at the Same Price
 
-If profit% and loss% are on the same CP and equal in amount:
+Two items sell at the same price, one at x% profit and the other at y% loss. The
+deal breaks even (zero net profit or loss) when:
 ```
-Profit × CP/100 = Loss × CP/100
-This only happens when profit% = loss%
+y = 100x / (100 + 2x)
 ```
+**Example:** a 50% profit on one item is exactly cancelled by a 25% loss on the
+other, since 100×50/(100+100) = 25. The loss percentage is always the *smaller*
+of the two — that asymmetry is the whole reason the equal-percentage case is
+always a net loss.
 
 ### Trick 5: Effect of Changing CP and SP
 

@@ -116,7 +116,7 @@ The default K8s scheduler is designed for long-running services (web servers, AP
 
 5. **Resource reservation**: When a node doesn't have enough resources for a pod, Volcano can "reserve" partial resources and wait for other pods on that node to finish, rather than immediately trying a different node.
 
-``n
+```
 Volcano vs. Default K8s Scheduler:
 
 | Feature | Default Scheduler | Volcano |
@@ -190,7 +190,7 @@ Reactive autoscaling (scale up when at 80% CPU) always lags behind demand. By th
 
 **Predictive autoscaling** uses machine learning to forecast demand and pre-scale before the spike arrives:
 
-``n
+```
 Reactive vs. Predictive Autoscaling:
 
   CPU %  ▲
@@ -222,7 +222,7 @@ Data centers consume 1–2% of global electricity. Cloud providers and enterpris
 
 **Carbon-aware scheduling** shifts workloads to times and locations where the electrical grid has lower carbon intensity (more renewable energy):
 
-``n
+```
 Carbon Intensity by Hour:
 
   gCO2/kWh ▲
@@ -271,7 +271,7 @@ Carbon Intensity by Hour:
 
 **6. Data transfer optimization**: Minimize cross-region and cross-AZ data transfer. Use compression, caching, and co-locating services that communicate frequently.
 
-``n
+```
 FinOps Cost Reduction Hierarchy (biggest to smallest impact):
 
   1. Architecture changes      ─── 50–80% savings

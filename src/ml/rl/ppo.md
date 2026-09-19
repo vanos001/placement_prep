@@ -63,7 +63,7 @@ graph TD
 
 ### Full PPO Objective
 
-\\[L(\theta) = \mathbb{E}\left[ L^{CLIP}(\theta) - c_1 L^{VF}(\theta) + c_2 H[\pi_\theta](s) \right]\\]
+\\[L(\theta) = \mathbb{E}\left[ L^{CLIP}(\theta) - c_1 L^{VF}(\theta) + c_2 H\left\lbrack \pi_\theta \right\rbrack (s) \right]\\]
 
 Where:
 - **L^CLIP**: Clipped surrogate objective (policy improvement)

@@ -254,7 +254,7 @@ Production engines use 1024-4096 tuples per batch as a sweet spot. DuckDB uses 2
 
 ## References
 
-- [MonetDB/X100: Hyper-Pipelined Query Execution](https://www.cs.cmu.edu/~kapil sigmod/x100.pdf) (CIDR 2005) — the original vectorized execution paper
+- [MonetDB/X100: Hyper-Pipelined Query Execution](https://www.cidrdb.org/cidr2005/papers/P12.pdf) (CIDR 2005) — the original vectorized execution paper
 - [The Complete Vectorized Execution Story](https://duckdb.org/2022/03/13/duckdb-internal-3.html) (DuckDB blog, 2022)
 - [Apache Arrow: Computational Columnar In-Memory Format](https://arrow.apache.org/docs/format/Columnar.html)
 - [ClickHouse: Vectorized Execution](https://clickhouse.com/blog/clickhouse-100x-faster-queries-with-asyncio)

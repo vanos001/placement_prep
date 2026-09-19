@@ -657,8 +657,8 @@ CONFIG_OF_CONFIGFS=y           # Configfs-based overlay management
 
 ## Relation to Other Subsystems
 
-- **Device Tree Overlays** modify the base [Device Tree](/embedded/device-tree).
-- **[Pinctrl](/kernel/drivers/pinctrl)** configurations are commonly added via overlays.
+- **Device Tree Overlays** modify the base [Device Tree](./device-tree.md).
+- **[Pinctrl](../kernel/drivers/pinctrl.md)** configurations are commonly added via overlays.
 - **GPIO** pin assignments are defined in overlays.
 - **U-Boot** applies overlays before passing the DTB to the kernel.
 - **[devicetree.org](https://devicetree.org/)** maintains the DT specification.
@@ -673,4 +673,4 @@ CONFIG_OF_CONFIGFS=y           # Configfs-based overlay management
 - [dtc (device tree compiler)](https://git.kernel.org/pub/scm/utils/dtc/dtc.git)
 - [LWN: Device tree overlays (2013)](https://lwn.net/Articles/574922/)
 - [BeagleBone Cape overlays](https://docs.beagleboard.org/latest/boards/beaglebone/ai/capes/)
-- See also: [Device Tree](/embedded/device-tree), [Pinctrl](/kernel/drivers/pinctrl), [GPIO](/kernel/drivers/gpio), [U-Boot](/embedded/uboot)
+- See also: [Device Tree](./device-tree.md), [Pinctrl](../kernel/drivers/pinctrl.md), [GPIO](../kernel/drivers/gpio.md), [U-Boot](./uboot.md)

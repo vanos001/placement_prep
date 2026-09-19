@@ -16,7 +16,10 @@ create-missing = false
 default-theme = "light"
 preferred-dark-theme = "ayu"
 git-repository-url = "https://github.com/vanos001/placement_prep"
-edit-url-template = "https://github.com/vanos001/placement_prep/edit/main/{path}"
+# `research` is a strict superset of `main` (verified: 0 commits and 0 files
+# missing), and it is where content is authored, so edit links resolve for
+# every page. Pointing at `main` 404s on research-only pages.
+edit-url-template = "https://github.com/vanos001/placement_prep/edit/research/{path}"
 additional-css = ["custom.css"]
 additional-js = ["mermaid-init.js"]
 mathjax-support = true

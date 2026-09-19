@@ -104,7 +104,7 @@ The README is the **front door** of your project. It's the first thing people se
 
 ### README Template
 
-```markdown
+````markdown
 # Project Name
 
 One-line description of what this project does.
@@ -179,7 +179,7 @@ See [CONTRIBUTING.md](CONTRIBUTING.md)
 ## License
 
 MIT License — see [LICENSE](LICENSE)
-```
+````
 
 ### README Best Practices
 
@@ -430,7 +430,7 @@ RFCs are **proposals for changes** that need team input before implementation.
 
 ### RFC Template
 
-```markdown
+````markdown
 # RFC: Implement Rate Limiting
 
 ## Summary
@@ -490,7 +490,7 @@ X-RateLimit-Reset: 1705334400
 2. Week 2: Integration with API gateway
 3. Week 3: Monitoring and alerting
 4. Week 4: Rollout to production (10% → 50% → 100%)
-```
+````
 
 ### RFC Process
 
@@ -511,7 +511,7 @@ Runbooks are **step-by-step operational procedures** for handling specific situa
 
 ### Runbook Template
 
-```markdown
+````markdown
 # Runbook: High CPU Usage Alert
 
 ## Overview
@@ -579,7 +579,7 @@ ssh prod-db-01 "pg_stat_activity" | grep -i "active"
 - Implement query timeout limits
 - Add circuit breakers for external services
 - Review and optimize slow queries quarterly
-```
+````
 
 ### Runbook Best Practices
 
@@ -670,7 +670,7 @@ Diagrams as Code:
 
 ### Mermaid Diagrams in Documentation
 
-```markdown
+````markdown
 # Example: System Architecture
 
 ```mermaid
@@ -687,7 +687,7 @@ graph TD
     G --> H[Worker Service]
     H --> E
 ```
-```
+````
 
 ---
 

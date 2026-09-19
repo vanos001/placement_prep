@@ -44,14 +44,14 @@ These problems involve a single right triangle with an angle of elevation or dep
 
 **Example:** A tower stands on level ground. From a point 100m from its base, the angle of elevation to the top is 30°. Find the tower's height.
 
-``
+```
 tan 30° = height / 100
 height = 100 × (1/√3) = 100√3 / 3 ≈ 57.74 m
 ```
 
 **Example 2:** From the top of a 50m building, the angle of depression of a car is 60°. Find the car's distance from the building.
 
-``
+```
 tan 60° = 50 / distance
 distance = 50 / √3 = 50√3 / 3 ≈ 28.87 m
 ```

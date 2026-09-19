@@ -2,7 +2,7 @@
 
 ## Introduction
 
-The Linux kernel is the core of the Linux operating system — a monolithic, Unix-like kernel first released by Linus Torvalds in 1991. It manages hardware resources, provides system services to user-space applications, and enforces security and isolation between processes. As of 2024, the Linux kernel contains over 30 million lines of code and runs on everything from embedded devices to the world's largest supercomputers.
+The Linux kernel is the core of the Linux operating system — a monolithic, Unix-like kernel first released by Linus Torvalds in 1991. It manages hardware resources, provides system services to user-space applications, and enforces security and isolation between processes. As of Linux 6.14 (2025), the Linux kernel contains over 40 million lines of code and runs on everything from embedded devices to the world's largest supercomputers.
 
 This chapter provides a high-level overview of the kernel's design philosophy, its major subsystems, and the boundary between kernel space and user space.
 

@@ -1,8 +1,8 @@
 # Placement Preparation Knowledge Base
 
-A comprehensive, self-improving placement preparation resource for Software Engineering interviews — built as an [mdBook](https://rust-lang.github.io/mdBook/) with 2,600+ pages, 4,800+ Mermaid diagrams, and MathJax-powered equations.
+A comprehensive, self-improving placement preparation resource for Software Engineering interviews — built as an [mdBook](https://rust-lang.github.io/mdBook/) with 2,800+ pages, 4,800+ Mermaid diagrams, and MathJax-powered equations.
 
-[![Validation](https://img.shields.io/badge/validation-links%20%C2%B7%20summary%20%C2%B7%20mathjax%20%C2%B7%20mermaid%20%28real%20parser%29-green)](scripts/README.md)
+[![Validate](https://github.com/vanos001/placement_prep/actions/workflows/validate.yml/badge.svg)](../../actions/workflows/validate.yml)
 
 ## Quick Start
 
@@ -76,10 +76,12 @@ placement_prep/
 
 | Metric | Count |
 |--------|-------|
-| Markdown pages | 2,640 |
-| Mermaid diagrams | 4,875 (100% pass the real mermaid@11 parser, not just the heuristic) |
+| Markdown pages | 2,809 content pages (+ `SUMMARY.md`) |
+| Mermaid diagrams | 4,889 across 1,328 files (100% pass the real mermaid@11 parser, not just the heuristic) |
 | Topic directories | 61 |
-| Math-enabled pages | 127 |
+| Math-enabled pages | 128 |
+| Words | ~5.79M |
+| Unique external URLs | ~4,000 |
 
 ## Validation
 
@@ -89,7 +91,16 @@ Every change should pass the full validation suite before committing:
 ./scripts/validate-all.sh .
 ```
 
-This runs six checks: mdBook build, Mermaid heuristic, Mermaid real parser, broken links, SUMMARY completeness, and MathJax. See [`scripts/README.md`](scripts/README.md) for details.
+This runs seven checks: mdBook build, **Markdown fence integrity**, Mermaid
+heuristic, Mermaid real parser, broken links + anchors, SUMMARY completeness, and
+MathJax. Set `EXTERNAL=1` to add DOI resolution and external-URL probing. See
+[`scripts/README.md`](scripts/README.md) for details.
+
+> **Scope of "0 broken links".** The internal link/anchor check is green. A full
+> probe of the ~6,500 external URLs found **758 dead ones** (647 × HTTP 404,
+> mostly moved `docs.kernel.org` pages). That backlog is tracked in
+> [`scripts/dead-links-report.txt`](scripts/dead-links-report.txt) and re-probed
+> weekly by the `external-checks` workflow.
 
 ## Contributing
 

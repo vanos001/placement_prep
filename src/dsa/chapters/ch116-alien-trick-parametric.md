@@ -6,7 +6,8 @@
 - Lagrange multipliers (conceptual understanding)
 
 ## Interview Frequency: ★★
-## Google, Amazon, Meta — hard optimization problems
+
+The alien trick (Lagrangian relaxation with WQS binary search) sits at the hard end of the optimization spectrum and shows up at **Google**, **Amazon**, and **Meta** mainly in senior or research-leaning loops. It is rarely the intended first solution; interviewers use it to see whether you can turn a "choose exactly k items" constraint into an unconstrained problem with a penalty term, then binary-search the penalty.
 
 ---
 

@@ -376,8 +376,8 @@ Conference on systemd, low-level user space, and containers.
 #### [Linux Unplugged](https://linuxunplugged.com/)
 Weekly Linux discussion podcast.
 
-#### [LINUX Unplugged](https://latenightlinux.com/)
-Linux and open-source news and discussion.
+#### [Late Night Linux](https://latenightlinux.com/)
+Long-running Linux and open-source news podcast.
 
 #### [Kernel Report](https://www.kernel.org/)
 Periodic updates on Linux kernel development.

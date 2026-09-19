@@ -280,7 +280,7 @@ Linux is the most widely deployed OS kernel, running on everything from smartpho
 - **Type:** Monolithic (with loadable kernel modules)
 - **First release:** 1991 by Linus Torvalds
 - **License:** GPLv2
-- **Lines of code:** ~30+ million (as of 2024)
+- **Lines of code:** ~40 million (Linux 6.14, 2025 — whole source tree)
 - **Architecture support:** x86, ARM, RISC-V, MIPS, PowerPC, etc.
 
 ### Linux Kernel Architecture

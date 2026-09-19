@@ -6,7 +6,8 @@
 - Binary exponentiation (exponentiation by squaring)
 
 ## Interview Frequency: ★★
-## Google, Meta, Amazon — optimizing linear recurrences
+
+Matrix exponentiation appears at **Google**, **Meta**, and **Amazon** whenever a problem hands you a linear recurrence and a large `n`. The usual shape is a two-step conversation: first you write the O(n) DP, then the interviewer raises `n` to 10^18 and watches whether you recognise that the recurrence is linear with constant coefficients and reach for repeated squaring. It is also standard competitive-programming material, so expect it as a follow-up on any counting-paths or tiling question.
 
 ---
 

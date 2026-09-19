@@ -807,8 +807,8 @@ apparmor_parser -r /etc/apparmor.d/criu
 - **LXC/LXD** integrates CRIU for live migration.
 - **Docker** has experimental CRIU support.
 - **MTCP** provides TCP-level migration for specific applications.
-- **[Namespaces](/containers/namespaces)** provide the isolation CRIU operates within.
-- **[cgroups](/containers/cgroups)** manage resource limits during restore.
+- **[Namespaces](../kernel/processes/namespaces.md)** provide the isolation CRIU operates within.
+- **[cgroups](../kernel/processes/cgroups.md)** manage resource limits during restore.
 
 ---
 
@@ -821,4 +821,4 @@ apparmor_parser -r /etc/apparmor.d/criu
 - [CRIU: Container live migration](https://criu.org/Live_migration)
 - [Podman checkpoint documentation](https://docs.podman.io/en/latest/markdown/podman-container-checkpoint.1.html)
 - [Userfaultfd documentation](https://www.kernel.org/doc/html/latest/admin-guide/mm/userfaultfd.html)
-- See also: [Namespaces](/containers/namespaces), [cgroups](/containers/cgroups), [Userfaultfd](/kernel/mm/userfaultfd)
+- See also: [Namespaces](../kernel/processes/namespaces.md), [cgroups](../kernel/processes/cgroups.md), [Userfaultfd](../kernel/memory/userfaultfd.md)

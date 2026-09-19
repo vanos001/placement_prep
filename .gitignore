@@ -57,7 +57,9 @@ node_modules/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-package-lock.json
+# NOTE: package.json / lockfiles are intentionally NOT ignored — the real
+# mermaid@11 + jsdom parser step in scripts/validate-all.sh depends on them, and
+# ignoring them made that environment unreproducible from a fresh clone.
 yarn.lock
 
 # ================================
@@ -76,8 +78,9 @@ env/
 # ================================
 # Rust / Cargo
 # ================================
-Cargo.lock
-Cargo.toml
+# Cargo.toml / Cargo.lock are NOT ignored: this book has no Rust build today,
+# but blanket-ignoring a build manifest silently swallows one if it is added.
+target/
 
 # ================================
 # Temp / backup files
@@ -98,5 +101,4 @@ Cargo.toml
 .env.local
 token.txt
 mermaid-validation-report.json
-package-lock.json
-package.json
+scripts/mermaid-validate-report.json

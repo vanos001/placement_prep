@@ -168,9 +168,9 @@ The big practical difference is tablet size: YugabyteDB's smaller tablets mean f
 
 ## References
 
-- [YugabyteDB Architecture documentation](https://docs.yugabyte.compreview/preview/architecture/)
+- [YugabyteDB Architecture documentation](https://docs.yugabyte.com/preview/architecture/)
 - Ranganathan et al., "[YugabyteDB: The Geo-Distributed SQL Database](https://www.yugabyte.com/yugabytedb-paper/)" (SIGMOD 2022)
-- [YugabyteDB: How HLC works](https://docs.yugabyte.compreview/preview/architecture/docdb/transactions/transaction-monotonic-clock/)
+- [YugabyteDB: How HLC works](https://docs.yugabyte.com/preview/explore/transactions/)
 - [YugabyteDB source code](https://github.com/yugabyte/yugabyte-db)
 - [Comparison: YugabyteDB vs CockroachDB](https://www.yugabyte.com/blog/yugabytedb-vs-cockroachdb-comparison/)
-- [PostgreSQL compatibility matrix](https://docs.yugabyte.compreview/preview/yugabyte-platform/overview/postgres-compatibility/)
+- [PostgreSQL compatibility matrix](https://docs.yugabyte.com/preview/explore/ysql-language-features/postgresql-compatibility/)

@@ -6,7 +6,8 @@
 - Adversarial arguments
 
 ## Interview Frequency: ★★
-## Google, Amazon, Meta — systems design and algorithmic reasoning
+
+Online algorithms and competitive analysis come up at **Google**, **Amazon**, and **Meta**, often as a bridge between algorithmic reasoning and system design. The recurring examples are ski rental (break-even analysis), the secretary problem (optimal stopping), and paging/caching (where LRU's k-competitiveness is the classic result). The interviewer is usually testing whether you can reason about a decision made without knowledge of the future, not whether you can recite an optimal algorithm.
 
 ---
 

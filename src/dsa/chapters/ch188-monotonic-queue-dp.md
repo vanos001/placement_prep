@@ -48,7 +48,9 @@ Array: `[3, 1, 4, 1, 5, 9, 2]`, k = 3.
 
 When a DP transition has the form:
 
-``ndp[i] = min over j in [i-k, i-1] of (dp[j] + cost(j, i))```
+```
+dp[i] = min over j in [i-k, i-1] of (dp[j] + cost(j, i))
+```
 
 and the cost satisfies a **monotonicity condition** on the optimal transition point, a monotonic deque maintains candidate indices. This reduces the inner loop from O(k) to O(1) amortized.
 

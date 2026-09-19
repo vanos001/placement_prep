@@ -8,7 +8,9 @@ Transient failures (network blips, temporary overload) are common. Retrying naiv
 
 ### Formula
 
-``ndelay = base_delay × 2^attempt + jitter```
+```
+delay = base_delay × 2^attempt + jitter
+```
 
 ### Implementation
 

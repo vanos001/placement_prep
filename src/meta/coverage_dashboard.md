@@ -1,9 +1,15 @@
 # Coverage Dashboard
 
 > Auto-generated tracking of content coverage across all subjects.
-> Last updated: 2026-09-02 (research branch @ `9c249de`; refreshed post-audit).
+> Last updated: 2026-09-19 (research branch @ `506338b`+; refreshed after the deep review and fix pass).
 >
-> **Branch note:** `research` is 75 commits ahead of `main` and adds 660 new markdown files since the 2026-08-16 snapshot. The repository now contains **2,777 markdown pages** under `src/` (2,776 reachable from `SUMMARY.md`), **4,873 Mermaid diagrams** across 1,317 files, and 128 MathJax-bearing pages — all validation green. The per-subject page counts below are point-in-time from the 2026-08-16 dashboard run; the research-branch additions primarily landed in the "Advanced …" rows (A–T sections) plus Linux, DSA, networking, storage, and distributed-systems deep dives.
+> **Branch note:** `research` is 93 commits ahead of `main` (a strict superset)
+> and adds 692 markdown files since the 2026-08-16 snapshot. The repository now
+> contains **2,809 content pages** under `src/` (+`SUMMARY.md`), **4,889 Mermaid
+> diagrams** across 1,328 files, and 128 MathJax-bearing pages. The per-subject page
+> counts below are point-in-time from the 2026-08-16 dashboard run and were *not*
+> regenerated; the research-branch additions landed mostly in the "Advanced …" rows
+> (A–T) plus Linux, DSA, networking, storage and distributed-systems deep dives.
 
 ## Summary
 
@@ -61,8 +67,10 @@
 
 ## Overall Metrics
 
-- **Total markdown files**: 2,117 (2,116 content pages plus SUMMARY)
-- **Total Mermaid diagrams**: 4,883 (across 1,319 files)
+- **Total markdown files**: 2,810 (2,809 content pages plus `SUMMARY.md`)
+- **Total Mermaid diagrams**: 4,889 (across 1,328 files)
+- **Math-enabled pages**: 128
+- **Fenced code blocks**: 33,151
 - **Total size**: ~42 MB (src/)
 - **New content this session**: ~249K words across 131 files
 - **Build status**: ✅ All validation checks passing (SUMMARY, links, mermaid 100%, MathJax)

@@ -27,7 +27,7 @@ python3 scripts/generate-cross-reference-graph.py \
 ```
 
 The generated file is not tracked. The deployment workflow runs this command
-automatically after `mdbook build`. Current graph size: **~2,120 nodes, ~7,500+ internal links** (estimated from 2,117 content files as of 2026-08-16).
+automatically after `mdbook build`. Current graph size: **~2,810 nodes, ~24,500 internal links** (measured across 2,809 content files on 2026-09-19).
 
 ## Graph scope
 

@@ -2,7 +2,7 @@
 
 ## Introduction
 
-The Linux kernel is one of the largest and most successful open-source projects in history, with over 28 million lines of code (as of 2024) and thousands of contributors from hundreds of organizations. Yet it operates with a remarkably efficient, hierarchical development model that has evolved organically over three decades.
+The Linux kernel is one of the largest and most successful open-source projects in history, with over 40 million lines of code (Linux 6.14, 2025) and thousands of contributors from hundreds of organizations. Yet it operates with a remarkably efficient, hierarchical development model that has evolved organically over three decades.
 
 Unlike many modern projects that use GitHub pull requests or GitLab merge requests, the Linux kernel uses a **mailing-list-based workflow** with a carefully structured maintainer hierarchy. Understanding this model is essential for anyone who wants to contribute to the kernel or simply understand how a world-class software project is managed.
 
