@@ -11,7 +11,7 @@ A comprehensive, self-improving placement preparation resource for Software Engi
 gh repo clone vanos001/placement_prep
 cd placement_prep
 
-# Build (requires mdBook 0.4.x)
+# Build (requires mdBook 0.5.4 — the version CI uses)
 mdbook build
 mdbook serve --open          # http://localhost:3000
 

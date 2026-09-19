@@ -17,7 +17,7 @@ must read **consistently** (hence: seize everything first, read after):
 
 | Object                 | Source of truth at dump time                | Image artifact        | Restore-time hazard                     |
 |------------------------|---------------------------------------------|-----------------------|-----------------------------------------|
-| Thread registers + IP  | ptrace `PTRACE_GETREGSET` on seized tasks   | core-<pid>.img        | IP must land in a rebuilt mapping        |
+| Thread registers + IP  | ptrace `PTRACE_GETREGSET` on seized tasks   | `core-<pid>.img`      | IP must land in a rebuilt mapping        |
 | Address space          | `/proc/pid/maps` + parasite page reads      | vma-*.img, pages-*.img| Map at identical addresses, incl. gaps   |
 | File descriptors       | `/proc/pid/fd` + fstat via parasite         | fdinfo-*.img          | Rebuild the dup table, same fd numbers   |
 | Established sockets    | `TCP_REPAIR` mode                           | fdinfo-*.img (sock)   | Seq/window continuity, options           |

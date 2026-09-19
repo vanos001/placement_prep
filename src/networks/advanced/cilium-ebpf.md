@@ -95,7 +95,7 @@ and never touches the Service path at all.
 
 Maps carry the state: a services map (VIP -> backend slot), a global backends map,
 reverse-NAT entries, global conntrack maps (CT4/CT6), the ipcache (IP -> security
-identity), endpoint maps, and per-endpoint tail-call maps (cilium_calls_lxc_<id>) that
+identity), endpoint maps, and per-endpoint tail-call maps (`cilium_calls_lxc_<id>`) that
 stitch policy fragments onto bpf_lxc. Tail calls exist
 because a single program cannot hold the whole pipeline: the kernel caps a tail-call
 chain at 32 hops, BPF stack at 512 bytes, and program complexity at 1M instructions

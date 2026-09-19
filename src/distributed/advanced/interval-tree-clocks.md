@@ -142,36 +142,6 @@ def show(t):
     return str(t) if is_leaf(t) else "(" + show(t[0]) + "|" + show(t[1]) + ")"
 
 
-def split_leftmost_one(t):
-    """replace the leftmost 1-leaf by ((1,0)) - deepens shape by one"""
-    if is_leaf(t):
-        return (1, 0)
-    l, r = t
-    if is_leaf(l) and l == 1:
-        return ((1, 0), r)
-    return (split_leftmost_one(l), r)
-
-
-def fork(i, ev):
-    pos = split_leftmost_one(i)          # parent keeps left branch
-    child_id = _mirror(pos)              # child gets the complement
-    parent_ev = _mirror_ev(ev, pos)      # event leaf n -> (n, 0) at split
-    child_ev = _mirror_ev(ev, pos)       # same inherited history
-    return (pos, parent_ev), (child_id, child_ev)
-
-
-def _mirror(i):
-    if is_leaf(i):
-        return i
-    return i  # shapes match; child's id is computed below
-
-
-def _mirror_ev(ev, pos):
-    """deepen ev where pos deepened: replace matching leaf n by (n, 0)"""
-    # the split replaced exactly one 1-leaf; ev and id share shape
-    return ev  # placeholder replaced below
-
-
 # The generic implementation is clearer than point-free helpers: operate on
 # (id, event) pairs with explicit paths.
 

@@ -8,9 +8,19 @@ navigation** so every change is verified before commit.
 
 | Tool | Needed by | Install |
 |---|---|---|
-| mdBook (0.4.x) | `validate-all.sh` | `curl -sL https://github.com/rust-lang/mdBook/releases/download/v0.4.40/mdbook-v0.4.40-x86_64-unknown-linux-gnu.tar.gz -o mdbook.tar.gz && tar xzf mdbook.tar.gz` |
+| mdBook **0.5.4** (match CI) | `validate-all.sh` | `curl -sL https://github.com/rust-lang/mdBook/releases/download/v0.5.4/mdbook-v0.5.4-x86_64-unknown-linux-gnu.tar.gz -o mdbook.tar.gz && tar xzf mdbook.tar.gz` |
 | Node.js ≥ 18 + npm | `validate-mermaid.mjs` (real parser) | — |
 | Python 3 | `check-links.py`, `check-summary.py`, `check-mathjax.py`, `check-fences.py`, graph generator | — |
+
+> **Match CI's mdBook version.** `.github/workflows/deploy.yml` installs
+> `mdbook-version: 'latest'`, which resolved to **0.5.4** on 2026-09-02 (see the
+> `mdbook version:` line in any workflow log). The version matters: 0.4.x inlines
+> the whole table of contents into **every** page, while 0.5.x externalises it to
+> a single shared `toc-*.js`. On this book that is the difference between a
+> **1.32 GB** site (0.4.40) and a **168 MB** one (0.5.4) — so validating an
+> output-size or navigation question with the wrong major version gives a
+> misleading answer. 0.5.4 also reports unclosed-HTML-tag warnings that 0.4.x
+> does not, which is how three real rendering defects were found.
 
 For the **real Mermaid parser** validator, install once:
 

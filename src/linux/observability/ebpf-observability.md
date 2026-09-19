@@ -181,7 +181,7 @@ The agent runs on every node, observes all pods, and sends profiles to a central
 For eBPF observability, the agent needs:
 - `CAP_BPF` (load BPF programs)
 - `CAP_PERFMON` (read perf events)
-- `CAP_SYS_PTRACE` (read /proc/<pid>/ for stack walking)
+- `CAP_SYS_PTRACE` (read `/proc/<pid>/` for stack walking)
 - Host PID and host network namespaces
 
 For security-conscious deployments, use a `securityContext` with specific capabilities instead of `privileged: true`.
