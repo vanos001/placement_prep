@@ -98,7 +98,7 @@ When you need strong consistency or authoritative, transactional membership (e.g
 - Gupta, Aguilera, Renesse, *SWIM: Scalable Weakly-consistent Infection-style process group Membership Protocol* (2002) — https://www.cs.cornell.edu/~asdas/research/dsn02-SWIM.pdf
 - HashiCorp memberlist (SWIM implementation) — https://github.com/hashicorp/memberlist
 - DeCandia et al., *Dynamo: Amazon's Highly Available Key-value Store* (2007) — https://www.allthingsdistributed.com/files/amazon-dynamo-sosp2007.pdf
-- Cassandra documentation: gossip and failure detection — https://cassandra.apache.org/doc/latest/cassandra/architecture/gossip.html
+- Cassandra documentation: gossip and failure detection — https://cassandra.apache.org/doc/latest/cassandra/architecture/dynamo.html
 
 ## Related Topics
 

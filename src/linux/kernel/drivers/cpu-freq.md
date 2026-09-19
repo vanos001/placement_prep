@@ -687,7 +687,7 @@ dmesg | grep -i "thermal\|throttl"
 - Linux kernel documentation, "CPU Performance Scaling,"
   https://docs.kernel.org/admin-guide/pm/cpufreq.html
 - Linux kernel documentation, "CPUFreq Governors,"
-  https://docs.kernel.org/admin-guide/pm/cpufreq-drivers.html
+  https://docs.kernel.org/admin-guide/pm/cpufreq.html
 - Linux cpufreq subsystem, `drivers/cpufreq/` in kernel source
 - Intel 64 and IA-32 Architectures Software Developer's Manual, Volume 3,
   Chapter 14 (Power Management)

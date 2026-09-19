@@ -213,7 +213,7 @@ Sockets=example.socket
 
 When `Accept=no` (default for long-running daemons), the service is expected to call `accept()` itself; systemd passes the **listening** FD. When `Accept=yes`, systemd accepts the connection itself and runs a new instance of the service with the **accepted** connection FD as fd 3 (this is "inetd-style" activation). The `Sockets=` directive links the service to all sockets that should be passed to it during restart — so a service restart does not drop the listening socket.
 
-The `LISTEN_FDS` / `LISTEN_PID` environment variables implement this protocol; see `sd_listen_fds(3)` and the [socket activation porting guide](https://systemd.io/PORTING_TO_RECEIVING_SD_LISTEN_FDS/).
+The `LISTEN_FDS` / `LISTEN_PID` environment variables implement this protocol; see `sd_listen_fds(3)` and the [socket activation porting guide](https://systemd.io/DAEMON_SOCKET_ACTIVATION/).
 
 ## 7. Timer activation
 
@@ -342,8 +342,8 @@ When you boot a Linux system, systemd (as PID 1) does roughly:
 - man systemd.service(5), https://www.freedesktop.org/software/systemd/man/systemd.service.html
 - man systemd.socket(5), https://www.freedesktop.org/software/systemd/man/systemd.socket.html
 - man systemd.timer(5), https://www.freedesktop.org/software/systemd/man/systemd.timer.html
-- "Socket Activation" by Lennart Poettering, https://systemd.io/SOCKET_ACTIVATION/
-- "Receiving socket activation FDs" porting guide, https://systemd.io/PORTING_TO_RECEIVING_SD_LISTEN_FDS/
+- "Socket Activation" by Lennart Poettering, https://systemd.io/DAEMON_SOCKET_ACTIVATION/
+- "Receiving socket activation FDs" porting guide, https://systemd.io/DAEMON_SOCKET_ACTIVATION/
 - LWN: "Systemd and parallel booting" — Jonathan Corbet, https://lwn.net/Articles/567997/
 - LWN: "A closer look at systemd" — Sean Robinson, https://lwn.net/Articles/567732/
 - sd_listen_fds(3) and the journal native protocol, https://systemd.io/JOURNAL_NATIVE_PROTOCOL/

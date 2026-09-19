@@ -750,7 +750,7 @@ tracepoint:power:cpu_idle /args->state == 4294967295 && @entry_time[args->cpu_id
 - Linux kernel documentation, "CPU Idle Time Management,"
   https://docs.kernel.org/admin-guide/pm/cpuidle.html
 - Linux kernel documentation, "CPU Idle Drivers,"
-  https://docs.kernel.org/admin-guide/pm/cpuidle/drivers.html
+  https://docs.kernel.org/admin-guide/pm/cpuidle.html
 - Linux cpuidle subsystem, `drivers/cpuidle/` in kernel source
 - Intel 64 and IA-32 Architectures Software Developer's Manual, Volume 3,
   Chapter 14 (Power Management)

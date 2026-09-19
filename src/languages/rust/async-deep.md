@@ -378,7 +378,7 @@ is why "Which runtime?" is a real Rust interview question.
 - Rust Asynchronous Programming Book — https://rust-lang.github.io/async-book/
 - Tokio Documentation — https://docs.rs/tokio/latest/tokio/
 - Rust RFC 2592 — `Future` trait — https://rust-lang.github.io/rfcs/2592-futures.html
-- Rust RFC 2394 — `async`/`await` syntax — https://rust-lang.github.io/rfcs/2394-async_await.html
+- Rust RFC 2394 — `async`/`await` syntax — https://github.com/rust-lang/rfcs/blob/master/text/2394-async_await.md
 - Rust RFC 2033 — Experimental coroutines — https://rust-lang.github.io/rfcs/2033-experimental-coroutines.html
 - "Asynchronous Programming in Rust" by Carl Lerche — https://carllerche.com/2019/04/17/an-async-1-0/
 - `std::future` API docs — https://doc.rust-lang.org/std/future/

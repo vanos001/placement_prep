@@ -292,7 +292,7 @@ Yes — that is the whole point. From the host's perspective Kata looks like
 
 - [Kata Containers GitHub](https://github.com/kata-containers/kata-containers)
 - [Kata Containers documentation site](https://katacontainers.io/)
-- [Kata Containers architecture design document](https://web.archive.org/web/20210727143712/https://github.com/kata-containers/kata-containers/blob/main/docs/design/architecture.md)
+- [Kata Containers architecture design document](https://github.com/kata-containers/kata-containers/blob/main/docs/design/architecture_4.0/architecture.md)
 - [virtio-fs specification](https://gitlab.com/virtio-fs/virtio-fs)
 - [OCI Runtime Specification](https://github.com/opencontainers/runtime-spec)
 - [Kubernetes RuntimeClass documentation](https://kubernetes.io/docs/concepts/containers/runtime-class/)

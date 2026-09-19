@@ -214,7 +214,7 @@ ClickHouse's high ingestion rate (1M+ rows/sec per node) makes it suitable for t
 
 - [ClickHouse documentation](https://clickhouse.com/docs/en/intro/)
 - [ClickHouse GitHub repository](https://github.com/ClickHouse/ClickHouse)
-- Alexey Milovidov, "[How ClickHouse processes queries](https://clickhouse.com/docs/en/operations/internal/" (ClickHouse blog)
+- Alexey Milovidov, "[How ClickHouse processes queries](https://clickhouse.com/docs/en/development/architecture)" (ClickHouse documentation)
 - [ClickHouse MergeTree documentation](https://clickhouse.com/docs/en/engines/table-engines/mergetree-family/mergetree/)
 - [ClickHouse Performance Guide](https://clickhouse.com/docs/en/operations/monitoring/)
 - [ClickHouse vs. Snowflake comparison](https://clickhouse.com/blog/clickhouse-vs-snowflake/)

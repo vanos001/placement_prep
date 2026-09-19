@@ -381,7 +381,7 @@ templates and Java interfaces" — it actually is, at the type-system level.
 - The Rust Reference — Traits — https://doc.rust-lang.org/reference/types.html#trait-objects
 - The Rust Book ch. 10 — Generic Types, Traits, and Lifetimes — https://doc.rust-lang.org/book/ch10-02-traits.html
 - Rust RFC 1149 — Closures: Capture-Mode and `move` — https://rust-lang.github.io/rfcs/0114-closures.html
-- Rust RFC 2071 — Object safety for generics — https://rust-lang.github.io/rfcs/2071-impl-trait-type.html
+- Rust RFC 2071 — Object safety for generics — https://github.com/rust-lang/rfcs/blob/master/text/2071-impl-trait-type-alias.md
 - Niko Matsakis's blog — https://smallcultfollowing.com/babysteps/
 - Niko Matsakis, "Where clauses and the orphan rule" — https://smallcultfollowing.com/babysteps/blog/2017/09/15/coherence-based-on-explicit-orphan-rules/
 - Haskell Wiki, Orphan instances — https://wiki.haskell.org/Orphan_instance

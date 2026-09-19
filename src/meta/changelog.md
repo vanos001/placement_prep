@@ -3,6 +3,35 @@
 This file records meaningful content and validation changes to the placement
 preparation book. Dates use the project timezone, Asia/Calcutta.
 
+## 2026-09-19 — External dead-link repair pass, second sweep
+
+The first pass worked from a catalogue of 758 flagged URLs. This pass threw the
+catalogue away and re-fetched **every distinct external URL in `src/`** — 8,662
+links across 2,067 hosts.
+
+- **What the full sweep found.** 5,872 live (HTTP 200), 761 dead (404/410); the
+  remainder answered 403/429/bot-challenge and were recorded as unverifiable
+  rather than dead. The earlier catalogue was incomplete: 305 of the 761 dead
+  links had never been catalogued, and 456 were known ones still unresolved.
+- **60 replacement URLs across 54 files**, each fetched and title-checked before
+  being written. **Every kernel.org link in the book is now live (471/471)** —
+  the sweep tested all of them, not just the catalogued ones, and re-pointed 20
+  to real pages (`selinux`, `seccomp`, `bpf/maps`, `cpufreq`, `cpuidle`,
+  `driver-api/vfio`, `core-api/memory-allocation`, `arch/x86/boot`,
+  `timers/index`, `netlink/specs`, `locking/spinlocks`, `core-api/workqueue`,
+  `filesystems/overlayfs`, and the OLS proceedings for the kprobes and udev
+  papers, whose original PDFs were removed from kernel.org).
+- Also repaired: 7 `systemd.io` pages that were reorganised, 5 Cassandra doc
+  paths, 16 man pages (man7.org section errors, `manpages.debian.org`, and
+  `man.archlinux.org` for pages man7.org does not mirror), 7 Rust RFC/Miri
+  links, and a malformed ClickHouse citation whose link text, URL and closing
+  quote were all wrong.
+- **Remaining backlog: 681 genuine dead links** (plus 40 intentional
+  `example.com` placeholders, which are correct as written), recatalogued by host
+  in `scripts/dead-links-report.txt`. These are pages deleted upstream — files
+  that exist at no path in the cited repository, retired documentation trees,
+  removed vendor posts — so each needs a substitution decision, not a rewrite.
+
 ## 2026-09-19 — External dead-link repair pass
 
 Worked through the external-URL backlog. Of the 758 links flagged dead by the

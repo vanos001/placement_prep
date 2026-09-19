@@ -183,7 +183,7 @@ Profile with Nsight Compute: if achieved memory bandwidth is near the hardware l
 
 ## References
 
-- NVIDIA CUDA C++ Programming Guide — https://docs.nvidia.com/cuda/cuda-c-programming-guide/
+- NVIDIA CUDA C++ Programming Guide — https://docs.nvidia.com/cuda/cuda-c-programming-guide/index.html
 - NVIDIA CUDA C++ Best Practices Guide — https://docs.nvidia.com/cuda/cuda-c-best-practices-guide/
 - Nsight Compute / Nsight Systems documentation — https://docs.nvidia.com/nsight-compute/
 - CUDA Samples (matrixMul, reduction) — https://github.com/NVIDIA/cuda-samples

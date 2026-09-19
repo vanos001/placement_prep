@@ -644,7 +644,7 @@ cat /proc/sys/kernel/io_uring_disabled
 
 1. **io_uring source**: https://github.com/torvalds/linux/tree/master/io_uring
 2. **io_uring design document**: https://kernel.dk/io_uring.pdf (Jens Axboe)
-3. **Kernel documentation**: https://docs.kernel.org/userspace-api/io_uring.html
+3. **io_uring(7) man page**: https://man7.org/linux/man-pages/man7/io_uring.7.html
 4. **LWN: A new API for asynchronous I/O**: https://lwn.net/Articles/776703/
 5. **LWN: The rapid growth of io_uring**: https://lwn.net/Articles/810414/
 6. **liburing userspace library**: https://github.com/axboe/liburing

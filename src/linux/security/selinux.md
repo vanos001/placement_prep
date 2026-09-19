@@ -678,7 +678,7 @@ The AVC caches access decisions to avoid repeated policy lookups. The default ca
 - SELinux Notebook (Tresys): https://github.com/SELinuxProject/selinux-notebook
 - NSA SELinux Original Paper: https://www.nsa.gov/Research/Selinux/
 - Dan Walsh SELinux Blog: https://danwalsh.livejournal.com/
-- Kernel documentation: https://docs.kernel.org/security/selinux.html
+- Kernel documentation: https://docs.kernel.org/admin-guide/LSM/SELinux.html
 - `man 8 selinux` — SELinux overview
 - `man 8 semanage` — SELinux policy management tool
 - `man 8 sealert` — SELinux alert diagnosis tool

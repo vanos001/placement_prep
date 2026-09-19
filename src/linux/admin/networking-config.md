@@ -798,7 +798,7 @@ ss -tunlp
 - [ArchWiki: Network configuration](https://wiki.archlinux.org/title/Network_configuration)
 - [iproute2 documentation](https://wiki.linuxfoundation.org/networking/iproute2)
 - [NetworkManager documentation](https://networkmanager.dev/docs/)
-- [systemd-networkd examples](https://systemd.io/NETWORK/)
+- [systemd-networkd examples](https://systemd.io/WRITING_NETWORK_CONFIGURATION_MANAGERS/)
 
 ## Related Topics
 

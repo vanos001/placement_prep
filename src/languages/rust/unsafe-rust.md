@@ -441,7 +441,7 @@ When *not* to reach for `unsafe`:
 - The Rustonomicon — https://doc.rust-lang.org/nomicon/
 - Rust RFC 2585 — `unsafe_op_in_unsafe_fn` — https://rust-lang.github.io/rfcs/2585-unsafe-block-in-unsafe-fn.html
 - Miri documentation — https://github.com/rust-lang/miri/
-- Miri book — https://rust-lang.github.io/miri/
+- Miri (interpreter for Rust MIR) — https://github.com/rust-lang/miri
 - Ralf Jung's blog — https://www.ralfj.de/blog/
 - Stacked Borrows paper (Jung et al.) — https://plv.mpi-sws.org/rustbelt/stacked-borrows/
 - Tree Borrows specification — https://perso.crans.org/monasse/tree-borrows/

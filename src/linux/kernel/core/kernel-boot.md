@@ -267,7 +267,7 @@ systemd as PID 1 takes over boot orchestration: it parses `/proc/cmdline`, picks
 ## References
 
 - The Linux Kernel Archives documentation, https://www.kernel.org/doc/html/latest/
-- Documentation/x86/boot in the kernel tree, https://www.kernel.org/doc/html/latest/x86/boot.html
+- Documentation/x86/boot in the kernel tree, https://docs.kernel.org/arch/x86/boot.html
 - Documentation/admin-guide/kernel-parameters.txt, https://www.kernel.org/doc/html/latest/admin-guide/kernel-parameters.html
 - man bootparam(7), https://man7.org/linux/man-pages/man7/bootparam.7.html
 - The Boot Loader Specification (systemd.io), https://systemd.io/BOOT_LOADER_SPECIFICATION/

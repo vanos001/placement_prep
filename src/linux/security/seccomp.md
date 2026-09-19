@@ -725,7 +725,7 @@ This is used by container runtimes for flexible sandboxing decisions that cannot
 - `man 3 seccomp_init` — libseccomp API
 - libseccomp project: https://github.com/seccomp/libseccomp
 - Seccomp BPF specification: https://www.kernel.org/doc/html/latest/networking/filter.html
-- Kernel seccomp documentation: https://docs.kernel.org/security/seccomp.html
+- Kernel seccomp documentation: https://docs.kernel.org/userspace-api/seccomp_filter.html
 - seccomp_data structure: include/uapi/linux/seccomp.h
 - Chrome Sandbox Design: https://chromium.googlesource.com/chromium/src/+/HEAD/docs/design/sandbox.md
 - Docker Seccomp Profiles: https://docs.docker.com/engine/security/seccomp/

@@ -590,7 +590,7 @@ int main(void) {
 
 - [Introduction to IPC — Beej's Guide](https://beej.us/guide/bgipc/)
 - [System V IPC — Linux man pages](https://man7.org/linux/man-pages/man7/svipc.7.html)
-- [POSIX IPC — Linux man pages](https://man7.org/linux/man-pages/man7/posixipc.7.html)
+- [Linux manual pages: section 7 — IPC overviews](https://man7.org/linux/man-pages/dir_section_7.html)
 - [Unix Domain Sockets — man 7 unix](https://man7.org/linux/man-pages/man7/unix.7.html)
 - [The Linux Programming Interface, Chapters 43-55](https://man7.org/tlpi/)
 

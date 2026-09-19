@@ -618,8 +618,8 @@ $ udevadm settle
 - [Planet GNU](https://planet.gnu.org/)
 - [Free Software Books](https://www.gnu.org/doc/other-free-books.html)
 
-- https://man7.org/linux/man-pages/man5/udev.7.html
-- https://man7.org/linux/man-pages/man7/udevadm.8.html
+- https://man7.org/linux/man-pages/man7/udev.7.html
+- https://man7.org/linux/man-pages/man8/udevadm.8.html
 - https://lwn.net/Articles/330985/ — "Devtmphs: a new approach to /dev"
 - https://lwn.net/Articles/250662/ — "The final word on devfs"
 - https://www.kernel.org/doc/html/latest/driver-api/early-userspace/early_userspace_support.html

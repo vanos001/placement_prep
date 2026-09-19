@@ -792,7 +792,7 @@ static void my_work_fn(struct work_struct *work)
 
 - [Linux kernel docs: IRQs](https://docs.kernel.org/core-api/irq/index.html) — IRQ management documentation
 - [LWN: RT spinlocks](https://lwn.net/Articles/646362/) — PREEMPT_RT spinlock changes
-- [man7.org: spinlock](https://man7.org/linux/man-pages/man9/spin_lock_irqsave.9.html) — Kernel spinlock API
+- [kernel docs: locking](https://docs.kernel.org/locking/spinlocks.html) — Kernel spinlock API
 - [Linux Device Drivers, Ch. 10](https://lwn.net/Kernel/LDD3/) — Interrupt handling
 - [docs.kernel.org: locking](https://docs.kernel.org/locking/index.html) — Locking documentation
 - [LWN: raw_spinlock](https://lwn.net/Articles/434794/) — When to use raw spinlocks

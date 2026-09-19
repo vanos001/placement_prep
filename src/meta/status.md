@@ -43,14 +43,17 @@ The validation suite re-run on the `research` tree during the 2026-09-19 review:
 - real `mermaid@11` parse → 4,889/4,889 pass (100%)
 - `scripts/check-doi.py` → 491/491 DOIs resolve
 
-> **External URLs are not fully clean.** A probe of ~6,500 external links initially
-> flagged 758 dead. A follow-up pass (see the 2026-09-19 entry below) repaired
-> **161** of them — 129 re-pointed to verified live pages (mostly `docs.kernel.org`
-> paths that never existed, plus man pages man7.org does not mirror) and 32 given
-> `web.archive.org` snapshots — and found that **20 were transient failures** which
-> resolve fine. **471 hard 404s remain**, catalogued by host in
-> `scripts/dead-links-report.txt`; each needs a human decision (re-point, replace,
-> or drop) rather than a code fix.
+> **External URLs are not fully clean.** A **full-repo sweep of all 8,662
+> external links** (2,067 hosts) found **5,872 live** and **761 dead**
+> (HTTP 404/410); the remainder returned 403/429/bot-challenge and are counted
+> unverifiable, not dead. The first repair pass fixed **161** dead links and the
+> second landed **60 more replacement URLs (54 files)** — each fetched and
+> title-checked first — including **all 471 kernel.org links, now 100% live**. Of the rest, **40 are intentional `example.com`
+> placeholders** and **681 are genuine dead links** catalogued by host in
+> `scripts/dead-links-report.txt`. They are overwhelmingly pages deleted
+> upstream — source-tree citations whose files exist at no path, retired doc
+> trees, removed vendor posts — so they need a human substitution decision
+> (re-point, replace, or drop) rather than a code fix.
 >
 > The full mdBook build peaks above the memory limit of the environment used for
 > this review, so the review ran a 47-chapter subset build of every changed file

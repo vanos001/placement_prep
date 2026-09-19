@@ -901,7 +901,7 @@ echo 1 > /sys/kernel/debug/sched/domains/cpu0/domain1/core_ctl/enable
 - `man 5 systemd.exec` — Service security directives
 - `man 8 auditd` — Audit daemon
 - `man 8 oscap` — OpenSCAP scanner
-- systemd Security Features: https://systemd.io/EXEC/
+- systemd Security Features: https://systemd.io/SECURITY/
 - GCC Hardening Options: https://wiki.debian.org/Hardening
 - Kernel Self Protection Project: https://kernsec.org/wiki/index.php/Kernel_Self_Protection_Project
 - Kernel Hardware Vulnerabilities Guide: https://docs.kernel.org/admin-guide/hw-vuln/index.html

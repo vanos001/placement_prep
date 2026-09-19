@@ -425,5 +425,5 @@ lower overhead.
 - LWN: "kprobes: looking at the infrastructure" — https://lwn.net/Articles/132196/
 - `perf-probe(1)` man page — https://man7.org/linux/man-pages/man1/perf-probe.1.html
 - `bpftrace` reference: `kprobe`/`kretprobe`/`uprobe`/`uretprobe` probes — https://github.com/iovisor/bpfprobe/blob/master/man/adoc/bpftrace.adoc
-- IBM "Kprobes: Kernel instrumentation for tracing and debugging" — https://www.kernel.org/doc/ols/2004/ols2004v1-pages-117-130.pdf
+- Mavinakayanahalli et al., "Probing the Guts of Kprobes" (OLS 2006) — https://www.kernel.org/doc/ols/2006/ols2006v2-pages-109-124.pdf
 - Steven Rostedt's "Kprobes and fentry" talk (LPC 2019) — https://blog.linuxplumbersconf.org/

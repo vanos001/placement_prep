@@ -508,7 +508,7 @@ GPUs and HPC form a four-layer stack: (1) the **hardware** — SMs, warps, SIMT,
 
 ## References
 
-- NVIDIA **CUDA C++ Programming Guide** — https://docs.nvidia.com/cuda/cuda-c-programming-guide/
+- NVIDIA **CUDA C++ Programming Guide** — https://docs.nvidia.com/cuda/cuda-c-programming-guide/index.html
 - NVIDIA **NCCL Documentation** — https://docs.nvidia.com/deeplearning/nccl/
 - Khronos **OpenCL Specification** — https://www.khronos.org/opencl/
 - Khronos **SYCL Specification** — https://www.khronos.org/sycl/

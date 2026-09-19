@@ -172,7 +172,7 @@ journalctl -o json -f | \
 
 - [systemd.journald(8)](https://www.freedesktop.org/software/systemd/man/systemd-journald.html)
 - [journalctl(1)](https://www.freedesktop.org/software/systemd/man/journalctl.html)
-- Lennart Poettering, "[Journal: Rationale, Design, and Implementation](https://systemd.io/JOURNAL-FILES/)"
+- Lennart Poettering, "[Journal: Rationale, Design, and Implementation](https://systemd.io/JOURNAL_FILE_FORMAT/)"
 - [systemd source: `src/libsystemd/sd-journal/journal-file.h`](https://github.com/systemd/systemd/blob/main/src/libsystemd/sd-journal/journal-file.h)
 - [LWN: "A look at journald" (2012)](https://lwn.net/Articles/510048/)
-- [Forward-Secure Sealing](https://systemd.io/JOURNAL_SECURITY/)
+- [Forward-Secure Sealing](https://systemd.io/JOURNAL_FILE_FORMAT/)

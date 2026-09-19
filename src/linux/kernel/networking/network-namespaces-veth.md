@@ -319,4 +319,4 @@ Run it as root. After teardown, `ip netns del a b c` and `ip link del br0` will 
 - LWN: "Network namespaces", J. Corbet (2013): https://lwn.net/Articles/580893/
 - LWN: "Namespaces in operation, part 3: Network namespaces", M. Kerrisk (2013): https://lwn.net/Articles/546921/
 - CNI specification (container network interface): https://github.com/containernetworking/cni/blob/main/SPEC.md
-- Linux kernel docs `Documentation/networking/veth.rst` and `Documentation/networking/macvlan.rst`: https://www.kernel.org/doc/html/latest/networking/veth.html
+- Linux kernel docs `Documentation/networking/veth.rst` and `Documentation/networking/macvlan.rst`: https://docs.kernel.org/networking/index.html

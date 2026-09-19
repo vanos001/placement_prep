@@ -637,6 +637,6 @@ Legacy Timer Wheel (cascading):          hrtimer (no cascading):
 3. **LWN: A new approach to kernel timers**: https://lwn.net/Articles/152436/
 4. **LWN: The tick broadcast framework**: https://lwn.net/Articles/574963/
 5. **Thomas Gleixner's hrtimer paper**: https://kernel.org/pub/linux/kernel/people/gleixner/hrtimers.pdf
-6. **clock_event_device documentation**: https://docs.kernel.org/timers/clockevents.html
+6. **clock_event_device documentation**: https://docs.kernel.org/timers/index.html
 7. **`/proc/timer_list` format**: `kernel/time/timer_list.c`
 8. **POSIX timers**: https://man7.org/linux/man-pages/man2/timer_create.2.html

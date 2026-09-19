@@ -370,10 +370,10 @@ and the variants are real, exhaustively matchable data.
 - The Rust Book, ch. 9 — Error Handling — https://doc.rust-lang.org/book/ch09-00-error-handling.html
 - `thiserror` crate documentation — https://docs.rs/thiserror/latest/thiserror/
 - `anyhow` crate documentation — https://docs.rs/anyhow/latest/anyhow/
-- Rust RFC 2442 — `try` blocks and `?`-style operators history — https://rust-lang.github.io/rfcs/2442-replace-...-with-..html (and the original RFC 1715 — `?` operator)
-- RFC 1715 — `?` operator for error propagation — https://rust-lang.github.io/rfcs/1717-impl-trait-for-dyn-trait.html (related)
+- Rust RFC 2388 — `try` blocks — https://github.com/rust-lang/rfcs/blob/master/text/2388-try-expr.md (and the original RFC 1715 — `?` operator)
+- `?` operator (error propagation) — https://doc.rust-lang.org/reference/expressions/operator-expr.html#the-question-mark-operator
 - Burntsushi, "Error Handling in Rust" — https://blog.burntsushi.net/error-handling/
 - Without Boats, "Why `?` works the way it does" — https://without.boats/blog/why-result-works/
 - `std::error::Error` API reference — https://doc.rust-lang.org/std/error/trait.Error.html
-- `Error::provide` stabilization RFC — https://rust-lang.github.io/rfcs/3043-err-derive.html
+- `Error::provide` — https://doc.rust-lang.org/std/error/trait.Error.html#method.provide
 - Failure-to-anyhow migration notes — https://github.com/dtolnay/anyhow/blob/master/README.md

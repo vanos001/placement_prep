@@ -666,7 +666,7 @@ quotacheck -cugm -F vfsv1 /home
 
 - [Linux kernel source: `fs/quota/dquot.c`](https://elixir.bootlin.com/linux/latest/source/fs/quota/dquot.c)
 - [Linux kernel source: `fs/quota/quota.c`](https://elixir.bootlin.com/linux/latest/source/fs/quota/quota.c)
-- [quota(8) man page](https://man7.org/linux/man-pages/man8/quota.8.html)
+- [quota(1) man page](https://man.archlinux.org/man/quota.1.en)
 - [quotactl(2) man page](https://man7.org/linux/man-pages/man2/quotactl.2.html)
 - [xfs_quota(8) man page](https://man7.org/linux/man-pages/man8/xfs_quota.8.html)
 - [Arch Linux Wiki: Disk Quotas](https://wiki.archlinux.org/title/Disk_quota)

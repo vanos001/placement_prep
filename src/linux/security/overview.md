@@ -673,7 +673,7 @@ docker sbom myapp:latest
 
 ```bash
 # Monitor kernel CVEs
-# https://www.kernel.org/category/cves.html
+# https://docs.kernel.org/process/security-bugs.html
 # https://cve.org/ (official CVE database)
 
 # Check kernel version for known vulnerabilities

@@ -313,7 +313,7 @@ doorbells stay on the host until the PCIe boundary itself moves.
 4. DOCA software framework + release notes (DOCA 3.4 archive):
    https://networking-docs.nvidia.com/doca/archive/3-4-0/doca-release-notes
 5. AMD Pensando DPU technology (Salina/Pollara generation):
-   https://www.amd.com/en/products/data-processing-units/pensando.html (search-verified;
+   https://amd.com/en/products/data-processing-units/pensando.html (search-verified;
    amd.com blocks curl)
 6. Open vSwitch, "Flow Hardware offload with Linux TC flower":
    https://docs.openvswitch.org/en/latest/howto/tc-offload

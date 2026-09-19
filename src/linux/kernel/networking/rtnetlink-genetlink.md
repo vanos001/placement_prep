@@ -299,12 +299,12 @@ Note that iproute2 deliberately avoids libnl — instead, it uses libmnl (minima
 
 - RFC 3549 — "Linux Netlink as an IP Services Protocol": https://www.rfc-editor.org/rfc/rfc3549
 - `man 7 netlink` and `man 7 rtnetlink` and `man 3 genl`: https://man7.org/linux/man-pages/man7/netlink.7.html
-- `man 7 genetlink` (Linux-specific): https://man7.org/linux/man-pages/man7/genetlink.7.html
+- Generic Netlink (legacy families): https://docs.kernel.org/userspace-api/netlink/genetlink-legacy.html
 - Kernel source `net/netlink/af_netlink.c`: https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/net/netlink/af_netlink.c
 - Kernel source `net/netlink/genetlink.c`: https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/net/netlink/genetlink.c
 - Kernel source `net/core/rtnetlink.c`: https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/net/core/rtnetlink.c
 - libnl documentation: https://www.infradead.org/~tgr/libnl/
 - iproute2 source: https://github.com/shemminger/iproute2
 - LWN: "An updated look at netlink", J. Corbet (2007): https://lwn.net/Articles/247019/
-- kernel.org documentation `Documentation/networking/netlink_spec/` (YAML-generated netlink protocol descriptions): https://www.kernel.org/doc/html/latest/networking/netlink_spec/index.html
+- kernel.org documentation `Documentation/networking/netlink_spec/` (YAML-generated netlink protocol descriptions): https://docs.kernel.org/netlink/specs/index.html
 - M. Kerrisk, "Linux Netlink", LinuxConfEU 2017 talk and slides: https://man7.org/conf/

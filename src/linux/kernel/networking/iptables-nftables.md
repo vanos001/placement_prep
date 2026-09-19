@@ -351,12 +351,12 @@ Apply with `nft -f nftables.conf`. Inspect: `nft list ruleset` and `conntrack -L
 
 - Netfilter project documentation, *iptables* and *nftables* wikis: https://wiki.nftables.org/ and https://ipset.netfilter.org/
 - `man 8 iptables` and `man 8 iptables-extensions`: https://man7.org/linux/man-pages/man8/iptables.8.html
-- `man 8 nft`: https://man7.org/linux/man-pages/man8/nft.8.html
+- `man 8 nft`: https://manpages.debian.org/nft.8
 - Kernel source `net/netfilter/nf_tables_api.c` and `net/netfilter/nf_tables_core.c`: https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/net/netfilter/nf_tables_api.c
 - Kernel source `net/ipv4/netfilter/ip_tables.c`: https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/net/ipv4/netfilter/ip_tables.c
 - Netfilter hooks API documentation: https://www.netfilter.org/documentation/HOWTO/netfilter-hOWTO-3.html
 - LWN: "nftables: a new firewall and packet filtering subsystem", J. Corbet (2014): https://lwn.net/Articles/564151/
 - LWN: "nftables: a packet filter for the future" (2013): https://lwn.net/Articles/348245/
-- Linux kernel nftables docs (`Documentation/networking/nf_conntrack.rst`): https://www.kernel.org/doc/html/latest/networking/nf_conntrack.html
+- Linux kernel nftables docs (`Documentation/networking/nf_conntrack.rst`): https://docs.kernel.org/networking/index.html
 - Florian Westphal, "nftables: An overview", netfilter workshop: https://netfilter.org/projects/nftables/
 - Eric Leblond & Pierre Chifflier, "nftables: the Linux firewall subsystem", Netdev 0x14 (2020): https://netdevconf.info/

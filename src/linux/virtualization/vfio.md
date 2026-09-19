@@ -600,4 +600,4 @@ echo "Done! Reboot to apply changes."
 - [Hugepages Documentation — docs.kernel.org](https://docs.kernel.org/admin-guide/mm/hugetlbpage.html)
 - [SR-IOV Documentation — docs.kernel.org](https://docs.kernel.org/PCI/pci-iov-howto.html)
 - [KVM VFIO API — docs.kernel.org](https://docs.kernel.org/virt/kvm/devices/vfio.html)
-- [vfio-pci(4) man page](https://man7.org/linux/man-pages/man4/vfio-pci.4.html)
+- [VFIO driver documentation](https://docs.kernel.org/driver-api/vfio.html)

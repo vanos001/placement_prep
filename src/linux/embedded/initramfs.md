@@ -573,7 +573,7 @@ rm -rf initramfs/usr/share/man
 - [kernel.org: initramfs](https://www.kernel.org/doc/html/latest/filesystems/ramfs-rootfs-initramfs.html)
 - [kernel.org: Early userspace support](https://www.kernel.org/doc/html/latest/driver-api/early-userspace/early_userspace_support.html)
 - [dracut documentation](https://man7.org/linux/man-pages/man8/dracut.8.html)
-- [initramfs-tools](https://man7.org/linux/man-pages/man8/initramfs-tools.8.html)
+- [initramfs-tools](https://manpages.org/initramfs-tools/8)
 - [mkinitcpio](https://man.archlinux.org/man/mkinitcpio.8.en)
 - [Arch Linux Wiki: mkinitcpio](https://wiki.archlinux.org/title/Mkinitcpio)
 - [LWN: An introduction to initramfs](https://lwn.net/Articles/210235/)

@@ -443,7 +443,7 @@ microtask queue, deterministic destructor on cancel).
 - Tokio documentation
   https://docs.rs/tokio/latest/tokio/
 - RFC 2394: `async`/`await` (synthetic coroutines)
-  https://rust-lang.github.io/rfcs/2394-async_await_synthetic_coroutines.html
+  https://github.com/rust-lang/rfcs/blob/master/text/2394-async_await.md
 - RFC 2592: the `Future` trait
   https://rust-lang.github.io/rfcs/2592-futures.html
 - RFC 2349: `Pin` and the "projections" problem

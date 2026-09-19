@@ -561,7 +561,7 @@ Common Memory Ordering Mistakes
 - [Free Software Books](https://www.gnu.org/doc/other-free-books.html)
 
 - Linux kernel memory barriers documentation: https://www.kernel.org/doc/html/latest/process/volatile-considered-harmful.html
-- Linux kernel memory-barriers.txt: https://www.kernel.org/doc/html/latest/memory-barriers.html
+- Linux kernel memory-barriers.txt: https://docs.kernel.org/core-api/wrappers/memory-barriers.html
 - LKMM (Linux Kernel Memory Model): https://github.com/torvalds/linux/tree/master/tools/memory-model
 - x86 memory ordering: Intel SDM Volume 3, Chapter 8
 - ARM memory ordering: ARM Architecture Reference Manual, Chapter B2

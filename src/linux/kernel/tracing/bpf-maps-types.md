@@ -419,9 +419,9 @@ and `events` via `ring_buffer__poll()`.
 
 ## References
 
-- Linux kernel docs, "BPF maps" — https://docs.kernel.org/bpf/map_generic.html
-- Linux kernel docs, "BPF_MAP_TYPE_RINGBUF" — https://docs.kernel.org/bpf/map_ringbuf.html
-- Linux kernel docs, BPF map type list — https://docs.kernel.org/userspace-api/ebpf/maps.html
+- Linux kernel docs, "BPF maps" — https://docs.kernel.org/bpf/maps.html
+- Linux kernel docs, "BPF_MAP_TYPE_RINGBUF" — https://docs.kernel.org/bpf/maps.html
+- Linux kernel docs, BPF map type list — https://docs.kernel.org/bpf/maps.html
 - `bpf(2)` man page ( Maintainers: Alexei Starovoitov, Daniel Borkmann) — https://man7.org/linux/man-pages/man2/bpf.2.html
 - libbpf map API documentation — https://libbpf.readthedocs.io/en/latest/
 - `include/uapi/linux/bpf.h` (Linux 6.x) — https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/include/uapi/linux/bpf.h

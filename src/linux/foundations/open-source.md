@@ -809,6 +809,6 @@ The scale of open source is difficult to comprehend. Here are some metrics:
 - [The GNU Manifesto](https://www.gnu.org/gnu/manifesto.html) — Stallman's foundational text
 - [Sigstore](https://www.sigstore.dev/) — Software signing infrastructure
 - [SLSA Framework](https://slsa.dev/) — Supply chain integrity levels
-- [man7.org: Development process](https://man7.org/linux/man-pages/man7/lfds.7.html) — Linux development resources
+- [Kernel development process](https://docs.kernel.org/process/development-process.html) — Linux development resources
 - [Red Hat: The Open Source Way](https://www.redhat.com/en/open-source) — Red Hat's open-source philosophy
 - [Apache Way](https://www.apache.org/theapacheway/) — Apache Foundation governance

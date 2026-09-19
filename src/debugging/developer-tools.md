@@ -277,7 +277,7 @@ flowchart TD
 
 ## bpftrace
 
-`bpftrace` is a high-level tracing language over eBPF. You write short one-liners that the bpftrace compiler turns into BPF bytecode, the kernel verifier checks for safety, and the kernel attaches to a probe (kprobe, tracepoint, USDT, perf event). The [bpftrace docs](https://github.com/bpftrace/bpftrace/blob/master/docs/index.md) list every probe and builtin.
+`bpftrace` is a high-level tracing language over eBPF. You write short one-liners that the bpftrace compiler turns into BPF bytecode, the kernel verifier checks for safety, and the kernel attaches to a probe (kprobe, tracepoint, USDT, perf event). The [bpftrace docs](https://bpftrace.org/) list every probe and builtin.
 
 ### Probes
 
@@ -488,7 +488,7 @@ Postmortem debugging is forensic science, not iterative development. You get one
 - Serebryany, K., Bruening, D., Potapenko, A., & Vyukov, D. (2012). *AddressSanitizer: A Fast Address Sanity Checker.* USENIX ATC. [Paper](https://www.usenix.org/system/files/conference/atc12/atc12-final39.pdf)
 - Serebryany, K., & Iskhodzhanov, T. (2009). *ThreadSanitizer — data race detection in practice.* WBIA. [Paper](https://research.google/pubs/pub35604/)
 - [perf Wiki](https://perf.wiki.kernel.org/) — Linux perf events documentation.
-- [bpftrace Documentation](https://github.com/bpftrace/bpftrace/blob/master/docs/index.md) — language reference and probe guide.
+- [bpftrace Documentation](https://bpftrace.org/) — language reference and probe guide.
 - [tcpdump(1)](https://www.tcpdump.org/manpages/tcpdump.1.html) and [pcap-filter(7)](https://www.tcpdump.org/manpages/pcap-filter.7.html).
 - [Wireshark User's Guide](https://www.wireshark.org/docs/wsug_html_chunked/).
 - [GNU Binutils Documentation](https://sourceware.org/binutils/docs/) — covers objdump, readelf, nm, ld, objcopy, strings.

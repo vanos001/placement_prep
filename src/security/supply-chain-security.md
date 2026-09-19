@@ -435,9 +435,9 @@ Cross-references: secrets used in CI live in a secrets manager — see [./secret
 
 - [SLSA Specification v1.0](https://slsa.dev/spec/v1.0/) — supply-chain levels for software artifacts
 - [NIST SP 800-218: Secure Software Development Framework (SSDF)](https://csrc.nist.gov/pubs/sp/800/218/final) — federal secure development practices
-- [CNCF Software Supply Chain Best Practices Whitepaper](https://web.archive.org/web/20240106031625/https://github.com/cncf/tag-security/tree/main/supply-chain-security/supply-chain-security-paper) — cloud-native guidance
+- [CNCF Software Supply Chain Best Practices Whitepaper](https://github.com/cncf/tag-security/tree/main/community/working-groups/supply-chain-security/supply-chain-security-paper) — cloud-native guidance
 - [OpenSSF Scorecard Documentation](https://securityscorecards.dev/) — automated security-health scoring
-- [in-toto Specification](https://github.com/in-toto/docs/blob/v1.0/spec.md) — attestation framework
+- [in-toto Specification](https://github.com/in-toto/specification/blob/master/in-toto-spec.md) — attestation framework
 - [Sigstore / Cosign Documentation](https://docs.sigstore.dev/) — keyless code signing
 - [CycloneDX SBOM Standard](https://cyclonedx.org/) — OWASP SBOM format
 - [SPDX Specification](https://spdx.dev/) — Linux Foundation SBOM format

@@ -165,4 +165,4 @@ The trade-off: CRDTs are more complex to implement and may not match the applica
 - [Riak Active Anti-Entropy](https://docs.riak.com/riak/kv/2.2.0/using/cluster-operations/active-anti-entropy.1.html)
 - Shapiro et al., "[Conflict-free Replicated Data Types](https://hal.inria.fr/inria-00655378/document)" (SSS 2011)
 - [LWN: Anti-entropy and reconciliation (2014)](https://lwn.net/Articles/612409/)
-- [Merkle Trees for Syncing (Apache Cassandra)](https://cassandra.apache.org/doc/latest/cassandra/architecture/storage_internals.html)
+- [Merkle Trees for Syncing (Apache Cassandra)](https://cassandra.apache.org/doc/latest/cassandra/architecture/storage-engine.html)

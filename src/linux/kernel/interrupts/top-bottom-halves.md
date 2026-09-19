@@ -731,7 +731,7 @@ root         7  0.0  0.0      0     0 ?   S    Jan01   0:08 [ksoftirqd/1]
 - [Linux kernel docs: Bottom halves](https://docs.kernel.org/core-api/local_ops.html) — Bottom half documentation
 - [LWN: The future of tasklets](https://lwn.net/Articles/830929/) — Tasklet deprecation discussion
 - [Linux Device Drivers, Ch. 10](https://lwn.net/Kernel/LDD3/) — Interrupt handling
-- [man7.org: workqueue](https://man7.org/linux/man-pages/man9/workqueue.9.html) — Workqueue API
+- [kernel docs: workqueue](https://docs.kernel.org/core-api/workqueue.html) — Workqueue API
 - [docs.kernel.org: workqueue](https://docs.kernel.org/core-api/workqueue.html) — Workqueue documentation
 - [LWN: NAPI](https://lwn.net/Articles/301926/) — NAPI poll internals
 - [Kernel docs: Threaded IRQs](https://docs.kernel.org/core-api/genericirq.html) — Generic IRQ handling

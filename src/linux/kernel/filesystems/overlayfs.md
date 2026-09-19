@@ -569,7 +569,7 @@ sudo bpftrace -e '
 - [The Linux Kernel Documentation](https://docs.kernel.org/)
 - https://www.kernel.org/doc/html/latest/filesystems/overlayfs.html
 - https://docs.kernel.org/filesystems/overlayfs.html — Official kernel OverlayFS documentation
-- https://man7.org/linux/man-pages/man5/overlayfs.5.html (mount options)
+- https://docs.kernel.org/filesystems/overlayfs.html (mount options)
 - https://lwn.net/Articles/396439/ — "An union filesystem for Linux"
 - https://lwn.net/Articles/612930/ — "Overlayfs: improvements and more"
 - https://docs.docker.com/storage/storagedriver/select-storage-driver/

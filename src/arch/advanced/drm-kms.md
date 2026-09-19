@@ -157,7 +157,7 @@ The `IN_FORMATS` blob on a plane lists every `(format, [modifiers])` the plane c
 - Linux DRM/KMS documentation — https://www.kernel.org/doc/html/latest/gpu/index.html
 - DRM Mode Setting (KMS) — https://www.kernel.org/doc/html/latest/gpu/drm-kms.html
 - DRM Memory Management & dma-buf — https://www.kernel.org/doc/html/latest/driver-api/dma-buf.html
-- DRM Mode-Setting Helper Library — https://www.kernel.org/doc/html/latest/gpu/drm-kms-helper.html
+- DRM Mode-Setting Helper Library — https://docs.kernel.org/gpu/index.html
 - LWN: "DRM rendering and memory management" — https://lwn.net/Articles/283793/
 - LWN: "Atomic mode setting design overview, part 1" (Daniel Vetter, 2014) — https://lwn.net/Articles/652878/
 - LWN: "Atomic mode setting design overview, part 2" — https://lwn.net/Articles/652879/

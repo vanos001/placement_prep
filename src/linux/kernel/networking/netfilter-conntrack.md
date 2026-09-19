@@ -282,7 +282,7 @@ The conntrack table is also the foundation for `CTINFO` mode (DSCP marking via `
 - Kernel docs `Documentation/networking/nf_conntrack-sysctl.rst`: https://www.kernel.org/doc/html/latest/networking/nf_conntrack-sysctl.html
 - LWN: "Network address translation and connection tracking", J. Corbet (2004): https://lwn.net/Articles/83110/
 - LWN: "Connection tracking and NAT in the kernel" series: https://lwn.net/Articles/813793/
-- Conntrack-tools user manual (`conntrack(8)`): https://man7.org/linux/man-pages/man8/conntrack.8.html
+- Conntrack-tools user manual (`conntrack(8)`): https://manpages.debian.org/conntrack.8
 - RFC 3022 — Traditional IP Network Address Translator (Traditional NAT): https://www.rfc-editor.org/rfc/rfc3022
 - Rusty Russell, "Linux 2.4 Packet Filtering HOWTO" (the original netfilter/iptables documentation): https://www.netfilter.org/documentation/HOWTO/packet-filtering-HOWTO.html
 - Pablo Neira Ayuso, "Netfilter's connection tracking system", Netdev 0x1: https://netdevconf.info/0x1/

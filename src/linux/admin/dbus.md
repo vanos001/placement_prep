@@ -323,11 +323,11 @@ For hot paths (e.g. Wayland), D-Bus is bypassed in favour of custom UNIX socket 
 
 - D-Bus specification, https://dbus.freedesktop.org/doc/dbus-specification.html
 - D-Bus tutorial, https://dbus.freedesktop.org/doc/dbus-tutorial.html
-- man dbus-send(1), https://man7.org/linux/man-pages/man1/dbus-send.1.html
-- man dbus-daemon(1), https://man7.org/linux/man-pages/man1/dbus-daemon.1.html
+- man dbus-send(1), https://manpages.debian.org/dbus-send.1
+- man dbus-daemon(1), https://manpages.debian.org/dbus-daemon.1
 - sd-bus documentation, https://www.freedesktop.org/software/systemd/man/sd-bus.html
 - Lennart Poettering, "The New sd-bus API", https://0pointer.de/blog/projects/the-new-systemd-bus-api.html
 - LWN: "A look at D-Bus" — Jake Edge, https://lwn.net/Articles/328516/
 - LWN: "D-Bus 1.0 released" — Jonathan Corbet, https://lwn.net/Articles/211540/
 - busctl(1) man page, https://www.freedesktop.org/software/systemd/man/busctl.html
-- gdbus(1) man page, https://man7.org/linux/man-pages/man1/gdbus.1.html
+- gdbus(1) man page, https://manpages.debian.org/gdbus.1

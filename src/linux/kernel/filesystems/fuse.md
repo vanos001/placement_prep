@@ -695,7 +695,7 @@ if (poll_handle) {
 
 - https://docs.kernel.org/filesystems/fuse/fuse.html
 - https://man7.org/linux/man-pages/man4/fuse.4.html
-- https://man7.org/linux/man-pages/man8/fusermount3.8.html
+- https://man.archlinux.org/man/fusermount3.1.en
 - https://github.com/libfuse/libfuse/wiki
 - https://lwn.net/Articles/787223/ — "FUSE passthrough"
 

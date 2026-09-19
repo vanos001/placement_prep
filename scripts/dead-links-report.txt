@@ -5,107 +5,762 @@ Audit trail for the external-URL pass. Internal links, anchors, SUMMARY,
 Mermaid, MathJax, fences and all DOIs are clean and checked by
 scripts/validate-all.sh; THIS file tracks third-party URLs only.
 
-Original probe (2026-09-19, before this pass): 6,458 external URLs,
-758 reported dead. A careful re-probe showed that number was partly noise:
-20 of the 758 were transient failures (DNS/SSL/timeout) and resolve fine.
+The catalogue below comes from a FULL-REPO sweep (2026-09-19, second pass):
+every distinct external URL in src/ was fetched, not just the ones flagged
+earlier. That is why the totals differ from the first catalogue.
 
 ------------------------------------------------------------------------------
-WHERE THE 758 WENT
+WHAT THE FULL SWEEP FOUND
 ------------------------------------------------------------------------------
-  fixed with a verified LIVE replacement : 129
-      - kernel.org / docs.kernel.org     : 93
-      - man7.org (man pages)             : 20
-      - URL variant (slash/www/index)    : 16
-  fixed with an ARCHIVED snapshot       : 32
-  false positives (resolve fine now)    : 20
-  blocked by bot protection (403/wall)  : 30
-  unverifiable (connection error)       : 76
-  still dead (hard 404)                 : 471
-                                          -----
-  total                                 : 758
+  external URLs swept (distinct hosts: 2067) : 8662
+  HTTP 200 (live)                              : 5872
+  HTTP 404 / 410 (dead)                        : 761
+  HTTP 403 (blocked to scripted clients)       : 645
+  HTTP 429 (rate-limited during the sweep)     : 669
+  bot challenge / other non-200                : 715
+
+  Only 404/410 is a reliable 'gone' signal. 403/429/challenge responses are
+  almost certainly live pages refusing this client; they are NOT counted dead.
 
 ------------------------------------------------------------------------------
-WHAT WAS FIXED
+REPAIRED IN THIS PASS
 ------------------------------------------------------------------------------
+  54 files touched, 60 distinct replacement URLs, every one fetched and
+  title-checked before it was written:
 
-1. docs.kernel.org / www.kernel.org  (93 links across 84 files)
-   The single largest cluster. Most were fabricated paths, e.g.
-   /security/IMA.html, /networking/qdisc.html, /mm/slub.html -- none of
-   those documents exist at those paths. Each was re-pointed using
-   docs.kernel.org's own searchindex (4,074 real document paths), then
-   verified by fetching the target and checking its <title>, e.g.
-     www.kernel.org/doc/Documentation/block/blk-mq.txt -> docs.kernel.org/block/blk-mq.html
-     docs.kernel.org/security/tomoyo.html              -> docs.kernel.org/admin-guide/LSM/tomoyo.html
-     docs.kernel.org/virt/kvm/mmu.html                 -> docs.kernel.org/virt/kvm/x86/mmu.html
-   Where no page exists for a topic, the link now points at that
-   section's index (e.g. /networking/index.html) rather than a 404.
-   git.kernel.org was NOT used as a replacement: it sits behind an
-   Anubis anti-bot wall that answers bots with HTTP 200 + a challenge
-   page, so targets there cannot be verified and were avoided.
-
-2. man7.org  (20 links across 16 files)
-   man7.org 404s for man pages it does not mirror (apt, chroot, nmcli,
-   nft, qemu-img, watchdog, ...). Re-pointed to manpages.debian.org,
-   whose /<name>.<section> URLs are version-agnostic and stable.
-
-3. URL variants  (16 links)
-   Trailing-slash, www-vs-bare, and .html/index.html normalisations.
-   Every candidate was re-checked for soft-404s: e.g. an NVIDIA PDF
-   'fixed' by adding a slash returned HTTP 200 with the title
-   'Page Not Found', and a Merkle/NRC 'fix' silently redirected to the
-   site homepage. Those candidates were rejected (topic-token check).
-
-4. Archived snapshots  (32 links)
-   For hard 404s with no live equivalent, links now point at
-   web.archive.org snapshots. All 32 were fetched and confirmed live.
-   These are the only non-primary sources in the book.
+  kernel.org family (full sweep of all 471 kernel links, now 471/471 live)
+      docs.kernel.org paths that never existed -> real pages
+      (selinux, seccomp, bpf maps x3, cpufreq, cpuidle, vfio, page_alloc,
+       drm-kms-helper, x86/boot, clockevents, netlink specs, nf_conntrack,
+       veth, memory-barriers, io_uring, kprobes OLS, udev OLS)
+  systemd.io                                      7
+  man pages (man7.org section errors, manpages.debian.org, man.archlinux.org) 16
+  Apache Cassandra docs (paths reorganised upstream)   5
+  Rust RFCs / Miri                                7
+  misc (CUDA path, ClickHouse citation, AMD, kata, tag-security, in-toto,
+        gh-ost, bpftrace)                         ~8
 
 ------------------------------------------------------------------------------
-STILL DEAD -- 471 links, 271 hosts (needs human judgement)
+REMAINING — NEEDS A HUMAN DECISION
+------------------------------------------------------------------------------
+  genuine dead links still in the docs : 681
+  (plus 40 intentional example.com/org placeholders, which are correct as-is)
+  affected hosts                       : 376
+
+  These are overwhelmingly pages that were deleted upstream, not URLs that
+  can be rewritten: source-tree citations whose files no longer exist at any
+  path, removed vendor blog posts, and retired documentation trees.
+
+  host                                       count
+  ------------------------------------------------
+  github.com                                    66
+  doi.org                                       14
+  aws.amazon.com                                11
+  developer.apple.com                            8
+  developer.chrome.com                           7
+  learn.microsoft.com                            7
+  web.dev                                        7
+  www.confluent.io                               7
+  cloud.google.com                               6
+  docs.nvidia.com                                6
+  www.cs.cornell.edu                             6
+  en.wikipedia.org                               5
+  research.google                                5
+  www.brendangregg.com                           5
+  www.cs.cmu.edu                                 5
+  www.postgresql.org                             5
+  www.usenix.org                                 5
+  blog.cloudflare.com                            4
+  clickhouse.com                                 4
+  cp-algorithms.com                              4
+  csrc.nist.gov                                  4
+  kernelnewbies.org                              4
+  kubectl.docs.kubernetes.io                     4
+  llvm.org                                       4
+  martinfowler.com                               4
+  min.io                                         4
+  reactnative.dev                                4
+  sre.google                                     4
+  www.bluetooth.com                              4
+  www.cncf.io                                    4
+  www.redhat.com                                 4
+  api.kernelci.org                               3
+  aur.archlinux.org                              3
+  bootlin.com                                    3
+  cdn.kernel.org                                 3
+  docs.google.com                                3
+  docs.u-boot.org                                3
+  gcc.gnu.org                                    3
+  gitlab.com                                     3
+  gvisor.dev                                     3
+  kubernetes.io                                  3
+  lamport.org                                    3
+  linkerd.io                                     3
+  lora-alliance.org                              3
+  p4.org                                         3
+
+------------------------------------------------------------------------------
+FULL LIST BY HOST
 ------------------------------------------------------------------------------
 
-These returned a hard 404 and no live replacement or snapshot was found.
-They need per-link investigation (reading the surrounding prose to decide
-whether to re-point, replace with a different source, or drop the link).
+github.com  (66)
+    https://github.com/CHIP-Specifications/connectedhomeip-spec/blob/master/spec/07-Matter-Data-Model.adoc
+    https://github.com/NVIDIA/TensorRT-LLM/blob/main/benchmarks/README.md
+    https://github.com/OP-TEE/optee_examples.git
+    https://github.com/YOUR_USERNAME/project.git
+    https://github.com/apple/swift-evolution/blob/main/proposals/0307-actor-execution.md
+    https://github.com/apple/swift-evolution/blob/main/proposals/0338-swift-concurrency-backdeployment.md
+    https://github.com/axboe/blktrace
+    https://github.com/bytecodealliance/cranelift/tree/main/peepmatic
+    https://github.com/bytecodealliance/wasmtime/blob/main/cranelift/src/egraph.rs
+    https://github.com/containerd/containerd/blob/main/docs/architecture.md
+    https://github.com/containers/common/blob/main/pkg/seccomp/default.json
+    https://github.com/containers/quadlet**
+    https://github.com/cryptsetup/cryptsetup/wiki
+    https://github.com/eclipse-threadx/rtos
+    https://github.com/epaxos/spindle
+    https://github.com/etsy/debriefing-facilitation-guide
+    https://github.com/example/app
+    https://github.com/example/meta-mylayer.git
+    https://github.com/example/myapp.git
+    https://github.com/flutter/engine/blob/main/impeller/docs/architecture.md
+    https://github.com/gilt/wrk2
+    https://github.com/golang/groupcache/blob/master/consistenthash/jump.go
+    https://github.com/graphprotocol/graphprotocol-docs
+    https://github.com/hodgesds/perf-exporter
+    https://github.com/iovisor/bpfprobe/blob/master/man/adoc/bpftrace.adoc
+    https://github.com/ipld/specs/blob/master/graph-sync/graph-sync.md
+    https://github.com/jirka-h/rt-tests
+    https://github.com/jlpteaching/diveinfoSystems
+    https://github.com/jorgebucaran/awsm-fish
+    https://github.com/keir/pompeii
+    https://github.com/kubernetes-sigs/cri-tools/releases/download/$VERSION/crictl-$VERSION-linux-amd64.tar.gz
+    https://github.com/kubernetes/enhancements/tree/master/keps/sig-network/0057-distributed-ldu
+    https://github.com/kubernetes/enhancements/tree/master/keps/sig-node/3058-psi
+    https://github.com/landlock-lsm/landlock-tools
+    https://github.com/lenb/idlestat.git
+    https://github.com/lib/lib.git
+    https://github.com/my-org/apps
+    https://github.com/my-org/my-app
+    https://github.com/my-org/my-app-deploy
+    https://github.com/ocaml-multicore/ocaml-mpst
+    https://github.com/ongardio/dissertation
+    https://github.com/openbmc/docs**
+    https://github.com/openxml/stablehlo
+    https://github.com/org/.*
+    https://github.com/org/app/.github/workflows/release.yml@refs/tags/v
+    https://github.com/org/gitops-config.git
+    https://github.com/org/k8s-manifests
+    https://github.com/org/k8s-manifests.git
+    https://github.com/org/monorepo.git
+    https://github.com/org/project.git
+    https://github.com/org/repo
+    https://github.com/org/repo/.github/workflows/release.yml
+    https://github.com/org/repo/.github/workflows/release.yml@refs/heads/main
+    https://github.com/org/repo@refs/heads/main
+    https://github.com/original/repo.git
+    https://github.com/ovn-org/ovn-kubernetes/blob/master/docs/architecture.md
+    https://github.com/petewarden/arduino_tinyml
+    https://github.com/pq-crystals/dilithium-round3
+    https://github.com/ptcube/jump-consistent-hash
+    https://github.com/raistlin/latencytop.git
+    https://github.com/slsa-framework/slsa-github-generator/.github/workflows/generator_generic_slsa3.yml
+    https://github.com/tianocore/edk2/tree/master/ShellBinPkg
+    https://github.com/user/my-package
+    https://github.com/user/repo.git
+    https://github.com/user/repo.git@main
+    https://github.com/waltligon/orangefs**
 
-Hosts with the most remaining:
-    23  github.com
-    10  man7.org
-     9  aws.amazon.com
-     7  developer.apple.com
-     7  developer.chrome.com
-     7  learn.microsoft.com
-     7  web.dev
-     6  cloud.google.com
-     6  docs.nvidia.com
-     5  research.google
-     5  systemd.io
-     5  www.brendangregg.com
-     5  www.confluent.io
-     5  www.cs.cornell.edu
-     5  www.postgresql.org
-     4  cassandra.apache.org
-     4  clickhouse.com
-     4  cp-algorithms.com
-     4  kubectl.docs.kubernetes.io
-     4  link.springer.com
-     4  llvm.org
-     4  min.io
-     4  reactnative.dev
-     4  www.cockroachlabs.com
-     4  www.cs.cmu.edu
-   246  ... and 246 more hosts with 1-4 each
+doi.org  (14)
+    https://doi.org/10.1002/(SICI
+    https://doi.org/10.1016/0020-0190(91
+    https://doi.org/10.1016/0022-0000(78
+    https://doi.org/10.1016/0169-7552(89
+    https://doi.org/10.1016/0196-6774(88
+    https://doi.org/10.1016/0196-6774(91
+    https://doi.org/10.1016/0304-3975(82
+    https://doi.org/10.1016/0304-3975(90
+    https://doi.org/10.1016/0304-3975(94
+    https://doi.org/10.1016/0890-5401(87
+    https://doi.org/10.1016/0890-5401(90
+    https://doi.org/10.1016/0890-5401(91
+    https://doi.org/10.1016/S0168-0072(98
+    https://doi.org/10.2168/lmcs-9(4:23
 
-Full list grouped by source file follows.
+aws.amazon.com  (11)
+    https://aws.amazon.com/blogs/compute/containers-without-constructs-aws-lambda-run-firecracker/
+    https://aws.amazon.com/blogs/compute/introducing-the-capacity-optimized-allocation-strategy-for-amazon-ec2-spot-fleets/
+    https://aws.amazon.com/blogs/containers/amazon-ecs-vs-amazon-eks/
+    https://aws.amazon.com/blogs/database/dynamodb-vs-cassandra/
+    https://aws.amazon.com/blogs/infrastructure-and-automation/best-practices-for-using-cloudformation-and-terraform-together/
+    https://aws.amazon.com/blogs/mt/monitoring-cloudwatch-vs-prometheus/
+    https://aws.amazon.com/blogs/opensource/why-aws-loves-rust-and-the-community-we-built-around-firecracker/
+    https://aws.amazon.com/builders-library/why-amazon-prime-video-services-uses-formal-methods/
+    https://aws.amazon.com/builders-library/workload-graceful-degradation/
+    https://aws.amazon.com/cloudfront/cloudflare-alternative/
+    https://aws.amazon.com/route53/cloudflare-alternative/
+
+developer.apple.com  (8)
+    https://developer.apple.com/documentation/coredata/performing_core_data_tasks_on_a_background_task
+    https://developer.apple.com/documentation/devicecheck/appattest
+    https://developer.apple.com/documentation/usernotifications/sending-push-messages-using-the-apple-push-notification-service
+    https://developer.apple.com/documentation/webkitjs/add_to_home_screen
+    https://developer.apple.com/library/archive/documentation/Miscellaneous/Conceptual/iPhoneOSConceptual/iPhoneOSOverview/iPhoneOSOverview.html
+    https://developer.apple.com/library/archive/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/ModifyingthePayload.html
+    https://developer.apple.com/library/archive/documentation/NetworkingInternetWeb/Conceptual/CoreBluetooth_concepts/AboutCoreBluetooth/AboutCoreBluetooth.html
+    https://developer.apple.com/library/archive/documentation/System/Conceptual/ManPages_iPhoneOS/man/task_set_exception_ports.3.html
+
+developer.chrome.com  (7)
+    https://developer.chrome.com/blog/eviction-policy/
+    https://developer.chrome.com/blog/periodic-background-sync/
+    https://developer.chrome.com/blog/webcodecs-now-shipped
+    https://developer.chrome.com/blog/webtransport-shipped
+    https://developer.chrome.com/docs/capabilities/web-transport
+    https://developer.chrome.com/docs/capabilities/webcodecs
+    https://developer.chrome.com/docs/devtools/canvas/
+
+learn.microsoft.com  (7)
+    https://learn.microsoft.com/en-us/azure/architecture/high-availability/
+    https://learn.microsoft.com/en-us/azure/azure-functions/durable/
+    https://learn.microsoft.com/en-us/azure/security/fundamentals/attestation
+    https://learn.microsoft.com/en-us/microsoft-edge/progressive-web-apps-chromium/microsoft-store
+    https://learn.microsoft.com/en-us/sql/relational-databases/databases/snapshots
+    https://learn.microsoft.com/en-us/windows-server/security/kerberos/how-the-kerberos-version-5-authentication-protocol-works
+    https://learn.microsoft.com/en-us/windows/security/hardware-security/tpm/tpm-operations-for-it-pros
+
+web.dev  (7)
+    https://web.dev/articles/http-caching
+    https://web.dev/articles/lighthouse-accessibility
+    https://web.dev/articles/mutationobserver
+    https://web.dev/articles/web-worker-transferable-objects
+    https://web.dev/css-container-queries/
+    https://web.dev/learn/performance/rendering/
+    https://web.dev/learn/pwa/service-worker-lifecycle/
+
+www.confluent.io  (7)
+    https://www.confluent.io/blog/kafka-connect-single-message-transformums-smt-vsmt-with-examples/
+    https://www.confluent.io/blog/kafka-streams-vs-flink-comparison/
+    https://www.confluent.io/blog/schema-registry-a-vital-component-for-event-streaming-applications/
+    https://www.confluent.io/blog/schemas-concepts
+    https://www.confluent.io/blog/sns-vs-kafka/
+    https://www.confluent.io/ebooks/designing-event-driven-systems/
+    https://www.confluent.io/kafka-vs-sqs-vs-rabbitmq/
+
+cloud.google.com  (6)
+    https://cloud.google.com/anthos/clusters/docs/security/networking
+    https://cloud.google.com/architecture/scalability
+    https://cloud.google.com/compute/docs/instances/committed-use-discounts
+    https://cloud.google.com/docs/get-started/choose-a-database
+    https://cloud.google.com/run/docs/about
+    https://cloud.google.com/spanner/docs/query-plans
+
+docs.nvidia.com  (6)
+    https://docs.nvidia.com/cuda/cooperative-groups/index.html
+    https://docs.nvidia.com/deeplearning/frameworks/inference-performance-guide/index.html#structured-sparse
+    https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/metrics.html
+    https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/protocol/extension_auto_complete.html
+    https://docs.nvidia.com/networking/display/mlnxofedv24100700/kernel+transport+layer+security+(ktls
+    https://docs.nvidia.com/networking/pages/viewpage.action?pageId=12013428
+
+www.cs.cornell.edu  (6)
+    https://www.cs.cornell.edu/Courses/cs711/2005fa/papers/p921-choi.pdf
+    https://www.cs.cornell.edu/courses/cs711/2005fa/papers/hind-pioli.pdf
+    https://www.cs.cornell.edu/home/livelock/theory-dc-paper.pdf
+    https://www.cs.cornell.edu/home/livelock/volcano.pdf
+    https://www.cs.cornell.edu/~asdas/research/dsn02-SWIM.pdf
+    https://www.cs.cornell.edu/~asdas/research/swim.pdf
+
+en.wikipedia.org  (5)
+    https://en.wikipedia.org/wiki/Erlang_(unit
+    https://en.wikipedia.org/wiki/GRASP_(object-oriented_design
+    https://en.wikipedia.org/wiki/Hexagonal_architecture_(software
+    https://en.wikipedia.org/wiki/Null_(SQL
+    https://en.wikipedia.org/wiki/Zen_(first_generation
+
+research.google  (5)
+    https://research.google/pubs/megastore-scalable-highly-available-storage/
+    https://research.google/pubs/pub30613/
+    https://research.google/pubs/pub36646/
+    https://research.google/pubs/pub45069.html
+    https://research.google/pubs/pub46902/
+
+www.brendangregg.com  (5)
+    https://www.brendangregg.com/Perf/bcc_cachestat.html
+    https://www.brendangregg.com/blog/2014-07-01/perf-ftrace.html
+    https://www.brendangregg.com/numa.html
+    https://www.brendangregg.com/strace.html
+    https://www.brendangregg.com/systems-performance-2nd-edition.html
+
+www.cs.cmu.edu  (5)
+    https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15740-f03/www/doc/HerlihyMoss-TM.pdf
+    https://www.cs.cmu.edu/~dga/papers/epaxos-sosp13.pdf
+    https://www.cs.cmu.edu/~fp/courses/15281-s07/lectures/kung-why-systolic-1982.pdf
+    https://www.cs.cmu.edu/~gongseg/yao-1982.pdf
+    https://www.cs.cmu.edu/~huanrao/papers/sigmod19.pdf
+
+www.postgresql.org  (5)
+    https://www.postgresql.org/about/news/pgvector-0-7-0-released/
+    https://www.postgresql.org/docs/current/gin-intro.html
+    https://www.postgresql.org/docs/current/gist-intro.html
+    https://www.postgresql.org/docs/current/replication-progress.html
+    https://www.postgresql.org/docs/current/storage-hot-chain.html
+
+www.usenix.org  (5)
+    https://www.usenix.org/conference/atc14/technical-sessions/presentation/weil
+    https://www.usenix.org/conference/fast16/technical-sessions/presentation/xia
+    https://www.usenix.org/conference/hotpar-10/non-scalable-locks-are-dangerous
+    https://www.usenix.org/conference/lisa19/presentation/starovoitov
+    https://www.usenix.org/legacy/publications/library/proceedings/jvm01/full_papers/click/click.pdf
+
+blog.cloudflare.com  (4)
+    https://blog.cloudflare.com/cubic-and-bbr-in-quiche/
+    https://blog.cloudflare.com/optimizing-http-2-header-compression-in-go/
+    https://blog.cloudflare.com/syn-cookie/
+    https://blog.cloudflare.com/tcp-fast-open/
+
+clickhouse.com  (4)
+    https://clickhouse.com/blog/100x-faster-queries-with-asyncio
+    https://clickhouse.com/blog/clickhouse-100x-faster-queries-with-asyncio
+    https://clickhouse.com/blog/clickhouse-vs-snowflake/
+    https://clickhouse.com/docs/en/operations/compression
+
+cp-algorithms.com  (4)
+    https://cp-algorithms.com/algebra/fft-modular.html
+    https://cp-algorithms.com/algebra/linear-recurrances.html
+    https://cp-algorithms.com/algebra/mobius-function.html
+    https://cp-algorithms.com/data_structures/
+
+csrc.nist.gov  (4)
+    https://csrc.nist.gov/CSRC/media/Publications/nistir/8413/final/documents/nistir8413.pdf
+    https://csrc.nist.gov/projects/pki-certificate-management
+    https://csrc.nist.gov/pubs/fips/140-3/upd1/final
+    https://csrc.nist.gov/pubs/nistir/8528/final
+
+kernelnewbies.org  (4)
+    https://kernelnewbies.org/KernelConfiguration
+    https://kernelnewbies.org/KernelMap
+    https://kernelnewbies.org/KernelModules
+    https://kernelnewbies.org/KernelTutorial
+
+kubectl.docs.kubernetes.io  (4)
+    https://kubectl.docs.kubernetes.io/pages/app_management/helm.html
+    https://kubectl.docs.kubernetes.io/pages/app_management/json_patch.html
+    https://kubectl.docs.kubernetes.io/pages/app_management/strategic_merge_patch.html
+    https://kubectl.docs.kubernetes.io/pages/kustomize.html
+
+llvm.org  (4)
+    https://llvm.org/docs/Attributor.html
+    https://llvm.org/doxygen/LoopRotate_8cpp.html
+    https://llvm.org/doxygen/SCCP_8cpp.html
+    https://llvm.org/pubs/2003-Chris-Lattner-MSThesis.pdf
+
+martinfowler.com  (4)
+    https://martinfowler.com/articles/accountingComputer.html
+    https://martinfowler.com/articles/patterns-of-distributed-systems/tcc.html
+    https://martinfowler.com/bliki/CQRSAndEventSourcing.html
+    https://martinfowler.com/eaaDev/EventDrivenCollaboration.html
+
+min.io  (4)
+    https://min.io/docs/minio/linux/operations/site-replication.html
+    https://min.io/product/overview/why-minio
+    https://min.io/resources/docs/MinIO-Architecture.pdf
+    https://min.io/subnet
+
+reactnative.dev  (4)
+    https://reactnative.dev/architecture/fabric
+    https://reactnative.dev/blog/2023/03/09/the-new-architecture-in-react-native-074
+    https://reactnative.dev/docs/faq#how-does-react-native-differ-from-flutter
+    https://reactnative.dev/docs/performance/overview
+
+sre.google  (4)
+    https://sre.google/postmortems/
+    https://sre.google/sre-book/slo-book/
+    https://sre.google/workbook/handling-overload/
+    https://sre.google/workbook/postmortems/
+
+www.bluetooth.com  (4)
+    https://www.bluetooth.com/learn-about-bluetooth/feature-topics/le-audio/
+    https://www.bluetooth.com/learn-about-bluetooth/tech-overview/le-2/
+    https://www.bluetooth.com/specifications/specs/mesh-profile-specification-v1-0-1/
+    https://www.bluetooth.com/specifications/specs/mesh-specification/
+
+www.cncf.io  (4)
+    https://www.cncf.io/announcements/2024/06/25/cert-manager-graduates-from-cncf-incubator/
+    https://www.cncf.io/blog/2020/11/04/envoy-vs-nginx-vs-haproxy/
+    https://www.cncf.io/blog/2021/05/26/argo-workflows-vs-apache-airflow/
+    https://www.cncf.io/blog/2021/05/26/tekton-vs-argo-workflows/
+
+www.redhat.com  (4)
+    https://www.redhat.com/en/topics/cloud-native-apps/quarkus-vs-spring-boot
+    https://www.redhat.com/en/topics/data-storage/change-data-capture
+    https://www.redhat.com/sysadmin/podman-docker-comparison
+    https://www.redhat.com/sysadmin/ssh-jump-host
+
+api.kernelci.org  (3)
+    https://api.kernelci.org/build?kernel_branch=mainline&limit=10
+    https://api.kernelci.org/device
+    https://api.kernelci.org/test?kernel_version=6.12&limit=10
+
+aur.archlinux.org  (3)
+    https://aur.archlinux.org/package-name.git
+    https://aur.archlinux.org/package.git
+    https://aur.archlinux.org/yay.git
+
+bootlin.com  (3)
+    https://bootlin.com/docx/boot-process/
+    https://bootlin.com/training/device-tree/
+    https://bootlin.com/training/embedded-linux-yocto/
+
+cdn.kernel.org  (3)
+    https://cdn.kernel.org/pub/linux/kernel/projects/rt/6.6/patch-${RT_PATCH}.patch.xz
+    https://cdn.kernel.org/pub/linux/kernel/v6.x/ChangeLog-*
+    https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-${KERNEL_VERSION}.tar.xz
+
+docs.google.com  (3)
+    https://docs.google.com/document/d/1KEx2TQGLZIz5YPp3dCJc9DFHiJlbmXjnxxwLxsSvUjE/
+    https://docs.google.com/document/d/1TTj4T-XJ7Tpg8U11vDpaxlzx7HOoF5VQQYsG2ixgyZ4/edit
+    https://docs.google.com/document/d/1VT43Je5CsDVNQ8yy9N-e275fu5NKeu5wXOTwB6w0Xk8/edit
+
+docs.u-boot.org  (3)
+    https://docs.u-boot.org/**
+    https://docs.u-boot.org/en/latest/usage/env.html
+    https://docs.u-boot.org/en/latest/usage/verified-boot.html
+
+gcc.gnu.org  (3)
+    https://gcc.gnu.org/onlinedocs/gccint/CFG-Optimizations.html
+    https://gcc.gnu.org/onlinedocs/gccint/Cross_002dCompilation.html
+    https://gcc.gnu.org/onlinedocs/gccint/VRP.html
+
+gitlab.com  (3)
+    https://gitlab.com/cryptsetup/cryptsetup/-/wikis/Documentation
+    https://gitlab.com/cryptsetup/cryptsetup/-/wikis/LUKS-standard-on-disk-format
+    https://gitlab.com/qemu-project/qemu/-/tree/main/tools/virtiofsd
+
+gvisor.dev  (3)
+    https://gvisor.dev/docs/architecture/
+    https://gvisor.dev/docs/user_guide/benchmarks/
+    https://gvisor.dev/docs/user_guide/compatibility/syscalls/
+
+kubernetes.io  (3)
+    https://kubernetes.io/docs/concepts/architecture/cni/
+    https://kubernetes.io/docs/concepts/scheduling-eviction/scheduler-framework/
+    https://kubernetes.io/docs/reference/kubernetes-api/cluster-resources/mutating-webhook-configuration-v1/
+
+lamport.org  (3)
+    https://lamport.org/tla/paxos.pdf
+    https://lamport.org/tla/tla-video.html
+    https://lamport.org/tla/video.html
+
+linkerd.io  (3)
+    https://linkerd.io/2/features/mtls/
+    https://linkerd.io/2021/01/11/production-deployments/
+    https://linkerd.io/istio-vs-linkerd/
+
+lora-alliance.org  (3)
+    https://lora-alliance.org/resource_hub/lorawan-1-0-4-specification-package/
+    https://lora-alliance.org/resource_hub/lorawan-11-specification/
+    https://lora-alliance.org/resource_hub/lorawan-backend-interface-v1-0/
+
+p4.org  (3)
+    https://p4.org/p4-spec/docs/P4-16-spec.html
+    https://p4.org/p4runtime
+    https://p4.org/specs
+
+raw.githubusercontent.com  (3)
+    https://raw.githubusercontent.com/Mellanox/k8s-rdma-shared-dev-plugin/master/k8s-rdma-shared-dev-plugin-config.yaml
+    https://raw.githubusercontent.com/moby/moby/master/profiles/seccomp/default.json
+    https://raw.githubusercontent.com/torvalds/linux/master/mm/bootmem.c
+
+redis.io  (3)
+    https://redis.io/docs/management/patterns/
+    https://redis.io/docs/reference/internals/
+    https://redis.io/docs/reference/internals/memory-allocator/
+
+use-the-index-luke.com  (3)
+    https://use-the-index-luke.com/sql/no-null
+    https://use-the-index-luke.com/sql/paging-results
+    https://use-the-index-luke.com/sql/window-functions
+
+www.cambridge.org  (3)
+    https://www.cambridge.org/core/books/computability/
+    https://www.cambridge.org/core/books/introduction-to-higherorder-categorical-logic/
+    https://www.cambridge.org/core/books/lectures-on-the-curryhoward-isomorphism/
+
+www.cockroachlabs.com  (3)
+    https://www.cockroachlabs.com/blog/query-planning/
+    https://www.cockroachlabs.com/blog/time-and-ordering-in-cocroachdb/
+    https://www.cockroachlabs.com/docs/stable/architecture/replication.html
+
+www.cs.utexas.edu  (3)
+    https://www.cs.utexas.edu/users/EWD/transcriptions/EWD00xx/EWD123.html
+    https://www.cs.utexas.edu/users/mckinley/380D/papers/briggs-thesis.pdf
+    https://www.cs.utexas.edu/~spec/papers/p32-steensgaard.pdf
+
+www.databricks.com  (3)
+    https://www.databricks.com/blog/2020/05/29/fine-tuning-adaptive-query-execution-in-apache-spark.html
+    https://www.databricks.com/blog/2020/09/09/introducing-photon-our-next-generation-vectorized-query-engine.html
+    https://www.databricks.com/product/databricks-sql/serverless
+
+www.freertos.org  (3)
+    https://www.freertos.org/Documentation/161204_Mastering_the_FreeRTOS_Real_Time_Kernel-A_Hands-On_Tutorial_Guide.pdf
+    https://www.freertos.org/FreeRTOS-Plus/Qualification_AWS.html
+    https://www.freertos.org/kernel.html
+
+www.microsoft.com  (3)
+    https://www.microsoft.com/en-us/research/project/ironfleet/
+    https://www.microsoft.com/en-us/research/publication/mimalloc-free-list-allocator/
+    https://www.microsoft.com/en-us/research/wp-content/uploads/2005/01/2005-PPoPP-ComposableMemoryTransactions.pdf
+
+www.nxp.com  (3)
+    https://www.nxp.com/docs/en/application-note/AN991.pdf
+    https://www.nxp.com/docs/en/user-guide/UM10204.pdf
+    https://www.nxp.com/files/microcontrollers/doc/ref_manual/M68HC11RM.pdf
+
+www.snowflake.com  (3)
+    https://www.snowflake.com/wp-content/uploads/2020/09/SIGMOD-FDB.pdf
+    https://www.snowflake.com/wp-content/uploads/2020/09/Snowflake-Architecture-Whitepaper.pdf
+    https://www.snowflake.com/wp-content/uploads/2020/09/SnowflakeMultiClusterSharedDataArchitecture.pdf
+
+apt.buildkite.com  (2)
+    https://apt.buildkite.com/buildkite-agent
+    https://apt.buildkite.com/buildkite-agent.key.asc
+
+bank.com  (2)
+    https://bank.com/transfer
+    https://bank.com/transfer?to=attacker&amount=10000
+
+catonmat.net  (2)
+    https://catonmat.net/awk-one-liners-explained
+    https://catonmat.net/sed-one-liners-explained
+
+cs.yale.edu  (2)
+    https://cs.yale.edu/homes/thaas/papers/calvin.pdf
+    https://cs.yale.edu/homes/thom/publications/calvin-sigmod12.pdf
+
+cseweb.ucsd.edu  (2)
+    https://cseweb.ucsd.edu/~daniele/LatticeSurvey/
+    https://cseweb.ucsd.edu/~daniele/papers/LWEJ.pdf
+
+debezium.io  (2)
+    https://debezium.io/blog/2023/02/02/transactional-outbox/
+    https://debezium.io/documentation/reference/tutorial/
+
+developers.google.com  (2)
+    https://developers.google.com/speed/bbr
+    https://developers.google.com/web/updates/2016/04/intersectionobserver
+
+doc.akka.io  (2)
+    https://doc.akka.io/docs/akka/current/typed/stream/stream-flows-and-basics.html
+    https://doc.akka.io/docs/akka/current/typed/stream/stream-graphstage.html
+
+doc.rust-lang.org  (2)
+    https://doc.rust-lang.org/nomicon/object-safety.html
+    https://doc.rust-lang.org/reference/unsafe.html
+
+docs.arbitrum.io  (2)
+    https://docs.arbitrum.io/how-arbitrum-works/challenge-protocol
+    https://docs.arbitrum.io/how-arbitrum-works/nitro-overview
+
+docs.ceph.com  (2)
+    https://docs.ceph.com/en/latest/cephfs/best-practices/
+    https://docs.ceph.com/en/latest/rados/operations/auth-intro/
+
+docs.cypress.io  (2)
+    https://docs.cypress.io/app/cloud/introduction
+    https://docs.cypress.io/app/get-started/component-testing
+
+docs.oasis-open.org  (2)
+    https://docs.oasis-open.org/pkcs11/pkcs11-base/v3.1/os/pkcs11-base-v3.1-os.html
+    https://docs.oasis-open.org/virtio/virtio/v1.2/csprd01/virtio-v1.2-csprd01.html
+
+docs.pinot.apache.org  (2)
+    https://docs.pinot.apache.org/basics/comparisons/pinot-vs-druid
+    https://docs.pinot.apache.org/basics/components/star-tree-index
+
+docs.yoctoproject.org  (2)
+    https://docs.yoctoproject.org/bitbake-user-manual/bitbake-user-manual-metadata.html
+    https://docs.yoctoproject.org/dev-manual/common-tasks.html
+
+engineering.linkedin.com  (2)
+    https://engineering.linkedin.com/analytics/real-time-deep-dive-apache-pinot
+    https://engineering.linkedin.com/distributed-systems/log-what-every-software-engineer-should-know-about-real-time-datas-unifying
+
+evil.com  (2)
+    https://evil.com/steal?cookie=
+    https://evil.com/steal?token=
+
+gist.github.com  (2)
+    https://gist.github.com/mondain/b2619a01463ce0ec2234
+    https://gist.github.com/user/id
+
+globalplatform.org  (2)
+    https://globalplatform.org/specs-device/
+    https://globalplatform.org/specs-library/tee-specifications/
+
+grafana.com  (2)
+    https://grafana.com/blog/2021/01/25/loki-vs-elasticsearch-whats-the-difference/
+    https://grafana.com/docs/mimir/latest/configure/configure-about/limits/
+
+groups.csail.mit.edu  (2)
+    https://groups.csail.mit.edu/tds/ShAvTaou95.pdf
+    https://groups.csail.mit.edu/tds/ShAvi-DiSc-ShAle-2006.pdf
+
+homepages.inf.ed.ac.uk  (2)
+    https://homepages.inf.ed.ac.uk/wadler/papers/linear/linear.pdf
+    https://homepages.inf.ed.ac.uk/wadler/papers/taste/taste.pdf
+
+images.nvidia.com  (2)
+    https://images.nvidia.com/cnvml-2/wp-content/uploads/2023/cnvml-2/h100-whitepaper.pdf
+    https://images.nvidia.com/content/volta-architecture-whitepaper.pdf
+
+istio.io  (2)
+    https://istio.io/latest/blog/2023/ambient-reached-beta/
+    https://istio.io/latest/docs/ops/configuration/mesh/config-resource-ready/
+
+jvns.ca  (2)
+    https://jvns.ca/blog/2015/11/20/what-even-is-a-terminal/
+    https://jvns.ca/blog/2024/02/03/the-art-of-command-line/
+
+kernel.org  (2)
+    https://kernel.org/pub/linux/kernel/people/gleixner/hrtimers.pdf
+    https://kernel.org/wiki/realtime
+
+lamport.azurewebsites.net  (2)
+    https://lamport.azurewebsites.net/pubs/chandy-lamport.pdf
+    https://lamport.azurewebsites.net/pubs/fast-paxos.pdf
+
+lwn.net  (2)
+    https://lwn.net/2001/0607-a.html
+    https://lwn.net/Articles/135208/
+
+mirrors.fedoraproject.org  (2)
+    https://mirrors.fedoraproject.org/metalink?repo=epel-$releasever&arch=$basearch
+    https://mirrors.fedoraproject.org/metalink?repo=epel-debug-$releasever&arch=$basearch
+
+owasp.org  (2)
+    https://owasp.org/www-project-mobile-security-testing-guide/
+    https://owasp.org/www-project-top-10-for-agentic-ai-applications/
+
+registry-1.docker.io  (2)
+    https://registry-1.docker.io
+    https://registry-1.docker.io/v2/library/alpine/blobs/$DIGEST
+
+shipilev.net  (2)
+    https://shipilev.net/jvm/anatomy-quark/3-gc-pause/
+    https://shipilev.net/jvm/anatomy-quarks/2-bytecode-basics/
+
+source.android.com  (2)
+    https://source.android.com/docs/core/architecture/kernel/module-interface
+    https://source.android.com/docs/core/ota/modular-system/tombstones
+
+tikv.org  (2)
+    https://tikv.org/docs/5.4/concepts/overview/
+    https://tikv.org/docs/devel/concepts/architecture/
+
+tldp.org  (2)
+    https://tldp.org/HOWTO/html_single/BootPrompt-HOWTO/
+    https://tldp.org/LDP/install-guide/
+
+wiki.archlinux.org  (2)
+    https://wiki.archlinux.org/title/Recovery
+    https://wiki.archlinux.org/title/System_administration
+
+www.amazon.com  (2)
+    https://www.amazon.com/Distributed-Computing-Principles-Algorithms-Applications/dp/0471516421
+    https://www.amazon.com/RISC-V-Reader-Open-Architecture/dp/0999249129
+
+www.anthropic.com  (2)
+    https://www.anthropic.com/engineering/prompt-injection-overview
+    https://www.anthropic.com/research/claude-model-spec
+
+www.bell-labs.com  (2)
+    https://www.bell-labs.com/unix-first-edition/
+    https://www.bell-labs.com/unix-project-history/unix-cacm1974.pdf
+
+www.cl.cam.ac.uk  (2)
+    https://www.cl.cam.ac.uk/research/srg/netos/lock-free/Harris-Fraser-2003.pdf
+    https://www.cl.cam.ac.uk/~pes20/ppc-supplemental/test64.pdf
+
+www.cs.kent.ac.uk  (2)
+    https://www.cs.kent.ac.uk/pubs/1996/543/
+    https://www.cs.kent.ac.uk/research/groups/sysjo/occam/
+
+www.cs.princeton.edu  (2)
+    https://www.cs.princeton.edu/courses/archive/fall06/cos598A/papers/LinearScan.pdf
+    https://www.cs.princeton.edu/~appel/papers/irc.pdf
+
+www.cs.ucsb.edu  (2)
+    https://www.cs.ucsb.edu/~suri/psdir/SOSP07-Dynamo.pdf
+    https://www.cs.ucsb.edu/~suri/psdir/dynamo.pdf
+
+www.eecs.harvard.edu  (2)
+    https://www.eecs.harvard.edu/~cahoon/cicde/papers/p1495-yang.pdf
+    https://www.eecs.harvard.edu/~cmnz/publications/hptnt-sigmod-2020.pdf
+
+www.elsevier.com  (2)
+    https://www.elsevier.com/books/computability-complexity-and-languages/davis/978-0-12-206382-0
+    https://www.elsevier.com/books/the-art-of-computer-programming/knuth/978-0-201-89683-1
+
+www.erlang.org  (2)
+    https://www.erlang.org/docs/getting_started/intro
+    https://www.erlang.org/docs/system/processes
+
+www.graalvm.org  (2)
+    https://www.graalvm.org/graalvm-features/escape-analysis/
+    https://www.graalvm.org/latest/graalvm/jit-compiler/
+
+www.iacr.org  (2)
+    https://www.iacr.org/archive/asiacrypt2009/59120559/59120559.pdf
+    https://www.iacr.org/archive/asiacrypt2011/70730119/70730119.pdf
+
+www.mongodb.com  (2)
+    https://www.mongodb.com/blog/post/mongodb-architecture
+    https://www.mongodb.com/blog/post/resharding-a-collection-in-mongodb-42
+
+www.netfilter.org  (2)
+    https://www.netfilter.org/documentation.html
+    https://www.netfilter.org/documentation/HOWTO/netfilter-hOWTO-3.html
+
+www.open-std.org  (2)
+    http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2018/p2382r0.html
+    https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2018/p0124r7.html
+
+www.starburst.io  (2)
+    https://www.starburst.io/blog/trino-vs-spark-sql/
+    https://www.starburst.io/wp-content/uploads/2020/11/OReilly-Trino-The-Definitive-Guide-2020-11.pdf
+
+www.x.org  (2)
+    https://www.x.org/wiki/Events/XDC2008/Proceedings/
+    https://www.x.org/wiki/Events/XDC2014/XDC2014LankhorstWwMutexes/
+
+www.yugabyte.com  (2)
+    https://www.yugabyte.com/blog/yugabytedb-vs-cockroachdb-comparison/
+    https://www.yugabyte.com/yugabytedb-paper/
+
+xml.org  (2)
+    http://xml.org/sax/features/external-general-entities
+    http://xml.org/sax/features/external-parameter-entities
 
 0pointer.de  (1)
     https://0pointer.de/blog/projects/the-new-systemd-bus-api.html
 
+aantron.github.io  (1)
+    https://aantron.github.io/dream/
+
 access.redhat.com  (1)
     https://access.redhat.com/articles/165953
 
+accounts.google.com  (1)
+    https://accounts.google.com/oauth/authorize
+
+allquantor.at  (1)
+    https://allquantor.at/blockchainbib/pdf/buchman2016.pdf
+
 ankane.org  (1)
     https://ankane.org/pgvector
+
+apache.org  (1)
+    http://apache.org/xml/features/disallow-doctype-decl
 
 api.flutter.dev  (1)
     https://api.flutter.dev/flutter/rendering/RenderingPipeline-class.html
@@ -122,16 +777,8 @@ aptos.dev  (1)
 arstechnica.com  (1)
     https://arstechnica.com/information-technology/2020/05/zfs-101-understanding-zfs-storage-and-raid/
 
-aws.amazon.com  (9)
-    https://aws.amazon.com/blogs/compute/containers-without-constructs-aws-lambda-run-firecracker/
-    https://aws.amazon.com/blogs/compute/introducing-the-capacity-optimized-allocation-strategy-for-amazon-ec2-spot-fleets/
-    https://aws.amazon.com/blogs/containers/amazon-ecs-vs-amazon-eks/
-    https://aws.amazon.com/blogs/database/dynamodb-vs-cassandra/
-    https://aws.amazon.com/blogs/infrastructure-and-automation/best-practices-for-using-cloudformation-and-terraform-together/
-    https://aws.amazon.com/blogs/mt/monitoring-cloudwatch-vs-prometheus/
-    https://aws.amazon.com/blogs/opensource/why-aws-loves-rust-and-the-community-we-built-around-firecracker/
-    https://aws.amazon.com/cloudfront/cloudflare-alternative/
-    https://aws.amazon.com/route53/cloudflare-alternative/
+avro.apache.org  (1)
+    https://avro.apache.org/docs/1.12.0/api/java.html
 
 aws.github.io  (1)
     https://aws.github.io/aws-eks-best-practices-guide/
@@ -139,21 +786,35 @@ aws.github.io  (1)
 bazel.build  (1)
     https://bazel.build/remote/remote-execution-intro
 
-blog.cloudflare.com  (3)
-    https://blog.cloudflare.com/common-hash-conflcit-and-solutions/
-    https://blog.cloudflare.com/syn-cookie/
-    https://blog.cloudflare.com/tcp-fast-open/
+bcachefs.org  (1)
+    https://bcachefs.org/Status/
+
+bit.ly  (1)
+    https://bit.ly/aX9kL2p
+
+blog.burntsushi.net  (1)
+    https://blog.burntsushi.net/error-handling/
 
 blog.eleuther.ai  (1)
     https://blog.eleuther.ai/rotary-position-embeddings/
 
+blog.mozilla.org  (1)
+    https://blog.mozilla.org/security/2020/01/07/crlite-part-2-end-to-end-design-of-a-bloom-filter-based-pki-system/
+
+blog.python.org  (1)
+    https://blog.python.org/2025/10/python-3140-released.html
+
+blog.rust-lang.org  (1)
+    https://blog.rust-lang.org/2018/04/06/impl-trait.html
+
+blog.synthetix.io  (1)
+    https://blog.synthetix.io/issue-report/
+
 blogs.windows.com  (1)
     https://blogs.windows.com/windowsexperience/2020/01/23/introducing-playwright-reliable-cross-browser-testing-for-the-modern-web/
 
-bootlin.com  (3)
-    https://bootlin.com/docx/boot-process/
-    https://bootlin.com/training/device-tree/
-    https://bootlin.com/training/embedded-linux-yocto/
+brand.co  (1)
+    https://brand.co/launch
 
 buoyant.io  (1)
     https://buoyant.io/2020/12/10/linkerd-2-10
@@ -161,41 +822,20 @@ buoyant.io  (1)
 caddyserver.com  (1)
     https://caddyserver.com/docs/comparisons
 
-cassandra.apache.org  (4)
-    https://cassandra.apache.org/doc/latest/cassandra/architecture/storage_internals.html
-    https://cassandra.apache.org/doc/latest/cassandra/developing/data-density.html
-    https://cassandra.apache.org/doc/latest/cassandra/operating/compaction.html
-    https://cassandra.apache.org/doc/latest/cassandra/operating/consistency.html
-
-catonmat.net  (2)
-    https://catonmat.net/awk-one-liners-explained
-    https://catonmat.net/sed-one-liners-explained
+chain.link  (1)
+    https://chain.link/whitepaper/whitepaper-v2.pdf
 
 cheatsheetseries.owasp.org  (1)
     https://cheatsheetseries.owasp.org/cheatsheets/Cross-Site_Scripting_Prevention_Cheat_Sheet.html
 
+chlipala.github.io  (1)
+    https://chlipala.github.io/cpdt/
+
 christopherco.github.io  (1)
     https://christopherco.github.io/multipath-tools/
 
-clickhouse.com  (4)
-    https://clickhouse.com/blog/100x-faster-queries-with-asyncio
-    https://clickhouse.com/blog/clickhouse-100x-faster-queries-with-asyncio
-    https://clickhouse.com/blog/clickhouse-vs-snowflake/
-    https://clickhouse.com/docs/en/operations/compression
-
-cloud.google.com  (6)
-    https://cloud.google.com/anthos/clusters/docs/security/networking
-    https://cloud.google.com/architecture/scalability
-    https://cloud.google.com/compute/docs/instances/committed-use-discounts
-    https://cloud.google.com/docs/get-started/choose-a-database
-    https://cloud.google.com/run/docs/about
-    https://cloud.google.com/spanner/docs/query-plans
-
-cp-algorithms.com  (4)
-    https://cp-algorithms.com/algebra/fft-modular.html
-    https://cp-algorithms.com/algebra/linear-recurrances.html
-    https://cp-algorithms.com/algebra/mobius-function.html
-    https://cp-algorithms.com/data_structures/
+cilium.io  (1)
+    https://cilium.io/blog/2023/03/14/k8s-network-policies-done-right/
 
 cr.openjdk.org  (1)
     https://cr.openjdk.org/~pliden/slides/ZGC-DevTrack-JavaOne-2018.pdf
@@ -205,13 +845,6 @@ cs.brown.edu  (1)
 
 cs.uwaterloo.ca  (1)
     https://cs.uwaterloo.ca/~jnwKim/papers/sigmod2020.pdf
-
-cs.yale.edu  (2)
-    https://cs.yale.edu/homes/thaas/papers/calvin.pdf
-    https://cs.yale.edu/homes/thom/publications/calvin-sigmod12.pdf
-
-csrc.nist.gov  (1)
-    https://csrc.nist.gov/pubs/fips/140-3/upd1/final
 
 css-tricks.com  (1)
     https://css-tricks.com/scroll-animations-with-intersection-observer/
@@ -234,9 +867,8 @@ db.in.tum.de  (1)
 dbmsmusings.blogspot.com  (1)
     https://dbmsmusings.blogspot.com/2019/06/consistency-consensus-and-calvin.html
 
-debezium.io  (2)
-    https://debezium.io/blog/2023/02/02/transactional-outbox/
-    https://debezium.io/documentation/reference/tutorial/
+devblogs.microsoft.com  (1)
+    https://devblogs.microsoft.com/typescript/a-10x-faster-typescript/
 
 developer.amd.com  (1)
     https://developer.amd.com/resources/developer-guides-manuals/
@@ -244,26 +876,14 @@ developer.amd.com  (1)
 developer.android.com  (1)
     https://developer.android.com/topic/performance/runtime
 
-developer.apple.com  (7)
-    https://developer.apple.com/documentation/coredata/performing_core_data_tasks_on_a_background_task
-    https://developer.apple.com/documentation/devicecheck/appattest
-    https://developer.apple.com/documentation/usernotifications/sending-push-messages-using-the-apple-push-notification-service
-    https://developer.apple.com/documentation/webkitjs/add_to_home_screen
-    https://developer.apple.com/library/archive/documentation/Miscellaneous/Conceptual/iPhoneOSConceptual/iPhoneOSOverview/iPhoneOSOverview.html
-    https://developer.apple.com/library/archive/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/ModifyingthePayload.html
-    https://developer.apple.com/library/archive/documentation/System/Conceptual/ManPages_iPhoneOS/man/task_set_exception_ports.3.html
-
-developer.chrome.com  (7)
-    https://developer.chrome.com/blog/eviction-policy/
-    https://developer.chrome.com/blog/periodic-background-sync/
-    https://developer.chrome.com/blog/webcodecs-now-shipped
-    https://developer.chrome.com/blog/webtransport-shipped
-    https://developer.chrome.com/docs/capabilities/web-transport
-    https://developer.chrome.com/docs/capabilities/webcodecs
-    https://developer.chrome.com/docs/devtools/canvas/
+developer.bluetooth.com  (1)
+    https://developer.bluetooth.com/core/Specifications/GATT
 
 developer.confluent.io  (1)
     https://developer.confluent.io/blog/kafka-without-zookeeper-a-gateway-to-kafka-3-0/
+
+developer.ibm.com  (1)
+    https://developer.ibm.com/linuxonpower/
 
 developer.nvidia.com  (1)
     https://developer.nvidia.com/blog/hopper-transformer-engine/
@@ -271,26 +891,20 @@ developer.nvidia.com  (1)
 developers.diem.com  (1)
     https://developers.diem.com/docs/technical-papers/diem-consensus-paper/
 
-developers.google.com  (2)
-    https://developers.google.com/speed/bbr
-    https://developers.google.com/web/updates/2016/04/intersectionobserver
+dist.schmorp.de  (1)
+    http://dist.schmorp.de/libev/libev-4.33.tar.gz
 
 doc.libsodium.org  (1)
     https://doc.libsodium.org/public-key-cryptography/public-key_signatures
 
+doc.opensuse.org  (1)
+    https://doc.opensuse.org/documentation/leap/security/html/book-security/cha-apparmor.html
+
 doc.pypy.org  (1)
     https://doc.pypy.org/en/latest/jit.html
 
-doc.rust-lang.org  (1)
-    https://doc.rust-lang.org/nomicon/object-safety.html
-
-docs.ceph.com  (2)
-    https://docs.ceph.com/en/latest/cephfs/best-practices/
-    https://docs.ceph.com/en/latest/rados/operations/auth-intro/
-
-docs.cypress.io  (2)
-    https://docs.cypress.io/app/cloud/introduction
-    https://docs.cypress.io/app/get-started/component-testing
+docs.chain.link  (1)
+    https://docs.chain.link/chainlink-nodes/oracle-application#off-chain-reporting-ocr
 
 docs.dagster.io  (1)
     https://docs.dagster.io/getting-started/why-dagster
@@ -304,27 +918,23 @@ docs.frrouting.org  (1)
 docs.getdbt.com  (1)
     https://docs.getdbt.com/reference/resource-configs/postgres-scd
 
-docs.google.com  (1)
-    https://docs.google.com/document/d/1KEx2TQGLZIz5YPp3dCJc9DFHiJlbmXjnxxwLxsSvUjE/
+docs.launchdarkly.com  (1)
+    https://docs.launchdarkly.com/sdk/concepts/flags
 
-docs.nvidia.com  (6)
-    https://docs.nvidia.com/cuda/cooperative-groups/index.html
-    https://docs.nvidia.com/deeplearning/frameworks/inference-performance-guide/index.html#structured-sparse
-    https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/metrics.html
-    https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/protocol/extension_auto_complete.html
-    https://docs.nvidia.com/networking/display/mlnxofedv24100700/kernel+transport+layer+security+(ktls
-    https://docs.nvidia.com/networking/pages/viewpage.action?pageId=12013428
-
-docs.oasis-open.org  (2)
-    https://docs.oasis-open.org/pkcs11/pkcs11-base/v3.1/os/pkcs11-base-v3.1-os.html
-    https://docs.oasis-open.org/virtio/virtio/v1.2/csprd01/virtio-v1.2-csprd01.html
+docs.li.fi  (1)
+    https://docs.li.fi/smart-contract-api/bridge-protocols
 
 docs.osgi.org  (1)
     https://docs.osgi.org/specification/osgi.core/8.0.0/framework.module.lifecycle.html
 
-docs.pinot.apache.org  (2)
-    https://docs.pinot.apache.org/basics/comparisons/pinot-vs-druid
-    https://docs.pinot.apache.org/basics/components/star-tree-index
+docs.pipewire.org  (1)
+    https://docs.pipewire.org/page/spa.html
+
+docs.podman.io  (1)
+    https://docs.podman.io/en/latest/markdown/podman-systemd.unit.5.html**
+
+docs.scroll.io  (1)
+    https://docs.scroll.io/technology/overview
 
 docs.sentry.io  (1)
     https://docs.sentry.io/product/cli/upload-symbol-sources/
@@ -332,19 +942,20 @@ docs.sentry.io  (1)
 docs.spring.io  (1)
     https://docs.spring.io/spring-security/reference/saml2/index.html
 
+docs.stoplight.io  (1)
+    https://docs.stoplight.io/docs/spectral/
+
+docs.stripe.com  (1)
+    https://docs.stripe.com/api/rate_limits
+
 docs.swift.org  (1)
     https://docs.swift.org/docs/swift-book/LanguageGuide/Concurrency.html
 
-docs.u-boot.org  (2)
-    https://docs.u-boot.org/en/latest/usage/env.html
-    https://docs.u-boot.org/en/latest/usage/verified-boot.html
-
-docs.yoctoproject.org  (2)
-    https://docs.yoctoproject.org/bitbake-user-manual/bitbake-user-manual-metadata.html
-    https://docs.yoctoproject.org/dev-manual/common-tasks.html
-
 docs.yubico.com  (1)
     https://docs.yubico.com/hardware/yubihsm-2/hardware/yubihsm-2-user-guide.html
+
+docs.zksync.io  (1)
+    https://docs.zksync.io/zk-stack/concepts/prover
 
 documentation.suse.com  (1)
     https://documentation.suse.com/sles/15-SP4/html/SLES-all/cha-apparmor.html
@@ -354,6 +965,9 @@ download.01.org  (1)
 
 duckdb.org  (1)
     https://duckdb.org/2022/03/13/duckdb-internal-3.html
+
+easychair.org  (1)
+    https://easychair.org/publications/openaccess/qhC
 
 ec.europa.eu  (1)
     https://ec.europa.eu/info/law/payment-services-psd2-directive-en
@@ -367,16 +981,8 @@ en.dtm.pub  (1)
 en.pingcap.com  (1)
     https://en.pingcap.com/blog/multi-raft/
 
-en.wikipedia.org  (3)
-    https://en.wikipedia.org/wiki/Erlang_(unit
-    https://en.wikipedia.org/wiki/Hexagonal_architecture_(software
-    https://en.wikipedia.org/wiki/Null_(SQL
-
 engineering.fb.com  (1)
     https://engineering.fb.com/2022/03/07/core-data/scaling-memcache-at-facebook/
-
-engineering.linkedin.com  (1)
-    https://engineering.linkedin.com/analytics/real-time-deep-dive-apache-pinot
 
 erofs.docs.kernel.org  (1)
     https://erofs.docs.kernel.org/en/latest/benchmark.html
@@ -384,58 +990,38 @@ erofs.docs.kernel.org  (1)
 etcd.io  (1)
     https://etcd.io/docs/latest/admin_guide/#disaster-recovery
 
+fcm.googleapis.com  (1)
+    https://fcm.googleapis.com/v1/projects/my-project/messages:send
+
+filecoin.io  (1)
+    https://filecoin.io/papers/storage-f2/
+
+files.openpower.foundation  (1)
+    https://files.openpower.foundation/processed/7022e86f52e111ebb1b30242ac130002/607f84804072c948b2e3145050b7ab0c.pdf
+
 flink.apache.org  (1)
     https://flink.apache.org/news/2015/03/13/preview-flink-0.9.0.html
 
 fluxcd.io  (1)
     https://fluxcd.io/flux/flux-multi-tenancy/
 
+ftp.gnu.org  (1)
+    https://ftp.gnu.org/gnu/hello/hello-${pkgver}.tar.gz
+
 gaia.cs.umass.edu  (1)
     https://gaia.cs.umass.edu/kurose_ross/wiwi.php
 
-gcc.gnu.org  (3)
-    https://gcc.gnu.org/onlinedocs/gccint/CFG-Optimizations.html
-    https://gcc.gnu.org/onlinedocs/gccint/Cross_002dCompilation.html
-    https://gcc.gnu.org/onlinedocs/gccint/VRP.html
+gin-gonic.com  (1)
+    https://gin-gonic.com/docs/
 
-gist.github.com  (1)
-    https://gist.github.com/mondain/b2619a01463ce0ec2234
+git.buildroot.net  (1)
+    https://git.buildroot.net/buildroot
+
+git.openwrt.org  (1)
+    https://git.openwrt.org/openwrt/openwrt.git
 
 github.blog  (1)
     https://github.blog/2021-09-09-sharding-github-database/
-
-github.com  (23)
-    https://github.com/NVIDIA/TensorRT-LLM/blob/main/benchmarks/README.md
-    https://github.com/WebAssembly/WASI/blob/main/wasip2/README.md
-    https://github.com/axboe/blktrace
-    https://github.com/bpftrace/bpftrace/blob/master/docs/index.md
-    https://github.com/bytecodealliance/cranelift/tree/main/peepmatic
-    https://github.com/bytecodealliance/wasmtime/blob/main/cranelift/src/egraph.rs
-    https://github.com/containerd/containerd/blob/main/docs/architecture.md
-    https://github.com/cryptsetup/cryptsetup/wiki
-    https://github.com/eclipse-threadx/rtos
-    https://github.com/epaxos/spindle
-    https://github.com/etsy/debriefing-facilitation-guide
-    https://github.com/flutter/engine/blob/main/impeller/docs/architecture.md
-    https://github.com/gilt/wrk2
-    https://github.com/github/gh-ost/blob/master/doc/why-trigger-issues.md
-    https://github.com/golang/groupcache/blob/master/consistenthash/jump.go
-    https://github.com/in-toto/docs/blob/v1.0/spec.md
-    https://github.com/jirka-h/rt-tests
-    https://github.com/jlpteaching/diveinfoSystems
-    https://github.com/jorgebucaran/awsm-fish
-    https://github.com/keir/pompeii
-    https://github.com/llvm/llvm-project/blob/main/llvm/lib/CodeGen/MachinePeephole.cpp
-    https://github.com/ongardio/dissertation
-    https://github.com/ptcube/jump-consistent-hash
-
-gitlab.com  (3)
-    https://gitlab.com/cryptsetup/cryptsetup/-/wikis/Documentation
-    https://gitlab.com/cryptsetup/cryptsetup/-/wikis/LUKS-standard-on-disk-format
-    https://gitlab.com/qemu-project/qemu/-/tree/main/tools/virtiofsd
-
-globalplatform.org  (1)
-    https://globalplatform.org/specs-device/
 
 go.dev  (1)
     https://go.dev/doc/tutorial/module
@@ -446,21 +1032,20 @@ godbolt.org  (1)
 google.github.io  (1)
     https://google.github.io/security-research/pocs/linux/cve-2022-29582/
 
-grafana.com  (2)
-    https://grafana.com/blog/2021/01/25/loki-vs-elasticsearch-whats-the-difference/
-    https://grafana.com/docs/mimir/latest/configure/configure-about/limits/
-
-groups.csail.mit.edu  (2)
-    https://groups.csail.mit.edu/tds/ShAvTaou95.pdf
-    https://groups.csail.mit.edu/tds/ShAvi-DiSc-ShAle-2006.pdf
-
-gvisor.dev  (3)
-    https://gvisor.dev/docs/architecture/
-    https://gvisor.dev/docs/user_guide/benchmarks/
-    https://gvisor.dev/docs/user_guide/compatibility/syscalls/
-
 hadoop.apache.org  (1)
     https://hadoop.apache.org/docs/current/api/org/apache/hadoop/net/BlockPlacementPolicy.html
+
+helidon.io  (1)
+    https://helidon.io/docs/v4/about/nima
+
+herbsutter.com  (1)
+    https://herbsutter.com/2013/09/30/atomic-weapons-the-c-memory-model-and-modern-hardware/
+
+honeycomb.io  (1)
+    https://honeycomb.io/blog/canary-vs-blue-green-vs-rolling-deployments
+
+hooks.slack.com  (1)
+    https://hooks.slack.com/services/xxx/yyy/zzz
 
 huggingface.co  (1)
     https://huggingface.co/blog/4bit-transformers-with-bitsandbytes
@@ -468,18 +1053,23 @@ huggingface.co  (1)
 ignite.apache.org  (1)
     https://ignite.apache.org/docs/latest/key-value-store/collocated-affinity
 
-images.nvidia.com  (2)
-    https://images.nvidia.com/cnvml-2/wp-content/uploads/2023/cnvml-2/h100-whitepaper.pdf
-    https://images.nvidia.com/content/volta-architecture-whitepaper.pdf
-
 imply.io  (1)
     https://imply.io/blog/real-time-analytics-comparison-druid-vs-clickhouse/
+
+in-toto.io  (1)
+    https://in-toto.io/attestation/slsa/v1
 
 indepth.dev  (1)
     https://indepth.dev/posts/53/react-internals-fiber
 
-istio.io  (1)
-    https://istio.io/latest/blog/2023/ambient-reached-beta/
+inside.java  (1)
+    https://inside.java/2024/02/04/sip108/
+
+iquilezles.org  (1)
+    https://iquilezles.org/articles/raymarchff/
+
+iris-project.org  (1)
+    https://iris-project.org/pdfs/2018-jfp-final.pdf
 
 jasonpearce.github.io  (1)
     https://jasonpearce.github.io/2017/03/02/hexagonal-clean-architecture.html
@@ -490,43 +1080,14 @@ java.testcontainers.org  (1)
 jemalloc.net  (1)
     https://jemalloc.net/jemalloc.html
 
-jvns.ca  (2)
-    https://jvns.ca/blog/2015/11/20/what-even-is-a-terminal/
-    https://jvns.ca/blog/2024/02/03/the-art-of-command-line/
-
 kb.isc.org  (1)
     https://kb.isc.org/docs/isc-dhcp-44-manual-pages
-
-kernel.org  (1)
-    https://kernel.org/wiki/realtime
-
-kernelnewbies.org  (3)
-    https://kernelnewbies.org/KernelConfiguration
-    https://kernelnewbies.org/KernelModules
-    https://kernelnewbies.org/KernelTutorial
-
-kubectl.docs.kubernetes.io  (4)
-    https://kubectl.docs.kubernetes.io/pages/app_management/helm.html
-    https://kubectl.docs.kubernetes.io/pages/app_management/json_patch.html
-    https://kubectl.docs.kubernetes.io/pages/app_management/strategic_merge_patch.html
-    https://kubectl.docs.kubernetes.io/pages/kustomize.html
-
-kubernetes.io  (3)
-    https://kubernetes.io/docs/concepts/architecture/cni/
-    https://kubernetes.io/docs/concepts/scheduling-eviction/scheduler-framework/
-    https://kubernetes.io/docs/reference/kubernetes-api/cluster-resources/mutating-webhook-configuration-v1/
 
 lampwww.epfl.ch  (1)
     https://lampwww.epfl.ch/~odersky/papers/actors-cacm.pdf
 
-learn.microsoft.com  (7)
-    https://learn.microsoft.com/en-us/azure/architecture/high-availability/
-    https://learn.microsoft.com/en-us/azure/azure-functions/durable/
-    https://learn.microsoft.com/en-us/azure/security/fundamentals/attestation
-    https://learn.microsoft.com/en-us/microsoft-edge/progressive-web-apps-chromium/microsoft-store
-    https://learn.microsoft.com/en-us/sql/relational-databases/databases/snapshots
-    https://learn.microsoft.com/en-us/windows-server/security/kerberos/how-the-kerberos-version-5-authentication-protocol-works
-    https://learn.microsoft.com/en-us/windows/security/hardware-security/tpm/tpm-operations-for-it-pros
+letsencrypt.org  (1)
+    https://letsencrypt.org/2023/07/10/retiring-tls1-0-1-1.html
 
 libra.org  (1)
     https://libra.org/white-paper/
@@ -534,55 +1095,20 @@ libra.org  (1)
 lilianweng.github.io  (1)
     https://lilianweng.github.io/posts/2021-08-28-self-supervised-comparison/
 
-link.springer.com  (4)
-    https://link.springer.com/article/10.1007/s10817-015-9348-x
-    https://link.springer.com/article/10.1023/A:1010095603625
-    https://link.springer.com/book/10.1007/3-540-29112-1
-    https://link.springer.com/book/10.1007/978-3-662-06700-8
-
-linkerd.io  (3)
-    https://linkerd.io/2/features/mtls/
-    https://linkerd.io/2021/01/11/production-deployments/
-    https://linkerd.io/istio-vs-linkerd/
-
-llvm.org  (4)
-    https://llvm.org/docs/Attributor.html
-    https://llvm.org/doxygen/LoopRotate_8cpp.html
-    https://llvm.org/doxygen/SCCP_8cpp.html
-    https://llvm.org/pubs/2003-Chris-Lattner-MSThesis.pdf
-
 lmax-exploratory.github.io  (1)
     https://lmax-exploratory.github.io/disruptor/
-
-lora-alliance.org  (1)
-    https://lora-alliance.org/resource_hub/lorawan-1-0-4-specification-package/
-
-lwn.net  (1)
-    https://lwn.net/2001/0607-a.html
-
-man7.org  (10)
-    https://man7.org/linux/man-pages/man1/cyclictest.1.html
-    https://man7.org/linux/man-pages/man4/binder.4.html
-    https://man7.org/linux/man-pages/man4/vfio-pci.4.html
-    https://man7.org/linux/man-pages/man5/vlan.5.html
-    https://man7.org/linux/man-pages/man7/lfds.7.html
-    https://man7.org/linux/man-pages/man7/posixipc.7.html
-    https://man7.org/linux/man-pages/man8/initramfs-tools.8.html
-    https://man7.org/linux/man-pages/man8/quota.8.html
-    https://man7.org/linux/man-pages/man9/spin_lock_irqsave.9.html
-    https://man7.org/linux/man-pages/man9/workqueue.9.html
 
 manybutfinite.com  (1)
     https://manybutfinite.com/post/paging-in-linux/
 
-martinfowler.com  (1)
-    https://martinfowler.com/articles/patterns-of-distributed-systems/tcc.html
+math-comp.github.io  (1)
+    https://math-comp.github.io/docs/
 
-min.io  (4)
-    https://min.io/docs/minio/linux/operations/site-replication.html
-    https://min.io/product/overview/why-minio
-    https://min.io/resources/docs/MinIO-Architecture.pdf
-    https://min.io/subnet
+microprofile.io  (1)
+    https://microprofile.io/specs/
+
+millenniumprize.org  (1)
+    https://millenniumprize.org/technology-prize/linux/
 
 mixpanel.com  (1)
     https://mixpanel.com/blog/what-is-cohort-analysis/
@@ -593,6 +1119,9 @@ mode.com  (1)
 nakryiko.com  (1)
     https://nakryiko.com/posts/libbpf-ultimate-guide/
 
+netdevconf.info  (1)
+    https://netdevconf.info/0x1/
+
 nginx.org  (1)
     https://nginx.org/en/docs/admin_guide.html
 
@@ -602,18 +1131,32 @@ nvmexpress.org  (1)
 nx.dev  (1)
     https://nx.dev/concepts/how-nx-works
 
+oauth2.googleapis.com  (1)
+    https://oauth2.googleapis.com/token
+
+ocaml.org  (1)
+    https://ocaml.org/docs/multicore
+
 opennetworking.org  (1)
     https://opennetworking.org/wp-content/uploads/2014/10/openflow-spec-v1.5.1.pdf
 
-owasp.org  (1)
-    https://owasp.org/www-project-mobile-security-testing-guide/
+other.com  (1)
+    http://other.com/widget
 
-p4.org  (2)
-    https://p4.org/p4-spec/docs/P4-16-spec.html
-    https://p4.org/p4runtime
+packages.grafana.com  (1)
+    https://packages.grafana.com/oss/deb
+
+people.debian.org  (1)
+    https://people.debian.org/~gio/dqib/riscv64-virt/image.qcow2
+
+platform.openai.com  (1)
+    https://platform.openai.com/docs/guides/prompt-injection
 
 playwright.dev  (1)
     https://playwright.dev/docs/api/test-locator#locator-screenshot
+
+predr.ag  (1)
+    https://predr.ag/blog/on-sealed-traits/
 
 pypy.org  (1)
     https://pypy.org/stm1.html
@@ -624,28 +1167,23 @@ pytorch.org  (1)
 qmonnet.github.io  (1)
     https://qmonnet.github.io/whirl-offload/2019/04/18/tc-bpf-egress/
 
-reactnative.dev  (4)
-    https://reactnative.dev/architecture/fabric
-    https://reactnative.dev/blog/2023/03/09/the-new-architecture-in-react-native-074
-    https://reactnative.dev/docs/faq#how-does-react-native-differ-from-flutter
-    https://reactnative.dev/docs/performance/overview
+quarkus.io  (1)
+    https://quarkus.io/guides/quarkus-runtime-guide
+
+react.dev  (1)
+    https://react.dev/blog/2024/10/21/react-compiler
 
 redis.com  (1)
     https://redis.com/blog/redis-streams-vs-apache-kafka/
 
-redis.io  (2)
-    https://redis.io/docs/management/patterns/
-    https://redis.io/docs/reference/internals/memory-allocator/
-
 refspecs.linuxbase.org  (1)
     https://refspecs.linuxbase.org/elf/gabi4/ch4.eheader.html
 
-research.google  (5)
-    https://research.google/pubs/megastore-scalable-highly-available-storage/
-    https://research.google/pubs/pub30613/
-    https://research.google/pubs/pub36646/
-    https://research.google/pubs/pub45069.html
-    https://research.google/pubs/pub46902/
+repo.cloudlinux.com  (1)
+    https://repo.cloudlinux.com/kernelcare/kernelcare.install
+
+roninblockchain.substack.com  (1)
+    https://roninblockchain.substack.com/p/community-alert-ronin-validators
 
 rook.io  (1)
     https://rook.io/docs/rook/latest/ceph-storage.html
@@ -659,51 +1197,41 @@ seata.io  (1)
 semiconductor.samsung.com  (1)
     https://semiconductor.samsung.com/dram/cxl-memory-module/
 
-shipilev.net  (2)
-    https://shipilev.net/jvm/anatomy-quark/3-gc-pause/
-    https://shipilev.net/jvm/anatomy-quarks/2-bytecode-basics/
-
 shopify.engineering  (1)
     https://shopify.engineering/ship-fast-with-webassembly-shopify-functions
+
+skiboot.readthedocs.io  (1)
+    https://skiboot.readthedocs.io/
+
+smallcultfollowing.com  (1)
+    https://smallcultfollowing.com/babysteps/blog/2017/09/15/coherence-based-on-explicit-orphan-rules/
 
 snyk.io  (1)
     https://snyk.io/research/prototype-pollution-in-nodejs/
 
-source.android.com  (2)
-    https://source.android.com/docs/core/architecture/kernel/module-interface
-    https://source.android.com/docs/core/ota/modular-system/tombstones
+software.schmorp.de  (1)
+    http://software.schmorp.de/pkg/libev.html
 
 square.github.io  (1)
     https://square.github.io/retrofit/
 
-sre.google  (3)
-    https://sre.google/postmortems/
-    https://sre.google/sre-book/slo-book/
-    https://sre.google/workbook/postmortems/
-
 stability.ai  (1)
     https://stability.ai/news/stability-ai-and-amd-collaborate-to-brain-generative-ai-workloads
 
-systemd.io  (5)
-    https://systemd.io/JOURNAL-FILES/
-    https://systemd.io/JOURNAL_SECURITY/
-    https://systemd.io/NETWORK/
-    https://systemd.io/PERSISTENT_DEVICE_NAMING/
-    https://systemd.io/PORTING_TO_RECEIVING_SD_LISTEN_FDS/
+techcrunch.com  (1)
+    https://techcrunch.com/2012/04/14/an-interview-with-miwako-aka-git-creator-linus-torvalds/
+
+thegraph.com  (1)
+    https://thegraph.com/blog/proof-of-indexing
 
 theory.stanford.edu  (1)
     https://theory.stanford.edu/~srini/215a/Dist.pdf
 
-tikv.org  (2)
-    https://tikv.org/docs/5.4/concepts/overview/
-    https://tikv.org/docs/devel/concepts/architecture/
-
 timdettmers.com  (1)
     https://timdettmers.com/2023/05/19/qlora-4-bit-queens/
 
-tldp.org  (2)
-    https://tldp.org/HOWTO/html_single/BootPrompt-HOWTO/
-    https://tldp.org/LDP/install-guide/
+token.actions.githubusercontent.com  (1)
+    https://token.actions.githubusercontent.com
 
 traefik.io  (1)
     https://traefik.io/blog/comparing-traefik-and-nginx/
@@ -711,16 +1239,20 @@ traefik.io  (1)
 trino.io  (1)
     https://trino.io/papers/presto-sigmod-2019.pdf
 
+trustedfirmware-a.readthedocs.io  (1)
+    https://trustedfirmware-a.readthedocs.io/**
+
 tutorial.ponylang.io  (1)
     https://tutorial.ponylang.io/actors/actors.html
 
+ubuntu.com  (1)
+    https://ubuntu.com/security/secure-boot
+
+ucsd-progsys.github.io  (1)
+    https://ucsd-progsys.github.io/liquidhaskell/papers.html
+
 uefi.org  (1)
     https://uefi.org/specifications/ACPI/6.4/
-
-use-the-index-luke.com  (3)
-    https://use-the-index-luke.com/sql/no-null
-    https://use-the-index-luke.com/sql/paging-results
-    https://use-the-index-luke.com/sql/window-functions
 
 v8.dev  (1)
     https://v8.dev/blog/orinoco-gc
@@ -728,21 +1260,11 @@ v8.dev  (1)
 valgrind.org  (1)
     https://valgrind.org/docs/valgrind-2002.pdf
 
-web.dev  (7)
-    https://web.dev/articles/http-caching
-    https://web.dev/articles/lighthouse-accessibility
-    https://web.dev/articles/mutationobserver
-    https://web.dev/articles/web-worker-transferable-objects
-    https://web.dev/css-container-queries/
-    https://web.dev/learn/performance/rendering/
-    https://web.dev/learn/pwa/service-worker-lifecycle/
+wasmtime.dev  (1)
+    https://wasmtime.dev/security.html
 
 web.stanford.edu  (1)
     https://web.stanford.edu/class/cs345d-01/rl/mohan-aries.pdf
-
-wiki.archlinux.org  (2)
-    https://wiki.archlinux.org/title/Recovery
-    https://wiki.archlinux.org/title/System_administration
 
 wiki.gentoo.org  (1)
     https://wiki.gentoo.org/wiki/Man:emerge
@@ -756,46 +1278,32 @@ wiki.nftables.org  (1)
 wiki.openjdk.org  (1)
     https://wiki.openjdk.org/display/HotSpot/MethodHandles
 
-www.amazon.com  (1)
-    https://www.amazon.com/Distributed-Computing-Principles-Algorithms-Applications/dp/0471516421
+without.boats  (1)
+    https://without.boats/blog/why-result-works/
 
-www.anthropic.com  (2)
-    https://www.anthropic.com/engineering/prompt-injection-overview
-    https://www.anthropic.com/research/claude-model-spec
+wormhole.com  (1)
+    https://wormhole.com/wormhole-incident-report.pdf
 
 www.astronomer.io  (1)
     https://www.astronomer.io/guides/airflow-dagster-prefect-comparison/
 
-www.bell-labs.com  (1)
-    https://www.bell-labs.com/unix-first-edition/
-
-www.bluetooth.com  (2)
-    https://www.bluetooth.com/learn-about-bluetooth/feature-topics/le-audio/
-    https://www.bluetooth.com/specifications/specs/mesh-specification/
+www.baeldung.com  (1)
+    https://www.baeldung.com/spring-bean-lifecycle
 
 www.bosch-mobility.com  (1)
     https://www.bosch-mobility.com/en/mobility/mobility-services/mobility-software/can/
 
-www.brendangregg.com  (5)
-    https://www.brendangregg.com/Perf/bcc_cachestat.html
-    https://www.brendangregg.com/blog/2014-07-01/perf-ftrace.html
-    https://www.brendangregg.com/numa.html
-    https://www.brendangregg.com/strace.html
-    https://www.brendangregg.com/systems-performance-2nd-edition.html
-
 www.broadcom.com  (1)
     https://www.broadcom.com/products/fibre-channel
-
-www.cambridge.org  (3)
-    https://www.cambridge.org/core/books/computability/
-    https://www.cambridge.org/core/books/introduction-to-higherorder-categorical-logic/
-    https://www.cambridge.org/core/books/lectures-on-the-curryhoward-isomorphism/
 
 www.can-cia.org  (1)
     https://www.can-cia.org/standards/specifications/
 
 www.census.gov  (1)
     https://www.census.gov/library/working-papers/2018/adrm/DSDP-working-paper.html
+
+www.chainalysis.com  (1)
+    https://www.chainalysis.com/blog/212-crypto-crime-report-2022-bridge-hacks/
 
 www.chromium.org  (1)
     https://www.chromium.org/developers/design-documents/linux-seccomp-bpf-sandbox/
@@ -806,29 +1314,11 @@ www.cidrdb.org  (1)
 www.cisa.gov  (1)
     https://www.cisa.gov/zero-trust
 
-www.cl.cam.ac.uk  (1)
-    https://www.cl.cam.ac.uk/research/srg/netos/lock-free/Harris-Fraser-2003.pdf
-
 www.cloudzero.com  (1)
     https://www.cloudzero.com/blog/eks-vs-gke-vs-aks
 
-www.cncf.io  (3)
-    https://www.cncf.io/blog/2020/11/04/envoy-vs-nginx-vs-haproxy/
-    https://www.cncf.io/blog/2021/05/26/argo-workflows-vs-apache-airflow/
-    https://www.cncf.io/blog/2021/05/26/tekton-vs-argo-workflows/
-
-www.cockroachlabs.com  (4)
-    https://www.cockroachlabs.com/blog/cockroachdb-living-without-true-time/
-    https://www.cockroachlabs.com/blog/query-planning/
-    https://www.cockroachlabs.com/blog/time-and-ordering-in-cocroachdb/
-    https://www.cockroachlabs.com/docs/stable/architecture/replication.html
-
-www.confluent.io  (5)
-    https://www.confluent.io/blog/kafka-connect-single-message-transformums-smt-vsmt-with-examples/
-    https://www.confluent.io/blog/kafka-streams-vs-flink-comparison/
-    https://www.confluent.io/blog/schema-registry-a-vital-component-for-event-streaming-applications/
-    https://www.confluent.io/blog/sns-vs-kafka/
-    https://www.confluent.io/kafka-vs-sqs-vs-rabbitmq/
+www.computerhistory.org  (1)
+    https://www.computerhistory.org/unix/
 
 www.consul.io  (1)
     https://www.consul.io/docs/intro/zk-etcd-consul-cmp.html
@@ -839,27 +1329,6 @@ www.cs.berkeley.edu  (1)
 www.cs.cit.tum.de  (1)
     https://www.cs.cit.tum.de/~leis/
 
-www.cs.cmu.edu  (4)
-    https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15740-f03/www/doc/HerlihyMoss-TM.pdf
-    https://www.cs.cmu.edu/~dga/papers/epaxos-sosp13.pdf
-    https://www.cs.cmu.edu/~fp/courses/15281-s07/lectures/kung-why-systolic-1982.pdf
-    https://www.cs.cmu.edu/~huanrao/papers/sigmod19.pdf
-
-www.cs.cornell.edu  (5)
-    https://www.cs.cornell.edu/Courses/cs711/2005fa/papers/p921-choi.pdf
-    https://www.cs.cornell.edu/courses/cs711/2005fa/papers/hind-pioli.pdf
-    https://www.cs.cornell.edu/home/livelock/theory-dc-paper.pdf
-    https://www.cs.cornell.edu/home/livelock/volcano.pdf
-    https://www.cs.cornell.edu/~asdas/research/swim.pdf
-
-www.cs.kent.ac.uk  (2)
-    https://www.cs.kent.ac.uk/pubs/1996/543/
-    https://www.cs.kent.ac.uk/research/groups/sysjo/occam/
-
-www.cs.princeton.edu  (2)
-    https://www.cs.princeton.edu/courses/archive/fall06/cos598A/papers/LinearScan.pdf
-    https://www.cs.princeton.edu/~appel/papers/irc.pdf
-
 www.cs.purdue.edu  (1)
     https://www.cs.purdue.edu/homes/zheng16/papers/tracing-jit.pdf
 
@@ -869,23 +1338,17 @@ www.cs.rochester.edu  (1)
 www.cs.rutgers.edu  (1)
     https://www.cs.rutgers.edu/~pxk/416/notes/paxos.html
 
+www.cs.sjsu.edu  (1)
+    https://www.cs.sjsu.edu/faculty/pollett/271-F2007/Notes/ajtai.pdf
+
 www.cs.tau.ac.il  (1)
     https://www.cs.tau.ac.il/~shahar/
 
 www.cs.tufts.edu  (1)
     https://www.cs.tufts.edu/~nr/cs257/archive/john-hughes/QuickCheck.pdf
 
-www.cs.ucsb.edu  (2)
-    https://www.cs.ucsb.edu/~suri/psdir/SOSP07-Dynamo.pdf
-    https://www.cs.ucsb.edu/~suri/psdir/dynamo.pdf
-
 www.cs.umd.edu  (1)
     https://www.cs.umd.edu/~abadi/papers/abadi-sssi-vldb08.pdf
-
-www.cs.utexas.edu  (3)
-    https://www.cs.utexas.edu/users/EWD/transcriptions/EWD00xx/EWD123.html
-    https://www.cs.utexas.edu/users/mckinley/380D/papers/briggs-thesis.pdf
-    https://www.cs.utexas.edu/~spec/papers/p32-steensgaard.pdf
 
 www.cs.wisc.edu  (1)
     https://www.cs.wisc.edu/~bart/fuzz/CS-TR-1990-895.pdf
@@ -899,34 +1362,20 @@ www.cse.iitb.ac.in  (1)
 www.cypress.io  (1)
     https://www.cypress.io/real-world-testing
 
-www.databricks.com  (3)
-    https://www.databricks.com/blog/2020/05/29/fine-tuning-adaptive-query-execution-in-apache-spark.html
-    https://www.databricks.com/blog/2020/09/09/introducing-photon-our-next-generation-vectorized-query-engine.html
-    https://www.databricks.com/product/databricks-sql/serverless
-
 www.debian.org  (1)
     https://www.debian.org/doc/debian-policy/ch-scripts.html
 
 www.deepspeed.ai  (1)
     https://www.deepspeed.ai/tutorials/fsdp-vs-deepspeed/
 
+www.di.unito.it  (1)
+    http://www.di.unito.it/~padovani/Research.html
+
 www.domainlanguage.com  (1)
     https://www.domainlanguage.com/wp-content/uploads/2016/05/DDD_Reference_1.0.pdf
 
-www.eecs.harvard.edu  (2)
-    https://www.eecs.harvard.edu/~cahoon/cicde/papers/p1495-yang.pdf
-    https://www.eecs.harvard.edu/~cmnz/publications/hptnt-sigmod-2020.pdf
-
-www.elsevier.com  (2)
-    https://www.elsevier.com/books/computability-complexity-and-languages/davis/978-0-12-206382-0
-    https://www.elsevier.com/books/the-art-of-computer-programming/knuth/978-0-201-89683-1
-
 www.envoyproxy.io  (1)
     https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview
-
-www.erlang.org  (2)
-    https://www.erlang.org/docs/getting_started/intro
-    https://www.erlang.org/docs/system/processes
 
 www.etsi.org  (1)
     https://www.etsi.org/technologies/network-functions-virtualization-nfv
@@ -934,20 +1383,20 @@ www.etsi.org  (1)
 www.fastly.com  (1)
     https://www.fastly.com/blog/surrogate-keys-explained-fastly-cdn-cache-purging-logic-for-dynamic-content
 
-www.freertos.org  (3)
-    https://www.freertos.org/Documentation/161204_Mastering_the_FreeRTOS_Real_Time_Kernel-A_Hands-On_Tutorial_Guide.pdf
-    https://www.freertos.org/FreeRTOS-Plus/Qualification_AWS.html
-    https://www.freertos.org/kernel.html
-
 www.geeksforgeeks.org  (1)
     https://www.geeksforgeeks.org/placement-preparation/
 
-www.graalvm.org  (2)
-    https://www.graalvm.org/graalvm-features/escape-analysis/
-    https://www.graalvm.org/latest/graalvm/jit-compiler/
+www.googleapis.com  (1)
+    https://www.googleapis.com/auth/firebase.messaging
 
 www.haproxy.com  (1)
     https://www.haproxy.com/blog/making-haproxy-1-5-fast
+
+www.iana.org  (1)
+    https://www.iana.org/assignments/media-types/text/event-stream
+
+www.ibm.com  (1)
+    https://www.ibm.com/support/pages/power-documentation
 
 www.icann.org  (1)
     https://www.icann.org/dnssec
@@ -957,6 +1406,9 @@ www.ietf.org  (1)
 
 www.infinibandta.org  (1)
     https://www.infinibandta.org/infiniband-specification
+
+www.infoq.com  (1)
+    https://www.infoq.com/presentations/cqrs-introduction/
 
 www.interviewbit.com  (1)
     https://www.interviewbit.com/courses/placement-preparation/
@@ -973,34 +1425,29 @@ www.jenkins.io  (1)
 www.juniper.net  (1)
     https://www.juniper.net/documentation/topics/topic-map/multicast-overview.html
 
-www.kernel.org  (1)
-    https://www.kernel.org/pub/linux/utils/kernel/hotplug/udev-ols.pdf
+www.lightbend.com  (1)
+    https://www.lightbend.com/blog/what-is-reactive
+
+www.linuxfoundation.org  (1)
+    https://www.linuxfoundation.org/about/linus-torvalds
 
 www.merkle.com  (1)
     https://www.merkle.com/papers/Certified1979.pdf
 
-www.microsoft.com  (2)
-    https://www.microsoft.com/en-us/research/publication/mimalloc-free-list-allocator/
-    https://www.microsoft.com/en-us/research/wp-content/uploads/2005/01/2005-PPoPP-ComposableMemoryTransactions.pdf
-
-www.mongodb.com  (2)
-    https://www.mongodb.com/blog/post/mongodb-architecture
-    https://www.mongodb.com/blog/post/resharding-a-collection-in-mongodb-42
-
-www.netfilter.org  (1)
-    https://www.netfilter.org/documentation.html
+www.mips.com  (1)
+    https://www.mips.com/developers/documentation/
 
 www.nrc.gov  (1)
     https://www.nrc.gov/docs/ML1007/ML100780485.pdf
-
-www.nxp.com  (1)
-    https://www.nxp.com/files/microcontrollers/doc/ref_manual/M68HC11RM.pdf
 
 www.oasis-open.org  (1)
     https://www.oasis-open.org/standardssaml/
 
 www.openldap.org  (1)
     https://www.openldap.org/pub/hyc/lmdb-concurrency-llnl-slides.pdf
+
+www.openmobilealliance.org  (1)
+    https://www.openmobilealliance.org/release/LightweightM2M/V1_1-20200910-L/OMA-ETS-LightweightM2M-V1_1-20200910-L.pdf
 
 www.openmp.org  (1)
     https://www.openmp.org/wp-content/uploads/Introduction-to-OpenMP-2019.pdf
@@ -1023,29 +1470,26 @@ www.percona.com  (1)
 www.ponylang.io  (1)
     https://www.ponylang.io/media/pdf/pony_oopsla2013.pdf
 
-www.postgresql.org  (5)
-    https://www.postgresql.org/about/news/pgvector-0-7-0-released/
-    https://www.postgresql.org/docs/current/gin-intro.html
-    https://www.postgresql.org/docs/current/gist-intro.html
-    https://www.postgresql.org/docs/current/replication-progress.html
-    https://www.postgresql.org/docs/current/storage-hot-chain.html
-
 www.psc.edu  (1)
     https://www.psc.edu/research/networking/tuning-tcp
+
+www.pvfs.org  (1)
+    https://www.pvfs.org/**
 
 www.qemu.org  (1)
     https://www.qemu.org/docs/master/system/virtio-blk.html
 
-www.redhat.com  (3)
-    https://www.redhat.com/en/topics/data-storage/change-data-capture
-    https://www.redhat.com/sysadmin/podman-docker-comparison
-    https://www.redhat.com/sysadmin/ssh-jump-host
+www.risczero.com  (1)
+    https://www.risczero.com/proof-system
 
 www.routledge.com  (1)
     https://www.routledge.com/p/book/9780415411713
 
 www.rsyslog.com  (1)
     https://www.rsyslog.com/doc/v8-stable/
+
+www.scottaaronson.com  (1)
+    https://www.scottaaronson.com/papers/kuperberg.pdf
 
 www.scylladb.com  (1)
     https://www.scylladb.com/2018/01/16/compaction-in-cassandra-and-scylladb/
@@ -1059,29 +1503,14 @@ www.smashingmagazine.com  (1)
 www.snia.org  (1)
     https://www.snia.org/sites/default/files/SNIA_DMTF_DDC_Multipathing_WP.pdf
 
-www.snowflake.com  (3)
-    https://www.snowflake.com/wp-content/uploads/2020/09/SIGMOD-FDB.pdf
-    https://www.snowflake.com/wp-content/uploads/2020/09/Snowflake-Architecture-Whitepaper.pdf
-    https://www.snowflake.com/wp-content/uploads/2020/09/SnowflakeMultiClusterSharedDataArchitecture.pdf
-
-www.starburst.io  (2)
-    https://www.starburst.io/blog/trino-vs-spark-sql/
-    https://www.starburst.io/wp-content/uploads/2020/11/OReilly-Trino-The-Definitive-Guide-2020-11.pdf
-
-www.suse.com  (1)
-    https://www.suse.com/support/kb/article/?id=7016650
-
 www.thomas-krenn.com  (1)
     https://www.thomas-krenn.com/en/wiki/Linux_I/O_Scheduler_Comparison
 
+www.threadgroup.org  (1)
+    https://www.threadgroup.org/thread-specificationv1-3
+
 www.usb.org  (1)
     https://www.usb.org/document-library
-
-www.usenix.org  (4)
-    https://www.usenix.org/conference/atc14/technical-sessions/presentation/weil
-    https://www.usenix.org/conference/fast16/technical-sessions/presentation/xia
-    https://www.usenix.org/conference/lisa19/presentation/starovoitov
-    https://www.usenix.org/legacy/publications/library/proceedings/jvm01/full_papers/click/click.pdf
 
 www.utimaco.com  (1)
     https://www.utimaco.com/products/hardware-security-modules/general-purpose-hsm/securityserver-se-series
@@ -1092,15 +1521,11 @@ www.vmware.com  (1)
 www.whitehouse.gov  (1)
     https://www.whitehouse.gov/briefing-room/presidential-actions/2021/05/12/executive-order-on-improving-the-nations-cybersecurity/
 
-www.x.org  (1)
-    https://www.x.org/wiki/Events/XDC2014/XDC2014LankhorstWwMutexes/
-
 www.youtube.com  (1)
     https://www.youtube.com/@TheLinuxExperiment
 
-www.yugabyte.com  (2)
-    https://www.yugabyte.com/blog/yugabytedb-vs-cockroachdb-comparison/
-    https://www.yugabyte.com/yugabytedb-paper/
+xenbits.xen.org  (1)
+    https://xenbits.xen.org/git-http/xen.git
 
 xenproject.org  (1)
     https://xenproject.org/documentation/

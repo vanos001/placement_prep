@@ -555,7 +555,7 @@ graph TD
 - [Amazon DynamoDB Consistency Models](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.ReadConsistency.html)
 - [Azure Cosmos DB Consistency Levels](https://learn.microsoft.com/en-us/azure/cosmos-db/consistency-levels)
 - [Google Spanner: Google's Globally-Distributed Database](https://research.google/pubs/pub39966/)
-- [Apache Cassandra Consistency Levels](https://cassandra.apache.org/doc/latest/cassandra/operating/consistency.html)
+- [Apache Cassandra Consistency Levels](https://cassandra.apache.org/doc/latest/cassandra/architecture/guarantees.html)
 - [CAP Theorem - AlgoMaster](https://algomaster.io/learn/system-design/cap-theorem)
 - [CRDTs - Conflict-free Replicated Data Types](https://crdt.tech/)
 

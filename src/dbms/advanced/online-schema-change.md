@@ -207,7 +207,7 @@ CockroachDB's schema changes are documented as the "online schema change" algori
 - [PostgreSQL: Altering Tables Online](https://www.postgresql.org/docs/current/sql-altertable.html)
 - [CockroachDB: Online Schema Changes](https://www.cockroachlabs.com/docs/stable/online-schema-changes.html)
 - Ian G. et al., "[F1: A Distributed SQL Database That Scales](http://research.google.com/pubs/pub41344.pdf)" (VLDB 2013) — Google's online schema change algorithm
-- [Shlomi Noach: gh-ost design](https://github.com/github/gh-ost/blob/master/doc/why-trigger-issues.md)
+- [Shlomi Noach: gh-ost design](https://github.com/github/gh-ost/blob/master/doc/why-triggerless.md)
 - [LWN: Online schema migration (2018)](https://lwn.net/Articles/768260/)
 - [PostgreSQL: CREATE INDEX](https://www.postgresql.org/docs/current/sql-createindex.html) — the CONCURRENTLY two-scan/wait-phase description, INVALID-index-on-failure semantics, and the transaction-block prohibition.
 - [MySQL 8.0: ALTER TABLE Statement](https://dev.mysql.com/doc/refman/8.0/en/alter-table.html) — COPY/INPLACE/INSTANT algorithm semantics and the brief exclusive metadata lock in the preparation/execution phases.

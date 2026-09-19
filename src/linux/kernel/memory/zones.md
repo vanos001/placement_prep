@@ -724,7 +724,7 @@ Node 0, zone   Normal  12345   8901   5678   3456   1234    567    234    123   
 - https://www.kernel.org/doc/html/latest/admin-guide/sysctl/vm.html
 - https://man7.org/linux/man-pages/man5/proc.5.html — /proc/zoneinfo
 - https://lwn.net/Articles/712460/ — "Folios and the page cache"
-- https://www.kernel.org/doc/html/latest/mm/page_alloc.html
+- https://docs.kernel.org/core-api/memory-allocation.html
 - https://lwn.net/Articles/152347/ — "The zone allocator"
 
 ## Related Topics
