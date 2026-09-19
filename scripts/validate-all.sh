@@ -64,7 +64,7 @@ if [ "$PARSER_OK" -eq 0 ]; then
     else
         echo "SKIP: mermaid@11/jsdom not installed. To enable:"
         echo "  mkdir -p /tmp/mv && cd /tmp/mv && npm i mermaid@11 jsdom && cp $REPO/scripts/validate-mermaid.mjs . && node validate-mermaid.mjs $REPO/src"
-        echo "  (or run with STRICT=1 to make a skipped parser step fatal — CI does)"
+        echo "  (or run with STRICT=1 to make a skipped parser step fatal)"
     fi
 fi
 

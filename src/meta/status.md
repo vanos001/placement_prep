@@ -45,11 +45,18 @@ The validation suite re-run on the `research` tree during the 2026-09-19 review:
 
 > **External URLs are not clean.** A probe of ~6,500 external links found **758 dead**
 > (647 × HTTP 404, mostly `docs.kernel.org` paths that were never valid). This is
-> tracked in `scripts/dead-links-report.txt` and re-probed weekly by the
-> `external-checks` workflow; it needs human triage rather than a code fix.
+> tracked in `scripts/dead-links-report.txt` and re-probed on demand with
+> `python3 scripts/check-links.py --external src`; it needs human triage rather
+> than a code fix.
 >
-> The full mdBook build peaks above the sandbox memory limit used for review, so it
-> is exercised in CI (`.github/workflows/validate.yml`) rather than locally.
+> The full mdBook build peaks above the memory limit of the environment used for
+> this review, so the review ran a 47-chapter subset build of every changed file
+> (clean, zero warnings). Run the full build locally before release.
+>
+> **Validation is a local/agent step, not a CI step.** CI in this repository is
+> reserved for builds and deploys (`.github/workflows/deploy.yml`); adding
+> validation jobs would consume hosted minutes on every push. The scripts under
+> `scripts/` are meant to be run by a human or an agent in a dev environment.
 
 ## Research-branch additions (2026-08-02 → 2026-09-02)
 
@@ -150,10 +157,12 @@ Each is verified, not asserted.
 - **Hardened `scripts/check-mathjax.py`** — detects `](` inside math spans (the
   `ppo.md` bug class), and its always-true `if dollars == line.count("$$")`
   condition is gone (deduplication already happens downstream).
-- **CI restored** — `.github/workflows/validate.yml` (push/PR, runs the suite with
-  `STRICT=1`) and `.github/workflows/external-checks.yml` (weekly + manual, report
-  only). The review noted the README, CONTRIBUTING and `scripts/README.md` all
-  claimed CI validation while the only workflow was a `main`-only Pages deploy.
+- **CI claims corrected, CI left build-only** — the README badge, CONTRIBUTING and
+  `scripts/README.md` variously implied that links/SUMMARY/MathJax/Mermaid were
+  validated in CI "and weekly", while the repository's only workflow is the
+  `main`-only Pages build+deploy. Rather than adding validation jobs (which would
+  bill hosted minutes on every push), the documents now state plainly that the
+  suite is run locally by a human or an agent, and the badge says so too.
 - `book.toml` edit links now point at `research` (a strict superset of `main`), so
   they resolve for research-only pages instead of 404ing.
 - `.gitignore` no longer hides `package.json`/`Cargo.toml`, which had made the

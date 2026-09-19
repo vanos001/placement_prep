@@ -46,10 +46,12 @@ the book's own validators are now stronger than the ones that missed these bugs.
   `check-links.py` now catches site-root-absolute and non-`.md` targets and no longer
   mistakes C++/Go samples such as `Sum[int](myInts)` for links; `check-mathjax.py`
   detects `](` inside math spans and drops an always-true condition.
-- **CI** — added `.github/workflows/validate.yml` (push/PR, `STRICT=1`) and
-  `external-checks.yml` (weekly report-only). Previously the only workflow was a
-  `main`-only Pages deploy, so `research` had never been built by CI despite the
-  README/CONTRIBUTING claims.
+- **CI deliberately left build-only** — the README badge, CONTRIBUTING and
+  `scripts/README.md` claimed validation ran in CI "and weekly", but the only
+  workflow is the `main`-only Pages build+deploy, so `research` had never been
+  built by CI. Validation is a local/agent step in this repository to avoid
+  burning hosted minutes; the documents and the badge were corrected to say so
+  instead of adding validation jobs.
 - **Known backlog** — 758 dead external URLs (647 × HTTP 404, mostly invalid
   `docs.kernel.org` deep paths), catalogued in `scripts/dead-links-report.txt`.
   Internal links, anchors, SUMMARY, Mermaid, MathJax, fences and all 491 DOIs are clean.

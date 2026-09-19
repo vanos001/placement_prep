@@ -136,7 +136,7 @@ python3 scripts/check-mathjax.py .            # MathJax validation
 python3 scripts/check-doi.py src              # Resolve every DOI via the doi.org Handle API
 python3 scripts/check-links.py --external src # Probe all external URLs (bot-blocker aware)
 
-# Strict mode (CI): a skipped real-mermaid-parser step FAILS the build
+# Strict mode (local pre-flight): a skipped real-mermaid-parser step FAILS
 STRICT=1 ./scripts/validate-all.sh .
 ```
 

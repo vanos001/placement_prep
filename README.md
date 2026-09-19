@@ -2,7 +2,7 @@
 
 A comprehensive, self-improving placement preparation resource for Software Engineering interviews — built as an [mdBook](https://rust-lang.github.io/mdBook/) with 2,800+ pages, 4,800+ Mermaid diagrams, and MathJax-powered equations.
 
-[![Validate](https://github.com/vanos001/placement_prep/actions/workflows/validate.yml/badge.svg)](../../actions/workflows/validate.yml)
+[![Validation](https://img.shields.io/badge/validation-run%20locally%20%C2%B7%20not%20in%20CI-blue)](scripts/README.md)
 
 ## Quick Start
 
@@ -85,7 +85,8 @@ placement_prep/
 
 ## Validation
 
-Every change should pass the full validation suite before committing:
+Validation runs **locally, not in CI** — CI is reserved for builds so hosted
+minutes stay available. Run the suite before committing:
 
 ```bash
 ./scripts/validate-all.sh .
@@ -99,8 +100,8 @@ MathJax. Set `EXTERNAL=1` to add DOI resolution and external-URL probing. See
 > **Scope of "0 broken links".** The internal link/anchor check is green. A full
 > probe of the ~6,500 external URLs found **758 dead ones** (647 × HTTP 404,
 > mostly moved `docs.kernel.org` pages). That backlog is tracked in
-> [`scripts/dead-links-report.txt`](scripts/dead-links-report.txt) and re-probed
-> weekly by the `external-checks` workflow.
+> [`scripts/dead-links-report.txt`](scripts/dead-links-report.txt); re-probe with
+> `python3 scripts/check-links.py --external src`.
 
 ## Contributing
 
