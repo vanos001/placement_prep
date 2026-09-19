@@ -866,13 +866,13 @@ The percentage columns show the number of zspages at each fullness level, helpin
 - **Understanding the Linux Kernel, 3rd Edition** — Chapter 8: Memory Management
 - [Kernel source: mm/slub.c](https://elixir.bootlin.com/linux/latest/source/mm/slub.c)
 - [Kernel source: mm/slab_common.c](https://elixir.bootlin.com/linux/latest/source/mm/slab_common.c)
-- [Kernel documentation: SLUB allocator — docs.kernel.org](https://docs.kernel.org/mm/slub.html)
+- [Kernel documentation: SLUB allocator — docs.kernel.org](https://docs.kernel.org/mm/slab.html)
 - [Kernel documentation: Slab Allocator](https://docs.kernel.org/mm/slab.html)
 - [Kernel documentation: Memory Allocation Guide](https://docs.kernel.org/core-api/memory-allocation.html)
 - [LWN: SLUB allocator](https://lwn.net/Articles/229984/)
 - [Christoph Lameter: SLUB — The Unqueued Slab Allocator](https://www.kernel.org/doc/gorman/html/understand/understand011.html)
 - [Kernel documentation: zsmalloc](https://docs.kernel.org/mm/zsmalloc.html)
-- [Kernel documentation: kmalloc API](https://docs.kernel.org/core-api/kmalloc.html)
+- [Kernel documentation: kmalloc API](https://docs.kernel.org/core-api/memory-allocation.html)
 
 ## Related Topics
 

@@ -849,7 +849,7 @@ journalctl -u backup.service
 
 - [crontab(5) Man Page](https://man7.org/linux/man-pages/man5/crontab.5.html) — Crontab syntax reference
 - [systemd.timer(5) Man Page](https://www.freedesktop.org/software/systemd/man/latest/systemd.timer.html) — Timer unit reference
-- [at(1) Man Page](https://man7.org/linux/man-pages/man1/at.1.html) — at command reference
+- [at(1) Man Page](https://manpages.debian.org/at.1) — at command reference
 - [Crontab Guru](https://crontab.guru/) — Online crontab expression editor
 - [Arch Wiki: Cron](https://wiki.archlinux.org/title/Cron) — Cron documentation
 - [systemd Timers for Cron Users](https://opensource.com/article/20/7/systemd-timers) — Migration guide

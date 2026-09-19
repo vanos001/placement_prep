@@ -693,7 +693,7 @@ flowchart TD
 
 - [Kernel docs: Idle Page Tracking](https://www.kernel.org/doc/html/latest/admin-guide/mm/idle_page_tracking.html)
 - [Kernel docs: DAMON](https://www.kernel.org/doc/html/latest/mm/damon/index.html)
-- [DAMON design document](https://damonitor.github.io/doc/html/latest/)
+- [DAMON design document](https://web.archive.org/web/20240722022900/https://damonitor.github.io/doc/html/latest/)
 - [LWN: Idle page tracking (2015)](https://lwn.net/Articles/643739/)
 - [LWN: DAMON for memory management](https://lwn.net/Articles/858728/)
 - [LWN: Memory tiering in Linux — CXL and beyond](https://lwn.net/Articles/894846/)

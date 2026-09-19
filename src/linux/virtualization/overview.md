@@ -472,7 +472,7 @@ flowchart LR
 1. Popek, G. J., & Goldberg, R. P. (1974). "Formal Requirements for Virtualizable Third Generation Architectures." *Communications of the ACM*, 17(7).
 2. Adams, K., & Agesen, O. (2006). "A Comparison of Software and Hardware Techniques for x86 Virtualization." *ASPLOS '06*.
 3. Intel. "Intel® 64 and IA-32 Architectures Software Developer's Manual, Volume 3C." [https://www.intel.com/sdm](https://www.intel.com/sdm)
-4. AMD. "AMD64 Architecture Programmer's Manual, Volume 2: System Programming." [https://www.amd.com/en/support/tech-docs](https://www.amd.com/en/support/tech-docs)
+4. AMD. "AMD64 Architecture Programmer's Manual, Volume 2: System Programming." [https://amd.com/en/support/tech-docs](https://amd.com/en/support/tech-docs)
 5. KVM Documentation. [https://www.kernel.org/doc/html/latest/virt/kvm/](https://www.kernel.org/doc/html/latest/virt/kvm/)
 
 ## Further Reading

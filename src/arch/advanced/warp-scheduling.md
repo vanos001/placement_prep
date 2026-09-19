@@ -193,7 +193,7 @@ The GK110 whitepaper: Fermi's dual-issue needed "a multi-port register scoreboar
 ## References
 
 - NVIDIA, CUDA C++ Programming Guide (current, CUDA 13 rewrite): <https://docs.nvidia.com/cuda/cuda-programming-guide/>
-- NVIDIA, CUDA C++ Programming Guide — Hardware Implementation / Multiprocessor Level (legacy edition, still live; source of the context-switch and 4L quotes): <https://docs.nvidia.com/cuda/cuda-c-programming-guide/>
+- NVIDIA, CUDA C++ Programming Guide — Hardware Implementation / Multiprocessor Level (legacy edition, still live; source of the context-switch and 4L quotes): <https://docs.nvidia.com/cuda/cuda-c-programming-guide/index.html>
 - NVIDIA, Compute Capabilities appendix (cc 8.0 limits, shared-memory carveouts): <https://docs.nvidia.com/cuda/cuda-programming-guide/05-appendices/compute-capabilities.html>
 - NVIDIA, CUDA C++ Best Practices Guide — Occupancy, Hiding Register Dependencies, Effects of Shared Memory: <https://docs.nvidia.com/cuda/cuda-c-best-practices-guide/>
 - NVIDIA, CUDA Runtime API — Occupancy: <https://docs.nvidia.com/cuda/cuda-runtime-api/group__CUDART__OCCUPANCY.html>
@@ -206,7 +206,7 @@ The GK110 whitepaper: Fermi's dual-issue needed "a multi-port register scoreboar
 ---
 Task ID: 64-2
 Probed URLs (all returned 200 unless noted):
-- https://docs.nvidia.com/cuda/cuda-c-programming-guide/ (200; now carries a legacy banner pointing to the CUDA 13 rewrite)
+- https://docs.nvidia.com/cuda/cuda-c-programming-guide/index.html (200; now carries a legacy banner pointing to the CUDA 13 rewrite)
 - https://docs.nvidia.com/cuda/cuda-programming-guide/ (200) and /05-appendices/compute-capabilities.html (200), /02-basics/writing-cuda-kernels.html (200), /05-appendices/cuda-cpp-execution-model.html (200)
 - https://docs.nvidia.com/cuda/cuda-c-best-practices-guide/ (200; Occupancy / Hiding Register Dependencies / Effects of Shared Memory verified verbatim)
 - https://docs.nvidia.com/cuda/cuda-runtime-api/group__CUDART__OCCUPANCY.html (200)

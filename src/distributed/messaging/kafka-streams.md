@@ -219,5 +219,5 @@ Kafka Streams is the choice when your data is in Kafka and you don't want a sepa
 - [Kafka Streams Developer Guide](https://kafka.apache.org/documentation/streams/developer-guide/)
 - [Confluent Streams: Examples and tutorials](https://docs.confluent.io/platform/current/streams/index.html)
 - [Kafka Streams vs Flink comparison](https://www.confluent.io/blog/kafka-streams-vs-flink-comparison/)
-- [Kafka Interactive Queries](https://kafka.apache.org/33/documentation/streams/developer-guide/interactive-queries.html)
+- [Kafka Interactive Queries](https://web.archive.org/web/20241111011739/https://kafka.apache.org/33/documentation/streams/developer-guide/interactive-queries.html)
 - [Exactly-once processing in Kafka Streams (Confluent blog)](https://www.confluent.io/blog/enabling-exactly-once-kafka-streams/)

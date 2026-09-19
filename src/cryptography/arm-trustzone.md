@@ -242,7 +242,7 @@ This is why you will find SGX in cloud confidential computing (where you rent a 
 - ARM, "[ARM Security Extensions: ARMv8-A Architecture Specification](https://developer.arm.com/documentation/ddi0487/latest)" (DDI0487, the architecture reference manual)
 - ARM, "[TrustZone Technology Overview](https://developer.arm.com/ip-products/security-ip/trustzone)" (developer page)
 - Linaro / OP-TEE project, "[OP-TEE OS documentation](https://optee.readthedocs.io/)"
-- Linaro, "[OP-TEE Linux kernel TEE subsystem documentation](https://www.kernel.org/doc/html/latest/staging/tee.html)"
+- Linaro, "[OP-TEE Linux kernel TEE subsystem documentation](https://docs.kernel.org/userspace-api/tee.html)"
 - Trusted Firmware-A project, "[TF-A Documentation](https://tf-a.readthedocs.io/)"
 - GlobalPlatform, "[TEE Client API Specification v1.0](https://globalplatform.org/specs-device/)"
 - ARM, "[ARM Trusted Board Boot (TBB) requirements](https://developer.arm.com/documentation/1008328/latest)" — secure boot chain on top of TF-A

@@ -194,4 +194,4 @@ JWTs cannot be revoked without contacting the issuer. Workarounds:
 - [PyJWT (Python library)](https://github.com/jpadilla/pyjwt)
 - [JWT Best Current Practices (RFC 8725)](https://datatracker.ietf.org/doc/html/rfc8725)
 - [Critical vulnerabilities in JSON Web Token libraries](https://auth0.com/blog/critical-vulnerabilities-in-json-web-token-libraries/) (Auth0 blog)
-- [OWASP JWT cheat sheet](https://cheatsheetseries.owasp.org/cheatsheets/JSON_Web_Token_for_Java_Cheat_Sheet.html)
+- [OWASP JWT cheat sheet](https://web.archive.org/web/20260606011649/https://cheatsheetseries.owasp.org/cheatsheets/JSON_Web_Token_for_Java_Cheat_Sheet.html)

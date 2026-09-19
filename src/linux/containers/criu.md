@@ -816,7 +816,7 @@ apparmor_parser -r /etc/apparmor.d/criu
 
 - [CRIU official site](https://criu.org)
 - [CRIU GitHub](https://github.com/checkpoint-restore/criu)
-- [Kernel docs: Checkpoint/Restore](https://www.kernel.org/doc/html/latest/admin-guide/checkpoint.html)
+- [Kernel docs: Checkpoint/Restore](https://docs.kernel.org/admin-guide/index.html)
 - [LWN: CRIU — checkpointing and restoring processes (2012)](https://lwn.net/Articles/495227/)
 - [CRIU: Container live migration](https://criu.org/Live_migration)
 - [Podman checkpoint documentation](https://docs.podman.io/en/latest/markdown/podman-container-checkpoint.1.html)

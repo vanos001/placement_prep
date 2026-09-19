@@ -776,7 +776,7 @@ echo 1024 > /proc/sys/vm/nr_hugepages
 ## Further Reading
 
 - [RISC-V ISA Specification — riscv.org](https://riscv.org/technical/specifications/)
-- [Linux RISC-V Documentation — docs.kernel.org](https://docs.kernel.org/riscv/index.html)
+- [Linux RISC-V Documentation — docs.kernel.org](https://docs.kernel.org/arch/riscv/index.html)
 - [OpenSBI Documentation — github.com](https://github.com/riscv-software-src/opensbi/blob/master/docs/)
 - [RISC-V GNU Toolchain — github.com](https://github.com/riscv-collab/riscv-gnu-toolchain)
 - [SiFive Technical Documents](https://www.sifive.com/documentation)

@@ -323,7 +323,7 @@ Temporal isolation is what lets a mixed-criticality system run a flight-control 
 - [FreeRTOS Official Documentation](https://www.freertos.org/Documentation/RTOS_book.html) — task model, priority inheritance mutexes, heap schemes.
 - [QNX Neutrino RTOS Architecture](https://www.qnx.com/developers/docs/) — microkernel design, adaptive partitioning.
 - [Zephyr Project Documentation](https://docs.zephyrproject.org/) — pluggable schedulers, scheduling contexts.
-- [VxWorks Documentation (Wind River)](https://docs.windriver.com/) — POSIX RT profiles, RTP/Wind kernel split.
+- [VxWorks Documentation (Wind River)](https://docs.windriver.com) — POSIX RT profiles, RTP/Wind kernel split.
 - [Real-Time Linux Wiki (PREEMPT_RT)](https://wiki.linuxfoundation.org/realtime/) — patch status, latency measurement.
 - L. Abeni and G. Buttazzo, "Integrating Multimedia Applications in Hard Real-Time Systems," RTSS 1998 — the Constant Bandwidth Server.
 - See also: [OS-level real-time scheduling](../os/scheduling/realtime.md), [RTOS internals](./rtos.md), [Firmware boot & watchdogs](./firmware.md).

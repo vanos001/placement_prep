@@ -573,7 +573,7 @@ numactl --hardware | grep "node distances"
 
 ## References
 
-- [Linux NUMA documentation](https://www.kernel.org/doc/html/latest/vm/numa.html)
+- [Linux NUMA documentation](https://docs.kernel.org/mm/numa.html)
 - [numactl(8) man page](https://man7.org/linux/man-pages/man8/numactl.8.html)
 - [numa(3) man page](https://man7.org/linux/man-pages/man3/numa.3.html)
 - [LWN: NUMA scheduling](https://lwn.net/Articles/524977/)

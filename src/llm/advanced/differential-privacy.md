@@ -166,6 +166,6 @@ Given N reports, the server uses an L1-regularized linear regression (`LASSO`) t
 - Ilya Mironov, "[Rényi Differential Privacy](https://arxiv.org/abs/1702.07476)" (CSF 2017)
 - Frank McSherry, Kunal Talwar, "[Mechanism Design via Differential Privacy](https://www.microsoft.com/en-us/research/publication/mechanism-design-via-differential-privacy/)" (FOCS 2007) — exponential mechanism
 - Latanya Sweeney, "[Simple Demographics Often Identify People Uniquely](https://dataprivacylab.org/dataprivacylab/kanonymous/)" (2000) — the de-anonymization motivation
-- Arvind Narayanan, Vitaly Shmatikov, "[Robust De-anonymization of Large Sparse Datasets](https://www.cs.utexas.edu/~shmat/shmat_oak08netflix.pdf)" (S&P 2008) — Netflix de-anonymization
+- Arvind Narayanan, Vitaly Shmatikov, "[Robust De-anonymization of Large Sparse Datasets](https://web.archive.org/web/20250811000324/https://www.cs.utexas.edu/~shmat/shmat_oak08netflix.pdf)" (S&P 2008) — Netflix de-anonymization
 - [TensorFlow Privacy library](https://github.com/tensorflow/privacy) — reference DP-SGD implementation
 - [Opacus: PyTorch DP training](https://opacus.ai/)

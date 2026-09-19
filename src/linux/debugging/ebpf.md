@@ -1355,8 +1355,8 @@ This mechanism allows the verifier to accept loops without explicit loop bounds,
 - [BPF Helper Functions — docs.kernel.org](https://docs.kernel.org/bpf/helpers.html)
 - [bpf-helpers(7) man page](https://man7.org/linux/man-pages/man7/bpf-helpers.7.html)
 - [eBPF Verifier Documentation](https://docs.kernel.org/bpf/verifier.html) — Official verifier internals (register tracking, bounds, direct packet access)
-- [BPF Map Types — docs.kernel.org](https://docs.kernel.org/bpf/map.html) — Complete map type reference
-- [BPF Program Types — docs.kernel.org](https://docs.kernel.org/bpf/prog_type.html)
+- [BPF Map Types — docs.kernel.org](https://docs.kernel.org/bpf/maps.html) — Complete map type reference
+- [BPF Program Types — docs.kernel.org](https://docs.kernel.org/bpf/libbpf/program_types.html)
 - [BPF Iterators — docs.kernel.org](https://docs.kernel.org/bpf/bpf_iterators.html) — BPF iterator programs, open-coded iterators, available types
 
 ## Related Topics

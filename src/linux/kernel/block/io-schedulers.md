@@ -892,7 +892,7 @@ schedulers in modern kernels.
 - [Planet GNU](https://planet.gnu.org/)
 - [Free Software Books](https://www.gnu.org/doc/other-free-books.html)
 
-- [Linux kernel docs — I/O schedulers](https://docs.kernel.org/block/elevator-schedulers.html)
+- [Linux kernel docs — I/O schedulers](https://docs.kernel.org/block/switching-sched.html)
 - [kernel.org — block/mq-deadline.c](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/block/mq-deadline.c)
 - [kernel.org — block/bfq-iosched.c](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/block/bfq-iosched.c)
 - [kernel.org — block/kyber-iosched.c](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/block/kyber-iosched.c)

@@ -688,7 +688,7 @@ echo "SR-IOV configured with $NUM_VFs VFs"
 - [Planet GNU](https://planet.gnu.org/)
 - [Free Software Books](https://www.gnu.org/doc/other-free-books.html)
 
-- [Linux kernel docs — PCI](https://docs.kernel.org/driver-api/pci.html)
+- [Linux kernel docs — PCI](https://docs.kernel.org/driver-api/pci/pci.html)
 - [PCI-SIG — PCI Express Base Specification](https://pcisig.com/specifications)
 - [LWN: PCI driver programming](https://lwn.net/Articles/339021/)
 - [Linux Device Drivers, 3rd Ed — Chapter 12](https://lwn.net/Kernel/LDD3/)

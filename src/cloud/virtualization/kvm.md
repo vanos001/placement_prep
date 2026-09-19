@@ -370,5 +370,5 @@ log is the bridge between "what the guest sees" and "what's on disk".
 - [Intel 64 and IA-32 SDM, Vol. 3C, Ch. 23–35 (VMX architecture)](https://www.intel.com/content/www/us/en/developer/articles/technical/intel-sdm.html)
 - [AMD64 Architecture Programmer's Manual, Vol. 2 (SVM)](https://developer.amd.com/resources/developer-guides-manuals/)
 - [LWN: vhost-net, a kernel-level virtio back-end (2010)](https://lwn.net/Articles/361301/)
-- [QEMU live migration documentation](https://www.qemu.org/docs/master/devel/migration.html)
+- [QEMU live migration documentation](https://www.qemu.org/docs/master/devel/migration/)
 - [KVM Forum archives](https://kvmforum2023.sched.com/)

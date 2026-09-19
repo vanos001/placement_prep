@@ -562,7 +562,7 @@ XFS is developing online filesystem checking (`xfs_scrub`), which can verify and
 - [XFS Delayed Logging Design](https://docs.kernel.org/filesystems/xfs/xfs-delayed-logging-design.html) — Detailed CIL/AIL design
 - [XFS Self Describing Metadata](https://docs.kernel.org/filesystems/xfs/xfs-self-describing-metadata.html) — CRC, magic numbers, runtime validation
 - [XFS Online Fsck Design](https://docs.kernel.org/filesystems/xfs/xfs-online-fsck-design.html) — Online filesystem checking architecture
-- [XFS documentation (kernel.org)](https://www.kernel.org/doc/html/latest/filesystems/xfs.html) — Official docs
+- [XFS documentation (kernel.org)](https://docs.kernel.org/admin-guide/xfs.html) — Official docs
 - [XFS wiki (xfs.org)](https://xfs.org/) — Community wiki
 - [xfs.org: Architecture and Design](https://xfs.org/index.php/Architecture_and_Design) — Design documents
 - [Linux kernel: fs/xfs/](https://elixir.bootlin.com/linux/latest/source/fs/xfs) — XFS source code

@@ -863,7 +863,7 @@ int do_async_read(struct block_device *bdev, sector_t sector,
 - [Free Software Books](https://www.gnu.org/doc/other-free-books.html)
 
 - [Linux kernel docs — bio API](https://docs.kernel.org/block/biovecs.html)
-- [Linux kernel docs — bio allocation](https://docs.kernel.org/block/bio-pool.html)
+- [Linux kernel docs — bio allocation](https://docs.kernel.org/block/index.html)
 - [LWN: The bio structure](https://lwn.net/Articles/737543/)
 - [kernel.org — include/linux/bio.h](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/include/linux/bio.h)
 - [kernel.org — block/bio.c source](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/block/bio.c)

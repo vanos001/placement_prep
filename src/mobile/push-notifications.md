@@ -413,7 +413,7 @@ forwards to APNs for iOS, but you lose direct control over APNs features like
 - [Apple Developer — Sending Push Notifications Using APNs (HTTP/2)](https://developer.apple.com/documentation/usernotifications/sending-push-messages-using-the-apple-push-notification-service)
 - [Apple Developer — Establishing a Connection to APNs (JWT provider tokens)](https://developer.apple.com/documentation/usernotifications/setting_up_a_remote_notification_server/establishing_a_certificate-based_connection_to_apns)
 - [Firebase Cloud Messaging — HTTP v1 protocol](https://firebase.google.com/docs/cloud-messaging/http-server-ref)
-- [Firebase — Send messages to topics](https://firebase.google.com/docs/cloud-messaging/send-message#topic_messages)
+- [Firebase — Send messages to topics](https://web.archive.org/web/20250917031716/https://firebase.google.com/docs/cloud-messaging/send-message)
 - [Firebase Cloud Messaging — HTTP v1 API documentation](https://firebase.google.com/docs/cloud-messaging)
 - [RFC 8291 — Voluntary Application Server Identification (VAPID) for Web Push](https://www.rfc-editor.org/rfc/rfc8291)
 - [RFC 8030 — Generic Event Delivery Using HTTP Push](https://www.rfc-editor.org/rfc/rfc8030)

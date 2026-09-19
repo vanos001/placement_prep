@@ -165,7 +165,7 @@ The defensive posture for io_uring in production: prefer `IORING_SETUP_SQPOLL` a
 
 ## References
 
-- Axel Dahlberg, "io_uring: A new Linux asynchronous I/O API" — [kernel documentation](https://docs.kernel.org/filesystem/io_uring.html)
+- Axel Dahlberg, "io_uring: A new Linux asynchronous I/O API" — [kernel documentation](https://docs.kernel.org/filesystems/index.html)
 - Jens Axboe, [`liburing`](https://github.com/axboe/liburing) — reference userspace library
 - [LWN: "io_uring and asynchronous I/O" (2019)](https://lwn.net/Articles/776703/) and the four-part follow-up
 - [Pavel Begunkov, Jens Axboe, "Efficient IO with io_uring" (2020)](https://kernel.dk/io_uring.pdf)

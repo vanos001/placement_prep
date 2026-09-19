@@ -493,7 +493,7 @@ struct __aligned(64) good_layout {
 - [Per-CPU variables documentation](https://www.kernel.org/doc/Documentation/percpu-rw-semaphore.txt)
 - [LWN: Per-CPU variables](https://lwn.net/Articles/225960/) — Detailed explanation
 - [percpu.h source](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/include/linux/percpu.h) — Kernel header
-- [percpu_counter API](https://www.kernel.org/doc/Documentation/core-api/percpu-refcount.rst)
+- [percpu_counter API](https://docs.kernel.org/core-api/index.html)
 - [What every programmer should know about memory](https://people.freebsd.org/~lstewart/articles/cpumemory.pdf) — Ulrich Drepper's classic paper
 
 ## Per-CPU Allocator Internals

@@ -792,9 +792,9 @@ ss -tunlp
 ## References
 
 - [ip(8) man page](https://man7.org/linux/man-pages/man8/ip.8.html) — iproute2 reference
-- [nmcli(1) man page](https://man7.org/linux/man-pages/man1/nmcli.1.html) — NetworkManager CLI
+- [nmcli(1) man page](https://manpages.debian.org/nmcli.1) — NetworkManager CLI
 - [systemd-networkd(8)](https://www.freedesktop.org/software/systemd/man/latest/systemd-networkd.service.html)
-- [interfaces(5) man page](https://man7.org/linux/man-pages/man5/interfaces.5.html) — Debian network config
+- [interfaces(5) man page](https://manpages.debian.org/interfaces.5) — Debian network config
 - [ArchWiki: Network configuration](https://wiki.archlinux.org/title/Network_configuration)
 - [iproute2 documentation](https://wiki.linuxfoundation.org/networking/iproute2)
 - [NetworkManager documentation](https://networkmanager.dev/docs/)

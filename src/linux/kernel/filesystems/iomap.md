@@ -645,7 +645,7 @@ static const struct address_space_operations myfs_aops = {
 
 ## Further Reading
 
-- [Kernel docs: iomap](https://www.kernel.org/doc/html/latest/filesystems/iomap.html)
+- [Kernel docs: iomap](https://docs.kernel.org/filesystems/iomap/index.html)
 - [LWN: iomap — a new block-mapping layer (2016)](https://lwn.net/Articles/677950/)
 - [LWN: iomap buffered I/O (2020)](https://lwn.net/Articles/814956/)
 - [Darrick Wong's iomap talk (LSFMM 2022)](https://lpc.events/event/16/contributions/1253/)
@@ -654,7 +654,7 @@ static const struct address_space_operations myfs_aops = {
 
 ## References
 
-- [iomap kernel documentation](https://www.kernel.org/doc/html/latest/filesystems/iomap.html)
+- [iomap kernel documentation](https://docs.kernel.org/filesystems/iomap/index.html)
 - [LWN: iomap — a new block-mapping layer](https://lwn.net/Articles/677950/)
 - [LWN: iomap buffered I/O](https://lwn.net/Articles/814956/)
 - [Linux source: fs/iomap/](https://github.com/torvalds/linux/tree/master/fs/iomap)

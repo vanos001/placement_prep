@@ -596,7 +596,7 @@ EOF
 ## References
 
 - [Ceph Documentation](https://docs.ceph.com/)
-- [CRUSH Paper](https://ceph.com/wp-content/uploads/2016/08/weil-crush-sc06.pdf)
+- [CRUSH Paper](https://web.archive.org/web/20210104022321/https://ceph.com/wp-content/uploads/2016/08/weil-crush-sc06.pdf)
 - [Ceph Architecture](https://docs.ceph.com/en/latest/architecture/)
 - [Rook Ceph Operator](https://rook.io/docs/rook/latest/ceph-storage.html)
 

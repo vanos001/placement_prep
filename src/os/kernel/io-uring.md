@@ -338,7 +338,7 @@ io_uring's surface area is large (~70 opcodes, ring-based shared memory, registe
 
 - io_uring man pages — `io_uring_setup(2)`, `io_uring_enter(2)`, `io_uring_register(2)` — [manpages.debian.org](https://manpages.debian.org/)
 - Jens Axboe, *Efficient IO with io_uring* — [kernel.dk/io_uring.pdf](https://kernel.dk/io_uring.pdf)
-- Linux kernel documentation: io_uring — [docs.kernel.org/io_uring/](https://docs.kernel.org/io_uring/)
+- Linux kernel documentation: io_uring — [docs.kernel.org/io_uring/](https://docs.kernel.org/filesystems/index.html)
 - Linux kernel source: `fs/io_uring.c`, `include/uapi/linux/io_uring.h` — [git.kernel.org](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/fs/io_uring.c)
 - LWN.net: *io_uring and asynchronous I/O* (Axboe) — [lwn.net/Articles/810414/](https://lwn.net/Articles/810414/) and follow-up LWN articles on 5.x feature additions
 - liburing library (reference userspace) — [github.com/axboe/liburing](https://github.com/axboe/liburing)

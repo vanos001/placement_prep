@@ -312,7 +312,7 @@ BPF you expected.
 1. **seccomp(2) manpage** —
    <https://man7.org/linux/man-pages/man2/seccomp.2.html>
 2. **Kernel docs: user-facing API** —
-   <https://www.kernel.org/doc/html/latest/userspace-api/seccomp_filter.rst>
+   <https://docs.kernel.org/userspace-api/seccomp_filter.html>
 3. **Docker seccomp security profile** —
    <https://docs.docker.com/engine/security/seccomp/>
 4. **Chromium sandbox design docs** —

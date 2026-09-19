@@ -574,9 +574,9 @@ pcm-memory 1
 
 ## References
 
-- [NUMA Deep Dive Series](https://frankdenneman.nl/2016/07/07/numa-deep-dive-part-1-uma-numa/)
+- [NUMA Deep Dive Series](https://web.archive.org/web/20260320093843/http://frankdenneman.nl/2016/07/07/numa-deep-dive-part-1-uma-numa/)
 - [numactl(8) man page](https://man7.org/linux/man-pages/man8/numactl.8.html)
-- [Linux NUMA Documentation](https://www.kernel.org/doc/html/latest/vm/numa.html)
+- [Linux NUMA Documentation](https://docs.kernel.org/mm/numa.html)
 - Gregg, B. *Systems Performance: Enterprise and the Cloud*, 2nd Edition (2020).
 - [Intel Memory Latency Checker](https://www.intel.com/content/www/us/en/developer/articles/tool/intelr-memory-latency-checker.html)
 - [Linux perf Examples — Brendan Gregg](https://www.brendangregg.com/perf.html)

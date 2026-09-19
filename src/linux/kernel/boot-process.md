@@ -781,7 +781,7 @@ $ qemu-system-x86_64 \
 - [Planet GNU](https://planet.gnu.org/)
 - [Free Software Books](https://www.gnu.org/doc/other-free-books.html)
 
-- [Linux kernel boot documentation](https://www.kernel.org/doc/html/latest/admin-guide/booting.html)
+- [Linux kernel boot documentation](https://docs.kernel.org/process/debugging/index.html)
 - [Boot process overview (kernel.org)](https://www.kernel.org/doc/html/latest/admin-guide/initrd.html)
 - [systemd boot documentation](https://www.freedesktop.org/software/systemd/man/bootup.html)
 - [UEFI specification](https://uefi.org/specifications)

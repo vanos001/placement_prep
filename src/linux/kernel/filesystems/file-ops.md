@@ -756,7 +756,7 @@ DAX provides byte-addressable load/store access to persistent memory, achieving 
 
 - [VFS file operations documentation](https://www.kernel.org/doc/html/latest/filesystems/vfs.html#file-operations)
 - [include/linux/fs.h source](https://github.com/torvalds/linux/blob/master/include/linux/fs.h)
-- [io_uring documentation](https://www.kernel.org/doc/html/latest/userspace-api/io_uring.html)
+- [io_uring documentation](https://docs.kernel.org/userspace-api/index.html)
 - [fallocate(2) man page](https://man7.org/linux/man-pages/man2/fallocate.2.html)
 - [copy_file_range(2) man page](https://man7.org/linux/man-pages/man2/copy_file_range.2.html)
 - [posix_fadvise(2) man page](https://man7.org/linux/man-pages/man2/posix_fadvise.2.html)

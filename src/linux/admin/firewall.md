@@ -846,7 +846,7 @@ firewall-cmd --state 2>/dev/null        # firewalld
 ## References
 
 - [iptables(8) man page](https://man7.org/linux/man-pages/man8/iptables.8.html)
-- [nft(8) man page](https://man7.org/linux/man-pages/man8/nft.8.html)
+- [nft(8) man page](https://manpages.debian.org/nft.8)
 - [firewalld documentation](https://firewalld.org/documentation)
 - [ufw wiki](https://wiki.ubuntu.com/UncomplicatedFirewall)
 - [Netfilter documentation](https://www.netfilter.org/documentation.html)

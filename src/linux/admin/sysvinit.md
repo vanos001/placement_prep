@@ -731,10 +731,10 @@ exec /sbin/init
 
 ## Further Reading
 
-- [init(8) man page](https://man7.org/linux/man-pages/man8/init.8.html)
-- [inittab(5) man page](https://man7.org/linux/man-pages/man5/inittab.5.html)
-- [update-rc.d(8) man page](https://man7.org/linux/man-pages/man8/update-rc.d.8.html)
-- [chkconfig(8) man page](https://man7.org/linux/man-pages/man8/chkconfig.8.html)
+- [init(8) man page](https://manpages.debian.org/init.8)
+- [inittab(5) man page](https://manpages.debian.org/inittab.5)
+- [update-rc.d(8) man page](https://manpages.debian.org/update-rc.d.8)
+- [chkconfig(8) man page](https://manpages.debian.org/chkconfig.8)
 - [LSB init script specification](https://refspecs.linuxbase.org/LSB_3.1.1/LSB-Core-generic/LSB-Core-generic/iniscrptact.html)
 - [Debian Wiki: Systemd](https://wiki.debian.org/systemd)
 - [systemd for SysV Init Users](https://wiki.archlinux.org/title/Systemd/Services)

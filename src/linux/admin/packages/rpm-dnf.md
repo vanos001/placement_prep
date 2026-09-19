@@ -534,7 +534,7 @@ graph TB
 
 ## References and Further Reading
 
-- [RPM documentation](https://rpm.org/documentation/)
+- [RPM documentation](https://web.archive.org/web/20260310112855/http://rpm.org/documentation)
 - [DNF documentation](https://dnf.readthedocs.io/)
 - [Fedora Packaging Guidelines](https://docs.fedoraproject.org/en-US/packaging-guidelines/)
 - [RPM Packaging Guide](https://rpm-packaging-guide.github.io/)

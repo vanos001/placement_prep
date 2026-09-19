@@ -758,7 +758,7 @@ podman info | grep -i storage
 
 ## References
 
-- [Podman Documentation](https://podman.io/docs/) — official docs
+- [Podman Documentation](https://web.archive.org/web/20260826040649/https://podman.io/docs) — official docs
 - [Podman GitHub](https://github.com/containers/podman) — source code
 - [Quadlet Documentation](https://docs.podman.io/en/latest/markdown/podman-systemd.unit.5.html) — systemd integration
 - [Podman Rootless](https://github.com/containers/podman/blob/main/docs/tutorials/rootless_tutorial.md) — rootless guide

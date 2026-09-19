@@ -568,7 +568,7 @@ arch/x86/kernel/cpu/common.c        # MSR writes
 - [Free Software Books](https://www.gnu.org/doc/other-free-books.html)
 
 - <https://comsec.ethz.ch/retbleed/> — Original Retbleed research paper
-- <https://www.kernel.org/doc/html/latest/admin-guide/hw-vuln/retbleed.html> — Kernel documentation
+- <https://docs.kernel.org/admin-guide/hw-vuln/index.html> — Kernel documentation
 - <https://access.redhat.com/solutions/retbleed> — Red Hat Retbleed guide
 - <https://github.com/speed47/spectre-meltdown-checker> — Vulnerability checker script
 

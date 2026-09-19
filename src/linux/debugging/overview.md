@@ -685,7 +685,7 @@ sudo bpftrace -e 'kprobe:__kmalloc { @bytes[comm] = sum(arg0); }'
 - [bpftrace Reference Guide](https://github.com/bpftrace/bpftrace/blob/master/docs/reference_guide.md)
 - [Brendan Gregg's Linux Performance](https://www.brendangregg.com/linuxperf.html) — comprehensive tools map
 - [LWN: Tracing the kernel](https://lwn.net/Articles/tracing/) — overview articles
-- [kernel.org: Debugging](https://www.kernel.org/doc/html/latest/dev-tools/gdb-kernel-debugging.html) — kernel debugging with GDB
+- [kernel.org: Debugging](https://docs.kernel.org/process/debugging/gdb-kernel-debugging.html) — kernel debugging with GDB
 - [Kernel Development Tools](https://docs.kernel.org/dev-tools/index.html) — Official index of kernel dev tools
 
 ## Related Topics

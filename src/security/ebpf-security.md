@@ -223,6 +223,6 @@ Pixie (New Relic) uses eBPF for application observability — not strictly secur
 - [Tetragon documentation](https://tetragon.io/docs/)
 - [Tracee documentation](https://aquasecurity.github.io/tracee/latest/)
 - [Cilium: eBPF-based security](https://docs.cilium.io/en/stable/security/)
-- [BPF-LSM documentation](https://docs.kernel.org/bpf/bpf_lsm.html)
+- [BPF-LSM documentation](https://docs.kernel.org/bpf/prog_lsm.html)
 - Daniel Borkmann, "[BPF: The future of Linux networking](https://netdevconf.info/0x15/session.html?borkmann-bpf)" (Netdev 0x15)
 - [LWN: eBPF for security (2021)](https://lwn.net/Articles/850489/)

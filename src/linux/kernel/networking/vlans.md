@@ -680,7 +680,7 @@ ip link set vxlan100 up
 ## References
 
 - [IEEE 802.1Q Standard](https://standards.ieee.org/standard/802_1Q-2018.html)
-- [Linux VLAN Documentation](https://docs.kernel.org/networking/vlan.html)
+- [Linux VLAN Documentation](https://docs.kernel.org/networking/index.html)
 - [Kernel 802.1Q module](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/net/8021q/)
 - [man-pages: vlan(5)](https://man7.org/linux/man-pages/man5/vlan.5.html)
 - [Red Hat: Configuring VLANs](https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/9/html/configuring_and_managing_networking/configuring-vlans_configuring-and-managing-networking)

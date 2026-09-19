@@ -599,8 +599,8 @@ tc filter add dev eth0 protocol ip parent 1: prio 1 flower \
 
 - [Linux Advanced Routing & Traffic Control](http://lartc.org/lartc.html)
 - [tc man page](https://man7.org/linux/man-pages/man8/tc.8.html)
-- [Kernel Traffic Control documentation](https://docs.kernel.org/networking/sched/index.html)
-- [Queueing Disciplines — docs.kernel.org](https://docs.kernel.org/networking/qdisc.html)
+- [Kernel Traffic Control documentation](https://docs.kernel.org/networking/index.html)
+- [Queueing Disciplines — docs.kernel.org](https://docs.kernel.org/networking/tc-queue-filters.html)
 - [TC Actions Environmental Rules — docs.kernel.org](https://docs.kernel.org/networking/tc-actions-env-rules.html)
 - [HTB — Hierarchical Token Bucket](http://luxik.cdi.cz/~devik/qos/htb/)
 - [LWN: Flow Queueing CoDel](https://lwn.net/Articles/496509/)

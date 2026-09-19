@@ -167,7 +167,7 @@ The maturity path most serious systems converge on: deterministic simulation for
 ## References
 
 - [Zhou et al., "FoundationDB: A Distributed Unbundled Transactional Key Value Store", SIGMOD 2021](https://dl.acm.org/doi/10.1145/3448016.3457559)
-- [FoundationDB blog — the SIGMOD'21 paper announcement](https://www.foundationdb.org/blog/fdb-paper)
+- [FoundationDB blog — the SIGMOD'21 paper announcement](https://www.foundationdb.org/blog/fdb-paper/)
 - [FoundationDB docs — simulation-based testing and Buggify](https://apple.github.io/foundationdb/testing.html)
 - [TigerBeetle documentation — deterministic simulation testing](https://docs.tigerbeetle.com/)
 - [Antithesis — deterministic testing infrastructure](https://antithesis.com/)

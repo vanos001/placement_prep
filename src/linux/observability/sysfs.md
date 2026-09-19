@@ -759,7 +759,7 @@ ls -la /sys/class/net/eth0/mtu
 
 - [sysfs Documentation](https://www.kernel.org/doc/html/latest/filesystems/sysfs.html)
 - [Linux Device Model](https://www.kernel.org/doc/html/latest/driver-api/driver-model/)
-- [udev Documentation](https://www.kernel.org/doc/html/latest/admin-guide/udev.html)
+- [udev Documentation](https://docs.kernel.org/admin-guide/index.html)
 
 ## Further Reading
 

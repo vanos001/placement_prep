@@ -678,7 +678,7 @@ if (poll_handle) {
 
 ## References
 
-- [FUSE kernel documentation](https://www.kernel.org/doc/html/latest/filesystems/fuse.html)
+- [FUSE kernel documentation](https://docs.kernel.org/filesystems/fuse/fuse.html)
 - [libfuse source code](https://github.com/libfuse/libfuse)
 - [FUSE protocol header](https://github.com/torvalds/linux/blob/master/include/uapi/linux/fuse.h)
 - [LWN: FUSE passthrough](https://lwn.net/Articles/787223/)
@@ -693,7 +693,7 @@ if (poll_handle) {
 - [Planet GNU](https://planet.gnu.org/)
 - [Free Software Books](https://www.gnu.org/doc/other-free-books.html)
 
-- https://www.kernel.org/doc/html/latest/filesystems/fuse.html
+- https://docs.kernel.org/filesystems/fuse/fuse.html
 - https://man7.org/linux/man-pages/man4/fuse.4.html
 - https://man7.org/linux/man-pages/man8/fusermount3.8.html
 - https://github.com/libfuse/libfuse/wiki

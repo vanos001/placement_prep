@@ -694,13 +694,13 @@ echo 0 > /proc/sys/kernel/numa_balancing
 - [Planet GNU](https://planet.gnu.org/)
 - [Free Software Books](https://www.gnu.org/doc/other-free-books.html)
 
-- [NUMA-aware scheduling documentation](https://www.kernel.org/doc/Documentation/scheduler/sched-numa-balancing.txt)
+- [NUMA-aware scheduling documentation](https://docs.kernel.org/scheduler/index.html)
 - [numactl(8) man page](https://man7.org/linux/man-pages/man8/numactl.8.html)
 - [set_mempolicy(2) man page](https://man7.org/linux/man-pages/man2/set_mempolicy.2.html)
 - [Linux NUMA memory policy](https://www.kernel.org/doc/Documentation/admin-guide/mm/numa_memory_policy.rst)
 - [Mel Gorman's NUMA balancing patches](https://lwn.net/Articles/524977/)
 - [NUMA Automatic Balancing — Linux Kernel Internals](https://kernel-internals.org/sched/numa-balancing/) — Detailed internals
-- [CXL Memory Tiering](https://docs.kernel.org/mm/cxl_memory_hotplug.html) — Linux CXL tiering documentation
+- [CXL Memory Tiering](https://docs.kernel.org/driver-api/cxl/linux/memory-hotplug.html) — Linux CXL tiering documentation
 
 ## Related Topics
 

@@ -553,7 +553,7 @@ ipcs -s --human
 - [sem_overview(7) man page](https://man7.org/linux/man-pages/man7/sem_overview.7.html)
 - [sem_open(3) man page](https://man7.org/linux/man-pages/man3/sem_open.3.html)
 - [semop(2) man page](https://man7.org/linux/man-pages/man2/semop.2.html)
-- [POSIX IPC documentation](https://www.kernel.org/doc/html/latest/userspace-api/sysVipc.html)
+- [POSIX IPC documentation](https://docs.kernel.org/userspace-api/index.html)
 - [The Little Book of Semaphores](https://greenteapress.com/wp/semaphores/) — Allen Downey
 
 ## Related Topics

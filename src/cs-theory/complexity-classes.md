@@ -137,4 +137,4 @@ A: (1) Show it's in NP (verify solution in polynomial time), (2) pick a known NP
 
 - [Introduction to Algorithms — CLRS](https://mitpress.mit.edu/9780262046305/introduction-to-algorithms/)
 - [Computational Complexity — Arora & Barak](http://theory.cs.princeton.edu/complexity/)
-- [Clay Mathematics — P vs NP](https://www.claymath.org/millennium-problems/p-vs-np-problem)
+- [Clay Mathematics — P vs NP](https://web.archive.org/web/20230501083644/https://www.claymath.org/millennium-problems/p-vs-np-problem)

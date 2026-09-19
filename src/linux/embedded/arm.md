@@ -542,7 +542,7 @@ perf stat -e cycles,instructions,cache-misses ./my_program
 - [ARM Cortex-A Programmer's Guide](https://developer.arm.com/documentation/den0024/latest)
 - [ARM NEON Programmer's Guide](https://developer.arm.com/documentation/den0018/latest)
 - [ARM SVE Programmer's Guide](https://developer.arm.com/documentation/102131/latest)
-- [Linux ARM64 Documentation](https://www.kernel.org/doc/html/latest/arm64/)
+- [Linux ARM64 Documentation](https://docs.kernel.org/arch/arm64/index.html)
 
 ## Related Topics
 

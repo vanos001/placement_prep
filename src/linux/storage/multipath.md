@@ -470,9 +470,9 @@ multipathd reinstate path mpatha sdb
 
 ## References
 
-- [device-mapper multipath documentation](https://www.kernel.org/doc/html/latest/admin-guide/device-mapper/dm-mpath.html)
+- [device-mapper multipath documentation](https://docs.kernel.org/admin-guide/device-mapper/index.html)
 - [Red Hat DM Multipath Guide](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html/dm_multipath/)
-- [multipath.conf(5) man page](https://man7.org/linux/man-pages/man5/multipath.conf.5.html)
+- [multipath.conf(5) man page](https://manpages.debian.org/multipath.conf.5)
 - [SCSI ALUA specification](https://www.t10.org/drafts.htm)
 
 ## Multipath with NVMe (ANA)

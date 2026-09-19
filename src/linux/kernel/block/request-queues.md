@@ -905,7 +905,7 @@ $ cat /sys/block/sda/device/power/runtime_suspended_time
 - [Free Software Books](https://www.gnu.org/doc/other-free-books.html)
 
 - [Linux kernel docs — blk-mq](https://docs.kernel.org/block/blk-mq.html)
-- [Linux kernel docs — request_queue API](https://docs.kernel.org/block/request.html)
+- [Linux kernel docs — request_queue API](https://docs.kernel.org/block/index.html)
 - [LWN: The multiqueue block layer](https://lwn.net/Articles/552904/)
 - [kernel.org — block/blk-mq.c](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/block/blk-mq.c)
 - [kernel.org — include/linux/blk-mq.h](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/include/linux/blk-mq.h)

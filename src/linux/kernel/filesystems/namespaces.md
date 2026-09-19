@@ -781,7 +781,7 @@ ReadWritePaths=/var/lib/myapp
 - [Linux kernel source: fs/namespace.c](https://github.com/torvalds/linux/blob/master/fs/namespace.c)
 - [LWN: Mount propagation](https://lwn.net/Articles/690679/)
 - [LWN: A deeper look at mount namespaces](https://lwn.net/Articles/689671/)
-- [Kernel documentation: sharedsubtree.txt](https://www.kernel.org/doc/html/latest/filesystems/sharedsubtree.txt)
+- [Kernel documentation: sharedsubtree.txt](https://docs.kernel.org/filesystems/sharedsubtree.html)
 
 ## Further Reading
 

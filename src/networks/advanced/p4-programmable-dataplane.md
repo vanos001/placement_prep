@@ -159,7 +159,7 @@ explains today's landscape:
   BlueField-4 (announced Oct 2025, 800 Gb/s, shipping with Vera Rubin
   platforms) continues the line.
 - **AMD Pensando DPUs**: pitched around a P4-programmable data plane plus Arm
-  cores ([amd.com Pensando](https://www.amd.com/en/products/data-processing-units/pensando.html)).
+  cores ([amd.com Pensando](https://amd.com/en/products/data-processing-units/pensando.html)).
 - **Intel**: p4c-dpdk compiles P4 into E810 Dynamic Device Personalization
   profiles (programmable parser/classify on a fixed-function NIC); Mount Evans
   (co-designed with Google) proved P4 host NICs at scale; successors continue

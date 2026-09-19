@@ -184,7 +184,7 @@ The dcp format is optimized for FSDP's sharded layout; loading is also sharded (
 - [PyTorch FSDP documentation](https://pytorch.org/docs/stable/fsdp.html)
 - [PyTorch FSDP getting started tutorial](https://pytorch.org/tutorials/intermediate/FSDP_tutorial.html)
 - Zhao et al., "[PyTorch FSDP: Experiences on Scaling Fully Sharded Data Parallel](https://arxiv.org/abs/2304.11277)" (VLDB 2024)
-- [FSDP + TP integration (PyTorch 2.x)](https://pytorch.org/tutorials/intermediate/tp_tutorial.html)
+- [FSDP + TP integration (PyTorch 2.x)](https://web.archive.org/web/20250430155800/https://pytorch.org/tutorials/intermediate/TP_tutorial.html)
 - [DeepSpeed vs FSDP comparison](https://www.deepspeed.ai/tutorials/fsdp-vs-deepspeed/)
 - [Hugging Face Transformers + FSDP](https://huggingface.co/docs/transformers/main/en/fsdp)
 - Rajbhandari et al., "[ZeRO Stage 3 paper](https://arxiv.org/abs/1910.02054)" (2020)

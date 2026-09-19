@@ -750,7 +750,7 @@ Guaranteed
 
 - [Kubernetes Documentation](https://kubernetes.io/docs/)
 - [CNI Specification](https://github.com/containernetworking/cni/blob/main/SPEC.md)
-- [containerd CRI Plugin](https://github.com/containerd/containerd/tree/main/pkg/cri)
+- [containerd CRI Plugin](https://web.archive.org/web/20240202011855/https://github.com/containerd/containerd/tree/main/pkg/cri)
 - [Cilium eBPF-based Networking](https://docs.cilium.io/)
 - [Kubernetes Security Best Practices](https://kubernetes.io/docs/concepts/security/)
 

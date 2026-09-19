@@ -550,7 +550,7 @@ pahole -C task_struct vmlinux
 - [BTF specification](https://www.kernel.org/doc/html/latest/bpf/btf.html)
 - [Andrii Nakryiko's CO-RE blog series](https://nakryiko.com/posts/bpf-core-reference-guide/)
 - [pahole tool](https://github.com/acmel/dwarves)
-- [bpftool documentation](https://www.kernel.org/doc/html/latest/bpf/bpftool.html)
+- [bpftool documentation](https://docs.kernel.org/bpf/index.html)
 
 ## CO-RE in Practice: Complete Examples
 

@@ -144,7 +144,7 @@ For greenfield deployments, QUIC is the better choice. For retrofitting TCP-base
 
 - [RFC 7413: TCP Fast Open](https://datatracker.ietf.org/doc/html/rfc7413) (2014)
 - Radhakrishnan et al., "[TCP Fast Open](https://research.google/pubs/pub36646/)" (ACM CoNEXT 2011) — the original paper
-- [Linux TCP Fast Open documentation](https://www.kernel.org/doc/Documentation/networking/tcp_fastopen.txt)
+- [Linux TCP Fast Open documentation](https://docs.kernel.org/networking/index.html)
 - [TCP Fast Open in nginx](https://nginx.org/en/docs/http/ngx_http_v2_module.html) (since 1.11)
 - [TFO deployment at Google](https://research.google/pubs/pub36640/) (Google paper)
 - [LWN: TCP Fast Open overview (2014)](https://lwn.net/Articles/508818/)

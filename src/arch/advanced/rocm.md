@@ -164,6 +164,6 @@ CUDA's advantage: better ecosystem, faster compute, and the fact that most ML re
 - [rocBLAS GitHub](https://github.com/ROCm/rocBLAS)
 - [MIOpen GitHub](https://github.com/ROCm/MIOpen)
 - [PyTorch ROCm install](https://pytorch.org/get-started/locally/)
-- [AMD Instinct MI300X product page](https://www.amd.com/en/products/accelerators/instinct/mi300/mi300x.html)
+- [AMD Instinct MI300X product page](https://amd.com/en/products/accelerators/instinct/mi300/mi300x.html)
 - [Stability AI on ROCm (case study)](https://stability.ai/news/stability-ai-and-amd-collaborate-to-brain-generative-ai-workloads)
 - [LWN: ROCm overview (2023)](https://lwn.net/Articles/927511/)

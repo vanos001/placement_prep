@@ -649,7 +649,7 @@ podman --log-level=trace run alpine echo hello 2>&1 | head -50
 - [Podman Rootless Tutorial](https://github.com/containers/podman/blob/main/docs/tutorials/rootless_tutorial.md)
 - [User Namespaces man page](https://man7.org/linux/man-pages/man7/user_namespaces.7.html)
 - [slirp4netns](https://github.com/rootless-containers/slirp4netns) — rootless networking
-- [pasta](https://passt.top/passt/) — fast rootless networking
+- [pasta](https://passt.top/passt) — fast rootless networking
 - [fuse-overlayfs](https://github.com/containers/fuse-overlayfs) — FUSE overlay
 - [LWN: Rootless containers](https://lwn.net/Articles/761021/) — design overview
 - [Rootless Containers](https://rootlesscontaine.rs/) — comprehensive resource

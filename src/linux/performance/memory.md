@@ -636,7 +636,7 @@ sysctl -w vm.vfs_cache_pressure=50
 
 - Gregg, B. *Systems Performance: Enterprise and the Cloud*, 2nd Edition (2020).
 - [Linux Memory Management Documentation](https://www.kernel.org/doc/html/latest/admin-guide/mm/)
-- [NUMA Deep Dive](https://frankdenneman.nl/2016/07/07/numa-deep-dive-part-1-uma-numa/)
+- [NUMA Deep Dive](https://web.archive.org/web/20260320093843/http://frankdenneman.nl/2016/07/07/numa-deep-dive-part-1-uma-numa/)
 - [Huge Pages Documentation](https://www.kernel.org/doc/html/latest/admin-guide/mm/hugetlbpage.html)
 - [Linux perf Examples — Brendan Gregg](https://www.brendangregg.com/perf.html)
 - [Understanding the Linux Virtual Memory Manager — Mel Gorman](https://www.kernel.org/doc/gorman/)

@@ -43,11 +43,14 @@ The validation suite re-run on the `research` tree during the 2026-09-19 review:
 - real `mermaid@11` parse → 4,889/4,889 pass (100%)
 - `scripts/check-doi.py` → 491/491 DOIs resolve
 
-> **External URLs are not clean.** A probe of ~6,500 external links found **758 dead**
-> (647 × HTTP 404, mostly `docs.kernel.org` paths that were never valid). This is
-> tracked in `scripts/dead-links-report.txt` and re-probed on demand with
-> `python3 scripts/check-links.py --external src`; it needs human triage rather
-> than a code fix.
+> **External URLs are not fully clean.** A probe of ~6,500 external links initially
+> flagged 758 dead. A follow-up pass (see the 2026-09-19 entry below) repaired
+> **161** of them — 129 re-pointed to verified live pages (mostly `docs.kernel.org`
+> paths that never existed, plus man pages man7.org does not mirror) and 32 given
+> `web.archive.org` snapshots — and found that **20 were transient failures** which
+> resolve fine. **471 hard 404s remain**, catalogued by host in
+> `scripts/dead-links-report.txt`; each needs a human decision (re-point, replace,
+> or drop) rather than a code fix.
 >
 > The full mdBook build peaks above the memory limit of the environment used for
 > this review, so the review ran a 47-chapter subset build of every changed file

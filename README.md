@@ -97,9 +97,12 @@ heuristic, Mermaid real parser, broken links + anchors, SUMMARY completeness, an
 MathJax. Set `EXTERNAL=1` to add DOI resolution and external-URL probing. See
 [`scripts/README.md`](scripts/README.md) for details.
 
-> **Scope of "0 broken links".** The internal link/anchor check is green. A full
-> probe of the ~6,500 external URLs found **758 dead ones** (647 × HTTP 404,
-> mostly moved `docs.kernel.org` pages). That backlog is tracked in
+> **Scope of "0 broken links".** The internal link/anchor check is green. A probe
+> of the ~6,500 external URLs initially flagged 758 as dead; **161 have since been
+> repaired** (129 with a verified live replacement — mostly fabricated
+> `docs.kernel.org` paths and man pages man7.org does not mirror — and 32 with an
+> archived snapshot). 20 were transient failures that resolve fine. **471 remain
+> dead** and are catalogued by host in
 > [`scripts/dead-links-report.txt`](scripts/dead-links-report.txt); re-probe with
 > `python3 scripts/check-links.py --external src`.
 

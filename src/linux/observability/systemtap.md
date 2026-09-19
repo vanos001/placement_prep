@@ -791,7 +791,7 @@ Key performance guidelines:
 
 ## Further Reading
 
-- [SystemTap Language Reference](https://sourceware.org/systemtap/langref/) — Official language reference
+- [SystemTap Language Reference](https://web.archive.org/web/20240406162327/https://sourceware.org/systemtap/langref/) — Official language reference
 - [SystemTap Tapset Reference](https://sourceware.org/systemtap/tapsets/) — Built-in tapsets
 - [SystemTap Beginner's Guide](https://sourceware.org/systemtap/SystemTap_Beginners_Guide/) — Getting started
 - [LWN: SystemTap](https://lwn.net/Articles/157860/) — Early SystemTap overview

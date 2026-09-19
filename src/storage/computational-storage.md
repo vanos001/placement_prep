@@ -148,6 +148,6 @@ Computational storage and DPUs solve adjacent data-movement problems at differen
 
 - SNIA, Computational Storage (architecture spec, CSD/CSP definitions, technical work group) - <https://www.snia.org/computational>
 - NVM Express, Computational Programs Command Set Specification (part of the NVMe 2.x family; rev 1.3 with Base rev 2.4 as of Aug 2026) - <https://nvmexpress.org/specification/computational-programs-command-set/>
-- Samsung Newsroom, "Samsung Electronics Develops Second-Generation SmartSSD Computational Storage Drive with Upgraded Processing Functionality" (Feb 2022) - <https://news.samsung.com/global/samsung-electronics-develops-second-generation-smartssd-computational-storage-drive-with-upgraded-processing-functionality>
+- Samsung Newsroom, "Samsung Electronics Develops Second-Generation SmartSSD Computational Storage Drive with Upgraded Processing Functionality" (Feb 2022) - <https://news.samsung.com/global/samsung-electronics-develops-second-generation-smartssd-computational-storage-drive-with-upgraded-processing-functionality/>
 - Seshadri et al., "Willow: A User-Programmable SSD", OSDI 2014 - <https://www.usenix.org/conference/osdi14/technical-sessions/presentation/seshadri>
 - Lukken & Trivedi, "Past, Present and Future of Computational Storage: A Survey", arXiv 2112.09691 - <https://arxiv.org/abs/2112.09691>

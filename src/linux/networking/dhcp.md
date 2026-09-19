@@ -680,7 +680,7 @@ iptables -A INPUT -i eth0 -p udp --sport 67 \
 - [RFC 2132 — DHCP Options and BOOTP Vendor Extensions](https://www.rfc-editor.org/rfc/rfc2132)
 - [ISC DHCP Server Documentation](https://kb.isc.org/docs/isc-dhcp-44-manual-pages)
 - [systemd-networkd DHCP Configuration](https://www.freedesktop.org/software/systemd/man/systemd.network.html)
-- [dhclient.conf man page](https://man7.org/linux/man-pages/man5/dhclient.conf.5.html)
+- [dhclient.conf man page](https://manpages.debian.org/dhclient.conf.5)
 
 ## Related Topics
 

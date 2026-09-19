@@ -268,7 +268,7 @@ The key insight: **a TPM is for "is this the device I think it is, in the state 
 - Microsoft, "[TPM Fundamentals](https://learn.microsoft.com/en-us/windows/security/hardware-security/tpm/tpm-fundamentals)"
 - Microsoft, "[TPM 2.0 Provisioning and Windows](https://learn.microsoft.com/en-us/windows/security/hardware-security/tpm/tpm-operations-for-it-pros)"
 - tpm2-tss project, "[tpm2-tss: TPM 2.0 Software Stack](https://github.com/tpm2-software/tpm2-tss)"
-- Linux kernel, "[TPM driver documentation](https://docs.kernel.org/driver-api/tpm/tpm.html)"
+- Linux kernel, "[TPM driver documentation](https://docs.kernel.org/security/tpm/index.html)"
 - systemd, "[systemd-cryptenroll manual](https://www.freedesktop.org/software/systemd/man/systemd-cryptenroll.html)" — TPM2 integration for LUKS
 - Kenneth Goldman et al., "[Practical Guide to TPM 2.0 (book)](https://link.springer.com/book/10.1007/978-1-4302-6584-9)" (Apress, 2016) — written by TPM 2.0 architects
 - J. Wertheimer, "[TPM 2.0 Attestation with Azure](https://learn.microsoft.com/en-us/azure/security/fundamentals/attestation)"

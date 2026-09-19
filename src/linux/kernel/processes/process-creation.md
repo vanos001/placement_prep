@@ -686,7 +686,7 @@ $ strace -f -e trace=execve,write ./myprogram
 - [Linux man pages: clone3(2)](https://man7.org/linux/man-pages/man2/clone3.2.html)
 - [Linux kernel: kernel/fork.c](https://elixir.bootlin.com/linux/latest/source/kernel/fork.c)
 - [LWN: A fork() in the road](https://lwn.net/Articles/789027/) — Discussion of fork() problems
-- [Linux Insides: fork()](https://0xax.gitbooks.io/linux-insides/content/SysCall/)
+- [Linux Insides: fork()](https://0xax.gitbooks.io/linux-insides/content/SysCall)
 - [The Linux Programming Interface: Process Creation](https://man7.org/tlpi/)
 
 ## Related Topics

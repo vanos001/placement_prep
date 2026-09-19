@@ -1544,9 +1544,9 @@ All KVM features and most bugfixes should be accompanied by tests. The kernel pr
 - [Intel SDM Volume 3C — VMX](https://www.intel.com/sdm)
 - [QEMU Internals Documentation](https://www.qemu.org/docs/master/devel/)
 - [KVM Source Browser](https://elixir.bootlin.com/linux/latest/source/virt/kvm)
-- [KVM MMU Documentation](https://docs.kernel.org/virt/kvm/mmu.html) — Shadow and EPT page table internals
-- [KVM Hypercalls — docs.kernel.org](https://docs.kernel.org/virt/kvm/hypercalls.html)
-- [Nested VMX documentation — docs.kernel.org](https://docs.kernel.org/virt/kvm/nested-vmx.html)
+- [KVM MMU Documentation](https://docs.kernel.org/virt/kvm/x86/mmu.html) — Shadow and EPT page table internals
+- [KVM Hypercalls — docs.kernel.org](https://docs.kernel.org/virt/kvm/x86/hypercalls.html)
+- [Nested VMX documentation — docs.kernel.org](https://docs.kernel.org/virt/kvm/x86/nested-vmx.html)
 - [KVM Review Checklist — docs.kernel.org](https://docs.kernel.org/virt/kvm/review-checklist.html) — Patch quality standards, testing requirements (selftests, kvm-unit-tests)
 
 ## Related Topics

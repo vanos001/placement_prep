@@ -656,7 +656,7 @@ Contended latency depends heavily on the number of CPUs competing for the same c
 - [Planet GNU](https://planet.gnu.org/)
 - [Free Software Books](https://www.gnu.org/doc/other-free-books.html)
 
-- [Linux Kernel Documentation: Atomic Types](https://www.kernel.org/doc/html/latest/core-api/atomic_ops.html)
+- [Linux Kernel Documentation: Atomic Types](https://docs.kernel.org/core-api/wrappers/atomic_t.html)
 - [Linux Kernel Documentation: Memory Barriers](https://www.kernel.org/doc/html/latest/core-api/wrappers/memory-barriers.html)
 - [Linux Kernel Source: Documentation/memory-barriers.txt](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/Documentation/memory-barriers.txt)
 - [Paul E. McKenney: "Memory Barriers: a Hardware View for Software Hackers"](https://www2.rdrop.com/users/paulmck/scalability/paper/whymb.2010.07.23a.pdf)

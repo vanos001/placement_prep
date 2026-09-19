@@ -559,8 +559,8 @@ int pinctrl_gpio_direction_output(unsigned gpio, int value);
 
 ## Further Reading
 
-- [Kernel docs: Pinctrl subsystem](https://www.kernel.org/doc/html/latest/driver-api/pinctrl.html)
-- [Kernel docs: Pinctrl bindings](https://www.kernel.org/doc/html/latest/devicetree/bindings/pinctrl/pinctrl-bindings.html)
+- [Kernel docs: Pinctrl subsystem](https://docs.kernel.org/driver-api/pin-control.html)
+- [Kernel docs: Pinctrl bindings](https://docs.kernel.org/devicetree/bindings/index.html)
 - [LWN: The pin control subsystem (2012)](https://lwn.net/Articles/503785/)
 - [pinctrl API reference](https://elixir.bootlin.com/linux/latest/source/include/linux/pinctrl/consumer.h)
 - [Device tree pinctrl examples](https://github.com/torvalds/linux/tree/master/Documentation/devicetree/bindings/pinctrl)

@@ -544,10 +544,10 @@ find /rootfs -type f | xargs -I{} evmctl ima_sign --key key.pem {}
 
 ## Further Reading
 
-- [Linux IMA documentation](https://www.kernel.org/doc/html/latest/security/IMA.html)
+- [Linux IMA documentation](https://docs.kernel.org/security/index.html)
 - [IMA/EVM Wiki](https://sourceforge.net/p/linux-ima/wiki/)
 - [LWN: IMA and EVM](https://lwn.net/Articles/461026/)
-- [evmctl man page](https://man7.org/linux/man-pages/man1/evmctl.1.html)
+- [evmctl man page](https://manpages.debian.org/evmctl.1)
 - [LWN: Digital signatures for IMA](https://lwn.net/Articles/621953/)
 - [TPM 2.0 and Linux](https://tpm2-software.github.io/)
 

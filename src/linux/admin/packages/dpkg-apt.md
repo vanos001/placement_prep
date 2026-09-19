@@ -518,7 +518,7 @@ graph TB
 ## References and Further Reading
 
 - [dpkg man page](https://man7.org/linux/man-pages/man1/dpkg.1.html)
-- [apt-get man page](https://man7.org/linux/man-pages/man8/apt-get.8.html)
+- [apt-get man page](https://manpages.debian.org/apt-get.8)
 - [Debian APT Wiki](https://wiki.debian.org/Apt)
 - [Ubuntu Package Management](https://help.ubuntu.com/community/AptGet/Howto)
 - [Debian Policy Manual — Binary packages](https://www.debian.org/doc/debian-policy/ch-binary.html)

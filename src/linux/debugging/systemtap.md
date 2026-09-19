@@ -515,7 +515,7 @@ sudo stap -DINTERRUPTIBLE=1 myprobe.stp
 ## References
 
 - [SystemTap Official Site](https://sourceware.org/systemtap/) — documentation
-- [SystemTap Language Reference](https://sourceware.org/systemtap/langref/) — complete language spec
+- [SystemTap Language Reference](https://web.archive.org/web/20240406162327/https://sourceware.org/systemtap/langref/) — complete language spec
 - [SystemTap Tapset Reference](https://sourceware.org/systemtap/tapsets/) — built-in tapsets
 - [SystemTap Beginner's Guide](https://sourceware.org/systemtap/SystemTap_Beginners_Guide/) — Red Hat guide
 - [man7.org: stap(1)](https://man7.org/linux/man-pages/man1/stap.1.html) — man page

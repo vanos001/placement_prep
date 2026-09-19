@@ -649,9 +649,9 @@ Network issue                    → eBPF, tcpdump
 - [Planet GNU](https://planet.gnu.org/)
 - [Free Software Books](https://www.gnu.org/doc/other-free-books.html)
 
-- [Kernel Debugging Documentation](https://www.kernel.org/doc/html/latest/dev-tools/gdb-kernel-debugging.html)
+- [Kernel Debugging Documentation](https://docs.kernel.org/process/debugging/gdb-kernel-debugging.html)
 - [crash Whitepaper](https://crash-utility.github.io/)
-- [KGDB Documentation](https://www.kernel.org/doc/html/latest/dev-tools/kgdb.html)
+- [KGDB Documentation](https://docs.kernel.org/process/debugging/kgdb.html)
 - [KASAN Documentation](https://www.kernel.org/doc/html/latest/dev-tools/kasan.html)
 - [kdump Documentation](https://www.kernel.org/doc/html/latest/admin-guide/kdump/kdump.html)
 - [Kernel Testing and Debugging](https://www.kernel.org/doc/html/latest/dev-tools/index.html)

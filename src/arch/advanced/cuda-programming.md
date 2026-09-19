@@ -188,7 +188,7 @@ For ML libraries (PyTorch, TensorFlow), the back-end is usually CUDA-specific co
 
 ## References
 
-- [NVIDIA CUDA C++ Programming Guide](https://docs.nvidia.com/cuda/cuda-c-programming-guide/)
+- [NVIDIA CUDA C++ Programming Guide](https://docs.nvidia.com/cuda/cuda-c-programming-guide/index.html)
 - [NVIDIA CUDA C++ Best Practices Guide](https://docs.nvidia.com/cuda/cuda-c-best-practices-guide/)
 - Kirk & Hwu, "[Programming Massively Parallel Processors](https://www.elsevier.com/books/programming-massively-parallel-processors/kirk/978-0-12-415992-1)" (4th edition, 2022) — textbook
 - [Mark Harris's CUDA tutorials](https://developer.nvidia.com/blog/tag/cuda/)

@@ -611,7 +611,7 @@ unregister_sysrq_key('c', &my_sysrq_op);
 
 - [systemd.special(7) man page](https://man7.org/linux/man-pages/man7/systemd.special.7.html) — Rescue/emergency targets
 - [fsck(8) man page](https://man7.org/linux/man-pages/man8/fsck.8.html)
-- [chroot(8) man page](https://man7.org/linux/man-pages/man8/chroot.8.html)
+- [chroot(8) man page](https://manpages.debian.org/chroot.8)
 - [GRUB2 manual](https://www.gnu.org/software/grub/manual/grub/)
 - [SystemRescue documentation](https://www.system-rescue.org/)
 - [ArchWiki: Recovery](https://wiki.archlinux.org/title/Recovery)

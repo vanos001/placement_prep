@@ -721,6 +721,6 @@ The POSIX.1e capabilities logic is itself an LSM, stored in `security/commoncap.
 - [LWN: LSM](https://lwn.net/Articles/635771/) — LSM overview
 - [SELinux Coloring Book](https://people.redhat.com/duffy/selinux/selinux-coloring-book_A4-Stapled.pdf) — Visual SELinux guide
 - [man7.org: selinux](https://man7.org/linux/man-pages/man8/selinux.8.html) — SELinux man pages
-- [Kernel docs: Smack](https://docs.kernel.org/security/smack.html) — Smack documentation
-- [Kernel docs: TOMOYO](https://docs.kernel.org/security/tomoyo.html) — TOMOYO documentation
-- [BPF LSM](https://docs.kernel.org/bpf/progs/lsm.html) — BPF LSM documentation
+- [Kernel docs: Smack](https://docs.kernel.org/admin-guide/LSM/Smack.html) — Smack documentation
+- [Kernel docs: TOMOYO](https://docs.kernel.org/admin-guide/LSM/tomoyo.html) — TOMOYO documentation
+- [BPF LSM](https://docs.kernel.org/bpf/prog_lsm.html) — BPF LSM documentation

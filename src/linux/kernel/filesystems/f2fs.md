@@ -555,7 +555,7 @@ $ dmesg | grep f2fs
 - [F2FS kernel documentation](https://www.kernel.org/doc/html/latest/filesystems/f2fs.html)
 - [F2FS design document](https://www.kernel.org/doc/html/latest/filesystems/f2fs.html#design)
 - [F2FS: A New File System for Flash Storage (USENIX FAST '15)](https://www.usenix.org/conference/fast15/technical-sessions/presentation/kim)
-- [mkfs.f2fs man page](https://man7.org/linux/man-pages/man8/mkfs.f2fs.8.html)
+- [mkfs.f2fs man page](https://manpages.debian.org/mkfs.f2fs.8)
 - [LWN: The F2FS filesystem](https://lwn.net/Articles/518936/)
 
 ## Further Reading
@@ -568,7 +568,7 @@ $ dmesg | grep f2fs
 - [Free Software Books](https://www.gnu.org/doc/other-free-books.html)
 
 - [F2FS documentation — docs.kernel.org](https://docs.kernel.org/filesystems/f2fs.html)
-- https://man7.org/linux/man-pages/man8/mkfs.f2fs.8.html
+- https://manpages.debian.org/mkfs.f2fs.8
 - https://lwn.net/Articles/518936/ — "The F2FS filesystem"
 - https://lwn.net/Articles/806930/ — "F2FS compression"
 - https://www.usenix.org/conference/fast15/technical-sessions/presentation/kim

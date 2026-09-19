@@ -488,7 +488,7 @@ integration.
 - Linux kernel: lockdep documentation.
   <https://docs.kernel.org/locking/lockdep-design.html>
 - Linux kernel: lockdep troubleshooting and usage.
-  <https://www.kernel.org/doc/html/latest/dev-tools/lockdep.html>
+  <https://docs.kernel.org/locking/lockdep-design.html>
 - Go runtime source: `runtime/proc.go` deadlock detection
   (`checkdead`).
   <https://github.com/golang/go/blob/master/src/runtime/proc.go>

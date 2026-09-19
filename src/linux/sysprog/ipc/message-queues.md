@@ -733,7 +733,7 @@ void *worker(void *arg) {
 
 - [msgget(2) man page](https://man7.org/linux/man-pages/man2/msgget.2.html)
 - [mq_overview(7) man page](https://man7.org/linux/man-pages/man7/mq_overview.7.html)
-- [POSIX Message Queues (Linux kernel docs)](https://www.kernel.org/doc/html/latest/userspace-api/sysVipc.html)
+- [POSIX Message Queues (Linux kernel docs)](https://docs.kernel.org/userspace-api/index.html)
 - [Beej's Guide to Unix IPC](https://beej.us/guide/bgipc/)
 - [Linux kernel source: ipc/msg.c](https://elixir.bootlin.com/linux/latest/source/ipc/msg.c)
 - [Linux kernel source: fs/mqueue.c](https://elixir.bootlin.com/linux/latest/source/fs/mqueue.c)

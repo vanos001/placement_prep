@@ -655,7 +655,7 @@ For read-write locks, lockdep tracks blocking conditions:
 - [Free Software Books](https://www.gnu.org/doc/other-free-books.html)
 
 - [Runtime locking correctness validator — docs.kernel.org](https://docs.kernel.org/locking/lockdep-design.html) — Official lockdep design documentation
-- [Kernel documentation: Lockdep](https://docs.kernel.org/locking/lockdep.html)
+- [Kernel documentation: Lockdep](https://docs.kernel.org/locking/lockdep-design.html)
 - [Ingo Molnár: "Runtime lock dependency validator" (original patch)](https://lwn.net/Articles/185500/)
 - [LWN: "Lockdep: the Linux lock validator"](https://lwn.net/Articles/185500/)
 - [Linux Kernel Source: kernel/locking/lockdep.c](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/kernel/locking/lockdep.c)

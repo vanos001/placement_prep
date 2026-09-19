@@ -618,9 +618,9 @@ chkrootkit
 - [rkhunter Documentation](http://rkhunter.sourceforge.net/) — Rootkit Hunter project
 - [chkrootkit](http://www.chkrootkit.org/) — chkrootkit project
 - [AIDE Manual](https://aide.github.io/) — AIDE documentation
-- [Linux kernel docs: IMA](https://docs.kernel.org/security/IMA.html) — Integrity Measurement Architecture
+- [Linux kernel docs: IMA](https://docs.kernel.org/security/index.html) — Integrity Measurement Architecture
 - [LWN: Kernel rootkits](https://lwn.net/Articles/426391/) — Kernel rootkit techniques
 - [man7.org: modules](https://man7.org/linux/man-pages/man5/modules-load.d.5.html) — Module loading
 - [Kernel docs: Module signing](https://docs.kernel.org/admin-guide/module-signing.html) — Module signature verification
-- [Kernel docs: Lockdown](https://docs.kernel.org/security/lockdown.html) — Kernel lockdown
+- [Kernel docs: Lockdown](https://docs.kernel.org/security/index.html) — Kernel lockdown
 - [dm-verity](https://docs.kernel.org/admin-guide/device-mapper/verity.html) — Device mapper verity

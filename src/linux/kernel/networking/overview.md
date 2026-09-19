@@ -1312,7 +1312,7 @@ depends NET_SWITCHDEV
 4. **Linux Foundation Networking Training** — [training.linuxfoundation.org](https://training.linuxfoundation.org/)
 5. **kernel.org Documentation** — [www.kernel.org/doc/html/latest/networking/](https://www.kernel.org/doc/html/latest/networking/)
 6. [Linux Kernel Networking Documentation](https://docs.kernel.org/networking/index.html) — Official kernel networking subsystem index
-7. [Routing in the Linux kernel — docs.kernel.org](https://docs.kernel.org/networking/route.html) — Official routing documentation
+7. [Routing in the Linux kernel — docs.kernel.org](https://docs.kernel.org/networking/index.html) — Official routing documentation
 8. [TIPC Protocol Documentation — docs.kernel.org](https://docs.kernel.org/networking/tipc.html) — Official TIPC kernel documentation
 9. [TIPC Getting Started](http://tipc.io/getting_started.html) — TIPC setup guide
 10. [TIPC Programming Guide](http://tipc.io/programming.html) — TIPC API reference

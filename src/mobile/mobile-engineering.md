@@ -259,7 +259,7 @@ give app-level visibility.
 Mobile networks are **lossy, slow and metered**. A mobile HTTP client must
 cache aggressively, time out quickly, retry idempotently, and survive full
 offline windows. The platform-native stacks are [`URLSession`](https://developer.apple.com/documentation/foundation/urlsession)
-on iOS and [`OkHttp`](https://square.github.io/okhttp/) (often wrapped by
+on iOS and [`OkHttp`](https://web.archive.org/web/20260712095525/https://square.github.io/okhttp/) (often wrapped by
 [Retrofit](https://square.github.io/retrofit/)) on Android.
 
 | Aspect | URLSession | OkHttp | Retrofit |
@@ -546,7 +546,7 @@ reference to a `View` / `Activity` context, non-static inner class holding outer
 - [React Native docs — New Architecture](https://reactnative.dev/docs/the-new-architecture/why)
 - [Flutter docs](https://docs.flutter.dev/) · [Dart language tour](https://dart.dev/language)
 - [Material Design 3](https://m3.material.io/)
-- [OkHttp](https://square.github.io/okhttp/) · [Retrofit](https://square.github.io/retrofit/)
+- [OkHttp](https://web.archive.org/web/20260712095525/https://square.github.io/okhttp/) · [Retrofit](https://square.github.io/retrofit/)
 - [APNs](https://developer.apple.com/documentation/usernotifications/setting_up_a_remote_notification_server) · [Firebase Cloud Messaging](https://firebase.google.com/docs/cloud-messaging)
 - [WorkManager](https://developer.android.com/topic/libraries/architecture/workmanager) · [BGTaskScheduler](https://developer.apple.com/documentation/backgroundtasks)
 - [Room](https://developer.android.com/training/data-storage/room) · [Core Data](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/CoreData/) · [SwiftData](https://developer.apple.com/documentation/swiftdata) · [Realm / Atlas Device SDK](https://www.mongodb.com/docs/atlas/device-sdks/)

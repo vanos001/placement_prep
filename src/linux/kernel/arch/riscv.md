@@ -659,7 +659,7 @@ dmesg | grep -i riscv
 ## References
 
 - [RISC-V ISA Specification](https://riscv.org/technical/specifications/)
-- [RISC-V Linux Kernel Documentation](https://www.kernel.org/doc/html/latest/riscv/)
+- [RISC-V Linux Kernel Documentation](https://docs.kernel.org/arch/riscv/index.html)
 - [RISC-V Reader](https://www.riscvbook.com/)
 - [RISC-V A Programmer's Perspective](https://github.com/jlpteaching/diveinfoSystems)
 - [SiFive Documentation](https://www.sifive.com/documentation)

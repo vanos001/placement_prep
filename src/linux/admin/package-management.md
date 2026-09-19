@@ -737,5 +737,5 @@ fpm -s python -t deb django
 - [Arch Wiki: pacman](https://wiki.archlinux.org/title/Pacman) — pacman documentation
 - [Gentoo Handbook](https://wiki.gentoo.org/wiki/Handbook:Main_Page) — Gentoo administration
 - [fpm Documentation](https://fpm.readthedocs.io/) — fpm packaging tool
-- [apt(8) Man Page](https://man7.org/linux/man-pages/man8/apt.8.html) — apt reference
+- [apt(8) Man Page](https://manpages.debian.org/apt.8) — apt reference
 - [dnf(8) Man Page](https://dnf.readthedocs.io/en/latest/command_ref.html) — dnf reference

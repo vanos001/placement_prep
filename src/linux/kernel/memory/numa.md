@@ -537,7 +537,7 @@ numactl --cpunodebind=0 --membind=0 ./myapp  # Both on node 0
 
 ## References
 
-- [NUMA documentation](https://www.kernel.org/doc/html/latest/vm/numa.html)
+- [NUMA documentation](https://docs.kernel.org/mm/numa.html)
 - [numactl(8) man page](https://man7.org/linux/man-pages/man8/numactl.8.html)
 - [mbind(2) man page](https://man7.org/linux/man-pages/man2/mbind.2.html)
 
@@ -642,7 +642,7 @@ cat /proc/zoneinfo | grep -A 10 "Node.*zone.*Movable"
 - [Planet GNU](https://planet.gnu.org/)
 - [Free Software Books](https://www.gnu.org/doc/other-free-books.html)
 
-- https://www.kernel.org/doc/html/latest/vm/numa.html
+- https://docs.kernel.org/mm/numa.html
 - https://man7.org/linux/man-pages/man7/numa.7.html
 - https://man7.org/linux/man-pages/man2/set_mempolicy.2.html
 - https://man7.org/linux/man-pages/man2/get_mempolicy.2.html

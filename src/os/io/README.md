@@ -315,4 +315,4 @@ sequenceDiagram
 - [Linux Kernel Development](https://www.amazon.com/Linux-Kernel-Development-Robert-Love/dp/0672329468) — Robert Love (I/O chapters)
 - [The Linux Programming Interface](https://man7.org/tlpi/) — Michael Kerrisk (Chapters 4-6, 63)
 - [io_uring documentation](https://kernel.dk/io_uring.pdf) — Jens Axboe
-- [UNIX Network Programming, Vol 1](https://www.unpbook.com/) — W. Richard Stevens (I/O multiplexing chapters)
+- [UNIX Network Programming, Vol 1](https://unpbook.com/) — W. Richard Stevens (I/O multiplexing chapters)

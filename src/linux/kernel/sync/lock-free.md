@@ -718,6 +718,6 @@ The report shows both the read and write locations, the tasks involved, and the 
 - [LWN: Lock-free data structures](https://lwn.net/Articles/270055/)
 - **Is Parallel Programming Hard, And, If So, What Can You Do About It?** — Paul E. McKenney
 - [kernel.org: RCU Concepts](https://www.kernel.org/doc/html/latest/RCU/whatisRCU.html)
-- [Memory Barriers: A Hardware View for Software Hackers](https://www.kernel.org/doc/html/latest/memory-barriers.txt)
+- [Memory Barriers: A Hardware View for Software Hackers](https://docs.kernel.org/core-api/wrappers/memory-barriers.html)
 
 > **Related topics:** Memory Barriers, Per-CPU Variables, [Spinlocks](./spinlocks.md), [RCU](./rcu.md)

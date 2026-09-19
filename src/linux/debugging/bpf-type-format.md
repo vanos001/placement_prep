@@ -574,7 +574,7 @@ When `kind_flag` is set, the offset contains both bitfield size and bit offset:
 - [BPF CO-RE Reference Guide](https://nakryiko.com/posts/bpf-core-reference-guide/)
 - [BPF Type Format (BTF) — docs.kernel.org](https://docs.kernel.org/bpf/btf.html) — Official BTF specification
 - [libbpf CO-RE tutorial](https://nakryiko.com/posts/libbpf-ultimate-guide/)
-- [bpftool documentation](https://man7.org/linux/man-pages/man8/bpftool-btf.8.html)
+- [bpftool documentation](https://manpages.debian.org/bpftool-btf.8)
 - [LWN: BPF Type Format](https://lwn.net/Articles/781430/)
 - [Andrii Nakryiko: BTF and CO-RE](https://nakryiko.com/posts/bpf-portability-and-co-re.html)
 

@@ -709,7 +709,7 @@ cpuidle and cpufreq work together: cpufreq adjusts frequency/voltage while runni
 - Gregg, B. *Systems Performance: Enterprise and the Cloud*, 2nd Edition.
 - [perf Wiki](https://perf.wiki.kernel.org/)
 - [Intel Performance Counter Monitor](https://github.com/intel/pcm)
-- [NUMA Deep Dive](https://frankdenneman.nl/2016/07/07/numa-deep-dive-part-1-uma-numa/)
+- [NUMA Deep Dive](https://web.archive.org/web/20260320093843/http://frankdenneman.nl/2016/07/07/numa-deep-dive-part-1-uma-numa/)
 
 ## Further Reading
 

@@ -260,6 +260,6 @@ For most Kubernetes deployments, Loki is sufficient and cheaper. For full-text s
 - [Loki GitHub repository](https://github.com/grafana/loki)
 - Grafana Labs, "[Loki: Like Prometheus, but for logs](https://grafana.com/blog/2018/12/12/loki-prometheus-inspired-open-source-logging-for-cloud-natives/)" (2018)
 - [LogQL documentation](https://grafana.com/docs/loki/latest/logql/)
-- [Promtail pipeline stages](https://grafana.com/docs/loki/latest/clients/promtail/pipelines/)
+- [Promtail pipeline stages](https://web.archive.org/web/20250505013032/https://grafana.com/docs/loki/latest/clients/promtail/pipelines/)
 - [Loki vs ELK comparison (Grafana)](https://grafana.com/blog/2021/01/25/loki-vs-elasticsearch-whats-the-difference/)
 - [LWN: Loki overview (2021)](https://lwn.net/Articles/856775/)

@@ -754,8 +754,8 @@ $ cat /sys/kernel/iommu_groups/0/type
 ## References
 
 - [Intel VT-d Specification](https://www.intel.com/content/www/us/en/developer/articles/technical/intel-sdm.html)
-- [AMD IOMMU Specification](https://www.amd.com/en/support/tech-docs)
-- [Linux IOMMU Documentation](https://www.kernel.org/doc/html/latest/driver-api/iommu.html)
+- [AMD IOMMU Specification](https://amd.com/en/support/tech-docs)
+- [Linux IOMMU Documentation](https://docs.kernel.org/arch/x86/iommu.html)
 - [VFIO Documentation](https://www.kernel.org/doc/html/latest/driver-api/vfio.html)
 - [LWN: IOMMU groups and VFIO](https://lwn.net/Articles/473906/)
 - [LWN: The IOMMU API](https://lwn.net/Articles/253064/)

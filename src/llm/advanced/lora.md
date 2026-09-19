@@ -175,6 +175,6 @@ GaLore (Gradient Low-Rank Projection) projects the gradient to a low-rank subspa
 - Liu et al., "[DoRA: Weight-Decomposed Low-Rank Adaptation](https://arxiv.org/abs/2402.09353)" (2024)
 - Kalajdziev & Narayan, "[rsLoRA: Rank-Stabilized LoRA](https://arxiv.org/abs/2312.03732)" (2023)
 - [Hugging Face PEFT library](https://github.com/huggingface/peft)
-- [vLLM: Multi-LoRA serving](https://docs.vllm.ai/en/stable/models/lora.html)
+- [vLLM: Multi-LoRA serving](https://docs.vllm.ai/en/stable/models/lora.html/)
 - [unsloth: Optimized LoRA training](https://github.com/unslothai/unsloth)
 - [PEFT tutorial: fine-tuning Llama-3 with LoRA](https://huggingface.co/blog/peft)

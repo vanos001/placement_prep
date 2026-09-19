@@ -257,4 +257,4 @@ A: Redis stores geospatial data as a sorted set. Each location is a sorted set m
 - [Redis Streams](https://redis.io/docs/data-types/streams/)
 - [Redis Lua Scripting](https://redis.io/docs/interact/programmability/eval-intro/)
 - [Redis Geospatial](https://redis.io/docs/data-types/geospatial/)
-- [Redis HyperLogLog](https://redis.io/docs/data-types/hyperloglogs/)
+- [Redis HyperLogLog](https://web.archive.org/web/20240301012237/https://redis.io/docs/data-types/hyperloglogs/)

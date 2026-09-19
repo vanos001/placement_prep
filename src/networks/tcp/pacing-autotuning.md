@@ -174,9 +174,9 @@ For a BBR-enabled server:
 
 ## References
 
-- [Linux TCP pacing documentation](https://www.kernel.org/doc/html/latest/networking/tcp_fairness.html)
+- [Linux TCP pacing documentation](https://docs.kernel.org/networking/index.html)
 - [LWN: fq qdisc and pacing (2014)](https://lwn.net/Articles/617986/)
-- [TCP autotuning in the Linux kernel](https://www.kernel.org/doc/html/latest/networking/tcp.html#tcp-tuning)
+- [TCP autotuning in the Linux kernel](https://docs.kernel.org/networking/index.html)
 - [BBR: Congestion-Based Congestion Control](https://research.google/pubs/pub45387/) (Google, ACM Queue 2016)
 - [Soheil Hassas Yeganeh et al., "fq_codel"](https://www.ietf.org/proceedings/84/slides/slides-94-tsvarea-0.pdf)
 - [Production TCP tuning for high-BDP networks](https://www.psc.edu/research/networking/tuning-tcp)

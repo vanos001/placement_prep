@@ -146,7 +146,7 @@ For most production training, Megatron-LM or DeepSpeed are the choices.
 - Huang et al., "[GPipe: Efficient Training of Giant Neural Networks using Pipeline Parallelism](https://arxiv.org/abs/1811.06965)" (2019)
 - Narayanan et al., "[PipeDream: Generalized Pipeline Parallelism for DNN Training](https://arxiv.org/abs/1806.03377)" (2019)
 - Megatron-LM source: [nvidia/megatron-lm](https://github.com/NVIDIA/Megatron-LM)
-- [PyTorch Pipeline Parallelism](https://pytorch.org/docs/stable/pipeline.html)
+- [PyTorch Pipeline Parallelism](https://web.archive.org/web/20240624183100/http://pytorch.org/docs/stable/pipeline.html)
 - [DeepSpeed Pipeline Parallelism](https://www.deepspeed.ai/tutorials/pipeline/)
 - [Ben-nicolas Lui et al., "Memory-efficient Pipeline-Parallel DNN Training](https://arxiv.org/abs/2110.07399)" (2021)
 - LWN: "[Pipeline Parallelism for Large Model Training](https://lwn.net/Articles/862415/)" (2021)

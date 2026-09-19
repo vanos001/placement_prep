@@ -741,9 +741,9 @@ mount -t ceph ... -o dax=always
 - [Linux kernel: CephFS client](https://docs.kernel.org/filesystems/ceph.html) — Kernel documentation
 - [Ceph Architecture](https://docs.ceph.com/en/latest/architecture/) — Ceph architecture overview
 - [LWN: CephFS](https://lwn.net/Articles/647377/) — CephFS kernel client discussion
-- [man7.org: mount.ceph](https://man7.org/linux/man-pages/man8/mount.ceph.8.html) — Mount options
+- [man7.org: mount.ceph](https://manpages.debian.org/mount.ceph.8) — Mount options
 - [CRUSH Algorithm Paper](https://ceph.io/assets/pdfs/weil-crush-sc06.pdf) — Original CRUSH paper
-- [docs.kernel.org: libceph](https://docs.kernel.org/rst/networking/device_drivers/ethernet/mellanox/mlx5/index.html) — Kernel Ceph client internals
+- [docs.kernel.org: libceph](https://docs.kernel.org/networking/device_drivers/ethernet/mellanox/mlx5/index.html) — Kernel Ceph client internals
 - [Kernel documentation: Ceph Distributed File System](https://docs.kernel.org/filesystems/ceph.html) — Official kernel docs with mount options and architecture
 - [CephFS Troubleshooting](https://docs.ceph.com/en/latest/cephfs/troubleshooting/) — Official troubleshooting guide
 - [CephX Authentication](https://docs.ceph.com/en/latest/rados/operations/auth-intro/) — Authentication docs

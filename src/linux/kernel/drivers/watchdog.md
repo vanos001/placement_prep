@@ -739,7 +739,7 @@ dmesg -w | grep -i watchdog
 
 - [Linux kernel source: `drivers/watchdog/`](https://elixir.bootlin.com/linux/latest/source/drivers/watchdog/)
 - [kernel.org: Watchdog](https://www.kernel.org/doc/html/latest/watchdog/watchdog-api.html)
-- [watchdog(8) man page](https://man7.org/linux/man-pages/man8/watchdog.8.html)
+- [watchdog(8) man page](https://manpages.debian.org/watchdog.8)
 - [watchdog-api.txt](https://www.kernel.org/doc/html/latest/watchdog/watchdog-api.html)
 - [systemd: Watchdog](https://www.freedesktop.org/software/systemd/man/systemd.service.html)
 - [Raspberry Pi Watchdog](https://www.raspberrypi.com/documentation/computers/configuration.html#watchdog)

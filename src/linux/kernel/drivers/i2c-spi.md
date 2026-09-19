@@ -730,7 +730,7 @@ cat /sys/bus/spi/devices/spi0.0/of_node/spi-max-frequency
 - [Planet GNU](https://planet.gnu.org/)
 - [Free Software Books](https://www.gnu.org/doc/other-free-books.html)
 
-- [Kernel I2C Documentation](https://docs.kernel.org/driver-api/i2c/)
+- [Kernel I2C Documentation](https://docs.kernel.org/driver-api/i2c.html)
 - [Kernel SPI Documentation](https://docs.kernel.org/driver-api/spi.html)
 - [I2C specification (NXP)](https://www.nxp.com/docs/en/user-guide/UM10204.pdf)
 - [SPI specification (Motorola)](https://www.nxp.com/docs/en/application-note/AN991.pdf)

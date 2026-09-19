@@ -778,7 +778,7 @@ ausearch -m AVC -ts recent
 - [ausearch man page](https://man7.org/linux/man-pages/man8/ausearch.8.html) — Log querying
 - [aureport man page](https://man7.org/linux/man-pages/man8/aureport.8.html) — Report generation
 - [LWN: Audit](https://lwn.net/Articles/292282/) — Audit framework overview
-- [Kernel docs: Audit](https://docs.kernel.org/admin-guide/audit.html) — Kernel audit documentation
+- [Kernel docs: Audit](https://docs.kernel.org/admin-guide/index.html) — Kernel audit documentation
 - [PCI-DSS Audit Requirements](https://www.pcisecuritystandards.org/) — PCI-DSS compliance
 - [OpenSCAP](https://www.open-scap.org/) — Automated compliance scanning
 - [auditd sample rules](https://github.com/linux-audit/audit-userspace/tree/master/rules) — Upstream rule templates

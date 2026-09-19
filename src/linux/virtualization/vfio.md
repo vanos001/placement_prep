@@ -595,7 +595,7 @@ echo "Done! Reboot to apply changes."
 - [VFIO Documentation — docs.kernel.org](https://docs.kernel.org/driver-api/vfio.html)
 - [Alex Williamson's VFIO Blog](https://vfio.blogspot.com/)
 - [VFIO Tips and Tricks — Arch Wiki](https://wiki.archlinux.org/title/PCI_passthrough_via_OVMF)
-- [IOMMU Documentation — docs.kernel.org](https://docs.kernel.org/admin-guide/kernel-parameters.txt) (search for `iommu`)
+- [IOMMU Documentation — docs.kernel.org](https://docs.kernel.org/admin-guide/kernel-parameters.html) (search for `iommu`)
 - [GPU Passthrough Guide — Reddit r/VFIO](https://www.reddit.com/r/VFIO/)
 - [Hugepages Documentation — docs.kernel.org](https://docs.kernel.org/admin-guide/mm/hugetlbpage.html)
 - [SR-IOV Documentation — docs.kernel.org](https://docs.kernel.org/PCI/pci-iov-howto.html)

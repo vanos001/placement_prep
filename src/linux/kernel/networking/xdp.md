@@ -824,7 +824,7 @@ To share a UMEM between sockets, set `XDP_SHARED_UMEM` in `bind()` and pass the 
 2. **Linux Kernel Source** — `net/core/xdp.c`, `include/net/xdp.h`
 3. **XDP Tutorial** — [github.com/xdp-project/xdp-tutorial](https://github.com/xdp-project/xdp-tutorial)
 4. **AF_XDP Documentation** — [docs.kernel.org/networking/af_xdp.html](https://docs.kernel.org/networking/af_xdp.html)
-4b. **XDP Documentation** — [docs.kernel.org/networking/xdp.html](https://docs.kernel.org/networking/xdp.html)
+4b. **XDP Documentation** — [docs.kernel.org/networking/xdp.html](https://docs.kernel.org/networking/af_xdp.html)
 5. **LWN: Accelerating networking with AF_XDP** — [lwn.net/Articles/750845/](https://lwn.net/Articles/750845/)
 6. *Linux Kernel Networking* by Rami Rosen (Apress)
 

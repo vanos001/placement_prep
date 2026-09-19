@@ -3,6 +3,41 @@
 This file records meaningful content and validation changes to the placement
 preparation book. Dates use the project timezone, Asia/Calcutta.
 
+## 2026-09-19 — External dead-link repair pass
+
+Worked through the external-URL backlog. Of the 758 links flagged dead by the
+original probe, **161 now resolve** and 20 turned out to be false positives.
+
+- **161 repaired.** 129 re-pointed to a verified live page, 32 given an archived
+  snapshot. Every replacement was fetched and confirmed (HTTP 200 *and* a real
+  page title) before being written; nothing was applied on a guess.
+- **93 of those were kernel docs.** The largest cluster was `docs.kernel.org`
+  paths that never existed (`/security/IMA.html`, `/networking/qdisc.html`,
+  `/mm/slub.html`, …). Each was resolved against docs.kernel.org's own
+  search index (4,074 real document paths) and confirmed by page title, e.g.
+  `www.kernel.org/doc/Documentation/block/blk-mq.txt` →
+  `docs.kernel.org/block/blk-mq.html`, `virt/kvm/mmu.html` →
+  `virt/kvm/x86/mmu.html`, `security/tomoyo.html` →
+  `admin-guide/LSM/tomoyo.html`.
+- **20 man pages** that man7.org does not mirror (apt, chroot, nmcli, nft,
+  qemu-img, watchdog, …) now point at `manpages.debian.org`, whose
+  `/<name>.<section>` URLs are version-agnostic.
+- **32 archived snapshots** for hard 404s with no live equivalent — the only
+  non-primary sources in the book; all were fetched and confirmed live.
+- **20 false positives.** A careful re-probe showed links such as `criu.org`,
+  the NIST/AMD/NVIDIA PDFs and `vldb.org` resolve fine; they had failed
+  transiently (DNS/TLS/timeout) during the first probe. None had been modified.
+- **Rejected bad "fixes".** Automated repair was deliberately conservative:
+  an NVIDIA PDF "fixed" by adding a trailing slash returned HTTP 200 with the
+  title *Page Not Found*, and a Merkle/NRC rewrite silently redirected to the
+  site homepage. A topic-token check rejected these rather than shipping them.
+- **`git.kernel.org` is unusable as a fallback.** It sits behind an Anubis
+  anti-bot wall that answers automated requests with HTTP 200 **and a challenge
+  page**, so a link there cannot be verified — and naive checking would have
+  reported the challenge page as a working link.
+- **471 hard 404s remain**, catalogued by host in `scripts/dead-links-report.txt`.
+  Each needs a human decision (re-point, swap source, or drop).
+
 ## 2026-09-19 — Independent review and fix pass
 
 Full audit of the `research` tree, then repair of every defect it found. Net result:
@@ -52,9 +87,11 @@ the book's own validators are now stronger than the ones that missed these bugs.
   built by CI. Validation is a local/agent step in this repository to avoid
   burning hosted minutes; the documents and the badge were corrected to say so
   instead of adding validation jobs.
-- **Known backlog** — 758 dead external URLs (647 × HTTP 404, mostly invalid
-  `docs.kernel.org` deep paths), catalogued in `scripts/dead-links-report.txt`.
-  Internal links, anchors, SUMMARY, Mermaid, MathJax, fences and all 491 DOIs are clean.
+- **Known backlog** — 758 external URLs were flagged dead. A dedicated follow-up
+  pass repaired 161 (129 verified live replacements, 32 archived snapshots),
+  identified 20 as transient false positives, and left 471 hard 404s catalogued
+  by host in `scripts/dead-links-report.txt`. Internal links, anchors, SUMMARY,
+  Mermaid, MathJax, fences and all 491 DOIs are clean.
 
 ## 2026-08-13 — Software Engineering: dedicated Testing, DevOps, and Contributing pages
 

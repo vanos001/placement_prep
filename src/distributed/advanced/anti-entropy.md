@@ -161,7 +161,7 @@ The trade-off: CRDTs are more complex to implement and may not match the applica
 
 - DeCandia et al., "[Dynamo: Amazon's Highly Available Key-Value Store](https://www.cs.ucsb.edu/~suri/psdir/SOSP07-Dynamo.pdf)" (SOSP 2007)
 - [Lamport: Time, Clocks, and the Ordering of Events](https://lamport.org/pubs/pubs.html#time-clocks) — vector clocks foundation
-- [Cassandra Anti-Entropy Repair](https://cassandra.apache.org/doc/latest/operating/repair.html)
+- [Cassandra Anti-Entropy Repair](https://web.archive.org/web/20210416222206/https://cassandra.apache.org/doc/latest/operating/repair.html)
 - [Riak Active Anti-Entropy](https://docs.riak.com/riak/kv/2.2.0/using/cluster-operations/active-anti-entropy.1.html)
 - Shapiro et al., "[Conflict-free Replicated Data Types](https://hal.inria.fr/inria-00655378/document)" (SSS 2011)
 - [LWN: Anti-entropy and reconciliation (2014)](https://lwn.net/Articles/612409/)

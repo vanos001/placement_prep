@@ -654,7 +654,7 @@ back to main memory.
 - **Linux Kernel Development, 3rd Edition** — Robert Love (Addison-Wesley, 2010)
 - **Linux Device Drivers, 3rd Edition** — Jonathan Corbet, Alessandro Rubini, Greg Kroah-Hartman
 - [Kernel documentation: Memory Management](https://www.kernel.org/doc/html/latest/admin-guide/mm/index.html)
-- [Kernel documentation: boot-time-mm](https://www.kernel.org/doc/html/latest/mm/boot-time-mm.html)
+- [Kernel documentation: boot-time-mm](https://docs.kernel.org/core-api/boot-time-mm.html)
 - [DAMON Documentation](https://docs.kernel.org/mm/damon/index.html) — DAMON design, API, and administration guide
 - [Memory Management Documentation](https://docs.kernel.org/mm/index.html) — Official kernel MM documentation
 - [LWN: Memory Management](https://lwn.net/Kernel/Index/#Memory_management)

@@ -470,7 +470,7 @@ POST is not naturally idempotent — calling `POST /charges` twice creates two c
 - [Stripe API Design](https://stripe.com/blog/api-versioning) and [Idempotent Requests](https://docs.stripe.com/api/idempotent_requests) — date-based versioning, idempotency keys
 - [Google AIP-158 — Pagination](https://google.aip.dev/158) — `page_size` / `page_token` / `next_page_token`
 - [JSON-RPC 2.0 Specification](https://www.jsonrpc.org/specification)
-- [AsyncAPI Specification](https://www.asyncapi.com/docs/specifications/latest)
+- [AsyncAPI Specification](https://web.archive.org/web/20200922105411/https://www.asyncapi.com/docs/specifications/latest/)
 - [SPIFFE / SPIRE](https://spiffe.io/) — service identity for zero-trust mTLS
 
 ## Cross-References

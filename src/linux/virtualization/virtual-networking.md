@@ -539,7 +539,7 @@ sudo ip netns exec ns1 tcpdump -i veth-ns1 -nn
 
 - [Linux Bridge Documentation — docs.kernel.org](https://docs.kernel.org/networking/bridge.html)
 - [Open vSwitch Documentation — openvswitch.org](https://docs.openvswitch.org/en/latest/)
-- [macvtap Kernel Documentation — docs.kernel.org](https://docs.kernel.org/networking/devices.html) (search macvtap)
+- [macvtap Kernel Documentation — docs.kernel.org](https://docs.kernel.org/admin-guide/devices.html) (search macvtap)
 - [Linux Network Namespaces — man7.org](https://man7.org/linux/man-pages/man8/ip-netns.8.html)
 - [nftables Wiki — wiki.nftables.org](https://wiki.nftables.org/wiki-nftables/index.php/Main_Page)
 - [libvirt Networking — libvirt.org](https://libvirt.org/formatnetwork.html)

@@ -233,5 +233,5 @@ normal routing, TCP, socket semantics, drivers, and fallback paths still exist.
 - [Linux BPF maps documentation](https://docs.kernel.org/bpf/maps.html)
 - [Linux networking documentation index](https://docs.kernel.org/networking/index.html)
 - [eBPF Docs](https://docs.ebpf.io/)
-- [Cilium eBPF introduction](https://docs.cilium.io/en/stable/concepts/ebpf/intro/)
+- [Cilium eBPF introduction](https://web.archive.org/web/20221003043617/https://docs.cilium.io/en/stable/concepts/ebpf/intro/)
 - [Cilium BPF and XDP reference guide](https://docs.cilium.io/en/stable/reference-guides/bpf/)

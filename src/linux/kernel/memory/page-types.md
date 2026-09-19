@@ -69,7 +69,7 @@ struct folio {
 };
 ```
 
-> **See also:** [Folio documentation](https://www.kernel.org/doc/html/latest/mm/folio.html)
+> **See also:** [Folio documentation](https://docs.kernel.org/mm/index.html)
 
 ---
 

@@ -716,8 +716,8 @@ up_write(&mm->mmap_lock);
 - [Free Software Books](https://www.gnu.org/doc/other-free-books.html)
 
 - [Percpu rw semaphores — docs.kernel.org](https://docs.kernel.org/locking/percpu-rw-semaphore.html) — Official kernel documentation for percpu rw semaphores
-- [rwlock API](https://www.kernel.org/doc/Documentation/locking/locktypes.txt) — Kernel lock types overview
-- [rw_semaphore internals](https://www.kernel.org/doc/Documentation/locking/rwsem-design.txt) — Design document
+- [rwlock API](https://docs.kernel.org/locking/locktypes.html) — Kernel lock types overview
+- [rw_semaphore internals](https://docs.kernel.org/locking/index.html) — Design document
 - [LWN: Scaling rw_semaphores](https://lwn.net/Articles/565734/) — Optimistic spinning
 - [rwlock.h source](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/include/linux/rwlock.h)
 - [rwsem.h source](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/include/linux/rwsem.h)

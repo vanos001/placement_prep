@@ -565,7 +565,7 @@ cat /sys/class/regulator/regulator.0/microvolts
 ## References
 
 - [Kernel Regulator API Documentation](https://www.kernel.org/doc/html/latest/driver-api/regulator.html)
-- [Kernel Regulator Consumer Interface](https://www.kernel.org/doc/html/latest/driver-api/regulator/regulator.html)
+- [Kernel Regulator Consumer Interface](https://docs.kernel.org/power/regulator/regulator.html)
 - [LWN: The regulator framework](https://lwn.net/Articles/289331/)
 - [Device Tree Regulator Bindings](https://www.kernel.org/doc/Documentation/devicetree/bindings/regulator/)
 - [Linux regulator consumer API](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/include/linux/regulator/consumer.h)

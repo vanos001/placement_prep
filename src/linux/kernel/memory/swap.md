@@ -1012,7 +1012,7 @@ Zswap differs from Zram in that zswap is a swap *cache* (works with an existing 
 
 ### Zswap Internals (from kernel docs)
 
-From the [kernel zswap documentation](https://docs.kernel.org/mm/zswap.html), zswap is a lightweight compressed write-back cache that sits in front of the swap device. When a page is candidate for swapping, zswap compresses it and stores it in a dynamically allocated RAM-based memory pool. If the compressed page fits, no disk I/O is needed. If the pool is full or compression fails, the least recently used (LRU) page is written to the backing swap device.
+From the [kernel zswap documentation](https://docs.kernel.org/admin-guide/mm/zswap.html), zswap is a lightweight compressed write-back cache that sits in front of the swap device. When a page is candidate for swapping, zswap compresses it and stores it in a dynamically allocated RAM-based memory pool. If the compressed page fits, no disk I/O is needed. If the pool is full or compression fails, the least recently used (LRU) page is written to the backing swap device.
 
 **Key design properties:**
 
@@ -1221,7 +1221,7 @@ $ cat /proc/sys/vm/zone_reclaim_mode
 - [LWN: Zram](https://lwn.net/Articles/545216/)
 - [LWN: THP swap](https://lwn.net/Articles/703927/)
 - [Documentation for /proc/sys/vm/ (kernel docs)](https://docs.kernel.org/admin-guide/sysctl/vm.html)
-- [Kernel documentation: zswap](https://docs.kernel.org/mm/zswap.html) — zswap internals, tunables, statistics
+- [Kernel documentation: zswap](https://docs.kernel.org/admin-guide/mm/zswap.html) — zswap internals, tunables, statistics
 - [Kernel documentation: Swap](https://docs.kernel.org/mm/swap.html)
 - [Kernel documentation: Memory Management](https://docs.kernel.org/mm/)
 

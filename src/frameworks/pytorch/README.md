@@ -395,7 +395,7 @@ epoch = checkpoint['epoch']
 
 - [PyTorch Official Documentation](https://pytorch.org/docs/stable/)
 - [PyTorch Tutorials](https://pytorch.org/tutorials/)
-- [Deep Learning with PyTorch (Book)](https://pytorch.org/deep-learning-with-pytorch)
+- [Deep Learning with PyTorch (Book)](https://web.archive.org/web/20201101080306/https://pytorch.org/deep-learning-with-pytorch)
 - [PyTorch Lightning](https://lightning.ai/docs/pytorch/)
 - [Papers With Code (PyTorch implementations)](https://paperswithcode.com/)
 

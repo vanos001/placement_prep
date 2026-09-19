@@ -595,7 +595,7 @@ The injection code can skip unknown radiotap fields, enabling replay of captured
 ## References
 
 - [Linux Wireless Wiki](https://wireless.wiki.kernel.org/)
-- [Kernel Wireless Documentation](https://docs.kernel.org/networking/wireless/)
+- [Kernel Wireless Documentation](https://docs.kernel.org/networking/index.html)
 - [iw documentation](https://wireless.wiki.kernel.org/en/users/documentation/iw)
 - [wpa_supplicant documentation](https://w1.fi/wpa_supplicant/)
 - [IEEE 802.11 Standard](https://standards.ieee.org/standard/802_11-2020.html)

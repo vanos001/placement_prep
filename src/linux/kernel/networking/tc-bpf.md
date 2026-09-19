@@ -206,7 +206,7 @@ A single Cilium-managed interface on a busy node typically has 6–10 BPF progra
 
 ## References
 
-- [kernel.org: tc-BPF documentation](https://docs.kernel.org/networking/tc_clsact.html)
+- [kernel.org: tc-BPF documentation](https://docs.kernel.org/networking/tc-queue-filters.html)
 - [Cilium documentation: BPF datapath](https://docs.cilium.io/en/latest/bpf/)
 - Daniel Borkmann, "[tc BPF — A practical look](https://qmonnet.github.io/whirl-offload/2019/04/18/tc-bpf-egress/)"
 - Daniel Borkmann, "[BPF: The next generation packet filter](https://www.netdevconf.org/2.1/session.html?borkmann-bpf)" (netdevconf 2.1, 2017)

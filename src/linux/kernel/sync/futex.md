@@ -173,7 +173,7 @@ As of kernel 6.x, `futex2` is being progressively adopted by glibc and musl, but
 
 - [futex(2) manpage](https://man7.org/linux/man-pages/man2/futex.2.html)
 - Hubertus Franke, Rusty Russell, "Fuss, Futexes and Furwocks: Fast Userlevel Locking in Linux" (OLS 2002) — the original paper
-- [kernel.org: futex documentation](https://docs.kernel.org/locking/futex.html)
+- [kernel.org: futex documentation](https://docs.kernel.org/locking/index.html)
 - Darren Hart, "A futex API overview" (LPC 2009)
 - [LWN: "A futex overview and update" (2009)](https://lwn.net/Articles/360699/)
 - André Almeida, "[futex2 design notes](https://www.collabora.com/news-and-blog/blog/2020/11/17/futex2-a-future-of-fast-user-level-locking-on-linux/)"

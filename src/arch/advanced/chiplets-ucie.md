@@ -147,5 +147,5 @@ For the coherent protocol underneath (MESI-family, directories), see `arch/memor
 - UCIe Consortium - specifications page (UCIe 1.0/2.0/3.0, packaging classes, bump pitches) - <https://www.uciexpress.org/specifications>
 - "An Introduction to the Universal Chiplet Interconnect Express" (ACM survey of the UCIe spec family) - <https://dl.acm.org/doi/10.1145/3819235>
 - TSMC 3DFabric - CoWoS family page - <https://3dfabric.tsmc.com/english/dedicatedFoundry/technology/cowos.htm>
-- AMD EPYC 9004 series (Zen 4 CCD/IOD chiplet architecture) - <https://www.amd.com/en/products/processors/server/epyc/9004-series.html>
+- AMD EPYC 9004 series (Zen 4 CCD/IOD chiplet architecture) - <https://amd.com/en/products/processors/server/epyc/9004-series.html>
 - Apple Newsroom: Apple unveils M1 Ultra (UltraFusion 2.5 TB/s) - <https://www.apple.com/newsroom/2022/03/apple-unveils-m1-ultra-the-worlds-most-powerful-chip-for-a-personal-computer>

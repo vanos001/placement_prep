@@ -502,7 +502,7 @@ Async/await provides a way to write non-blocking code that looks synchronous. Th
 - [Python asyncio Documentation](https://docs.python.org/3/library/asyncio.html)
 - [Rust Async Book](https://rust-lang.github.io/async-book/)
 - [Tokio Tutorial](https://tokio.rs/tokio/tutorial)
-- [Structured Concurrency (Martin Sústrik)](https://250bpm.com/blog:71/)
+- [Structured Concurrency (Martin Sústrik)](https://web.archive.org/web/20250530113135/https://250bpm.com/blog:71/)
 - [Node.js Event Loop](https://nodejs.org/en/learn/asynchronous-work/event-loop-timers-and-nexttick)
 
 ## Cross-References

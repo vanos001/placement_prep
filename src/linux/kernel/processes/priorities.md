@@ -658,7 +658,7 @@ chrt -f 80 taskset -c 2-3 $APP
 - [chrt(1) man page](https://man7.org/linux/man-pages/man1/chrt.1.html)
 - [ionice(1) man page](https://man7.org/linux/man-pages/man1/ionice.1.html)
 - [CFS scheduler documentation](https://www.kernel.org/doc/Documentation/scheduler/sched-design-CFS.txt)
-- [Priority inheritance in Linux](https://www.kernel.org/doc/Documentation/rt-mutex-design.txt)
+- [Priority inheritance in Linux](https://docs.kernel.org/locking/rt-mutex-design.html)
 - [EEVDF scheduler design](https://docs.kernel.org/scheduler/sched-eevdf.html) — EEVDF documentation
 - [RT throttling documentation](https://docs.kernel.org/scheduler/sched-rt-group.html) — RT bandwidth control
 

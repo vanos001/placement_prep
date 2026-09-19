@@ -997,7 +997,7 @@ $ ls -la /proc/1/ns/
 - [Free Software Books](https://www.gnu.org/doc/other-free-books.html)
 
 - [namespaces(7) man page](https://man7.org/linux/man-pages/man7/namespaces.7.html) — Comprehensive reference
-- [Linux kernel namespace docs](https://www.kernel.org/doc/Documentation/networking/net_namespace.txt)
+- [Linux kernel namespace docs](https://docs.kernel.org/admin-guide/namespaces/index.html)
 - [User namespaces and security](https://man7.org/linux/man-pages/man7/user_namespaces.7.html)
 - [Introducing Linux Network Namespaces](https://blog.scottlowe.org/2013/09/04/introducing-linux-network-namespaces/)
 - [unshare(1) man page](https://man7.org/linux/man-pages/man1/unshare.1.html)

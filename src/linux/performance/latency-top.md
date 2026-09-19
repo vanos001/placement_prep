@@ -794,7 +794,7 @@ graph TD
 
 - [LatencyTOP website](https://latencytop.org/)
 - [LWN: Finding the source of latency (2008)](https://lwn.net/Articles/271654/)
-- [Kernel docs: latencytop](https://www.kernel.org/doc/html/latest/admin-guide/latencytop.html)
+- [Kernel docs: latencytop](https://docs.kernel.org/admin-guide/index.html)
 - [Kernel docs: sched-stats](https://www.kernel.org/doc/html/latest/scheduler/sched-stats.html)
 - [BPF Performance Tools (Brendan Gregg)](http://www.brendangregg.com/bpf-performance-tools-book.html)
 - [perf sched documentation](https://man7.org/linux/man-pages/man1/perf-sched.1.html)

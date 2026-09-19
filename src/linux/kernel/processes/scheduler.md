@@ -1146,7 +1146,7 @@ This is useful for latency-sensitive workloads that need guaranteed minimum freq
 - [Linux kernel: kernel/sched/sched.h](https://elixir.bootlin.com/linux/latest/source/kernel/sched/sched.h)
 - [Linux man pages: sched(7)](https://man7.org/linux/man-pages/man7/sched.7.html)
 - [LWN: The Linux scheduler](https://lwn.net/Articles/531853/)
-- [Linux Insides: Linux kernel scheduling](https://0xax.gitbooks.io/linux-insides/content/SysCall/)
+- [Linux Insides: Linux kernel scheduling](https://0xax.gitbooks.io/linux-insides/content/SysCall)
 - [Robert Love: Linux Kernel Development, Chapter 4 - Process Scheduling](https://www.oreilly.com/library/view/linux-kernel-development/9780768696974/)
 
 ## Related Topics

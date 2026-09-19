@@ -730,7 +730,7 @@ bcachefs fs usage /mnt/bcachefs
 
 ## References
 
-- [bcachefs kernel documentation](https://www.kernel.org/doc/html/latest/filesystems/bcachefs.html)
+- [bcachefs kernel documentation](https://docs.kernel.org/filesystems/index.html)
 - [bcachefs.org](https://bcachefs.org/)
 - [LWN: A new filesystem for Linux](https://lwn.net/Articles/747355/)
 - [LWN: Bcachefs makes progress](https://lwn.net/Articles/934689/)

@@ -426,7 +426,7 @@ with tracepoint-driven off-CPU analysis, where time is spent
 6. **`tools/perf/Documentation/` source** —
    <https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/tools/perf/Documentation>
 7. **`Documentation/admin-guide/perf-security.rst`** —
-   <https://www.kernel.org/doc/html/latest/admin-guide/perf-security.rst>
+   <https://docs.kernel.org/admin-guide/perf-security.html>
 8. **LWN: "What is perf?" (Vince Weaver, 2010)** —
    <https://lwn.net/Articles/433494/> and the long-form follow-up
    series <https://lwn.net/Articles/420223/>

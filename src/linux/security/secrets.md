@@ -622,7 +622,7 @@ cryptsetup luksOpen /dev/sda1 mydisk --keyring-keyring=@u --keyring-key=cryptset
 
 - [Linux kernel source: `security/keys/`](https://elixir.bootlin.com/linux/latest/source/security/keys/)
 - [Linux kernel source: `security/keys/encrypted-keys/`](https://elixir.bootlin.com/linux/latest/source/security/keys/encrypted-keys/)
-- [kernel.org: Kernel Keyring](https://www.kernel.org/doc/html/latest/security/keys/core.rst)
+- [kernel.org: Kernel Keyring](https://docs.kernel.org/security/keys/core.html)
 - [keyctl(1) man page](https://man7.org/linux/man-pages/man1/keyctl.1.html)
 - [cryptsetup(8) man page](https://man7.org/linux/man-pages/man8/cryptsetup.8.html)
 - [tpm2-tools documentation](https://github.com/tpm2-software/tpm2-tools)

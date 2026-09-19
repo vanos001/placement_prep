@@ -169,7 +169,7 @@ For typical training (8 GPUs, 1 TB model state, gradient size 32 GB):
 
 - Baidu Research, "[Bringing HPC Techniques to Deep Learning](https://research.baidu.com/Blog/index/view?id=119)" (2017) — the original Ring AllReduce paper for ML
 - Patarasuk & Yuan, "[Bandwidth Optimal All-reduce Algorithms for Clusters](https://cs.brown.edu/people/jslng/Docs/bandwidthoptimal.pdf)" (2007)
-- [NCCL documentation](https://docs.nvidia.com/deeplearning/nccl/user-guide/docs/usage/operations.html)
+- [NCCL documentation](https://web.archive.org/web/20251207223118/https://docs.nvidia.com/deeplearning/nccl/user-guide/docs/usage/operations.html)
 - [PyTorch DDP tutorial](https://pytorch.org/tutorials/intermediate/ddp_tutorial.html)
 - [Horovod documentation](https://horovod.readthedocs.io/)
 - [DeepSpeed documentation](https://www.deepspeed.ai/)

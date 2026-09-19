@@ -917,6 +917,6 @@ static void force_sig_info_fault(int si_signo, int si_code,
 - [Intel SDM Vol. 3, Ch. 6](https://www.intel.com/content/www/us/en/developer/articles/technical/intel-sdm.html) — Interrupt and exception handling
 - [LWN: Understanding page faults](https://lwn.net/Articles/646362/) — Page fault handling
 - [man7.org: signal](https://man7.org/linux/man-pages/man7/signal.7.html) — Signal delivery for exceptions
-- [Kernel oops decoding](https://docs.kernel.org/dev-tools/gdb-kernel-debugging.html) — Debugging kernel oops
+- [Kernel oops decoding](https://docs.kernel.org/process/debugging/gdb-kernel-debugging.html) — Debugging kernel oops
 - [ARM64 Exception Model](https://developer.arm.com/documentation/den0024/a/AArch64-Exception-Handling) — ARM64 exception handling
-- [MCE handling in Linux](https://docs.kernel.org/x86/x86_64/machinecheck.html) — Machine check exception documentation
+- [MCE handling in Linux](https://docs.kernel.org/arch/x86/x86_64/machinecheck.html) — Machine check exception documentation

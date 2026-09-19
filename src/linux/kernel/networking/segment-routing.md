@@ -733,7 +733,7 @@ sudo bpftrace -e 'kprobe:seg6_input { printf("seg6_input called\n"); }'
 - [RFC 8754 — IPv6 Segment Routing Header (SRH)](https://tools.ietf.org/html/rfc8754)
 - [RFC 8986 — Segment Routing over IPv6 (SRv6) Network Programming](https://tools.ietf.org/html/rfc8986)
 - [draft-ietf-spring-srv6-srh-compression — SRv6 SID Compression](https://datatracker.ietf.org/doc/draft-ietf-spring-srv6-srh-compression/)
-- [Linux Kernel SRv6 Documentation](https://www.kernel.org/doc/html/latest/networking/segment-routing.html)
+- [Linux Kernel SRv6 Documentation](https://docs.kernel.org/networking/index.html)
 - [SRv6 Linux Kernel Implementation](https://github.com/torvalds/linux/tree/master/net/ipv6)
 - [FRR SRv6 Configuration](https://docs.frrouting.org/en/latest/seg6.html)
 

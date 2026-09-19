@@ -166,6 +166,6 @@ echo 1 > /sys/block/nvme0n1/device/poll_queues
 - [kernel.org: Block layer documentation](https://docs.kernel.org/block/blk-mq.html)
 - [LWN: "Multi-queue block IO queueing mechanism (blk-mq) v5" (2014)](https://lwn.net/Articles/555098/)
 - [LWN: "blk-mq: The future of the Linux block layer" (2013)](https://lwn.net/Articles/603931/)
-- Jens Axboe, "[blk-mq design](https://www.kernel.org/doc/Documentation/block/blk-mq.txt)"
+- Jens Axboe, "[blk-mq design](https://docs.kernel.org/block/blk-mq.html)"
 - Björn Töpel, "[Linux NVMe polling internals](https://lpc.events/event/4/contributions/457/)"
 - [Linux source: `block/blk-mq.c`](https://github.com/torvalds/linux/blob/master/block/blk-mq.c)

@@ -637,7 +637,7 @@ On x86, `atomic_add_return()` uses `LOCK XADD` (a single instruction) rather tha
 
 ## Further Reading
 
-- [Kernel docs: Atomic Operations](https://www.kernel.org/doc/html/latest/core-api/atomic_ops.html)
+- [Kernel docs: Atomic Operations](https://docs.kernel.org/core-api/wrappers/atomic_t.html)
 - [Kernel docs: Memory Barriers](https://www.kernel.org/doc/html/latest/core-api/wrappers/memory-barriers.html)
 - [LWN: Lock-free algorithms](https://lwn.net/Articles/262464/)
 - [Intel SDM Vol. 2: CMPXCHG instruction](https://www.intel.com/sdm)

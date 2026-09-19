@@ -677,7 +677,7 @@ static int __init my_module_init(void)
 
 ## Further Reading
 
-- [Android Binder IPC Mechanism — docs.kernel.org](https://docs.kernel.org/driver-api/binder.html)
+- [Android Binder IPC Mechanism — docs.kernel.org](https://docs.kernel.org/netlink/specs/binder.html)
 - [Binder Driver Source — kernel.org](https://android.googlesource.com/kernel/common/+/refs/heads/android-mainline/drivers/android/)
 - [GKI Documentation — source.android.com](https://source.android.com/docs/core/architecture/kernel/generic-kernel-image)
 - [Android Kernel Module Interface](https://source.android.com/docs/core/architecture/kernel/module-interface)

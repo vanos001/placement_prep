@@ -529,8 +529,8 @@ stty -F /dev/ttyUSB0 speed 115200
 
 ## Further Reading
 
-- [Kernel docs: KGDB](https://www.kernel.org/doc/html/latest/dev-tools/kgdb.html)
-- [Kernel docs: GDB Kernel Debugging](https://www.kernel.org/doc/html/latest/dev-tools/gdb-kernel-debugging.html)
+- [Kernel docs: KGDB](https://docs.kernel.org/process/debugging/kgdb.html)
+- [Kernel docs: GDB Kernel Debugging](https://docs.kernel.org/process/debugging/gdb-kernel-debugging.html)
 - [KGDB/KDB wiki](https://kgdb.wiki.kernel.org/)
 - [LWN: KGDB revival (2010)](https://lwn.net/Articles/394398/)
 - [QEMU GDB stub documentation](https://www.qemu.org/docs/master/system/gdb.html)

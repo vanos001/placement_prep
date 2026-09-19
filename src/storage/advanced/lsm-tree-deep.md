@@ -179,7 +179,7 @@ Mixed / unknown:
 - P. O'Neil, E. Cheng, D. Gawlick, E. O'Neil, "[The Log-Structured Merge-Tree (LSM-Tree)](https://www.cs.umb.edu/~poneil/lsmtree.pdf)", *Acta Informatica* 33(4), 1996 — the foundational LSM paper.
 - Facebook/Meta, "[RocksDB Tuning Guide](https://github.com/facebook/rocksdb/wiki/RocksDB-Tuning-Guide)" — official tuning reference.
 - Facebook/Meta, "[RocksDB Compaction Overview](https://github.com/facebook/rocksdb/wiki/Compaction)" — official compaction documentation.
-- Apache Cassandra, "[Compaction Strategies](https://cassandra.apache.org/doc/latest/operating/compaction.html)" — STCS, LCS, TWCS docs.
+- Apache Cassandra, "[Compaction Strategies](https://web.archive.org/web/20200328172111/http://cassandra.apache.org:80/doc/latest/operating/compaction.html)" — STCS, LCS, TWCS docs.
 - Dzenan Silajdzic, "[Compaction in Cassandra and ScyllaDB](https://www.scylladb.com/2018/01/16/compaction-in-cassandra-and-scylladb/)" — ScyllaDB blog with practical tuning notes.
 - Dong, S., Callaghan, M., et al., "[Rocksdb: Evolution of development experience of unkey evolution](https://www.slideshare.net/DongXu/rocksdb-evolution-of-development-experience-of-unkey-evolution)", *SIGMOD 2017* — production RocksDB evolution.
 - Lanyu Lu, et al., "[UniKV: Toward the Performance of LSM-tree in Key-value Stores](https://www.usenix.org/system/files/conference/atc17/atc17-lu.pdf)", *USENIX ATC 2017* — hybrid compaction analysis.

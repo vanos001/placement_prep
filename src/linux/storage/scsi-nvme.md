@@ -724,7 +724,7 @@ fio --name=nvme-fixed --filename=/dev/nvme0n1 \
 - [Planet GNU](https://planet.gnu.org/)
 - [Free Software Books](https://www.gnu.org/doc/other-free-books.html)
 
-- <https://www.kernel.org/doc/html/latest/driver-api/nvme.html> - Linux NVMe driver API
+- <https://docs.kernel.org/driver-api/index.html> - Linux NVMe driver API
 - <https://nvmexpress.org/educational-resources/> - NVMe educational resources
 - <https://sg.danny.cz/sg/> - Linux SCSI Generic (sg) driver documentation
 - <https://github.com/avocado-framework/avocado> - Test framework with SCSI/NVMe tests

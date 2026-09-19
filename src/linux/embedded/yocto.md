@@ -634,7 +634,7 @@ SECURITY_LDFLAGS = "-Wl,-z,relro,-z,now"
 - [BitBake User Manual](https://docs.yoctoproject.org/bitbake.html)
 - [Yocto Project Mega-Manual](https://docs.yoctoproject.org/singleindex.html)
 - [OpenEmbedded-Core Layer Index](https://layers.openembedded.org/)
-- [devtool Documentation](https://docs.yoctoproject.org/dev-manual/common-tasks.html#using-devtool-in-your-workflow)
+- [devtool Documentation](https://web.archive.org/web/20230401072943/https://docs.yoctoproject.org/dev-manual/common-tasks.html)
 - [Yocto Project Development Tasks Manual](https://docs.yoctoproject.org/dev-manual/common-tasks.html)
 - [BitBake Recipe Syntax Reference](https://docs.yoctoproject.org/bitbake-user-manual/bitbake-user-manual-metadata.html)
 - [sstate-cache Explanation — LWN.net](https://lwn.net/Articles/761530/)

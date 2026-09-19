@@ -670,5 +670,5 @@ qemu-system-x86_64 \
 - [virtio-scsi Specification — OASIS](https://docs.oasis-open.org/virtio/virtio/v1.2/virtio-v1.2.html#x1-2580005)
 - [LVM Thin Provisioning — redhat.com](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html/configuring_and_managing_logical_volumes/creating-and-managing-thin-volumes_configuring-and-managing-logical-volumes)
 - [io_uring — kernel.dk](https://kernel.dk/io_uring.pdf)
-- [qemu-img(1) man page](https://man7.org/linux/man-pages/man1/qemu-img.1.html)
+- [qemu-img(1) man page](https://manpages.debian.org/qemu-img.1)
 - [KVM Storage Documentation — docs.kernel.org](https://docs.kernel.org/virt/kvm/index.html)

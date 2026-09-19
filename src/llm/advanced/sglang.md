@@ -175,7 +175,7 @@ SGLang's 3× speedup comes from RadixAttention's automatic prefix sharing — mo
 - Zheng et al., "[SGLang: Efficient Execution of Structured Language Model Programs](https://arxiv.org/abs/2312.07104)" (NeurIPS 2024)
 - [SGLang GitHub repository](https://github.com/sgl-project/sglang)
 - [SGLang documentation](https://docs.sglang.ai/)
-- [SGLang vs vLLM comparison](https://docs.sglang.ai/references/supported_models.html)
+- [SGLang vs vLLM comparison](https://web.archive.org/web/20250316165506/https://docs.sglang.ai/references/supported_models.html)
 - [LMSYS: Large Model Systems Organization](https://lmsys.org/)
 - [RadixAttention paper](https://arxiv.org/abs/2312.07104) (NeurIPS 2024)
 - [LWN: SGLang overview (2024)](https://lwn.net/Articles/936633/)

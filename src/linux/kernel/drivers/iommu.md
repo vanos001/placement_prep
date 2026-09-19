@@ -599,7 +599,7 @@ sudo perf trace -e 'iommu:*' -a -- sleep 5
 - [Intel VT-d Specification](https://www.intel.com/content/www/us/en/io/virtualization-technology-for-directed-io.html)
 - [AMD IOMMU Specification](https://developer.amd.com/resources/developer-guides-manuals/)
 - [ARM SMMU Specification](https://developer.arm.com/documentation/ihi0070/latest)
-- [Linux IOMMU Documentation](https://www.kernel.org/doc/html/latest/driver-api/iommu.html)
+- [Linux IOMMU Documentation](https://docs.kernel.org/arch/x86/iommu.html)
 - [VFIO Documentation](https://docs.kernel.org/driver-api/vfio.html)
 - [LWN: IOMMU](https://lwn.net/Articles/321676/)
 - [Alex Williamson VFIO blog](https://vfio.blogspot.com/)
