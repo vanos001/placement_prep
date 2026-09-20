@@ -504,5 +504,5 @@ same problem space from different angles.
   CoNEXT 2014. Cormode & Muthukrishnan, *Count-Min Sketch*, J. Alg. 2005.
   Flajolet et al., *HyperLogLog*, AOFA 2007. Blumer et al., *Smallest
   Automaton Recognizing Subwords of a Text*, TCS 1983.
-- [CP-Algorithms](https://cp-algorithms.com/data_structures/) — implementations
+- [CP-Algorithms](https://cp-algorithms.com/) — implementations
   and proofs for segment trees, Fenwick, DSU, sparse tables, Li Chao, suffix.

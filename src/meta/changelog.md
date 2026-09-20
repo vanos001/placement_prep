@@ -3,6 +3,31 @@
 This file records meaningful content and validation changes to the placement
 preparation book. Dates use the project timezone, Asia/Calcutta.
 
+## 2026-09-19 — Fourth pass: measurement bug fixed, 30 more links repaired
+
+**A counting bug in the previous passes is corrected here.** The URL extractor
+stopped at the first `)` and bled across `]`, so *every* URL containing a
+parenthesis was measured as truncated and reported dead. A Markdown-aware
+extractor (balanced parentheses, stops at link syntax) replaces it.
+
+- **20 links were never broken.** 14 `doi.org` DOIs, the 5 Wikipedia articles
+  (`Erlang_(unit)`, `Null_(SQL)`, …) and one testcontainers page all return 200.
+  They were false positives of the old extractor, not dead links.
+- **Re-measured everything:** 8,638 external URLs, 6,112 live, 601 dead. Of the
+  dead, 116 appear only inside fenced code blocks and 66 are intentional
+  placeholders, leaving **483 genuine broken links** — down from the previously
+  reported 522, which was itself inflated.
+- **30 more links repaired**, each fetched and title-checked first: removed
+  PostgreSQL and cp-algorithms doc paths, brendangregg.com's restructured site
+  (including the book page and four blog slugs), LLVM's dead doxygen file pages
+  replaced with the canonical GitHub sources, `research.google` numeric pub ids
+  replaced with the current slugs, three Cloudflare blog slugs that changed in
+  their 2024 migration, and four more GitHub paths (grpc A6, `src/udevd` →
+  `src/udev`, SE-0302 whose title and path were both wrong, and Chainlink's
+  contracts which now live in `chainlink-evm`).
+- Two citations again turned out to be fabricated rather than merely moved:
+  SE-0302 was cited under a title and directory that do not exist.
+
 ## 2026-09-19 — External dead-link repair pass, third sweep
 
 Worked the remaining backlog directly rather than only cataloguing it. **90 more

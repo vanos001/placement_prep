@@ -649,7 +649,7 @@ fastest.
 - MariaDB Knowledge Base, "[Parallel Replication](https://mariadb.com/kb/en/parallel-replication/)" — in-order vs out-of-order parallel apply and the group-commit-based conservative mode.
 - Jim Gray and Andreas Reuter, *Transaction Processing: Concepts and Techniques* (Morgan Kaufmann, 1993), Chapter 12 "Crash Recovery" and the appendix on "1-safe vs 2-safe" replication — the original vocabulary for synchronous replication safety levels.
 - Martin Kleppmann, *Designing Data-Intensive Applications* (O'Reilly, 2nd ed. 2025), Chapter 5 "Replication" — leader-based, leaderless, multi-leader, conflict resolution, and the replication lag problems.
-- PostgreSQL Documentation, "[Replication Progress Tracking](https://www.postgresql.org/docs/current/replication-progress.html)" and "[pg_stat_replication](https://www.postgresql.org/docs/current/monitoring-stats.html#MONITORING-PG-STAT-REPLICATION-VIEW)" — the view that powers every Postgres replication dashboard.
+- PostgreSQL Documentation, "[Replication Progress Tracking](https://www.postgresql.org/docs/current/monitoring-stats.html)" and "[pg_stat_replication](https://www.postgresql.org/docs/current/monitoring-stats.html#MONITORING-PG-STAT-REPLICATION-VIEW)" — the view that powers every Postgres replication dashboard.
 
 ## Related Topics
 

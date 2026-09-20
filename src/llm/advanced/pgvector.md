@@ -176,7 +176,7 @@ Beyond these, a dedicated vector DB (Milvus, Qdrant) is better:
 - [pgvector GitHub repository](https://github.com/pgvector/pgvector)
 - [pgvector documentation](https://github.com/pgvector/pgvector#installation)
 - Andrew Kane, "[pgvector: Open-source vector similarity search for Postgres](https://ankane.org/pgvector)" (blog post, 2021)
-- [PostgreSQL: Working with pgvector](https://www.postgresql.org/about/news/pgvector-0-7-0-released/)
+- [PostgreSQL: Working with pgvector](https://github.com/pgvector/pgvector/)
 - [pgvector vs Milvus comparison](https://hunterheilmil.com/posts/pgvector-milvus)
 - [Supabase: pgvector in production](https://supabase.com/docs/guides/ai/vector-columns)
 - [TimescaleDB: pgvector + time-series for AI](https://www.timescale.com/blog)

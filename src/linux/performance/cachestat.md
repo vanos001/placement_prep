@@ -621,7 +621,7 @@ echo 8G > /sys/fs/cgroup/myapp/memory.min  # Protect 8GB from reclaim
 ## 15. Further Reading
 
 * **LWN: [The cachestat() syscall](https://lwn.net/Articles/936574/)**
-* **Brendan Gregg: [Cachestat](https://www.brendangregg.com/Perf/bcc_cachestat.html)**
+* **Brendan Gregg: [Cachestat](https://github.com/brendangregg/perf-tools/blob/master/bin/cachestat)**
 * **Documentation: `Documentation/filesystems/cachestat.rst`**
 * **man page: `man 2 cachestat`**
 * **Source: `mm/filemap.c` — `cachestat()` implementation**

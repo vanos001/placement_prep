@@ -294,4 +294,4 @@ Chainlink-specific attacks worth knowing for interviews:
 - Chainlink VRF v2 documentation — https://docs.chain.link/vrf/v2/introduction
 - Chainlink CCIP documentation — https://docs.chain.link/ccip
 - Chainlink Automation documentation — https://docs.chain.link/chainlink-automation
-- AggregatorV3Interface source — https://github.com/smartcontractkit/chainlink/blob/master/contracts/src/v0.8/shared/interfaces/AggregatorV3Interface.sol
+- AggregatorV3Interface source — https://github.com/smartcontractkit/chainlink-evm/blob/develop/contracts/src/v0.8/shared/interfaces/AggregatorV3Interface.sol

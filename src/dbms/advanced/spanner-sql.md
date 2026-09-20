@@ -217,7 +217,7 @@ For a query that returns 1M joined tuples, Cross Apply is 10,000× more RPCs tha
 ## References
 
 - [Spanner: Becoming a SQL System](https://research.google/pubs/pub47702/) (SIGMOD 2017)
-- Wilson Wu et al., "[Spanner: A New SQL System](https://research.google/pubs/pub46902/)" (VLDB 2014)
+- Wilson Wu et al., "[Spanner: A New SQL System](https://research.google/pubs/spanner-becoming-a-sql-system/)" (VLDB 2014)
 - [ZetaSQL: Spanner's SQL parser and analyzer](https://github.com/google/zetasql)
 - [Spanner SQL documentation](https://cloud.google.com/spanner/docs/query-statistics)
 - [Spanner SQL query plans](https://cloud.google.com/spanner/docs/query-plans)

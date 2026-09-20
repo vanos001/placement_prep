@@ -712,6 +712,6 @@ For computing C[S] = Σ_{T⊆S} A[T] · B[S\T], use ranked transforms with O(2�
 ## 18. Further Reading
 
 - [CP-Algorithms: FFT](https://cp-algorithms.com/algebra/fft.html)
-- [CP-Algorithms: NTT](https://cp-algorithms.com/algebra/fft-modular.html)
+- [CP-Algorithms: NTT](https://cp-algorithms.com/algebra/fft.html)
 - *Introduction to Algorithms* (CLRS), Chapter 30 — Polynomials and the FFT
 - "Competitive Programming 3" by Steven Halim — FFT section

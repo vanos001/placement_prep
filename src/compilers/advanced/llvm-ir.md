@@ -179,7 +179,7 @@ The JIT API provides incremental compilation (compile a function at a time), laz
 
 ## References
 
-- Chris Lattner, "[LLVM: An Infrastructure for Multi-Stage Optimization](https://llvm.org/pubs/2003-Chris-Lattner-MSThesis.pdf)" (UIUC M.S. thesis, 2002)
+- Chris Lattner, "[LLVM: An Infrastructure for Multi-Stage Optimization](https://llvm.org/pubs/2002-12-LattnerMSThesis.pdf)" (UIUC M.S. thesis, 2002)
 - [LLVM Language Reference Manual](https://llvm.org/docs/LangRef.html)
 - [LLVM IR Tutorial](https://llvm.org/docs/tutorial/)
 - [LLVM's Pass Infrastructure](https://llvm.org/docs/WritingAnLLVMPass.html)

@@ -312,5 +312,5 @@ Superoptimization is expensive (seconds to minutes per sequence) and used offlin
 - P. Cousot & R. Cousot, *Abstract Interpretation: A Unified Lattice Model* (1977)
 - LLVM pass documentation: <https://llvm.org/docs/Passes.html>
 - LLVM Loop Vectorizer design: <https://llvm.org/docs/Vectorizers.html>
-- Google AutoFDO: <https://research.google/pubs/pub45069.html>
+- Google AutoFDO: <https://research.google/pubs/autofdo-automatic-feedback-directed-optimization-for-warehouse-scale-applications/>
 - E. Schkufza et al., *STOKE: Synthesizing Theorems and Lattices* (ASPLOS 2013)

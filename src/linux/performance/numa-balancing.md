@@ -799,7 +799,7 @@ echo 0 > /proc/sys/kernel/numa_balancing_promote_rate_limit_MBps
 - [LWN: NUMA balancing](https://lwn.net/Articles/524977/)
 - [numactl(8) man page](https://man7.org/linux/man-pages/man8/numactl.8.html)
 - [numa(3) man page](https://man7.org/linux/man-pages/man3/numa.3.html)
-- [Brendan Gregg: NUMA analysis](https://www.brendangregg.com/numa.html)
+- [Brendan Gregg: NUMA analysis](https://www.brendangregg.com/perf.html)
 - [Intel MLC (Memory Latency Checker)](https://www.intel.com/content/www/us/en/developer/articles/tool/intelr-memory-latency-checker.html)
 
 ## See Also

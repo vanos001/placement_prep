@@ -770,5 +770,5 @@ This runs in O(log n) time!
 
 - Berlekamp, E. R. (1968). *Algebraic Coding Theory*. McGraw-Hill.
 - Massey, J. L. (1969). "Shift-register synthesis and BCH decoding." *IEEE Transactions on Information Theory*.
-- cp-algorithms: [Berlekamp-Massey Algorithm](https://cp-algorithms.com/algebra/linear-recurrances.html)
+- [Berlekamp–Massey algorithm](https://en.wikipedia.org/wiki/Berlekamp%E2%80%93Massey_algorithm) (cp-algorithms no longer hosts the page)
 - Erickson, J. "Algorithms" — Chapter on Algebraic Algorithms

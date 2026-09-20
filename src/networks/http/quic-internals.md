@@ -392,7 +392,7 @@ full fast-recovery for the entire window.
 In practice most production QUIC stacks ship multiple controllers:
 
 - **Cubic** (default in Chrome and Cloudflare quiche) —
-  https://blog.cloudflare.com/cubic-and-bbr-in-quiche/
+  https://blog.cloudflare.com/new-standards/
 - **BBR v2** — Google's model-based controller, tuned for non-lossy
   congestion signals (delay, ECN, bandwidth estimation).
 - **NewReno** — RFC 9002's reference, used in test suites.
@@ -561,7 +561,7 @@ exactly.
 - IETF QUIC WG — *WG wiki and drafts archive.*
   https://datatracker.ietf.org/wg/quic/about/
 - Cloudflare — *"Cubic and BBR in quiche"*.
-  https://blog.cloudflare.com/cubic-and-bbr-in-quiche/
+  https://blog.cloudflare.com/new-standards/
 - Cloudflare — *"The road to QUIC"* (engineering notes on building a
   production QUIC stack). https://blog.cloudflare.com/the-road-to-quic/
 - chromium — *QUIC implementation docs.*

@@ -43,19 +43,25 @@ The validation suite re-run on the `research` tree during the 2026-09-19 review:
 - real `mermaid@11` parse → 4,889/4,889 pass (100%)
 - `scripts/check-doi.py` → 491/491 DOIs resolve
 
-> **External URLs are not fully clean.** A **full-repo sweep of all 8,662
-> external links** (2,067 hosts) found **5,872 live** and **761 dead**
-> (HTTP 404/410); the remainder returned 403/429/bot-challenge and are counted
-> unverifiable, not dead. Three repair passes have fixed **251** dead links —
-> each fetched and title-checked first — including **all 471 kernel.org links,
-> now 100% live**. Of the rest, **25 are intentional `example.com`
-> placeholders** and **522 are genuine broken links** catalogued by host in
-> `scripts/dead-links-report.txt`; a further **68 404ing URLs live only inside
-> fenced code blocks** (code samples and namespace identifiers, correct as
-> written). What remains is overwhelmingly pages deleted upstream — source-tree
-> citations whose files exist at no path, retired doc trees, removed vendor
-> posts and dead DOIs — so each needs a human substitution decision (re-point,
+> **External URLs are not fully clean.** A **full sweep of all 8,638 external
+> links** found **6,112 live** and **601 dead** (HTTP 404/410); the remainder
+> returned 403/429/bot-challenge and are counted unverifiable, not dead. Three
+> repair passes have fixed **281** dead links — each fetched and title-checked
+> first — including **all 471 kernel.org links, now 100% live**. Of the rest,
+> **66 are intentional placeholders** and **483 are genuine broken links**
+> catalogued by host in `scripts/dead-links-report.txt`; a further **116 404ing
+> URLs live only inside fenced code blocks** (code samples, XML namespace
+> identifiers, shell templates) and are correct as written. What remains is
+> overwhelmingly pages deleted upstream — removed vendor documentation, retired
+> doc trees, dead DOIs — so each needs a human substitution decision (re-point,
 > replace, or drop) rather than a code fix.
+>
+> An earlier revision of these figures was **overstated**: the URL extractor
+> stopped at the first `)` and bled across `]`, so every URL containing a
+> parenthesis was measured truncated and reported dead. A Markdown-aware
+> extractor fixed this and recovered 20 links (14 DOIs, 5 Wikipedia articles,
+> 1 testcontainers page) that were never broken.
+>
 >
 > The full mdBook build peaks above the memory limit of the environment used for
 > this review, so the review ran a 47-chapter subset build of every changed file

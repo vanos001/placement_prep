@@ -199,6 +199,6 @@ The shared conflict on B is detected because both transactions included B in the
 - D. P. Reed, "[Implementing Atomic Actions on Distributed Data](https://dl.acm.org/doi/10.1145/800216.806585)", *SOSP 1983* — introduces multiversion OCC, the basis for most production systems.
 - FoundationDB developers, "[Key Ranges in Conflict Ranges](https://apple.github.io/foundationdb/developer-guide.html#conflict-ranges)", official developer guide.
 - Cockroach Labs, "[Transaction Layer — Architecture](https://www.cockroachlabs.com/docs/stable/architecture/transaction-layer.html)", CockroachDB reference docs.
-- J. Baker et al., "[Megastore: Scalable Highly Available Storage](https://research.google/pubs/megastore-scalable-highly-available-storage/)", *CIDR 2011* — production Google system using OCC + 2PC over Paxos groups.
+- J. Baker et al., "[Megastore: Scalable Highly Available Storage](https://research.google/pubs/megastore-providing-scalable-highly-available-storage-for-interactive-services/)", *CIDR 2011* — production Google system using OCC + 2PC over Paxos groups.
 - J. C. Corbett et al., "[Spanner: Google's Globally-Distributed Database](https://research.google/pubs/spanner-googles-globally-distributed-database/)", *OSDI 2012* — OCC + TrueTime + 2PC, the most-cited modern OCC paper.
 - H. Berenson et al., "[A Critique of ANSI SQL Isolation Levels](https://www.cs.umb.edu/~poneil/iso.pdf)", *SIGMOD 1995* — defines the anomaly taxonomy that explains when OCC's promises are enough.

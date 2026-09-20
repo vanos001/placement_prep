@@ -447,7 +447,7 @@ The **interaction between sanitizers** is limited: ASan and MSan are mutually ex
 
 ## References
 
-- **LLVM Attributor**: <https://llvm.org/docs/Attributor.html> — official documentation; covers the `AbstractAttribute` API, the fixpoint iteration, and the manifest step.
+- **LLVM Attributor**: <https://github.com/llvm/llvm-project/blob/main/llvm/lib/Transforms/IPO/Attributor.cpp> — official documentation; covers the `AbstractAttribute` API, the fixpoint iteration, and the manifest step.
 - J. Doerfert, "The Attributor — A Modular Interprocedural Fixpoint Analysis," LLVM Developers' Meeting 2019 — the original talk introducing the framework.
 - J. Doerfert et al., "The Attributor: A Modular Interprocedural Fixpoint Analysis Framework for LLVM," 2020 — the formal write-up, including the abstract-attribute lattice and the call-graph-SCC traversal.
 - LLVM `function-attrs` pass: <https://llvm.org/doxygen/FunctionAttrs_8cpp.html> — the legacy pass that Attributor replaces; useful for understanding the historical motivation.

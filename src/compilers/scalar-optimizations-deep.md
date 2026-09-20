@@ -447,7 +447,7 @@ Tail duplication is most useful as a **machine-level** pass because its benefits
 - Pettis, K., & Hansen, R. C. (1990). *Profile-Guided Code Positioning*. Proceedings of the ACM SIGPLAN 1990 Conference on Programming Language Design and Implementation (PLDI '90), 16–27. <https://dl.acm.org/doi/10.1145/93542.93550>
 - Kildall, G. A. (1973). *A Unified Approach to Global Program Optimization*. Proceedings of the 1st Annual ACM SIGACT-SIGPLAN Symposium on Principles of Programming Languages (POPL '73), 194–206. <https://dl.acm.org/doi/10.1145/512927.512945>
 - LLVM `GVN` pass documentation: <https://llvm.org/docs/Passes.html#gvn-global-value-numbering>
-- LLVM `SCCP` pass documentation: <https://llvm.org/doxygen/SCCP_8cpp.html>
+- LLVM `SCCP` pass documentation: <https://github.com/llvm/llvm-project/blob/main/llvm/lib/Transforms/Scalar/SCCP.cpp>
 - LLVM `JumpThreading` pass source: <https://github.com/llvm/llvm-project/blob/main/llvm/lib/Transforms/Scalar/JumpThreading.cpp>
 - LLVM `CorrelatedValuePropagation` pass source: <https://github.com/llvm/llvm-project/blob/main/llvm/lib/Transforms/Scalar/CorrelatedValuePropagation.cpp>
 - LLVM `TailDuplication` pass source: <https://github.com/llvm/llvm-project/blob/main/llvm/lib/CodeGen/TailDuplication.cpp>

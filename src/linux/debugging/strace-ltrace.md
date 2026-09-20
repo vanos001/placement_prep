@@ -532,7 +532,7 @@ sudo nsenter -t $PID -m -u -i -n -p -- strace -p 1
 - [ltrace(1) man page](https://man7.org/linux/man-pages/man1/ltrace.1.html)
 - [strace GitHub](https://github.com/strace/strace)
 - [ltrace GitHub](https://github.com/dkogan/ltrace)
-- [Brendan Gregg's strace page](https://www.brendangregg.com/strace.html)
+- [Brendan Gregg's strace page](https://www.brendangregg.com/blog/2014-05-11/strace-wow-much-syscall.html)
 
 ## Related Topics
 

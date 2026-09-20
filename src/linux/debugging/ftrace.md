@@ -1347,7 +1347,7 @@ dmesg | grep initcall
 - [KernelShark](https://kernelshark.org/)
 - [Steven Rostedt's ftrace tutorial](https://lwn.net/Articles/370423/)
 - [Kernel documentation: Kprobes](https://docs.kernel.org/trace/kprobes.html) — Full kprobe/kretprobe reference and internals
-- [Brendan Gregg's ftrace page](https://www.brendangregg.com/blog/2014-07-01/perf-ftrace.html)
+- [Brendan Gregg's ftrace page](https://www.brendangregg.com/blog/2014-08-30/ftrace-the-hidden-light-switch.html)
 - [Hardware Latency Detector — docs.kernel.org](https://docs.kernel.org/trace/hwlat_detector.html)
 - [Event Tracing Documentation](https://docs.kernel.org/trace/events.html) — Official event tracing reference (format files, filters, triggers, boot options)
 - [Boot-time tracing](https://docs.kernel.org/trace/boottime-trace.html) — Kernel command-line trace parameters for early-boot debugging

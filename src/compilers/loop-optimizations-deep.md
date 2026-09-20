@@ -452,7 +452,7 @@ The `-debug-only=<pass>` flag is gated on LLVM being built in `Debug` or `RelWit
 - LLVM `ScalarEvolution.h` doxygen: <https://llvm.org/doxygen/ScalarEvolution_8h_source.html>
 - LLVM *LoopTerminology* documentation: <https://llvm.org/docs/LoopTerminology.html>
 - LLVM *LoopTerminology#LCSSA*: <https://llvm.org/docs/LoopTerminology.html#lcssa>
-- LLVM `LoopRotate` pass: <https://llvm.org/doxygen/LoopRotate_8cpp.html>
+- LLVM `LoopRotate` pass: <https://github.com/llvm/llvm-project/blob/main/llvm/lib/Transforms/Scalar/LoopRotation.cpp>
 - LLVM `MachinePipeliner` (software pipelining): <https://llvm.org/doxygen/MachinePipeliner_8cpp.html>
 - Lam, M. (1988). *Software Pipelining: An Effective Scheduling Technique for VLIW Machines*. PLDI '88. <https://doi.org/10.1145/53990.54007>
 - Rau, B. R. (1994). *Iterative Modulo Scheduling*. MICRO 27. <https://doi.org/10.1109/MICRO.1994.717412>

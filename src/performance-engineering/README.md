@@ -72,7 +72,7 @@ flowchart TD
 ## References
 
 - Beyer, B., et al. *Site Reliability Engineering* (Google SRE Book). O'Reilly, 2016. [sre.google/sre-book](https://sre.google/sre-book/table-of-contents/)
-- Gregg, B. *Systems Performance: Enterprise and the Cloud*, 2nd Ed. Addison-Wesley, 2020. [brendangregg.com/systems-performance-2nd-edition](https://www.brendangregg.com/systems-performance-2nd-edition.html)
+- Gregg, B. *Systems Performance: Enterprise and the Cloud*, 2nd Ed. Addison-Wesley, 2020. [brendangregg.com/systems-performance-2nd-edition](https://www.brendangregg.com/systems-performance-2nd-edition-book.html)
 - Gregg, B. "The USE Method." [brendangregg.com/usemethod.html](https://www.brendangregg.com/usemethod.html)
 - Google "Latency Tip #7: Percentiles Are Not Enough." [research.google/pubs/pub40755](https://research.google/pubs/pub40755/)
 

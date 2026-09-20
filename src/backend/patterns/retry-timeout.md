@@ -326,7 +326,7 @@ A single deadline is set at the edge (the user request). It travels with the RPC
 - Google SRE Book, Chapter 22: *Addressing Cascading Failures* — https://sre.google/sre-book/addressing-cascading-failures/
 - Google SRE Workbook, Chapter 22: *Handling Overload* — https://sre.google/workbook/handling-overload/
 - gRPC deadlines documentation — https://grpc.io/docs/guides/deadlines/
-- gRPC proposal A6: deadline propagation — https://github.com/grpc/proposal/blob/master/A6-client-stats.md
+- gRPC proposal A6: deadline propagation — https://github.com/grpc/proposal/blob/master/A6-client-retries.md
 - Netflix Hystrix Wiki: *How it Works* (circuit breaker state machine) — https://github.com/Netflix/Hystrix/wiki/How-it-Works
 - Resilience4j documentation (modern successor to Hystrix) — https://resilience4j.readme.io/docs/circuitbreaker
 - Microsoft Azure: *Retry guidance for Azure services* — https://learn.microsoft.com/en-us/azure/architecture/best-practices/retry-service-specific

@@ -206,7 +206,7 @@ To find the visible version of a row by index:
 
 If the row is updated often, the chain can be long, and the index still points to the *original* TID — readers must walk forward. This is the **HOT (Heap-Only-Tuple) update** optimization target.
 
-**HOT update**: if the update (a) does not change any indexed column, and (b) the new tuple fits on the same page, PostgreSQL doesn't update indexes — it just chains the tuple. Reads use the original TID, follow the chain to the latest visible tuple. This avoids N index writes per UPDATE when N indexes exist on the table. Crucial for update-heavy tables. Documentation: <https://www.postgresql.org/docs/current/storage-hot-chain.html>.
+**HOT update**: if the update (a) does not change any indexed column, and (b) the new tuple fits on the same page, PostgreSQL doesn't update indexes — it just chains the tuple. Reads use the original TID, follow the chain to the latest visible tuple. This avoids N index writes per UPDATE when N indexes exist on the table. Crucial for update-heavy tables. Documentation: <https://www.postgresql.org/docs/current/storage-page-layout.html>.
 
 If the update changes an indexed column, every index on that column must be updated — this is what makes secondary indexes on volatile columns expensive.
 
@@ -269,5 +269,5 @@ Most modern OLTP databases are **MVCC + 2PL hybrid**: MVCC for readers (snapshot
 - InnoDB, "[InnoDB Multi-Versioning](https://dev.mysql.com/doc/refman/8.0/en/innodb-multi-versioning.html)" — official ReadView / undo log docs.
 - M. Stonebraker, "[The Design of POSTGRES](https://dl.acm.org/doi/10.1145/16856.16859)", *SIGMOD 1986* — original PostgreSQL design with MVCC baked in.
 - M. J. Cahill, J. Doherty, R. Kummeth, D. Lomet, "[Serializable Snapshot Isolation in PostgreSQL](https://drkp.net/papers/ssi-vldb12.pdf)", *VLDB 2012* — describes the SSI extension atop MVCC.
-- Alvaro Herrera, "[HOT (Heap-Only-Tuple) updates](https://www.postgresql.org/docs/current/storage-hot-chain.html)" — PostgreSQL documentation of HOT chains.
+- Alvaro Herrera, "[HOT (Heap-Only-Tuple) updates](https://www.postgresql.org/docs/current/storage-page-layout.html)" — PostgreSQL documentation of HOT chains.
 - A. Thomson et al., "[Calvin: Fast Distributed Transactions](https://cs.yale.edu/homes/thom/publications/calvin-sigmod12.pdf)", *SIGMOD 2012* — interesting alternative to MVCC for distributed transactions.

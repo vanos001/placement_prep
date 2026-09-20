@@ -383,7 +383,7 @@ Two contrasts are worth dwelling on:
 - SE-0306: Actors
   https://github.com/apple/swift-evolution/blob/main/proposals/0306-actors.md
 - SE-0302: Sendable and @Sendable closures
-  https://github.com/apple/swift-evolution/blob/main/proposals/0302-concurrency-safety/static-sendable.md
+  https://github.com/apple/swift-evolution/blob/main/proposals/0302-concurrent-value-and-concurrent-closures.md
 - SE-0317: async let — implicitly awaiting sub-tasks
   https://github.com/apple/swift-evolution/blob/main/proposals/0317-async-let.md
 - SE-0297: Concurrency Interoperability with Objective-C

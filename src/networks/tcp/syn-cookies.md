@@ -135,5 +135,5 @@ These are not replacements for SYN cookies but additions — the kernel's SYN co
 - [RFC 4987: TCP SYN Flooding Attacks and Common Mitigations](https://datatracker.ietf.org/doc/html/rfc4987)
 - [Linux SYN cookies source code](https://github.com/torvalds/linux/blob/master/net/ipv4/syncookies.c)
 - [LWN: SYN cookies and TCP performance (2001)](https://lwn.net/2001/0607-a.html)
-- [Cloudflare: How we use SYN cookies](https://blog.cloudflare.com/syn-cookie/)
+- [Cloudflare: How we use SYN cookies](https://blog.cloudflare.com/syn-packet-handling-in-the-wild/)
 - [AWS Shield: SYN flood mitigation](https://docs.aws.amazon.com/whitepapers/latest/aws-best-practices-ddos-resiliency/operational-adaptations-tcp-syn-flood.html)

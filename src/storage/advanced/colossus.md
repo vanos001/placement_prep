@@ -125,7 +125,7 @@ The biggest gap: Colossus is not open source. HDFS and Ceph attempt to match Col
 ## References
 
 - Dean, "[Colossus: Google's Distributed Storage System](https://cloud.google.com/blog/products/storage-data-transfer/colossus-googles-distributed-storage-system)" (Google blog, 2017)
-- Ghemawat, Gobioff, Leung, "[The Google File System](https://research.google/pubs/pub30613/)" (SOSP 2003)
+- Ghemawat, Gobioff, Leung, "[The Google File System](https://research.google/pubs/the-google-file-system/)" (SOSP 2003)
 - [Recursive Reed-Solomon in Colossus](https://arxiv.org/abs/2407.10616) (2024)
 - [Google Cloud Storage documentation](https://cloud.google.com/storage/docs)
 - Chang et al., "[Bigtable: A Distributed Storage System for Structured Data](https://research.google/pubs/bigtable-a-distributed-storage-system-for-structured-data/)" (OSDI 2006)

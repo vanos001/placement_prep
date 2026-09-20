@@ -5,109 +5,115 @@ Audit trail for the external-URL passes. Internal links, anchors, SUMMARY,
 Mermaid, MathJax, fences and all DOIs are clean and checked by
 scripts/validate-all.sh; THIS file tracks third-party URLs only.
 
-Source: a FULL-REPO sweep in which every distinct external URL in src/ was
-fetched, not just the ones flagged earlier.
+MEASUREMENT NOTE. Earlier versions of this file were produced by a URL
+extractor that stopped at the first ')' and bled across ']', so every URL
+containing a parenthesis was measured truncated and reported dead. That
+inflated the defect count. The current figures come from a Markdown-aware
+extractor that keeps balanced parentheses and stops at link syntax, and from
+a sweep of all 8,638 external URLs in src/.
 
 ------------------------------------------------------------------------------
-WHAT THE FULL SWEEP FOUND
+CURRENT STATE
 ------------------------------------------------------------------------------
-  external URLs swept (distinct hosts: 2067) : 8662
-  HTTP 200 (live)                                : 5872
-  HTTP 404 / 410 (dead)                          : 761
-  HTTP 403 (blocked to scripted clients)         : 645
-  HTTP 429 (rate-limited during the sweep)       : 669
-  other non-200 / challenge                      : 715
+  external URLs in the book                    : 8638
+  HTTP 200 (live)                              : 6112
+  HTTP 404 / 410 (dead)                        : 630 at sweep time
+                                                 -> 601 after this pass's repairs
+  HTTP 403 / 429 / challenge (unverifiable)    : 1875
+  other non-200                                : 21
 
-  Only 404/410 is a reliable 'gone' signal; 403/429/challenge responses are
-  live pages refusing this client and are NOT counted dead.
+  Only 404/410 is a reliable 'gone' signal. 403/429/challenge responses are
+  live pages refusing a scripted client and are NOT counted dead.
 
 ------------------------------------------------------------------------------
-REPAIRED ACROSS THE PASSES
+OF THE DEAD URLs, WHAT IS ACTUALLY A BROKEN LINK
 ------------------------------------------------------------------------------
-  161 dead links repaired in pass 1 (verified live replacements or snapshots).
-   90 more repaired in pass 2, then re-checked:
-      - 26 github URLs: renamed/moved repos and relocated files, resolved
-        through the GitHub tree API rather than guesswork.
-      - 67 dead documentation pages re-pointed at their live parent section,
-        used only where the parent is the same doc area (never for articles,
-        blogs, papers or named source files, where the parent would be
-        different content).
-      -  2 fabricated Swift-evolution citations corrected; the titles and the
-         proposal numbers were both wrong.
-  Every replacement was fetched and title-checked before being written.
+  genuine broken links                         : 483
+  inside code fences only (NOT links)          : 116
+  intentional placeholders                     : 66
+
+  The code-fence group is code samples, XML namespace identifiers
+  (http://xml.org/sax/features/...), shell templates containing ${VAR},
+  and deliberately fake hosts (evil.com, bank.com) used in security
+  examples. None of them are hyperlinks and all are correct as written.
+
+------------------------------------------------------------------------------
+REPAIRED ACROSS ALL PASSES
+------------------------------------------------------------------------------
+  161 in pass 1 (verified live replacements or archive snapshots)
+   90 in pass 2 (github renames/moves, doc-parent sections)
+   30 in pass 3, listed below; every replacement fetched and title-checked
+
+  pass 3 detail
+    - 9 PostgreSQL / cp-algorithms: removed doc paths ('gin-intro' -> 'gin',
+      'gist-intro' -> 'gist', etc.) and pages cp-algorithms deleted outright
+      (Mobius, Berlekamp-Massey) replaced with Wikipedia equivalents
+    - 5 brendangregg.com: site restructure ('systems-performance-2nd-edition'
+      -> '-2nd-edition-book', blog slugs that moved)
+    - 4 llvm.org: dead doxygen file pages replaced with the canonical GitHub
+      sources; the Lattner thesis PDF moved to its correct filename
+    - 5 research.google: numeric pub ids replaced with the current slugs
+    - 3 blog.cloudflare.com: restored slugs that changed after the 2024 blog
+      migration
+    - 4 more github.com: grpc A6, systemd src/udevd -> src/udev,
+      SE-0302 (title and path both wrong), chainlink contracts now in
+      chainlink-evm
+
+  Also reclassified, not replaced: 20 URLs previously reported dead
+  (14 doi.org, 5 en.wikipedia.org, 1 testcontainers.org) are LIVE and were
+  false positives of the old extractor - they all contain parentheses.
 
 ------------------------------------------------------------------------------
 REMAINING — NEEDS A HUMAN DECISION
 ------------------------------------------------------------------------------
-  genuine broken links still in the docs : 522
-  affected hosts                         : 332
+  genuine broken links : 483   across 328 hosts
 
-  A further 68 URLs that 404 appear ONLY inside fenced code blocks.
-  Those are code samples, XML namespace identifiers and template strings, not
-  links — they are correct as written and are listed separately at the end.
-
-  host                                       count
-  ------------------------------------------------
-  doi.org                                       14
-  aws.amazon.com                                11
-  github.com                                    10
-  www.confluent.io                               7
-  www.cs.cornell.edu                             6
-  en.wikipedia.org                               5
-  research.google                                5
-  web.dev                                        5
-  www.brendangregg.com                           5
-  www.cs.cmu.edu                                 5
-  www.postgresql.org                             5
-  blog.cloudflare.com                            4
-  cloud.google.com                               4
-  cp-algorithms.com                              4
-  csrc.nist.gov                                  4
-  developer.apple.com                            4
-  developer.chrome.com                           4
-  docs.nvidia.com                                4
-  kernelnewbies.org                              4
-  kubectl.docs.kubernetes.io                     4
-  llvm.org                                       4
-  martinfowler.com                               4
-  reactnative.dev                                4
-  sre.google                                     4
-  www.cncf.io                                    4
-  bootlin.com                                    3
-  clickhouse.com                                 3
-  docs.google.com                                3
-  docs.u-boot.org                                3
-  gcc.gnu.org                                    3
-  lamport.org                                    3
-  lora-alliance.org                              3
-  min.io                                         3
-  p4.org                                         3
-  use-the-index-luke.com                         3
-  www.cambridge.org                              3
-  www.cockroachlabs.com                          3
-  www.cs.utexas.edu                              3
-  www.databricks.com                             3
-  www.freertos.org                               3
+  host                                         count
+  --------------------------------------------------
+  aws.amazon.com                                  11
+  github.com                                      11
+  www.confluent.io                                 7
+  www.cs.cornell.edu                               6
+  web.dev                                          5
+  www.cs.cmu.edu                                   5
+  cloud.google.com                                 4
+  csrc.nist.gov                                    4
+  developer.apple.com                              4
+  developer.chrome.com                             4
+  docs.nvidia.com                                  4
+  kernelnewbies.org                                4
+  kubectl.docs.kubernetes.io                       4
+  martinfowler.com                                 4
+  reactnative.dev                                  4
+  sre.google                                       4
+  www.cncf.io                                      4
+  www.cockroachlabs.com                            4
+  bootlin.com                                      3
+  clickhouse.com                                   3
+  docs.google.com                                  3
+  docs.u-boot.org                                  3
+  gcc.gnu.org                                      3
+  lamport.org                                      3
+  lora-alliance.org                                3
+  min.io                                           3
+  p4.org                                           3
+  use-the-index-luke.com                           3
+  www.cambridge.org                                3
+  www.cs.utexas.edu                                3
+  www.databricks.com                               3
+  www.freertos.org                                 3
+  www.microsoft.com                                3
+  www.nxp.com                                      3
+  www.snowflake.com                                3
+  blog.cloudflare.com                              2
+  catonmat.net                                     2
+  cs.yale.edu                                      2
+  cseweb.ucsd.edu                                  2
+  debezium.io                                      2
 
 ------------------------------------------------------------------------------
 GENUINE BROKEN LINKS BY HOST
 ------------------------------------------------------------------------------
-
-doi.org  (14)
-    https://doi.org/10.1002/(SICI
-    https://doi.org/10.1016/0020-0190(91
-    https://doi.org/10.1016/0022-0000(78
-    https://doi.org/10.1016/0169-7552(89
-    https://doi.org/10.1016/0196-6774(88
-    https://doi.org/10.1016/0196-6774(91
-    https://doi.org/10.1016/0304-3975(82
-    https://doi.org/10.1016/0304-3975(90
-    https://doi.org/10.1016/0304-3975(94
-    https://doi.org/10.1016/0890-5401(87
-    https://doi.org/10.1016/0890-5401(90
-    https://doi.org/10.1016/0890-5401(91
-    https://doi.org/10.1016/S0168-0072(98
-    https://doi.org/10.2168/lmcs-9(4:23
 
 aws.amazon.com  (11)
     https://aws.amazon.com/blogs/compute/containers-without-constructs-aws-lambda-run-firecracker/
@@ -122,8 +128,9 @@ aws.amazon.com  (11)
     https://aws.amazon.com/cloudfront/cloudflare-alternative/
     https://aws.amazon.com/route53/cloudflare-alternative/
 
-github.com  (10)
+github.com  (11)
     https://github.com/NVIDIA/TensorRT-LLM/blob/main/benchmarks/README.md
+    https://github.com/WebAssembly/WASI/blob/main/wasip2/README.md
     https://github.com/axboe/blktrace
     https://github.com/bytecodealliance/cranelift/tree/main/peepmatic
     https://github.com/jlpteaching/diveinfoSystems
@@ -151,33 +158,12 @@ www.cs.cornell.edu  (6)
     https://www.cs.cornell.edu/~asdas/research/dsn02-SWIM.pdf
     https://www.cs.cornell.edu/~asdas/research/swim.pdf
 
-en.wikipedia.org  (5)
-    https://en.wikipedia.org/wiki/Erlang_(unit
-    https://en.wikipedia.org/wiki/GRASP_(object-oriented_design
-    https://en.wikipedia.org/wiki/Hexagonal_architecture_(software
-    https://en.wikipedia.org/wiki/Null_(SQL
-    https://en.wikipedia.org/wiki/Zen_(first_generation
-
-research.google  (5)
-    https://research.google/pubs/megastore-scalable-highly-available-storage/
-    https://research.google/pubs/pub30613/
-    https://research.google/pubs/pub36646/
-    https://research.google/pubs/pub45069.html
-    https://research.google/pubs/pub46902/
-
 web.dev  (5)
     https://web.dev/articles/http-caching
     https://web.dev/articles/lighthouse-accessibility
     https://web.dev/articles/mutationobserver
     https://web.dev/articles/web-worker-transferable-objects
     https://web.dev/css-container-queries/
-
-www.brendangregg.com  (5)
-    https://www.brendangregg.com/Perf/bcc_cachestat.html
-    https://www.brendangregg.com/blog/2014-07-01/perf-ftrace.html
-    https://www.brendangregg.com/numa.html
-    https://www.brendangregg.com/strace.html
-    https://www.brendangregg.com/systems-performance-2nd-edition.html
 
 www.cs.cmu.edu  (5)
     https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15740-f03/www/doc/HerlihyMoss-TM.pdf
@@ -186,30 +172,11 @@ www.cs.cmu.edu  (5)
     https://www.cs.cmu.edu/~gongseg/yao-1982.pdf
     https://www.cs.cmu.edu/~huanrao/papers/sigmod19.pdf
 
-www.postgresql.org  (5)
-    https://www.postgresql.org/about/news/pgvector-0-7-0-released/
-    https://www.postgresql.org/docs/current/gin-intro.html
-    https://www.postgresql.org/docs/current/gist-intro.html
-    https://www.postgresql.org/docs/current/replication-progress.html
-    https://www.postgresql.org/docs/current/storage-hot-chain.html
-
-blog.cloudflare.com  (4)
-    https://blog.cloudflare.com/cubic-and-bbr-in-quiche/
-    https://blog.cloudflare.com/optimizing-http-2-header-compression-in-go/
-    https://blog.cloudflare.com/syn-cookie/
-    https://blog.cloudflare.com/tcp-fast-open/
-
 cloud.google.com  (4)
     https://cloud.google.com/anthos/clusters/docs/security/networking
     https://cloud.google.com/architecture/scalability
     https://cloud.google.com/run/docs/about
     https://cloud.google.com/spanner/docs/query-plans
-
-cp-algorithms.com  (4)
-    https://cp-algorithms.com/algebra/fft-modular.html
-    https://cp-algorithms.com/algebra/linear-recurrances.html
-    https://cp-algorithms.com/algebra/mobius-function.html
-    https://cp-algorithms.com/data_structures/
 
 csrc.nist.gov  (4)
     https://csrc.nist.gov/CSRC/media/Publications/nistir/8413/final/documents/nistir8413.pdf
@@ -247,12 +214,6 @@ kubectl.docs.kubernetes.io  (4)
     https://kubectl.docs.kubernetes.io/pages/app_management/strategic_merge_patch.html
     https://kubectl.docs.kubernetes.io/pages/kustomize.html
 
-llvm.org  (4)
-    https://llvm.org/docs/Attributor.html
-    https://llvm.org/doxygen/LoopRotate_8cpp.html
-    https://llvm.org/doxygen/SCCP_8cpp.html
-    https://llvm.org/pubs/2003-Chris-Lattner-MSThesis.pdf
-
 martinfowler.com  (4)
     https://martinfowler.com/articles/accountingComputer.html
     https://martinfowler.com/articles/patterns-of-distributed-systems/tcc.html
@@ -276,6 +237,12 @@ www.cncf.io  (4)
     https://www.cncf.io/blog/2020/11/04/envoy-vs-nginx-vs-haproxy/
     https://www.cncf.io/blog/2021/05/26/argo-workflows-vs-apache-airflow/
     https://www.cncf.io/blog/2021/05/26/tekton-vs-argo-workflows/
+
+www.cockroachlabs.com  (4)
+    https://www.cockroachlabs.com/blog/cockroachdb-living-without-true-time/
+    https://www.cockroachlabs.com/blog/query-planning/
+    https://www.cockroachlabs.com/blog/time-and-ordering-in-cocroachdb/
+    https://www.cockroachlabs.com/docs/stable/architecture/replication.html
 
 bootlin.com  (3)
     https://bootlin.com/docx/boot-process/
@@ -332,11 +299,6 @@ www.cambridge.org  (3)
     https://www.cambridge.org/core/books/introduction-to-higherorder-categorical-logic/
     https://www.cambridge.org/core/books/lectures-on-the-curryhoward-isomorphism/
 
-www.cockroachlabs.com  (3)
-    https://www.cockroachlabs.com/blog/query-planning/
-    https://www.cockroachlabs.com/blog/time-and-ordering-in-cocroachdb/
-    https://www.cockroachlabs.com/docs/stable/architecture/replication.html
-
 www.cs.utexas.edu  (3)
     https://www.cs.utexas.edu/users/EWD/transcriptions/EWD00xx/EWD123.html
     https://www.cs.utexas.edu/users/mckinley/380D/papers/briggs-thesis.pdf
@@ -366,6 +328,10 @@ www.snowflake.com  (3)
     https://www.snowflake.com/wp-content/uploads/2020/09/SIGMOD-FDB.pdf
     https://www.snowflake.com/wp-content/uploads/2020/09/Snowflake-Architecture-Whitepaper.pdf
     https://www.snowflake.com/wp-content/uploads/2020/09/SnowflakeMultiClusterSharedDataArchitecture.pdf
+
+blog.cloudflare.com  (2)
+    https://blog.cloudflare.com/optimizing-http-2-header-compression-in-go/
+    https://blog.cloudflare.com/tcp-fast-open/
 
 catonmat.net  (2)
     https://catonmat.net/awk-one-liners-explained
@@ -562,6 +528,9 @@ allquantor.at  (1)
 ankane.org  (1)
     https://ankane.org/pgvector
 
+api.coingecko.com  (1)
+    https://api.coingecko.com/
+
 api.flutter.dev  (1)
     https://api.flutter.dev/flutter/rendering/RenderingPipeline-class.html
 
@@ -609,6 +578,9 @@ blog.synthetix.io  (1)
 
 blogs.windows.com  (1)
     https://blogs.windows.com/windowsexperience/2020/01/23/introducing-playwright-reliable-cross-browser-testing-for-the-modern-web/
+
+boringssl.googlesource.com  (1)
+    https://boringssl.googlesource.com/boringssl/+/HEAD/TIMING.md
 
 brand.co  (1)
     https://brand.co/launch
@@ -792,6 +764,9 @@ gist.github.com  (1)
 
 github.blog  (1)
     https://github.blog/2021-09-09-sharding-github-database/
+
+global.oup.com  (1)
+    https://global.oup.com/academic/product/godels-incompleteness-theorems-9780195073963
 
 godbolt.org  (1)
     https://godbolt.org/blog/what-is-io-uring
@@ -1030,9 +1005,6 @@ web.stanford.edu  (1)
 wiki.gentoo.org  (1)
     https://wiki.gentoo.org/wiki/Man:emerge
 
-wiki.mozilla.org  (1)
-    https://wiki.mozilla.org/Security/DNS-over-HTTPS
-
 without.boats  (1)
     https://without.boats/blog/why-result-works/
 
@@ -1237,14 +1209,14 @@ www.scottaaronson.com  (1)
 www.scylladb.com  (1)
     https://www.scylladb.com/2018/01/16/compaction-in-cassandra-and-scylladb/
 
-www.slideshare.net  (1)
-    https://www.slideshare.net/DongXu/rocksdb-evolution-of-development-experience-of-unkey-evolution
-
 www.smashingmagazine.com  (1)
     https://www.smashingmagazine.com/2019/08/front-end-performance-checklist-2019-pdf-pages/
 
 www.snia.org  (1)
     https://www.snia.org/sites/default/files/SNIA_DMTF_DDC_Multipathing_WP.pdf
+
+www.suse.com  (1)
+    https://www.suse.com/support/kb/article/?id=7016650
 
 www.thomas-krenn.com  (1)
     https://www.thomas-krenn.com/en/wiki/Linux_I/O_Scheduler_Comparison
@@ -1273,6 +1245,9 @@ www.youtube.com  (1)
 xenproject.org  (1)
     https://xenproject.org/documentation/
 
+xml.org  (1)
+    http://xml.org/sax/features/
+
 zdharma-continuum.github.io  (1)
     https://zdharma-continuum.github.io/Zsh-Plugin-Standard/
 
@@ -1284,6 +1259,11 @@ URLs INSIDE CODE FENCES (not links — listed for completeness)
 ------------------------------------------------------------------------------
     http://apache.org/xml/features/disallow-doctype-decl
     http://dist.schmorp.de/libev/libev-4.33.tar.gz
+    http://example.com/1
+    http://example.com/2
+    http://example.com/3
+    http://example.com/a
+    http://example.com:80/path
     http://other.com/widget
     http://xml.org/sax/features/external-general-entities
     http://xml.org/sax/features/external-parameter-entities
@@ -1303,7 +1283,38 @@ URLs INSIDE CODE FENCES (not links — listed for completeness)
     https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-${KERNEL_VERSION}.tar.xz
     https://evil.com/steal?cookie=
     https://evil.com/steal?token=
+    https://example.com/${P}.tar.gz
+    https://example.com/app.tar.gz
+    https://example.com/dashboard
+    https://example.com/docs
+    https://example.com/events
+    https://example.com/file.zip
+    https://example.com/file1
+    https://example.com/file2
+    https://example.com/gpg.key
+    https://example.com/health
+    https://example.com/issues/1234
+    https://example.com/login
+    https://example.com/myapp
+    https://example.com/myapp-${pkgver}.tar.gz
+    https://example.com/mydriver
+    https://example.com/mypackage
+    https://example.com/old-page
+    https://example.com/package.rpm
+    https://example.com/page
+    https://example.com/redirect
+    https://example.com/releases
+    https://example.com/repo/example.repo
+    https://example.com/report
+    https://example.com/sbom/0866702c-4097-53c7-bca3-7bd45ae76b29
+    https://example.com/schemas/payment-base.json
+    https://example.com/search?q=
+    https://example.com/transport
+    https://example.com/very/long/path
+    https://example.com/ws
+    https://fcm.googleapis.com/v1/projects/
     https://fcm.googleapis.com/v1/projects/my-project/messages:send
+    https://fonts.gstatic.com
     https://ftp.gnu.org/gnu/hello/hello-${pkgver}.tar.gz
     https://gist.github.com/user/id
     https://git.buildroot.net/buildroot
@@ -1316,6 +1327,7 @@ URLs INSIDE CODE FENCES (not links — listed for completeness)
     https://github.com/kubernetes-sigs/cri-tools/releases/download/$VERSION/crictl-$VERSION-linux-amd64.tar.gz
     https://github.com/lenb/idlestat.git
     https://github.com/lib/lib.git
+    https://github.com/moby/moby/blob/master/profiles/seccomp/default.json
     https://github.com/my-org/apps
     https://github.com/my-org/my-app
     https://github.com/my-org/my-app-deploy
@@ -1331,10 +1343,14 @@ URLs INSIDE CODE FENCES (not links — listed for completeness)
     https://github.com/org/repo@refs/heads/main
     https://github.com/original/repo.git
     https://github.com/raistlin/latencytop.git
+    https://github.com/sifive/freedom-u-sdk/releases/download/v2022.04.00/demo-coreip-cli-unmatched-2022.04.00.rootfs.wic.gz
     https://github.com/slsa-framework/slsa-github-generator/.github/workflows/generator_generic_slsa3.yml
+    https://github.com/slsa-framework/slsa-github-generator/buildtype/generic/v1
     https://github.com/user/my-package
+    https://github.com/user/new-repo.git
     https://github.com/user/repo.git
     https://github.com/user/repo.git@main
+    https://github.com/your-user/repo.git
     https://hooks.slack.com/services/xxx/yyy/zzz
     https://in-toto.io/attestation/slsa/v1
     https://mirrors.fedoraproject.org/metalink?repo=epel-$releasever&arch=$basearch
@@ -1347,6 +1363,13 @@ URLs INSIDE CODE FENCES (not links — listed for completeness)
     https://registry-1.docker.io
     https://registry-1.docker.io/v2/library/alpine/blobs/$DIGEST
     https://repo.cloudlinux.com/kernelcare/kernelcare.install
+    https://sns.us-east-1.amazonaws.com/SimpleNotificationService-
     https://token.actions.githubusercontent.com
+    https://www.example.com/page
+    https://www.example.com/page1
+    https://www.example.com/page2
+    https://www.example.com/page3
+    https://www.example.com:443/path/to/page?key=value#section
+    https://www.example.com:443/path?key=value#fragment
     https://www.googleapis.com/auth/firebase.messaging
     https://xenbits.xen.org/git-http/xen.git

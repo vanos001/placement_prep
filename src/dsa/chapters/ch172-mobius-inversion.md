@@ -886,5 +886,5 @@ Count square-free numbers up to n:
 
 - Apostol, T. M. (1976). *Introduction to Analytic Number Theory*. Springer.
 - Hardy, G. H., & Wright, E. M. (2008). *An Introduction to the Theory of Numbers*. Oxford.
-- cp-algorithms: [Möbius Function](https://cp-algorithms.com/algebra/mobius-function.html)
+- [Möbius function](https://en.wikipedia.org/wiki/M%C3%B6bius_function) and [Möbius inversion](https://en.wikipedia.org/wiki/M%C3%B6bius_inversion_formula)
 - Project Euler — Problems involving gcd and coprime counting
