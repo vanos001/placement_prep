@@ -312,7 +312,7 @@ Numbers will vary dramatically with payload shape (small ints vs floats vs strin
 - IANA CBOR tag registry: https://www.iana.org/assignments/cbor-tags/cbor-tags.xhtml
 - BSON specification: https://bsonspec.org/
 - MongoDB BSON reference: https://www.mongodb.com/docs/manual/reference/bson-types/
-- Redis listpack / intset internals: https://redis.io/docs/reference/internals/
+- Redis listpack / intset internals: https://redis.io/docs/latest/operate/oss_and_stack/reference/internals/
 - ciborium (Rust CBOR library): https://docs.rs/ciborium
 - cbor2 (Python CBOR library): https://cbor2.readthedocs.io/
 - rmp-serde (Rust MessagePack): https://docs.rs/rmp-serde

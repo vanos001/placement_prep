@@ -213,7 +213,7 @@ Trino is for interactive; Spark is for batch. They're complementary — Spark wr
 - [Trino documentation](https://trino.io/docs/current/)
 - Setty et al., "[Presto: SQL on Everything](https://trino.io/papers/presto-sigmod-2019.pdf)" (SIGMOD 2019)
 - [Trino GitHub repository](https://github.com/trinodb/trino)
-- [Trino: The Definitive Guide (O'Reilly book)](https://www.starburst.io/wp-content/uploads/2020/11/OReilly-Trino-The-Definitive-Guide-2020-11.pdf)
+- [Trino: The Definitive Guide (O'Reilly book)](https://www.starburst.io/info/oreilly-trino-guide/)
 - [PrestoSQL → Trino rename announcement](https://trino.io/blog/2020/12/27/announcing-trino.html)
 - [Trino vs Spark SQL comparison](https://www.starburst.io/blog/trino-vs-spark-sql/)
 - [LWN: Trino overview (2021)](https://lwn.net/Articles/872812/)

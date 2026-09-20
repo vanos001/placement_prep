@@ -561,7 +561,7 @@ graph TD
 - [AWS - Database Caching Strategies Using Redis](https://docs.aws.amazon.com/whitepapers/latest/database-caching-strategies-using-redis/)
 - [Redis Documentation](https://redis.io/docs/)
 - [Memcached Wiki](https://github.com/memcached/memcached/wiki)
-- [Facebook Engineering - Scaling Memcache](https://engineering.fb.com/2022/03/07/core-data/scaling-memcache-at-facebook/)
+- [Facebook Engineering - Scaling Memcache](https://engineering.fb.com/03/07/core-data/scaling-memcache-at-facebook)
 - Nishtala et al., "Scaling Memcache at Facebook", NSDI 2013
 - Martin Kleppmann, *Designing Data-Intensive Applications*, Chapter 5
 

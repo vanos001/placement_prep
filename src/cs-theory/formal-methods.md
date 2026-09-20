@@ -278,5 +278,5 @@ For rapidly-changing systems where the spec would become stale faster than the c
 - Edmund Clarke et al. — "Model Checking" (MIT Press, 1999) — the standard textbook
 - The seL4 project — https://sel4.systems/ — the verified microkernel
 - CompCert — https://compcert.org/ — the verified C compiler
-- AWS — "Use of Formal Methods at AWS" (CACM 2015) — https://aws.amazon.com/builders-library/why-amazon-prime-video-services-uses-formal-methods/ and the original CACM article
+- Newcombe et al., "How Amazon Web Services Uses Formal Methods" (CACM 2015) — https://doi.org/10.1145/2699417 and the original CACM article
 - Microsoft Research — IronFleet project — https://www.microsoft.com/en-us/research/project/ironfleet/

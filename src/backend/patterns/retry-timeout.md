@@ -324,7 +324,7 @@ A single deadline is set at the edge (the user request). It travels with the RPC
 - AWS Architecture Blog: *Exponential Backoff and Jitter* (classic) — https://aws.amazon.com/blogs/architecture/exponential-backoff-and-jitter/
 - AWS Builders' Library: *Timeouts, Retries, and Backoff with Jitter* — https://aws.amazon.com/builders-library/timeouts-retries-and-backoff-with-jitter/
 - Google SRE Book, Chapter 22: *Addressing Cascading Failures* — https://sre.google/sre-book/addressing-cascading-failures/
-- Google SRE Workbook, Chapter 22: *Handling Overload* — https://sre.google/workbook/handling-overload/
+- Google SRE Workbook, Chapter 22: *Handling Overload* — https://sre.google/resources/book-update/handling-overload/
 - gRPC deadlines documentation — https://grpc.io/docs/guides/deadlines/
 - gRPC proposal A6: deadline propagation — https://github.com/grpc/proposal/blob/master/A6-client-retries.md
 - Netflix Hystrix Wiki: *How it Works* (circuit breaker state machine) — https://github.com/Netflix/Hystrix/wiki/How-it-Works

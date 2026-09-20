@@ -643,7 +643,7 @@ sudo systemctl disable apparmor
 ## Further Reading
 
 - [AppArmor Wiki](https://gitlab.com/apparmor/apparmor/-/wikis/home)
-- [AppArmor Profile Language](https://apparmor.net/docs/latest/apparmor.html)
+- [AppArmor Profile Language](https://apparmor.net/man/apparmor.d/)
 - [Kernel docs: AppArmor](https://www.kernel.org/doc/html/latest/admin-guide/LSM/apparmor.html)
 - [Ubuntu AppArmor documentation](https://ubuntu.com/server/docs/security-apparmor)
 - [SUSE AppArmor documentation](https://documentation.suse.com/sles/15-SP4/html/SLES-all/cha-apparmor.html)

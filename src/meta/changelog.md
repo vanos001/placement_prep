@@ -3,6 +3,47 @@
 This file records meaningful content and validation changes to the placement
 preparation book. Dates use the project timezone, Asia/Calcutta.
 
+## 2026-09-19 — Fifth pass: automated link resolution taken to its limit
+
+**30 more dead links repaired** (483 → 453 genuine broken links), and the
+automation itself was measured rather than assumed.
+
+- **Structural URL variants.** 2,740 candidate URLs across 483 dead links
+  (case, file extension, trailing slash, separators, locale and version
+  segments) produced **7** confirmed fixes — e.g. OWASP's
+  `Cross-Site_Scripting…` → `Cross_Site_Scripting…`, and engineering.fb.com and
+  herbsutter.com posts reachable with the date prefix dropped. A second round
+  adding host-alias rewrites (`/users/X/` → `/~X/`) produced **0** from 638
+  candidates.
+- **Crossref / arXiv matching** against the citation titles of 88 dead PDFs,
+  accepting only ≥0.80 title similarity: **5** confirmed. Two further candidates
+  were rejected on inspection — a journal article standing in for a PhD thesis,
+  and a paper whose result exponent (`0.091n`) differed from the cited one
+  (`0.054n`). Verifying at the metadata level rather than by HTTP status is what
+  caught those: an earlier, looser pass had matched a Tendermint thesis to an
+  unrelated *Information Sciences* article.
+- **Sitemap harvesting.** 440 of the 468 links then outstanding sit on hosts
+  that still resolve, so the pages moved rather than the sites dying. Each live
+  host's own `sitemap.xml` / MkDocs `search_index.json` was harvested — 184
+  hosts, **102,590 URLs** — and slug-matched at a strict threshold for **16**
+  more confirmed replacements (Redis's reorganised docs, `sre.google` book
+  chapters, Pony tutorial, catonmat, Stripe, EleutherAI, and others).
+- **Also corrected:** three more citations whose *cited document does not exist*
+  rather than merely having moved — AWS's "Use of Formal Methods" URL was
+  fabricated (it mixed Prime Video into the slug) and now cites the real CACM
+  paper by DOI; two AWS marketing comparison pages were replaced with the
+  product feature pages they were describing.
+
+**Why the remaining 453 need a human.** Every candidate was rejected unless it
+passed a same-document test: no index/ancestor pages, no locale swaps, no
+version downgrades, and the leading distinctive word of the dead URL had to
+survive. Loosening that bar made the matcher propose a Japanese-locale page for
+an English one, map "sed one-liners" to "awk one-liners", and offer an older
+release in place of a newer one. The 453 that remain are pages that exist in no
+equivalent form — removed vendor documentation, pruned blog posts, retired
+academic pages, dead DOIs — so substituting anything would make the
+bibliography wrong rather than merely stale.
+
 ## 2026-09-19 — Fourth pass: measurement bug fixed, 30 more links repaired
 
 **A counting bug in the previous passes is corrected here.** The URL extractor

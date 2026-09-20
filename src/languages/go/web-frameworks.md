@@ -261,7 +261,7 @@ Gin/Echo: `c.Stream` or `c.DataFromReader` with `Flusher`. Fiber: `c.SendStream`
 
 ## References
 
-- Gin Web Framework — Official Docs: https://gin-gonic.com/docs/ [gin-gonic.com]
+- Gin Web Framework — Official Docs: https://gin-gonic.com/ [gin-gonic.com]
 - Echo Framework — Official Guide & Middleware: https://echo.labstack.com/docs [labstack.com]
 - Fiber Framework — Docs & Benchmarks: https://docs.gofiber.io/ [gofiber.io]
 - Go Web Frameworks in Production: Gin vs Echo vs Fiber Performance Comparison (2026) — real production wrk benchmarks, memory, GC impact [dev.to/matthiasbruns][Matthias Bruns Blog]

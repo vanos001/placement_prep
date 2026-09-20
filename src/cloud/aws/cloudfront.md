@@ -211,5 +211,5 @@ CloudFront's advantage is AWS integration (WAF, S3, Kinesis). Cloudflare's advan
 - [CloudFront signed URLs](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/private-content-signed-urls.html)
 - [CloudFront + AWS WAF](https://docs.aws.amazon.com/waf/latest/developerguide/cloudfront-and-waf.html)
 - [Lambda@Edge](https://docs.aws.amazon.com/lambda/latest/dg/lambda-edge.html)
-- [CloudFront vs Cloudflare (AWS blog)](https://aws.amazon.com/cloudfront/cloudflare-alternative/)
+- [CloudFront features](https://aws.amazon.com/cloudfront/features/)
 - [LWN: CloudFront internals (2021)](https://lwn.net/Articles/820133/)

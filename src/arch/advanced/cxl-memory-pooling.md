@@ -208,7 +208,7 @@ which does that today with RDMA and NVLink at process granularity).
 - **CPUs**: Intel's 4th-gen Xeon (Sapphire Rapids, 2023) brought CXL Type 3 support to
   volume x86 servers; later Xeons widened switch/fabric features, and AMD EPYC 9004
   (Genoa) supports CXL 1.1+ memory expansion. Check per-SKU spec revisions.
-- **Devices**: Samsung's [CMM](https://semiconductor.samsung.com/dram/cxl-memory-module/),
+- **Devices**: Samsung's [CMM](https://semiconductor.samsung.com/about-us/locations/us-rnd-labs/memory-labs/cxl-memory-module-box/),
   the first announced CXL DRAM expander (then the CMM-D DDR5 module), defined the
   category; Micron, SK hynix, and Marvell ship competing expanders and controllers.
 - **Switches**: silicon from Broadcom, Marvell, and XConn enables the pooled topology; young fabric managers are the gap between demos and fleets.

@@ -311,7 +311,7 @@ JSR-133 group just prohibited the outcome by fiat.
 - cppreference: `std::atomic` and C atomics reference — https://en.cppreference.com/w/c/atomic
 - Hans-J. Boehm, Sarita V. Adve, *"Foundations of the C++ Concurrency Memory Model"*, PLDI 2008 — https://www.hpl.hp.com/techreports/2008/HPL-2008-56.html
 - Hans-J. Boehm, Sarita V. Adve, *"Sequential Consistency by Default"*, original DRF paper, 1990 — https://dl.acm.org/doi/10.1145/93542.93545
-- Herb Sutter, *"Atomic Weapons"* talks (Cppcon 2013/2014) — https://herbsutter.com/2013/09/30/atomic-weapons-the-c-memory-model-and-modern-hardware/
+- Herb Sutter, *"Atomic Weapons"* talks (Cppcon 2013/2014) — https://herbsutter.com/09/30/atomic-weapons-the-c-memory-model-and-modern-hardware
 - Mark Batty et al., *"Mathematizing C++ Concurrency"*, POPL 2011 (the formal semantics) — https://www.cl.cam.ac.uk/~mjb220/papers/popl081.pdf
 - JSR-133: Java Memory Model and Thread Specification — https://docs.oracle.com/javase/specs/jls/se8/html/jls-17.html
 - Paul McKenney, *"Memory Barriers: a Hardware View for Software Hackers"* — https://www.paulmck.us/Talks/memory-barriers/

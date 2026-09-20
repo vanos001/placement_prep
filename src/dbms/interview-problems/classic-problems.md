@@ -144,4 +144,4 @@ A: Using PERCENTILE_CONT(0.5) within group (ORDER BY salary). Or: row_number app
 ## References
 
 - [LeetCode SQL Problems](https://leetcode.com/problemset/database/)
-- [SQL Window Functions — Use The Index, Luke](https://use-the-index-luke.com/sql/window-functions)
+- [SQL Window Functions — Use The Index, Luke](https://use-the-index-luke.com/sql/partial-results/window-functions)

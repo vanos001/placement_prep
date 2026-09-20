@@ -411,7 +411,7 @@ token bucket, which rejects rather than delays.
   https://blog.cloudflare.com/counting-things-a-lot-of-different-things/
 - Stripe API documentation: *Rate Limits* — covers the response contract,
   the `X-RateLimit-*` headers, and the tiered approach.
-  https://docs.stripe.com/api/rate_limits
+  https://docs.stripe.com/rate-limits
 - AWS API Gateway Developer Guide: *Throttle API requests using account-level
   and API-level throttling* — the configuration of burst vs steady-state,
   the underlying token bucket, and the response headers.

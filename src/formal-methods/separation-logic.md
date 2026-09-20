@@ -176,7 +176,7 @@ For "find as many bugs as possible in a million-line codebase" — use **Infer**
 - Peter O'Hearn, David Pym. **The Logic of Bunched Implications**. Bulletin of Symbolic Logic 1999. The precursor; introduces BI, the substructural logic whose model makes separation logic work. https://www.cs.ucl.ac.uk/staff/d.pym/BI-sept-99.pdf
 - Samin Ishtiaq and Peter O'Hearn. **BI as an Assertion Language for Mutable Data Structures**. POPL 2001. The paper that introduces Hoare logic + BI = separation logic. https://dl.acm.org/doi/10.1145/374783.375105
 - John Reynolds. **Separation Logic: A Logic for Shared Mutable Data Structures**. LICS 2002. The polished foundational paper; standard citation. https://www.cs.cmu.edu/~jcr/seplogic.pdf
-- Ralf Jung, David Swase, et al. **Iris from the ground up: A modular foundation for higher-order concurrent separation logic**. JFP 2018. The foundational Iris paper. https://iris-project.org/pdfs/2018-jfp-final.pdf
+- Ralf Jung, David Swase, et al. **Iris from the ground up: A modular foundation for higher-order concurrent separation logic**. JFP 2018. The foundational Iris paper. https://doi.org/10.1017/s0956796818000151
 - The Iris documentation, including the Coq development and proof mode. https://iris-project.org/ and https://gitlab.mpi-sws.org/iris/iris
 - Andrew Appel et al. *Program Logics for Certified Compilers* (VST book). Cambridge 2014. The VST reference. https://vst.cs.princeton.edu/
 - Derek Dreyer et al. **RustBelt: Securing the Foundations of the Rust Programming Language**. POPL 2018. The RustBelt foundational paper. https://plv.mpi-sws.org/rustbelt/popl18/

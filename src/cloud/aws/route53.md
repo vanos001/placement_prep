@@ -257,5 +257,5 @@ Route 53 is the choice for AWS-integrated deployments. Cloudflare is the choice 
 - [Route 53 health checks](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-failover.html)
 - [Route 53 Traffic Flow (visual editor)](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/traffic-flow.html)
 - [Route 53 private hosted zones](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/hosted-zones-private.html)
-- [Route 53 vs Cloudflare DNS (AWS blog)](https://aws.amazon.com/route53/cloudflare-alternative/)
+- [Route 53 features](https://aws.amazon.com/route53/features/)
 - [LWN: Route 53 overview (2020)](https://lwn.net/Articles/820133/)

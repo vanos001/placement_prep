@@ -314,7 +314,7 @@ Every pattern — blue-green (flag selects environment), canary (flag selects co
 
 - Argo Rollouts documentation — https://argo-rollouts.readthedocs.io/
 - Flagger documentation — https://docs.flagger.app/
-- LaunchDarkly documentation: *Feature flag concepts* — https://docs.launchdarkly.com/sdk/concepts/flags
+- LaunchDarkly documentation: *Feature flag concepts* — https://launchdarkly.com/docs/guides/flags
 - Martin Fowler: *CanaryRelease* — https://martinfowler.com/bliki/CanaryRelease.html
 - Martin Fowler: *FeatureToggles* (a.k.a. Feature Flags) — https://martinfowler.com/articles/feature-toggles.html
 - Istio documentation: *Traffic Mirroring* — https://istio.io/latest/docs/tasks/traffic-management/mirroring/

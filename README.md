@@ -98,17 +98,20 @@ MathJax. Set `EXTERNAL=1` to add DOI resolution and external-URL probing. See
 [`scripts/README.md`](scripts/README.md) for details.
 
 > **Scope of "0 broken links".** The internal link/anchor check is green. For
-> external URLs, a **full sweep of all 8,638 third-party links** found **6,112
-> live** and **601 dead** (HTTP 404/410); the rest answered 403/429/challenge and
-> are treated as unverifiable rather than dead. **281 dead links have been
-> repaired** across three passes — every replacement fetched and title-checked
-> before it was written — which includes **every kernel.org link (471/471 now
-> live)**. Of what remains, 66 are intentional placeholders and **483 are genuine
-> broken links**, catalogued by host in
-> [`scripts/dead-links-report.txt`](scripts/dead-links-report.txt). A further
-> **116 URLs that 404 appear only inside fenced code blocks** — code samples, XML
-> namespace identifiers and shell templates, not links — so they are correct as
-> written and are listed separately rather than counted as defects.
+> external URLs, a **sweep of all 8,638 third-party links** found **6,112 live**
+> and **601 dead** (HTTP 404/410); the rest answered 403/429/challenge and are
+> treated as unverifiable rather than dead. **281 dead links have been repaired**
+> across four passes — every replacement fetched and title-checked before it was
+> written — which includes **every kernel.org link (471/471 now live)**. Of what
+> remains, 63 are intentional placeholders and **453 are genuine broken links**,
+> catalogued by host in
+> [`scripts/dead-links-report.txt`](scripts/dead-links-report.txt); a further
+> **116 URLs that 404 appear only inside fenced code blocks** (code samples, XML
+> namespace identifiers, shell templates) and are correct as written.
+> Automated resolution has now been pushed to its limit — structural variants,
+> host aliases, Crossref metadata matching and per-site sitemap harvesting were
+> each measured and stopped producing trustworthy results. The remainder needs a
+> human decision per link (re-point, substitute or drop).
 > Re-probe with `python3 scripts/check-links.py --external src`.
 
 ## Contributing

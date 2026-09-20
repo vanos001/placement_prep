@@ -179,7 +179,7 @@ You probably should not reach for a proof assistant when: the property can be ex
 - Benjamin Pierce et al. *Software Foundations* series. https://softwarefoundations.cis.upenn.edu/
 - The Coq Development Team. *The Coq Reference Manual*. https://coq.inria.fr/doc/
 - Yves Bertot and Pierre Castéran. *Interactive Theorem Proving and Program Development — Coq'Art*. Springer, 2004. The classical textbook; https://www.labri.fr/perso/casteran/CoqArt/
-- The Coq standard library and MathComp documentation. https://math-comp.github.io/docs/
+- The Coq standard library and MathComp documentation. https://math-comp.github.io/htmldoc/
 - Leonardo de Moura, Jeremy Avigad, et al. *Theorem Proving in Lean 4*. https://lean-lang.org/theorem_proving_in_lean4/
 - The mathlib4 documentation and community pages. https://leanprover-community.github.io/ and https://leanprover-community.github.io/mathlib4_docs/
 - The Liquid Tensor Experiment — Peter Scholze's challenge problem and the formalization account. https://xenaproject.wordpress.com/

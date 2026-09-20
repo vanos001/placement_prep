@@ -43,18 +43,22 @@ The validation suite re-run on the `research` tree during the 2026-09-19 review:
 - real `mermaid@11` parse → 4,889/4,889 pass (100%)
 - `scripts/check-doi.py` → 491/491 DOIs resolve
 
-> **External URLs are not fully clean.** A **full sweep of all 8,638 external
+> **External URLs are not fully clean.** A **sweep of all 8,638 external
 > links** found **6,112 live** and **601 dead** (HTTP 404/410); the remainder
-> returned 403/429/bot-challenge and are counted unverifiable, not dead. Three
+> returned 403/429/bot-challenge and are counted unverifiable, not dead. Four
 > repair passes have fixed **281** dead links — each fetched and title-checked
 > first — including **all 471 kernel.org links, now 100% live**. Of the rest,
-> **66 are intentional placeholders** and **483 are genuine broken links**
+> **63 are intentional placeholders** and **453 are genuine broken links**
 > catalogued by host in `scripts/dead-links-report.txt`; a further **116 404ing
-> URLs live only inside fenced code blocks** (code samples, XML namespace
-> identifiers, shell templates) and are correct as written. What remains is
-> overwhelmingly pages deleted upstream — removed vendor documentation, retired
-> doc trees, dead DOIs — so each needs a human substitution decision (re-point,
-> replace, or drop) rather than a code fix.
+> URLs live only inside fenced code blocks** and are correct as written.
+>
+> Automated resolution is now exhausted, and the report records what was tried
+> and measured: structural URL variants (2,740 candidates → 7 fixes), host-alias
+> rewrites (638 → 0), Crossref metadata matching against 88 dead PDF citations
+> (5 confirmed), and harvesting the sitemaps of 184 live hosts (102,590 URLs →
+> 16 confirmed). The 453 that remain need a human decision each — re-point,
+> substitute, or drop — because no equivalent page exists to point at.
+>
 >
 > An earlier revision of these figures was **overstated**: the URL extractor
 > stopped at the first `)` and bled across `]`, so every URL containing a

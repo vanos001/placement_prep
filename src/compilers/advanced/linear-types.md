@@ -179,5 +179,5 @@ The tradeoff: linear typing requires the programmer (or the inference engine) to
 - J.-P. Bernardy et al., *Linear Haskell: Practical Linearity in the Presence of IO and Concurrency* (2018) — https://arxiv.org/abs/1805.07804
 - The Linear Haskell GHC proposal — https://github.com/ghc-proposals/ghc-proposals/blob/master/proposals/0111-linear-types.rst
 - The Rust Book, Chapter 4 (Ownership) — https://doc.rust-lang.org/book/ch04-00-understanding-ownership.html
-- P. Wadler, *A Taste of Linear Logic* (tutorial) — https://homepages.inf.ed.ac.uk/wadler/papers/taste/taste.pdf
+- P. Wadler, *A Taste of Linear Logic* (tutorial) — https://doi.org/10.1007/3-540-57182-5_12
 - R. de Vries, E. Boucher, *Uniqueness Typing for Clean* (Clean language documentation) — https://clean.cs.ru.nl/Clean

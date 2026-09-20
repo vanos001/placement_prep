@@ -607,7 +607,7 @@ flowchart TB
 - AppArmor Project: https://apparmor.net/
 - AppArmor Wiki: https://gitlab.com/apparmor/apparmor/-/wikis/home
 - Ubuntu AppArmor Documentation: https://ubuntu.com/server/docs/security-apparmor
-- openSUSE AppArmor Guide: https://doc.opensuse.org/documentation/leap/security/html/book-security/cha-apparmor.html
+- openSUSE AppArmor Guide: https://doc.opensuse.org/documentation/leap/archive/15.2/security/html/book-security/cha-apparmor-commandline.html
 - AppArmor Kernel Documentation: https://www.kernel.org/doc/html/latest/admin-guide/LSM/apparmor.html
 - `man 5 apparmor.d` — AppArmor profile syntax
 - `man 7 apparmor` — AppArmor security module

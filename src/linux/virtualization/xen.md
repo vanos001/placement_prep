@@ -515,7 +515,7 @@ xl create hvm.cfg -F  # Force stub domain
 ## References
 
 1. Barham, P., et al. (2003). "Xen and the Art of Virtualization." *SOSP '03*.
-2. Xen Project Documentation. [https://xenproject.org/documentation/](https://xenproject.org/documentation/)
+2. Xen Project Documentation. [https://xenbits.xen.org/docs/unstable/](https://xenbits.xen.org/docs/unstable/)
 3. Chisnall, D. (2007). *The Definitive Guide to the Xen Hypervisor*. Prentice Hall.
 4. Xen Source Code. [https://xenbits.xen.org/gitweb/?p=xen.git](https://xenbits.xen.org/gitweb/?p=xen.git)
 
@@ -530,7 +530,7 @@ xl create hvm.cfg -F  # Force stub domain
 - [Free Software Books](https://www.gnu.org/doc/other-free-books.html)
 
 - [Xen Project Wiki](https://wiki.xenproject.org/)
-- [Xen Documentation](https://xenproject.org/documentation/)
+- [Xen Documentation](https://xenbits.xen.org/docs/unstable/)
 - [xl(1) Man Page](https://xenbits.xen.org/docs/4.17-testing/man/xl.1.html)
 - [AWS and Xen](https://aws.amazon.com/ec2/faqs/)
 - [Xen Security Advisory Process](https://xenbits.xen.org/xsa/)

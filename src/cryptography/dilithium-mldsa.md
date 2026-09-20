@@ -233,7 +233,7 @@ The NSA's CNSA 2.0 suite specifies **ML-DSA-87** (paired with ML-KEM-1024) as it
 
 - NIST FIPS 204 (final), *Module-Lattice-Based Digital Signature Standard*, August 2024 — https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.204.pdf
 - Ducas, Kiltz, Lyubashevsky, Pépin, Schwabe, Seiler, Stehlé, *CRYSTALS-Dilithium: A Lattice-Based Digital Signature Scheme*, TCHES 2018 — https://eprint.iacr.org/2017/633
-- Lyubashevsky, *Fiat-Shamir with Aborts: Applications to Lattice and Factoring-Based Signatures*, ASIACRYPT 2009 — https://www.iacr.org/archive/asiacrypt2009/59120559/59120559.pdf
+- Lyubashevsky, *Fiat-Shamir with Aborts: Applications to Lattice and Factoring-Based Signatures*, ASIACRYPT 2009 — https://doi.org/10.1007/978-3-642-10366-7_35
 - Lyubashevsky, *Lattice Signatures without Trapdoors*, EUROCRYPT 2012 — https://eprint.iacr.org/2011/189
 - NIST PQC standardization project — https://csrc.nist.gov/projects/post-quantum-cryptography
 - NIST IR 8413 (Round 3 PQC status report) — https://nvlpubs.nist.gov/nistpubs/ir/2022/NIST.IR.8413.pdf

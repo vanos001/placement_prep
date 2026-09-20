@@ -1,77 +1,91 @@
 DEAD EXTERNAL LINK BACKLOG
 ==============================================================================
 
-Audit trail for the external-URL passes. Internal links, anchors, SUMMARY,
-Mermaid, MathJax, fences and all DOIs are clean and checked by
-scripts/validate-all.sh; THIS file tracks third-party URLs only.
+Internal links, anchors, SUMMARY, Mermaid, MathJax, fences and all DOIs are
+clean, checked by scripts/validate-all.sh. THIS file tracks third-party URLs.
 
-MEASUREMENT NOTE. Earlier versions of this file were produced by a URL
-extractor that stopped at the first ')' and bled across ']', so every URL
-containing a parenthesis was measured truncated and reported dead. That
-inflated the defect count. The current figures come from a Markdown-aware
-extractor that keeps balanced parentheses and stops at link syntax, and from
-a sweep of all 8,638 external URLs in src/.
+MEASUREMENT. Figures come from a Markdown-aware URL extractor (balanced
+parentheses, stops at link syntax) and a sweep of all 8,638 external URLs in
+src/. An earlier extractor stopped at the first ')' and reported every
+parenthesised URL as dead; that bug is fixed and its 20 false positives are
+gone.
 
 ------------------------------------------------------------------------------
 CURRENT STATE
 ------------------------------------------------------------------------------
-  external URLs in the book                    : 8638
-  HTTP 200 (live)                              : 6112
-  HTTP 404 / 410 (dead)                        : 630 at sweep time
-                                                 -> 601 after this pass's repairs
-  HTTP 403 / 429 / challenge (unverifiable)    : 1875
-  other non-200                                : 21
+  external URLs in the book                 : 8638
+  HTTP 200 (live)                           : 6112
+  HTTP 404/410 at sweep time                : 630
+  HTTP 403/429/challenge (unverifiable)     : 1875
+  other non-200                             : 21
 
-  Only 404/410 is a reliable 'gone' signal. 403/429/challenge responses are
-  live pages refusing a scripted client and are NOT counted dead.
+  Only 404/410 is a reliable gone signal. 403/429/challenge are live pages
+  refusing a scripted client and are NOT counted dead.
 
 ------------------------------------------------------------------------------
 OF THE DEAD URLs, WHAT IS ACTUALLY A BROKEN LINK
 ------------------------------------------------------------------------------
-  genuine broken links                         : 483
-  inside code fences only (NOT links)          : 116
-  intentional placeholders                     : 66
+  genuine broken links                      : 453
+  inside code fences only (NOT links)       : 116
+  intentional placeholders                  : 63
 
   The code-fence group is code samples, XML namespace identifiers
-  (http://xml.org/sax/features/...), shell templates containing ${VAR},
-  and deliberately fake hosts (evil.com, bank.com) used in security
-  examples. None of them are hyperlinks and all are correct as written.
+  (http://xml.org/sax/features/...), shell templates containing ${VAR} and
+  deliberately fake hosts (evil.com, bank.com) used in security examples.
+  None are hyperlinks; all are correct as written.
 
 ------------------------------------------------------------------------------
 REPAIRED ACROSS ALL PASSES
 ------------------------------------------------------------------------------
-  161 in pass 1 (verified live replacements or archive snapshots)
-   90 in pass 2 (github renames/moves, doc-parent sections)
-   30 in pass 3, listed below; every replacement fetched and title-checked
+  pass 1 : 161   verified live replacements or archive snapshots
+  pass 2 :  90   github renames/moves, documentation parent sections
+  pass 3 :  30   postgresql / cp-algorithms / brendangregg / llvm /
+                 research.google path changes; a measurement bug fixed
+  pass 4 :  30   structural variants, host aliases, Crossref-verified
+                 paper DOIs, sitemap-index matching (see below)
 
-  pass 3 detail
-    - 9 PostgreSQL / cp-algorithms: removed doc paths ('gin-intro' -> 'gin',
-      'gist-intro' -> 'gist', etc.) and pages cp-algorithms deleted outright
-      (Mobius, Berlekamp-Massey) replaced with Wikipedia equivalents
-    - 5 brendangregg.com: site restructure ('systems-performance-2nd-edition'
-      -> '-2nd-edition-book', blog slugs that moved)
-    - 4 llvm.org: dead doxygen file pages replaced with the canonical GitHub
-      sources; the Lattner thesis PDF moved to its correct filename
-    - 5 research.google: numeric pub ids replaced with the current slugs
-    - 3 blog.cloudflare.com: restored slugs that changed after the 2024 blog
-      migration
-    - 4 more github.com: grpc A6, systemd src/udevd -> src/udev,
-      SE-0302 (title and path both wrong), chainlink contracts now in
-      chainlink-evm
+------------------------------------------------------------------------------
+WHAT PASS 4 TRIED, AND WHAT IT PROVED
+------------------------------------------------------------------------------
+  Automated resolution was pushed until it stopped producing trustworthy
+  results. Each strategy was measured, not assumed:
 
-  Also reclassified, not replaced: 20 URLs previously reported dead
-  (14 doi.org, 5 en.wikipedia.org, 1 testcontainers.org) are LIVE and were
-  false positives of the old extractor - they all contain parentheses.
+  1. Structural URL variants (case, extension, trailing slash, separators,
+     locale/version segments): 2,740 candidates over 483 links -> 7 fixes.
+     A second round with host-alias rewrites (/users/X -> /~X, etc.):
+     638 candidates -> 0 fixes.
+  2. Crossref / arXiv metadata matching against the citation titles of 88
+     dead PDFs. Only matches at >=0.80 title similarity were accepted, and
+     two further matches were rejected on inspection: a journal article
+     standing in for a PhD thesis, and a paper whose result exponent
+     (0.091n) differed from the cited one (0.054n). Net: 5 fixes.
+  3. Sitemap harvesting. Of the 468 links then outstanding, 440 sit on hosts
+     that still resolve, so the pages moved rather than the sites dying.
+     Each live host's own sitemap.xml / MkDocs search index was harvested:
+     184 hosts, 102,590 URLs. Title/slug matching at a strict threshold
+     produced 16 trustworthy replacements.
+
+  Every candidate was rejected unless it passed a same-document test: no
+  ancestor/index pages, no locale swaps, no version downgrades, and the
+  leading distinctive word of the dead URL had to survive. That bar is why
+  the yields are small - at a looser threshold the matcher proposed a
+  Japanese-locale page for an English one, mapped 'sed one-liners' to
+  'awk one-liners', and offered an older release in place of a newer one.
 
 ------------------------------------------------------------------------------
 REMAINING — NEEDS A HUMAN DECISION
 ------------------------------------------------------------------------------
-  genuine broken links : 483   across 328 hosts
+  genuine broken links : 453   across 310 hosts
+
+  These are pages that no longer exist in equivalent form anywhere:
+  removed vendor documentation, pruned blog posts, retired academic pages
+  and dead DOIs. Automating further would mean substituting different
+  content, which would make the bibliography wrong rather than merely stale.
 
   host                                         count
   --------------------------------------------------
-  aws.amazon.com                                  11
   github.com                                      11
+  aws.amazon.com                                   7
   www.confluent.io                                 7
   www.cs.cornell.edu                               6
   web.dev                                          5
@@ -85,7 +99,6 @@ REMAINING — NEEDS A HUMAN DECISION
   kubectl.docs.kubernetes.io                       4
   martinfowler.com                                 4
   reactnative.dev                                  4
-  sre.google                                       4
   www.cncf.io                                      4
   www.cockroachlabs.com                            4
   bootlin.com                                      3
@@ -97,7 +110,7 @@ REMAINING — NEEDS A HUMAN DECISION
   lora-alliance.org                                3
   min.io                                           3
   p4.org                                           3
-  use-the-index-luke.com                           3
+  sre.google                                       3
   www.cambridge.org                                3
   www.cs.utexas.edu                                3
   www.databricks.com                               3
@@ -106,27 +119,20 @@ REMAINING — NEEDS A HUMAN DECISION
   www.nxp.com                                      3
   www.snowflake.com                                3
   blog.cloudflare.com                              2
-  catonmat.net                                     2
   cs.yale.edu                                      2
   cseweb.ucsd.edu                                  2
   debezium.io                                      2
+  developers.google.com                            2
+  doc.akka.io                                      2
+  doc.rust-lang.org                                2
+  docs.arbitrum.io                                 2
+  docs.cypress.io                                  2
+  docs.oasis-open.org                              2
+  docs.yoctoproject.org                            2
 
 ------------------------------------------------------------------------------
 GENUINE BROKEN LINKS BY HOST
 ------------------------------------------------------------------------------
-
-aws.amazon.com  (11)
-    https://aws.amazon.com/blogs/compute/containers-without-constructs-aws-lambda-run-firecracker/
-    https://aws.amazon.com/blogs/compute/introducing-the-capacity-optimized-allocation-strategy-for-amazon-ec2-spot-fleets/
-    https://aws.amazon.com/blogs/containers/amazon-ecs-vs-amazon-eks/
-    https://aws.amazon.com/blogs/database/dynamodb-vs-cassandra/
-    https://aws.amazon.com/blogs/infrastructure-and-automation/best-practices-for-using-cloudformation-and-terraform-together/
-    https://aws.amazon.com/blogs/mt/monitoring-cloudwatch-vs-prometheus/
-    https://aws.amazon.com/blogs/opensource/why-aws-loves-rust-and-the-community-we-built-around-firecracker/
-    https://aws.amazon.com/builders-library/why-amazon-prime-video-services-uses-formal-methods/
-    https://aws.amazon.com/builders-library/workload-graceful-degradation/
-    https://aws.amazon.com/cloudfront/cloudflare-alternative/
-    https://aws.amazon.com/route53/cloudflare-alternative/
 
 github.com  (11)
     https://github.com/NVIDIA/TensorRT-LLM/blob/main/benchmarks/README.md
@@ -140,6 +146,15 @@ github.com  (11)
     https://github.com/ongardio/dissertation
     https://github.com/petewarden/arduino_tinyml
     https://github.com/ptcube/jump-consistent-hash
+
+aws.amazon.com  (7)
+    https://aws.amazon.com/blogs/compute/containers-without-constructs-aws-lambda-run-firecracker/
+    https://aws.amazon.com/blogs/compute/introducing-the-capacity-optimized-allocation-strategy-for-amazon-ec2-spot-fleets/
+    https://aws.amazon.com/blogs/containers/amazon-ecs-vs-amazon-eks/
+    https://aws.amazon.com/blogs/database/dynamodb-vs-cassandra/
+    https://aws.amazon.com/blogs/infrastructure-and-automation/best-practices-for-using-cloudformation-and-terraform-together/
+    https://aws.amazon.com/blogs/mt/monitoring-cloudwatch-vs-prometheus/
+    https://aws.amazon.com/blogs/opensource/why-aws-loves-rust-and-the-community-we-built-around-firecracker/
 
 www.confluent.io  (7)
     https://www.confluent.io/blog/kafka-connect-single-message-transformums-smt-vsmt-with-examples/
@@ -226,12 +241,6 @@ reactnative.dev  (4)
     https://reactnative.dev/docs/faq#how-does-react-native-differ-from-flutter
     https://reactnative.dev/docs/performance/overview
 
-sre.google  (4)
-    https://sre.google/postmortems/
-    https://sre.google/sre-book/slo-book/
-    https://sre.google/workbook/handling-overload/
-    https://sre.google/workbook/postmortems/
-
 www.cncf.io  (4)
     https://www.cncf.io/announcements/2024/06/25/cert-manager-graduates-from-cncf-incubator/
     https://www.cncf.io/blog/2020/11/04/envoy-vs-nginx-vs-haproxy/
@@ -289,10 +298,10 @@ p4.org  (3)
     https://p4.org/p4runtime
     https://p4.org/specs
 
-use-the-index-luke.com  (3)
-    https://use-the-index-luke.com/sql/no-null
-    https://use-the-index-luke.com/sql/paging-results
-    https://use-the-index-luke.com/sql/window-functions
+sre.google  (3)
+    https://sre.google/postmortems/
+    https://sre.google/sre-book/slo-book/
+    https://sre.google/workbook/postmortems/
 
 www.cambridge.org  (3)
     https://www.cambridge.org/core/books/computability/
@@ -332,10 +341,6 @@ www.snowflake.com  (3)
 blog.cloudflare.com  (2)
     https://blog.cloudflare.com/optimizing-http-2-header-compression-in-go/
     https://blog.cloudflare.com/tcp-fast-open/
-
-catonmat.net  (2)
-    https://catonmat.net/awk-one-liners-explained
-    https://catonmat.net/sed-one-liners-explained
 
 cs.yale.edu  (2)
     https://cs.yale.edu/homes/thaas/papers/calvin.pdf
@@ -397,10 +402,6 @@ gvisor.dev  (2)
     https://gvisor.dev/docs/architecture/
     https://gvisor.dev/docs/user_guide/benchmarks/
 
-homepages.inf.ed.ac.uk  (2)
-    https://homepages.inf.ed.ac.uk/wadler/papers/linear/linear.pdf
-    https://homepages.inf.ed.ac.uk/wadler/papers/taste/taste.pdf
-
 images.nvidia.com  (2)
     https://images.nvidia.com/cnvml-2/wp-content/uploads/2023/cnvml-2/h100-whitepaper.pdf
     https://images.nvidia.com/content/volta-architecture-whitepaper.pdf
@@ -428,10 +429,6 @@ lwn.net  (2)
 owasp.org  (2)
     https://owasp.org/www-project-mobile-security-testing-guide/
     https://owasp.org/www-project-top-10-for-agentic-ai-applications/
-
-redis.io  (2)
-    https://redis.io/docs/reference/internals/
-    https://redis.io/docs/reference/internals/memory-allocator/
 
 tikv.org  (2)
     https://tikv.org/docs/5.4/concepts/overview/
@@ -481,10 +478,6 @@ www.graalvm.org  (2)
     https://www.graalvm.org/graalvm-features/escape-analysis/
     https://www.graalvm.org/latest/graalvm/jit-compiler/
 
-www.iacr.org  (2)
-    https://www.iacr.org/archive/asiacrypt2009/59120559/59120559.pdf
-    https://www.iacr.org/archive/asiacrypt2011/70730119/70730119.pdf
-
 www.mongodb.com  (2)
     https://www.mongodb.com/blog/post/mongodb-architecture
     https://www.mongodb.com/blog/post/resharding-a-collection-in-mongodb-42
@@ -500,10 +493,6 @@ www.open-std.org  (2)
 www.redhat.com  (2)
     https://www.redhat.com/sysadmin/podman-docker-comparison
     https://www.redhat.com/sysadmin/ssh-jump-host
-
-www.starburst.io  (2)
-    https://www.starburst.io/blog/trino-vs-spark-sql/
-    https://www.starburst.io/wp-content/uploads/2020/11/OReilly-Trino-The-Definitive-Guide-2020-11.pdf
 
 www.x.org  (2)
     https://www.x.org/wiki/Events/XDC2008/Proceedings/
@@ -534,9 +523,6 @@ api.coingecko.com  (1)
 api.flutter.dev  (1)
     https://api.flutter.dev/flutter/rendering/RenderingPipeline-class.html
 
-apparmor.net  (1)
-    https://apparmor.net/docs/latest/apparmor.html
-
 apple.github.io  (1)
     https://apple.github.io/foundationdb/transaction-logging.html
 
@@ -560,9 +546,6 @@ bcachefs.org  (1)
 
 blog.burntsushi.net  (1)
     https://blog.burntsushi.net/error-handling/
-
-blog.eleuther.ai  (1)
-    https://blog.eleuther.ai/rotary-position-embeddings/
 
 blog.mozilla.org  (1)
     https://blog.mozilla.org/security/2020/01/07/crlite-part-2-end-to-end-design-of-a-bloom-filter-based-pki-system/
@@ -594,9 +577,6 @@ caddyserver.com  (1)
 chain.link  (1)
     https://chain.link/whitepaper/whitepaper-v2.pdf
 
-cheatsheetseries.owasp.org  (1)
-    https://cheatsheetseries.owasp.org/cheatsheets/Cross-Site_Scripting_Prevention_Cheat_Sheet.html
-
 chlipala.github.io  (1)
     https://chlipala.github.io/cpdt/
 
@@ -608,9 +588,6 @@ cilium.io  (1)
 
 cr.openjdk.org  (1)
     https://cr.openjdk.org/~pliden/slides/ZGC-DevTrack-JavaOne-2018.pdf
-
-cs.brown.edu  (1)
-    https://cs.brown.edu/people/jslng/Docs/bandwidthoptimal.pdf
 
 cs.uwaterloo.ca  (1)
     https://cs.uwaterloo.ca/~jnwKim/papers/sigmod2020.pdf
@@ -657,9 +634,6 @@ developers.diem.com  (1)
 doc.libsodium.org  (1)
     https://doc.libsodium.org/public-key-cryptography/public-key_signatures
 
-doc.opensuse.org  (1)
-    https://doc.opensuse.org/documentation/leap/security/html/book-security/cha-apparmor.html
-
 doc.pypy.org  (1)
     https://doc.pypy.org/en/latest/jit.html
 
@@ -674,9 +648,6 @@ docs.frrouting.org  (1)
 
 docs.getdbt.com  (1)
     https://docs.getdbt.com/reference/resource-configs/postgres-scd
-
-docs.launchdarkly.com  (1)
-    https://docs.launchdarkly.com/sdk/concepts/flags
 
 docs.li.fi  (1)
     https://docs.li.fi/smart-contract-api/bridge-protocols
@@ -701,9 +672,6 @@ docs.spring.io  (1)
 
 docs.stoplight.io  (1)
     https://docs.stoplight.io/docs/spectral/
-
-docs.stripe.com  (1)
-    https://docs.stripe.com/api/rate_limits
 
 docs.swift.org  (1)
     https://docs.swift.org/docs/swift-book/LanguageGuide/Concurrency.html
@@ -735,9 +703,6 @@ en.dtm.pub  (1)
 en.pingcap.com  (1)
     https://en.pingcap.com/blog/multi-raft/
 
-engineering.fb.com  (1)
-    https://engineering.fb.com/2022/03/07/core-data/scaling-memcache-at-facebook/
-
 erofs.docs.kernel.org  (1)
     https://erofs.docs.kernel.org/en/latest/benchmark.html
 
@@ -755,9 +720,6 @@ fluxcd.io  (1)
 
 gaia.cs.umass.edu  (1)
     https://gaia.cs.umass.edu/kurose_ross/wiwi.php
-
-gin-gonic.com  (1)
-    https://gin-gonic.com/docs/
 
 gist.github.com  (1)
     https://gist.github.com/mondain/b2619a01463ce0ec2234
@@ -780,8 +742,8 @@ grafana.com  (1)
 hadoop.apache.org  (1)
     https://hadoop.apache.org/docs/current/api/org/apache/hadoop/net/BlockPlacementPolicy.html
 
-herbsutter.com  (1)
-    https://herbsutter.com/2013/09/30/atomic-weapons-the-c-memory-model-and-modern-hardware/
+homepages.inf.ed.ac.uk  (1)
+    https://homepages.inf.ed.ac.uk/wadler/papers/linear/linear.pdf
 
 honeycomb.io  (1)
     https://honeycomb.io/blog/canary-vs-blue-green-vs-rolling-deployments
@@ -803,9 +765,6 @@ inside.java  (1)
 
 iquilezles.org  (1)
     https://iquilezles.org/articles/raymarchff/
-
-iris-project.org  (1)
-    https://iris-project.org/pdfs/2018-jfp-final.pdf
 
 istio.io  (1)
     https://istio.io/latest/blog/2023/ambient-reached-beta/
@@ -845,9 +804,6 @@ lmax-exploratory.github.io  (1)
 
 manybutfinite.com  (1)
     https://manybutfinite.com/post/paging-in-linux/
-
-math-comp.github.io  (1)
-    https://math-comp.github.io/docs/
 
 microprofile.io  (1)
     https://microprofile.io/specs/
@@ -927,9 +883,6 @@ sched-ext.github.io  (1)
 seata.io  (1)
     https://seata.io/en-us/docs/dev/user/tcc.html
 
-semiconductor.samsung.com  (1)
-    https://semiconductor.samsung.com/dram/cxl-memory-module/
-
 shipilev.net  (1)
     https://shipilev.net/jvm/anatomy-quark/3-gc-pause/
 
@@ -978,9 +931,6 @@ trino.io  (1)
 trustedfirmware-a.readthedocs.io  (1)
     https://trustedfirmware-a.readthedocs.io/**
 
-tutorial.ponylang.io  (1)
-    https://tutorial.ponylang.io/actors/actors.html
-
 ubuntu.com  (1)
     https://ubuntu.com/security/secure-boot
 
@@ -989,6 +939,9 @@ ucsd-progsys.github.io  (1)
 
 uefi.org  (1)
     https://uefi.org/specifications/ACPI/6.4/
+
+use-the-index-luke.com  (1)
+    https://use-the-index-luke.com/sql/paging-results
 
 v8.dev  (1)
     https://v8.dev/blog/orinoco-gc
@@ -1113,6 +1066,9 @@ www.geeksforgeeks.org  (1)
 www.haproxy.com  (1)
     https://www.haproxy.com/blog/making-haproxy-1-5-fast
 
+www.iacr.org  (1)
+    https://www.iacr.org/archive/asiacrypt2011/70730119/70730119.pdf
+
 www.ibm.com  (1)
     https://www.ibm.com/support/pages/power-documentation
 
@@ -1148,9 +1104,6 @@ www.lightbend.com  (1)
 
 www.linuxfoundation.org  (1)
     https://www.linuxfoundation.org/about/linus-torvalds
-
-www.merkle.com  (1)
-    https://www.merkle.com/papers/Certified1979.pdf
 
 www.mips.com  (1)
     https://www.mips.com/developers/documentation/
@@ -1215,6 +1168,9 @@ www.smashingmagazine.com  (1)
 www.snia.org  (1)
     https://www.snia.org/sites/default/files/SNIA_DMTF_DDC_Multipathing_WP.pdf
 
+www.starburst.io  (1)
+    https://www.starburst.io/blog/trino-vs-spark-sql/
+
 www.suse.com  (1)
     https://www.suse.com/support/kb/article/?id=7016650
 
@@ -1241,9 +1197,6 @@ www.whitehouse.gov  (1)
 
 www.youtube.com  (1)
     https://www.youtube.com/@TheLinuxExperiment
-
-xenproject.org  (1)
-    https://xenproject.org/documentation/
 
 xml.org  (1)
     http://xml.org/sax/features/

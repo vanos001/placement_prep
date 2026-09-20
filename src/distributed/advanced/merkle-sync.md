@@ -147,7 +147,7 @@ For very large trees, an alternative is a "skip list" structure: instead of a bi
 
 ## References
 
-- Ralph Merkle, "[A Certified Digital Signature](https://www.merkle.com/papers/Certified1979.pdf)" (CRYPTO 1979) — the original
+- Ralph Merkle, "[A Certified Digital Signature](https://doi.org/10.1007/0-387-34805-0_21)" (CRYPTO 1979) — the original
 - [Cassandra Merkle Tree source code](https://github.com/apache/cassandra/blob/trunk/src/java/org/apache/cassandra/utils/MerkleTree.java)
 - [Git internals: tree objects and Merkle trees](https://git-scm.com/book/en/v2/Git-Internals-Git-Objects)
 - [Bitcoin SPV documentation](https://developer.bitcoin.org/devguide/operating_modes.html#simplified-payment-verification-spv)

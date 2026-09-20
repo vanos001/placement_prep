@@ -364,11 +364,11 @@ Flags give operators a manual kill switch on top of the breaker's automatic one.
 ## References
 
 - Google SRE Book, Chapter 6: *Dealing with Interrupts* (graceful degradation, fail-fast) — https://sre.google/sre-book/addressing-cascading-failures/
-- Google SRE Workbook, Chapter 13: *Handling Overload* — https://sre.google/workbook/handling-overload/
+- Google SRE Workbook, Chapter 13: *Handling Overload* — https://sre.google/resources/book-update/handling-overload/
 - Netflix Hystrix Wiki: *Fallback* — https://github.com/Netflix/Hystrix/wiki/Fallback
 - Resilience4j: *Circuit Breaker and Fallback* — https://resilience4j.readme.io/docs/circuitbreaker
 - Peter Deutsch's *Fallacies of Distributed Computing* (1987, still canonical) — https://www.rgoarchitects.com/Software-Anti-Patterns/Distributed-Computing-Fallacies
-- AWS Builders' Library: *Graceful Degradation* — https://aws.amazon.com/builders-library/workload-graceful-degradation/
+- AWS Builders' Library: *Using load shedding to avoid overload* (the mechanism behind graceful degradation) — https://aws.amazon.com/builders-library/using-load-shedding-to-avoid-overload/
 - Microsoft: *Pattern: Health Endpoint Monitoring* — https://learn.microsoft.com/en-us/azure/architecture/patterns/health-endpoint-monitoring
 - Martin Fowler: *Circuit Breaker* — https://martinfowler.com/bliki/CircuitBreaker.html
 - LaunchDarkly: *Defaults and offline mode* — https://docs.launchdarkly.com/sdk/concepts/

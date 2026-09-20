@@ -178,5 +178,5 @@ The `rope_theta` parameter controls the frequency of the rotation. Higher values
 - Su et al., "[RoFormer: Enhanced Transformer with Rotary Position Embedding](https://arxiv.org/abs/2104.09864)" (Neurocomputing 2021)
 - Press et al., "[Train Short, Test Long: Attention with Linear Biases Enables Input Length Extrapolation](https://arxiv.org/abs/2108.12409)" (ICLR 2022)
 - Chen et al., "[YaRN: Efficient Context Window Extension of Large Language Models](https://arxiv.org/abs/2309.00071)" (ICLR 2024)
-- [Eleuther AI: Rotary Position Embedding blog post](https://blog.eleuther.ai/rotary-position-embeddings/)
+- [Eleuther AI: Rotary Position Embedding blog post](https://blog.eleuther.ai/rotary-embeddings/)
 - [Llama 3 architecture (Meta blog)](https://ai.meta.com/blog/meta-llama-3/)

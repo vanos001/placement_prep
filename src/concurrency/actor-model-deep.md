@@ -390,7 +390,7 @@ being touched by many producers.
 - Erlang reference: Processes and message passing.
   <https://www.erlang.org/docs/system/processes>
 - Pony language tutorial: Actors.
-  <https://tutorial.ponylang.io/actors/actors.html>
+  <https://tutorial.ponylang.io/types/actors.html>
 - Sylvan Clebsch, Sophia Drossopoulou. *The Pony type system: "to
   fearless concurrency and beyond"*. SCALA 2013.
   <https://www.ponylang.io/media/pdf/pony_oopsla2013.pdf>

@@ -184,7 +184,7 @@ For most Linux workloads, jemalloc is the recommended upgrade from glibc. For em
 - Jason Evans, "[A Scalable Concurrent malloc Implementation for FreeBSD](https://people.freebsd.org/~jasone/jemalloc/bsdcan2006/jemalloc.pdf)" (BSDCan 2006)
 - [jemalloc GitHub](https://github.com/jemalloc/jemalloc)
 - [jemalloc documentation](https://jemalloc.net/jemalloc.html)
-- [Redis with jemalloc](https://redis.io/docs/reference/internals/memory-allocator/) (Redis default)
+- [Redis with jemalloc](https://redis.io/docs/latest/operate/oss_and_stack/management/optimization/memory-optimization/) (Redis default)
 - [jemalloc vs tcmalloc vs glibc benchmark](https://github.com/jemalloc/jemalloc/wiki/Testing)
 - [mimalloc: Microsoft's competitor](https://github.com/microsoft/mimalloc)
 - [tcmalloc: Google's allocator](https://github.com/gperftools/gperftools)

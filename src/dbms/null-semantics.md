@@ -121,4 +121,4 @@ A: In most databases (PostgreSQL, MySQL, SQL Server), multiple NULL values **are
 
 - [PostgreSQL: Null Handling](https://www.postgresql.org/docs/current/functions-comparison.html)
 - [SQL NULLs — Wikipedia](https://en.wikipedia.org/wiki/Null_(SQL))
-- [NULLs and Three-Valued Logic — use-the-index-luke.com](https://use-the-index-luke.com/sql/no-null)
+- [NULLs and Three-Valued Logic — use-the-index-luke.com](https://use-the-index-luke.com/sql/where-clause/null)

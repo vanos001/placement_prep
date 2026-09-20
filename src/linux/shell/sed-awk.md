@@ -890,6 +890,6 @@ grep -F 'fixed' file            # Faster than regex
 - [sed Manual (GNU)](https://www.gnu.org/software/sed/manual/sed.html) — Official GNU sed documentation
 - [gawk Manual (GNU)](https://www.gnu.org/software/gawk/manual/) — Official GNU awk documentation
 - [The AWK Programming Language](https://ia800609.us.archive.org/10/items/pdfy-MgN0H1joIoDVoIC7/The_AWK_Programming_Language.pdf) — The original book by Aho, Weinberger, Kernighan
-- [sed One-Liners Explained](https://catonmat.net/sed-one-liners-explained) — Peteris Krumins' collection
-- [awk One-Liners Explained](https://catonmat.net/awk-one-liners-explained) — Peteris Krumins' collection
+- [sed One-Liners Explained](https://catonmat.net/sed-one-liners-explained-part-one) — Peteris Krumins' collection
+- [awk One-Liners Explained](https://catonmat.net/awk-one-liners-explained-part-one) — Peteris Krumins' collection
 - [Effective awk Programming](https://www.oreilly.com/library/view/effective-awk-programming/9781491904930/) — Arnold Robbins' definitive guide
