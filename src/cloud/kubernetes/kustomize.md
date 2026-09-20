@@ -264,10 +264,10 @@ Kustomize is for customizing; Helm is for packaging. Many deployments use both.
 
 ## References
 
-- [Kustomize documentation](https://kubectl.docs.kubernetes.io/pages/kustomize.html)
+- [Kustomize documentation](https://kubectl.docs.kubernetes.io/references/kustomize/)
 - [Kustomize GitHub](https://github.com/kubernetes-sigs/kustomize)
-- [Kustomize Tutorial](https://kubectl.docs.kubernetes.io/pages/kustomize.html)
-- [Strategic Merge Patch](https://kubectl.docs.kubernetes.io/pages/app_management/strategic_merge_patch.html)
-- [JSON 6902 Patches](https://kubectl.docs.kubernetes.io/pages/app_management/json_patch.html)
-- [Helm + Kustomize Integration](https://kubectl.docs.kubernetes.io/pages/app_management/helm.html)
+- [Kustomize Tutorial](https://kubectl.docs.kubernetes.io/guides/config_management/introduction/)
+- [Strategic Merge Patch](https://kubectl.docs.kubernetes.io/references/kustomize/builtins/#field-name-patchesstrategicmerge)
+- [JSON 6902 Patches](https://kubectl.docs.kubernetes.io/references/kustomize/builtins/#field-name-patchesjson6902)
+- [Helm + Kustomize Integration](https://kubectl.docs.kubernetes.io/references/kustomize/kustomization/helmcharts/)
 - [LWN: Kustomize overview (2020)](https://lwn.net/Articles/815575/)

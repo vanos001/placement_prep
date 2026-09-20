@@ -167,7 +167,7 @@ Google Spanner (2012) uses Multi-Paxos with three modifications:
 - Leslie Lamport, "[The Part-Time Parliament](https://lamport.org/pubs/pubs.html#lamport-paxos)" (ACM TOCS 1998)
 - Leslie Lamport, "[Paxos Made Simple](https://lamport.org/pubs/pubs.html#paxos-simple)" (2001)
 - Leslie Lamport, "[Multi-Paxos: How to Make a Stable Leader](https://lamport.org/pubs/pubs.html#multi-paxos)" (technical report)
-- Diego Ongaro, "[Consensus: Bridging Theory and Practice](https://github.com/ongardio/dissertation)" (PhD thesis, 2014, includes Multi-Paxos analysis)
+- Diego Ongaro, "[Consensus: Bridging Theory and Practice](https://github.com/ongardie/dissertation)" (PhD thesis, 2014, includes Multi-Paxos analysis)
 - James Myers, "[Paxos Made Moderately Complex](https://www.cs.rutgers.edu/~pxk/416/notes/paxos.html)" (2012, pedagogical)
 - [Spanner: Google's Globally-Distributed Database](https://research.google/pubs/pub39966/) (OSDI 2012)
 - [etcd-raft: production Raft implementation](https://github.com/etcd-io/raft) — Multi-Paxos-equivalent production reference

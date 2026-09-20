@@ -251,5 +251,5 @@ CloudWatch is the choice for AWS-only deployments; Prometheus for multi-cloud se
 - [CloudWatch Alarms](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/AlarmThatSendsEmail.html)
 - [CloudWatch Agent (for EC2/ECS)](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/InstallCloudWatchAgent.html)
 - [CloudWatch pricing](https://aws.amazon.com/cloudwatch/pricing/)
-- [CloudWatch vs Prometheus (AWS blog)](https://aws.amazon.com/blogs/mt/monitoring-cloudwatch-vs-prometheus/)
+- [Amazon CloudWatch documentation: what is CloudWatch](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/WhatIsCloudWatch.html)
 - [LWN: CloudWatch overview (2021)](https://lwn.net/Articles/820133/)

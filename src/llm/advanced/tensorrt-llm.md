@@ -199,5 +199,5 @@ vLLM is the choice for:
 - NVIDIA, "[H100 Transformer Engine for FP8 inference](https://developer.nvidia.com/blog/hopper-transformer-engine/)" (blog post)
 - [NVIDIA TensorRT documentation](https://docs.nvidia.com/deeplearning/tensorrt/)
 - [NVIDIA Triton Inference Server](https://docs.nvidia.com/deeplearning/triton-inference-server/)
-- [TensorRT-LLM benchmarks](https://github.com/NVIDIA/TensorRT-LLM/blob/main/benchmarks/README.md)
+- [TensorRT-LLM benchmarks](https://nvidia.github.io/TensorRT-LLM/performance/perf-benchmarking.html)
 - [LWN: TensorRT-LLM overview (2024)](https://lwn.net/Articles/940012/)

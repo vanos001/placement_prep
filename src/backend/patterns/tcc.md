@@ -139,7 +139,7 @@ TCC is bad for:
 - Pat Helland, "[Life beyond Distributed Transactions](https://dl.acm.org/doi/10.1145/1229185.1229528)" (2007, CIDR)
 - [Seata TCC documentation](https://seata.io/en-us/docs/dev/user/tcc.html)
 - [DTM (Go distributed transaction manager)](https://en.dtm.pub/)
-- "[Try-Confirm-Cancel: An Investigation into Distributed Transactions](https://martinfowler.com/articles/patterns-of-distributed-systems/tcc.html)" (Martin Fowler)
+- [Patterns of Distributed Systems](https://martinfowler.com/articles/patterns-of-distributed-systems/) (Martin Fowler) — the catalog of distributed transaction and coordination patterns
 - [Alibaba Seata TCC source](https://github.com/seata/seata)
 - [DTM TCC implementation](https://github.com/dtm-labs/dtm)
 - [TCC vs Saga vs 2PC (DTM blog)](https://en.dtm.pub/appanomaly/tcc-vs-saga/)

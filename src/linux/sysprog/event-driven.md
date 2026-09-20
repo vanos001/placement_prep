@@ -698,7 +698,7 @@ io_uring_wait_cqe(&ring, &cqe);
 - [Free Software Books](https://www.gnu.org/doc/other-free-books.html)
 
 - [libevent documentation](https://libevent.org/)
-- [libev documentation](http://software.schmorp.de/pkg/libev.html)
+- [libev documentation](https://web.archive.org/web/20260910231147/http://software.schmorp.de/pkg/libev.html)
 - [libuv documentation](https://docs.libuv.org/)
 - [epoll man page](https://man7.org/linux/man-pages/man7/epoll.7.html)
 - [C10K problem](http://www.kegel.com/c10k.html) — Dan Kegel

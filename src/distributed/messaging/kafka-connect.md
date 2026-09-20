@@ -226,5 +226,5 @@ SMTs run in the worker, before the message is produced (source) or after it's co
 - [Debezium documentation](https://debezium.io/documentation/)
 - [Confluent Schema Registry](https://docs.confluent.io/platform/current/schema-registry/index.html)
 - [Kafka Connect REST API](https://docs.confluent.io/platform/current/connect/management.html)
-- [Single Message Transforms](https://www.confluent.io/blog/kafka-connect-single-message-transformums-smt-vsmt-with-examples/)
+- [Single Message Transforms](https://docs.confluent.io/platform/current/connect/transforms/overview.html)
 - [Debezium + Kafka Connect tutorial](https://debezium.io/documentation/reference/tutorial/)

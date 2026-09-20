@@ -99,11 +99,12 @@ MathJax. Set `EXTERNAL=1` to add DOI resolution and external-URL probing. See
 
 > **Scope of "0 broken links".** The internal link/anchor check is green. For
 > external URLs, a **sweep of all 8,638 third-party links** found **6,112 live**
-> and **601 dead** (HTTP 404/410); the rest answered 403/429/challenge and are
-> treated as unverifiable rather than dead. **281 dead links have been repaired**
-> across four passes — every replacement fetched and title-checked before it was
-> written — which includes **every kernel.org link (471/471 now live)**. Of what
-> remains, 63 are intentional placeholders and **453 are genuine broken links**,
+> and **630 dead** (HTTP 404/410); the rest answered 403/429/challenge and are
+> treated as unverifiable rather than dead. **399 dead links have been repaired**
+> across six passes — every replacement fetched and title-checked before it was
+> written, or backed by a verified Wayback snapshot — which includes **every
+> kernel.org link (471/471 now live)**. Of what remains, 63 are intentional
+> placeholders and **395 are genuine broken links**,
 > catalogued by host in
 > [`scripts/dead-links-report.txt`](scripts/dead-links-report.txt); a further
 > **116 URLs that 404 appear only inside fenced code blocks** (code samples, XML

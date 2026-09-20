@@ -225,7 +225,7 @@ The IETF has standardized the hybrid in TLS 1.3 — see the `x25519_kyber768` co
 - Langlois, Regev, *Worst-case to Average-case Reductions for Module-Lattices*, 2013 — https://eprint.iacr.org/2012/506
 - Regev, *On Lattices, Learning with Errors, Random Linear Codes, and Journaling*, JACM 2009 (STOC 2005) — https://cse.nyu.edu/~regev/papers/qibo.pdf
 - NIST PQC standardization project — https://csrc.nist.gov/projects/post-quantum-cryptography
-- NIST PQC round 3 report (status of Kyber) — https://csrc.nist.gov/CSRC/media/Publications/nistir/8413/final/documents/nistir8413.pdf
+- NIST PQC round 3 report (status of Kyber) — https://nvlpubs.nist.gov/nistpubs/ir/2022/NIST.IR.8413-upd1.pdf
 - CRYSTALS-Kyber reference implementation (pq-crystals/kyber) — https://github.com/pq-crystals/kyber
 - Open Quantum Safe (liboqs) — https://openquantumsafe.org/
 - Becker, Ducas, Laarhoven, *The General Sieve Kernel and New Records in Lattice Reduction*, ASIACRYPT 2016 — https://eprint.iacr.org/2019/1461 (core-SVP cost model; updated cost estimator)

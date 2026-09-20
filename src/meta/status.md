@@ -44,11 +44,12 @@ The validation suite re-run on the `research` tree during the 2026-09-19 review:
 - `scripts/check-doi.py` → 491/491 DOIs resolve
 
 > **External URLs are not fully clean.** A **sweep of all 8,638 external
-> links** found **6,112 live** and **601 dead** (HTTP 404/410); the remainder
-> returned 403/429/bot-challenge and are counted unverifiable, not dead. Four
-> repair passes have fixed **281** dead links — each fetched and title-checked
-> first — including **all 471 kernel.org links, now 100% live**. Of the rest,
-> **63 are intentional placeholders** and **453 are genuine broken links**
+> links** found **6,112 live** and **630 dead** (HTTP 404/410); the remainder
+> returned 403/429/bot-challenge and are counted unverifiable, not dead. Six
+> repair passes have fixed **399** dead links — each fetched and title-checked
+> first, or backed by a verified archive snapshot — including **all 471
+> kernel.org links, now 100% live**. Of the rest, **63 are intentional
+> placeholders** and **395 are genuine broken links**
 > catalogued by host in `scripts/dead-links-report.txt`; a further **116 404ing
 > URLs live only inside fenced code blocks** and are correct as written.
 >
@@ -56,7 +57,10 @@ The validation suite re-run on the `research` tree during the 2026-09-19 review:
 > and measured: structural URL variants (2,740 candidates → 7 fixes), host-alias
 > rewrites (638 → 0), Crossref metadata matching against 88 dead PDF citations
 > (5 confirmed), and harvesting the sitemaps of 184 live hosts (102,590 URLs →
-> 16 confirmed). The 453 that remain need a human decision each — re-point,
+> 16 confirmed; a sixth pass added OpenAlex metadata matching, GitHub API
+> checks and archive CDX resolution). The 395 that remain need a human decision
+> each — re-point, substitute, or drop — because no equivalent page exists to
+> point at.
 > substitute, or drop — because no equivalent page exists to point at.
 >
 >

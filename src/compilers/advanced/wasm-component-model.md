@@ -270,7 +270,7 @@ The Component Model is increasingly used for *plugin* architectures in native ap
 
 - [WebAssembly Component Model specification](https://github.com/WebAssembly/component-model) — the canonical spec, including WIT and the Canonical ABI
 - [WIT documentation](https://component-model.bytecodealliance.org/design/wit.html) — interface definition language
-- [WASI Preview 2 specification](https://github.com/WebAssembly/WASI/blob/main/wasip2/README.md) — released December 2023
+- [WASI Preview 2 specification](https://github.com/WebAssembly/WASI/blob/main/specifications/wasi-0.2.0/Overview.md) — released December 2023
 - [Wasmtime documentation](https://docs.wasmtime.dev/) — reference Component Model runtime
 - [Bytecode Alliance](https://bytecodealliance.org/) — steward of the Wasm component ecosystem
 - [Fermyon Spin](https://developer.fermyon.com/spin/) — serverless Wasm platform

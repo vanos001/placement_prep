@@ -220,7 +220,7 @@ The whole of lattice cryptography is just: "what's the largest `n`, smallest `q`
 - Aggarwal, Joux, Prakash, Santha, *A New Public-Key Cryptosystem via Mersenne Numbers*, CRYPTO 2018 (sieving costs discussion) — https://eprint.iacr.org/2017/1038
 - Peikert, *Lattice Cryptography for the Internet*, PQCrypto 2014 (CCA-secure KEM from Ring-LWE) — https://eprint.iacr.org/2014/070
 - Alkim, Ducas, Pöppelmann, Schwabe, *Post-quantum Key Exchange — A New Hope*, USENIX Security 2016 (the first real-world Ring-LWE deployment) — https://eprint.iacr.org/2015/1092
-- Kuperberg, *Subexponential-Time Quantum Algorithm for the Hidden Subgroup Problem*, J. Algorithms 2005 — https://www.scottaaronson.com/papers/kuperberg.pdf (the hidden-shift algorithm motivating cyclotomic-ring concerns)
+- Kuperberg, *Subexponential-Time Quantum Algorithm for the Hidden Subgroup Problem*, J. Algorithms 2005 — https://drops.dagstuhl.de/storage/00lipics/lipics-vol022-tqc2013/LIPIcs.TQC.2013.20/LIPIcs.TQC.2013.20.pdf (the hidden-shift algorithm motivating cyclotomic-ring concerns)
 - The Lattice Estimator (Python tool for BKZ cost estimation) — https://github.com/malb/lattice-estimator
 
 ## Interview Questions

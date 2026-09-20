@@ -649,7 +649,7 @@ dd if=/dev/sda of=/dev/null bs=1M count=4000
 ## References
 
 - Gregg, B. *Systems Performance: Enterprise and the Cloud*, 2nd Edition (2020).
-- [blktrace Documentation](https://github.com/axboe/blktrace)
+- [blktrace Documentation](https://man7.org/linux/man-pages/man8/blktrace.8.html)
 - [fio Documentation](https://fio.readthedocs.io/)
 - [Linux I/O Scheduler Documentation](https://www.kernel.org/doc/html/latest/block/)
 - [Linux perf Examples — Brendan Gregg](https://www.brendangregg.com/perf.html)

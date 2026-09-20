@@ -241,7 +241,7 @@ Because the projection will be replayed. Crashes, schema migrations, new read mo
 - Greg Young, *CQRS Documents* (2010, published online) — the original paper that defined the pattern; the unambiguous source on what CQRS is and is not. https://cqrs.files.wordpress.com/2010/11/cqrs_documents.pdf
 - Greg Young, *CQRS with Event Sourcing* (talk at QCon 2010 / DDD Europe) — the canonical talk that introduced the pattern to the wider community. https://www.infoq.com/presentations/cqrs-introduction/
 - Martin Fowler, *CQRS* (bliki, 2011) — the high-level treatment, with the explicit warning that the pattern is over-applied. https://martinfowler.com/bliki/CQRS.html
-- Martin Fowler, *CQRS & Event Sourcing* (bliki) — Fowler's analysis of the CQRS+ES combination and the risks of conflating the two. https://martinfowler.com/bliki/CQRSAndEventSourcing.html
+- Martin Fowler, *CQRS* (bliki) and *Event Sourcing* — the two patterns and the risks of conflating them. https://martinfowler.com/bliki/CQRS.html and https://martinfowler.com/eaaDev/EventSourcing.html
 - Axon Framework reference guide — the canonical JVM implementation; the docs walk through command bus, event bus, projection, and query gateway end-to-end. https://docs.axoniq.io/reference-guide/
 - EventStoreDB documentation — streams, projections, and persistent subscriptions; the operational model of a purpose-built event store. https://developers.eventstore.com/
 - DDD Community, *CQRS* — community-curated resources, talks, and papers on the pattern. https://www.dddcommunity.com/library/young_2010/

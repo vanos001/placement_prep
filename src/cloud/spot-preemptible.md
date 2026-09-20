@@ -120,5 +120,5 @@ The interview-ready summary: spot converts a cost problem into an availability-e
 - AWS documentation, "Spot Instances" (pricing model, interruption notices, allocation strategies): <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-spot-instances.html>
 - Google Cloud documentation, "Spot VMs" (fixed discount model, 30 s eviction signal): <https://cloud.google.com/compute/docs/instances/spot>
 - Apache Spark documentation, "Decommissioning" (graceful spot shutdown for executors): <https://spark.apache.org/docs/latest/cluster-overview.html#decommissioning>
-- AWS blog, "Capacity-Optimized Spot Instance allocation" (interruption-rate rationale for allocation strategies): <https://aws.amazon.com/blogs/compute/introducing-the-capacity-optimized-allocation-strategy-for-amazon-ec2-spot-fleets/>
+- AWS docs, "Allocation strategies for EC2 Fleet and Spot Fleet" (interruption-rate rationale for allocation strategies): <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-fleet-allocation-strategy.html>
 - Azure documentation, "Azure Spot Virtual Machines" (eviction types and max-price semantics): <https://learn.microsoft.com/en-us/azure/virtual-machines/spot-vms>

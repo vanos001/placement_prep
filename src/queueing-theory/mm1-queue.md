@@ -295,7 +295,7 @@ This model is the right one for sizing TCP `somaxconn`, thread-pool rejection qu
 6. Pollaczek, F. *Über eine Aufgabe der Wahrscheinlichkeitstheorie I–II*. Mathematische Zeitschrift, 32:64–100, 729–750, 1930.
 7. Khintchine, A. Y. *Mathematical Theory of Queueing*. Trudy Mat. Inst. Steklov, 49, 1955.
 8. Kingman, J. F. C. *The single server queue in heavy traffic*. Proc. Cambridge Philos. Soc., 57:902–904, 1961. — The heavy-traffic approximation, fundamental to understanding ρ → 1.
-9. Paxson, V., Floyd, S. *Wide-area traffic: A failure of Poisson modeling*. IEEE/ACM Transactions on Networking, 3(3):226–244, 1995. — [https://ee.lbl.gov/papers/wan-poisson-tnet95.pdf](https://ee.lbl.gov/papers/wan-poisson-tnet95.pdf)
+9. Paxson, V., Floyd, S. *Wide-area traffic: A failure of Poisson modeling*. IEEE/ACM Transactions on Networking, 3(3):226–244, 1995. — [https://doi.org/10.1109/90.392383](https://doi.org/10.1109/90.392383)
 10. Wikipedia: [M/M/1 queue](https://en.wikipedia.org/wiki/M/M/1_queue), [Little's Law](https://en.wikipedia.org/wiki/Little%27s_law), [Pollaczek-Khinchine formula](https://en.wikipedia.org/wiki/Pollaczek%E2%80%93Khinchine_formula).
 
 ## Interview Questions

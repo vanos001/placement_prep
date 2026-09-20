@@ -171,7 +171,7 @@ For greenfield deployments in 2024+, Geneve is preferred (more flexible). For co
 - [RFC 7348: VXLAN](https://datatracker.ietf.org/doc/html/rfc7348)
 - [OVN-Kubernetes architecture](https://github.com/ovn-org/ovn-kubernetes/blob/master/docs/design/architecture.md)
 - [Cilium: BGP-aware overlay mode](https://web.archive.org/web/20240420165622/https://docs.cilium.io/en/stable/network/bgp-control-plane/)
-- [Anthos networking](https://cloud.google.com/anthos/clusters/docs/security/networking)
+- [GKE networking (Anthos clusters)](https://cloud.google.com/kubernetes-engine/docs/concepts/network-overview)
 - [Geneve in Open vSwitch (OVS)](https://docs.openvswitch.org/en/latest/topics/)
 - [LWN: Geneve vs VXLAN (2021)](https://lwn.net/Articles/850489/)
 - [Geneve vs VXLAN comparison (NVIDIA)](https://docs.nvidia.com/networking-ethernet-software/knowledge-base/)

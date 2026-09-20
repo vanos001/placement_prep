@@ -256,7 +256,7 @@ The deployment is *interactive*: gesture → UI action must complete in <100 ms 
 - Robert David et al., "[TensorFlow Lite Micro: Embedded Machine Learning for TinyML Systems](https://arxiv.org/abs/2104.06772)" (MLSys 2021)
 - [Harvard CS249R: TinyML and Efficient Deep Learning Computing](https://hanlab.mit.edu/course) — Song Han's TinyML course
 - [TensorFlow Lite Micro documentation](https://www.tensorflow.org/lite/microcontrollers)
-- [Arduino TinyML examples — petewarden/arduino_tinyml](https://github.com/petewarden/arduino_tinyml) — Warden's open-source pedagogy examples
+- [Arduino TinyML/AI examples — petewarden/ArduinoAI](https://github.com/petewarden/ArduinoAI) — Warden's open-source pedagogy examples
 - Yundong Zhang, Naveen Suda, Liangzhen Lai, Anand Krishnan, "[Hello Edge: Keyword Spotting on Microcontrollers](https://arxiv.org/abs/1711.07128)" (2017)
 - Pete Warden, "[Speech Commands: A Dataset for Limited-Vocabulary Speech Recognition](https://arxiv.org/abs/1804.03209)" (2018) — the KWS dataset
 - Han Cai, Chuang Gan, Song Han, "[Once-for-All: Train One Network and Specialize it for Efficient Deployment](https://arxiv.org/abs/1908.09791)" (ICLR 2020)

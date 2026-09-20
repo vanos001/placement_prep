@@ -139,5 +139,5 @@ The realistic view: learned indexes are a niche optimization for specific worklo
 - Ding et al., "[ALEX: An Updatable Adaptive Learned Index](https://dl.acm.org/doi/10.1145/3318464.3380516)" (SIGMOD 2020)
 - Galakatos et al., "[Fitting Trees: A Data-Aware Index Structure](https://www.cs.cmu.edu/~huanrao/papers/sigmod19.pdf)" (SIGMOD 2019)
 - [PGM-Index GitHub](https://github.com/gvinciguerra/PGM-index)
-- [Marcus et al., "Benchmarking Learned Indexes"](https://db.in.tum.de/~radler/beyond_b_trees.pdf) (Datenbank-Spektrum 2020)
+- [Marcus et al., "Benchmarking Learned Indexes"](https://arxiv.org/pdf/2006.12804) (Datenbank-Spektrum 2020)
 - [The Case Against Learned Indexes (Viktor Leis, 2020)](https://www.cs.cit.tum.de/~leis/)

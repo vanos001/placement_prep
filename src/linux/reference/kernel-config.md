@@ -876,7 +876,7 @@ sysctl net.ipv4.ip_forward
 - [Free Software Books](https://www.gnu.org/doc/other-free-books.html)
 
 - [Linux Kernel Configuration Documentation](https://www.kernel.org/doc/html/latest/admin-guide/README.html)
-- [Kernel Newbies — Kernel Configuration](https://kernelnewbies.org/KernelConfiguration)
+- [Kernel documentation — Configuration targets and editors](https://docs.kernel.org/kbuild/kconfig.html)
 - [Gentoo Kernel Configuration Guide](https://wiki.gentoo.org/wiki/Kernel/Configuration)
 - [Arch Linux Kernel Compilation](https://wiki.archlinux.org/title/Kernel/Traditional_compilation)
 - [Linux Kernel Driver Database](https://cateee.net/lkddb/web-lkddb/)

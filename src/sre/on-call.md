@@ -151,7 +151,7 @@ The question is never "who messed up?" but **"what in our systems, processes, or
 
 - [Google SRE Book — Handling Incidents](https://sre.google/sre-book/postmortem-culture/)
 - [PagerDuty Alerting Best Practices](https://www.pagerduty.com/resources/learn/what-is-an-on-call/)
-- [SLO-Based Alerting](https://sre.google/sre-book/slo-book/)
+- [Alerting on SLOs](https://sre.google/workbook/alerting-on-slos/)
 
 ## Interview Questions
 

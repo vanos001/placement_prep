@@ -219,9 +219,9 @@ For industry: session types are still mostly used in research and a few niche de
 
 - K. Honda, N. Yoshida, M. Carbone, *Multiparty Asynchronous Session Types* (POPL 2008) — https://dl.acm.org/doi/10.1145/1328438.1328472
 - The Scribble project (protocol description language and tools) — http://www.scribble.org/
-- OCaml `mpst` library (multi-party session types in OCaml) — https://github.com/ocaml-multicore/ocaml-mpst
+- OCaml `mpst` library (multi-party session types in OCaml) — https://github.com/keigoi/ocaml-mpst
 - S. Gay, *Session Types publications index*, University of Glasgow — http://www.dcs.gla.ac.uk/~simon/publications/
 - K. Honda, V. Vasconcelos, M. Kubo, *Language Primitives for Non-deterministic Concurrent Functions* (ICCL 1998), the original binary session types paper — https://dl.acm.org/doi/10.1109/ICCL.1998.687524
-- L. Padovani, *Asynchronous Session Logic* and related work — http://www.di.unito.it/~padovani/Research.html
+- L. Padovani, *Asynchronous Session Logic* and related work — https://web.archive.org/web/20100313174545/http://www.di.unito.it:80/~padovani/research.html
 - D. Sangiorgi, D. Walker, *The Pi-Calculus: A Theory of Mobile Processes* (Cambridge University Press, 2001)
 - N. Ng, V. Vasconcelos, *Sill: A Generative Spreadsheet API for Session Types* — http://www.di.fc.ul.pt/~vv/papers/sill/

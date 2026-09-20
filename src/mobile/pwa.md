@@ -505,7 +505,7 @@ Apple's intention has been to keep the web sandboxed below native.
 - [Service Worker overview — web.dev](https://web.dev/articles/service-workers-cache-storage)
 - [Web Push API — MDN](https://developer.mozilla.org/en-US/docs/Web/API/Push_API)
 - [Background Sync API — MDN](https://developer.mozilla.org/en-US/docs/Web/API/Background_Synchronization_API)
-- [Periodic Background Sync — Chrome developers](https://developer.chrome.com/blog/periodic-background-sync/)
+- [Periodic Background Sync — Chrome developers](https://developer.chrome.com/docs/capabilities/periodic-background-sync)
 - [beforeinstallprompt event — MDN](https://developer.mozilla.org/en-US/docs/Web/API/BeforeInstallPromptEvent)
 - [Web Bundles / Web Packaging — WICG](https://github.com/WICG/webpackage)
 - [Trusted Web Activity — Android developers](https://developer.android.com/training/app-links/verify-site-associations)

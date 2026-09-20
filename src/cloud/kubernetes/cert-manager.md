@@ -435,7 +435,7 @@ cert-manager wins on portability across ingress controllers and the ability to m
 - Kubernetes Ingress network path — https://kubernetes.io/docs/concepts/services-networking/ingress-controllers/
 - RFC 8555 (ACME) — https://www.rfc-editor.org/rfc/rfc8555
 - cert-manager security disclosures and policies — https://github.com/cert-manager/cert-manager/security/policy
-- CNCF cert-manager graduation announcement (2024) — https://www.cncf.io/announcements/2024/06/25/cert-manager-graduates-from-cncf-incubator/
+- CNCF cert-manager graduation announcement (2024) — https://www.cncf.io/announcements/2024/11/12/cloud-native-computing-foundation-announces-cert-manager-graduation/
 - Jetstack corporate site — https://www.jetstack.io/
 
 ## Interview Questions

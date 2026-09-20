@@ -642,7 +642,7 @@ $ scripts/config --enable CONFIG_MODULES
 - [Kernel configuration documentation](https://www.kernel.org/doc/html/latest/kbuild/kconfig.html)
 - [Kconfig language reference](https://www.kernel.org/doc/html/latest/kbuild/kconfig-language.html)
 - [Linux Kernel in a Nutshell — Configuration](http://www.kroah.com/lkn/)
-- [Kernel Newbies: Kernel Configuration](https://kernelnewbies.org/KernelConfiguration)
+- [Kernel documentation: Configuration targets and editors](https://docs.kernel.org/kbuild/kconfig.html)
 - [Gentoo Kernel Configuration Guide](https://wiki.gentoo.org/wiki/Kernel/Configuration)
 
 ## Related Topics

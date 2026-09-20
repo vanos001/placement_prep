@@ -3,6 +3,43 @@
 This file records meaningful content and validation changes to the placement
 preparation book. Dates use the project timezone, Asia/Calcutta.
 
+## 2026-09-20 — Sixth pass: papers resolved at metadata level, moved docs, pruned posts
+
+**58 more dead links repaired** (453 → 395 genuine broken links). Nothing was
+replaced unless the target was fetched and title-checked live, or a Wayback
+snapshot of the same URL was confirmed.
+
+- **OpenAlex paper resolution** over 81 unresolved dead PDFs (Semantic Scholar
+  answers 429 to scripted clients): **5** applied, each after reading the
+  citation line. A metadata match alone is not enough — the candidate offered
+  for `scottaaronson.com/papers/kuperberg.pdf` was a *different* Kuperberg
+  paper and was rejected.
+- **GitHub facts checked through the API** instead of by guesswork:
+  `ongardio/dissertation` → `ongardie/dissertation`,
+  `ocaml-multicore/ocaml-mpst` → `keigoi/ocaml-mpst`, and the WASI Preview 2
+  spec now lives at `specifications/wasi-0.2.0/Overview.md`. Deleted
+  repositories (peepmatic, keir/pompeii, ptcube/jump-consistent-hash) resolved
+  to nothing and were left in the backlog rather than pointed at a lookalike.
+- **Documentation that moved without redirects**: web.dev
+  `articles/http-caching` → `articles/http-cache`; Lighthouse accessibility
+  scoring → `developer.chrome.com/docs/lighthouse/accessibility/scoring/`;
+  Anthos clusters security/networking → the GKE network overview;
+  `kubectl.docs.kubernetes.io/pages/*` → `references/kustomize/*`;
+  kernelnewbies CamelCase pages → `/Module`, `/Documentation/Subsystems`,
+  `/FirstKernelPatch`; Spanner `query-plans` → `query-execution-plans`;
+  Cloud Run `run/docs/about` → `run/docs/overview/what-is-cloud-run`; NIST
+  `pubs/nistir/*` → `pubs/ir/*` plus the nvlpubs PDF host.
+- **Pruned comparison posts, substituted but not mislabelled**: the AWS blog,
+  Confluent and CNCF "X vs Y" posts are gone with no successor, so those links
+  now point at the same vendor's documentation for the topic and each label
+  says what the target actually is. Two pages that survive only in the Wayback
+  Machine (libev, Luca Padovani's research page) link to their snapshots.
+- `scripts/dead-links-report.txt` regenerated: **395 genuine broken links
+  across 298 hosts**, with a per-host listing and the pass-6 strategy notes.
+- `README.md` and `src/meta/status.md` corrected while editing them: both still
+  said "281 repaired across four passes" (the pass-3 count of 30 had been
+  dropped from the sum) and "601 dead" where the measured figure is 630.
+
 ## 2026-09-19 — Fifth pass: automated link resolution taken to its limit
 
 **30 more dead links repaired** (483 → 453 genuine broken links), and the

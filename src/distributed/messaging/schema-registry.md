@@ -186,4 +186,4 @@ The deserializer reads the schema ID, fetches the schema (cached), and deseriali
 - [Confluent Schema Registry GitHub](https://github.com/confluentinc/schema-registry)
 - [Apicurio Registry (open-source alternative)](https://github.com/apicurio/apicurio-registry)
 - [LWN: Schema Registry (2020)](https://lwn.net/Articles/820528/)
-- [Schema evolution and compatibility (Confluent blog)](https://www.confluent.io/blog/schema-registry-a-vital-component-for-event-streaming-applications/)
+- [Schema evolution and compatibility types](https://docs.confluent.io/platform/current/schema-registry/fundamentals/schema-evolution.html)

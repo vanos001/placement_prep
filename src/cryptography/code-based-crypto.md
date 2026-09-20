@@ -267,8 +267,8 @@ In real BIKE, the bit-flipping is wrapped in a "Black-Gray-Black" (BGB) trick to
 - Becker, Joux, May, Meurer, *Decoding Random Linear Codes in `O(2^0.054n)`*, EUROCRYPT 2012 (BJMM bound) — https://eprint.iacr.org/2012/026
 - Sendrier, Vasseur, *Sampling the spectrum of QC-LDPC coded modulations*, 2020; *On the Complexity of the BJMM Decoding algorithm: the improved ISD for linear codes*, IEEE Trans. Info. Theory 2018 — for BIKE timing attacks: https://eprint.iacr.org/2019/1468
 - Wenger, Vasseur, Zémor, *A simpler algorithm for finding short vectors in quasi-cyclic lattices*, 2024 (TWMZ QC attack) — https://eprint.iacr.org/2024/071
-- NIST PQC Round 4 status report (2022) — https://csrc.nist.gov/CSRC/media/Publications/nistir/8413/final/documents/nistir8413.pdf
-- NIST IR 8528 (Status of Round 4 candidates, 2025) — https://csrc.nist.gov/pubs/nistir/8528/final
+- NIST PQC Round 4 status report (2022) — https://nvlpubs.nist.gov/nistpubs/ir/2022/NIST.IR.8413-upd1.pdf
+- NIST IR 8528 (Status of Round 4 candidates, 2025) — https://csrc.nist.gov/pubs/ir/8528/final
 
 ## Interview Questions
 

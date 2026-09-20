@@ -314,6 +314,6 @@ The serializer prefixes the magic byte + schema ID before encoding; the deserial
 - fastavro documentation: https://fastavro.readthedocs.io/
 - Confluent wire format (Kafka): https://docs.confluent.io/platform/current/schema-registry/serdes/index.html#wire-format
 - Apache Parquet (reuses Avro logical types): https://parquet.apache.org/docs/
-- "Schema Registry: A Data Contracting Story", Confluent blog: https://www.confluent.io/blog/schemas-concepts
+- "Schema Registry concepts: schemas, subjects and topics": https://docs.confluent.io/platform/current/schema-registry/fundamentals/index.html
 - Apache Avro Java API: https://avro.apache.org/docs/1.12.0/api/java.html
 - Doug Cutting's Avro design notes (Apache Jira AVRO-1): https://issues.apache.org/jira/browse/AVRO-1

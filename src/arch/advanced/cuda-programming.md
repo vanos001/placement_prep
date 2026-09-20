@@ -192,7 +192,7 @@ For ML libraries (PyTorch, TensorFlow), the back-end is usually CUDA-specific co
 - [NVIDIA CUDA C++ Best Practices Guide](https://docs.nvidia.com/cuda/cuda-c-best-practices-guide/)
 - Kirk & Hwu, "[Programming Massively Parallel Processors](https://www.elsevier.com/books/programming-massively-parallel-processors/kirk/978-0-12-415992-1)" (4th edition, 2022) — textbook
 - [Mark Harris's CUDA tutorials](https://developer.nvidia.com/blog/tag/cuda/)
-- [Cooperative Groups documentation](https://docs.nvidia.com/cuda/cooperative-groups/index.html)
+- [Cooperative Groups documentation](https://docs.nvidia.com/cuda/cuda-c-programming-guide/index.html)
 - [HIP: AMD's CUDA-equivalent](https://github.com/ROCm/HIP)
 - [Triton: OpenAI's GPU DSL](https://github.com/openai/triton)
 - [LWN: Modern CUDA (2023)](https://lwn.net/Articles/927507/)

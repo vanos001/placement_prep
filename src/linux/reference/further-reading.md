@@ -574,7 +574,7 @@ Resources for Linux kernel beginners. Includes an FAQ, tutorials, and a helpful 
 - **Key pages:**
   - [KernelNewbies FAQ](https://kernelnewbies.org/FAQ)
   - [Kernel Janitors](https://kernelnewbies.org/KernelJanitors)
-  - [Kernel Newbies Tutorial](https://kernelnewbies.org/KernelTutorial)
+  - [Kernel Newbies: First Kernel Patch](https://kernelnewbies.org/FirstKernelPatch)
 
 ---
 

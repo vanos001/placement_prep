@@ -534,7 +534,7 @@ TrueTime plays in Spanner, but without GPS/atomic clocks.
 - Fischer, M., Lynch, N., Paterson, M. — *Impossibility of Distributed Consensus with One Faulty Process* (JACM 1985) — https://groups.csail.mit.edu/tds/papers/Lynch/jacm85.pdf
 - Castro, M., Liskov, B. — *Practical Byzantine Fault Tolerance* (OSDI 1999; TOCS 2002) — https://pmg.csail.mit.edu/papers/osdi99.pdf
 - Yin, M. et al. — *HotStuff: BFT Consensus with Linearity and Responsiveness* (PODC 2019) — https://arxiv.org/abs/1803.05069
-- Buchman, E. — *Tendermint: Byzantine Fault Tolerance in the Age of Blockchains* (M.Sc. thesis, 2016) — https://allquantor.at/blockchainbib/pdf/buchman2016.pdf
+- Buchman, E. — *Tendermint: Byzantine Fault Tolerance in the Age of Blockchains* (M.Sc. thesis, 2016) — https://hdl.handle.net/10214/9769
 - Chandy, K. M., Lamport, L. — *Distributed Snapshots: Determining Global States of Distributed Systems* (TOCS 1985) — https://lamport.azurewebsites.net/pubs/chandy-lamport.pdf
 - Lai, T., Yang, T. — *On Distributed Snapshots* (1987)
 - Garcia-Molina, H. — *Elections in a Distributed Computing System* (IEEE TC 1982); Chang, E., Roberts, R. — *Decentralized Extrema-Finding in Circular Configurations* (CACM 1979)

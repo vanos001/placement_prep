@@ -205,5 +205,5 @@ The known-issues allow-list is honest: every team has an a11y debt list. Burying
 - [WCAG 2.2 recommendation](https://www.w3.org/TR/WCAG22/)
 - [MDN: Accessibility](https://developer.mozilla.org/en-US/docs/Web/Accessibility)
 - [WebAIM — Web Accessibility Evaluation Tool (WAVE)](https://wave.webaim.org/)
-- [Lighthouse Accessibility scoring](https://web.dev/articles/lighthouse-accessibility)
+- [Lighthouse accessibility scoring](https://developer.chrome.com/docs/lighthouse/accessibility/scoring/)
 - [Playwright Axe integration](https://playwright.dev/docs/accessibility-testing)

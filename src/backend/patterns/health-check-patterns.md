@@ -259,7 +259,7 @@ Depends on the audience. For Kubernetes-driven probes, never use `/health` — u
 - Google SRE Book, Chapter 6: *Monitoring* (asymmetric monitoring, alerting) — https://sre.google/sre-book/practical-alerting/
 - Google SRE Book, Chapter 14: *Addressing Cascading Failures* (health check failure modes) — https://sre.google/sre-book/addressing-cascading-failures/
 - Spring Boot Actuator: *Health Indicators* — https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#actuator
-- Kubernetes enhancement KEP-0057: *Startup probes* — https://github.com/kubernetes/enhancements/tree/master/keps/sig-network/0057-distributed-ldu
+- Kubernetes documentation: *Configure Liveness, Readiness and Startup Probes* — https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/
 - AWS Builders' Library: *Implementing Health Checks* — https://aws.amazon.com/builders-library/implementing-health-checks/
 - Microsoft Azure: *Health Endpoint Monitoring pattern* — https://learn.microsoft.com/en-us/azure/architecture/patterns/health-endpoint-monitoring
 - Cloud Native Computing Foundation: *Liveness and Readiness Probes — Best Practices* — https://kubernetes.io/docs/concepts/configuration/liveness-readiness-startup-probes/

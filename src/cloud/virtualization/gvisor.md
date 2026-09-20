@@ -322,7 +322,7 @@ trusted workloads) or Kata (for untrusted but full-ABI workloads) is better.
 - [gVisor documentation site](https://gvisor.dev/)
 - [gVisor architecture overview](https://gvisor.dev/docs/architecture/)
 - [gVisor platforms (ptrace, KVM, systrap)](https://gvisor.dev/docs/user_guide/platforms/)
-- [Google Cloud Run documentation (uses gVisor)](https://cloud.google.com/run/docs/about)
+- [Google Cloud Run documentation (uses gVisor)](https://cloud.google.com/run/docs/overview/what-is-cloud-run)
 - [GKE Sandbox (gVisor) documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/sandbox-pods)
 - [LWN: The seccomp unotify mechanism (2019)](https://lwn.net/Articles/788332/)
 - [gVisor syscall support reference](https://gvisor.dev/docs/user_guide/compatibility/)

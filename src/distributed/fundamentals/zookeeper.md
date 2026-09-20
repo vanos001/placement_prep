@@ -214,5 +214,5 @@ ZooKeeper is the oldest; etcd is more modern; Consul is the most feature-rich.
 - [ZAB: ZooKeeper Atomic Broadcast](https://zookeeper.apache.org/doc/r3.8.0/zookeeperHierarchical.html)
 - [ZooKeeper recipes for locks, leader election](https://zookeeper.apache.org/doc/r3.8.0/recipes.html)
 - [Curator: ZooKeeper client library (Apache)](https://curator.apache.org/)
-- [Kafka KRaft (without ZooKeeper)](https://developer.confluent.io/blog/kafka-without-zookeeper-a-gateway-to-kafka-3-0/)
+- [Kafka KRaft overview (ZooKeeper replaced by a metadata quorum)](https://docs.confluent.io/platform/current/kafka-metadata/kraft.html)
 - [LWN: ZooKeeper overview (2020)](https://lwn.net/Articles/820130/)

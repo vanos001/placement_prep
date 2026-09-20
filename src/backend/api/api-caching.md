@@ -238,7 +238,7 @@ background revalidation).
 Cloudflare, Fastly, and Varnish all implement `stale-while-revalidate`
 natively. The MDN
 ([*HTTP Caching*](https://developer.mozilla.org/en-US/docs/Web/HTTP/Caching))
-and web.dev ([*Prevent unnecessary network requests with the HTTP Cache*](https://web.dev/articles/http-caching))
+and web.dev ([*Prevent unnecessary network requests with the HTTP Cache*](https://web.dev/articles/http-cache))
 references are the canonical intro.
 
 ## Application-Level Caching vs HTTP Caching
@@ -409,6 +409,6 @@ hash + variables. Neither is as clean as REST's URL-based caching.
 - RFC 7232 — *Hypertext Transfer Protocol (HTTP/1.1): Conditional Requests* — <https://www.rfc-editor.org/rfc/rfc7232>
 - RFC 5861 — *HTTP Cache-Control Extensions for Stale Content* (`stale-while-revalidate`, `stale-if-error`) — <https://www.rfc-editor.org/rfc/rfc5861>
 - MDN — *HTTP caching* — <https://developer.mozilla.org/en-US/docs/Web/HTTP/Caching>
-- web.dev — *Prevent unnecessary network requests with the HTTP Cache* — <https://web.dev/articles/http-caching>
+- web.dev — *Prevent unnecessary network requests with the HTTP Cache* — <https://web.dev/articles/http-cache>
 - Cloudflare — *What is HTTP caching? How does it work?* — <https://www.cloudflare.com/learning/cdn/what-is-caching/>
 - Fastly — *Surrogate keys for cache invalidation* — <https://www.fastly.com/blog/surrogate-keys-explained-fastly-cdn-cache-purging-logic-for-dynamic-content>

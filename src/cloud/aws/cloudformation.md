@@ -263,6 +263,6 @@ StackSets deploy a template to multiple accounts and regions in one operation. U
 - [CloudFormation Template Reference](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-reference.html)
 - [CloudFormation Drift Detection](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/detect-stack-drift.html)
 - [CloudFormation StackSets](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-concepts.html)
-- [CloudFormation vs Terraform](https://aws.amazon.com/blogs/infrastructure-and-automation/best-practices-for-using-cloudformation-and-terraform-together/)
+- [AWS CloudFormation documentation: what is CloudFormation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/Welcome.html)
 - [AWS Quick Start (pre-built templates)](https://aws.amazon.com/quickstart/)
 - [LWN: AWS CloudFormation overview (2020)](https://lwn.net/Articles/820133/)

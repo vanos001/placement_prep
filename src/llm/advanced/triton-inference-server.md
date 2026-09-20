@@ -240,8 +240,8 @@ For multi-model deployment (vision + LLM), Triton is the standard. For LLM-only,
 
 - [Triton Inference Server documentation](https://docs.nvidia.com/deeplearning/triton-inference-server/)
 - [Triton GitHub repository](https://github.com/triton-inference-server/server)
-- [Triton model configuration](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/protocol/extension_auto_complete.html)
-- [Triton metrics (Prometheus)](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/metrics.html)
+- [Triton model configuration](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/protocol/extension_model_configuration.html)
+- [Triton metrics (Prometheus)](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/metrics.html)
 - [Triton + TensorRT-LLM integration](https://github.com/triton-inference-server/tensorrtllm_backend)
 - [Triton Python backend](https://github.com/triton-inference-server/python_backend)
 - [LWN: Triton for production ML serving (2023)](https://lwn.net/Articles/926655/)

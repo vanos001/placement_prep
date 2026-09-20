@@ -138,8 +138,8 @@ When the system has a synchronous user expectation that you can't relax. A login
 ## References
 
 - Martin Fowler, *What do you mean by Event-Driven?* (bliki, 2017) — the three event flavours (notification, state-transfer, entity events) and the trade-offs. https://martinfowler.com/articles/201701-event-driven.html
-- Martin Fowler, *EventDrivenCollaboration* (bliki) and the older *Enterprise Integration Patterns* reference — the foundational vocabulary. https://martinfowler.com/eaaDev/EventDrivenCollaboration.html
-- Ben Stopford, *Designing Event-Driven Systems* (O'Reilly, 2018, free PDF from Confluent) — the modern canonical book; chapters on contracts, choreography, and event sourcing as the integration pattern. https://www.confluent.io/ebooks/designing-event-driven-systems/
+- Martin Fowler, *Event Collaboration* (bliki) and the older *Enterprise Integration Patterns* reference — the foundational vocabulary. https://martinfowler.com/eaaDev/EventCollaboration.html
+- Ben Stopford, *Designing Event-Driven Systems* (O'Reilly, 2018, free PDF from Confluent) — the modern canonical book; chapters on contracts, choreography, and event sourcing as the integration pattern. https://www.confluent.io/designing-event-driven-systems/
 - Jay Kreps, *I Heart Logs* (O'Reilly, 2014) — the short book that argued the log is the central data abstraction of the modern stack. https://www.oreilly.com/library/view/i-heart-logs/9781491912511/
 - Apache Kafka documentation — producer/consumer model, log compaction, exactly-once semantics. https://kafka.apache.org/documentation/
 - NATS documentation — JetStream streams, work queues, and the at-least-once delivery model. https://docs.nats.io/nats-concepts/jetstream

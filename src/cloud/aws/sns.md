@@ -236,5 +236,5 @@ SNS is the AWS-native fan-out choice. Kafka for high-throughput pull-based. Redi
 - [SNS + SQS fan-out pattern](https://docs.aws.amazon.com/sns/latest/dg/sns-common-scenarios.html)
 - [SNS mobile push notifications](https://docs.aws.amazon.com/sns/latest/dg/sns-mobile-notifications.html)
 - [SNS HTTP/HTTPS endpoint verification](https://docs.aws.amazon.com/sns/latest/dg/sns-verify-signature.html)
-- [SNS vs Kafka (Confluent blog)](https://www.confluent.io/blog/sns-vs-kafka/)
+- [Amazon SNS Developer Guide](https://docs.aws.amazon.com/sns/latest/dg/welcome.html)
 - [LWN: SNS overview (2020)](https://lwn.net/Articles/820133/)

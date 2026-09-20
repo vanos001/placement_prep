@@ -184,7 +184,7 @@ The non-trivial caveat is that *using* an HSM is slower and more fragile than so
 ## References
 
 - OASIS PKCS#11 Technical Committee, "[PKCS #11 v3.1 Base Specification](https://docs.oasis-open.org/pkcs11/pkcs11-base/v3.1/os/pkcs11-base-v3.1-os.html)" (2023)
-- NIST, "[FIPS 140-3: Cryptographic Module Security Requirements](https://csrc.nist.gov/pubs/fips/140-3/upd1/final)" (2025 update)
+- NIST, "[FIPS 140-3: Cryptographic Module Security Requirements](https://csrc.nist.gov/pubs/fips/140-3/final)" (2025 update)
 - NIST, "[FIPS 140-3 Implementation Guidance](https://csrc.nist.gov/projects/cryptographic-module-validation-program/standards)" (CMVP)
 - Thales, "[Luna Network HSM 7 Administration Guide](https://docs.thalesgroup.com/docs/luna_network_hsm_7_administration_guide.pdf)"
 - Yubico, "[YubiHSM 2 User Guide](https://docs.yubico.com/hardware/yubihsm-2/hardware/yubihsm-2-user-guide.html)"

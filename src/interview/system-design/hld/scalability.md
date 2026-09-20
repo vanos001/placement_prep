@@ -425,7 +425,7 @@ Most systems scale along all three axes as they grow.
 
 - Martin Kleppmann, *Designing Data-Intensive Applications*, O'Reilly, 2017
 - [AWS Auto Scaling Documentation](https://docs.aws.amazon.com/autoscaling/ec2/userguide/what-is-amazon-ec2-auto-scaling.html)
-- [Google Cloud - Scalability](https://cloud.google.com/architecture/scalability)
+- [Google Cloud - Scalability](https://cloud.google.com/architecture/scalable-and-resilient-apps)
 - [Meta Engineering Blog - Scaling Instagram](https://engineering.fb.com/)
 - [Twitter Engineering Blog - Scaling](https://blog.twitter.com/engineering)
 - [The Scale Cube - Microservices](https://microservices.io/articles/scalecube.html)

@@ -605,7 +605,7 @@ When a patch touches multiple subsystems:
 
 - Linux Kernel Source Browser: https://elixir.bootlin.com/linux/latest/source
 - MAINTAINERS file: https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/MAINTAINERS
-- Kernel Newbies — Kernel Map: https://kernelnewbies.org/KernelMap
+- Kernel Newbies — Subsystem documentation: https://kernelnewbies.org/Documentation/Subsystems
 - "Linux Kernel Development" by Robert Love (3rd Edition). ISBN 978-0672329464
 - "Understanding the Linux Kernel" by Bovet & Cesati (3rd Edition). ISBN 978-0596005658
 - The Linux Kernel documentation: https://www.kernel.org/doc/html/latest/

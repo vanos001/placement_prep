@@ -252,7 +252,7 @@ A: State-of-the-art 2-party systems (CrypTFlow2, CryptGPU, Piranha) handle billi
 
 ## References
 
-- Yao, A. C.-C. — *"Protocols for Secure Computations"* (1982), FOCS. The millionaires' problem and the first 2-party garbled-circuit protocol. https://www.cs.cmu.edu/~gongseg/yao-1982.pdf
+- Yao, A. C.-C. — *"Protocols for Secure Computations"* (1982), FOCS. The millionaires' problem and the first 2-party garbled-circuit protocol. https://doi.org/10.1109/sfcs.1982.88
 - Goldreich, O., Micali, S., Wigderson, A. — *"How to Play ANY Mental Game"* (1987), STOC. The GMW multi-party protocol with OT-based multiplication. https://www.wisdom.weizmann.ac.il/~oded/gmw.html
 - Ben-Or, M., Goldwasser, S., Wigderson, A. — *"Completeness Theorems for Non-Cryptographic Fault-Tolerant Distributed Computation"* (1988), STOC. The BGW protocol: information-theoretic MPC with honest majority. https://doi.org/10.1145/62212.62213
 - Chaum, D., Crépeau, C., Damgård, I. — *"Multiparty Unconditionally Secure Protocols"* (1988), STOC. The CCD protocol, independently of BGW. https://doi.org/10.1145/62212.62214

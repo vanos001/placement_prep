@@ -192,5 +192,5 @@ SQS is the standard for AWS-native decoupling. Kafka for high-throughput. Rabbit
 - [SQS visibility timeout](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-visibility-timeout.html)
 - [SQS + Lambda (trigger configuration)](https://docs.aws.amazon.com/lambda/latest/dg/with-sqs.html)
 - [SQS extended client library (S3 storage)](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-s3-messages.html)
-- [SQS vs Kafka vs RabbitMQ (Confluent blog)](https://www.confluent.io/kafka-vs-sqs-vs-rabbitmq/)
+- [Amazon SQS Developer Guide](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/welcome.html)
 - [LWN: SQS overview (2020)](https://lwn.net/Articles/820133/)

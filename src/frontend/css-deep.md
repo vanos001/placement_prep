@@ -288,5 +288,5 @@ A: CSS Modules generate unique class names at build time with zero runtime overh
 
 - [MDN — CSS Specificity](https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity)
 - [CSS-Tricks — A Complete Guide to Grid](https://css-tricks.com/snippets/css/complete-guide-grid/)
-- [web.dev — CSS Container Queries](https://web.dev/css-container-queries/)
+- [web.dev — Container queries (Learn CSS)](https://web.dev/learn/css/container-queries/)
 - [Tailwind CSS Documentation](https://tailwindcss.com/docs)

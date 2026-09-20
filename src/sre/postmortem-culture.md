@@ -187,7 +187,7 @@ Two non-obvious rules:
 
 ### Google's Postmortems
 
-Google publishes a curated set of postmortems at `https://sre.google/postmortems/`. The canonical case is the 2019 **Google Cloud Storage global outage** caused by a single malformed DNS update that propagated further than the test had predicted. The published postmortem is a near-textbook example: a short summary naming the user-visible impact; a timeline that includes the moment engineering declared "we are wrong about the cause" (a section most teams omit out of embarrassment); a root-cause section distinguishing the *triggering* bug (a tool that should have rejected a config) from the *amplifying* factor (a control-plane cache that propagated it globally before revalidation); and action items with named owners, including non-engineering ones ("update customer-communication playbook"). The Google SRE Book's Chapter 15 ("Postmortem Culture") is the canonical reference.
+Google describes its blameless postmortem practice at `https://sre.google/sre-book/postmortem-culture/`. The canonical case is the 2019 **Google Cloud Storage global outage** caused by a single malformed DNS update that propagated further than the test had predicted. The published postmortem is a near-textbook example: a short summary naming the user-visible impact; a timeline that includes the moment engineering declared "we are wrong about the cause" (a section most teams omit out of embarrassment); a root-cause section distinguishing the *triggering* bug (a tool that should have rejected a config) from the *amplifying* factor (a control-plane cache that propagated it globally before revalidation); and action items with named owners, including non-engineering ones ("update customer-communication playbook"). The Google SRE Book's Chapter 15 ("Postmortem Culture") is the canonical reference.
 
 ### GitHub Incidents
 
@@ -251,7 +251,7 @@ A: The SRE postmortem is a direct descendant of the US Army's AAR formalized in 
 
 - [Google SRE Book — Chapter 15: Postmortem Culture: Learning from Failure](https://sre.google/sre-book/postmortem-culture/)
 - [Google SRE Book — Chapter 14: Managing Incidents](https://sre.google/sre-book/managing-incidents/)
-- [Google SRE Workbook — Postmortems chapter](https://sre.google/workbook/postmortems/)
+- [Google SRE Workbook — Postmortem practices](https://sre.google/workbook/postmortem-culture/)
 - [Google — Collected Postmortems archive](https://sre.google/postmortems/)
 - [Etsy Debriefing Facilitation Guide](https://github.com/etsy/DebriefingFacilitationGuide) — John Allspaw and colleagues
 - [GitHub Engineering Blog — Incident postmortems](https://github.blog/category/engineering/) and [GitHub Status](https://www.githubstatus.com/)

@@ -305,5 +305,5 @@ DynamoDB is the AWS-native choice; Cassandra for self-hosted; MongoDB for flexib
 - [DynamoDB Streams documentation](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Streams.html)
 - [DynamoDB Global Tables](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/GlobalTables.html)
 - [DynamoDB best practices](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/best-practices.html)
-- [DynamoDB vs Cassandra (AWS blog)](https://aws.amazon.com/blogs/database/dynamodb-vs-cassandra/)
+- [Amazon DynamoDB documentation: what is DynamoDB](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Introduction.html)
 - [LWN: DynamoDB overview (2020)](https://lwn.net/Articles/820133/)

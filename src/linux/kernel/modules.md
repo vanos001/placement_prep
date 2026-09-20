@@ -797,7 +797,7 @@ static void __exit my_fs_exit(void)
 - [Linux Kernel Module Programming Guide](https://tldp.org/LDP/lkmpg/2.6/html/)
 - [The Linux Kernel documentation — Modules](https://docs.kernel.org/kbuild/modules.html)
 - [Linux Device Drivers, 3rd Edition — Chapter 2](https://lwn.net/Kernel/LDD3/)
-- [Kernel Newbies: Kernel Modules](https://kernelnewbies.org/KernelModules)
+- [Kernel Newbies: Modules](https://kernelnewbies.org/Module)
 - [LKM (Loadable Kernel Module) basics](https://www.kernel.org/doc/html/latest/kbuild/modules.html)
 
 ## Related Topics

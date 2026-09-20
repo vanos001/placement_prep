@@ -43,6 +43,13 @@ REPAIRED ACROSS ALL PASSES
                  research.google path changes; a measurement bug fixed
   pass 4 :  30   structural variants, host aliases, Crossref-verified
                  paper DOIs, sitemap-index matching (see below)
+  pass 5 :  30   second sitemap-index sweep at a looser overlap threshold,
+                 redis prefix damage, Starburst Trino PDF -> O'Reilly guide
+  pass 6 :  58   OpenAlex-confirmed paper PDFs/DOIs, GitHub repo renames and
+                 moved files (API-checked), vendor-doc substitutions for
+                 pruned comparison posts, moved documentation URLs (web.dev,
+                 developer.chrome.com, cloud.google.com, kernelnewbies,
+                 kubectl.docs, NIST pubs), two Wayback archive snapshots
 
 ------------------------------------------------------------------------------
 WHAT PASS 4 TRIED, AND WHAT IT PROVED
@@ -73,9 +80,32 @@ WHAT PASS 4 TRIED, AND WHAT IT PROVED
   'awk one-liners', and offered an older release in place of a newer one.
 
 ------------------------------------------------------------------------------
+WHAT PASS 6 TRIED, AND WHAT IT PROVED
+------------------------------------------------------------------------------
+  1. Crossref-style metadata resolution moved to OpenAlex (Semantic Scholar
+     returns HTTP 429 to scripted clients). 81 unresolved dead PDFs were
+     queried by citation title; 5 resolved to a live copy of the same work
+     and were applied after reading the citation context for each.
+  2. GitHub: 11 dead repo/file URLs checked through the API. Renames and
+     moved files resolved 3 (ongardie/dissertation, keigoi/ocaml-mpst,
+     WASI specifications/wasi-0.2.0); archived or deleted repos did not.
+  3. Wayback CDX replaced the availability API as the archive channel. It
+     answers reliably one query at a time but rate-limits bulk sweeps, so
+     it was used only for URLs that no live copy could replace (2 applied:
+     libev, Padovani research page).
+  4. Live-document moves: several hosts restructured without redirects
+     (web.dev articles -> developer.chrome.com, Anthos -> GKE, kubectl.docs
+     pages/ -> references/, kernelnewbies CamelCase -> /Documentation/*).
+     Each successor was fetched and title-checked against the citation.
+  5. Pruned comparison posts (AWS blog, Confluent, CNCF) have no successor.
+     Where the underlying topic is still documented by the same vendor, the
+     link now points at that vendor documentation and the label says so;
+     nothing was pointed at a different document under the old label.
+
+------------------------------------------------------------------------------
 REMAINING — NEEDS A HUMAN DECISION
 ------------------------------------------------------------------------------
-  genuine broken links : 453   across 310 hosts
+  genuine broken links : 395   across 298 hosts
 
   These are pages that no longer exist in equivalent form anywhere:
   removed vendor documentation, pruned blog posts, retired academic pages
@@ -84,86 +114,40 @@ REMAINING — NEEDS A HUMAN DECISION
 
   host                                         count
   --------------------------------------------------
-  github.com                                      11
-  aws.amazon.com                                   7
-  www.confluent.io                                 7
-  www.cs.cornell.edu                               6
-  web.dev                                          5
-  www.cs.cmu.edu                                   5
-  cloud.google.com                                 4
-  csrc.nist.gov                                    4
-  developer.apple.com                              4
-  developer.chrome.com                             4
-  docs.nvidia.com                                  4
-  kernelnewbies.org                                4
-  kubectl.docs.kubernetes.io                       4
-  martinfowler.com                                 4
-  reactnative.dev                                  4
-  www.cncf.io                                      4
-  www.cockroachlabs.com                            4
-  bootlin.com                                      3
-  clickhouse.com                                   3
-  docs.google.com                                  3
-  docs.u-boot.org                                  3
-  gcc.gnu.org                                      3
-  lamport.org                                      3
-  lora-alliance.org                                3
-  min.io                                           3
-  p4.org                                           3
-  sre.google                                       3
-  www.cambridge.org                                3
-  www.cs.utexas.edu                                3
-  www.databricks.com                               3
-  www.freertos.org                                 3
-  www.microsoft.com                                3
-  www.nxp.com                                      3
-  www.snowflake.com                                3
-  blog.cloudflare.com                              2
-  cs.yale.edu                                      2
-  cseweb.ucsd.edu                                  2
-  debezium.io                                      2
-  developers.google.com                            2
-  doc.akka.io                                      2
-  doc.rust-lang.org                                2
-  docs.arbitrum.io                                 2
-  docs.cypress.io                                  2
-  docs.oasis-open.org                              2
-  docs.yoctoproject.org                            2
+  www.cs.cornell.edu                           6
+  developer.apple.com                          4
+  github.com                                   4
+  www.cockroachlabs.com                        4
+  www.cs.cmu.edu                               4
+  bootlin.com                                  3
+  clickhouse.com                               3
+  developer.chrome.com                         3
+  docs.google.com                              3
+  docs.u-boot.org                              3
+  gcc.gnu.org                                  3
+  lamport.org                                  3
+  lora-alliance.org                            3
+  min.io                                       3
+  p4.org                                       3
+  reactnative.dev                              3
+  www.cambridge.org                            3
+  www.cncf.io                                  3
+  www.cs.utexas.edu                            3
+  www.databricks.com                           3
+  www.freertos.org                             3
+  www.microsoft.com                            3
+  www.nxp.com                                  3
+  www.snowflake.com                            3
+  www.open-std.org                             2
+  (... 273 further hosts, 1-2 each)            314
 
 ------------------------------------------------------------------------------
 GENUINE BROKEN LINKS BY HOST
 ------------------------------------------------------------------------------
 
-github.com  (11)
-    https://github.com/NVIDIA/TensorRT-LLM/blob/main/benchmarks/README.md
-    https://github.com/WebAssembly/WASI/blob/main/wasip2/README.md
-    https://github.com/axboe/blktrace
-    https://github.com/bytecodealliance/cranelift/tree/main/peepmatic
-    https://github.com/jlpteaching/diveinfoSystems
-    https://github.com/keir/pompeii
-    https://github.com/kubernetes/enhancements/tree/master/keps/sig-network/0057-distributed-ldu
-    https://github.com/ocaml-multicore/ocaml-mpst
-    https://github.com/ongardio/dissertation
-    https://github.com/petewarden/arduino_tinyml
-    https://github.com/ptcube/jump-consistent-hash
-
-aws.amazon.com  (7)
-    https://aws.amazon.com/blogs/compute/containers-without-constructs-aws-lambda-run-firecracker/
-    https://aws.amazon.com/blogs/compute/introducing-the-capacity-optimized-allocation-strategy-for-amazon-ec2-spot-fleets/
-    https://aws.amazon.com/blogs/containers/amazon-ecs-vs-amazon-eks/
-    https://aws.amazon.com/blogs/database/dynamodb-vs-cassandra/
-    https://aws.amazon.com/blogs/infrastructure-and-automation/best-practices-for-using-cloudformation-and-terraform-together/
-    https://aws.amazon.com/blogs/mt/monitoring-cloudwatch-vs-prometheus/
-    https://aws.amazon.com/blogs/opensource/why-aws-loves-rust-and-the-community-we-built-around-firecracker/
-
-www.confluent.io  (7)
-    https://www.confluent.io/blog/kafka-connect-single-message-transformums-smt-vsmt-with-examples/
-    https://www.confluent.io/blog/kafka-streams-vs-flink-comparison/
-    https://www.confluent.io/blog/schema-registry-a-vital-component-for-event-streaming-applications/
-    https://www.confluent.io/blog/schemas-concepts
-    https://www.confluent.io/blog/sns-vs-kafka/
-    https://www.confluent.io/ebooks/designing-event-driven-systems/
-    https://www.confluent.io/kafka-vs-sqs-vs-rabbitmq/
+  395 URLs across 298 hosts, grouped by host and ordered by
+  path. Every URL here returned HTTP 404/410 in the final re-probe and no
+  live equivalent (or archive snapshot) could be verified for it.
 
 www.cs.cornell.edu  (6)
     https://www.cs.cornell.edu/Courses/cs711/2005fa/papers/p921-choi.pdf
@@ -173,85 +157,29 @@ www.cs.cornell.edu  (6)
     https://www.cs.cornell.edu/~asdas/research/dsn02-SWIM.pdf
     https://www.cs.cornell.edu/~asdas/research/swim.pdf
 
-web.dev  (5)
-    https://web.dev/articles/http-caching
-    https://web.dev/articles/lighthouse-accessibility
-    https://web.dev/articles/mutationobserver
-    https://web.dev/articles/web-worker-transferable-objects
-    https://web.dev/css-container-queries/
-
-www.cs.cmu.edu  (5)
-    https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15740-f03/www/doc/HerlihyMoss-TM.pdf
-    https://www.cs.cmu.edu/~dga/papers/epaxos-sosp13.pdf
-    https://www.cs.cmu.edu/~fp/courses/15281-s07/lectures/kung-why-systolic-1982.pdf
-    https://www.cs.cmu.edu/~gongseg/yao-1982.pdf
-    https://www.cs.cmu.edu/~huanrao/papers/sigmod19.pdf
-
-cloud.google.com  (4)
-    https://cloud.google.com/anthos/clusters/docs/security/networking
-    https://cloud.google.com/architecture/scalability
-    https://cloud.google.com/run/docs/about
-    https://cloud.google.com/spanner/docs/query-plans
-
-csrc.nist.gov  (4)
-    https://csrc.nist.gov/CSRC/media/Publications/nistir/8413/final/documents/nistir8413.pdf
-    https://csrc.nist.gov/projects/pki-certificate-management
-    https://csrc.nist.gov/pubs/fips/140-3/upd1/final
-    https://csrc.nist.gov/pubs/nistir/8528/final
-
 developer.apple.com  (4)
     https://developer.apple.com/library/archive/documentation/Miscellaneous/Conceptual/iPhoneOSConceptual/iPhoneOSOverview/iPhoneOSOverview.html
     https://developer.apple.com/library/archive/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/ModifyingthePayload.html
     https://developer.apple.com/library/archive/documentation/NetworkingInternetWeb/Conceptual/CoreBluetooth_concepts/AboutCoreBluetooth/AboutCoreBluetooth.html
     https://developer.apple.com/library/archive/documentation/System/Conceptual/ManPages_iPhoneOS/man/task_set_exception_ports.3.html
 
-developer.chrome.com  (4)
-    https://developer.chrome.com/blog/eviction-policy/
-    https://developer.chrome.com/blog/periodic-background-sync/
-    https://developer.chrome.com/blog/webcodecs-now-shipped
-    https://developer.chrome.com/blog/webtransport-shipped
-
-docs.nvidia.com  (4)
-    https://docs.nvidia.com/cuda/cooperative-groups/index.html
-    https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/metrics.html
-    https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/protocol/extension_auto_complete.html
-    https://docs.nvidia.com/networking/pages/viewpage.action?pageId=12013428
-
-kernelnewbies.org  (4)
-    https://kernelnewbies.org/KernelConfiguration
-    https://kernelnewbies.org/KernelMap
-    https://kernelnewbies.org/KernelModules
-    https://kernelnewbies.org/KernelTutorial
-
-kubectl.docs.kubernetes.io  (4)
-    https://kubectl.docs.kubernetes.io/pages/app_management/helm.html
-    https://kubectl.docs.kubernetes.io/pages/app_management/json_patch.html
-    https://kubectl.docs.kubernetes.io/pages/app_management/strategic_merge_patch.html
-    https://kubectl.docs.kubernetes.io/pages/kustomize.html
-
-martinfowler.com  (4)
-    https://martinfowler.com/articles/accountingComputer.html
-    https://martinfowler.com/articles/patterns-of-distributed-systems/tcc.html
-    https://martinfowler.com/bliki/CQRSAndEventSourcing.html
-    https://martinfowler.com/eaaDev/EventDrivenCollaboration.html
-
-reactnative.dev  (4)
-    https://reactnative.dev/architecture/fabric
-    https://reactnative.dev/blog/2023/03/09/the-new-architecture-in-react-native-074
-    https://reactnative.dev/docs/faq#how-does-react-native-differ-from-flutter
-    https://reactnative.dev/docs/performance/overview
-
-www.cncf.io  (4)
-    https://www.cncf.io/announcements/2024/06/25/cert-manager-graduates-from-cncf-incubator/
-    https://www.cncf.io/blog/2020/11/04/envoy-vs-nginx-vs-haproxy/
-    https://www.cncf.io/blog/2021/05/26/argo-workflows-vs-apache-airflow/
-    https://www.cncf.io/blog/2021/05/26/tekton-vs-argo-workflows/
+github.com  (4)
+    https://github.com/bytecodealliance/cranelift/tree/main/peepmatic
+    https://github.com/jlpteaching/diveinfoSystems
+    https://github.com/keir/pompeii
+    https://github.com/ptcube/jump-consistent-hash
 
 www.cockroachlabs.com  (4)
     https://www.cockroachlabs.com/blog/cockroachdb-living-without-true-time/
     https://www.cockroachlabs.com/blog/query-planning/
     https://www.cockroachlabs.com/blog/time-and-ordering-in-cocroachdb/
     https://www.cockroachlabs.com/docs/stable/architecture/replication.html
+
+www.cs.cmu.edu  (4)
+    https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15740-f03/www/doc/HerlihyMoss-TM.pdf
+    https://www.cs.cmu.edu/~dga/papers/epaxos-sosp13.pdf
+    https://www.cs.cmu.edu/~fp/courses/15281-s07/lectures/kung-why-systolic-1982.pdf
+    https://www.cs.cmu.edu/~huanrao/papers/sigmod19.pdf
 
 bootlin.com  (3)
     https://bootlin.com/docx/boot-process/
@@ -262,6 +190,11 @@ clickhouse.com  (3)
     https://clickhouse.com/blog/100x-faster-queries-with-asyncio
     https://clickhouse.com/blog/clickhouse-100x-faster-queries-with-asyncio
     https://clickhouse.com/blog/clickhouse-vs-snowflake/
+
+developer.chrome.com  (3)
+    https://developer.chrome.com/blog/eviction-policy/
+    https://developer.chrome.com/blog/webcodecs-now-shipped
+    https://developer.chrome.com/blog/webtransport-shipped
 
 docs.google.com  (3)
     https://docs.google.com/document/d/1KEx2TQGLZIz5YPp3dCJc9DFHiJlbmXjnxxwLxsSvUjE/
@@ -298,15 +231,20 @@ p4.org  (3)
     https://p4.org/p4runtime
     https://p4.org/specs
 
-sre.google  (3)
-    https://sre.google/postmortems/
-    https://sre.google/sre-book/slo-book/
-    https://sre.google/workbook/postmortems/
+reactnative.dev  (3)
+    https://reactnative.dev/architecture/fabric
+    https://reactnative.dev/blog/2023/03/09/the-new-architecture-in-react-native-074
+    https://reactnative.dev/docs/faq#how-does-react-native-differ-from-flutter
 
 www.cambridge.org  (3)
     https://www.cambridge.org/core/books/computability/
     https://www.cambridge.org/core/books/introduction-to-higherorder-categorical-logic/
     https://www.cambridge.org/core/books/lectures-on-the-curryhoward-isomorphism/
+
+www.cncf.io  (3)
+    https://www.cncf.io/blog/2020/11/04/envoy-vs-nginx-vs-haproxy/
+    https://www.cncf.io/blog/2021/05/26/argo-workflows-vs-apache-airflow/
+    https://www.cncf.io/blog/2021/05/26/tekton-vs-argo-workflows/
 
 www.cs.utexas.edu  (3)
     https://www.cs.utexas.edu/users/EWD/transcriptions/EWD00xx/EWD123.html
@@ -434,6 +372,10 @@ tikv.org  (2)
     https://tikv.org/docs/5.4/concepts/overview/
     https://tikv.org/docs/devel/concepts/architecture/
 
+web.dev  (2)
+    https://web.dev/articles/mutationobserver
+    https://web.dev/articles/web-worker-transferable-objects
+
 wiki.archlinux.org  (2)
     https://wiki.archlinux.org/title/Recovery
     https://wiki.archlinux.org/title/System_administration
@@ -505,14 +447,8 @@ www.yugabyte.com  (2)
 0pointer.de  (1)
     https://0pointer.de/blog/projects/the-new-systemd-bus-api.html
 
-aantron.github.io  (1)
-    https://aantron.github.io/dream/
-
 access.redhat.com  (1)
     https://access.redhat.com/articles/165953
-
-allquantor.at  (1)
-    https://allquantor.at/blockchainbib/pdf/buchman2016.pdf
 
 ankane.org  (1)
     https://ankane.org/pgvector
@@ -592,6 +528,9 @@ cr.openjdk.org  (1)
 cs.uwaterloo.ca  (1)
     https://cs.uwaterloo.ca/~jnwKim/papers/sigmod2020.pdf
 
+csrc.nist.gov  (1)
+    https://csrc.nist.gov/projects/pki-certificate-management
+
 css-tricks.com  (1)
     https://css-tricks.com/scroll-animations-with-intersection-observer/
 
@@ -604,9 +543,6 @@ databricks.com  (1)
 dataprivacylab.org  (1)
     https://dataprivacylab.org/dataprivacylab/kanonymous/
 
-db.in.tum.de  (1)
-    https://db.in.tum.de/~radler/beyond_b_trees.pdf
-
 dbmsmusings.blogspot.com  (1)
     https://dbmsmusings.blogspot.com/2019/06/consistency-consensus-and-calvin.html
 
@@ -618,9 +554,6 @@ developer.amd.com  (1)
 
 developer.bluetooth.com  (1)
     https://developer.bluetooth.com/core/Specifications/GATT
-
-developer.confluent.io  (1)
-    https://developer.confluent.io/blog/kafka-without-zookeeper-a-gateway-to-kafka-3-0/
 
 developer.ibm.com  (1)
     https://developer.ibm.com/linuxonpower/
@@ -651,6 +584,9 @@ docs.getdbt.com  (1)
 
 docs.li.fi  (1)
     https://docs.li.fi/smart-contract-api/bridge-protocols
+
+docs.nvidia.com  (1)
+    https://docs.nvidia.com/networking/pages/viewpage.action?pageId=12013428
 
 docs.osgi.org  (1)
     https://docs.osgi.org/specification/osgi.core/8.0.0/framework.module.lifecycle.html
@@ -693,9 +629,6 @@ duckdb.org  (1)
 
 easychair.org  (1)
     https://easychair.org/publications/openaccess/qhC
-
-ee.lbl.gov  (1)
-    https://ee.lbl.gov/papers/wan-poisson-tnet95.pdf
 
 en.dtm.pub  (1)
     https://en.dtm.pub/appanomaly/tcc-vs-saga/
@@ -805,6 +738,9 @@ lmax-exploratory.github.io  (1)
 manybutfinite.com  (1)
     https://manybutfinite.com/post/paging-in-linux/
 
+martinfowler.com  (1)
+    https://martinfowler.com/articles/accountingComputer.html
+
 microprofile.io  (1)
     https://microprofile.io/specs/
 
@@ -903,6 +839,9 @@ software.schmorp.de  (1)
 
 square.github.io  (1)
     https://square.github.io/retrofit/
+
+sre.google  (1)
+    https://sre.google/postmortems/
 
 stability.ai  (1)
     https://stability.ai/news/stability-ai-and-amd-collaborate-to-brain-generative-ai-workloads
@@ -1048,9 +987,6 @@ www.debian.org  (1)
 www.deepspeed.ai  (1)
     https://www.deepspeed.ai/tutorials/fsdp-vs-deepspeed/
 
-www.di.unito.it  (1)
-    http://www.di.unito.it/~padovani/Research.html
-
 www.domainlanguage.com  (1)
     https://www.domainlanguage.com/wp-content/uploads/2016/05/DDD_Reference_1.0.pdf
 
@@ -1156,9 +1092,6 @@ www.routledge.com  (1)
 www.rsyslog.com  (1)
     https://www.rsyslog.com/doc/v8-stable/
 
-www.scottaaronson.com  (1)
-    https://www.scottaaronson.com/papers/kuperberg.pdf
-
 www.scylladb.com  (1)
     https://www.scylladb.com/2018/01/16/compaction-in-cassandra-and-scylladb/
 
@@ -1207,7 +1140,6 @@ zdharma-continuum.github.io  (1)
 zookeeper.apache.org  (1)
     https://zookeeper.apache.org/doc/r3.8.0/zookeeperHierarchical.html
 
-------------------------------------------------------------------------------
 URLs INSIDE CODE FENCES (not links — listed for completeness)
 ------------------------------------------------------------------------------
     http://apache.org/xml/features/disallow-doctype-decl

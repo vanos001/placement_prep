@@ -202,5 +202,5 @@ ECS is simpler (less to learn, less to manage). Kubernetes is more powerful (ric
 - [ECS Fargate](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/AWS_Fargate.html)
 - [ECS Service Auto-Scaling](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-auto-scaling.html)
 - [ECS + ALB Integration](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/load-balancer-types.html)
-- [ECS vs EKS (AWS blog)](https://aws.amazon.com/blogs/containers/amazon-ecs-vs-amazon-eks/)
+- [Amazon ECS documentation: what is Amazon ECS](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/Welcome.html)
 - [LWN: ECS overview (2021)](https://lwn.net/Articles/820133/)

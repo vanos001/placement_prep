@@ -134,7 +134,7 @@ Jane Street's standard-library alternatives. **Base** is the lightweight, portab
 - Dune build system — https://dune.build/
 - Jane Street open source (Base, Core, Async) — https://opensource.jane.com/
 - Lwt — https://github.com/ocsigen/lwt
-- Dream web framework — https://aantron.github.io/dream/
+- Dream web framework — https://camlworks.github.io/dream/
 - OCaml 5 multicore blog (ocaml.org) — https://ocaml.org/docs/multicore
 
 ## Related Topics
