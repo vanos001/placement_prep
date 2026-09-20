@@ -667,7 +667,7 @@ dd if=/dev/sda of=/dev/null bs=1M count=4000
 - <https://fio.readthedocs.io/en/latest/fio_doc.html> — fio documentation
 - <https://www.brendangregg.com/linuxperf.html> — Linux performance tools
 - <https://github.com/axboe/fio> — fio source code
-- <https://www.thomas-krenn.com/en/wiki/Linux_I/O_Scheduler_Comparison> — Scheduler benchmarks
+- <https://www.thomas-krenn.com/en/wiki/> — Scheduler benchmarks
 
 ## Related Topics
 

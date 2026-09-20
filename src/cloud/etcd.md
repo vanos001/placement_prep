@@ -245,6 +245,6 @@ etcd and ZooKeeper are similar in features; etcd's API is more modern (gRPC). Co
 - Ongaro & Oki, "[In Search of an Understandable Consensus Algorithm (Raft)](https://raft.github.io/raft.pdf)" (USENIX ATC 2014)
 - [etcd GitHub repository](https://github.com/etcd-io/etcd)
 - [etcd Performance tuning](https://etcd.io/docs/latest/tuning/)
-- [etcd disaster recovery](https://etcd.io/docs/latest/admin_guide/#disaster-recovery)
+- [etcd disaster recovery](https://etcd.io/docs/latest/)
 - [Kubernetes: etcd maintenance](https://kubernetes.io/docs/tasks/administer-cluster/configure-upgrade-etcd/)
 - [LWN: etcd internals (2018)](https://lwn.net/Articles/750830/)

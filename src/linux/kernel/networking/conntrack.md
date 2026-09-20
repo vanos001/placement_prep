@@ -590,7 +590,7 @@ echo 30 > /proc/sys/net/netfilter/nf_conntrack_tcp_timeout_time_wait
 - **thermalcircle.de**: [Connection Tracking Core Implementation](https://thermalcircle.de/doku.php?id=blog:linux:connection_tracking_2_core_implementation)
 - **kernel-internals.org**: [Connection Tracking](https://kernel-internals.org/net/conntrack/)
 - **Kernel documentation**: `Documentation/networking/nf_conntrack-sysctl.rst`
-- **nftables wiki**: [Conntrack](https://wiki.nftables.org/wiki-nftables/index.php/Conntrack)
+- **nftables wiki**: [Conntrack](https://wiki.nftables.org/wiki-nftables/index.php/)
 
 ---
 

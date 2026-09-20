@@ -213,5 +213,5 @@ Arc), Cosmos DB's multi-model global distribution, and Entra ID's maturity.
 - [Azure Documentation](https://learn.microsoft.com/en-us/azure/)
 - [Cosmos DB Consistency Levels](https://learn.microsoft.com/en-us/azure/cosmos-db/consistency-levels)
 - [Azure Well-Architected Framework](https://learn.microsoft.com/en-us/azure/well-architected/)
-- [Azure Functions Durable Extensions](https://learn.microsoft.com/en-us/azure/azure-functions/durable/)
+- [Azure Functions Durable Extensions](https://learn.microsoft.com/en-us/azure/azure-functions/)
 - [Microsoft Entra ID Documentation](https://learn.microsoft.com/en-us/entra/identity/)

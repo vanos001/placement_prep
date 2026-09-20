@@ -555,7 +555,7 @@ podman run --security-opt seccomp=notify:listener.sock \
 # The supervisor (conmon or external) receives notifications
 
 # Podman's built-in seccomp profile:
-# https://github.com/containers/common/blob/main/pkg/seccomp/default.json
+# https://github.com/containers/common/blob/main/pkg/seccomp/seccomp.json
 # Blocks: mount, kexec_load, reboot, swapon, swapoff, sysfs, etc.
 # Allows: read, write, open, close, stat, mmap, etc.
 ```

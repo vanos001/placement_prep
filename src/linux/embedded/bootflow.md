@@ -531,7 +531,7 @@ arm-none-eabi-gdb
 * **LWN: [Booting Linux](https://lwn.net/Articles/636902/)**
 * **ARM Trusted Firmware-A (TF-A): https://trustedfirmware-a.readthedocs.io/**
 * **Device Tree specification: https://devicetree.org/**
-* **OpenBMC boot flow: https://github.com/openbmc/docs**
+* **OpenBMC boot flow: https://github.com/openbmc/docs
 * **Raspberry Pi boot flow: https://www.raspberrypi.com/documentation/computers/raspberry-pi.html#raspberry-pi-boot-modes**
 
 ---

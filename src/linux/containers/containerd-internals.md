@@ -190,9 +190,9 @@ For new Kubernetes deployments, containerd is the standard. CRI-O is used in Ope
 
 - [containerd documentation](https://containerd.io/docs/)
 - [containerd GitHub](https://github.com/containerd/containerd)
-- [containerd architecture documentation](https://github.com/containerd/containerd/blob/main/docs/architecture.md)
+- [containerd architecture documentation](https://github.com/containerd/containerd/blob/main/docs/cri/architecture.md)
 - [CRI plugin source code](https://github.com/containerd/containerd/tree/main/plugins/cri)
-- [Kubernetes: Container Runtime Interface](https://kubernetes.io/docs/concepts/architecture/cni/)
+- [Kubernetes: Container Runtime Interface](https://kubernetes.io/docs/concepts/architecture/)
 - [OCI Runtime specification](https://github.com/opencontainers/runtime-spec)
 - [OCI Image specification](https://github.com/opencontainers/image-spec)
 - [CRI-O documentation](https://cri-o.io/)

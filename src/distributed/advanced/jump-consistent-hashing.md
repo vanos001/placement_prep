@@ -133,7 +133,7 @@ The multiplier `2654435761` is the "Knuth's multiplicative constant" for 32-bit.
 
 - Lamping & Veach, "[A Fast, Minimal Memory, Consistent Hashing Algorithm](https://arxiv.org/abs/1406.2295)" (2011)
 - Erlend Hamberg, "[Jump Consistent Hashing in Haskell](https://hamberg.no/erlend/posts/2015-03-20-jump-consistent-hash-in-haskell.html)" (2015) — the bug report
-- [groupcache's jump consistent hash implementation](https://github.com/golang/groupcache/blob/master/consistenthash/jump.go)
+- [groupcache's jump consistent hash implementation](https://github.com/golang/groupcache/blob/master/consistenthash/consistenthash.go)
 - [Implementation in Java (Google Guava)](https://github.com/google/guava/wiki/CollectionUtilities)
 - [Implementation in Python](https://github.com/ptcube/jump-consistent-hash)
 - [LWN: Jump consistent hashing (2015)](https://lwn.net/Articles/609616/)

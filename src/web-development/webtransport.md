@@ -307,7 +307,7 @@ A: HOLB happens when an in-order transport like TCP stalls unrelated data behind
 
 - [W3C WebTransport Specification](https://www.w3.org/TR/webtransport/)
 - [MDN: WebTransport API](https://developer.mozilla.org/en-US/docs/Web/API/WebTransport)
-- [Chrome Developers: WebTransport](https://developer.chrome.com/docs/capabilities/web-transport)
+- [Chrome Developers: WebTransport](https://developer.chrome.com/docs/capabilities/)
 - [RFC 9220 — Proxying UDP in HTTP (extended CONNECT)](https://www.rfc-editor.org/rfc/rfc9220)
 - [RFC 9221 — An Unreliable Datagram Extension to QUIC](https://www.rfc-editor.org/rfc/rfc9221)
 - [IETF draft-ietf-webtrans-http3 (WebTransport over HTTP/3)](https://datatracker.ietf.org/doc/html/draft-ietf-webtrans-http3)

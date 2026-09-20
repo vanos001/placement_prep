@@ -470,7 +470,7 @@ which functionality is restricted.
 
 ## References
 
-- [Apple Developer — App Attest](https://developer.apple.com/documentation/devicecheck/appattest)
+- [Apple Developer — App Attest](https://developer.apple.com/documentation/devicecheck/)
 - [Apple Developer — DeviceCheck API](https://developer.apple.com/documentation/devicecheck)
 - [Apple Platform Security Guide — Code Signing](https://support.apple.com/guide/security/sec1258564c4/web)
 - [Apple Platform Security Guide — Secure Enclave](https://support.apple.com/guide/security/sec59b0b31web/web)

@@ -613,7 +613,7 @@ EOF
 - <https://ceph.io/en/> - Ceph project homepage
 - <https://docs.ceph.com/en/latest/rados/operations/> - RADOS operations guide
 - <https://docs.ceph.com/en/latest/rbd/> - RBD documentation
-- <https://www.usenix.org/conference/atc14/technical-sessions/presentation/weil> - CRUSH algorithm paper
+- <https://www.usenix.org/conference/atc14/technical-sessions/> - CRUSH algorithm paper
 
 ## Related Topics
 

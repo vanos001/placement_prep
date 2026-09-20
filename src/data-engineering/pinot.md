@@ -200,7 +200,7 @@ Pinot's star-tree gives it an edge for "group-by on multiple dimensions" queries
 - [Apache Pinot documentation](https://docs.pinot.apache.org/)
 - Kishore et al., "[Apache Pinot: A Real-time Analytical Data Store](https://www.cidrdb.org/cidr2021/papers/p35-kishore.pdf)" (CIDR 2021)
 - [Pinot GitHub repository](https://github.com/apache/pinot)
-- [Star-Tree index documentation](https://docs.pinot.apache.org/basics/components/star-tree-index)
+- [Star-Tree index documentation](https://docs.pinot.apache.org/basics/components/)
 - [LinkedIn: Pinot case study](https://engineering.linkedin.com/analytics/real-time-deep-dive-apache-pinot)
 - [Pinot vs Druid comparison](https://docs.pinot.apache.org/basics/comparisons/pinot-vs-druid)
 - [LWN: Apache Pinot overview (2021)](https://lwn.net/Articles/865099/)

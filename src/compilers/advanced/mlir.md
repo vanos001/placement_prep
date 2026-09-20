@@ -164,5 +164,5 @@ LLVM IR is "the floor" — every MLIR compiler eventually lowers to LLVM IR for 
 - Chris Lattner et al., "[MLIR: Scaling Compiler Infrastructure for Domain Specific Computation](https://www.computer.org/csdl/proceedings-article/2021-cgo/516500a543/1Cb4BP2PHTY%3D/10)" (CGO 2021)
 - [IREE: A Compiler and Runtime for ML](https://github.com/iree-org/iree)
 - [Torch-MLIR](https://github.com/llvm/torch-mlir)
-- [StableHLO specification](https://github.com/openxml/stablehlo)
+- [StableHLO specification](https://github.com/openxla/stablehlo)
 - [LLVM CIRCT project (hardware design)](https://www.circt.org/)

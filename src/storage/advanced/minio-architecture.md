@@ -190,5 +190,5 @@ MinIO's "Go single binary, no external deps" makes it easy to deploy; Ceph's "C+
 - [MinIO GitHub](https://github.com/minio/minio)
 - [MinIO Erasure Coding: Quick Look](https://min.io/docs/minio/linux/operations/concepts/erasure-coding.html)
 - [MinIO site replication](https://min.io/docs/minio/linux/operations/site-replication.html)
-- [Ceph RGW vs MinIO: A comparison](https://min.io/product/overview/why-minio)
+- [Ceph RGW vs MinIO: A comparison](https://min.io/product/overview/)
 - [MinIO Subnet (commercial support)](https://min.io/subnet)

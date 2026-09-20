@@ -416,7 +416,7 @@ Total time: ~1 s, with state preserved.
 - [Dart asynchronous programming — dart.dev](https://dart.dev/codelabs/async-await)
 - [Isolates — dart.dev](https://dart.dev/language/concurrency)
 - [Flutter rendering pipeline — docs.flutter.dev](https://api.flutter.dev/flutter/rendering/RenderingPipeline-class.html)
-- [Impeller architecture — github.com/flutter/engine](https://github.com/flutter/engine/blob/main/impeller/docs/architecture.md)
+- [Impeller architecture — github.com/flutter/engine](https://docs.flutter.dev/perf/impeller)
 - [Skia graphics library — skia.org](https://skia.org/)
 - [AOT vs JIT in Dart — dart.dev/tools/dart-compile](https://dart.dev/tools/dart-compile)
 - [Flutter performance best practices — docs.flutter.dev](https://docs.flutter.dev/perf/best-practices)

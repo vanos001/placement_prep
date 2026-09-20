@@ -313,7 +313,7 @@ A: The first call to the encoder's `output` callback carries `metadata.decoderCo
 
 - [W3C WebCodecs Specification](https://www.w3.org/TR/webcodecs/)
 - [MDN: WebCodecs API](https://developer.mozilla.org/en-US/docs/Web/API/WebCodecs_API)
-- [Chrome Developers: WebCodecs](https://developer.chrome.com/docs/capabilities/webcodecs)
+- [Chrome Developers: WebCodecs](https://developer.chrome.com/docs/capabilities/)
 - [WebCodecs Samples Repository](https://w3c.github.io/webcodecs/samples/)
 - [W3C VideoFrame reference](https://w3c.github.io/webcodecs/#videoframe-interface)
 - [W3C codec registry](https://www.w3.org/TR/webcodecs-codec-registry/)

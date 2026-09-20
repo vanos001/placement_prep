@@ -266,10 +266,10 @@ The key insight: **a TPM is for "is this the device I think it is, in the state 
 - Trusted Computing Group, "[TCG TPM 2.0 Specification, Revision 01.59](https://trustedcomputinggroup.org/resource/tpm-library-specification/)" (2020)
 - Trusted Computing Group, "[PC Client Platform Firmware Profile](https://trustedcomputinggroup.org/resource/pc-client-specific-platform-firmware-profile-specification/)"
 - Microsoft, "[TPM Fundamentals](https://learn.microsoft.com/en-us/windows/security/hardware-security/tpm/tpm-fundamentals)"
-- Microsoft, "[TPM 2.0 Provisioning and Windows](https://learn.microsoft.com/en-us/windows/security/hardware-security/tpm/tpm-operations-for-it-pros)"
+- Microsoft, "[TPM 2.0 Provisioning and Windows](https://learn.microsoft.com/en-us/windows/security/hardware-security/)"
 - tpm2-tss project, "[tpm2-tss: TPM 2.0 Software Stack](https://github.com/tpm2-software/tpm2-tss)"
 - Linux kernel, "[TPM driver documentation](https://docs.kernel.org/security/tpm/index.html)"
 - systemd, "[systemd-cryptenroll manual](https://www.freedesktop.org/software/systemd/man/systemd-cryptenroll.html)" — TPM2 integration for LUKS
 - Kenneth Goldman et al., "[Practical Guide to TPM 2.0 (book)](https://link.springer.com/book/10.1007/978-1-4302-6584-9)" (Apress, 2016) — written by TPM 2.0 architects
-- J. Wertheimer, "[TPM 2.0 Attestation with Azure](https://learn.microsoft.com/en-us/azure/security/fundamentals/attestation)"
+- J. Wertheimer, "[TPM 2.0 Attestation with Azure](https://learn.microsoft.com/en-us/azure/security/fundamentals/)"
 - Keylime project, "[Keylime: TPM-based Boot Attestation](https://keylime.dev/)" — Linux Foundation open-source attestation framework

@@ -877,7 +877,7 @@ podman run --rm -it nginx:latest sh
 * **Podman Quadlet guide: https://docs.podman.io/en/latest/markdown/podman-systemd.unit.5.html**
 * **LWN: [Quadlet](https://lwn.net/Articles/919게시/)**
 * **Red Hat blog: "Podman Quadlet: Running Containers as Systemd Services"**
-* **Source: https://github.com/containers/quadlet**
+* **Source: https://github.com/containers/quadlet
 * **systemd generators: `man systemd.generator`**
 
 ---

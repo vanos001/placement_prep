@@ -172,7 +172,7 @@ The curve has a **knee** — the point at which latency stops growing linearly a
 
 Most load tools are **closed-loop**: the test fires N concurrent virtual users; each fires a request, waits, fires the next. The throughput is a function of latency — if latency doubles, throughput halves because the virtual users are blocked waiting.
 
-Production is **open-loop**: requests arrive at a rate independent of the system's response. A spike of 1,000 RPS hits your system whether it responds in 100 ms or 1,000 ms. The implication, codified by John D. Mitchell in his analysis of "Little's Law gone wrong" and the basis for the [wrk2 paper](https://github.com/gilt/wrk2): **closed-loop load tests systematically overestimate the system's capacity.** A closed-loop test of "1,000 virtual users" will report lower latency than an open-loop test at "1,000 RPS" because, when the system gets slow, the closed-loop virtual users naturally back off and reduce the offered load.
+Production is **open-loop**: requests arrive at a rate independent of the system's response. A spike of 1,000 RPS hits your system whether it responds in 100 ms or 1,000 ms. The implication, codified by John D. Mitchell in his analysis of "Little's Law gone wrong" and the basis for the [wrk2 paper](https://github.com/giltene/wrk2): **closed-loop load tests systematically overestimate the system's capacity.** A closed-loop test of "1,000 virtual users" will report lower latency than an open-loop test at "1,000 RPS" because, when the system gets slow, the closed-loop virtual users naturally back off and reduce the offered load.
 
 `wrk2` (and `k6`'s `constant_arrival_rate` executor) are open-loop: they generate requests at a fixed rate independent of the system's response. For capacity planning, prefer open-loop.
 
@@ -302,7 +302,7 @@ A: Four classes. (1) **Latency** (p50, p95, p99 — never averages): user-visibl
 - [Locust — Documentation](https://docs.locust.io/en/stable/)
 - [Apache JMeter — User Manual](https://jmeter.apache.org/usermanual/index.html)
 - [Gatling — Documentation](https://docs.gatling.io/)
-- [wrk2 — GitHub (constant-throughput load test tool)](https://github.com/gilt/wrk2)
+- [wrk2 — GitHub (constant-throughput load test tool)](https://github.com/giltene/wrk2)
 - [Google SRE Book — Chapter 12: Reliable Cascading (testing)](https://sre.google/sre-book/)
 - [Google SRE Workbook — Load testing chapter](https://sre.google/workbook/)
 - [Brendan Gregg — The USE Method](https://www.brendangregg.com/usemethod.html)

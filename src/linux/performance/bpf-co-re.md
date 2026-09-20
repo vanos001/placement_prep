@@ -545,7 +545,7 @@ pahole -C task_struct vmlinux
 ## Further Reading
 
 - [BPF CO-RE reference guide](https://nakryiko.com/posts/bpf-core-reference-guide/)
-- [BPF CO-RE: Compile Once – Run Everywhere (Alexei Starovoitov)](https://www.usenix.org/conference/lisa19/presentation/starovoitov)
+- [BPF CO-RE: Compile Once – Run Everywhere (Alexei Starovoitov)](https://www.usenix.org/conference/lisa19/presentation/)
 - [libbpf-bootstrap](https://github.com/libbpf/libbpf-bootstrap)
 - [BTF specification](https://www.kernel.org/doc/html/latest/bpf/btf.html)
 - [Andrii Nakryiko's CO-RE blog series](https://nakryiko.com/posts/bpf-core-reference-guide/)

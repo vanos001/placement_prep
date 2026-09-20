@@ -109,7 +109,7 @@ EPaxos's central insight — that conflict-aware consensus can run faster than c
 ## References
 
 - Iulian Moraru, David Turnbull, et al., "[There Is More Consensus in Egalitarian Parliaments](https://www.cs.cmu.edu/~dga/papers/epaxos-sosp13.pdf)" (SOSP 2013)
-- [Spindle: EPaxos evaluation repository](https://github.com/epaxos/spindle)
+- [Spindle: EPaxos evaluation repository](https://github.com/efficient/epaxos)
 - [LWN: "Egalitarian Paxos and the limits of leaderless consensus" (2014)](https://lwn.net/Articles/619438/)
 - Aapo Kojola, "EPaxos revisited" (blog series, 2022)
 - [Pompeii: Modern EPaxos implementation in Rust](https://github.com/keir/pompeii)

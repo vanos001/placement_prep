@@ -702,8 +702,8 @@ sequenceDiagram
 - **Kernel documentation**: `Documentation/admin-guide/device-mapper/dm-crypt.html`
 - **kernel-internals.org**: [dm-crypt and fscrypt](https://kernel-internals.org/crypto/encryption/)
 - **Cloudflare Blog**: [Speeding up Linux disk encryption](https://blog.cloudflare.com/speeding-up-linux-disk-encryption/)
-- **cryptsetup wiki**: [GitHub wiki](https://github.com/cryptsetup/cryptsetup/wiki)
-- **LUKS specification**: [GitLab](https://gitlab.com/cryptsetup/cryptsetup/-/wikis/LUKS-standard-on-disk-format)
+- **cryptsetup wiki**: [GitHub wiki](https://gitlab.com/cryptsetup/cryptsetup/-/wikis/home)
+- **LUKS specification**: [GitLab](https://gitlab.com/cryptsetup/cryptsetup/-/wikis/)
 
 ---
 

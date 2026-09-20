@@ -225,7 +225,7 @@ FreeRTOS dominates the MCU market by volume; Zephyr is the rising challenger wit
 - [FreeRTOS Official Documentation](https://www.freertos.org/Documentation/RTOS_book.html) — task model, ready list, PendSV port notes.
 - [FreeRTOS Kernel Source on GitHub](https://github.com/FreeRTOS/FreeRTOS-Kernel) — `tasks.c`, `queue.c`, `portable/GCC/ARM_CM3/port.c` for the actual context switch.
 - [Zephyr Project Documentation](https://docs.zephyrproject.org/latest/) — scheduler concepts, EDF, SMP, devicetree.
-- [ThreadX Documentation (Eclipse OpenAD)](https://github.com/eclipse-threadx/rtos) — preemption-threshold, thread control block.
+- [ThreadX Documentation (Eclipse OpenAD)](https://github.com/eclipse-threadx/threadx) — preemption-threshold, thread control block.
 - Jane W. S. Liu, *Real-Time Systems: Developer's Insight* (Prentice Hall, 2000), Chapters 5–8 — the canonical reference on fixed-priority scheduling and synchronization protocols.
 - [ARM Cortex-M3 / Cortex-M4 / Cortex-M7 Processor Programming Manual (ARM DDI 0403 / 0553)](https://developer.arm.com/documentation/ddi0403/latest) — exception model, PSP/MSP, EXC_RETURN, PendSV, NVIC.
 - [Embedded.com — "How to build a real-time scheduler" (Don Lecke, 2018)](https://www.embedded.com/how-to-build-a-real-time-scheduler/) — practical walk-through of the ready-list and tick-handler design.

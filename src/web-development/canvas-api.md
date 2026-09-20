@@ -347,5 +347,5 @@ A: `ImageBitmap` is the decoded, GPU-ready form. Drawing an `HTMLImageElement` m
 - [MDN: Optimizing Canvas](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Optimizing_canvas)
 - [MDN: OffscreenCanvas](https://developer.mozilla.org/en-US/docs/Web/API/OffscreenCanvas)
 - [MDN: ImageBitmap](https://developer.mozilla.org/en-US/docs/Web/API/ImageBitmap)
-- [Chrome DevTools: Canvas inspection](https://developer.chrome.com/docs/devtools/canvas/)
+- [Chrome DevTools: Canvas inspection](https://developer.chrome.com/docs/devtools/)
 - [W3C Canvas 2D Context (Level 2) Note](https://www.w3.org/TR/2dcontext/)

@@ -355,7 +355,7 @@ For enterprise-scale analytics (millions of queries per day, complex aggregation
 
 - The Graph documentation — https://thegraph.com/docs/
 - Subgraph manifest specification — https://thegraph.com/docs/en/developing/creating-a-subgraph/
-- Graph Protocol specification (technical paper) — https://github.com/graphprotocol/graphprotocol-docs
+- Graph Protocol specification (technical paper) — https://github.com/graphprotocol/docs
 - GraphQL schema reference for subgraphs — https://thegraph.com/docs/en/developing/defining-a-subgraph/
 - AssemblyScript API reference (`@graphprotocol/graph-ts`) — https://thegraph.com/docs/en/developing/assemblyscript-api/
 - Substreams documentation — https://thegraph.com/docs/en/substreams/

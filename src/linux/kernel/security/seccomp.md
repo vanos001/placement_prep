@@ -254,7 +254,7 @@ compiles to `sock_fprog`. The flow at startup:
 The Chrome team's writing on the sandbox is canonical reading:
 
 - *Sandbox design under Linux* — <https://www.chromium.org/developers/design-documents/sandbox/>
-- *Linux seccomp-bpf sandbox* — <https://www.chromium.org/developers/design-documents/linux-seccomp-bpf-sandbox/>
+- *Linux seccomp-bpf sandbox* — <https://www.chromium.org/developers/design-documents/>
 
 ## Inspecting seccomp on a Process
 

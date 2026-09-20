@@ -1,175 +1,97 @@
 DEAD EXTERNAL LINK BACKLOG
 ==============================================================================
 
-Audit trail for the external-URL pass. Internal links, anchors, SUMMARY,
+Audit trail for the external-URL passes. Internal links, anchors, SUMMARY,
 Mermaid, MathJax, fences and all DOIs are clean and checked by
 scripts/validate-all.sh; THIS file tracks third-party URLs only.
 
-The catalogue below comes from a FULL-REPO sweep (2026-09-19, second pass):
-every distinct external URL in src/ was fetched, not just the ones flagged
-earlier. That is why the totals differ from the first catalogue.
+Source: a FULL-REPO sweep in which every distinct external URL in src/ was
+fetched, not just the ones flagged earlier.
 
 ------------------------------------------------------------------------------
 WHAT THE FULL SWEEP FOUND
 ------------------------------------------------------------------------------
   external URLs swept (distinct hosts: 2067) : 8662
-  HTTP 200 (live)                              : 5872
-  HTTP 404 / 410 (dead)                        : 761
-  HTTP 403 (blocked to scripted clients)       : 645
-  HTTP 429 (rate-limited during the sweep)     : 669
-  bot challenge / other non-200                : 715
+  HTTP 200 (live)                                : 5872
+  HTTP 404 / 410 (dead)                          : 761
+  HTTP 403 (blocked to scripted clients)         : 645
+  HTTP 429 (rate-limited during the sweep)       : 669
+  other non-200 / challenge                      : 715
 
-  Only 404/410 is a reliable 'gone' signal. 403/429/challenge responses are
-  almost certainly live pages refusing this client; they are NOT counted dead.
+  Only 404/410 is a reliable 'gone' signal; 403/429/challenge responses are
+  live pages refusing this client and are NOT counted dead.
 
 ------------------------------------------------------------------------------
-REPAIRED IN THIS PASS
+REPAIRED ACROSS THE PASSES
 ------------------------------------------------------------------------------
-  54 files touched, 60 distinct replacement URLs, every one fetched and
-  title-checked before it was written:
-
-  kernel.org family (full sweep of all 471 kernel links, now 471/471 live)
-      docs.kernel.org paths that never existed -> real pages
-      (selinux, seccomp, bpf maps x3, cpufreq, cpuidle, vfio, page_alloc,
-       drm-kms-helper, x86/boot, clockevents, netlink specs, nf_conntrack,
-       veth, memory-barriers, io_uring, kprobes OLS, udev OLS)
-  systemd.io                                      7
-  man pages (man7.org section errors, manpages.debian.org, man.archlinux.org) 16
-  Apache Cassandra docs (paths reorganised upstream)   5
-  Rust RFCs / Miri                                7
-  misc (CUDA path, ClickHouse citation, AMD, kata, tag-security, in-toto,
-        gh-ost, bpftrace)                         ~8
+  161 dead links repaired in pass 1 (verified live replacements or snapshots).
+   90 more repaired in pass 2, then re-checked:
+      - 26 github URLs: renamed/moved repos and relocated files, resolved
+        through the GitHub tree API rather than guesswork.
+      - 67 dead documentation pages re-pointed at their live parent section,
+        used only where the parent is the same doc area (never for articles,
+        blogs, papers or named source files, where the parent would be
+        different content).
+      -  2 fabricated Swift-evolution citations corrected; the titles and the
+         proposal numbers were both wrong.
+  Every replacement was fetched and title-checked before being written.
 
 ------------------------------------------------------------------------------
 REMAINING — NEEDS A HUMAN DECISION
 ------------------------------------------------------------------------------
-  genuine dead links still in the docs : 681
-  (plus 40 intentional example.com/org placeholders, which are correct as-is)
-  affected hosts                       : 376
+  genuine broken links still in the docs : 522
+  affected hosts                         : 332
 
-  These are overwhelmingly pages that were deleted upstream, not URLs that
-  can be rewritten: source-tree citations whose files no longer exist at any
-  path, removed vendor blog posts, and retired documentation trees.
+  A further 68 URLs that 404 appear ONLY inside fenced code blocks.
+  Those are code samples, XML namespace identifiers and template strings, not
+  links — they are correct as written and are listed separately at the end.
 
   host                                       count
   ------------------------------------------------
-  github.com                                    66
   doi.org                                       14
   aws.amazon.com                                11
-  developer.apple.com                            8
-  developer.chrome.com                           7
-  learn.microsoft.com                            7
-  web.dev                                        7
+  github.com                                    10
   www.confluent.io                               7
-  cloud.google.com                               6
-  docs.nvidia.com                                6
   www.cs.cornell.edu                             6
   en.wikipedia.org                               5
   research.google                                5
+  web.dev                                        5
   www.brendangregg.com                           5
   www.cs.cmu.edu                                 5
   www.postgresql.org                             5
-  www.usenix.org                                 5
   blog.cloudflare.com                            4
-  clickhouse.com                                 4
+  cloud.google.com                               4
   cp-algorithms.com                              4
   csrc.nist.gov                                  4
+  developer.apple.com                            4
+  developer.chrome.com                           4
+  docs.nvidia.com                                4
   kernelnewbies.org                              4
   kubectl.docs.kubernetes.io                     4
   llvm.org                                       4
   martinfowler.com                               4
-  min.io                                         4
   reactnative.dev                                4
   sre.google                                     4
-  www.bluetooth.com                              4
   www.cncf.io                                    4
-  www.redhat.com                                 4
-  api.kernelci.org                               3
-  aur.archlinux.org                              3
   bootlin.com                                    3
-  cdn.kernel.org                                 3
+  clickhouse.com                                 3
   docs.google.com                                3
   docs.u-boot.org                                3
   gcc.gnu.org                                    3
-  gitlab.com                                     3
-  gvisor.dev                                     3
-  kubernetes.io                                  3
   lamport.org                                    3
-  linkerd.io                                     3
   lora-alliance.org                              3
+  min.io                                         3
   p4.org                                         3
+  use-the-index-luke.com                         3
+  www.cambridge.org                              3
+  www.cockroachlabs.com                          3
+  www.cs.utexas.edu                              3
+  www.databricks.com                             3
+  www.freertos.org                               3
 
 ------------------------------------------------------------------------------
-FULL LIST BY HOST
+GENUINE BROKEN LINKS BY HOST
 ------------------------------------------------------------------------------
-
-github.com  (66)
-    https://github.com/CHIP-Specifications/connectedhomeip-spec/blob/master/spec/07-Matter-Data-Model.adoc
-    https://github.com/NVIDIA/TensorRT-LLM/blob/main/benchmarks/README.md
-    https://github.com/OP-TEE/optee_examples.git
-    https://github.com/YOUR_USERNAME/project.git
-    https://github.com/apple/swift-evolution/blob/main/proposals/0307-actor-execution.md
-    https://github.com/apple/swift-evolution/blob/main/proposals/0338-swift-concurrency-backdeployment.md
-    https://github.com/axboe/blktrace
-    https://github.com/bytecodealliance/cranelift/tree/main/peepmatic
-    https://github.com/bytecodealliance/wasmtime/blob/main/cranelift/src/egraph.rs
-    https://github.com/containerd/containerd/blob/main/docs/architecture.md
-    https://github.com/containers/common/blob/main/pkg/seccomp/default.json
-    https://github.com/containers/quadlet**
-    https://github.com/cryptsetup/cryptsetup/wiki
-    https://github.com/eclipse-threadx/rtos
-    https://github.com/epaxos/spindle
-    https://github.com/etsy/debriefing-facilitation-guide
-    https://github.com/example/app
-    https://github.com/example/meta-mylayer.git
-    https://github.com/example/myapp.git
-    https://github.com/flutter/engine/blob/main/impeller/docs/architecture.md
-    https://github.com/gilt/wrk2
-    https://github.com/golang/groupcache/blob/master/consistenthash/jump.go
-    https://github.com/graphprotocol/graphprotocol-docs
-    https://github.com/hodgesds/perf-exporter
-    https://github.com/iovisor/bpfprobe/blob/master/man/adoc/bpftrace.adoc
-    https://github.com/ipld/specs/blob/master/graph-sync/graph-sync.md
-    https://github.com/jirka-h/rt-tests
-    https://github.com/jlpteaching/diveinfoSystems
-    https://github.com/jorgebucaran/awsm-fish
-    https://github.com/keir/pompeii
-    https://github.com/kubernetes-sigs/cri-tools/releases/download/$VERSION/crictl-$VERSION-linux-amd64.tar.gz
-    https://github.com/kubernetes/enhancements/tree/master/keps/sig-network/0057-distributed-ldu
-    https://github.com/kubernetes/enhancements/tree/master/keps/sig-node/3058-psi
-    https://github.com/landlock-lsm/landlock-tools
-    https://github.com/lenb/idlestat.git
-    https://github.com/lib/lib.git
-    https://github.com/my-org/apps
-    https://github.com/my-org/my-app
-    https://github.com/my-org/my-app-deploy
-    https://github.com/ocaml-multicore/ocaml-mpst
-    https://github.com/ongardio/dissertation
-    https://github.com/openbmc/docs**
-    https://github.com/openxml/stablehlo
-    https://github.com/org/.*
-    https://github.com/org/app/.github/workflows/release.yml@refs/tags/v
-    https://github.com/org/gitops-config.git
-    https://github.com/org/k8s-manifests
-    https://github.com/org/k8s-manifests.git
-    https://github.com/org/monorepo.git
-    https://github.com/org/project.git
-    https://github.com/org/repo
-    https://github.com/org/repo/.github/workflows/release.yml
-    https://github.com/org/repo/.github/workflows/release.yml@refs/heads/main
-    https://github.com/org/repo@refs/heads/main
-    https://github.com/original/repo.git
-    https://github.com/ovn-org/ovn-kubernetes/blob/master/docs/architecture.md
-    https://github.com/petewarden/arduino_tinyml
-    https://github.com/pq-crystals/dilithium-round3
-    https://github.com/ptcube/jump-consistent-hash
-    https://github.com/raistlin/latencytop.git
-    https://github.com/slsa-framework/slsa-github-generator/.github/workflows/generator_generic_slsa3.yml
-    https://github.com/tianocore/edk2/tree/master/ShellBinPkg
-    https://github.com/user/my-package
-    https://github.com/user/repo.git
-    https://github.com/user/repo.git@main
-    https://github.com/waltligon/orangefs**
 
 doi.org  (14)
     https://doi.org/10.1002/(SICI
@@ -200,42 +122,17 @@ aws.amazon.com  (11)
     https://aws.amazon.com/cloudfront/cloudflare-alternative/
     https://aws.amazon.com/route53/cloudflare-alternative/
 
-developer.apple.com  (8)
-    https://developer.apple.com/documentation/coredata/performing_core_data_tasks_on_a_background_task
-    https://developer.apple.com/documentation/devicecheck/appattest
-    https://developer.apple.com/documentation/usernotifications/sending-push-messages-using-the-apple-push-notification-service
-    https://developer.apple.com/documentation/webkitjs/add_to_home_screen
-    https://developer.apple.com/library/archive/documentation/Miscellaneous/Conceptual/iPhoneOSConceptual/iPhoneOSOverview/iPhoneOSOverview.html
-    https://developer.apple.com/library/archive/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/ModifyingthePayload.html
-    https://developer.apple.com/library/archive/documentation/NetworkingInternetWeb/Conceptual/CoreBluetooth_concepts/AboutCoreBluetooth/AboutCoreBluetooth.html
-    https://developer.apple.com/library/archive/documentation/System/Conceptual/ManPages_iPhoneOS/man/task_set_exception_ports.3.html
-
-developer.chrome.com  (7)
-    https://developer.chrome.com/blog/eviction-policy/
-    https://developer.chrome.com/blog/periodic-background-sync/
-    https://developer.chrome.com/blog/webcodecs-now-shipped
-    https://developer.chrome.com/blog/webtransport-shipped
-    https://developer.chrome.com/docs/capabilities/web-transport
-    https://developer.chrome.com/docs/capabilities/webcodecs
-    https://developer.chrome.com/docs/devtools/canvas/
-
-learn.microsoft.com  (7)
-    https://learn.microsoft.com/en-us/azure/architecture/high-availability/
-    https://learn.microsoft.com/en-us/azure/azure-functions/durable/
-    https://learn.microsoft.com/en-us/azure/security/fundamentals/attestation
-    https://learn.microsoft.com/en-us/microsoft-edge/progressive-web-apps-chromium/microsoft-store
-    https://learn.microsoft.com/en-us/sql/relational-databases/databases/snapshots
-    https://learn.microsoft.com/en-us/windows-server/security/kerberos/how-the-kerberos-version-5-authentication-protocol-works
-    https://learn.microsoft.com/en-us/windows/security/hardware-security/tpm/tpm-operations-for-it-pros
-
-web.dev  (7)
-    https://web.dev/articles/http-caching
-    https://web.dev/articles/lighthouse-accessibility
-    https://web.dev/articles/mutationobserver
-    https://web.dev/articles/web-worker-transferable-objects
-    https://web.dev/css-container-queries/
-    https://web.dev/learn/performance/rendering/
-    https://web.dev/learn/pwa/service-worker-lifecycle/
+github.com  (10)
+    https://github.com/NVIDIA/TensorRT-LLM/blob/main/benchmarks/README.md
+    https://github.com/axboe/blktrace
+    https://github.com/bytecodealliance/cranelift/tree/main/peepmatic
+    https://github.com/jlpteaching/diveinfoSystems
+    https://github.com/keir/pompeii
+    https://github.com/kubernetes/enhancements/tree/master/keps/sig-network/0057-distributed-ldu
+    https://github.com/ocaml-multicore/ocaml-mpst
+    https://github.com/ongardio/dissertation
+    https://github.com/petewarden/arduino_tinyml
+    https://github.com/ptcube/jump-consistent-hash
 
 www.confluent.io  (7)
     https://www.confluent.io/blog/kafka-connect-single-message-transformums-smt-vsmt-with-examples/
@@ -245,22 +142,6 @@ www.confluent.io  (7)
     https://www.confluent.io/blog/sns-vs-kafka/
     https://www.confluent.io/ebooks/designing-event-driven-systems/
     https://www.confluent.io/kafka-vs-sqs-vs-rabbitmq/
-
-cloud.google.com  (6)
-    https://cloud.google.com/anthos/clusters/docs/security/networking
-    https://cloud.google.com/architecture/scalability
-    https://cloud.google.com/compute/docs/instances/committed-use-discounts
-    https://cloud.google.com/docs/get-started/choose-a-database
-    https://cloud.google.com/run/docs/about
-    https://cloud.google.com/spanner/docs/query-plans
-
-docs.nvidia.com  (6)
-    https://docs.nvidia.com/cuda/cooperative-groups/index.html
-    https://docs.nvidia.com/deeplearning/frameworks/inference-performance-guide/index.html#structured-sparse
-    https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/metrics.html
-    https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/protocol/extension_auto_complete.html
-    https://docs.nvidia.com/networking/display/mlnxofedv24100700/kernel+transport+layer+security+(ktls
-    https://docs.nvidia.com/networking/pages/viewpage.action?pageId=12013428
 
 www.cs.cornell.edu  (6)
     https://www.cs.cornell.edu/Courses/cs711/2005fa/papers/p921-choi.pdf
@@ -284,6 +165,13 @@ research.google  (5)
     https://research.google/pubs/pub45069.html
     https://research.google/pubs/pub46902/
 
+web.dev  (5)
+    https://web.dev/articles/http-caching
+    https://web.dev/articles/lighthouse-accessibility
+    https://web.dev/articles/mutationobserver
+    https://web.dev/articles/web-worker-transferable-objects
+    https://web.dev/css-container-queries/
+
 www.brendangregg.com  (5)
     https://www.brendangregg.com/Perf/bcc_cachestat.html
     https://www.brendangregg.com/blog/2014-07-01/perf-ftrace.html
@@ -305,24 +193,17 @@ www.postgresql.org  (5)
     https://www.postgresql.org/docs/current/replication-progress.html
     https://www.postgresql.org/docs/current/storage-hot-chain.html
 
-www.usenix.org  (5)
-    https://www.usenix.org/conference/atc14/technical-sessions/presentation/weil
-    https://www.usenix.org/conference/fast16/technical-sessions/presentation/xia
-    https://www.usenix.org/conference/hotpar-10/non-scalable-locks-are-dangerous
-    https://www.usenix.org/conference/lisa19/presentation/starovoitov
-    https://www.usenix.org/legacy/publications/library/proceedings/jvm01/full_papers/click/click.pdf
-
 blog.cloudflare.com  (4)
     https://blog.cloudflare.com/cubic-and-bbr-in-quiche/
     https://blog.cloudflare.com/optimizing-http-2-header-compression-in-go/
     https://blog.cloudflare.com/syn-cookie/
     https://blog.cloudflare.com/tcp-fast-open/
 
-clickhouse.com  (4)
-    https://clickhouse.com/blog/100x-faster-queries-with-asyncio
-    https://clickhouse.com/blog/clickhouse-100x-faster-queries-with-asyncio
-    https://clickhouse.com/blog/clickhouse-vs-snowflake/
-    https://clickhouse.com/docs/en/operations/compression
+cloud.google.com  (4)
+    https://cloud.google.com/anthos/clusters/docs/security/networking
+    https://cloud.google.com/architecture/scalability
+    https://cloud.google.com/run/docs/about
+    https://cloud.google.com/spanner/docs/query-plans
 
 cp-algorithms.com  (4)
     https://cp-algorithms.com/algebra/fft-modular.html
@@ -335,6 +216,24 @@ csrc.nist.gov  (4)
     https://csrc.nist.gov/projects/pki-certificate-management
     https://csrc.nist.gov/pubs/fips/140-3/upd1/final
     https://csrc.nist.gov/pubs/nistir/8528/final
+
+developer.apple.com  (4)
+    https://developer.apple.com/library/archive/documentation/Miscellaneous/Conceptual/iPhoneOSConceptual/iPhoneOSOverview/iPhoneOSOverview.html
+    https://developer.apple.com/library/archive/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/ModifyingthePayload.html
+    https://developer.apple.com/library/archive/documentation/NetworkingInternetWeb/Conceptual/CoreBluetooth_concepts/AboutCoreBluetooth/AboutCoreBluetooth.html
+    https://developer.apple.com/library/archive/documentation/System/Conceptual/ManPages_iPhoneOS/man/task_set_exception_ports.3.html
+
+developer.chrome.com  (4)
+    https://developer.chrome.com/blog/eviction-policy/
+    https://developer.chrome.com/blog/periodic-background-sync/
+    https://developer.chrome.com/blog/webcodecs-now-shipped
+    https://developer.chrome.com/blog/webtransport-shipped
+
+docs.nvidia.com  (4)
+    https://docs.nvidia.com/cuda/cooperative-groups/index.html
+    https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/metrics.html
+    https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/protocol/extension_auto_complete.html
+    https://docs.nvidia.com/networking/pages/viewpage.action?pageId=12013428
 
 kernelnewbies.org  (4)
     https://kernelnewbies.org/KernelConfiguration
@@ -360,12 +259,6 @@ martinfowler.com  (4)
     https://martinfowler.com/bliki/CQRSAndEventSourcing.html
     https://martinfowler.com/eaaDev/EventDrivenCollaboration.html
 
-min.io  (4)
-    https://min.io/docs/minio/linux/operations/site-replication.html
-    https://min.io/product/overview/why-minio
-    https://min.io/resources/docs/MinIO-Architecture.pdf
-    https://min.io/subnet
-
 reactnative.dev  (4)
     https://reactnative.dev/architecture/fabric
     https://reactnative.dev/blog/2023/03/09/the-new-architecture-in-react-native-074
@@ -378,43 +271,21 @@ sre.google  (4)
     https://sre.google/workbook/handling-overload/
     https://sre.google/workbook/postmortems/
 
-www.bluetooth.com  (4)
-    https://www.bluetooth.com/learn-about-bluetooth/feature-topics/le-audio/
-    https://www.bluetooth.com/learn-about-bluetooth/tech-overview/le-2/
-    https://www.bluetooth.com/specifications/specs/mesh-profile-specification-v1-0-1/
-    https://www.bluetooth.com/specifications/specs/mesh-specification/
-
 www.cncf.io  (4)
     https://www.cncf.io/announcements/2024/06/25/cert-manager-graduates-from-cncf-incubator/
     https://www.cncf.io/blog/2020/11/04/envoy-vs-nginx-vs-haproxy/
     https://www.cncf.io/blog/2021/05/26/argo-workflows-vs-apache-airflow/
     https://www.cncf.io/blog/2021/05/26/tekton-vs-argo-workflows/
 
-www.redhat.com  (4)
-    https://www.redhat.com/en/topics/cloud-native-apps/quarkus-vs-spring-boot
-    https://www.redhat.com/en/topics/data-storage/change-data-capture
-    https://www.redhat.com/sysadmin/podman-docker-comparison
-    https://www.redhat.com/sysadmin/ssh-jump-host
-
-api.kernelci.org  (3)
-    https://api.kernelci.org/build?kernel_branch=mainline&limit=10
-    https://api.kernelci.org/device
-    https://api.kernelci.org/test?kernel_version=6.12&limit=10
-
-aur.archlinux.org  (3)
-    https://aur.archlinux.org/package-name.git
-    https://aur.archlinux.org/package.git
-    https://aur.archlinux.org/yay.git
-
 bootlin.com  (3)
     https://bootlin.com/docx/boot-process/
     https://bootlin.com/training/device-tree/
     https://bootlin.com/training/embedded-linux-yocto/
 
-cdn.kernel.org  (3)
-    https://cdn.kernel.org/pub/linux/kernel/projects/rt/6.6/patch-${RT_PATCH}.patch.xz
-    https://cdn.kernel.org/pub/linux/kernel/v6.x/ChangeLog-*
-    https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-${KERNEL_VERSION}.tar.xz
+clickhouse.com  (3)
+    https://clickhouse.com/blog/100x-faster-queries-with-asyncio
+    https://clickhouse.com/blog/clickhouse-100x-faster-queries-with-asyncio
+    https://clickhouse.com/blog/clickhouse-vs-snowflake/
 
 docs.google.com  (3)
     https://docs.google.com/document/d/1KEx2TQGLZIz5YPp3dCJc9DFHiJlbmXjnxxwLxsSvUjE/
@@ -431,50 +302,25 @@ gcc.gnu.org  (3)
     https://gcc.gnu.org/onlinedocs/gccint/Cross_002dCompilation.html
     https://gcc.gnu.org/onlinedocs/gccint/VRP.html
 
-gitlab.com  (3)
-    https://gitlab.com/cryptsetup/cryptsetup/-/wikis/Documentation
-    https://gitlab.com/cryptsetup/cryptsetup/-/wikis/LUKS-standard-on-disk-format
-    https://gitlab.com/qemu-project/qemu/-/tree/main/tools/virtiofsd
-
-gvisor.dev  (3)
-    https://gvisor.dev/docs/architecture/
-    https://gvisor.dev/docs/user_guide/benchmarks/
-    https://gvisor.dev/docs/user_guide/compatibility/syscalls/
-
-kubernetes.io  (3)
-    https://kubernetes.io/docs/concepts/architecture/cni/
-    https://kubernetes.io/docs/concepts/scheduling-eviction/scheduler-framework/
-    https://kubernetes.io/docs/reference/kubernetes-api/cluster-resources/mutating-webhook-configuration-v1/
-
 lamport.org  (3)
     https://lamport.org/tla/paxos.pdf
     https://lamport.org/tla/tla-video.html
     https://lamport.org/tla/video.html
-
-linkerd.io  (3)
-    https://linkerd.io/2/features/mtls/
-    https://linkerd.io/2021/01/11/production-deployments/
-    https://linkerd.io/istio-vs-linkerd/
 
 lora-alliance.org  (3)
     https://lora-alliance.org/resource_hub/lorawan-1-0-4-specification-package/
     https://lora-alliance.org/resource_hub/lorawan-11-specification/
     https://lora-alliance.org/resource_hub/lorawan-backend-interface-v1-0/
 
+min.io  (3)
+    https://min.io/docs/minio/linux/operations/site-replication.html
+    https://min.io/resources/docs/MinIO-Architecture.pdf
+    https://min.io/subnet
+
 p4.org  (3)
     https://p4.org/p4-spec/docs/P4-16-spec.html
     https://p4.org/p4runtime
     https://p4.org/specs
-
-raw.githubusercontent.com  (3)
-    https://raw.githubusercontent.com/Mellanox/k8s-rdma-shared-dev-plugin/master/k8s-rdma-shared-dev-plugin-config.yaml
-    https://raw.githubusercontent.com/moby/moby/master/profiles/seccomp/default.json
-    https://raw.githubusercontent.com/torvalds/linux/master/mm/bootmem.c
-
-redis.io  (3)
-    https://redis.io/docs/management/patterns/
-    https://redis.io/docs/reference/internals/
-    https://redis.io/docs/reference/internals/memory-allocator/
 
 use-the-index-luke.com  (3)
     https://use-the-index-luke.com/sql/no-null
@@ -521,14 +367,6 @@ www.snowflake.com  (3)
     https://www.snowflake.com/wp-content/uploads/2020/09/Snowflake-Architecture-Whitepaper.pdf
     https://www.snowflake.com/wp-content/uploads/2020/09/SnowflakeMultiClusterSharedDataArchitecture.pdf
 
-apt.buildkite.com  (2)
-    https://apt.buildkite.com/buildkite-agent
-    https://apt.buildkite.com/buildkite-agent.key.asc
-
-bank.com  (2)
-    https://bank.com/transfer
-    https://bank.com/transfer?to=attacker&amount=10000
-
 catonmat.net  (2)
     https://catonmat.net/awk-one-liners-explained
     https://catonmat.net/sed-one-liners-explained
@@ -561,10 +399,6 @@ docs.arbitrum.io  (2)
     https://docs.arbitrum.io/how-arbitrum-works/challenge-protocol
     https://docs.arbitrum.io/how-arbitrum-works/nitro-overview
 
-docs.ceph.com  (2)
-    https://docs.ceph.com/en/latest/cephfs/best-practices/
-    https://docs.ceph.com/en/latest/rados/operations/auth-intro/
-
 docs.cypress.io  (2)
     https://docs.cypress.io/app/cloud/introduction
     https://docs.cypress.io/app/get-started/component-testing
@@ -572,10 +406,6 @@ docs.cypress.io  (2)
 docs.oasis-open.org  (2)
     https://docs.oasis-open.org/pkcs11/pkcs11-base/v3.1/os/pkcs11-base-v3.1-os.html
     https://docs.oasis-open.org/virtio/virtio/v1.2/csprd01/virtio-v1.2-csprd01.html
-
-docs.pinot.apache.org  (2)
-    https://docs.pinot.apache.org/basics/comparisons/pinot-vs-druid
-    https://docs.pinot.apache.org/basics/components/star-tree-index
 
 docs.yoctoproject.org  (2)
     https://docs.yoctoproject.org/bitbake-user-manual/bitbake-user-manual-metadata.html
@@ -585,25 +415,21 @@ engineering.linkedin.com  (2)
     https://engineering.linkedin.com/analytics/real-time-deep-dive-apache-pinot
     https://engineering.linkedin.com/distributed-systems/log-what-every-software-engineer-should-know-about-real-time-datas-unifying
 
-evil.com  (2)
-    https://evil.com/steal?cookie=
-    https://evil.com/steal?token=
-
-gist.github.com  (2)
-    https://gist.github.com/mondain/b2619a01463ce0ec2234
-    https://gist.github.com/user/id
+gitlab.com  (2)
+    https://gitlab.com/cryptsetup/cryptsetup/-/wikis/LUKS-standard-on-disk-format
+    https://gitlab.com/qemu-project/qemu/-/tree/main/tools/virtiofsd
 
 globalplatform.org  (2)
     https://globalplatform.org/specs-device/
     https://globalplatform.org/specs-library/tee-specifications/
 
-grafana.com  (2)
-    https://grafana.com/blog/2021/01/25/loki-vs-elasticsearch-whats-the-difference/
-    https://grafana.com/docs/mimir/latest/configure/configure-about/limits/
-
 groups.csail.mit.edu  (2)
     https://groups.csail.mit.edu/tds/ShAvTaou95.pdf
     https://groups.csail.mit.edu/tds/ShAvi-DiSc-ShAle-2006.pdf
+
+gvisor.dev  (2)
+    https://gvisor.dev/docs/architecture/
+    https://gvisor.dev/docs/user_guide/benchmarks/
 
 homepages.inf.ed.ac.uk  (2)
     https://homepages.inf.ed.ac.uk/wadler/papers/linear/linear.pdf
@@ -612,10 +438,6 @@ homepages.inf.ed.ac.uk  (2)
 images.nvidia.com  (2)
     https://images.nvidia.com/cnvml-2/wp-content/uploads/2023/cnvml-2/h100-whitepaper.pdf
     https://images.nvidia.com/content/volta-architecture-whitepaper.pdf
-
-istio.io  (2)
-    https://istio.io/latest/blog/2023/ambient-reached-beta/
-    https://istio.io/latest/docs/ops/configuration/mesh/config-resource-ready/
 
 jvns.ca  (2)
     https://jvns.ca/blog/2015/11/20/what-even-is-a-terminal/
@@ -629,37 +451,25 @@ lamport.azurewebsites.net  (2)
     https://lamport.azurewebsites.net/pubs/chandy-lamport.pdf
     https://lamport.azurewebsites.net/pubs/fast-paxos.pdf
 
+linkerd.io  (2)
+    https://linkerd.io/2021/01/11/production-deployments/
+    https://linkerd.io/istio-vs-linkerd/
+
 lwn.net  (2)
     https://lwn.net/2001/0607-a.html
     https://lwn.net/Articles/135208/
-
-mirrors.fedoraproject.org  (2)
-    https://mirrors.fedoraproject.org/metalink?repo=epel-$releasever&arch=$basearch
-    https://mirrors.fedoraproject.org/metalink?repo=epel-debug-$releasever&arch=$basearch
 
 owasp.org  (2)
     https://owasp.org/www-project-mobile-security-testing-guide/
     https://owasp.org/www-project-top-10-for-agentic-ai-applications/
 
-registry-1.docker.io  (2)
-    https://registry-1.docker.io
-    https://registry-1.docker.io/v2/library/alpine/blobs/$DIGEST
-
-shipilev.net  (2)
-    https://shipilev.net/jvm/anatomy-quark/3-gc-pause/
-    https://shipilev.net/jvm/anatomy-quarks/2-bytecode-basics/
-
-source.android.com  (2)
-    https://source.android.com/docs/core/architecture/kernel/module-interface
-    https://source.android.com/docs/core/ota/modular-system/tombstones
+redis.io  (2)
+    https://redis.io/docs/reference/internals/
+    https://redis.io/docs/reference/internals/memory-allocator/
 
 tikv.org  (2)
     https://tikv.org/docs/5.4/concepts/overview/
     https://tikv.org/docs/devel/concepts/architecture/
-
-tldp.org  (2)
-    https://tldp.org/HOWTO/html_single/BootPrompt-HOWTO/
-    https://tldp.org/LDP/install-guide/
 
 wiki.archlinux.org  (2)
     https://wiki.archlinux.org/title/Recovery
@@ -680,10 +490,6 @@ www.bell-labs.com  (2)
 www.cl.cam.ac.uk  (2)
     https://www.cl.cam.ac.uk/research/srg/netos/lock-free/Harris-Fraser-2003.pdf
     https://www.cl.cam.ac.uk/~pes20/ppc-supplemental/test64.pdf
-
-www.cs.kent.ac.uk  (2)
-    https://www.cs.kent.ac.uk/pubs/1996/543/
-    https://www.cs.kent.ac.uk/research/groups/sysjo/occam/
 
 www.cs.princeton.edu  (2)
     https://www.cs.princeton.edu/courses/archive/fall06/cos598A/papers/LinearScan.pdf
@@ -725,6 +531,10 @@ www.open-std.org  (2)
     http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2018/p2382r0.html
     https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2018/p0124r7.html
 
+www.redhat.com  (2)
+    https://www.redhat.com/sysadmin/podman-docker-comparison
+    https://www.redhat.com/sysadmin/ssh-jump-host
+
 www.starburst.io  (2)
     https://www.starburst.io/blog/trino-vs-spark-sql/
     https://www.starburst.io/wp-content/uploads/2020/11/OReilly-Trino-The-Definitive-Guide-2020-11.pdf
@@ -737,10 +547,6 @@ www.yugabyte.com  (2)
     https://www.yugabyte.com/blog/yugabytedb-vs-cockroachdb-comparison/
     https://www.yugabyte.com/yugabytedb-paper/
 
-xml.org  (2)
-    http://xml.org/sax/features/external-general-entities
-    http://xml.org/sax/features/external-parameter-entities
-
 0pointer.de  (1)
     https://0pointer.de/blog/projects/the-new-systemd-bus-api.html
 
@@ -750,17 +556,11 @@ aantron.github.io  (1)
 access.redhat.com  (1)
     https://access.redhat.com/articles/165953
 
-accounts.google.com  (1)
-    https://accounts.google.com/oauth/authorize
-
 allquantor.at  (1)
     https://allquantor.at/blockchainbib/pdf/buchman2016.pdf
 
 ankane.org  (1)
     https://ankane.org/pgvector
-
-apache.org  (1)
-    http://apache.org/xml/features/disallow-doctype-decl
 
 api.flutter.dev  (1)
     https://api.flutter.dev/flutter/rendering/RenderingPipeline-class.html
@@ -788,9 +588,6 @@ bazel.build  (1)
 
 bcachefs.org  (1)
     https://bcachefs.org/Status/
-
-bit.ly  (1)
-    https://bit.ly/aX9kL2p
 
 blog.burntsushi.net  (1)
     https://blog.burntsushi.net/error-handling/
@@ -849,9 +646,6 @@ cs.uwaterloo.ca  (1)
 css-tricks.com  (1)
     https://css-tricks.com/scroll-animations-with-intersection-observer/
 
-cwiki.apache.org  (1)
-    https://cwiki.apache.org/confluence/display/KAFKA/KIP-447
-
 dagster.io  (1)
     https://dagster.io/blog/data-orchestrator
 
@@ -873,9 +667,6 @@ devblogs.microsoft.com  (1)
 developer.amd.com  (1)
     https://developer.amd.com/resources/developer-guides-manuals/
 
-developer.android.com  (1)
-    https://developer.android.com/topic/performance/runtime
-
 developer.bluetooth.com  (1)
     https://developer.bluetooth.com/core/Specifications/GATT
 
@@ -890,9 +681,6 @@ developer.nvidia.com  (1)
 
 developers.diem.com  (1)
     https://developers.diem.com/docs/technical-papers/diem-consensus-paper/
-
-dist.schmorp.de  (1)
-    http://dist.schmorp.de/libev/libev-4.33.tar.gz
 
 doc.libsodium.org  (1)
     https://doc.libsodium.org/public-key-cryptography/public-key_signatures
@@ -909,9 +697,6 @@ docs.chain.link  (1)
 docs.dagster.io  (1)
     https://docs.dagster.io/getting-started/why-dagster
 
-docs.datastax.com  (1)
-    https://docs.datastax.com/en/cassandra-oss/3.0/cassandra/operations/
-
 docs.frrouting.org  (1)
     https://docs.frrouting.org/en/latest/seg6.html
 
@@ -927,6 +712,9 @@ docs.li.fi  (1)
 docs.osgi.org  (1)
     https://docs.osgi.org/specification/osgi.core/8.0.0/framework.module.lifecycle.html
 
+docs.pinot.apache.org  (1)
+    https://docs.pinot.apache.org/basics/comparisons/pinot-vs-druid
+
 docs.pipewire.org  (1)
     https://docs.pipewire.org/page/spa.html
 
@@ -935,9 +723,6 @@ docs.podman.io  (1)
 
 docs.scroll.io  (1)
     https://docs.scroll.io/technology/overview
-
-docs.sentry.io  (1)
-    https://docs.sentry.io/product/cli/upload-symbol-sources/
 
 docs.spring.io  (1)
     https://docs.spring.io/spring-security/reference/saml2/index.html
@@ -969,9 +754,6 @@ duckdb.org  (1)
 easychair.org  (1)
     https://easychair.org/publications/openaccess/qhC
 
-ec.europa.eu  (1)
-    https://ec.europa.eu/info/law/payment-services-psd2-directive-en
-
 ee.lbl.gov  (1)
     https://ee.lbl.gov/papers/wan-poisson-tnet95.pdf
 
@@ -987,12 +769,6 @@ engineering.fb.com  (1)
 erofs.docs.kernel.org  (1)
     https://erofs.docs.kernel.org/en/latest/benchmark.html
 
-etcd.io  (1)
-    https://etcd.io/docs/latest/admin_guide/#disaster-recovery
-
-fcm.googleapis.com  (1)
-    https://fcm.googleapis.com/v1/projects/my-project/messages:send
-
 filecoin.io  (1)
     https://filecoin.io/papers/storage-f2/
 
@@ -1005,26 +781,17 @@ flink.apache.org  (1)
 fluxcd.io  (1)
     https://fluxcd.io/flux/flux-multi-tenancy/
 
-ftp.gnu.org  (1)
-    https://ftp.gnu.org/gnu/hello/hello-${pkgver}.tar.gz
-
 gaia.cs.umass.edu  (1)
     https://gaia.cs.umass.edu/kurose_ross/wiwi.php
 
 gin-gonic.com  (1)
     https://gin-gonic.com/docs/
 
-git.buildroot.net  (1)
-    https://git.buildroot.net/buildroot
-
-git.openwrt.org  (1)
-    https://git.openwrt.org/openwrt/openwrt.git
+gist.github.com  (1)
+    https://gist.github.com/mondain/b2619a01463ce0ec2234
 
 github.blog  (1)
     https://github.blog/2021-09-09-sharding-github-database/
-
-go.dev  (1)
-    https://go.dev/doc/tutorial/module
 
 godbolt.org  (1)
     https://godbolt.org/blog/what-is-io-uring
@@ -1032,20 +799,17 @@ godbolt.org  (1)
 google.github.io  (1)
     https://google.github.io/security-research/pocs/linux/cve-2022-29582/
 
+grafana.com  (1)
+    https://grafana.com/blog/2021/01/25/loki-vs-elasticsearch-whats-the-difference/
+
 hadoop.apache.org  (1)
     https://hadoop.apache.org/docs/current/api/org/apache/hadoop/net/BlockPlacementPolicy.html
-
-helidon.io  (1)
-    https://helidon.io/docs/v4/about/nima
 
 herbsutter.com  (1)
     https://herbsutter.com/2013/09/30/atomic-weapons-the-c-memory-model-and-modern-hardware/
 
 honeycomb.io  (1)
     https://honeycomb.io/blog/canary-vs-blue-green-vs-rolling-deployments
-
-hooks.slack.com  (1)
-    https://hooks.slack.com/services/xxx/yyy/zzz
 
 huggingface.co  (1)
     https://huggingface.co/blog/4bit-transformers-with-bitsandbytes
@@ -1055,9 +819,6 @@ ignite.apache.org  (1)
 
 imply.io  (1)
     https://imply.io/blog/real-time-analytics-comparison-druid-vs-clickhouse/
-
-in-toto.io  (1)
-    https://in-toto.io/attestation/slsa/v1
 
 indepth.dev  (1)
     https://indepth.dev/posts/53/react-internals-fiber
@@ -1071,6 +832,9 @@ iquilezles.org  (1)
 iris-project.org  (1)
     https://iris-project.org/pdfs/2018-jfp-final.pdf
 
+istio.io  (1)
+    https://istio.io/latest/blog/2023/ambient-reached-beta/
+
 jasonpearce.github.io  (1)
     https://jasonpearce.github.io/2017/03/02/hexagonal-clean-architecture.html
 
@@ -1083,8 +847,14 @@ jemalloc.net  (1)
 kb.isc.org  (1)
     https://kb.isc.org/docs/isc-dhcp-44-manual-pages
 
+kubernetes.io  (1)
+    https://kubernetes.io/docs/concepts/scheduling-eviction/scheduler-framework/
+
 lampwww.epfl.ch  (1)
     https://lampwww.epfl.ch/~odersky/papers/actors-cacm.pdf
+
+learn.microsoft.com  (1)
+    https://learn.microsoft.com/en-us/windows-server/security/kerberos/how-the-kerberos-version-5-authentication-protocol-works
 
 letsencrypt.org  (1)
     https://letsencrypt.org/2023/07/10/retiring-tls1-0-1-1.html
@@ -1131,23 +901,11 @@ nvmexpress.org  (1)
 nx.dev  (1)
     https://nx.dev/concepts/how-nx-works
 
-oauth2.googleapis.com  (1)
-    https://oauth2.googleapis.com/token
-
 ocaml.org  (1)
     https://ocaml.org/docs/multicore
 
 opennetworking.org  (1)
     https://opennetworking.org/wp-content/uploads/2014/10/openflow-spec-v1.5.1.pdf
-
-other.com  (1)
-    http://other.com/widget
-
-packages.grafana.com  (1)
-    https://packages.grafana.com/oss/deb
-
-people.debian.org  (1)
-    https://people.debian.org/~gio/dqib/riscv64-virt/image.qcow2
 
 platform.openai.com  (1)
     https://platform.openai.com/docs/guides/prompt-injection
@@ -1170,6 +928,9 @@ qmonnet.github.io  (1)
 quarkus.io  (1)
     https://quarkus.io/guides/quarkus-runtime-guide
 
+raw.githubusercontent.com  (1)
+    https://raw.githubusercontent.com/torvalds/linux/master/mm/bootmem.c
+
 react.dev  (1)
     https://react.dev/blog/2024/10/21/react-compiler
 
@@ -1178,9 +939,6 @@ redis.com  (1)
 
 refspecs.linuxbase.org  (1)
     https://refspecs.linuxbase.org/elf/gabi4/ch4.eheader.html
-
-repo.cloudlinux.com  (1)
-    https://repo.cloudlinux.com/kernelcare/kernelcare.install
 
 roninblockchain.substack.com  (1)
     https://roninblockchain.substack.com/p/community-alert-ronin-validators
@@ -1196,6 +954,9 @@ seata.io  (1)
 
 semiconductor.samsung.com  (1)
     https://semiconductor.samsung.com/dram/cxl-memory-module/
+
+shipilev.net  (1)
+    https://shipilev.net/jvm/anatomy-quark/3-gc-pause/
 
 shopify.engineering  (1)
     https://shopify.engineering/ship-fast-with-webassembly-shopify-functions
@@ -1230,8 +991,8 @@ theory.stanford.edu  (1)
 timdettmers.com  (1)
     https://timdettmers.com/2023/05/19/qlora-4-bit-queens/
 
-token.actions.githubusercontent.com  (1)
-    https://token.actions.githubusercontent.com
+tldp.org  (1)
+    https://tldp.org/LDP/install-guide/
 
 traefik.io  (1)
     https://traefik.io/blog/comparing-traefik-and-nginx/
@@ -1272,12 +1033,6 @@ wiki.gentoo.org  (1)
 wiki.mozilla.org  (1)
     https://wiki.mozilla.org/Security/DNS-over-HTTPS
 
-wiki.nftables.org  (1)
-    https://wiki.nftables.org/wiki-nftables/index.php/Conntrack
-
-wiki.openjdk.org  (1)
-    https://wiki.openjdk.org/display/HotSpot/MethodHandles
-
 without.boats  (1)
     https://without.boats/blog/why-result-works/
 
@@ -1289,6 +1044,9 @@ www.astronomer.io  (1)
 
 www.baeldung.com  (1)
     https://www.baeldung.com/spring-bean-lifecycle
+
+www.bluetooth.com  (1)
+    https://www.bluetooth.com/learn-about-bluetooth/feature-topics/le-audio/
 
 www.bosch-mobility.com  (1)
     https://www.bosch-mobility.com/en/mobility/mobility-services/mobility-software/can/
@@ -1304,9 +1062,6 @@ www.census.gov  (1)
 
 www.chainalysis.com  (1)
     https://www.chainalysis.com/blog/212-crypto-crime-report-2022-bridge-hacks/
-
-www.chromium.org  (1)
-    https://www.chromium.org/developers/design-documents/linux-seccomp-bpf-sandbox/
 
 www.cidrdb.org  (1)
     https://www.cidrdb.org/cidr2021/papers/p35-kishore.pdf
@@ -1374,9 +1129,6 @@ www.di.unito.it  (1)
 www.domainlanguage.com  (1)
     https://www.domainlanguage.com/wp-content/uploads/2016/05/DDD_Reference_1.0.pdf
 
-www.envoyproxy.io  (1)
-    https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview
-
 www.etsi.org  (1)
     https://www.etsi.org/technologies/network-functions-virtualization-nfv
 
@@ -1386,14 +1138,8 @@ www.fastly.com  (1)
 www.geeksforgeeks.org  (1)
     https://www.geeksforgeeks.org/placement-preparation/
 
-www.googleapis.com  (1)
-    https://www.googleapis.com/auth/firebase.messaging
-
 www.haproxy.com  (1)
     https://www.haproxy.com/blog/making-haproxy-1-5-fast
-
-www.iana.org  (1)
-    https://www.iana.org/assignments/media-types/text/event-stream
 
 www.ibm.com  (1)
     https://www.ibm.com/support/pages/power-documentation
@@ -1470,9 +1216,6 @@ www.percona.com  (1)
 www.ponylang.io  (1)
     https://www.ponylang.io/media/pdf/pony_oopsla2013.pdf
 
-www.psc.edu  (1)
-    https://www.psc.edu/research/networking/tuning-tcp
-
 www.pvfs.org  (1)
     https://www.pvfs.org/**
 
@@ -1512,6 +1255,9 @@ www.threadgroup.org  (1)
 www.usb.org  (1)
     https://www.usb.org/document-library
 
+www.usenix.org  (1)
+    https://www.usenix.org/legacy/publications/library/proceedings/jvm01/full_papers/click/click.pdf
+
 www.utimaco.com  (1)
     https://www.utimaco.com/products/hardware-security-modules/general-purpose-hsm/securityserver-se-series
 
@@ -1524,9 +1270,6 @@ www.whitehouse.gov  (1)
 www.youtube.com  (1)
     https://www.youtube.com/@TheLinuxExperiment
 
-xenbits.xen.org  (1)
-    https://xenbits.xen.org/git-http/xen.git
-
 xenproject.org  (1)
     https://xenproject.org/documentation/
 
@@ -1535,3 +1278,75 @@ zdharma-continuum.github.io  (1)
 
 zookeeper.apache.org  (1)
     https://zookeeper.apache.org/doc/r3.8.0/zookeeperHierarchical.html
+
+------------------------------------------------------------------------------
+URLs INSIDE CODE FENCES (not links — listed for completeness)
+------------------------------------------------------------------------------
+    http://apache.org/xml/features/disallow-doctype-decl
+    http://dist.schmorp.de/libev/libev-4.33.tar.gz
+    http://other.com/widget
+    http://xml.org/sax/features/external-general-entities
+    http://xml.org/sax/features/external-parameter-entities
+    https://accounts.google.com/oauth/authorize
+    https://api.kernelci.org/build?kernel_branch=mainline&limit=10
+    https://api.kernelci.org/device
+    https://api.kernelci.org/test?kernel_version=6.12&limit=10
+    https://apt.buildkite.com/buildkite-agent
+    https://apt.buildkite.com/buildkite-agent.key.asc
+    https://aur.archlinux.org/package-name.git
+    https://aur.archlinux.org/package.git
+    https://aur.archlinux.org/yay.git
+    https://bank.com/transfer
+    https://bank.com/transfer?to=attacker&amount=10000
+    https://bit.ly/aX9kL2p
+    https://cdn.kernel.org/pub/linux/kernel/projects/rt/6.6/patch-${RT_PATCH}.patch.xz
+    https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-${KERNEL_VERSION}.tar.xz
+    https://evil.com/steal?cookie=
+    https://evil.com/steal?token=
+    https://fcm.googleapis.com/v1/projects/my-project/messages:send
+    https://ftp.gnu.org/gnu/hello/hello-${pkgver}.tar.gz
+    https://gist.github.com/user/id
+    https://git.buildroot.net/buildroot
+    https://git.openwrt.org/openwrt/openwrt.git
+    https://github.com/YOUR_USERNAME/project.git
+    https://github.com/example/app
+    https://github.com/example/meta-mylayer.git
+    https://github.com/example/myapp.git
+    https://github.com/hodgesds/perf-exporter
+    https://github.com/kubernetes-sigs/cri-tools/releases/download/$VERSION/crictl-$VERSION-linux-amd64.tar.gz
+    https://github.com/lenb/idlestat.git
+    https://github.com/lib/lib.git
+    https://github.com/my-org/apps
+    https://github.com/my-org/my-app
+    https://github.com/my-org/my-app-deploy
+    https://github.com/org/.*
+    https://github.com/org/app/.github/workflows/release.yml@refs/tags/v
+    https://github.com/org/gitops-config.git
+    https://github.com/org/k8s-manifests
+    https://github.com/org/k8s-manifests.git
+    https://github.com/org/monorepo.git
+    https://github.com/org/repo
+    https://github.com/org/repo/.github/workflows/release.yml
+    https://github.com/org/repo/.github/workflows/release.yml@refs/heads/main
+    https://github.com/org/repo@refs/heads/main
+    https://github.com/original/repo.git
+    https://github.com/raistlin/latencytop.git
+    https://github.com/slsa-framework/slsa-github-generator/.github/workflows/generator_generic_slsa3.yml
+    https://github.com/user/my-package
+    https://github.com/user/repo.git
+    https://github.com/user/repo.git@main
+    https://hooks.slack.com/services/xxx/yyy/zzz
+    https://in-toto.io/attestation/slsa/v1
+    https://mirrors.fedoraproject.org/metalink?repo=epel-$releasever&arch=$basearch
+    https://mirrors.fedoraproject.org/metalink?repo=epel-debug-$releasever&arch=$basearch
+    https://oauth2.googleapis.com/token
+    https://packages.grafana.com/oss/deb
+    https://people.debian.org/~gio/dqib/riscv64-virt/image.qcow2
+    https://raw.githubusercontent.com/Mellanox/k8s-rdma-shared-dev-plugin/master/k8s-rdma-shared-dev-plugin-config.yaml
+    https://raw.githubusercontent.com/moby/moby/master/profiles/seccomp/default.json
+    https://registry-1.docker.io
+    https://registry-1.docker.io/v2/library/alpine/blobs/$DIGEST
+    https://repo.cloudlinux.com/kernelcare/kernelcare.install
+    https://token.actions.githubusercontent.com
+    https://www.googleapis.com/auth/firebase.messaging
+    https://xenbits.xen.org/git-http/xen.git

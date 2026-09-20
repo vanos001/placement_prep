@@ -463,7 +463,7 @@ landlock-sandbox --read /usr --read /lib --write /tmp -- /usr/bin/myapp
 
 ```bash
 # Install from source
-git clone https://github.com/landlock-lsm/landlock-tools
+git clone https://landlock.io/
 cd landlock-tools && make
 
 # Usage

@@ -288,4 +288,4 @@ RDS — per route. Use Route.typed_per_filter_config with envoy.filters.http.loc
 - Istio — How to Understand Envoy xDS API in Istio Context, mapping resources to xDS types: https://oneuptime.com/blog/post/2026-02-24-how-to-understand-envoy-xds-api-in-istio-context/view [OneUptime]
 - What xDS Actually Ships: Control plane sends protobuf, not YAML — LDS/RDS/CDS/EDS/SDS analogy and grain analysis: https://dev.to/kanywst/what-xds-actually-ships-your-control-plane-sends-protobuf-not-yaml-2oje [dev.to]
 - Solo.io — Guidance for Building a Control Plane to Manage Envoy Proxy: https://medium.com/solo-io/guidance-for-building-a-control-plane-to-manage-envoy-proxy-at-the-edge-as-a-gateway-or-in-a-mesh-badb6c36a2af [Medium - Solo.io]
-- Istio docs — Architecture, Pilot as DiscoveryServer, xDS sync status: https://istio.io/latest/docs/ops/configuration/mesh/config-resource-ready/ [Istio]
+- Istio docs — Architecture, Pilot as DiscoveryServer, xDS sync status: https://istio.io/latest/docs/ops/configuration/mesh/ [Istio]

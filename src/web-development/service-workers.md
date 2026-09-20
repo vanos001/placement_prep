@@ -147,4 +147,4 @@ A: The browser falls back to the default network behavior — it attempts the or
 
 - [Service Workers — MDN](https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API)
 - [Workbox — Google Developers](https://developer.chrome.com/docs/workbox)
-- [The Service Worker Lifecycle — web.dev](https://web.dev/learn/pwa/service-worker-lifecycle/)
+- [The Service Worker Lifecycle — web.dev](https://web.dev/learn/pwa/)

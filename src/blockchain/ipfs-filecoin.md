@@ -238,4 +238,4 @@ The typical real-world hybrid: enterprise workloads use S3 for hot data, IPFS + 
 - Filecoin Proof-of-Replication paper — https://filecoin.io/papers/storage-f2/
 - Filecoin Proof of Spacetime (Window PoSt) — https://spec.filecoin.io/algorithms/pos/post/
 - Storage Market actor specification — https://spec.filecoin.io/systems/filecoin_markets/storage_market/
-- GraphSync protocol spec — https://github.com/ipld/specs/blob/master/graph-sync/graph-sync.md
+- GraphSync protocol spec — https://github.com/ipld/specs/blob/master/block-layer/graphsync/graphsync.md

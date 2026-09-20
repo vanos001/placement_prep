@@ -213,7 +213,7 @@ The canonical full pipeline (Han et al. 2016, "Deep Compression") stacks pruning
 - Zhuang Liu, Mingjie Sun, et al., "[Rethinking the Value of Network Pruning](https://arxiv.org/abs/1810.05270)" (ICLR 2019)
 - Pavlo Molchanov, Stephen Tyree, et al., "[Pruning Convolutional Neural Networks for Resource Efficient Inference](https://arxiv.org/abs/1611.06440)" (ICLR 2017) — Taylor criterion
 - [PyTorch pruning tutorial](https://pytorch.org/tutorials/intermediate/pruning_tutorial.html)
-- [NVIDIA 2:4 structured sparsity documentation](https://docs.nvidia.com/deeplearning/frameworks/inference-performance-guide/index.html#structured-sparse)
+- [NVIDIA 2:4 structured sparsity documentation](https://docs.nvidia.com/deeplearning/frameworks/)
 
 ## Cross-References
 

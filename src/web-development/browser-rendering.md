@@ -116,5 +116,5 @@ A: `display: none` removes the element from the render tree entirely — no layo
 
 ## References
 
-- [Rendering Performance — web.dev](https://web.dev/learn/performance/rendering/)
+- [Rendering Performance — web.dev](https://web.dev/learn/performance/)
 - [How Browsers Work — Tali Garsiel](https://www.html5rocks.com/en/tutorials/internals/howbrowserswork/)

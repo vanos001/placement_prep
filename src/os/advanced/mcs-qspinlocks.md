@@ -254,7 +254,7 @@ the handoff the waiters are waiting for — that feedback loop is what
   https://doi.org/10.1145/103727.103729 (verified via Crossref)
 - Boyd-Wickizer, Z., Zeldovich, N. *Non-scalable Locks are Dangerous*.
   USENIX HotPar '10. (official page bot-walls automated checks:
-  https://www.usenix.org/conference/hotpar-10/non-scalable-locks-are-dangerous)
+  https://www.usenix.org/conference/hotpar-10/)
 - Michael, M., Scott, M. *Simple, Fast, and Practical Non-Blocking and
   Blocking Concurrent Queue Algorithms*. PODC '96.
   https://doi.org/10.1145/248052.248106 (verified via Crossref — the

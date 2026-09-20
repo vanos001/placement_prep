@@ -293,7 +293,7 @@ WebSocket's bidirectional capability matters for chat, collaborative editing (CR
 - WHATWG HTML — The EventSource interface: https://html.spec.whatwg.org/multipage/comms.html#the-eventsource-interface
 - MDN Web Docs — Server-sent events: https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events
 - MDN — EventSource reference: https://developer.mozilla.org/en-US/docs/Web/API/EventSource
-- IANA — `text/event-stream` media type registration: https://www.iana.org/assignments/media-types/text/event-stream
+- IANA — `text/event-stream` media type registration: https://www.iana.org/assignments/media-types/text/
 - RFC 9110 — HTTP Semantics (Cache-Control, Connection): https://www.rfc-editor.org/rfc/rfc9110
 - RFC 9113 — HTTP/2 (multiplexing eliminates the 6-connection limit): https://www.rfc-editor.org/rfc/rfc9113
 - OpenAI Chat Completions streaming reference: https://platform.openai.com/docs/api-reference/chat/streaming

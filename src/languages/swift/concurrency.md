@@ -386,10 +386,10 @@ Two contrasts are worth dwelling on:
   https://github.com/apple/swift-evolution/blob/main/proposals/0302-concurrency-safety/static-sendable.md
 - SE-0317: async let — implicitly awaiting sub-tasks
   https://github.com/apple/swift-evolution/blob/main/proposals/0317-async-let.md
-- SE-0338: Concurrency Interoperability with Objective-C (back-deployment)
-  https://github.com/apple/swift-evolution/blob/main/proposals/0338-swift-concurrency-backdeployment.md
-- SE-0307: Cooperative task cancellation and priority escalation
-  https://github.com/apple/swift-evolution/blob/main/proposals/0307-actor-execution.md
+- SE-0297: Concurrency Interoperability with Objective-C
+  https://github.com/apple/swift-evolution/blob/main/proposals/0297-concurrency-objc.md
+- SE-0304: Structured Concurrency (cooperative cancellation)
+  https://github.com/apple/swift-evolution/blob/main/proposals/0304-structured-concurrency.md
 - Swift Concurrency guide (official docs)
   https://docs.swift.org/swift-book/LanguageGuide/Concurrency.html
 - WWDC 2021 — "Meet async/await" (session 10132)

@@ -288,7 +288,7 @@ Both are server-pushed GATT operations, but notifications don't require a confir
 - Bluetooth Developer Portal — "GATT Overview" — https://developer.bluetooth.com/core/Specifications/GATT
 - Nordic Semiconductor — "BLE and Bluetooth" Infocenter — https://docs.nordicsemi.com/bundle/ncs-latest/page/nrf/protocols/bluetooth.html
 - Nordic Semiconductor — "Bluetooth LE Adaptive Frequency Hopping" — https://docs.nordicsemi.com/bundle/ncs-latest/page/nrf/protocols/bluetooth/le/afh.html
-- Bluetooth SIG — "Bluetooth Low Energy — Get Started" — https://www.bluetooth.com/learn-about-bluetooth/tech-overview/le-2/
-- Bluetooth SIG — "Mesh Profile Specification" (BLE Mesh) — https://www.bluetooth.com/specifications/specs/mesh-profile-specification-v1-0-1/
+- Bluetooth SIG — "Bluetooth Low Energy — Get Started" — https://www.bluetooth.com/learn-about-bluetooth/tech-overview/
+- Bluetooth SIG — "Mesh Profile Specification" (BLE Mesh) — https://www.bluetooth.com/specifications/specs/
 - "Bluetooth Low Energy: The Developer's Handbook" (Heydon, 2013)
 - Apple — "Core Bluetooth Programming Guide" — https://developer.apple.com/library/archive/documentation/NetworkingInternetWeb/Conceptual/CoreBluetooth_concepts/AboutCoreBluetooth/AboutCoreBluetooth.html

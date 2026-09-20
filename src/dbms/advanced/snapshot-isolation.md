@@ -188,7 +188,7 @@ MySQL InnoDB's "REPEATABLE READ" is Snapshot Isolation. It's the default.
 - Berenson et al., "[A Critique of ANSI SQL Isolation Levels](https://www.cs.umb.edu/~poneil/iso.pdf)" (SIGMOD 1995) — the original SI write-skew discussion
 - [PostgreSQL: Transaction Isolation](https://www.postgresql.org/docs/current/transaction-iso.html)
 - [Oracle Database: Data Concurrency and Consistency](https://docs.oracle.com/en/database/oracle/oracle-database/19/cncpt/data-concurrency-and-consistency.html)
-- [Microsoft SQL Server: Snapshot Isolation](https://learn.microsoft.com/en-us/sql/relational-databases/databases/snapshots)
+- [Microsoft SQL Server: Snapshot Isolation](https://learn.microsoft.com/en-us/sql/relational-databases/databases/)
 - Wu et al., "[Serialization and Snapshot Isolation in Distributed Databases](https://www.cs.umd.edu/~abadi/papers/abadi-sssi-vldb08.pdf)" (VLDB 2008)
 - [LWN: Snapshot Isolation and the Lost Update problem](https://lwn.net/Articles/593062/)
 - Fekete et al., "[Making Snapshot Isolation Serializable](https://www.eecs.harvard.edu/~margo/papers/fekete-sigmod2005.pdf)" (SIGMOD 2005) — the basis of SSI

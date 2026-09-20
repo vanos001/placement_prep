@@ -639,6 +639,6 @@ CONFIG_KEY_NOTIFICATIONS=y       # Key change notifications
 - [keyctl(1) man page](https://man7.org/linux/man-pages/man1/keyctl.1.html) — keyctl command reference
 - [keyutils(7) man page](https://man7.org/linux/man-pages/man7/keyutils.7.html) — Kernel key management
 - [LWN: Kernel keyring](https://lwn.net/Articles/646362/) — Keyring subsystem overview
-- [dm-crypt documentation](https://gitlab.com/cryptsetup/cryptsetup/-/wikis/Documentation) — Disk encryption docs
+- [dm-crypt documentation](https://gitlab.com/cryptsetup/cryptsetup/-/wikis/) — Disk encryption docs
 - [TPM and trusted keys](https://www.mankier.com/5/key.dns_resolver) — Trusted key documentation
 - [Kernel docs: encrypted keys](https://www.kernel.org/doc/html/latest/security/keys/trusted-encrypted.html) — Encrypted and trusted keys

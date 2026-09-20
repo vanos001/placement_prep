@@ -241,6 +241,6 @@ The two patterns overlap. The ambassador is a sidecar that proxies to a specific
 - [Microsoft Azure Architecture Center — Ambassador pattern](https://learn.microsoft.com/en-us/azure/architecture/patterns/ambassador) — sibling entry for the proxy variant
 - [Istio — Architecture overview](https://istio.io/latest/docs/ops/deployment/architecture/) — describes the sidecar-injection and control-plane model
 - [Istio — Sidecar resource reference](https://istio.io/latest/docs/reference/config/networking/sidecar/) — the configuration object that scopes a sidecar's listeners
-- [Envoy proxy — Architecture overview](https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview) — the most common sidecar in production
+- [Envoy proxy — Architecture overview](https://www.envoyproxy.io/docs/envoy/latest/) — the most common sidecar in production
 - [Kubernetes — Pods (overview)](https://kubernetes.io/docs/concepts/workloads/pods/) — the runtime unit that hosts sidecars
 - [Microsoft Azure Architecture Center — Cloud Design Patterns (catalog)](https://learn.microsoft.com/en-us/azure/architecture/patterns/) — broader pattern catalog including Sidecar, Ambassador, and the Anti-Corruption Layer

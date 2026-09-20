@@ -510,6 +510,6 @@ Apple's intention has been to keep the web sandboxed below native.
 - [Web Bundles / Web Packaging — WICG](https://github.com/WICG/webpackage)
 - [Trusted Web Activity — Android developers](https://developer.android.com/training/app-links/verify-site-associations)
 - [Bubblewrap CLI — github.com/GoogleChromeLabs/bubblewrap](https://github.com/GoogleChromeLabs/bubblewrap)
-- [Apple PWA / Add to Home Screen docs — developer.apple.com](https://developer.apple.com/documentation/webkitjs/add_to_home_screen)
+- [Apple PWA / Add to Home Screen docs — developer.apple.com](https://developer.apple.com/documentation/webkitjs/)
 - [iOS Web Push support — webkit.org blog](https://webkit.org/blog/13878/web-push-for-web-apps-on-ios-and-ipados/)
-- [PWA on Microsoft Store — Microsoft docs](https://learn.microsoft.com/en-us/microsoft-edge/progressive-web-apps-chromium/microsoft-store)
+- [PWA on Microsoft Store — Microsoft docs](https://learn.microsoft.com/en-us/microsoft-edge/progressive-web-apps-chromium/)

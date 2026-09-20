@@ -744,7 +744,7 @@ mount -o noatime /dev/md0 /data/archive
 - <https://www.usenix.org/legacy/events/fast09/tech/full_papers/jiang/jiang.pdf> - RAID reliability analysis
 - <https://lwn.net/Articles/636968/> - Linux RAID performance tuning
 - <https://github.com/ceph/ceph> - Ceph distributed storage (erasure coding)
-- <https://www.usenix.org/conference/fast16/technical-sessions/presentation/xia> - Erasure coding performance
+- <https://www.usenix.org/conference/fast16/technical-sessions/> - Erasure coding performance
 
 ## Related Topics
 

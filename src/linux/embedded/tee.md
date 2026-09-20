@@ -504,7 +504,7 @@ Emerging TEE standards for RISC-V:
 # Clone OP-TEE repositories
 git clone https://github.com/OP-TEE/optee_os.git
 git clone https://github.com/OP-TEE/optee_client.git
-git clone https://github.com/OP-TEE/optee_examples.git
+git clone https://github.com/linaro-swg/optee_examples
 
 # Build for QEMU (ARMv7 or ARMv8)
 cd optee_os

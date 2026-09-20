@@ -746,6 +746,6 @@ mount -t ceph ... -o dax=always
 - [docs.kernel.org: libceph](https://docs.kernel.org/networking/device_drivers/ethernet/mellanox/mlx5/index.html) — Kernel Ceph client internals
 - [Kernel documentation: Ceph Distributed File System](https://docs.kernel.org/filesystems/ceph.html) — Official kernel docs with mount options and architecture
 - [CephFS Troubleshooting](https://docs.ceph.com/en/latest/cephfs/troubleshooting/) — Official troubleshooting guide
-- [CephX Authentication](https://docs.ceph.com/en/latest/rados/operations/auth-intro/) — Authentication docs
-- [CephFS Best Practices](https://docs.ceph.com/en/latest/cephfs/best-practices/) — Production deployment guide
+- [CephX Authentication](https://docs.ceph.com/en/latest/rados/operations/) — Authentication docs
+- [CephFS Best Practices](https://docs.ceph.com/en/latest/cephfs/) — Production deployment guide
 - [CephFS Multimds](https://docs.ceph.com/en/latest/cephfs/multimds/) — Multi-MDS configuration

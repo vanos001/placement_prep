@@ -874,7 +874,7 @@ string match -r '(?<year>\d{4})-(?<month>\d{2})' '2024-07'
 - [Oh My Fish](https://github.com/oh-my-fish/oh-my-fish)
 - [fzf.fish](https://github.com/PatrickF1/fzf.fish)
 - [Tide Prompt](https://github.com/IlanCosman/tide)
-- [Awesome Fish](https://github.com/jorgebucaran/awsm-fish) — curated plugin list
+- [Awesome Fish](https://github.com/jorgebucaran/awsm.fish) — curated plugin list
 - [Fish FAQ](https://fishshell.com/docs/current/faq.html)
 
 ## Related Topics

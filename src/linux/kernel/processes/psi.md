@@ -623,4 +623,4 @@ The overhead is so low that PSI is enabled by default in most distributions.
 5. **LWN: A psi update and a new resource-pressure API**: https://lwn.net/Articles/793427/
 6. **oomd (Facebook's userspace OOM killer)**: https://facebookincubator.github.io/oomd/
 7. **PSI documentation**: https://facebookmicrosites.github.io/psi/docs/overview
-8. **Kubernetes PSI proposal**: https://github.com/kubernetes/enhancements/tree/master/keps/sig-node/3058-psi
+8. **Kubernetes PSI proposal**: https://github.com/kubernetes/enhancements/tree/master/keps/sig-node/4205-psi-metric

@@ -264,5 +264,5 @@ Cassandra excels at write-heavy workloads with multi-datacenter replication. Mon
 - [Cassandra Architecture documentation](https://cassandra.apache.org/doc/latest/cassandra/architecture/)
 - [Cassandra Compaction strategies](https://cassandra.apache.org/doc/latest/cassandra/managing/operating/compaction/index.html)
 - [Cassandra Consistency Levels](https://cassandra.apache.org/doc/latest/cassandra/architecture/guarantees.html)
-- [DataStax: Cassandra Best Practices](https://docs.datastax.com/en/cassandra-oss/3.0/cassandra/operations/)
+- [DataStax: Cassandra Best Practices](https://docs.datastax.com/en/cassandra-oss/3.0/)
 - [LWN: Cassandra overview (2020)](https://lwn.net/Articles/820130/)

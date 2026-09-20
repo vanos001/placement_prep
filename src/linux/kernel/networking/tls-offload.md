@@ -721,4 +721,4 @@ cat /proc/net/tls_stat
 - [OpenSSL kTLS support](https://github.com/openssl/openssl/blob/master/ssl/tls13_enc.c)
 - [BoringSSL kTLS](https://boringssl.googlesource.com/boringssl/+/refs/heads/master/ssl/tls13_enc.cc)
 - [Intel E810 TLS offload](https://www.intel.com/content/www/us/en/products/details/ethernet/800-series/e810.html)
-- [NVIDIA kTLS offload guide](https://docs.nvidia.com/networking/display/mlnxofedv24100700/kernel+transport+layer+security+(ktls)+offloads)
+- [NVIDIA kTLS offload guide](https://docs.nvidia.com/networking/display/mlnxofedv24100700/)+offloads)

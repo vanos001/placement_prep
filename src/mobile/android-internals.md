@@ -452,7 +452,7 @@ with `servicemanager` to be discoverable by apps.
 
 - [Android Platform Architecture — developer.android.com](https://developer.android.com/guide/platform)
 - [Binder — Android Open Source Project documentation](https://source.android.com/devices/architecture/hidl/binder-ipc)
-- [Android Runtime (ART) — developer.android.com](https://developer.android.com/topic/performance/runtime)
+- [Android Runtime (ART) — developer.android.com](https://developer.android.com/topic/performance/)
 - [Android Init Language — AOSP `system/core/init/README.md`](https://android.googlesource.com/platform/system/core/+/master/init/README.md)
 - [AOSP `frameworks/base` source](https://cs.android.com/android/platform/superproject/+/master:frameworks/base/)
 - [AOSP `system/server` / `system_server` source](https://cs.android.com/android/platform/superproject/+/master:frameworks/base/services/java/com/android/server/)

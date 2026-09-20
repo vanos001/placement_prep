@@ -324,7 +324,7 @@ Note:
 - JEP 371 — Hidden Classes: <https://openjdk.org/jeps/371>
 - JSR 292 — Supporting Dynamically Typed Languages on the JVM (the original `invokedynamic` spec): <https://www.jcp.org/en/jsr/detail?id=292>
 - Brian Goetz — "Translation of Lambda Expressions" (how `javac` lowers lambdas to `invokedynamic`): <https://cr.openjdk.org/~briangoetz/lambda/lambda-translation.html>
-- John Rose — "Bytecode workshop / HotSpot internals" notes (includes CallSite & MethodHandle details): <https://wiki.openjdk.org/display/HotSpot/MethodHandles>
-- Aleksey Shipilev — "Lambdas in Java 8" with bytecode walkthrough: <https://shipilev.net/jvm/anatomy-quarks/2-bytecode-basics/>
+- John Rose — "Bytecode workshop / HotSpot internals" notes (includes CallSite & MethodHandle details): <https://wiki.openjdk.org/display/HotSpot/>
+- Aleksey Shipilev — "Lambdas in Java 8" with bytecode walkthrough: <https://shipilev.net/jvm/anatomy-quarks/>
 - `javap` man page and `-v` (verbose) flag reference: <https://docs.oracle.com/en/java/javase/22/docs/specs/man/javap.html>
 - The ASM tree API (handy for building/reading class files programmatically): <https://asm.ow2.io/javadoc/org/objectweb/asm/tree/ClassNode.html>

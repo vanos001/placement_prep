@@ -253,6 +253,6 @@ A: The SRE postmortem is a direct descendant of the US Army's AAR formalized in 
 - [Google SRE Book — Chapter 14: Managing Incidents](https://sre.google/sre-book/managing-incidents/)
 - [Google SRE Workbook — Postmortems chapter](https://sre.google/workbook/postmortems/)
 - [Google — Collected Postmortems archive](https://sre.google/postmortems/)
-- [Etsy Debriefing Facilitation Guide](https://github.com/etsy/debriefing-facilitation-guide) — John Allspaw and colleagues
+- [Etsy Debriefing Facilitation Guide](https://github.com/etsy/DebriefingFacilitationGuide) — John Allspaw and colleagues
 - [GitHub Engineering Blog — Incident postmortems](https://github.blog/category/engineering/) and [GitHub Status](https://www.githubstatus.com/)
 - [PagerDuty — Incident Response documentation](https://response.pagerduty.com/)

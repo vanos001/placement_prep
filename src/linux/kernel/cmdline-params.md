@@ -661,7 +661,7 @@ netdev_budget_usecs=8000   # NAPI time budget (µs)
 ## Further Reading
 
 - [The kernel's command-line parameters — docs.kernel.org](https://docs.kernel.org/admin-guide/kernel-parameters.html)
-- [Linux kernel command line howto](https://tldp.org/HOWTO/html_single/BootPrompt-HOWTO/)
+- [Linux kernel command line howto](https://tldp.org/HOWTO/html_single/)
 - [systemd kernel command line](https://www.freedesktop.org/software/systemd/man/kernel-command-line.html)
 - [Arch Linux kernel parameters](https://wiki.archlinux.org/title/Kernel_parameters)
 - [GRUB 2 documentation](https://www.gnu.org/software/grub/manual/grub/)

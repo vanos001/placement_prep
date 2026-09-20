@@ -206,7 +206,7 @@ Notable: ML-DSA *verifies faster than Ed25519* in single-signature mode. The cos
 
 Reference implementations:
 
-- `pq-crystals/dilithium` (https://github.com/pq-crystals/dilithium-round3) — the canonical AVX2 implementation
+- `pq-crystals/dilithium` (https://github.com/pq-crystals/dilithium) — the canonical AVX2 implementation
 - `liboqs` (https://openquantumsafe.org) — production wrapper
 - `oqs-provider` for OpenSSL 3.x — exposes ML-DSA through the standard `EVP_PKEY` API
 

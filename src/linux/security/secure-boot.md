@@ -618,7 +618,7 @@ For debugging Secure Boot, a UEFI shell is invaluable:
 
 ```bash
 # Download the UEFI shell from Tianocore
-# https://github.com/tianocore/edk2/tree/master/ShellBinPkg
+# https://github.com/tianocore/edk2/tree/master/ShellPkg
 
 # Copy to EFI partition
 sudo mkdir -p /boot/efi/EFI/tools/

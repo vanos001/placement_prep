@@ -179,5 +179,5 @@ For a BBR-enabled server:
 - [TCP autotuning in the Linux kernel](https://docs.kernel.org/networking/index.html)
 - [BBR: Congestion-Based Congestion Control](https://research.google/pubs/pub45387/) (Google, ACM Queue 2016)
 - [Soheil Hassas Yeganeh et al., "fq_codel"](https://www.ietf.org/proceedings/84/slides/slides-94-tsvarea-0.pdf)
-- [Production TCP tuning for high-BDP networks](https://www.psc.edu/research/networking/tuning-tcp)
+- [Production TCP tuning for high-BDP networks](https://www.psc.edu/research/networking/)
 - [Linux networking sysctls](https://www.kernel.org/doc/Documentation/networking/ip-sysctl.txt)

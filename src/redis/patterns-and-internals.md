@@ -104,4 +104,4 @@ A: (1) Set `maxmemory`, (2) configure eviction policy (LRU/LFU), (3) use TTLs on
 ## References
 
 - [Redis Documentation](https://redis.io/docs/)
-- [Redis Patterns and Best Practices](https://redis.io/docs/management/patterns/)
+- [Redis Patterns and Best Practices](https://redis.io/docs/management/)

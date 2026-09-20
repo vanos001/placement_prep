@@ -223,7 +223,7 @@ Thread is the *transport* — IPv6 mesh over 802.15.4, just the network layer. M
 - Thread Group "Thread Primer" — https://www.threadgroup.org/what-is-thread
 - Matter 1.3 Specification (CSA) — https://csa-iot.org/all-solutions/matter/
 - Matter SDK (ConnectedHomeIP) on GitHub — https://github.com/project-chip/connectedhomeip
-- Matter Specification — Data Model and Interactions — https://github.com/CHIP-Specifications/connectedhomeip-spec/blob/master/spec/07-Matter-Data-Model.adoc
+- Matter Specification — Data Model and Interactions — https://github.com/project-chip/connectedhomeip
 - Apple "Why Matter" developer docs — https://developer.apple.com/videos/play/tech-talks/110382/ (Matter and Thread overview)
 - Google Home Developer — "Matter" — https://developers.home.google.com/matter
 - IEEE 802.15.4-2020 standard — https://standards.ieee.org/ieee/802.15.4/7029/

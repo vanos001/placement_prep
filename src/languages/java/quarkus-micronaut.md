@@ -289,5 +289,5 @@ It tells `native-image` to run the static initializer (`<clinit>`) of the named 
 - GraalVM Native Image Reference Manual — https://www.graalvm.org/reference-manual/native-image/
 - GraalVM — Reachability Metadata — https://www.graalvm.org/reference-manual/native-image/metadata/
 - Thoughts on Java — Quarkus vs Spring Boot — https://www.thoughtsonjava.com/quarkus-vs-spring-boot/
-- Red Hat — Quarkus vs Spring Boot — https://www.redhat.com/en/topics/cloud-native-apps/quarkus-vs-spring-boot
+- Red Hat — Quarkus vs Spring Boot — https://www.redhat.com/en/topics/cloud-native-apps/
 - MicroProfile Specifications — https://microprofile.io/specs/

@@ -827,6 +827,6 @@ void update_data(void) {
 - [Real-Time Linux in Mainline — LWN.net](https://lwn.net/Articles/953752/)
 - [PREEMPT_RT Merged (6.12) — LWN.net](https://lwn.net/Articles/993498/)
 - [Latency Debugging — docs.kernel.org](https://docs.kernel.org/trace/events.html)
-- [rt-tests GitHub](https://github.com/jirka-h/rt-tests)
+- [rt-tests GitHub](https://github.com/clrkwllms/rt-tests)
 - [cyclictest(1) man page](https://manpages.org/cyclictest/1)
 - [sched(7) — scheduling policies](https://man7.org/linux/man-pages/man7/sched.7.html)

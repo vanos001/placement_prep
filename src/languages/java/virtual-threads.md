@@ -257,5 +257,5 @@ No. The carrier pool's parallelism should equal the number of CPU cores you want
 - JEP 506: Scoped Values (4th Preview, JDK 25) — https://openjdk.org/jeps/506
 - Inside Java — Project Loom: Modern Scalable Concurrency for the Java Platform (official Oracle technical article) — https://inside.java/2024/02/04/sip108/
 - Spring Framework reference — Virtual Threads (`spring.threads.virtual.enabled`) — https://docs.spring.io/spring-framework/reference/integration/scheduling.html#scheduling-choose-virtual-threads
-- Helidon Nima — a web server built from the ground up on virtual threads — https://helidon.io/docs/v4/about/nima
+- Helidon Nima — a web server built from the ground up on virtual threads — https://helidon.io/docs/v4/
 - JVM Technology Deep Dive: Patterns for Scaling — Ron Pressler's Loom talks (Devoxx, QCon) for the original design rationale

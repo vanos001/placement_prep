@@ -171,6 +171,6 @@ mTLS's advantage is cryptographic strength + cloud-agnostic. Its disadvantage is
 - [SPIFFE specification](https://github.com/spiffe/spiffe)
 - [SPIRE: SPIFFE Runtime Environment](https://github.com/spiffe/spire)
 - [Istio mTLS documentation](https://istio.io/latest/docs/concepts/security/#mutual-tls-authentication)
-- [Linkerd mTLS documentation](https://linkerd.io/2/features/mtls/)
+- [Linkerd mTLS documentation](https://linkerd.io/2/features/)
 - [AWS App Mesh mTLS](https://docs.aws.amazon.com/app-mesh/latest/userguide/mutual-tls.html)
 - [LWN: SPIFFE and workload identity (2021)](https://lwn.net/Articles/856642/)

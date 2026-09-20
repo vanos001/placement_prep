@@ -295,7 +295,7 @@ Hard-won lessons worth calling out: **shared credentials across a fleet** mean o
 - [LoRa Alliance — LoRaWAN Specification](https://lora-alliance.org/resource_hub/lorawan-1-0-4-specification-package/)
 - [3GPP — NB-IoT overview](https://www.3gpp.org/technologies/nb-iot)
 - [Zigbee Alliance — Specifications](https://csa-iot.org/)
-- [Bluetooth Mesh Specification](https://www.bluetooth.com/specifications/specs/mesh-specification/)
+- [Bluetooth Mesh Specification](https://www.bluetooth.com/specifications/specs/)
 - [AWS IoT Core Developer Guide](https://docs.aws.amazon.com/iot/)
 - [Azure IoT Hub Documentation](https://learn.microsoft.com/azure/iot-hub/)
 - [Eclipse IoT Projects](https://iot.eclipse.org/)

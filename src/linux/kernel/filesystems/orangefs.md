@@ -580,7 +580,7 @@ dmesg | grep orangefs
 * **OrangeFS documentation: https://docs.orangefs.io/**
 * **LWN: [OrangeFS: a new direction for PVFS](https://lwn.net/Articles/662090/)**
 * **PVFS2 project page: https://www.pvfs.org/**
-* **Source code: https://github.com/waltligon/orangefs**
+* **Source code: https://github.com/waltligon/orangefs
 * **Source: `fs/orangefs/` in the kernel tree**
 * **LPC 2016: "Upstreaming the OrangeFS Kernel Client"**
 * **[OrangeFS FAQ](http://www.orangefs.org/faq)**

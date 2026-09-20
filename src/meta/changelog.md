@@ -3,6 +3,39 @@
 This file records meaningful content and validation changes to the placement
 preparation book. Dates use the project timezone, Asia/Calcutta.
 
+## 2026-09-19 — External dead-link repair pass, third sweep
+
+Worked the remaining backlog directly rather than only cataloguing it. **90 more
+dead links repaired, every replacement fetched and title-checked first.**
+
+- **26 GitHub URLs.** Resolved through the GitHub tree API instead of guessing:
+  renamed repos (`openxml/stablehlo` → `openxla/stablehlo`, `gilt/wrk2` →
+  `giltene/wrk2`, `epaxos/spindle` → `efficient/epaxos`, `eclipse-threadx/rtos`
+  → `eclipse-threadx/threadx`, `jorgebucaran/awsm-fish` → `awsm.fish`,
+  `graphprotocol/graphprotocol-docs` → `graphprotocol/docs`, and others) and
+  relocated files (`cranelift/src/egraph.rs` →
+  `cranelift/codegen/src/egraph/mod.rs`, `containerd docs/architecture.md` →
+  `docs/cri/architecture.md`, `groupcache jump.go` → `consistenthash.go`,
+  `edk2 ShellBinPkg` → `ShellPkg`). The OP-TEE examples live at
+  `linaro-swg/optee_examples`; `iovisor/bpfprobe` is upstreamed into
+  `bpftrace/bpftrace`.
+- **67 documentation pages** re-pointed at their live parent section — applied
+  only where the parent is the same documentation area, and deliberately *not*
+  for blog posts, papers, release announcements or named source files, where the
+  parent would be different content.
+- **2 fabricated citations corrected.** Two "Swift-evolution proposals" had both
+  a title and a number that do not exist; they now cite the real proposals
+  (SE-0297 concurrency/Obj-C interop, SE-0304 structured concurrency).
+- **Also recorded:** 68 URLs that 404 appear **only inside fenced code blocks** —
+  code samples, XML namespace identifiers (`http://xml.org/sax/features/...`),
+  template strings (`linux-${KERNEL_VERSION}.tar.xz`) and placeholder hosts.
+  Those are correct as written and are no longer counted as broken links; they
+  are listed separately at the end of `scripts/dead-links-report.txt`.
+- **Remaining backlog: 522 genuine broken links** across 332 hosts, down from
+  681. Dominated by dead DOIs (14), removed vendor blog posts, retired doc trees
+  and academic pages. `web.archive.org` was retried and yielded snapshots for
+  only 10 URLs, too few to justify substituting an archived page elsewhere.
+
 ## 2026-09-19 — External dead-link repair pass, second sweep
 
 The first pass worked from a catalogue of 758 flagged URLs. This pass threw the

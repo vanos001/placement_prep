@@ -145,4 +145,4 @@ SpiderMonkey and V8 use a similar tiered approach but with their own JITs instea
 - [ISLE: Pattern-matching DSL paper](https://docs.rs/cranelift-isle/latest/cranelift_isle/)
 - [Wasmtime: WebAssembly runtime](https://wasmtime.dev/)
 - [Bytecode Alliance](https://bytecodealliance.org/)
-- [Cranelift's e-graph optimization](https://github.com/bytecodealliance/wasmtime/blob/main/cranelift/src/egraph.rs)
+- [Cranelift's e-graph optimization](https://github.com/bytecodealliance/wasmtime/blob/main/cranelift/codegen/src/egraph/mod.rs)

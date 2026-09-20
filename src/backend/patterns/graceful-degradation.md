@@ -371,7 +371,7 @@ Flags give operators a manual kill switch on top of the breaker's automatic one.
 - AWS Builders' Library: *Graceful Degradation* — https://aws.amazon.com/builders-library/workload-graceful-degradation/
 - Microsoft: *Pattern: Health Endpoint Monitoring* — https://learn.microsoft.com/en-us/azure/architecture/patterns/health-endpoint-monitoring
 - Martin Fowler: *Circuit Breaker* — https://martinfowler.com/bliki/CircuitBreaker.html
-- LaunchDarkly: *Defaults and offline mode* — https://docs.launchdarkly.com/sdk/concepts/flags
+- LaunchDarkly: *Defaults and offline mode* — https://docs.launchdarkly.com/sdk/concepts/
 - Klein, Maggio, Årzén, Hernández-Rodriguez: *Brownout: Building More Robust Cloud Applications*, ICSE 2014 — https://doi.org/10.1145/2568225.2568227 (dimmable components; DP and beam-search controllers)
 - Xu & Buyya: *Brownout Approach for Adaptive Management of Resources and Applications in Cloud Computing Systems: A Taxonomy and Future Directions*, ACM Computing Surveys 2019 — https://doi.org/10.1145/3234151
 - Xu, Dastjerdi & Buyya: *Energy Efficient Scheduling of Cloud Application Components with Brownout* (microservice-granularity dimming) — https://arxiv.org/abs/1608.02707

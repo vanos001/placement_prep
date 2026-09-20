@@ -196,7 +196,7 @@ The phrase "exactly-once delivery" is meaningless without specifying the boundar
 ## References
 
 - Kafka KIP-98: "Exactly Once Delivery and Transactional Messaging" — [KIP-98](https://cwiki.apache.org/confluence/display/KAFKA/KIP-98+-+Exactly+Once+Delivery+and+Transactional+Messaging)
-- Kafka KIP-447: "Producer scalability for exactly-once" — [KIP-447](https://cwiki.apache.org/confluence/display/KAFKA/KIP-447)
+- Kafka KIP-447: "Producer scalability for exactly-once" — [KIP-447](https://cwiki.apache.org/confluence/display/KAFKA/)
 - [Apache Kafka documentation: Exactly-once semantics](https://kafka.apache.org/documentation/#semantics)
 - [Debezium: CDC for transactional outbox](https://debezium.io/blog/2023/02/02/transactional-outbox/)
 - [Stripe idempotency key docs](https://docs.stripe.com/api/idempotent_requests)

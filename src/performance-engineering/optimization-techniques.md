@@ -209,7 +209,7 @@ Socket 0                    Socket 1
 
 - Hennessy, J. & Patterson, D. *Computer Architecture: A Quantitative Approach*, 6th Ed.
 - Gregg, B. *Systems Performance*, 2nd Ed. Chapter 6: CPUs.
-- ClickHouse Docs on Compression: [clickhouse.com/docs/en/operations/compression](https://clickhouse.com/docs/en/operations/compression)
+- ClickHouse Docs on Compression: [clickhouse.com/docs/en/operations/compression](https://clickhouse.com/docs/en/operations/)
 
 ## Interview Questions
 

@@ -231,7 +231,7 @@ A: Almost never for raw price. The three hyperscalers watch each other's price l
 - [FinOps Foundation — State of FinOps report (annual)](https://data.finops.org/)
 - [AWS Cost Explorer — User Guide](https://docs.aws.amazon.com/cost-management/latest/userguide/ce-what-is.html)
 - [AWS Savings Plans — Documentation](https://aws.amazon.com/savingsplans/)
-- [Google Cloud — Committed Use Discounts](https://cloud.google.com/compute/docs/instances/committed-use-discounts)
+- [Google Cloud — Committed Use Discounts](https://cloud.google.com/compute/docs/instances/)
 - [Kubecost — Documentation](https://docs.kubecost.com/)
 - [OpenCost — CNCF sandbox project](https://www.opencost.io/)
 - [VMware CloudHealth — Cloud Cost Management](https://www.vmware.com/products/cloudhealth.html)

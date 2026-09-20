@@ -100,15 +100,15 @@ MathJax. Set `EXTERNAL=1` to add DOI resolution and external-URL probing. See
 > **Scope of "0 broken links".** The internal link/anchor check is green. For
 > external URLs, a **full-repo sweep of all 8,662 third-party links** (2,067
 > hosts) found **5,872 live** and **761 dead** (HTTP 404/410); the rest answered
-> 403/429/challenge and were treated as unverifiable rather than dead. **161 of
-> those dead links were repaired in the first pass** and **60 more replacement
-> URLs (in 54 files) in the second** — every replacement fetched and
-> title-checked before it was written — which includes **every kernel.org link
-> (471/471 now live)**. Of what is left, 40 are intentional `example.com`
-> placeholders and **681 are genuine dead links**, catalogued by host in
-> [`scripts/dead-links-report.txt`](scripts/dead-links-report.txt). Those are
-> almost all pages deleted upstream (source files that no longer exist at any
-> path, retired doc trees), so they need a substitution decision, not a rewrite.
+> 403/429/challenge and are treated as unverifiable rather than dead. **251 of
+> those dead links have been repaired** across three passes — every replacement
+> fetched and title-checked before it was written — which includes **every
+> kernel.org link (471/471 now live)**. Of what remains, 25 are intentional
+> `example.com` placeholders and **522 are genuine broken links**, catalogued by
+> host in [`scripts/dead-links-report.txt`](scripts/dead-links-report.txt).
+> A further **68 URLs that 404 appear only inside fenced code blocks** — code
+> samples, XML namespace identifiers and template strings, not links — so they
+> are correct as written and are listed separately.
 > Re-probe with `python3 scripts/check-links.py --external src`.
 
 ## Contributing

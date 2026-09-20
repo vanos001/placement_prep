@@ -537,7 +537,7 @@ This pattern is so universal that the `client-go` `informer` factory is the foun
 - [etcd docs — MVCC, Raft, leases](https://etcd.io/docs/latest/)
 - [CRI](https://kubernetes.io/docs/concepts/architecture/cri/) · [containerd](https://containerd.io/docs/) · [CRI-O](https://cri-o.io/) · [OCI runtime spec](https://github.com/opencontainers/runtime-spec)
 - [CNI spec](https://github.com/containernetworking/cni/blob/main/SPEC.md) · [CSI spec](https://github.com/container-storage-interface/spec)
-- [Scheduling Framework](https://kubernetes.io/docs/concepts/scheduling-eviction/scheduler-framework/) · [Admission Controllers](https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/) · [Pod Security Standards](https://kubernetes.io/docs/concepts/security/pod-security-standards/) · [Node-pressure eviction](https://kubernetes.io/docs/concepts/scheduling-eviction/node-pressure-eviction/)
+- [Scheduling Framework](https://kubernetes.io/docs/concepts/scheduling-eviction/) · [Admission Controllers](https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/) · [Pod Security Standards](https://kubernetes.io/docs/concepts/security/pod-security-standards/) · [Node-pressure eviction](https://kubernetes.io/docs/concepts/scheduling-eviction/node-pressure-eviction/)
 - [Kubernetes the Hard Way — Kelsey Hightower](https://github.com/kelseyhightower/kubernetes-the-hard-way) · *Kubernetes Up & Running* (Hightower, Burns, Beda, O'Reilly 3rd ed., 2022) · [Client-go informers](https://pkg.go.dev/k8s.io/client-go/informers)
 
 ## Cross-References

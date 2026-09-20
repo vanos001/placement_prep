@@ -283,7 +283,7 @@ If a method uses a pointer receiver, only `*S` satisfies any interface requiring
 - [Go Specification — Type switches](https://go.dev/ref/spec#Type_switches)
 - [Effective Go — Interfaces and types](https://go.dev/doc/effective_go#interfaces_and_types)
 - [Go Blog — When and why to use generics](https://go.dev/blog/why-generics)
-- [Tutorial: Getting started with modules](https://go.dev/doc/tutorial/module)
+- [Tutorial: Getting started with modules](https://go.dev/doc/tutorial/)
 
 ## See also
 

@@ -161,4 +161,4 @@ Daily reconciliation ensures system records match bank/gateway records:
 
 - [PCI DSS Documentation](https://www.pcisecuritystandards.org/)
 - [Stripe API Design](https://stripe.com/docs/api)
-- [Payment Services Directive (PSD2)](https://ec.europa.eu/info/law/payment-services-psd2-directive-en)
+- [Payment Services Directive (PSD2)](https://ec.europa.eu/info/law/)

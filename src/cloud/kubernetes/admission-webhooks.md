@@ -266,7 +266,7 @@ violation[msg] {
 
 - [Kubernetes: Admission Controllers Reference](https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/)
 - [Kubernetes: Dynamic Admission Control](https://kubernetes.io/docs/reference/access-authn-authz/extensible-admission-controllers/)
-- [MutatingWebhookConfiguration API reference](https://kubernetes.io/docs/reference/kubernetes-api/cluster-resources/mutating-webhook-configuration-v1/)
+- [MutatingWebhookConfiguration API reference](https://kubernetes.io/docs/reference/kubernetes-api/)
 - [Kyverno: policy as code](https://kyverno.io/)
 - [OPA Gatekeeper](https://open-policy-agent.github.io/gatekeeper/)
 - [Istio sidecar injector source code](https://github.com/istio/istio/tree/master/pkg/kube/inject)

@@ -619,7 +619,7 @@ Common pitfalls:
 - [Android Jetpack DataStore (modern KVP replacement)](https://developer.android.com/topic/libraries/architecture/datastore)
 - [Apple — Core Data Programming Guide](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/CoreData/)
 - [Apple — NSPersistentContainer documentation](https://developer.apple.com/documentation/coredata/nspersistentcontainer)
-- [Apple — Concurrency with Core Data](https://developer.apple.com/documentation/coredata/performing_core_data_tasks_on_a_background_task)
+- [Apple — Concurrency with Core Data](https://developer.apple.com/documentation/coredata/)
 - [Realm — Documentation hub](https://www.mongodb.com/docs/realm/)
 - [Realm Kotlin SDK](https://www.mongodb.com/docs/realm/sdk/kotlin/)
 - [Apple — UserDefaults reference](https://developer.apple.com/documentation/foundation/userdefaults)

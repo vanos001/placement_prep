@@ -410,7 +410,7 @@ forwards to APNs for iOS, but you lose direct control over APNs features like
 ## References
 
 - [Apple Developer — APNs Overview](https://developer.apple.com/library/archive/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/APNSOverview.html)
-- [Apple Developer — Sending Push Notifications Using APNs (HTTP/2)](https://developer.apple.com/documentation/usernotifications/sending-push-messages-using-the-apple-push-notification-service)
+- [Apple Developer — Sending Push Notifications Using APNs (HTTP/2)](https://developer.apple.com/documentation/usernotifications/)
 - [Apple Developer — Establishing a Connection to APNs (JWT provider tokens)](https://developer.apple.com/documentation/usernotifications/setting_up_a_remote_notification_server/establishing_a_certificate-based_connection_to_apns)
 - [Firebase Cloud Messaging — HTTP v1 protocol](https://firebase.google.com/docs/cloud-messaging/http-server-ref)
 - [Firebase — Send messages to topics](https://web.archive.org/web/20250917031716/https://firebase.google.com/docs/cloud-messaging/send-message)

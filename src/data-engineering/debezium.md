@@ -235,5 +235,5 @@ US-East is the source of truth; US-West is a read replica kept in sync via CDC. 
 - [Debezium Connector for MySQL](https://debezium.io/documentation/reference/stable/connectors/mysql.html)
 - [PostgreSQL logical replication documentation](https://www.postgresql.org/docs/current/logical-replication.html)
 - [MySQL binary log documentation](https://dev.mysql.com/doc/refman/8.0/en/binary-log.html)
-- [Debezium: Practical patterns (Red Hat blog)](https://www.redhat.com/en/topics/data-storage/change-data-capture)
-- [Debezium + Kafka Connect tutorial](https://debezium.io/documentation/reference/tutorial/)
+- [Debezium: Practical patterns (Red Hat blog)](https://www.redhat.com/en/topics/data-storage/)
+- [Debezium + Kafka Connect tutorial](https://debezium.io/documentation/reference/)

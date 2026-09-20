@@ -594,7 +594,7 @@ Patches per release:
 - kernel.org release history: https://kernel.org/
 - LWN.net "What's new in Linux X.Y" articles: https://lwn.net/
 - Linux Kernel Newbies — Release notes: https://kernelnewbies.org/LinuxChanges
-- kernel.org changelog: https://cdn.kernel.org/pub/linux/kernel/v6.x/ChangeLog-*
+- kernel.org changelog: https://cdn.kernel.org/pub/linux/kernel/v6.x/
 - Corbet, Jonathan. "A brief history of Linux kernel releases." LWN.net. https://lwn.net/
 - "A Guide to the Kernel Development Process": https://www.kernel.org/doc/html/latest/process/development-process.html
 - Torvalds, Linus. Linux kernel Git log: https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/log/

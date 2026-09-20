@@ -598,7 +598,7 @@ graph TD
 - [Google SRE Book](https://sre.google/sre-book/table-of-contents/)
 - [Netflix Tech Blog - Chaos Engineering](https://netflixtechblog.com/)
 - [AWS Well-Architected Framework - Reliability](https://aws.amazon.com/architecture/well-architected/)
-- [Microsoft Azure - High Availability](https://learn.microsoft.com/en-us/azure/architecture/high-availability/)
+- [Microsoft Azure - High Availability](https://learn.microsoft.com/en-us/azure/architecture/)
 
 ## Cross-References
 

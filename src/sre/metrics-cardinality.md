@@ -124,7 +124,7 @@ The exemplar mechanism deserves special mention because it is the *controlled le
 ## References
 
 - Prometheus documentation, "Exemplars" and storage overview (head block / active series model): <https://prometheus.io/docs/prometheus/latest/storage/>
-- Grafana Mimir documentation, "Limitations" (per-tenant series and label limits): <https://grafana.com/docs/mimir/latest/configure/configure-about/limits/>
+- Grafana Mimir documentation, "Limitations" (per-tenant series and label limits): <https://grafana.com/docs/mimir/latest/configure/>
 - Robust Perception (Brian Brazil's blog), canonical posts on cardinality, e.g. "Cardinality is key": <https://www.robustperception.io/cardinality-is-key/>
 - Grafana Mimir `mimirtool` (analyze dashboards/rules for cardinality impact): <https://grafana.com/docs/mimir/latest/operators-guide/tools/mimirtool/>
 - Prometheus `metric_relabel_configs` reference (drop/bucket at scrape boundary): <https://prometheus.io/docs/prometheus/latest/configuration/configuration/#metric_relabel_configs>

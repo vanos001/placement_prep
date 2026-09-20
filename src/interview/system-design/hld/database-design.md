@@ -606,7 +606,7 @@ Connection timeout: 5s (fail fast if pool exhausted)
 - [Cassandra Architecture](https://cassandra.apache.org/doc/latest/cassandra/architecture/)
 - [Vitess Documentation](https://vitess.io/docs/)
 - [AWS Database Blog](https://aws.amazon.com/blogs/database/)
-- [Google Cloud - Choosing a Database](https://cloud.google.com/docs/get-started/choose-a-database)
+- [Google Cloud - Choosing a Database](https://cloud.google.com/docs/get-started/)
 
 ## Cross-References
 

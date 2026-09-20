@@ -353,8 +353,8 @@ exist without further restriction.
 - Go blog: Go Concurrency Patterns: Pipelines and cancellation.
   <https://go.dev/blog/pipelines>
 - Peter H. Welch. *Process Oriented Design for MIMD Parallel
-  Processing*. 1996. <https://www.cs.kent.ac.uk/pubs/1996/543/>
+  Processing*. 1996. <https://www.cs.kent.ac.uk/pubs/1996/>
 - Geraint Jones. *occam 2.1 Reference Manual*.
-  <https://www.cs.kent.ac.uk/research/groups/sysjo/occam/>
+  <https://www.cs.kent.ac.uk/research/groups/>
 - JCSP — Communicating Sequential Processes for Java.
   <https://www.cs.kent.ac.uk/projects/ofa/jcsp/>
