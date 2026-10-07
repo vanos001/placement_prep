@@ -1,6 +1,6 @@
 # Placement Preparation Knowledge Base
 
-A comprehensive, self-improving placement preparation resource for Software Engineering interviews — built as an [mdBook](https://rust-lang.github.io/mdBook/) with 2,800+ pages, 4,800+ Mermaid diagrams, and MathJax-powered equations.
+A comprehensive, self-improving placement preparation resource for Software Engineering interviews — built as an [mdBook](https://rust-lang.github.io/mdBook/) with 2,900+ pages, 5,300+ Mermaid diagrams, and MathJax-powered equations.
 
 [![Validation](https://img.shields.io/badge/validation-run%20locally%20%C2%B7%20not%20in%20CI-blue)](scripts/README.md)
 
@@ -76,8 +76,8 @@ placement_prep/
 
 | Metric | Count |
 |--------|-------|
-| Markdown pages | 2,985 content pages (+ `SUMMARY.md`) |
-| Mermaid diagrams | 5,249 across 1,400+ files (100% pass the real mermaid@11 parser, not just the heuristic) |
+| Markdown pages | 3,020 content pages (+ `SUMMARY.md`) |
+| Mermaid diagrams | 5,336 across 1,400+ files (100% pass the real mermaid@11 parser, not just the heuristic) |
 | Topic directories | 61 |
 | Math-enabled pages | 128 |
 | Words | ~5.79M |

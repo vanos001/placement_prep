@@ -17,6 +17,22 @@
 - Backlog items closed this pass: Ceph CRUSH/RADOS deep dive.
 - All pages wired into SUMMARY; validators green; real Mermaid parser 5,182/5,182.
 
+## Interview-classics expansion — 2026-10-08
+
+- 36 new pages across interview case studies (18), machine coding (9),
+  security (3), modern kernel (3), HPC (2), and networks DDoS (1).
+- 10 thin high-traffic pages substantially enhanced (coding patterns,
+  OA/MCQ strategies, section README catalogs, TGI, LLM serving security,
+  vector DB internals, CI/CD case study).
+- Backlog items closed this pass: IRCTC/Tatkal booking, UPI/NPCI,
+  video conferencing (SFU), CDN service design, DDoS mitigation,
+  threat modeling, zero-trust, incident response, Rust-in-kernel,
+  THP/khugepaged, zram swap, SIMD/roofline, HPC checkpoint/restart,
+  machine-coding classics (car rental, thread pool, pub-sub, cron parser,
+  Stack Overflow, cricket scoreboard, marketplace, content moderation).
+- All pages wired into SUMMARY; validators green; real Mermaid parser
+  5,336/5,336.
+
 ## Dev pull audit — 2026-08-13
 
 - Pulled the latest `dev` expansion and repaired ten missing Summary targets

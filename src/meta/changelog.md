@@ -3,6 +3,41 @@
 This file records meaningful content and validation changes to the placement
 preparation book. Dates use the project timezone, Asia/Calcutta.
 
+## 2026-10-08 — Interview-classics expansion: 36 new pages, 5,336 diagrams
+
+Third expansion round targeting the remaining classic interview topics and
+thin high-traffic pages. **36 new pages** (13,539 lines inserted) plus 10
+existing pages substantially enhanced (+2,463 lines net).
+
+New pages (all wired into `src/SUMMARY.md`):
+
+- **System-design case studies** (`src/interview/system-design/case-studies/`,
+  18 pages) — IRCTC/Tatkal train booking, UPI/NPCI payments, food delivery
+  (HLD), video conferencing (SFU/WebRTC), live comments, online exam
+  platform, dating app, CDN service, matchmaking & leaderboards, fantasy
+  sports, grocery instant delivery, loyalty points ledger, vaccination slot
+  booking, telehealth, digital lending, C2C marketplace, Google
+  Photos-scale media, content moderation platform.
+- **Machine coding** (`src/machine-coding/`, 9 pages) — car rental, meeting
+  room scheduler, shopping cart, Stack Overflow Q&A, cricket scoreboard,
+  thread pool, pub-sub broker, inventory management, cron parser.
+- **Networks** — DDoS mitigation deep dive (`src/networks/security/`).
+- **HPC** — SIMD vectorization & roofline model; fault tolerance &
+  checkpoint/restart (`src/hpc/`).
+- **Security** — threat modeling, zero-trust architecture, incident response
+  & forensics (`src/security/`).
+- **Modern kernel** — Rust in the Linux kernel, THP/khugepaged, zram swap
+  tuning (`src/os/modern/`).
+
+Enhanced pages: coding-pattern pages (binary search, sliding window, two
+pointers), OA/MCQ/pseudocode strategy guides, `interview/coding/README.md`,
+case-studies README rebuilt as a 37-study catalog, machine-coding README
+rebuilt as a 23-problem catalog, TGI deep dive, LLM serving security,
+vector-database internals, CI/CD case study expanded to full format.
+
+Validation: 0 broken links, SUMMARY navigation OK (3,020 pages), 0 MathJax
+issues, real Mermaid v11 parser **5,336/5,336 pass**.
+
 ## 2026-10-07 — Reference-grounded expansion: 140 new pages, 5,182 diagrams
 
 Large expansion driven by the Reference Libraries section: each new deep dive
