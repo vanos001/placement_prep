@@ -1723,6 +1723,9 @@
 - [Command Injection](./security/command-injection.md)
 - [Prototype Pollution](./security/prototype-pollution.md)
 - [Software Supply Chain Security](./security/supply-chain-security.md)
+- [Threat Modeling](./security/threat-modeling.md)
+- [Zero Trust Architecture](./security/zero-trust-architecture.md)
+- [Incident Response & Forensics](./security/incident-response.md)
 
 ---
 
@@ -3495,6 +3498,9 @@
 - [Vaccination Slot Booking](./interview/system-design/case-studies/vaccination-slot-booking.md)
 - [Telehealth Consultation](./interview/system-design/case-studies/telehealth-consultation.md)
 - [Digital Lending Platform](./interview/system-design/case-studies/digital-lending.md)
+- [C2C Marketplace Platform](./interview/system-design/case-studies/marketplace-platform.md)
+- [Google Photos-Scale Media Platform](./interview/system-design/case-studies/google-photos.md)
+- [Content Moderation Platform](./interview/system-design/case-studies/content-moderation-platform.md)
 
 ---
 
@@ -3627,6 +3633,9 @@
 - [Maple Tree & VMA Management](./os/modern/maple-tree-vma.md)
 - [Page Reclaim Internals](./os/modern/page-reclaim.md)
 - [OOM Killer Internals](./os/modern/oom-killer.md)
+- [Rust in the Linux Kernel](./os/modern/rust-in-kernel.md)
+- [Transparent Huge Pages & khugepaged](./os/modern/thp-khugepaged.md)
+- [zram & Modern Swap Tuning](./os/modern/zram-swap.md)
 
 ---
 
