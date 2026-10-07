@@ -1,6 +1,6 @@
 # Reference Libraries
 
-Eight verified indexes of **primary sources** — one per major systems topic. Where the rest of this book explains concepts, these pages tell you *which document to open* for the authoritative answer, and in what order to read things.
+Ten verified indexes of **primary sources** — one per major systems topic. Where the rest of this book explains concepts, these pages tell you *which document to open* for the authoritative answer, and in what order to read things.
 
 Each entry records, where it exists:
 
@@ -24,12 +24,14 @@ Each page then has a two-track **Education** section (Basic and Advanced, with u
 | [Machine Learning, Deep Learning & AI](./machine-learning-ai.md) | 89 | 57 | 205 |
 | [Programming Languages, Compilers & Runtimes](./languages-compilers.md) | 82 | 59 | 171 |
 | [Cloud Computing](./cloud-computing.md) | 93 | 57 | 212 |
+| [Prompt Engineering](./prompt-engineering.md) | 70 | 53 | 118 |
+| [Agentic Engineering](./agentic-engineering.md) | 71 | 54 | 120 |
 
-**747 entries, 1,705 unique URLs**, every one HTTP-verified on 2026-10-07.
+**888 entries, 1,822 unique URLs**, every one HTTP-verified on 2026-10-07.
 
 ## Research papers
 
-Every index except the networking one ends with a research section. Fifteen sources are shared across all seven — arXiv (with its API and bulk-data endpoints), ar5iv, alphaXiv, Semantic Scholar, OpenAlex, DBLP, OpenReview, CORE, Unpaywall, Papers We Love, The Morning Paper archive, USENIX Proceedings, the ACM DL, IEEE Xplore and DROPS/LIPIcs — and each page adds the venues specific to its field. (The networking index instead carries RFC/standards bodies, NOG communities and operator resources in its own categories.)
+Every index except the networking one ends with a research section. Fifteen sources are shared across all nine — arXiv (with its API and bulk-data endpoints), ar5iv, alphaXiv, Semantic Scholar, OpenAlex, DBLP, OpenReview, CORE, Unpaywall, Papers We Love, The Morning Paper archive, USENIX Proceedings, the ACM DL, IEEE Xplore and DROPS/LIPIcs — and each page adds the venues specific to its field. (The networking index instead carries RFC/standards bodies, NOG communities and operator resources in its own categories.)
 
 The **access model is recorded for every venue**: which are fully open (USENIX, PVLDB, PMLR, JMLR, ACL Anthology, CVF, LIPIcs, PACMPL), which are partially open (ACM), and which are mostly paywalled with a legal free route around them (IEEE Xplore → arXiv, author pages, Unpaywall).
 
@@ -40,6 +42,7 @@ Every URL was fetched with redirects followed and a 25-second timeout, and recor
 - **Dead links were replaced, not kept.** Where a documented path 404'd, the working replacement is used.
 - **Bot-blocked sources are flagged, not dropped.** Several important sources (the Intel SDM, `developer.arm.com`, the OSDev Wiki, `dev.mysql.com`, cppreference, the ACM DL) return 403 to automated clients while working normally in a browser. These are kept with an explicit note, because dropping them would make the indexes worse.
 - **Ownership and naming changes are noted inline** where they affect whether a link or a search will work: Linode → Akamai Cloud Computing, Timescale → TigerData, Redis → the Valkey fork, Terraform → OpenTofu, Coq → Rocq, Talos docs → `docs.siderolabs.com`, Spirent → absorbed into Keysight, OpenZiti docs → hosted under NetFoundry, NS1 → IBM NS1 Connect.
+- **Two sources are kept with a browser-only flag** in the newest indexes: `ai.google.dev` redirects automated clients to a Google sign-in page, and `openai.com/research/` returns 403 to them. Both load normally in a browser.
 
 ## Machine-readable data
 
@@ -55,6 +58,8 @@ Each index also ships as CSV, one row per entry, with the same columns:
 - [machine-learning-ai.csv](./data/machine-learning-ai.csv)
 - [languages-compilers.csv](./data/languages-compilers.csv)
 - [cloud-computing.csv](./data/cloud-computing.csv)
+- [prompt-engineering.csv](./data/prompt-engineering.csv)
+- [agentic-engineering.csv](./data/agentic-engineering.csv)
 
 ## How to use these pages
 

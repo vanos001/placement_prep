@@ -3423,6 +3423,8 @@
 - [Machine Learning & AI Reference Library](./references/machine-learning-ai.md)
 - [Languages, Compilers & Runtimes Reference Library](./references/languages-compilers.md)
 - [Cloud Computing Reference Library](./references/cloud-computing.md)
+- [Prompt Engineering Reference Library](./references/prompt-engineering.md)
+- [Agentic Engineering Reference Library](./references/agentic-engineering.md)
 
 ---
 
