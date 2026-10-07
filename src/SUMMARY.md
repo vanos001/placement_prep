@@ -1178,6 +1178,15 @@
   - [Query Execution Models](./dbms/internals/query-execution.md)
   - [Storage Engine Internals](./dbms/internals/storage-engine.md)
   - [Transaction Internals](./dbms/internals/transaction-internals.md)
+- [PostgreSQL MVCC Deep Dive](./dbms/internals/postgresql-mvcc-deep.md)
+- [MySQL InnoDB Internals](./dbms/internals/mysql-innodb-internals.md)
+- [Bw-Tree & Latch-Free Indexes](./dbms/internals/bwtree-and-latch-free.md)
+- [Column-Store Execution: Vectorized vs Compiled](./dbms/internals/column-store-execution.md)
+- [Adaptive Query Execution](./dbms/internals/adaptive-query-execution.md)
+- [Vector Index Internals (HNSW, DiskANN, ScaNN)](./dbms/internals/vector-indexes-deep.md)
+- [LSM/B-Tree Hybrid Engines](./dbms/internals/lsm-btree-hybrid-engines.md)
+- [Time-Series Database Internals](./dbms/internals/timeseries-databases-internals.md)
+- [Database Observability](./dbms/internals/database-observability.md)
 - [NULL Semantics in SQL](./dbms/null-semantics.md)
 - [Query Planner](./dbms/query-planner.md)
 
@@ -3544,8 +3553,6 @@
 - [Long Context vs RAG](./llm/retrieval-advanced/long-context-vs-rag.md)
 - [RAG Evaluation](./llm/retrieval-advanced/rag-evaluation.md)
 - [Rerankers Deep Dive](./llm/retrieval-advanced/rerankers-deep.md)
-
----
 
 # Reference Libraries
 
