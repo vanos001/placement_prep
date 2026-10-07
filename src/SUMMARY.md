@@ -3554,6 +3554,19 @@
 - [RAG Evaluation](./llm/retrieval-advanced/rag-evaluation.md)
 - [Rerankers Deep Dive](./llm/retrieval-advanced/rerankers-deep.md)
 
+# Modern Kernel Internals
+
+- [Modern Kernel Map](./os/modern/README.md)
+- [EEVDF Scheduler](./os/modern/eevdf-scheduler.md)
+- [PSI & DAMON](./os/modern/psi-and-damon.md)
+- [Multi-Gen LRU](./os/modern/mglru.md)
+- [sched_ext: BPF Schedulers](./os/modern/sched-ext.md)
+- [SCHED_DEADLINE & Real-Time](./os/modern/sched-deadline.md)
+- [Futex Deep Dive](./os/modern/futex-deep-dive.md)
+- [Maple Tree & VMA Management](./os/modern/maple-tree-vma.md)
+- [Page Reclaim Internals](./os/modern/page-reclaim.md)
+- [OOM Killer Internals](./os/modern/oom-killer.md)
+
 # Reference Libraries
 
 - [Reference Libraries Overview](./references/README.md)
