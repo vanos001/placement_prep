@@ -64,10 +64,18 @@ complexity classes, comparison-sorting lower bound), networks overview/routing/
 ssl/advanced, os filesystems/boot/kernel, dbms/postgresql, llm/advanced,
 distributed overview, dbms/internals README.
 
+A same-day second wave added **10 more pages**: serving engines
+(`llama.cpp/GGUF`, LMDeploy, cache-aware KV routing, engine-comparison matrix),
+audio & speech models, diffusion transformers/flow matching, tokenizer
+internals, six new case studies (social graph, API gateway, secrets manager,
+feature flags, video transcoding, durable execution), an **LLM Evaluation**
+section (benchmark landscape, harnesses, LLM-as-judge), and network additions
+(BGP route reflector, anycast & geo routing, DNS tuning).
+
 **Validation**: all four fast validators pass (0 broken links, SUMMARY
-navigation OK for 2,962 pages, 0 MathJax issues incl. 358 single-backslash
+navigation OK for 2,985 pages, 0 MathJax issues incl. 358 single-backslash
 delimiters repaired, heuristic mermaid 100%) and the **real Mermaid v11 parser
-passes 5,182/5,182 diagrams** — up from 4,889.
+passes 5,249/5,249 diagrams** — up from 4,889.
 
 ## 2026-09-20 — Sixth pass: papers resolved at metadata level, moved docs, pruned posts
 

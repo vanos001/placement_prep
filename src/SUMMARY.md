@@ -1286,6 +1286,7 @@
   - [SSL](./networks/security/ssl.md)
   - [Firewalls](./networks/security/firewalls.md)
   - [VPN](./networks/security/vpn.md)
+- [DNS Tuning for Latency](./networks/dns/dns-tuning-for-latency.md)
     - [MASQUE: Proxying IP over HTTP/3](./networks/security/masque.md)
   - [IPsec](./networks/security/ipsec.md)
 - [Load Balancing](./networks/load-balancing/README.md)
@@ -1315,6 +1316,7 @@
   - [5G](./networks/wireless/5g.md)
   - [SDN](./networks/wireless/sdn.md)
   - [NFV](./networks/wireless/nfv.md)
+- [Anycast & Geo Routing](./networks/cdn/anycast-and-geo-routing.md)
 
 ---
 
@@ -3463,6 +3465,9 @@
 - [Feature Flag Service](./interview/system-design/case-studies/feature-flag-service.md)
 - [Video Transcoding Pipeline](./interview/system-design/case-studies/video-transcoding-pipeline.md)
 - [Durable Execution Engine](./interview/system-design/case-studies/durable-execution-engine.md)
+- [Cloud IDE](./interview/system-design/case-studies/cloud-ide.md)
+- [Collaborative Spreadsheet](./interview/system-design/case-studies/collaborative-spreadsheet.md)
+- [Distributed Configuration Service](./interview/system-design/case-studies/distributed-config-service.md)
 
 ---
 
@@ -3609,6 +3614,15 @@
 - [ptrace Internals](./os/security-internals/ptrace.md)
 - [Lockdown & Secure Boot Chain](./os/security-internals/lockdown.md)
 
+# LLM Evaluation
+
+- [Evaluation Landscape](./llm/evals/README.md)
+- [Benchmark Landscape](./llm/evals/benchmark-landscape.md)
+- [Eval Harnesses](./llm/evals/eval-harnesses.md)
+- [LLM-as-Judge Deep Dive](./llm/evals/llm-as-judge-deep.md)
+
+---
+
 # Network Protocols & Performance
 
 - [Protocol Deep-Dives Overview](./networks/protocols/README.md)
@@ -3621,6 +3635,7 @@
 - [Path MTU Discovery & MSS](./networks/protocols/pmtud-and-mss.md)
 - [RoCEv2 Data Centers](./networks/protocols/rocev2-datacenter.md)
 - [Wi-Fi 7 (802.11be)](./networks/protocols/wifi7-80211be.md)
+- [BGP Route Reflector Design](./networks/protocols/route-reflector-design.md)
 
 ---
 
