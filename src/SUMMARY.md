@@ -1050,6 +1050,10 @@
 - [Chapter 192: Subset Convolution](./dsa/chapters/ch192-subset-convolution.md)
 - [Chapter 193: Kernelization](./dsa/chapters/ch193-kernelization.md)
 - [Chapter 194: Planar Separator Theorems](./dsa/chapters/ch194-planar-separator-theorems.md)
+- [Chapter 195: Li Chao Segment Tree](./dsa/chapters/ch195-li-chao-segment-tree.md)
+- [Chapter 196: Segment Tree Beats](./dsa/chapters/ch196-segment-tree-beats.md)
+- [Chapter 197: Matroid Intersection](./dsa/chapters/ch197-matroid-intersection.md)
+- [Chapter 198: Sprague-Grundy Game Theory](./dsa/chapters/ch198-sprague-grundy.md)
 
 ---
 
@@ -3579,6 +3583,21 @@
 - [vDSO & vvar](./os/security-internals/vdso.md)
 - [ptrace Internals](./os/security-internals/ptrace.md)
 - [Lockdown & Secure Boot Chain](./os/security-internals/lockdown.md)
+
+# Network Protocols & Performance
+
+- [Protocol Deep-Dives Overview](./networks/protocols/README.md)
+- [SCTP](./networks/protocols/sctp.md)
+- [EVPN-VXLAN Data Centers](./networks/protocols/evpn-vxlan.md)
+- [RPKI & BGP Security](./networks/protocols/rpki-bgp-security.md)
+- [TLS Encrypted Client Hello](./networks/protocols/tls-ech.md)
+- [QUIC Connection Migration](./networks/protocols/quic-connection-migration.md)
+- [BBR Congestion Control Deep Dive](./networks/protocols/bbr-deep.md)
+- [Path MTU Discovery & MSS](./networks/protocols/pmtud-and-mss.md)
+- [RoCEv2 Data Centers](./networks/protocols/rocev2-datacenter.md)
+- [Wi-Fi 7 (802.11be)](./networks/protocols/wifi7-80211be.md)
+
+---
 
 # Reference Libraries
 
