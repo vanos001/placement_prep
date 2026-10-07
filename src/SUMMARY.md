@@ -3412,6 +3412,19 @@
 - [Advanced Benchmarking](./performance-engineering/advanced-benchmarking.md)
 - [Continuous Profiling in Production](./performance-engineering/continuous-profiling.md)
 
+# Reference Libraries
+
+- [Reference Libraries Overview](./references/README.md)
+- [Computer Architecture Reference Library](./references/computer-architecture.md)
+- [Operating Systems Reference Library](./references/operating-systems.md)
+- [Database Systems Reference Library](./references/database-systems.md)
+- [NoSQL & Distributed Systems Reference Library](./references/distributed-systems.md)
+- [Machine Learning & AI Reference Library](./references/machine-learning-ai.md)
+- [Languages, Compilers & Runtimes Reference Library](./references/languages-compilers.md)
+- [Cloud Computing Reference Library](./references/cloud-computing.md)
+
+---
+
 # Meta
 
 - [Status](./meta/status.md)
