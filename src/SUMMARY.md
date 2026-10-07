@@ -3412,6 +3412,141 @@
 - [Advanced Benchmarking](./performance-engineering/advanced-benchmarking.md)
 - [Continuous Profiling in Production](./performance-engineering/continuous-profiling.md)
 
+
+---
+
+# System Design Case Studies
+
+- [Case Studies Overview](./interview/system-design/case-studies/README.md)
+- [Ad Tech & Real-Time Bidding](./interview/system-design/case-studies/ad-tech.md)
+- [CI/CD System](./interview/system-design/case-studies/ci-cd-system.md)
+- [Distributed Task Scheduler](./interview/system-design/case-studies/distributed-task-scheduler.md)
+- [Distributed Tracing System](./interview/system-design/case-studies/distributed-tracing.md)
+- [ML Feature Store](./interview/system-design/case-studies/feature-store.md)
+- [Live Auction Platform](./interview/system-design/case-studies/live-auction.md)
+- [Log Analytics Pipeline](./interview/system-design/case-studies/log-analytics.md)
+- [Metrics & Monitoring System](./interview/system-design/case-studies/metrics-monitoring.md)
+- [Stock Exchange Matching Engine](./interview/system-design/case-studies/stock-exchange.md)
+- [Ticketing & Reserved Seating](./interview/system-design/case-studies/ticketmaster.md)
+
+---
+
+# Coordination Systems Internals
+
+- [Coordination Systems Overview](./distributed/systems/README.md)
+- [Calvin & Deterministic Databases](./distributed/systems/calvin-and-deterministic.md)
+- [Chubby & Consul](./distributed/systems/chubby-and-consul.md)
+- [CockroachDB Architecture](./distributed/systems/cockroachdb-architecture.md)
+- [Consistency Verification (Jepsen, Simulation)](./distributed/systems/consistency-verification.md)
+- [etcd Internals](./distributed/systems/etcd-internals.md)
+- [Memberlist & Gossip (SWIM) Internals](./distributed/systems/memberlist-gossip.md)
+- [Spanner Internals & TrueTime](./distributed/systems/spanner-internals.md)
+- [TiDB Architecture](./distributed/systems/tidb-architecture.md)
+- [ZooKeeper Internals (ZAB)](./distributed/systems/zookeeper-internals.md)
+
+---
+
+# Messaging Systems Internals
+
+- [Messaging Internals Overview](./distributed/messaging-internals/README.md)
+- [Backpressure & Flow Control](./distributed/messaging-internals/backpressure-and-flow-control.md)
+- [Apache BookKeeper Internals](./distributed/messaging-internals/bookkeeper-internals.md)
+- [Exactly-Once Semantics](./distributed/messaging-internals/exactly-once-semantics.md)
+- [Kafka Consumer Rebalancing](./distributed/messaging-internals/kafka-consumer-rebalancing.md)
+- [Kafka Log Internals](./distributed/messaging-internals/kafka-log-internals.md)
+- [NATS & JetStream](./distributed/messaging-internals/nats-jetstream.md)
+- [Apache Pulsar Internals](./distributed/messaging-internals/pulsar-internals.md)
+- [Redpanda & Thread-per-Core](./distributed/messaging-internals/redpanda-and-thread-per-core.md)
+
+---
+
+# Storage Formats & Lakehouse Internals
+
+- [Table Formats Overview](./storage/formats/README.md)
+- [Apache Hudi](./storage/formats/apache-hudi.md)
+- [Apache Iceberg](./storage/formats/apache-iceberg.md)
+- [Cache Eviction Algorithms](./storage/formats/cache-eviction-algorithms.md)
+- [Ceph CRUSH & RADOS](./storage/formats/ceph-crush.md)
+- [Delta Lake](./storage/formats/delta-lake.md)
+- [Deduplication Internals](./storage/formats/deduplication-internals.md)
+- [Parquet Internals](./storage/formats/parquet-internals.md)
+- [Iceberg vs Delta vs Hudi](./storage/formats/table-format-comparison.md)
+
+---
+
+# LLM Architectures
+
+- [LLM Architecture Landscape](./llm/architectures/README.md)
+- [Hybrid SSM-Transformer Architectures](./llm/architectures/hybrid-architectures.md)
+- [Linear Attention Variants](./llm/architectures/linear-attention-variants.md)
+- [Long Context Strategies](./llm/architectures/long-context-strategies.md)
+- [Mamba & State Space Models](./llm/architectures/mamba-ssm.md)
+- [Mixture of Depths](./llm/architectures/mixture-of-depths.md)
+- [Model Merging](./llm/architectures/model-merging.md)
+- [RWKV](./llm/architectures/rwkv.md)
+- [SSM vs Attention Decision Guide](./llm/architectures/ssm-vs-attention.md)
+- [Vision-Language Architectures](./llm/architectures/vision-language-architectures.md)
+
+---
+
+# LLM Post-Training
+
+- [Post-Training Pipeline Overview](./llm/post-training/README.md)
+- [Continual Pretraining](./llm/post-training/continual-pretraining.md)
+- [Post-Training Data Pipelines](./llm/post-training/data-pipelines.md)
+- [The DPO Family](./llm/post-training/dpo-family.md)
+- [GRPO & RLVR](./llm/post-training/grpo-rlvr.md)
+- [Process Reward Models](./llm/post-training/process-reward-models.md)
+- [Reward Hacking & Spec Gaming](./llm/post-training/reward-hacking.md)
+- [Reward Models](./llm/post-training/reward-models.md)
+- [Self-Improvement (STaR, ReST)](./llm/post-training/self-improvement.md)
+- [Synthetic Data](./llm/post-training/synthetic-data.md)
+
+---
+
+# Agentic Systems Engineering
+
+- [Production Agent Anatomy](./llm/agentic/README.md)
+- [Agent Identity & Auth](./llm/agentic/agent-identity-and-auth.md)
+- [Agent Memory Architectures](./llm/agentic/agent-memory-advanced.md)
+- [Agent Observability](./llm/agentic/agent-observability.md)
+- [Agent Protocols (MCP, A2A)](./llm/agentic/agent-protocols.md)
+- [Browser & Computer-Use Agents](./llm/agentic/browser-and-computer-use.md)
+- [Guardrails & Policy Engines](./llm/agentic/guardrails.md)
+- [Multi-Agent Topologies](./llm/agentic/multi-agent-topologies.md)
+- [Sandboxed Code Execution](./llm/agentic/sandboxed-execution.md)
+- [Coding Agents & SWE-Bench](./llm/agentic/swe-agents.md)
+
+---
+
+# Advanced Prompt Engineering
+
+- [Prompt Engineering Landscape](./llm/prompting/README.md)
+- [Chain-of-Thought & Self-Consistency](./llm/prompting/cot-and-self-consistency.md)
+- [Few-Shot Example Selection](./llm/prompting/few-shot-example-selection.md)
+- [Prompt Caching](./llm/prompting/prompt-caching.md)
+- [Prompt Compression](./llm/prompting/prompt-compression.md)
+- [Prompt Injection Defense](./llm/prompting/prompt-injection-defense.md)
+- [Structured Output Patterns](./llm/prompting/structured-output-patterns.md)
+- [System Prompt Design](./llm/prompting/system-prompt-design.md)
+- [Tree & Graph of Thoughts](./llm/prompting/tot-and-got.md)
+
+---
+
+# Advanced Retrieval & RAG
+
+- [Retrieval Landscape](./llm/retrieval-advanced/README.md)
+- [Agentic RAG](./llm/retrieval-advanced/agentic-rag.md)
+- [Chunking Strategies](./llm/retrieval-advanced/chunking-strategies.md)
+- [Embedding Fine-Tuning](./llm/retrieval-advanced/embedding-finetuning.md)
+- [GraphRAG](./llm/retrieval-advanced/graphrag.md)
+- [Hybrid Search & Fusion](./llm/retrieval-advanced/hybrid-search-fusion.md)
+- [Long Context vs RAG](./llm/retrieval-advanced/long-context-vs-rag.md)
+- [RAG Evaluation](./llm/retrieval-advanced/rag-evaluation.md)
+- [Rerankers Deep Dive](./llm/retrieval-advanced/rerankers-deep.md)
+
+---
+
 # Reference Libraries
 
 - [Reference Libraries Overview](./references/README.md)
