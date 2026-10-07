@@ -1054,6 +1054,10 @@
 - [Chapter 196: Segment Tree Beats](./dsa/chapters/ch196-segment-tree-beats.md)
 - [Chapter 197: Matroid Intersection](./dsa/chapters/ch197-matroid-intersection.md)
 - [Chapter 198: Sprague-Grundy Game Theory](./dsa/chapters/ch198-sprague-grundy.md)
+- [Chapter 199: XOR Basis & Linear Algebra](./dsa/chapters/ch199-xor-basis-linear-algebra.md)
+- [Chapter 200: Finger Trees](./dsa/chapters/ch200-finger-trees.md)
+- [Chapter 201: Slope Trick](./dsa/chapters/ch201-slope-trick.md)
+- [Chapter 202: Offline Dynamic Connectivity](./dsa/chapters/ch202-offline-dynamic-connectivity.md)
 
 ---
 
