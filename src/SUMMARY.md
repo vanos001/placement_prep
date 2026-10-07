@@ -3567,6 +3567,19 @@
 - [Page Reclaim Internals](./os/modern/page-reclaim.md)
 - [OOM Killer Internals](./os/modern/oom-killer.md)
 
+---
+
+# OS Security Internals
+
+- [seccomp & User Notification](./os/security-internals/seccomp.md)
+- [Landlock LSM](./os/security-internals/landlock.md)
+- [BPF LSM](./os/security-internals/bpf-lsm.md)
+- [IMA & Module Signing](./os/security-internals/ima-signing.md)
+- [Kernel Live Patching](./os/security-internals/livepatching.md)
+- [vDSO & vvar](./os/security-internals/vdso.md)
+- [ptrace Internals](./os/security-internals/ptrace.md)
+- [Lockdown & Secure Boot Chain](./os/security-internals/lockdown.md)
+
 # Reference Libraries
 
 - [Reference Libraries Overview](./references/README.md)
