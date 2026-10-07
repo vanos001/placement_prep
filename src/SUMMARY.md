@@ -2326,6 +2326,10 @@
     - [TensorRT-LLM](./llm/llm-serving/tensorrt.md)
     - [TGI](./llm/llm-serving/tgi.md)
     - [Ollama](./llm/llm-serving/ollama.md)
+- [llama.cpp & GGUF](./llm/llm-serving/llama-cpp-gguf.md)
+- [LMDeploy](./llm/llm-serving/lmdeploy.md)
+- [Cache-Aware Routing](./llm/llm-serving/cache-aware-routing.md)
+- [Serving Engine Comparison](./llm/llm-serving/engine-comparison.md)
   - [Tokenization](./llm/llm-serving/tokenization.md)
   - [Embeddings](./llm/llm-serving/embeddings.md)
   - [LLM Evaluation](./llm/llm-serving/evaluation.md)
@@ -3453,6 +3457,12 @@
 - [Metrics & Monitoring System](./interview/system-design/case-studies/metrics-monitoring.md)
 - [Stock Exchange Matching Engine](./interview/system-design/case-studies/stock-exchange.md)
 - [Ticketing & Reserved Seating](./interview/system-design/case-studies/ticketmaster.md)
+- [Social Graph Service](./interview/system-design/case-studies/social-graph-service.md)
+- [API Gateway](./interview/system-design/case-studies/api-gateway.md)
+- [Secrets Manager](./interview/system-design/case-studies/secrets-manager.md)
+- [Feature Flag Service](./interview/system-design/case-studies/feature-flag-service.md)
+- [Video Transcoding Pipeline](./interview/system-design/case-studies/video-transcoding-pipeline.md)
+- [Durable Execution Engine](./interview/system-design/case-studies/durable-execution-engine.md)
 
 ---
 
@@ -3511,6 +3521,9 @@
 - [RWKV](./llm/architectures/rwkv.md)
 - [SSM vs Attention Decision Guide](./llm/architectures/ssm-vs-attention.md)
 - [Vision-Language Architectures](./llm/architectures/vision-language-architectures.md)
+- [Audio & Speech Models](./llm/architectures/audio-and-speech-models.md)
+- [Diffusion Transformers & Flow Matching](./llm/architectures/diffusion-transformers.md)
+- [Tokenizer Internals](./llm/architectures/tokenizer-internals.md)
 
 ---
 
