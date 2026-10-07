@@ -1286,6 +1286,7 @@
   - [SSL](./networks/security/ssl.md)
   - [Firewalls](./networks/security/firewalls.md)
   - [VPN](./networks/security/vpn.md)
+  - [DDoS Mitigation](./networks/security/ddos-mitigation.md)
 - [DNS Tuning for Latency](./networks/dns/dns-tuning-for-latency.md)
     - [MASQUE: Proxying IP over HTTP/3](./networks/security/masque.md)
   - [IPsec](./networks/security/ipsec.md)
@@ -1744,6 +1745,15 @@
 - [Snake and Ladder](./machine-coding/snake-and-ladder.md)
 - [Tic-Tac-Toe](./machine-coding/tic-tac-toe.md)
 - [Vending Machine](./machine-coding/vending-machine.md)
+- [Car Rental System](./machine-coding/car-rental.md)
+- [Meeting Room Scheduler](./machine-coding/meeting-room-scheduler.md)
+- [Shopping Cart](./machine-coding/shopping-cart.md)
+- [Stack Overflow Q&A](./machine-coding/stack-overflow.md)
+- [Cricket Scoreboard](./machine-coding/cricinfo-scoreboard.md)
+- [Thread Pool](./machine-coding/threadpool.md)
+- [Pub-Sub Broker](./machine-coding/pub-sub.md)
+- [Inventory Management](./machine-coding/inventory-management.md)
+- [Cron Expression Parser](./machine-coding/cron-parser.md)
 
 ---
 
@@ -3172,6 +3182,8 @@
 - [SYCL and oneAPI: Portable Heterogeneous Computing](./hpc/sycl-oneapi.md)
 - [OpenACC: Directives-First GPU Porting](./hpc/openacc.md)
 - [OpenMP](./hpc/openmp.md)
+- [SIMD Vectorization & the Roofline Model](./hpc/vectorization-roofline.md)
+- [Fault Tolerance & Checkpoint/Restart](./hpc/fault-tolerance-checkpointing.md)
 
 ---
 
@@ -3468,6 +3480,21 @@
 - [Cloud IDE](./interview/system-design/case-studies/cloud-ide.md)
 - [Collaborative Spreadsheet](./interview/system-design/case-studies/collaborative-spreadsheet.md)
 - [Distributed Configuration Service](./interview/system-design/case-studies/distributed-config-service.md)
+- [IRCTC Train Booking](./interview/system-design/case-studies/irctc-train-booking.md)
+- [UPI Payments (NPCI Switch)](./interview/system-design/case-studies/upi-payments.md)
+- [Food Delivery Platform (HLD)](./interview/system-design/case-studies/food-delivery-hld.md)
+- [Video Conferencing](./interview/system-design/case-studies/video-conferencing.md)
+- [Live Comments & Chat at Scale](./interview/system-design/case-studies/live-comments.md)
+- [Online Exam Platform](./interview/system-design/case-studies/online-exam-platform.md)
+- [Dating App](./interview/system-design/case-studies/dating-app.md)
+- [CDN Service](./interview/system-design/case-studies/cdn-service.md)
+- [Matchmaking & Leaderboards](./interview/system-design/case-studies/matchmaking-leaderboard.md)
+- [Fantasy Sports Platform](./interview/system-design/case-studies/fantasy-sports.md)
+- [Grocery Instant Delivery](./interview/system-design/case-studies/grocery-instant-delivery.md)
+- [Loyalty Points Platform](./interview/system-design/case-studies/loyalty-points.md)
+- [Vaccination Slot Booking](./interview/system-design/case-studies/vaccination-slot-booking.md)
+- [Telehealth Consultation](./interview/system-design/case-studies/telehealth-consultation.md)
+- [Digital Lending Platform](./interview/system-design/case-studies/digital-lending.md)
 
 ---
 
