@@ -3,6 +3,19 @@
 > Auto-maintained by research agents. Topics discovered during expansion that need coverage.
 > Priority: HIGH (interview-critical) | MEDIUM (important) | LOW (nice-to-have)
 > Last updated: 2026-08-16 (validation re-run, meta sync)
+> Last content change: 2026-10-07 (reference-grounded expansion)
+
+## Reference-grounded expansion — 2026-10-07
+
+- 140 new pages across 15 new sections (LLM architectures / post-training /
+  agentic / prompting / retrieval, system-design case studies, coordination &
+  messaging internals, lakehouse formats, database internals, modern kernel,
+  OS security internals, network protocols, cs-theory, DSA ch195-202).
+- 10 previously-thin README/overview pages deepened; cs-theory thin pages
+  expanded (logic, proofs, formal languages, computability, Turing machines,
+  complexity classes, comparison-sorting lower bound).
+- Backlog items closed this pass: Ceph CRUSH/RADOS deep dive.
+- All pages wired into SUMMARY; validators green; real Mermaid parser 5,182/5,182.
 
 ## Dev pull audit — 2026-08-13
 
@@ -88,7 +101,7 @@ The following previously-backlogged topics now have dedicated coverage:
 - ~~Tiered Storage and Data Temperature~~ ✅ Done `storage/tiered-storage.md` (2026-08-12): hot/warm/cold, RocksDB, object lifecycle, caches, recovery
 - ~~Storage: SSTable Format — data blocks, index, bloom, footer, compression~~ ✅ Done `storage/sstable.md` (2026-08-09): BlockBasedTable diagram, Index/Bloom/Footer 48 bytes magic, partitioned index/filter, read path, compression
 - ~~Storage: BlobDB — separation of small vs large values~~ ✅ Done `storage/blobdb.md` (2026-08-09): WiscKey, BlobIndex file_no/offset/size, GC age cutoff 0.25, WA 1.4-1.7 vs 6.1-6.8 75% lower, options enable_blob_files/min_blob_size
-- **Storage: Ceph CRUSH/RADOS Deep Dive** — CRUSH algorithm, placement groups, RADOS (still TODO)
+- ~~Storage: Ceph CRUSH/RADOS Deep Dive~~ ✅ Done `storage/formats/ceph-crush.md` (2026-10-07): CRUSH map hierarchy, PG count math, chooseleaf rules, tunables, RADOS write path, recovery/backfill
 - ~~Storage: NVMe over Fabrics~~ ✅ Done `storage/nvmeof.md` (2026-08-12): TCP/RDMA, discovery, queues, multipathing, security, observability
 - ~~Concurrency: Work-Stealing Scheduler — Go scheduler work-stealing, Java ForkJoinPool, Rust Tokio~~ ✅ Done `concurrency/work-stealing.md` (2026-08-09): LIFO owner head vs FIFO thief tail, Go GMP P local 256 + global, Java ForkJoinPool WorkQueue 4096, Tokio 256 ring + injection queue
 - ~~Concurrency: ABA Problem & Memory Reclamation~~ ✅ Done `concurrency/aba-problem.md` (2026-08-12): tagged pointers, hazard pointers, EBR, RCU, reference counting, memory ordering, C++26 safe-reclamation references

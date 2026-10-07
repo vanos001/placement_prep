@@ -30,7 +30,7 @@ sequenceDiagram
     K->>T: direct PING
     K--xA: NACK / result
     Note over A: all fail → mark T SUSPECT
-    Note over A: suspicion gossips; grace timer runs
+    Note over A: suspicion gossips #59; grace timer runs
     Note over A,T: no refutation → T becomes DEAD
 ```
 

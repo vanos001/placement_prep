@@ -10,7 +10,7 @@ Scope note: [Reranking and Hybrid Fusion](../../search/reranking.md) already der
 
 **Lexical (BM25).** BM25 scores a document as a sum over matched query terms of IDF-weighted, saturating term frequencies with length normalization:
 
-\[ \mathrm{score}(q,d) = \sum_{t \in q} \mathrm{IDF}(t) \cdot \frac{f_{t,d}\,(k_1+1)}{f_{t,d} + k_1 \cdot (1 - b + b \cdot |d|/\mathrm{avgdl})} \]
+\\[ \mathrm{score}(q,d) = \sum_{t \in q} \mathrm{IDF}(t) \cdot \frac{f_{t,d}\,(k_1+1)}{f_{t,d} + k_1 \cdot (1 - b + b \cdot |d|/\mathrm{avgdl})} \\]
 
 with the standard defaults \\( k_1 \approx 1.2 \\) (term-frequency saturation: the 10th occurrence adds little) and \\( b \approx 0.75 \\) (long documents are discounted). Its virtues are boring and decisive: exact token matching (IDs, error codes, part numbers, names), OOV robustness, incremental updates in milliseconds, and no model to drift. Its weakness is vocabulary mismatch — "car" never matches "automobile", and any concept the user words differently is invisible.
 
@@ -123,7 +123,7 @@ flowchart TD
 
 RRF (Cormack, Clarke, Buettcher, SIGIR 2009) scores each document by the sum of reciprocal ranks across lists:
 
-\[ \mathrm{RRF}(d) = \sum_{L} \frac{1}{k + \mathrm{rank}_L(d)} \]
+\\[ \mathrm{RRF}(d) = \sum_{L} \frac{1}{k + \mathrm{rank}_L(d)} \\]
 
 The paper fixed the damping constant at \\( k = 60 \\) "during a pilot investigation", and it became the ecosystem default (Elasticsearch `rank_constant`, OpenSearch, Qdrant all default to 60). The intuition for why a *large* k works: with k=60, rank 1 contributes 1/61 ≈ 0.0164 and rank 100 contributes 1/160 = 0.00625 — a 2.6× ratio between the top and rank 100. Small k (say 1) makes rank differences huge and the fusion becomes nearly a "who is #1" vote; large k (say 1000) flattens ranks toward uniform voting where every list membership counts equally. k=60 damps the head enough that agreement across lists matters more than any single list's top position, and it dampens the tail enough that deep junk rarely outvotes a mid-rank from another list. It is also scale-free — an outlier BM25 score of 42 contributes the same as any other #1 — which is exactly the property weighted score fusion lacks.
 

@@ -24,9 +24,9 @@ controller knows where the cliff is.
 BBR instead targets the Kleinrock optimum: the operating point that maximizes throughput
 while minimizing delay, at exactly one BDP of data in flight:
 
-\[
+\\[
 BDP = BtlBw \times RTprop
-\]
+\\]
 
 At that point there is no standing queue, no self-induced loss, and the measured RTT equals
 the propagation delay. The cost is that BBR needs *measurements* rather than a signal, and

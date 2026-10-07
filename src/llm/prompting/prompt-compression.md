@@ -80,7 +80,7 @@ def compress(context: str, scorer, budget_tokens: int,
 
 Three implementation details decide whether this survives contact with production. Units are scored *in context*, not in isolation — the probability of a sentence depends on what precedes it, so a single forward pass over the whole text with per-span scoring beats scoring sentences independently. The `has_digits` guard is the cheap version of LongLLMLingua's entity protection: numerals, dates, and identifiers are near-free to keep and catastrophic to drop. And `render` must preserve source order (sort kept units back to their original positions), because scrambling paragraph order changes the narrative the downstream model reasons over even when no content is lost.
 
-Selective Context (Li et al., EMNLP 2023) is the cleanest formulation of the same idea. Each lexical unit \(u\) (token, phrase, or sentence) gets a self-information score:
+Selective Context (Li et al., EMNLP 2023) is the cleanest formulation of the same idea. Each lexical unit \\(u\\) (token, phrase, or sentence) gets a self-information score:
 
 \\[
 I(u) = -\log_2 p(u \mid \text{preceding context})

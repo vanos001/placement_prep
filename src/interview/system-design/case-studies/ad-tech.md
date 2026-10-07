@@ -155,10 +155,10 @@ Trade-off table to present:
 
 | Option | Lookup | Freshness | Cost | Failure mode |
 |---|---|---|---|---|
-| Redis cluster keyed by user hash | ~1–3 ms | Minutes (event-fed) | $$ | Cold lookups → lower win rate |
+| Redis cluster keyed by user hash | ~1–3 ms | Minutes (event-fed) | High | Cold lookups → lower win rate |
 | Local in-memory (LRU per POP) | ~0.1 ms | Seconds–minutes stale | Cheap | Per-POP divergence of caps |
 | Embedded feature DB (RocksDB) | ~1 ms | Event-fed | $ | Ops-heavy |
-| Ask a database synchronously | 20–50 ms | Fresh | $$$ | Blows budget — rejected |
+| Ask a database synchronously | 20–50 ms | Fresh | Highest | Blows budget — rejected |
 
 ## Deep Dive 3 — Frequency Capping and Auction Dynamics
 

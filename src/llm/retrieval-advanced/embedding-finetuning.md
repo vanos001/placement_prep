@@ -8,11 +8,11 @@ Scope note: [Embeddings](../llm-serving/embeddings.md) covers what embeddings ar
 
 ## The Objective: Contrastive Training with In-Batch Negatives
 
-Embedding models for retrieval are trained with a contrastive objective: pull the query close to its positive document, push it away from negatives, in the angle space of a shared encoder. The standard loss is InfoNCE over cosine similarities \( s(q, d) = \cos(e_q, e_d) \):
+Embedding models for retrieval are trained with a contrastive objective: pull the query close to its positive document, push it away from negatives, in the angle space of a shared encoder. The standard loss is InfoNCE over cosine similarities \\( s(q, d) = \cos(e_q, e_d) \\):
 
-\[ \mathcal{L}(q, d^{+}) = -\log \frac{\exp(s(q, d^{+})/\tau)}{\exp(s(q, d^{+})/\tau) + \sum_{j=1}^{N} \exp(s(q, d^{-}_{j})/\tau)} \]
+\\[ \mathcal{L}(q, d^{+}) = -\log \frac{\exp(s(q, d^{+})/\tau)}{\exp(s(q, d^{+})/\tau) + \sum_{j=1}^{N} \exp(s(q, d^{-}_{j})/\tau)} \\]
 
-where \( \tau \) is a temperature (typically 0.01-0.05 — small values sharpen the softmax and punish near-misses harder) and the \( d^{-}_{j} \) are negatives. The negative pool is the design decision. **In-batch negatives** take every other document in the batch as a free negative: with batch size \( B \), each query gets \( B-1 \) negatives at zero extra cost, since all document embeddings are already computed for the batch. This is why embedding training is batch-size-bound: DPR (Karpukhin et al., 2020) used in-batch plus one BM25 hard negative; modern recipes scale batches to 512-4096 across GPUs precisely to grow the negative pool.
+where \\( \tau \\) is a temperature (typically 0.01-0.05 — small values sharpen the softmax and punish near-misses harder) and the \\( d^{-}_{j} \\) are negatives. The negative pool is the design decision. **In-batch negatives** take every other document in the batch as a free negative: with batch size \\( B \\), each query gets \\( B-1 \\) negatives at zero extra cost, since all document embeddings are already computed for the batch. This is why embedding training is batch-size-bound: DPR (Karpukhin et al., 2020) used in-batch plus one BM25 hard negative; modern recipes scale batches to 512-4096 across GPUs precisely to grow the negative pool.
 
 The catch is that in-batch negatives are *uniformly easy* — documents in a random batch are usually about unrelated topics, so the model learns coarse topic separation quickly and then stops improving. A batch of 1024 generic passages contains perhaps one near-duplicate of any given query's positive. That ceiling is what hard-negative mining exists to break, and the two techniques compose: in-batch negatives supply volume, hard negatives supply difficulty. Typical production ratios are a few hard negatives per query on top of the full batch, with the batch mixed so positives and their mined negatives co-occur.
 
@@ -21,7 +21,7 @@ A clarifying contrast belongs next to the objective: **continued pretraining is 
 | Lever | What it improves | Typical setting | Cost |
 |---|---|---|---|
 | In-batch negatives | volume of negatives, gradient stability | batch 256-4096 | GPU memory (scales ~linearly) |
-| Temperature \( \tau \) | hardness of the objective | 0.01-0.05 | tuning runs |
+| Temperature \\( \tau \\) | hardness of the objective | 0.01-0.05 | tuning runs |
 | Hard negatives (1-7/query) | fine-grained ranking | mined per query below | mining pipeline + ~2× train time |
 | Cross-encoder filtering | false-negative removal | below | one pass over mined pairs |
 
@@ -63,9 +63,9 @@ The train-serving mismatch closes the loop: if you mine negatives with model v1 
 
 Matryoshka Representation Learning (Kusupati et al., 2022, arXiv 2205.13147) trains an embedding so that *every prefix of the vector is itself a usable embedding*: the first 64 dimensions encode the coarse signal, the first 256 a mid-grain one, the full 3072 the finest. The trick is the loss — instead of one contrastive loss on the full vector, sum losses over truncated prefixes, each re-normalized to the unit sphere:
 
-\[ \mathcal{L} = \sum_{m \in \mathcal{M}} w_m \, \mathcal{L}_{\text{contrastive}}\big( \operatorname{norm}(z_{1:m}), \, \operatorname{norm}(z'_{1:m}) \big) \]
+\\[ \mathcal{L} = \sum_{m \in \mathcal{M}} w_m \, \mathcal{L}_{\text{contrastive}}\big( \operatorname{norm}(z_{1:m}), \, \operatorname{norm}(z'_{1:m}) \big) \\]
 
-with \( \mathcal{M} \) a ladder of prefix sizes (e.g., 64, 128, 256, 512, 1024, 3072) and \( w_m \) roughly uniform. Each prefix is optimized to rank correctly *on its own*, so truncation at inference — take the first \( m \) dimensions, done, no model call — trades a little ranking quality for proportional savings in storage, memory bandwidth, and ANN latency.
+with \\( \mathcal{M} \\) a ladder of prefix sizes (e.g., 64, 128, 256, 512, 1024, 3072) and \\( w_m \\) roughly uniform. Each prefix is optimized to rank correctly *on its own*, so truncation at inference — take the first \\( m \\) dimensions, done, no model call — trades a little ranking quality for proportional savings in storage, memory bandwidth, and ANN latency.
 
 The production economics make this a deployment default rather than a novelty. OpenAI's text-embedding-3 models ship with exactly this property (3-large: 3072 native, offered at 256/1024/3072), and the cohort of open Matryoshka-trained models covers the common dims ladder. The arithmetic for a 100M-chunk corpus at float32 shows why: 3072 dims is ~1.23 TB of vectors and a heavy HNSW graph; 1024 dims is ~410 GB; 256 dims ~103 GB — a 12× storage cut for a modest recall cost, and smaller vectors mean more of the index fits in RAM, which often *recovers* latency despite the theoretical quality loss.
 
@@ -147,7 +147,7 @@ The pipeline below is the standard production sequence, parameterized with setti
 1. **Collect seed queries.** 5K-100K real queries from logs, search boxes, ticket titles, or the eval set. Real phrasing matters: the queries must look like production traffic, including typos and acronyms, because the model adapts to the query distribution as much as the corpus.
 2. **Label positives cheaply.** Clicks and citations from existing logs; otherwise LLM-judge labeling — present the query and 20 BM25+dense candidates, ask which answer it, and keep confident judgments. Human labeling only for the golden eval set, which must stay separate from training data to remain an honest metric.
 3. **Mine hard negatives** with the *current* model (ANN top-50 minus positives) and BM25 top-20 minus positives, then filter with a strong cross-encoder — drop any negative scoring above the positive. Keep 1-7 per query.
-4. **Train contrastive** on the target backbone: full-batch in-batch negatives plus mined pairs, \( \tau \approx 0.02\text{-}0.05 \), 1-2 epochs (more overfits to the mining distribution), learning rate ~1e-5 full fine-tune or ~1e-4 LoRA (a few hundred GPU-hours for a 7B backbone at 100K examples; minutes-to-hours for a 100M model). LoRA is the standard: [PEFT](https://huggingface.co/docs/peft) adapters keep the base model swappable and the training memory bounded.
+4. **Train contrastive** on the target backbone: full-batch in-batch negatives plus mined pairs, \\( \tau \approx 0.02\text{-}0.05 \\), 1-2 epochs (more overfits to the mining distribution), learning rate ~1e-5 full fine-tune or ~1e-4 LoRA (a few hundred GPU-hours for a 7B backbone at 100K examples; minutes-to-hours for a 100M model). LoRA is the standard: [PEFT](https://huggingface.co/docs/peft) adapters keep the base model swappable and the training memory bounded.
 5. **Add Matryoshka** if dimension-tunable serving is wanted: wrap the loss in the prefix ladder and re-run — it composes with steps 2-4.
 6. **Evaluate on the golden set first**, MTEB second. Recall@k and nDCG@10 on your labeled queries are the decision metric; an MTEB subset guards against catastrophic forgetting of generic retrieval.
 7. **Deploy with an index rebuild** — new embedding space, old index is garbage; re-embed the whole corpus and canary traffic between models behind the router ([Vector Databases](../llm-serving/vector-databases.md) covers zero-downtime reindex patterns).
@@ -158,7 +158,7 @@ For step 4 specifically, the hyperparameter starting points that survive contact
 | Parameter | Starting point | Adjust when |
 |---|---|---|
 | Batch size (global) | 256-1024 | recall plateaus early → grow pool before anything else |
-| Temperature \( \tau \) | 0.02-0.05 | gradients unstable → raise; false negatives dominate → raise |
+| Temperature \\( \tau \\) | 0.02-0.05 | gradients unstable → raise; false negatives dominate → raise |
 | Hard negatives per query | 1-7 | mining cost binds → cut; ranking precision short → raise toward 7 |
 | Learning rate (full 110M) | 1e-5 to 3e-5 | loss oscillates → halve; underfitting → up to 5e-5 |
 | Learning rate (LoRA, 7B) | 1e-4 | same shape as full-tune |

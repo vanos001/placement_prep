@@ -28,19 +28,19 @@ These metrics need, per query, a set (or graded list) of relevant documents and 
 
 **Recall@k** answers "did the needed evidence survive the cut?" — for a query \\( q \\) with relevant set \\( R(q) \\) and the top-\\( k \\) retrieved list:
 
-\[ \mathrm{recall@}k = \frac{| \{ d \in R(q) \} \cap \{ \text{top-}k \} |}{| R(q) |} \]
+\\[ \mathrm{recall@}k = \frac{| \{ d \in R(q) \} \cap \{ \text{top-}k \} |}{| R(q) |} \\]
 
 Recall@k is the *ceiling* metric: the generator can only use what retrieval surfaced, so if recall@10 on the golden set is 0.82, 18% of questions were lost before the LLM ran. For multi-fact questions, track **recall of necessary facts**, not documents — a single chunk can be "relevant" while omitting the second fact the answer requires (see [Chunking Strategies](./chunking-strategies.md) on granular relevance).
 
 **MRR (Mean Reciprocal Rank)** answers "how soon does the first hit appear?" — for query \\( i \\) whose first relevant document sits at rank \\( \mathrm{rank}_i \\):
 
-\[ \mathrm{MRR} = \frac{1}{|Q|} \sum_{i=1}^{|Q|} \frac{1}{\mathrm{rank}_i} \]
+\\[ \mathrm{MRR} = \frac{1}{|Q|} \sum_{i=1}^{|Q|} \frac{1}{\mathrm{rank}_i} \\]
 
 MRR is the right headline for "one good chunk is enough" workloads (support answers, navigational queries) because it is sensitive to the top of the list: moving the first hit from rank 3 to rank 1 moves MRR by 0.33 for that query, while rank-40 churn is invisible. It is the wrong headline when multiple chunks matter — a query with five relevant documents scores identically to one with a single hit.
 
 **nDCG@k (normalized discounted cumulative gain)** answers "is the *whole ordering* good, weighted by graded relevance?" With \\( \mathrm{rel}_i \\) the graded relevance (0-3 from human labels or judge scores) of the document at position \\( i \\):
 
-\[ \mathrm{DCG@}k = \sum_{i=1}^{k} \frac{2^{\mathrm{rel}_i} - 1}{\log_2(i+1)}, \qquad \mathrm{nDCG@}k = \frac{\mathrm{DCG@}k}{\mathrm{IDCG@}k} \]
+\\[ \mathrm{DCG@}k = \sum_{i=1}^{k} \frac{2^{\mathrm{rel}_i} - 1}{\log_2(i+1)}, \qquad \mathrm{nDCG@}k = \frac{\mathrm{DCG@}k}{\mathrm{IDCG@}k} \\]
 
 where IDCG is the DCG of the ideal ordering. The \\( \log_2 \\) discount encodes position economics (position 2 is worth ~0.63 of position 1, position 10 worth ~0.29), and the \\( 2^{\mathrm{rel}} - 1 \\) gain makes highly-relevant documents count disproportionately more. nDCG@10 on a graded golden set is the workhorse offline metric for reranking changes; it is what "we shipped a new reranker" should be backed by.
 
@@ -69,25 +69,25 @@ Retrieval metrics need labels; generation metrics mostly need a judge. The RAGAS
 
 **Faithfulness (groundedness).** Decompose the answer into atomic claims with an LLM, then verify each claim is entailed by the retrieved context; the score is the supported fraction:
 
-\[ \mathrm{faithfulness} = \frac{|\{\text{claims entailed by context}\}|}{|\{\text{claims in answer}\}|} \]
+\\[ \mathrm{faithfulness} = \frac{|\{\text{claims entailed by context}\}|}{|\{\text{claims in answer}\}|} \\]
 
 This is the anti-hallucination metric. Its failure modes are judge-driven: claim decomposition granularity (a compound claim "X caused Y in Q3" is hard to verify), and entailing from *partially* supporting context. Calibrate against a set of answers with known fabricated entities (below).
 
 **Answer relevance.** Generate \\( n \\) synthetic questions from the answer, embed them, and score their mean similarity to the original question:
 
-\[ \mathrm{answer\ relevance} = \frac{1}{n} \sum_{j=1}^{n} \cos\big( E(q),\, E(\hat{q}_j) \big) \]
+\\[ \mathrm{answer\ relevance} = \frac{1}{n} \sum_{j=1}^{n} \cos\big( E(q),\, E(\hat{q}_j) \big) \\]
 
 It catches evasive, padded, or off-topic answers that contain the right entities without addressing the question. It does *not* catch factual error — a confident, well-targeted, wrong answer scores 1.0 — which is why faithfulness and answer relevance always ship as a pair.
 
 **Context precision.** Given retrieved chunks \\( c_1 \dots c_k \\) in ranked order with per-chunk utility \\( v_i \in \{0,1\} \\) ("was this chunk actually used/necessary for the answer?"), the RAGAS-style average precision punishes useful chunks buried below noise:
 
-\[ \mathrm{context\ precision} = \frac{\sum_{i=1}^{k} v_i \cdot \mathrm{precision@}i}{\sum_{i=1}^{k} \mathbf{1}[v_i > 0]} \]
+\\[ \mathrm{context\ precision} = \frac{\sum_{i=1}^{k} v_i \cdot \mathrm{precision@}i}{\sum_{i=1}^{k} \mathbf{1}[v_i > 0]} \\]
 
 Low context precision with high answer quality means the prompt is carrying dead weight — a cost and distraction problem (lost-in-the-middle effects grow with context size; see [Long Context vs RAG](./long-context-vs-rag.md)).
 
 **Context recall.** With a ground-truth answer available, decompose it into claims and check what fraction is attributable to the retrieved context:
 
-\[ \mathrm{context\ recall} = \frac{|\{\text{GT claims attributable to context}\}|}{|\{\text{GT claims}\}|} \]
+\\[ \mathrm{context\ recall} = \frac{|\{\text{GT claims attributable to context}\}|}{|\{\text{GT claims}\}|} \\]
 
 This is the *retrieval-side* metric that uses generation machinery, and it is the bridge metric: when end-to-end quality drops while recall@k (document-level) holds, context recall usually reveals that the *chunk granularity* lost a needed fact.
 

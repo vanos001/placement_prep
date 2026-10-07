@@ -1,7 +1,7 @@
 # Coverage Dashboard
 
 > Auto-generated tracking of content coverage across all subjects.
-> Last updated: 2026-09-19 (research branch @ `506338b`+; refreshed after the deep review and fix pass).
+> Last updated: 2026-10-07 (research branch; after the reference-grounded expansion — 140 new pages).
 >
 > **Branch note:** `research` is 93 commits ahead of `main` (a strict superset)
 > and adds 692 markdown files since the 2026-08-16 snapshot. The repository now

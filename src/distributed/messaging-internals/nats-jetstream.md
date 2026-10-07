@@ -129,7 +129,7 @@ sequenceDiagram
     C->>S: +WPI in progress
     S->>C: Hold off redelivery
     C->>S: -NAK or +ACK
-    Note over C,S: max_deliver bounds the loop; +TERM exits early
+    Note over C,S: max_deliver bounds the loop #59; +TERM exits early
 ```
 
 ## File Storage Internals

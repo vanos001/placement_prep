@@ -14,7 +14,7 @@ Every relevance model answers the same question — how similar are query \\( q 
 
 **Late interaction (ColBERT family).** Encode query and document separately (so documents precompute), but keep *token-level* vectors and let tokens interact at scoring time via MaxSim:
 
-\[ \mathrm{score}(q,d) = \sum_{i=1}^{|q|} \max_{j \in d} \; \langle E_q(t_i), E_d(t_j) \rangle \]
+\\[ \mathrm{score}(q,d) = \sum_{i=1}^{|q|} \max_{j \in d} \; \langle E_q(t_i), E_d(t_j) \rangle \\]
 
 Each query token finds its best-matching document token; the sum rewards documents where *every* query term finds support. This preserves much of the cross-encoder's quality while keeping document encoding offline. ColBERT (Khattab & Zaharia, SIGIR 2020) also appends query-marker "[MASK]" tokens to queries — punctuation-agnostic query augmentation that lets the model emphasize query terms. ColBERTv2 (Santhanam et al., NAACL 2022) made storage practical: token vectors are compressed via *residual quantization* against a centroid set, cutting storage roughly 6-10× versus ColBERT v1's 32-bit token vectors (the paper reports ~36× fewer bits per token than vanilla float storage) with negligible quality loss. PLAID (Santhanam et al., CIKM 2022) made query time practical: candidate generation over compressed centroid representations, then careful pruning so full-resolution MaxSim is computed only for survivors — latencies in the tens of milliseconds at MS MARCO scale on CPU-class hardware.
 

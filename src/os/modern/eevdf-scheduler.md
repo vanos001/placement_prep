@@ -55,9 +55,9 @@ L_i(t) = S_i^{ideal}(t) - S_i^{actual}(t)
 
 A task is **eligible** to run if and only if \\(L_i \ge 0\\), which in virtual-time terms is simply:
 
-\[
+\\[
 v_i \le V(t)
-\]
+\\]
 
 This single rule kills the worst CFS problem: a task that grabbed more than its share (negative lag) is *ineligible* — it cannot run no matter what, until virtual time catches up. Conversely, a task owed time is always eligible. CFS approximated this by ordering on vruntime; EEVDF makes it an explicit, enforced constraint.
 
@@ -65,9 +65,9 @@ This single rule kills the worst CFS problem: a task that grabbed more than its 
 
 Each time a task becomes eligible it issues a **request**: a slice of CPU time \\(s_i\\) (the time it wants to run before re-queuing). The request is converted to virtual time and added to the task's current virtual runtime to produce the **virtual deadline**:
 
-\[
+\\[
 VD_i = v_i + \frac{s_i \times 1024}{w_i}
-\]
+\\]
 
 The scheduler then picks, among eligible tasks, the one with the **earliest virtual deadline**. Two consequences follow directly from the formula:
 

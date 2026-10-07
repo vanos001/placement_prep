@@ -79,7 +79,7 @@ Two consequences interviewers probe. First, **E > Qw spreads the stripe without 
 
 BookKeeper bookies split writes across two storage structures (detailed in [BookKeeper internals](bookkeeper-internals.md)): the **journal**, a per-bookie write-ahead log that is force-synced on the write path (group commit amortizes many entries into one fsync), and the **entry log**, an append-only shared file flushed lazily with an index for later reads. A produce's end-to-end latency is therefore approximately:
 
-\[ t_{produce} \approx t_{client\to broker} + t_{quorum} \approx t_{client\to broker} + \max_{i \le Qa}(\, t_{bookie_i} + t_{journal\,fsync} \,) \]
+\\[ t_{produce} \approx t_{client\to broker} + t_{quorum} \approx t_{client\to broker} + \max_{i \le Qa}(\, t_{bookie_i} + t_{journal\,fsync} \,) \\]
 
 — the ack waits on the Qa-th fastest bookie, and each bookie's cost is dominated by its journal fsync. This is why Pulsar deployments obsess over journal disk isolation (journal on NVMe, entry log on separate devices) and why increasing Qa from 2 to 3 *doubles* the fsync storm: the ack now waits for the 3rd-fastest bookie. Reads, in contrast, hit the entry log (usually warm in page cache after recovery) and can be served by any single bookie holding the entry — a read path that scales with E rather than Qw.
 

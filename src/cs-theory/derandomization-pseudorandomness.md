@@ -64,7 +64,7 @@ Over characteristic 2, the XOR-flavored variant is the one used in practice: wor
 
 | Independence | Seed (bits) | Sample space | Concentration available | Typical use |
 |---|---|---|---|---|
-| pairwise (\\( k=2 \\)) | \\( 2t \\) | \\( q^2 \le n^2 \) | Chebyshev | universal hashing, FKS, sketching |
+| pairwise (\\( k=2 \\)) | \\( 2t \\) | \\( q^2 \le n^2 \\) | Chebyshev | universal hashing, FKS, sketching |
 | 4-wise | \\( 4t \\) | \\( q^4 \\) | limited Chernoff-type | variance-critical sampling, pivots |
 | \\( k \\)-wise | \\( kt \\) | \\( q^k \\) | \\( \delta \\)-tails for \\( k \approx \log(1/\delta) \\) | amplification with tiny seeds, min-wise |
 | full \\( n \\)-wise | \\( nt \\) | \\( q^n \\) | full Chernoff | baseline \\( = \\) true randomness |

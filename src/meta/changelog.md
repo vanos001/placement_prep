@@ -3,6 +3,72 @@
 This file records meaningful content and validation changes to the placement
 preparation book. Dates use the project timezone, Asia/Calcutta.
 
+## 2026-10-07 — Reference-grounded expansion: 140 new pages, 5,182 diagrams
+
+Large expansion driven by the Reference Libraries section: each new deep dive
+was written against the verified primary-source indexes (machine-learning-ai,
+agentic-engineering, prompt-engineering, distributed-systems, database-systems,
+networking, operating-systems) and cites them. **140 new pages** (31,870 lines
+inserted), 6 existing pages substantially enhanced.
+
+New sections (all wired into `src/SUMMARY.md`):
+
+- **LLM Architectures** (`src/llm/architectures/`, 10 pages) — Mamba/SSM, RWKV,
+  linear attention, long-context strategies, hybrid architectures, Mixture of
+  Depths, model merging, vision-language, SSM-vs-attention decision guide.
+- **LLM Post-Training** (`src/llm/post-training/`, 10 pages) — DPO family,
+  GRPO/RLVR, reward models, PRMs, reward hacking, synthetic data, continual
+  pretraining, self-improvement, data pipelines.
+- **Agentic Systems Engineering** (`src/llm/agentic/`, 10 pages) — MCP/A2A
+  protocols, agent auth (OAuth 2.1, token exchange), sandboxed execution,
+  observability, guardrails, computer-use agents, SWE-agents, memory, topologies.
+- **Advanced Prompt Engineering** (`src/llm/prompting/`, 9 pages) — CoT/self-
+  consistency, ToT/GoT, prompt caching, compression, few-shot selection,
+  structured outputs, injection defense (incl. CaMeL), system prompt design.
+- **Advanced Retrieval & RAG** (`src/llm/retrieval-advanced/`, 9 pages) —
+  chunking, hybrid fusion, rerankers, GraphRAG, agentic RAG, embedding
+  fine-tuning, RAG evaluation, long-context-vs-RAG.
+- **System Design Case Studies** (`src/interview/system-design/case-studies/`,
+  11 pages) — ticketmaster, stock exchange, ad-tech RTB, distributed task
+  scheduler, metrics monitoring, distributed tracing, log analytics, live
+  auction, feature store, CI/CD.
+- **Coordination Systems Internals** (`src/distributed/systems/`, 10 pages) —
+  etcd, ZooKeeper/ZAB, Chubby & Consul, CockroachDB, TiDB, Spanner/TrueTime,
+  Calvin, SWIM/memberlist, consistency verification (Jepsen/FDB/VOPR).
+- **Messaging Internals** (`src/distributed/messaging-internals/`, 9 pages) —
+  Kafka log & rebalancing, Pulsar/BookKeeper, Redpanda, NATS JetStream,
+  exactly-once, backpressure.
+- **Storage Formats & Lakehouse** (`src/storage/formats/`, 9 pages) — Iceberg,
+  Delta, Hudi, comparison, Parquet internals, cache eviction, Ceph CRUSH
+  (backlog item closed), deduplication.
+- **Database Internals additions** (`src/dbms/internals/`, 9 pages) —
+  PostgreSQL MVCC, InnoDB, Bw-tree, column-store execution, adaptive query
+  execution, vector indexes, LSM hybrids, TSDB internals, observability.
+- **Modern Kernel Internals** (`src/os/modern/`, 10 pages) — EEVDF, PSI/DAMON,
+  MGLRU, sched_ext, SCHED_DEADLINE, futex, maple tree, page reclaim, OOM killer.
+- **OS Security Internals** (`src/os/security-internals/`, 8 pages) — seccomp,
+  Landlock, BPF LSM, IMA, livepatching, vDSO, ptrace, lockdown.
+- **Network Protocols** (`src/networks/protocols/`, 10 pages) — SCTP,
+  EVPN-VXLAN, RPKI, TLS ECH, QUIC migration, BBR deep dive, PMTUD, RoCEv2,
+  Wi-Fi 7.
+- **CS Theory additions** (`src/cs-theory/`, 9 new pages) — randomized
+  algorithms, derandomization, communication complexity, information theory,
+  coding theory, online algorithms, algorithmic game theory, PCP/inapproximability.
+- **DSA Chapters 195-202** — Li Chao segment tree, Segment Tree Beats, matroid
+  intersection, Sprague-Grundy, XOR basis, finger trees, slope trick, offline
+  dynamic connectivity.
+
+Enhanced (thin pages deepened to 200-320 lines): cs-theory README set
+(logic, proofs, formal languages, computability, Turing machines, sets,
+complexity classes, comparison-sorting lower bound), networks overview/routing/
+ssl/advanced, os filesystems/boot/kernel, dbms/postgresql, llm/advanced,
+distributed overview, dbms/internals README.
+
+**Validation**: all four fast validators pass (0 broken links, SUMMARY
+navigation OK for 2,962 pages, 0 MathJax issues incl. 358 single-backslash
+delimiters repaired, heuristic mermaid 100%) and the **real Mermaid v11 parser
+passes 5,182/5,182 diagrams** — up from 4,889.
+
 ## 2026-09-20 — Sixth pass: papers resolved at metadata level, moved docs, pruned posts
 
 **58 more dead links repaired** (453 → 395 genuine broken links). Nothing was

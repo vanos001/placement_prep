@@ -118,7 +118,7 @@ The table every approximation-theory interview expects. "Hardness" column states
 |---|---|---|---|---|
 | Max-3SAT | \\( 7/8 + \varepsilon \\) (random assignment) | \\( 7/8 + \varepsilon \\) for all \\( \varepsilon > 0 \\) | P \\( \ne \\) NP | Håstad 2001 |
 | Max-Cut | \\( 0.8786 \\) (Goemans–Williamson SDP) | \\( 16/17 \approx 0.9412 + \varepsilon \\) | UGC (KKMO) | Håstad 2001 / Khot–Kindler–Mossel–O'Donnell |
-| Set Cover | \\( H_n \approx \ln n \\) (greedy) | \\( (1 - \varepsilon)\ln n \\) | P \\( \ne \\) NP (via NP \\( \subseteq \) DTIME\\( (n^{O(\log\log n)}) \\)) | Feige 1998 |
+| Set Cover | \\( H_n \approx \ln n \\) (greedy) | \\( (1 - \varepsilon)\ln n \\) | P \\( \ne \\) NP (via NP \\( \subseteq \\) DTIME\\( (n^{O(\log\log n)}) \\)) | Feige 1998 |
 | Maximum Clique | \\( n^{1-\varepsilon} \\) trivial (largest vertex) | \\( n^{1-\varepsilon} \\) for all \\( \varepsilon > 0 \\) | P \\( \ne \\) NP | Zuckerman 2006 (after Håstad 1996) |
 | Chromatic number | \\( n^{1-\varepsilon} \\)-hard territory | \\( n^{1-\varepsilon} \\) | P \\( \ne \\) NP | Zuckerman 2006 |
 | Vertex Cover | \\( 2 - O(1/\sqrt{\log n}) \\) | \\( 1.3606 \\) | P \\( \ne \\) NP | Dinur–Safra 2005 |
