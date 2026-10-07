@@ -670,4 +670,4 @@ Two tracks: **Basic** builds the foundations, **Advanced** is about reading and 
 ## Related sections of this book
 
 - [Computer Architecture](../arch/overview.md) — the explanatory chapters this index points out from
-- [Reference Libraries index](./README.md) — the other six topic indexes
+- [Reference Libraries index](./README.md) — the other topic indexes

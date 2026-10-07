@@ -3415,6 +3415,7 @@
 # Reference Libraries
 
 - [Reference Libraries Overview](./references/README.md)
+- [Networking Reference Library](./references/networking.md)
 - [Computer Architecture Reference Library](./references/computer-architecture.md)
 - [Operating Systems Reference Library](./references/operating-systems.md)
 - [Database Systems Reference Library](./references/database-systems.md)
@@ -3434,3 +3435,4 @@
 - [Cross-Reference Graph](./meta/cross-reference-graph.md)
 - [Topic Backlog](./meta/topic_backlog.md)
 - [Knowledge Graph](./meta/knowledge_graph.md)
+- [Documentation Navigator Prompt Library](./meta/prompt-library.md)
