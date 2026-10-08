@@ -3,6 +3,19 @@
 This file records meaningful content and validation changes to the placement
 preparation book. Dates use the project timezone, Asia/Calcutta.
 
+## 2026-10-08 — Indian recruiter guides & SQL round: 4 new pages, 2 enhanced
+
+Fifth round: new company guides for the Indian placement season —
+TCS (NQT, Ninja/Digital/Prime), Infosys (SE/DSE/Power Programmer tracks),
+other mass recruiters (Wipro/Accenture/Cognizant/Capgemini/LTIMindtree
+comparison), and the India product-company landscape (Flipkart/Swiggy/
+Razorpay/Atlassian-style funnels, LLD emphasis, ESOP reality). SQL-rounds
+page expanded into a 12-pattern query catalog with window functions;
+compound-interest aptitude page deepened.
+
+Validation: 0 broken links, SUMMARY OK (3,028 pages), 0 MathJax issues,
+real Mermaid v11 parser 5,359/5,359 pass.
+
 ## 2026-10-08 — Placement-process & puzzles round: 4 new pages, 13 enhanced
 
 Fourth round closing the placement-logistics gaps: the entire
