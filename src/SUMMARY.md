@@ -1199,6 +1199,7 @@
   - [Query Cache](./dbms/caching/query-cache.md)
   - [Redis](./dbms/caching/redis.md)
   - [Memcached](./dbms/caching/memcached.md)
+  - [In-Memory Data Grids: Hazelcast & Coherence](./dbms/caching/in-memory-data-grids.md)
   - [Advanced Caching Strategies](./dbms/caching/advanced-caching.md)
 - [Distributed Databases](./dbms/distributed/README.md)
   - [CAP Theorem](./dbms/distributed/cap.md)
@@ -2114,6 +2115,7 @@
 - [Feature Flags (Feature Toggles)](./sre/feature-flags.md)
 - [Multi-Region Architecture](./sre/multi-region.md)
 - [Infrastructure & Platform Engineering](./sre/infrastructure-platform-engineering.md)
+- [Internal Developer Platforms & Backstage](./sre/internal-developer-platforms.md)
 - [FMEA & Fault Trees](./sre/fmea-fault-trees.md)
 - [Metrics Cardinality Explosions](./sre/metrics-cardinality.md)
 - [FinOps and Cloud Cost Optimization](./sre/finops-cloud-cost.md)
@@ -2295,6 +2297,7 @@
 - [etcd Architecture](./cloud/etcd.md)
 - [Consul](./cloud/consul.md)
 - [Policy as Code: OPA, Kyverno & Falco](./cloud/policy-as-code.md)
+- [HashiCorp Nomad: The Simple Orchestrator](./cloud/nomad.md)
 - [Jaeger (Distributed Tracing)](./cloud/observability/jaeger.md)
 - [Loki (Log Aggregation)](./cloud/observability/loki.md)
 - [ELK Stack](./cloud/observability/elk-stack.md)
@@ -2785,6 +2788,7 @@
 
 - [Java Overview](./languages/java/README.md)
 - [JVM Internals](./languages/java/jvm.md)
+- [HotSpot Internals: The JVM Engine Room](./languages/java/hotspot-internals.md)
 - [Garbage Collection](./languages/java/gc.md)
 - [Virtual Threads (Project Loom)](./languages/java/virtual-threads.md)
 - [Java Ecosystem & Tooling](./languages/java/ecosystem.md)
@@ -2957,6 +2961,7 @@
 - [xv6: Anatomy of the Teaching Kernel](./os/advanced/xv6-teaching-kernel.md)
 - [The BSD Family: What Linux Interviews Forget](./os/advanced/bsd-family-internals.md)
 - [How to Start Reading the Linux Kernel](./os/advanced/kernel-learning-path.md)
+- [Fuchsia & Zircon: A Capability-Based OS in Production](./os/advanced/fuchsia-zircon.md)
 - [Virtualization Internals](./os/advanced/virtualization.md)
 - [VM Exits and VM Entry: The Cost of the World Switch](./os/advanced/vm-exits.md)
 - [Kernel Crypto API](./os/advanced/kernel-crypto-api.md)
@@ -3754,6 +3759,9 @@
 - [Cloud Computing Reference Library](./references/cloud-computing.md)
 - [Prompt Engineering Reference Library](./references/prompt-engineering.md)
 - [Agentic Engineering Reference Library](./references/agentic-engineering.md)
+- [Security Engineering Reference Library](./references/security-reference.md)
+- [Concurrency & Parallelism Reference Library](./references/concurrency-reference.md)
+- [Storage Systems Reference Library](./references/storage-reference.md)
 
 ---
 

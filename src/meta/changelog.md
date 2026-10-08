@@ -3,6 +3,31 @@
 This file records meaningful content and validation changes to the placement
 preparation book. Dates use the project timezone, Asia/Calcutta.
 
+## 2026-10-08 — Skipped-gap pages + three new reference indexes: 8 new pages, 213 new index entries
+
+Eighth round, two tracks. Track 1 closed the five gaps deliberately
+skipped by the reference-mining round: HotSpot internals (runtime/
+interpreter/tiering/safepoints/oops, complementing the existing JVM
+pages), Fuchsia & Zircon (capability microkernel in production), HashiCorp
+Nomad (architecture, drivers, Nomad-vs-Kubernetes decision table),
+in-memory data grids (Hazelcast/Ignite/Coherence with CP-subsystem and
+split-brain coverage), and internal developer platforms (Backstage
+catalog/Scaffolder/TechDocs with Team Topologies framing). Track 2 grew
+the references section from ten to thirteen verified indexes — Security
+Engineering (81 entries), Concurrency & Parallelism (68), Storage Systems
+(64) — each in the established format with education tracks, the shared
+research-venue section, and a machine-readable CSV. All 321 URLs in the
+three new CSVs were HTTP-verified: 301 OK; 17 bot-blocked sources flagged
+in-page rather than dropped (cppreference, git.kernel.org cgit, uefi.org,
+nfs.sourceforge.net, datatracker, CISA KEV, AppArmor GitLab); 3
+long-stable canonical sites unreachable from the build network (io500.org,
+gnu.org tar manual/Savannah) flagged the same way; 8 dead or moved URLs
+were replaced with verified working ones (Ceph developer guide, fio
+HOWTO.rst, kernel NVDIMM driver-api page, exfatprogs, BeeGFS portal).
+
+Validation: 0 broken links, SUMMARY OK (3,079 pages), fences OK, MathJax
+clean, real Mermaid v11 parser 5,463/5,463 pass.
+
 ## 2026-10-08 — IaC section depth + Twelve-Factor: 1 new page, 4 enhanced
 
 Companion wave to the reference-mining round. The `src/iac/` section was

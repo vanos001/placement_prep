@@ -1,6 +1,6 @@
 # Reference Libraries
 
-Ten verified indexes of **primary sources** — one per major systems topic. Where the rest of this book explains concepts, these pages tell you *which document to open* for the authoritative answer, and in what order to read things.
+Thirteen verified indexes of **primary sources** — one per major systems topic. Where the rest of this book explains concepts, these pages tell you *which document to open* for the authoritative answer, and in what order to read things.
 
 Each entry records, where it exists:
 
@@ -26,8 +26,11 @@ Each page then has a two-track **Education** section (Basic and Advanced, with u
 | [Cloud Computing](./cloud-computing.md) | 93 | 57 | 212 |
 | [Prompt Engineering](./prompt-engineering.md) | 70 | 53 | 118 |
 | [Agentic Engineering](./agentic-engineering.md) | 71 | 54 | 120 |
+| [Security Engineering](./security-reference.md) | 81 | 46 | 206 |
+| [Concurrency & Parallelism](./concurrency-reference.md) | 68 | 58 | 156 |
+| [Storage Systems](./storage-reference.md) | 64 | 58 | 160 |
 
-**888 entries, 1,822 unique URLs**, every one HTTP-verified on 2026-10-07.
+**1,101 entries, 2,344 unique URLs** across the thirteen indexes. The original ten batches were HTTP-verified on 2026-10-07; the security, concurrency and storage indexes were verified on 2026-10-08. Every URL in the three newest indexes was fetched with the same method — redirects followed, 25-second timeout, final status and resolved URL recorded.
 
 ## Research papers
 
@@ -60,6 +63,9 @@ Each index also ships as CSV, one row per entry, with the same columns:
 - [cloud-computing.csv](./data/cloud-computing.csv)
 - [prompt-engineering.csv](./data/prompt-engineering.csv)
 - [agentic-engineering.csv](./data/agentic-engineering.csv)
+- [security.csv](./data/security.csv)
+- [concurrency.csv](./data/concurrency.csv)
+- [storage.csv](./data/storage.csv)
 
 ## How to use these pages
 

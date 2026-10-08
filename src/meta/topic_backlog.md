@@ -2,8 +2,23 @@
 
 > Auto-maintained by research agents. Topics discovered during expansion that need coverage.
 > Priority: HIGH (interview-critical) | MEDIUM (important) | LOW (nice-to-have)
-> Last updated: 2026-10-08 (reference-library gap analysis)
-> Last content change: 2026-10-08 (mining the reference libraries: 15 source-grounded pages)
+> Last updated: 2026-10-08 (gaps closed + 3 new reference indexes)
+> Last content change: 2026-10-08 (5 skipped-gap pages + security/concurrency/storage reference indexes)
+
+## Skipped gaps + new reference indexes — 2026-10-08
+
+- Track 1: the five deliberately-skipped reference-mining candidates got
+  dedicated pages (HotSpot internals, Fuchsia/Zircon, Nomad, in-memory
+  data grids, IDP/Backstage) — the "remaining known gaps" list from the
+  mining round below is now fully closed.
+- Track 2: references section grew 10 -> 13 indexes (security 81,
+  concurrency 68, storage 64 entries = +213 entries, +522 URLs). All
+  321 CSV URLs HTTP-verified with redirects/25s-timeout; bot-blocked
+  flagged in-page per the README convention; 8 dead/moved URLs replaced.
+- Verification tooling: scripts/verify_urls.py in the workspace (parallel
+  curl, records final status + resolved URL; CSV and --md modes).
+- No known remaining gaps from the reference indexes; future index
+  candidates if ever wanted: graphics/game-dev, bioinformatics, quantum.
 
 ## Reference-library mining round — 2026-10-08
 
