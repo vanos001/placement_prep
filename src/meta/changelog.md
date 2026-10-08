@@ -3,6 +3,40 @@
 This file records meaningful content and validation changes to the placement
 preparation book. Dates use the project timezone, Asia/Calcutta.
 
+## 2026-10-08 — Full-corpus mining across all 13 indexes: 15 new pages, 2 deepened
+
+Ninth round, continuing toward the 30k-page goal. The gap-analysis script
+was re-run over the whole reference corpus (1,781 entries across the now
+thirteen indexes, 1,066 raw misses); after filtering education-track and
+paper-venue noise and dedup-checking every candidate against the book
+(many apparent gaps were already covered — Go/Java/Rust concurrency,
+WebAssembly, MCP, event-driven patterns, the block layer, backup), fifteen
+true gaps became pages. Five OS kernel-family deep dives landed in
+os/advanced: Windows NT internals (IRQLs/DPCs, object manager, memory
+manager, IRP flow), XNU & Darwin (Mach ports, compressor VM, kqueue,
+launchd, Apple Silicon boot chain), the real-time landscape (RMA/EDF
+theory, Zephyr, FreeRTOS, NuttX, Tock/Hubris, PREEMPT_RT), illumos
+(DTrace delta-enablement, Zones, SMF, FMA), and POSIX & the Single UNIX
+Specification. Four security pages — the first mining of the round-8
+security index — cover the AppSec toolchain (Semgrep/CodeQL/Trivy/secrets,
+reachability triage), vulnerability management (CVE/CWE/KEV/EPSS
+prioritization, patch SLAs, Log4Shell case study), reverse engineering &
+malware analysis (Ghidra/r2/YARA/Volatility 3), and host detection &
+response (osquery/Wazuh/Tetragon eBPF enforcement). DBMS adds search-engine
+internals (Lucene segments, BM25, translog-vs-refresh, ES/OpenSearch),
+Vitess sharding middleware (vindexes, MoveTables resharding), and
+query-engine frameworks (Calcite/DataFusion/Polars). Runtimes adds managed
+runtimes beyond the JVM (PyPy meta-tracing, GraalVM partial evaluation,
+LuaJIT, .NET tiering), rustc query-based internals (HIR/MIR, NLL, trait
+solving), and JAX functional ML (grad/jit/vmap/pmap, XLA). Two thin pages
+were deepened in place: cloud/autoscaling.md 148 -> 290 (HPA mechanics,
+KEDA, Karpenter, scaling-signal traps) and os/advanced/kernel-architectures.md
+147 -> 251 (a ten-kernel design survey, isolation mechanisms, verification
+spectrum, cross-links to the new kernel-family pages).
+
+Validation: 0 broken links, SUMMARY OK (3,094 pages, 0 duplicates),
+fences OK, MathJax clean, real Mermaid v11 parser 5,496/5,496 pass.
+
 ## 2026-10-08 — Skipped-gap pages + three new reference indexes: 8 new pages, 213 new index entries
 
 Eighth round, two tracks. Track 1 closed the five gaps deliberately

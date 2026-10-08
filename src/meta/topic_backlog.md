@@ -2,8 +2,33 @@
 
 > Auto-maintained by research agents. Topics discovered during expansion that need coverage.
 > Priority: HIGH (interview-critical) | MEDIUM (important) | LOW (nice-to-have)
-> Last updated: 2026-10-08 (gaps closed + 3 new reference indexes)
-> Last content change: 2026-10-08 (5 skipped-gap pages + security/concurrency/storage reference indexes)
+> Last updated: 2026-10-08 (round 9: 15 pages mined from all 13 indexes)
+> Last content change: 2026-10-08 (kernel families x5, security x4, DBMS x3, runtimes x3, JAX; autoscaling + kernel-architectures deepened)
+
+## Round 9 — full-corpus mining, all 13 indexes — 2026-10-08
+
+- Re-ran `scripts/ref_gap_analysis.py` over all thirteen indexes: 1,781
+  entries, 1,066 raw misses; heavy education/venue noise filtered, then
+  each candidate dedup-checked against the repo (many "misses" were
+  already covered — Go/Java/Rust concurrency, wasm, MCP, event-driven,
+  block layer, backup). True gaps curated to 15 new pages.
+- OS kernel families (5): Windows NT internals, XNU/Darwin, RTOS
+  landscape (Zephyr/FreeRTOS/NuttX + Tock/Hubris), illumos/DTrace
+  heritage, POSIX & SUS standards — src/os/advanced/.
+- Security, first mining of the new index (4): AppSec toolchain
+  (SAST/SCA/secrets/DAST), vulnerability management (CVE-to-patch,
+  CVSS/EPSS/KEV), reverse engineering & malware analysis, host detection
+  & response (osquery/Wazuh/Tetragon) — src/security/advanced/.
+- DBMS (3): search-engine internals (Lucene/ES/OpenSearch), Vitess
+  sharding middleware, query-engine frameworks (Calcite/DataFusion).
+- Runtimes (3): managed runtimes beyond the JVM (PyPy/GraalVM/LuaJIT/.NET),
+  rustc query-based internals, JAX & functional ML.
+- Enhancements: cloud/autoscaling.md 148 -> 290 (HPA/KEDA/Karpenter),
+  os/advanced/kernel-architectures.md 147 -> 251 (real-kernel survey,
+  verification spectrum, links to the five new kernel-family pages).
+- Remaining round-10 candidates spotted while deduping: Valkey,
+  well-architected frameworks, Talos/k3s, offensive web tooling deep
+  dive, gossip-glomers-style labs, vuln reachability tooling.
 
 ## Skipped gaps + new reference indexes — 2026-10-08
 
