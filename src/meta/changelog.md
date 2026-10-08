@@ -3,6 +3,34 @@
 This file records meaningful content and validation changes to the placement
 preparation book. Dates use the project timezone, Asia/Calcutta.
 
+## 2026-10-08 — Mining the reference libraries: 15 new source-grounded pages
+
+Seventh round, driven by a systematic gap analysis of the ten reference
+indexes in `src/references/` (888 entries, 1,822 verified URLs): every
+index entry was diffed against the book's page inventory, and the
+high-value systems with no dedicated deep-dive were written up, grounded
+in the primary sources the indexes already list. New pages: OS — xv6
+anatomy (PDOS/6.1810), the BSD family (FreeBSD/OpenBSD/NetBSD/illumos),
+and a kernel source-reading curriculum (docs.kernel.org, LWN, Elixir,
+KernelNewbies, Bootlin). Architecture — architectural simulation (gem5,
+Spike, Verilator, Ramulator 2, DRAMsim3, CACTI), the microarchitectural
+measurement toolbox (uops.info, llvm-mca, Agner Fog, Intel Intrinsics
+Guide, Chips and Cheese), and hardware root of trust (OpenTitan, TPM 2.0,
+OpenSBI). Databases/data — DuckDB internals, Apache Beam (the Dataflow
+model), and time-series databases (InfluxDB TSM→v3, TimescaleDB
+hypertables, delta-of-delta + Gorilla compression with worked examples).
+Distributed — Jepsen/Maelstrom/Gossip Glomers testing and TigerBeetle's
+deterministic financial ledger (VOPR, Viewstamped Replication, 128-bit
+money). Tooling — reading small compilers (chibicc, QBE, c4), IaC beyond
+Terraform (OpenTofu, Pulumi, CDK, Crossplane, Terragrunt), policy as code
+(OPA/Rego, Kyverno, Falco), and the 2026 agent SDK landscape (OpenAI
+Agents SDK, Claude Agent SDK, Google ADK, smolagents, Mastra, Semantic
+Kernel). Every page cross-links its sibling book chapters and ends with
+interview Q&A.
+
+Validation: 0 broken links, SUMMARY OK (3,070 pages), 0 MathJax issues,
+fences OK, real Mermaid v11 parser 5,446/5,446 pass.
+
 ## 2026-10-08 — Competitive programming, math olympiads & quant puzzles: 27 new pages
 
 Sixth round: three new top-level sections requested for competition-track

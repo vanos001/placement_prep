@@ -1167,6 +1167,7 @@
   - [B-Trees Internals](./dbms/indexing/btrees.md)
   - [Adaptive Radix Tree (ART): Main-Memory Indexing](./dbms/advanced/adaptive-radix-tree.md)
   - [FSST: Fast Random-Access String Compression](./dbms/advanced/fsst-string-compression.md)
+  - [DuckDB: Vectorized OLAP in-Process](./dbms/advanced/duckdb-internals.md)
   - [B+ Tree](./dbms/indexing/b-plus-tree.md)
   - [Hash Index](./dbms/indexing/hash-index.md)
   - [Bitmap Index](./dbms/indexing/bitmap-index.md)
@@ -1213,6 +1214,7 @@
   - [Document Stores](./dbms/nosql/document.md)
   - [Column-family Stores](./dbms/nosql/column-family.md)
   - [Graph Databases](./dbms/nosql/graph.md)
+  - [Time-Series Databases: InfluxDB & TimescaleDB](./dbms/nosql/time-series-databases.md)
   - [NewSQL](./dbms/nosql/newsql.md)
 - [MongoDB Sharding](./dbms/nosql/mongodb-sharding.md)
 - [Cassandra Architecture](./dbms/nosql/cassandra-architecture.md)
@@ -1532,6 +1534,7 @@
 - [Testing Distributed Systems](./distributed/testing/README.md)
   - [Jepsen: Fault Injection and Correctness Checking](./distributed/testing/jepsen.md)
   - [Deterministic Simulation Testing](./distributed/testing/deterministic-simulation.md)
+  - [Jepsen, Maelstrom & Distributed Systems Testing](./distributed/testing/jepsen-maelstrom.md)
 
 ---
 
@@ -1819,6 +1822,7 @@
 - [Analytics & OLAP](./data-engineering/analytics.md)
 - [Spark Internals](./data-engineering/spark-internals.md)
 - [Apache Flink](./data-engineering/flink.md)
+- [Apache Beam: Portable Batch & Streaming](./data-engineering/apache-beam.md)
 - [Apache Airflow](./data-engineering/airflow.md)
 - [Dagster](./data-engineering/dagster.md)
 - [ClickHouse](./data-engineering/clickhouse.md)
@@ -2085,6 +2089,7 @@
 - [IaC Overview](./iac/README.md)
 - [Terraform](./iac/terraform.md)
 - [Ansible](./iac/ansible.md)
+- [IaC Beyond Terraform: OpenTofu, Pulumi, CDK & Crossplane](./iac/beyond-terraform.md)
 - [IaC Interview Questions](./iac/interview-questions.md)
 
 ---
@@ -2288,6 +2293,7 @@
 - [Linkerd Service Mesh](./cloud/linkerd.md)
 - [etcd Architecture](./cloud/etcd.md)
 - [Consul](./cloud/consul.md)
+- [Policy as Code: OPA, Kyverno & Falco](./cloud/policy-as-code.md)
 - [Jaeger (Distributed Tracing)](./cloud/observability/jaeger.md)
 - [Loki (Log Aggregation)](./cloud/observability/loki.md)
 - [ELK Stack](./cloud/observability/elk-stack.md)
@@ -2830,6 +2836,7 @@
 - [Scalar Optimizations Deep Dive (PRE, SCCP, jump threading, VRP, tail dup)](./compilers/scalar-optimizations-deep.md)
 - [IPA, Attributor & Codegen Deep Dive](./compilers/ipa-attributor-codegen-deep.md)
 - [Translation Validation (Alive2) & Compiler Bootstrapping](./compilers/translation-validation-bootstrapping.md)
+- [Reading Small Compilers: chibicc & QBE](./compilers/reading-small-compilers.md)
 
 ---
 
@@ -2946,6 +2953,9 @@
 
 - [Advanced OS Overview](./os/advanced/README.md)
 - [Kernel Architectures](./os/advanced/kernel-architectures.md)
+- [xv6: Anatomy of the Teaching Kernel](./os/advanced/xv6-teaching-kernel.md)
+- [The BSD Family: What Linux Interviews Forget](./os/advanced/bsd-family-internals.md)
+- [How to Start Reading the Linux Kernel](./os/advanced/kernel-learning-path.md)
 - [Virtualization Internals](./os/advanced/virtualization.md)
 - [VM Exits and VM Entry: The Cost of the World Switch](./os/advanced/vm-exits.md)
 - [Kernel Crypto API](./os/advanced/kernel-crypto-api.md)
@@ -3208,6 +3218,9 @@
 - [Intel IPU: x86's Answer to the DPU](./arch/advanced/intel-ipu.md)
 - [Graphcore IPU: Bulk-Synchronous Dataflow Accelerators](./arch/advanced/ipu-dataflow.md)
 - [ARM CCA & Realms](./arch/advanced/arm-cca-realms.md)
+- [Architectural Simulation & Modelling](./arch/advanced/architectural-simulation.md)
+- [Microarchitectural Measurement Toolbox](./arch/advanced/uarch-measurement-toolbox.md)
+- [Hardware Root of Trust](./arch/advanced/hardware-root-of-trust.md)
 - [CUDA Programming Model](./arch/advanced/cuda-programming.md)
 - [ROCm](./arch/advanced/rocm.md)
 - [TPU Architecture](./arch/advanced/tpu-architecture.md)
@@ -3558,6 +3571,7 @@
 
 - [Coordination Systems Overview](./distributed/systems/README.md)
 - [Calvin & Deterministic Databases](./distributed/systems/calvin-and-deterministic.md)
+- [TigerBeetle: Deterministic Financial Ledger](./distributed/systems/tigerbeetle-internals.md)
 - [Chubby & Consul](./distributed/systems/chubby-and-consul.md)
 - [CockroachDB Architecture](./distributed/systems/cockroachdb-architecture.md)
 - [Consistency Verification (Jepsen, Simulation)](./distributed/systems/consistency-verification.md)
@@ -3642,6 +3656,7 @@
 - [Multi-Agent Topologies](./llm/agentic/multi-agent-topologies.md)
 - [Sandboxed Code Execution](./llm/agentic/sandboxed-execution.md)
 - [Coding Agents & SWE-Bench](./llm/agentic/swe-agents.md)
+- [The Modern Agent SDK Landscape (2026)](./llm/agentic/agent-sdks-2026.md)
 
 ---
 

@@ -2,8 +2,32 @@
 
 > Auto-maintained by research agents. Topics discovered during expansion that need coverage.
 > Priority: HIGH (interview-critical) | MEDIUM (important) | LOW (nice-to-have)
-> Last updated: 2026-08-16 (validation re-run, meta sync)
-> Last content change: 2026-10-08 (competitive programming, math olympiads, quant puzzles)
+> Last updated: 2026-10-08 (reference-library gap analysis)
+> Last content change: 2026-10-08 (mining the reference libraries: 15 source-grounded pages)
+
+## Reference-library mining round — 2026-10-08
+
+- Systematic gap analysis: all 888 entries of the ten `src/references/`
+  indexes diffed against the book's page inventory (script:
+  `scripts/ref_gap_analysis.py` in the workspace; ~945 raw misses after
+  removing education-track and paper-venue noise, curated to 15).
+- New pages grounded in the indexes' verified primary sources: OS —
+  xv6 teaching kernel, BSD family internals, kernel source-reading
+  curriculum. Architecture — architectural simulation (gem5/Spike/
+  Verilator/Ramulator/DRAMsim3/CACTI), µarch measurement toolbox
+  (uops.info/llvm-mca/Agner Fog), hardware root of trust (OpenTitan/TPM/
+  OpenSBI). Data — DuckDB internals, Apache Beam, time-series databases
+  (InfluxDB/TimescaleDB, Gorilla + delta-of-delta worked examples).
+  Distributed — Jepsen/Maelstrom/Gossip Glomers, TigerBeetle internals.
+  Tooling — reading small compilers (chibicc/QBE/c4), IaC beyond
+  Terraform, policy as code (OPA/Kyverno/Falco), agent SDK landscape 2026.
+- Remaining known gaps (deliberately skipped — passing mentions already
+  exist or marginal interview value): HotSpot-specific internals page
+  (JVM covered via jvm-jit/gc/bytecode), Fuchsia/Zircon dedicated page
+  (kernel-architectures.md covers microkernel theory), Nomad deep dive,
+  in-memory data grids (Hazelcast), Backstage/IDP platform page.
+- All pages wired into SUMMARY; validators green; real Mermaid parser
+  5,447/5,447.
 
 ## Reference-grounded expansion — 2026-10-07
 
