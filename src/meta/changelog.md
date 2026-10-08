@@ -3,7 +3,7 @@
 This file records meaningful content and validation changes to the placement
 preparation book. Dates use the project timezone, Asia/Calcutta.
 
-## 2026-10-08 — Competitive programming, math olympiads & quant puzzles: 25 new pages
+## 2026-10-08 — Competitive programming, math olympiads & quant puzzles: 27 new pages
 
 Sixth round: three new top-level sections requested for competition-track
 candidates. `src/competitive-programming/` (8 pages): hub + rating ladders,
@@ -14,7 +14,11 @@ workflows, and a 14-judge resource directory. `src/competitive-math/`
 number theory, combinatorics (15-puzzle parity, invariants, extremal
 arguments), algebra (FE playbook, Vieta jumping), geometry (power of a
 point, barycentric/complex fallbacks), the Indian IOQM→RMO→INMO pipeline,
-and a resource directory (AoPS, Evan Chen, HBCSE). `src/quant-prep/`
+and a resource directory (AoPS, Evan Chen, HBCSE). The CP section also
+gained a per-competition archive miner (IOI/ICPC/USACO/CF/AtCoder/LC past
+sets with a 12-week mining plan) and a tooling-and-workflow page (Codeforces
+API, kenkoooo sheets, clist feeds, stress-testing rig, mistake-log tracker).
+`src/quant-prep/`
 (9 pages): quant landscape + role/interview funnel, a 20-firm directory
 (Jane Street/HRT/Optiver/IMC/SIG/Jump/DRW/Two Sigma/DE Shaw + India scene),
 Jane Street monthly-puzzle framework with two fully worked style-puzzles,
@@ -24,8 +28,8 @@ two envelopes, secretary problem), market-making game math with adverse
 selection, mental-math speed drills (zetamac, 4-week plan), game-theory
 puzzles (Nim, backward induction), and the green-book canon map.
 
-Validation: 0 broken links, SUMMARY OK (3,053 pages), 0 MathJax issues,
-fences OK, real Mermaid v11 parser 5,403/5,403 pass.
+Validation: 0 broken links, SUMMARY OK (3,055 pages), 0 MathJax issues,
+fences OK, real Mermaid v11 parser 5,407/5,407 pass.
 
 ## 2026-10-08 — Indian recruiter guides & SQL round: 4 new pages, 2 enhanced
 

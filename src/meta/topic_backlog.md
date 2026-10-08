@@ -28,8 +28,8 @@
   mental math, game theory, canon map).
 - Cross-wired with existing content: dsa game-theory chapters (ch61/162/
   180/198), mathematics/, interview/puzzles/, aptitude/.
-- All 25 pages wired into SUMMARY; validators green; real Mermaid parser
-  5,403/5,403.
+- All 27 pages wired into SUMMARY; validators green; real Mermaid parser
+  5,407/5,407.
 
 ## Placement-process & puzzles round — 2026-10-08
 

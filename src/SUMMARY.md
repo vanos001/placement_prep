@@ -1071,6 +1071,8 @@
 - [IOI Guide — Olympiad Format, Partial Scoring, and the India Path](./competitive-programming/ioi-guide.md)
 - [Contest Calendars and Multi-Judge Practice — clist.by and vJudge](./competitive-programming/contest-calendar-codelist.md)
 - [The Competitive Programming Resource Directory](./competitive-programming/resources-directory.md)
+- [Contest Archives — Mining Every Competition's Past](./competitive-programming/contest-archives.md)
+- [Tooling and Workflow — APIs, Stress Testing, Trackers](./competitive-programming/tooling-and-workflow.md)
 
 ---
 
