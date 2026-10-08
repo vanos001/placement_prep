@@ -2,8 +2,30 @@
 
 > Auto-maintained by research agents. Topics discovered during expansion that need coverage.
 > Priority: HIGH (interview-critical) | MEDIUM (important) | LOW (nice-to-have)
-> Last updated: 2026-10-08 (round 9: 15 pages mined from all 13 indexes)
-> Last content change: 2026-10-08 (kernel families x5, security x4, DBMS x3, runtimes x3, JAX; autoscaling + kernel-architectures deepened)
+> Last updated: 2026-10-09 (round 10: 5 new pages + distributed-projects stub deepened)
+> Last content change: 2026-10-09 (Valkey, well-architected, Talos/k3s, offensive web tooling, reachability tooling; distributed labs curriculum)
+
+## Round 10 — backlog-queue mining — 2026-10-09
+
+- All six round-9 spot candidates became pages: Valkey & the Redis fork
+  landscape (dbms/caching), Well-Architected frameworks (cloud), Talos/
+  k3s & minimal Kubernetes (cloud), offensive web tooling
+  (security/advanced), vulnerability reachability tooling
+  (security/advanced), and the 44-line distributed-projects stub became
+  a 271-line lab curriculum (projects/build-it-yourself).
+- Dedup notes: jepsen-maelstrom.md already covers the Glomers challenge
+  mechanics (the new labs page is the curriculum view and cross-links it);
+  web-security.md holds all vulnerability theory (the offensive page is
+  tooling-only); appsec-toolchain's reachability section links forward to
+  the new tooling page.
+- Round-11 candidates spotted while writing: gVisor/Kata/gVisor-vs-Firecracker
+  sandboxing spectrum beyond the existing containerd/Kata pages (check
+  cloud/virtualization first), database migration tooling deep-dive
+  (gh-ost/pt-online-schema-change/flyway-liquibase), feature-store &
+  ML-data tooling (feast), webassembly component model deep-dive
+  (wasm already has a page — component model may not), LLM eval tooling
+  beyond evals/README (promptfoo/inspect-ai), eBPF-based observability
+  tooling deep-dive (pixie/parca — check observability dir first).
 
 ## Round 9 — full-corpus mining, all 13 indexes — 2026-10-08
 

@@ -3,6 +3,28 @@
 This file records meaningful content and validation changes to the placement
 preparation book. Dates use the project timezone, Asia/Calcutta.
 
+## 2026-10-09 — Round 10 of reference mining: 5 new pages, 1 stub deepened
+
+Tenth round toward the 30k-page goal, mining the round-9 backlog queue.
+Five new pages: Valkey and the Redis fork landscape (licence-change origin
+story, multi-threaded I/O engine, RESP/module compatibility, migration
+mechanics, 11-row comparison — dbms/caching); Well-Architected frameworks
+(AWS six pillars + lenses, Azure WAF, running reviews as evidence loops,
+pillar trade-offs argued both sides — cloud); Talos, k3s & minimal
+Kubernetes (distro design space, API-managed immutable Talos, single-binary
+k3s with SQLite-vs-etcd, 9-row distro comparison — cloud); offensive web
+tooling (WSTG methodology, interception proxies, ffuf filtering, Nuclei
+templates, sqlmap — strictly authorized-targets framing — security/advanced);
+and vulnerability reachability tooling (the four-level present/loaded/
+reachable/triggerable ladder, govulncheck & OSV-Scanner mechanics, SBOM
+pipelines, VEX/OpenVEX, CI gate economics — security/advanced). The 44-line
+distributed-projects stub became a 271-line labs curriculum (MIT 6.5840
+labs, Gossip Glomers, Maelstrom, TinyKV; fault-injection ladder; interview
+payoff) while preserving every original line. All external URLs verbatim
+from the verified reference indexes. Validation: 3,099 pages reachable,
+0 broken links, 0 fence problems, MathJax clean, 5,511/5,511 diagrams pass
+the real mermaid@11 parser.
+
 ## 2026-10-08 — Full-corpus mining across all 13 indexes: 15 new pages, 2 deepened
 
 Ninth round, continuing toward the 30k-page goal. The gap-analysis script
