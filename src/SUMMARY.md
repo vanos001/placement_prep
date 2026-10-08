@@ -2467,6 +2467,10 @@
 # Interview Preparation
 
 - [Interview Overview](./interview/overview.md)
+- [Puzzles & Brain Teasers](./interview/puzzles/README.md)
+  - [Classic Measurement Puzzles](./interview/puzzles/classic-measurement.md)
+  - [Logic Deduction Puzzles](./interview/puzzles/logic-deduction.md)
+  - [Probability Puzzles](./interview/puzzles/probability-puzzles.md)
 - [Behavioral Interviews](./interview/behavioral/README.md)
   - [STAR Method](./interview/behavioral/star.md)
   - [Common Questions](./interview/behavioral/common.md)
