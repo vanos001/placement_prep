@@ -1631,6 +1631,7 @@
   - [Kubernetes](./backend/containers/kubernetes.md)
   - [Service Mesh](./backend/containers/service-mesh.md)
   - [xDS Protocol](./backend/containers/xds-protocol.md)
+- [The Twelve-Factor App](./backend/twelve-factor-app.md)
 - [Messaging](./backend/messaging/README.md)
   - [Kafka](./backend/messaging/kafka.md)
   - [RabbitMQ](./backend/messaging/rabbitmq.md)

@@ -3,6 +3,24 @@
 This file records meaningful content and validation changes to the placement
 preparation book. Dates use the project timezone, Asia/Calcutta.
 
+## 2026-10-08 — IaC section depth + Twelve-Factor: 1 new page, 4 enhanced
+
+Companion wave to the reference-mining round. The `src/iac/` section was
+the thinnest in the book (README 29, interview-questions 18, terraform
+133, ansible 128 lines) and the Twelve-Factor App — the classic
+cloud-native vocabulary — had no dedicated page. Now: the IaC overview
+explains state, push-vs-pull, the full tool landscape and a maturity
+ladder; terraform.md covers providers/locks, plan-apply lifecycle, S3+
+DynamoDB locking, modules, workspaces, import, drift and six footguns;
+ansible.md covers dynamic inventory, idempotency mechanics, roles vs
+collections, Vault, execution environments and the Terraform boundary;
+interview-questions.md is a real 18-question graded set. New page
+`src/backend/twelve-factor-app.md` maps all 12 factors to modern
+cloud-native practice and lists which factors changed meaning since 2011.
+
+Validation: 0 broken links, SUMMARY OK (3,071 pages), fences OK, MathJax
+clean, real Mermaid v11 parser 5,449/5,449 pass.
+
 ## 2026-10-08 — Mining the reference libraries: 15 new source-grounded pages
 
 Seventh round, driven by a systematic gap analysis of the ten reference
