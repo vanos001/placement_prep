@@ -198,3 +198,7 @@ The plan front-loads reading into days 1–6 and spends the last day entirely on
 - [Probability & Combinatorics (Aptitude)](../../aptitude/probability-combinatorics.md) — the counting and probability toolkit the third page builds on.
 - [Google](../companies/google.md) — a company whose loops frequently open with puzzle-style warm-ups.
 - [Classic Measurement](./classic-measurement.md) — start here for the weighing, timing, and transport canon.
+- [Quantitative Finance Interview Preparation](../../quant-prep/README.md) — the dedicated quant-track sibling of this section: firm-specific puzzle cultures (Jane Street monthly puzzles, HRT brainteasers), expected-value derivations, and market-making games.
+- [Expected Value Problems](../../quant-prep/expected-value-problems.md) — the probability canon pushed one level deeper, with full first-step-analysis derivations.
+- [Competitive Programming](../../competitive-programming/README.md) — where the same problem-solving discipline is scored by a judge instead of an interviewer.
+- [Competitive Mathematics](../../competitive-math/README.md) — the proof-based olympiad track behind many of the puzzle archetypes here.

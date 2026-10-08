@@ -3,6 +3,30 @@
 This file records meaningful content and validation changes to the placement
 preparation book. Dates use the project timezone, Asia/Calcutta.
 
+## 2026-10-08 — Competitive programming, math olympiads & quant puzzles: 25 new pages
+
+Sixth round: three new top-level sections requested for competition-track
+candidates. `src/competitive-programming/` (8 pages): hub + rating ladders,
+Codeforces and AtCoder guides, LeetCode archive strategy, ICPC and IOI
+pipelines (incl. the India path via IARCS), clist.by/vJudge contest-calendar
+workflows, and a 14-judge resource directory. `src/competitive-math/`
+(8 pages): olympiad track hub, IMO format/scoring/preparation, proof-first
+number theory, combinatorics (15-puzzle parity, invariants, extremal
+arguments), algebra (FE playbook, Vieta jumping), geometry (power of a
+point, barycentric/complex fallbacks), the Indian IOQM→RMO→INMO pipeline,
+and a resource directory (AoPS, Evan Chen, HBCSE). `src/quant-prep/`
+(9 pages): quant landscape + role/interview funnel, a 20-firm directory
+(Jane Street/HRT/Optiver/IMC/SIG/Jump/DRW/Two Sigma/DE Shaw + India scene),
+Jane Street monthly-puzzle framework with two fully worked style-puzzles,
+HRT brainteasers (pirates, airplane, blue eyes, von Neumann coins), the EV
+canon derived via first-step analysis (HHT=14 vs HTT=10, St. Petersburg,
+two envelopes, secretary problem), market-making game math with adverse
+selection, mental-math speed drills (zetamac, 4-week plan), game-theory
+puzzles (Nim, backward induction), and the green-book canon map.
+
+Validation: 0 broken links, SUMMARY OK (3,053 pages), 0 MathJax issues,
+fences OK, real Mermaid v11 parser 5,403/5,403 pass.
+
 ## 2026-10-08 — Indian recruiter guides & SQL round: 4 new pages, 2 enhanced
 
 Fifth round: new company guides for the Indian placement season —

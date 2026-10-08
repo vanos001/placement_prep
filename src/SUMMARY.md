@@ -1061,6 +1061,46 @@
 
 ---
 
+# Competitive Programming
+
+- [Competitive Programming](./competitive-programming/README.md)
+- [Codeforces Guide](./competitive-programming/codeforces-guide.md)
+- [AtCoder Guide](./competitive-programming/atcoder-guide.md)
+- [LeetCode — The Placement Archive and Contest System](./competitive-programming/leetcode-archive.md)
+- [ICPC Guide — Format, Pipeline, and Team Strategy](./competitive-programming/icpc-guide.md)
+- [IOI Guide — Olympiad Format, Partial Scoring, and the India Path](./competitive-programming/ioi-guide.md)
+- [Contest Calendars and Multi-Judge Practice — clist.by and vJudge](./competitive-programming/contest-calendar-codelist.md)
+- [The Competitive Programming Resource Directory](./competitive-programming/resources-directory.md)
+
+---
+
+# Competitive Mathematics
+
+- [Competitive Mathematics — The Olympiad Track](./competitive-math/README.md)
+- [The IMO — Format, Scoring, and Preparation](./competitive-math/imo-guide.md)
+- [Olympiad Number Theory](./competitive-math/number-theory-olympiad.md)
+- [Olympiad Combinatorics](./competitive-math/combinatorics-olympiad.md)
+- [Olympiad Algebra](./competitive-math/algebra-olympiad.md)
+- [Olympiad Geometry](./competitive-math/geometry-olympiad.md)
+- [India Math Olympiads — The IOQM → INMO Pipeline](./competitive-math/india-math-olympiads.md)
+- [Competition Math Resources — The Master Directory](./competitive-math/resources-directory.md)
+
+---
+
+# Quant Firm Puzzles
+
+- [Quantitative Finance Interview Preparation](./quant-prep/README.md)
+- [The Quant Firm Directory](./quant-prep/firm-directory.md)
+- [Jane Street Puzzles](./quant-prep/jane-street-puzzles.md)
+- [HRT Brainteasers](./quant-prep/hrt-brainteasers.md)
+- [Expected Value Problems](./quant-prep/expected-value-problems.md)
+- [Market Making Games](./quant-prep/market-making-games.md)
+- [Mental Math Speed for Trading Interviews](./quant-prep/mental-math-speed.md)
+- [Game Theory Puzzles for Trading Interviews](./quant-prep/game-theory-puzzles.md)
+- [The Quant Interview Canon: Books and How to Use Them](./quant-prep/interview-canon.md)
+
+---
+
 # Database Management Systems
 
 - [DBMS Overview](./dbms/overview.md)

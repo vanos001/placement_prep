@@ -3,7 +3,7 @@
 > Auto-maintained by research agents. Topics discovered during expansion that need coverage.
 > Priority: HIGH (interview-critical) | MEDIUM (important) | LOW (nice-to-have)
 > Last updated: 2026-08-16 (validation re-run, meta sync)
-> Last content change: 2026-10-07 (reference-grounded expansion)
+> Last content change: 2026-10-08 (competitive programming, math olympiads, quant puzzles)
 
 ## Reference-grounded expansion — 2026-10-07
 
@@ -16,6 +16,20 @@
   complexity classes, comparison-sorting lower bound).
 - Backlog items closed this pass: Ceph CRUSH/RADOS deep dive.
 - All pages wired into SUMMARY; validators green; real Mermaid parser 5,182/5,182.
+
+## Competitive/math/quant round — 2026-10-08
+
+- Three new top-level sections closed the competition-track gap:
+  competitive programming (8 pages — CF/AtCoder/LC guides, ICPC/IOI,
+  clist.by/vJudge calendars, judge directory), competitive mathematics
+  (8 pages — IMO, olympiad NT/comb/algebra/geometry, India IOQM→INMO,
+  resource directory), and quant firm puzzles (9 pages — firm directory,
+  Jane Street/HRT puzzle cultures, EV derivations, market-making games,
+  mental math, game theory, canon map).
+- Cross-wired with existing content: dsa game-theory chapters (ch61/162/
+  180/198), mathematics/, interview/puzzles/, aptitude/.
+- All 25 pages wired into SUMMARY; validators green; real Mermaid parser
+  5,403/5,403.
 
 ## Placement-process & puzzles round — 2026-10-08
 
