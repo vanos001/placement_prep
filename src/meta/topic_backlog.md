@@ -17,6 +17,15 @@
 - Backlog items closed this pass: Ceph CRUSH/RADOS deep dive.
 - All pages wired into SUMMARY; validators green; real Mermaid parser 5,182/5,182.
 
+## Placement-process & puzzles round — 2026-10-08
+
+- New puzzles section (4 pages, worked solutions) — closed the
+  brain-teaser gap for interview warm-ups.
+- All 11 placement-preparation pages deepened (funnel, campus mechanics,
+  technical/HR/GD/communication, OA/cognitive/coding assessments,
+  internships/PPO) + aptitude hub/trigonometry/calculus expanded.
+- Validators green; real Mermaid parser 5,354/5,354.
+
 ## Interview-classics expansion — 2026-10-08
 
 - 36 new pages across interview case studies (18), machine coding (9),

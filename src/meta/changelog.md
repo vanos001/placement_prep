@@ -3,6 +3,21 @@
 This file records meaningful content and validation changes to the placement
 preparation book. Dates use the project timezone, Asia/Calcutta.
 
+## 2026-10-08 — Placement-process & puzzles round: 4 new pages, 13 enhanced
+
+Fourth round closing the placement-logistics gaps: the entire
+`src/placement-preparation/` section deepened (funnel & 12-week plan,
+campus vs off-campus mechanics, technical/HR/GD/communication rounds, OA
+platforms, coding assessments, cognitive tests, internships/PPO), the
+aptitude hub + trigonometry + calculus pages expanded, and a NEW puzzles
+section (`src/interview/puzzles/`) added with fully-worked solutions for the
+canon: weighing/weaving classics (8 balls, 25 horses, 2 eggs/100 floors),
+logic deduction (100 prisoners, hats, chameleons, birthday grid), and
+probability (Monty Hall, birthday paradox, cycle-following prisoners).
+
+Validation: 0 broken links, SUMMARY navigation OK (3,024 pages), 0 MathJax
+issues, real Mermaid v11 parser 5,354/5,354 pass.
+
 ## 2026-10-08 — Interview-classics expansion: 36 new pages, 5,336 diagrams
 
 Third expansion round targeting the remaining classic interview topics and
