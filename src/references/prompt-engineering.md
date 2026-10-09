@@ -6,7 +6,7 @@ It is a **navigation layer**, not a tutorial. Where the rest of this book explai
 
 Vendor prompting documentation, open guides, programmatic prompting and constrained decoding, evaluation frameworks, injection and red-teaming tooling, and a two-track path from hands-on tutorials to DSPy, token-level constraints and defensible evals.
 
-**70 entries** across 6 categories, plus **53 education & reference-implementation resources** (22 basic / 31 advanced).
+**70 entries** across 6 categories, plus **53 education & reference-implementation resources** (22 basic / 31 advanced), plus **10 video resources** and **5 conference sources**.
 
 Every link HTTP-verified on **2026-10-07**.
 
@@ -21,6 +21,8 @@ Every link HTTP-verified on **2026-10-07**.
 - [5. Prompt injection, red-teaming & risk](#5-prompt-injection-red-teaming--risk) — 8
 - [6. Research papers & open-access literature](#6-research-papers--open-access-literature) — 27
 - [Education & reference implementations](#education--reference-implementations) — 53 (22 basic / 31 advanced)
+- [Video courses, channels & talks](#video-courses-channels--talks) — 10
+- [Conference videos, notes & archives](#conference-videos-notes--archives) — 5
 
 
 ## 1. Vendor prompting documentation
@@ -681,6 +683,45 @@ Two tracks: **Basic** builds the foundations, **Advanced** is about reading and 
 
 
 ---
+
+## Video courses, channels & talks
+
+*10 resources across 2 groups.* Every channel and playlist below was fetched and title-verified on **2026-10-09**. Handles drift and several plausible-looking handles resolve to the wrong channel, so a 200 response is not proof of identity — the links here were each checked against the channel title.
+
+### Channels & conference recordings
+
+- **[DeepLearning.AI](https://www.youtube.com/@DeepLearningAI)** — Short courses run by Andrew Ng & co.; vendor-leaning, verify against the papers.
+- **[OpenAI](https://www.youtube.com/@OpenAI)** — Model releases and DevDay talks; primary for API and product behaviour.
+- **[Google DeepMind](https://www.youtube.com/@GoogleDeepMind)** — Research overviews and model announcements from DeepMind.
+- **[Hugging Face](https://www.youtube.com/@HuggingFace)** — The open LLM ecosystem: transformers, datasets, agents, tool calling.
+- **[LangChain](https://www.youtube.com/@LangChain)** — Framework walkthroughs for agents and RAG; vendor content, verify against the docs.
+- **[Dave Ebbelaar](https://www.youtube.com/@daveebbelaar)** — Practical LLM and agent app builds, end to end, in Python.
+- **[Machine Learning Street Talk](https://www.youtube.com/@MachineLearningStreetTalk)** — Long-form research interviews; useful for context around current papers.
+- **[Latent Space](https://www.youtube.com/@LatentSpacePod)** — Interviews with the people building prompting tooling; trend-aware, verify against papers.
+- **[TWIML AI Podcast](https://www.youtube.com/@twimlai)** — Long-form applied-AI interviews, including prompt and RAG practice.
+
+### Lectures & playlists
+
+- **[ChatGPT Prompt Engineering for Developers (DeepLearning.AI)](https://www.youtube.com/watch?v=H4YK_7MAckk)** — The one prompt-engineering video worth watching end to end; dated in places, so verify against current model docs.
+
+*Note:* This is the fastest-moving index in the book and its video goes stale fastest: check publish dates, and prefer primary model-provider talks over third-party technique videos.
+
+## Conference videos, notes & archives
+
+*5 resources across 2 groups.* Conference recordings are the primary-source tier of video: the speaker is usually an author of the paper, and where a talk exists the proceedings entry is often open at the same link. Every URL here returned 200 on **2026-10-09** unless the note says otherwise.
+
+There is no prompt-engineering conference. What exists is the main ML venues plus vendor dev days, which is why this section is short and the staleness warning is loud.
+
+### Conference channels & video archives
+
+- **[NeurIPS proceedings](https://neurips.cc/Conferences/2025)** — Where prompting research is published; search the year's papers rather than watching talks.
+- **[ICLR](https://iclr.cc/)** — Most prompting and in-context-learning work appears here first.
+- **[ICML](https://icml.cc/)** — Proceedings portal for the same material.
+- **[AI Engineer World's Fair](https://ai.engineer/)** — The closest thing to a dedicated conference for applied LLM and agent work; recordings published by the organisers, vendor-heavy.
+
+### Notes, proceedings & paper-adjacent archives
+
+- **Treat vendor dev-day talks as release notes** — Anything from a model provider about prompting is a product announcement with a talk attached. Check the date before you rely on it.
 
 ## If you only do three things
 

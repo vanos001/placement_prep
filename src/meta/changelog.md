@@ -3,6 +3,392 @@
 This file records meaningful content and validation changes to the placement
 preparation book. Dates use the project timezone, Asia/Calcutta.
 
+## 2026-10-09 — Reference libraries: a new DSA index, then video and conference tracks on all fourteen
+
+Two pieces of work on `src/references/`. First, a **fourteenth index**,
+`dsa-competitive-programming.md` — DSA, competitive programming and competitive
+math — rebuilt from a flat source list into the house format: 170 entries across
+nine categories (contest platforms and judges, curricula and reference
+implementations, competitive math, tooling and judge infrastructure, interview
+and OA platforms, editorials, university and MOOC material, community and video,
+repositories), 72 education resources in two tracks, 30 research sources, and
+**402 verified URLs**. It is wired into `src/SUMMARY.md` and into
+`src/references/README.md`, and its CSV is generated from the page.
+
+Second, every one of the fourteen indexes gained two new sections:
+**Video courses, channels & talks** (195 resources) and **Conference videos,
+notes & archives** (86 sources, split into conference channels / video archives
+and proceedings / note archives). Both are navigation layers in the same voice as
+the rest of the book — one line per resource, each with an honest caveat about
+what it is good for and where it misleads. Highlights: Onur Mutlu's lecture
+series and Hot Chips for architecture; Kernel Recipes, Linux Plumbers,
+linux.conf.au, OSDI/ATC and EuroSys for operating systems; CMU 15-445 plus
+VLDB/SIGMOD/Percona Live for databases; MIT 6.824, Strange Loop, KTH distributed
+algorithms and SREcon for distributed systems; Stanford CS229, NeurIPS/ICLR/ICML,
+the CVF open-access portal and MLSys for ML; LLVM developer meetings, PyCon US
+and SIGPLAN for compilers; DEF CON, USENIX Security, Black Hat, HITB and
+media.ccc.de for security; CppCon and the kernel tracks for concurrency; FAST,
+SNIA and OpenZFS for storage; netdev, SIGCOMM, RIPE and IETF for networking;
+and the IOI / ICPC / IMO task archives for competitive programming, where the
+honest note is that the task archive matters and no talk circuit exists.
+
+**Verification.** Every channel, playlist and archive URL added was fetched and,
+for YouTube, title-checked — a 200 on a handle is not proof of identity, and the
+rejections are recorded in-page: `@NANOG` resolves to "Nano G", `@OWASPfoundation`
+to an unrelated channel, `@BlackHatEvents` to "InfoSec Events", `@sigplan` to a
+personal channel, and `@nptel`/`@NPTEL`/`@NPTELNOC`, `@ISCAconf`, `@sigmod`,
+`@CiscoLive`, `@nanogorg`, `@MIT6S191` and `@ACLmeeting` all 404. Dead hosts
+(`hitb.org`, `kernel-recipes.net`, `debconf-video.debian.net`) were dropped; three
+sites that 403 automated checkers but work in a browser (`nanog.org`,
+`blackhat.com`, `rsaconference.com`) are kept and flagged. Two guessed playlist
+IDs resolved to "undefined" and were discarded; CMU 15-418 is listed with its
+real caveat, that slides and assignments are open but lecture video needs an
+`andrew.cmu.edu` YouTube login.
+
+**Also updated:** `data/*.csv` now carries one row per resource including the new
+video and conference rows (and education rows for the four indexes whose CSVs
+were previously entry-only); `src/references/README.md` gains Video and
+Conference columns and recomputed per-page URL counts; the book totals were
+recomputed to **1,257 entries and 2,744 unique URLs** after the previous headline
+figure was found not to reconcile with its own per-index column; `src/meta/` was
+refreshed (status, progress, coverage dashboard, knowledge graph) and the root
+`README.md` now lists the reference libraries in *What's Inside*, in the
+repository structure, and in the stats table.
+
+## 2026-10-09 — Round 11: five new pages, two thin pages deepened
+
+Eleventh round toward the 30k-page goal. Of the six candidates queued by
+round 10, four turned out to be already covered when dedup-checked before
+writing — gVisor/Kata/Firecracker each have dedicated pages in
+cloud/virtualization/, the feature store owns ml/system-design/
+feature-store.md plus a case study, the WASM component model has
+compilers/advanced/wasm-component-model.md, and Pixie/Parca are covered by
+linux/observability/ebpf-observability.md and performance-engineering/
+continuous-profiling.md — so the round re-mined the wider inventory for true
+gaps. Five new pages: Zanzibar and relationship-based access control
+(relation tuples, userset rewrite rules, the zookie snapshot model, sharded
+Check evaluation with cache tiers, SpiceDB/OpenFGA/Keto survey, Drive-sharing
+interview walkthrough — security/advanced); schema migration tooling
+(versioned vs declarative authoring, the Flyway/Liquibase/sqitch/Atlas/
+Alembic landscape, where migrations run, expand–contract worked end-to-end
+across four deploys, resumable backfills, forward-only rollback discipline —
+dbms/advanced, cross-linked to online-schema-change.md which keeps the
+big-table DDL mechanics); LLM eval tooling (promptfoo YAML matrices and
+red-teaming, Inspect AI's task/solver/scorer architecture, DeepEval
+pytest-style metrics, Ragas RAG metrics, LangSmith trace-linked datasets,
+five-tool comparison and stack composition — llm/evals, complementing
+eval-harnesses.md); geospatial indexing (geohash bit mechanics and the
+boundary problem, S2 Hilbert cells, H3 hexagons, PostGIS/Elasticsearch query
+paths, the nearest-drivers worked example — dbms/advanced, linking the GiST
+and ride-hailing pages); and micro-frontends (integration-pattern taxonomy
+from build-time packages through Module Federation, single-spa, Web
+Components, iframes, and edge composition; routing, shared state, version
+skew, performance costs, and the when-not-to section — frontend). Two thin
+pages deepened in place with every original line preserved:
+sre/chaos-engineering.md 76 -> 271 lines (fault taxonomy, experiment design
+depth, Chaos Mesh/Litmus/FIS/Toxiproxy mechanics, production safety gates,
+Netflix case studies) and cloud/disaster-recovery.md 119 -> 260 lines
+(RTO/RPO budget math, backup-verification drills, data-layer failover
+mechanics, the four-rung DR testing ladder, DR-as-code runbooks). Every
+external URL used was verified live the same day; four dead candidates were
+replaced and the bot-blocked Percona docs stay flagged per convention.
+Validation: mdBook build clean (3,106 HTML pages), 3,104 pages reachable via
+SUMMARY, 0 broken links, 0 fence problems, MathJax clean, 5,527/5,527
+diagrams pass the real mermaid@11 parser. README stats refreshed (page,
+diagram, word, and URL counts re-measured with a consistent method).
+
+## 2026-10-09 — Round 10 of reference mining: 5 new pages, 1 stub deepened
+
+Tenth round toward the 30k-page goal, mining the round-9 backlog queue.
+Five new pages: Valkey and the Redis fork landscape (licence-change origin
+story, multi-threaded I/O engine, RESP/module compatibility, migration
+mechanics, 11-row comparison — dbms/caching); Well-Architected frameworks
+(AWS six pillars + lenses, Azure WAF, running reviews as evidence loops,
+pillar trade-offs argued both sides — cloud); Talos, k3s & minimal
+Kubernetes (distro design space, API-managed immutable Talos, single-binary
+k3s with SQLite-vs-etcd, 9-row distro comparison — cloud); offensive web
+tooling (WSTG methodology, interception proxies, ffuf filtering, Nuclei
+templates, sqlmap — strictly authorized-targets framing — security/advanced);
+and vulnerability reachability tooling (the four-level present/loaded/
+reachable/triggerable ladder, govulncheck & OSV-Scanner mechanics, SBOM
+pipelines, VEX/OpenVEX, CI gate economics — security/advanced). The 44-line
+distributed-projects stub became a 271-line labs curriculum (MIT 6.5840
+labs, Gossip Glomers, Maelstrom, TinyKV; fault-injection ladder; interview
+payoff) while preserving every original line. All external URLs verbatim
+from the verified reference indexes. Validation: 3,099 pages reachable,
+0 broken links, 0 fence problems, MathJax clean, 5,511/5,511 diagrams pass
+the real mermaid@11 parser.
+
+## 2026-10-08 — Full-corpus mining across all 13 indexes: 15 new pages, 2 deepened
+
+Ninth round, continuing toward the 30k-page goal. The gap-analysis script
+was re-run over the whole reference corpus (1,781 entries across the now
+thirteen indexes, 1,066 raw misses); after filtering education-track and
+paper-venue noise and dedup-checking every candidate against the book
+(many apparent gaps were already covered — Go/Java/Rust concurrency,
+WebAssembly, MCP, event-driven patterns, the block layer, backup), fifteen
+true gaps became pages. Five OS kernel-family deep dives landed in
+os/advanced: Windows NT internals (IRQLs/DPCs, object manager, memory
+manager, IRP flow), XNU & Darwin (Mach ports, compressor VM, kqueue,
+launchd, Apple Silicon boot chain), the real-time landscape (RMA/EDF
+theory, Zephyr, FreeRTOS, NuttX, Tock/Hubris, PREEMPT_RT), illumos
+(DTrace delta-enablement, Zones, SMF, FMA), and POSIX & the Single UNIX
+Specification. Four security pages — the first mining of the round-8
+security index — cover the AppSec toolchain (Semgrep/CodeQL/Trivy/secrets,
+reachability triage), vulnerability management (CVE/CWE/KEV/EPSS
+prioritization, patch SLAs, Log4Shell case study), reverse engineering &
+malware analysis (Ghidra/r2/YARA/Volatility 3), and host detection &
+response (osquery/Wazuh/Tetragon eBPF enforcement). DBMS adds search-engine
+internals (Lucene segments, BM25, translog-vs-refresh, ES/OpenSearch),
+Vitess sharding middleware (vindexes, MoveTables resharding), and
+query-engine frameworks (Calcite/DataFusion/Polars). Runtimes adds managed
+runtimes beyond the JVM (PyPy meta-tracing, GraalVM partial evaluation,
+LuaJIT, .NET tiering), rustc query-based internals (HIR/MIR, NLL, trait
+solving), and JAX functional ML (grad/jit/vmap/pmap, XLA). Two thin pages
+were deepened in place: cloud/autoscaling.md 148 -> 290 (HPA mechanics,
+KEDA, Karpenter, scaling-signal traps) and os/advanced/kernel-architectures.md
+147 -> 251 (a ten-kernel design survey, isolation mechanisms, verification
+spectrum, cross-links to the new kernel-family pages).
+
+Validation: 0 broken links, SUMMARY OK (3,094 pages, 0 duplicates),
+fences OK, MathJax clean, real Mermaid v11 parser 5,496/5,496 pass.
+
+## 2026-10-08 — Skipped-gap pages + three new reference indexes: 8 new pages, 213 new index entries
+
+Eighth round, two tracks. Track 1 closed the five gaps deliberately
+skipped by the reference-mining round: HotSpot internals (runtime/
+interpreter/tiering/safepoints/oops, complementing the existing JVM
+pages), Fuchsia & Zircon (capability microkernel in production), HashiCorp
+Nomad (architecture, drivers, Nomad-vs-Kubernetes decision table),
+in-memory data grids (Hazelcast/Ignite/Coherence with CP-subsystem and
+split-brain coverage), and internal developer platforms (Backstage
+catalog/Scaffolder/TechDocs with Team Topologies framing). Track 2 grew
+the references section from ten to thirteen verified indexes — Security
+Engineering (81 entries), Concurrency & Parallelism (68), Storage Systems
+(64) — each in the established format with education tracks, the shared
+research-venue section, and a machine-readable CSV. All 321 URLs in the
+three new CSVs were HTTP-verified: 301 OK; 17 bot-blocked sources flagged
+in-page rather than dropped (cppreference, git.kernel.org cgit, uefi.org,
+nfs.sourceforge.net, datatracker, CISA KEV, AppArmor GitLab); 3
+long-stable canonical sites unreachable from the build network (io500.org,
+gnu.org tar manual/Savannah) flagged the same way; 8 dead or moved URLs
+were replaced with verified working ones (Ceph developer guide, fio
+HOWTO.rst, kernel NVDIMM driver-api page, exfatprogs, BeeGFS portal).
+
+Validation: 0 broken links, SUMMARY OK (3,079 pages), fences OK, MathJax
+clean, real Mermaid v11 parser 5,463/5,463 pass.
+
+## 2026-10-08 — IaC section depth + Twelve-Factor: 1 new page, 4 enhanced
+
+Companion wave to the reference-mining round. The `src/iac/` section was
+the thinnest in the book (README 29, interview-questions 18, terraform
+133, ansible 128 lines) and the Twelve-Factor App — the classic
+cloud-native vocabulary — had no dedicated page. Now: the IaC overview
+explains state, push-vs-pull, the full tool landscape and a maturity
+ladder; terraform.md covers providers/locks, plan-apply lifecycle, S3+
+DynamoDB locking, modules, workspaces, import, drift and six footguns;
+ansible.md covers dynamic inventory, idempotency mechanics, roles vs
+collections, Vault, execution environments and the Terraform boundary;
+interview-questions.md is a real 18-question graded set. New page
+`src/backend/twelve-factor-app.md` maps all 12 factors to modern
+cloud-native practice and lists which factors changed meaning since 2011.
+
+Validation: 0 broken links, SUMMARY OK (3,071 pages), fences OK, MathJax
+clean, real Mermaid v11 parser 5,449/5,449 pass.
+
+## 2026-10-08 — Mining the reference libraries: 15 new source-grounded pages
+
+Seventh round, driven by a systematic gap analysis of the ten reference
+indexes in `src/references/` (888 entries, 1,822 verified URLs): every
+index entry was diffed against the book's page inventory, and the
+high-value systems with no dedicated deep-dive were written up, grounded
+in the primary sources the indexes already list. New pages: OS — xv6
+anatomy (PDOS/6.1810), the BSD family (FreeBSD/OpenBSD/NetBSD/illumos),
+and a kernel source-reading curriculum (docs.kernel.org, LWN, Elixir,
+KernelNewbies, Bootlin). Architecture — architectural simulation (gem5,
+Spike, Verilator, Ramulator 2, DRAMsim3, CACTI), the microarchitectural
+measurement toolbox (uops.info, llvm-mca, Agner Fog, Intel Intrinsics
+Guide, Chips and Cheese), and hardware root of trust (OpenTitan, TPM 2.0,
+OpenSBI). Databases/data — DuckDB internals, Apache Beam (the Dataflow
+model), and time-series databases (InfluxDB TSM→v3, TimescaleDB
+hypertables, delta-of-delta + Gorilla compression with worked examples).
+Distributed — Jepsen/Maelstrom/Gossip Glomers testing and TigerBeetle's
+deterministic financial ledger (VOPR, Viewstamped Replication, 128-bit
+money). Tooling — reading small compilers (chibicc, QBE, c4), IaC beyond
+Terraform (OpenTofu, Pulumi, CDK, Crossplane, Terragrunt), policy as code
+(OPA/Rego, Kyverno, Falco), and the 2026 agent SDK landscape (OpenAI
+Agents SDK, Claude Agent SDK, Google ADK, smolagents, Mastra, Semantic
+Kernel). Every page cross-links its sibling book chapters and ends with
+interview Q&A.
+
+Validation: 0 broken links, SUMMARY OK (3,070 pages), 0 MathJax issues,
+fences OK, real Mermaid v11 parser 5,446/5,446 pass.
+
+## 2026-10-08 — Competitive programming, math olympiads & quant puzzles: 27 new pages
+
+Sixth round: three new top-level sections requested for competition-track
+candidates. `src/competitive-programming/` (8 pages): hub + rating ladders,
+Codeforces and AtCoder guides, LeetCode archive strategy, ICPC and IOI
+pipelines (incl. the India path via IARCS), clist.by/vJudge contest-calendar
+workflows, and a 14-judge resource directory. `src/competitive-math/`
+(8 pages): olympiad track hub, IMO format/scoring/preparation, proof-first
+number theory, combinatorics (15-puzzle parity, invariants, extremal
+arguments), algebra (FE playbook, Vieta jumping), geometry (power of a
+point, barycentric/complex fallbacks), the Indian IOQM→RMO→INMO pipeline,
+and a resource directory (AoPS, Evan Chen, HBCSE). The CP section also
+gained a per-competition archive miner (IOI/ICPC/USACO/CF/AtCoder/LC past
+sets with a 12-week mining plan) and a tooling-and-workflow page (Codeforces
+API, kenkoooo sheets, clist feeds, stress-testing rig, mistake-log tracker).
+`src/quant-prep/`
+(9 pages): quant landscape + role/interview funnel, a 20-firm directory
+(Jane Street/HRT/Optiver/IMC/SIG/Jump/DRW/Two Sigma/DE Shaw + India scene),
+Jane Street monthly-puzzle framework with two fully worked style-puzzles,
+HRT brainteasers (pirates, airplane, blue eyes, von Neumann coins), the EV
+canon derived via first-step analysis (HHT=14 vs HTT=10, St. Petersburg,
+two envelopes, secretary problem), market-making game math with adverse
+selection, mental-math speed drills (zetamac, 4-week plan), game-theory
+puzzles (Nim, backward induction), and the green-book canon map.
+
+Validation: 0 broken links, SUMMARY OK (3,055 pages), 0 MathJax issues,
+fences OK, real Mermaid v11 parser 5,407/5,407 pass.
+
+## 2026-10-08 — Indian recruiter guides & SQL round: 4 new pages, 2 enhanced
+
+Fifth round: new company guides for the Indian placement season —
+TCS (NQT, Ninja/Digital/Prime), Infosys (SE/DSE/Power Programmer tracks),
+other mass recruiters (Wipro/Accenture/Cognizant/Capgemini/LTIMindtree
+comparison), and the India product-company landscape (Flipkart/Swiggy/
+Razorpay/Atlassian-style funnels, LLD emphasis, ESOP reality). SQL-rounds
+page expanded into a 12-pattern query catalog with window functions;
+compound-interest aptitude page deepened.
+
+Validation: 0 broken links, SUMMARY OK (3,028 pages), 0 MathJax issues,
+real Mermaid v11 parser 5,359/5,359 pass.
+
+## 2026-10-08 — Placement-process & puzzles round: 4 new pages, 13 enhanced
+
+Fourth round closing the placement-logistics gaps: the entire
+`src/placement-preparation/` section deepened (funnel & 12-week plan,
+campus vs off-campus mechanics, technical/HR/GD/communication rounds, OA
+platforms, coding assessments, cognitive tests, internships/PPO), the
+aptitude hub + trigonometry + calculus pages expanded, and a NEW puzzles
+section (`src/interview/puzzles/`) added with fully-worked solutions for the
+canon: weighing/weaving classics (8 balls, 25 horses, 2 eggs/100 floors),
+logic deduction (100 prisoners, hats, chameleons, birthday grid), and
+probability (Monty Hall, birthday paradox, cycle-following prisoners).
+
+Validation: 0 broken links, SUMMARY navigation OK (3,024 pages), 0 MathJax
+issues, real Mermaid v11 parser 5,354/5,354 pass.
+
+## 2026-10-08 — Interview-classics expansion: 36 new pages, 5,336 diagrams
+
+Third expansion round targeting the remaining classic interview topics and
+thin high-traffic pages. **36 new pages** (13,539 lines inserted) plus 10
+existing pages substantially enhanced (+2,463 lines net).
+
+New pages (all wired into `src/SUMMARY.md`):
+
+- **System-design case studies** (`src/interview/system-design/case-studies/`,
+  18 pages) — IRCTC/Tatkal train booking, UPI/NPCI payments, food delivery
+  (HLD), video conferencing (SFU/WebRTC), live comments, online exam
+  platform, dating app, CDN service, matchmaking & leaderboards, fantasy
+  sports, grocery instant delivery, loyalty points ledger, vaccination slot
+  booking, telehealth, digital lending, C2C marketplace, Google
+  Photos-scale media, content moderation platform.
+- **Machine coding** (`src/machine-coding/`, 9 pages) — car rental, meeting
+  room scheduler, shopping cart, Stack Overflow Q&A, cricket scoreboard,
+  thread pool, pub-sub broker, inventory management, cron parser.
+- **Networks** — DDoS mitigation deep dive (`src/networks/security/`).
+- **HPC** — SIMD vectorization & roofline model; fault tolerance &
+  checkpoint/restart (`src/hpc/`).
+- **Security** — threat modeling, zero-trust architecture, incident response
+  & forensics (`src/security/`).
+- **Modern kernel** — Rust in the Linux kernel, THP/khugepaged, zram swap
+  tuning (`src/os/modern/`).
+
+Enhanced pages: coding-pattern pages (binary search, sliding window, two
+pointers), OA/MCQ/pseudocode strategy guides, `interview/coding/README.md`,
+case-studies README rebuilt as a 37-study catalog, machine-coding README
+rebuilt as a 23-problem catalog, TGI deep dive, LLM serving security,
+vector-database internals, CI/CD case study expanded to full format.
+
+Validation: 0 broken links, SUMMARY navigation OK (3,020 pages), 0 MathJax
+issues, real Mermaid v11 parser **5,336/5,336 pass**.
+
+## 2026-10-07 — Reference-grounded expansion: 140 new pages, 5,182 diagrams
+
+Large expansion driven by the Reference Libraries section: each new deep dive
+was written against the verified primary-source indexes (machine-learning-ai,
+agentic-engineering, prompt-engineering, distributed-systems, database-systems,
+networking, operating-systems) and cites them. **140 new pages** (31,870 lines
+inserted), 6 existing pages substantially enhanced.
+
+New sections (all wired into `src/SUMMARY.md`):
+
+- **LLM Architectures** (`src/llm/architectures/`, 10 pages) — Mamba/SSM, RWKV,
+  linear attention, long-context strategies, hybrid architectures, Mixture of
+  Depths, model merging, vision-language, SSM-vs-attention decision guide.
+- **LLM Post-Training** (`src/llm/post-training/`, 10 pages) — DPO family,
+  GRPO/RLVR, reward models, PRMs, reward hacking, synthetic data, continual
+  pretraining, self-improvement, data pipelines.
+- **Agentic Systems Engineering** (`src/llm/agentic/`, 10 pages) — MCP/A2A
+  protocols, agent auth (OAuth 2.1, token exchange), sandboxed execution,
+  observability, guardrails, computer-use agents, SWE-agents, memory, topologies.
+- **Advanced Prompt Engineering** (`src/llm/prompting/`, 9 pages) — CoT/self-
+  consistency, ToT/GoT, prompt caching, compression, few-shot selection,
+  structured outputs, injection defense (incl. CaMeL), system prompt design.
+- **Advanced Retrieval & RAG** (`src/llm/retrieval-advanced/`, 9 pages) —
+  chunking, hybrid fusion, rerankers, GraphRAG, agentic RAG, embedding
+  fine-tuning, RAG evaluation, long-context-vs-RAG.
+- **System Design Case Studies** (`src/interview/system-design/case-studies/`,
+  11 pages) — ticketmaster, stock exchange, ad-tech RTB, distributed task
+  scheduler, metrics monitoring, distributed tracing, log analytics, live
+  auction, feature store, CI/CD.
+- **Coordination Systems Internals** (`src/distributed/systems/`, 10 pages) —
+  etcd, ZooKeeper/ZAB, Chubby & Consul, CockroachDB, TiDB, Spanner/TrueTime,
+  Calvin, SWIM/memberlist, consistency verification (Jepsen/FDB/VOPR).
+- **Messaging Internals** (`src/distributed/messaging-internals/`, 9 pages) —
+  Kafka log & rebalancing, Pulsar/BookKeeper, Redpanda, NATS JetStream,
+  exactly-once, backpressure.
+- **Storage Formats & Lakehouse** (`src/storage/formats/`, 9 pages) — Iceberg,
+  Delta, Hudi, comparison, Parquet internals, cache eviction, Ceph CRUSH
+  (backlog item closed), deduplication.
+- **Database Internals additions** (`src/dbms/internals/`, 9 pages) —
+  PostgreSQL MVCC, InnoDB, Bw-tree, column-store execution, adaptive query
+  execution, vector indexes, LSM hybrids, TSDB internals, observability.
+- **Modern Kernel Internals** (`src/os/modern/`, 10 pages) — EEVDF, PSI/DAMON,
+  MGLRU, sched_ext, SCHED_DEADLINE, futex, maple tree, page reclaim, OOM killer.
+- **OS Security Internals** (`src/os/security-internals/`, 8 pages) — seccomp,
+  Landlock, BPF LSM, IMA, livepatching, vDSO, ptrace, lockdown.
+- **Network Protocols** (`src/networks/protocols/`, 10 pages) — SCTP,
+  EVPN-VXLAN, RPKI, TLS ECH, QUIC migration, BBR deep dive, PMTUD, RoCEv2,
+  Wi-Fi 7.
+- **CS Theory additions** (`src/cs-theory/`, 9 new pages) — randomized
+  algorithms, derandomization, communication complexity, information theory,
+  coding theory, online algorithms, algorithmic game theory, PCP/inapproximability.
+- **DSA Chapters 195-202** — Li Chao segment tree, Segment Tree Beats, matroid
+  intersection, Sprague-Grundy, XOR basis, finger trees, slope trick, offline
+  dynamic connectivity.
+
+Enhanced (thin pages deepened to 200-320 lines): cs-theory README set
+(logic, proofs, formal languages, computability, Turing machines, sets,
+complexity classes, comparison-sorting lower bound), networks overview/routing/
+ssl/advanced, os filesystems/boot/kernel, dbms/postgresql, llm/advanced,
+distributed overview, dbms/internals README.
+
+A same-day second wave added **10 more pages**: serving engines
+(`llama.cpp/GGUF`, LMDeploy, cache-aware KV routing, engine-comparison matrix),
+audio & speech models, diffusion transformers/flow matching, tokenizer
+internals, six new case studies (social graph, API gateway, secrets manager,
+feature flags, video transcoding, durable execution), an **LLM Evaluation**
+section (benchmark landscape, harnesses, LLM-as-judge), and network additions
+(BGP route reflector, anycast & geo routing, DNS tuning).
+
+**Validation**: all four fast validators pass (0 broken links, SUMMARY
+navigation OK for 2,985 pages, 0 MathJax issues incl. 358 single-backslash
+delimiters repaired, heuristic mermaid 100%) and the **real Mermaid v11 parser
+passes 5,249/5,249 diagrams** — up from 4,889.
+
 ## 2026-09-20 — Sixth pass: papers resolved at metadata level, moved docs, pruned posts
 
 **58 more dead links repaired** (453 → 395 genuine broken links). Nothing was

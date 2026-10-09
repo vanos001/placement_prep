@@ -613,3 +613,27 @@ Service Mesh & Observability
   → OpenTelemetry (Backend) → traces, metrics, logs
   → eBPF (Kernel B) → Cilium, network observability
 ```
+
+## Reference Library Edges — 2026-10-09
+
+Thirteen of the fourteen indexes under [references/](../references/README.md) close with a
+*Related sections of this book* block; those blocks are the newest edges in the graph. Each
+index and the chapters it points back into:
+
+- **[Computer Networks reference library](../references/networking.md)** → [Computer Networks](../networks/overview.md); [Reference Libraries index](../references/README.md)
+- **[Computer Architecture reference library](../references/computer-architecture.md)** → [Computer Architecture](../arch/overview.md); [Reference Libraries index](../references/README.md)
+- **[Operating Systems reference library](../references/operating-systems.md)** → [Operating Systems](../os/overview.md); [Reference Libraries index](../references/README.md)
+- **[Database Systems reference library](../references/database-systems.md)** → [Database Management Systems](../dbms/overview.md); [Reference Libraries index](../references/README.md)
+- **[NoSQL & Distributed Systems reference library](../references/distributed-systems.md)** → [Distributed Systems](../distributed/overview.md); [Reference Libraries index](../references/README.md)
+- **[Machine Learning & AI reference library](../references/machine-learning-ai.md)** → [Machine Learning & AI](../ml/overview.md); [Reference Libraries index](../references/README.md)
+- **[Languages, Compilers & Runtimes reference library](../references/languages-compilers.md)** → [Compilers](../compilers/README.md); [Reference Libraries index](../references/README.md)
+- **[Cloud Computing reference library](../references/cloud-computing.md)** → [Cloud & DevOps](../cloud/overview.md); [Reference Libraries index](../references/README.md)
+- **[Prompt Engineering reference library](../references/prompt-engineering.md)** → [Prompt Engineering in Production](../llm/prompt-engineering.md); [AI Agents Engineering](../llm/agents.md); [LLM Security & Safety](../llm/llm-security.md); [LLM Evaluation](../llm/llm-serving/evaluation.md); [Prompt Library](../meta/prompt-library.md); [Reference Libraries index](../references/README.md)
+- **[Agentic Engineering reference library](../references/agentic-engineering.md)** → [AI Agents Engineering](../llm/agents.md); [Prompt Engineering in Production](../llm/prompt-engineering.md); [RAG Systems](../llm/rag-systems.md); [LLM Security & Safety](../llm/llm-security.md); [Prompt Library](../meta/prompt-library.md); [Reference Libraries index](../references/README.md)
+- **[Concurrency & Parallelism reference library](../references/concurrency-reference.md)** → [Concurrency](../concurrency/overview.md); [Threads](../os/threads/models.md); [Formal methods — TLA+](../formal-methods/tla-plus.md); [Reference Libraries index](../references/README.md)
+- **[Storage Systems reference library](../references/storage-reference.md)** → [Database Systems Reference Library](../references/database-systems.md); [Operating Systems Reference Library](../references/operating-systems.md); [Computer Architecture Reference Library](../references/computer-architecture.md); [Storage internals chapters](../storage/block-storage.md); [Reference Libraries index](../references/README.md)
+- **[DSA, CP & Competitive Math reference library](../references/dsa-competitive-programming.md)** → [DSA](../dsa/README.md); [Competitive Programming](../competitive-programming/README.md); [Competitive Math](../competitive-math/README.md); [CS Theory](../cs-theory/README.md); [Mathematics](../mathematics/README.md); [Reference Libraries index](../references/README.md)
+
+The DSA, competitive programming and competitive math index is the newest node: it links out
+to the DSA, competitive programming, competitive math, CS theory and mathematics sections, and
+every other index links back to the reference-libraries overview.

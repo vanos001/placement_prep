@@ -51,7 +51,7 @@ keys: https://db.example.org/art/paper, /art/code, /index   (23-byte shared pref
 BEFORE: one node per byte                    AFTER: pessimistic path compression
 root                                         root
  |-h                                          |-h
- | |-t                                        | '-[pkey="ttps://db.example.org/"]
+ | |-t                                        | '-[pkey="https://db.example.org/"]
  |   |-t  ... 32 one-way Node4 nodes          |   |-a
  |   |-s  in a chain, depth = 33              |   | '-[pkey="rt/"]
  |   |-:                                      |   |   |-p-- [pkey="aper"] leaf

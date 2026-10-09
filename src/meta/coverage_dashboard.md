@@ -1,7 +1,7 @@
 # Coverage Dashboard
 
 > Auto-generated tracking of content coverage across all subjects.
-> Last updated: 2026-09-19 (research branch @ `506338b`+; refreshed after the deep review and fix pass).
+> Last updated: 2026-10-07 (research branch; after the reference-grounded expansion — 140 new pages).
 >
 > **Branch note:** `research` is 93 commits ahead of `main` (a strict superset)
 > and adds 692 markdown files since the 2026-08-16 snapshot. The repository now
@@ -64,6 +64,31 @@
 | DBMS Interview Problems | 6 | 15+ | 2+ | Done |
 | Search | 3 | 10+ | 5+ | Done |
 | SRE | 4 | 20+ | 8+ | Done |
+
+### Reference libraries (hand-maintained, 2026-10-09)
+
+Not part of the auto-generated per-subject run above. These fourteen indexes are verified
+primary-source directories rather than teaching pages, so the useful columns are entries and
+verified URLs, not interview questions or diagrams. Source of truth:
+[`src/references/README.md`](../references/README.md).
+
+| Index | Entries | Education | Video | Conference | Verified URLs |
+|---|---|---|---|---|---|
+| [Computer Networks](../references/networking.md) | 196 | 196 | 16 | 9 | 761 |
+| [Computer Architecture](../references/computer-architecture.md) | 63 | 53 | 12 | 6 | 135 |
+| [Operating Systems](../references/operating-systems.md) | 68 | 58 | 10 | 7 | 151 |
+| [Database Systems](../references/database-systems.md) | 68 | 53 | 14 | 6 | 173 |
+| [NoSQL & Distributed Systems](../references/distributed-systems.md) | 74 | 54 | 14 | 8 | 186 |
+| [ML / DL / AI](../references/machine-learning-ai.md) | 89 | 57 | 22 | 8 | 234 |
+| [Languages & Compilers](../references/languages-compilers.md) | 82 | 59 | 12 | 5 | 187 |
+| [Cloud Computing](../references/cloud-computing.md) | 93 | 57 | 10 | 5 | 227 |
+| [Prompt Engineering](../references/prompt-engineering.md) | 70 | 53 | 10 | 5 | 132 |
+| [Agentic Engineering](../references/agentic-engineering.md) | 71 | 54 | 9 | 5 | 133 |
+| [Security Engineering](../references/security-reference.md) | 81 | 46 | 14 | 7 | 226 |
+| [Concurrency & Parallelism](../references/concurrency-reference.md) | 68 | 58 | 9 | 4 | 168 |
+| [Storage Systems](../references/storage-reference.md) | 64 | 58 | 8 | 8 | 176 |
+| [DSA / CP / Competitive Math](../references/dsa-competitive-programming.md) | 170 | 72 | 35 | 3 | 402 |
+| **Total** | **1,257** | **928** | **195** | **86** | **2,744 de-duplicated** |
 
 ## Overall Metrics
 

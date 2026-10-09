@@ -149,3 +149,18 @@ Education — Advanced,CNCF Landscape,https://landscape.cncf.io/,,,Navigating th
 Education — Advanced,CNCF projects,https://www.cncf.io/projects/,,,Navigating the ecosystem,,Maturity levels are a reasonable proxy for production readiness.
 Education — Advanced,Linux Foundation training,https://training.linuxfoundation.org/,,,Navigating the ecosystem,,"Certification paths (CKA, CKAD, CKS) if credentials matter in your context."
 Education — Advanced,Google Cloud Skills Boost,https://www.cloudskillsboost.google/,,,Navigating the ecosystem,,"Advanced hands-on labs, not only introductory ones."
+Video — Channels & conference recordings,AWS,https://www.youtube.com/@AmazonWebServices,,,,,"Official AWS: re:Invent sessions and service deep dives — a huge, searchable archive."
+Video — Channels & conference recordings,Google Cloud Tech,https://www.youtube.com/@GoogleCloudTech,,,,,Official Google Cloud: product talks and architecture series.
+Video — Channels & conference recordings,Microsoft Azure,https://www.youtube.com/@MicrosoftAzure,,,,,Official Microsoft Azure channel: Ignite sessions and service explainers.
+Video — Channels & conference recordings,CNCF,https://www.youtube.com/@cncf,,,,,KubeCon keynotes and project-maintainer talks across the cloud-native landscape.
+Video — Channels & conference recordings,Kubernetes,https://www.youtube.com/@kubernetescommunity,,,,,Official Kubernetes community channel.
+Video — Channels & conference recordings,The Linux Foundation,https://www.youtube.com/@LinuxFoundationOrg,,,,,The Linux Foundation channel: kernel and LF event recordings.
+Video — Channels & conference recordings,InfoQ,https://www.youtube.com/@InfoQ,,,,,"Conference keynotes and architecture talks — good for orientation, verify specifics elsewhere."
+Video — Channels & conference recordings,HashiCorp,https://www.youtube.com/@HashiCorp,,,,,"HashiConf talks: Terraform, Vault, Consul, Nomad — vendor, but the design talks are real."
+Video — Channels & conference recordings,Grafana Labs,https://www.youtube.com/@GrafanaLabs,,,,,GrafanaCon and observability talks; the open-source telemetry stack is documented here in video form.
+Video — Channels & conference recordings,Tech Field Day,https://www.youtube.com/@TechFieldDay,,,,,Multi-vendor engineering sessions on cloud and infrastructure; good for comparing implementations.
+Conference — Conference channels & video archives,SREcon,https://www.usenix.org/conference/srecon,,,,,"The site reliability engineering conference, run by USENIX — practitioner-authored, no marketing."
+Conference — Conference channels & video archives,USENIX ATC '26,https://www.usenix.org/conference/atc26,,,,,Where the research behind cloud behaviour gets published; open.
+Conference — Conference channels & video archives,EuroSys,https://www.eurosys.org/,,,,,Proceedings and selected recordings for the systems side of cloud.
+Conference — Conference channels & video archives,FOSDEM video archive,https://video.fosdem.org/,,,,,"Containers, cloud-infrastructure and observability devrooms."
+"Conference — Notes, proceedings & paper-adjacent archives",USENIX ;login:,https://www.usenix.org/publications/login/,,,,,Operations and reliability write-ups; the text equivalent of SREcon.

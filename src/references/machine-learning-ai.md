@@ -6,7 +6,7 @@ It is a **navigation layer**, not a tutorial. Where the rest of this book explai
 
 Frameworks, model hubs, GPU kernels and ML compilers, distributed training, inference serving, MLOps tooling, and a two-track path from building backpropagation by hand to reading vLLM and writing Triton kernels.
 
-**89 entries** across 7 categories, plus **57 education & reference-implementation resources** (25 basic / 32 advanced).
+**89 entries** across 7 categories, plus **57 education & reference-implementation resources** (25 basic / 32 advanced), plus **22 video resources** and **8 conference sources**.
 
 Every link HTTP-verified on **2026-10-07**.
 
@@ -22,6 +22,8 @@ Every link HTTP-verified on **2026-10-07**.
 - [6. Fine-tuning, evaluation, retrieval & RL](#6-fine-tuning-evaluation-retrieval--rl) — 16
 - [7. Research papers & open-access literature](#7-research-papers--open-access-literature) — 31
 - [Education & reference implementations](#education--reference-implementations) — 57 (25 basic / 32 advanced)
+- [Video courses, channels & talks](#video-courses-channels--talks) — 22
+- [Conference videos, notes & archives](#conference-videos-notes--archives) — 8
 
 
 ## 1. Core frameworks
@@ -856,6 +858,60 @@ Two tracks: **Basic** builds the foundations, **Advanced** is about reading and 
 
 
 ---
+
+## Video courses, channels & talks
+
+*22 resources across 2 groups.* Every channel and playlist below was fetched and title-verified on **2026-10-09**. Handles drift and several plausible-looking handles resolve to the wrong channel, so a 200 response is not proof of identity — the links here were each checked against the channel title.
+
+### Channels & conference recordings
+
+- **[Andrej Karpathy](https://www.youtube.com/@AndrejKarpathy)** — The best free depth available: backprop, transformers and GPT built from scratch on camera.
+- **[Two Minute Papers](https://www.youtube.com/@TwoMinutePapers)** — Fast paper coverage; headlines overstate, so read the abstract before you cite.
+- **[Yannic Kilcher](https://www.youtube.com/@YannicKilcher)** — Long-form paper reviews — literature depth you will not get from a blog.
+- **[3Blue1Brown](https://www.youtube.com/@3blue1brown)** — Visual linear algebra and calculus — the maths prerequisite for all of ML.
+- **[StatQuest](https://www.youtube.com/@StatQuest)** — The clearest intuition available for the statistics that ML assumes.
+- **[DeepLearning.AI](https://www.youtube.com/@DeepLearningAI)** — Short courses run by Andrew Ng & co.; vendor-leaning, verify against the papers.
+- **[Hugging Face](https://www.youtube.com/@HuggingFace)** — The open LLM ecosystem: transformers, datasets, agents, tool calling.
+- **[PyTorch](https://www.youtube.com/@PyTorch)** — Official PyTorch tutorials and PyTorch Conference talks.
+- **[TensorFlow](https://www.youtube.com/@TensorFlow)** — Official TensorFlow channel — dev summit talks and tutorials.
+- **[OpenAI](https://www.youtube.com/@OpenAI)** — Model releases and DevDay talks; primary for API and product behaviour.
+- **[Google DeepMind](https://www.youtube.com/@GoogleDeepMind)** — Research overviews and model announcements from DeepMind.
+- **[sentdex](https://www.youtube.com/@sentdex)** — Applied Python ML/NLP walkthroughs; solid for getting something running.
+- **[ICML](https://www.youtube.com/@ICMLConf)** — Official ICML channel; plenaries and tutorials, coverage varies by year.
+- **[ICLR](https://www.youtube.com/@ICLR)** — Channel titled simply "Iclr" — check the video against the conference site before citing it.
+- **[The CVF](https://www.youtube.com/@TheCVF)** — The Computer Vision Foundation: CVPR/ICCV material, fully open access.
+- **[Latent Space](https://www.youtube.com/@LatentSpacePod)** — Long-form practitioner interviews; the fastest way to find out what people are actually shipping.
+- **[TWIML AI Podcast](https://www.youtube.com/@twimlai)** — Interview archive going back years; uneven, occasionally excellent.
+- **[Google TechTalks](https://www.youtube.com/@GoogleTechTalks)** — Foundational ML talks by the authors of the papers you are reading.
+
+### Lectures & playlists
+
+- **[Let's build GPT: from scratch, in code, spelled out](https://www.youtube.com/watch?v=kCc8FmEb1nY)** — Karpathy builds a GPT end-to-end in two hours; the single best ML video here.
+- **[Essence of linear algebra](https://www.youtube.com/playlist?list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab)** — the prerequisite series for every ML index below.
+- **[Essence of calculus](https://www.youtube.com/playlist?list=PLZHQObOWTQDMsr9K-rj53DwVRMYO3t5Yr)** — derivatives and backprop intuition in visual form.
+- **[Stanford CS229 — Machine Learning (Autumn 2018)](https://www.youtube.com/playlist?list=PLoROMvodv4rMiGQp3WXShtMGgzqpfVfbU)** — Ng, complete, and still the clearest full-course treatment of the classical material.
+
+*Note:* The only topic here where video is genuinely better than text for prerequisites; treat paper-summary channels as a discovery feed, never as a citation.
+
+## Conference videos, notes & archives
+
+*8 resources across 2 groups.* Conference recordings are the primary-source tier of video: the speaker is usually an author of the paper, and where a talk exists the proceedings entry is often open at the same link. Every URL here returned 200 on **2026-10-09** unless the note says otherwise.
+
+ML publishes more open proceedings than any other field here — and more video of people explaining other people's papers, which is not the same thing.
+
+### Conference channels & video archives
+
+- **[NeurIPS proceedings](https://neurips.cc/Conferences/2025)** — Every paper, with links to the authors' sites; video coverage varies by year.
+- **[CVF Open Access](https://openaccess.thecvf.com/)** — CVPR/ICCV/WACV papers with supplementary video — fully open, the model the other venues should copy.
+- **[FOSDEM video archive](https://video.fosdem.org/)** — AI/ML and data devrooms; small but free.
+- **[MLSys](https://mlsys.org/)** — The ML-systems conference: open proceedings, and the venue for the engineering half of ML (serving, compilation, distributed training).
+- **[CVPR 2026](https://cvpr.thecvf.com/)** — Conference site for the vision flagship; papers and supplementary video via the CVF open-access portal above.
+- **[KDD](https://www.kdd.org/)** — The applied data-science conference; proceedings partly open, tutorials often published.
+- **[EMNLP 2026](https://2026.emnlp.org/)** — The NLP venue; papers in the ACL Anthology, recordings inconsistent.
+
+### Notes, proceedings & paper-adjacent archives
+
+- **[Hugging Face Papers](https://huggingface.co/papers)** — Daily trending papers with discussion attached; the fastest discovery feed, and a mediocre archive.
 
 ## If you only do three things
 

@@ -1,6 +1,6 @@
 # Reference Libraries
 
-Ten verified indexes of **primary sources** — one per major systems topic. Where the rest of this book explains concepts, these pages tell you *which document to open* for the authoritative answer, and in what order to read things.
+Fourteen verified indexes of **primary sources** — one per major topic. Where the rest of this book explains concepts, these pages tell you *which document to open* for the authoritative answer, and in what order to read things.
 
 Each entry records, where it exists:
 
@@ -10,24 +10,28 @@ Each entry records, where it exists:
 - **Downloadable or offline** documentation (PDFs, doc tarballs, offline bundles)
 - A short honest **note** — what the source is actually good for, and where it misleads
 
-Each page then has a two-track **Education** section (Basic and Advanced, with university course material in both) and a **Research papers & open-access literature** section covering free paper sources for that field.
+Each page then has a two-track **Education** section (Basic and Advanced, with university course material in both), a **Research papers & open-access literature** section covering free paper sources for that field, a **Video courses, channels & talks** section of verified channels and lecture playlists, and a **Conference videos, notes & archives** section covering the conference channels, video archives, proceedings portals and paper-adjacent note archives for that field. The DSA index is the exception in placement only: its video material sits in its Community & video category and in the Basic education track rather than in a separate section.
 
 ## The indexes
 
-| Topic | Entries | Education | Verified links |
-|---|---|---|---|
-| [Computer Networks](./networking.md) | 196 | 196 | 736 |
-| [Computer Architecture](./computer-architecture.md) | 63 | 53 | 119 |
-| [Operating Systems](./operating-systems.md) | 68 | 58 | 134 |
-| [Database Systems](./database-systems.md) | 68 | 53 | 153 |
-| [NoSQL & Distributed Systems](./distributed-systems.md) | 74 | 54 | 164 |
-| [Machine Learning, Deep Learning & AI](./machine-learning-ai.md) | 89 | 57 | 205 |
-| [Programming Languages, Compilers & Runtimes](./languages-compilers.md) | 82 | 59 | 171 |
-| [Cloud Computing](./cloud-computing.md) | 93 | 57 | 212 |
-| [Prompt Engineering](./prompt-engineering.md) | 70 | 53 | 118 |
-| [Agentic Engineering](./agentic-engineering.md) | 71 | 54 | 120 |
+| Topic | Entries | Education | Video | Conference | Verified links |
+|---|---|---|---|---|---|
+| [Computer Networks](./networking.md) | 196 | 196 | 16 | 9 | 761 |
+| [Computer Architecture](./computer-architecture.md) | 63 | 53 | 12 | 6 | 135 |
+| [Operating Systems](./operating-systems.md) | 68 | 58 | 10 | 7 | 151 |
+| [Database Systems](./database-systems.md) | 68 | 53 | 14 | 6 | 173 |
+| [NoSQL & Distributed Systems](./distributed-systems.md) | 74 | 54 | 14 | 8 | 186 |
+| [Machine Learning, Deep Learning & AI](./machine-learning-ai.md) | 89 | 57 | 22 | 8 | 234 |
+| [Programming Languages, Compilers & Runtimes](./languages-compilers.md) | 82 | 59 | 12 | 5 | 187 |
+| [Cloud Computing](./cloud-computing.md) | 93 | 57 | 10 | 5 | 227 |
+| [Prompt Engineering](./prompt-engineering.md) | 70 | 53 | 10 | 5 | 132 |
+| [Agentic Engineering](./agentic-engineering.md) | 71 | 54 | 9 | 5 | 133 |
+| [Security Engineering](./security-reference.md) | 81 | 46 | 14 | 7 | 226 |
+| [Concurrency & Parallelism](./concurrency-reference.md) | 68 | 58 | 9 | 4 | 168 |
+| [Storage Systems](./storage-reference.md) | 64 | 58 | 8 | 8 | 176 |
+| [DSA, Competitive Programming & Competitive Math](./dsa-competitive-programming.md) | 170 | 72 | 35 | 3 | 402 |
 
-**888 entries, 1,822 unique URLs**, every one HTTP-verified on 2026-10-07.
+**1,257 entries, 2,744 unique URLs** across the fourteen indexes (entries counted per index; the URL total is de-duplicated across all fourteen pages and was recomputed on 2026-10-09 — the previous figure did not reconcile with the per-index column).
 
 ## Research papers
 
@@ -46,7 +50,7 @@ Every URL was fetched with redirects followed and a 25-second timeout, and recor
 
 ## Machine-readable data
 
-Each index also ships as CSV, one row per entry, with the same columns:
+Each index also ships as CSV, with the same columns and **one row per resource**: every entry, every education resource, every video resource and every conference source. Category values are the numbered entry categories (`3. Competitive math`), `Education — Basic`, `Education — Advanced`, `Video — <group>` and `Conference — <group>`. The DSA index keeps the original un-numbered category names; `networking.csv` keeps its older `Vendor / Project` column header.
 
 `Category, Name, Documentation, Developer / API portal, Source / GitHub, SDKs & notable repos, Downloadable / offline docs, Notes`
 
@@ -60,6 +64,10 @@ Each index also ships as CSV, one row per entry, with the same columns:
 - [cloud-computing.csv](./data/cloud-computing.csv)
 - [prompt-engineering.csv](./data/prompt-engineering.csv)
 - [agentic-engineering.csv](./data/agentic-engineering.csv)
+- [security.csv](./data/security.csv)
+- [concurrency.csv](./data/concurrency.csv)
+- [storage.csv](./data/storage.csv)
+- [dsa-competitive-programming.csv](./data/dsa-competitive-programming.csv)
 
 ## How to use these pages
 
