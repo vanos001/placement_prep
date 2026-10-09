@@ -3,6 +3,48 @@
 This file records meaningful content and validation changes to the placement
 preparation book. Dates use the project timezone, Asia/Calcutta.
 
+## 2026-10-09 — Round 11: five new pages, two thin pages deepened
+
+Eleventh round toward the 30k-page goal. Of the six candidates queued by
+round 10, four turned out to be already covered when dedup-checked before
+writing — gVisor/Kata/Firecracker each have dedicated pages in
+cloud/virtualization/, the feature store owns ml/system-design/
+feature-store.md plus a case study, the WASM component model has
+compilers/advanced/wasm-component-model.md, and Pixie/Parca are covered by
+linux/observability/ebpf-observability.md and performance-engineering/
+continuous-profiling.md — so the round re-mined the wider inventory for true
+gaps. Five new pages: Zanzibar and relationship-based access control
+(relation tuples, userset rewrite rules, the zookie snapshot model, sharded
+Check evaluation with cache tiers, SpiceDB/OpenFGA/Keto survey, Drive-sharing
+interview walkthrough — security/advanced); schema migration tooling
+(versioned vs declarative authoring, the Flyway/Liquibase/sqitch/Atlas/
+Alembic landscape, where migrations run, expand–contract worked end-to-end
+across four deploys, resumable backfills, forward-only rollback discipline —
+dbms/advanced, cross-linked to online-schema-change.md which keeps the
+big-table DDL mechanics); LLM eval tooling (promptfoo YAML matrices and
+red-teaming, Inspect AI's task/solver/scorer architecture, DeepEval
+pytest-style metrics, Ragas RAG metrics, LangSmith trace-linked datasets,
+five-tool comparison and stack composition — llm/evals, complementing
+eval-harnesses.md); geospatial indexing (geohash bit mechanics and the
+boundary problem, S2 Hilbert cells, H3 hexagons, PostGIS/Elasticsearch query
+paths, the nearest-drivers worked example — dbms/advanced, linking the GiST
+and ride-hailing pages); and micro-frontends (integration-pattern taxonomy
+from build-time packages through Module Federation, single-spa, Web
+Components, iframes, and edge composition; routing, shared state, version
+skew, performance costs, and the when-not-to section — frontend). Two thin
+pages deepened in place with every original line preserved:
+sre/chaos-engineering.md 76 -> 271 lines (fault taxonomy, experiment design
+depth, Chaos Mesh/Litmus/FIS/Toxiproxy mechanics, production safety gates,
+Netflix case studies) and cloud/disaster-recovery.md 119 -> 260 lines
+(RTO/RPO budget math, backup-verification drills, data-layer failover
+mechanics, the four-rung DR testing ladder, DR-as-code runbooks). Every
+external URL used was verified live the same day; four dead candidates were
+replaced and the bot-blocked Percona docs stay flagged per convention.
+Validation: mdBook build clean (3,106 HTML pages), 3,104 pages reachable via
+SUMMARY, 0 broken links, 0 fence problems, MathJax clean, 5,527/5,527
+diagrams pass the real mermaid@11 parser. README stats refreshed (page,
+diagram, word, and URL counts re-measured with a consistent method).
+
 ## 2026-10-09 — Round 10 of reference mining: 5 new pages, 1 stub deepened
 
 Tenth round toward the 30k-page goal, mining the round-9 backlog queue.

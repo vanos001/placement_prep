@@ -2010,6 +2010,7 @@
 - [CSS Deep Dive](./frontend/css-deep.md)
 - [Server-Side Rendering, Client-Side Rendering, and Static Generation](./frontend/ssr-csr-ssg.md)
 - [Frontend Engineering Deep Dive](./frontend/frontend-engineering.md)
+- [Micro-Frontends](./frontend/micro-frontends.md)
 
 ---
 
@@ -3103,6 +3104,7 @@
 - [Memcached Internals](./dbms/advanced/memcached.md)
 - [Database Sharding](./dbms/advanced/database-sharding.md)
 - [Online Schema Change](./dbms/advanced/online-schema-change.md)
+- [Schema Migrations: Versioned Tooling and Expand–Contract](./dbms/advanced/schema-migrations.md)
 - [Online Resharding and Shard Migration](./dbms/advanced/online-resharding.md)
 - [Automatic Indexing: What-If Analysis and Self-Tuning Index Selection](./dbms/advanced/automatic-indexing.md)
 - [Cursors and Streaming Results](./dbms/advanced/cursors-and-streaming-results.md)
@@ -3118,6 +3120,7 @@
 - [The RUM Conjecture](./dbms/advanced/rum-conjecture.md)
 - [Materialized View Maintenance and Incremental Computation](./dbms/advanced/incremental-view-maintenance.md)
 - [Vector Databases](./dbms/advanced/vector-databases.md)
+- [Geospatial Indexing: Geohash, S2, and H3](./dbms/advanced/geospatial-indexing.md)
 - [Graph Databases](./dbms/advanced/graph-databases.md)
 - [Graph Query Languages: Cypher, SPARQL, Gremlin, GQL](./dbms/advanced/graph-query-languages.md)
 - [Temporal & Streaming Databases](./dbms/advanced/temporal-streaming.md)
@@ -3374,6 +3377,7 @@
 - [Advanced Cryptography](./security/advanced/crypto-advanced.md)
 - [FIDO2 & WebAuthn](./security/advanced/fido2-webauthn.md)
 - [Confidential Computing & TEEs](./security/advanced/confidential-computing.md)
+- [Zanzibar and Relationship-Based Access Control](./security/advanced/zanzibar-rebac.md)
 
 ---
 
@@ -3747,6 +3751,7 @@
 - [Benchmark Landscape](./llm/evals/benchmark-landscape.md)
 - [Eval Harnesses](./llm/evals/eval-harnesses.md)
 - [LLM-as-Judge Deep Dive](./llm/evals/llm-as-judge-deep.md)
+- [LLM Eval Tooling: promptfoo, Inspect AI, DeepEval, Ragas](./llm/evals/eval-tooling.md)
 
 ---
 

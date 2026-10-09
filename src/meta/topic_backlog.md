@@ -2,8 +2,39 @@
 
 > Auto-maintained by research agents. Topics discovered during expansion that need coverage.
 > Priority: HIGH (interview-critical) | MEDIUM (important) | LOW (nice-to-have)
-> Last updated: 2026-10-09 (round 10: 5 new pages + distributed-projects stub deepened)
-> Last content change: 2026-10-09 (Valkey, well-architected, Talos/k3s, offensive web tooling, reachability tooling; distributed labs curriculum)
+> Last updated: 2026-10-09 (round 11: 5 new pages + 2 thin pages deepened)
+> Last content change: 2026-10-09 (Zanzibar/ReBAC, schema-migration tooling, LLM eval tooling, geospatial indexing, micro-frontends; chaos-engineering and disaster-recovery deepens)
+
+## Round 11 — backlog re-mine + inventory scan — 2026-10-09
+
+- Of the six round-10 candidates, four were already covered and dropped after
+  dedup: gVisor/Kata/Firecracker (cloud/virtualization/ has dedicated pages),
+  feature-store & ML-data tooling (ml/system-design/feature-store.md + the
+  interview case study), the WASM component model
+  (compilers/advanced/wasm-component-model.md), and eBPF observability tooling
+  (linux/observability/ebpf-observability.md + continuous-profiling.md both
+  carry Pixie/Parca). The other two became pages with complementary angles:
+  database migration tooling (versioned/declarative authoring + expand–
+  contract, NOT the pt-osc/gh-ost mechanics online-schema-change.md already
+  owns) and LLM eval tooling (promptfoo/Inspect AI/DeepEval/Ragas/LangSmith
+  mechanics, NOT the benchmark-harness territory eval-harnesses.md owns).
+- Five new pages: Zanzibar & relationship-based access control
+  (security/advanced/zanzibar-rebac.md), schema migration tooling
+  (dbms/advanced/schema-migrations.md), LLM eval tooling
+  (llm/evals/eval-tooling.md), geospatial indexing
+  (dbms/advanced/geospatial-indexing.md), micro-frontends
+  (frontend/micro-frontends.md).
+- Two thin pages deepened with all original content preserved:
+  sre/chaos-engineering.md 76 -> 271 and cloud/disaster-recovery.md 119 -> 260
+  (slo-sli-sla.md was considered but rejected — slo-error-budget.md already
+  owns burn-rate alerting, so a deep-dive would duplicate).
+- Round-12 candidates spotted while scanning: a data-contracts page (5
+  passing mentions; complements data-engineering/data-quality.md), email
+  deliverability infrastructure beyond the email case study (SPF/DKIM/DMARC
+  mechanics, bounce handling, warm-up — currently 6 passing mentions), and a
+  housekeeping pass on stale section-README tables (security/advanced/README
+  reading-order lists 5 of 22 files; several section mindmaps predate the
+  new pages — SUMMARY is the maintained source of truth).
 
 ## Round 10 — backlog-queue mining — 2026-10-09
 

@@ -10,6 +10,7 @@ Essential frontend knowledge for software engineering interviews.
 | [JavaScript Deep Dive](./javascript-deep-dive.md) | Closures, prototypes, event loop, promises, async/await |
 | [TypeScript](./typescript.md) | Type system, generics, utility types, narrowing |
 | [React](./react.md) | Hooks, virtual DOM, state management, server components |
+| [Micro-Frontends](./micro-frontends.md) | Multi-team SPA decomposition: Module Federation, single-spa, Web Components, iframes, edge composition, version-skew and performance costs |
 | [Interview Questions](./interview-questions.md) | Frontend interview questions |
 
 ## Why Frontend Matters for Placement
