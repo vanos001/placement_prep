@@ -6,7 +6,7 @@ It is a **navigation layer**, not a tutorial. Where the rest of this book explai
 
 Hyperscale and developer-focused providers, infrastructure as code, containers and orchestration, observability, reliability frameworks, and a two-track path from the OCI specs to Kubernetes internals and platform engineering.
 
-**93 entries** across 10 categories, plus **57 education & reference-implementation resources** (26 basic / 31 advanced).
+**93 entries** across 10 categories, plus **57 education & reference-implementation resources** (26 basic / 31 advanced), plus **10 video resources** and **5 conference sources**.
 
 Every link HTTP-verified on **2026-10-07**.
 
@@ -23,6 +23,8 @@ Every link HTTP-verified on **2026-10-07**.
 - [9. Scaling, delivery & cost](#9-scaling-delivery--cost) — 7
 - [10. Research papers & open-access literature](#10-research-papers--open-access-literature) — 27
 - [Education & reference implementations](#education--reference-implementations) — 57 (26 basic / 31 advanced)
+- [Video courses, channels & talks](#video-courses-channels--talks) — 10
+- [Conference videos, notes & archives](#conference-videos-notes--archives) — 5
 
 
 ## 1. Hyperscale cloud providers
@@ -906,6 +908,42 @@ Two tracks: **Basic** builds the foundations, **Advanced** is about reading and 
 
 
 ---
+
+## Video courses, channels & talks
+
+*10 resources across 1 group.* Every channel and playlist below was fetched and title-verified on **2026-10-09**. Handles drift and several plausible-looking handles resolve to the wrong channel, so a 200 response is not proof of identity — the links here were each checked against the channel title.
+
+### Channels & conference recordings
+
+- **[AWS](https://www.youtube.com/@AmazonWebServices)** — Official AWS: re:Invent sessions and service deep dives — a huge, searchable archive.
+- **[Google Cloud Tech](https://www.youtube.com/@GoogleCloudTech)** — Official Google Cloud: product talks and architecture series.
+- **[Microsoft Azure](https://www.youtube.com/@MicrosoftAzure)** — Official Microsoft Azure channel: Ignite sessions and service explainers.
+- **[CNCF](https://www.youtube.com/@cncf)** — KubeCon keynotes and project-maintainer talks across the cloud-native landscape.
+- **[Kubernetes](https://www.youtube.com/@kubernetescommunity)** — Official Kubernetes community channel.
+- **[The Linux Foundation](https://www.youtube.com/@LinuxFoundationOrg)** — The Linux Foundation channel: kernel and LF event recordings.
+- **[InfoQ](https://www.youtube.com/@InfoQ)** — Conference keynotes and architecture talks — good for orientation, verify specifics elsewhere.
+- **[HashiCorp](https://www.youtube.com/@HashiCorp)** — HashiConf talks: Terraform, Vault, Consul, Nomad — vendor, but the design talks are real.
+- **[Grafana Labs](https://www.youtube.com/@GrafanaLabs)** — GrafanaCon and observability talks; the open-source telemetry stack is documented here in video form.
+- **[Tech Field Day](https://www.youtube.com/@TechFieldDay)** — Multi-vendor engineering sessions on cloud and infrastructure; good for comparing implementations.
+
+*Note:* Cloud video is dominated by vendor marketing; it is worth watching for service mechanics and release behaviour, and worthless for architecture judgment.
+
+## Conference videos, notes & archives
+
+*5 resources across 2 groups.* Conference recordings are the primary-source tier of video: the speaker is usually an author of the paper, and where a talk exists the proceedings entry is often open at the same link. Every URL here returned 200 on **2026-10-09** unless the note says otherwise.
+
+Cloud video is mostly vendor content, with two exceptions: SREcon is practitioner-authored, and the open-source conferences publish everything.
+
+### Conference channels & video archives
+
+- **[SREcon](https://www.usenix.org/conference/srecon)** — The site reliability engineering conference, run by USENIX — practitioner-authored, no marketing.
+- **[USENIX ATC '26](https://www.usenix.org/conference/atc26)** — Where the research behind cloud behaviour gets published; open.
+- **[EuroSys](https://www.eurosys.org/)** — Proceedings and selected recordings for the systems side of cloud.
+- **[FOSDEM video archive](https://video.fosdem.org/)** — Containers, cloud-infrastructure and observability devrooms.
+
+### Notes, proceedings & paper-adjacent archives
+
+- **[USENIX ;login:](https://www.usenix.org/publications/login/)** — Operations and reliability write-ups; the text equivalent of SREcon.
 
 ## If you only do three things
 

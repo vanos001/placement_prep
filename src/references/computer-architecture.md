@@ -6,7 +6,7 @@ It is a **navigation layer**, not a tutorial. Where the rest of this book explai
 
 ISA specifications, open-source cores, simulators, EDA toolchains, performance-analysis tooling, and a two-track learning path — from NAND gates to out-of-order execution and open silicon.
 
-**63 entries** across 7 categories, plus **53 education & reference-implementation resources** (22 basic / 31 advanced).
+**63 entries** across 7 categories, plus **53 education & reference-implementation resources** (22 basic / 31 advanced), plus **12 video resources** and **6 conference sources**.
 
 Every link HTTP-verified on **2026-10-07**.
 
@@ -22,6 +22,8 @@ Every link HTTP-verified on **2026-10-07**.
 - [6. Reverse engineering, commentary & live tooling](#6-reverse-engineering-commentary--live-tooling) — 8
 - [7. Research papers & open-access literature](#7-research-papers--open-access-literature) — 20
 - [Education & reference implementations](#education--reference-implementations) — 53 (22 basic / 31 advanced)
+- [Video courses, channels & talks](#video-courses-channels--talks) — 12
+- [Conference videos, notes & archives](#conference-videos-notes--archives) — 6
 
 
 ## 1. Instruction set architectures & vendor documentation
@@ -651,6 +653,45 @@ Two tracks: **Basic** builds the foundations, **Advanced** is about reading and 
 
 
 ---
+
+## Video courses, channels & talks
+
+*12 resources across 1 group.* Every channel and playlist below was fetched and title-verified on **2026-10-09**. Handles drift and several plausible-looking handles resolve to the wrong channel, so a 200 response is not proof of identity — the links here were each checked against the channel title.
+
+### Channels & conference recordings
+
+- **[Onur Mutlu](https://www.youtube.com/@OnurMutlu)** — Full graduate lecture series from digital design through memory systems — the best free depth on caches and DRAM.
+- **[Onur Mutlu Lectures](https://www.youtube.com/@onurmutlulectures)** — Separate archive channel for Mutlu lecture recordings.
+- **[CS61C](https://www.youtube.com/@CS61C)** — Berkeley CS61C recordings — RISC-V, caches, SIMD, with the labs.
+- **[UC Berkeley](https://www.youtube.com/@UCBerkeley)** — EECS course and seminar recordings.
+- **[Computerphile](https://www.youtube.com/@Computerphile)** — Short, well-made explainers; the right first stop before a spec.
+- **[Branch Education](https://www.youtube.com/@BranchEducation)** — Animated deep dives into CPUs, caches and memory — strong mental models, not authoritative.
+- **[NVIDIA Developer](https://www.youtube.com/@NVIDIADeveloper)** — GTC talks on GPU architecture and parallel programming; primary for accelerator design.
+- **[USENIX](https://www.youtube.com/@USENIX)** — Conference recordings for most USENIX papers — free video, the fastest route into a systems paper.
+- **[linux.conf.au](https://www.youtube.com/@linuxconfau)** — linux.conf.au talks: kernel, filesystems and low-level systems depth.
+- **[Hot Chips](https://www.youtube.com/@HotChips)** — The annual chip-architecture symposium: talks by the teams that built the hardware.
+- **[Google TechTalks](https://www.youtube.com/@GoogleTechTalks)** — Architecture and systems talks from visiting researchers; uneven, but deep when good.
+- **[IIT Madras](https://www.youtube.com/@IITMadrasOfficial)** — Full NPTEL-style courses including computer organisation and architecture, in English.
+
+*Note:* Still the rare field where a full graduate lecture series is free on video; start with Mutlu, use Computerphile and Branch Education only to build a mental model before Patterson & Hennessy.
+
+## Conference videos, notes & archives
+
+*6 resources across 2 groups.* Conference recordings are the primary-source tier of video: the speaker is usually an author of the paper, and where a talk exists the proceedings entry is often open at the same link. Every URL here returned 200 on **2026-10-09** unless the note says otherwise.
+
+Architecture has no single conference channel: the symposiums do not publish video, so this is a mix of the two that do and the archives that fill the gap.
+
+### Conference channels & video archives
+
+- **[Hot Chips](https://www.youtube.com/@HotChips)** — The one architecture symposium that publishes its own recordings; talks by the design teams.
+- **[CMU 15-418/15-618](https://www.cs.cmu.edu/~418/)** — Slides and assignments are open; the lecture videos sit behind an andrew.cmu.edu YouTube login, so plan for slides only.
+- **[FOSDEM video archive](https://video.fosdem.org/)** — Hardware, embedded and RISC-V devrooms — the widest free coverage of architecture-adjacent talks.
+- **[media.ccc.de](https://media.ccc.de/)** — Hardware and side-channel tracks, plus the occasional brilliant reverse-engineering talk.
+- **[USENIX ATC '26](https://www.usenix.org/conference/atc26)** — Open proceedings; architecture papers here are usually about how hardware behaves under real systems.
+
+### Notes, proceedings & paper-adjacent archives
+
+- **No official channel for ISCA, MICRO, HPCA or ASPLOS** — Verified on 2026-10-09: @ISCAconf returns 404 and the obvious variants are wrong. Get these talks from the ACM DL, author homepages, or conference sites — not from YouTube.
 
 ## If you only do three things
 

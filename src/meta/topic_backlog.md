@@ -2,7 +2,176 @@
 
 > Auto-maintained by research agents. Topics discovered during expansion that need coverage.
 > Priority: HIGH (interview-critical) | MEDIUM (important) | LOW (nice-to-have)
-> Last updated: 2026-08-16 (validation re-run, meta sync)
+> Last updated: 2026-10-09 (round 11: 5 new pages + 2 thin pages deepened)
+> Last content change: 2026-10-09 (Zanzibar/ReBAC, schema-migration tooling, LLM eval tooling, geospatial indexing, micro-frontends; chaos-engineering and disaster-recovery deepens)
+
+## Round 11 — backlog re-mine + inventory scan — 2026-10-09
+
+- Of the six round-10 candidates, four were already covered and dropped after
+  dedup: gVisor/Kata/Firecracker (cloud/virtualization/ has dedicated pages),
+  feature-store & ML-data tooling (ml/system-design/feature-store.md + the
+  interview case study), the WASM component model
+  (compilers/advanced/wasm-component-model.md), and eBPF observability tooling
+  (linux/observability/ebpf-observability.md + continuous-profiling.md both
+  carry Pixie/Parca). The other two became pages with complementary angles:
+  database migration tooling (versioned/declarative authoring + expand–
+  contract, NOT the pt-osc/gh-ost mechanics online-schema-change.md already
+  owns) and LLM eval tooling (promptfoo/Inspect AI/DeepEval/Ragas/LangSmith
+  mechanics, NOT the benchmark-harness territory eval-harnesses.md owns).
+- Five new pages: Zanzibar & relationship-based access control
+  (security/advanced/zanzibar-rebac.md), schema migration tooling
+  (dbms/advanced/schema-migrations.md), LLM eval tooling
+  (llm/evals/eval-tooling.md), geospatial indexing
+  (dbms/advanced/geospatial-indexing.md), micro-frontends
+  (frontend/micro-frontends.md).
+- Two thin pages deepened with all original content preserved:
+  sre/chaos-engineering.md 76 -> 271 and cloud/disaster-recovery.md 119 -> 260
+  (slo-sli-sla.md was considered but rejected — slo-error-budget.md already
+  owns burn-rate alerting, so a deep-dive would duplicate).
+- Round-12 candidates spotted while scanning: a data-contracts page (5
+  passing mentions; complements data-engineering/data-quality.md), email
+  deliverability infrastructure beyond the email case study (SPF/DKIM/DMARC
+  mechanics, bounce handling, warm-up — currently 6 passing mentions), and a
+  housekeeping pass on stale section-README tables (security/advanced/README
+  reading-order lists 5 of 22 files; several section mindmaps predate the
+  new pages — SUMMARY is the maintained source of truth).
+
+## Round 10 — backlog-queue mining — 2026-10-09
+
+- All six round-9 spot candidates became pages: Valkey & the Redis fork
+  landscape (dbms/caching), Well-Architected frameworks (cloud), Talos/
+  k3s & minimal Kubernetes (cloud), offensive web tooling
+  (security/advanced), vulnerability reachability tooling
+  (security/advanced), and the 44-line distributed-projects stub became
+  a 271-line lab curriculum (projects/build-it-yourself).
+- Dedup notes: jepsen-maelstrom.md already covers the Glomers challenge
+  mechanics (the new labs page is the curriculum view and cross-links it);
+  web-security.md holds all vulnerability theory (the offensive page is
+  tooling-only); appsec-toolchain's reachability section links forward to
+  the new tooling page.
+- Round-11 candidates spotted while writing: gVisor/Kata/gVisor-vs-Firecracker
+  sandboxing spectrum beyond the existing containerd/Kata pages (check
+  cloud/virtualization first), database migration tooling deep-dive
+  (gh-ost/pt-online-schema-change/flyway-liquibase), feature-store &
+  ML-data tooling (feast), webassembly component model deep-dive
+  (wasm already has a page — component model may not), LLM eval tooling
+  beyond evals/README (promptfoo/inspect-ai), eBPF-based observability
+  tooling deep-dive (pixie/parca — check observability dir first).
+
+## Round 9 — full-corpus mining, all 13 indexes — 2026-10-08
+
+- Re-ran `scripts/ref_gap_analysis.py` over all thirteen indexes: 1,781
+  entries, 1,066 raw misses; heavy education/venue noise filtered, then
+  each candidate dedup-checked against the repo (many "misses" were
+  already covered — Go/Java/Rust concurrency, wasm, MCP, event-driven,
+  block layer, backup). True gaps curated to 15 new pages.
+- OS kernel families (5): Windows NT internals, XNU/Darwin, RTOS
+  landscape (Zephyr/FreeRTOS/NuttX + Tock/Hubris), illumos/DTrace
+  heritage, POSIX & SUS standards — src/os/advanced/.
+- Security, first mining of the new index (4): AppSec toolchain
+  (SAST/SCA/secrets/DAST), vulnerability management (CVE-to-patch,
+  CVSS/EPSS/KEV), reverse engineering & malware analysis, host detection
+  & response (osquery/Wazuh/Tetragon) — src/security/advanced/.
+- DBMS (3): search-engine internals (Lucene/ES/OpenSearch), Vitess
+  sharding middleware, query-engine frameworks (Calcite/DataFusion).
+- Runtimes (3): managed runtimes beyond the JVM (PyPy/GraalVM/LuaJIT/.NET),
+  rustc query-based internals, JAX & functional ML.
+- Enhancements: cloud/autoscaling.md 148 -> 290 (HPA/KEDA/Karpenter),
+  os/advanced/kernel-architectures.md 147 -> 251 (real-kernel survey,
+  verification spectrum, links to the five new kernel-family pages).
+- Remaining round-10 candidates spotted while deduping: Valkey,
+  well-architected frameworks, Talos/k3s, offensive web tooling deep
+  dive, gossip-glomers-style labs, vuln reachability tooling.
+
+## Skipped gaps + new reference indexes — 2026-10-08
+
+- Track 1: the five deliberately-skipped reference-mining candidates got
+  dedicated pages (HotSpot internals, Fuchsia/Zircon, Nomad, in-memory
+  data grids, IDP/Backstage) — the "remaining known gaps" list from the
+  mining round below is now fully closed.
+- Track 2: references section grew 10 -> 13 indexes (security 81,
+  concurrency 68, storage 64 entries = +213 entries, +522 URLs). All
+  321 CSV URLs HTTP-verified with redirects/25s-timeout; bot-blocked
+  flagged in-page per the README convention; 8 dead/moved URLs replaced.
+- Verification tooling: scripts/verify_urls.py in the workspace (parallel
+  curl, records final status + resolved URL; CSV and --md modes).
+- No known remaining gaps from the reference indexes; future index
+  candidates if ever wanted: graphics/game-dev, bioinformatics, quantum.
+
+## Reference-library mining round — 2026-10-08
+
+- Systematic gap analysis: all 888 entries of the ten `src/references/`
+  indexes diffed against the book's page inventory (script:
+  `scripts/ref_gap_analysis.py` in the workspace; ~945 raw misses after
+  removing education-track and paper-venue noise, curated to 15).
+- New pages grounded in the indexes' verified primary sources: OS —
+  xv6 teaching kernel, BSD family internals, kernel source-reading
+  curriculum. Architecture — architectural simulation (gem5/Spike/
+  Verilator/Ramulator/DRAMsim3/CACTI), µarch measurement toolbox
+  (uops.info/llvm-mca/Agner Fog), hardware root of trust (OpenTitan/TPM/
+  OpenSBI). Data — DuckDB internals, Apache Beam, time-series databases
+  (InfluxDB/TimescaleDB, Gorilla + delta-of-delta worked examples).
+  Distributed — Jepsen/Maelstrom/Gossip Glomers, TigerBeetle internals.
+  Tooling — reading small compilers (chibicc/QBE/c4), IaC beyond
+  Terraform, policy as code (OPA/Kyverno/Falco), agent SDK landscape 2026.
+- Remaining known gaps (deliberately skipped — passing mentions already
+  exist or marginal interview value): HotSpot-specific internals page
+  (JVM covered via jvm-jit/gc/bytecode), Fuchsia/Zircon dedicated page
+  (kernel-architectures.md covers microkernel theory), Nomad deep dive,
+  in-memory data grids (Hazelcast), Backstage/IDP platform page.
+- All pages wired into SUMMARY; validators green; real Mermaid parser
+  5,447/5,447.
+
+## Reference-grounded expansion — 2026-10-07
+
+- 140 new pages across 15 new sections (LLM architectures / post-training /
+  agentic / prompting / retrieval, system-design case studies, coordination &
+  messaging internals, lakehouse formats, database internals, modern kernel,
+  OS security internals, network protocols, cs-theory, DSA ch195-202).
+- 10 previously-thin README/overview pages deepened; cs-theory thin pages
+  expanded (logic, proofs, formal languages, computability, Turing machines,
+  complexity classes, comparison-sorting lower bound).
+- Backlog items closed this pass: Ceph CRUSH/RADOS deep dive.
+- All pages wired into SUMMARY; validators green; real Mermaid parser 5,182/5,182.
+
+## Competitive/math/quant round — 2026-10-08
+
+- Three new top-level sections closed the competition-track gap:
+  competitive programming (8 pages — CF/AtCoder/LC guides, ICPC/IOI,
+  clist.by/vJudge calendars, judge directory), competitive mathematics
+  (8 pages — IMO, olympiad NT/comb/algebra/geometry, India IOQM→INMO,
+  resource directory), and quant firm puzzles (9 pages — firm directory,
+  Jane Street/HRT puzzle cultures, EV derivations, market-making games,
+  mental math, game theory, canon map).
+- Cross-wired with existing content: dsa game-theory chapters (ch61/162/
+  180/198), mathematics/, interview/puzzles/, aptitude/.
+- All 27 pages wired into SUMMARY; validators green; real Mermaid parser
+  5,407/5,407.
+
+## Placement-process & puzzles round — 2026-10-08
+
+- New puzzles section (4 pages, worked solutions) — closed the
+  brain-teaser gap for interview warm-ups.
+- All 11 placement-preparation pages deepened (funnel, campus mechanics,
+  technical/HR/GD/communication, OA/cognitive/coding assessments,
+  internships/PPO) + aptitude hub/trigonometry/calculus expanded.
+- Validators green; real Mermaid parser 5,354/5,354.
+
+## Interview-classics expansion — 2026-10-08
+
+- 36 new pages across interview case studies (18), machine coding (9),
+  security (3), modern kernel (3), HPC (2), and networks DDoS (1).
+- 10 thin high-traffic pages substantially enhanced (coding patterns,
+  OA/MCQ strategies, section README catalogs, TGI, LLM serving security,
+  vector DB internals, CI/CD case study).
+- Backlog items closed this pass: IRCTC/Tatkal booking, UPI/NPCI,
+  video conferencing (SFU), CDN service design, DDoS mitigation,
+  threat modeling, zero-trust, incident response, Rust-in-kernel,
+  THP/khugepaged, zram swap, SIMD/roofline, HPC checkpoint/restart,
+  machine-coding classics (car rental, thread pool, pub-sub, cron parser,
+  Stack Overflow, cricket scoreboard, marketplace, content moderation).
+- All pages wired into SUMMARY; validators green; real Mermaid parser
+  5,336/5,336.
 
 ## Dev pull audit — 2026-08-13
 
@@ -88,7 +257,7 @@ The following previously-backlogged topics now have dedicated coverage:
 - ~~Tiered Storage and Data Temperature~~ ✅ Done `storage/tiered-storage.md` (2026-08-12): hot/warm/cold, RocksDB, object lifecycle, caches, recovery
 - ~~Storage: SSTable Format — data blocks, index, bloom, footer, compression~~ ✅ Done `storage/sstable.md` (2026-08-09): BlockBasedTable diagram, Index/Bloom/Footer 48 bytes magic, partitioned index/filter, read path, compression
 - ~~Storage: BlobDB — separation of small vs large values~~ ✅ Done `storage/blobdb.md` (2026-08-09): WiscKey, BlobIndex file_no/offset/size, GC age cutoff 0.25, WA 1.4-1.7 vs 6.1-6.8 75% lower, options enable_blob_files/min_blob_size
-- **Storage: Ceph CRUSH/RADOS Deep Dive** — CRUSH algorithm, placement groups, RADOS (still TODO)
+- ~~Storage: Ceph CRUSH/RADOS Deep Dive~~ ✅ Done `storage/formats/ceph-crush.md` (2026-10-07): CRUSH map hierarchy, PG count math, chooseleaf rules, tunables, RADOS write path, recovery/backfill
 - ~~Storage: NVMe over Fabrics~~ ✅ Done `storage/nvmeof.md` (2026-08-12): TCP/RDMA, discovery, queues, multipathing, security, observability
 - ~~Concurrency: Work-Stealing Scheduler — Go scheduler work-stealing, Java ForkJoinPool, Rust Tokio~~ ✅ Done `concurrency/work-stealing.md` (2026-08-09): LIFO owner head vs FIFO thief tail, Go GMP P local 256 + global, Java ForkJoinPool WorkQueue 4096, Tokio 256 ring + injection queue
 - ~~Concurrency: ABA Problem & Memory Reclamation~~ ✅ Done `concurrency/aba-problem.md` (2026-08-12): tagged pointers, hazard pointers, EBR, RCU, reference counting, memory ordering, C++26 safe-reclamation references

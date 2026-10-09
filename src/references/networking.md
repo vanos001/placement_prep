@@ -4,7 +4,7 @@ This page is a verified index of primary sources for computer networks: official
 
 It is a **navigation layer**, not a tutorial. Where the rest of this book explains a concept, this page tells you which document to open to get the authoritative answer, and in what order to read things. Every link was HTTP-verified on the date shown below; sources that block automated checkers but work in a browser are flagged rather than silently dropped.
 
-**196 vendors and projects** plus **196 education & reference-implementation resources**, across 18 categories — documentation, developer portals, GitHub orgs, SDKs, and downloadable/offline doc bundles.
+**196 vendors and projects** plus **196 education & reference-implementation resources**, across 18 categories — documentation, developer portals, GitHub orgs, SDKs, and downloadable/offline doc bundles, plus **16 video resources** and **9 conference sources**.
 
 Every link was HTTP-verified on **2026-10-07**. Direct PDF links were additionally verified by content-type.
 
@@ -30,6 +30,8 @@ Every link was HTTP-verified on **2026-10-07**. Direct PDF links were additional
 - [16. Vendor-neutral automation frameworks](#16-vendor-neutral-automation-frameworks) — 7
 - [17. Embedded / router operating systems](#17-embedded--router-operating-systems) — 3
 - [18. Education & reference implementations](#18-education--reference-implementations) — 196 (64 basic / 132 advanced)
+- [Video courses, channels & talks](#video-courses-channels--talks) — 16
+- [Conference videos, notes & archives](#conference-videos-notes--archives) — 9
 
 
 ## 1. Enterprise switching, routing & campus
@@ -1942,6 +1944,55 @@ These were confirmed to return `application/pdf` (or a bulk archive):
 - **ADVA → Adtran** (merged 2022); **ECI → Ribbon**.
 - **Cradlepoint → Ericsson**; **Silver Peak → HPE Aruba**; **Pensando → AMD**; **Mellanox/Cumulus → NVIDIA**.
 - **OpenZiti docs** moved under `netfoundry.io/docs/openziti/`.
+
+## Video courses, channels & talks
+
+*16 resources across 2 groups.* Every channel and playlist below was fetched and title-verified on **2026-10-09**. Handles drift and several plausible-looking handles resolve to the wrong channel, so a 200 response is not proof of identity — the links here were each checked against the channel title.
+
+### Channels & conference recordings
+
+- **[Practical Networking](https://www.youtube.com/@PracticalNetworking)** — Packet-level Wireshark and tcpdump walkthroughs — the closest thing to a lab bench on video.
+- **[NetworkChuck](https://www.youtube.com/@NetworkChuck)** — Fast, entry-level networking (CCNA, Wi-Fi, VPNs); good for momentum, verify the details.
+- **[David Bombal](https://www.youtube.com/@DavidBombal)** — Long-form Wireshark, Python for network engineers, and vendor-neutral labs.
+- **[RIPE NCC](https://www.youtube.com/@RIPENCC)** — RIPE meeting recordings: routing, RPKI, BGP operations at real operator depth.
+- **[IETF](https://www.youtube.com/@IETF)** — Working-group sessions and tutorials given by RFC authors — primary-source video.
+- **[USENIX](https://www.youtube.com/@USENIX)** — Conference recordings for most USENIX papers — free video, the fastest route into a systems paper.
+- **[The Linux Foundation](https://www.youtube.com/@LinuxFoundationOrg)** — The Linux Foundation channel: kernel and LF event recordings.
+- **[ACM](https://www.youtube.com/@TheOfficialACM)** — ACM channel: SIG talks and TechTalks, including SIGCOMM/SIGMOD-adjacent material.
+- **[InfoQ](https://www.youtube.com/@InfoQ)** — Conference keynotes and architecture talks — good for orientation, verify specifics elsewhere.
+- **[netdevconf](https://www.youtube.com/@netdevconf)** — Official netdev conference recordings — kernel networking, the dev room of record for Linux networking.
+- **[SIGCOMM](https://www.youtube.com/@sigcomm)** — ACM SIGCOMM channel; thin, but it carries the occasional full-session recording.
+- **[Tech Field Day](https://www.youtube.com/@TechFieldDay)** — Vendor-engineer roundtables on networking, wireless and infrastructure; unscripted Q&A, verify claims.
+- **[Google TechTalks](https://www.youtube.com/@GoogleTechTalks)** — A large archive of university and internal talks, including a lot of systems and networking material.
+
+### Lectures & playlists
+
+- **[Stanford CS144 — Introduction to Computer Networking](https://www.youtube.com/playlist?list=PL6RdenZrxrw9inR-IJv-erlOKRHjymxMN)** — McKeown and Levis, complete; the best free networking course on video.
+- **[Stanford CS144 — Routing unit](https://www.youtube.com/playlist?list=PLTQzEwN6b5LUL85DCttO9z_-BOQTApyvZ)** — The routing half of CS144 as standalone short videos.
+- **[Stanford CS144 — Philip Levis & Nick McKeown (older run)](https://www.youtube.com/playlist?list=PLvFG2xYBrYAQCyz4Wx3NPoYJOFjvU7g2Z)** — An earlier full run of the same course, useful when a lecture is missing from the newer playlist.
+
+*Note:* Networking video skews either to certification prep or to operator conference footage; both are here, and both need checking against the RFC.
+
+## Conference videos, notes & archives
+
+*9 resources across 2 groups.* Conference recordings are the primary-source tier of video: the speaker is usually an author of the paper, and where a talk exists the proceedings entry is often open at the same link. Every URL here returned 200 on **2026-10-09** unless the note says otherwise.
+
+Networking is unusual: the operator conferences (RIPE, NANOG, netdev) publish more usable video than the academic ones.
+
+### Conference channels & video archives
+
+- **[netdev conference](https://netdevconf.info/)** — Slides and video for every netdev talk — the Linux kernel networking conference.
+- **[USENIX NSDI '25](https://www.usenix.org/conference/nsdi25)** — Previous edition; NSDI papers are the reference point for anything about transport and forwarding.
+- **[IETF meetings](https://www.ietf.org/how/meetings/)** — Recordings, slides and minutes for every working-group session — primary source for protocol design.
+- **[RIPE meetings](https://www.ripe.net/)** — RIPE NCC site: meeting archives, policy documents and operator training material.
+- **[FOSDEM video archive](https://video.fosdem.org/)** — Free, complete, and organised by devroom — the networking and routing devrooms are the useful ones.
+- **[FOSDEM schedule](https://fosdem.org/2026/schedule/)** — The searchable schedule; video lands on the archive above within days.
+- **[media.ccc.de](https://media.ccc.de/)** — Chaos Computer Club congress archive with slides and subtitles; the network-infrastructure tracks are here.
+- **[NANOG](https://www.nanog.org/)** — NANOG meeting presentations. *Verify currency:* the site returns 403 to automated checkers but works in a browser.
+
+### Notes, proceedings & paper-adjacent archives
+
+- **[USENIX ;login:](https://www.usenix.org/publications/login/)** — The USENIX magazine — practitioner write-ups that read like conference talks without the video.
 
 ## If you only bookmark ten
 

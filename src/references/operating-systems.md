@@ -6,7 +6,7 @@ It is a **navigation layer**, not a tutorial. Where the rest of this book explai
 
 Production kernels, teaching kernels, RTOSes, the POSIX and OCI interfaces, observability tooling, and a two-track path from OSTEP to reading production kernel source.
 
-**68 entries** across 8 categories, plus **58 education & reference-implementation resources** (24 basic / 34 advanced).
+**68 entries** across 8 categories, plus **58 education & reference-implementation resources** (24 basic / 34 advanced), plus **10 video resources** and **7 conference sources**.
 
 Every link HTTP-verified on **2026-10-07**.
 
@@ -23,6 +23,8 @@ Every link HTTP-verified on **2026-10-07**.
 - [7. Kernel learning material, labs & testing](#7-kernel-learning-material-labs--testing) — 9
 - [8. Research papers & open-access literature](#8-research-papers--open-access-literature) — 21
 - [Education & reference implementations](#education--reference-implementations) — 58 (24 basic / 34 advanced)
+- [Video courses, channels & talks](#video-courses-channels--talks) — 10
+- [Conference videos, notes & archives](#conference-videos-notes--archives) — 7
 
 
 ## 1. Production kernels & their documentation
@@ -698,6 +700,47 @@ Two tracks: **Basic** builds the foundations, **Advanced** is about reading and 
 
 
 ---
+
+## Video courses, channels & talks
+
+*10 resources across 2 groups.* Every channel and playlist below was fetched and title-verified on **2026-10-09**. Handles drift and several plausible-looking handles resolve to the wrong channel, so a 200 response is not proof of identity — the links here were each checked against the channel title.
+
+### Channels & conference recordings
+
+- **[Kernel Recipes](https://www.youtube.com/@KernelRecipes)** — Annual Paris kernel conference: maintainer-level talks on schedulers, filesystems and mm.
+- **[linux.conf.au](https://www.youtube.com/@linuxconfau)** — linux.conf.au talks: kernel, filesystems and low-level systems depth.
+- **[The Linux Foundation](https://www.youtube.com/@LinuxFoundationOrg)** — The Linux Foundation channel: kernel and LF event recordings.
+- **[USENIX](https://www.youtube.com/@USENIX)** — Conference recordings for most USENIX papers — free video, the fastest route into a systems paper.
+- **[Computerphile](https://www.youtube.com/@Computerphile)** — Short, well-made explainers; the right first stop before a spec.
+- **[Neso Academy](https://www.youtube.com/@NesoAcademy)** — Unit-by-unit university course playlists (OS, compiler design); verify against OSTEP and the dragon book.
+- **[Tsoding Daily](https://www.youtube.com/@TsodingDaily)** — Livestreamed low-level building: compilers, interpreters, OS-ish projects in C and Zig.
+- **[Linux Plumbers Conference](https://www.youtube.com/@linuxplumbers)** — The kernel working conference: scheduler, filesystem and mm tracks, recordings published by the organisers.
+- **[IIT Bombay](https://www.youtube.com/@IITBombayOfficial)** — NPTEL-style operating-systems and systems-programming lecture series.
+
+### Lectures & playlists
+
+- **[UC Berkeley CS162 — Operating Systems (Fall 2020)](https://www.youtube.com/playlist?list=PLbGbd5NUA_Nhdy07caUPmCR9v0o95lauT)** — Kubiatowicz, complete: concurrency, virtual memory and filesystems, with the lecture structure of OSTEP.
+
+*Note:* Kernel conference footage is where the real design arguments happen; the course channels below are for structure, not for currency.
+
+## Conference videos, notes & archives
+
+*7 resources across 2 groups.* Conference recordings are the primary-source tier of video: the speaker is usually an author of the paper, and where a talk exists the proceedings entry is often open at the same link. Every URL here returned 200 on **2026-10-09** unless the note says otherwise.
+
+Kernel conferences publish everything, and most of it is free; this is the one topic where the conference footage is the primary literature.
+
+### Conference channels & video archives
+
+- **[Linux Plumbers Conference](https://lpc.events/)** — The kernel working conference: slides and recordings for every microconference.
+- **[linux.conf.au](https://linux.conf.au/)** — Site for the conference whose recordings sit on the channel above; kernel, filesystems and embedded tracks.
+- **[USENIX ATC '26](https://www.usenix.org/conference/atc26)** — The larger, more applied sibling of OSDI; also open.
+- **[FOSDEM video archive](https://video.fosdem.org/)** — Kernel, microkernel and embedded devrooms.
+- **[media.ccc.de](https://media.ccc.de/)** — Kernel and low-level tracks from the Chaos congresses.
+- **[DebConf Videos](https://www.youtube.com/@DebConfVideos)** — Debian conference recordings: packaging, boot, init and distro-infrastructure talks.
+
+### Notes, proceedings & paper-adjacent archives
+
+- **[USENIX ;login:](https://www.usenix.org/publications/login/)** — Practitioner articles on the same material, easier to skim than a talk.
 
 ## If you only do three things
 

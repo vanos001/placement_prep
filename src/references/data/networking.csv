@@ -391,3 +391,28 @@ Category,Vendor / Project,Documentation,Developer / API portal,GitHub,SDKs & not
 18. Education — Advanced,Packet Pushers,https://packetpushers.net/,,,Operator-grade engineering reading,,Podcasts and write-ups across the whole industry.
 18. Education — Advanced,NANOG,https://nanog.org/,,,Operator-grade engineering reading,,Operator conference — the archives and mailing list are a goldmine.
 18. Education — Advanced,ACM SIGCOMM,https://conferences.sigcomm.org/sigcomm/,,,Operator-grade engineering reading,,Where most of this field's foundational papers were published.
+Video — Channels & conference recordings,Practical Networking,https://www.youtube.com/@PracticalNetworking,,,,,Packet-level Wireshark and tcpdump walkthroughs — the closest thing to a lab bench on video.
+Video — Channels & conference recordings,NetworkChuck,https://www.youtube.com/@NetworkChuck,,,,,"Fast, entry-level networking (CCNA, Wi-Fi, VPNs); good for momentum, verify the details."
+Video — Channels & conference recordings,David Bombal,https://www.youtube.com/@DavidBombal,,,,,"Long-form Wireshark, Python for network engineers, and vendor-neutral labs."
+Video — Channels & conference recordings,RIPE NCC,https://www.youtube.com/@RIPENCC,,,,,"RIPE meeting recordings: routing, RPKI, BGP operations at real operator depth."
+Video — Channels & conference recordings,IETF,https://www.youtube.com/@IETF,,,,,Working-group sessions and tutorials given by RFC authors — primary-source video.
+Video — Channels & conference recordings,USENIX,https://www.youtube.com/@USENIX,,,,,"Conference recordings for most USENIX papers — free video, the fastest route into a systems paper."
+Video — Channels & conference recordings,The Linux Foundation,https://www.youtube.com/@LinuxFoundationOrg,,,,,The Linux Foundation channel: kernel and LF event recordings.
+Video — Channels & conference recordings,ACM,https://www.youtube.com/@TheOfficialACM,,,,,"ACM channel: SIG talks and TechTalks, including SIGCOMM/SIGMOD-adjacent material."
+Video — Channels & conference recordings,InfoQ,https://www.youtube.com/@InfoQ,,,,,"Conference keynotes and architecture talks — good for orientation, verify specifics elsewhere."
+Video — Channels & conference recordings,netdevconf,https://www.youtube.com/@netdevconf,,,,,"Official netdev conference recordings — kernel networking, the dev room of record for Linux networking."
+Video — Channels & conference recordings,SIGCOMM,https://www.youtube.com/@sigcomm,,,,,"ACM SIGCOMM channel; thin, but it carries the occasional full-session recording."
+Video — Channels & conference recordings,Tech Field Day,https://www.youtube.com/@TechFieldDay,,,,,"Vendor-engineer roundtables on networking, wireless and infrastructure; unscripted Q&A, verify claims."
+Video — Channels & conference recordings,Google TechTalks,https://www.youtube.com/@GoogleTechTalks,,,,,"A large archive of university and internal talks, including a lot of systems and networking material."
+Video — Lectures & playlists,Stanford CS144 — Introduction to Computer Networking,https://www.youtube.com/playlist?list=PL6RdenZrxrw9inR-IJv-erlOKRHjymxMN,,,,,"McKeown and Levis, complete; the best free networking course on video."
+Video — Lectures & playlists,Stanford CS144 — Routing unit,https://www.youtube.com/playlist?list=PLTQzEwN6b5LUL85DCttO9z_-BOQTApyvZ,,,,,The routing half of CS144 as standalone short videos.
+Video — Lectures & playlists,Stanford CS144 — Philip Levis & Nick McKeown (older run),https://www.youtube.com/playlist?list=PLvFG2xYBrYAQCyz4Wx3NPoYJOFjvU7g2Z,,,,,"An earlier full run of the same course, useful when a lecture is missing from the newer playlist."
+Conference — Conference channels & video archives,netdev conference,https://netdevconf.info/,,,,,Slides and video for every netdev talk — the Linux kernel networking conference.
+Conference — Conference channels & video archives,USENIX NSDI '25,https://www.usenix.org/conference/nsdi25,,,,,Previous edition; NSDI papers are the reference point for anything about transport and forwarding.
+Conference — Conference channels & video archives,IETF meetings,https://www.ietf.org/how/meetings/,,,,,"Recordings, slides and minutes for every working-group session — primary source for protocol design."
+Conference — Conference channels & video archives,RIPE meetings,https://www.ripe.net/,,,,,"RIPE NCC site: meeting archives, policy documents and operator training material."
+Conference — Conference channels & video archives,FOSDEM video archive,https://video.fosdem.org/,,,,,"Free, complete, and organised by devroom — the networking and routing devrooms are the useful ones."
+Conference — Conference channels & video archives,FOSDEM schedule,https://fosdem.org/2026/schedule/,,,,,The searchable schedule; video lands on the archive above within days.
+Conference — Conference channels & video archives,media.ccc.de,https://media.ccc.de/,,,,,Chaos Computer Club congress archive with slides and subtitles; the network-infrastructure tracks are here.
+Conference — Conference channels & video archives,NANOG,https://www.nanog.org/,,,,,NANOG meeting presentations. *Verify currency:* the site returns 403 to automated checkers but works in a browser.
+"Conference — Notes, proceedings & paper-adjacent archives",USENIX ;login:,https://www.usenix.org/publications/login/,,,,,The USENIX magazine — practitioner write-ups that read like conference talks without the video.

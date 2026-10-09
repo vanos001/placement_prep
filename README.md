@@ -1,6 +1,6 @@
 # Placement Preparation Knowledge Base
 
-A comprehensive, self-improving placement preparation resource for Software Engineering interviews — built as an [mdBook](https://rust-lang.github.io/mdBook/) with 2,800+ pages, 4,800+ Mermaid diagrams, and MathJax-powered equations.
+A comprehensive, self-improving placement preparation resource for Software Engineering interviews — built as an [mdBook](https://rust-lang.github.io/mdBook/) with 3,000+ pages, 5,500+ Mermaid diagrams, and MathJax-powered equations.
 
 [![Validation](https://img.shields.io/badge/validation-run%20locally%20%C2%B7%20not%20in%20CI-blue)](scripts/README.md)
 
@@ -37,6 +37,7 @@ mdbook serve --open          # http://localhost:3000
 | **Frontend** | React, TypeScript, browser internals, CSS, accessibility |
 | **Career** | Resume writing, behavioral interviews, salary negotiation |
 | **And more** | Compilers, SRE, embedded systems, storage, Git, machine coding |
+| **Reference Libraries** | 14 verified primary-source indexes — 1,257 entries, 2,744 de-duplicated URLs, each with education, video and conference tracks |
 
 Full table of contents: [`src/SUMMARY.md`](src/SUMMARY.md)
 
@@ -60,6 +61,7 @@ placement_prep/
 │   ├── cloud/             # Cloud & DevOps
 │   ├── linux/             # Linux deep-dive
 │   ├── ...                # 50+ topic directories
+│   ├── references/         # 14 verified primary-source indexes (+ data/*.csv)
 │   └── meta/              # Internal tracking pages
 └── scripts/               # Validation & tooling
     ├── validate-all.sh           # Full validation suite (STRICT=1 / EXTERNAL=1 modes)
@@ -76,12 +78,12 @@ placement_prep/
 
 | Metric | Count |
 |--------|-------|
-| Markdown pages | 2,809 content pages (+ `SUMMARY.md`) |
-| Mermaid diagrams | 4,889 across 1,328 files (100% pass the real mermaid@11 parser, not just the heuristic) |
+| Markdown pages | 3,105 content pages (+ `SUMMARY.md`) |
+| Mermaid diagrams | 5,527 across 1,400+ files (100% pass the real mermaid@11 parser, not just the heuristic) |
 | Topic directories | 61 |
 | Math-enabled pages | 128 |
-| Words | ~5.79M |
-| Unique external URLs | ~4,000 |
+| Words | ~7.09M |
+| Unique external URLs | 12,035 (de-duplicated across every page under `src/`) |
 
 ## Validation
 

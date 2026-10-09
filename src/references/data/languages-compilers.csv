@@ -140,3 +140,20 @@ Education — Advanced,PLDI,https://pldi25.sigplan.org/,,,Research & community,,
 Education — Advanced,POPL,https://popl25.sigplan.org/,,,Research & community,,Theory-focused.
 Education — Advanced,WG21 papers,https://www.open-std.org/jtc1/sc22/wg21/docs/papers/,,,Research & community,,"Language design argued in public, at length."
 Education — Advanced,TC39 proposals,https://github.com/tc39/proposals,,,Research & community,,"The same, for JavaScript, and easier to follow."
+Video — Channels & conference recordings,Tsoding Daily,https://www.youtube.com/@TsodingDaily,,,,,"Livestreamed low-level building: compilers, interpreters, OS-ish projects in C and Zig."
+Video — Channels & conference recordings,CppCon,https://www.youtube.com/@CppCon,,,,,The C++ conference — where the memory-model and atomics talks live.
+Video — Channels & conference recordings,Strange Loop Conference,https://www.youtube.com/@StrangeLoopConf,,,,,"The Strange Loop channel: distributed systems, databases and language talks from the conference."
+Video — Channels & conference recordings,Computerphile,https://www.youtube.com/@Computerphile,,,,,"Short, well-made explainers; the right first stop before a spec."
+Video — Channels & conference recordings,Neso Academy,https://www.youtube.com/@NesoAcademy,,,,,"Unit-by-unit university course playlists (OS, compiler design); verify against OSTEP and the dragon book."
+Video — Channels & conference recordings,USENIX,https://www.youtube.com/@USENIX,,,,,"Conference recordings for most USENIX papers — free video, the fastest route into a systems paper."
+Video — Channels & conference recordings,InfoQ,https://www.youtube.com/@InfoQ,,,,,"Conference keynotes and architecture talks — good for orientation, verify specifics elsewhere."
+Video — Channels & conference recordings,Papers We Love,https://www.youtube.com/@PapersWeLove,,,,,Recorded paper walkthroughs — watch one before you read the PDF.
+Video — Channels & conference recordings,PyCon US,https://www.youtube.com/@PyConUS,,,,,"The full PyCon archive: CPython internals, JIT work, type systems, packaging."
+Video — Channels & conference recordings,C++Now,https://www.youtube.com/@CppNow,,,,,The Boost-flavoured C++ conference; more language-design and metaprogramming than CppCon.
+Video — Channels & conference recordings,Meeting C++,https://www.youtube.com/@meetingcpp,,,,,"European C++ conference recordings, including standardisation talks."
+Video — Lectures & playlists,Stanford CS143 — Compilers (Alex Aiken),https://www.youtube.com/playlist?list=PLEAYkSg4uSQ3yc_zf_f1GOxl5CZo0LVBb,,,,,"Short, tightly cut lectures: lexing through code generation and register allocation."
+Conference — Conference channels & video archives,LLVM Developers' Meetings,https://llvm.org/devmtg/,,,,,Slides and recordings for every LLVM dev meeting going back years — the single best compiler-implementation archive.
+Conference — Conference channels & video archives,PyCon US,https://us.pycon.org/,,,,,Full talk archive on the site and on the PyCon US channel; interpreter internals talks every year.
+Conference — Conference channels & video archives,Strange Loop,https://www.thestrangeloop.com/,,,,,"Language-design and implementation talks, free."
+Conference — Conference channels & video archives,FOSDEM video archive,https://video.fosdem.org/,,,,,Programming-language and compiler devrooms.
+"Conference — Notes, proceedings & paper-adjacent archives","No official channel for PLDI, POPL or ICFP",,,,,,Checked on 2026-10-09. Papers live in the ACM DL and PACMPL (open); talks surface on author pages and at Strange Loop.

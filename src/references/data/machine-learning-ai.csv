@@ -145,3 +145,33 @@ Education — Advanced,Distill.pub,https://distill.pub/,,,Keeping current & rese
 Education — Advanced,NeurIPS,https://neurips.cc/,,,Keeping current & research,,Proceedings free.
 Education — Advanced,ICML,https://icml.cc/,,,Keeping current & research,,Proceedings free.
 Education — Advanced,ICLR,https://iclr.cc/,,,Keeping current & research,,Reviews are public on OpenReview — reading them teaches you how the field evaluates work.
+Video — Channels & conference recordings,Andrej Karpathy,https://www.youtube.com/@AndrejKarpathy,,,,,"The best free depth available: backprop, transformers and GPT built from scratch on camera."
+Video — Channels & conference recordings,Two Minute Papers,https://www.youtube.com/@TwoMinutePapers,,,,,"Fast paper coverage; headlines overstate, so read the abstract before you cite."
+Video — Channels & conference recordings,Yannic Kilcher,https://www.youtube.com/@YannicKilcher,,,,,Long-form paper reviews — literature depth you will not get from a blog.
+Video — Channels & conference recordings,3Blue1Brown,https://www.youtube.com/@3blue1brown,,,,,Visual linear algebra and calculus — the maths prerequisite for all of ML.
+Video — Channels & conference recordings,StatQuest,https://www.youtube.com/@StatQuest,,,,,The clearest intuition available for the statistics that ML assumes.
+Video — Channels & conference recordings,DeepLearning.AI,https://www.youtube.com/@DeepLearningAI,,,,,"Short courses run by Andrew Ng & co.; vendor-leaning, verify against the papers."
+Video — Channels & conference recordings,Hugging Face,https://www.youtube.com/@HuggingFace,,,,,"The open LLM ecosystem: transformers, datasets, agents, tool calling."
+Video — Channels & conference recordings,PyTorch,https://www.youtube.com/@PyTorch,,,,,Official PyTorch tutorials and PyTorch Conference talks.
+Video — Channels & conference recordings,TensorFlow,https://www.youtube.com/@TensorFlow,,,,,Official TensorFlow channel — dev summit talks and tutorials.
+Video — Channels & conference recordings,OpenAI,https://www.youtube.com/@OpenAI,,,,,Model releases and DevDay talks; primary for API and product behaviour.
+Video — Channels & conference recordings,Google DeepMind,https://www.youtube.com/@GoogleDeepMind,,,,,Research overviews and model announcements from DeepMind.
+Video — Channels & conference recordings,sentdex,https://www.youtube.com/@sentdex,,,,,Applied Python ML/NLP walkthroughs; solid for getting something running.
+Video — Channels & conference recordings,ICML,https://www.youtube.com/@ICMLConf,,,,,"Official ICML channel; plenaries and tutorials, coverage varies by year."
+Video — Channels & conference recordings,ICLR,https://www.youtube.com/@ICLR,,,,,"Channel titled simply ""Iclr"" — check the video against the conference site before citing it."
+Video — Channels & conference recordings,The CVF,https://www.youtube.com/@TheCVF,,,,,"The Computer Vision Foundation: CVPR/ICCV material, fully open access."
+Video — Channels & conference recordings,Latent Space,https://www.youtube.com/@LatentSpacePod,,,,,Long-form practitioner interviews; the fastest way to find out what people are actually shipping.
+Video — Channels & conference recordings,TWIML AI Podcast,https://www.youtube.com/@twimlai,,,,,"Interview archive going back years; uneven, occasionally excellent."
+Video — Channels & conference recordings,Google TechTalks,https://www.youtube.com/@GoogleTechTalks,,,,,Foundational ML talks by the authors of the papers you are reading.
+Video — Lectures & playlists,"Let's build GPT: from scratch, in code, spelled out",https://www.youtube.com/watch?v=kCc8FmEb1nY,,,,,Karpathy builds a GPT end-to-end in two hours; the single best ML video here.
+Video — Lectures & playlists,Essence of linear algebra,https://www.youtube.com/playlist?list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab,,,,,the prerequisite series for every ML index below.
+Video — Lectures & playlists,Essence of calculus,https://www.youtube.com/playlist?list=PLZHQObOWTQDMsr9K-rj53DwVRMYO3t5Yr,,,,,derivatives and backprop intuition in visual form.
+Video — Lectures & playlists,Stanford CS229 — Machine Learning (Autumn 2018),https://www.youtube.com/playlist?list=PLoROMvodv4rMiGQp3WXShtMGgzqpfVfbU,,,,,"Ng, complete, and still the clearest full-course treatment of the classical material."
+Conference — Conference channels & video archives,NeurIPS proceedings,https://neurips.cc/Conferences/2025,,,,,"Every paper, with links to the authors' sites; video coverage varies by year."
+Conference — Conference channels & video archives,CVF Open Access,https://openaccess.thecvf.com/,,,,,"CVPR/ICCV/WACV papers with supplementary video — fully open, the model the other venues should copy."
+Conference — Conference channels & video archives,FOSDEM video archive,https://video.fosdem.org/,,,,,AI/ML and data devrooms; small but free.
+Conference — Conference channels & video archives,MLSys,https://mlsys.org/,,,,,"The ML-systems conference: open proceedings, and the venue for the engineering half of ML (serving, compilation, distributed training)."
+Conference — Conference channels & video archives,CVPR 2026,https://cvpr.thecvf.com/,,,,,Conference site for the vision flagship; papers and supplementary video via the CVF open-access portal above.
+Conference — Conference channels & video archives,KDD,https://www.kdd.org/,,,,,"The applied data-science conference; proceedings partly open, tutorials often published."
+Conference — Conference channels & video archives,EMNLP 2026,https://2026.emnlp.org/,,,,,"The NLP venue; papers in the ACL Anthology, recordings inconsistent."
+"Conference — Notes, proceedings & paper-adjacent archives",Hugging Face Papers,https://huggingface.co/papers,,,,,"Daily trending papers with discussion attached; the fastest discovery feed, and a mediocre archive."

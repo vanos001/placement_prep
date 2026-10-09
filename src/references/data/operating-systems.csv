@@ -125,3 +125,20 @@ Education — Advanced,KernelNewbies,https://kernelnewbies.org/,,,Staying curren
 Education — Advanced,USENIX OSDI,https://www.usenix.org/conference/osdi25,,,Staying current,,The main OS research venue; papers are free.
 Education — Advanced,ACM SOSP,https://sosp.org/,,,Staying current,,The other one. Alternates years with OSDI.
 Education — Advanced,ASPLOS,https://asplos-conference.org/,,,Staying current,,Where OS research meets architecture and compilers.
+Video — Channels & conference recordings,Kernel Recipes,https://www.youtube.com/@KernelRecipes,,,,,"Annual Paris kernel conference: maintainer-level talks on schedulers, filesystems and mm."
+Video — Channels & conference recordings,linux.conf.au,https://www.youtube.com/@linuxconfau,,,,,"linux.conf.au talks: kernel, filesystems and low-level systems depth."
+Video — Channels & conference recordings,The Linux Foundation,https://www.youtube.com/@LinuxFoundationOrg,,,,,The Linux Foundation channel: kernel and LF event recordings.
+Video — Channels & conference recordings,USENIX,https://www.youtube.com/@USENIX,,,,,"Conference recordings for most USENIX papers — free video, the fastest route into a systems paper."
+Video — Channels & conference recordings,Computerphile,https://www.youtube.com/@Computerphile,,,,,"Short, well-made explainers; the right first stop before a spec."
+Video — Channels & conference recordings,Neso Academy,https://www.youtube.com/@NesoAcademy,,,,,"Unit-by-unit university course playlists (OS, compiler design); verify against OSTEP and the dragon book."
+Video — Channels & conference recordings,Tsoding Daily,https://www.youtube.com/@TsodingDaily,,,,,"Livestreamed low-level building: compilers, interpreters, OS-ish projects in C and Zig."
+Video — Channels & conference recordings,Linux Plumbers Conference,https://www.youtube.com/@linuxplumbers,,,,,"The kernel working conference: scheduler, filesystem and mm tracks, recordings published by the organisers."
+Video — Channels & conference recordings,IIT Bombay,https://www.youtube.com/@IITBombayOfficial,,,,,NPTEL-style operating-systems and systems-programming lecture series.
+Video — Lectures & playlists,UC Berkeley CS162 — Operating Systems (Fall 2020),https://www.youtube.com/playlist?list=PLbGbd5NUA_Nhdy07caUPmCR9v0o95lauT,,,,,"Kubiatowicz, complete: concurrency, virtual memory and filesystems, with the lecture structure of OSTEP."
+Conference — Conference channels & video archives,Linux Plumbers Conference,https://lpc.events/,,,,,The kernel working conference: slides and recordings for every microconference.
+Conference — Conference channels & video archives,linux.conf.au,https://linux.conf.au/,,,,,"Site for the conference whose recordings sit on the channel above; kernel, filesystems and embedded tracks."
+Conference — Conference channels & video archives,USENIX ATC '26,https://www.usenix.org/conference/atc26,,,,,"The larger, more applied sibling of OSDI; also open."
+Conference — Conference channels & video archives,FOSDEM video archive,https://video.fosdem.org/,,,,,"Kernel, microkernel and embedded devrooms."
+Conference — Conference channels & video archives,media.ccc.de,https://media.ccc.de/,,,,,Kernel and low-level tracks from the Chaos congresses.
+Conference — Conference channels & video archives,DebConf Videos,https://www.youtube.com/@DebConfVideos,,,,,"Debian conference recordings: packaging, boot, init and distro-infrastructure talks."
+"Conference — Notes, proceedings & paper-adjacent archives",USENIX ;login:,https://www.usenix.org/publications/login/,,,,,"Practitioner articles on the same material, easier to skim than a talk."

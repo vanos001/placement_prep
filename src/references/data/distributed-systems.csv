@@ -127,3 +127,25 @@ Education — Advanced,PingCAP talent-plan,https://github.com/pingcap/talent-pla
 Education — Advanced,USENIX OSDI,https://www.usenix.org/conference/osdi25,,,Research venues,,"Free papers, and the main venue for systems work."
 Education — Advanced,ACM SOSP,https://sosp.org/,,,Research venues,,Alternates with OSDI.
 Education — Advanced,Jepsen analyses,https://jepsen.io/analyses,,,Research venues,,"Not peer-reviewed, but more consequential in practice than most papers."
+Video — Channels & conference recordings,Confluent,https://www.youtube.com/@Confluent,,,,,Kafka Summit talks and stream-processing design sessions — the canonical Kafka video record.
+Video — Channels & conference recordings,CNCF,https://www.youtube.com/@cncf,,,,,KubeCon keynotes and project-maintainer talks across the cloud-native landscape.
+Video — Channels & conference recordings,Kubernetes,https://www.youtube.com/@kubernetescommunity,,,,,Official Kubernetes community channel.
+Video — Channels & conference recordings,Strange Loop Conference,https://www.youtube.com/@StrangeLoopConf,,,,,"The Strange Loop channel: distributed systems, databases and language talks from the conference."
+Video — Channels & conference recordings,USENIX,https://www.youtube.com/@USENIX,,,,,"Conference recordings for most USENIX papers — free video, the fastest route into a systems paper."
+Video — Channels & conference recordings,Papers We Love,https://www.youtube.com/@PapersWeLove,,,,,Recorded paper walkthroughs — watch one before you read the PDF.
+Video — Channels & conference recordings,InfoQ,https://www.youtube.com/@InfoQ,,,,,"Conference keynotes and architecture talks — good for orientation, verify specifics elsewhere."
+Video — Channels & conference recordings,The Linux Foundation,https://www.youtube.com/@LinuxFoundationOrg,,,,,The Linux Foundation channel: kernel and LF event recordings.
+Video — Channels & conference recordings,Meta Open Source,https://www.youtube.com/@MetaOpenSource,,,,,"Talks on the infrastructure behind the big deployments — caches, schedulers, storage."
+Video — Channels & conference recordings,ScyllaDB,https://www.youtube.com/@ScyllaDB,,,,,"Latency and performance conference talks; the P99 crowd, strong on tail-latency measurement."
+Video — Channels & conference recordings,Google TechTalks,https://www.youtube.com/@GoogleTechTalks,,,,,"Spanner, Chubby, Borg and Dapper history, often given by the authors."
+Video — Lectures & playlists,MIT 6.824 — Distributed Systems (Spring 2020),https://www.youtube.com/playlist?list=PLrw6a1wE39_tb2fErI4-WkMbsvGQk9_UB,,,,,"Kaashoek, complete: GFS, Raft, Spanner, Frangipani — the canonical paper-per-lecture course."
+Video — Lectures & playlists,MIT 6.824 — Distributed Systems (Spring 2021),https://www.youtube.com/playlist?list=PLylxsabx8fCHNBSCA_atBqLC38hqoYy_n,,,,,The pandemic-era Zoom recordings; covers some topics the 2020 set does not.
+Video — Lectures & playlists,KTH — Distributed Algorithms (Seif Haridi),https://www.youtube.com/playlist?list=PL700757A5D4B3F368,,,,,"The theory half distributed systems courses skip: consensus, failure detectors, snapshot algorithms."
+Conference — Conference channels & video archives,Strange Loop,https://www.thestrangeloop.com/,,,,,"Every talk online, free. Start here for distributed-systems talks given by practitioners."
+Conference — Conference channels & video archives,USENIX ATC '26,https://www.usenix.org/conference/atc26,,,,,The applied venue; open.
+Conference — Conference channels & video archives,USENIX NSDI '26,https://www.usenix.org/conference/nsdi26,,,,,Where the networking half of distributed systems lands.
+Conference — Conference channels & video archives,EuroSys,https://www.eurosys.org/,,,,,Proceedings plus selected recordings.
+Conference — Conference channels & video archives,VLDB,https://www.vldb.org/,,,,,"For the data-side papers (Spanner, Calvin, etc.), fully open."
+Conference — Conference channels & video archives,FOSDEM video archive,https://video.fosdem.org/,,,,,"Distributed systems, messaging and observability devrooms."
+Conference — Conference channels & video archives,media.ccc.de,https://media.ccc.de/,,,,,Distributed-infrastructure and federation tracks.
+"Conference — Notes, proceedings & paper-adjacent archives",USENIX ;login:,https://www.usenix.org/publications/login/,,,,,Postmortems and design write-ups in magazine form.

@@ -6,7 +6,7 @@ It is a **navigation layer**, not a tutorial. Where the rest of this book explai
 
 Document, wide-column, key-value, graph, time-series and search stores; consensus libraries; messaging and stream processing; verification tooling; and a two-track path from Gossip Glomers to implementing Raft and model-checking your own protocols.
 
-**74 entries** across 8 categories, plus **54 education & reference-implementation resources** (23 basic / 31 advanced).
+**74 entries** across 8 categories, plus **54 education & reference-implementation resources** (23 basic / 31 advanced), plus **14 video resources** and **8 conference sources**.
 
 Every link HTTP-verified on **2026-10-07**.
 
@@ -21,6 +21,8 @@ Every link HTTP-verified on **2026-10-07**.
 - [7. Replication, CRDTs, chaos & deterministic testing](#7-replication-crdts-chaos--deterministic-testing) — 8
 - [8. Research papers & open-access literature](#8-research-papers--open-access-literature) — 23
 - [Education & reference implementations](#education--reference-implementations) — 54 (23 basic / 31 advanced)
+- [Video courses, channels & talks](#video-courses-channels--talks) — 14
+- [Conference videos, notes & archives](#conference-videos-notes--archives) — 8
 
 
 ## 1. Document, wide-column & key-value stores
@@ -764,6 +766,52 @@ Two tracks: **Basic** builds the foundations, **Advanced** is about reading and 
 
 
 ---
+
+## Video courses, channels & talks
+
+*14 resources across 2 groups.* Every channel and playlist below was fetched and title-verified on **2026-10-09**. Handles drift and several plausible-looking handles resolve to the wrong channel, so a 200 response is not proof of identity — the links here were each checked against the channel title.
+
+### Channels & conference recordings
+
+- **[Confluent](https://www.youtube.com/@Confluent)** — Kafka Summit talks and stream-processing design sessions — the canonical Kafka video record.
+- **[CNCF](https://www.youtube.com/@cncf)** — KubeCon keynotes and project-maintainer talks across the cloud-native landscape.
+- **[Kubernetes](https://www.youtube.com/@kubernetescommunity)** — Official Kubernetes community channel.
+- **[Strange Loop Conference](https://www.youtube.com/@StrangeLoopConf)** — The Strange Loop channel: distributed systems, databases and language talks from the conference.
+- **[USENIX](https://www.youtube.com/@USENIX)** — Conference recordings for most USENIX papers — free video, the fastest route into a systems paper.
+- **[Papers We Love](https://www.youtube.com/@PapersWeLove)** — Recorded paper walkthroughs — watch one before you read the PDF.
+- **[InfoQ](https://www.youtube.com/@InfoQ)** — Conference keynotes and architecture talks — good for orientation, verify specifics elsewhere.
+- **[The Linux Foundation](https://www.youtube.com/@LinuxFoundationOrg)** — The Linux Foundation channel: kernel and LF event recordings.
+- **[Meta Open Source](https://www.youtube.com/@MetaOpenSource)** — Talks on the infrastructure behind the big deployments — caches, schedulers, storage.
+- **[ScyllaDB](https://www.youtube.com/@ScyllaDB)** — Latency and performance conference talks; the P99 crowd, strong on tail-latency measurement.
+- **[Google TechTalks](https://www.youtube.com/@GoogleTechTalks)** — Spanner, Chubby, Borg and Dapper history, often given by the authors.
+
+### Lectures & playlists
+
+- **[MIT 6.824 — Distributed Systems (Spring 2020)](https://www.youtube.com/playlist?list=PLrw6a1wE39_tb2fErI4-WkMbsvGQk9_UB)** — Kaashoek, complete: GFS, Raft, Spanner, Frangipani — the canonical paper-per-lecture course.
+- **[MIT 6.824 — Distributed Systems (Spring 2021)](https://www.youtube.com/playlist?list=PLylxsabx8fCHNBSCA_atBqLC38hqoYy_n)** — The pandemic-era Zoom recordings; covers some topics the 2020 set does not.
+- **[KTH — Distributed Algorithms (Seif Haridi)](https://www.youtube.com/playlist?list=PL700757A5D4B3F368)** — The theory half distributed systems courses skip: consensus, failure detectors, snapshot algorithms.
+
+*Note:* The conference channels are the real value here — most canonical distributed-systems design talks were recorded at Strange Loop, USENIX or a KubeCon.
+
+## Conference videos, notes & archives
+
+*8 resources across 2 groups.* Conference recordings are the primary-source tier of video: the speaker is usually an author of the paper, and where a talk exists the proceedings entry is often open at the same link. Every URL here returned 200 on **2026-10-09** unless the note says otherwise.
+
+The canonical distributed-systems talks were all recorded, mostly at Strange Loop, USENIX or a KubeCon; this is where to find them.
+
+### Conference channels & video archives
+
+- **[Strange Loop](https://www.thestrangeloop.com/)** — Every talk online, free. Start here for distributed-systems talks given by practitioners.
+- **[USENIX ATC '26](https://www.usenix.org/conference/atc26)** — The applied venue; open.
+- **[USENIX NSDI '26](https://www.usenix.org/conference/nsdi26)** — Where the networking half of distributed systems lands.
+- **[EuroSys](https://www.eurosys.org/)** — Proceedings plus selected recordings.
+- **[VLDB](https://www.vldb.org/)** — For the data-side papers (Spanner, Calvin, etc.), fully open.
+- **[FOSDEM video archive](https://video.fosdem.org/)** — Distributed systems, messaging and observability devrooms.
+- **[media.ccc.de](https://media.ccc.de/)** — Distributed-infrastructure and federation tracks.
+
+### Notes, proceedings & paper-adjacent archives
+
+- **[USENIX ;login:](https://www.usenix.org/publications/login/)** — Postmortems and design write-ups in magazine form.
 
 ## If you only do three things
 

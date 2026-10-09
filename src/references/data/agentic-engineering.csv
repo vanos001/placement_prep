@@ -124,3 +124,17 @@ Education — Advanced,Reflexion,https://arxiv.org/abs/2303.11366,,,Primary pape
 Education — Advanced,Toolformer,https://arxiv.org/abs/2302.04761,,,Primary papers,,"Models learning when to call tools, self-supervised."
 Education — Advanced,arXiv cs.MA,https://arxiv.org/list/cs.MA/recent,,,Primary papers,,"Multi-agent systems, where the coordination literature lives."
 Education — Advanced,OpenReview,https://openreview.net/,,,Primary papers,,Agent benchmarks attract methodological criticism; the reviews are where you find it.
+Video — Channels & conference recordings,LangChain,https://www.youtube.com/@LangChain,,,,,"Framework walkthroughs for agents and RAG; vendor content, verify against the docs."
+Video — Channels & conference recordings,Hugging Face,https://www.youtube.com/@HuggingFace,,,,,"The open LLM ecosystem: transformers, datasets, agents, tool calling."
+Video — Channels & conference recordings,Dave Ebbelaar,https://www.youtube.com/@daveebbelaar,,,,,"Practical LLM and agent app builds, end to end, in Python."
+Video — Channels & conference recordings,Machine Learning Street Talk,https://www.youtube.com/@MachineLearningStreetTalk,,,,,Long-form research interviews; useful for context around current papers.
+Video — Channels & conference recordings,OpenAI,https://www.youtube.com/@OpenAI,,,,,Model releases and DevDay talks; primary for API and product behaviour.
+Video — Channels & conference recordings,Google DeepMind,https://www.youtube.com/@GoogleDeepMind,,,,,Research overviews and model announcements from DeepMind.
+Video — Channels & conference recordings,InfoQ,https://www.youtube.com/@InfoQ,,,,,"Conference keynotes and architecture talks — good for orientation, verify specifics elsewhere."
+Video — Channels & conference recordings,Latent Space,https://www.youtube.com/@LatentSpacePod,,,,,"Agent-tooling interviews; current, but the frameworks discussed age within months."
+Video — Channels & conference recordings,TWIML AI Podcast,https://www.youtube.com/@twimlai,,,,,"Applied-agent interviews, including RAG and evaluation practice."
+Conference — Conference channels & video archives,ICLR,https://iclr.cc/,,,,,Most agent-paper activity; the open reviews are useful for seeing what reviewers actually object to.
+Conference — Conference channels & video archives,NeurIPS proceedings,https://neurips.cc/Conferences/2025,,,,,"The other half of agent research, especially tool use and evaluation."
+Conference — Conference channels & video archives,ICML,https://icml.cc/,,,,,Proceedings portal.
+Conference — Conference channels & video archives,AI Engineer World's Fair,https://ai.engineer/,,,,,"The closest thing to a dedicated conference for applied LLM and agent work; recordings published by the organisers, vendor-heavy."
+"Conference — Notes, proceedings & paper-adjacent archives",Framework dev days are release notes,,,,,,"LangChain, OpenAI and Hugging Face agent talks describe the API as it was on the day. Re-check the docs before building on them."

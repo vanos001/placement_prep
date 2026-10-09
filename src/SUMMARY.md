@@ -1050,6 +1050,56 @@
 - [Chapter 192: Subset Convolution](./dsa/chapters/ch192-subset-convolution.md)
 - [Chapter 193: Kernelization](./dsa/chapters/ch193-kernelization.md)
 - [Chapter 194: Planar Separator Theorems](./dsa/chapters/ch194-planar-separator-theorems.md)
+- [Chapter 195: Li Chao Segment Tree](./dsa/chapters/ch195-li-chao-segment-tree.md)
+- [Chapter 196: Segment Tree Beats](./dsa/chapters/ch196-segment-tree-beats.md)
+- [Chapter 197: Matroid Intersection](./dsa/chapters/ch197-matroid-intersection.md)
+- [Chapter 198: Sprague-Grundy Game Theory](./dsa/chapters/ch198-sprague-grundy.md)
+- [Chapter 199: XOR Basis & Linear Algebra](./dsa/chapters/ch199-xor-basis-linear-algebra.md)
+- [Chapter 200: Finger Trees](./dsa/chapters/ch200-finger-trees.md)
+- [Chapter 201: Slope Trick](./dsa/chapters/ch201-slope-trick.md)
+- [Chapter 202: Offline Dynamic Connectivity](./dsa/chapters/ch202-offline-dynamic-connectivity.md)
+
+---
+
+# Competitive Programming
+
+- [Competitive Programming](./competitive-programming/README.md)
+- [Codeforces Guide](./competitive-programming/codeforces-guide.md)
+- [AtCoder Guide](./competitive-programming/atcoder-guide.md)
+- [LeetCode — The Placement Archive and Contest System](./competitive-programming/leetcode-archive.md)
+- [ICPC Guide — Format, Pipeline, and Team Strategy](./competitive-programming/icpc-guide.md)
+- [IOI Guide — Olympiad Format, Partial Scoring, and the India Path](./competitive-programming/ioi-guide.md)
+- [Contest Calendars and Multi-Judge Practice — clist.by and vJudge](./competitive-programming/contest-calendar-codelist.md)
+- [The Competitive Programming Resource Directory](./competitive-programming/resources-directory.md)
+- [Contest Archives — Mining Every Competition's Past](./competitive-programming/contest-archives.md)
+- [Tooling and Workflow — APIs, Stress Testing, Trackers](./competitive-programming/tooling-and-workflow.md)
+
+---
+
+# Competitive Mathematics
+
+- [Competitive Mathematics — The Olympiad Track](./competitive-math/README.md)
+- [The IMO — Format, Scoring, and Preparation](./competitive-math/imo-guide.md)
+- [Olympiad Number Theory](./competitive-math/number-theory-olympiad.md)
+- [Olympiad Combinatorics](./competitive-math/combinatorics-olympiad.md)
+- [Olympiad Algebra](./competitive-math/algebra-olympiad.md)
+- [Olympiad Geometry](./competitive-math/geometry-olympiad.md)
+- [India Math Olympiads — The IOQM → INMO Pipeline](./competitive-math/india-math-olympiads.md)
+- [Competition Math Resources — The Master Directory](./competitive-math/resources-directory.md)
+
+---
+
+# Quant Firm Puzzles
+
+- [Quantitative Finance Interview Preparation](./quant-prep/README.md)
+- [The Quant Firm Directory](./quant-prep/firm-directory.md)
+- [Jane Street Puzzles](./quant-prep/jane-street-puzzles.md)
+- [HRT Brainteasers](./quant-prep/hrt-brainteasers.md)
+- [Expected Value Problems](./quant-prep/expected-value-problems.md)
+- [Market Making Games](./quant-prep/market-making-games.md)
+- [Mental Math Speed for Trading Interviews](./quant-prep/mental-math-speed.md)
+- [Game Theory Puzzles for Trading Interviews](./quant-prep/game-theory-puzzles.md)
+- [The Quant Interview Canon: Books and How to Use Them](./quant-prep/interview-canon.md)
 
 ---
 
@@ -1117,6 +1167,7 @@
   - [B-Trees Internals](./dbms/indexing/btrees.md)
   - [Adaptive Radix Tree (ART): Main-Memory Indexing](./dbms/advanced/adaptive-radix-tree.md)
   - [FSST: Fast Random-Access String Compression](./dbms/advanced/fsst-string-compression.md)
+  - [DuckDB: Vectorized OLAP in-Process](./dbms/advanced/duckdb-internals.md)
   - [B+ Tree](./dbms/indexing/b-plus-tree.md)
   - [Hash Index](./dbms/indexing/hash-index.md)
   - [Bitmap Index](./dbms/indexing/bitmap-index.md)
@@ -1147,7 +1198,9 @@
   - [Buffer Pool](./dbms/caching/buffer-pool.md)
   - [Query Cache](./dbms/caching/query-cache.md)
   - [Redis](./dbms/caching/redis.md)
+  - [Valkey and the Redis Fork Landscape](./dbms/caching/valkey-redis-fork.md)
   - [Memcached](./dbms/caching/memcached.md)
+  - [In-Memory Data Grids: Hazelcast & Coherence](./dbms/caching/in-memory-data-grids.md)
   - [Advanced Caching Strategies](./dbms/caching/advanced-caching.md)
 - [Distributed Databases](./dbms/distributed/README.md)
   - [CAP Theorem](./dbms/distributed/cap.md)
@@ -1163,6 +1216,8 @@
   - [Document Stores](./dbms/nosql/document.md)
   - [Column-family Stores](./dbms/nosql/column-family.md)
   - [Graph Databases](./dbms/nosql/graph.md)
+  - [Time-Series Databases: InfluxDB & TimescaleDB](./dbms/nosql/time-series-databases.md)
+  - [Search Engine Internals: Lucene, Elasticsearch, OpenSearch](./dbms/nosql/search-engine-internals.md)
   - [NewSQL](./dbms/nosql/newsql.md)
 - [MongoDB Sharding](./dbms/nosql/mongodb-sharding.md)
 - [Cassandra Architecture](./dbms/nosql/cassandra-architecture.md)
@@ -1178,6 +1233,15 @@
   - [Query Execution Models](./dbms/internals/query-execution.md)
   - [Storage Engine Internals](./dbms/internals/storage-engine.md)
   - [Transaction Internals](./dbms/internals/transaction-internals.md)
+- [PostgreSQL MVCC Deep Dive](./dbms/internals/postgresql-mvcc-deep.md)
+- [MySQL InnoDB Internals](./dbms/internals/mysql-innodb-internals.md)
+- [Bw-Tree & Latch-Free Indexes](./dbms/internals/bwtree-and-latch-free.md)
+- [Column-Store Execution: Vectorized vs Compiled](./dbms/internals/column-store-execution.md)
+- [Adaptive Query Execution](./dbms/internals/adaptive-query-execution.md)
+- [Vector Index Internals (HNSW, DiskANN, ScaNN)](./dbms/internals/vector-indexes-deep.md)
+- [LSM/B-Tree Hybrid Engines](./dbms/internals/lsm-btree-hybrid-engines.md)
+- [Time-Series Database Internals](./dbms/internals/timeseries-databases-internals.md)
+- [Database Observability](./dbms/internals/database-observability.md)
 - [NULL Semantics in SQL](./dbms/null-semantics.md)
 - [Query Planner](./dbms/query-planner.md)
 
@@ -1269,6 +1333,8 @@
   - [SSL](./networks/security/ssl.md)
   - [Firewalls](./networks/security/firewalls.md)
   - [VPN](./networks/security/vpn.md)
+  - [DDoS Mitigation](./networks/security/ddos-mitigation.md)
+- [DNS Tuning for Latency](./networks/dns/dns-tuning-for-latency.md)
     - [MASQUE: Proxying IP over HTTP/3](./networks/security/masque.md)
   - [IPsec](./networks/security/ipsec.md)
 - [Load Balancing](./networks/load-balancing/README.md)
@@ -1298,6 +1364,7 @@
   - [5G](./networks/wireless/5g.md)
   - [SDN](./networks/wireless/sdn.md)
   - [NFV](./networks/wireless/nfv.md)
+- [Anycast & Geo Routing](./networks/cdn/anycast-and-geo-routing.md)
 
 ---
 
@@ -1470,6 +1537,7 @@
 - [Testing Distributed Systems](./distributed/testing/README.md)
   - [Jepsen: Fault Injection and Correctness Checking](./distributed/testing/jepsen.md)
   - [Deterministic Simulation Testing](./distributed/testing/deterministic-simulation.md)
+  - [Jepsen, Maelstrom & Distributed Systems Testing](./distributed/testing/jepsen-maelstrom.md)
 
 ---
 
@@ -1566,6 +1634,7 @@
   - [Kubernetes](./backend/containers/kubernetes.md)
   - [Service Mesh](./backend/containers/service-mesh.md)
   - [xDS Protocol](./backend/containers/xds-protocol.md)
+- [The Twelve-Factor App](./backend/twelve-factor-app.md)
 - [Messaging](./backend/messaging/README.md)
   - [Kafka](./backend/messaging/kafka.md)
   - [RabbitMQ](./backend/messaging/rabbitmq.md)
@@ -1703,6 +1772,9 @@
 - [Command Injection](./security/command-injection.md)
 - [Prototype Pollution](./security/prototype-pollution.md)
 - [Software Supply Chain Security](./security/supply-chain-security.md)
+- [Threat Modeling](./security/threat-modeling.md)
+- [Zero Trust Architecture](./security/zero-trust-architecture.md)
+- [Incident Response & Forensics](./security/incident-response.md)
 
 ---
 
@@ -1725,6 +1797,15 @@
 - [Snake and Ladder](./machine-coding/snake-and-ladder.md)
 - [Tic-Tac-Toe](./machine-coding/tic-tac-toe.md)
 - [Vending Machine](./machine-coding/vending-machine.md)
+- [Car Rental System](./machine-coding/car-rental.md)
+- [Meeting Room Scheduler](./machine-coding/meeting-room-scheduler.md)
+- [Shopping Cart](./machine-coding/shopping-cart.md)
+- [Stack Overflow Q&A](./machine-coding/stack-overflow.md)
+- [Cricket Scoreboard](./machine-coding/cricinfo-scoreboard.md)
+- [Thread Pool](./machine-coding/threadpool.md)
+- [Pub-Sub Broker](./machine-coding/pub-sub.md)
+- [Inventory Management](./machine-coding/inventory-management.md)
+- [Cron Expression Parser](./machine-coding/cron-parser.md)
 
 ---
 
@@ -1745,6 +1826,7 @@
 - [Analytics & OLAP](./data-engineering/analytics.md)
 - [Spark Internals](./data-engineering/spark-internals.md)
 - [Apache Flink](./data-engineering/flink.md)
+- [Apache Beam: Portable Batch & Streaming](./data-engineering/apache-beam.md)
 - [Apache Airflow](./data-engineering/airflow.md)
 - [Dagster](./data-engineering/dagster.md)
 - [ClickHouse](./data-engineering/clickhouse.md)
@@ -1928,6 +2010,7 @@
 - [CSS Deep Dive](./frontend/css-deep.md)
 - [Server-Side Rendering, Client-Side Rendering, and Static Generation](./frontend/ssr-csr-ssg.md)
 - [Frontend Engineering Deep Dive](./frontend/frontend-engineering.md)
+- [Micro-Frontends](./frontend/micro-frontends.md)
 
 ---
 
@@ -1939,6 +2022,14 @@
 - [Proof Techniques](./cs-theory/proofs.md)
 - [Complexity Classes](./cs-theory/complexity-classes.md)
 - [Approximation Algorithms: Ratios, PTAS, and What Cannot Be Done](./cs-theory/approximation-algorithms.md)
+- [Randomized Algorithms](./cs-theory/randomized-algorithms.md)
+- [Derandomization & Pseudorandomness](./cs-theory/derandomization-pseudorandomness.md)
+- [Communication Complexity](./cs-theory/communication-complexity.md)
+- [Information Theory for CS](./cs-theory/information-theory.md)
+- [Coding Theory](./cs-theory/coding-theory.md)
+- [Online Algorithms](./cs-theory/online-algorithms.md)
+- [Algorithmic Game Theory](./cs-theory/algorithmic-game-theory.md)
+- [PCP & Inapproximability](./cs-theory/pcp-inapproximability.md)
 - [Turing Machines](./cs-theory/turing-machines.md)
 - [Computability](./cs-theory/computability.md)
 - [Formal Languages](./cs-theory/formal-languages.md)
@@ -2003,6 +2094,7 @@
 - [IaC Overview](./iac/README.md)
 - [Terraform](./iac/terraform.md)
 - [Ansible](./iac/ansible.md)
+- [IaC Beyond Terraform: OpenTofu, Pulumi, CDK & Crossplane](./iac/beyond-terraform.md)
 - [IaC Interview Questions](./iac/interview-questions.md)
 
 ---
@@ -2026,6 +2118,7 @@
 - [Feature Flags (Feature Toggles)](./sre/feature-flags.md)
 - [Multi-Region Architecture](./sre/multi-region.md)
 - [Infrastructure & Platform Engineering](./sre/infrastructure-platform-engineering.md)
+- [Internal Developer Platforms & Backstage](./sre/internal-developer-platforms.md)
 - [FMEA & Fault Trees](./sre/fmea-fault-trees.md)
 - [Metrics Cardinality Explosions](./sre/metrics-cardinality.md)
 - [FinOps and Cloud Cost Optimization](./sre/finops-cloud-cost.md)
@@ -2164,6 +2257,7 @@
   - [Debugging K8s](./cloud/kubernetes/debugging.md)
   - [Admission Webhooks](./cloud/kubernetes/admission-webhooks.md)
   - [Operator Pattern](./cloud/kubernetes/operator-pattern.md)
+- [Talos, k3s & Minimal Kubernetes](./cloud/talos-k3s-minimal-kubernetes.md)
 - [Kubelet](./cloud/kubernetes/kubelet.md)
 - [Controller-Manager](./cloud/kubernetes/controller-manager.md)
 - [Helm](./cloud/kubernetes/helm.md)
@@ -2206,6 +2300,9 @@
 - [Linkerd Service Mesh](./cloud/linkerd.md)
 - [etcd Architecture](./cloud/etcd.md)
 - [Consul](./cloud/consul.md)
+- [Policy as Code: OPA, Kyverno & Falco](./cloud/policy-as-code.md)
+- [HashiCorp Nomad: The Simple Orchestrator](./cloud/nomad.md)
+- [Well-Architected Frameworks](./cloud/well-architected-frameworks.md)
 - [Jaeger (Distributed Tracing)](./cloud/observability/jaeger.md)
 - [Loki (Log Aggregation)](./cloud/observability/loki.md)
 - [ELK Stack](./cloud/observability/elk-stack.md)
@@ -2261,6 +2358,7 @@
   - [Optimizers](./ml/deep-learning/optimizers.md)
   - [Transfer Learning](./ml/deep-learning/transfer-learning.md)
   - [Attention Mechanism](./ml/deep-learning/attention.md)
+  - [JAX & Functional ML](./ml/deep-learning/jax-functional-ml.md)
 - [Transformers](./ml/transformers/README.md)
   - [Transformer Architecture](./ml/transformers/architecture.md)
   - [Self-Attention](./ml/transformers/self-attention.md)
@@ -2301,6 +2399,10 @@
     - [TensorRT-LLM](./llm/llm-serving/tensorrt.md)
     - [TGI](./llm/llm-serving/tgi.md)
     - [Ollama](./llm/llm-serving/ollama.md)
+- [llama.cpp & GGUF](./llm/llm-serving/llama-cpp-gguf.md)
+- [LMDeploy](./llm/llm-serving/lmdeploy.md)
+- [Cache-Aware Routing](./llm/llm-serving/cache-aware-routing.md)
+- [Serving Engine Comparison](./llm/llm-serving/engine-comparison.md)
   - [Tokenization](./llm/llm-serving/tokenization.md)
   - [Embeddings](./llm/llm-serving/embeddings.md)
   - [LLM Evaluation](./llm/llm-serving/evaluation.md)
@@ -2423,6 +2525,10 @@
 # Interview Preparation
 
 - [Interview Overview](./interview/overview.md)
+- [Puzzles & Brain Teasers](./interview/puzzles/README.md)
+  - [Classic Measurement Puzzles](./interview/puzzles/classic-measurement.md)
+  - [Logic Deduction Puzzles](./interview/puzzles/logic-deduction.md)
+  - [Probability Puzzles](./interview/puzzles/probability-puzzles.md)
 - [Behavioral Interviews](./interview/behavioral/README.md)
   - [STAR Method](./interview/behavioral/star.md)
   - [Common Questions](./interview/behavioral/common.md)
@@ -2552,6 +2658,10 @@
   - [Meta](./interview/companies/meta.md)
   - [Apple](./interview/companies/apple.md)
   - [Netflix](./interview/companies/netflix.md)
+  - [TCS (NQT & Tiers)](./interview/companies/tcs.md)
+  - [Infosys (SE/DSE/Power Programmer)](./interview/companies/infosys.md)
+  - [Other Mass Recruiters](./interview/companies/mass-recruiters.md)
+  - [India Product Companies](./interview/companies/india-product-companies.md)
   - [Product vs Service vs Semiconductor vs Cloud Companies](./interview/companies/company-types.md)
   - [FAANG/Big Tech Interview Preparation](./interview/companies/faang-preparation.md)
   - [Recruiter Communication](./interview/companies/recruiter-communication.md)
@@ -2640,6 +2750,7 @@
 - [Error Handling](./languages/rust/error-handling.md)
 - [Async Rust](./languages/rust/async.md)
 - [Unsafe Rust](./languages/rust/unsafe.md)
+- [rustc Internals: Query-Based Compilation](./languages/rust/rustc-internals.md)
 - [Rust Ecosystem & Tooling](./languages/rust/ecosystem.md)
 - [Rust Interview Questions](./languages/rust/interview-questions.md)
 - [Rust async/await — Futures, Pinning, Executors](./languages/rust/async-async.md)
@@ -2684,6 +2795,7 @@
 
 - [Java Overview](./languages/java/README.md)
 - [JVM Internals](./languages/java/jvm.md)
+- [HotSpot Internals: The JVM Engine Room](./languages/java/hotspot-internals.md)
 - [Garbage Collection](./languages/java/gc.md)
 - [Virtual Threads (Project Loom)](./languages/java/virtual-threads.md)
 - [Java Ecosystem & Tooling](./languages/java/ecosystem.md)
@@ -2736,6 +2848,7 @@
 - [Scalar Optimizations Deep Dive (PRE, SCCP, jump threading, VRP, tail dup)](./compilers/scalar-optimizations-deep.md)
 - [IPA, Attributor & Codegen Deep Dive](./compilers/ipa-attributor-codegen-deep.md)
 - [Translation Validation (Alive2) & Compiler Bootstrapping](./compilers/translation-validation-bootstrapping.md)
+- [Reading Small Compilers: chibicc & QBE](./compilers/reading-small-compilers.md)
 
 ---
 
@@ -2852,6 +2965,15 @@
 
 - [Advanced OS Overview](./os/advanced/README.md)
 - [Kernel Architectures](./os/advanced/kernel-architectures.md)
+- [xv6: Anatomy of the Teaching Kernel](./os/advanced/xv6-teaching-kernel.md)
+- [The BSD Family: What Linux Interviews Forget](./os/advanced/bsd-family-internals.md)
+- [How to Start Reading the Linux Kernel](./os/advanced/kernel-learning-path.md)
+- [Fuchsia & Zircon: A Capability-Based OS in Production](./os/advanced/fuchsia-zircon.md)
+- [Windows NT Kernel Internals](./os/advanced/windows-nt-internals.md)
+- [XNU & Darwin: The Apple Kernel](./os/advanced/xnu-darwin-internals.md)
+- [Real-Time Operating Systems: Zephyr, FreeRTOS, and the RT Landscape](./os/advanced/rtos-real-time.md)
+- [illumos: OpenSolaris Heritage, DTrace, Zones](./os/advanced/illumos-dtrace-heritage.md)
+- [POSIX & the Single UNIX Specification](./os/advanced/posix-standards-deep.md)
 - [Virtualization Internals](./os/advanced/virtualization.md)
 - [VM Exits and VM Entry: The Cost of the World Switch](./os/advanced/vm-exits.md)
 - [Kernel Crypto API](./os/advanced/kernel-crypto-api.md)
@@ -2952,6 +3074,7 @@
 - [Query Optimizers](./dbms/advanced/query-optimizers.md)
 - [Cascades Optimizer](./dbms/advanced/cascades-optimizer.md)
 - [Volcano Optimizer](./dbms/advanced/volcano-optimizer.md)
+- [Build-a-Query-Engine Frameworks: Calcite, DataFusion, and Friends](./dbms/advanced/query-engine-frameworks.md)
 - [Cardinality Estimation](./dbms/advanced/cardinality-estimation.md)
 - [Adaptive Query Execution: Re-Optimizing the Plan While It Runs](./dbms/advanced/adaptive-query-execution.md)
 - [Bw-Tree and ART](./dbms/advanced/bwtree-art.md)
@@ -2981,6 +3104,7 @@
 - [Memcached Internals](./dbms/advanced/memcached.md)
 - [Database Sharding](./dbms/advanced/database-sharding.md)
 - [Online Schema Change](./dbms/advanced/online-schema-change.md)
+- [Schema Migrations: Versioned Tooling and Expand–Contract](./dbms/advanced/schema-migrations.md)
 - [Online Resharding and Shard Migration](./dbms/advanced/online-resharding.md)
 - [Automatic Indexing: What-If Analysis and Self-Tuning Index Selection](./dbms/advanced/automatic-indexing.md)
 - [Cursors and Streaming Results](./dbms/advanced/cursors-and-streaming-results.md)
@@ -2992,9 +3116,11 @@
 - [Advanced Indexing](./dbms/advanced/index-advanced.md)
 - [Advanced Concurrency Control](./dbms/advanced/concurrency-advanced.md)
 - [Distributed Databases](./dbms/advanced/distributed-databases.md)
+- [Vitess: Sharding Middleware for MySQL](./dbms/advanced/vitess-sharding-proxy.md)
 - [The RUM Conjecture](./dbms/advanced/rum-conjecture.md)
 - [Materialized View Maintenance and Incremental Computation](./dbms/advanced/incremental-view-maintenance.md)
 - [Vector Databases](./dbms/advanced/vector-databases.md)
+- [Geospatial Indexing: Geohash, S2, and H3](./dbms/advanced/geospatial-indexing.md)
 - [Graph Databases](./dbms/advanced/graph-databases.md)
 - [Graph Query Languages: Cypher, SPARQL, Gremlin, GQL](./dbms/advanced/graph-query-languages.md)
 - [Temporal & Streaming Databases](./dbms/advanced/temporal-streaming.md)
@@ -3055,6 +3181,7 @@
 - [GC Write Barriers and the Tricolor Abstraction](./compilers/advanced/gc-write-barriers.md)
 - [JIT & Runtime Optimization](./compilers/advanced/jit-optimization.md)
 - [Deoptimization & OSR](./compilers/advanced/deoptimization-osr.md)
+- [Managed Runtimes Beyond the JVM: PyPy, GraalVM, LuaJIT, .NET](./compilers/advanced/managed-runtimes-beyond-jvm.md)
 - [Auto-Vectorization Internals](./compilers/advanced/auto-vectorization-deep.md)
 - [Polyhedral Compilation](./compilers/advanced/polyhedral-compilation.md)
 - [MLIR](./compilers/advanced/mlir.md)
@@ -3114,6 +3241,9 @@
 - [Intel IPU: x86's Answer to the DPU](./arch/advanced/intel-ipu.md)
 - [Graphcore IPU: Bulk-Synchronous Dataflow Accelerators](./arch/advanced/ipu-dataflow.md)
 - [ARM CCA & Realms](./arch/advanced/arm-cca-realms.md)
+- [Architectural Simulation & Modelling](./arch/advanced/architectural-simulation.md)
+- [Microarchitectural Measurement Toolbox](./arch/advanced/uarch-measurement-toolbox.md)
+- [Hardware Root of Trust](./arch/advanced/hardware-root-of-trust.md)
 - [CUDA Programming Model](./arch/advanced/cuda-programming.md)
 - [ROCm](./arch/advanced/rocm.md)
 - [TPU Architecture](./arch/advanced/tpu-architecture.md)
@@ -3141,6 +3271,8 @@
 - [SYCL and oneAPI: Portable Heterogeneous Computing](./hpc/sycl-oneapi.md)
 - [OpenACC: Directives-First GPU Porting](./hpc/openacc.md)
 - [OpenMP](./hpc/openmp.md)
+- [SIMD Vectorization & the Roofline Model](./hpc/vectorization-roofline.md)
+- [Fault Tolerance & Checkpoint/Restart](./hpc/fault-tolerance-checkpointing.md)
 
 ---
 
@@ -3228,6 +3360,12 @@
 - [Sandboxing](./security/advanced/sandboxing.md)
 - [Remote Attestation: Proving Software State to a Stranger](./security/advanced/remote-attestation.md)
 - [Taint Tracking and Information Flow Control](./security/advanced/taint-tracking.md)
+- [The AppSec Toolchain: SAST, SCA, Secrets, and DAST](./security/advanced/appsec-toolchain.md)
+- [Vulnerability & Exposure Management: CVE to Patch](./security/advanced/vulnerability-management.md)
+- [Vulnerability Reachability Tooling: Is the CVE Actually Executed?](./security/advanced/vuln-reachability-tooling.md)
+- [Offensive Web Tooling: Probing Applications Like an Attacker](./security/advanced/offensive-web-tooling.md)
+- [Reverse Engineering & Malware Analysis](./security/advanced/reverse-engineering-malware.md)
+- [Host Detection & Response: osquery, Wazuh, and eBPF-based Security](./security/advanced/host-detection-response.md)
 - [Side-Channel Resistant Crypto](./security/advanced/side-channel-resistant.md)
 - [Flush+Reload and Cache-Template Attacks](./security/advanced/flush-reload.md)
 - [Prime+Probe: Last-Level Cache Attacks Without Shared Memory](./security/advanced/prime-probe.md)
@@ -3239,6 +3377,7 @@
 - [Advanced Cryptography](./security/advanced/crypto-advanced.md)
 - [FIDO2 & WebAuthn](./security/advanced/fido2-webauthn.md)
 - [Confidential Computing & TEEs](./security/advanced/confidential-computing.md)
+- [Zanzibar and Relationship-Based Access Control](./security/advanced/zanzibar-rebac.md)
 
 ---
 
@@ -3412,6 +3551,226 @@
 - [Advanced Benchmarking](./performance-engineering/advanced-benchmarking.md)
 - [Continuous Profiling in Production](./performance-engineering/continuous-profiling.md)
 
+
+---
+
+# System Design Case Studies
+
+- [Case Studies Overview](./interview/system-design/case-studies/README.md)
+- [Ad Tech & Real-Time Bidding](./interview/system-design/case-studies/ad-tech.md)
+- [CI/CD System](./interview/system-design/case-studies/ci-cd-system.md)
+- [Distributed Task Scheduler](./interview/system-design/case-studies/distributed-task-scheduler.md)
+- [Distributed Tracing System](./interview/system-design/case-studies/distributed-tracing.md)
+- [ML Feature Store](./interview/system-design/case-studies/feature-store.md)
+- [Live Auction Platform](./interview/system-design/case-studies/live-auction.md)
+- [Log Analytics Pipeline](./interview/system-design/case-studies/log-analytics.md)
+- [Metrics & Monitoring System](./interview/system-design/case-studies/metrics-monitoring.md)
+- [Stock Exchange Matching Engine](./interview/system-design/case-studies/stock-exchange.md)
+- [Ticketing & Reserved Seating](./interview/system-design/case-studies/ticketmaster.md)
+- [Social Graph Service](./interview/system-design/case-studies/social-graph-service.md)
+- [API Gateway](./interview/system-design/case-studies/api-gateway.md)
+- [Secrets Manager](./interview/system-design/case-studies/secrets-manager.md)
+- [Feature Flag Service](./interview/system-design/case-studies/feature-flag-service.md)
+- [Video Transcoding Pipeline](./interview/system-design/case-studies/video-transcoding-pipeline.md)
+- [Durable Execution Engine](./interview/system-design/case-studies/durable-execution-engine.md)
+- [Cloud IDE](./interview/system-design/case-studies/cloud-ide.md)
+- [Collaborative Spreadsheet](./interview/system-design/case-studies/collaborative-spreadsheet.md)
+- [Distributed Configuration Service](./interview/system-design/case-studies/distributed-config-service.md)
+- [IRCTC Train Booking](./interview/system-design/case-studies/irctc-train-booking.md)
+- [UPI Payments (NPCI Switch)](./interview/system-design/case-studies/upi-payments.md)
+- [Food Delivery Platform (HLD)](./interview/system-design/case-studies/food-delivery-hld.md)
+- [Video Conferencing](./interview/system-design/case-studies/video-conferencing.md)
+- [Live Comments & Chat at Scale](./interview/system-design/case-studies/live-comments.md)
+- [Online Exam Platform](./interview/system-design/case-studies/online-exam-platform.md)
+- [Dating App](./interview/system-design/case-studies/dating-app.md)
+- [CDN Service](./interview/system-design/case-studies/cdn-service.md)
+- [Matchmaking & Leaderboards](./interview/system-design/case-studies/matchmaking-leaderboard.md)
+- [Fantasy Sports Platform](./interview/system-design/case-studies/fantasy-sports.md)
+- [Grocery Instant Delivery](./interview/system-design/case-studies/grocery-instant-delivery.md)
+- [Loyalty Points Platform](./interview/system-design/case-studies/loyalty-points.md)
+- [Vaccination Slot Booking](./interview/system-design/case-studies/vaccination-slot-booking.md)
+- [Telehealth Consultation](./interview/system-design/case-studies/telehealth-consultation.md)
+- [Digital Lending Platform](./interview/system-design/case-studies/digital-lending.md)
+- [C2C Marketplace Platform](./interview/system-design/case-studies/marketplace-platform.md)
+- [Google Photos-Scale Media Platform](./interview/system-design/case-studies/google-photos.md)
+- [Content Moderation Platform](./interview/system-design/case-studies/content-moderation-platform.md)
+
+---
+
+# Coordination Systems Internals
+
+- [Coordination Systems Overview](./distributed/systems/README.md)
+- [Calvin & Deterministic Databases](./distributed/systems/calvin-and-deterministic.md)
+- [TigerBeetle: Deterministic Financial Ledger](./distributed/systems/tigerbeetle-internals.md)
+- [Chubby & Consul](./distributed/systems/chubby-and-consul.md)
+- [CockroachDB Architecture](./distributed/systems/cockroachdb-architecture.md)
+- [Consistency Verification (Jepsen, Simulation)](./distributed/systems/consistency-verification.md)
+- [etcd Internals](./distributed/systems/etcd-internals.md)
+- [Memberlist & Gossip (SWIM) Internals](./distributed/systems/memberlist-gossip.md)
+- [Spanner Internals & TrueTime](./distributed/systems/spanner-internals.md)
+- [TiDB Architecture](./distributed/systems/tidb-architecture.md)
+- [ZooKeeper Internals (ZAB)](./distributed/systems/zookeeper-internals.md)
+
+---
+
+# Messaging Systems Internals
+
+- [Messaging Internals Overview](./distributed/messaging-internals/README.md)
+- [Backpressure & Flow Control](./distributed/messaging-internals/backpressure-and-flow-control.md)
+- [Apache BookKeeper Internals](./distributed/messaging-internals/bookkeeper-internals.md)
+- [Exactly-Once Semantics](./distributed/messaging-internals/exactly-once-semantics.md)
+- [Kafka Consumer Rebalancing](./distributed/messaging-internals/kafka-consumer-rebalancing.md)
+- [Kafka Log Internals](./distributed/messaging-internals/kafka-log-internals.md)
+- [NATS & JetStream](./distributed/messaging-internals/nats-jetstream.md)
+- [Apache Pulsar Internals](./distributed/messaging-internals/pulsar-internals.md)
+- [Redpanda & Thread-per-Core](./distributed/messaging-internals/redpanda-and-thread-per-core.md)
+
+---
+
+# Storage Formats & Lakehouse Internals
+
+- [Table Formats Overview](./storage/formats/README.md)
+- [Apache Hudi](./storage/formats/apache-hudi.md)
+- [Apache Iceberg](./storage/formats/apache-iceberg.md)
+- [Cache Eviction Algorithms](./storage/formats/cache-eviction-algorithms.md)
+- [Ceph CRUSH & RADOS](./storage/formats/ceph-crush.md)
+- [Delta Lake](./storage/formats/delta-lake.md)
+- [Deduplication Internals](./storage/formats/deduplication-internals.md)
+- [Parquet Internals](./storage/formats/parquet-internals.md)
+- [Iceberg vs Delta vs Hudi](./storage/formats/table-format-comparison.md)
+
+---
+
+# LLM Architectures
+
+- [LLM Architecture Landscape](./llm/architectures/README.md)
+- [Hybrid SSM-Transformer Architectures](./llm/architectures/hybrid-architectures.md)
+- [Linear Attention Variants](./llm/architectures/linear-attention-variants.md)
+- [Long Context Strategies](./llm/architectures/long-context-strategies.md)
+- [Mamba & State Space Models](./llm/architectures/mamba-ssm.md)
+- [Mixture of Depths](./llm/architectures/mixture-of-depths.md)
+- [Model Merging](./llm/architectures/model-merging.md)
+- [RWKV](./llm/architectures/rwkv.md)
+- [SSM vs Attention Decision Guide](./llm/architectures/ssm-vs-attention.md)
+- [Vision-Language Architectures](./llm/architectures/vision-language-architectures.md)
+- [Audio & Speech Models](./llm/architectures/audio-and-speech-models.md)
+- [Diffusion Transformers & Flow Matching](./llm/architectures/diffusion-transformers.md)
+- [Tokenizer Internals](./llm/architectures/tokenizer-internals.md)
+
+---
+
+# LLM Post-Training
+
+- [Post-Training Pipeline Overview](./llm/post-training/README.md)
+- [Continual Pretraining](./llm/post-training/continual-pretraining.md)
+- [Post-Training Data Pipelines](./llm/post-training/data-pipelines.md)
+- [The DPO Family](./llm/post-training/dpo-family.md)
+- [GRPO & RLVR](./llm/post-training/grpo-rlvr.md)
+- [Process Reward Models](./llm/post-training/process-reward-models.md)
+- [Reward Hacking & Spec Gaming](./llm/post-training/reward-hacking.md)
+- [Reward Models](./llm/post-training/reward-models.md)
+- [Self-Improvement (STaR, ReST)](./llm/post-training/self-improvement.md)
+- [Synthetic Data](./llm/post-training/synthetic-data.md)
+
+---
+
+# Agentic Systems Engineering
+
+- [Production Agent Anatomy](./llm/agentic/README.md)
+- [Agent Identity & Auth](./llm/agentic/agent-identity-and-auth.md)
+- [Agent Memory Architectures](./llm/agentic/agent-memory-advanced.md)
+- [Agent Observability](./llm/agentic/agent-observability.md)
+- [Agent Protocols (MCP, A2A)](./llm/agentic/agent-protocols.md)
+- [Browser & Computer-Use Agents](./llm/agentic/browser-and-computer-use.md)
+- [Guardrails & Policy Engines](./llm/agentic/guardrails.md)
+- [Multi-Agent Topologies](./llm/agentic/multi-agent-topologies.md)
+- [Sandboxed Code Execution](./llm/agentic/sandboxed-execution.md)
+- [Coding Agents & SWE-Bench](./llm/agentic/swe-agents.md)
+- [The Modern Agent SDK Landscape (2026)](./llm/agentic/agent-sdks-2026.md)
+
+---
+
+# Advanced Prompt Engineering
+
+- [Prompt Engineering Landscape](./llm/prompting/README.md)
+- [Chain-of-Thought & Self-Consistency](./llm/prompting/cot-and-self-consistency.md)
+- [Few-Shot Example Selection](./llm/prompting/few-shot-example-selection.md)
+- [Prompt Caching](./llm/prompting/prompt-caching.md)
+- [Prompt Compression](./llm/prompting/prompt-compression.md)
+- [Prompt Injection Defense](./llm/prompting/prompt-injection-defense.md)
+- [Structured Output Patterns](./llm/prompting/structured-output-patterns.md)
+- [System Prompt Design](./llm/prompting/system-prompt-design.md)
+- [Tree & Graph of Thoughts](./llm/prompting/tot-and-got.md)
+
+---
+
+# Advanced Retrieval & RAG
+
+- [Retrieval Landscape](./llm/retrieval-advanced/README.md)
+- [Agentic RAG](./llm/retrieval-advanced/agentic-rag.md)
+- [Chunking Strategies](./llm/retrieval-advanced/chunking-strategies.md)
+- [Embedding Fine-Tuning](./llm/retrieval-advanced/embedding-finetuning.md)
+- [GraphRAG](./llm/retrieval-advanced/graphrag.md)
+- [Hybrid Search & Fusion](./llm/retrieval-advanced/hybrid-search-fusion.md)
+- [Long Context vs RAG](./llm/retrieval-advanced/long-context-vs-rag.md)
+- [RAG Evaluation](./llm/retrieval-advanced/rag-evaluation.md)
+- [Rerankers Deep Dive](./llm/retrieval-advanced/rerankers-deep.md)
+
+# Modern Kernel Internals
+
+- [Modern Kernel Map](./os/modern/README.md)
+- [EEVDF Scheduler](./os/modern/eevdf-scheduler.md)
+- [PSI & DAMON](./os/modern/psi-and-damon.md)
+- [Multi-Gen LRU](./os/modern/mglru.md)
+- [sched_ext: BPF Schedulers](./os/modern/sched-ext.md)
+- [SCHED_DEADLINE & Real-Time](./os/modern/sched-deadline.md)
+- [Futex Deep Dive](./os/modern/futex-deep-dive.md)
+- [Maple Tree & VMA Management](./os/modern/maple-tree-vma.md)
+- [Page Reclaim Internals](./os/modern/page-reclaim.md)
+- [OOM Killer Internals](./os/modern/oom-killer.md)
+- [Rust in the Linux Kernel](./os/modern/rust-in-kernel.md)
+- [Transparent Huge Pages & khugepaged](./os/modern/thp-khugepaged.md)
+- [zram & Modern Swap Tuning](./os/modern/zram-swap.md)
+
+---
+
+# OS Security Internals
+
+- [seccomp & User Notification](./os/security-internals/seccomp.md)
+- [Landlock LSM](./os/security-internals/landlock.md)
+- [BPF LSM](./os/security-internals/bpf-lsm.md)
+- [IMA & Module Signing](./os/security-internals/ima-signing.md)
+- [Kernel Live Patching](./os/security-internals/livepatching.md)
+- [vDSO & vvar](./os/security-internals/vdso.md)
+- [ptrace Internals](./os/security-internals/ptrace.md)
+- [Lockdown & Secure Boot Chain](./os/security-internals/lockdown.md)
+
+# LLM Evaluation
+
+- [Evaluation Landscape](./llm/evals/README.md)
+- [Benchmark Landscape](./llm/evals/benchmark-landscape.md)
+- [Eval Harnesses](./llm/evals/eval-harnesses.md)
+- [LLM-as-Judge Deep Dive](./llm/evals/llm-as-judge-deep.md)
+- [LLM Eval Tooling: promptfoo, Inspect AI, DeepEval, Ragas](./llm/evals/eval-tooling.md)
+
+---
+
+# Network Protocols & Performance
+
+- [Protocol Deep-Dives Overview](./networks/protocols/README.md)
+- [SCTP](./networks/protocols/sctp.md)
+- [EVPN-VXLAN Data Centers](./networks/protocols/evpn-vxlan.md)
+- [RPKI & BGP Security](./networks/protocols/rpki-bgp-security.md)
+- [TLS Encrypted Client Hello](./networks/protocols/tls-ech.md)
+- [QUIC Connection Migration](./networks/protocols/quic-connection-migration.md)
+- [BBR Congestion Control Deep Dive](./networks/protocols/bbr-deep.md)
+- [Path MTU Discovery & MSS](./networks/protocols/pmtud-and-mss.md)
+- [RoCEv2 Data Centers](./networks/protocols/rocev2-datacenter.md)
+- [Wi-Fi 7 (802.11be)](./networks/protocols/wifi7-80211be.md)
+- [BGP Route Reflector Design](./networks/protocols/route-reflector-design.md)
+
+---
+
 # Reference Libraries
 
 - [Reference Libraries Overview](./references/README.md)
@@ -3425,6 +3784,10 @@
 - [Cloud Computing Reference Library](./references/cloud-computing.md)
 - [Prompt Engineering Reference Library](./references/prompt-engineering.md)
 - [Agentic Engineering Reference Library](./references/agentic-engineering.md)
+- [Security Engineering Reference Library](./references/security-reference.md)
+- [Concurrency & Parallelism Reference Library](./references/concurrency-reference.md)
+- [Storage Systems Reference Library](./references/storage-reference.md)
+- [DSA, Competitive Programming & Competitive Math Reference Library](./references/dsa-competitive-programming.md)
 
 ---
 
