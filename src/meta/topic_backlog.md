@@ -2,8 +2,34 @@
 
 > Auto-maintained by research agents. Topics discovered during expansion that need coverage.
 > Priority: HIGH (interview-critical) | MEDIUM (important) | LOW (nice-to-have)
-> Last updated: 2026-10-09 (round 11: 5 new pages + 2 thin pages deepened)
-> Last content change: 2026-10-09 (Zanzibar/ReBAC, schema-migration tooling, LLM eval tooling, geospatial indexing, micro-frontends; chaos-engineering and disaster-recovery deepens)
+> Last updated: 2026-10-09 (Linux userland binaries round: 280 pages across 16 collections)
+> Last content change: 2026-10-09 (new part src/linux/binaries/ — one page per binary for coreutils, util-linux, shadow, login, procps, findutils, diffutils, grep, sed, gawk, tar, acl, hostname, bsdutils, busybox, uutils)
+
+## Round 12 — Linux userland binaries sweep — 2026-10-09
+
+- User-directed round replacing the usual gap-mine: one page per binary for
+  every binary in the core userland packages (collection names taken from
+  uutils.org). 280 new pages under `src/linux/binaries/` in 16 collections,
+  each collection with a hub page carrying package-level context. Wired as a
+  new top-level SUMMARY part "Linux Userland Binaries".
+- Dedup: find/xargs/grep/sed/awk kept their existing deep shell-track pages;
+  hubs cross-link instead of duplicating. bsdutils binaries (logger, wall,
+  write, script, scriptlive, scriptreplay, renice) get their pages in the
+  bsdutils collection with cross-links to util-linux pages; login/sulogin/
+  nologin live in the login collection. raw(8) and pg(1) are documented as
+  removed upstream rather than given pages.
+- Reference discipline held: 285 per-binary manpage URLs verified live on
+  manpages.debian.org (the Debian util-linux split was mapped by scraping
+  package indexes: fdisk, mount, uuid-runtime, eject, ncal, bsdextrautils,
+  util-linux-extra, sysvinit-utils, uidmap), plus sources.debian.org,
+  GitHub mirrors, BusyBox manual, POSIX spec. gnu.org unreachable from the
+  work environment → not cited except the pre-verified tar manual.
+- Candidate follow-ups spotted while writing: a gzip/gzip-family page set
+  (the compression tools are referenced everywhere but have no home —
+  coreutils-adjacent gap), an ldd/ld.so/ELF loader page set (referenced by
+  five+ binary pages), a sysstat (iostat/sar) collection to complete the
+  observability story procps starts, and deepening the login collection's
+  shorter pages (lastlog/newgrp/sg/sulogin run 217-240 lines).
 
 ## Round 11 — backlog re-mine + inventory scan — 2026-10-09
 

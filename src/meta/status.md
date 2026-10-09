@@ -1,6 +1,19 @@
 # Project Status
 
-> Status snapshot: 2026-09-19 (research branch @ `506338b`+) — validation passing, plus an independent deep review and fix pass (see "Deep review & fix pass" below).
+> Status snapshot: 2026-10-09 (research branch @ `46e95b3`+binary round) — validation passing; latest round added the Linux Userland Binaries part (280 pages), see "Userland binaries round" below.
+
+## Userland binaries round — 2026-10-09
+
+- **New part**: `src/linux/binaries/` — 280 pages, 16 collections, one page
+  per binary (coreutils 104, util-linux 96, shadow 24, login 8, procps 18,
+  findutils, diffutils, grep, sed, gawk, tar, acl, hostname, bsdutils,
+  busybox, uutils), each with a package-level hub.
+- **Validation after the round**: 3,385 pages reachable via SUMMARY (0
+  duplicates), 0 broken links/anchors, MathJax clean, 5,527/5,527 Mermaid
+  diagrams pass the real mermaid@11 parser.
+- **References**: 285 per-binary manpage URLs verified live (manpages.debian.org,
+  incl. the post-split Debian package mapping), sources.debian.org,
+  GitHub mirrors, BusyBox manual, POSIX 2018 spec.
 
 ## Current status
 

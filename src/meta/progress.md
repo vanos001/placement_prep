@@ -2,6 +2,17 @@
 
 > Work log for 2026-08-02 to 2026-09-02. All counts are from the working tree after each change.
 
+## Linux userland binaries round — 2026-10-09
+
+280 new pages under `src/linux/binaries/` (one page per binary across 16
+collections, hubs included), wired as the new top-level SUMMARY part
+"Linux Userland Binaries". Page counts: 3,105 → 3,385 content pages.
+Words ~7.09M → ~7.73M. Unique external URLs 12,035 → 12,370. Mermaid
+diagrams unchanged at 5,527 (new pages favor house-style ASCII diagrams);
+all pass the real mermaid@11 parser. Validation: 0 broken links, 0
+duplicate SUMMARY destinations, MathJax clean. Reference URLs verified
+live the day of writing (285 per-binary manpages + source browsers).
+
 ## Research branch — 2026-08-02 to 2026-09-02
 
 The `research` branch (75 commits ahead of `main`) landed 660 new markdown files (~174K lines) and 66 batch-style deep-dive pages. All counts below are from the `research` tree @ `9c249de`.

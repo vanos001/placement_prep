@@ -29,7 +29,7 @@ conventions, then one page per binary.
 | [grep](./grep/overview.md) | hub | → deep page |
 | [GNU sed](./sed/overview.md) | hub | → deep page |
 | [Gawk](./gawk/overview.md) | hub | → deep page |
-| [GNU tar](./tar.md) | 1 | the archiver |
+| [GNU tar](./tar/tar.md) | 1 | the archiver |
 | [ACL tools](./acl/overview.md) | 3 | setfacl, getfacl |
 | [hostname](./hostname.md) | 1 | hostname + variants |
 | [bsdutils](./bsdutils/overview.md) | 7 | logger, script, wall |

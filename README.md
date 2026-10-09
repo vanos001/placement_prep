@@ -78,12 +78,12 @@ placement_prep/
 
 | Metric | Count |
 |--------|-------|
-| Markdown pages | 3,105 content pages (+ `SUMMARY.md`) |
-| Mermaid diagrams | 5,527 across 1,400+ files (100% pass the real mermaid@11 parser, not just the heuristic) |
+| Markdown pages | 3,385 content pages (+ `SUMMARY.md`) |
+| Mermaid diagrams | 5,527 across 1,640 files (100% pass the real mermaid@11 parser, not just the heuristic) |
 | Topic directories | 61 |
 | Math-enabled pages | 128 |
-| Words | ~7.09M |
-| Unique external URLs | 12,035 (de-duplicated across every page under `src/`) |
+| Words | ~7.73M |
+| Unique external URLs | 12,370 (de-duplicated across every page under `src/`) |
 
 ## Validation
 
