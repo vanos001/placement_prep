@@ -6,7 +6,7 @@ It is a **navigation layer**, not a tutorial. Where the rest of this book explai
 
 Language memory models and their atomics, runtimes from goroutines to virtual threads to the BEAM, the lock-free algorithm literature, the tools that prove or debug it, and a two-track path from OSTEP's concurrency chapters to reading Vyukov and McKenney directly.
 
-**68 entries** across 8 categories, plus **26 research & open-access sources** and **58 education & reference resources** (24 basic / 34 advanced).
+**68 entries** across 8 categories, plus **26 research & open-access sources** and **58 education & reference resources** (24 basic / 34 advanced), plus **9 video resources** and **4 conference sources**.
 
 Every link HTTP-verified on **2026-10-08**.
 
@@ -24,6 +24,8 @@ Every link HTTP-verified on **2026-10-08**.
 - [8. Observability & debugging](#8-observability--debugging) — 6
 - [Research papers & open-access literature](#research-papers--open-access-literature) — 26
 - [Education & reference implementations](#education--reference-implementations) — 58 (24 basic / 34 advanced)
+- [Video courses, channels & talks](#video-courses-channels--talks) — 9
+- [Conference videos, notes & archives](#conference-videos-notes--archives) — 4
 
 
 ## 1. Go concurrency
@@ -709,6 +711,43 @@ Two tracks: **Basic** builds the foundations, **Advanced** is about reading and 
 
 
 ---
+
+## Video courses, channels & talks
+
+*9 resources across 2 groups.* Every channel and playlist below was fetched and title-verified on **2026-10-09**. Handles drift and several plausible-looking handles resolve to the wrong channel, so a 200 response is not proof of identity — the links here were each checked against the channel title.
+
+### Channels & conference recordings
+
+- **[CppCon](https://www.youtube.com/@CppCon)** — The C++ conference — where the memory-model and atomics talks live.
+- **[NVIDIA Developer](https://www.youtube.com/@NVIDIADeveloper)** — GTC talks on GPU architecture and parallel programming; primary for accelerator design.
+- **[Strange Loop Conference](https://www.youtube.com/@StrangeLoopConf)** — The Strange Loop channel: distributed systems, databases and language talks from the conference.
+- **[USENIX](https://www.youtube.com/@USENIX)** — Conference recordings for most USENIX papers — free video, the fastest route into a systems paper.
+- **[Computerphile](https://www.youtube.com/@Computerphile)** — Short, well-made explainers; the right first stop before a spec.
+- **[InfoQ](https://www.youtube.com/@InfoQ)** — Conference keynotes and architecture talks — good for orientation, verify specifics elsewhere.
+- **[Google TechTalks](https://www.youtube.com/@GoogleTechTalks)** — Concurrency and runtime talks, including historic ones from the authors of Go and Java libraries.
+- **[Linux Plumbers Conference](https://www.youtube.com/@linuxplumbers)** — Kernel scheduler, locking and memory-ordering tracks.
+
+### Lectures & playlists
+
+- **[UC Berkeley CS162 — Operating Systems (Fall 2020)](https://www.youtube.com/playlist?list=PLbGbd5NUA_Nhdy07caUPmCR9v0o95lauT)** — The concurrency third of this course (lectures 6–12) is the clearest free treatment of locks, semaphores and monitors.
+
+*Note:* No channel covers concurrency systematically; CppCon holds the memory-model and lock-free talks, GTC holds the GPU ones.
+
+## Conference videos, notes & archives
+
+*4 resources across 2 groups.* Conference recordings are the primary-source tier of video: the speaker is usually an author of the paper, and where a talk exists the proceedings entry is often open at the same link. Every URL here returned 200 on **2026-10-09** unless the note says otherwise.
+
+Concurrency has no conference of its own; the material appears at CppCon, at the systems venues, and in the kernel tracks.
+
+### Conference channels & video archives
+
+- **[Linux Plumbers Conference](https://lpc.events/)** — Scheduler, locking and memory-ordering microconferences — kernel concurrency discussed by the people maintaining it.
+- **[USENIX ATC '26](https://www.usenix.org/conference/atc26)** — The applied venue, open.
+- **[FOSDEM video archive](https://video.fosdem.org/)** — Kernel and runtime devrooms.
+
+### Notes, proceedings & paper-adjacent archives
+
+- **No official channel for PPoPP or SPAA** — Checked on 2026-10-09; the parallel-computing conferences do not publish video. Use the ACM DL and author pages.
 
 ## If you only do three things
 

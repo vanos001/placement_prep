@@ -6,7 +6,7 @@ It is a **navigation layer**, not a tutorial. Where the rest of this book explai
 
 Standards and exposure feeds, fuzzers, SAST/SCA and secret scanners, supply-chain signing, web and API tooling, network and host defense, runtime and cloud security, identity and applied crypto, and the reverse-engineering bench — plus a two-track path from the PortSwigger Web Security Academy to reading Project Zero write-ups.
 
-**81 entries** across 9 categories, plus **46 education & reference-implementation resources** (20 basic / 26 advanced).
+**81 entries** across 9 categories, plus **46 education & reference-implementation resources** (20 basic / 26 advanced), plus **14 video resources** and **7 conference sources**.
 
 Every link HTTP-verified on **2026-10-08**.
 
@@ -25,6 +25,8 @@ Every link HTTP-verified on **2026-10-08**.
 - [9. Reverse engineering, malware & forensics](#9-reverse-engineering-malware--forensics) — 7
 - [Education & reference implementations](#education--reference-implementations) — 46 (20 basic / 26 advanced)
 - [Research papers & open-access literature](#research-papers--open-access-literature) — 22
+- [Video courses, channels & talks](#video-courses-channels--talks) — 14
+- [Conference videos, notes & archives](#conference-videos-notes--archives) — 7
 
 
 ## 1. Standards, vulnerability & exposure data
@@ -955,6 +957,51 @@ Security research publishes at four core venues — USENIX Security, IEEE S&P, A
 **A note on SoK papers.** Security is the field with a working culture of *Systematization of Knowledge* papers — literature reviews that are themselves rigorous, peer-reviewed contributions, published mostly at USENIX Security and IEEE S&P. Before reading anything else in a new subfield, search "SoK \<topic\>" across the venues above: a good SoK has already sorted the literature for you and told you which papers were superseded.
 
 ---
+
+## Video courses, channels & talks
+
+*14 resources across 2 groups.* Every channel and playlist below was fetched and title-verified on **2026-10-09**. Handles drift and several plausible-looking handles resolve to the wrong channel, so a 200 response is not proof of identity — the links here were each checked against the channel title.
+
+### Channels & conference recordings
+
+- **[LiveOverflow](https://www.youtube.com/@LiveOverflow)** — The best free offensive depth: binary exploitation, web, and CTF methodology.
+- **[STÖK](https://www.youtube.com/@STOKfredrik)** — Live offensive security work and tooling, mostly unscripted.
+- **[ippsec](https://www.youtube.com/@ippsec)** — Hack The Box walkthroughs with the reasoning narrated — methodology, not answers.
+- **[PwnFunction](https://www.youtube.com/@PwnFunction)** — Short, precise explainers on web and exploitation primitives.
+- **[NahamSec](https://www.youtube.com/@NahamSec)** — Bug bounty recon methodology; verify any technique against primary sources.
+- **[Gynvael Coldwind](https://www.youtube.com/@GynvaelColdwind)** — Low-level security, reversing and CTF streams in English and Polish.
+- **[DEF CON](https://www.youtube.com/@DEFCONConference)** — Official DEF CON channel — conference and village talks.
+- **[USENIX](https://www.youtube.com/@USENIX)** — Conference recordings for most USENIX papers — free video, the fastest route into a systems paper.
+- **[Black Hat](https://www.youtube.com/@BlackHatOfficial)** — Official Black Hat channel: briefings and keynote recordings.
+- **[Hack In The Box](https://www.youtube.com/@HITBSecConf)** — HITB conference talks; strong Asia-Pacific coverage, full sessions published.
+- **[OWASP Foundation](https://www.youtube.com/@OWASPGlobal)** — AppSec Days and chapter talks — the application-security side the CTF channels skip.
+- **[Hack The Box](https://www.youtube.com/@hackthebox)** — Official HTB channel: machine releases, walkthroughs and community streams.
+- **[John Hammond](https://www.youtube.com/@_JohnHammond)** — CTF walkthroughs and malware analysis with the reasoning narrated.
+
+### Lectures & playlists
+
+- **[MIT 6.858 — Computer Systems Security (Fall 2014)](https://www.youtube.com/playlist?list=PLeNTxjd8Hh3k-afkI9Z7fHGOYk2Mxl2js)** — Zeldovich and Mickens: threat models, buffer overflows, web security, Kerberos. Old, and still the best systems-security course on video.
+
+*Note:* Offensive video is unusually good, because CTF and bug-bounty practitioners publish their actual process. DEF CON and USENIX recordings are the primary-source tier.
+
+## Conference videos, notes & archives
+
+*7 resources across 2 groups.* Conference recordings are the primary-source tier of video: the speaker is usually an author of the paper, and where a talk exists the proceedings entry is often open at the same link. Every URL here returned 200 on **2026-10-09** unless the note says otherwise.
+
+Security has the best conference video of any field here, because the hacker conferences publish everything and the academic ones are open too.
+
+### Conference channels & video archives
+
+- **[DEF CON](https://defcon.org/)** — Site for the conference whose recordings sit on the channel above; village talks are the depth.
+- **[USENIX Security](https://www.usenix.org/security/)** — Open proceedings plus talk video — the academic tier, no paywall.
+- **[IEEE Security & Privacy](https://www.ieee-security.org/)** — The Oakland S&P portal; proceedings largely paywalled, papers usually on author pages and arXiv.
+- **[media.ccc.de](https://media.ccc.de/)** — The canonical hacker-conference archive: Chaos Communication Congress, with slides, audio and subtitles, all open.
+- **[FOSDEM video archive](https://video.fosdem.org/)** — Security devroom; free and complete.
+
+### Notes, proceedings & paper-adjacent archives
+
+- **[RSA Conference](https://www.rsaconference.com/)** — *Verify currency:* 403 to automated checkers, works in a browser; recordings mostly behind registration.
+- **HITB site is unreliable** — Checked on 2026-10-09: hitb.org does not resolve. Their talks are on the HITB channel above instead.
 
 ## If you only do three things
 

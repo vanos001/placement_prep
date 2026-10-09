@@ -3787,6 +3787,7 @@
 - [Security Engineering Reference Library](./references/security-reference.md)
 - [Concurrency & Parallelism Reference Library](./references/concurrency-reference.md)
 - [Storage Systems Reference Library](./references/storage-reference.md)
+- [DSA, Competitive Programming & Competitive Math Reference Library](./references/dsa-competitive-programming.md)
 
 ---
 

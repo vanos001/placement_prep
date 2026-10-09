@@ -68,3 +68,15 @@ The `research` branch (75 commits ahead of `main`) landed 660 new markdown files
 
 - Added 20+ pages across kernel, networks, backend, languages, storage, concurrency, and interview sections
 - All with Mermaid diagrams, interview questions, and real-world references
+
+## Reference library expansion — 2026-10-09
+
+| Step | Result |
+|---|---|
+| New fourteenth index | `references/dsa-competitive-programming.md` — 170 entries, 72 education resources (37 basic / 35 advanced), 30 research sources, 402 verified URLs, wired into `SUMMARY.md` and `references/README.md`. |
+| Video sections | 195 resources across the fourteen indexes (channels, conference recordings and lecture playlists), every channel and playlist fetched and title-checked. |
+| Conference sections | 86 sources across the fourteen indexes: conference channels and video archives (USENIX, FOSDEM `video.fosdem.org`, `media.ccc.de`, Linux Plumbers, netdev, LCA, PyCon US, LLVM dev meetings) plus proceedings and note archives (SIGCOMM, SIGPLAN, SIGMOD, VLDB, NeurIPS, ICLR, ICML, CVF, EuroSys, IEEE S&P, SNIA, `;login:`). |
+| Rejected rather than guessed | ~35 bad YouTube handles (wrong identity or 404), 4 dead hosts, 2 playlist IDs that resolved to "undefined"; 3 bot-blocked sites kept and flagged. |
+| CSVs | `data/*.csv` extended to one row per resource — entries, education, video, conference — including education rows for the four indexes that were entry-only. |
+| Documentation | `references/README.md` (Video + Conference columns, recomputed URL counts, corrected totals), root `README.md` (What's Inside, repository structure, stats), `meta/status.md`, `meta/progress.md`, `meta/coverage_dashboard.md`, `meta/knowledge_graph.md`. |
+

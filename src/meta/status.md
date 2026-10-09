@@ -29,7 +29,10 @@ stale counts in this file, and missing CI. See "Deep review & fix pass".
 | Advanced topics | ⚠️ Partially verified | All 1,374 `src/index.md` bullets covered. The earlier "all 1,528 `prompt.md` topics" claim could not be reproduced — **no `prompt.md` exists in the repository**, so that figure is unverifiable and is no longer asserted. |
 | Build-it-yourself | ✅ Complete | 34 implementation projects across 5 domains. |
 | Benchmarking | ✅ Complete | Methodology, pitfalls, statistics, tool comparison. |
+| Reference libraries | ✅ Complete | 14 indexes under `src/references/` — **1,257 entries**, **2,744 de-duplicated URLs**, 928 education resources, 195 video resources, 86 conference sources; every URL verified 2026-10-07/08/09, CSV mirrors each page. |
 | Research batches | ✅ Complete | 93 research commits (2026-08-02 → 2026-09-05), 66+ "batch" deep-dive pages with Crossref-verified DOIs, RFC-cited networking pages, and byte-exact demo QA. |
+
+**Reference libraries (2026-10-09).** Fourteen verified primary-source indexes, one per major topic, each carrying the same five parts: numbered entry categories, a two-track Education section, a research-papers section, a Video courses/channels/talks section, and a Conference videos/notes/archives section. A new fourteenth index (DSA, competitive programming and competitive math) joined the set this week. Per-index counts, the CSV list and the verification dates live in `src/references/README.md`; the headline totals there (1,257 entries, 2,744 unique URLs) are recomputed from the pages rather than carried forward, because the previous totals did not reconcile with their own per-index column.
 
 ## Validation commands
 

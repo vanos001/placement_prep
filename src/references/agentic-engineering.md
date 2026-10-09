@@ -6,7 +6,7 @@ It is a **navigation layer**, not a tutorial. Where the rest of this book explai
 
 Protocols (MCP, A2A), agent frameworks, coding agents, sandboxed execution and durable workflows, tracing and benchmarks, agent security, and a two-track path from reading a thousand-line agent loop to evaluating and isolating production agents.
 
-**71 entries** across 7 categories, plus **54 education & reference-implementation resources** (21 basic / 33 advanced).
+**71 entries** across 7 categories, plus **54 education & reference-implementation resources** (21 basic / 33 advanced), plus **9 video resources** and **5 conference sources**.
 
 Every link HTTP-verified on **2026-10-07**.
 
@@ -22,6 +22,8 @@ Every link HTTP-verified on **2026-10-07**.
 - [6. Guardrails, permissions & agent security](#6-guardrails-permissions--agent-security) — 6
 - [7. Research papers & open-access literature](#7-research-papers--open-access-literature) — 29
 - [Education & reference implementations](#education--reference-implementations) — 54 (21 basic / 33 advanced)
+- [Video courses, channels & talks](#video-courses-channels--talks) — 9
+- [Conference videos, notes & archives](#conference-videos-notes--archives) — 5
 
 
 ## 1. Protocols & interoperability
@@ -691,6 +693,41 @@ Two tracks: **Basic** builds the foundations, **Advanced** is about reading and 
 
 
 ---
+
+## Video courses, channels & talks
+
+*9 resources across 1 group.* Every channel and playlist below was fetched and title-verified on **2026-10-09**. Handles drift and several plausible-looking handles resolve to the wrong channel, so a 200 response is not proof of identity — the links here were each checked against the channel title.
+
+### Channels & conference recordings
+
+- **[LangChain](https://www.youtube.com/@LangChain)** — Framework walkthroughs for agents and RAG; vendor content, verify against the docs.
+- **[Hugging Face](https://www.youtube.com/@HuggingFace)** — The open LLM ecosystem: transformers, datasets, agents, tool calling.
+- **[Dave Ebbelaar](https://www.youtube.com/@daveebbelaar)** — Practical LLM and agent app builds, end to end, in Python.
+- **[Machine Learning Street Talk](https://www.youtube.com/@MachineLearningStreetTalk)** — Long-form research interviews; useful for context around current papers.
+- **[OpenAI](https://www.youtube.com/@OpenAI)** — Model releases and DevDay talks; primary for API and product behaviour.
+- **[Google DeepMind](https://www.youtube.com/@GoogleDeepMind)** — Research overviews and model announcements from DeepMind.
+- **[InfoQ](https://www.youtube.com/@InfoQ)** — Conference keynotes and architecture talks — good for orientation, verify specifics elsewhere.
+- **[Latent Space](https://www.youtube.com/@LatentSpacePod)** — Agent-tooling interviews; current, but the frameworks discussed age within months.
+- **[TWIML AI Podcast](https://www.youtube.com/@twimlai)** — Applied-agent interviews, including RAG and evaluation practice.
+
+*Note:* Framework channels dominate agent video and they age badly; watch for the pattern, then re-implement against current docs.
+
+## Conference videos, notes & archives
+
+*5 resources across 2 groups.* Conference recordings are the primary-source tier of video: the speaker is usually an author of the paper, and where a talk exists the proceedings entry is often open at the same link. Every URL here returned 200 on **2026-10-09** unless the note says otherwise.
+
+Agent work has no dedicated peer-reviewed venue yet; it appears at the main ML conferences and is demonstrated at framework dev days.
+
+### Conference channels & video archives
+
+- **[ICLR](https://iclr.cc/)** — Most agent-paper activity; the open reviews are useful for seeing what reviewers actually object to.
+- **[NeurIPS proceedings](https://neurips.cc/Conferences/2025)** — The other half of agent research, especially tool use and evaluation.
+- **[ICML](https://icml.cc/)** — Proceedings portal.
+- **[AI Engineer World's Fair](https://ai.engineer/)** — The closest thing to a dedicated conference for applied LLM and agent work; recordings published by the organisers, vendor-heavy.
+
+### Notes, proceedings & paper-adjacent archives
+
+- **Framework dev days are release notes** — LangChain, OpenAI and Hugging Face agent talks describe the API as it was on the day. Re-check the docs before building on them.
 
 ## If you only do three things
 

@@ -6,7 +6,7 @@ It is a **navigation layer**, not a tutorial. Where the rest of this book explai
 
 Compiler infrastructure, language specifications, managed runtimes and JITs, WebAssembly, parsing tooling, and a two-track path from Crafting Interpreters to reading V8, rustc and MLIR.
 
-**82 entries** across 8 categories, plus **59 education & reference-implementation resources** (24 basic / 35 advanced).
+**82 entries** across 8 categories, plus **59 education & reference-implementation resources** (24 basic / 35 advanced), plus **12 video resources** and **5 conference sources**.
 
 Every link HTTP-verified on **2026-10-07**.
 
@@ -23,6 +23,8 @@ Every link HTTP-verified on **2026-10-07**.
 - [7. Proof assistants, verification & teaching material](#7-proof-assistants-verification--teaching-material) — 12
 - [8. Research papers & open-access literature](#8-research-papers--open-access-literature) — 27
 - [Education & reference implementations](#education--reference-implementations) — 59 (24 basic / 35 advanced)
+- [Video courses, channels & talks](#video-courses-channels--talks) — 12
+- [Conference videos, notes & archives](#conference-videos-notes--archives) — 5
 
 
 ## 1. Compiler infrastructure
@@ -819,6 +821,47 @@ Two tracks: **Basic** builds the foundations, **Advanced** is about reading and 
 
 
 ---
+
+## Video courses, channels & talks
+
+*12 resources across 2 groups.* Every channel and playlist below was fetched and title-verified on **2026-10-09**. Handles drift and several plausible-looking handles resolve to the wrong channel, so a 200 response is not proof of identity — the links here were each checked against the channel title.
+
+### Channels & conference recordings
+
+- **[Tsoding Daily](https://www.youtube.com/@TsodingDaily)** — Livestreamed low-level building: compilers, interpreters, OS-ish projects in C and Zig.
+- **[CppCon](https://www.youtube.com/@CppCon)** — The C++ conference — where the memory-model and atomics talks live.
+- **[Strange Loop Conference](https://www.youtube.com/@StrangeLoopConf)** — The Strange Loop channel: distributed systems, databases and language talks from the conference.
+- **[Computerphile](https://www.youtube.com/@Computerphile)** — Short, well-made explainers; the right first stop before a spec.
+- **[Neso Academy](https://www.youtube.com/@NesoAcademy)** — Unit-by-unit university course playlists (OS, compiler design); verify against OSTEP and the dragon book.
+- **[USENIX](https://www.youtube.com/@USENIX)** — Conference recordings for most USENIX papers — free video, the fastest route into a systems paper.
+- **[InfoQ](https://www.youtube.com/@InfoQ)** — Conference keynotes and architecture talks — good for orientation, verify specifics elsewhere.
+- **[Papers We Love](https://www.youtube.com/@PapersWeLove)** — Recorded paper walkthroughs — watch one before you read the PDF.
+- **[PyCon US](https://www.youtube.com/@PyConUS)** — The full PyCon archive: CPython internals, JIT work, type systems, packaging.
+- **[C++Now](https://www.youtube.com/@CppNow)** — The Boost-flavoured C++ conference; more language-design and metaprogramming than CppCon.
+- **[Meeting C++](https://www.youtube.com/@meetingcpp)** — European C++ conference recordings, including standardisation talks.
+
+### Lectures & playlists
+
+- **[Stanford CS143 — Compilers (Alex Aiken)](https://www.youtube.com/playlist?list=PLEAYkSg4uSQ3yc_zf_f1GOxl5CZo0LVBb)** — Short, tightly cut lectures: lexing through code generation and register allocation.
+
+*Note:* Compiler video is thin and fragmented: livestream build-alongs and conference talks, with no single canonical course. The playlists in the education section above still beat it for rigour.
+
+## Conference videos, notes & archives
+
+*5 resources across 2 groups.* Conference recordings are the primary-source tier of video: the speaker is usually an author of the paper, and where a talk exists the proceedings entry is often open at the same link. Every URL here returned 200 on **2026-10-09** unless the note says otherwise.
+
+Compiler video is scattered across language conferences; LLVM and PyCon are the two archives that are actually complete.
+
+### Conference channels & video archives
+
+- **[LLVM Developers' Meetings](https://llvm.org/devmtg/)** — Slides and recordings for every LLVM dev meeting going back years — the single best compiler-implementation archive.
+- **[PyCon US](https://us.pycon.org/)** — Full talk archive on the site and on the PyCon US channel; interpreter internals talks every year.
+- **[Strange Loop](https://www.thestrangeloop.com/)** — Language-design and implementation talks, free.
+- **[FOSDEM video archive](https://video.fosdem.org/)** — Programming-language and compiler devrooms.
+
+### Notes, proceedings & paper-adjacent archives
+
+- **No official channel for PLDI, POPL or ICFP** — Checked on 2026-10-09. Papers live in the ACM DL and PACMPL (open); talks surface on author pages and at Strange Loop.
 
 ## If you only do three things
 

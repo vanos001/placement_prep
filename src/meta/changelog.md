@@ -3,6 +3,58 @@
 This file records meaningful content and validation changes to the placement
 preparation book. Dates use the project timezone, Asia/Calcutta.
 
+## 2026-10-09 — Reference libraries: a new DSA index, then video and conference tracks on all fourteen
+
+Two pieces of work on `src/references/`. First, a **fourteenth index**,
+`dsa-competitive-programming.md` — DSA, competitive programming and competitive
+math — rebuilt from a flat source list into the house format: 170 entries across
+nine categories (contest platforms and judges, curricula and reference
+implementations, competitive math, tooling and judge infrastructure, interview
+and OA platforms, editorials, university and MOOC material, community and video,
+repositories), 72 education resources in two tracks, 30 research sources, and
+**402 verified URLs**. It is wired into `src/SUMMARY.md` and into
+`src/references/README.md`, and its CSV is generated from the page.
+
+Second, every one of the fourteen indexes gained two new sections:
+**Video courses, channels & talks** (195 resources) and **Conference videos,
+notes & archives** (86 sources, split into conference channels / video archives
+and proceedings / note archives). Both are navigation layers in the same voice as
+the rest of the book — one line per resource, each with an honest caveat about
+what it is good for and where it misleads. Highlights: Onur Mutlu's lecture
+series and Hot Chips for architecture; Kernel Recipes, Linux Plumbers,
+linux.conf.au, OSDI/ATC and EuroSys for operating systems; CMU 15-445 plus
+VLDB/SIGMOD/Percona Live for databases; MIT 6.824, Strange Loop, KTH distributed
+algorithms and SREcon for distributed systems; Stanford CS229, NeurIPS/ICLR/ICML,
+the CVF open-access portal and MLSys for ML; LLVM developer meetings, PyCon US
+and SIGPLAN for compilers; DEF CON, USENIX Security, Black Hat, HITB and
+media.ccc.de for security; CppCon and the kernel tracks for concurrency; FAST,
+SNIA and OpenZFS for storage; netdev, SIGCOMM, RIPE and IETF for networking;
+and the IOI / ICPC / IMO task archives for competitive programming, where the
+honest note is that the task archive matters and no talk circuit exists.
+
+**Verification.** Every channel, playlist and archive URL added was fetched and,
+for YouTube, title-checked — a 200 on a handle is not proof of identity, and the
+rejections are recorded in-page: `@NANOG` resolves to "Nano G", `@OWASPfoundation`
+to an unrelated channel, `@BlackHatEvents` to "InfoSec Events", `@sigplan` to a
+personal channel, and `@nptel`/`@NPTEL`/`@NPTELNOC`, `@ISCAconf`, `@sigmod`,
+`@CiscoLive`, `@nanogorg`, `@MIT6S191` and `@ACLmeeting` all 404. Dead hosts
+(`hitb.org`, `kernel-recipes.net`, `debconf-video.debian.net`) were dropped; three
+sites that 403 automated checkers but work in a browser (`nanog.org`,
+`blackhat.com`, `rsaconference.com`) are kept and flagged. Two guessed playlist
+IDs resolved to "undefined" and were discarded; CMU 15-418 is listed with its
+real caveat, that slides and assignments are open but lecture video needs an
+`andrew.cmu.edu` YouTube login.
+
+**Also updated:** `data/*.csv` now carries one row per resource including the new
+video and conference rows (and education rows for the four indexes whose CSVs
+were previously entry-only); `src/references/README.md` gains Video and
+Conference columns and recomputed per-page URL counts; the book totals were
+recomputed to **1,257 entries and 2,744 unique URLs** after the previous headline
+figure was found not to reconcile with its own per-index column; `src/meta/` was
+refreshed (status, progress, coverage dashboard, knowledge graph) and the root
+`README.md` now lists the reference libraries in *What's Inside*, in the
+repository structure, and in the stats table.
+
 ## 2026-10-09 — Round 11: five new pages, two thin pages deepened
 
 Eleventh round toward the 30k-page goal. Of the six candidates queued by

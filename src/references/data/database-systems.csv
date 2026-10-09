@@ -120,3 +120,23 @@ Education — Advanced,VLDB / PVLDB,https://www.vldb.org/pvldb/,,,Papers & resea
 Education — Advanced,ACM SIGMOD,https://dl.acm.org/conference/sigmod,,,Papers & research venues,,"The other main venue. ACM DL 403s to bots; accessible in a browser, and most papers are also on authors' pages."
 Education — Advanced,CIDR,https://www.cidrdb.org/,,,Papers & research venues,,"Biennial, visionary, short papers. Often the most interesting reading of the three."
 Education — Advanced,awesome-database-learning,https://github.com/pingcap/awesome-database-learning,,,Papers & research venues,,Also a good paper index organised by subsystem.
+Video — Channels & conference recordings,Hussein Nasser,https://www.youtube.com/@HusseinNasser,,,,,"Database internals — indexing, isolation levels, replication — explained from first principles."
+Video — Channels & conference recordings,MySQL,https://www.youtube.com/@MySQL,,,,,Official MySQL channel: product deep dives and conference talks.
+Video — Channels & conference recordings,MongoDB,https://www.youtube.com/@MongoDB,,,,,"Official MongoDB channel: internals, aggregation, Atlas talks."
+Video — Channels & conference recordings,Redis,https://www.youtube.com/@RedisInc,,,,,"Official Redis channel: internals, modules, and Redis University material."
+Video — Channels & conference recordings,Confluent,https://www.youtube.com/@Confluent,,,,,Kafka Summit talks and stream-processing design sessions — the canonical Kafka video record.
+Video — Channels & conference recordings,USENIX,https://www.youtube.com/@USENIX,,,,,"Conference recordings for most USENIX papers — free video, the fastest route into a systems paper."
+Video — Channels & conference recordings,InfoQ,https://www.youtube.com/@InfoQ,,,,,"Conference keynotes and architecture talks — good for orientation, verify specifics elsewhere."
+Video — Channels & conference recordings,Papers We Love,https://www.youtube.com/@PapersWeLove,,,,,Recorded paper walkthroughs — watch one before you read the PDF.
+Video — Channels & conference recordings,VLDB,https://www.youtube.com/@vldb,,,,,"VLDB conference recordings; the channel only holds one edition, so treat it as a sample, not an archive."
+Video — Channels & conference recordings,Percona,https://www.youtube.com/@Percona,,,,,"Percona Live talks on MySQL, PostgreSQL and MongoDB internals — practitioner depth, engine-specific."
+Video — Channels & conference recordings,ClickHouse,https://www.youtube.com/@ClickHouseDB,,,,,"Vendor channel, but unusually technical: columnar storage internals and query-execution talks."
+Video — Channels & conference recordings,Yugabyte,https://www.youtube.com/@YugabyteDB,,,,,"Distributed SQL internals, including consensus and transaction-design talks."
+Video — Lectures & playlists,CMU 15-445/645 — Intro to Database Systems (Fall 2022),https://www.youtube.com/playlist?list=PLSE8ODhjZXjaKScG3l0nuOiDTTqpfnWFf,,,,,The standard free database-internals course; pair it with the course site and the labs below.
+Video — Lectures & playlists,CMU 15-445/645 — Intro to Database Systems (Fall 2019),https://www.youtube.com/playlist?list=PLSE8ODhjZXjbohkNBWQs_otTrBTrjyohi,,,,,An earlier run; useful when the 2022 recording of a topic is missing.
+Conference — Conference channels & video archives,VLDB,https://www.vldb.org/,,,,,"PVLDB is fully open access, which is why it is the citation you can actually read."
+Conference — Conference channels & video archives,USENIX FAST '25,https://www.usenix.org/conference/fast25,,,,,"Storage conference, but the storage-engine papers here are database internals."
+Conference — Conference channels & video archives,Percona Live,https://www.percona.com/live,,,,,"Practitioner conference on MySQL, PostgreSQL and MongoDB; talks published on the Percona channel."
+Conference — Conference channels & video archives,CMU 15-445 course site,https://15445.courses.cs.cmu.edu/fall2025/,,,,,"Slides, notes and open labs to go with the playlist above; the homework is the point."
+Conference — Conference channels & video archives,FOSDEM video archive,https://video.fosdem.org/,,,,,Databases and PostgreSQL devrooms.
+"Conference — Notes, proceedings & paper-adjacent archives",USENIX ;login:,https://www.usenix.org/publications/login/,,,,,Where the operational side of database work gets written up.

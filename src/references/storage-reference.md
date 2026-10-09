@@ -8,7 +8,7 @@ Local filesystems from ext4 to ZFS and Btrfs, distributed and parallel filesyste
 
 The overlap contract: database engines (RocksDB, LevelDB, LMDB, WiredTiger) and columnar interchange formats (Parquet, Arrow) live in the [Database Systems index](./database-systems.md). This page owns filesystems — local, distributed and parallel — object storage, the block and device layers, backup and recovery, benchmarking, and on-disk formats. CXL and the new interconnect story belong to the [Computer Architecture index](./computer-architecture.md); this page keeps only the filesystem-side DAX note.
 
-**64 entries** across 9 categories, plus **58 education & reference resources** (24 basic / 34 advanced).
+**64 entries** across 9 categories, plus **58 education & reference resources** (24 basic / 34 advanced), plus **8 video resources** and **8 conference sources**.
 
 Every link HTTP-verified on **2026-10-08**.
 
@@ -27,6 +27,8 @@ Every link HTTP-verified on **2026-10-08**.
 - [9. Persistent memory & new buses](#9-persistent-memory--new-buses) — 5
 - [Education & reference implementations](#education--reference-implementations) — 58 (24 basic / 34 advanced)
 - [Research papers & open-access literature](#research-papers--open-access-literature) — 28
+- [Video courses, channels & talks](#video-courses-channels--talks) — 8
+- [Conference videos, notes & archives](#conference-videos-notes--archives) — 8
 
 
 ## 1. Linux filesystems
@@ -908,6 +910,43 @@ Two tracks: **Basic** builds the foundations, **Advanced** is about reading and 
 
 
 ---
+
+## Video courses, channels & talks
+
+*8 resources across 1 group.* Every channel and playlist below was fetched and title-verified on **2026-10-09**. Handles drift and several plausible-looking handles resolve to the wrong channel, so a 200 response is not proof of identity — the links here were each checked against the channel title.
+
+### Channels & conference recordings
+
+- **[Kernel Recipes](https://www.youtube.com/@KernelRecipes)** — Annual Paris kernel conference: maintainer-level talks on schedulers, filesystems and mm.
+- **[linux.conf.au](https://www.youtube.com/@linuxconfau)** — linux.conf.au talks: kernel, filesystems and low-level systems depth.
+- **[The Linux Foundation](https://www.youtube.com/@LinuxFoundationOrg)** — The Linux Foundation channel: kernel and LF event recordings.
+- **[Ceph](https://www.youtube.com/@CephStorage)** — Official Ceph channel: RADOS, RGW, CephFS talks and community calls.
+- **[USENIX](https://www.youtube.com/@USENIX)** — Conference recordings for most USENIX papers — free video, the fastest route into a systems paper.
+- **[InfoQ](https://www.youtube.com/@InfoQ)** — Conference keynotes and architecture talks — good for orientation, verify specifics elsewhere.
+- **[Linux Plumbers Conference](https://www.youtube.com/@linuxplumbers)** — Filesystem and block-layer tracks; where btrfs, XFS and io_uring design gets argued in public.
+- **[ScyllaDB](https://www.youtube.com/@ScyllaDB)** — Storage-engine performance talks, heavy on NVMe and io_uring measurement.
+
+*Note:* Storage video is almost entirely conference footage: FAST/ATC/USENIX for research, kernel recipes and LCA for implementation.
+
+## Conference videos, notes & archives
+
+*8 resources across 2 groups.* Conference recordings are the primary-source tier of video: the speaker is usually an author of the paper, and where a talk exists the proceedings entry is often open at the same link. Every URL here returned 200 on **2026-10-09** unless the note says otherwise.
+
+FAST is the storage venue, and it is fully open; everything else comes from the kernel tracks.
+
+### Conference channels & video archives
+
+- **[USENIX FAST '26](https://www.usenix.org/conference/fast26)** — The storage conference: open proceedings, video for most talks.
+- **[USENIX ATC '26](https://www.usenix.org/conference/atc26)** — Applied storage and filesystem papers; open.
+- **[Linux Plumbers Conference](https://lpc.events/)** — Filesystem and block-layer microconferences; where io_uring and btrfs design gets decided.
+- **[linux.conf.au](https://linux.conf.au/)** — Filesystem and storage tracks, recordings on the channel above.
+- **[SNIA](https://www.snia.org/)** — The storage standards body: tutorial slides, webinars and the persistent-memory material nobody else publishes.
+- **[OpenZFS](https://openzfs.org/)** — Project site for ZFS; summit recordings and documentation.
+- **[FOSDEM video archive](https://video.fosdem.org/)** — Storage and filesystem devrooms.
+
+### Notes, proceedings & paper-adjacent archives
+
+- **[USENIX ;login:](https://www.usenix.org/publications/login/)** — Storage operations write-ups, easier to skim than FAST papers.
 
 ## If you only do three things
 

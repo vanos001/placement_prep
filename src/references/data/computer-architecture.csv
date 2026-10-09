@@ -115,3 +115,21 @@ Education — Advanced,MICRO,https://www.microarch.org/,,,Research venues,,Micro
 Education — Advanced,ASPLOS,https://asplos-conference.org/,,,Research venues,,"Where architecture, OS and languages intersect — the most cross-cutting venue."
 Education — Advanced,HPCA,https://hpca-conf.org/,,,Research venues,,High-performance architecture.
 Education — Advanced,gem5,https://github.com/gem5/gem5,,,Research venues,,Learn it if you intend to publish; most results in these venues are produced with it.
+Video — Channels & conference recordings,Onur Mutlu,https://www.youtube.com/@OnurMutlu,,,,,Full graduate lecture series from digital design through memory systems — the best free depth on caches and DRAM.
+Video — Channels & conference recordings,Onur Mutlu Lectures,https://www.youtube.com/@onurmutlulectures,,,,,Separate archive channel for Mutlu lecture recordings.
+Video — Channels & conference recordings,CS61C,https://www.youtube.com/@CS61C,,,,,"Berkeley CS61C recordings — RISC-V, caches, SIMD, with the labs."
+Video — Channels & conference recordings,UC Berkeley,https://www.youtube.com/@UCBerkeley,,,,,EECS course and seminar recordings.
+Video — Channels & conference recordings,Computerphile,https://www.youtube.com/@Computerphile,,,,,"Short, well-made explainers; the right first stop before a spec."
+Video — Channels & conference recordings,Branch Education,https://www.youtube.com/@BranchEducation,,,,,"Animated deep dives into CPUs, caches and memory — strong mental models, not authoritative."
+Video — Channels & conference recordings,NVIDIA Developer,https://www.youtube.com/@NVIDIADeveloper,,,,,GTC talks on GPU architecture and parallel programming; primary for accelerator design.
+Video — Channels & conference recordings,USENIX,https://www.youtube.com/@USENIX,,,,,"Conference recordings for most USENIX papers — free video, the fastest route into a systems paper."
+Video — Channels & conference recordings,linux.conf.au,https://www.youtube.com/@linuxconfau,,,,,"linux.conf.au talks: kernel, filesystems and low-level systems depth."
+Video — Channels & conference recordings,Hot Chips,https://www.youtube.com/@HotChips,,,,,The annual chip-architecture symposium: talks by the teams that built the hardware.
+Video — Channels & conference recordings,Google TechTalks,https://www.youtube.com/@GoogleTechTalks,,,,,"Architecture and systems talks from visiting researchers; uneven, but deep when good."
+Video — Channels & conference recordings,IIT Madras,https://www.youtube.com/@IITMadrasOfficial,,,,,"Full NPTEL-style courses including computer organisation and architecture, in English."
+Conference — Conference channels & video archives,Hot Chips,https://www.youtube.com/@HotChips,,,,,The one architecture symposium that publishes its own recordings; talks by the design teams.
+Conference — Conference channels & video archives,CMU 15-418/15-618,https://www.cs.cmu.edu/~418/,,,,,"Slides and assignments are open; the lecture videos sit behind an andrew.cmu.edu YouTube login, so plan for slides only."
+Conference — Conference channels & video archives,FOSDEM video archive,https://video.fosdem.org/,,,,,"Hardware, embedded and RISC-V devrooms — the widest free coverage of architecture-adjacent talks."
+Conference — Conference channels & video archives,media.ccc.de,https://media.ccc.de/,,,,,"Hardware and side-channel tracks, plus the occasional brilliant reverse-engineering talk."
+Conference — Conference channels & video archives,USENIX ATC '26,https://www.usenix.org/conference/atc26,,,,,Open proceedings; architecture papers here are usually about how hardware behaves under real systems.
+"Conference — Notes, proceedings & paper-adjacent archives","No official channel for ISCA, MICRO, HPCA or ASPLOS",,,,,,"Verified on 2026-10-09: @ISCAconf returns 404 and the obvious variants are wrong. Get these talks from the ACM DL, author homepages, or conference sites — not from YouTube."

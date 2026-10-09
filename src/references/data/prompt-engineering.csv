@@ -122,3 +122,18 @@ Education — Advanced,COLM,https://colmweb.org/,,,Where the field publishes,,A 
 Education — Advanced,OpenReview,https://openreview.net/,,,Where the field publishes,,"Reviews and rebuttals. For contested results, read these first."
 Education — Advanced,arXiv cs.CL,https://arxiv.org/list/cs.CL/recent,,,Where the field publishes,,The firehose. Pair with curation.
 Education — Advanced,ML Papers of the Week,https://github.com/dair-ai/ML-Papers-of-the-Week,,,Where the field publishes,,A weekly curated digest from the DAIR.AI team.
+Video — Channels & conference recordings,DeepLearning.AI,https://www.youtube.com/@DeepLearningAI,,,,,"Short courses run by Andrew Ng & co.; vendor-leaning, verify against the papers."
+Video — Channels & conference recordings,OpenAI,https://www.youtube.com/@OpenAI,,,,,Model releases and DevDay talks; primary for API and product behaviour.
+Video — Channels & conference recordings,Google DeepMind,https://www.youtube.com/@GoogleDeepMind,,,,,Research overviews and model announcements from DeepMind.
+Video — Channels & conference recordings,Hugging Face,https://www.youtube.com/@HuggingFace,,,,,"The open LLM ecosystem: transformers, datasets, agents, tool calling."
+Video — Channels & conference recordings,LangChain,https://www.youtube.com/@LangChain,,,,,"Framework walkthroughs for agents and RAG; vendor content, verify against the docs."
+Video — Channels & conference recordings,Dave Ebbelaar,https://www.youtube.com/@daveebbelaar,,,,,"Practical LLM and agent app builds, end to end, in Python."
+Video — Channels & conference recordings,Machine Learning Street Talk,https://www.youtube.com/@MachineLearningStreetTalk,,,,,Long-form research interviews; useful for context around current papers.
+Video — Channels & conference recordings,Latent Space,https://www.youtube.com/@LatentSpacePod,,,,,"Interviews with the people building prompting tooling; trend-aware, verify against papers."
+Video — Channels & conference recordings,TWIML AI Podcast,https://www.youtube.com/@twimlai,,,,,"Long-form applied-AI interviews, including prompt and RAG practice."
+Video — Lectures & playlists,ChatGPT Prompt Engineering for Developers (DeepLearning.AI),https://www.youtube.com/watch?v=H4YK_7MAckk,,,,,"The one prompt-engineering video worth watching end to end; dated in places, so verify against current model docs."
+Conference — Conference channels & video archives,NeurIPS proceedings,https://neurips.cc/Conferences/2025,,,,,Where prompting research is published; search the year's papers rather than watching talks.
+Conference — Conference channels & video archives,ICLR,https://iclr.cc/,,,,,Most prompting and in-context-learning work appears here first.
+Conference — Conference channels & video archives,ICML,https://icml.cc/,,,,,Proceedings portal for the same material.
+Conference — Conference channels & video archives,AI Engineer World's Fair,https://ai.engineer/,,,,,"The closest thing to a dedicated conference for applied LLM and agent work; recordings published by the organisers, vendor-heavy."
+"Conference — Notes, proceedings & paper-adjacent archives",Treat vendor dev-day talks as release notes,,,,,,Anything from a model provider about prompting is a product announcement with a talk attached. Check the date before you rely on it.

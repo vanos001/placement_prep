@@ -6,7 +6,7 @@ It is a **navigation layer**, not a tutorial. Where the rest of this book explai
 
 Relational engines, analytical and columnar systems, storage engines, lakehouse table formats, and a two-track learning path from CMU 15-445 to reading query optimizers and LSM internals.
 
-**68 entries** across 8 categories, plus **53 education & reference-implementation resources** (23 basic / 30 advanced).
+**68 entries** across 8 categories, plus **53 education & reference-implementation resources** (23 basic / 30 advanced), plus **14 video resources** and **6 conference sources**.
 
 Every link HTTP-verified on **2026-10-07**.
 
@@ -23,6 +23,8 @@ Every link HTTP-verified on **2026-10-07**.
 - [7. Query engines, streaming and the surrounding ecosystem](#7-query-engines-streaming-and-the-surrounding-ecosystem) — 10
 - [8. Research papers & open-access literature](#8-research-papers--open-access-literature) — 21
 - [Education & reference implementations](#education--reference-implementations) — 53 (23 basic / 30 advanced)
+- [Video courses, channels & talks](#video-courses-channels--talks) — 14
+- [Conference videos, notes & archives](#conference-videos-notes--archives) — 6
 
 
 ## 1. Relational databases — open source
@@ -708,6 +710,50 @@ Two tracks: **Basic** builds the foundations, **Advanced** is about reading and 
 
 
 ---
+
+## Video courses, channels & talks
+
+*14 resources across 2 groups.* Every channel and playlist below was fetched and title-verified on **2026-10-09**. Handles drift and several plausible-looking handles resolve to the wrong channel, so a 200 response is not proof of identity — the links here were each checked against the channel title.
+
+### Channels & conference recordings
+
+- **[Hussein Nasser](https://www.youtube.com/@HusseinNasser)** — Database internals — indexing, isolation levels, replication — explained from first principles.
+- **[MySQL](https://www.youtube.com/@MySQL)** — Official MySQL channel: product deep dives and conference talks.
+- **[MongoDB](https://www.youtube.com/@MongoDB)** — Official MongoDB channel: internals, aggregation, Atlas talks.
+- **[Redis](https://www.youtube.com/@RedisInc)** — Official Redis channel: internals, modules, and Redis University material.
+- **[Confluent](https://www.youtube.com/@Confluent)** — Kafka Summit talks and stream-processing design sessions — the canonical Kafka video record.
+- **[USENIX](https://www.youtube.com/@USENIX)** — Conference recordings for most USENIX papers — free video, the fastest route into a systems paper.
+- **[InfoQ](https://www.youtube.com/@InfoQ)** — Conference keynotes and architecture talks — good for orientation, verify specifics elsewhere.
+- **[Papers We Love](https://www.youtube.com/@PapersWeLove)** — Recorded paper walkthroughs — watch one before you read the PDF.
+- **[VLDB](https://www.youtube.com/@vldb)** — VLDB conference recordings; the channel only holds one edition, so treat it as a sample, not an archive.
+- **[Percona](https://www.youtube.com/@Percona)** — Percona Live talks on MySQL, PostgreSQL and MongoDB internals — practitioner depth, engine-specific.
+- **[ClickHouse](https://www.youtube.com/@ClickHouseDB)** — Vendor channel, but unusually technical: columnar storage internals and query-execution talks.
+- **[Yugabyte](https://www.youtube.com/@YugabyteDB)** — Distributed SQL internals, including consensus and transaction-design talks.
+
+### Lectures & playlists
+
+- **[CMU 15-445/645 — Intro to Database Systems (Fall 2022)](https://www.youtube.com/playlist?list=PLSE8ODhjZXjaKScG3l0nuOiDTTqpfnWFf)** — The standard free database-internals course; pair it with the course site and the labs below.
+- **[CMU 15-445/645 — Intro to Database Systems (Fall 2019)](https://www.youtube.com/playlist?list=PLSE8ODhjZXjbohkNBWQs_otTrBTrjyohi)** — An earlier run; useful when the 2022 recording of a topic is missing.
+
+*Note:* Vendor channels are useful for internals of their own engine and useless for anything else; pair them with the USENIX and paper-walkthrough material.
+
+## Conference videos, notes & archives
+
+*6 resources across 2 groups.* Conference recordings are the primary-source tier of video: the speaker is usually an author of the paper, and where a talk exists the proceedings entry is often open at the same link. Every URL here returned 200 on **2026-10-09** unless the note says otherwise.
+
+Database conferences are unusually open — PVLDB is fully open access, and the vendor conferences publish good internals talks.
+
+### Conference channels & video archives
+
+- **[VLDB](https://www.vldb.org/)** — PVLDB is fully open access, which is why it is the citation you can actually read.
+- **[USENIX FAST '25](https://www.usenix.org/conference/fast25)** — Storage conference, but the storage-engine papers here are database internals.
+- **[Percona Live](https://www.percona.com/live)** — Practitioner conference on MySQL, PostgreSQL and MongoDB; talks published on the Percona channel.
+- **[CMU 15-445 course site](https://15445.courses.cs.cmu.edu/fall2025/)** — Slides, notes and open labs to go with the playlist above; the homework is the point.
+- **[FOSDEM video archive](https://video.fosdem.org/)** — Databases and PostgreSQL devrooms.
+
+### Notes, proceedings & paper-adjacent archives
+
+- **[USENIX ;login:](https://www.usenix.org/publications/login/)** — Where the operational side of database work gets written up.
 
 ## If you only do three things
 
