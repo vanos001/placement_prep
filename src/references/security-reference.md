@@ -919,7 +919,7 @@ Security research publishes at four core venues — USENIX Security, IEEE S&P, A
 ### IEEE Symposium on Security & Privacy (S&P)
 
 - **Docs:** [computer.org/csdl/proceedings/sp](https://www.computer.org/csdl/proceedings/sp) — the IEEE CSDL proceedings archive
-- **SDKs & repos:** "Oakland" — the oldest and most formal security venue; each year also gets a conference site at sp<year>.ieee-security.org
+- **SDKs & repos:** "Oakland" — the oldest and most formal security venue; each year also gets its own conference site, linked from [ieee-security.org](https://www.ieee-security.org/)
 - **Downloadable / offline:** Paywalled via IEEE Xplore; author copies are widely posted — try the author's page or Unpaywall first
 - *Note:* Where measurement, formal-methods and theory-heavy work lands. The `ieee-security.org` conference sites refused automated connections while this page was built; they load normally in a browser.
 
