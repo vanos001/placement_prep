@@ -74,7 +74,7 @@ interview topic — see the [migration and landscape page](./sysvinit/migration-
 If you are new, read the first two bullets of each row; the rest is
 reference depth. Every page is self-contained and cross-linked.
 
-### systemd — 15 pages
+### systemd — 16 pages
 
 - [Overview and Architecture](./systemd/overview-architecture.md) — components, design, history, adoption
 - [Boot Process (bootup(7))](./systemd/boot-process.md) — kernel → sysinit.target → default.target, analyze tools
@@ -90,13 +90,15 @@ reference depth. Every page is self-contained and cross-linked.
 - [cgroups and Resource Control](./systemd/cgroups-resource-control.md) — slices, scopes, CPUQuota/MemoryMax/TasksMax
 - [systemd-udevd](./systemd/udevd.md) — uevents, rule grammar, predictable naming
 - [networkd and resolved](./systemd/networkd-resolved.md) — network config files, DNS stub, split DNS
+- [Configuring systemd](./systemd/configuration.md) — system.conf/logind.conf, *.d snippet dirs, identity files, sleep hooks
 - [Programming APIs](./systemd/apis-development.md) — sd_notify, sd-bus, sd-journal, generators, transient units
 
-### sysvinit — 15 pages
+### sysvinit — 16 pages
 
 - [Overview and History](./sysvinit/overview-history.md) — System V lineage, components, where it still runs
 - [Boot Sequence](./sysvinit/boot-sequence.md) — inittab → rcS → rc N → gettys, initramfs handoff
 - [inittab](./sysvinit/inittab.md) — every action explained, real distro files, serial consoles
+- [Configuration File Map](./sysvinit/configuration.md) — /etc/default/*, the rc script, securetty, tuning recipes
 - [Runlevels](./sysvinit/runlevels.md) — 0-6, S, ondemand; transition mechanics
 - [/etc/init.d Scripts](./sysvinit/init-scripts.md) — conventions, start-stop-daemon, LSB exit codes
 - [LSB Headers](./sysvinit/lsb-headers.md) — the metadata block, virtual facilities, chkconfig
@@ -117,17 +119,19 @@ reference depth. Every page is self-contained and cross-linked.
 - [Service Scripts](./openrc/init-scripts.md) — depend() verbs, checkpath, supervise-daemon
 - [rc.conf, cgroups, Containers](./openrc/config-advanced.md) — rc_parallel, rc_sys, elogind, Docker use
 
-### runit — 3 pages
+### runit — 4 pages
 
 - [Overview and Philosophy](./runit/overview-philosophy.md) — daemontools lineage, supervision model
 - [Stages and Service Directories](./runit/stages-services.md) — stage 1/2/3, runsvdir/runsv, service anatomy
 - [sv, svlogd, chpst](./runit/sv-logging.md) — operating services, log rotation, recipes
+- [Configuration Handbook](./runit/configuration.md) — stage scripts, core-services, rc.conf, conf files, user services
 
-### dinit — 3 pages
+### dinit — 4 pages
 
 - [Overview](./dinit/overview.md) — design goals, users, architecture
 - [Service Descriptions](./dinit/service-descriptions.md) — types, dependency kinds, full option grammar
 - [Operations](./dinit/operations.md) — dinitctl, boot profiles, real systems
+- [Configuration Handbook](./dinit/configuration.md) — PID-1 options, environment file, waits-for.d, user instances
 
 ### Cross-cutting
 

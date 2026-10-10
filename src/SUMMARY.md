@@ -326,10 +326,12 @@
   - [cgroups and Resource Control](./linux/init-systems/systemd/cgroups-resource-control.md)
   - [systemd-udevd and udev Rules](./linux/init-systems/systemd/udevd.md)
   - [networkd and resolved](./linux/init-systems/systemd/networkd-resolved.md)
+  - [Configuring systemd — Manager Confs, Snippet Dirs, Identity Files](./linux/init-systems/systemd/configuration.md)
   - [Programming Against systemd — APIs](./linux/init-systems/systemd/apis-development.md)
 - [sysvinit — Overview and History](./linux/init-systems/sysvinit/overview-history.md)
   - [The sysvinit Boot Sequence](./linux/init-systems/sysvinit/boot-sequence.md)
   - [inittab — The Master Configuration](./linux/init-systems/sysvinit/inittab.md)
+  - [sysvinit Configuration — The Complete File Map](./linux/init-systems/sysvinit/configuration.md)
   - [Runlevels in Depth](./linux/init-systems/sysvinit/runlevels.md)
   - [/etc/init.d Scripts — Conventions and Patterns](./linux/init-systems/sysvinit/init-scripts.md)
   - [LSB Init Script Headers](./linux/init-systems/sysvinit/lsb-headers.md)
@@ -349,9 +351,11 @@
 - [runit — Overview and Philosophy](./linux/init-systems/runit/overview-philosophy.md)
   - [runit Boot Stages and Service Directories](./linux/init-systems/runit/stages-services.md)
   - [sv, svlogd, chpst — Operating Services](./linux/init-systems/runit/sv-logging.md)
+  - [runit Configuration — Stages, Services, Environment](./linux/init-systems/runit/configuration.md)
 - [dinit — Overview](./linux/init-systems/dinit/overview.md)
   - [dinit Service Descriptions](./linux/init-systems/dinit/service-descriptions.md)
   - [dinit in Operation](./linux/init-systems/dinit/operations.md)
+  - [dinit Configuration — Environment, Directories, Enablement](./linux/init-systems/dinit/configuration.md)
 
 ---
 
