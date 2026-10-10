@@ -308,6 +308,53 @@
 
 ---
 
+## Init Systems
+
+- [Linux Init Systems — Field Guide](./linux/init-systems/README.md)
+- [Init Systems Compared](./linux/init-systems/comparison.md)
+- [systemd — Overview and Architecture](./linux/init-systems/systemd/overview-architecture.md)
+  - [The systemd Boot Process](./linux/init-systems/systemd/boot-process.md)
+  - [systemd Unit Types](./linux/init-systems/systemd/unit-types.md)
+  - [Unit Files — Syntax, Drop-ins, Templating](./linux/init-systems/systemd/unit-files.md)
+  - [Service Units in Depth](./linux/init-systems/systemd/service-units.md)
+  - [systemctl — Command Reference](./linux/init-systems/systemd/systemctl-cli.md)
+  - [Targets and Runlevel Compatibility](./linux/init-systems/systemd/targets-runlevels.md)
+  - [Dependencies and Ordering](./linux/init-systems/systemd/dependency-management.md)
+  - [Socket Activation](./linux/init-systems/systemd/socket-activation.md)
+  - [Timer Units](./linux/init-systems/systemd/timers.md)
+  - [journald — Architecture and journalctl](./linux/init-systems/systemd/journald.md)
+  - [cgroups and Resource Control](./linux/init-systems/systemd/cgroups-resource-control.md)
+  - [systemd-udevd and udev Rules](./linux/init-systems/systemd/udevd.md)
+  - [networkd and resolved](./linux/init-systems/systemd/networkd-resolved.md)
+  - [Programming Against systemd — APIs](./linux/init-systems/systemd/apis-development.md)
+- [sysvinit — Overview and History](./linux/init-systems/sysvinit/overview-history.md)
+  - [The sysvinit Boot Sequence](./linux/init-systems/sysvinit/boot-sequence.md)
+  - [inittab — The Master Configuration](./linux/init-systems/sysvinit/inittab.md)
+  - [Runlevels in Depth](./linux/init-systems/sysvinit/runlevels.md)
+  - [/etc/init.d Scripts — Conventions and Patterns](./linux/init-systems/sysvinit/init-scripts.md)
+  - [LSB Init Script Headers](./linux/init-systems/sysvinit/lsb-headers.md)
+  - [rc0.d–rc6.d Symlink Sequencing](./linux/init-systems/sysvinit/rc-symlinks.md)
+  - [Service Management Tooling](./linux/init-systems/sysvinit/tooling.md)
+  - [shutdown, halt, reboot, poweroff](./linux/init-systems/sysvinit/shutdown-halt.md)
+  - [Single-User Mode and sulogin](./linux/init-systems/sysvinit/single-user-sulogin.md)
+  - [getty and Terminal Management](./linux/init-systems/sysvinit/getty-terminals.md)
+  - [The sysvinit Toolset — Utilities](./linux/init-systems/sysvinit/utilities.md)
+  - [Parallel and Dependency-Based Boot](./linux/init-systems/sysvinit/parallel-booting.md)
+  - [Writing a Production init.d Script](./linux/init-systems/sysvinit/custom-init-scripts.md)
+  - [From sysvinit to systemd — Migration](./linux/init-systems/sysvinit/migration-modern.md)
+- [OpenRC — Overview and Architecture](./linux/init-systems/openrc/overview-architecture.md)
+  - [OpenRC Runlevels and Service Management](./linux/init-systems/openrc/runlevels-services.md)
+  - [OpenRC Service Scripts](./linux/init-systems/openrc/init-scripts.md)
+  - [rc.conf, cgroups, Containers](./linux/init-systems/openrc/config-advanced.md)
+- [runit — Overview and Philosophy](./linux/init-systems/runit/overview-philosophy.md)
+  - [runit Boot Stages and Service Directories](./linux/init-systems/runit/stages-services.md)
+  - [sv, svlogd, chpst — Operating Services](./linux/init-systems/runit/sv-logging.md)
+- [dinit — Overview](./linux/init-systems/dinit/overview.md)
+  - [dinit Service Descriptions](./linux/init-systems/dinit/service-descriptions.md)
+  - [dinit in Operation](./linux/init-systems/dinit/operations.md)
+
+---
+
 ## Kernel
 
 - [Apis](./linux/kernel/apis.md)
