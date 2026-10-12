@@ -38,79 +38,79 @@ with fewer sources than the standard.
 | GLIBC-atoi | atoi | `stdlib.h` | — | documented | [glibc catalog](./overview.md) | —grouped; grouped |
 | GLIBC-atol | atol | — | — | documented | [glibc catalog](./overview.md) | —grouped; grouped |
 | GLIBC-atoll | atoll | — | — | documented | [glibc catalog](./overview.md) | —grouped; grouped |
-| GLIBC-cabs | cabs | `complex.h` | — | researched | [glibc catalog](./overview.md) | —complex; complex |
-| GLIBC-cabsf | cabsf | — | — | researched | [glibc catalog](./overview.md) | —complex; complex |
-| GLIBC-cabsfN | cabsfN | — | — | researched | [glibc catalog](./overview.md) | —complex; complex |
-| GLIBC-cabsfNx | cabsfNx | — | — | researched | [glibc catalog](./overview.md) | —complex; complex |
-| GLIBC-cabsl | cabsl | — | — | researched | [glibc catalog](./overview.md) | —complex; complex |
+| GLIBC-cabs | cabs | `complex.h` | — | documented | [glibc catalog](./overview.md) | —complex; complex |
+| GLIBC-cabsf | cabsf | — | — | documented | [glibc catalog](./overview.md) | —complex; complex |
+| GLIBC-cabsfN | cabsfN | — | — | documented | [glibc catalog](./overview.md) | —complex; complex |
+| GLIBC-cabsfNx | cabsfNx | — | — | documented | [glibc catalog](./overview.md) | —complex; complex |
+| GLIBC-cabsl | cabsl | — | — | documented | [glibc catalog](./overview.md) | —complex; complex |
 | GLIBC-canonicalize | canonicalize | — | — | not-started | [glibc catalog](./overview.md) | — |
 | GLIBC-canonicalizef | canonicalizef | — | — | not-started | [glibc catalog](./overview.md) | — |
 | GLIBC-canonicalizefN | canonicalizefN | — | — | not-started | [glibc catalog](./overview.md) | — |
 | GLIBC-canonicalizefNx | canonicalizefNx | — | — | not-started | [glibc catalog](./overview.md) | — |
 | GLIBC-canonicalizel | canonicalizel | — | — | not-started | [glibc catalog](./overview.md) | — |
-| GLIBC-carg | carg | `complex.h` | — | researched | [glibc catalog](./overview.md) | —complex; complex |
-| GLIBC-cargf | cargf | — | — | researched | [glibc catalog](./overview.md) | —complex; complex |
-| GLIBC-cargfN | cargfN | — | — | researched | [glibc catalog](./overview.md) | —complex; complex |
-| GLIBC-cargfNx | cargfNx | — | — | researched | [glibc catalog](./overview.md) | —complex; complex |
-| GLIBC-cargl | cargl | — | — | researched | [glibc catalog](./overview.md) | —complex; complex |
+| GLIBC-carg | carg | `complex.h` | — | documented | [glibc catalog](./overview.md) | —complex; complex |
+| GLIBC-cargf | cargf | — | — | documented | [glibc catalog](./overview.md) | —complex; complex |
+| GLIBC-cargfN | cargfN | — | — | documented | [glibc catalog](./overview.md) | —complex; complex |
+| GLIBC-cargfNx | cargfNx | — | — | documented | [glibc catalog](./overview.md) | —complex; complex |
+| GLIBC-cargl | cargl | — | — | documented | [glibc catalog](./overview.md) | —complex; complex |
 | GLIBC-ceil | ceil | `math.h` | — | not-started | [glibc catalog](./overview.md) | — |
 | GLIBC-ceilf | ceilf | — | — | not-started | [glibc catalog](./overview.md) | — |
 | GLIBC-ceilfN | ceilfN | — | — | not-started | [glibc catalog](./overview.md) | — |
 | GLIBC-ceilfNx | ceilfNx | — | — | not-started | [glibc catalog](./overview.md) | — |
 | GLIBC-ceill | ceill | — | — | not-started | [glibc catalog](./overview.md) | — |
-| GLIBC-cimag | cimag | `complex.h` | — | researched | [glibc catalog](./overview.md) | —complex; complex |
-| GLIBC-cimagf | cimagf | — | — | researched | [glibc catalog](./overview.md) | —complex; complex |
-| GLIBC-cimagfN | cimagfN | — | — | researched | [glibc catalog](./overview.md) | —complex; complex |
-| GLIBC-cimagfNx | cimagfNx | — | — | researched | [glibc catalog](./overview.md) | —complex; complex |
-| GLIBC-cimagl | cimagl | — | — | researched | [glibc catalog](./overview.md) | —complex; complex |
-| GLIBC-conj | conj | `complex.h` | — | researched | [glibc catalog](./overview.md) | —complex; complex |
-| GLIBC-conjf | conjf | — | — | researched | [glibc catalog](./overview.md) | —complex; complex |
-| GLIBC-conjfN | conjfN | — | — | researched | [glibc catalog](./overview.md) | —complex; complex |
-| GLIBC-conjfNx | conjfNx | — | — | researched | [glibc catalog](./overview.md) | —complex; complex |
-| GLIBC-conjl | conjl | — | — | researched | [glibc catalog](./overview.md) | —complex; complex |
+| GLIBC-cimag | cimag | `complex.h` | — | documented | [glibc catalog](./overview.md) | —complex; complex |
+| GLIBC-cimagf | cimagf | — | — | documented | [glibc catalog](./overview.md) | —complex; complex |
+| GLIBC-cimagfN | cimagfN | — | — | documented | [glibc catalog](./overview.md) | —complex; complex |
+| GLIBC-cimagfNx | cimagfNx | — | — | documented | [glibc catalog](./overview.md) | —complex; complex |
+| GLIBC-cimagl | cimagl | — | — | documented | [glibc catalog](./overview.md) | —complex; complex |
+| GLIBC-conj | conj | `complex.h` | — | documented | [glibc catalog](./overview.md) | —complex; complex |
+| GLIBC-conjf | conjf | — | — | documented | [glibc catalog](./overview.md) | —complex; complex |
+| GLIBC-conjfN | conjfN | — | — | documented | [glibc catalog](./overview.md) | —complex; complex |
+| GLIBC-conjfNx | conjfNx | — | — | documented | [glibc catalog](./overview.md) | —complex; complex |
+| GLIBC-conjl | conjl | — | — | documented | [glibc catalog](./overview.md) | —complex; complex |
 | GLIBC-copysign | copysign | `math.h` | — | not-started | [glibc catalog](./overview.md) | — |
 | GLIBC-copysignf | copysignf | — | — | not-started | [glibc catalog](./overview.md) | — |
 | GLIBC-copysignfN | copysignfN | — | — | not-started | [glibc catalog](./overview.md) | — |
 | GLIBC-copysignfNx | copysignfNx | — | — | not-started | [glibc catalog](./overview.md) | — |
 | GLIBC-copysignl | copysignl | — | — | not-started | [glibc catalog](./overview.md) | — |
-| GLIBC-cproj | cproj | `complex.h` | — | researched | [glibc catalog](./overview.md) | —complex; complex |
-| GLIBC-cprojf | cprojf | — | — | researched | [glibc catalog](./overview.md) | —complex; complex |
-| GLIBC-cprojfN | cprojfN | — | — | researched | [glibc catalog](./overview.md) | —complex; complex |
-| GLIBC-cprojfNx | cprojfNx | — | — | researched | [glibc catalog](./overview.md) | —complex; complex |
-| GLIBC-cprojl | cprojl | — | — | researched | [glibc catalog](./overview.md) | —complex; complex |
-| GLIBC-creal | creal | `complex.h` | — | researched | [glibc catalog](./overview.md) | —complex; complex |
-| GLIBC-crealf | crealf | — | — | researched | [glibc catalog](./overview.md) | —complex; complex |
-| GLIBC-crealfN | crealfN | — | — | researched | [glibc catalog](./overview.md) | —complex; complex |
-| GLIBC-crealfNx | crealfNx | — | — | researched | [glibc catalog](./overview.md) | —complex; complex |
-| GLIBC-creall | creall | — | — | researched | [glibc catalog](./overview.md) | —complex; complex |
-| GLIBC-daddl | daddl | — | — | researched | [glibc catalog](./overview.md) | —decimal; decimal |
-| GLIBC-ddivl | ddivl | — | — | researched | [glibc catalog](./overview.md) | —decimal; decimal |
-| GLIBC-dfmal | dfmal | — | — | researched | [glibc catalog](./overview.md) | —decimal; decimal |
+| GLIBC-cproj | cproj | `complex.h` | — | documented | [glibc catalog](./overview.md) | —complex; complex |
+| GLIBC-cprojf | cprojf | — | — | documented | [glibc catalog](./overview.md) | —complex; complex |
+| GLIBC-cprojfN | cprojfN | — | — | documented | [glibc catalog](./overview.md) | —complex; complex |
+| GLIBC-cprojfNx | cprojfNx | — | — | documented | [glibc catalog](./overview.md) | —complex; complex |
+| GLIBC-cprojl | cprojl | — | — | documented | [glibc catalog](./overview.md) | —complex; complex |
+| GLIBC-creal | creal | `complex.h` | — | documented | [glibc catalog](./overview.md) | —complex; complex |
+| GLIBC-crealf | crealf | — | — | documented | [glibc catalog](./overview.md) | —complex; complex |
+| GLIBC-crealfN | crealfN | — | — | documented | [glibc catalog](./overview.md) | —complex; complex |
+| GLIBC-crealfNx | crealfNx | — | — | documented | [glibc catalog](./overview.md) | —complex; complex |
+| GLIBC-creall | creall | — | — | documented | [glibc catalog](./overview.md) | —complex; complex |
+| GLIBC-daddl | daddl | — | — | documented | [glibc catalog](./overview.md) | —decimal; decimal |
+| GLIBC-ddivl | ddivl | — | — | documented | [glibc catalog](./overview.md) | —decimal; decimal |
+| GLIBC-dfmal | dfmal | — | — | documented | [glibc catalog](./overview.md) | —decimal; decimal |
 | GLIBC-div | div | `stdlib.h` | — | documented | [glibc catalog](./overview.md) | —grouped; grouped |
-| GLIBC-dmull | dmull | — | — | researched | [glibc catalog](./overview.md) | —decimal; decimal |
+| GLIBC-dmull | dmull | — | — | documented | [glibc catalog](./overview.md) | —decimal; decimal |
 | GLIBC-drem | drem | — | — | not-started | [glibc catalog](./overview.md) | — |
 | GLIBC-dremf | dremf | — | — | not-started | [glibc catalog](./overview.md) | — |
 | GLIBC-dreml | dreml | — | — | not-started | [glibc catalog](./overview.md) | — |
-| GLIBC-dsqrtl | dsqrtl | — | — | researched | [glibc catalog](./overview.md) | —decimal; decimal |
-| GLIBC-dsubl | dsubl | — | — | researched | [glibc catalog](./overview.md) | —decimal; decimal |
-| GLIBC-ecvt | ecvt | `stdlib.h` | — | researched | [glibc catalog](./overview.md) | —stdlib; stdlib |
-| GLIBC-ecvt_r | ecvt_r | `stdlib.h` | — | researched | [glibc catalog](./overview.md) | —stdlib; stdlib |
+| GLIBC-dsqrtl | dsqrtl | — | — | documented | [glibc catalog](./overview.md) | —decimal; decimal |
+| GLIBC-dsubl | dsubl | — | — | documented | [glibc catalog](./overview.md) | —decimal; decimal |
+| GLIBC-ecvt | ecvt | `stdlib.h` | — | documented | [glibc catalog](./overview.md) | —stdlib; stdlib |
+| GLIBC-ecvt_r | ecvt_r | `stdlib.h` | — | documented | [glibc catalog](./overview.md) | —stdlib; stdlib |
 | GLIBC-fabs | fabs | `math.h` | — | not-started | [glibc catalog](./overview.md) | — |
 | GLIBC-fabsf | fabsf | — | — | not-started | [glibc catalog](./overview.md) | — |
 | GLIBC-fabsfN | fabsfN | — | — | not-started | [glibc catalog](./overview.md) | — |
 | GLIBC-fabsfNx | fabsfNx | — | — | not-started | [glibc catalog](./overview.md) | — |
 | GLIBC-fabsl | fabsl | — | — | not-started | [glibc catalog](./overview.md) | — |
-| GLIBC-fadd | fadd | — | — | researched | [glibc catalog](./overview.md) | —decimal; decimal |
-| GLIBC-faddl | faddl | — | — | researched | [glibc catalog](./overview.md) | —decimal; decimal |
-| GLIBC-fcvt | fcvt | — | — | researched | [glibc catalog](./overview.md) | —stdlib; stdlib |
-| GLIBC-fcvt_r | fcvt_r | — | — | researched | [glibc catalog](./overview.md) | —stdlib; stdlib |
+| GLIBC-fadd | fadd | — | — | documented | [glibc catalog](./overview.md) | —decimal; decimal |
+| GLIBC-faddl | faddl | — | — | documented | [glibc catalog](./overview.md) | —decimal; decimal |
+| GLIBC-fcvt | fcvt | — | — | documented | [glibc catalog](./overview.md) | —stdlib; stdlib |
+| GLIBC-fcvt_r | fcvt_r | — | — | documented | [glibc catalog](./overview.md) | —stdlib; stdlib |
 | GLIBC-fdim | fdim | `math.h` | — | not-started | [glibc catalog](./overview.md) | — |
 | GLIBC-fdimf | fdimf | — | — | not-started | [glibc catalog](./overview.md) | — |
 | GLIBC-fdimfN | fdimfN | — | — | not-started | [glibc catalog](./overview.md) | — |
 | GLIBC-fdimfNx | fdimfNx | — | — | not-started | [glibc catalog](./overview.md) | — |
 | GLIBC-fdiml | fdiml | — | — | not-started | [glibc catalog](./overview.md) | — |
-| GLIBC-fdiv | fdiv | — | — | researched | [glibc catalog](./overview.md) | —decimal; decimal |
-| GLIBC-fdivl | fdivl | — | — | researched | [glibc catalog](./overview.md) | —decimal; decimal |
+| GLIBC-fdiv | fdiv | — | — | documented | [glibc catalog](./overview.md) | —decimal; decimal |
+| GLIBC-fdivl | fdivl | — | — | documented | [glibc catalog](./overview.md) | —decimal; decimal |
 | GLIBC-feclearexcept | feclearexcept | — | — | not-started | [glibc catalog](./overview.md) | — |
 | GLIBC-fedisableexcept | fedisableexcept | — | — | not-started | [glibc catalog](./overview.md) | — |
 | GLIBC-feenableexcept | feenableexcept | — | — | not-started | [glibc catalog](./overview.md) | — |
@@ -221,8 +221,8 @@ with fewer sources than the standard.
 | GLIBC-fMsqrtfNx | fMsqrtfNx | — | — | not-started | [glibc catalog](./overview.md) | — |
 | GLIBC-fMsubfN | fMsubfN | — | — | not-started | [glibc catalog](./overview.md) | — |
 | GLIBC-fMsubfNx | fMsubfNx | — | — | not-started | [glibc catalog](./overview.md) | — |
-| GLIBC-fmul | fmul | — | — | researched | [glibc catalog](./overview.md) | —decimal; decimal |
-| GLIBC-fmull | fmull | — | — | researched | [glibc catalog](./overview.md) | —decimal; decimal |
+| GLIBC-fmul | fmul | — | — | documented | [glibc catalog](./overview.md) | —decimal; decimal |
+| GLIBC-fmull | fmull | — | — | documented | [glibc catalog](./overview.md) | —decimal; decimal |
 | GLIBC-fMxaddfN | fMxaddfN | — | — | not-started | [glibc catalog](./overview.md) | — |
 | GLIBC-fMxaddfNx | fMxaddfNx | — | — | not-started | [glibc catalog](./overview.md) | — |
 | GLIBC-fMxdivfN | fMxdivfN | — | — | not-started | [glibc catalog](./overview.md) | — |
@@ -250,18 +250,18 @@ with fewer sources than the standard.
 | GLIBC-fromfpxfN | fromfpxfN | — | — | not-started | [glibc catalog](./overview.md) | — |
 | GLIBC-fromfpxfNx | fromfpxfNx | — | — | not-started | [glibc catalog](./overview.md) | — |
 | GLIBC-fromfpxl | fromfpxl | — | — | not-started | [glibc catalog](./overview.md) | — |
-| GLIBC-fsqrt | fsqrt | — | — | researched | [glibc catalog](./overview.md) | —decimal; decimal |
-| GLIBC-fsqrtl | fsqrtl | — | — | researched | [glibc catalog](./overview.md) | —decimal; decimal |
-| GLIBC-fsub | fsub | — | — | researched | [glibc catalog](./overview.md) | —decimal; decimal |
-| GLIBC-fsubl | fsubl | — | — | researched | [glibc catalog](./overview.md) | —decimal; decimal |
-| GLIBC-gcvt | gcvt | `stdlib.h` | — | researched | [glibc catalog](./overview.md) | —stdlib; stdlib |
+| GLIBC-fsqrt | fsqrt | — | — | documented | [glibc catalog](./overview.md) | —decimal; decimal |
+| GLIBC-fsqrtl | fsqrtl | — | — | documented | [glibc catalog](./overview.md) | —decimal; decimal |
+| GLIBC-fsub | fsub | — | — | documented | [glibc catalog](./overview.md) | —decimal; decimal |
+| GLIBC-fsubl | fsubl | — | — | documented | [glibc catalog](./overview.md) | —decimal; decimal |
+| GLIBC-gcvt | gcvt | `stdlib.h` | — | documented | [glibc catalog](./overview.md) | —stdlib; stdlib |
 | GLIBC-getpayload | getpayload | — | — | not-started | [glibc catalog](./overview.md) | — |
 | GLIBC-getpayloadf | getpayloadf | — | — | not-started | [glibc catalog](./overview.md) | — |
 | GLIBC-getpayloadfN | getpayloadfN | — | — | not-started | [glibc catalog](./overview.md) | — |
 | GLIBC-getpayloadfNx | getpayloadfNx | — | — | not-started | [glibc catalog](./overview.md) | — |
 | GLIBC-getpayloadl | getpayloadl | — | — | not-started | [glibc catalog](./overview.md) | — |
-| GLIBC-imaxabs | imaxabs | — | — | researched | [glibc catalog](./overview.md) | —stdlib; stdlib |
-| GLIBC-imaxdiv | imaxdiv | — | — | researched | [glibc catalog](./overview.md) | —stdlib; stdlib |
+| GLIBC-imaxabs | imaxabs | — | — | documented | [glibc catalog](./overview.md) | —stdlib; stdlib |
+| GLIBC-imaxdiv | imaxdiv | — | — | documented | [glibc catalog](./overview.md) | —stdlib; stdlib |
 | GLIBC-isinf | isinf | — | — | not-started | [glibc catalog](./overview.md) | — |
 | GLIBC-isinff | isinff | — | — | not-started | [glibc catalog](./overview.md) | — |
 | GLIBC-isinfl | isinfl | — | — | not-started | [glibc catalog](./overview.md) | — |
@@ -330,11 +330,11 @@ with fewer sources than the standard.
 | GLIBC-nextupfN | nextupfN | — | — | not-started | [glibc catalog](./overview.md) | — |
 | GLIBC-nextupfNx | nextupfNx | — | — | not-started | [glibc catalog](./overview.md) | — |
 | GLIBC-nextupl | nextupl | — | — | not-started | [glibc catalog](./overview.md) | — |
-| GLIBC-qecvt | qecvt | `stdlib.h` | — | researched | [glibc catalog](./overview.md) | —stdlib; stdlib |
-| GLIBC-qecvt_r | qecvt_r | — | — | researched | [glibc catalog](./overview.md) | —stdlib; stdlib |
-| GLIBC-qfcvt | qfcvt | — | — | researched | [glibc catalog](./overview.md) | —stdlib; stdlib |
-| GLIBC-qfcvt_r | qfcvt_r | — | — | researched | [glibc catalog](./overview.md) | —stdlib; stdlib |
-| GLIBC-qgcvt | qgcvt | — | — | researched | [glibc catalog](./overview.md) | —stdlib; stdlib |
+| GLIBC-qecvt | qecvt | `stdlib.h` | — | documented | [glibc catalog](./overview.md) | —stdlib; stdlib |
+| GLIBC-qecvt_r | qecvt_r | — | — | documented | [glibc catalog](./overview.md) | —stdlib; stdlib |
+| GLIBC-qfcvt | qfcvt | — | — | documented | [glibc catalog](./overview.md) | —stdlib; stdlib |
+| GLIBC-qfcvt_r | qfcvt_r | — | — | documented | [glibc catalog](./overview.md) | —stdlib; stdlib |
+| GLIBC-qgcvt | qgcvt | — | — | documented | [glibc catalog](./overview.md) | —stdlib; stdlib |
 | GLIBC-remainder | remainder | `math.h` | — | not-started | [glibc catalog](./overview.md) | — |
 | GLIBC-remainderf | remainderf | — | — | not-started | [glibc catalog](./overview.md) | — |
 | GLIBC-remainderfN | remainderfN | — | — | not-started | [glibc catalog](./overview.md) | — |
@@ -382,24 +382,24 @@ with fewer sources than the standard.
 | GLIBC-significand | significand | `math.h` | — | not-started | [glibc catalog](./overview.md) | — |
 | GLIBC-significandf | significandf | — | — | not-started | [glibc catalog](./overview.md) | — |
 | GLIBC-significandl | significandl | — | — | not-started | [glibc catalog](./overview.md) | — |
-| GLIBC-strfromd | strfromd | `stdlib.h` | — | researched | [glibc catalog](./overview.md) | —stdlib; stdlib |
-| GLIBC-strfromf | strfromf | — | — | researched | [glibc catalog](./overview.md) | —stdlib; stdlib |
-| GLIBC-strfromfN | strfromfN | — | — | researched | [glibc catalog](./overview.md) | —stdlib; stdlib |
-| GLIBC-strfromfNx | strfromfNx | — | — | researched | [glibc catalog](./overview.md) | —stdlib; stdlib |
-| GLIBC-strfroml | strfroml | — | — | researched | [glibc catalog](./overview.md) | —stdlib; stdlib |
+| GLIBC-strfromd | strfromd | `stdlib.h` | — | documented | [glibc catalog](./overview.md) | —stdlib; stdlib |
+| GLIBC-strfromf | strfromf | — | — | documented | [glibc catalog](./overview.md) | —stdlib; stdlib |
+| GLIBC-strfromfN | strfromfN | — | — | documented | [glibc catalog](./overview.md) | —stdlib; stdlib |
+| GLIBC-strfromfNx | strfromfNx | — | — | documented | [glibc catalog](./overview.md) | —stdlib; stdlib |
+| GLIBC-strfroml | strfroml | — | — | documented | [glibc catalog](./overview.md) | —stdlib; stdlib |
 | GLIBC-strtod | strtod | `stdlib.h` | — | documented | [glibc catalog](./overview.md) | —grouped; grouped |
 | GLIBC-strtof | strtof | — | — | documented | [glibc catalog](./overview.md) | —grouped; grouped |
 | GLIBC-strtofN | strtofN | — | — | not-started | [glibc catalog](./overview.md) | — |
 | GLIBC-strtofNx | strtofNx | — | — | not-started | [glibc catalog](./overview.md) | — |
-| GLIBC-strtoimax | strtoimax | `inttypes.h` | — | researched | [glibc catalog](./overview.md) | —stdlib; stdlib |
+| GLIBC-strtoimax | strtoimax | `inttypes.h` | — | documented | [glibc catalog](./overview.md) | —stdlib; stdlib |
 | GLIBC-strtol | strtol | `stdlib.h` | — | documented | [glibc catalog](./overview.md) | —grouped; grouped |
 | GLIBC-strtold | strtold | — | — | documented | [glibc catalog](./overview.md) | —grouped; grouped |
 | GLIBC-strtoll | strtoll | — | — | documented | [glibc catalog](./overview.md) | —grouped; grouped |
-| GLIBC-strtoq | strtoq | — | — | researched | [glibc catalog](./overview.md) | —stdlib; stdlib |
+| GLIBC-strtoq | strtoq | — | — | documented | [glibc catalog](./overview.md) | —stdlib; stdlib |
 | GLIBC-strtoul | strtoul | `stdlib.h` | — | documented | [glibc catalog](./overview.md) | —grouped; grouped |
 | GLIBC-strtoull | strtoull | — | — | documented | [glibc catalog](./overview.md) | —grouped; grouped |
-| GLIBC-strtoumax | strtoumax | — | — | researched | [glibc catalog](./overview.md) | —stdlib; stdlib |
-| GLIBC-strtouq | strtouq | — | — | researched | [glibc catalog](./overview.md) | —stdlib; stdlib |
+| GLIBC-strtoumax | strtoumax | — | — | documented | [glibc catalog](./overview.md) | —stdlib; stdlib |
+| GLIBC-strtouq | strtouq | — | — | documented | [glibc catalog](./overview.md) | —stdlib; stdlib |
 | GLIBC-totalorder | totalorder | — | GLIBC_2.25 | not-started | [glibc catalog](./overview.md) | — |
 | GLIBC-totalorderf | totalorderf | — | GLIBC_2.25 | not-started | [glibc catalog](./overview.md) | — |
 | GLIBC-totalorderfN | totalorderfN | — | — | not-started | [glibc catalog](./overview.md) | — |
@@ -415,7 +415,7 @@ with fewer sources than the standard.
 | GLIBC-truncfN | truncfN | — | — | not-started | [glibc catalog](./overview.md) | — |
 | GLIBC-truncfNx | truncfNx | — | — | not-started | [glibc catalog](./overview.md) | — |
 | GLIBC-truncl | truncl | — | — | not-started | [glibc catalog](./overview.md) | — |
-| GLIBC-uabs | uabs | — | — | researched | [glibc catalog](./overview.md) | —stdlib; stdlib |
+| GLIBC-uabs | uabs | — | — | source-limited | [glibc catalog](./overview.md) | —stdlib; stdlib |
 | GLIBC-ufromfp | ufromfp | — | — | not-started | [glibc catalog](./overview.md) | — |
 | GLIBC-ufromfpf | ufromfpf | — | — | not-started | [glibc catalog](./overview.md) | — |
 | GLIBC-ufromfpfN | ufromfpfN | — | — | not-started | [glibc catalog](./overview.md) | — |
@@ -426,97 +426,97 @@ with fewer sources than the standard.
 | GLIBC-ufromfpxfN | ufromfpxfN | — | — | not-started | [glibc catalog](./overview.md) | — |
 | GLIBC-ufromfpxfNx | ufromfpxfNx | — | — | not-started | [glibc catalog](./overview.md) | — |
 | GLIBC-ufromfpxl | ufromfpxl | — | — | not-started | [glibc catalog](./overview.md) | — |
-| GLIBC-ulabs | ulabs | — | — | researched | [glibc catalog](./overview.md) | —stdlib; stdlib |
-| GLIBC-ullabs | ullabs | — | — | researched | [glibc catalog](./overview.md) | —stdlib; stdlib |
-| GLIBC-umaxabs | umaxabs | — | — | researched | [glibc catalog](./overview.md) | —stdlib; stdlib |
-| GLIBC-wcstod | wcstod | — | — | researched | [glibc catalog](./overview.md) | —wide; wide |
-| GLIBC-wcstof | wcstof | — | — | researched | [glibc catalog](./overview.md) | —wide; wide |
-| GLIBC-wcstofN | wcstofN | — | — | researched | [glibc catalog](./overview.md) | —wide; wide |
-| GLIBC-wcstofNx | wcstofNx | — | — | researched | [glibc catalog](./overview.md) | —wide; wide |
-| GLIBC-wcstoimax | wcstoimax | `stddef.h` | — | researched | [glibc catalog](./overview.md) | —wide; wide |
-| GLIBC-wcstol | wcstol | — | — | researched | [glibc catalog](./overview.md) | —wide; wide |
-| GLIBC-wcstold | wcstold | — | — | researched | [glibc catalog](./overview.md) | —wide; wide |
-| GLIBC-wcstoll | wcstoll | — | — | researched | [glibc catalog](./overview.md) | —wide; wide |
-| GLIBC-wcstoq | wcstoq | — | — | researched | [glibc catalog](./overview.md) | —wide; wide |
-| GLIBC-wcstoul | wcstoul | — | — | researched | [glibc catalog](./overview.md) | —wide; wide |
-| GLIBC-wcstoull | wcstoull | — | — | researched | [glibc catalog](./overview.md) | —wide; wide |
-| GLIBC-wcstoumax | wcstoumax | — | — | researched | [glibc catalog](./overview.md) | —wide; wide |
-| GLIBC-wcstouq | wcstouq | — | — | researched | [glibc catalog](./overview.md) | —wide; wide |
+| GLIBC-ulabs | ulabs | — | — | source-limited | [glibc catalog](./overview.md) | —stdlib; stdlib |
+| GLIBC-ullabs | ullabs | — | — | source-limited | [glibc catalog](./overview.md) | —stdlib; stdlib |
+| GLIBC-umaxabs | umaxabs | — | — | source-limited | [glibc catalog](./overview.md) | —stdlib; stdlib |
+| GLIBC-wcstod | wcstod | — | — | documented | [glibc catalog](./overview.md) | —wide; wide |
+| GLIBC-wcstof | wcstof | — | — | documented | [glibc catalog](./overview.md) | —wide; wide |
+| GLIBC-wcstofN | wcstofN | — | — | documented | [glibc catalog](./overview.md) | —wide; wide |
+| GLIBC-wcstofNx | wcstofNx | — | — | documented | [glibc catalog](./overview.md) | —wide; wide |
+| GLIBC-wcstoimax | wcstoimax | `stddef.h` | — | documented | [glibc catalog](./overview.md) | —wide; wide |
+| GLIBC-wcstol | wcstol | — | — | documented | [glibc catalog](./overview.md) | —wide; wide |
+| GLIBC-wcstold | wcstold | — | — | documented | [glibc catalog](./overview.md) | —wide; wide |
+| GLIBC-wcstoll | wcstoll | — | — | documented | [glibc catalog](./overview.md) | —wide; wide |
+| GLIBC-wcstoq | wcstoq | — | — | documented | [glibc catalog](./overview.md) | —wide; wide |
+| GLIBC-wcstoul | wcstoul | — | — | documented | [glibc catalog](./overview.md) | —wide; wide |
+| GLIBC-wcstoull | wcstoull | — | — | documented | [glibc catalog](./overview.md) | —wide; wide |
+| GLIBC-wcstoumax | wcstoumax | — | — | documented | [glibc catalog](./overview.md) | —wide; wide |
+| GLIBC-wcstouq | wcstouq | — | — | documented | [glibc catalog](./overview.md) | —wide; wide |
 
 ### Bit Manipulation
 
 | ID | Function | Header | Exported | Status | Chapter | Notes |
 |---|---|---|---|---|---|---|
-| GLIBC-stdc_bit_ceil_uc | stdc_bit_ceil_uc | — | — | researched | [glibc catalog](./overview.md) | —stdbit.h; stdbit.h |
-| GLIBC-stdc_bit_ceil_ui | stdc_bit_ceil_ui | — | — | researched | [glibc catalog](./overview.md) | —stdbit.h; stdbit.h |
-| GLIBC-stdc_bit_ceil_ul | stdc_bit_ceil_ul | — | — | researched | [glibc catalog](./overview.md) | —stdbit.h; stdbit.h |
-| GLIBC-stdc_bit_ceil_ull | stdc_bit_ceil_ull | — | — | researched | [glibc catalog](./overview.md) | —stdbit.h; stdbit.h |
-| GLIBC-stdc_bit_ceil_us | stdc_bit_ceil_us | — | — | researched | [glibc catalog](./overview.md) | —stdbit.h; stdbit.h |
-| GLIBC-stdc_bit_floor_uc | stdc_bit_floor_uc | — | — | researched | [glibc catalog](./overview.md) | —stdbit.h; stdbit.h |
-| GLIBC-stdc_bit_floor_ui | stdc_bit_floor_ui | — | — | researched | [glibc catalog](./overview.md) | —stdbit.h; stdbit.h |
-| GLIBC-stdc_bit_floor_ul | stdc_bit_floor_ul | — | — | researched | [glibc catalog](./overview.md) | —stdbit.h; stdbit.h |
-| GLIBC-stdc_bit_floor_ull | stdc_bit_floor_ull | — | — | researched | [glibc catalog](./overview.md) | —stdbit.h; stdbit.h |
-| GLIBC-stdc_bit_floor_us | stdc_bit_floor_us | — | — | researched | [glibc catalog](./overview.md) | —stdbit.h; stdbit.h |
-| GLIBC-stdc_bit_width_uc | stdc_bit_width_uc | — | — | researched | [glibc catalog](./overview.md) | —stdbit.h; stdbit.h |
-| GLIBC-stdc_bit_width_ui | stdc_bit_width_ui | — | — | researched | [glibc catalog](./overview.md) | —stdbit.h; stdbit.h |
-| GLIBC-stdc_bit_width_ul | stdc_bit_width_ul | — | — | researched | [glibc catalog](./overview.md) | —stdbit.h; stdbit.h |
-| GLIBC-stdc_bit_width_ull | stdc_bit_width_ull | — | — | researched | [glibc catalog](./overview.md) | —stdbit.h; stdbit.h |
-| GLIBC-stdc_bit_width_us | stdc_bit_width_us | — | — | researched | [glibc catalog](./overview.md) | —stdbit.h; stdbit.h |
-| GLIBC-stdc_count_ones_uc | stdc_count_ones_uc | — | — | researched | [glibc catalog](./overview.md) | —stdbit.h; stdbit.h |
-| GLIBC-stdc_count_ones_ui | stdc_count_ones_ui | — | — | researched | [glibc catalog](./overview.md) | —stdbit.h; stdbit.h |
-| GLIBC-stdc_count_ones_ul | stdc_count_ones_ul | — | — | researched | [glibc catalog](./overview.md) | —stdbit.h; stdbit.h |
-| GLIBC-stdc_count_ones_ull | stdc_count_ones_ull | — | — | researched | [glibc catalog](./overview.md) | —stdbit.h; stdbit.h |
-| GLIBC-stdc_count_ones_us | stdc_count_ones_us | — | — | researched | [glibc catalog](./overview.md) | —stdbit.h; stdbit.h |
-| GLIBC-stdc_count_zeros_uc | stdc_count_zeros_uc | — | — | researched | [glibc catalog](./overview.md) | —stdbit.h; stdbit.h |
-| GLIBC-stdc_count_zeros_ui | stdc_count_zeros_ui | — | — | researched | [glibc catalog](./overview.md) | —stdbit.h; stdbit.h |
-| GLIBC-stdc_count_zeros_ul | stdc_count_zeros_ul | — | — | researched | [glibc catalog](./overview.md) | —stdbit.h; stdbit.h |
-| GLIBC-stdc_count_zeros_ull | stdc_count_zeros_ull | — | — | researched | [glibc catalog](./overview.md) | —stdbit.h; stdbit.h |
-| GLIBC-stdc_count_zeros_us | stdc_count_zeros_us | — | — | researched | [glibc catalog](./overview.md) | —stdbit.h; stdbit.h |
-| GLIBC-stdc_first_leading_one_uc | stdc_first_leading_one_uc | — | — | researched | [glibc catalog](./overview.md) | —stdbit.h; stdbit.h |
-| GLIBC-stdc_first_leading_one_ui | stdc_first_leading_one_ui | — | — | researched | [glibc catalog](./overview.md) | —stdbit.h; stdbit.h |
-| GLIBC-stdc_first_leading_one_ul | stdc_first_leading_one_ul | — | — | researched | [glibc catalog](./overview.md) | —stdbit.h; stdbit.h |
-| GLIBC-stdc_first_leading_one_ull | stdc_first_leading_one_ull | — | — | researched | [glibc catalog](./overview.md) | —stdbit.h; stdbit.h |
-| GLIBC-stdc_first_leading_one_us | stdc_first_leading_one_us | — | — | researched | [glibc catalog](./overview.md) | —stdbit.h; stdbit.h |
-| GLIBC-stdc_first_leading_zero_uc | stdc_first_leading_zero_uc | — | — | researched | [glibc catalog](./overview.md) | —stdbit.h; stdbit.h |
-| GLIBC-stdc_first_leading_zero_ui | stdc_first_leading_zero_ui | — | — | researched | [glibc catalog](./overview.md) | —stdbit.h; stdbit.h |
-| GLIBC-stdc_first_leading_zero_ul | stdc_first_leading_zero_ul | — | — | researched | [glibc catalog](./overview.md) | —stdbit.h; stdbit.h |
-| GLIBC-stdc_first_leading_zero_ull | stdc_first_leading_zero_ull | — | — | researched | [glibc catalog](./overview.md) | —stdbit.h; stdbit.h |
-| GLIBC-stdc_first_leading_zero_us | stdc_first_leading_zero_us | — | — | researched | [glibc catalog](./overview.md) | —stdbit.h; stdbit.h |
-| GLIBC-stdc_first_trailing_one_uc | stdc_first_trailing_one_uc | — | — | researched | [glibc catalog](./overview.md) | —stdbit.h; stdbit.h |
-| GLIBC-stdc_first_trailing_one_ui | stdc_first_trailing_one_ui | — | — | researched | [glibc catalog](./overview.md) | —stdbit.h; stdbit.h |
-| GLIBC-stdc_first_trailing_one_ul | stdc_first_trailing_one_ul | — | — | researched | [glibc catalog](./overview.md) | —stdbit.h; stdbit.h |
-| GLIBC-stdc_first_trailing_one_ull | stdc_first_trailing_one_ull | — | — | researched | [glibc catalog](./overview.md) | —stdbit.h; stdbit.h |
-| GLIBC-stdc_first_trailing_one_us | stdc_first_trailing_one_us | — | — | researched | [glibc catalog](./overview.md) | —stdbit.h; stdbit.h |
-| GLIBC-stdc_first_trailing_zero_uc | stdc_first_trailing_zero_uc | — | — | researched | [glibc catalog](./overview.md) | —stdbit.h; stdbit.h |
-| GLIBC-stdc_first_trailing_zero_ui | stdc_first_trailing_zero_ui | — | — | researched | [glibc catalog](./overview.md) | —stdbit.h; stdbit.h |
-| GLIBC-stdc_first_trailing_zero_ul | stdc_first_trailing_zero_ul | — | — | researched | [glibc catalog](./overview.md) | —stdbit.h; stdbit.h |
-| GLIBC-stdc_first_trailing_zero_ull | stdc_first_trailing_zero_ull | — | — | researched | [glibc catalog](./overview.md) | —stdbit.h; stdbit.h |
-| GLIBC-stdc_first_trailing_zero_us | stdc_first_trailing_zero_us | — | — | researched | [glibc catalog](./overview.md) | —stdbit.h; stdbit.h |
-| GLIBC-stdc_has_single_bit_uc | stdc_has_single_bit_uc | — | — | researched | [glibc catalog](./overview.md) | —stdbit.h; stdbit.h |
-| GLIBC-stdc_has_single_bit_ui | stdc_has_single_bit_ui | — | — | researched | [glibc catalog](./overview.md) | —stdbit.h; stdbit.h |
-| GLIBC-stdc_has_single_bit_ul | stdc_has_single_bit_ul | — | — | researched | [glibc catalog](./overview.md) | —stdbit.h; stdbit.h |
-| GLIBC-stdc_has_single_bit_ull | stdc_has_single_bit_ull | — | — | researched | [glibc catalog](./overview.md) | —stdbit.h; stdbit.h |
-| GLIBC-stdc_has_single_bit_us | stdc_has_single_bit_us | — | — | researched | [glibc catalog](./overview.md) | —stdbit.h; stdbit.h |
-| GLIBC-stdc_leading_ones_uc | stdc_leading_ones_uc | — | — | researched | [glibc catalog](./overview.md) | —stdbit.h; stdbit.h |
-| GLIBC-stdc_leading_ones_ui | stdc_leading_ones_ui | — | — | researched | [glibc catalog](./overview.md) | —stdbit.h; stdbit.h |
-| GLIBC-stdc_leading_ones_ul | stdc_leading_ones_ul | — | — | researched | [glibc catalog](./overview.md) | —stdbit.h; stdbit.h |
-| GLIBC-stdc_leading_ones_ull | stdc_leading_ones_ull | — | — | researched | [glibc catalog](./overview.md) | —stdbit.h; stdbit.h |
-| GLIBC-stdc_leading_ones_us | stdc_leading_ones_us | — | — | researched | [glibc catalog](./overview.md) | —stdbit.h; stdbit.h |
-| GLIBC-stdc_leading_zeros_uc | stdc_leading_zeros_uc | — | — | researched | [glibc catalog](./overview.md) | —stdbit.h; stdbit.h |
-| GLIBC-stdc_leading_zeros_ui | stdc_leading_zeros_ui | — | — | researched | [glibc catalog](./overview.md) | —stdbit.h; stdbit.h |
-| GLIBC-stdc_leading_zeros_ul | stdc_leading_zeros_ul | — | — | researched | [glibc catalog](./overview.md) | —stdbit.h; stdbit.h |
-| GLIBC-stdc_leading_zeros_ull | stdc_leading_zeros_ull | — | — | researched | [glibc catalog](./overview.md) | —stdbit.h; stdbit.h |
-| GLIBC-stdc_leading_zeros_us | stdc_leading_zeros_us | — | — | researched | [glibc catalog](./overview.md) | —stdbit.h; stdbit.h |
-| GLIBC-stdc_trailing_ones_uc | stdc_trailing_ones_uc | — | — | researched | [glibc catalog](./overview.md) | —stdbit.h; stdbit.h |
-| GLIBC-stdc_trailing_ones_ui | stdc_trailing_ones_ui | — | — | researched | [glibc catalog](./overview.md) | —stdbit.h; stdbit.h |
-| GLIBC-stdc_trailing_ones_ul | stdc_trailing_ones_ul | — | — | researched | [glibc catalog](./overview.md) | —stdbit.h; stdbit.h |
-| GLIBC-stdc_trailing_ones_ull | stdc_trailing_ones_ull | — | — | researched | [glibc catalog](./overview.md) | —stdbit.h; stdbit.h |
-| GLIBC-stdc_trailing_ones_us | stdc_trailing_ones_us | — | — | researched | [glibc catalog](./overview.md) | —stdbit.h; stdbit.h |
-| GLIBC-stdc_trailing_zeros_uc | stdc_trailing_zeros_uc | — | — | researched | [glibc catalog](./overview.md) | —stdbit.h; stdbit.h |
-| GLIBC-stdc_trailing_zeros_ui | stdc_trailing_zeros_ui | — | — | researched | [glibc catalog](./overview.md) | —stdbit.h; stdbit.h |
-| GLIBC-stdc_trailing_zeros_ul | stdc_trailing_zeros_ul | — | — | researched | [glibc catalog](./overview.md) | —stdbit.h; stdbit.h |
-| GLIBC-stdc_trailing_zeros_ull | stdc_trailing_zeros_ull | — | — | researched | [glibc catalog](./overview.md) | —stdbit.h; stdbit.h |
-| GLIBC-stdc_trailing_zeros_us | stdc_trailing_zeros_us | — | — | researched | [glibc catalog](./overview.md) | —stdbit.h; stdbit.h |
+| GLIBC-stdc_bit_ceil_uc | stdc_bit_ceil_uc | — | — | documented | [glibc catalog](./overview.md) | —stdbit.h; stdbit.h |
+| GLIBC-stdc_bit_ceil_ui | stdc_bit_ceil_ui | — | — | documented | [glibc catalog](./overview.md) | —stdbit.h; stdbit.h |
+| GLIBC-stdc_bit_ceil_ul | stdc_bit_ceil_ul | — | — | documented | [glibc catalog](./overview.md) | —stdbit.h; stdbit.h |
+| GLIBC-stdc_bit_ceil_ull | stdc_bit_ceil_ull | — | — | documented | [glibc catalog](./overview.md) | —stdbit.h; stdbit.h |
+| GLIBC-stdc_bit_ceil_us | stdc_bit_ceil_us | — | — | documented | [glibc catalog](./overview.md) | —stdbit.h; stdbit.h |
+| GLIBC-stdc_bit_floor_uc | stdc_bit_floor_uc | — | — | documented | [glibc catalog](./overview.md) | —stdbit.h; stdbit.h |
+| GLIBC-stdc_bit_floor_ui | stdc_bit_floor_ui | — | — | documented | [glibc catalog](./overview.md) | —stdbit.h; stdbit.h |
+| GLIBC-stdc_bit_floor_ul | stdc_bit_floor_ul | — | — | documented | [glibc catalog](./overview.md) | —stdbit.h; stdbit.h |
+| GLIBC-stdc_bit_floor_ull | stdc_bit_floor_ull | — | — | documented | [glibc catalog](./overview.md) | —stdbit.h; stdbit.h |
+| GLIBC-stdc_bit_floor_us | stdc_bit_floor_us | — | — | documented | [glibc catalog](./overview.md) | —stdbit.h; stdbit.h |
+| GLIBC-stdc_bit_width_uc | stdc_bit_width_uc | — | — | documented | [glibc catalog](./overview.md) | —stdbit.h; stdbit.h |
+| GLIBC-stdc_bit_width_ui | stdc_bit_width_ui | — | — | documented | [glibc catalog](./overview.md) | —stdbit.h; stdbit.h |
+| GLIBC-stdc_bit_width_ul | stdc_bit_width_ul | — | — | documented | [glibc catalog](./overview.md) | —stdbit.h; stdbit.h |
+| GLIBC-stdc_bit_width_ull | stdc_bit_width_ull | — | — | documented | [glibc catalog](./overview.md) | —stdbit.h; stdbit.h |
+| GLIBC-stdc_bit_width_us | stdc_bit_width_us | — | — | documented | [glibc catalog](./overview.md) | —stdbit.h; stdbit.h |
+| GLIBC-stdc_count_ones_uc | stdc_count_ones_uc | — | — | documented | [glibc catalog](./overview.md) | —stdbit.h; stdbit.h |
+| GLIBC-stdc_count_ones_ui | stdc_count_ones_ui | — | — | documented | [glibc catalog](./overview.md) | —stdbit.h; stdbit.h |
+| GLIBC-stdc_count_ones_ul | stdc_count_ones_ul | — | — | documented | [glibc catalog](./overview.md) | —stdbit.h; stdbit.h |
+| GLIBC-stdc_count_ones_ull | stdc_count_ones_ull | — | — | documented | [glibc catalog](./overview.md) | —stdbit.h; stdbit.h |
+| GLIBC-stdc_count_ones_us | stdc_count_ones_us | — | — | documented | [glibc catalog](./overview.md) | —stdbit.h; stdbit.h |
+| GLIBC-stdc_count_zeros_uc | stdc_count_zeros_uc | — | — | documented | [glibc catalog](./overview.md) | —stdbit.h; stdbit.h |
+| GLIBC-stdc_count_zeros_ui | stdc_count_zeros_ui | — | — | documented | [glibc catalog](./overview.md) | —stdbit.h; stdbit.h |
+| GLIBC-stdc_count_zeros_ul | stdc_count_zeros_ul | — | — | documented | [glibc catalog](./overview.md) | —stdbit.h; stdbit.h |
+| GLIBC-stdc_count_zeros_ull | stdc_count_zeros_ull | — | — | documented | [glibc catalog](./overview.md) | —stdbit.h; stdbit.h |
+| GLIBC-stdc_count_zeros_us | stdc_count_zeros_us | — | — | documented | [glibc catalog](./overview.md) | —stdbit.h; stdbit.h |
+| GLIBC-stdc_first_leading_one_uc | stdc_first_leading_one_uc | — | — | documented | [glibc catalog](./overview.md) | —stdbit.h; stdbit.h |
+| GLIBC-stdc_first_leading_one_ui | stdc_first_leading_one_ui | — | — | documented | [glibc catalog](./overview.md) | —stdbit.h; stdbit.h |
+| GLIBC-stdc_first_leading_one_ul | stdc_first_leading_one_ul | — | — | documented | [glibc catalog](./overview.md) | —stdbit.h; stdbit.h |
+| GLIBC-stdc_first_leading_one_ull | stdc_first_leading_one_ull | — | — | documented | [glibc catalog](./overview.md) | —stdbit.h; stdbit.h |
+| GLIBC-stdc_first_leading_one_us | stdc_first_leading_one_us | — | — | documented | [glibc catalog](./overview.md) | —stdbit.h; stdbit.h |
+| GLIBC-stdc_first_leading_zero_uc | stdc_first_leading_zero_uc | — | — | documented | [glibc catalog](./overview.md) | —stdbit.h; stdbit.h |
+| GLIBC-stdc_first_leading_zero_ui | stdc_first_leading_zero_ui | — | — | documented | [glibc catalog](./overview.md) | —stdbit.h; stdbit.h |
+| GLIBC-stdc_first_leading_zero_ul | stdc_first_leading_zero_ul | — | — | documented | [glibc catalog](./overview.md) | —stdbit.h; stdbit.h |
+| GLIBC-stdc_first_leading_zero_ull | stdc_first_leading_zero_ull | — | — | documented | [glibc catalog](./overview.md) | —stdbit.h; stdbit.h |
+| GLIBC-stdc_first_leading_zero_us | stdc_first_leading_zero_us | — | — | documented | [glibc catalog](./overview.md) | —stdbit.h; stdbit.h |
+| GLIBC-stdc_first_trailing_one_uc | stdc_first_trailing_one_uc | — | — | documented | [glibc catalog](./overview.md) | —stdbit.h; stdbit.h |
+| GLIBC-stdc_first_trailing_one_ui | stdc_first_trailing_one_ui | — | — | documented | [glibc catalog](./overview.md) | —stdbit.h; stdbit.h |
+| GLIBC-stdc_first_trailing_one_ul | stdc_first_trailing_one_ul | — | — | documented | [glibc catalog](./overview.md) | —stdbit.h; stdbit.h |
+| GLIBC-stdc_first_trailing_one_ull | stdc_first_trailing_one_ull | — | — | documented | [glibc catalog](./overview.md) | —stdbit.h; stdbit.h |
+| GLIBC-stdc_first_trailing_one_us | stdc_first_trailing_one_us | — | — | documented | [glibc catalog](./overview.md) | —stdbit.h; stdbit.h |
+| GLIBC-stdc_first_trailing_zero_uc | stdc_first_trailing_zero_uc | — | — | documented | [glibc catalog](./overview.md) | —stdbit.h; stdbit.h |
+| GLIBC-stdc_first_trailing_zero_ui | stdc_first_trailing_zero_ui | — | — | documented | [glibc catalog](./overview.md) | —stdbit.h; stdbit.h |
+| GLIBC-stdc_first_trailing_zero_ul | stdc_first_trailing_zero_ul | — | — | documented | [glibc catalog](./overview.md) | —stdbit.h; stdbit.h |
+| GLIBC-stdc_first_trailing_zero_ull | stdc_first_trailing_zero_ull | — | — | documented | [glibc catalog](./overview.md) | —stdbit.h; stdbit.h |
+| GLIBC-stdc_first_trailing_zero_us | stdc_first_trailing_zero_us | — | — | documented | [glibc catalog](./overview.md) | —stdbit.h; stdbit.h |
+| GLIBC-stdc_has_single_bit_uc | stdc_has_single_bit_uc | — | — | documented | [glibc catalog](./overview.md) | —stdbit.h; stdbit.h |
+| GLIBC-stdc_has_single_bit_ui | stdc_has_single_bit_ui | — | — | documented | [glibc catalog](./overview.md) | —stdbit.h; stdbit.h |
+| GLIBC-stdc_has_single_bit_ul | stdc_has_single_bit_ul | — | — | documented | [glibc catalog](./overview.md) | —stdbit.h; stdbit.h |
+| GLIBC-stdc_has_single_bit_ull | stdc_has_single_bit_ull | — | — | documented | [glibc catalog](./overview.md) | —stdbit.h; stdbit.h |
+| GLIBC-stdc_has_single_bit_us | stdc_has_single_bit_us | — | — | documented | [glibc catalog](./overview.md) | —stdbit.h; stdbit.h |
+| GLIBC-stdc_leading_ones_uc | stdc_leading_ones_uc | — | — | documented | [glibc catalog](./overview.md) | —stdbit.h; stdbit.h |
+| GLIBC-stdc_leading_ones_ui | stdc_leading_ones_ui | — | — | documented | [glibc catalog](./overview.md) | —stdbit.h; stdbit.h |
+| GLIBC-stdc_leading_ones_ul | stdc_leading_ones_ul | — | — | documented | [glibc catalog](./overview.md) | —stdbit.h; stdbit.h |
+| GLIBC-stdc_leading_ones_ull | stdc_leading_ones_ull | — | — | documented | [glibc catalog](./overview.md) | —stdbit.h; stdbit.h |
+| GLIBC-stdc_leading_ones_us | stdc_leading_ones_us | — | — | documented | [glibc catalog](./overview.md) | —stdbit.h; stdbit.h |
+| GLIBC-stdc_leading_zeros_uc | stdc_leading_zeros_uc | — | — | documented | [glibc catalog](./overview.md) | —stdbit.h; stdbit.h |
+| GLIBC-stdc_leading_zeros_ui | stdc_leading_zeros_ui | — | — | documented | [glibc catalog](./overview.md) | —stdbit.h; stdbit.h |
+| GLIBC-stdc_leading_zeros_ul | stdc_leading_zeros_ul | — | — | documented | [glibc catalog](./overview.md) | —stdbit.h; stdbit.h |
+| GLIBC-stdc_leading_zeros_ull | stdc_leading_zeros_ull | — | — | documented | [glibc catalog](./overview.md) | —stdbit.h; stdbit.h |
+| GLIBC-stdc_leading_zeros_us | stdc_leading_zeros_us | — | — | documented | [glibc catalog](./overview.md) | —stdbit.h; stdbit.h |
+| GLIBC-stdc_trailing_ones_uc | stdc_trailing_ones_uc | — | — | documented | [glibc catalog](./overview.md) | —stdbit.h; stdbit.h |
+| GLIBC-stdc_trailing_ones_ui | stdc_trailing_ones_ui | — | — | documented | [glibc catalog](./overview.md) | —stdbit.h; stdbit.h |
+| GLIBC-stdc_trailing_ones_ul | stdc_trailing_ones_ul | — | — | documented | [glibc catalog](./overview.md) | —stdbit.h; stdbit.h |
+| GLIBC-stdc_trailing_ones_ull | stdc_trailing_ones_ull | — | — | documented | [glibc catalog](./overview.md) | —stdbit.h; stdbit.h |
+| GLIBC-stdc_trailing_ones_us | stdc_trailing_ones_us | — | — | documented | [glibc catalog](./overview.md) | —stdbit.h; stdbit.h |
+| GLIBC-stdc_trailing_zeros_uc | stdc_trailing_zeros_uc | — | — | documented | [glibc catalog](./overview.md) | —stdbit.h; stdbit.h |
+| GLIBC-stdc_trailing_zeros_ui | stdc_trailing_zeros_ui | — | — | documented | [glibc catalog](./overview.md) | —stdbit.h; stdbit.h |
+| GLIBC-stdc_trailing_zeros_ul | stdc_trailing_zeros_ul | — | — | documented | [glibc catalog](./overview.md) | —stdbit.h; stdbit.h |
+| GLIBC-stdc_trailing_zeros_ull | stdc_trailing_zeros_ull | — | — | documented | [glibc catalog](./overview.md) | —stdbit.h; stdbit.h |
+| GLIBC-stdc_trailing_zeros_us | stdc_trailing_zeros_us | — | — | documented | [glibc catalog](./overview.md) | —stdbit.h; stdbit.h |
 
 ### Character Handling
 
@@ -563,31 +563,31 @@ with fewer sources than the standard.
 
 | ID | Function | Header | Exported | Status | Chapter | Notes |
 |---|---|---|---|---|---|---|
-| GLIBC-btowc | btowc | `wchar.h` | — | researched | [glibc catalog](./overview.md) | —character; character |
-| GLIBC-iconv | iconv | `iconv.h` | — | researched | [glibc catalog](./overview.md) | —character; character |
-| GLIBC-iconv_close | iconv_close | `iconv.h` | — | researched | [glibc catalog](./overview.md) | —character; character |
-| GLIBC-iconv_open | iconv_open | `iconv.h` | — | researched | [glibc catalog](./overview.md) | —character; character |
-| GLIBC-mblen | mblen | `stdlib.h` | — | researched | [glibc catalog](./overview.md) | —character; character |
-| GLIBC-mbrlen | mbrlen | `wchar.h` | — | researched | [glibc catalog](./overview.md) | —character; character |
-| GLIBC-mbrtowc | mbrtowc | `wchar.h` | — | researched | [glibc catalog](./overview.md) | —character; character |
-| GLIBC-mbsinit | mbsinit | `wchar.h` | — | researched | [glibc catalog](./overview.md) | —character; character |
-| GLIBC-mbsnrtowcs | mbsnrtowcs | `wchar.h` | — | researched | [glibc catalog](./overview.md) | —character; character |
-| GLIBC-mbsrtowcs | mbsrtowcs | `wchar.h` | — | researched | [glibc catalog](./overview.md) | —character; character |
-| GLIBC-mbstowcs | mbstowcs | `stdlib.h` | — | researched | [glibc catalog](./overview.md) | —character; character |
-| GLIBC-mbtowc | mbtowc | `stdlib.h` | — | researched | [glibc catalog](./overview.md) | —character; character |
-| GLIBC-wcrtomb | wcrtomb | `wchar.h` | — | researched | [glibc catalog](./overview.md) | —character; character |
-| GLIBC-wcsnrtombs | wcsnrtombs | `wchar.h` | — | researched | [glibc catalog](./overview.md) | —character; character |
-| GLIBC-wcsrtombs | wcsrtombs | `wchar.h` | — | researched | [glibc catalog](./overview.md) | —character; character |
-| GLIBC-wcstombs | wcstombs | `stdlib.h` | — | researched | [glibc catalog](./overview.md) | —character; character |
-| GLIBC-wctob | wctob | `wchar.h` | — | researched | [glibc catalog](./overview.md) | —character; character |
-| GLIBC-wctomb | wctomb | `stdlib.h` | — | researched | [glibc catalog](./overview.md) | —character; character |
+| GLIBC-btowc | btowc | `wchar.h` | — | documented | [glibc catalog](./overview.md) | —character; character |
+| GLIBC-iconv | iconv | `iconv.h` | — | documented | [glibc catalog](./overview.md) | —character; character |
+| GLIBC-iconv_close | iconv_close | `iconv.h` | — | documented | [glibc catalog](./overview.md) | —character; character |
+| GLIBC-iconv_open | iconv_open | `iconv.h` | — | documented | [glibc catalog](./overview.md) | —character; character |
+| GLIBC-mblen | mblen | `stdlib.h` | — | documented | [glibc catalog](./overview.md) | —character; character |
+| GLIBC-mbrlen | mbrlen | `wchar.h` | — | documented | [glibc catalog](./overview.md) | —character; character |
+| GLIBC-mbrtowc | mbrtowc | `wchar.h` | — | documented | [glibc catalog](./overview.md) | —character; character |
+| GLIBC-mbsinit | mbsinit | `wchar.h` | — | documented | [glibc catalog](./overview.md) | —character; character |
+| GLIBC-mbsnrtowcs | mbsnrtowcs | `wchar.h` | — | documented | [glibc catalog](./overview.md) | —character; character |
+| GLIBC-mbsrtowcs | mbsrtowcs | `wchar.h` | — | documented | [glibc catalog](./overview.md) | —character; character |
+| GLIBC-mbstowcs | mbstowcs | `stdlib.h` | — | documented | [glibc catalog](./overview.md) | —character; character |
+| GLIBC-mbtowc | mbtowc | `stdlib.h` | — | documented | [glibc catalog](./overview.md) | —character; character |
+| GLIBC-wcrtomb | wcrtomb | `wchar.h` | — | documented | [glibc catalog](./overview.md) | —character; character |
+| GLIBC-wcsnrtombs | wcsnrtombs | `wchar.h` | — | documented | [glibc catalog](./overview.md) | —character; character |
+| GLIBC-wcsrtombs | wcsrtombs | `wchar.h` | — | documented | [glibc catalog](./overview.md) | —character; character |
+| GLIBC-wcstombs | wcstombs | `stdlib.h` | — | documented | [glibc catalog](./overview.md) | —character; character |
+| GLIBC-wctob | wctob | `wchar.h` | — | documented | [glibc catalog](./overview.md) | —character; character |
+| GLIBC-wctomb | wctomb | `stdlib.h` | — | documented | [glibc catalog](./overview.md) | —character; character |
 
 ### Cryptographic Functions
 
 | ID | Function | Header | Exported | Status | Chapter | Notes |
 |---|---|---|---|---|---|---|
-| GLIBC-getentropy | getentropy | `unistd.h` | — | researched | [glibc catalog](./overview.md) | —cryptographic; cryptographic |
-| GLIBC-getrandom | getrandom | — | — | researched | [glibc catalog](./overview.md) | —cryptographic; cryptographic |
+| GLIBC-getentropy | getentropy | `unistd.h` | — | documented | [glibc catalog](./overview.md) | —cryptographic; cryptographic |
+| GLIBC-getrandom | getrandom | — | — | documented | [glibc catalog](./overview.md) | —cryptographic; cryptographic |
 
 ### Date and Time
 
@@ -602,8 +602,8 @@ with fewer sources than the standard.
 | GLIBC-clock_nanosleep | clock_nanosleep | — | GLIBC_2.2.5 | not-started | [glibc catalog](./overview.md) | — |
 | GLIBC-clock_settime | clock_settime | — | GLIBC_2.2.5 | not-started | [glibc catalog](./overview.md) | — |
 | GLIBC-difftime | difftime | `time.h` | — | documented | [glibc catalog](./overview.md) | —FULL; FULL |
-| GLIBC-getdate | getdate | `time.h` | — | researched | [glibc catalog](./overview.md) | —time; time |
-| GLIBC-getdate_r | getdate_r | — | — | researched | [glibc catalog](./overview.md) | —time; time |
+| GLIBC-getdate | getdate | `time.h` | — | documented | [glibc catalog](./overview.md) | —time; time |
+| GLIBC-getdate_r | getdate_r | — | — | documented | [glibc catalog](./overview.md) | —time; time |
 | GLIBC-getitimer | getitimer | — | — | not-started | [glibc catalog](./overview.md) | — |
 | GLIBC-gettimeofday | gettimeofday | — | — | not-started | [glibc catalog](./overview.md) | — |
 | GLIBC-gmtime | gmtime | — | — | documented | [glibc catalog](./overview.md) | —Grouped; Grouped |
@@ -617,32 +617,32 @@ with fewer sources than the standard.
 | GLIBC-setitimer | setitimer | — | — | not-started | [glibc catalog](./overview.md) | — |
 | GLIBC-settimeofday | settimeofday | — | — | not-started | [glibc catalog](./overview.md) | — |
 | GLIBC-sleep | sleep | `unistd.h` | — | documented | [glibc catalog](./overview.md) | —ledger; ledger |
-| GLIBC-stime | stime | — | GLIBC_2.2.5 | researched | [glibc catalog](./overview.md) | —time; time |
+| GLIBC-stime | stime | — | GLIBC_2.2.5 | documented | [glibc catalog](./overview.md) | —time; time |
 | GLIBC-strftime | strftime | `time.h` | — | documented | [glibc catalog](./overview.md) | —FULL; FULL |
-| GLIBC-strftime_l | strftime_l | — | — | researched | [glibc catalog](./overview.md) | —strftime; strftime |
+| GLIBC-strftime_l | strftime_l | — | — | documented | [glibc catalog](./overview.md) | —strftime; strftime |
 | GLIBC-strptime | strptime | `time.h` | — | documented | [glibc catalog](./overview.md) | —FULL; FULL |
 | GLIBC-time | time | — | — | documented | [glibc catalog](./overview.md) | —FULL; FULL |
-| GLIBC-timegm | timegm | `time.h` | — | researched | [glibc catalog](./overview.md) | —time; time |
-| GLIBC-timelocal | timelocal | — | — | researched | [glibc catalog](./overview.md) | —time; time |
+| GLIBC-timegm | timegm | `time.h` | — | documented | [glibc catalog](./overview.md) | —time; time |
+| GLIBC-timelocal | timelocal | — | — | documented | [glibc catalog](./overview.md) | —time; time |
 | GLIBC-times | times | — | — | not-started | [glibc catalog](./overview.md) | — |
-| GLIBC-timespec_get | timespec_get | — | — | researched | [glibc catalog](./overview.md) | —time; time |
-| GLIBC-timespec_getres | timespec_getres | — | — | researched | [glibc catalog](./overview.md) | —time; time |
+| GLIBC-timespec_get | timespec_get | — | — | documented | [glibc catalog](./overview.md) | —time; time |
+| GLIBC-timespec_getres | timespec_getres | — | — | documented | [glibc catalog](./overview.md) | —time; time |
 | GLIBC-tzset | tzset | `time.h` | — | documented | [glibc catalog](./overview.md) | —FULL; FULL |
-| GLIBC-wcsftime | wcsftime | — | — | researched | [glibc catalog](./overview.md) | —time; time |
+| GLIBC-wcsftime | wcsftime | — | — | documented | [glibc catalog](./overview.md) | —time; time |
 
 ### Debugging support
 
 | ID | Function | Header | Exported | Status | Chapter | Notes |
 |---|---|---|---|---|---|---|
-| GLIBC-backtrace | backtrace | `execinfo.h` | — | researched | [glibc catalog](./overview.md) | —debugging; backtrace; debugging; backtrace |
-| GLIBC-backtrace_symbols | backtrace_symbols | — | — | researched | [glibc catalog](./overview.md) | —debugging; backtrace; debugging; backtrace |
-| GLIBC-backtrace_symbols_fd | backtrace_symbols_fd | — | — | researched | [glibc catalog](./overview.md) | —debugging; backtrace; debugging; backtrace |
+| GLIBC-backtrace | backtrace | `execinfo.h` | — | documented | [glibc catalog](./overview.md) | —debugging; backtrace; debugging; backtrace |
+| GLIBC-backtrace_symbols | backtrace_symbols | — | — | documented | [glibc catalog](./overview.md) | —debugging; backtrace; debugging; backtrace |
+| GLIBC-backtrace_symbols_fd | backtrace_symbols_fd | — | — | documented | [glibc catalog](./overview.md) | —debugging; backtrace; debugging; backtrace |
 
 ### Dynamic Linker
 
 | ID | Function | Header | Exported | Status | Chapter | Notes |
 |---|---|---|---|---|---|---|
-| GLIBC-_dl_find_object | _dl_find_object | — | — | researched | [glibc catalog](./overview.md) | —dynlink; dynlink |
+| GLIBC-_dl_find_object | _dl_find_object | — | — | documented | [glibc catalog](./overview.md) | —dynlink; dynlink |
 | GLIBC-dlinfo | dlinfo | `link.h` | GLIBC_2.3.3 | documented | [glibc catalog](./overview.md) | —Grouped; Grouped |
 
 ### Error Reporting
@@ -674,14 +674,14 @@ with fewer sources than the standard.
 | GLIBC-alphasort | alphasort | — | — | documented | [glibc catalog](./overview.md) | —Grouped; Grouped |
 | GLIBC-alphasort64 | alphasort64 | — | — | documented | [glibc catalog](./overview.md) | —Grouped; Grouped |
 | GLIBC-canonicalize_file_name | canonicalize_file_name | `stdlib.h` | — | documented | [glibc catalog](./overview.md) | —Grouped; Grouped |
-| GLIBC-chdir | chdir | — | — | researched | [glibc catalog](./overview.md) | —fs; fs |
+| GLIBC-chdir | chdir | — | — | documented | [glibc catalog](./overview.md) | —fs; fs |
 | GLIBC-chmod | chmod | — | — | documented | [glibc catalog](./overview.md) | —Grouped; Grouped |
 | GLIBC-chown | chown | — | — | documented | [glibc catalog](./overview.md) | —Grouped; Grouped |
 | GLIBC-closedir | closedir | `sys/types.h` | — | documented | [glibc catalog](./overview.md) | —Grouped; Grouped |
-| GLIBC-dirfd | dirfd | `sys/types.h` | — | researched | [glibc catalog](./overview.md) | —fs; fs |
-| GLIBC-DTTOIF | DTTOIF | — | — | researched | [glibc catalog](./overview.md) | —fs; fs |
+| GLIBC-dirfd | dirfd | `sys/types.h` | — | documented | [glibc catalog](./overview.md) | —fs; fs |
+| GLIBC-DTTOIF | DTTOIF | — | — | documented | [glibc catalog](./overview.md) | —fs; fs |
 | GLIBC-faccessat | faccessat | — | — | documented | [glibc catalog](./overview.md) | —access/faccessat; access/faccessat |
-| GLIBC-fchdir | fchdir | — | — | researched | [glibc catalog](./overview.md) | —fs; fs |
+| GLIBC-fchdir | fchdir | — | — | documented | [glibc catalog](./overview.md) | —fs; fs |
 | GLIBC-fchmod | fchmod | — | — | documented | [glibc catalog](./overview.md) | —Grouped; Grouped |
 | GLIBC-fchown | fchown | — | — | documented | [glibc catalog](./overview.md) | —Grouped; Grouped |
 | GLIBC-fdopendir | fdopendir | — | — | documented | [glibc catalog](./overview.md) | —Grouped; Grouped |
@@ -689,38 +689,38 @@ with fewer sources than the standard.
 | GLIBC-fstat64 | fstat64 | — | — | documented | [glibc catalog](./overview.md) | —Grouped; Grouped |
 | GLIBC-fstatat | fstatat | — | — | documented | [glibc catalog](./overview.md) | —Grouped; Grouped |
 | GLIBC-fstatat64 | fstatat64 | — | — | documented | [glibc catalog](./overview.md) | —Grouped; Grouped |
-| GLIBC-ftruncate | ftruncate | — | — | researched | [glibc catalog](./overview.md) | —fs; fs |
-| GLIBC-ftruncate64 | ftruncate64 | — | — | researched | [glibc catalog](./overview.md) | —fs; fs |
+| GLIBC-ftruncate | ftruncate | — | — | documented | [glibc catalog](./overview.md) | —fs; fs |
+| GLIBC-ftruncate64 | ftruncate64 | — | — | documented | [glibc catalog](./overview.md) | —fs; fs |
 | GLIBC-ftw | ftw | `ftw.h` | — | documented | [glibc catalog](./overview.md) | —Grouped; Grouped |
 | GLIBC-ftw64 | ftw64 | — | — | documented | [glibc catalog](./overview.md) | —Grouped; Grouped |
-| GLIBC-futimens | futimens | — | — | researched | [glibc catalog](./overview.md) | —fs; fs |
-| GLIBC-futimes | futimes | `sys/time.h` | — | researched | [glibc catalog](./overview.md) | —fs; fs |
-| GLIBC-get_current_dir_name | get_current_dir_name | — | — | researched | [glibc catalog](./overview.md) | —fs; fs |
-| GLIBC-getcwd | getcwd | `unistd.h` | — | researched | [glibc catalog](./overview.md) | —fs; fs |
-| GLIBC-getdents64 | getdents64 | — | — | researched | [glibc catalog](./overview.md) | —fs; fs |
-| GLIBC-getumask | getumask | — | — | researched | [glibc catalog](./overview.md) | —fs; fs |
-| GLIBC-IFTODT | IFTODT | — | — | researched | [glibc catalog](./overview.md) | —fs; fs |
+| GLIBC-futimens | futimens | — | — | documented | [glibc catalog](./overview.md) | —fs; fs |
+| GLIBC-futimes | futimes | `sys/time.h` | — | documented | [glibc catalog](./overview.md) | —fs; fs |
+| GLIBC-get_current_dir_name | get_current_dir_name | — | — | documented | [glibc catalog](./overview.md) | —fs; fs |
+| GLIBC-getcwd | getcwd | `unistd.h` | — | documented | [glibc catalog](./overview.md) | —fs; fs |
+| GLIBC-getdents64 | getdents64 | — | — | documented | [glibc catalog](./overview.md) | —fs; fs |
+| GLIBC-getumask | getumask | — | — | source-limited | [glibc catalog](./overview.md) | —fs; fs |
+| GLIBC-IFTODT | IFTODT | — | — | documented | [glibc catalog](./overview.md) | —fs; fs |
 | GLIBC-link | link | — | — | documented | [glibc catalog](./overview.md) | —Grouped; Grouped |
 | GLIBC-linkat | linkat | — | — | documented | [glibc catalog](./overview.md) | —Grouped; Grouped |
 | GLIBC-lstat | lstat | — | — | documented | [glibc catalog](./overview.md) | —Grouped; Grouped |
 | GLIBC-lstat64 | lstat64 | — | — | documented | [glibc catalog](./overview.md) | —Grouped; Grouped |
-| GLIBC-lutimes | lutimes | — | — | researched | [glibc catalog](./overview.md) | —fs; fs |
+| GLIBC-lutimes | lutimes | — | — | documented | [glibc catalog](./overview.md) | —fs; fs |
 | GLIBC-mkdir | mkdir | — | — | documented | [glibc catalog](./overview.md) | —Grouped; Grouped |
 | GLIBC-mkdirat | mkdirat | — | — | documented | [glibc catalog](./overview.md) | —Grouped; Grouped |
 | GLIBC-mkdtemp | mkdtemp | `stdlib.h` | — | documented | [glibc catalog](./overview.md) | —tmpfile/tmpnam/mkstemp/mkdtemp; Grouped; tmpfile/tmpnam/mkstemp/mkdtemp; Grouped |
-| GLIBC-mknod | mknod | — | — | researched | [glibc catalog](./overview.md) | —fs; fs |
+| GLIBC-mknod | mknod | — | — | documented | [glibc catalog](./overview.md) | —fs; fs |
 | GLIBC-mkstemp | mkstemp | `stdlib.h` | — | documented | [glibc catalog](./overview.md) | —tmpfile/tmpnam/mkstemp/mkdtemp; Grouped; tmpfile/tmpnam/mkstemp/mkdtemp; Grouped |
 | GLIBC-mktemp | mktemp | `stdlib.h` | — | documented | [glibc catalog](./overview.md) | —tmpfile/tmpnam/mkstemp/mkdtemp; tmpfile/tmpnam/mkstemp/mkdtemp |
 | GLIBC-nftw | nftw | — | GLIBC_2.2.5 | documented | [glibc catalog](./overview.md) | —Grouped; Grouped |
 | GLIBC-nftw64 | nftw64 | — | GLIBC_2.2.5 | documented | [glibc catalog](./overview.md) | —Grouped; Grouped |
 | GLIBC-opendir | opendir | `sys/types.h` | — | documented | [glibc catalog](./overview.md) | —Grouped; Grouped |
-| GLIBC-posix_fallocate | posix_fallocate | `fcntl.h` | — | researched | [glibc catalog](./overview.md) | —fs; fs |
-| GLIBC-posix_fallocate64 | posix_fallocate64 | — | — | researched | [glibc catalog](./overview.md) | —fs; fs |
+| GLIBC-posix_fallocate | posix_fallocate | `fcntl.h` | — | documented | [glibc catalog](./overview.md) | —fs; fs |
+| GLIBC-posix_fallocate64 | posix_fallocate64 | — | — | documented | [glibc catalog](./overview.md) | —fs; fs |
 | GLIBC-readdir | readdir | `dirent.h` | — | documented | [glibc catalog](./overview.md) | —Grouped; Grouped |
 | GLIBC-readdir64 | readdir64 | — | — | documented | [glibc catalog](./overview.md) | —Grouped; Grouped |
 | GLIBC-readdir64_r | readdir64_r | — | — | documented | [glibc catalog](./overview.md) | —Grouped; Grouped |
 | GLIBC-readdir_r | readdir_r | `dirent.h` | — | documented | [glibc catalog](./overview.md) | —Grouped; Grouped |
-| GLIBC-readlink | readlink | — | — | researched | [glibc catalog](./overview.md) | —fs; fs |
+| GLIBC-readlink | readlink | — | — | documented | [glibc catalog](./overview.md) | —fs; fs |
 | GLIBC-realpath | realpath | `limits.h` | GLIBC_2.2.5 | documented | [glibc catalog](./overview.md) | —FULL; FULL |
 | GLIBC-remove | remove | `stdio.h` | — | documented | [glibc catalog](./overview.md) | —remove/rename; Grouped; remove/rename; Grouped |
 | GLIBC-rename | rename | — | — | documented | [glibc catalog](./overview.md) | —remove/rename; Grouped; remove/rename; Grouped |
@@ -729,24 +729,24 @@ with fewer sources than the standard.
 | GLIBC-rmdir | rmdir | — | — | documented | [glibc catalog](./overview.md) | —Grouped; Grouped |
 | GLIBC-scandir | scandir | `dirent.h` | — | documented | [glibc catalog](./overview.md) | —Grouped; Grouped |
 | GLIBC-scandir64 | scandir64 | — | — | documented | [glibc catalog](./overview.md) | —Grouped; Grouped |
-| GLIBC-seekdir | seekdir | `dirent.h` | — | researched | [glibc catalog](./overview.md) | —fs; fs |
+| GLIBC-seekdir | seekdir | `dirent.h` | — | documented | [glibc catalog](./overview.md) | —fs; fs |
 | GLIBC-stat | stat | — | — | documented | [glibc catalog](./overview.md) | —Grouped; Grouped |
 | GLIBC-stat64 | stat64 | — | — | documented | [glibc catalog](./overview.md) | —Grouped; Grouped |
 | GLIBC-symlink | symlink | — | — | documented | [glibc catalog](./overview.md) | —Grouped; Grouped |
-| GLIBC-telldir | telldir | `dirent.h` | — | researched | [glibc catalog](./overview.md) | —fs; fs |
+| GLIBC-telldir | telldir | `dirent.h` | — | documented | [glibc catalog](./overview.md) | —fs; fs |
 | GLIBC-tempnam | tempnam | `stdio.h` | — | documented | [glibc catalog](./overview.md) | —tmpfile/tmpnam/mkstemp/mkdtemp; tmpfile/tmpnam/mkstemp/mkdtemp |
 | GLIBC-tmpfile | tmpfile | `stdio.h` | — | documented | [glibc catalog](./overview.md) | —tmpfile/tmpnam/mkstemp/mkdtemp; tmpfile/tmpnam/mkstemp/mkdtemp |
 | GLIBC-tmpfile64 | tmpfile64 | — | — | documented | [glibc catalog](./overview.md) | —tmpfile/tmpnam/mkstemp/mkdtemp; tmpfile/tmpnam/mkstemp/mkdtemp |
 | GLIBC-tmpnam | tmpnam | `stdio.h` | — | documented | [glibc catalog](./overview.md) | —tmpfile/tmpnam/mkstemp/mkdtemp; tmpfile/tmpnam/mkstemp/mkdtemp |
 | GLIBC-tmpnam_r | tmpnam_r | — | — | documented | [glibc catalog](./overview.md) | —tmpfile/tmpnam/mkstemp/mkdtemp; tmpfile/tmpnam/mkstemp/mkdtemp |
-| GLIBC-truncate | truncate | — | — | researched | [glibc catalog](./overview.md) | —fs; fs |
-| GLIBC-truncate64 | truncate64 | — | — | researched | [glibc catalog](./overview.md) | —fs; fs |
-| GLIBC-umask | umask | — | — | researched | [glibc catalog](./overview.md) | —fs; fs |
+| GLIBC-truncate | truncate | — | — | documented | [glibc catalog](./overview.md) | —fs; fs |
+| GLIBC-truncate64 | truncate64 | — | — | documented | [glibc catalog](./overview.md) | —fs; fs |
+| GLIBC-umask | umask | — | — | documented | [glibc catalog](./overview.md) | —fs; fs |
 | GLIBC-unlink | unlink | — | — | documented | [glibc catalog](./overview.md) | —Grouped; Grouped |
 | GLIBC-unlinkat | unlinkat | — | — | documented | [glibc catalog](./overview.md) | —Grouped; Grouped |
-| GLIBC-utime | utime | — | — | researched | [glibc catalog](./overview.md) | —fs; fs |
-| GLIBC-utimensat | utimensat | — | — | researched | [glibc catalog](./overview.md) | —fs; fs |
-| GLIBC-utimes | utimes | — | — | researched | [glibc catalog](./overview.md) | —fs; fs |
+| GLIBC-utime | utime | — | — | documented | [glibc catalog](./overview.md) | —fs; fs |
+| GLIBC-utimensat | utimensat | — | — | documented | [glibc catalog](./overview.md) | —fs; fs |
+| GLIBC-utimes | utimes | — | — | documented | [glibc catalog](./overview.md) | —fs; fs |
 | GLIBC-versionsort | versionsort | — | — | documented | [glibc catalog](./overview.md) | —Grouped; Grouped |
 | GLIBC-versionsort64 | versionsort64 | — | — | documented | [glibc catalog](./overview.md) | —Grouped; Grouped |
 
@@ -754,17 +754,17 @@ with fewer sources than the standard.
 
 | ID | Function | Header | Exported | Status | Chapter | Notes |
 |---|---|---|---|---|---|---|
-| GLIBC-__fbufsize | __fbufsize | — | — | researched | [glibc catalog](./overview.md) | —stdio_ext; stdio_ext |
-| GLIBC-__flbf | __flbf | — | — | researched | [glibc catalog](./overview.md) | —stdio_ext; stdio_ext |
-| GLIBC-__fpending | __fpending | — | — | researched | [glibc catalog](./overview.md) | —stdio_ext; stdio_ext |
-| GLIBC-__fpurge | __fpurge | — | — | researched | [glibc catalog](./overview.md) | —stdio_ext; stdio_ext |
-| GLIBC-__freadable | __freadable | — | — | researched | [glibc catalog](./overview.md) | —stdio_ext; stdio_ext |
-| GLIBC-__freading | __freading | — | — | researched | [glibc catalog](./overview.md) | —stdio_ext; stdio_ext |
-| GLIBC-__fsetlocking | __fsetlocking | — | — | researched | [glibc catalog](./overview.md) | —stdio_ext; stdio_ext |
-| GLIBC-__fwritable | __fwritable | — | — | researched | [glibc catalog](./overview.md) | —stdio_ext; stdio_ext |
-| GLIBC-__fwriting | __fwriting | — | — | researched | [glibc catalog](./overview.md) | —stdio_ext; stdio_ext |
-| GLIBC-_flushlbf | _flushlbf | — | — | researched | [glibc catalog](./overview.md) | —stdio_ext; stdio_ext |
-| GLIBC-addseverity | addseverity | `fmtmsg.h` | — | researched | [glibc catalog](./overview.md) | —fmtmsg/addseverity; fmtmsg/addseverity |
+| GLIBC-__fbufsize | __fbufsize | — | — | documented | [glibc catalog](./overview.md) | —stdio_ext; stdio_ext |
+| GLIBC-__flbf | __flbf | — | — | documented | [glibc catalog](./overview.md) | —stdio_ext; stdio_ext |
+| GLIBC-__fpending | __fpending | — | — | documented | [glibc catalog](./overview.md) | —stdio_ext; stdio_ext |
+| GLIBC-__fpurge | __fpurge | — | — | documented | [glibc catalog](./overview.md) | —stdio_ext; stdio_ext |
+| GLIBC-__freadable | __freadable | — | — | documented | [glibc catalog](./overview.md) | —stdio_ext; stdio_ext |
+| GLIBC-__freading | __freading | — | — | documented | [glibc catalog](./overview.md) | —stdio_ext; stdio_ext |
+| GLIBC-__fsetlocking | __fsetlocking | — | — | documented | [glibc catalog](./overview.md) | —stdio_ext; stdio_ext |
+| GLIBC-__fwritable | __fwritable | — | — | documented | [glibc catalog](./overview.md) | —stdio_ext; stdio_ext |
+| GLIBC-__fwriting | __fwriting | — | — | documented | [glibc catalog](./overview.md) | —stdio_ext; stdio_ext |
+| GLIBC-_flushlbf | _flushlbf | — | — | documented | [glibc catalog](./overview.md) | —stdio_ext; stdio_ext |
+| GLIBC-addseverity | addseverity | `fmtmsg.h` | — | documented | [glibc catalog](./overview.md) | —fmtmsg/addseverity; fmtmsg/addseverity |
 | GLIBC-asprintf | asprintf | `stdio.h` | — | documented | [glibc catalog](./overview.md) | —printf; printf |
 | GLIBC-clearerr | clearerr | — | — | documented | [glibc catalog](./overview.md) | —fileno/feof/ferror/clearerr; fileno/feof/ferror/clearerr |
 | GLIBC-clearerr_unlocked | clearerr_unlocked | — | — | documented | [glibc catalog](./overview.md) | —fileno/feof/ferror/clearerr; fileno/feof/ferror/clearerr |
@@ -783,25 +783,25 @@ with fewer sources than the standard.
 | GLIBC-fgetpos64 | fgetpos64 | — | — | documented | [glibc catalog](./overview.md) | —fseeko/ftello; fseeko/ftello |
 | GLIBC-fgets | fgets | — | — | documented | [glibc catalog](./overview.md) | —fgets/getline/getdelim; fgets/getline/getdelim |
 | GLIBC-fgets_unlocked | fgets_unlocked | — | — | documented | [glibc catalog](./overview.md) | —fgets/getline/getdelim; fgets/getline/getdelim |
-| GLIBC-fgetwc | fgetwc | `stdio.h` | — | researched | [glibc catalog](./overview.md) | —wide-char; wide-char |
-| GLIBC-fgetwc_unlocked | fgetwc_unlocked | — | — | researched | [glibc catalog](./overview.md) | —wide-char; wide-char |
-| GLIBC-fgetws | fgetws | `wchar.h` | — | researched | [glibc catalog](./overview.md) | —wide-char; wide-char |
-| GLIBC-fgetws_unlocked | fgetws_unlocked | — | — | researched | [glibc catalog](./overview.md) | —wide-char; wide-char |
+| GLIBC-fgetwc | fgetwc | `stdio.h` | — | documented | [glibc catalog](./overview.md) | —wide-char; wide-char |
+| GLIBC-fgetwc_unlocked | fgetwc_unlocked | — | — | documented | [glibc catalog](./overview.md) | —wide-char; wide-char |
+| GLIBC-fgetws | fgetws | `wchar.h` | — | documented | [glibc catalog](./overview.md) | —wide-char; wide-char |
+| GLIBC-fgetws_unlocked | fgetws_unlocked | — | — | documented | [glibc catalog](./overview.md) | —wide-char; wide-char |
 | GLIBC-flockfile | flockfile | `stdio.h` | — | documented | [glibc catalog](./overview.md) | —flockfile; flockfile |
-| GLIBC-fmemopen | fmemopen | `stdio.h` | GLIBC_2.2.5 | researched | [glibc catalog](./overview.md) | —fmemopen/open_memstream/fopencookie; fmemopen/open_memstream/fopencookie |
-| GLIBC-fmtmsg | fmtmsg | `fmtmsg.h` | — | researched | [glibc catalog](./overview.md) | —fmtmsg/addseverity; fmtmsg/addseverity |
+| GLIBC-fmemopen | fmemopen | `stdio.h` | GLIBC_2.2.5 | documented | [glibc catalog](./overview.md) | —fmemopen/open_memstream/fopencookie; fmemopen/open_memstream/fopencookie |
+| GLIBC-fmtmsg | fmtmsg | `fmtmsg.h` | — | documented | [glibc catalog](./overview.md) | —fmtmsg/addseverity; fmtmsg/addseverity |
 | GLIBC-fopen | fopen | `stdio.h` | — | documented | [glibc catalog](./overview.md) | —fopen/fdopen/freopen/fclose; fopen/fdopen/freopen/fclose |
 | GLIBC-fopen64 | fopen64 | — | — | documented | [glibc catalog](./overview.md) | —fopen/fdopen/freopen/fclose; fopen/fdopen/freopen/fclose |
-| GLIBC-fopencookie | fopencookie | `stdio.h` | — | researched | [glibc catalog](./overview.md) | —fmemopen/open_memstream/fopencookie; fmemopen/open_memstream/fopencookie |
+| GLIBC-fopencookie | fopencookie | `stdio.h` | — | documented | [glibc catalog](./overview.md) | —fmemopen/open_memstream/fopencookie; fmemopen/open_memstream/fopencookie |
 | GLIBC-fprintf | fprintf | — | — | documented | [glibc catalog](./overview.md) | —printf; printf |
 | GLIBC-fputc | fputc | — | — | documented | [glibc catalog](./overview.md) | —fputc/putc/putchar/fputs/puts; fputc/putc/putchar/fputs/puts |
 | GLIBC-fputc_unlocked | fputc_unlocked | — | — | documented | [glibc catalog](./overview.md) | —fputc/putc/putchar/fputs/puts; fputc/putc/putchar/fputs/puts |
 | GLIBC-fputs | fputs | — | — | documented | [glibc catalog](./overview.md) | —fputc/putc/putchar/fputs/puts; fputc/putc/putchar/fputs/puts |
 | GLIBC-fputs_unlocked | fputs_unlocked | — | — | documented | [glibc catalog](./overview.md) | —fputc/putc/putchar/fputs/puts; fputc/putc/putchar/fputs/puts |
-| GLIBC-fputwc | fputwc | `stdio.h` | — | researched | [glibc catalog](./overview.md) | —wide-char; wide-char |
-| GLIBC-fputwc_unlocked | fputwc_unlocked | — | — | researched | [glibc catalog](./overview.md) | —wide-char; wide-char |
-| GLIBC-fputws | fputws | `wchar.h` | — | researched | [glibc catalog](./overview.md) | —wide-char; wide-char |
-| GLIBC-fputws_unlocked | fputws_unlocked | — | — | researched | [glibc catalog](./overview.md) | —wide-char; wide-char |
+| GLIBC-fputwc | fputwc | `stdio.h` | — | documented | [glibc catalog](./overview.md) | —wide-char; wide-char |
+| GLIBC-fputwc_unlocked | fputwc_unlocked | — | — | documented | [glibc catalog](./overview.md) | —wide-char; wide-char |
+| GLIBC-fputws | fputws | `wchar.h` | — | documented | [glibc catalog](./overview.md) | —wide-char; wide-char |
+| GLIBC-fputws_unlocked | fputws_unlocked | — | — | documented | [glibc catalog](./overview.md) | —wide-char; wide-char |
 | GLIBC-fread | fread | `stdio.h` | — | documented | [glibc catalog](./overview.md) | —fread/fwrite; fread/fwrite |
 | GLIBC-fread_unlocked | fread_unlocked | — | — | documented | [glibc catalog](./overview.md) | —fread/fwrite; fread/fwrite |
 | GLIBC-freopen | freopen | — | — | documented | [glibc catalog](./overview.md) | —fopen/fdopen/freopen/fclose; fopen/fdopen/freopen/fclose |
@@ -817,11 +817,11 @@ with fewer sources than the standard.
 | GLIBC-ftello64 | ftello64 | — | — | documented | [glibc catalog](./overview.md) | —fseeko/ftello; fseeko/ftello |
 | GLIBC-ftrylockfile | ftrylockfile | — | — | documented | [glibc catalog](./overview.md) | —flockfile; flockfile |
 | GLIBC-funlockfile | funlockfile | — | — | documented | [glibc catalog](./overview.md) | —flockfile; flockfile |
-| GLIBC-fwide | fwide | `wchar.h` | — | researched | [glibc catalog](./overview.md) | —wide-char; wide-char |
-| GLIBC-fwprintf | fwprintf | — | — | researched | [glibc catalog](./overview.md) | —wide-char; wide-char |
+| GLIBC-fwide | fwide | `wchar.h` | — | documented | [glibc catalog](./overview.md) | —wide-char; wide-char |
+| GLIBC-fwprintf | fwprintf | — | — | documented | [glibc catalog](./overview.md) | —wide-char; wide-char |
 | GLIBC-fwrite | fwrite | — | — | documented | [glibc catalog](./overview.md) | —fread/fwrite; fread/fwrite |
 | GLIBC-fwrite_unlocked | fwrite_unlocked | — | — | documented | [glibc catalog](./overview.md) | —fread/fwrite; fread/fwrite |
-| GLIBC-fwscanf | fwscanf | — | — | researched | [glibc catalog](./overview.md) | —wide-char; wide-char |
+| GLIBC-fwscanf | fwscanf | — | — | documented | [glibc catalog](./overview.md) | —wide-char; wide-char |
 | GLIBC-getc | getc | — | — | documented | [glibc catalog](./overview.md) | —fgetc/getc/getchar/ungetc; fgetc/getc/getchar/ungetc |
 | GLIBC-getc_unlocked | getc_unlocked | — | — | documented | [glibc catalog](./overview.md) | —fgetc/getc/getchar/ungetc; fgetc/getc/getchar/ungetc |
 | GLIBC-getchar | getchar | — | — | documented | [glibc catalog](./overview.md) | —fgetc/getc/getchar/ungetc; fgetc/getc/getchar/ungetc |
@@ -829,28 +829,28 @@ with fewer sources than the standard.
 | GLIBC-getdelim | getdelim | — | — | documented | [glibc catalog](./overview.md) | —fgets/getline/getdelim; fgets/getline/getdelim |
 | GLIBC-getline | getline | `stdio.h` | — | documented | [glibc catalog](./overview.md) | —fgets/getline/getdelim; fgets/getline/getdelim |
 | GLIBC-getw | getw | `stdio.h` | — | documented | [glibc catalog](./overview.md) | —fgetc/getc/getchar/ungetc; fgetc/getc/getchar/ungetc |
-| GLIBC-getwc | getwc | — | — | researched | [glibc catalog](./overview.md) | —wide-char; wide-char |
-| GLIBC-getwc_unlocked | getwc_unlocked | — | — | researched | [glibc catalog](./overview.md) | —wide-char; wide-char |
-| GLIBC-getwchar | getwchar | `wchar.h` | — | researched | [glibc catalog](./overview.md) | —wide-char; wide-char |
-| GLIBC-getwchar_unlocked | getwchar_unlocked | — | — | researched | [glibc catalog](./overview.md) | —wide-char; wide-char |
-| GLIBC-obstack_printf | obstack_printf | — | — | researched | [glibc catalog](./overview.md) | —obstack; obstack |
-| GLIBC-obstack_vprintf | obstack_vprintf | — | — | researched | [glibc catalog](./overview.md) | —obstack; obstack |
-| GLIBC-open_memstream | open_memstream | `stdio.h` | — | researched | [glibc catalog](./overview.md) | —fmemopen/open_memstream/fopencookie; fmemopen/open_memstream/fopencookie |
-| GLIBC-parse_printf_format | parse_printf_format | — | — | researched | [glibc catalog](./overview.md) | —parse_printf_format/printf_size; parse_printf_format/printf_size |
+| GLIBC-getwc | getwc | — | — | documented | [glibc catalog](./overview.md) | —wide-char; wide-char |
+| GLIBC-getwc_unlocked | getwc_unlocked | — | — | documented | [glibc catalog](./overview.md) | —wide-char; wide-char |
+| GLIBC-getwchar | getwchar | `wchar.h` | — | documented | [glibc catalog](./overview.md) | —wide-char; wide-char |
+| GLIBC-getwchar_unlocked | getwchar_unlocked | — | — | documented | [glibc catalog](./overview.md) | —wide-char; wide-char |
+| GLIBC-obstack_printf | obstack_printf | — | — | documented | [glibc catalog](./overview.md) | —obstack; obstack |
+| GLIBC-obstack_vprintf | obstack_vprintf | — | — | documented | [glibc catalog](./overview.md) | —obstack; obstack |
+| GLIBC-open_memstream | open_memstream | `stdio.h` | — | documented | [glibc catalog](./overview.md) | —fmemopen/open_memstream/fopencookie; fmemopen/open_memstream/fopencookie |
+| GLIBC-parse_printf_format | parse_printf_format | — | — | documented | [glibc catalog](./overview.md) | —parse_printf_format/printf_size; parse_printf_format/printf_size |
 | GLIBC-printf | printf | `stdio.h` | — | documented | [glibc catalog](./overview.md) | —printf; printf |
-| GLIBC-printf_size | printf_size | — | — | researched | [glibc catalog](./overview.md) | —parse_printf_format/printf_size; parse_printf_format/printf_size |
-| GLIBC-printf_size_info | printf_size_info | — | — | researched | [glibc catalog](./overview.md) | —parse_printf_format/printf_size; parse_printf_format/printf_size |
+| GLIBC-printf_size | printf_size | — | — | documented | [glibc catalog](./overview.md) | —parse_printf_format/printf_size; parse_printf_format/printf_size |
+| GLIBC-printf_size_info | printf_size_info | — | — | documented | [glibc catalog](./overview.md) | —parse_printf_format/printf_size; parse_printf_format/printf_size |
 | GLIBC-putc | putc | — | — | documented | [glibc catalog](./overview.md) | —fputc/putc/putchar/fputs/puts; fputc/putc/putchar/fputs/puts |
 | GLIBC-putc_unlocked | putc_unlocked | — | — | documented | [glibc catalog](./overview.md) | —fputc/putc/putchar/fputs/puts; fputc/putc/putchar/fputs/puts |
 | GLIBC-putchar | putchar | — | — | documented | [glibc catalog](./overview.md) | —fputc/putc/putchar/fputs/puts; fputc/putc/putchar/fputs/puts |
 | GLIBC-putchar_unlocked | putchar_unlocked | — | — | documented | [glibc catalog](./overview.md) | —fputc/putc/putchar/fputs/puts; fputc/putc/putchar/fputs/puts |
 | GLIBC-puts | puts | `stdio.h` | — | documented | [glibc catalog](./overview.md) | —fputc/putc/putchar/fputs/puts; fputc/putc/putchar/fputs/puts |
 | GLIBC-putw | putw | — | — | documented | [glibc catalog](./overview.md) | —fputc/putc/putchar/fputs/puts; fputc/putc/putchar/fputs/puts |
-| GLIBC-putwc | putwc | — | — | researched | [glibc catalog](./overview.md) | —wide-char; wide-char |
-| GLIBC-putwc_unlocked | putwc_unlocked | — | — | researched | [glibc catalog](./overview.md) | —wide-char; wide-char |
-| GLIBC-putwchar | putwchar | `wchar.h` | — | researched | [glibc catalog](./overview.md) | —wide-char; wide-char |
-| GLIBC-putwchar_unlocked | putwchar_unlocked | — | — | researched | [glibc catalog](./overview.md) | —wide-char; wide-char |
-| GLIBC-register_printf_function | register_printf_function | — | — | researched | [glibc catalog](./overview.md) | —register_printf_function; register_printf_function |
+| GLIBC-putwc | putwc | — | — | documented | [glibc catalog](./overview.md) | —wide-char; wide-char |
+| GLIBC-putwc_unlocked | putwc_unlocked | — | — | documented | [glibc catalog](./overview.md) | —wide-char; wide-char |
+| GLIBC-putwchar | putwchar | `wchar.h` | — | documented | [glibc catalog](./overview.md) | —wide-char; wide-char |
+| GLIBC-putwchar_unlocked | putwchar_unlocked | — | — | documented | [glibc catalog](./overview.md) | —wide-char; wide-char |
+| GLIBC-register_printf_function | register_printf_function | — | — | documented | [glibc catalog](./overview.md) | —register_printf_function; register_printf_function |
 | GLIBC-rewind | rewind | — | — | documented | [glibc catalog](./overview.md) | —fseeko/ftello; fseeko/ftello |
 | GLIBC-scanf | scanf | `stdio.h` | — | documented | [glibc catalog](./overview.md) | —scanf; scanf |
 | GLIBC-setbuf | setbuf | `stdio.h` | — | documented | [glibc catalog](./overview.md) | —setvbuf/setbuf/setbuffer; setvbuf/setbuf/setbuffer |
@@ -860,36 +860,36 @@ with fewer sources than the standard.
 | GLIBC-snprintf | snprintf | — | — | documented | [glibc catalog](./overview.md) | —printf; printf |
 | GLIBC-sprintf | sprintf | — | — | documented | [glibc catalog](./overview.md) | —printf; printf |
 | GLIBC-sscanf | sscanf | — | — | documented | [glibc catalog](./overview.md) | —scanf; scanf |
-| GLIBC-swprintf | swprintf | — | — | researched | [glibc catalog](./overview.md) | —wide-char; wide-char |
-| GLIBC-swscanf | swscanf | — | — | researched | [glibc catalog](./overview.md) | —wide-char; wide-char |
+| GLIBC-swprintf | swprintf | — | — | documented | [glibc catalog](./overview.md) | —wide-char; wide-char |
+| GLIBC-swscanf | swscanf | — | — | documented | [glibc catalog](./overview.md) | —wide-char; wide-char |
 | GLIBC-ungetc | ungetc | — | — | documented | [glibc catalog](./overview.md) | —fgetc/getc/getchar/ungetc; fgetc/getc/getchar/ungetc |
-| GLIBC-ungetwc | ungetwc | `wchar.h` | — | researched | [glibc catalog](./overview.md) | —wide-char; wide-char |
+| GLIBC-ungetwc | ungetwc | `wchar.h` | — | documented | [glibc catalog](./overview.md) | —wide-char; wide-char |
 | GLIBC-vasprintf | vasprintf | — | — | documented | [glibc catalog](./overview.md) | —vprintf; vprintf |
 | GLIBC-vdprintf | vdprintf | — | — | documented | [glibc catalog](./overview.md) | —vprintf; vprintf |
 | GLIBC-vfprintf | vfprintf | — | — | documented | [glibc catalog](./overview.md) | —vprintf; vprintf |
 | GLIBC-vfscanf | vfscanf | — | — | documented | [glibc catalog](./overview.md) | —scanf; scanf |
-| GLIBC-vfwprintf | vfwprintf | — | — | researched | [glibc catalog](./overview.md) | —wide-char; wide-char |
-| GLIBC-vfwscanf | vfwscanf | — | — | researched | [glibc catalog](./overview.md) | —wide-char; wide-char |
+| GLIBC-vfwprintf | vfwprintf | — | — | documented | [glibc catalog](./overview.md) | —wide-char; wide-char |
+| GLIBC-vfwscanf | vfwscanf | — | — | documented | [glibc catalog](./overview.md) | —wide-char; wide-char |
 | GLIBC-vprintf | vprintf | — | — | documented | [glibc catalog](./overview.md) | —vprintf; vprintf |
 | GLIBC-vscanf | vscanf | — | — | documented | [glibc catalog](./overview.md) | —scanf; scanf |
 | GLIBC-vsnprintf | vsnprintf | — | — | documented | [glibc catalog](./overview.md) | —vprintf; vprintf |
 | GLIBC-vsprintf | vsprintf | — | — | documented | [glibc catalog](./overview.md) | —vprintf; vprintf |
 | GLIBC-vsscanf | vsscanf | — | — | documented | [glibc catalog](./overview.md) | —scanf; scanf |
-| GLIBC-vswprintf | vswprintf | — | — | researched | [glibc catalog](./overview.md) | —wide-char; wide-char |
-| GLIBC-vswscanf | vswscanf | — | — | researched | [glibc catalog](./overview.md) | —wide-char; wide-char |
-| GLIBC-vwprintf | vwprintf | — | — | researched | [glibc catalog](./overview.md) | —wide-char; wide-char |
-| GLIBC-vwscanf | vwscanf | — | — | researched | [glibc catalog](./overview.md) | —wide-char; wide-char |
-| GLIBC-wprintf | wprintf | `stdio.h` | — | researched | [glibc catalog](./overview.md) | —wide-char; wide-char |
-| GLIBC-wscanf | wscanf | — | — | researched | [glibc catalog](./overview.md) | —wide-char; wide-char |
+| GLIBC-vswprintf | vswprintf | — | — | documented | [glibc catalog](./overview.md) | —wide-char; wide-char |
+| GLIBC-vswscanf | vswscanf | — | — | documented | [glibc catalog](./overview.md) | —wide-char; wide-char |
+| GLIBC-vwprintf | vwprintf | — | — | documented | [glibc catalog](./overview.md) | —wide-char; wide-char |
+| GLIBC-vwscanf | vwscanf | — | — | documented | [glibc catalog](./overview.md) | —wide-char; wide-char |
+| GLIBC-wprintf | wprintf | `stdio.h` | — | documented | [glibc catalog](./overview.md) | —wide-char; wide-char |
+| GLIBC-wscanf | wscanf | — | — | documented | [glibc catalog](./overview.md) | —wide-char; wide-char |
 
 ### Inter-Process Communication
 
 | ID | Function | Header | Exported | Status | Chapter | Notes |
 |---|---|---|---|---|---|---|
-| GLIBC-semctl | semctl | — | — | researched | [glibc catalog](./overview.md) | —sysv; sysv |
-| GLIBC-semget | semget | — | — | researched | [glibc catalog](./overview.md) | —sysv; sysv |
-| GLIBC-semop | semop | — | — | researched | [glibc catalog](./overview.md) | —sysv; sysv |
-| GLIBC-semtimedop | semtimedop | — | — | researched | [glibc catalog](./overview.md) | —sysv; sysv |
+| GLIBC-semctl | semctl | — | — | documented | [glibc catalog](./overview.md) | —sysv; sysv |
+| GLIBC-semget | semget | — | — | documented | [glibc catalog](./overview.md) | —sysv; sysv |
+| GLIBC-semop | semop | — | — | documented | [glibc catalog](./overview.md) | —sysv; sysv |
+| GLIBC-semtimedop | semtimedop | — | — | documented | [glibc catalog](./overview.md) | —sysv; sysv |
 
 ### Job Control
 
@@ -911,10 +911,10 @@ with fewer sources than the standard.
 | ID | Function | Header | Exported | Status | Chapter | Notes |
 |---|---|---|---|---|---|---|
 | GLIBC-localeconv | localeconv | `locale.h` | — | documented | [glibc catalog](./overview.md) | —Grouped; Grouped |
-| GLIBC-nl_langinfo | nl_langinfo | `langinfo.h` | — | researched | [glibc catalog](./overview.md) | —compact; compact |
-| GLIBC-rpmatch | rpmatch | `stdlib.h` | — | researched | [glibc catalog](./overview.md) | —compact; compact |
+| GLIBC-nl_langinfo | nl_langinfo | `langinfo.h` | — | documented | [glibc catalog](./overview.md) | —compact; compact |
+| GLIBC-rpmatch | rpmatch | `stdlib.h` | — | documented | [glibc catalog](./overview.md) | —compact; compact |
 | GLIBC-setlocale | setlocale | `locale.h` | — | documented | [glibc catalog](./overview.md) | —Grouped; Grouped |
-| GLIBC-strfmon | strfmon | `monetary.h` | — | researched | [glibc catalog](./overview.md) | —compact; compact |
+| GLIBC-strfmon | strfmon | `monetary.h` | — | documented | [glibc catalog](./overview.md) | —compact; compact |
 
 ### Low-Level Input/Output
 
@@ -983,7 +983,7 @@ with fewer sources than the standard.
 | GLIBC-read | read | — | — | documented | [glibc catalog](./overview.md) | —read/write; read/write |
 | GLIBC-readv | readv | — | — | documented | [glibc catalog](./overview.md) | —readv/writev/pread/pwrite; readv/writev/pread/pwrite |
 | GLIBC-select | select | — | — | not-started | [glibc catalog](./overview.md) | — |
-| GLIBC-sync | sync | — | — | researched | [glibc catalog](./overview.md) | —sync; sync |
+| GLIBC-sync | sync | — | — | documented | [glibc catalog](./overview.md) | —sync; sync |
 | GLIBC-write | write | — | — | documented | [glibc catalog](./overview.md) | —read/write; read/write |
 | GLIBC-writev | writev | — | — | documented | [glibc catalog](./overview.md) | —readv/writev/pread/pwrite; readv/writev/pread/pwrite |
 
@@ -991,37 +991,37 @@ with fewer sources than the standard.
 
 | ID | Function | Header | Exported | Status | Chapter | Notes |
 |---|---|---|---|---|---|---|
-| GLIBC-cfgetibaud | cfgetibaud | — | — | researched | [glibc catalog](./overview.md) | —legacy; legacy |
-| GLIBC-cfgetispeed | cfgetispeed | — | — | researched | [glibc catalog](./overview.md) | —baud; baud |
-| GLIBC-cfgetobaud | cfgetobaud | — | — | researched | [glibc catalog](./overview.md) | —legacy; legacy |
-| GLIBC-cfgetospeed | cfgetospeed | — | — | researched | [glibc catalog](./overview.md) | —baud; baud |
-| GLIBC-cfmakeraw | cfmakeraw | — | — | researched | [glibc catalog](./overview.md) | —Grouped; Grouped |
-| GLIBC-cfsetbaud | cfsetbaud | — | — | researched | [glibc catalog](./overview.md) | —legacy; legacy |
-| GLIBC-cfsetibaud | cfsetibaud | — | — | researched | [glibc catalog](./overview.md) | —legacy; legacy |
-| GLIBC-cfsetispeed | cfsetispeed | — | — | researched | [glibc catalog](./overview.md) | —baud; baud |
-| GLIBC-cfsetobaud | cfsetobaud | — | — | researched | [glibc catalog](./overview.md) | —legacy; legacy |
-| GLIBC-cfsetospeed | cfsetospeed | — | — | researched | [glibc catalog](./overview.md) | —baud; baud |
-| GLIBC-cfsetspeed | cfsetspeed | — | — | researched | [glibc catalog](./overview.md) | —baud; baud |
-| GLIBC-forkpty | forkpty | — | GLIBC_2.2.5 | researched | [glibc catalog](./overview.md) | —pty; pty |
-| GLIBC-getpass | getpass | `unistd.h` | — | researched | [glibc catalog](./overview.md) | —terminal; terminal |
-| GLIBC-getpt | getpt | `stdlib.h` | — | researched | [glibc catalog](./overview.md) | —pty; pty |
-| GLIBC-grantpt | grantpt | `stdlib.h` | — | researched | [glibc catalog](./overview.md) | —pty; pty |
-| GLIBC-gtty | gtty | — | — | researched | [glibc catalog](./overview.md) | —sgtty; sgtty |
+| GLIBC-cfgetibaud | cfgetibaud | — | — | documented | [glibc catalog](./overview.md) | —legacy; legacy |
+| GLIBC-cfgetispeed | cfgetispeed | — | — | documented | [glibc catalog](./overview.md) | —baud; baud |
+| GLIBC-cfgetobaud | cfgetobaud | — | — | documented | [glibc catalog](./overview.md) | —legacy; legacy |
+| GLIBC-cfgetospeed | cfgetospeed | — | — | documented | [glibc catalog](./overview.md) | —baud; baud |
+| GLIBC-cfmakeraw | cfmakeraw | — | — | documented | [glibc catalog](./overview.md) | —Grouped; Grouped |
+| GLIBC-cfsetbaud | cfsetbaud | — | — | documented | [glibc catalog](./overview.md) | —legacy; legacy |
+| GLIBC-cfsetibaud | cfsetibaud | — | — | documented | [glibc catalog](./overview.md) | —legacy; legacy |
+| GLIBC-cfsetispeed | cfsetispeed | — | — | documented | [glibc catalog](./overview.md) | —baud; baud |
+| GLIBC-cfsetobaud | cfsetobaud | — | — | documented | [glibc catalog](./overview.md) | —legacy; legacy |
+| GLIBC-cfsetospeed | cfsetospeed | — | — | documented | [glibc catalog](./overview.md) | —baud; baud |
+| GLIBC-cfsetspeed | cfsetspeed | — | — | documented | [glibc catalog](./overview.md) | —baud; baud |
+| GLIBC-forkpty | forkpty | — | GLIBC_2.2.5 | documented | [glibc catalog](./overview.md) | —pty; pty |
+| GLIBC-getpass | getpass | `unistd.h` | — | documented | [glibc catalog](./overview.md) | —terminal; terminal |
+| GLIBC-getpt | getpt | `stdlib.h` | — | documented | [glibc catalog](./overview.md) | —pty; pty |
+| GLIBC-grantpt | grantpt | `stdlib.h` | — | documented | [glibc catalog](./overview.md) | —pty; pty |
+| GLIBC-gtty | gtty | — | — | documented | [glibc catalog](./overview.md) | —sgtty; sgtty |
 | GLIBC-isatty | isatty | `unistd.h` | — | documented | [glibc catalog](./overview.md) | —isatty; isatty |
-| GLIBC-openpty | openpty | `pty.h` | GLIBC_2.2.5 | researched | [glibc catalog](./overview.md) | —pty; pty |
-| GLIBC-posix_openpt | posix_openpt | `stdlib.h` | — | researched | [glibc catalog](./overview.md) | —pty; pty |
-| GLIBC-ptsname | ptsname | `stdlib.h` | — | researched | [glibc catalog](./overview.md) | —pty; pty |
-| GLIBC-ptsname_r | ptsname_r | — | — | researched | [glibc catalog](./overview.md) | —pty; pty |
-| GLIBC-stty | stty | — | — | researched | [glibc catalog](./overview.md) | —sgtty; sgtty |
-| GLIBC-tcdrain | tcdrain | — | — | researched | [glibc catalog](./overview.md) | —line-control; line-control |
-| GLIBC-tcflow | tcflow | — | — | researched | [glibc catalog](./overview.md) | —line-control; line-control |
-| GLIBC-tcflush | tcflush | — | — | researched | [glibc catalog](./overview.md) | —line-control; line-control |
+| GLIBC-openpty | openpty | `pty.h` | GLIBC_2.2.5 | documented | [glibc catalog](./overview.md) | —pty; pty |
+| GLIBC-posix_openpt | posix_openpt | `stdlib.h` | — | documented | [glibc catalog](./overview.md) | —pty; pty |
+| GLIBC-ptsname | ptsname | `stdlib.h` | — | documented | [glibc catalog](./overview.md) | —pty; pty |
+| GLIBC-ptsname_r | ptsname_r | — | — | documented | [glibc catalog](./overview.md) | —pty; pty |
+| GLIBC-stty | stty | — | — | documented | [glibc catalog](./overview.md) | —sgtty; sgtty |
+| GLIBC-tcdrain | tcdrain | — | — | documented | [glibc catalog](./overview.md) | —line-control; line-control |
+| GLIBC-tcflow | tcflow | — | — | documented | [glibc catalog](./overview.md) | —line-control; line-control |
+| GLIBC-tcflush | tcflush | — | — | documented | [glibc catalog](./overview.md) | —line-control; line-control |
 | GLIBC-tcgetattr | tcgetattr | — | — | documented | [glibc catalog](./overview.md) | —Grouped; Grouped |
-| GLIBC-tcsendbreak | tcsendbreak | — | — | researched | [glibc catalog](./overview.md) | —line-control; line-control |
+| GLIBC-tcsendbreak | tcsendbreak | — | — | documented | [glibc catalog](./overview.md) | —line-control; line-control |
 | GLIBC-tcsetattr | tcsetattr | — | — | documented | [glibc catalog](./overview.md) | —Grouped; Grouped |
-| GLIBC-ttyname | ttyname | `unistd.h` | — | researched | [glibc catalog](./overview.md) | —terminal; terminal |
-| GLIBC-ttyname_r | ttyname_r | — | — | researched | [glibc catalog](./overview.md) | —terminal; terminal |
-| GLIBC-unlockpt | unlockpt | `stdlib.h` | — | researched | [glibc catalog](./overview.md) | —pty; pty |
+| GLIBC-ttyname | ttyname | `unistd.h` | — | documented | [glibc catalog](./overview.md) | —terminal; terminal |
+| GLIBC-ttyname_r | ttyname_r | — | — | documented | [glibc catalog](./overview.md) | —terminal; terminal |
+| GLIBC-unlockpt | unlockpt | `stdlib.h` | — | documented | [glibc catalog](./overview.md) | —pty; pty |
 
 ### Mathematics
 
@@ -1439,9 +1439,9 @@ with fewer sources than the standard.
 |---|---|---|---|---|---|---|
 | GLIBC-bind_textdomain_codeset | bind_textdomain_codeset | — | — | documented | [glibc catalog](./overview.md) | —Grouped; Grouped |
 | GLIBC-bindtextdomain | bindtextdomain | — | — | documented | [glibc catalog](./overview.md) | —Grouped; Grouped |
-| GLIBC-catclose | catclose | — | — | researched | [glibc catalog](./overview.md) | —catgets; catgets |
-| GLIBC-catgets | catgets | `nl_types.h` | — | researched | [glibc catalog](./overview.md) | —catgets; catgets |
-| GLIBC-catopen | catopen | `nl_types.h` | — | researched | [glibc catalog](./overview.md) | —catgets; catgets |
+| GLIBC-catclose | catclose | — | — | documented | [glibc catalog](./overview.md) | —catgets; catgets |
+| GLIBC-catgets | catgets | `nl_types.h` | — | documented | [glibc catalog](./overview.md) | —catgets; catgets |
+| GLIBC-catopen | catopen | `nl_types.h` | — | documented | [glibc catalog](./overview.md) | —catgets; catgets |
 | GLIBC-dcgettext | dcgettext | — | — | documented | [glibc catalog](./overview.md) | —Grouped; Grouped |
 | GLIBC-dcngettext | dcngettext | — | — | documented | [glibc catalog](./overview.md) | —Grouped; Grouped |
 | GLIBC-dgettext | dgettext | — | — | documented | [glibc catalog](./overview.md) | —Grouped; Grouped |
@@ -1454,13 +1454,13 @@ with fewer sources than the standard.
 
 | ID | Function | Header | Exported | Status | Chapter | Notes |
 |---|---|---|---|---|---|---|
-| GLIBC-getcontext | getcontext | `ucontext.h` | — | researched | [glibc catalog](./overview.md) | —ucontext; ucontext |
+| GLIBC-getcontext | getcontext | `ucontext.h` | — | documented | [glibc catalog](./overview.md) | —ucontext; ucontext |
 | GLIBC-longjmp | longjmp | — | — | documented | [glibc catalog](./overview.md) | —grouped; grouped |
-| GLIBC-makecontext | makecontext | `ucontext.h` | — | researched | [glibc catalog](./overview.md) | —ucontext; ucontext |
-| GLIBC-setcontext | setcontext | — | — | researched | [glibc catalog](./overview.md) | —ucontext; ucontext |
+| GLIBC-makecontext | makecontext | `ucontext.h` | — | documented | [glibc catalog](./overview.md) | —ucontext; ucontext |
+| GLIBC-setcontext | setcontext | — | — | documented | [glibc catalog](./overview.md) | —ucontext; ucontext |
 | GLIBC-siglongjmp | siglongjmp | — | — | documented | [glibc catalog](./overview.md) | —grouped; grouped |
 | GLIBC-sigsetjmp | sigsetjmp | — | — | documented | [glibc catalog](./overview.md) | —grouped; grouped |
-| GLIBC-swapcontext | swapcontext | — | — | researched | [glibc catalog](./overview.md) | —ucontext; ucontext |
+| GLIBC-swapcontext | swapcontext | — | — | documented | [glibc catalog](./overview.md) | —ucontext; ucontext |
 
 ### Pattern Matching
 
@@ -1471,12 +1471,12 @@ with fewer sources than the standard.
 | GLIBC-glob64 | glob64 | — | GLIBC_2.2.5 | documented | [glibc catalog](./overview.md) | —Grouped; Grouped |
 | GLIBC-globfree | globfree | — | — | documented | [glibc catalog](./overview.md) | —Grouped; Grouped |
 | GLIBC-globfree64 | globfree64 | — | — | documented | [glibc catalog](./overview.md) | —Grouped; Grouped |
-| GLIBC-regcomp | regcomp | — | — | researched | [glibc catalog](./overview.md) | —regex; regex |
-| GLIBC-regerror | regerror | — | — | researched | [glibc catalog](./overview.md) | —regex; regex |
-| GLIBC-regexec | regexec | — | GLIBC_2.2.5 | researched | [glibc catalog](./overview.md) | —regex; regex |
-| GLIBC-regfree | regfree | — | — | researched | [glibc catalog](./overview.md) | —regex; regex |
-| GLIBC-wordexp | wordexp | `wordexp.h` | — | researched | [glibc catalog](./overview.md) | —regex/wordexp; regex/wordexp |
-| GLIBC-wordfree | wordfree | — | — | researched | [glibc catalog](./overview.md) | —regex/wordexp; regex/wordexp |
+| GLIBC-regcomp | regcomp | — | — | documented | [glibc catalog](./overview.md) | —regex; regex |
+| GLIBC-regerror | regerror | — | — | documented | [glibc catalog](./overview.md) | —regex; regex |
+| GLIBC-regexec | regexec | — | GLIBC_2.2.5 | documented | [glibc catalog](./overview.md) | —regex; regex |
+| GLIBC-regfree | regfree | — | — | documented | [glibc catalog](./overview.md) | —regex; regex |
+| GLIBC-wordexp | wordexp | `wordexp.h` | — | documented | [glibc catalog](./overview.md) | —regex/wordexp; regex/wordexp |
+| GLIBC-wordfree | wordfree | — | — | documented | [glibc catalog](./overview.md) | —regex/wordexp; regex/wordexp |
 
 ### Pipes and FIFOs
 
@@ -1552,21 +1552,21 @@ with fewer sources than the standard.
 | ID | Function | Header | Exported | Status | Chapter | Notes |
 |---|---|---|---|---|---|---|
 | GLIBC-bsearch | bsearch | `stdlib.h` | — | documented | [glibc catalog](./overview.md) | —full; full |
-| GLIBC-hcreate | hcreate | — | — | researched | [glibc catalog](./overview.md) | —hash; hash |
-| GLIBC-hcreate_r | hcreate_r | — | — | researched | [glibc catalog](./overview.md) | —hash; hash |
-| GLIBC-hdestroy | hdestroy | — | — | researched | [glibc catalog](./overview.md) | —hash; hash |
-| GLIBC-hdestroy_r | hdestroy_r | — | — | researched | [glibc catalog](./overview.md) | —hash; hash |
-| GLIBC-hsearch | hsearch | `search.h` | — | researched | [glibc catalog](./overview.md) | —hash; hash |
-| GLIBC-hsearch_r | hsearch_r | — | — | researched | [glibc catalog](./overview.md) | —hash; hash |
-| GLIBC-lfind | lfind | — | — | researched | [glibc catalog](./overview.md) | —linear; linear |
-| GLIBC-lsearch | lsearch | `search.h` | — | researched | [glibc catalog](./overview.md) | —linear; linear |
+| GLIBC-hcreate | hcreate | — | — | documented | [glibc catalog](./overview.md) | —hash; hash |
+| GLIBC-hcreate_r | hcreate_r | — | — | documented | [glibc catalog](./overview.md) | —hash; hash |
+| GLIBC-hdestroy | hdestroy | — | — | documented | [glibc catalog](./overview.md) | —hash; hash |
+| GLIBC-hdestroy_r | hdestroy_r | — | — | documented | [glibc catalog](./overview.md) | —hash; hash |
+| GLIBC-hsearch | hsearch | `search.h` | — | documented | [glibc catalog](./overview.md) | —hash; hash |
+| GLIBC-hsearch_r | hsearch_r | — | — | documented | [glibc catalog](./overview.md) | —hash; hash |
+| GLIBC-lfind | lfind | — | — | documented | [glibc catalog](./overview.md) | —linear; linear |
+| GLIBC-lsearch | lsearch | `search.h` | — | documented | [glibc catalog](./overview.md) | —linear; linear |
 | GLIBC-qsort | qsort | `stdlib.h` | — | documented | [glibc catalog](./overview.md) | —grouped; grouped |
-| GLIBC-tdelete | tdelete | — | — | researched | [glibc catalog](./overview.md) | —tree; tree |
-| GLIBC-tdestroy | tdestroy | — | — | researched | [glibc catalog](./overview.md) | —tree; tree |
-| GLIBC-tfind | tfind | — | — | researched | [glibc catalog](./overview.md) | —tree; tree |
-| GLIBC-tsearch | tsearch | `search.h` | — | researched | [glibc catalog](./overview.md) | —tree; tree |
-| GLIBC-twalk | twalk | — | — | researched | [glibc catalog](./overview.md) | —tree; tree |
-| GLIBC-twalk_r | twalk_r | — | — | researched | [glibc catalog](./overview.md) | —tree; tree |
+| GLIBC-tdelete | tdelete | — | — | documented | [glibc catalog](./overview.md) | —tree; tree |
+| GLIBC-tdestroy | tdestroy | — | — | documented | [glibc catalog](./overview.md) | —tree; tree |
+| GLIBC-tfind | tfind | — | — | documented | [glibc catalog](./overview.md) | —tree; tree |
+| GLIBC-tsearch | tsearch | `search.h` | — | documented | [glibc catalog](./overview.md) | —tree; tree |
+| GLIBC-twalk | twalk | — | — | documented | [glibc catalog](./overview.md) | —tree; tree |
+| GLIBC-twalk_r | twalk_r | — | — | documented | [glibc catalog](./overview.md) | —tree; tree |
 
 ### Signal Handling
 
@@ -1609,9 +1609,9 @@ with fewer sources than the standard.
 | GLIBC-bind | bind | — | — | documented | [glibc catalog](./overview.md) | —Grouped; Grouped |
 | GLIBC-connect | connect | — | — | documented | [glibc catalog](./overview.md) | —Grouped; Grouped |
 | GLIBC-endhostent | endhostent | — | — | documented | [glibc catalog](./overview.md) | —Grouped; Grouped |
-| GLIBC-endnetent | endnetent | — | — | researched | [glibc catalog](./overview.md) | —networks(5); networks(5) |
-| GLIBC-endprotoent | endprotoent | — | — | researched | [glibc catalog](./overview.md) | —protocols(5); protocols(5) |
-| GLIBC-endservent | endservent | — | — | researched | [glibc catalog](./overview.md) | —services(5); services(5) |
+| GLIBC-endnetent | endnetent | — | — | documented | [glibc catalog](./overview.md) | —networks(5); networks(5) |
+| GLIBC-endprotoent | endprotoent | — | — | documented | [glibc catalog](./overview.md) | —protocols(5); protocols(5) |
+| GLIBC-endservent | endservent | — | — | documented | [glibc catalog](./overview.md) | —services(5); services(5) |
 | GLIBC-gethostbyaddr | gethostbyaddr | — | — | documented | [glibc catalog](./overview.md) | —Grouped; Grouped |
 | GLIBC-gethostbyaddr_r | gethostbyaddr_r | — | — | documented | [glibc catalog](./overview.md) | —Grouped; Grouped |
 | GLIBC-gethostbyname | gethostbyname | `netdb.h` | — | documented | [glibc catalog](./overview.md) | —Grouped; Grouped |
@@ -1619,31 +1619,31 @@ with fewer sources than the standard.
 | GLIBC-gethostbyname2_r | gethostbyname2_r | — | — | documented | [glibc catalog](./overview.md) | —Grouped; Grouped |
 | GLIBC-gethostbyname_r | gethostbyname_r | — | — | documented | [glibc catalog](./overview.md) | —Grouped; Grouped |
 | GLIBC-gethostent | gethostent | — | — | documented | [glibc catalog](./overview.md) | —Grouped; Grouped |
-| GLIBC-getnetbyaddr | getnetbyaddr | — | — | researched | [glibc catalog](./overview.md) | —netdb; netdb |
-| GLIBC-getnetbyname | getnetbyname | — | — | researched | [glibc catalog](./overview.md) | —netdb; netdb |
-| GLIBC-getnetent | getnetent | `netdb.h` | — | researched | [glibc catalog](./overview.md) | —netdb; netdb |
-| GLIBC-getpeername | getpeername | — | — | researched | [glibc catalog](./overview.md) | —netdb; netdb |
-| GLIBC-getprotobyname | getprotobyname | — | — | researched | [glibc catalog](./overview.md) | —netdb; netdb |
-| GLIBC-getprotobynumber | getprotobynumber | — | — | researched | [glibc catalog](./overview.md) | —netdb; netdb |
-| GLIBC-getprotoent | getprotoent | `netdb.h` | — | researched | [glibc catalog](./overview.md) | —netdb; netdb |
-| GLIBC-getservbyname | getservbyname | — | — | researched | [glibc catalog](./overview.md) | —netdb; netdb |
-| GLIBC-getservbyport | getservbyport | — | — | researched | [glibc catalog](./overview.md) | —netdb; netdb |
-| GLIBC-getservent | getservent | `netdb.h` | — | researched | [glibc catalog](./overview.md) | —netdb; netdb |
-| GLIBC-getsockname | getsockname | — | — | researched | [glibc catalog](./overview.md) | —netdb; netdb |
-| GLIBC-getsockopt | getsockopt | — | — | researched | [glibc catalog](./overview.md) | —netdb; netdb |
+| GLIBC-getnetbyaddr | getnetbyaddr | — | — | documented | [glibc catalog](./overview.md) | —netdb; netdb |
+| GLIBC-getnetbyname | getnetbyname | — | — | documented | [glibc catalog](./overview.md) | —netdb; netdb |
+| GLIBC-getnetent | getnetent | `netdb.h` | — | documented | [glibc catalog](./overview.md) | —netdb; netdb |
+| GLIBC-getpeername | getpeername | — | — | documented | [glibc catalog](./overview.md) | —netdb; netdb |
+| GLIBC-getprotobyname | getprotobyname | — | — | documented | [glibc catalog](./overview.md) | —netdb; netdb |
+| GLIBC-getprotobynumber | getprotobynumber | — | — | documented | [glibc catalog](./overview.md) | —netdb; netdb |
+| GLIBC-getprotoent | getprotoent | `netdb.h` | — | documented | [glibc catalog](./overview.md) | —netdb; netdb |
+| GLIBC-getservbyname | getservbyname | — | — | documented | [glibc catalog](./overview.md) | —netdb; netdb |
+| GLIBC-getservbyport | getservbyport | — | — | documented | [glibc catalog](./overview.md) | —netdb; netdb |
+| GLIBC-getservent | getservent | `netdb.h` | — | documented | [glibc catalog](./overview.md) | —netdb; netdb |
+| GLIBC-getsockname | getsockname | — | — | documented | [glibc catalog](./overview.md) | —netdb; netdb |
+| GLIBC-getsockopt | getsockopt | — | — | documented | [glibc catalog](./overview.md) | —netdb; netdb |
 | GLIBC-htonl | htonl | — | — | documented | [glibc catalog](./overview.md) | —Grouped; Grouped |
 | GLIBC-htons | htons | — | — | documented | [glibc catalog](./overview.md) | —Grouped; Grouped |
-| GLIBC-if_freenameindex | if_freenameindex | — | — | researched | [glibc catalog](./overview.md) | —netdb; netdb |
-| GLIBC-if_indextoname | if_indextoname | — | — | researched | [glibc catalog](./overview.md) | —netdb; netdb |
-| GLIBC-if_nameindex | if_nameindex | `net/if.h` | — | researched | [glibc catalog](./overview.md) | —netdb; netdb |
-| GLIBC-if_nametoindex | if_nametoindex | `net/if.h` | — | researched | [glibc catalog](./overview.md) | —netdb; netdb |
+| GLIBC-if_freenameindex | if_freenameindex | — | — | documented | [glibc catalog](./overview.md) | —netdb; netdb |
+| GLIBC-if_indextoname | if_indextoname | — | — | documented | [glibc catalog](./overview.md) | —netdb; netdb |
+| GLIBC-if_nameindex | if_nameindex | `net/if.h` | — | documented | [glibc catalog](./overview.md) | —netdb; netdb |
+| GLIBC-if_nametoindex | if_nametoindex | `net/if.h` | — | documented | [glibc catalog](./overview.md) | —netdb; netdb |
 | GLIBC-inet_addr | inet_addr | — | — | documented | [glibc catalog](./overview.md) | —Grouped; Grouped |
 | GLIBC-inet_aton | inet_aton | — | — | documented | [glibc catalog](./overview.md) | —Grouped; Grouped |
-| GLIBC-inet_lnaof | inet_lnaof | — | — | researched | [glibc catalog](./overview.md) | —classful; classful |
-| GLIBC-inet_makeaddr | inet_makeaddr | — | — | researched | [glibc catalog](./overview.md) | —classful; classful |
-| GLIBC-inet_netof | inet_netof | — | — | researched | [glibc catalog](./overview.md) | —classful; classful |
-| GLIBC-inet_network | inet_network | — | — | researched | [glibc catalog](./overview.md) | —classful; classful |
-| GLIBC-inet_ntoa | inet_ntoa | — | — | researched | [glibc catalog](./overview.md) | —static-buffer; static-buffer |
+| GLIBC-inet_lnaof | inet_lnaof | — | — | documented | [glibc catalog](./overview.md) | —classful; classful |
+| GLIBC-inet_makeaddr | inet_makeaddr | — | — | documented | [glibc catalog](./overview.md) | —classful; classful |
+| GLIBC-inet_netof | inet_netof | — | — | documented | [glibc catalog](./overview.md) | —classful; classful |
+| GLIBC-inet_network | inet_network | — | — | documented | [glibc catalog](./overview.md) | —classful; classful |
+| GLIBC-inet_ntoa | inet_ntoa | — | — | documented | [glibc catalog](./overview.md) | —static-buffer; static-buffer |
 | GLIBC-inet_ntop | inet_ntop | `arpa/inet.h` | — | documented | [glibc catalog](./overview.md) | —Grouped; Grouped |
 | GLIBC-inet_pton | inet_pton | `arpa/inet.h` | — | documented | [glibc catalog](./overview.md) | —Grouped; Grouped |
 | GLIBC-listen | listen | — | — | documented | [glibc catalog](./overview.md) | —Grouped; Grouped |
@@ -1656,11 +1656,11 @@ with fewer sources than the standard.
 | GLIBC-sendmsg | sendmsg | — | — | documented | [glibc catalog](./overview.md) | —Grouped; Grouped |
 | GLIBC-sendto | sendto | — | — | documented | [glibc catalog](./overview.md) | —Grouped; Grouped |
 | GLIBC-sethostent | sethostent | — | — | documented | [glibc catalog](./overview.md) | —Grouped; Grouped |
-| GLIBC-setnetent | setnetent | — | — | researched | [glibc catalog](./overview.md) | —netdb; netdb |
-| GLIBC-setprotoent | setprotoent | — | — | researched | [glibc catalog](./overview.md) | —netdb; netdb |
-| GLIBC-setservent | setservent | — | — | researched | [glibc catalog](./overview.md) | —netdb; netdb |
-| GLIBC-setsockopt | setsockopt | — | — | researched | [glibc catalog](./overview.md) | —netdb; netdb |
-| GLIBC-shutdown | shutdown | — | — | researched | [glibc catalog](./overview.md) | —netdb; netdb |
+| GLIBC-setnetent | setnetent | — | — | documented | [glibc catalog](./overview.md) | —netdb; netdb |
+| GLIBC-setprotoent | setprotoent | — | — | documented | [glibc catalog](./overview.md) | —netdb; netdb |
+| GLIBC-setservent | setservent | — | — | documented | [glibc catalog](./overview.md) | —netdb; netdb |
+| GLIBC-setsockopt | setsockopt | — | — | documented | [glibc catalog](./overview.md) | —netdb; netdb |
+| GLIBC-shutdown | shutdown | — | — | documented | [glibc catalog](./overview.md) | —netdb; netdb |
 | GLIBC-socket | socket | — | — | documented | [glibc catalog](./overview.md) | —Grouped; Grouped |
 | GLIBC-socketpair | socketpair | — | — | documented | [glibc catalog](./overview.md) | —FULL; FULL |
 
@@ -1668,109 +1668,109 @@ with fewer sources than the standard.
 
 | ID | Function | Header | Exported | Status | Chapter | Notes |
 |---|---|---|---|---|---|---|
-| GLIBC-a64l | a64l | `stdlib.h` | — | researched | [glibc catalog](./overview.md) | —string.h; string.h |
-| GLIBC-argz_add | argz_add | `argz.h` | — | researched | [glibc catalog](./overview.md) | —string.h; string.h |
-| GLIBC-argz_add_sep | argz_add_sep | — | — | researched | [glibc catalog](./overview.md) | —string.h; string.h |
-| GLIBC-argz_append | argz_append | — | — | researched | [glibc catalog](./overview.md) | —string.h; string.h |
-| GLIBC-argz_count | argz_count | — | — | researched | [glibc catalog](./overview.md) | —string.h; string.h |
-| GLIBC-argz_create | argz_create | — | — | researched | [glibc catalog](./overview.md) | —string.h; string.h |
-| GLIBC-argz_create_sep | argz_create_sep | — | — | researched | [glibc catalog](./overview.md) | —string.h; string.h |
-| GLIBC-argz_delete | argz_delete | — | — | researched | [glibc catalog](./overview.md) | —string.h; string.h |
-| GLIBC-argz_extract | argz_extract | — | — | researched | [glibc catalog](./overview.md) | —string.h; string.h |
-| GLIBC-argz_insert | argz_insert | — | — | researched | [glibc catalog](./overview.md) | —string.h; string.h |
-| GLIBC-argz_next | argz_next | — | — | researched | [glibc catalog](./overview.md) | —string.h; string.h |
-| GLIBC-argz_replace | argz_replace | — | — | researched | [glibc catalog](./overview.md) | —string.h; string.h |
-| GLIBC-argz_stringify | argz_stringify | — | — | researched | [glibc catalog](./overview.md) | —string.h; string.h |
-| GLIBC-basename | basename | `libgen.h` | — | researched | [glibc catalog](./overview.md) | —string.h; string.h |
-| GLIBC-bcmp | bcmp | `strings.h` | — | researched | [glibc catalog](./overview.md) | —string.h; string.h |
-| GLIBC-bcopy | bcopy | `strings.h` | — | researched | [glibc catalog](./overview.md) | —string.h; string.h |
-| GLIBC-bzero | bzero | `strings.h` | — | researched | [glibc catalog](./overview.md) | —string.h; string.h |
-| GLIBC-dirname | dirname | — | — | researched | [glibc catalog](./overview.md) | —string.h; string.h |
-| GLIBC-envz_add | envz_add | `envz.h` | — | researched | [glibc catalog](./overview.md) | —string.h; string.h |
-| GLIBC-envz_entry | envz_entry | — | — | researched | [glibc catalog](./overview.md) | —string.h; string.h |
-| GLIBC-envz_get | envz_get | — | — | researched | [glibc catalog](./overview.md) | —string.h; string.h |
-| GLIBC-envz_merge | envz_merge | — | — | researched | [glibc catalog](./overview.md) | —string.h; string.h |
-| GLIBC-envz_remove | envz_remove | — | — | researched | [glibc catalog](./overview.md) | —string.h; string.h |
-| GLIBC-envz_strip | envz_strip | — | — | researched | [glibc catalog](./overview.md) | —string.h; string.h |
-| GLIBC-explicit_bzero | explicit_bzero | — | — | researched | [glibc catalog](./overview.md) | —string.h; string.h |
-| GLIBC-index | index | `strings.h` | — | researched | [glibc catalog](./overview.md) | —string.h; string.h |
-| GLIBC-l64a | l64a | — | — | researched | [glibc catalog](./overview.md) | —string.h; string.h |
-| GLIBC-memccpy | memccpy | `string.h` | — | researched | [glibc catalog](./overview.md) | —string.h; string.h |
+| GLIBC-a64l | a64l | `stdlib.h` | — | documented | [glibc catalog](./overview.md) | —string.h; string.h |
+| GLIBC-argz_add | argz_add | `argz.h` | — | documented | [glibc catalog](./overview.md) | —string.h; string.h |
+| GLIBC-argz_add_sep | argz_add_sep | — | — | documented | [glibc catalog](./overview.md) | —string.h; string.h |
+| GLIBC-argz_append | argz_append | — | — | documented | [glibc catalog](./overview.md) | —string.h; string.h |
+| GLIBC-argz_count | argz_count | — | — | documented | [glibc catalog](./overview.md) | —string.h; string.h |
+| GLIBC-argz_create | argz_create | — | — | documented | [glibc catalog](./overview.md) | —string.h; string.h |
+| GLIBC-argz_create_sep | argz_create_sep | — | — | documented | [glibc catalog](./overview.md) | —string.h; string.h |
+| GLIBC-argz_delete | argz_delete | — | — | documented | [glibc catalog](./overview.md) | —string.h; string.h |
+| GLIBC-argz_extract | argz_extract | — | — | documented | [glibc catalog](./overview.md) | —string.h; string.h |
+| GLIBC-argz_insert | argz_insert | — | — | documented | [glibc catalog](./overview.md) | —string.h; string.h |
+| GLIBC-argz_next | argz_next | — | — | documented | [glibc catalog](./overview.md) | —string.h; string.h |
+| GLIBC-argz_replace | argz_replace | — | — | documented | [glibc catalog](./overview.md) | —string.h; string.h |
+| GLIBC-argz_stringify | argz_stringify | — | — | documented | [glibc catalog](./overview.md) | —string.h; string.h |
+| GLIBC-basename | basename | `libgen.h` | — | documented | [glibc catalog](./overview.md) | —string.h; string.h |
+| GLIBC-bcmp | bcmp | `strings.h` | — | documented | [glibc catalog](./overview.md) | —string.h; string.h |
+| GLIBC-bcopy | bcopy | `strings.h` | — | documented | [glibc catalog](./overview.md) | —string.h; string.h |
+| GLIBC-bzero | bzero | `strings.h` | — | documented | [glibc catalog](./overview.md) | —string.h; string.h |
+| GLIBC-dirname | dirname | — | — | documented | [glibc catalog](./overview.md) | —string.h; string.h |
+| GLIBC-envz_add | envz_add | `envz.h` | — | documented | [glibc catalog](./overview.md) | —string.h; string.h |
+| GLIBC-envz_entry | envz_entry | — | — | documented | [glibc catalog](./overview.md) | —string.h; string.h |
+| GLIBC-envz_get | envz_get | — | — | documented | [glibc catalog](./overview.md) | —string.h; string.h |
+| GLIBC-envz_merge | envz_merge | — | — | documented | [glibc catalog](./overview.md) | —string.h; string.h |
+| GLIBC-envz_remove | envz_remove | — | — | documented | [glibc catalog](./overview.md) | —string.h; string.h |
+| GLIBC-envz_strip | envz_strip | — | — | documented | [glibc catalog](./overview.md) | —string.h; string.h |
+| GLIBC-explicit_bzero | explicit_bzero | — | — | documented | [glibc catalog](./overview.md) | —string.h; string.h |
+| GLIBC-index | index | `strings.h` | — | documented | [glibc catalog](./overview.md) | —string.h; string.h |
+| GLIBC-l64a | l64a | — | — | documented | [glibc catalog](./overview.md) | —string.h; string.h |
+| GLIBC-memccpy | memccpy | `string.h` | — | documented | [glibc catalog](./overview.md) | —string.h; string.h |
 | GLIBC-memchr | memchr | `string.h` | — | documented | [glibc catalog](./overview.md) | —grouped; grouped |
 | GLIBC-memcmp | memcmp | `string.h` | — | documented | [glibc catalog](./overview.md) | —grouped; grouped |
 | GLIBC-memcpy | memcpy | `string.h` | GLIBC_2.2.5 | documented | [glibc catalog](./overview.md) | —grouped; grouped |
-| GLIBC-memfrob | memfrob | `string.h` | — | researched | [glibc catalog](./overview.md) | —string.h; string.h |
-| GLIBC-memmem | memmem | `string.h` | — | researched | [glibc catalog](./overview.md) | —string.h; string.h |
+| GLIBC-memfrob | memfrob | `string.h` | — | documented | [glibc catalog](./overview.md) | —string.h; string.h |
+| GLIBC-memmem | memmem | `string.h` | — | documented | [glibc catalog](./overview.md) | —string.h; string.h |
 | GLIBC-memmove | memmove | `string.h` | — | documented | [glibc catalog](./overview.md) | —grouped; grouped |
-| GLIBC-mempcpy | mempcpy | `string.h` | — | researched | [glibc catalog](./overview.md) | —string.h; string.h |
-| GLIBC-memrchr | memrchr | — | — | researched | [glibc catalog](./overview.md) | —string.h; string.h |
+| GLIBC-mempcpy | mempcpy | `string.h` | — | documented | [glibc catalog](./overview.md) | —string.h; string.h |
+| GLIBC-memrchr | memrchr | — | — | documented | [glibc catalog](./overview.md) | —string.h; string.h |
 | GLIBC-memset | memset | `string.h` | — | documented | [glibc catalog](./overview.md) | —grouped; grouped |
 | GLIBC-memset_explicit | memset_explicit | — | — | not-started | [glibc catalog](./overview.md) | — |
-| GLIBC-rawmemchr | rawmemchr | — | — | researched | [glibc catalog](./overview.md) | —string.h; string.h |
-| GLIBC-rindex | rindex | — | — | researched | [glibc catalog](./overview.md) | —string.h; string.h |
-| GLIBC-stpcpy | stpcpy | `string.h` | — | researched | [glibc catalog](./overview.md) | —string.h; string.h |
-| GLIBC-stpncpy | stpncpy | `string.h` | — | researched | [glibc catalog](./overview.md) | —string.h; string.h |
-| GLIBC-strcasecmp | strcasecmp | `strings.h` | — | researched | [glibc catalog](./overview.md) | —string.h; string.h |
+| GLIBC-rawmemchr | rawmemchr | — | — | documented | [glibc catalog](./overview.md) | —string.h; string.h |
+| GLIBC-rindex | rindex | — | — | documented | [glibc catalog](./overview.md) | —string.h; string.h |
+| GLIBC-stpcpy | stpcpy | `string.h` | — | documented | [glibc catalog](./overview.md) | —string.h; string.h |
+| GLIBC-stpncpy | stpncpy | `string.h` | — | documented | [glibc catalog](./overview.md) | —string.h; string.h |
+| GLIBC-strcasecmp | strcasecmp | `strings.h` | — | documented | [glibc catalog](./overview.md) | —string.h; string.h |
 | GLIBC-strcasestr | strcasestr | — | — | documented | [glibc catalog](./overview.md) | —grouped; grouped |
 | GLIBC-strcat | strcat | `string.h` | — | documented | [glibc catalog](./overview.md) | —grouped; grouped |
 | GLIBC-strchr | strchr | `string.h` | — | documented | [glibc catalog](./overview.md) | —grouped; grouped |
 | GLIBC-strchrnul | strchrnul | — | — | documented | [glibc catalog](./overview.md) | —grouped; grouped |
 | GLIBC-strcmp | strcmp | `string.h` | — | documented | [glibc catalog](./overview.md) | —grouped; grouped |
-| GLIBC-strcoll | strcoll | `string.h` | — | researched | [glibc catalog](./overview.md) | —string.h; string.h |
+| GLIBC-strcoll | strcoll | `string.h` | — | documented | [glibc catalog](./overview.md) | —string.h; string.h |
 | GLIBC-strcpy | strcpy | `string.h` | — | documented | [glibc catalog](./overview.md) | —grouped; grouped |
 | GLIBC-strcspn | strcspn | — | — | documented | [glibc catalog](./overview.md) | —grouped; grouped |
 | GLIBC-strdup | strdup | `string.h` | — | documented | [glibc catalog](./overview.md) | —grouped; grouped |
-| GLIBC-strfry | strfry | `string.h` | — | researched | [glibc catalog](./overview.md) | —string.h; string.h |
-| GLIBC-strlcat | strlcat | — | — | researched | [glibc catalog](./overview.md) | —string.h; string.h |
-| GLIBC-strlcpy | strlcpy | — | — | researched | [glibc catalog](./overview.md) | —string.h; string.h |
+| GLIBC-strfry | strfry | `string.h` | — | documented | [glibc catalog](./overview.md) | —string.h; string.h |
+| GLIBC-strlcat | strlcat | — | — | documented | [glibc catalog](./overview.md) | —string.h; string.h |
+| GLIBC-strlcpy | strlcpy | — | — | documented | [glibc catalog](./overview.md) | —string.h; string.h |
 | GLIBC-strlen | strlen | `string.h` | — | documented | [glibc catalog](./overview.md) | —full; full |
-| GLIBC-strncasecmp | strncasecmp | — | — | researched | [glibc catalog](./overview.md) | —string.h; string.h |
+| GLIBC-strncasecmp | strncasecmp | — | — | documented | [glibc catalog](./overview.md) | —string.h; string.h |
 | GLIBC-strncat | strncat | — | — | documented | [glibc catalog](./overview.md) | —grouped; grouped |
 | GLIBC-strncmp | strncmp | — | — | documented | [glibc catalog](./overview.md) | —grouped; grouped |
 | GLIBC-strncpy | strncpy | — | — | documented | [glibc catalog](./overview.md) | —grouped; grouped |
 | GLIBC-strndup | strndup | — | — | documented | [glibc catalog](./overview.md) | —grouped; grouped |
-| GLIBC-strnlen | strnlen | `string.h` | — | researched | [glibc catalog](./overview.md) | —string.h; string.h |
+| GLIBC-strnlen | strnlen | `string.h` | — | documented | [glibc catalog](./overview.md) | —string.h; string.h |
 | GLIBC-strpbrk | strpbrk | `string.h` | — | documented | [glibc catalog](./overview.md) | —grouped; grouped |
 | GLIBC-strrchr | strrchr | — | — | documented | [glibc catalog](./overview.md) | —grouped; grouped |
-| GLIBC-strsep | strsep | `string.h` | — | researched | [glibc catalog](./overview.md) | —string.h; string.h |
+| GLIBC-strsep | strsep | `string.h` | — | documented | [glibc catalog](./overview.md) | —string.h; string.h |
 | GLIBC-strspn | strspn | `string.h` | — | documented | [glibc catalog](./overview.md) | —grouped; grouped |
 | GLIBC-strstr | strstr | `string.h` | — | documented | [glibc catalog](./overview.md) | —grouped; grouped |
 | GLIBC-strtok | strtok | `string.h` | — | documented | [glibc catalog](./overview.md) | —grouped; grouped |
 | GLIBC-strtok_r | strtok_r | — | — | documented | [glibc catalog](./overview.md) | —grouped; grouped |
-| GLIBC-strverscmp | strverscmp | `string.h` | — | researched | [glibc catalog](./overview.md) | —string.h; string.h |
-| GLIBC-strxfrm | strxfrm | `string.h` | — | researched | [glibc catalog](./overview.md) | —string.h; string.h |
-| GLIBC-wcpcpy | wcpcpy | `wchar.h` | — | researched | [glibc catalog](./overview.md) | —string.h; string.h |
-| GLIBC-wcpncpy | wcpncpy | `wchar.h` | — | researched | [glibc catalog](./overview.md) | —string.h; string.h |
-| GLIBC-wcscasecmp | wcscasecmp | `wchar.h` | — | researched | [glibc catalog](./overview.md) | —string.h; string.h |
-| GLIBC-wcscat | wcscat | `wchar.h` | — | researched | [glibc catalog](./overview.md) | —string.h; string.h |
-| GLIBC-wcschr | wcschr | `wchar.h` | — | researched | [glibc catalog](./overview.md) | —string.h; string.h |
-| GLIBC-wcschrnul | wcschrnul | — | — | researched | [glibc catalog](./overview.md) | —string.h; string.h |
-| GLIBC-wcscmp | wcscmp | `wchar.h` | — | researched | [glibc catalog](./overview.md) | —string.h; string.h |
-| GLIBC-wcscoll | wcscoll | — | — | researched | [glibc catalog](./overview.md) | —string.h; string.h |
-| GLIBC-wcscpy | wcscpy | `wchar.h` | — | researched | [glibc catalog](./overview.md) | —string.h; string.h |
-| GLIBC-wcscspn | wcscspn | `wchar.h` | — | researched | [glibc catalog](./overview.md) | —string.h; string.h |
-| GLIBC-wcsdup | wcsdup | `wchar.h` | — | researched | [glibc catalog](./overview.md) | —string.h; string.h |
-| GLIBC-wcslcat | wcslcat | — | — | researched | [glibc catalog](./overview.md) | —string.h; string.h |
-| GLIBC-wcslcpy | wcslcpy | — | — | researched | [glibc catalog](./overview.md) | —string.h; string.h |
-| GLIBC-wcslen | wcslen | `wchar.h` | — | researched | [glibc catalog](./overview.md) | —string.h; string.h |
-| GLIBC-wcsncasecmp | wcsncasecmp | `wchar.h` | — | researched | [glibc catalog](./overview.md) | —string.h; string.h |
-| GLIBC-wcsncat | wcsncat | `wchar.h` | — | researched | [glibc catalog](./overview.md) | —string.h; string.h |
-| GLIBC-wcsncmp | wcsncmp | `wchar.h` | — | researched | [glibc catalog](./overview.md) | —string.h; string.h |
-| GLIBC-wcsncpy | wcsncpy | `wchar.h` | — | researched | [glibc catalog](./overview.md) | —string.h; string.h |
-| GLIBC-wcsnlen | wcsnlen | `wchar.h` | — | researched | [glibc catalog](./overview.md) | —string.h; string.h |
-| GLIBC-wcspbrk | wcspbrk | `wchar.h` | — | researched | [glibc catalog](./overview.md) | —string.h; string.h |
-| GLIBC-wcsrchr | wcsrchr | `wchar.h` | — | researched | [glibc catalog](./overview.md) | —string.h; string.h |
-| GLIBC-wcsspn | wcsspn | `wchar.h` | — | researched | [glibc catalog](./overview.md) | —string.h; string.h |
-| GLIBC-wcsstr | wcsstr | `wchar.h` | — | researched | [glibc catalog](./overview.md) | —string.h; string.h |
-| GLIBC-wcstok | wcstok | `wchar.h` | — | researched | [glibc catalog](./overview.md) | —string.h; string.h |
-| GLIBC-wcswcs | wcswcs | — | — | researched | [glibc catalog](./overview.md) | —string.h; string.h |
-| GLIBC-wcsxfrm | wcsxfrm | — | — | researched | [glibc catalog](./overview.md) | —string.h; string.h |
-| GLIBC-wmemchr | wmemchr | `wchar.h` | — | researched | [glibc catalog](./overview.md) | —string.h; string.h |
-| GLIBC-wmemcmp | wmemcmp | `wchar.h` | — | researched | [glibc catalog](./overview.md) | —string.h; string.h |
-| GLIBC-wmemcpy | wmemcpy | `wchar.h` | — | researched | [glibc catalog](./overview.md) | —string.h; string.h |
-| GLIBC-wmemmove | wmemmove | `wchar.h` | — | researched | [glibc catalog](./overview.md) | —string.h; string.h |
-| GLIBC-wmempcpy | wmempcpy | — | — | researched | [glibc catalog](./overview.md) | —string.h; string.h |
-| GLIBC-wmemset | wmemset | `wchar.h` | — | researched | [glibc catalog](./overview.md) | —string.h; string.h |
+| GLIBC-strverscmp | strverscmp | `string.h` | — | documented | [glibc catalog](./overview.md) | —string.h; string.h |
+| GLIBC-strxfrm | strxfrm | `string.h` | — | documented | [glibc catalog](./overview.md) | —string.h; string.h |
+| GLIBC-wcpcpy | wcpcpy | `wchar.h` | — | documented | [glibc catalog](./overview.md) | —string.h; string.h |
+| GLIBC-wcpncpy | wcpncpy | `wchar.h` | — | documented | [glibc catalog](./overview.md) | —string.h; string.h |
+| GLIBC-wcscasecmp | wcscasecmp | `wchar.h` | — | documented | [glibc catalog](./overview.md) | —string.h; string.h |
+| GLIBC-wcscat | wcscat | `wchar.h` | — | documented | [glibc catalog](./overview.md) | —string.h; string.h |
+| GLIBC-wcschr | wcschr | `wchar.h` | — | documented | [glibc catalog](./overview.md) | —string.h; string.h |
+| GLIBC-wcschrnul | wcschrnul | — | — | documented | [glibc catalog](./overview.md) | —string.h; string.h |
+| GLIBC-wcscmp | wcscmp | `wchar.h` | — | documented | [glibc catalog](./overview.md) | —string.h; string.h |
+| GLIBC-wcscoll | wcscoll | — | — | documented | [glibc catalog](./overview.md) | —string.h; string.h |
+| GLIBC-wcscpy | wcscpy | `wchar.h` | — | documented | [glibc catalog](./overview.md) | —string.h; string.h |
+| GLIBC-wcscspn | wcscspn | `wchar.h` | — | documented | [glibc catalog](./overview.md) | —string.h; string.h |
+| GLIBC-wcsdup | wcsdup | `wchar.h` | — | documented | [glibc catalog](./overview.md) | —string.h; string.h |
+| GLIBC-wcslcat | wcslcat | — | — | documented | [glibc catalog](./overview.md) | —string.h; string.h |
+| GLIBC-wcslcpy | wcslcpy | — | — | documented | [glibc catalog](./overview.md) | —string.h; string.h |
+| GLIBC-wcslen | wcslen | `wchar.h` | — | documented | [glibc catalog](./overview.md) | —string.h; string.h |
+| GLIBC-wcsncasecmp | wcsncasecmp | `wchar.h` | — | documented | [glibc catalog](./overview.md) | —string.h; string.h |
+| GLIBC-wcsncat | wcsncat | `wchar.h` | — | documented | [glibc catalog](./overview.md) | —string.h; string.h |
+| GLIBC-wcsncmp | wcsncmp | `wchar.h` | — | documented | [glibc catalog](./overview.md) | —string.h; string.h |
+| GLIBC-wcsncpy | wcsncpy | `wchar.h` | — | documented | [glibc catalog](./overview.md) | —string.h; string.h |
+| GLIBC-wcsnlen | wcsnlen | `wchar.h` | — | documented | [glibc catalog](./overview.md) | —string.h; string.h |
+| GLIBC-wcspbrk | wcspbrk | `wchar.h` | — | documented | [glibc catalog](./overview.md) | —string.h; string.h |
+| GLIBC-wcsrchr | wcsrchr | `wchar.h` | — | documented | [glibc catalog](./overview.md) | —string.h; string.h |
+| GLIBC-wcsspn | wcsspn | `wchar.h` | — | documented | [glibc catalog](./overview.md) | —string.h; string.h |
+| GLIBC-wcsstr | wcsstr | `wchar.h` | — | documented | [glibc catalog](./overview.md) | —string.h; string.h |
+| GLIBC-wcstok | wcstok | `wchar.h` | — | documented | [glibc catalog](./overview.md) | —string.h; string.h |
+| GLIBC-wcswcs | wcswcs | — | — | documented | [glibc catalog](./overview.md) | —string.h; string.h |
+| GLIBC-wcsxfrm | wcsxfrm | — | — | documented | [glibc catalog](./overview.md) | —string.h; string.h |
+| GLIBC-wmemchr | wmemchr | `wchar.h` | — | documented | [glibc catalog](./overview.md) | —string.h; string.h |
+| GLIBC-wmemcmp | wmemcmp | `wchar.h` | — | documented | [glibc catalog](./overview.md) | —string.h; string.h |
+| GLIBC-wmemcpy | wmemcpy | `wchar.h` | — | documented | [glibc catalog](./overview.md) | —string.h; string.h |
+| GLIBC-wmemmove | wmemmove | `wchar.h` | — | documented | [glibc catalog](./overview.md) | —string.h; string.h |
+| GLIBC-wmempcpy | wmempcpy | — | — | documented | [glibc catalog](./overview.md) | —string.h; string.h |
+| GLIBC-wmemset | wmemset | `wchar.h` | — | documented | [glibc catalog](./overview.md) | —string.h; string.h |
 
 ### Syslog
 
@@ -1786,36 +1786,36 @@ with fewer sources than the standard.
 
 | ID | Function | Header | Exported | Status | Chapter | Notes |
 |---|---|---|---|---|---|---|
-| GLIBC-confstr | confstr | `unistd.h` | — | researched | [glibc catalog](./overview.md) | —pathconf/confstr; pathconf/confstr |
-| GLIBC-fpathconf | fpathconf | `unistd.h` | — | researched | [glibc catalog](./overview.md) | —pathconf/confstr; pathconf/confstr |
-| GLIBC-pathconf | pathconf | — | — | researched | [glibc catalog](./overview.md) | —pathconf/confstr; pathconf/confstr |
+| GLIBC-confstr | confstr | `unistd.h` | — | documented | [glibc catalog](./overview.md) | —pathconf/confstr; pathconf/confstr |
+| GLIBC-fpathconf | fpathconf | `unistd.h` | — | documented | [glibc catalog](./overview.md) | —pathconf/confstr; pathconf/confstr |
+| GLIBC-pathconf | pathconf | — | — | documented | [glibc catalog](./overview.md) | —pathconf/confstr; pathconf/confstr |
 | GLIBC-sysconf | sysconf | `unistd.h` | — | documented | [glibc catalog](./overview.md) | —FULL; FULL |
 
 ### System Management
 
 | ID | Function | Header | Exported | Status | Chapter | Notes |
 |---|---|---|---|---|---|---|
-| GLIBC-addmntent | addmntent | — | — | researched | [glibc catalog](./overview.md) | —mntent; mntent |
-| GLIBC-endfsent | endfsent | — | — | researched | [glibc catalog](./overview.md) | —fstab; fstab |
-| GLIBC-endmntent | endmntent | — | — | researched | [glibc catalog](./overview.md) | —mntent; mntent |
-| GLIBC-getdomainname | getdomainname | — | — | researched | [glibc catalog](./overview.md) | —host-identification; host-identification |
-| GLIBC-getfsent | getfsent | `fstab.h` | — | researched | [glibc catalog](./overview.md) | —fstab; fstab |
-| GLIBC-getfsfile | getfsfile | — | — | researched | [glibc catalog](./overview.md) | —fstab; fstab |
-| GLIBC-getfsspec | getfsspec | — | — | researched | [glibc catalog](./overview.md) | —fstab; fstab |
-| GLIBC-gethostid | gethostid | `unistd.h` | — | researched | [glibc catalog](./overview.md) | —host-identification; host-identification |
-| GLIBC-gethostname | gethostname | — | — | researched | [glibc catalog](./overview.md) | —host-identification; host-identification |
-| GLIBC-getmntent | getmntent | `stdio.h` | — | researched | [glibc catalog](./overview.md) | —mntent; mntent |
-| GLIBC-getmntent_r | getmntent_r | — | — | researched | [glibc catalog](./overview.md) | —mntent; mntent |
-| GLIBC-hasmntopt | hasmntopt | — | — | researched | [glibc catalog](./overview.md) | —mntent; mntent |
-| GLIBC-mount | mount | — | — | researched | [glibc catalog](./overview.md) | —mount; mount |
-| GLIBC-setdomainname | setdomainname | — | — | researched | [glibc catalog](./overview.md) | —host-identification; host-identification |
-| GLIBC-setfsent | setfsent | — | — | researched | [glibc catalog](./overview.md) | —fstab; fstab |
-| GLIBC-sethostid | sethostid | — | — | researched | [glibc catalog](./overview.md) | —host-identification; host-identification |
-| GLIBC-sethostname | sethostname | — | — | researched | [glibc catalog](./overview.md) | —host-identification; host-identification |
-| GLIBC-setmntent | setmntent | — | — | researched | [glibc catalog](./overview.md) | —mntent; mntent |
-| GLIBC-umount | umount | — | — | researched | [glibc catalog](./overview.md) | —umount; umount |
-| GLIBC-umount2 | umount2 | — | — | researched | [glibc catalog](./overview.md) | —umount; umount |
-| GLIBC-uname | uname | — | — | researched | [glibc catalog](./overview.md) | —uname; uname |
+| GLIBC-addmntent | addmntent | — | — | documented | [glibc catalog](./overview.md) | —mntent; mntent |
+| GLIBC-endfsent | endfsent | — | — | documented | [glibc catalog](./overview.md) | —fstab; fstab |
+| GLIBC-endmntent | endmntent | — | — | documented | [glibc catalog](./overview.md) | —mntent; mntent |
+| GLIBC-getdomainname | getdomainname | — | — | documented | [glibc catalog](./overview.md) | —host-identification; host-identification |
+| GLIBC-getfsent | getfsent | `fstab.h` | — | documented | [glibc catalog](./overview.md) | —fstab; fstab |
+| GLIBC-getfsfile | getfsfile | — | — | documented | [glibc catalog](./overview.md) | —fstab; fstab |
+| GLIBC-getfsspec | getfsspec | — | — | documented | [glibc catalog](./overview.md) | —fstab; fstab |
+| GLIBC-gethostid | gethostid | `unistd.h` | — | documented | [glibc catalog](./overview.md) | —host-identification; host-identification |
+| GLIBC-gethostname | gethostname | — | — | documented | [glibc catalog](./overview.md) | —host-identification; host-identification |
+| GLIBC-getmntent | getmntent | `stdio.h` | — | documented | [glibc catalog](./overview.md) | —mntent; mntent |
+| GLIBC-getmntent_r | getmntent_r | — | — | documented | [glibc catalog](./overview.md) | —mntent; mntent |
+| GLIBC-hasmntopt | hasmntopt | — | — | documented | [glibc catalog](./overview.md) | —mntent; mntent |
+| GLIBC-mount | mount | — | — | documented | [glibc catalog](./overview.md) | —mount; mount |
+| GLIBC-setdomainname | setdomainname | — | — | documented | [glibc catalog](./overview.md) | —host-identification; host-identification |
+| GLIBC-setfsent | setfsent | — | — | documented | [glibc catalog](./overview.md) | —fstab; fstab |
+| GLIBC-sethostid | sethostid | — | — | documented | [glibc catalog](./overview.md) | —host-identification; host-identification |
+| GLIBC-sethostname | sethostname | — | — | documented | [glibc catalog](./overview.md) | —host-identification; host-identification |
+| GLIBC-setmntent | setmntent | — | — | documented | [glibc catalog](./overview.md) | —mntent; mntent |
+| GLIBC-umount | umount | — | — | documented | [glibc catalog](./overview.md) | —umount; umount |
+| GLIBC-umount2 | umount2 | — | — | documented | [glibc catalog](./overview.md) | —umount; umount |
+| GLIBC-uname | uname | — | — | documented | [glibc catalog](./overview.md) | —uname; uname |
 
 ### The Basic Program/System Interface
 
@@ -1825,55 +1825,55 @@ with fewer sources than the standard.
 | GLIBC-_Exit | _Exit | — | — | documented | [glibc catalog](./overview.md) | —grouped; grouped |
 | GLIBC-abort | abort | `stdlib.h` | — | documented | [glibc catalog](./overview.md) | —full; full |
 | GLIBC-atexit | atexit | `stdlib.h` | — | documented | [glibc catalog](./overview.md) | —grouped; grouped |
-| GLIBC-clearenv | clearenv | `stdlib.h` | — | researched | [glibc catalog](./overview.md) | —basic-prog; recap; basic-prog; recap |
+| GLIBC-clearenv | clearenv | `stdlib.h` | — | documented | [glibc catalog](./overview.md) | —basic-prog; recap; basic-prog; recap |
 | GLIBC-exit | exit | `stdlib.h` | — | documented | [glibc catalog](./overview.md) | —grouped; grouped |
-| GLIBC-getauxval | getauxval | `sys/auxv.h` | — | researched | [glibc catalog](./overview.md) | —basic-prog; recap; basic-prog; recap |
+| GLIBC-getauxval | getauxval | `sys/auxv.h` | — | documented | [glibc catalog](./overview.md) | —basic-prog; recap; basic-prog; recap |
 | GLIBC-getenv | getenv | `stdlib.h` | — | documented | [glibc catalog](./overview.md) | —grouped; grouped |
-| GLIBC-getsubopt | getsubopt | `stdlib.h` | — | researched | [glibc catalog](./overview.md) | —basic-prog; recap; basic-prog; recap |
+| GLIBC-getsubopt | getsubopt | `stdlib.h` | — | documented | [glibc catalog](./overview.md) | —basic-prog; recap; basic-prog; recap |
 | GLIBC-on_exit | on_exit | `stdlib.h` | — | documented | [glibc catalog](./overview.md) | —grouped; grouped |
 | GLIBC-putenv | putenv | `stdlib.h` | — | documented | [glibc catalog](./overview.md) | —grouped; grouped |
-| GLIBC-secure_getenv | secure_getenv | — | — | researched | [glibc catalog](./overview.md) | —basic-prog; recap; basic-prog; recap |
+| GLIBC-secure_getenv | secure_getenv | — | — | documented | [glibc catalog](./overview.md) | —basic-prog; recap; basic-prog; recap |
 | GLIBC-setenv | setenv | `stdlib.h` | — | documented | [glibc catalog](./overview.md) | —grouped; grouped |
-| GLIBC-syscall | syscall | — | — | researched | [glibc catalog](./overview.md) | —basic-prog; recap; basic-prog; recap |
+| GLIBC-syscall | syscall | — | — | documented | [glibc catalog](./overview.md) | —basic-prog; recap; basic-prog; recap |
 | GLIBC-unsetenv | unsetenv | — | — | documented | [glibc catalog](./overview.md) | —grouped; grouped |
 
 ### Threads
 
 | ID | Function | Header | Exported | Status | Chapter | Notes |
 |---|---|---|---|---|---|---|
-| GLIBC-call_once | call_once | — | GLIBC_2.28 | researched | [glibc catalog](./overview.md) | —C11; C11 |
-| GLIBC-cnd_broadcast | cnd_broadcast | — | GLIBC_2.28 | researched | [glibc catalog](./overview.md) | —C11; C11 |
-| GLIBC-cnd_destroy | cnd_destroy | — | GLIBC_2.28 | researched | [glibc catalog](./overview.md) | —C11; C11 |
-| GLIBC-cnd_init | cnd_init | — | GLIBC_2.28 | researched | [glibc catalog](./overview.md) | —C11; C11 |
-| GLIBC-cnd_signal | cnd_signal | — | GLIBC_2.28 | researched | [glibc catalog](./overview.md) | —C11; C11 |
-| GLIBC-cnd_timedwait | cnd_timedwait | — | GLIBC_2.28 | researched | [glibc catalog](./overview.md) | —C11; C11 |
-| GLIBC-cnd_wait | cnd_wait | — | GLIBC_2.28 | researched | [glibc catalog](./overview.md) | —C11; C11 |
-| GLIBC-mtx_destroy | mtx_destroy | — | GLIBC_2.28 | researched | [glibc catalog](./overview.md) | —C11; C11 |
-| GLIBC-mtx_init | mtx_init | — | GLIBC_2.28 | researched | [glibc catalog](./overview.md) | —C11; C11 |
-| GLIBC-mtx_lock | mtx_lock | — | GLIBC_2.28 | researched | [glibc catalog](./overview.md) | —C11; C11 |
-| GLIBC-mtx_timedlock | mtx_timedlock | — | GLIBC_2.28 | researched | [glibc catalog](./overview.md) | —C11; C11 |
-| GLIBC-mtx_trylock | mtx_trylock | — | GLIBC_2.28 | researched | [glibc catalog](./overview.md) | —C11; C11 |
-| GLIBC-mtx_unlock | mtx_unlock | — | GLIBC_2.28 | researched | [glibc catalog](./overview.md) | —C11; C11 |
-| GLIBC-pthread_attr_destroy | pthread_attr_destroy | — | — | researched | [glibc catalog](./overview.md) | —attr; attr |
-| GLIBC-pthread_attr_getaffinity_np | pthread_attr_getaffinity_np | — | GLIBC_2.3.4 | researched | [glibc catalog](./overview.md) | —attr; attr |
-| GLIBC-pthread_attr_getdetachstate | pthread_attr_getdetachstate | — | — | researched | [glibc catalog](./overview.md) | —attr; attr |
-| GLIBC-pthread_attr_getsigmask_np | pthread_attr_getsigmask_np | — | — | researched | [glibc catalog](./overview.md) | —attr; attr |
-| GLIBC-pthread_attr_init | pthread_attr_init | `pthread.h` | — | researched | [glibc catalog](./overview.md) | —attr; attr |
-| GLIBC-pthread_attr_setaffinity_np | pthread_attr_setaffinity_np | `pthread.h` | GLIBC_2.3.4 | researched | [glibc catalog](./overview.md) | —attr; attr |
-| GLIBC-pthread_attr_setdetachstate | pthread_attr_setdetachstate | `pthread.h` | — | researched | [glibc catalog](./overview.md) | —attr; attr |
-| GLIBC-pthread_attr_setsigmask_np | pthread_attr_setsigmask_np | `pthread.h` | — | researched | [glibc catalog](./overview.md) | —attr; attr |
-| GLIBC-pthread_barrier_destroy | pthread_barrier_destroy | — | GLIBC_2.2.5 | researched | [glibc catalog](./overview.md) | —barrier; barrier |
-| GLIBC-pthread_barrier_init | pthread_barrier_init | — | GLIBC_2.2.5 | researched | [glibc catalog](./overview.md) | —barrier; barrier |
-| GLIBC-pthread_barrier_wait | pthread_barrier_wait | — | GLIBC_2.2.5 | researched | [glibc catalog](./overview.md) | —barrier; barrier |
+| GLIBC-call_once | call_once | — | GLIBC_2.28 | documented | [glibc catalog](./overview.md) | —C11; C11 |
+| GLIBC-cnd_broadcast | cnd_broadcast | — | GLIBC_2.28 | documented | [glibc catalog](./overview.md) | —C11; C11 |
+| GLIBC-cnd_destroy | cnd_destroy | — | GLIBC_2.28 | documented | [glibc catalog](./overview.md) | —C11; C11 |
+| GLIBC-cnd_init | cnd_init | — | GLIBC_2.28 | documented | [glibc catalog](./overview.md) | —C11; C11 |
+| GLIBC-cnd_signal | cnd_signal | — | GLIBC_2.28 | documented | [glibc catalog](./overview.md) | —C11; C11 |
+| GLIBC-cnd_timedwait | cnd_timedwait | — | GLIBC_2.28 | documented | [glibc catalog](./overview.md) | —C11; C11 |
+| GLIBC-cnd_wait | cnd_wait | — | GLIBC_2.28 | documented | [glibc catalog](./overview.md) | —C11; C11 |
+| GLIBC-mtx_destroy | mtx_destroy | — | GLIBC_2.28 | documented | [glibc catalog](./overview.md) | —C11; C11 |
+| GLIBC-mtx_init | mtx_init | — | GLIBC_2.28 | documented | [glibc catalog](./overview.md) | —C11; C11 |
+| GLIBC-mtx_lock | mtx_lock | — | GLIBC_2.28 | documented | [glibc catalog](./overview.md) | —C11; C11 |
+| GLIBC-mtx_timedlock | mtx_timedlock | — | GLIBC_2.28 | documented | [glibc catalog](./overview.md) | —C11; C11 |
+| GLIBC-mtx_trylock | mtx_trylock | — | GLIBC_2.28 | documented | [glibc catalog](./overview.md) | —C11; C11 |
+| GLIBC-mtx_unlock | mtx_unlock | — | GLIBC_2.28 | documented | [glibc catalog](./overview.md) | —C11; C11 |
+| GLIBC-pthread_attr_destroy | pthread_attr_destroy | — | — | documented | [glibc catalog](./overview.md) | —attr; attr |
+| GLIBC-pthread_attr_getaffinity_np | pthread_attr_getaffinity_np | — | GLIBC_2.3.4 | documented | [glibc catalog](./overview.md) | —attr; attr |
+| GLIBC-pthread_attr_getdetachstate | pthread_attr_getdetachstate | — | — | documented | [glibc catalog](./overview.md) | —attr; attr |
+| GLIBC-pthread_attr_getsigmask_np | pthread_attr_getsigmask_np | — | — | documented | [glibc catalog](./overview.md) | —attr; attr |
+| GLIBC-pthread_attr_init | pthread_attr_init | `pthread.h` | — | documented | [glibc catalog](./overview.md) | —attr; attr |
+| GLIBC-pthread_attr_setaffinity_np | pthread_attr_setaffinity_np | `pthread.h` | GLIBC_2.3.4 | documented | [glibc catalog](./overview.md) | —attr; attr |
+| GLIBC-pthread_attr_setdetachstate | pthread_attr_setdetachstate | `pthread.h` | — | documented | [glibc catalog](./overview.md) | —attr; attr |
+| GLIBC-pthread_attr_setsigmask_np | pthread_attr_setsigmask_np | `pthread.h` | — | documented | [glibc catalog](./overview.md) | —attr; attr |
+| GLIBC-pthread_barrier_destroy | pthread_barrier_destroy | — | GLIBC_2.2.5 | documented | [glibc catalog](./overview.md) | —barrier; barrier |
+| GLIBC-pthread_barrier_init | pthread_barrier_init | — | GLIBC_2.2.5 | documented | [glibc catalog](./overview.md) | —barrier; barrier |
+| GLIBC-pthread_barrier_wait | pthread_barrier_wait | — | GLIBC_2.2.5 | documented | [glibc catalog](./overview.md) | —barrier; barrier |
 | GLIBC-pthread_clockjoin_np | pthread_clockjoin_np | — | GLIBC_2.31 | documented | [glibc catalog](./overview.md) | —grouped; grouped |
 | GLIBC-pthread_cond_clockwait | pthread_cond_clockwait | — | GLIBC_2.30 | documented | [glibc catalog](./overview.md) | —grouped; grouped |
 | GLIBC-pthread_create | pthread_create | `pthread.h` | GLIBC_2.2.5 | documented | [glibc catalog](./overview.md) | —full; full |
 | GLIBC-pthread_detach | pthread_detach | `pthread.h` | GLIBC_2.2.5 | documented | [glibc catalog](./overview.md) | —grouped; grouped |
 | GLIBC-pthread_equal | pthread_equal | `pthread.h` | — | documented | [glibc catalog](./overview.md) | —grouped; grouped |
-| GLIBC-pthread_getaffinity_np | pthread_getaffinity_np | — | GLIBC_2.3.4 | researched | [glibc catalog](./overview.md) | —attr; attr |
-| GLIBC-pthread_getattr_default_np | pthread_getattr_default_np | `pthread.h` | GLIBC_2.18 | researched | [glibc catalog](./overview.md) | —attr; attr |
-| GLIBC-pthread_getcpuclockid | pthread_getcpuclockid | `pthread.h` | GLIBC_2.2.5 | researched | [glibc catalog](./overview.md) | —attr/info; attr/info |
-| GLIBC-pthread_getname_np | pthread_getname_np | — | GLIBC_2.12 | researched | [glibc catalog](./overview.md) | —attr/info; attr/info |
+| GLIBC-pthread_getaffinity_np | pthread_getaffinity_np | — | GLIBC_2.3.4 | documented | [glibc catalog](./overview.md) | —attr; attr |
+| GLIBC-pthread_getattr_default_np | pthread_getattr_default_np | `pthread.h` | GLIBC_2.18 | documented | [glibc catalog](./overview.md) | —attr; attr |
+| GLIBC-pthread_getcpuclockid | pthread_getcpuclockid | `pthread.h` | GLIBC_2.2.5 | documented | [glibc catalog](./overview.md) | —attr/info; attr/info |
+| GLIBC-pthread_getname_np | pthread_getname_np | — | GLIBC_2.12 | documented | [glibc catalog](./overview.md) | —attr/info; attr/info |
 | GLIBC-pthread_getspecific | pthread_getspecific | — | GLIBC_2.2.5 | documented | [glibc catalog](./overview.md) | —grouped; grouped |
 | GLIBC-pthread_join | pthread_join | `pthread.h` | GLIBC_2.2.5 | documented | [glibc catalog](./overview.md) | —grouped; grouped |
 | GLIBC-pthread_key_create | pthread_key_create | — | GLIBC_2.2.5 | documented | [glibc catalog](./overview.md) | —grouped; grouped |
@@ -1891,184 +1891,184 @@ with fewer sources than the standard.
 | GLIBC-pthread_mutexattr_init | pthread_mutexattr_init | `pthread.h` | GLIBC_2.2.5 | documented | [glibc catalog](./overview.md) | —grouped; grouped |
 | GLIBC-pthread_mutexattr_settype | pthread_mutexattr_settype | — | GLIBC_2.2.5 | documented | [glibc catalog](./overview.md) | —grouped; grouped |
 | GLIBC-pthread_once | pthread_once | — | GLIBC_2.2.5 | documented | [glibc catalog](./overview.md) | —full; full |
-| GLIBC-pthread_rwlock_clockrdlock | pthread_rwlock_clockrdlock | — | GLIBC_2.30 | researched | [glibc catalog](./overview.md) | —rwlock; rwlock |
-| GLIBC-pthread_rwlock_clockwrlock | pthread_rwlock_clockwrlock | — | GLIBC_2.30 | researched | [glibc catalog](./overview.md) | —rwlock; rwlock |
+| GLIBC-pthread_rwlock_clockrdlock | pthread_rwlock_clockrdlock | — | GLIBC_2.30 | documented | [glibc catalog](./overview.md) | —rwlock; rwlock |
+| GLIBC-pthread_rwlock_clockwrlock | pthread_rwlock_clockwrlock | — | GLIBC_2.30 | documented | [glibc catalog](./overview.md) | —rwlock; rwlock |
 | GLIBC-pthread_self | pthread_self | `pthread.h` | — | documented | [glibc catalog](./overview.md) | —grouped; grouped |
-| GLIBC-pthread_setaffinity_np | pthread_setaffinity_np | `pthread.h` | GLIBC_2.3.4 | researched | [glibc catalog](./overview.md) | —attr; attr |
-| GLIBC-pthread_setattr_default_np | pthread_setattr_default_np | — | GLIBC_2.18 | researched | [glibc catalog](./overview.md) | —attr; attr |
-| GLIBC-pthread_setname_np | pthread_setname_np | `pthread.h` | GLIBC_2.12 | researched | [glibc catalog](./overview.md) | —attr/info; attr/info |
+| GLIBC-pthread_setaffinity_np | pthread_setaffinity_np | `pthread.h` | GLIBC_2.3.4 | documented | [glibc catalog](./overview.md) | —attr; attr |
+| GLIBC-pthread_setattr_default_np | pthread_setattr_default_np | — | GLIBC_2.18 | documented | [glibc catalog](./overview.md) | —attr; attr |
+| GLIBC-pthread_setname_np | pthread_setname_np | `pthread.h` | GLIBC_2.12 | documented | [glibc catalog](./overview.md) | —attr/info; attr/info |
 | GLIBC-pthread_setspecific | pthread_setspecific | — | GLIBC_2.2.5 | documented | [glibc catalog](./overview.md) | —grouped; grouped |
 | GLIBC-pthread_sigmask | pthread_sigmask | `signal.h` | GLIBC_2.2.5 | documented | [glibc catalog](./overview.md) | —grouped; grouped |
-| GLIBC-pthread_spin_destroy | pthread_spin_destroy | — | GLIBC_2.2.5 | researched | [glibc catalog](./overview.md) | —spinlock; spinlock |
-| GLIBC-pthread_spin_init | pthread_spin_init | `pthread.h` | GLIBC_2.2.5 | researched | [glibc catalog](./overview.md) | —spinlock; spinlock |
-| GLIBC-pthread_spin_lock | pthread_spin_lock | `pthread.h` | GLIBC_2.2.5 | researched | [glibc catalog](./overview.md) | —spinlock; spinlock |
-| GLIBC-pthread_spin_trylock | pthread_spin_trylock | — | GLIBC_2.2.5 | researched | [glibc catalog](./overview.md) | —spinlock; spinlock |
-| GLIBC-pthread_spin_unlock | pthread_spin_unlock | — | GLIBC_2.2.5 | researched | [glibc catalog](./overview.md) | —spinlock; spinlock |
+| GLIBC-pthread_spin_destroy | pthread_spin_destroy | — | GLIBC_2.2.5 | documented | [glibc catalog](./overview.md) | —spinlock; spinlock |
+| GLIBC-pthread_spin_init | pthread_spin_init | `pthread.h` | GLIBC_2.2.5 | documented | [glibc catalog](./overview.md) | —spinlock; spinlock |
+| GLIBC-pthread_spin_lock | pthread_spin_lock | `pthread.h` | GLIBC_2.2.5 | documented | [glibc catalog](./overview.md) | —spinlock; spinlock |
+| GLIBC-pthread_spin_trylock | pthread_spin_trylock | — | GLIBC_2.2.5 | documented | [glibc catalog](./overview.md) | —spinlock; spinlock |
+| GLIBC-pthread_spin_unlock | pthread_spin_unlock | — | GLIBC_2.2.5 | documented | [glibc catalog](./overview.md) | —spinlock; spinlock |
 | GLIBC-pthread_timedjoin_np | pthread_timedjoin_np | — | GLIBC_2.3.3 | documented | [glibc catalog](./overview.md) | —grouped; grouped |
 | GLIBC-pthread_tryjoin_np | pthread_tryjoin_np | `pthread.h` | GLIBC_2.3.3 | documented | [glibc catalog](./overview.md) | —grouped; grouped |
-| GLIBC-sem_clockwait | sem_clockwait | — | GLIBC_2.30 | researched | [glibc catalog](./overview.md) | —semaphore; semaphore |
-| GLIBC-sem_close | sem_close | `semaphore.h` | GLIBC_2.2.5 | researched | [glibc catalog](./overview.md) | —semaphore; semaphore |
-| GLIBC-sem_destroy | sem_destroy | `semaphore.h` | GLIBC_2.2.5 | researched | [glibc catalog](./overview.md) | —semaphore; semaphore |
-| GLIBC-sem_getvalue | sem_getvalue | `semaphore.h` | GLIBC_2.2.5 | researched | [glibc catalog](./overview.md) | —semaphore; semaphore |
-| GLIBC-sem_init | sem_init | `semaphore.h` | GLIBC_2.2.5 | researched | [glibc catalog](./overview.md) | —semaphore; semaphore |
-| GLIBC-sem_open | sem_open | `fcntl.h` | GLIBC_2.2.5 | researched | [glibc catalog](./overview.md) | —semaphore; semaphore |
-| GLIBC-sem_post | sem_post | `semaphore.h` | GLIBC_2.2.5 | researched | [glibc catalog](./overview.md) | —semaphore; semaphore |
-| GLIBC-sem_timedwait | sem_timedwait | — | GLIBC_2.2.5 | researched | [glibc catalog](./overview.md) | —semaphore; semaphore |
-| GLIBC-sem_trywait | sem_trywait | — | GLIBC_2.2.5 | researched | [glibc catalog](./overview.md) | —semaphore; semaphore |
-| GLIBC-sem_unlink | sem_unlink | `semaphore.h` | GLIBC_2.2.5 | researched | [glibc catalog](./overview.md) | —semaphore; semaphore |
-| GLIBC-sem_wait | sem_wait | `semaphore.h` | GLIBC_2.2.5 | researched | [glibc catalog](./overview.md) | —semaphore; semaphore |
-| GLIBC-thrd_create | thrd_create | — | GLIBC_2.28 | researched | [glibc catalog](./overview.md) | —C11; C11 |
-| GLIBC-thrd_current | thrd_current | — | — | researched | [glibc catalog](./overview.md) | —C11; C11 |
-| GLIBC-thrd_detach | thrd_detach | — | GLIBC_2.28 | researched | [glibc catalog](./overview.md) | —C11; C11 |
-| GLIBC-thrd_equal | thrd_equal | — | — | researched | [glibc catalog](./overview.md) | —C11; C11 |
-| GLIBC-thrd_exit | thrd_exit | — | GLIBC_2.28 | researched | [glibc catalog](./overview.md) | —C11; C11 |
-| GLIBC-thrd_join | thrd_join | — | GLIBC_2.28 | researched | [glibc catalog](./overview.md) | —C11; C11 |
-| GLIBC-thrd_sleep | thrd_sleep | — | — | researched | [glibc catalog](./overview.md) | —C11; C11 |
-| GLIBC-thrd_yield | thrd_yield | — | — | researched | [glibc catalog](./overview.md) | —C11; C11 |
-| GLIBC-tss_create | tss_create | — | GLIBC_2.28 | researched | [glibc catalog](./overview.md) | —C11; C11 |
-| GLIBC-tss_delete | tss_delete | — | GLIBC_2.28 | researched | [glibc catalog](./overview.md) | —C11; C11 |
-| GLIBC-tss_get | tss_get | — | GLIBC_2.28 | researched | [glibc catalog](./overview.md) | —C11; C11 |
-| GLIBC-tss_set | tss_set | — | GLIBC_2.28 | researched | [glibc catalog](./overview.md) | —C11; C11 |
+| GLIBC-sem_clockwait | sem_clockwait | — | GLIBC_2.30 | documented | [glibc catalog](./overview.md) | —semaphore; semaphore |
+| GLIBC-sem_close | sem_close | `semaphore.h` | GLIBC_2.2.5 | documented | [glibc catalog](./overview.md) | —semaphore; semaphore |
+| GLIBC-sem_destroy | sem_destroy | `semaphore.h` | GLIBC_2.2.5 | documented | [glibc catalog](./overview.md) | —semaphore; semaphore |
+| GLIBC-sem_getvalue | sem_getvalue | `semaphore.h` | GLIBC_2.2.5 | documented | [glibc catalog](./overview.md) | —semaphore; semaphore |
+| GLIBC-sem_init | sem_init | `semaphore.h` | GLIBC_2.2.5 | documented | [glibc catalog](./overview.md) | —semaphore; semaphore |
+| GLIBC-sem_open | sem_open | `fcntl.h` | GLIBC_2.2.5 | documented | [glibc catalog](./overview.md) | —semaphore; semaphore |
+| GLIBC-sem_post | sem_post | `semaphore.h` | GLIBC_2.2.5 | documented | [glibc catalog](./overview.md) | —semaphore; semaphore |
+| GLIBC-sem_timedwait | sem_timedwait | — | GLIBC_2.2.5 | documented | [glibc catalog](./overview.md) | —semaphore; semaphore |
+| GLIBC-sem_trywait | sem_trywait | — | GLIBC_2.2.5 | documented | [glibc catalog](./overview.md) | —semaphore; semaphore |
+| GLIBC-sem_unlink | sem_unlink | `semaphore.h` | GLIBC_2.2.5 | documented | [glibc catalog](./overview.md) | —semaphore; semaphore |
+| GLIBC-sem_wait | sem_wait | `semaphore.h` | GLIBC_2.2.5 | documented | [glibc catalog](./overview.md) | —semaphore; semaphore |
+| GLIBC-thrd_create | thrd_create | — | GLIBC_2.28 | documented | [glibc catalog](./overview.md) | —C11; C11 |
+| GLIBC-thrd_current | thrd_current | — | — | documented | [glibc catalog](./overview.md) | —C11; C11 |
+| GLIBC-thrd_detach | thrd_detach | — | GLIBC_2.28 | documented | [glibc catalog](./overview.md) | —C11; C11 |
+| GLIBC-thrd_equal | thrd_equal | — | — | documented | [glibc catalog](./overview.md) | —C11; C11 |
+| GLIBC-thrd_exit | thrd_exit | — | GLIBC_2.28 | documented | [glibc catalog](./overview.md) | —C11; C11 |
+| GLIBC-thrd_join | thrd_join | — | GLIBC_2.28 | documented | [glibc catalog](./overview.md) | —C11; C11 |
+| GLIBC-thrd_sleep | thrd_sleep | — | — | documented | [glibc catalog](./overview.md) | —C11; C11 |
+| GLIBC-thrd_yield | thrd_yield | — | — | documented | [glibc catalog](./overview.md) | —C11; C11 |
+| GLIBC-tss_create | tss_create | — | GLIBC_2.28 | documented | [glibc catalog](./overview.md) | —C11; C11 |
+| GLIBC-tss_delete | tss_delete | — | GLIBC_2.28 | documented | [glibc catalog](./overview.md) | —C11; C11 |
+| GLIBC-tss_get | tss_get | — | GLIBC_2.28 | documented | [glibc catalog](./overview.md) | —C11; C11 |
+| GLIBC-tss_set | tss_set | — | GLIBC_2.28 | documented | [glibc catalog](./overview.md) | —C11; C11 |
 
 ### Users and Groups
 
 | ID | Function | Header | Exported | Status | Chapter | Notes |
 |---|---|---|---|---|---|---|
-| GLIBC-cuserid | cuserid | — | — | researched | [glibc catalog](./overview.md) | —persona; persona |
-| GLIBC-endgrent | endgrent | — | — | researched | [glibc catalog](./overview.md) | —grent; grent |
-| GLIBC-endnetgrent | endnetgrent | — | — | researched | [glibc catalog](./overview.md) | —netgroup; netgroup |
-| GLIBC-endpwent | endpwent | — | — | researched | [glibc catalog](./overview.md) | —pwent; pwent |
-| GLIBC-endutent | endutent | — | — | researched | [glibc catalog](./overview.md) | —utmp; utmp |
-| GLIBC-endutxent | endutxent | — | — | researched | [glibc catalog](./overview.md) | —utmpx; utmpx |
-| GLIBC-fgetgrent | fgetgrent | `stdio.h` | — | researched | [glibc catalog](./overview.md) | —group-DB; group-DB |
-| GLIBC-fgetgrent_r | fgetgrent_r | — | — | researched | [glibc catalog](./overview.md) | —group-DB; group-DB |
-| GLIBC-fgetpwent | fgetpwent | `stdio.h` | — | researched | [glibc catalog](./overview.md) | —passwd-DB; passwd-DB |
-| GLIBC-fgetpwent_r | fgetpwent_r | — | — | researched | [glibc catalog](./overview.md) | —passwd-DB; passwd-DB |
-| GLIBC-getegid | getegid | — | — | researched | [glibc catalog](./overview.md) | —persona; persona |
-| GLIBC-geteuid | geteuid | — | — | researched | [glibc catalog](./overview.md) | —persona; persona |
-| GLIBC-getgid | getgid | — | — | researched | [glibc catalog](./overview.md) | —persona; persona |
-| GLIBC-getgrent | getgrent | `sys/types.h` | — | researched | [glibc catalog](./overview.md) | —grent; grent |
-| GLIBC-getgrent_r | getgrent_r | `grp.h` | — | researched | [glibc catalog](./overview.md) | —grent; grent |
+| GLIBC-cuserid | cuserid | — | — | documented | [glibc catalog](./overview.md) | —persona; persona |
+| GLIBC-endgrent | endgrent | — | — | documented | [glibc catalog](./overview.md) | —grent; grent |
+| GLIBC-endnetgrent | endnetgrent | — | — | documented | [glibc catalog](./overview.md) | —netgroup; netgroup |
+| GLIBC-endpwent | endpwent | — | — | documented | [glibc catalog](./overview.md) | —pwent; pwent |
+| GLIBC-endutent | endutent | — | — | documented | [glibc catalog](./overview.md) | —utmp; utmp |
+| GLIBC-endutxent | endutxent | — | — | documented | [glibc catalog](./overview.md) | —utmpx; utmpx |
+| GLIBC-fgetgrent | fgetgrent | `stdio.h` | — | documented | [glibc catalog](./overview.md) | —group-DB; group-DB |
+| GLIBC-fgetgrent_r | fgetgrent_r | — | — | documented | [glibc catalog](./overview.md) | —group-DB; group-DB |
+| GLIBC-fgetpwent | fgetpwent | `stdio.h` | — | documented | [glibc catalog](./overview.md) | —passwd-DB; passwd-DB |
+| GLIBC-fgetpwent_r | fgetpwent_r | — | — | documented | [glibc catalog](./overview.md) | —passwd-DB; passwd-DB |
+| GLIBC-getegid | getegid | — | — | documented | [glibc catalog](./overview.md) | —persona; persona |
+| GLIBC-geteuid | geteuid | — | — | documented | [glibc catalog](./overview.md) | —persona; persona |
+| GLIBC-getgid | getgid | — | — | documented | [glibc catalog](./overview.md) | —persona; persona |
+| GLIBC-getgrent | getgrent | `sys/types.h` | — | documented | [glibc catalog](./overview.md) | —grent; grent |
+| GLIBC-getgrent_r | getgrent_r | `grp.h` | — | documented | [glibc catalog](./overview.md) | —grent; grent |
 | GLIBC-getgrgid | getgrgid | — | — | documented | [glibc catalog](./overview.md) | —Grouped; Grouped |
 | GLIBC-getgrgid_r | getgrgid_r | — | — | documented | [glibc catalog](./overview.md) | —Grouped; Grouped |
 | GLIBC-getgrnam | getgrnam | `sys/types.h` | — | documented | [glibc catalog](./overview.md) | —Grouped; Grouped |
 | GLIBC-getgrnam_r | getgrnam_r | — | — | documented | [glibc catalog](./overview.md) | —Grouped; Grouped |
 | GLIBC-getgrouplist | getgrouplist | `grp.h` | — | documented | [glibc catalog](./overview.md) | —Grouped; Grouped |
 | GLIBC-getgroups | getgroups | — | — | documented | [glibc catalog](./overview.md) | —Grouped; Grouped |
-| GLIBC-getlogin | getlogin | `unistd.h` | — | researched | [glibc catalog](./overview.md) | —persona; persona |
-| GLIBC-getnetgrent | getnetgrent | — | — | researched | [glibc catalog](./overview.md) | —netgroup; netgroup |
-| GLIBC-getnetgrent_r | getnetgrent_r | — | — | researched | [glibc catalog](./overview.md) | —netgroup; netgroup |
-| GLIBC-getpwent | getpwent | `sys/types.h` | — | researched | [glibc catalog](./overview.md) | —pwent; pwent |
-| GLIBC-getpwent_r | getpwent_r | `pwd.h` | — | researched | [glibc catalog](./overview.md) | —pwent; pwent |
+| GLIBC-getlogin | getlogin | `unistd.h` | — | documented | [glibc catalog](./overview.md) | —persona; persona |
+| GLIBC-getnetgrent | getnetgrent | — | — | documented | [glibc catalog](./overview.md) | —netgroup; netgroup |
+| GLIBC-getnetgrent_r | getnetgrent_r | — | — | documented | [glibc catalog](./overview.md) | —netgroup; netgroup |
+| GLIBC-getpwent | getpwent | `sys/types.h` | — | documented | [glibc catalog](./overview.md) | —pwent; pwent |
+| GLIBC-getpwent_r | getpwent_r | `pwd.h` | — | documented | [glibc catalog](./overview.md) | —pwent; pwent |
 | GLIBC-getpwnam | getpwnam | `sys/types.h` | — | documented | [glibc catalog](./overview.md) | —Grouped; Grouped |
 | GLIBC-getpwnam_r | getpwnam_r | — | — | documented | [glibc catalog](./overview.md) | —Grouped; Grouped |
 | GLIBC-getpwuid | getpwuid | — | — | documented | [glibc catalog](./overview.md) | —Grouped; Grouped |
 | GLIBC-getpwuid_r | getpwuid_r | — | — | documented | [glibc catalog](./overview.md) | —Grouped; Grouped |
-| GLIBC-getuid | getuid | — | — | researched | [glibc catalog](./overview.md) | —persona; persona |
-| GLIBC-getutent | getutent | `utmp.h` | — | researched | [glibc catalog](./overview.md) | —utmp; utmp |
-| GLIBC-getutent_r | getutent_r | — | — | researched | [glibc catalog](./overview.md) | —utmp; utmp |
-| GLIBC-getutid | getutid | — | — | researched | [glibc catalog](./overview.md) | —utmp; utmp |
-| GLIBC-getutid_r | getutid_r | — | — | researched | [glibc catalog](./overview.md) | —utmp; utmp |
-| GLIBC-getutline | getutline | — | — | researched | [glibc catalog](./overview.md) | —utmp; utmp |
-| GLIBC-getutline_r | getutline_r | — | — | researched | [glibc catalog](./overview.md) | —utmp; utmp |
-| GLIBC-getutmp | getutmp | `utmpx.h` | — | researched | [glibc catalog](./overview.md) | —utmp/utmpx; utmp/utmpx |
-| GLIBC-getutmpx | getutmpx | — | — | researched | [glibc catalog](./overview.md) | —utmp/utmpx; utmp/utmpx |
-| GLIBC-getutxent | getutxent | — | — | researched | [glibc catalog](./overview.md) | —utmpx; utmpx |
-| GLIBC-getutxid | getutxid | — | — | researched | [glibc catalog](./overview.md) | —utmpx; utmpx |
-| GLIBC-getutxline | getutxline | — | — | researched | [glibc catalog](./overview.md) | —utmpx; utmpx |
+| GLIBC-getuid | getuid | — | — | documented | [glibc catalog](./overview.md) | —persona; persona |
+| GLIBC-getutent | getutent | `utmp.h` | — | documented | [glibc catalog](./overview.md) | —utmp; utmp |
+| GLIBC-getutent_r | getutent_r | — | — | documented | [glibc catalog](./overview.md) | —utmp; utmp |
+| GLIBC-getutid | getutid | — | — | documented | [glibc catalog](./overview.md) | —utmp; utmp |
+| GLIBC-getutid_r | getutid_r | — | — | documented | [glibc catalog](./overview.md) | —utmp; utmp |
+| GLIBC-getutline | getutline | — | — | documented | [glibc catalog](./overview.md) | —utmp; utmp |
+| GLIBC-getutline_r | getutline_r | — | — | documented | [glibc catalog](./overview.md) | —utmp; utmp |
+| GLIBC-getutmp | getutmp | `utmpx.h` | — | documented | [glibc catalog](./overview.md) | —utmp/utmpx; utmp/utmpx |
+| GLIBC-getutmpx | getutmpx | — | — | documented | [glibc catalog](./overview.md) | —utmp/utmpx; utmp/utmpx |
+| GLIBC-getutxent | getutxent | — | — | documented | [glibc catalog](./overview.md) | —utmpx; utmpx |
+| GLIBC-getutxid | getutxid | — | — | documented | [glibc catalog](./overview.md) | —utmpx; utmpx |
+| GLIBC-getutxline | getutxline | — | — | documented | [glibc catalog](./overview.md) | —utmpx; utmpx |
 | GLIBC-initgroups | initgroups | `sys/types.h` | — | documented | [glibc catalog](./overview.md) | —Grouped; Grouped |
-| GLIBC-innetgr | innetgr | — | — | researched | [glibc catalog](./overview.md) | —netgroup; netgroup |
-| GLIBC-login | login | `utmp.h` | GLIBC_2.2.5 | researched | [glibc catalog](./overview.md) | —utmp/wtmp; utmp/wtmp |
-| GLIBC-login_tty | login_tty | — | GLIBC_2.2.5 | researched | [glibc catalog](./overview.md) | —utmp/wtmp; utmp/wtmp |
-| GLIBC-logout | logout | — | GLIBC_2.2.5 | researched | [glibc catalog](./overview.md) | —utmp/wtmp; utmp/wtmp |
-| GLIBC-logwtmp | logwtmp | — | GLIBC_2.2.5 | researched | [glibc catalog](./overview.md) | —utmp/wtmp; utmp/wtmp |
-| GLIBC-putpwent | putpwent | `stdio.h` | — | researched | [glibc catalog](./overview.md) | —passwd-DB; passwd-DB |
-| GLIBC-pututline | pututline | — | — | researched | [glibc catalog](./overview.md) | —utmp; utmp |
-| GLIBC-pututxline | pututxline | — | — | researched | [glibc catalog](./overview.md) | —utmpx; utmpx |
-| GLIBC-setegid | setegid | — | — | researched | [glibc catalog](./overview.md) | —setuid-family; setuid-family |
-| GLIBC-seteuid | seteuid | — | — | researched | [glibc catalog](./overview.md) | —setuid-family; setuid-family |
-| GLIBC-setgid | setgid | — | — | researched | [glibc catalog](./overview.md) | —setuid-family; setuid-family |
-| GLIBC-setgrent | setgrent | — | — | researched | [glibc catalog](./overview.md) | —grent; grent |
+| GLIBC-innetgr | innetgr | — | — | documented | [glibc catalog](./overview.md) | —netgroup; netgroup |
+| GLIBC-login | login | `utmp.h` | GLIBC_2.2.5 | documented | [glibc catalog](./overview.md) | —utmp/wtmp; utmp/wtmp |
+| GLIBC-login_tty | login_tty | — | GLIBC_2.2.5 | documented | [glibc catalog](./overview.md) | —utmp/wtmp; utmp/wtmp |
+| GLIBC-logout | logout | — | GLIBC_2.2.5 | documented | [glibc catalog](./overview.md) | —utmp/wtmp; utmp/wtmp |
+| GLIBC-logwtmp | logwtmp | — | GLIBC_2.2.5 | documented | [glibc catalog](./overview.md) | —utmp/wtmp; utmp/wtmp |
+| GLIBC-putpwent | putpwent | `stdio.h` | — | documented | [glibc catalog](./overview.md) | —passwd-DB; passwd-DB |
+| GLIBC-pututline | pututline | — | — | documented | [glibc catalog](./overview.md) | —utmp; utmp |
+| GLIBC-pututxline | pututxline | — | — | documented | [glibc catalog](./overview.md) | —utmpx; utmpx |
+| GLIBC-setegid | setegid | — | — | documented | [glibc catalog](./overview.md) | —setuid-family; setuid-family |
+| GLIBC-seteuid | seteuid | — | — | documented | [glibc catalog](./overview.md) | —setuid-family; setuid-family |
+| GLIBC-setgid | setgid | — | — | documented | [glibc catalog](./overview.md) | —setuid-family; setuid-family |
+| GLIBC-setgrent | setgrent | — | — | documented | [glibc catalog](./overview.md) | —grent; grent |
 | GLIBC-setgroups | setgroups | — | — | documented | [glibc catalog](./overview.md) | —Grouped; Grouped |
-| GLIBC-setnetgrent | setnetgrent | `netdb.h` | — | researched | [glibc catalog](./overview.md) | —netgroup; netgroup |
-| GLIBC-setpwent | setpwent | — | — | researched | [glibc catalog](./overview.md) | —pwent; pwent |
-| GLIBC-setregid | setregid | — | — | researched | [glibc catalog](./overview.md) | —setuid-family; setuid-family |
-| GLIBC-setreuid | setreuid | — | — | researched | [glibc catalog](./overview.md) | —setuid-family; setuid-family |
-| GLIBC-setuid | setuid | — | — | researched | [glibc catalog](./overview.md) | —setuid-family; setuid-family |
-| GLIBC-setutent | setutent | — | — | researched | [glibc catalog](./overview.md) | —utmp; utmp |
-| GLIBC-setutxent | setutxent | — | — | researched | [glibc catalog](./overview.md) | —utmpx; utmpx |
-| GLIBC-updwtmp | updwtmp | `utmp.h` | — | researched | [glibc catalog](./overview.md) | —utmp/wtmp; utmp/wtmp |
-| GLIBC-utmpname | utmpname | — | — | researched | [glibc catalog](./overview.md) | —utmp; utmp |
-| GLIBC-utmpxname | utmpxname | — | — | researched | [glibc catalog](./overview.md) | —utmpx; utmpx |
+| GLIBC-setnetgrent | setnetgrent | `netdb.h` | — | documented | [glibc catalog](./overview.md) | —netgroup; netgroup |
+| GLIBC-setpwent | setpwent | — | — | documented | [glibc catalog](./overview.md) | —pwent; pwent |
+| GLIBC-setregid | setregid | — | — | documented | [glibc catalog](./overview.md) | —setuid-family; setuid-family |
+| GLIBC-setreuid | setreuid | — | — | documented | [glibc catalog](./overview.md) | —setuid-family; setuid-family |
+| GLIBC-setuid | setuid | — | — | documented | [glibc catalog](./overview.md) | —setuid-family; setuid-family |
+| GLIBC-setutent | setutent | — | — | documented | [glibc catalog](./overview.md) | —utmp; utmp |
+| GLIBC-setutxent | setutxent | — | — | documented | [glibc catalog](./overview.md) | —utmpx; utmpx |
+| GLIBC-updwtmp | updwtmp | `utmp.h` | — | documented | [glibc catalog](./overview.md) | —utmp/wtmp; utmp/wtmp |
+| GLIBC-utmpname | utmpname | — | — | documented | [glibc catalog](./overview.md) | —utmp; utmp |
+| GLIBC-utmpxname | utmpxname | — | — | documented | [glibc catalog](./overview.md) | —utmpx; utmpx |
 
 ### Virtual Memory Allocation And Paging
 
 | ID | Function | Header | Exported | Status | Chapter | Notes |
 |---|---|---|---|---|---|---|
 | GLIBC-aligned_alloc | aligned_alloc | — | — | documented | [glibc catalog](./overview.md) | —grouped; grouped |
-| GLIBC-alloca | alloca | `alloca.h` | — | researched | [glibc catalog](./overview.md) | —allocation; allocation |
-| GLIBC-brk | brk | — | — | researched | [glibc catalog](./overview.md) | —allocation; allocation |
+| GLIBC-alloca | alloca | `alloca.h` | — | documented | [glibc catalog](./overview.md) | —allocation; allocation |
+| GLIBC-brk | brk | — | — | documented | [glibc catalog](./overview.md) | —allocation; allocation |
 | GLIBC-calloc | calloc | — | — | documented | [glibc catalog](./overview.md) | —full; full |
 | GLIBC-free | free | — | — | documented | [glibc catalog](./overview.md) | —full; full |
-| GLIBC-free_aligned_sized | free_aligned_sized | — | — | researched | [glibc catalog](./overview.md) | —allocation; allocation |
-| GLIBC-free_sized | free_sized | — | — | researched | [glibc catalog](./overview.md) | —allocation; allocation |
+| GLIBC-free_aligned_sized | free_aligned_sized | — | — | source-limited | [glibc catalog](./overview.md) | —allocation; allocation |
+| GLIBC-free_sized | free_sized | — | — | source-limited | [glibc catalog](./overview.md) | —allocation; allocation |
 | GLIBC-mallinfo2 | mallinfo2 | — | — | documented | [glibc catalog](./overview.md) | —grouped; grouped |
 | GLIBC-malloc | malloc | `stdlib.h` | — | documented | [glibc catalog](./overview.md) | —full; full |
 | GLIBC-mallopt | mallopt | `malloc.h` | — | documented | [glibc catalog](./overview.md) | —full; full |
-| GLIBC-mcheck | mcheck | `mcheck.h` | — | researched | [glibc catalog](./overview.md) | —allocation; allocation |
-| GLIBC-memalign | memalign | — | — | researched | [glibc catalog](./overview.md) | —allocation; allocation |
-| GLIBC-memalignment | memalignment | — | — | researched | [glibc catalog](./overview.md) | —allocation; allocation |
-| GLIBC-mlock | mlock | — | — | researched | [glibc catalog](./overview.md) | —allocation; allocation |
-| GLIBC-mlock2 | mlock2 | — | — | researched | [glibc catalog](./overview.md) | —allocation; allocation |
-| GLIBC-mlockall | mlockall | — | — | researched | [glibc catalog](./overview.md) | —allocation; allocation |
-| GLIBC-mprobe | mprobe | — | — | researched | [glibc catalog](./overview.md) | —allocation; allocation |
-| GLIBC-mprotect | mprotect | — | — | researched | [glibc catalog](./overview.md) | —allocation; allocation |
-| GLIBC-mseal | mseal | — | — | researched | [glibc catalog](./overview.md) | —allocation; allocation |
-| GLIBC-mtrace | mtrace | `mcheck.h` | — | researched | [glibc catalog](./overview.md) | —allocation; allocation |
-| GLIBC-munlock | munlock | — | — | researched | [glibc catalog](./overview.md) | —allocation; allocation |
-| GLIBC-munlockall | munlockall | — | — | researched | [glibc catalog](./overview.md) | —allocation; allocation |
-| GLIBC-muntrace | muntrace | — | — | researched | [glibc catalog](./overview.md) | —allocation; allocation |
-| GLIBC-obstack_1grow | obstack_1grow | — | — | researched | [glibc catalog](./overview.md) | —obstack; obstack |
-| GLIBC-obstack_1grow_fast | obstack_1grow_fast | — | — | researched | [glibc catalog](./overview.md) | —obstack; obstack |
-| GLIBC-obstack_alloc | obstack_alloc | — | — | researched | [glibc catalog](./overview.md) | —obstack; obstack |
-| GLIBC-obstack_base | obstack_base | — | — | researched | [glibc catalog](./overview.md) | —obstack; obstack |
-| GLIBC-obstack_blank | obstack_blank | — | — | researched | [glibc catalog](./overview.md) | —obstack; obstack |
-| GLIBC-obstack_blank_fast | obstack_blank_fast | — | — | researched | [glibc catalog](./overview.md) | —obstack; obstack |
-| GLIBC-obstack_copy | obstack_copy | — | — | researched | [glibc catalog](./overview.md) | —obstack; obstack |
-| GLIBC-obstack_copy0 | obstack_copy0 | — | — | researched | [glibc catalog](./overview.md) | —obstack; obstack |
-| GLIBC-obstack_finish | obstack_finish | — | — | researched | [glibc catalog](./overview.md) | —obstack; obstack |
-| GLIBC-obstack_free | obstack_free | — | — | researched | [glibc catalog](./overview.md) | —obstack; obstack |
-| GLIBC-obstack_grow | obstack_grow | — | — | researched | [glibc catalog](./overview.md) | —obstack; obstack |
-| GLIBC-obstack_grow0 | obstack_grow0 | — | — | researched | [glibc catalog](./overview.md) | —obstack; obstack |
-| GLIBC-obstack_init | obstack_init | — | — | researched | [glibc catalog](./overview.md) | —obstack; obstack |
-| GLIBC-obstack_int_grow | obstack_int_grow | — | — | researched | [glibc catalog](./overview.md) | —obstack; obstack |
-| GLIBC-obstack_int_grow_fast | obstack_int_grow_fast | — | — | researched | [glibc catalog](./overview.md) | —obstack; obstack |
-| GLIBC-obstack_next_free | obstack_next_free | — | — | researched | [glibc catalog](./overview.md) | —obstack; obstack |
-| GLIBC-obstack_object_size | obstack_object_size | — | — | researched | [glibc catalog](./overview.md) | —obstack; obstack |
-| GLIBC-obstack_ptr_grow | obstack_ptr_grow | — | — | researched | [glibc catalog](./overview.md) | —obstack; obstack |
-| GLIBC-obstack_ptr_grow_fast | obstack_ptr_grow_fast | — | — | researched | [glibc catalog](./overview.md) | —obstack; obstack |
-| GLIBC-obstack_room | obstack_room | — | — | researched | [glibc catalog](./overview.md) | —obstack; obstack |
-| GLIBC-pkey_alloc | pkey_alloc | — | — | researched | [glibc catalog](./overview.md) | —allocation; allocation |
-| GLIBC-pkey_free | pkey_free | — | — | researched | [glibc catalog](./overview.md) | —allocation; allocation |
-| GLIBC-pkey_get | pkey_get | — | — | researched | [glibc catalog](./overview.md) | —allocation; allocation |
-| GLIBC-pkey_mprotect | pkey_mprotect | — | — | researched | [glibc catalog](./overview.md) | —allocation; allocation |
-| GLIBC-pkey_set | pkey_set | — | — | researched | [glibc catalog](./overview.md) | —allocation; allocation |
+| GLIBC-mcheck | mcheck | `mcheck.h` | — | documented | [glibc catalog](./overview.md) | —allocation; allocation |
+| GLIBC-memalign | memalign | — | — | documented | [glibc catalog](./overview.md) | —allocation; allocation |
+| GLIBC-memalignment | memalignment | — | — | source-limited | [glibc catalog](./overview.md) | —allocation; allocation |
+| GLIBC-mlock | mlock | — | — | documented | [glibc catalog](./overview.md) | —allocation; allocation |
+| GLIBC-mlock2 | mlock2 | — | — | documented | [glibc catalog](./overview.md) | —allocation; allocation |
+| GLIBC-mlockall | mlockall | — | — | documented | [glibc catalog](./overview.md) | —allocation; allocation |
+| GLIBC-mprobe | mprobe | — | — | documented | [glibc catalog](./overview.md) | —allocation; allocation |
+| GLIBC-mprotect | mprotect | — | — | documented | [glibc catalog](./overview.md) | —allocation; allocation |
+| GLIBC-mseal | mseal | — | — | source-limited | [glibc catalog](./overview.md) | —allocation; allocation |
+| GLIBC-mtrace | mtrace | `mcheck.h` | — | documented | [glibc catalog](./overview.md) | —allocation; allocation |
+| GLIBC-munlock | munlock | — | — | documented | [glibc catalog](./overview.md) | —allocation; allocation |
+| GLIBC-munlockall | munlockall | — | — | documented | [glibc catalog](./overview.md) | —allocation; allocation |
+| GLIBC-muntrace | muntrace | — | — | documented | [glibc catalog](./overview.md) | —allocation; allocation |
+| GLIBC-obstack_1grow | obstack_1grow | — | — | documented | [glibc catalog](./overview.md) | —obstack; obstack |
+| GLIBC-obstack_1grow_fast | obstack_1grow_fast | — | — | documented | [glibc catalog](./overview.md) | —obstack; obstack |
+| GLIBC-obstack_alloc | obstack_alloc | — | — | documented | [glibc catalog](./overview.md) | —obstack; obstack |
+| GLIBC-obstack_base | obstack_base | — | — | documented | [glibc catalog](./overview.md) | —obstack; obstack |
+| GLIBC-obstack_blank | obstack_blank | — | — | documented | [glibc catalog](./overview.md) | —obstack; obstack |
+| GLIBC-obstack_blank_fast | obstack_blank_fast | — | — | documented | [glibc catalog](./overview.md) | —obstack; obstack |
+| GLIBC-obstack_copy | obstack_copy | — | — | documented | [glibc catalog](./overview.md) | —obstack; obstack |
+| GLIBC-obstack_copy0 | obstack_copy0 | — | — | documented | [glibc catalog](./overview.md) | —obstack; obstack |
+| GLIBC-obstack_finish | obstack_finish | — | — | documented | [glibc catalog](./overview.md) | —obstack; obstack |
+| GLIBC-obstack_free | obstack_free | — | — | documented | [glibc catalog](./overview.md) | —obstack; obstack |
+| GLIBC-obstack_grow | obstack_grow | — | — | documented | [glibc catalog](./overview.md) | —obstack; obstack |
+| GLIBC-obstack_grow0 | obstack_grow0 | — | — | documented | [glibc catalog](./overview.md) | —obstack; obstack |
+| GLIBC-obstack_init | obstack_init | — | — | documented | [glibc catalog](./overview.md) | —obstack; obstack |
+| GLIBC-obstack_int_grow | obstack_int_grow | — | — | documented | [glibc catalog](./overview.md) | —obstack; obstack |
+| GLIBC-obstack_int_grow_fast | obstack_int_grow_fast | — | — | documented | [glibc catalog](./overview.md) | —obstack; obstack |
+| GLIBC-obstack_next_free | obstack_next_free | — | — | documented | [glibc catalog](./overview.md) | —obstack; obstack |
+| GLIBC-obstack_object_size | obstack_object_size | — | — | documented | [glibc catalog](./overview.md) | —obstack; obstack |
+| GLIBC-obstack_ptr_grow | obstack_ptr_grow | — | — | documented | [glibc catalog](./overview.md) | —obstack; obstack |
+| GLIBC-obstack_ptr_grow_fast | obstack_ptr_grow_fast | — | — | documented | [glibc catalog](./overview.md) | —obstack; obstack |
+| GLIBC-obstack_room | obstack_room | — | — | documented | [glibc catalog](./overview.md) | —obstack; obstack |
+| GLIBC-pkey_alloc | pkey_alloc | — | — | documented | [glibc catalog](./overview.md) | —allocation; allocation |
+| GLIBC-pkey_free | pkey_free | — | — | documented | [glibc catalog](./overview.md) | —allocation; allocation |
+| GLIBC-pkey_get | pkey_get | — | — | documented | [glibc catalog](./overview.md) | —allocation; allocation |
+| GLIBC-pkey_mprotect | pkey_mprotect | — | — | documented | [glibc catalog](./overview.md) | —allocation; allocation |
+| GLIBC-pkey_set | pkey_set | — | — | documented | [glibc catalog](./overview.md) | —allocation; allocation |
 | GLIBC-posix_memalign | posix_memalign | `stdlib.h` | — | documented | [glibc catalog](./overview.md) | —grouped; grouped |
 | GLIBC-realloc | realloc | — | — | documented | [glibc catalog](./overview.md) | —grouped; grouped |
 | GLIBC-reallocarray | reallocarray | — | — | documented | [glibc catalog](./overview.md) | —grouped; grouped |
-| GLIBC-sbrk | sbrk | — | — | researched | [glibc catalog](./overview.md) | —allocation; allocation |
-| GLIBC-valloc | valloc | — | — | researched | [glibc catalog](./overview.md) | —allocation; allocation |
+| GLIBC-sbrk | sbrk | — | — | documented | [glibc catalog](./overview.md) | —allocation; allocation |
+| GLIBC-valloc | valloc | — | — | documented | [glibc catalog](./overview.md) | —allocation; allocation |
 
 ### argp.texi
 
 | ID | Function | Header | Exported | Status | Chapter | Notes |
 |---|---|---|---|---|---|---|
-| GLIBC-argp_error | argp_error | — | — | researched | [glibc catalog](./overview.md) | —argp; argp |
-| GLIBC-argp_failure | argp_failure | — | — | researched | [glibc catalog](./overview.md) | —argp; argp |
-| GLIBC-argp_help | argp_help | — | — | researched | [glibc catalog](./overview.md) | —argp; argp |
-| GLIBC-argp_parse | argp_parse | — | — | researched | [glibc catalog](./overview.md) | —argp; argp |
-| GLIBC-argp_state_help | argp_state_help | — | — | researched | [glibc catalog](./overview.md) | —argp; argp |
-| GLIBC-argp_usage | argp_usage | — | — | researched | [glibc catalog](./overview.md) | —argp; argp |
+| GLIBC-argp_error | argp_error | — | — | documented | [glibc catalog](./overview.md) | —argp; argp |
+| GLIBC-argp_failure | argp_failure | — | — | documented | [glibc catalog](./overview.md) | —argp; argp |
+| GLIBC-argp_help | argp_help | — | — | documented | [glibc catalog](./overview.md) | —argp; argp |
+| GLIBC-argp_parse | argp_parse | — | — | documented | [glibc catalog](./overview.md) | —argp; argp |
+| GLIBC-argp_state_help | argp_state_help | — | — | documented | [glibc catalog](./overview.md) | —argp; argp |
+| GLIBC-argp_usage | argp_usage | — | — | documented | [glibc catalog](./overview.md) | —argp; argp |
 
 ### getopt.texi
 
@@ -2979,7 +2979,8 @@ unless they are public documented APIs under another spelling.
 | GLIBC-getaliasbyname_r | getaliasbyname_r | libc.so.6 | — | not-started |
 | GLIBC-getaliasent | getaliasent | libc.so.6 | — | not-started |
 | GLIBC-getaliasent_r | getaliasent_r | libc.so.6 | — | not-started |
-| GLIBC-getdate_err | getdate_err | libc.so.6 | — | not-started |
+| GLIBC-getdate_err | getdate_err | libc.so.6 | — | documented |
+| wave 7-c page (adjacent row absorbed): [getdate-getdate_r.md](glibc/misc/getdate-getdate_r.md) | 
 | GLIBC-getdirentries | getdirentries | libc.so.6 | — | not-started |
 | GLIBC-getdirentries64 | getdirentries64 | libc.so.6 | — | not-started |
 | GLIBC-getdtablesize | getdtablesize | libc.so.6 | — | not-started |
@@ -3374,7 +3375,8 @@ unless they are public documented APIs under another spelling.
 | GLIBC-nis_stats | nis_stats | libnsl.so.1 | GLIBC_2.2.5 | not-started |
 | GLIBC-nis_verifygroup | nis_verifygroup | libnsl.so.1 | GLIBC_2.2.5 | not-started |
 | GLIBC-nis_write_obj | nis_write_obj | libnsl.so.1 | GLIBC_2.2.5 | not-started |
-| GLIBC-nl_langinfo_l | nl_langinfo_l | libc.so.6 | — | not-started |
+| GLIBC-nl_langinfo_l | nl_langinfo_l | libc.so.6 | — | documented |
+| wave 7-c page (adjacent row absorbed): [nl_langinfo.md](glibc/fs/nl_langinfo.md) | 
 | GLIBC-ns_datetosecs | ns_datetosecs | libresolv.so.2 | — | not-started |
 | GLIBC-ns_format_ttl | ns_format_ttl | libresolv.so.2 | — | not-started |
 | GLIBC-ns_get16 | ns_get16 | libresolv.so.2 | — | not-started |
@@ -3756,7 +3758,8 @@ unless they are public documented APIs under another spelling.
 | GLIBC-step | step | libc.so.6 | GLIBC_2.2.5 | not-started |
 | GLIBC-strcasecmp_l | strcasecmp_l | libc.so.6 | — | not-started |
 | GLIBC-strcoll_l | strcoll_l | libc.so.6 | — | not-started |
-| GLIBC-strfmon_l | strfmon_l | libc.so.6 | — | not-started |
+| GLIBC-strfmon_l | strfmon_l | libc.so.6 | — | documented |
+| wave 7-c page (adjacent row absorbed): [strfmon.md](glibc/misc/strfmon.md) | 
 | GLIBC-strfromf128 | strfromf128 | libc.so.6 | — | not-started |
 | GLIBC-strfromf32 | strfromf32 | libc.so.6 | — | not-started |
 | GLIBC-strfromf32x | strfromf32x | libc.so.6 | — | not-started |
@@ -3898,7 +3901,8 @@ unless they are public documented APIs under another spelling.
 | GLIBC-waitid | waitid | libc.so.6 | — | documented; full |
 | GLIBC-wcscasecmp_l | wcscasecmp_l | libc.so.6 | — | not-started |
 | GLIBC-wcscoll_l | wcscoll_l | libc.so.6 | — | not-started |
-| GLIBC-wcsftime_l | wcsftime_l | libc.so.6 | — | not-started |
+| GLIBC-wcsftime_l | wcsftime_l | libc.so.6 | — | documented |
+| wave 7-c page (adjacent row absorbed): [wcsftime.md](glibc/misc/wcsftime.md) | 
 | GLIBC-wcsncasecmp_l | wcsncasecmp_l | libc.so.6 | — | not-started |
 | GLIBC-wcstod_l | wcstod_l | libc.so.6 | — | researched; locale-variant |
 | GLIBC-wcstof128 | wcstof128 | libc.so.6 | — | not-started |
