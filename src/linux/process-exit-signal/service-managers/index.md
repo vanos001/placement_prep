@@ -85,3 +85,10 @@ supervisor's model.
 - runit official documentation: <http://smarden.org/runit/>
 - s6 official documentation: <https://skarnet.org/software/s6/>
 - Full per-manager reference lists are at the end of each page above.
+
+## Related Topics
+
+- [Containers](../containers/index.md) — the same stop-signal and grace-period semantics re-implemented by runtimes and orchestrators
+- [Exit-status lifecycle](../exit-status/index.md) — what the supervisor actually observes when a child exits or dies by signal
+- [Operational troubleshooting](../troubleshooting/index.md) — diagnosing restart loops and shutdown failures in the field
+- [Init Systems Compared (existing chapter)](../../init-systems/comparison.md) — broader init-system comparison beyond the exit/signal angle

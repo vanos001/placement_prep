@@ -399,9 +399,9 @@ Statuses: `documented` = verified against the cited OCaml 5.2 manual/source with
 
 ## Related Topics
 
-- [Python](../python.md) — `atexit` LIFO mirror image; PEP 475 auto-retry vs OCaml's explicit `EINTR` handling.
-- [Java](../java.md) — shutdown-hook ordering (unspecified) vs `at_exit` (LIFO); `Process.waitFor` vs `process_status`.
-- [Node.js](../nodejs.md) — shell-string APIs (`exec` vs `Sys.command`) share the injection lesson.
+- [Python](python.md) — `atexit` LIFO mirror image; PEP 475 auto-retry vs OCaml's explicit `EINTR` handling.
+- [Java](java.md) — shutdown-hook ordering (unspecified) vs `at_exit` (LIFO); `Process.waitFor` vs `process_status`.
+- [Node.js](nodejs.md) — shell-string APIs (`exec` vs `Sys.command`) share the injection lesson.
 - [Signals overview](../signals/index.md) — the kernel semantics `Sys.signal`/`Unix.sigprocmask` bind.
 - [Exit status conventions](../exit-status/index.md) — exit 2, 127, and 128+N in the wider system.
 - [Interface ledger](../interfaces/index.md) — `fork`, `execve`, `wait4`, `sigaction` at the syscall layer.

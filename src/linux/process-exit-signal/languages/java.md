@@ -393,9 +393,9 @@ Statuses: `documented` = verified against the cited JDK 21 source with signature
 
 ## Related Topics
 
-- [Python](../python.md) — `subprocess` −N convention vs Java's undocumented signal-death encoding; `atexit` vs shutdown hooks.
-- [Node.js](../nodejs.md) — `'exit' (code, signal)` events vs `Process.waitFor`; `process.exit` vs `Runtime.halt`.
-- [OCaml](../ocaml.md) — `Unix.process_status` (WEXITED/WSIGNALED) as the explicit status model Java omits.
+- [Python](python.md) — `subprocess` −N convention vs Java's undocumented signal-death encoding; `atexit` vs shutdown hooks.
+- [Node.js](nodejs.md) — `'exit' (code, signal)` events vs `Process.waitFor`; `process.exit` vs `Runtime.halt`.
+- [OCaml](ocaml.md) — `Unix.process_status` (WEXITED/WSIGNALED) as the explicit status model Java omits.
 - [Signals overview](../signals/index.md) — what SIGHUP/SIGINT/SIGTERM defaults mean below the JVM.
 - [Exit status conventions](../exit-status/index.md) — 128+N and the shell's view of JVM terminations.
 - [Interface ledger](../interfaces/index.md) — `waitpid`, `kill`, `pipe` under `ProcessBuilder`.

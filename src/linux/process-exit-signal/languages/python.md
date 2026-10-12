@@ -412,9 +412,9 @@ Statuses: `documented` = verified against the cited source with signature and se
 
 ## Related Topics
 
-- [Java](../java.md) — shutdown hooks vs Python `atexit`; `Process.waitFor` exit codes vs `returncode` −N.
-- [Node.js](../nodejs.md) — event-loop drain vs interpreter finalization; `child_process` `(code, signal)` vs Python's −N.
-- [OCaml](../ocaml.md) — `at_exit` LIFO vs Python `atexit`; `Unix.process_status` vs `os.WIFEXITED`.
+- [Java](java.md) — shutdown hooks vs Python `atexit`; `Process.waitFor` exit codes vs `returncode` −N.
+- [Node.js](nodejs.md) — event-loop drain vs interpreter finalization; `child_process` `(code, signal)` vs Python's −N.
+- [OCaml](ocaml.md) — `at_exit` LIFO vs Python `atexit`; `Unix.process_status` vs `os.WIFEXITED`.
 - [Signals overview](../signals/index.md) — kernel-level semantics Python's `signal` module wraps.
 - [Exit status conventions](../exit-status/index.md) — where 0–127, 128+N, and 120 fit system-wide.
 - [Interface ledger](../interfaces/index.md) — the syscall layer underneath `subprocess`.

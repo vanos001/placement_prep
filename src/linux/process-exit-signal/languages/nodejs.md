@@ -391,9 +391,9 @@ Statuses: `documented` = verified against the Node.js 22 API docs with signature
 
 ## Related Topics
 
-- [Python](../python.md) — `subprocess` −N vs Node's `(code, signal)` duality; `atexit` vs `'exit'`-event rules.
-- [Java](../java.md) — `Process.waitFor` timeout returns `false` vs Node's `timeout`+`killSignal` auto-kill.
-- [OCaml](../ocaml.md) — shell-string APIs (`Sys.command`, `Unix.open_process_in`) vs Node's `exec` — same injection lesson.
+- [Python](python.md) — `subprocess` −N vs Node's `(code, signal)` duality; `atexit` vs `'exit'`-event rules.
+- [Java](java.md) — `Process.waitFor` timeout returns `false` vs Node's `timeout`+`killSignal` auto-kill.
+- [OCaml](ocaml.md) — shell-string APIs (`Sys.command`, `Unix.open_process_in`) vs Node's `exec` — same injection lesson.
 - [Signals overview](../signals/index.md) — SIGTERM/SIGINT defaults Node re-implements and re-raises.
 - [Exit status conventions](../exit-status/index.md) — 128+N, reserved codes (2 = Bash builtin misuse).
 - [Interface ledger](../interfaces/index.md) — pipes, `waitpid`, `setsid` beneath `child_process`.
