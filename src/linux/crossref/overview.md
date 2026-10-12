@@ -22,7 +22,7 @@ after the wave-2 pass; source-limited rows name the exact missing source).
 ## Reading rules
 
 - Arrows are typed: `wraps` (thin libc wrapper), `implements` (userspace
-  fallback — no syscall), `consumes` (reads results of), `services` (kernel
+  fallback -- no syscall), `consumes` (reads results of), `services` (kernel
   side serving the call), `gated-by` (config/capability/version gates).
 - Every syscall in a map cites its `SC-<name>` ID from the
   [syscall ledger](../syscalls/ledger.md); every class cites its `SYSC-<class>`

@@ -1,8 +1,8 @@
-# musl libc — Catalog
+# musl libc -- Catalog
 
 musl is cataloged separately from glibc by design: same POSIX surface, very
 different implementation choices and extension set. The authoritative
-inventory is [ledger-musl.md](../ledger-musl.md) — 1482 functions across 110
+inventory is [ledger-musl.md](../ledger-musl.md) -- 1482 functions across 110
 public-header families of musl 1.2.5, extracted from the musl source tree
 (with the `_Noreturn`-aware fix: the BSD `err`/`warn` family and `_Exit` were
 initially missed by naive prototype parsing), plus computed deltas against the
@@ -22,7 +22,7 @@ glibc inventory (musl-only: 15; glibc-only: ~2367).
 - Flat ABI: no symbol versioning, `dlvsym` meaningless; dynlink lookup ignores
   versions (musl `ldso/dynlink.c`).
 - `ucontext`: all four functions declared in `ucontext.h`, no implementation
-  anywhere in `src/` — linking fails (sharper than the usual "no makecontext").
+  anywhere in `src/` -- linking fails (sharper than the usual "no makecontext").
 - No `execinfo.h`/`backtrace`; no nsswitch, `RES_OPTIONS`, or `LOCALDOMAIN`
   handling; iconv uses a fixed built-in charset table; ctype `_l` variants
   ignore locale.
