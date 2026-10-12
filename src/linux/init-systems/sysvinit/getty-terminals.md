@@ -189,7 +189,7 @@ Writers, precisely: init writes the `BOOT_TIME`/`RUN_LVL`/`INIT_PROCESS` records
 ### Readers, Rotation, and Hygiene
 
 - `who(1)` (coreutils) shows current sessions from utmp; `w(1)` (procps) joins them with per-process activity; `last(1)`/`lastb(1)` (util-linux — see [utilities.md](./utilities.md)) replay wtmp/btmp.
-- All three files grow forever unless rotated. `logrotate` ships rules for wtmp and btmp (monthly, with `create` preserving owner/mode) — the "wtmp begins <date>" line in `last` output marks the start of the current rotation window, and forensic sessions before that line are in the rotated files.
+- All three files grow forever unless rotated. `logrotate` ships rules for wtmp and btmp (monthly, with `create` preserving owner/mode) — the "wtmp begins `<date>`" line in `last` output marks the start of the current rotation window, and forensic sessions before that line are in the rotated files.
 - Programs writing utmp must lock records (`utmpx` locking) to avoid interleaved writes; getting this wrong is how "who" output becomes binary mush. Application authors on modern systems use libutempter-style helpers rather than writing the file by hand.
 
 ## Serial Consoles: console= versus a getty Line

@@ -31,7 +31,7 @@ Each triplet reads: inside-namespace start (`uid`), outside-namespace start (`lo
 
 ## How It Works
 
-### The kernel layer: /proc/<pid>/uid_map
+### The kernel layer: /proc/`<pid>`/uid_map
 
 Every process in a non-initial user namespace exposes its UID translation in `/proc/<pid>/uid_map`. Each line is:
 

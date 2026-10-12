@@ -278,7 +278,7 @@ The one-shot boot pass reads the rest of the constellation, script by script:
 - **`/etc/network/interfaces`** — consumed by `ifup(8)` (the `ifupdown` package) via `/etc/init.d/networking`, which runs during the rcS pass to bring up interfaces marked `auto`. Bookworm sysvinit installs keep this path; the file is ifupdown-owned, not initscripts-owned, which is why it is absent from the initscripts package listing.
 - **`/run/nologin`** (historically `/etc/nologin`) — the `DELAYLOGIN` flag file. Verified round trip: `bootmisc.sh` writes `System bootup in progress - please wait` into it when `DELAYLOGIN` is `yes`; `rmnologin` (run at the end of the multiuser levels) removes it; while it exists, `login(1)` refuses non-root logins. `rcS(5)` adds the operational footnote: if you set `DELAYLOGIN=no`, make sure no stale `/run/nologin` is lying around, or you have built a permanent login blocker.
 
-## Per-Service Configuration: /etc/default/<service>
+## Per-Service Configuration: /etc/default/`<service>`
 
 The same panel pattern scales to every service. The Debian convention: an init script sources `/etc/default/<name>` near the top (usually conditionally — `[ -r /etc/default/myapp ] && . /etc/default/myapp` — so a missing file cannot break the boot), sets its own code defaults first, and lets the file's assignments win. Package upgrades overwrite `/etc/init.d/<name>` but never your `/etc/default/<name>`, which is the entire point: maintainer defaults in package-owned code, operator intent in a file dpkg does not touch.
 

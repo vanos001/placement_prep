@@ -31,7 +31,7 @@ Each triplet reads: inside-namespace start (`gid`), outside-namespace start (`lo
 
 ## How It Works
 
-### The kernel layer: /proc/<pid>/gid_map
+### The kernel layer: /proc/`<pid>`/gid_map
 
 Each line of `gid_map` is `ID-inside-ns ID-outside-ns length`, translating GIDs exactly the way `uid_map` translates UIDs. An empty map leaves every group ID unmapped — all files show `nogroup` (65534) from outside, and group-based access checks inside the namespace cannot resolve. The kernel-side rules parallel the UID case:
 

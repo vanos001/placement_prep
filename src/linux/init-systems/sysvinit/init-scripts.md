@@ -282,7 +282,7 @@ Because the pidfile records the first child s-s-d created, while a double-forkin
 
 `start-stop-daemon --stop --retry TERM/30/KILL/5 --pidfile ...`: a schedule of signal/wait pairs applied in order — SIGTERM, up to 30 seconds for the process to exit, then SIGKILL, up to 5 more. This matters because K scripts run synchronously inside a `wait` entry of init: any hang in a stop path stalls the whole runlevel transition (and on shutdown, stalls levels 0/6). The schedule makes worst-case stop time a known constant instead of "however long a wedged daemon ignores SIGTERM." Hand-rolled `kill; sleep 5; kill -9` approximates it badly — it neither waits adaptively nor reports.
 
-### Q: Why do Debian init scripts source /etc/default/<name> and /lib/lsb/init-functions, and what breaks if you skip them?
+### Q: Why do Debian init scripts source /etc/default/`<name>` and /lib/lsb/init-functions, and what breaks if you skip them?
 
 The defaults file separates administrator intent (port, flags, limits) from package-owned code, so package upgrades never clobber local configuration — skip it and every upgrade becomes a merge conflict or a regression. The init-functions library provides `log_daemon_msg`/`log_end_msg`/`log_*_msg`, which honor VERBOSE and render boot-console output correctly — skip it and your messages either vanish from the boot console or appear as unformatted noise, and your script no longer looks or behaves like the rest of the system. Both are conventions, not enforcement — which is exactly why interviewers ask whether you understand *why* they exist rather than that they exist.
 

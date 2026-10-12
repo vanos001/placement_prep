@@ -326,7 +326,7 @@ Notes for reviewers: `$network` in an LSB header maps to OpenRC's virtual `net` 
 
 They implement different contracts. Background+pidfile: start-stop-daemon detaches the daemon and OpenRC trusts the pidfile afterward — no resident process, but state is *recorded, not measured*, so double-forking daemons and OOM kills leave desynced bookkeeping (fixed via `zap`). supervise-daemon: a resident supervisor keeps the command as its child, detects exit by observation, respawns per `--respawn-delay`/`--respawn-max`, and makes the pidfile optional. Choose supervision for anything where silent death matters (daemons without their own watchdog, lab services, edge boxes); choose background+pidfile when a daemon has its own reliable supervisor semantics or an external watchdog already exists.
 
-### Q: Why do OpenRC scripts source /etc/conf.d/<service>, and what belongs there?
+### Q: Why do OpenRC scripts source /etc/conf.d/`<service>`, and what belongs there?
 
 The conf.d file separates *site configuration* from *packaged code*: it is sourced before the script body, so every script variable (`command_args`, `pidfile`, `output_log`), plus per-service dependency overrides (`rc_<svc>_need`, `rc_<svc>_after`, ...) and cgroup settings, can be changed per host without touching the script — which package upgrades may replace at any time. Operational settings belong there (flags, limits, addresses); logic belongs in the script. It is the direct analogue of Debian's `/etc/default/<svc>` files, but wired into the interpreter rather than conventionally dot-sourced.
 
@@ -349,7 +349,7 @@ The conf.d file separates *site configuration* from *packaged code*: it is sourc
 ## Cross-References
 
 - [OpenRC Runlevels and Service Management](./runlevels-services.md) — how these scripts are enabled, ordered, and reported.
-- [rc.conf, cgroups, Containers and Advanced OpenRC](./config-advanced.md) — conf.d overrides, rc_<svc>_* dependency knobs, cgroup cleanup.
+- [rc.conf, cgroups, Containers and Advanced OpenRC](./config-advanced.md) — conf.d overrides, `rc_<svc>_*` dependency knobs, cgroup cleanup.
 - [OpenRC — Overview and Architecture](./overview-architecture.md) — where the script interpreter sits in the component model.
 - [SysVinit — Init Scripts](../sysvinit/init-scripts.md) — the shell-script tradition OpenRC modernizes.
 - [SysVinit — LSB Headers](../sysvinit/lsb-headers.md) — the header vocabulary mapped in the migration table.

@@ -1,4 +1,4 @@
-# mkfs — front-end dispatcher for filesystem builders (mkfs.<type>)
+# mkfs — front-end dispatcher for filesystem builders (mkfs.`<type>`)
 
 ## Overview
 
@@ -210,7 +210,7 @@ lsblk -f /dev/sdb1 && mkfs -t ext4 /dev/sdb1 && lsblk -f /dev/sdb1
 - **`mkfs.ext4` etc. are often symlinks.** On Debian, `mkfs.ext2/3/4` all point to `mke2fs`, which switches personality by program name. That is why `man mkfs.ext4` may land on the mke2fs page.
 - **Size operand is legacy.** Builders disagree on its meaning; sizing via partition table or image file is the robust path.
 - **Helpers are exec'd, not forked shells.** There is no quoting layer between mkfs and the helper: fs-options arrive as verbatim argv. Arguments with spaces or glob characters must be quoted by *you* at the mkfs call site, exactly as if calling the helper directly.
-- **The banner line is a version tell.** `mkfs -V` prints "mkfs from util-linux <version>" — occasionally the fastest way to answer "which util-linux is this box running" during an incident, without touching dpkg.
+- **The banner line is a version tell.** `mkfs -V` prints "mkfs from util-linux `<version>`" — occasionally the fastest way to answer "which util-linux is this box running" during an incident, without touching dpkg.
 - **No locking.** Two concurrent `mkfs -t` runs on the same device interleave writes with no warning; both "succeed" and the result is a corrupt hybrid. Provisioning scripts should hold a lock (`flock`) keyed on the device.
 - **Stale signatures outlive reformatting.** A fresh superblock does not always erase leftovers of the previous filesystem's structures; `wipefs -a` first is the hygiene step that keeps `blkid`'s type/UUID reporting honest after reformatting.
 - **Refusals differ per helper.** mke2fs needs `-F` to proceed on mounted targets, mkfs.xfs needs `-f`; a generic wrapper can promise uniform dispatch but not uniform guard rails — check the helper's own safety flags.

@@ -76,7 +76,7 @@ Limits are inherited across `fork`/`exec`, so the process tree carries them: log
 
 Enforcement points differ per resource, which is the practical part of the design: `open()` fails with `EMFILE` beyond NOFILE; `fork()` fails with `EAGAIN` beyond NPROC; writes past FSIZE raise `SIGXFSZ` and fail with `EFBIG`; CPU overshoot raises `SIGXCPU` at soft and `SIGKILL` at hard. Knowing which syscall returns which errno turns "app misbehaving" into "limit hit" in one log line.
 
-### The read-only mirror: /proc/<pid>/limits
+### The read-only mirror: /proc/`<pid>`/limits
 
 `cat /proc/<pid>/limits` renders the same 16 slots — it is how monitoring collects limits without syscalls and how you cross-check what prlimit reports. There is no procfs *write* path; changes go through `prlimit64(2)` only, so scripts that try to echo into procfs fail by design.
 

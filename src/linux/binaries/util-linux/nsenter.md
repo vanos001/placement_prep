@@ -229,7 +229,7 @@ By default, entering a user namespace makes you uid 0 there — convenient, beca
 
 Two reasons: the forked child can be reaped and its exit status forwarded cleanly, and forking after the namespace joins but before exec keeps nsenter's own bookkeeping (fd closing, credential changes, chdir) isolated from the final program. `-F` skips the fork for latency and simpler process trees, at the cost of exec semantics being visible directly to nsenter's parent — which is exactly what shell scripting with `$!` and signals wants.
 
-### Q: What do the /proc/<pid>/ns/* files actually contain, and how do tools tell namespaces apart?
+### Q: What do the /proc/`<pid>`/ns/* files actually contain, and how do tools tell namespaces apart?
 
 They are magic symlinks whose readlink output (`net:[4026532285]`) shows the kernel instance id; the reliable equality test is comparing stat's device+inode on two of them. `lsns` walks /proc doing exactly that to enumerate all namespaces and their users. The files double as handles: opening one pins the namespace against teardown even with zero member processes — the mechanism `ip netns` uses to keep empty named networks addressable.
 
