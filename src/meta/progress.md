@@ -91,3 +91,13 @@ The `research` branch (75 commits ahead of `main`) landed 660 new markdown files
 | CSVs | `data/*.csv` extended to one row per resource — entries, education, video, conference — including education rows for the four indexes that were entry-only. |
 | Documentation | `references/README.md` (Video + Conference columns, recomputed URL counts, corrected totals), root `README.md` (What's Inside, repository structure, stats), `meta/status.md`, `meta/progress.md`, `meta/coverage_dashboard.md`, `meta/knowledge_graph.md`. |
 
+
+
+## Linux Interface Encyclopedia - per-function rebuild - 2026-10-12
+
+| Part | Result |
+|---|---|
+| Structure | One page per syscall/function/class (no per-domain mega-chapters); man-page families share pages per the source-derived `.so` alias map |
+| Ledgers | syscalls 535, glibc 1881+3470+1953 rows, musl 1482, sysfs 120, crossref 38 - regenerated from sources, statuses restored from surviving reports |
+| Documentation | 194 syscall pages, 122 glibc pages, 6 musl pages, 42 sysfs class pages, 3 crossref maps (367 content pages) |
+| Honest gaps | 101 syscall rows source-limited (named), 10 not-started, 12 crossref rows source-limited, glibc 1377 documented-API rows still `researched` |

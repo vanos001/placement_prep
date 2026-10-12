@@ -973,3 +973,28 @@ Five focused commits pushed to `origin/dev`:
 
 Every commit was preceded by a clean `mdbook build`; no warnings
 introduced. `token.txt` is in `.gitignore` and was never staged.
+
+
+## 2026-10-12 - Linux Interface Encyclopedia rebuilt as per-function pages
+
+Six waves re-authored the encyclopedia with **one page per function** (the
+previous per-domain chapter layout is gone). Resumed after a workspace loss:
+the four coverage ledgers were regenerated from primary sources via the
+surviving generator scripts, and all 2 095 per-entry status rows were restored
+from the surviving `status/` reports; two of seventeen lost chapter texts were
+recovered from persisted tool outputs and split into per-function pages.
+
+| Part | Pages | Ledger state |
+|---|---|---|
+| syscalls (7 domains, per-function pages + auto hubs) | 194 + 7 hubs | 378 documented / 46 researched / 101 source-limited / 10 not-started of 535 |
+| glibc functions (stdio/process/strings/net/fs) | 122 | 504 documented of 1 881 documented-API rows |
+| musl family pages + catalog | 6 | 110-family inventory (1 482 funcs) |
+| sysfs classes (one page per documented class) | 42 | 42 documented / 77 researched / 1 source-limited of 120 |
+| cross-layer maps | 3 | 38 rows (26 documented / 12 source-limited) |
+
+Shared grouping authority `page_groups.py` (roff `.so` alias map + family
+groups) keeps ledger rows, hub tables and file layout consistent. Every page:
+ASCII-only, balanced fences, relative links verified, numbers cross-checked
+against kernel syscall tables / installed headers / `nm` on host glibc 2.41.
+Source-limited rows name their missing sources; no completeness claim beyond
+ledger statuses.
