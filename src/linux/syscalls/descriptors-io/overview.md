@@ -26,9 +26,8 @@ Status vocabulary: `documented` (full per-page entry), `researched` (brief entry
 | [ioctl](ioctl.md) | `ioctl` x64 16 | i386 54 | g64 29 | arm 54 | - | 1.0 | documented |
 | [mmap2](mmap2.md) | `mmap2` x64 -- | i386 192 | g64 -- | arm 192 | - | 2.4 | researched |
 | [openat2](openat2.md) | `openat2` x64 437 | i386 437 | g64 437 | arm 437 | - | 5.6 | documented |
-| [pread](pread.md) | `pread64` x64 17 | i386 180 | g64 67 | arm 180 | - | -- | documented |
+| [pread](pread.md) | `pread64` x64 17 | i386 180 | g64 67 | arm 180, `pwrite64` x64 18 | i386 181 | g64 68 | arm 181 | - | -- | documented |
 | [readv](readv.md) | `preadv` x64 295 | i386 333 | g64 69 | arm 361, `preadv2` x64 327 | i386 378 | g64 286 | arm 392, `pwritev` x64 296 | i386 334 | g64 70 | arm 362, `pwritev2` x64 328 | i386 379 | g64 287 | arm 393, `readv` x64 19 | i386 145 | g64 65 | arm 145, `writev` x64 20 | i386 146 | g64 66 | arm 146 | - | 2.6.30 | documented |
-| [pwrite](pwrite.md) | `pwrite64` x64 18 | i386 181 | g64 68 | arm 181 | - | -- | documented |
 | [read](read.md) | `read` x64 0 | i386 3 | g64 63 | arm 3 | - | 1.0 | documented |
 | [readahead](readahead.md) | `readahead` x64 187 | i386 225 | g64 213 | arm 225 | - | 2.4.13 | researched |
 | [readdir](readdir.md) | `readdir` x64 -- | i386 89 | g64 -- | arm -- | - | 1.0 | researched |

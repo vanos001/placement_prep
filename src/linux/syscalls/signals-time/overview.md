@@ -21,8 +21,7 @@ Status vocabulary: `documented` (full per-page entry), `researched` (brief entry
 | [rt_sigqueueinfo](rt_sigqueueinfo.md) | `rt_sigqueueinfo` x64 129 | i386 178 | g64 138 | arm 178, `rt_tgsigqueueinfo` x64 297 | i386 335 | g64 240 | arm 363 | - | 2.2 | documented |
 | [sigreturn](sigreturn.md) | `rt_sigreturn` x64 15 | i386 173 | g64 139 | arm 173, `sigreturn` x64 -- | i386 119 | g64 -- | arm 119 | - | 2.2 | documented |
 | [rt_sigsuspend](rt_sigsuspend.md) | `rt_sigsuspend` x64 130 | i386 179 | g64 133 | arm 179, `sigsuspend` x64 -- | i386 72 | g64 -- | arm 72 | - | 2.2 | researched |
-| [sigtimedwait](sigtimedwait.md) | `rt_sigtimedwait` x64 128 | i386 177 | g64 137 | arm 177 | - | 2.2 | documented |
-| [rt_sigtimedwait_time64](rt_sigtimedwait_time64.md) | `rt_sigtimedwait_time64` x64 -- | i386 421 | g64 -- | arm 421 | - | -- | researched |
+| [sigtimedwait](sigtimedwait.md) | `rt_sigtimedwait` x64 128 | i386 177 | g64 137 | arm 177, `rt_sigtimedwait_time64` x64 -- | i386 421 | g64 -- | arm 421 | - | 2.2 | documented |
 | [sgetmask](sgetmask.md) | `sgetmask` x64 -- | i386 68 | g64 -- | arm --, `ssetmask` x64 -- | i386 69 | g64 -- | arm -- | - | 1.0 | researched |
 | [sigaltstack](sigaltstack.md) | `sigaltstack` x64 131 | i386 186 | g64 132 | arm 186 | - | 2.2 | documented |
 | [stime](stime.md) | `stime` x64 -- | i386 25 | g64 -- | arm -- | - | 1.0 | source-limited |

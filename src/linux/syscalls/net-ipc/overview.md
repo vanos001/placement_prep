@@ -16,8 +16,7 @@ Status vocabulary: `documented` (full per-page entry), `researched` (brief entry
 | [eventfd](eventfd.md) | `eventfd` x64 284 | i386 323 | g64 -- | arm 351, `eventfd2` x64 290 | i386 328 | g64 19 | arm 356 | - | 2.6.22 | documented |
 | [getdomainname](getdomainname.md) | `getdomainname` x64 -- | i386 -- | g64 -- | arm --, `setdomainname` x64 171 | i386 121 | g64 162 | arm 121 | - | 2.2 | researched |
 | [gethostname](gethostname.md) | `gethostname` x64 -- | i386 -- | g64 -- | arm --, `sethostname` x64 170 | i386 74 | g64 161 | arm 74 | - | 2.0 | researched |
-| [getpeername](getpeername.md) | `getpeername` x64 52 | i386 368 | g64 205 | arm 287 | - | 2.0 | documented |
-| [getsockname](getsockname.md) | `getsockname` x64 51 | i386 367 | g64 204 | arm 286 | - | 2.0 | documented |
+| [getsockname](getsockname.md) | `getpeername` x64 52 | i386 368 | g64 205 | arm 287, `getsockname` x64 51 | i386 367 | g64 204 | arm 286 | - | 2.0 | documented |
 | [setsockopt](setsockopt.md) | `getsockopt` x64 55 | i386 365 | g64 209 | arm 295, `setsockopt` x64 54 | i386 366 | g64 208 | arm 294 | - | 2.0 | documented |
 | [io_setup](io_setup.md) | `io_cancel` x64 210 | i386 249 | g64 3 | arm 247, `io_destroy` x64 207 | i386 246 | g64 1 | arm 244, `io_getevents` x64 208 | i386 247 | g64 4 | arm 245, `io_pgetevents` x64 333 | i386 385 | g64 292 | arm 399, `io_pgetevents_time64` x64 -- | i386 416 | g64 -- | arm 416, `io_setup` x64 206 | i386 245 | g64 0 | arm 243, `io_submit` x64 209 | i386 248 | g64 2 | arm 246 | - | 2.6 | documented |
 | [io_uring_setup](io_uring_setup.md) | `io_uring_enter` x64 426 | i386 426 | g64 426 | arm 426, `io_uring_register` x64 427 | i386 427 | g64 427 | arm 427, `io_uring_setup` x64 425 | i386 425 | g64 425 | arm 425 | - | 5.1 | documented |
@@ -37,5 +36,5 @@ Status vocabulary: `documented` (full per-page entry), `researched` (brief entry
 | [signalfd](signalfd.md) | `signalfd` x64 282 | i386 321 | g64 -- | arm 349, `signalfd4` x64 289 | i386 327 | g64 74 | arm 355 | - | 2.6.22 | documented |
 | [socket](socket.md) | `socket` x64 41 | i386 359 | g64 198 | arm 281, `socketpair` x64 53 | i386 360 | g64 199 | arm 288 | - | 2.0 | documented |
 | [socketcall](socketcall.md) | `socketcall` x64 -- | i386 102 | g64 -- | arm -- | - | 1.0 | documented |
-| [timerfd_create](timerfd_create.md) | `timerfd_create` x64 283 | i386 322 | g64 85 | arm 350 | - | 2.6.25 | documented |
-| [timerfd_settime](timerfd_settime.md) | `timerfd_gettime` x64 287 | i386 326 | g64 87 | arm 354, `timerfd_gettime64` x64 -- | i386 410 | g64 -- | arm 410, `timerfd_settime` x64 286 | i386 325 | g64 86 | arm 353, `timerfd_settime64` x64 -- | i386 411 | g64 -- | arm 411 | - | 2.6.25 | documented |
+| [timerfd_create](timerfd_create.md) | `timerfd_create` x64 283 | i386 322 | g64 85 | arm 350, `timerfd_gettime` x64 287 | i386 326 | g64 87 | arm 354, `timerfd_settime` x64 286 | i386 325 | g64 86 | arm 353 | - | 2.6.25 | documented |
+| [timerfd_settime](timerfd_settime.md) | `timerfd_gettime64` x64 -- | i386 410 | g64 -- | arm 410, `timerfd_settime64` x64 -- | i386 411 | g64 -- | arm 411 | - | -- | documented |

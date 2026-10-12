@@ -42,9 +42,7 @@ Status vocabulary: `documented` (full per-page entry), `researched` (brief entry
 | [kexec_load](kexec_load.md) | `kexec_file_load` x64 320 | i386 -- | g64 294 | arm 401, `kexec_load` x64 246 | i386 283 | g64 104 | arm 347 | - | 3.17 | documented |
 | [landlock_create_ruleset](landlock_create_ruleset.md) | `landlock_add_rule` x64 445 | i386 445 | g64 445 | arm 445, `landlock_create_ruleset` x64 444 | i386 444 | g64 444 | arm 444, `landlock_restrict_self` x64 446 | i386 446 | g64 446 | arm 446 | - | 5.13 | documented |
 | [lookup_dcookie](lookup_dcookie.md) | `lookup_dcookie` x64 212 | i386 253 | g64 18 | arm 249 | - | 2.6 | documented |
-| [lsm_get_self_attr](lsm_get_self_attr.md) | `lsm_get_self_attr` x64 459 | i386 459 | g64 459 | arm 459 | - | -- | documented |
-| [lsm_list_modules](lsm_list_modules.md) | `lsm_list_modules` x64 461 | i386 461 | g64 461 | arm 461 | - | -- | documented |
-| [lsm_set_self_attr](lsm_set_self_attr.md) | `lsm_set_self_attr` x64 460 | i386 460 | g64 460 | arm 460 | - | -- | documented |
+| [lsm_get_self_attr](lsm_get_self_attr.md) | `lsm_get_self_attr` x64 459 | i386 459 | g64 459 | arm 459, `lsm_list_modules` x64 461 | i386 461 | g64 461 | arm 461, `lsm_set_self_attr` x64 460 | i386 460 | g64 460 | arm 460 | - | -- | documented |
 | [memory_ordering](memory_ordering.md) | `memory_ordering` x64 -- | i386 -- | g64 -- | arm -- | - | 2.2 | source-limited |
 | [modify_ldt](modify_ldt.md) | `modify_ldt` x64 154 | i386 123 | g64 -- | arm -- | - | 1.0 | source-limited |
 | [nfsservctl](nfsservctl.md) | `nfsservctl` x64 180 | i386 169 | g64 42 | arm 169 | - | 2.2 | source-limited |
@@ -59,9 +57,9 @@ Status vocabulary: `documented` (full per-page entry), `researched` (brief entry
 | [perfctr](perfctr.md) | `perfctr` x64 -- | i386 -- | g64 -- | arm -- | - | 2.2 | source-limited |
 | [perfmonctl](perfmonctl.md) | `perfmonctl` x64 -- | i386 -- | g64 -- | arm -- | - | 2.4 | source-limited |
 | [profil](profil.md) | `profil` x64 -- | i386 98 | g64 -- | arm -- | - | -- | source-limited |
-                                                                                                                                                                                            | [query_module](query_module.md) | `query_module` x64 178 | i386 167 | g64 -- | arm -- | - | 2.2 | source-limited |
+| [query_module](query_module.md) | `query_module` x64 178 | i386 167 | g64 -- | arm -- | - | 2.2 | source-limited |
 | [reboot](reboot.md) | `reboot` x64 169 | i386 88 | g64 142 | arm 88 | - | 1.0 | documented |
-| [riscv_flush_icache](riscv_flush_icache.md) | `riscv_flush_icache` x64 -- | i386 -- | g64 -- | arm -- | - | 4.15 | source-limited |
+                                                                                                                                                                                            | [riscv_flush_icache](riscv_flush_icache.md) | `riscv_flush_icache` x64 -- | i386 -- | g64 -- | arm -- | - | 4.15 | source-limited |
 | [rtas](rtas.md) | `rtas` x64 -- | i386 -- | g64 -- | arm -- | - | 2.6.2 | source-limited |
 | [s390_guarded_storage](s390_guarded_storage.md) | `s390_guarded_storage` x64 -- | i386 -- | g64 -- | arm -- | - | 4.12 | source-limited |
 | [s390_pci_mmio_write](s390_pci_mmio_write.md) | `s390_pci_mmio_read` x64 -- | i386 -- | g64 -- | arm --, `s390_pci_mmio_write` x64 -- | i386 -- | g64 -- | arm -- | - | 3.19 | source-limited |

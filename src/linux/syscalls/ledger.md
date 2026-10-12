@@ -42,11 +42,10 @@ Legend for numbers columns: `x64` = x86_64, `i386` = 32-bit x86, `g64` = asm-gen
 
 | ID | Name | Numbers | Since | Status | Chapter | Notes |
 |---|---|---|---|---|---|---|
-| SC-acct | [acct](https://man7.org/linux/man-pages/man2/acct.2.html) | x64 163 · i386 51 · g64 89 · arm 51 | 1.0 | researched | [acct](./process/acct.md) | —brief |
-| SC-arch_prctl | [arch_prctl](https://man7.org/linux/man-pages/man2/arch_prctl.2.html) | x64 158 · i386 384 · g64 — · arm — | 2.6 | researched | [arch_prctl](./process/arch_prctl.md) | —brief |
-| SC-capget | [capget](https://man7.org/linux/man-pages/man2/capget.2.html) | x64 125 · i386 184 · g64 90 · arm 184 | 2.2 | documented | [capget](./process/capget.md) | —grouped |
-| SC-capset | [capset](https://man7.org/linux/man-pages/man2/capset.2.html) | x64 126 · i386 185 · g64 91 · arm 185 | 2.2 | documented | [capset](./process/capget.md) | —grouped |
-| SC-chown32 | [chown32](https://man7.org/linux/man-pages/man2/chown32.2.html) | x64 — · i386 212 · g64 — · arm 212 | 2.4 | not-started | [chown32](./process/chown.md) | — |
+| SC-acct | [acct](https://man7.org/linux/man-pages/man2/acct.2.html) | x64 163 · i386 51 · g64 89 · arm 51 | 1.0 | documented | [acct](./process/acct.md) | —brief-length full-template entry (was researched in ledger; CAP_SYS_PACCT, acct(5) pointer) |
+| SC-arch_prctl | [arch_prctl](https://man7.org/linux/man-pages/man2/arch_prctl.2.html) | x64 158 · i386 384 · g64 — · arm — | 2.6 | documented | [arch_prctl](./process/arch_prctl.md) | —brief-length full-template entry (was researched; x86-only; glibc/musl TLS notes) |
+| SC-capget | [capget](https://man7.org/linux/man-pages/man2/capget.2.html) | x64 125 · i386 184 · g64 90 · arm 184 | 2.2 | documented | [capget](./process/capget.md) | —grouped; grouped entry (covers capget+capset; V1/V2/V3 versioning, VFS-caps note) |
+| SC-capset | [capset](https://man7.org/linux/man-pages/man2/capset.2.html) | x64 126 · i386 185 · g64 91 · arm 185 | 2.2 | documented | [capset](./process/capget.md) | —grouped; grouped entry (covered by capget.md) |
 | SC-clone | [clone](https://man7.org/linux/man-pages/man2/clone.2.html) | x64 56 · i386 120 · g64 220 · arm 120 | 1.0 | documented | [clone](./process/clone.md) | —full |
 | SC-clone2 | [clone2](https://man7.org/linux/man-pages/man2/clone2.2.html) | x64 — · i386 — · g64 — · arm — | 2.4 | documented | [clone2](./process/clone.md) | —grouped |
 | SC-clone3 | [clone3](https://man7.org/linux/man-pages/man2/clone3.2.html) | x64 435 · i386 435 · g64 435 · arm 435 | 5.3 | documented | [clone3](./process/clone.md) | —full |
@@ -55,7 +54,6 @@ Legend for numbers columns: `x64` = x86_64, `i386` = 32-bit x86, `g64` = asm-gen
 | SC-execveat | [execveat](https://man7.org/linux/man-pages/man2/execveat.2.html) | x64 322 · i386 358 · g64 281 · arm 387 | 3.19 | documented | [execveat](./process/execveat.md) | —grouped |
 | SC-exit | [exit](https://man7.org/linux/man-pages/man2/exit.2.html) | x64 60 · i386 1 · g64 93 · arm 1 | 1.0 | documented | [exit](./process/_exit.md) | —grouped |
 | SC-exit_group | [exit_group](https://man7.org/linux/man-pages/man2/exit_group.2.html) | x64 231 · i386 252 · g64 94 · arm 248 | 2.6 | documented | [exit_group](./process/_exit.md) | —grouped |
-| SC-fchown32 | [fchown32](https://man7.org/linux/man-pages/man2/fchown32.2.html) | x64 — · i386 207 · g64 — · arm 207 | 2.4 | not-started | [fchown32](./process/chown.md) | — |
 | SC-fork | [fork](https://man7.org/linux/man-pages/man2/fork.2.html) | x64 57 · i386 2 · g64 — · arm 2 | 1.0 | documented | [fork](./process/fork.md) | —full |
 | SC-futex | [futex](https://man7.org/linux/man-pages/man2/futex.2.html) | x64 202 · i386 240 · g64 98 · arm 240 | 2.6 | documented | [futex](./process/futex.md) | —full |
 | SC-futex_requeue | futex_requeue | x64 456 · i386 456 · g64 456 · arm 456 | 6.14 | source-limited | [futex_requeue](./process/futex.md) | —grouped |
@@ -63,17 +61,17 @@ Legend for numbers columns: `x64` = x86_64, `i386` = 32-bit x86, `g64` = asm-gen
 | SC-futex_wait | futex_wait | x64 455 · i386 455 · g64 455 · arm 455 | 6.14 | source-limited | [futex_wait](./process/futex.md) | —grouped |
 | SC-futex_waitv | futex_waitv | x64 449 · i386 449 · g64 449 · arm 449 | — | documented | [futex_waitv](./process/futex.md) | —grouped |
 | SC-futex_wake | futex_wake | x64 454 · i386 454 · g64 454 · arm 454 | 6.14 | source-limited | [futex_wake](./process/futex.md) | —grouped |
-| SC-get_robust_list | [get_robust_list](https://man7.org/linux/man-pages/man2/get_robust_list.2.html) | x64 274 · i386 312 · g64 100 · arm 339 | 2.6.17 | researched | [get_robust_list](./process/get_robust_list.md) | —brief |
-| SC-getegid | [getegid](https://man7.org/linux/man-pages/man2/getegid.2.html) | x64 108 · i386 50 · g64 177 · arm 50 | 1.0 | documented | [getegid](./process/getgid.md) | —grouped |
-| SC-getegid32 | [getegid32](https://man7.org/linux/man-pages/man2/getegid32.2.html) | x64 — · i386 202 · g64 — · arm 202 | 2.4 | documented | [getegid32](./process/getegid.md) | —grouped |
-| SC-geteuid | [geteuid](https://man7.org/linux/man-pages/man2/geteuid.2.html) | x64 107 · i386 49 · g64 175 · arm 49 | 1.0 | documented | [geteuid](./process/getuid.md) | —grouped |
-| SC-geteuid32 | [geteuid32](https://man7.org/linux/man-pages/man2/geteuid32.2.html) | x64 — · i386 201 · g64 — · arm 201 | 2.4 | documented | [geteuid32](./process/geteuid.md) | —grouped |
-| SC-getgid | [getgid](https://man7.org/linux/man-pages/man2/getgid.2.html) | x64 104 · i386 47 · g64 176 · arm 47 | 1.0 | documented | [getgid](./process/getgid.md) | —grouped |
-| SC-getgid32 | [getgid32](https://man7.org/linux/man-pages/man2/getgid32.2.html) | x64 — · i386 200 · g64 — · arm 200 | 2.4 | documented | [getgid32](./process/getgid.md) | —grouped |
-| SC-getgroups | [getgroups](https://man7.org/linux/man-pages/man2/getgroups.2.html) | x64 115 · i386 80 · g64 158 · arm 80 | 1.0 | documented | [getgroups](./process/getgroups.md) | —grouped |
-| SC-getgroups32 | [getgroups32](https://man7.org/linux/man-pages/man2/getgroups32.2.html) | x64 — · i386 205 · g64 — · arm 205 | 2.4 | documented | [getgroups32](./process/getgroups.md) | —grouped |
-| SC-getpgid | [getpgid](https://man7.org/linux/man-pages/man2/getpgid.2.html) | x64 121 · i386 132 · g64 155 · arm 132 | 1.0 | documented | [getpgid](./process/setpgid.md) | —grouped |
-| SC-getpgrp | [getpgrp](https://man7.org/linux/man-pages/man2/getpgrp.2.html) | x64 111 · i386 65 · g64 — · arm 65 | 1.0 | documented | [getpgrp](./process/setpgid.md) | —grouped |
+| SC-get_robust_list | [get_robust_list](https://man7.org/linux/man-pages/man2/get_robust_list.2.html) | x64 274 · i386 312 · g64 100 · arm 339 | 2.6.17 | documented | [get_robust_list](./process/get_robust_list.md) | —brief-length full-template entry (was researched; covers set_robust_list) |
+| SC-getegid | [getegid](https://man7.org/linux/man-pages/man2/getegid.2.html) | x64 108 · i386 50 · g64 177 · arm 50 | 1.0 | documented | [getegid](./process/getgid.md) | —grouped; grouped entry (covered by getgid.md; man2/getegid.2 is .so alias of getgid.2) |
+| SC-getegid32 | [getegid32](https://man7.org/linux/man-pages/man2/getegid32.2.html) | x64 — · i386 202 · g64 — · arm 202 | 2.4 | documented | [getegid32](./process/getgid.md) | —grouped; grouped entry (covered by getgid.md; i386 202) |
+| SC-geteuid | [geteuid](https://man7.org/linux/man-pages/man2/geteuid.2.html) | x64 107 · i386 49 · g64 175 · arm 49 | 1.0 | documented | [geteuid](./process/getuid.md) | —grouped; grouped entry (covered by getuid.md; man2/geteuid.2 is .so alias of getuid.2) |
+| SC-geteuid32 | [geteuid32](https://man7.org/linux/man-pages/man2/geteuid32.2.html) | x64 — · i386 201 · g64 — · arm 201 | 2.4 | documented | [geteuid32](./process/getuid.md) | —grouped; grouped entry (covered by getuid.md; i386 201) |
+| SC-getgid | [getgid](https://man7.org/linux/man-pages/man2/getgid.2.html) | x64 104 · i386 47 · g64 176 · arm 47 | 1.0 | documented | [getgid](./process/getgid.md) | —grouped; grouped entry (covers getgid+getegid; *32 aliases) |
+| SC-getgid32 | [getgid32](https://man7.org/linux/man-pages/man2/getgid32.2.html) | x64 — · i386 200 · g64 — · arm 200 | 2.4 | documented | [getgid32](./process/getgid.md) | —grouped; grouped entry (covered by getgid.md; i386 200) |
+| SC-getgroups | [getgroups](https://man7.org/linux/man-pages/man2/getgroups.2.html) | x64 115 · i386 80 · g64 158 · arm 80 | 1.0 | documented | [getgroups](./process/getgroups.md) | —grouped; grouped entry (covers getgroups+setgroups; *32 aliases) |
+| SC-getgroups32 | [getgroups32](https://man7.org/linux/man-pages/man2/getgroups32.2.html) | x64 — · i386 205 · g64 — · arm 205 | 2.4 | documented | [getgroups32](./process/getgroups.md) | —grouped; grouped entry (covered by getgroups.md; i386 205) |
+| SC-getpgid | [getpgid](https://man7.org/linux/man-pages/man2/getpgid.2.html) | x64 121 · i386 132 · g64 155 · arm 132 | 1.0 | documented | [getpgid](./process/setpgid.md) | —grouped; grouped entry (covered by setpgid.md) |
+| SC-getpgrp | [getpgrp](https://man7.org/linux/man-pages/man2/getpgrp.2.html) | x64 111 · i386 65 · g64 — · arm 65 | 1.0 | documented | [getpgrp](./process/setpgid.md) | —grouped; grouped entry (covered by setpgid.md; x86_64 111, no g64 row) |
 | SC-getpid | [getpid](https://man7.org/linux/man-pages/man2/getpid.2.html) | x64 39 · i386 20 · g64 172 · arm 20 | 1.0 | researched | [getpid](./process/getpid.md) | —covered |
 | SC-getppid | [getppid](https://man7.org/linux/man-pages/man2/getppid.2.html) | x64 110 · i386 64 · g64 173 · arm 64 | 1.0 | researched | [getppid](./process/getpid.md) | —covered |
 | SC-getresgid | [getresgid](https://man7.org/linux/man-pages/man2/getresgid.2.html) | x64 120 · i386 171 · g64 150 · arm 171 | 2.2 | documented | [getresgid](./process/getresuid.md) | —grouped |
@@ -82,51 +80,50 @@ Legend for numbers columns: `x64` = x86_64, `i386` = 32-bit x86, `g64` = asm-gen
 | SC-getresuid32 | [getresuid32](https://man7.org/linux/man-pages/man2/getresuid32.2.html) | x64 — · i386 209 · g64 — · arm 209 | 2.4 | documented | [getresuid32](./process/getresuid.md) | —grouped |
 | SC-getrlimit | [getrlimit](https://man7.org/linux/man-pages/man2/getrlimit.2.html) | x64 97 · i386 76 · g64 — · arm — | 1.0 | not-started | [getrlimit](./process/getrlimit.md) | — |
 | SC-getrusage | [getrusage](https://man7.org/linux/man-pages/man2/getrusage.2.html) | x64 98 · i386 77 · g64 165 · arm 77 | 1.0 | not-started | [getrusage](./process/getrusage.md) | — |
-| SC-getsid | [getsid](https://man7.org/linux/man-pages/man2/getsid.2.html) | x64 124 · i386 147 · g64 156 · arm 147 | 2.0 | documented | [getsid](./process/getsid.md) | —grouped |
+| SC-getsid | [getsid](https://man7.org/linux/man-pages/man2/getsid.2.html) | x64 124 · i386 147 · g64 156 · arm 147 | 2.0 | documented | [getsid](./process/getsid.md) | —grouped; full entry (Linux does not return EPERM per man NOTES) |
 | SC-gettid | [gettid](https://man7.org/linux/man-pages/man2/gettid.2.html) | x64 186 · i386 224 · g64 178 · arm 224 | 2.4.11 | researched | [gettid](./process/getpid.md) | —covered |
-| SC-getuid | [getuid](https://man7.org/linux/man-pages/man2/getuid.2.html) | x64 102 · i386 24 · g64 174 · arm 24 | 1.0 | documented | [getuid](./process/getuid.md) | —grouped |
-| SC-getuid32 | [getuid32](https://man7.org/linux/man-pages/man2/getuid32.2.html) | x64 — · i386 199 · g64 — · arm 199 | 2.4 | documented | [getuid32](./process/getuid.md) | —grouped |
-| SC-lchown32 | [lchown32](https://man7.org/linux/man-pages/man2/lchown32.2.html) | x64 — · i386 198 · g64 — · arm 198 | 2.4 | not-started | [lchown32](./process/chown.md) | — |
+| SC-getuid | [getuid](https://man7.org/linux/man-pages/man2/getuid.2.html) | x64 102 · i386 24 · g64 174 · arm 24 | 1.0 | documented | [getuid](./process/getuid.md) | —grouped; grouped entry (covers getuid+geteuid; *32 aliases) |
+| SC-getuid32 | [getuid32](https://man7.org/linux/man-pages/man2/getuid32.2.html) | x64 — · i386 199 · g64 — · arm 199 | 2.4 | documented | [getuid32](./process/getuid.md) | —grouped; grouped entry (covered by getuid.md; i386 199) |
 | SC-personality | [personality](https://man7.org/linux/man-pages/man2/personality.2.html) | x64 135 · i386 136 · g64 92 · arm 136 | 1.2 | not-started | [personality](./process/personality.md) | — |
 | SC-pidfd_getfd | [pidfd_getfd](https://man7.org/linux/man-pages/man2/pidfd_getfd.2.html) | x64 438 · i386 438 · g64 438 · arm 438 | 5.6 | documented | [pidfd_getfd](./process/pidfd_getfd.md) | —grouped |
 | SC-pidfd_open | [pidfd_open](https://man7.org/linux/man-pages/man2/pidfd_open.2.html) | x64 434 · i386 434 · g64 434 · arm 434 | 5.3 | documented | [pidfd_open](./process/pidfd_open.md) | —full |
-| SC-pidfd_send_signal | [pidfd_send_signal](https://man7.org/linux/man-pages/man2/pidfd_send_signal.2.html) | x64 424 · i386 424 · g64 424 · arm 424 | 5.1 | documented | [pidfd_send_signal](./process/pidfd_send_signal.md) | —grouped |
+| SC-pidfd_send_signal | [pidfd_send_signal](https://man7.org/linux/man-pages/man2/pidfd_send_signal.2.html) | x64 424 · i386 424 · g64 424 · arm 424 | 5.1 | documented | [pidfd_send_signal](./process/pidfd_send_signal.md) | —grouped; full entry (glibc 2.36 wrapper double-sourced: NEWS + nm) |
 | SC-prctl | [prctl](https://man7.org/linux/man-pages/man2/prctl.2.html) | x64 157 · i386 172 · g64 167 · arm 172 | 2.2 | documented | [prctl](./process/prctl.md) | —full |
 | SC-prlimit64 | [prlimit64](https://man7.org/linux/man-pages/man2/prlimit64.2.html) | x64 302 · i386 340 · g64 261 · arm 369 | 2.6.36 | not-started | [prlimit64](./process/getrlimit.md) | — |
-| SC-process_madvise | [process_madvise](https://man7.org/linux/man-pages/man2/process_madvise.2.html) | x64 440 · i386 440 · g64 440 · arm 440 | 5.10 | documented | [process_madvise](./process/process_madvise.md) | —grouped |
+| SC-process_madvise | [process_madvise](https://man7.org/linux/man-pages/man2/process_madvise.2.html) | x64 440 · i386 440 · g64 440 · arm 440 | 5.10 | documented | [process_madvise](./process/process_madvise.md) | —grouped; full entry (MADV_COLD/MADV_PAGEOUT subset; man says CAP_SYS_ADMIN + PTRACE_MODE_READ_REALCREDS) |
 | SC-process_mrelease | process_mrelease | x64 448 · i386 448 · g64 448 · arm 448 | — | source-limited | [process_mrelease](./process/process_mrelease.md) | —grouped |
 | SC-ptrace | [ptrace](https://man7.org/linux/man-pages/man2/ptrace.2.html) | x64 101 · i386 26 · g64 117 · arm 26 | 1.0 | researched | [ptrace](./process/ptrace.md) | —brief |
 | SC-rseq | rseq | x64 334 · i386 386 · g64 293 · arm 398 | 4.18 | source-limited | [rseq](./process/rseq.md) | —no |
 | SC-rseq_slice_yield | rseq_slice_yield | x64 471 · i386 471 · g64 471 · arm 471 | — | source-limited | [rseq_slice_yield](./process/rseq_slice_yield.md) | —grouped |
-| SC-set_robust_list | [set_robust_list](https://man7.org/linux/man-pages/man2/set_robust_list.2.html) | x64 273 · i386 311 · g64 99 · arm 338 | 2.6.17 | researched | [set_robust_list](./process/get_robust_list.md) | —brief |
+| SC-set_robust_list | [set_robust_list](https://man7.org/linux/man-pages/man2/set_robust_list.2.html) | x64 273 · i386 311 · g64 99 · arm 338 | 2.6.17 | documented | [set_robust_list](./process/get_robust_list.md) | —grouped entry (covered by get_robust_list.md) |
 | SC-set_tid_address | [set_tid_address](https://man7.org/linux/man-pages/man2/set_tid_address.2.html) | x64 218 · i386 258 · g64 96 · arm 256 | 2.6 | documented | [set_tid_address](./process/set_tid_address.md) | —full |
-| SC-setfsgid | [setfsgid](https://man7.org/linux/man-pages/man2/setfsgid.2.html) | x64 123 · i386 139 · g64 152 · arm 139 | 1.2 | documented | [setfsgid](./process/setfsgid.md) | —grouped |
-| SC-setfsgid32 | [setfsgid32](https://man7.org/linux/man-pages/man2/setfsgid32.2.html) | x64 — · i386 216 · g64 — · arm 216 | 2.4 | documented | [setfsgid32](./process/setfsgid.md) | —grouped |
-| SC-setfsuid | [setfsuid](https://man7.org/linux/man-pages/man2/setfsuid.2.html) | x64 122 · i386 138 · g64 151 · arm 138 | 1.2 | documented | [setfsuid](./process/setfsuid.md) | —grouped |
-| SC-setfsuid32 | [setfsuid32](https://man7.org/linux/man-pages/man2/setfsuid32.2.html) | x64 — · i386 215 · g64 — · arm 215 | 2.4 | documented | [setfsuid32](./process/setfsuid.md) | —grouped |
+| SC-setfsgid | [setfsgid](https://man7.org/linux/man-pages/man2/setfsgid.2.html) | x64 123 · i386 139 · g64 152 · arm 139 | 1.2 | documented | [setfsgid](./process/setfsuid.md) | —grouped; grouped entry (covered by setfsuid.md; full cached setfsgid.2) |
+| SC-setfsgid32 | [setfsgid32](https://man7.org/linux/man-pages/man2/setfsgid32.2.html) | x64 — · i386 216 · g64 — · arm 216 | 2.4 | documented | [setfsgid32](./process/setfsuid.md) | —grouped; grouped entry (covered by setfsuid.md; i386/arm 216) |
+| SC-setfsuid | [setfsuid](https://man7.org/linux/man-pages/man2/setfsuid.2.html) | x64 122 · i386 138 · g64 151 · arm 138 | 1.2 | documented | [setfsuid](./process/setfsuid.md) | —grouped; grouped entry (covers setfsuid+setfsgid; *32 aliases) |
+| SC-setfsuid32 | [setfsuid32](https://man7.org/linux/man-pages/man2/setfsuid32.2.html) | x64 — · i386 215 · g64 — · arm 215 | 2.4 | documented | [setfsuid32](./process/setfsuid.md) | —grouped; grouped entry (covered by setfsuid.md; i386/arm 215) |
 | SC-setgid | [setgid](https://man7.org/linux/man-pages/man2/setgid.2.html) | x64 106 · i386 46 · g64 144 · arm 46 | 1.0 | documented | [setgid](./process/setgid.md) | —grouped |
 | SC-setgid32 | [setgid32](https://man7.org/linux/man-pages/man2/setgid32.2.html) | x64 — · i386 214 · g64 — · arm 214 | 2.4 | documented | [setgid32](./process/setgid.md) | —grouped |
-| SC-setgroups | [setgroups](https://man7.org/linux/man-pages/man2/setgroups.2.html) | x64 116 · i386 81 · g64 159 · arm 81 | 1.0 | documented | [setgroups](./process/getgroups.md) | —grouped |
-| SC-setgroups32 | [setgroups32](https://man7.org/linux/man-pages/man2/setgroups32.2.html) | x64 — · i386 206 · g64 — · arm 206 | 2.4 | documented | [setgroups32](./process/setgroups.md) | —grouped |
-| SC-setpgid | [setpgid](https://man7.org/linux/man-pages/man2/setpgid.2.html) | x64 109 · i386 57 · g64 154 · arm 57 | 1.0 | documented | [setpgid](./process/setpgid.md) | —grouped |
-| SC-setpgrp | [setpgrp](https://man7.org/linux/man-pages/man2/setpgrp.2.html) | x64 — · i386 — · g64 — · arm — | 2.0 | documented | [setpgrp](./process/setpgid.md) | —grouped |
-| SC-setregid | [setregid](https://man7.org/linux/man-pages/man2/setregid.2.html) | x64 114 · i386 71 · g64 143 · arm 71 | 1.0 | documented | [setregid](./process/setreuid.md) | —grouped |
-| SC-setregid32 | [setregid32](https://man7.org/linux/man-pages/man2/setregid32.2.html) | x64 — · i386 204 · g64 — · arm 204 | 2.4 | documented | [setregid32](./process/setregid.md) | —grouped |
-| SC-setresgid | [setresgid](https://man7.org/linux/man-pages/man2/setresgid.2.html) | x64 119 · i386 170 · g64 149 · arm 170 | 2.2 | documented | [setresgid](./process/setresuid.md) | —grouped |
-| SC-setresgid32 | [setresgid32](https://man7.org/linux/man-pages/man2/setresgid32.2.html) | x64 — · i386 210 · g64 — · arm 210 | 2.4 | documented | [setresgid32](./process/setresgid.md) | —grouped |
-| SC-setresuid | [setresuid](https://man7.org/linux/man-pages/man2/setresuid.2.html) | x64 117 · i386 164 · g64 147 · arm 164 | 2.2 | documented | [setresuid](./process/setresuid.md) | —grouped |
-| SC-setresuid32 | [setresuid32](https://man7.org/linux/man-pages/man2/setresuid32.2.html) | x64 — · i386 208 · g64 — · arm 208 | 2.4 | documented | [setresuid32](./process/setresuid.md) | —grouped |
-| SC-setreuid | [setreuid](https://man7.org/linux/man-pages/man2/setreuid.2.html) | x64 113 · i386 70 · g64 145 · arm 70 | 1.0 | documented | [setreuid](./process/setreuid.md) | —grouped |
-| SC-setreuid32 | [setreuid32](https://man7.org/linux/man-pages/man2/setreuid32.2.html) | x64 — · i386 203 · g64 — · arm 203 | 2.4 | documented | [setreuid32](./process/setreuid.md) | —grouped |
+| SC-setgroups | [setgroups](https://man7.org/linux/man-pages/man2/setgroups.2.html) | x64 116 · i386 81 · g64 159 · arm 81 | 1.0 | documented | [setgroups](./process/getgroups.md) | —grouped; grouped entry (covered by getgroups.md; man2/setgroups.2 is .so alias) |
+| SC-setgroups32 | [setgroups32](https://man7.org/linux/man-pages/man2/setgroups32.2.html) | x64 — · i386 206 · g64 — · arm 206 | 2.4 | documented | [setgroups32](./process/getgroups.md) | —grouped; grouped entry (covered by getgroups.md; i386 206) |
+| SC-setpgid | [setpgid](https://man7.org/linux/man-pages/man2/setpgid.2.html) | x64 109 · i386 57 · g64 154 · arm 57 | 1.0 | documented | [setpgid](./process/setpgid.md) | —grouped; grouped entry (covers setpgid/getpgid/getpgrp/setpgrp; EPERM session rules) |
+| SC-setpgrp | [setpgrp](https://man7.org/linux/man-pages/man2/setpgrp.2.html) | x64 — · i386 — · g64 — · arm — | 2.0 | documented | [setpgrp](./process/setpgid.md) | —grouped; grouped entry (covered by setpgid.md; libc-only, no numbers) |
+| SC-setregid | [setregid](https://man7.org/linux/man-pages/man2/setregid.2.html) | x64 114 · i386 71 · g64 143 · arm 71 | 1.0 | documented | [setregid](./process/setreuid.md) | —grouped; grouped entry (covered by setreuid.md) |
+| SC-setregid32 | [setregid32](https://man7.org/linux/man-pages/man2/setregid32.2.html) | x64 — · i386 204 · g64 — · arm 204 | 2.4 | documented | [setregid32](./process/setreuid.md) | —grouped; grouped entry (covered by setreuid.md; i386/arm 204) |
+| SC-setresgid | [setresgid](https://man7.org/linux/man-pages/man2/setresgid.2.html) | x64 119 · i386 170 · g64 149 · arm 170 | 2.2 | documented | [setresgid](./process/setresuid.md) | —grouped; grouped entry (covered by setresuid.md) |
+| SC-setresgid32 | [setresgid32](https://man7.org/linux/man-pages/man2/setresgid32.2.html) | x64 — · i386 210 · g64 — · arm 210 | 2.4 | documented | [setresgid32](./process/setresuid.md) | —grouped; grouped entry (covered by setresuid.md; i386/arm 210) |
+| SC-setresuid | [setresuid](https://man7.org/linux/man-pages/man2/setresuid.2.html) | x64 117 · i386 164 · g64 147 · arm 164 | 2.2 | documented | [setresuid](./process/setresuid.md) | —grouped; grouped entry (covers setresuid+setresgid; *32 aliases; hub Since 2.2 vs man 2.1.44 noted on page) |
+| SC-setresuid32 | [setresuid32](https://man7.org/linux/man-pages/man2/setresuid32.2.html) | x64 — · i386 208 · g64 — · arm 208 | 2.4 | documented | [setresuid32](./process/setresuid.md) | —grouped; grouped entry (covered by setresuid.md; i386/arm 208) |
+| SC-setreuid | [setreuid](https://man7.org/linux/man-pages/man2/setreuid.2.html) | x64 113 · i386 70 · g64 145 · arm 70 | 1.0 | documented | [setreuid](./process/setreuid.md) | —grouped; grouped entry (covers setreuid+setregid; *32 aliases) |
+| SC-setreuid32 | [setreuid32](https://man7.org/linux/man-pages/man2/setreuid32.2.html) | x64 — · i386 203 · g64 — · arm 203 | 2.4 | documented | [setreuid32](./process/setreuid.md) | —grouped; grouped entry (covered by setreuid.md; i386/arm 203) |
 | SC-setrlimit | [setrlimit](https://man7.org/linux/man-pages/man2/setrlimit.2.html) | x64 160 · i386 75 · g64 — · arm 75 | 1.0 | not-started | [setrlimit](./process/getrlimit.md) | — |
-| SC-setsid | [setsid](https://man7.org/linux/man-pages/man2/setsid.2.html) | x64 112 · i386 66 · g64 157 · arm 66 | 1.0 | documented | [setsid](./process/setsid.md) | —grouped |
-| SC-setuid | [setuid](https://man7.org/linux/man-pages/man2/setuid.2.html) | x64 105 · i386 23 · g64 146 · arm 23 | 1.0 | documented | [setuid](./process/setuid.md) | —grouped |
-| SC-setuid32 | [setuid32](https://man7.org/linux/man-pages/man2/setuid32.2.html) | x64 — · i386 213 · g64 — · arm 213 | 2.4 | documented | [setuid32](./process/setuid.md) | —grouped |
+| SC-setsid | [setsid](https://man7.org/linux/man-pages/man2/setsid.2.html) | x64 112 · i386 66 · g64 157 · arm 66 | 1.0 | documented | [setsid](./process/setsid.md) | —grouped; full entry |
+| SC-setuid | [setuid](https://man7.org/linux/man-pages/man2/setuid.2.html) | x64 105 · i386 23 · g64 146 · arm 23 | 1.0 | documented | [setuid](./process/setuid.md) | —grouped; grouped entry (covers setuid+seteuid story; setuid32 alias) |
+| SC-setuid32 | [setuid32](https://man7.org/linux/man-pages/man2/setuid32.2.html) | x64 — · i386 213 · g64 — · arm 213 | 2.4 | documented | [setuid32](./process/setuid.md) | —grouped; grouped entry (covered by setuid.md; i386/arm 213) |
 | SC-ugetrlimit | [ugetrlimit](https://man7.org/linux/man-pages/man2/ugetrlimit.2.html) | x64 — · i386 191 · g64 — · arm 191 | 2.4 | not-started | [ugetrlimit](./process/getrlimit.md) | — |
-| SC-uname | [uname](https://man7.org/linux/man-pages/man2/uname.2.html) | x64 63 · i386 122 · g64 160 · arm 122 | 1.0 | documented | [uname](./process/uname.md) | —full |
-| SC-vfork | [vfork](https://man7.org/linux/man-pages/man2/vfork.2.html) | x64 58 · i386 190 · g64 — · arm 190 | 2.2 | documented | [vfork](./process/vfork.md) | —full |
+| SC-uname | [uname](https://man7.org/linux/man-pages/man2/uname.2.html) | x64 63 · i386 122 · g64 160 · arm 122 | 1.0 | documented | [uname](./process/uname.md) | —full; full entry (UTS namespace + domainname decay note) |
+| SC-vfork | [vfork](https://man7.org/linux/man-pages/man2/vfork.2.html) | x64 58 · i386 190 · g64 — · arm 190 | 2.2 | documented | [vfork](./process/vfork.md) | —full; full entry (CLONE_VM|CLONE_VFORK|SIGCHLD; musl fork()-fallback note) |
 | SC-wait4 | [wait4](https://man7.org/linux/man-pages/man2/wait4.2.html) | x64 61 · i386 114 · g64 260 · arm 114 | 1.0 | documented | [wait4](./process/wait4.md) | —full |
-| SC-waitid | [waitid](https://man7.org/linux/man-pages/man2/waitid.2.html) | x64 247 · i386 284 · g64 95 · arm 280 | 2.6.10 | documented | [waitid](./process/wait.md) | —full |
+| SC-waitid | [waitid](https://man7.org/linux/man-pages/man2/waitid.2.html) | x64 247 · i386 284 · g64 95 · arm 280 | 2.6.10 | documented | [waitid](./process/wait4.md) | —full |
 | SC-waitpid | [waitpid](https://man7.org/linux/man-pages/man2/waitpid.2.html) | x64 — · i386 7 · g64 — · arm — | 1.0 | documented | [waitpid](./process/wait4.md) | —grouped |
 
 ### memory
@@ -214,7 +211,7 @@ Legend for numbers columns: `x64` = x86_64, `i386` = 32-bit x86, `g64` = asm-gen
 | SC-pread64 | [pread64](https://man7.org/linux/man-pages/man2/pread64.2.html) | x64 17 · i386 180 · g64 67 · arm 180 | — | documented | [pread64](./descriptors-io/pread.md) | —pread64/pwrite64 |
 | SC-preadv | [preadv](https://man7.org/linux/man-pages/man2/preadv.2.html) | x64 295 · i386 333 · g64 69 · arm 361 | 2.6.30 | documented | [preadv](./descriptors-io/readv.md) | —documented |
 | SC-preadv2 | [preadv2](https://man7.org/linux/man-pages/man2/preadv2.2.html) | x64 327 · i386 378 · g64 286 · arm 392 | 4.6 | documented | [preadv2](./descriptors-io/readv.md) | —preadv2/pwritev2 |
-| SC-pwrite64 | [pwrite64](https://man7.org/linux/man-pages/man2/pwrite64.2.html) | x64 18 · i386 181 · g64 68 · arm 181 | — | documented | [pwrite64](./descriptors-io/pwrite.md) | —pread64/pwrite64 |
+| SC-pwrite64 | [pwrite64](https://man7.org/linux/man-pages/man2/pwrite64.2.html) | x64 18 · i386 181 · g64 68 · arm 181 | — | documented | [pwrite64](./descriptors-io/pread.md) | —pread64/pwrite64 |
 | SC-pwritev | [pwritev](https://man7.org/linux/man-pages/man2/pwritev.2.html) | x64 296 · i386 334 · g64 70 · arm 362 | 2.6.30 | documented | [pwritev](./descriptors-io/readv.md) | —documented |
 | SC-pwritev2 | [pwritev2](https://man7.org/linux/man-pages/man2/pwritev2.2.html) | x64 328 · i386 379 · g64 287 · arm 393 | 4.6 | documented | [pwritev2](./descriptors-io/readv.md) | —preadv2/pwritev2 |
 | SC-read | [read](https://man7.org/linux/man-pages/man2/read.2.html) | x64 0 · i386 3 · g64 63 · arm 3 | 1.0 | documented | [read](./descriptors-io/read.md) | —read |
@@ -251,6 +248,7 @@ Legend for numbers columns: `x64` = x86_64, `i386` = 32-bit x86, `g64` = asm-gen
 | SC-chdir | [chdir](https://man7.org/linux/man-pages/man2/chdir.2.html) | x64 80 · i386 12 · g64 49 · arm 12 | 1.0 | documented | [chdir](./fs-mounts-namespace/chdir.md) | —grouped |
 | SC-chmod | [chmod](https://man7.org/linux/man-pages/man2/chmod.2.html) | x64 90 · i386 15 · g64 — · arm 15 | 1.0 | documented | [chmod](./fs-mounts-namespace/chmod.md) | —grouped |
 | SC-chown | [chown](https://man7.org/linux/man-pages/man2/chown.2.html) | x64 92 · i386 182 · g64 — · arm 182 | 2.2 | documented | [chown](./fs-mounts-namespace/chown.md) | —grouped |
+| SC-chown32 | [chown32](https://man7.org/linux/man-pages/man2/chown32.2.html) | x64 — · i386 212 · g64 — · arm 212 | 2.4 | not-started | [chown32](./fs-mounts-namespace/chown.md) | — |
 | SC-chroot | [chroot](https://man7.org/linux/man-pages/man2/chroot.2.html) | x64 161 · i386 61 · g64 51 · arm 61 | 1.0 | documented | [chroot](./fs-mounts-namespace/chroot.md) | —FULL |
 | SC-fanotify_init | [fanotify_init](https://man7.org/linux/man-pages/man2/fanotify_init.2.html) | x64 300 · i386 338 · g64 262 · arm 367 | 2.6.37 | documented | [fanotify_init](./fs-mounts-namespace/fanotify_init.md) | —BRIEF |
 | SC-fanotify_mark | [fanotify_mark](https://man7.org/linux/man-pages/man2/fanotify_mark.2.html) | x64 301 · i386 339 · g64 263 · arm 368 | 2.6.37 | documented | [fanotify_mark](./fs-mounts-namespace/fanotify_mark.md) | —BRIEF |
@@ -259,13 +257,14 @@ Legend for numbers columns: `x64` = x86_64, `i386` = 32-bit x86, `g64` = asm-gen
 | SC-fchmodat | [fchmodat](https://man7.org/linux/man-pages/man2/fchmodat.2.html) | x64 268 · i386 306 · g64 53 · arm 333 | 2.6.16 | documented | [fchmodat](./fs-mounts-namespace/chmod.md) | —grouped |
 | SC-fchmodat2 | fchmodat2 | x64 452 · i386 452 · g64 452 · arm 452 | — | source-limited | [fchmodat2](./fs-mounts-namespace/chmod.md) | —note |
 | SC-fchown | [fchown](https://man7.org/linux/man-pages/man2/fchown.2.html) | x64 93 · i386 95 · g64 55 · arm 95 | 1.0 | documented | [fchown](./fs-mounts-namespace/chown.md) | —grouped |
+| SC-fchown32 | [fchown32](https://man7.org/linux/man-pages/man2/fchown32.2.html) | x64 — · i386 207 · g64 — · arm 207 | 2.4 | not-started | [fchown32](./fs-mounts-namespace/chown.md) | — |
 | SC-fchownat | [fchownat](https://man7.org/linux/man-pages/man2/fchownat.2.html) | x64 260 · i386 298 · g64 54 · arm 325 | 2.6.16 | documented | [fchownat](./fs-mounts-namespace/chown.md) | —grouped |
 | SC-fchroot | fchroot | x64 472 · i386 472 · g64 472 · arm 472 | — | source-limited | [fchroot](./fs-mounts-namespace/fchroot.md) | —BRIEF |
-| SC-fgetxattr | [fgetxattr](https://man7.org/linux/man-pages/man2/fgetxattr.2.html) | x64 193 · i386 231 · g64 10 · arm 231 | 2.6 | documented | [fgetxattr](./fs-mounts-namespace/getxattr.md) | —xattr |
+| SC-fgetxattr | [fgetxattr](https://man7.org/linux/man-pages/man2/fgetxattr.2.html) | x64 193 · i386 231 · g64 10 · arm 231 | 2.6 | documented | [fgetxattr](./fs-mounts-namespace/setxattr.md) | —xattr |
 | SC-file_getattr | file_getattr | x64 468 · i386 468 · g64 468 · arm 468 | — | source-limited | [file_getattr](./fs-mounts-namespace/file_getattr.md) | —BRIEF |
 | SC-file_setattr | file_setattr | x64 469 · i386 469 · g64 469 · arm 469 | — | source-limited | [file_setattr](./fs-mounts-namespace/file_setattr.md) | —BRIEF |
-| SC-flistxattr | [flistxattr](https://man7.org/linux/man-pages/man2/flistxattr.2.html) | x64 196 · i386 234 · g64 13 · arm 234 | 2.6 | documented | [flistxattr](./fs-mounts-namespace/listxattr.md) | —xattr |
-| SC-fremovexattr | [fremovexattr](https://man7.org/linux/man-pages/man2/fremovexattr.2.html) | x64 199 · i386 237 · g64 16 · arm 237 | 2.6 | documented | [fremovexattr](./fs-mounts-namespace/removexattr.md) | —xattr |
+| SC-flistxattr | [flistxattr](https://man7.org/linux/man-pages/man2/flistxattr.2.html) | x64 196 · i386 234 · g64 13 · arm 234 | 2.6 | documented | [flistxattr](./fs-mounts-namespace/setxattr.md) | —xattr |
+| SC-fremovexattr | [fremovexattr](https://man7.org/linux/man-pages/man2/fremovexattr.2.html) | x64 199 · i386 237 · g64 16 · arm 237 | 2.6 | documented | [fremovexattr](./fs-mounts-namespace/setxattr.md) | —xattr |
 | SC-fsconfig | fsconfig | x64 431 · i386 431 · g64 431 · arm 431 | 5.2 | documented | [fsconfig](./fs-mounts-namespace/fsconfig.md) | —new |
 | SC-fsetxattr | [fsetxattr](https://man7.org/linux/man-pages/man2/fsetxattr.2.html) | x64 190 · i386 228 · g64 7 · arm 228 | 2.6 | documented | [fsetxattr](./fs-mounts-namespace/setxattr.md) | —xattr |
 | SC-fsmount | fsmount | x64 432 · i386 432 · g64 432 · arm 432 | 5.2 | documented | [fsmount](./fs-mounts-namespace/fsmount.md) | —new |
@@ -273,23 +272,24 @@ Legend for numbers columns: `x64` = x86_64, `i386` = 32-bit x86, `g64` = asm-gen
 | SC-fspick | fspick | x64 433 · i386 433 · g64 433 · arm 433 | 5.2 | documented | [fspick](./fs-mounts-namespace/fspick.md) | —new |
 | SC-futimesat | [futimesat](https://man7.org/linux/man-pages/man2/futimesat.2.html) | x64 261 · i386 299 · g64 — · arm 326 | 2.6.16 | documented | [futimesat](./fs-mounts-namespace/utimensat.md) | —timestamp |
 | SC-getcwd | [getcwd](https://man7.org/linux/man-pages/man2/getcwd.2.html) | x64 79 · i386 183 · g64 17 · arm 183 | 2.2 | documented | [getcwd](./fs-mounts-namespace/getcwd.md) | —FULL |
-| SC-getxattr | [getxattr](https://man7.org/linux/man-pages/man2/getxattr.2.html) | x64 191 · i386 229 · g64 8 · arm 229 | 2.6 | documented | [getxattr](./fs-mounts-namespace/getxattr.md) | —xattr |
+| SC-getxattr | [getxattr](https://man7.org/linux/man-pages/man2/getxattr.2.html) | x64 191 · i386 229 · g64 8 · arm 229 | 2.6 | documented | [getxattr](./fs-mounts-namespace/setxattr.md) | —xattr |
 | SC-getxattrat | getxattrat | x64 464 · i386 464 · g64 464 · arm 464 | — | source-limited | [getxattrat](./fs-mounts-namespace/getxattrat.md) | —FULL-brief |
 | SC-inotify_add_watch | [inotify_add_watch](https://man7.org/linux/man-pages/man2/inotify_add_watch.2.html) | x64 254 · i386 292 · g64 27 · arm 317 | 2.6.13 | documented | [inotify_add_watch](./fs-mounts-namespace/inotify_add_watch.md) | —inotify |
 | SC-inotify_init | [inotify_init](https://man7.org/linux/man-pages/man2/inotify_init.2.html) | x64 253 · i386 291 · g64 — · arm 316 | 2.6.13 | documented | [inotify_init](./fs-mounts-namespace/inotify_init.md) | —grouped |
 | SC-inotify_init1 | [inotify_init1](https://man7.org/linux/man-pages/man2/inotify_init1.2.html) | x64 294 · i386 332 · g64 26 · arm 360 | 2.6.27 | documented | [inotify_init1](./fs-mounts-namespace/inotify_init.md) | —grouped |
 | SC-inotify_rm_watch | [inotify_rm_watch](https://man7.org/linux/man-pages/man2/inotify_rm_watch.2.html) | x64 255 · i386 293 · g64 28 · arm 318 | 2.6.13 | documented | [inotify_rm_watch](./fs-mounts-namespace/inotify_rm_watch.md) | —grouped |
-| SC-keyctl | [keyctl](https://man7.org/linux/man-pages/man2/keyctl.2.html) | x64 250 · i386 288 · g64 219 · arm 311 | 2.6.10 | documented | [keyctl](./fs-mounts-namespace/keyctl.md) | —keyring |
+| SC-keyctl | [keyctl](https://man7.org/linux/man-pages/man2/keyctl.2.html) | x64 250 · i386 288 · g64 219 · arm 311 | 2.6.10 | documented | [keyctl](./fs-mounts-namespace/add_key.md) | —keyring |
 | SC-lchown | [lchown](https://man7.org/linux/man-pages/man2/lchown.2.html) | x64 94 · i386 16 · g64 — · arm 16 | 1.0 | documented | [lchown](./fs-mounts-namespace/chown.md) | —grouped |
-| SC-lgetxattr | [lgetxattr](https://man7.org/linux/man-pages/man2/lgetxattr.2.html) | x64 192 · i386 230 · g64 9 · arm 230 | 2.6 | documented | [lgetxattr](./fs-mounts-namespace/getxattr.md) | —xattr |
+| SC-lchown32 | [lchown32](https://man7.org/linux/man-pages/man2/lchown32.2.html) | x64 — · i386 198 · g64 — · arm 198 | 2.4 | not-started | [lchown32](./fs-mounts-namespace/chown.md) | — |
+| SC-lgetxattr | [lgetxattr](https://man7.org/linux/man-pages/man2/lgetxattr.2.html) | x64 192 · i386 230 · g64 9 · arm 230 | 2.6 | documented | [lgetxattr](./fs-mounts-namespace/setxattr.md) | —xattr |
 | SC-link | [link](https://man7.org/linux/man-pages/man2/link.2.html) | x64 86 · i386 9 · g64 — · arm 9 | 1.0 | documented | [link](./fs-mounts-namespace/link.md) | —grouped |
 | SC-linkat | [linkat](https://man7.org/linux/man-pages/man2/linkat.2.html) | x64 265 · i386 303 · g64 37 · arm 330 | 2.6.16 | documented | [linkat](./fs-mounts-namespace/link.md) | —grouped |
-| SC-listmount | listmount | x64 458 · i386 458 · g64 458 · arm 458 | — | documented | [listmount](./fs-mounts-namespace/listmount.md) | —brief |
+| SC-listmount | listmount | x64 458 · i386 458 · g64 458 · arm 458 | — | documented | [listmount](./fs-mounts-namespace/statmount.md) | —brief |
 | SC-listns | listns | x64 470 · i386 470 · g64 470 · arm 470 | — | source-limited | [listns](./fs-mounts-namespace/listns.md) | —ENTRY |
-| SC-listxattr | [listxattr](https://man7.org/linux/man-pages/man2/listxattr.2.html) | x64 194 · i386 232 · g64 11 · arm 232 | 2.6 | documented | [listxattr](./fs-mounts-namespace/listxattr.md) | —xattr |
+| SC-listxattr | [listxattr](https://man7.org/linux/man-pages/man2/listxattr.2.html) | x64 194 · i386 232 · g64 11 · arm 232 | 2.6 | documented | [listxattr](./fs-mounts-namespace/setxattr.md) | —xattr |
 | SC-listxattrat | listxattrat | x64 465 · i386 465 · g64 465 · arm 465 | — | source-limited | [listxattrat](./fs-mounts-namespace/listxattrat.md) | —kernel-sources-only |
-| SC-llistxattr | [llistxattr](https://man7.org/linux/man-pages/man2/llistxattr.2.html) | x64 195 · i386 233 · g64 12 · arm 233 | 2.6 | documented | [llistxattr](./fs-mounts-namespace/listxattr.md) | —xattr |
-| SC-lremovexattr | [lremovexattr](https://man7.org/linux/man-pages/man2/lremovexattr.2.html) | x64 198 · i386 236 · g64 15 · arm 236 | 2.6 | documented | [lremovexattr](./fs-mounts-namespace/removexattr.md) | —xattr |
+| SC-llistxattr | [llistxattr](https://man7.org/linux/man-pages/man2/llistxattr.2.html) | x64 195 · i386 233 · g64 12 · arm 233 | 2.6 | documented | [llistxattr](./fs-mounts-namespace/setxattr.md) | —xattr |
+| SC-lremovexattr | [lremovexattr](https://man7.org/linux/man-pages/man2/lremovexattr.2.html) | x64 198 · i386 236 · g64 15 · arm 236 | 2.6 | documented | [lremovexattr](./fs-mounts-namespace/setxattr.md) | —xattr |
 | SC-lsetxattr | [lsetxattr](https://man7.org/linux/man-pages/man2/lsetxattr.2.html) | x64 189 · i386 227 · g64 6 · arm 227 | 2.6 | documented | [lsetxattr](./fs-mounts-namespace/setxattr.md) | —xattr |
 | SC-mkdir | [mkdir](https://man7.org/linux/man-pages/man2/mkdir.2.html) | x64 83 · i386 39 · g64 — · arm 39 | 1.0 | documented | [mkdir](./fs-mounts-namespace/mkdir.md) | —grouped |
 | SC-mkdirat | [mkdirat](https://man7.org/linux/man-pages/man2/mkdirat.2.html) | x64 258 · i386 296 · g64 34 · arm 323 | 2.6.16 | documented | [mkdirat](./fs-mounts-namespace/mkdir.md) | —grouped |
@@ -304,13 +304,13 @@ Legend for numbers columns: `x64` = x86_64, `i386` = 32-bit x86, `g64` = asm-gen
 | SC-open_tree_attr | open_tree_attr | x64 467 · i386 467 · g64 467 · arm 467 | — | documented | [open_tree_attr](./fs-mounts-namespace/open_tree_attr.md) | —brief |
 | SC-pivot_root | [pivot_root](https://man7.org/linux/man-pages/man2/pivot_root.2.html) | x64 155 · i386 217 · g64 41 · arm 218 | 2.3.41 | documented | [pivot_root](./fs-mounts-namespace/pivot_root.md) | —FULL |
 | SC-quotactl | [quotactl](https://man7.org/linux/man-pages/man2/quotactl.2.html) | x64 179 · i386 131 · g64 60 · arm 131 | 1.0 | documented | [quotactl](./fs-mounts-namespace/quotactl.md) | —grouped |
-| SC-quotactl_fd | quotactl_fd | x64 443 · i386 443 · g64 443 · arm 443 | 5.14 | documented | [quotactl_fd](./fs-mounts-namespace/quotactl_fd.md) | —grouped |
-| SC-removexattr | [removexattr](https://man7.org/linux/man-pages/man2/removexattr.2.html) | x64 197 · i386 235 · g64 14 · arm 235 | 2.6 | documented | [removexattr](./fs-mounts-namespace/removexattr.md) | —xattr |
+| SC-quotactl_fd | quotactl_fd | x64 443 · i386 443 · g64 443 · arm 443 | 5.14 | documented | [quotactl_fd](./fs-mounts-namespace/quotactl.md) | —grouped |
+| SC-removexattr | [removexattr](https://man7.org/linux/man-pages/man2/removexattr.2.html) | x64 197 · i386 235 · g64 14 · arm 235 | 2.6 | documented | [removexattr](./fs-mounts-namespace/setxattr.md) | —xattr |
 | SC-removexattrat | removexattrat | x64 466 · i386 466 · g64 466 · arm 466 | — | source-limited | [removexattrat](./fs-mounts-namespace/removexattrat.md) | —kernel-sources-only |
 | SC-rename | [rename](https://man7.org/linux/man-pages/man2/rename.2.html) | x64 82 · i386 38 · g64 — · arm 38 | 1.0 | documented | [rename](./fs-mounts-namespace/rename.md) | —grouped |
 | SC-renameat | [renameat](https://man7.org/linux/man-pages/man2/renameat.2.html) | x64 264 · i386 302 · g64 — · arm 329 | 2.6.16 | documented | [renameat](./fs-mounts-namespace/rename.md) | —grouped |
 | SC-renameat2 | [renameat2](https://man7.org/linux/man-pages/man2/renameat2.2.html) | x64 316 · i386 353 · g64 276 · arm 382 | 3.15 | documented | [renameat2](./fs-mounts-namespace/rename.md) | —FULL |
-| SC-request_key | [request_key](https://man7.org/linux/man-pages/man2/request_key.2.html) | x64 249 · i386 287 · g64 218 · arm 310 | 2.6.10 | documented | [request_key](./fs-mounts-namespace/request_key.md) | —keyring |
+| SC-request_key | [request_key](https://man7.org/linux/man-pages/man2/request_key.2.html) | x64 249 · i386 287 · g64 218 · arm 310 | 2.6.10 | documented | [request_key](./fs-mounts-namespace/add_key.md) | —keyring |
 | SC-rmdir | [rmdir](https://man7.org/linux/man-pages/man2/rmdir.2.html) | x64 84 · i386 40 · g64 — · arm 40 | 1.0 | documented | [rmdir](./fs-mounts-namespace/mkdir.md) | —grouped |
 | SC-setns | [setns](https://man7.org/linux/man-pages/man2/setns.2.html) | x64 308 · i386 346 · g64 268 · arm 375 | 3.0 | documented | [setns](./fs-mounts-namespace/setns.md) | —FULL |
 | SC-setxattr | [setxattr](https://man7.org/linux/man-pages/man2/setxattr.2.html) | x64 188 · i386 226 · g64 5 · arm 226 | 2.6 | documented | [setxattr](./fs-mounts-namespace/setxattr.md) | —xattr |
@@ -357,7 +357,7 @@ Legend for numbers columns: `x64` = x86_64, `i386` = 32-bit x86, `g64` = asm-gen
 | SC-rt_sigreturn | [rt_sigreturn](https://man7.org/linux/man-pages/man2/rt_sigreturn.2.html) | x64 15 · i386 173 · g64 139 · arm 173 | 2.2 | documented | [rt_sigreturn](./signals-time/sigreturn.md) | —full |
 | SC-rt_sigsuspend | [rt_sigsuspend](https://man7.org/linux/man-pages/man2/rt_sigsuspend.2.html) | x64 130 · i386 179 · g64 133 · arm 179 | 2.2 | researched | [rt_sigsuspend](./signals-time/rt_sigsuspend.md) | —covered |
 | SC-rt_sigtimedwait | [rt_sigtimedwait](https://man7.org/linux/man-pages/man2/rt_sigtimedwait.2.html) | x64 128 · i386 177 · g64 137 · arm 177 | 2.2 | documented | [rt_sigtimedwait](./signals-time/sigtimedwait.md) | —full |
-| SC-rt_sigtimedwait_time64 | rt_sigtimedwait_time64 | x64 — · i386 421 · g64 — · arm 421 | — | researched | [rt_sigtimedwait_time64](./signals-time/rt_sigtimedwait_time64.md) | —time64 |
+| SC-rt_sigtimedwait_time64 | rt_sigtimedwait_time64 | x64 — · i386 421 · g64 — · arm 421 | — | researched | [rt_sigtimedwait_time64](./signals-time/sigtimedwait.md) | —time64 |
 | SC-rt_tgsigqueueinfo | [rt_tgsigqueueinfo](https://man7.org/linux/man-pages/man2/rt_tgsigqueueinfo.2.html) | x64 297 · i386 335 · g64 240 · arm 363 | 2.6.31 | documented | [rt_tgsigqueueinfo](./signals-time/rt_sigqueueinfo.md) | —covered |
 | SC-setitimer | [setitimer](https://man7.org/linux/man-pages/man2/setitimer.2.html) | x64 38 · i386 104 · g64 103 · arm 104 | 1.0 | documented | [setitimer](./signals-time/setitimer.md) | —grouped |
 | SC-settimeofday | [settimeofday](https://man7.org/linux/man-pages/man2/settimeofday.2.html) | x64 164 · i386 79 · g64 170 · arm 79 | 1.0 | documented | [settimeofday](./signals-time/gettimeofday.md) | —grouped |
@@ -435,8 +435,8 @@ Legend for numbers columns: `x64` = x86_64, `i386` = 32-bit x86, `g64` = asm-gen
 | SC-lock | [lock](https://man7.org/linux/man-pages/man2/lock.2.html) | x64 — · i386 53 · g64 — · arm — | — | source-limited | [lock](./sched-misc/unimplemented.md) | —inventory |
 | SC-lookup_dcookie | [lookup_dcookie](https://man7.org/linux/man-pages/man2/lookup_dcookie.2.html) | x64 212 · i386 253 · g64 18 · arm 249 | 2.6 | documented | [lookup_dcookie](./sched-misc/lookup_dcookie.md) | —full |
 | SC-lsm_get_self_attr | lsm_get_self_attr | x64 459 · i386 459 · g64 459 · arm 459 | — | documented | [lsm_get_self_attr](./sched-misc/lsm_get_self_attr.md) | —full |
-| SC-lsm_list_modules | lsm_list_modules | x64 461 · i386 461 · g64 461 · arm 461 | — | documented | [lsm_list_modules](./sched-misc/lsm_list_modules.md) | —full |
-| SC-lsm_set_self_attr | lsm_set_self_attr | x64 460 · i386 460 · g64 460 · arm 460 | — | documented | [lsm_set_self_attr](./sched-misc/lsm_set_self_attr.md) | —full |
+| SC-lsm_list_modules | lsm_list_modules | x64 461 · i386 461 · g64 461 · arm 461 | — | documented | [lsm_list_modules](./sched-misc/lsm_get_self_attr.md) | —full |
+| SC-lsm_set_self_attr | lsm_set_self_attr | x64 460 · i386 460 · g64 460 · arm 460 | — | documented | [lsm_set_self_attr](./sched-misc/lsm_get_self_attr.md) | —full |
 | SC-memory_ordering | memory_ordering | x64 — · i386 — · g64 — · arm — | 2.2 | source-limited | [memory_ordering](./sched-misc/memory_ordering.md) | —inventory |
 | SC-modify_ldt | [modify_ldt](https://man7.org/linux/man-pages/man2/modify_ldt.2.html) | x64 154 · i386 123 · g64 — · arm — | 1.0 | source-limited | [modify_ldt](./sched-misc/modify_ldt.md) | —inventory |
 | SC-mpx | [mpx](https://man7.org/linux/man-pages/man2/mpx.2.html) | x64 — · i386 56 · g64 — · arm — | — | source-limited | [mpx](./sched-misc/unimplemented.md) | —inventory |
@@ -540,7 +540,7 @@ Legend for numbers columns: `x64` = x86_64, `i386` = 32-bit x86, `g64` = asm-gen
 | SC-eventfd2 | [eventfd2](https://man7.org/linux/man-pages/man2/eventfd2.2.html) | x64 290 · i386 328 · g64 19 · arm 356 | 2.6.27 | documented | [eventfd2](./net-ipc/eventfd.md) | —full; grouped in net-ipc/eventfd.md; 2.6.27, g64 19; glibc wrapper uses eventfd2 since 2.9 |
 | SC-getdomainname | [getdomainname](https://man7.org/linux/man-pages/man2/getdomainname.2.html) | x64 — · i386 — · g64 — · arm — | 2.2 | researched | [getdomainname](./net-ipc/getdomainname.md) | —brief |
 | SC-gethostname | [gethostname](https://man7.org/linux/man-pages/man2/gethostname.2.html) | x64 — · i386 — · g64 — · arm — | 2.0 | researched | [gethostname](./net-ipc/gethostname.md) | —brief |
-| SC-getpeername | [getpeername](https://man7.org/linux/man-pages/man2/getpeername.2.html) | x64 52 · i386 368 · g64 205 · arm 287 | 2.0 | documented | [getpeername](./net-ipc/getpeername.md) | —full |
+| SC-getpeername | [getpeername](https://man7.org/linux/man-pages/man2/getpeername.2.html) | x64 52 · i386 368 · g64 205 · arm 287 | 2.0 | documented | [getpeername](./net-ipc/getsockname.md) | —full |
 | SC-getsockname | [getsockname](https://man7.org/linux/man-pages/man2/getsockname.2.html) | x64 51 · i386 367 · g64 204 · arm 286 | 2.0 | documented | [getsockname](./net-ipc/getsockname.md) | —full |
 | SC-getsockopt | [getsockopt](https://man7.org/linux/man-pages/man2/getsockopt.2.html) | x64 55 · i386 365 · g64 209 · arm 295 | 2.0 | documented | [getsockopt](./net-ipc/setsockopt.md) | —full; grouped in net-ipc/setsockopt.md; value-result optlen |
 | SC-io_cancel | [io_cancel](https://man7.org/linux/man-pages/man2/io_cancel.2.html) | x64 210 · i386 249 · g64 3 · arm 247 | 2.6 | documented | [io_cancel](./net-ipc/io_setup.md) | —full |
@@ -603,9 +603,9 @@ Legend for numbers columns: `x64` = x86_64, `i386` = 32-bit x86, `g64` = asm-gen
 | SC-socketcall | [socketcall](https://man7.org/linux/man-pages/man2/socketcall.2.html) | x64 — · i386 102 · g64 — · arm — | 1.0 | documented | [socketcall](./net-ipc/socketcall.md) | —full; full page net-ipc/socketcall.md; i386 102; SYS_* 1-20 table from /usr/include/linux/net.h; direct i386 calls since |
 | SC-socketpair | [socketpair](https://man7.org/linux/man-pages/man2/socketpair.2.html) | x64 53 · i386 360 · g64 199 · arm 288 | 2.0 | documented | [socketpair](./net-ipc/socket.md) | —full; covered inline in net-ipc/socket.md per task 3-f spec; hub/ledger point SC-socketpair at socketpair.md (merge-time |
 | SC-timerfd_create | [timerfd_create](https://man7.org/linux/man-pages/man2/timerfd_create.2.html) | x64 283 · i386 322 · g64 85 · arm 350 | 2.6.25 | documented | [timerfd_create](./net-ipc/timerfd_create.md) | —full; full page net-ipc/timerfd_create.md; clocks incl BOOTTIME 3.15 / *_ALARM 3.11 + CAP_WAKE_ALARM; TFD_* from bits/ti |
-| SC-timerfd_gettime | [timerfd_gettime](https://man7.org/linux/man-pages/man2/timerfd_gettime.2.html) | x64 287 · i386 326 · g64 87 · arm 354 | 2.6.25 | documented | [timerfd_gettime](./net-ipc/timerfd_settime.md) | —full; grouped in net-ipc/timerfd_create.md; relative remaining; zero = disarmed |
+| SC-timerfd_gettime | [timerfd_gettime](https://man7.org/linux/man-pages/man2/timerfd_gettime.2.html) | x64 287 · i386 326 · g64 87 · arm 354 | 2.6.25 | documented | [timerfd_gettime](./net-ipc/timerfd_create.md) | —full; grouped in net-ipc/timerfd_create.md; relative remaining; zero = disarmed |
 | SC-timerfd_gettime64 | timerfd_gettime64 | x64 — · i386 410 · g64 — · arm 410 | — | documented | [timerfd_gettime64](./net-ipc/timerfd_settime.md) | —grouped in net-ipc/timerfd_create.md; i386/arm 410, added 5.1 (tag probe) |
-| SC-timerfd_settime | [timerfd_settime](https://man7.org/linux/man-pages/man2/timerfd_settime.2.html) | x64 286 · i386 325 · g64 86 · arm 353 | 2.6.25 | documented | [timerfd_settime](./net-ipc/timerfd_settime.md) | —full; grouped in net-ipc/timerfd_create.md; ABSTIME / CANCEL_ON_SET; ECANCELED rearm quirk (man NOTES) |
+| SC-timerfd_settime | [timerfd_settime](https://man7.org/linux/man-pages/man2/timerfd_settime.2.html) | x64 286 · i386 325 · g64 86 · arm 353 | 2.6.25 | documented | [timerfd_settime](./net-ipc/timerfd_create.md) | —full; grouped in net-ipc/timerfd_create.md; ABSTIME / CANCEL_ON_SET; ECANCELED rearm quirk (man NOTES) |
 | SC-timerfd_settime64 | timerfd_settime64 | x64 — · i386 411 · g64 — · arm 411 | — | documented | [timerfd_settime64](./net-ipc/timerfd_settime.md) | —grouped in net-ipc/timerfd_create.md; i386/arm 411, added 5.1 |
 
 Total classified rows: 535. Unclassified: 0.
