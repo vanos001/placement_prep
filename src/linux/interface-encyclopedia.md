@@ -82,13 +82,13 @@ Documentation is **split per function**, not grouped into per-domain mega-chapte
 
 ## Coverage snapshot
 
-| Ledger | Rows | Statused | documented |
-|---|---|---|---|
-| [Syscalls](./syscalls/ledger.md) | 535 | 525 | 366 |
-| [glibc API](./libc/ledger-glibc.md) | 1881 documented-API (+3470 exported, +1953 triage) | 1257 | 504 |
-| [musl API](./libc/ledger-musl.md) | 1482 functions (110 header families) | by family | 8 families full |
-| [Sysfs classes](./sysfs/ledger.md) | 120 | 120 | 42 |
-| [Cross-layer maps](./crossref/ledger.md) | 38 | 38 | 26 |
+| Ledger | Rows | Statused | documented | Pages |
+|---|---|---|---|---|
+| [Syscalls](./syscalls/ledger.md) | 535 | 525 | 378 | 194 per-function + 7 auto hubs |
+| [glibc API](./libc/ledger-glibc.md) | 1881 documented-API (+3470 exported, +1953 triage) | 1257 | 504 | 122 function pages |
+| [musl API](./libc/ledger-musl.md) | 1482 functions (110 header families) | by family | 6 family pages | 6 + catalog |
+| [Sysfs classes](./sysfs/ledger.md) | 120 | 120 | 42 | 42 class pages |
+| [Cross-layer maps](./crossref/ledger.md) | 38 | 38 | 26 | 3 maps |
 
 Source-limited rows and not-started rows are **kept visible** with their gaps
 named, rather than dropped to make the numbers look better.
