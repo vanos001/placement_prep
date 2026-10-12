@@ -101,3 +101,14 @@ The `research` branch (75 commits ahead of `main`) landed 660 new markdown files
 | Ledgers | syscalls 535, glibc 1881+3470+1953 rows, musl 1482, sysfs 120, crossref 38 - regenerated from sources, statuses restored from surviving reports |
 | Documentation | 194 syscall pages, 122 glibc pages, 6 musl pages, 42 sysfs class pages, 3 crossref maps (367 content pages) |
 | Honest gaps | 101 syscall rows source-limited (named), 10 not-started, 12 crossref rows source-limited, glibc 1377 documented-API rows still `researched` |
+
+## Linux Interface Encyclopedia - wave 7 (push to research) - 2026-10-13
+
+| Part | Result |
+|---|---|
+| Syscalls | 10 not-started rows closed (rlimit family, getrusage, execv, personality, chown32 trio): 388 documented / 46 researched / 101 source-limited of 535; 0 not-started |
+| glibc | 157 per-function pages across 6 new dirs (math, threads, termios, users, vm, misc) plus fs/stdio/strings/net additions; ledger 1047 documented / 10 source-limited / 0 researched of the 1881 documented-API rows |
+| sysfs | all 77 remaining `researched` classes -> per-class pages (65 documented, 13 honest source-limited stubs): 106 documented / 14 source-limited of 120 |
+| crossref | 11 of 12 `source-limited` rows upgraded with fetched upstream docs (NetworkManager, thermald, UPower, libinput, libdrm, rdma-core, ndctl, procps, dmidecode) plus local NSS/kernel sources; XR-112 stays source-limited (msr-tools docs unreachable) |
+| Validation | every new page ASCII-only, balanced fences, relative links resolve; statuses/notes flipped in all four ledgers; SUMMARY wired (282 glibc entries, 119 class entries) |
+

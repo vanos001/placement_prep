@@ -10,7 +10,7 @@ has it *and* is configured for it, when your libc either wraps it or leaves you
 a supported way to call it raw, and when the runtime gates (capabilities,
 boot parameters, cgroup versions, seccomp behavior) are satisfied. The rows are
 `XR-201..XR-210` of the [coverage ledger](./ledger.md) (statuses authoritative
-there: 8 documented, 2 source-limited).
+there: all 10 documented; XR-208/XR-209 upgraded in the 7-d pass).
 
 How to read each row:
 
@@ -47,8 +47,8 @@ Index of the ten rows (statuses are the ledger's):
 | XR-205 | time64 (5.1, 32-bit) | documented |
 | XR-206 | statx (4.11) | documented |
 | XR-207 | mount API (5.2+) | documented |
-| XR-208 | memfd_secret (5.14) | source-limited |
-| XR-209 | cachestat (6.5) | source-limited |
+| XR-208 | memfd_secret (5.14) | documented |
+| XR-209 | cachestat (6.5) | documented |
 | XR-210 | fchmodat2 (6.6) | documented |
 
 ---
@@ -199,40 +199,50 @@ the API. Pages: [fsopen](../syscalls/fs-mounts-namespace/fsopen.md),
 [mount_setattr](../syscalls/fs-mounts-namespace/mount_setattr.md); kernel side:
 [mount API](../kernel/filesystems/mount-api.md).
 
-### XR-208 -- memfd_secret (5.14) -> no glibc wrapper -> SECRETMEM config (source-limited)
+### XR-208 -- memfd_secret (5.14) -> no glibc wrapper -> SECRETMEM config
 
 | feature | kernel version | glibc support | musl support | runtime prerequisites |
 |---|---|---|---|---|
-| `SC-memfd_secret` (x64 447, i386 447; no g64 slot, no arm slot) | **5.14** (x86-first: the arm32 table carries only a reservation comment; no asm-generic slot) | **none** (no wrapper symbol on glibc 2.41) | musl 1.2.5: `syscall()` path noted for x86_64 | `CONFIG_SECRETMEM` (Kconfig: default y behind EXPERT, depends on `ARCH_HAS_SET_DIRECT_MAP`); **`secretmem.enable` boot/module parameter** -- off by default at v5.14, flipped to on at **v6.5** (tag bisect v6.4 off / v6.5 on); `ENOSYS` when the gate is closed |
+| `SC-memfd_secret` (x64 447, i386 447; no g64 slot, no arm slot) | **5.14** (x86-first: the arm32 table carries only a reservation comment; no asm-generic slot) | **none** (`nm -D` on glibc 2.41 finds no `memfd_secret` symbol; no declaration anywhere under `/usr/include` except the `SYS_memfd_secret` macro in `bits/syscall.h`, guarded by `#ifdef __NR_memfd_secret`) | musl 1.2.5: `syscall()` path noted for x86_64 | `CONFIG_SECRETMEM` (Kconfig: default y behind EXPERT, depends on `ARCH_HAS_SET_DIRECT_MAP`); **`secretmem.enable` boot/module parameter** -- off by default at v5.14, flipped to on at **v6.5** (tag bisect v6.4 off / v6.5 on; kernel-source-sourced, still no doc file states it -- flagged, not asserted); `ENOSYS` when the gate is closed |
 
 `memfd_secret` carves memory out of the kernel's direct map so it is not
 reachable by the kernel's linear mapping; creation returns an fd whose pages
 are `__GFP_ZERO`-allocated and accounted against `RLIMIT_MEMLOCK`, and the
 descriptor is deliberately excluded from fork/exec sharing per the man page.
-Why the row stays **source-limited**:
-the runtime-gate story (the `secretmem.enable` default flipping between v6.4
-and v6.5) rests on a tag bisect of kernel sources -- no man page or ABI doc
-states the flip; the libc columns are negative evidence (no glibc wrapper; a
-syscall macro only, x86-side); and the number story is ABI-gated (447 on
-x86_64/i386, a reservation comment on arm32). The memfd_secret man page *is*
-in the cached man-pages tree and covers semantics. Pages:
-[memfd_secret](../syscalls/memory/memfd_secret.md),
+The row upgraded to **documented** when the syscall encyclopedia grew the
+full [memfd_secret](../syscalls/memory/memfd_secret.md) page (man page in the
+cached tree plus `mm/secretmem.c`/`mm/Kconfig`), and the header sweep pinned
+the libc columns: there is no `memfd_secret` declaration anywhere in the
+installed headers -- `/usr/include/x86_64-linux-gnu/sys/random.h` declares
+only `getrandom`/`getentropy`, and the existing
+`/usr/include/linux/memfd.h` (linux-libc-dev) carries only the `MFD_*` flags
+of `memfd_create` -- so the sole userspace surface is the `SYS_memfd_secret`
+macro (`bits/syscall.h`, `#ifdef __NR_memfd_secret`) and raw `syscall()`.
+The one flagged sub-claim is the v6.4/v6.5 `secretmem.enable` default flip,
+which rests on the tag bisect (kernel-source-sourced, no doc file). Sibling:
 [memfd_create](../syscalls/memory/memfd_create.md); kernel side:
 [memfd](../kernel/memory/memfd.md).
 
-### XR-209 -- cachestat (6.5) -> no glibc wrapper -> header-free use via syscall() (source-limited)
+### XR-209 -- cachestat (6.5) -> no glibc wrapper -> structs in linux/mman.h, raw syscall()
 
 | feature | kernel version | glibc support | musl support | runtime prerequisites |
 |---|---|---|---|---|
-| `SC-cachestat` (451 uniform across x64/i386/g64/arm) | **6.5** -- tag-probe verified (absent at v6.4, present at v6.5); `cachestat.2` HISTORY says 6.5. **Correction**: the ledger note historically read 6.1; 6.5 is the verified value and this page carries it | **none** (no wrapper; NEWS has no cachestat item) | musl 1.2.5: the `SYS_cachestat` **macro only** -- no function | none at the config level; one kernel-source fact not yet in the 6.19 man page: `EPERM` can come from the kernel's cachestat permission check |
+| `SC-cachestat` (451 uniform across x64/i386/g64/arm) | **6.5** -- tag-probe verified (absent at v6.4, present at v6.5); `cachestat.2` HISTORY says 6.5. **Correction**: the ledger note historically read 6.1; 6.5 is the verified value and this page carries it | **none** (no wrapper; NEWS has no cachestat item; `nm -D` on glibc 2.41 finds no symbol; the `SYS_cachestat` macro sits in `bits/syscall.h` under `#ifdef __NR_cachestat`) | musl 1.2.5: the `SYS_cachestat` **macro only** -- no function | no `CONFIG_CACHESTAT_SYSCALL` prerequisite at the tool level; one kernel-source fact not yet in the 6.19 man page: `EPERM` can come from the kernel's cachestat permission check |
 
 cachestat answers "which pages of this file are in the page cache" -- a query
-page-cache operators previously approximated with mincore tricks. Why the row
-stays **source-limited**: it is a ledger note row whose availability columns
-rest on negative evidence (no glibc wrapper; musl macro only), and one
-behavioral fact (the `EPERM` gate) is sourced from the kernel implementation
-rather than the man page. Everything kernel-side is otherwise fully probed.
-Pages: [cachestat](../syscalls/memory/cachestat.md),
+page-cache operators previously approximated with mincore tricks. The row
+upgraded to **documented** when the syscall encyclopedia grew the full
+[cachestat](../syscalls/memory/cachestat.md) page and the header sweep pinned
+the struct story: there is no `/usr/include/linux/cachestat.h` on the
+reference host, but the structs are shipped anyway -- linux-libc-dev's
+`/usr/include/linux/mman.h` defines `struct cachestat_range` (the `off`/`len`
+pair) and `struct cachestat` (the five `__u64` counters), matching the UAPI
+-- so the real use pattern is `#include <linux/mman.h>` plus
+`syscall(SYS_cachestat, ...)` with the `SYS_cachestat` macro from
+`bits/syscall.h`. (The sibling syscall page's "declare the structs locally"
+note reflects a glibc-header check; the kernel UAPI header does ship them on
+this host -- both attributions stand.) The `EPERM` gate stays
+kernel-source-sourced per the linked page. Sibling:
 [mincore](../syscalls/memory/mincore.md); kernel side:
 [page cache](../kernel/memory/page-cache.md);
 [performance view of cachestat](../performance/cachestat.md).
@@ -261,9 +271,7 @@ verified knowledge sits. Page:
 
 | Rows | Status | Note |
 |---|---|---|
-| XR-201 .. XR-207, XR-210 | documented (8) | versions tag-probe or NEWS/nm double-sourced; open sub-claims flagged in place |
-| XR-208 memfd_secret | source-limited | boot-param default flip (v6.4/v6.5) rests on a tag bisect; libc columns are negative evidence |
-| XR-209 cachestat | source-limited | ledger note row; 6.1 corrected to 6.5 per the tag probe; availability columns negative evidence |
+| XR-201 .. XR-210 | documented (10) | versions tag-probe or NEWS/nm double-sourced; open sub-claims flagged in place (XR-208's boot-param default flip remains tag-bisect sourced; XR-209's `EPERM` gate kernel-source sourced) |
 
 ## Interview Questions
 

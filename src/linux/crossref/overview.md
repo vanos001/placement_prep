@@ -16,8 +16,8 @@ section keeps those mappings explicit.
 | [feature → version → availability matrix](./feature-matrix.md) | kernel feature → minimum version → libc support → runtime prerequisites | XR-201..XR-210 |
 
 The [coverage ledger](./ledger.md) tracks all 38 rows with the same status
-vocabulary as the rest of the encyclopedia (26 documented, 12 source-limited
-after the wave-2 pass; source-limited rows name the exact missing source).
+vocabulary as the rest of the encyclopedia (37 documented, 1 source-limited
+after the 7-d upgrade pass; source-limited rows name the exact missing source).
 
 ## Reading rules
 

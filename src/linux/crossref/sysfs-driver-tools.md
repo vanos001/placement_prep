@@ -9,7 +9,8 @@ relationship** (what registers the device, what the class directory inherits),
 lists the **userspace consumers and how exactly they touch the class**, and
 records the **/dev and /proc cross-refs** that duplicate or complement the
 view. The rows are `XR-101..XR-114` of the [coverage ledger](./ledger.md)
-(statuses authoritative there: 6 documented, 8 source-limited).
+(statuses authoritative there: 13 documented, 1 source-limited; the 7-d pass
+upgraded XR-102, XR-106, XR-107, XR-110, XR-111, XR-113 and XR-114).
 
 Sources and honesty rules for this page: attribute contracts come from the
 kernel `Documentation/ABI/` tree; tool behavior comes from the tools' own
@@ -35,7 +36,11 @@ pages under [classes/](../sysfs/overview.md) carry the full attribute tables.
   traced through Makefiles/Kconfig.
 - **Tools**: the tool's own documentation or source (util-linux man pages,
   systemd man pages, iproute2, nvme-cli/libnvme, ndctl, lm-sensors,
-  brightnessctl, libgpiod, thermal daemon) -- never assumed from the name.
+  brightnessctl, libgpiod, thermal daemon) -- never assumed from the name;
+  upstream tool documentation fetched for the 7-d pass (NetworkManager(8),
+  thermald(8), the UPower reference manual, the libinput docs, drm(7)/libdrm
+  man pages, rdma-core and ndctl READMEs, cpuid(1), msr(4), sysctl(8),
+  dmidecode(8)).
 - **Live snapshot**: `live@5.10.134` class populations, attribute listings,
   topology symlinks, and uevent payloads, read read-only; nothing was written
   to `/sys` during research.
@@ -87,16 +92,23 @@ block-specific tooling. Per-class pages:
 [block](../sysfs/classes/block.md), [bdi](../sysfs/classes/bdi.md); kernel
 side: [block devices](../kernel/block/devices.md).
 
-### XR-102 -- /sys/class/net -> net core -> net-sysfs -> ip, ethtool (source-limited)
+### XR-102 -- /sys/class/net -> net core -> net-sysfs -> ip, ethtool, NetworkManager
 
 | class | subsystem + config | driver-model relationship | consumers with HOW | /dev, /proc cross-refs |
 |---|---|---|---|---|
-| `SYSC-net` (live 3: lo, eth0, dummy0) | net core: `net/core/net-sysfs.c` (`net_class_attrs[]`, per-queue and statistics groups); `CONFIG_NET` | netdev registered under `net_class`; `eth0/device` symlinks to the parent PCI/virtio device (live: `->virtio1`); statistics files mirror driver counters | **ip**(8) (iproute2) reads and *changes* state over **rtnetlink**, not sysfs -- sysfs is read-only observability here; **ethtool** speaks **ethtool netlink** (genetlink) per `ethtool-netlink.rst`; udev renames interfaces using the `INTERFACE`/`IFINDEX` uevent payload | `/proc/net/dev` duplicates counters; `/proc/sys/net/` is the sysctl twin for tunables; no /dev node exists for netdevs |
+| `SYSC-net` (live 3: lo, eth0, dummy0) | net core: `net/core/net-sysfs.c` (`net_class_attrs[]`, per-queue and statistics groups); `CONFIG_NET` | netdev registered under `net_class`; `eth0/device` symlinks to the parent PCI/virtio device (live: `->virtio1`); statistics files mirror driver counters | **ip**(8) (iproute2) reads and *changes* state over **rtnetlink**, not sysfs -- sysfs is read-only observability here; **ethtool** speaks **ethtool netlink** (genetlink) per `ethtool-netlink.rst`; udev renames interfaces using the `INTERFACE`/`IFINDEX` uevent payload; **NetworkManager**(8) manages Ethernet/Wi-Fi/mobile-broadband devices, discovers them via **udev**(7) (the `NM_UNMANAGED` and `ID_NET_MANAGED_BY` udev properties gate manageability) and exports state over D-Bus (NetworkManager(8), trixie 1.52.1) | `/proc/net/dev` duplicates counters; `/proc/sys/net/` is the sysctl twin for tunables; no /dev node exists for netdevs |
 
-**Source-limited (consumer set).** ip(8), ethtool-netlink and udev(7) are
-sourced; the **NetworkManager** consumer claim is **unverified** -- NetworkManager
-documentation was not reachable in this environment, so this page does not
-assert what NetworkManager reads or writes. ABI: `testing/sysfs-class-net` (31),
+The NetworkManager consumer claim upgraded in the 7-d pass: the fetched
+NetworkManager(8) (Debian trixie 1.52.1) states that the daemon manages "the
+primary network connection and other network interfaces, like Ethernet,
+Wi-Fi, and Mobile Broadband devices" and "will connect any network device
+when a connection for that device becomes available", that "udev(7) device
+manager is used for the network device discovery", and names the udev
+properties that steer management (`NM_UNMANAGED`, `ID_NET_MANAGED_BY`,
+`ID_NET_AUTO_LINK_LOCAL_ONLY`, `ID_NET_DHCP_BROADCAST`) plus the D-Bus export
+of network state. The page therefore documents NM's integration at the
+udev/netlink/D-Bus layer and makes no direct-sysfs-read claim for it. ABI:
+`testing/sysfs-class-net` (31),
 `-queues` (14), `-statistics` (24). Live quirk: `eth0/speed` reads `-1` and `lo`
 returns `EINVAL` for speed. The live pass also separated ABI-documented from
 live-only attributes: `gro_flush_timeout`, `napi_defer_hard_irqs`, `proto_down`
@@ -159,11 +171,11 @@ onto the same `inN_input` / `tempN_input` / `fanN_input` shapes, so the tool
 needs no per-chip knowledge to list them. Page:
 [hwmon](../sysfs/classes/hwmon.md).
 
-### XR-106 -- /sys/class/thermal -> thermal core -> thermald (source-limited)
+### XR-106 -- /sys/class/thermal -> thermal core -> thermald
 
 | class | subsystem + config | driver-model relationship | consumers with HOW | /dev, /proc cross-refs |
 |---|---|---|---|---|
-| `SYSC-thermal` (live 0 entries) plus the cooling-device directory `/sys/class/thermal_cooling` (no ledger row of its own) | thermal core: `thermal_sys.o` (`CONFIG_THERMAL`); zones, cooling devices and governor choices exposed as attributes | thermal zone devices register with the core; governor + policy attributes select behavior; cooling devices link to consumers (cpufreq, etc.) | **thermald** (Intel thermal daemon): only **changelog-level evidence** that it uses thermal zones exists (README); **per-file usage is unverified** -- the source-limited status of this row is exactly that missing detail | no /dev node; `/proc` twin absent; trip points pair with hwmon readings (XR-105) |
+| `SYSC-thermal` (live 0 entries) plus the cooling-device directory `/sys/class/thermal_cooling` (no ledger row of its own) | thermal core: `thermal_sys.o` (`CONFIG_THERMAL`); zones, cooling devices and governor choices exposed as attributes | thermal zone devices register with the core; governor + policy attributes select behavior; cooling devices link to consumers (cpufreq, etc.) | **thermald**(8) (Intel thermal daemon): per thermald(8) (trixie 2.5.9), it "looks for thermal sensors and thermal cooling drivers in the Linux thermal sysfs (/sys/class/thermal) and builds a list of sensors and cooling drivers", binds sensors to cooling drivers and works from trip points, with `thermal-conf.xml` as the user override | no /dev node; `/proc` twin absent; trip points pair with hwmon readings (XR-105) |
 
 ABI: `testing/sysfs-class-thermal` (27 entries, no per-entry Date/KernelVersion
 lines -- the ABI file is older-style, which is why the class page carries no
@@ -172,19 +184,25 @@ the cooling-device directory `/sys/class/thermal_cooling` (outside the
 class ledger's seeded rows), and the hwmon mirror some drivers
 register (XR-105); a tool that only reads one of them sees half the picture.
 Kernel side: [thermal](../kernel/drivers/thermal.md); class page:
-[thermal](../sysfs/classes/thermal.md).
+[thermal](../sysfs/classes/thermal.md). The thermald consumer claim
+upgraded in the 7-d pass: the fetched thermald(8) man page states the sysfs
+scan verbatim (the row's former missing source was per-file usage evidence).
 
-### XR-107 -- /sys/class/power_supply -> power supply core -> UPower (source-limited)
+### XR-107 -- /sys/class/power_supply -> power supply core -> UPower
 
 | class | subsystem + config | driver-model relationship | consumers with HOW | /dev, /proc cross-refs |
 |---|---|---|---|---|
-| `SYSC-power_supply` (live 0 entries) | power supply core: `power_supply.o` (`CONFIG_POWER_SUPPLY`); battery/AC/UPS class devices with type, capacity, status attributes | each registered supply creates one class device; properties are driver-populated; changes can trigger uevents | **UPower**: the standard desktop battery stack -- but its documentation (gitlab.freedesktop.org) was **unreachable** in this environment, so how UPower consumes this class is **not asserted** here; this is the named missing source of the row | no /dev node; `/proc` twin absent; `/sys/class/leds` charge-status LEDs are the visual sibling (XR-108) |
+| `SYSC-power_supply` (live 0 entries) | power supply core: `power_supply.o` (`CONFIG_POWER_SUPPLY`); battery/AC/UPS class devices with type, capacity, status attributes | each registered supply creates one class device; properties are driver-populated; changes can trigger uevents | **UPower**: the standard desktop battery stack; the UPower reference manual (upower.freedesktop.org, v1.91.2) documents each device's `NativePath` property as the "OS specific native path of the power source. On Linux this is the sysfs path" with the example `/sys/devices/LNXSYSTM:00/device:00/PNP0C0A:00/power_supply/BAT0`, and marks `VoltageMinDesign`/`VoltageMaxDesign` "as reported by the kernel"; UPower(7) frames the daemon as the interface to "enumerate power sources on the system" over `org.freedesktop.UPower` | no /dev node; `/proc` twin absent; `/sys/class/leds` charge-status LEDs are the visual sibling (XR-108) |
 
 ABI: `testing/sysfs-class-power` (59 core `What:` entries; 82 documented paths
 ledger-wide including driver ABI files; the earliest per-entry KernelVersion
 lines date to 2.6.35). The class models everything with a charge state --
 batteries, AC adapters, UPSes -- with `type` selecting which properties apply,
-which is what makes generic desktop consumers possible. Pages:
+which is what makes generic desktop consumers possible. The UPower consumer
+claim upgraded in the 7-d pass: the fetched reference manual gives the
+concrete class-to-daemon linkage (NativePath = the sysfs power_supply path,
+kernel-reported properties) and UPower(7) names the enumeration contract.
+Pages:
 [power_supply](../sysfs/classes/power_supply.md).
 
 ### XR-108 -- /sys/class/leds + backlight -> leds/backlight cores -> brightnessctl, systemd-backlight
@@ -225,39 +243,46 @@ duty-cycle attrs. Pages: [gpio](../sysfs/classes/gpio.md),
 [gpio](../kernel/drivers/gpio.md), [regulator](../kernel/drivers/regulator.md),
 [i2c/spi](../kernel/drivers/i2c-spi.md).
 
-### XR-110 -- /sys/class/input -> input core -> libinput/evdev (source-limited)
+### XR-110 -- /sys/class/input -> input core -> libinput/evdev
 
 | class | subsystem + config | driver-model relationship | consumers with HOW | /dev, /proc cross-refs |
 |---|---|---|---|---|
-| `SYSC-input` (live 2 entries) | input core: `drivers/input/input.c` (attr groups: `name`, `phys`, `uniq`, `modalias`, `properties`, `id/*`, `capabilities/*`); evdev (`drivers/input/evdev.c`, `event%d` devices) | each input device registers with the core, which creates the class device and an evdev char device; udev's `input_id` builtin computes capability-based properties (`ID_INPUT_*`) from the sysfs `capabilities/*` files | **libinput**: **unverified** -- freedesktop GitLab was unreachable, so how libinput consumes `/sys/class/input` vs evdev is **not asserted** (this is the row's named missing source); what **is** sourced: `devices.txt` (char major 13, Input core) and systemd's `udev-builtin-input_id.c` | `/dev/input/eventN` (evdev) and `/dev/input/mice`; on the live host `/dev/input` was **absent** while class entries existed -- a devnode-vs-sysfs split observed, not a rule |
+| `SYSC-input` (live 2 entries) | input core: `drivers/input/input.c` (attr groups: `name`, `phys`, `uniq`, `modalias`, `properties`, `id/*`, `capabilities/*`); evdev (`drivers/input/evdev.c`, `event%d` devices) | each input device registers with the core, which creates the class device and an evdev char device; udev's `input_id` builtin computes capability-based properties (`ID_INPUT_*`) from the sysfs `capabilities/*` files | **libinput**: per the libinput 1.31.0 docs, devices are recognized and typed via **udev properties**: `ID_INPUT` must be set (devices without it are ignored) and `ID_INPUT_KEYBOARD`/`ID_INPUT_KEY`/`ID_INPUT_MOUSE`/`ID_INPUT_TOUCHPAD`/`ID_INPUT_TOUCHSCREEN`/`ID_INPUT_TABLET`/`ID_INPUT_JOYSTICK`/`ID_INPUT_ACCELEROMETER` select the initialized device type; configuration rides `LIBINPUT_CALIBRATION_MATRIX`, `LIBINPUT_IGNORE_DEVICE` and `ID_SEAT`; libinput itself is "a full input stack for display servers and other applications that need to handle input devices provided by the kernel", reading the evdev event nodes; udev's `input_id` builtin computes the `ID_INPUT_*` properties from the sysfs `capabilities/*` files (systemd source) | `/dev/input/eventN` (evdev) and `/dev/input/mice`; on the live host `/dev/input` was **absent** while class entries existed -- a devnode-vs-sysfs split observed, not a rule |
 
 ABI: no class-level ABI file (only driver-specific ones); claims above trace
 to named kernel sources. The capability tree is the interesting part:
 `capabilities/ev`-style bitmaps are what udev's `input_id` builtin parses to
 set `ID_INPUT_KEYBOARD`/`ID_INPUT_MOUSE`-class properties, which downstream
 devices rules then match on -- the sysfs files are the raw material for the
-event-device classification. Page: [input](../sysfs/classes/input.md).
+event-device classification. The libinput consumer claim upgraded in the
+7-d pass: the fetched libinput documentation (wayland.freedesktop.org,
+1.31.0, device-configuration-via-udev) documents the udev-property contract
+verbatim, closing the row's former gap. Page:
+[input](../sysfs/classes/input.md).
 
-### XR-111 -- /sys/class/drm + graphics -> DRM core -> libdrm/compositors (source-limited)
+### XR-111 -- /sys/class/drm + graphics -> DRM core -> libdrm/compositors
 
 | class | subsystem + config | driver-model relationship | consumers with HOW | /dev, /proc cross-refs |
 |---|---|---|---|---|
-| `SYSC-drm` (live: version-only, `drm 1.1.0 20060810`), `SYSC-graphics` (live: fbcon) | DRM core: `drivers/gpu/drm/drm_sysfs.c` (`card%d`, `renderD%d`, devnode `dri/`); fbdev: `fb_class` (`graphics`, `fb%d`, FB_MAJOR 29) | DRM registers render/card devices under `drm`; the legacy fbdev layer separately registers framebuffers under `graphics`; `boot_display` is the class's single ABI entry | **libdrm/compositors**: **unverified** -- freedesktop GitLab unreachable, so libdrm's sysfs consumption and compositor behavior are **not asserted** (the row's named missing source); sourced instead: `devices.txt` char major 226 (DRI) and the class attrs from `drm_sysfs.c` | `/dev/dri/cardN`, `/dev/dri/renderD N`; on the live host `/dev/dri` was absent while the class existed; fbcon live attrs `rotate`, `cursor_blink` |
+| `SYSC-drm` (live: version-only, `drm 1.1.0 20060810`), `SYSC-graphics` (live: fbcon) | DRM core: `drivers/gpu/drm/drm_sysfs.c` (`card%d`, `renderD%d`, devnode `dri/`); fbdev: `fb_class` (`graphics`, `fb%d`, FB_MAJOR 29) | DRM registers render/card devices under `drm`; the legacy fbdev layer separately registers framebuffers under `graphics`; `boot_display` is the class's single ABI entry | **libdrm/compositors**: per drm(7) (libdrm 2.4.124 man pages), "All these interfaces are based on ioctl(2) commands on the DRM character device. The libdrm library provides wrappers for these system-calls and many helpers", and "Each connected GPU is then presented to user-space via a character-device that is usually available as /dev/dri/card0"; mode-setting (KMS) is restricted to the current DRM master (`drmSetMaster(3)`), and `drmModeGetResources(3)` exposes the crtcs/encoders/connectors/fbs topology compositors drive; `drmAvailable(3)` probes for a loaded DRM driver | `/dev/dri/cardN`, `/dev/dri/renderD N`; on the live host `/dev/dri` was absent while the class existed; fbcon live attrs `rotate`, `cursor_blink` |
 
 ABI: `testing/sysfs-class-drm` (1 entry: `boot_display`). The live snapshot
 makes the split concrete: the drm class carried only its version attribute,
 while the fbdev layer under `graphics` carried the live framebuffer console
 (`fbcon`, with `rotate`, `cursor_blink` and write-only `rotate_all`). On
 machines with real GPUs the card/render device directories are where
-connector and client state lives, which is the part the unreachable libdrm
-documentation would cover. Pages:
+connector and client state lives, which is the part drm(7) now documents:
+the libdrm wrappers over the DRM character-device ioctls (7-d pass fetch;
+the gitlab.freedesktop.org repo itself stayed unreachable behind an
+anti-bot wall, so the Debian-shipped libdrm man pages are the citation).
+Pages:
 [drm](../sysfs/classes/drm.md), [graphics](../sysfs/classes/graphics.md).
 
 ### XR-112 -- /sys/class/{msr,cpuid} -> x86 arch code -> msr-tools (source-limited)
 
 | class | subsystem + config | driver-model relationship | consumers with HOW | /dev, /proc cross-refs |
 |---|---|---|---|---|
-| `SYSC-msr` (live 2: msr0, msr1 at 202:0/202:1), `SYSC-cpuid` (live 2: 203:0/203:1) | `arch/x86/kernel/msr.c` (`msr%d`, `allow_writes` module param, 0600), `arch/x86/kernel/cpuid.c` (`cpu/%u/cpuid`); `CONFIG_X86_MSR` / `CONFIG_X86_CPUID` | one class device per CPU; these classes exist to anchor the **char devices**; x86-only by construction | **rdmsr/wrmsr (msr-tools)**: **unverified** -- kernel.org-hosted msr-tools docs were not reachable, so the tool-level claims are **not asserted** (the row's named missing source); sourced: the arch drivers themselves and `devices.txt` (major 202/203) | `/dev/cpu/N/msr`, `/dev/cpu/N/cpuid` -- both **absent** on the live host while the class dirs existed; writes to msr additionally gated by the `allow_writes` param |
+| `SYSC-msr` (live 2: msr0, msr1 at 202:0/202:1), `SYSC-cpuid` (live 2: 203:0/203:1) | `arch/x86/kernel/msr.c` (`msr%d`, `allow_writes` module param, 0600), `arch/x86/kernel/cpuid.c` (`cpu/%u/cpuid`); `CONFIG_X86_MSR` / `CONFIG_X86_CPUID` | one class device per CPU; these classes exist to anchor the **char devices**; x86-only by construction | **rdmsr/wrmsr (msr-tools)**: still **unsourced** -- the msr-tools documentation is not reachable (kernel.org gitweb serves an anti-bot page; Debian and Ubuntu ship no rdmsr/wrmsr man pages), so tool-level claims stay **not asserted** (the row's named missing source); sourced in the 7-d pass: `msr(4)` documents the device contract (`/dev/cpu/CPUNUM/msr`: seek to the MSR number as offset, read/write in 8-byte chunks, root-only, `modprobe msr` since the driver is not auto-loaded) and `cpuid(1)` documents its `--kernel` option ("Use the CPUID kernel module", typically root) versus the default `--inst` CPUID-instruction mode | `/dev/cpu/N/msr`, `/dev/cpu/N/cpuid` -- both **absent** on the live host while the class dirs existed; writes to msr additionally gated by the `allow_writes` param |
 
 No class ABI file exists for either class; all claims trace to the named arch
 sources. The safety story is unusually sharp here: msr writes can boot-loop or
@@ -265,29 +290,38 @@ worse a machine, which is why the driver added the `allow_writes` parameter
 (`on`/`off`/`default`) gating writes on the char device -- a layering where
 the class directory is inert and all the policy sits on the /dev side. Pages:
 [msr](../sysfs/classes/msr.md), [cpuid](../sysfs/classes/cpuid.md),
-[mem/misc context](../sysfs/classes/mem.md).
+[mem/misc context](../sysfs/classes/mem.md). The 7-d fetch pass narrowed the
+gap without closing it: msr(4) and cpuid(1) are now cited above, but the
+msr-tools rdmsr/wrmsr documentation remains unfetched, so the tool-to-device
+linkage is still unasserted.
 
-### XR-113 -- /sys/class/infiniband + devlink + dax -> RDMA/devlink/dax cores -> rdma, ndctl (source-limited)
+### XR-113 -- /sys/class/infiniband + devlink + dax -> RDMA/devlink/dax cores -> rdma, ndctl
 
 | class | subsystem + config | driver-model relationship | consumers with HOW | /dev, /proc cross-refs |
 |---|---|---|---|---|
-| `SYSC-infiniband` (ABI 130 `What:` entries), `SYSC-devlink` (ABI 7), `SYSC-nd` (live 1: ndctl0, char 253:0 via `register_chrdev(0, "ndctl")`) | infiniband core (`drivers/infiniband/core/`); devlink class in `drivers/base/core.c` with the **devlink netlink family** in `net/devlink/core.c` (name collision, two different things); nvdimm/dax bus (`sysfs-bus-dax`, 18 entries) | IB devices expose ports, counters and MAD/verbs char devices; devlink class devices (`<bus>:<dev>--<bus>:<dev>` links) are device-pair metadata; nd exposes nvdimm regions/buses for libndctl | **ndctl** reads `/sys/class/nd` via `libndctl.c` (sourced); **rdma(8)**: transport and uverbs claims **unverified** -- the rdma tool docs cover usage, but the IB *transport* paths and the uverbs char-device story were not sourceable here (the row's named missing sources) | `/dev/infiniband/uverbsN`, `/dev/infiniband/ucmN`; `/dev/ndctlN` (live: ndctl0); devlink's real control channel is **netlink**, not its class dir |
+| `SYSC-infiniband` (ABI 130 `What:` entries), `SYSC-devlink` (ABI 7), `SYSC-nd` (live 1: ndctl0, char 253:0 via `register_chrdev(0, "ndctl")`) | infiniband core (`drivers/infiniband/core/`); devlink class in `drivers/base/core.c` with the **devlink netlink family** in `net/devlink/core.c` (name collision, two different things); nvdimm/dax bus (`sysfs-bus-dax`, 18 entries) | IB devices expose ports, counters and MAD/verbs char devices; devlink class devices (`<bus>:<dev>--<bus>:<dev>` links) are device-pair metadata; nd exposes nvdimm regions/buses for libndctl | **ndctl** reads `/sys/class/nd` via `libndctl.c` (sourced); the ndctl README calls the project the "Utility library for managing the libnvdimm (non-volatile memory device) sub-system in the Linux kernel"; **rdma-core** README (official repo): "the userspace components for the Linux Kernel's drivers/infiniband subsystem", naming the library-per-device-node mapping -- `/dev/infiniband/uverbsX` (libibverbs), `/dev/infiniband/rdma_cm` (librdmacm), `/dev/infiniband/umadX` (libibumad) -- plus per-driver provider libraries and the srp_daemon/iwpmd/ibacm daemons; rdma(8) usage stays tool-doc sourced | `/dev/infiniband/uverbsN`, `/dev/infiniband/ucmN`; `/dev/ndctlN` (live: ndctl0); devlink's real control channel is **netlink**, not its class dir |
 
 Pages: [infiniband](../sysfs/classes/infiniband.md),
 [infiniband_verbs](../sysfs/classes/infiniband_verbs.md),
 [devlink](../sysfs/classes/devlink.md), [nd](../sysfs/classes/nd.md);
-RDMA background: [rdma](../networking/rdma.md). Source details kept from the
+RDMA background: [rdma](../networking/rdma.md). The rdma-core and ndctl
+halves upgraded in the 7-d pass: the official rdma-core README
+(github.com/linux-rdma/rdma-core) states the userspace-components claim and
+the uverbsX/rdma_cm/umadX node mapping, and the ndctl README
+(github.com/pmem/ndctl) states the libnvdimm-management scope; the umad and
+uverbs devnode details below keep their kernel-source attributions. Source
+details kept from the
 fetch pass: the umad class devices carry an `abi_version` attr and a
 `infiniband/%s` devnode; uverbs devnodes are mode 0666 (user-level verbs need
 access from unprivileged processes); and on the live host `ndctl0` was a
 **char** device at 253:0 while `/sys/dev/block/253:0` pointed at zram0 -- the
 two `/sys/dev` namespaces are separate major spaces, verified live.
 
-### XR-114 -- non-class trees (/sys/devices, /sys/bus, /sys/module, /sys/kernel, /sys/fs) -> sysctl, dmidecode (source-limited)
+### XR-114 -- non-class trees (/sys/devices, /sys/bus, /sys/module, /sys/kernel, /sys/fs) -> sysctl, dmidecode
 
 | class | subsystem + config | driver-model relationship | consumers with HOW | /dev, /proc cross-refs |
 |---|---|---|---|---|
-| non-class: `/sys/devices/system/cpu` (ABI 19 entries: cpufreq/cpuidle/topology), `/sys/module` (ABI 5), `/sys/kernel` (btf), `/sys/fs` (xfs ABI) | device tree core (`/sys/devices`), bus types, module kobjects (`sysfs-module`), kernel-global attrs, filesystem-specific attrs (`sysfs-fs-xfs`) | not classes at all: the kobject hierarchy that classes hang off; per-CPU cpufreq policy dirs live here, not in a class | **cpupower**(1) reads/writes cpufreq attributes under `/sys/devices/system/cpu/cpuN/cpufreq` (cpupower.1 + `cpufreq.rst` sourced); **lscpu**(1) reads CPU topology (util-linux); **sysctl(8)** wording for `/proc/sys` vs `/sys/kernel` splits **unverified** (procps docs -- the row's named missing source); **dmidecode** consumption of `/sys/firmware/dmi` **unverified** | `/proc/modules` vs `/sys/module` (same inventory, different shapes); `/proc/sys/` is the sysctl tree; `/sys/fs/cgroup` is the cgroup2 mount, not a class |
+| non-class: `/sys/devices/system/cpu` (ABI 19 entries: cpufreq/cpuidle/topology), `/sys/module` (ABI 5), `/sys/kernel` (btf), `/sys/fs` (xfs ABI) | device tree core (`/sys/devices`), bus types, module kobjects (`sysfs-module`), kernel-global attrs, filesystem-specific attrs (`sysfs-fs-xfs`) | not classes at all: the kobject hierarchy that classes hang off; per-CPU cpufreq policy dirs live here, not in a class | **cpupower**(1) reads/writes cpufreq attributes under `/sys/devices/system/cpu/cpuN/cpufreq` (cpupower.1 + `cpufreq.rst` sourced); **lscpu**(1) reads CPU topology (util-linux); **sysctl(8)** (procps 4.0.4): "used to modify kernel parameters at runtime. The parameters available are those listed under /proc/sys/. Procfs is required for sysctl support in Linux" -- i.e. sysctl(8) is a `/proc/sys` tool, and `/sys/kernel` is a distinct attribute tree, not a sysctl frontend; **dmidecode**(8) (3.6): locates the DMI table "first ... from sysfs" -- FILES: `/sys/firmware/dmi/tables/smbios_entry_point` and `/sys/firmware/dmi/tables/DMI` (Linux only) -- falling back to `/dev/mem` | `/proc/modules` vs `/sys/module` (same inventory, different shapes); `/proc/sys/` is the sysctl tree; `/sys/fs/cgroup` is the cgroup2 mount, not a class |
 
 Pages: [cpu-freq](../kernel/drivers/cpu-freq.md), [cgroups-v2](../containers/cgroups-v2.md);
 procfs context: [proc](../observability/proc.md). What distinguishes this row
@@ -296,7 +330,10 @@ paths under `/sys/devices` (per-CPU policy dirs), `/sys/module` (per-module
 parameters and sections), `/sys/kernel` (global attrs like the BTF blob) and
 `/sys/fs` (filesystem-specific trees, plus the cgroup2 mount). The ABI files
 mirror that structure: `sysfs-devices-system-cpu` (19), `sysfs-module` (5),
-`sysfs-kernel-btf`, `sysfs-fs-xfs`.
+`sysfs-kernel-btf`, `sysfs-fs-xfs`. The 7-d fetch pass sourced both remaining
+consumer claims: procps' sysctl(8) is explicitly a `/proc/sys` tool (quote
+above), and dmidecode(8) reads the DMI table from sysfs first
+(`/sys/firmware/dmi/tables/...`) before `/dev/mem`.
 
 ---
 
@@ -305,19 +342,19 @@ mirror that structure: `sysfs-devices-system-cpu` (19), `sysfs-module` (5),
 | Row | Status | Missing source (exact) |
 |---|---|---|
 | XR-101 block/bdi | documented | -- |
-| XR-102 net | source-limited | NetworkManager documentation (consumer claim unverified) |
+| XR-102 net | documented | -- (NetworkManager(8) 1.52.1 fetched: udev discovery + NM_UNMANAGED/ID_NET_MANAGED_BY properties) |
 | XR-103 tty | documented | -- |
 | XR-104 nvme | documented | -- (no live device on the build host; ABI+source only) |
 | XR-105 hwmon | documented | -- |
-| XR-106 thermal | source-limited | thermald per-file usage (only changelog-level evidence) |
-| XR-107 power_supply | source-limited | UPower docs (gitlab.freedesktop.org unreachable) |
+| XR-106 thermal | documented | -- (thermald(8) 2.5.9 fetched: sysfs scan stated verbatim) |
+| XR-107 power_supply | documented | -- (UPower reference manual v1.91.2 fetched: NativePath = sysfs path) |
 | XR-108 leds/backlight | documented | -- |
 | XR-109 gpio/pwm/regulator/i2c-adapter | documented | -- |
-| XR-110 input | source-limited | libinput documentation (fd.o unreachable) |
-| XR-111 drm/graphics | source-limited | libdrm/compositor documentation (fd.o unreachable) |
-| XR-112 msr/cpuid | source-limited | msr-tools documentation (kernel.org-hosted, unreachable) |
-| XR-113 infiniband/devlink/dax | source-limited | rdma transport + uverbs sources |
-| XR-114 non-class trees | source-limited | sysctl(8) procps wording; dmidecode sources |
+| XR-110 input | documented | -- (libinput 1.31.0 docs fetched: ID_INPUT_* udev-property contract) |
+| XR-111 drm/graphics | documented | -- (drm(7)/libdrm 2.4.124 man pages fetched: ioctl wrappers over /dev/dri/card0) |
+| XR-112 msr/cpuid | source-limited | msr-tools rdmsr/wrmsr documentation (kernel.org gitweb unreachable); cpuid(1) and msr(4) halves now sourced |
+| XR-113 infiniband/devlink/dax | documented | -- (rdma-core README: uverbsX/rdma_cm/umadX node mapping; ndctl README: libnvdimm scope) |
+| XR-114 non-class trees | documented | -- (sysctl(8) procps wording and dmidecode(8) sysfs FILES fetched) |
 
 ## Key Takeaways
 
@@ -331,11 +368,11 @@ mirror that structure: `sysfs-devices-system-cpu` (19), `sysfs-module` (5),
   thermal, power_supply, leds, backlight, i2c-adapter, nvme) say nothing about
   the ABI contract, and missing /dev nodes (input, cpu, dri) on the build host
   are snapshots, not rules.
-- The source-limited set is uniform in shape: kernel-side contracts are
-  documented, but the *consumer* documentation (NetworkManager, thermald
-  detail, UPower, libinput, libdrm/compositors, msr-tools, rdma/uverbs,
-  sysctl/dmidecode) was unreachable from this environment -- every row names
-  its missing source.
+- The source-limited set is down to one row (XR-112): kernel-side contracts
+  are documented everywhere, and the consumer documentation (NetworkManager,
+  thermald, UPower, libinput, libdrm, rdma-core/ndctl, sysctl/dmidecode) was
+  fetched upstream in the 7-d pass -- only the msr-tools rdmsr/wrmsr docs
+  remain unreachable, and XR-112 names its missing source.
 
 ## Interview Questions
 

@@ -84,11 +84,17 @@ Documentation is **split per function**, not grouped into per-domain mega-chapte
 
 | Ledger | Rows | Statused | documented | Pages |
 |---|---|---|---|---|
-| [Syscalls](./syscalls/ledger.md) | 535 | 525 | 378 | 194 per-function + 7 auto hubs |
-| [glibc API](./libc/ledger-glibc.md) | 1881 documented-API (+3470 exported, +1953 triage) | 1257 | 504 | 122 function pages |
+| [Syscalls](./syscalls/ledger.md) | 535 | 535 | 388 | 198 per-function + 7 auto hubs |
+| [glibc API](./libc/ledger-glibc.md) | 1881 documented-API (+3470 exported, +1953 triage) | 1881 | 1047 | 281 function pages |
 | [musl API](./libc/ledger-musl.md) | 1482 functions (110 header families) | by family | 6 family pages | 6 + catalog |
-| [Sysfs classes](./sysfs/ledger.md) | 120 | 120 | 42 | 42 class pages |
-| [Cross-layer maps](./crossref/ledger.md) | 38 | 38 | 26 | 3 maps |
+| [Sysfs classes](./sysfs/ledger.md) | 120 | 120 | 106 | 119 class pages |
+| [Cross-layer maps](./crossref/ledger.md) | 38 | 38 | 37 | 3 maps |
 
 Source-limited rows and not-started rows are **kept visible** with their gaps
 named, rather than dropped to make the numbers look better.
+
+Remaining after wave 7 (2026-10-13): syscalls 46 `researched` + 101
+`source-limited`; glibc 10 `source-limited` (uabs family, getumask, mseal,
+memalignment, free_sized, free_aligned_sized, pthread_gettid_np) plus 2573
+`not-started` exported-symbol rows; sysfs 14 `source-limited` (thin/no-source
+classes, named in-page); crossref 1 `source-limited` (XR-112 msr-tools).

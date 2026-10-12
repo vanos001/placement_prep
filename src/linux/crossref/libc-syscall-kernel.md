@@ -6,8 +6,8 @@ This map answers one question per libc entry point: **what actually happens belo
 libc?** One libc call may issue zero syscalls (pure userspace work), one thin
 wrapped syscall, or a version-dependent composite; and one syscall may serve
 dozens of libc functions. The rows below are the 14 rows `XR-001..XR-014` of the
-[coverage ledger](./ledger.md) (statuses there are authoritative: 12 documented,
-2 source-limited). Each row's table cites every libc function by its `GLIBC-<name>`
+[coverage ledger](./ledger.md) (statuses there are authoritative: all 14
+documented; XR-012/XR-013 upgraded in the 7-d pass). Each row's table cites every libc function by its `GLIBC-<name>`
 row in the [glibc ledger](../libc/ledger-glibc.md), every syscall by its
 `SC-<name>` row in the [syscall ledger](../syscalls/ledger.md), and names kernel
 subsystem file paths only where the syscall chapters established them.
@@ -39,8 +39,9 @@ subsystem file paths only where the syscall chapters established them.
 - **Ledger resolution.** Row ids and Map text follow the ledger's libc section
   exactly (`printf family -> write/writev -> vfs_write` ... `dynamic loader ->
   mmap/open/read -> ld.so`); statuses are the ledger's (XR-012, XR-013
-  source-limited, the rest documented). Agent status reports proposed the
-  statuses; the ledger merged them, and this page carries the same split.
+  upgraded to documented in the 7-d pass, the rest documented). Agent status
+  reports proposed the statuses; the ledger merged them, and this page carries
+  the same split.
 - **Architecture honesty.** The tables quote x86_64 numbers as representative;
   the ledger carries the full x64 / i386 / g64 (asm-generic) / arm32 columns,
   and several rows below lean on the differences (no `fork`/`vfork`/`time`
@@ -315,33 +316,59 @@ the syscall chapter: `gethostname(2)` states glibc never employs a
 libc side: [socket family](../libc/glibc/net/socket-connect-bind-listen-accept.md),
 [getaddrinfo](../libc/glibc/net/getaddrinfo-getnameinfo.md).
 
-### XR-012 -- getpwnam/NSS -> no direct syscall -> /etc/passwd + NSS modules (source-limited)
+### XR-012 -- getpwnam/NSS -> no direct syscall -> /etc/passwd + NSS modules (musl: built-in)
 
 | libc functions | syscalls | kernel subsystem | typed arrows |
 |---|---|---|---|
 | `GLIBC-getpwnam`, `GLIBC-getpwuid` | no dedicated syscall; generic `SC-openat` (257), `SC-read` (0), `SC-socket` (41), `SC-connect` (42) under the hood | none directly -- the kernel only serves generic file and socket work | `GLIBC-getpwnam` **implements** the whole lookup in userspace; file parsing **consumes** `SC-openat`+`SC-read`; nscd transport **consumes** `SC-socket`+`SC-connect`; module loading is **gated-by** `/etc/nsswitch.conf` |
 
-**Source-limited (musl column).** The glibc side is fully sourced: NSS
-dispatch reads `/etc/nsswitch.conf`, the `files` module parses `/etc/passwd`
-with ordinary file reads, later modules are `dlopen`ed shared objects, and the
-nscd path speaks a socket protocol to the daemon -- so the kernel sees only
-XR-002's file path and XR-011's socket path, with no user-database syscall
-anywhere. What is missing: the musl column. The musl catalog verifies that
-musl has **no nsswitch** (tree-wide grep) and routes `/etc/passwd` first with
-an nscd fallback -- but it does not document musl's passwd-lookup
-implementation itself, and musl's `src/passwd/` sources were outside the
-catalog's section scope. The consequence is practical: a musl-built program
-and a glibc-built one resolve the same name through different userspace
-machinery, and this encyclopedia can currently cite only one side in full.
-Named missing source: a musl passwd-lookup implementation reference (musl
-ships no manual). Page:
+The glibc side is fully sourced by the NSS manual nodes (manual `nss.texi`):
+`getpwnam` dispatch reads `/etc/nsswitch.conf`, one database per line, where a
+line lists services with optional action expressions `[(!?status=action)+]`
+(`status` in `success|notfound|unavail|tryagain`, `action` in
+`return|continue|merge`; defaults: `success` -> `return`, the rest ->
+`continue`). Each service name names a module `libnss_<service>.so.2` whose
+functions are found by symbol name -- `_nss_<service>_<function>`, e.g.
+`_nss_files_gethostbyname_r` -- with no jump table (the manual is explicit
+that the functions are identified by their names); modules only carry the
+reentrant variants, a missing function is treated as `unavail`, and the
+module functions return `enum nss_status` (`SUCCESS` = 1, `NOTFOUND` = 0,
+`UNAVAIL` = -1, `TRYAGAIN` = -2, plus the internal `NSS_STATUS_RETURN`) with
+`*errnop` carrying `EAGAIN`/`ERANGE`. The `files` module parses
+`/etc/passwd` with ordinary file reads, later modules are `dlopen`ed shared
+objects, and the nscd path speaks a socket protocol to the daemon -- so the
+kernel sees only XR-002's file path and XR-011's socket path, with no
+user-database syscall anywhere.
+
+Host reality on the reference glibc 2.41 backs the split:
+`/etc/nsswitch.conf` reads `passwd: files`, `group: files`, `shadow: files`,
+`hosts: files dns` and friends (the `db files` style for protocols/services,
+`netgroup: nis`), and the files service has been compiled into libc itself:
+`libc.so.6` exports `_nss_files_getpwnam_r`, `_nss_files_getpwuid_r` and
+`_nss_files_getpwent_r` as `GLIBC_PRIVATE` symbols, while the on-disk
+`libnss_files.so.2` (14,336 bytes) is a stub with only five dynamic symbols.
+The `libnss_<service>.so.2` loading mechanism remains the extension path for
+third-party modules.
+
+The musl column is now sourced from the musl tree itself: `getpwnam` routes
+to `__getpw_a` in `src/passwd/getpw_a.c`, which opens `/etc/passwd`
+(`fopen("/etc/passwd", "rbe")`) and scans it with `__getpwent_a` comparing
+`pw_name`/`pw_uid`; on a miss it queries a running nscd via `__nscd_query`
+(`src/passwd/nscd_query.c`, requests `GETPWBYNAME`/`GETPWBYUID`). There is
+no nsswitch file, no action expressions, and no `dlopen`ed modules anywhere
+in the tree (grep: zero hits; `src/network/` carries the same philosophy as
+a hardcoded backend order -- `lookup_name.c` tries `name_from_null` ->
+`name_from_numeric` -> `name_from_hosts` -> `name_from_dns_search`, i.e.
+`/etc/hosts` first, then DNS). The consequence is practical: a musl-built
+program and a glibc-built one resolve the same name through different
+userspace machinery, and both sides are now cited. Page:
 [getpwnam family](../libc/glibc/net/getpwnam-getpwuid-family.md).
 
-### XR-013 -- ioctl -> fs/ioctl dispatch -> driver unlocked_ioctl (source-limited)
+### XR-013 -- ioctl -> fs/ioctl dispatch -> driver unlocked_ioctl (tty: tty_ioctl chain)
 
 | libc functions | syscalls | kernel subsystem | typed arrows |
 |---|---|---|---|
-| `GLIBC-ioctl`, `GLIBC-tcgetattr`, `GLIBC-tcsetattr` | `SC-ioctl` (x64 16) -- e.g. `TCGETS`/`TCSETS` for the terminal pair | `fs/ioctl.c`: `SYSCALL_DEFINE3` -> `security_file_ioctl` -> `do_vfs_ioctl` generic switch -> on `-ENOIOCTLCMD` -> `vfs_ioctl` -> `filp->f_op->unlocked_ioctl` | `GLIBC-tcgetattr`/`tcsetattr` **wrap** `SC-ioctl(TCGETS/TCSETS)`; the generic switch **services** file-generic commands; driver `.unlocked_ioctl` **services** the rest |
+| `GLIBC-ioctl`, `GLIBC-tcgetattr`, `GLIBC-tcsetattr` | `SC-ioctl` (x64 16) -- e.g. `TCGETS`/`TCSETS` for the terminal pair | `fs/ioctl.c`: `SYSCALL_DEFINE3` -> `security_file_ioctl` -> `do_vfs_ioctl` generic switch -> on `-ENOIOCTLCMD` -> `vfs_ioctl` -> `filp->f_op->unlocked_ioctl`; tty case: `drivers/tty/tty_io.c` registers `.unlocked_ioctl = tty_ioctl` (`tty_fops`/`console_fops`; hung-up: `hung_up_tty_ioctl`) and `tty_ioctl` falls through `tty_jobctrl_ioctl` -> `tty->ops->ioctl` -> `ld->ops->ioctl`, `-ENOIOCTLCMD` -> `-ENOTTY` | `GLIBC-tcgetattr`/`tcsetattr` **wrap** `SC-ioctl(TCGETS/TCSETS)`; the generic switch **services** file-generic commands; driver `.unlocked_ioctl` **services** the rest |
 
 `ioctl` is one syscall serving thousands of commands; the syscall chapter
 documents the dispatch chain above and the generic commands handled centrally
@@ -352,12 +379,21 @@ driver-specific exits that switch with `-ENOIOCTLCMD` and lands in the
 `f_op->unlocked_ioctl` of the file's driver -- which is why one libc function
 can touch a tty, a sound device, an NVMe controller, or a loop device through
 the same `SC-ioctl` slot while the kernel-side code paths diverge completely.
-**Source-limited (kernel path for the terminal case).**
-`tcgetattr`/`tcsetattr` -> `SC-ioctl(TCGETS/TCSETS)` is sourced, but the
-kernel-side *file path* for terminal ioctls is not named in the syscall
-chapters -- this page stops at the documented `.unlocked_ioctl` dispatch
-point. Named missing source: a tty-internals reference that documents
-`tty_io.c`/`tty_ioctl.c` dispatch. Page: [ioctl](../syscalls/descriptors-io/ioctl.md);
+The terminal half is now sourced end to end at the cached sources'
+granularity: `ioctl_tty.2` (cached man-pages tree) documents the terminal
+request contract -- `TCGETS`/`TCSETS` taking `struct termios *`, the
+`termios2`/`TCGETS2` variants, and the wider `TIO*` set -- and the fetched
+`drivers/tty/tty_io.c` names the file path: the tty `file_operations`
+register `.unlocked_ioctl = tty_ioctl` (`tty_fops`, and `console_fops`;
+`hung_up_tty_fops` gets `hung_up_tty_ioctl`), and `tty_ioctl` handles its
+explicit cases (`TIOCGWINSZ`, `TIOCMGET`, `TCFLSH`, `TIOCGSERIAL`, ...) then
+delegates what remains: `tty_jobctrl_ioctl` first, then the driver's
+`tty->ops->ioctl`, then the line discipline's `ld->ops->ioctl`, mapping a
+final `-ENOIOCTLCMD` to `-ENOTTY`. Flagged sub-claim: the exact site that
+copies the termios struct (the tty_ioctl.c/`n_tty` layer below `tty_ioctl`)
+is not itself in the fetched sources -- the dispatch chain and the request
+contract are, so the row is documented with that boundary named. Page:
+[ioctl](../syscalls/descriptors-io/ioctl.md);
 the sysfs side of the same tty devices is XR-103 in the
 [sibling map](./sysfs-driver-tools.md).
 
@@ -438,9 +474,7 @@ a variation on one of those three shapes.
 
 | Rows | Status | Note |
 |---|---|---|
-| XR-001 .. XR-011, XR-014 | documented (12) | sourced from the syscall/libc/kernel chapters listed per row |
-| XR-012 | source-limited | musl passwd-lookup implementation reference missing |
-| XR-013 | source-limited | kernel-side terminal-ioctl file path not named in consulted chapters |
+| XR-001 .. XR-014 | documented (14) | sourced from the syscall/libc/kernel chapters listed per row; XR-012/XR-013 upgraded in the 7-d pass (XR-013 keeps its termios-answer-site boundary flagged in place) |
 
 ## Key Takeaways
 
@@ -451,9 +485,11 @@ a variation on one of those three shapes.
 - The recurring libc-side deltas are small but constant: errno translation,
   no `EINTR` retry, short counts -- plus version-dependent wrapper arrivals
   (`getdents64` 2.30, `execveat` 2.34) that the ledgers pin.
-- The two source-limited rows are limited for different reasons: XR-012 lacks
-  a musl implementation reference, XR-013 lacks a named kernel file path --
-  both named, neither padded.
+- Every row of this map is now documented; the formerly limited rows were
+  held back on named missing sources -- XR-012's musl passwd-lookup
+  implementation (now cited from the musl tree) and XR-013's terminal-ioctl
+  file path (now cited from fetched `tty_io.c` + cached `ioctl_tty.2`) --
+  and upgraded only once those sources existed.
 
 ## Interview Questions
 
