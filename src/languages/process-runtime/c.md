@@ -195,17 +195,17 @@ prototype changed; C17 spelling in §1.5.
 
 | API | Canonical signature (C23 spelling; C17 uses `_Noreturn`) | Semantics / notes |
 |---|---|---|
-| `exit` | `[[noreturn]] void exit(int status);` (§7.24.4.4) | normal termination: `atexit` handlers in reverse registration order (a handler may register more; each is called as many times as registered), then all open streams flushed and closed, `tmpfile` files removed, control to host. `at_quick_exit` handlers are **not** called. Double-`exit`/`exit`+`quick_exit` is UB. |
-| `_Exit` | `[[noreturn]] void _Exit(int status);` (§7.24.4.5) | normal termination classification; **no** `atexit`/`at_quick_exit`/signal handlers; flush/close implementation-defined. Since **C99**. |
-| `quick_exit` | `[[noreturn]] void quick_exit(int status);` (§7.24.4.7) | runs only `at_quick_exit` handlers (reverse order), then `_Exit(status)`. No `atexit` handlers, no signal handlers; UB if a signal is raised during its execution. Since **C11**. |
-| `abort` | `[[noreturn]] void abort(void);` (§7.24.4.1) | abnormal termination: raise `SIGABRT`; if caught and the handler does not return, `abort` does not complete; flush/close implementation-defined; unsuccessful status. |
-| `atexit` | `int atexit(void (*func)(void));` (§7.24.4.2) | register normal-termination handler; ≥32 registrations; 0 on success, nonzero on failure; unspecified whether a call concurrent with `exit` succeeds. |
-| `at_quick_exit` | `int at_quick_exit(void (*func)(void));` (§7.24.4.3) | same contract for the `quick_exit` list; ≥32 entries. Since **C11**. |
-| `system` | `int system(const char *string);` (§7.24.4.8) | `NULL`: nonzero iff a command processor exists. Non-NULL: pass string to the processor; return value implementation-defined; "can then cause the program calling system to behave in a non-conforming manner or to terminate." POSIX sharpens everything (§5.5). |
-| `getenv` | `char *getenv(const char *name);` (§7.24.4.6) | returns pointer to the associated string; "shall not be modified by the program, but may be overwritten by a subsequent call to the getenv function"; **not required to avoid data races** with threads that modify the environment; the set of names and the method of altering the list are implementation-defined — which is exactly where POSIX steps in (§2.3). |
-| `assert` | `void assert(scalar expression);` (§7.2.1.1) | on failure writes diagnostics to stderr and calls `abort`; compile-out when `NDEBUG` is defined at the last `<assert.h>` inclusion; the macro is redefined each time `<assert.h>` is included per the current `NDEBUG` state. |
+| [`exit`](https://pubs.opengroup.org/onlinepubs/9799919799/functions/exit.html) | `[[noreturn]] void exit(int status);` (§7.24.4.4) | normal termination: `atexit` handlers in reverse registration order (a handler may register more; each is called as many times as registered), then all open streams flushed and closed, `tmpfile` files removed, control to host. `at_quick_exit` handlers are **not** called. Double-`exit`/`exit`+`quick_exit` is UB. |
+| [`_Exit`](https://pubs.opengroup.org/onlinepubs/9799919799/functions/_Exit.html) | `[[noreturn]] void _Exit(int status);` (§7.24.4.5) | normal termination classification; **no** `atexit`/`at_quick_exit`/signal handlers; flush/close implementation-defined. Since **C99**. |
+| [`quick_exit`](https://pubs.opengroup.org/onlinepubs/9799919799/functions/quick_exit.html) | `[[noreturn]] void quick_exit(int status);` (§7.24.4.7) | runs only `at_quick_exit` handlers (reverse order), then `_Exit(status)`. No `atexit` handlers, no signal handlers; UB if a signal is raised during its execution. Since **C11**. |
+| [`abort`](https://pubs.opengroup.org/onlinepubs/9799919799/functions/abort.html) | `[[noreturn]] void abort(void);` (§7.24.4.1) | abnormal termination: raise `SIGABRT`; if caught and the handler does not return, `abort` does not complete; flush/close implementation-defined; unsuccessful status. |
+| [`atexit`](https://pubs.opengroup.org/onlinepubs/9799919799/functions/atexit.html) | `int atexit(void (*func)(void));` (§7.24.4.2) | register normal-termination handler; ≥32 registrations; 0 on success, nonzero on failure; unspecified whether a call concurrent with `exit` succeeds. |
+| [`at_quick_exit`](https://pubs.opengroup.org/onlinepubs/9799919799/functions/at_quick_exit.html) | `int at_quick_exit(void (*func)(void));` (§7.24.4.3) | same contract for the `quick_exit` list; ≥32 entries. Since **C11**. |
+| [`system`](https://pubs.opengroup.org/onlinepubs/9799919799/functions/system.html) | `int system(const char *string);` (§7.24.4.8) | `NULL`: nonzero iff a command processor exists. Non-NULL: pass string to the processor; return value implementation-defined; "can then cause the program calling system to behave in a non-conforming manner or to terminate." POSIX sharpens everything (§5.5). |
+| [`getenv`](https://pubs.opengroup.org/onlinepubs/9799919799/functions/getenv.html) | `char *getenv(const char *name);` (§7.24.4.6) | returns pointer to the associated string; "shall not be modified by the program, but may be overwritten by a subsequent call to the getenv function"; **not required to avoid data races** with threads that modify the environment; the set of names and the method of altering the list are implementation-defined — which is exactly where POSIX steps in (§2.3). |
+| [`assert`](https://pubs.opengroup.org/onlinepubs/9799919799/functions/assert.html) | `void assert(scalar expression);` (§7.2.1.1) | on failure writes diagnostics to stderr and calls `abort`; compile-out when `NDEBUG` is defined at the last `<assert.h>` inclusion; the macro is redefined each time `<assert.h>` is included per the current `NDEBUG` state. |
 
-**[glibc]** man7 exit(3) adds implementation detail the standard leaves
+**[glibc]** man7 [exit(3)](https://man7.org/linux/man-pages/man3/exit.3.html) adds implementation detail the standard leaves
 open: `exit` runs `atexit` **and** `on_exit` handlers in reverse
 registration order; a handler that does not return (`_exit`, or killing
 itself) abandons all remaining handlers *and* stdio flushing; "a call to
@@ -215,17 +215,17 @@ execve(2) removes registrations created using atexit(3) and on_exit(3)."
 
 | API | Canonical signature | Layer | Semantics / notes |
 |---|---|---|---|
-| `signal` | `void (*signal(int sig, void (*func)(int)))(int);` | [ISO C] §7.14.1.1 | install `SIG_DFL`/`SIG_IGN`/handler. Post-handler reinstall-vs-block behavior implementation-defined; multi-threaded use is UB per ISO C (§4.7). Returns previous handler or `SIG_ERR` (+ `errno`). |
-| `raise` | `int raise(int sig);` | [ISO C] §7.14.2.1 | send to the executing program/thread; handler runs synchronously, `raise` returns after it; 0 on success. [POSIX]: to the *thread* — effectively `pthread_kill(pthread_self(), sig)`. |
-| `sigaction` | `int sigaction(int sig, const struct sigaction *restrict act, struct sigaction *restrict oact);` | [POSIX] | examine/modify per-signal action; `act == NULL` queries. The preferred interface (§4.2). |
-| `sigprocmask` | `int sigprocmask(int how, const sigset_t *restrict set, sigset_t *restrict oset);` | [POSIX] | change calling thread's mask; "its behavior is unspecified if called from a multi-threaded process" (POSIX `pthread_sigmask`). |
-| `pthread_sigmask` | `int pthread_sigmask(int how, const sigset_t *restrict set, sigset_t *restrict oset);` | [POSIX] | per-thread mask; returns the error number directly (not -1/errno); `how` ∈ {`SIG_BLOCK`, `SIG_SETMASK`, `SIG_UNBLOCK`}. |
-| `sigpending` | `int sigpending(sigset_t *set);` | [POSIX] | pending-and-blocked set for the calling thread. |
-| `sigsuspend` | `int sigsuspend(const sigset_t *sigmask);` | [POSIX] | atomically replace mask and wait for an unblocked signal; always returns -1 with `EINTR` when it returns. The race-free wait primitive (§4.3). |
-| `sigwait` | `int sigwait(const sigset_t *restrict set, int *restrict sig);` | [POSIX] | synchronously consume one pending signal from `set` (which must be blocked); returns error number; never `EINTR`. No handler runs. |
-| `pause` | `int pause(void);` | [POSIX] | suspend until a signal whose action is to run a handler or terminate; returns -1/`EINTR` only after a caught handler returns. |
-| `alarm` | `unsigned alarm(unsigned seconds);` | [POSIX] | schedule `SIGALRM` after *realtime* seconds; 0 cancels a pending alarm; requests are not stacked; returns seconds remaining of a previous request. |
-| `kill` | `int kill(pid_t pid, int sig);` | [POSIX] | pid > 0: that process; 0: caller's process group; -1: all permitted processes; < -1: process group \|pid\|. `sig == 0` is the null signal: permission check only. |
+| [`signal`](https://pubs.opengroup.org/onlinepubs/9799919799/functions/signal.html) | `void (*signal(int sig, void (*func)(int)))(int);` | [ISO C] §7.14.1.1 | install `SIG_DFL`/`SIG_IGN`/handler. Post-handler reinstall-vs-block behavior implementation-defined; multi-threaded use is UB per ISO C (§4.7). Returns previous handler or `SIG_ERR` (+ `errno`). |
+| [`raise`](https://pubs.opengroup.org/onlinepubs/9799919799/functions/raise.html) | `int raise(int sig);` | [ISO C] §7.14.2.1 | send to the executing program/thread; handler runs synchronously, `raise` returns after it; 0 on success. [POSIX]: to the *thread* — effectively `pthread_kill(pthread_self(), sig)`. |
+| [`sigaction`](https://pubs.opengroup.org/onlinepubs/9799919799/functions/sigaction.html) | `int sigaction(int sig, const struct sigaction *restrict act, struct sigaction *restrict oact);` | [POSIX] | examine/modify per-signal action; `act == NULL` queries. The preferred interface (§4.2). |
+| [`sigprocmask`](https://pubs.opengroup.org/onlinepubs/9799919799/functions/sigprocmask.html) | `int sigprocmask(int how, const sigset_t *restrict set, sigset_t *restrict oset);` | [POSIX] | change calling thread's mask; "its behavior is unspecified if called from a multi-threaded process" (POSIX `pthread_sigmask`). |
+| [`pthread_sigmask`](https://pubs.opengroup.org/onlinepubs/9799919799/functions/pthread_sigmask.html) | `int pthread_sigmask(int how, const sigset_t *restrict set, sigset_t *restrict oset);` | [POSIX] | per-thread mask; returns the error number directly (not -1/errno); `how` ∈ {`SIG_BLOCK`, `SIG_SETMASK`, `SIG_UNBLOCK`}. |
+| [`sigpending`](https://pubs.opengroup.org/onlinepubs/9799919799/functions/sigpending.html) | `int sigpending(sigset_t *set);` | [POSIX] | pending-and-blocked set for the calling thread. |
+| [`sigsuspend`](https://pubs.opengroup.org/onlinepubs/9799919799/functions/sigsuspend.html) | `int sigsuspend(const sigset_t *sigmask);` | [POSIX] | atomically replace mask and wait for an unblocked signal; always returns -1 with `EINTR` when it returns. The race-free wait primitive (§4.3). |
+| [`sigwait`](https://pubs.opengroup.org/onlinepubs/9799919799/functions/sigwait.html) | `int sigwait(const sigset_t *restrict set, int *restrict sig);` | [POSIX] | synchronously consume one pending signal from `set` (which must be blocked); returns error number; never `EINTR`. No handler runs. |
+| [`pause`](https://pubs.opengroup.org/onlinepubs/9799919799/functions/pause.html) | `int pause(void);` | [POSIX] | suspend until a signal whose action is to run a handler or terminate; returns -1/`EINTR` only after a caught handler returns. |
+| [`alarm`](https://pubs.opengroup.org/onlinepubs/9799919799/functions/alarm.html) | `unsigned alarm(unsigned seconds);` | [POSIX] | schedule `SIGALRM` after *realtime* seconds; 0 cancels a pending alarm; requests are not stacked; returns seconds remaining of a previous request. |
+| [`kill`](https://pubs.opengroup.org/onlinepubs/9799919799/functions/kill.html) | `int kill(pid_t pid, int sig);` | [POSIX] | pid > 0: that process; 0: caller's process group; -1: all permitted processes; < -1: process group \|pid\|. `sig == 0` is the null signal: permission check only. |
 
 ### 2.3 Environment — `<stdlib.h>`/`<unistd.h>`
 
@@ -316,7 +316,7 @@ streams shall not be flushed."
 
 **[glibc]** `abort(3)` first *unblocks* `SIGABRT`, then raises it; if a
 handler catches it and returns, glibc restores the default disposition and
-re-raises — `abort` cannot return (man7 abort(3)). **[Linux]** the SIGABRT
+re-raises — `abort` cannot return ([man7 abort(3)](https://man7.org/linux/man-pages/man3/abort.3.html)). **[Linux]** the SIGABRT
 death follows the normal core-dump rules (RLIMIT_CORE, `core_pattern`).
 
 ### 3.3 `atexit` / `at_quick_exit` ordering and concurrency
@@ -456,7 +456,7 @@ These are **different representations**:
   kernel's per-syscall restartability list (man7 signal(7),
   sigaction(2)).
 
-### 4.2 `sigaction` — the registration primitive
+### 4.2 [`sigaction`](https://pubs.opengroup.org/onlinepubs/9799919799/functions/sigaction.html) — the registration primitive
 
 ```c
 int sigaction(int sig, const struct sigaction *restrict act,
@@ -527,7 +527,7 @@ objects, call `abort`/`_Exit`/`quick_exit` (and, C23, lock-free
 with `signal(sig, …)`. Everything else — `printf`, `malloc`, `exit`,
 mutexes — is UB by the standard.
 
-**[POSIX]** widens this to an explicit safe list (man7 signal-safety(7)):
+**[POSIX]** widens this to an explicit safe list ([man7 signal-safety(7)](https://man7.org/linux/man-pages/man7/signal-safety.7.html)):
 `write`, `_exit`, `sigaction`, `kill`, `sigsuspend`, `waitpid`, and others
 are async-signal-safe; the man page explains *why* the rest are not — e.g.
 stdio keeps a shared buffer whose internal state a handler corruption
@@ -581,7 +581,7 @@ signals around critical waits, or use `sigwait`-style consumption.
 
 ## 5. Subprocess and Child-Process Management
 
-### 5.1 `fork` — what is copied, what is reset
+### 5.1 [`fork`](https://pubs.opengroup.org/onlinepubs/9799919799/functions/fork.html) — what is copied, what is reset
 
 **[POSIX]** `pid_t fork(void);` / `pid_t _Fork(void);` (Issue 8 added
 `_Fork`: like `fork` but never runs `pthread_atfork` handlers and is
@@ -654,7 +654,7 @@ effective-IDs per setuid/setgid bits and ST_NOSUID; all other attributes
 are inherited — which is why "leak an fd into a child" is the default, not
 the exception (§5.9).
 
-### 5.3 The wait family and status macros
+### 5.3 The [wait](https://pubs.opengroup.org/onlinepubs/9799919799/functions/wait.html) family and status macros ([man-pages wait(2)](https://man7.org/linux/man-pages/man2/wait.2.html))
 
 ```c
 #include <sys/wait.h>
@@ -695,7 +695,7 @@ feature-test rules; `wait4` was never POSIX. They add `rusage` of the
 reaped child. New code uses `waitid` (or Linux `wait4` where rusage
 matters).
 
-### 5.4 `posix_spawn` / `posix_spawnp` — the modern default
+### 5.4 [`posix_spawn`](https://pubs.opengroup.org/onlinepubs/9799919799/functions/posix_spawn.html) / `posix_spawnp` — the modern default
 
 ```c
 #include <spawn.h>
@@ -728,7 +728,7 @@ int posix_spawnp(pid_t *restrict pid, const char *restrict file,
   libraries: `posix_spawn` sidesteps the multithreaded-fork hazards of §6.5
   — prefer it in threaded code.
 
-### 5.5 `system` and `popen` — shell in the loop
+### 5.5 [`system`](https://pubs.opengroup.org/onlinepubs/9799919799/functions/system.html) and [`popen`](https://pubs.opengroup.org/onlinepubs/9799919799/functions/popen.html) — shell in the loop
 
 ```c
 int system(const char *command);                 /* <stdlib.h> */
@@ -1066,49 +1066,118 @@ cite the man pages that document glibc instead.
 
 ## References
 
-1. ISO/IEC 9899:2017 — C17 draft **N2310** (open-std.org,
-   https://www.open-std.org/jtc1/sc22/wg14/www/docs/n2310.pdf; retrieved
-   2026-10-13): §5.1.2.2 (hosted environment, `main`, program termination),
+1. ISO/IEC 9899:2017 — C17 draft **N2310** ([open-std.org,
+   N2310 PDF](https://www.open-std.org/jtc1/sc22/wg14/www/docs/n2310.pdf);
+   retrieved 2026-10-13): §5.1.2.2 (hosted environment, `main`, program termination),
    §5.1.2.4 (execution semantics, data races), §6.2.2 (linkage), §6.2.4
    (storage durations), §7.2.1.1 (`assert`/`NDEBUG`), §7.14.1.1 (`signal`),
    §7.14.2.1 (`raise`), §7.22.4 (termination family, `system`).
-2. ISO/IEC 9899:2024 — C23 working draft **N3220** (open-std.org,
-   https://www.open-std.org/jtc1/sc22/wg14/www/docs/n3220.pdf; retrieved
-   2026-10-13): §5.1.2.3.2/5.1.2.3.4 (startup/termination, C23 numbering),
+2. ISO/IEC 9899:2024 — C23 working draft **N3220** ([open-std.org,
+   N3220 PDF](https://www.open-std.org/jtc1/sc22/wg14/www/docs/n3220.pdf);
+   retrieved 2026-10-13): §5.1.2.3.2/5.1.2.3.4 (startup/termination, C23 numbering),
    §7.14.1.1 (handler rules incl. `constexpr`/`<stdatomic.h>` relaxations),
    §7.24.4.1–7.24.4.8 (`[[noreturn]]` prototypes; renumbered library),
    §7.28 (`<threads.h>`, `__STDC_NO_THREADS__` still applies).
-3. ISO/IEC 9899:TC3 — C99 draft **N1256** (open-std.org,
-   https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1256.pdf; retrieved
-   2026-10-13): §5.1.2.2.3, §7.20.4.3–7.20.4.4 (`exit`, `_Exit` added in
+3. ISO/IEC 9899:TC3 — C99 draft **N1256** ([open-std.org,
+   N1256 PDF](https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1256.pdf);
+   retrieved 2026-10-13): §5.1.2.2.3, §7.20.4.3–7.20.4.4 (`exit`, `_Exit` added in
    C99), signal-handler rules of the era.
-4. POSIX.1-2024 / Issue 8 (pubs.opengroup.org/onlinepubs/9799919799,
-   retrieved 2026-10-13): `exec` (full family synopsis incl. `fexecve`;
-   disposition/mask/`SA_ONSTACK`/`atexit`-drop rules), `fork` (incl.
-   `_Fork`), `_Exit`/`_exit` (`status & 0377`; waitid full value),
-   `wait` (macros incl. `WCOREDUMP` now standardized), `waitid`,
-   `posix_spawn`, `system` (`sh -c --`; SIGINT/SIGQUIT/SIGCHLD
-   discipline), `popen` (`FD_CLOFORK`), `sigaction`, `sigprocmask`,
-   `pthread_sigmask`, `sigpending`, `sigsuspend`, `sigwait`, `pause`,
-   `alarm`, `kill`, `raise`, `getenv`, `setenv`, `putenv`, `unsetenv`,
-   `environ`, `pthread_create`, `pthread_join`, `pthread_detach`,
-   `pthread_exit`, `pthread_cancel`, `pthread_cleanup_push`,
-   `pthread_atfork` (obsolescent per Issue 8 change history), `assert`.
-5. Linux man-pages **6.19** (man7.org, dated 2026-06-05; retrieved
-   2026-10-13): fork(2), vfork(2), execve(2), exec(3) (`execvpe` GNU),
-   wait(2) (macros; POSIX.1-2024 annotations), wait4(2) (`wait3` history),
-   posix_spawn(3) (glibc vfork/clone implementation notes), system(3),
-   popen(3) (mode `'e'`), signal(2) (BSD-vs-SysV glibc semantics),
-   sigaction(2) (flags; `SA_NOCLDWAIT` on Linux), sigprocmask(2),
-   sigpending(2), sigsuspend(2), sigwait(3), pause(2), alarm(2), kill(2),
-   raise(3), signal-safety(7), signal(7), pipe(2), dup(2), close(2),
-   close_range(2), open(2), fcntl(2), setenv(3), getenv(3), putenv(3),
-   unsetenv(3), clearenv(3), environ(7), stdio(3), stdin(3), setbuf(3),
-   exit(3) (`on_exit`, execve-drops-registrations), abort(3), atexit(3),
-   _exit(2) (`exit_group` since glibc 2.3), assert(3), pthreads(7),
-   pthread_create(3), pthread_join(3), pthread_exit(3), pthread_cancel(3),
-   pthread_cleanup_push(3), pthread_atfork(3).
-6. glibc project — sourceware.org/glibc (retrieved 2026-10-13): current
+4. POSIX.1-2024 / Issue 8 ([pubs.opengroup.org/onlinepubs/9799919799](https://pubs.opengroup.org/onlinepubs/9799919799/),
+   retrieved 2026-10-13; per-function pages linked):
+   [`exec`](https://pubs.opengroup.org/onlinepubs/9799919799/functions/exec.html)
+   (full family synopsis incl. `fexecve`; disposition/mask/`SA_ONSTACK`/`atexit`-drop
+   rules), [`fork`](https://pubs.opengroup.org/onlinepubs/9799919799/functions/fork.html)
+   (incl. `_Fork`),
+   [`_Exit`](https://pubs.opengroup.org/onlinepubs/9799919799/functions/_Exit.html)/[`_exit`](https://pubs.opengroup.org/onlinepubs/9799919799/functions/_exit.html)
+   (`status & 0377`; waitid full value),
+   [`wait`](https://pubs.opengroup.org/onlinepubs/9799919799/functions/wait.html)
+   (macros incl. `WCOREDUMP` now standardized),
+   [`waitid`](https://pubs.opengroup.org/onlinepubs/9799919799/functions/waitid.html),
+   [`posix_spawn`](https://pubs.opengroup.org/onlinepubs/9799919799/functions/posix_spawn.html),
+   [`system`](https://pubs.opengroup.org/onlinepubs/9799919799/functions/system.html)
+   (`sh -c --`; SIGINT/SIGQUIT/SIGCHLD discipline),
+   [`popen`](https://pubs.opengroup.org/onlinepubs/9799919799/functions/popen.html)
+   (`FD_CLOFORK`),
+   [`sigaction`](https://pubs.opengroup.org/onlinepubs/9799919799/functions/sigaction.html),
+   [`sigprocmask`](https://pubs.opengroup.org/onlinepubs/9799919799/functions/sigprocmask.html),
+   [`pthread_sigmask`](https://pubs.opengroup.org/onlinepubs/9799919799/functions/pthread_sigmask.html),
+   [`sigpending`](https://pubs.opengroup.org/onlinepubs/9799919799/functions/sigpending.html),
+   [`sigsuspend`](https://pubs.opengroup.org/onlinepubs/9799919799/functions/sigsuspend.html),
+   [`sigwait`](https://pubs.opengroup.org/onlinepubs/9799919799/functions/sigwait.html),
+   [`pause`](https://pubs.opengroup.org/onlinepubs/9799919799/functions/pause.html),
+   [`alarm`](https://pubs.opengroup.org/onlinepubs/9799919799/functions/alarm.html),
+   [`kill`](https://pubs.opengroup.org/onlinepubs/9799919799/functions/kill.html),
+   [`raise`](https://pubs.opengroup.org/onlinepubs/9799919799/functions/raise.html),
+   [`getenv`](https://pubs.opengroup.org/onlinepubs/9799919799/functions/getenv.html),
+   [`setenv`](https://pubs.opengroup.org/onlinepubs/9799919799/functions/setenv.html),
+   [`putenv`](https://pubs.opengroup.org/onlinepubs/9799919799/functions/putenv.html),
+   [`unsetenv`](https://pubs.opengroup.org/onlinepubs/9799919799/functions/unsetenv.html),
+   [`environ`](https://pubs.opengroup.org/onlinepubs/9799919799/functions/environ.html),
+   [`pthread_create`](https://pubs.opengroup.org/onlinepubs/9799919799/functions/pthread_create.html),
+   [`pthread_join`](https://pubs.opengroup.org/onlinepubs/9799919799/functions/pthread_join.html),
+   [`pthread_detach`](https://pubs.opengroup.org/onlinepubs/9799919799/functions/pthread_detach.html),
+   [`pthread_exit`](https://pubs.opengroup.org/onlinepubs/9799919799/functions/pthread_exit.html),
+   [`pthread_cancel`](https://pubs.opengroup.org/onlinepubs/9799919799/functions/pthread_cancel.html),
+   [`pthread_cleanup_push`](https://pubs.opengroup.org/onlinepubs/9799919799/functions/pthread_cleanup_push.html),
+   [`pthread_atfork`](https://pubs.opengroup.org/onlinepubs/9799919799/functions/pthread_atfork.html)
+   (obsolescent per Issue 8 change history),
+   [`assert`](https://pubs.opengroup.org/onlinepubs/9799919799/functions/assert.html).
+5. Linux man-pages **6.19** ([man7.org/linux/man-pages](https://man7.org/linux/man-pages/),
+   dated 2026-06-05; retrieved 2026-10-13; per-page links):
+   [fork(2)](https://man7.org/linux/man-pages/man2/fork.2.html),
+   [vfork(2)](https://man7.org/linux/man-pages/man2/vfork.2.html),
+   [execve(2)](https://man7.org/linux/man-pages/man2/execve.2.html),
+   [exec(3)](https://man7.org/linux/man-pages/man3/exec.3.html) (`execvpe` GNU),
+   [wait(2)](https://man7.org/linux/man-pages/man2/wait.2.html) (macros; POSIX.1-2024 annotations),
+   [wait4(2)](https://man7.org/linux/man-pages/man2/wait4.2.html) (`wait3` history),
+   [posix_spawn(3)](https://man7.org/linux/man-pages/man3/posix_spawn.3.html)
+   (glibc vfork/clone implementation notes),
+   [system(3)](https://man7.org/linux/man-pages/man3/system.3.html),
+   [popen(3)](https://man7.org/linux/man-pages/man3/popen.3.html) (mode `'e'`),
+   [signal(2)](https://man7.org/linux/man-pages/man2/signal.2.html) (BSD-vs-SysV glibc semantics),
+   [sigaction(2)](https://man7.org/linux/man-pages/man2/sigaction.2.html)
+   (flags; `SA_NOCLDWAIT` on Linux),
+   [sigprocmask(2)](https://man7.org/linux/man-pages/man2/sigprocmask.2.html),
+   [sigpending(2)](https://man7.org/linux/man-pages/man2/sigpending.2.html),
+   [sigsuspend(2)](https://man7.org/linux/man-pages/man2/sigsuspend.2.html),
+   [sigwait(3)](https://man7.org/linux/man-pages/man3/sigwait.3.html),
+   [pause(2)](https://man7.org/linux/man-pages/man2/pause.2.html),
+   [alarm(2)](https://man7.org/linux/man-pages/man2/alarm.2.html),
+   [kill(2)](https://man7.org/linux/man-pages/man2/kill.2.html),
+   [raise(3)](https://man7.org/linux/man-pages/man3/raise.3.html),
+   [signal-safety(7)](https://man7.org/linux/man-pages/man7/signal-safety.7.html),
+   [signal(7)](https://man7.org/linux/man-pages/man7/signal.7.html),
+   [pipe(2)](https://man7.org/linux/man-pages/man2/pipe.2.html),
+   [dup(2)](https://man7.org/linux/man-pages/man2/dup.2.html),
+   [close(2)](https://man7.org/linux/man-pages/man2/close.2.html),
+   [close_range(2)](https://man7.org/linux/man-pages/man2/close_range.2.html),
+   [open(2)](https://man7.org/linux/man-pages/man2/open.2.html),
+   [fcntl(2)](https://man7.org/linux/man-pages/man2/fcntl.2.html),
+   [setenv(3)](https://man7.org/linux/man-pages/man3/setenv.3.html),
+   [getenv(3)](https://man7.org/linux/man-pages/man3/getenv.3.html),
+   [putenv(3)](https://man7.org/linux/man-pages/man3/putenv.3.html),
+   [unsetenv(3)](https://man7.org/linux/man-pages/man3/unsetenv.3.html),
+   [clearenv(3)](https://man7.org/linux/man-pages/man3/clearenv.3.html),
+   [environ(7)](https://man7.org/linux/man-pages/man7/environ.7.html),
+   [stdio(3)](https://man7.org/linux/man-pages/man3/stdio.3.html),
+   [stdin(3)](https://man7.org/linux/man-pages/man3/stdin.3.html),
+   [setbuf(3)](https://man7.org/linux/man-pages/man3/setbuf.3.html),
+   [exit(3)](https://man7.org/linux/man-pages/man3/exit.3.html)
+   (`on_exit`, execve-drops-registrations),
+   [abort(3)](https://man7.org/linux/man-pages/man3/abort.3.html),
+   [atexit(3)](https://man7.org/linux/man-pages/man3/atexit.3.html),
+   [_exit(2)](https://man7.org/linux/man-pages/man2/_exit.2.html)
+   (`exit_group` since glibc 2.3),
+   [assert(3)](https://man7.org/linux/man-pages/man3/assert.3.html),
+   [pthreads(7)](https://man7.org/linux/man-pages/man7/pthreads.7.html),
+   [pthread_create(3)](https://man7.org/linux/man-pages/man3/pthread_create.3.html),
+   [pthread_join(3)](https://man7.org/linux/man-pages/man3/pthread_join.3.html),
+   [pthread_exit(3)](https://man7.org/linux/man-pages/man3/pthread_exit.3.html),
+   [pthread_cancel(3)](https://man7.org/linux/man-pages/man3/pthread_cancel.3.html),
+   [pthread_cleanup_push(3)](https://man7.org/linux/man-pages/man3/pthread_cleanup_push.3.html),
+   [pthread_atfork(3)](https://man7.org/linux/man-pages/man3/pthread_atfork.3.html).
+6. glibc project — [sourceware.org/glibc](https://sourceware.org/glibc/)
+   (retrieved 2026-10-13): current
    stable version 2.44 (released 2026-07-25), development 2.45. The GNU C
    Library manual (gnu.org/software/libc/manual) was unreachable from this
    environment at retrieval; no claim in this chapter depends on it.

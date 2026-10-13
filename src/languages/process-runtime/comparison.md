@@ -520,40 +520,94 @@ Per the grounding rule, conflicts are stated rather than resolved:
 Primary-source sets as declared by each chapter (all retrieved 2026-10; the
 per-claim anchors are in the chapters themselves):
 
-- **C** ([c.md](./c.md)): ISO/IEC 9899:2017 draft N2310 + C23 N3220 +
-  C99 N1256 (open-std.org); POSIX.1-2024 / Issue 8
-  (pubs.opengroup.org/onlinepubs/9799919799); Linux man-pages 6.19
-  (man7.org, 2026-06-05); glibc 2.44 version per sourceware.org (glibc
-  manual unreachable — man-pages-anchored instead).
-- **C++** ([cpp.md](./cpp.md)): ISO C++23 DIS N4950 (open-std.org) with
-  C++26 working-draft cross-checks (eel.is/c++draft, generated 2026-08-23);
-  POSIX.1-2024; man-pages 6.19; GCC 14.2.0 libstdc++ headers;
+- **C** ([c.md](./c.md)): ISO/IEC 9899:2017 draft
+  [N2310](https://www.open-std.org/jtc1/sc22/wg14/www/docs/n2310.pdf) + C23
+  [N3220](https://www.open-std.org/jtc1/sc22/wg14/www/docs/n3220.pdf) + C99
+  [N1256](https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1256.pdf)
+  (open-std.org); POSIX.1-2024 / Issue 8
+  ([pubs.opengroup.org/onlinepubs/9799919799](https://pubs.opengroup.org/onlinepubs/9799919799/));
+  Linux man-pages 6.19 ([man7.org/linux/man-pages](https://man7.org/linux/man-pages/),
+  2026-06-05); glibc 2.44 version per [sourceware.org/glibc](https://sourceware.org/glibc/)
+  (glibc manual unreachable — man-pages-anchored instead).
+- **C++** ([cpp.md](./cpp.md)): ISO C++23 DIS
+  [N4950](https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2023/n4950.pdf)
+  (open-std.org) with C++26 working-draft cross-checks
+  ([eel.is/c++draft](https://eel.is/c++draft/), generated 2026-08-23);
+  POSIX.1-2024 ([9799919799](https://pubs.opengroup.org/onlinepubs/9799919799/));
+  man-pages 6.19 ([man7.org](https://man7.org/linux/man-pages/));
+  GCC 14.2.0 libstdc++ headers ([gcc.gnu.org](https://gcc.gnu.org/));
   en.cppreference.com Cloudflare-blocked at retrieval — signatures
   transcribed from N4950.
 - **Python** ([python.md](./python.md)): CPython 3.15.0 documentation
-  (docs.python.org/3: sys, atexit, signal, subprocess, os, threading,
-  multiprocessing, asyncio); CPython source (`pylifecycle.c`,
-  `subprocess.py`, `threading.py`); PEPs 442, 446, 475.
-- **Go** ([go.md](./go.md)): Go 1.27.2 per go.dev/dl JSON feed;
-  pkg.go.dev doc comments (os, os/exec, os/signal, runtime, syscall,
-  log, context) fetched at tag `go1.27.2`; Go release notes (1.14/1.16/
-  1.19/1.20/1.22/1.25); syscall/exec_linux.go for implementation facts.
-- **Java** ([java.md](./java.md)): JDK 25 Javadoc (docs.oracle.com/en/java/
-  javase/25); JLS SE 25; `java` command manual; JEPs 395/409/421/444/491/512;
-  OpenJDK `jdk-25+36` source (ProcessImpl.java, ProcessHandleImpl*.c,
-  sun/misc/Signal.java, Integer.java); man-pages exit(3).
-- **Rust** ([rust.md](./rust.md)): std 1.99.0 docs (doc.rust-lang.org/std:
-  process, panic, thread, os::unix::process); Rust Reference; Cargo Book
-  (panic strategy); std source (`rt.rs`, `sys/pal/unix/mod.rs`) for the
-  101/SIGPIPE numeric anchors.
+  ([docs.python.org/3](https://docs.python.org/3/): [sys](https://docs.python.org/3/library/sys.html),
+  [atexit](https://docs.python.org/3/library/atexit.html),
+  [signal](https://docs.python.org/3/library/signal.html),
+  [subprocess](https://docs.python.org/3/library/subprocess.html),
+  [os](https://docs.python.org/3/library/os.html),
+  [threading](https://docs.python.org/3/library/threading.html),
+  [multiprocessing](https://docs.python.org/3/library/multiprocessing.html),
+  [asyncio](https://docs.python.org/3/library/asyncio.html)); CPython source
+  ([github.com/python/cpython](https://github.com/python/cpython):
+  `pylifecycle.c`, `subprocess.py`, `threading.py`); PEPs
+  [442](https://peps.python.org/pep-0442/),
+  [446](https://peps.python.org/pep-0446/),
+  [475](https://peps.python.org/pep-0475/).
+- **Go** ([go.md](./go.md)): Go 1.27.2 per the [go.dev/dl JSON
+  feed](https://go.dev/dl/?mode=json); [pkg.go.dev](https://pkg.go.dev/)
+  doc comments ([os](https://pkg.go.dev/os),
+  [os/exec](https://pkg.go.dev/os/exec),
+  [os/signal](https://pkg.go.dev/os/signal),
+  [runtime](https://pkg.go.dev/runtime),
+  [syscall](https://pkg.go.dev/syscall),
+  [log](https://pkg.go.dev/log),
+  [context](https://pkg.go.dev/context)) fetched at tag `go1.27.2`; Go
+  [release notes](https://go.dev/doc/devel/release) (1.14/1.16/1.19/1.20/
+  1.22/1.25); `syscall/exec_linux.go` for implementation facts
+  ([go source](https://github.com/golang/go/tree/master/src/syscall)).
+- **Java** ([java.md](./java.md)): JDK 25 Javadoc
+  ([docs.oracle.com/en/java/javase/25](https://docs.oracle.com/en/java/javase/25/));
+  [JLS SE 25](https://docs.oracle.com/javase/specs/jls/se25/html/index.html);
+  [`java` command manual](https://docs.oracle.com/en/java/javase/25/docs/specs/man/java.html);
+  JEPs [395](https://openjdk.org/jeps/395), [409](https://openjdk.org/jeps/409),
+  [421](https://openjdk.org/jeps/421), [444](https://openjdk.org/jeps/444),
+  [491](https://openjdk.org/jeps/491), [512](https://openjdk.org/jeps/512);
+  OpenJDK `jdk-25+36` source
+  ([github.com/openjdk/jdk](https://github.com/openjdk/jdk):
+  ProcessImpl.java, ProcessHandleImpl*.c, sun/misc/Signal.java,
+  Integer.java); man-pages [exit(3)](https://man7.org/linux/man-pages/man3/exit.3.html).
+- **Rust** ([rust.md](./rust.md)): std 1.99.0 docs
+  ([doc.rust-lang.org/std](https://doc.rust-lang.org/std/):
+  [process](https://doc.rust-lang.org/std/process/index.html),
+  [panic](https://doc.rust-lang.org/std/panic/index.html),
+  [thread](https://doc.rust-lang.org/std/thread/index.html),
+  [os::unix::process](https://doc.rust-lang.org/std/os/unix/process/index.html));
+  Rust [Reference](https://doc.rust-lang.org/reference/); Cargo Book
+  ([panic strategy](https://doc.rust-lang.org/cargo/reference/profiles.html));
+  std source ([rt.rs](https://github.com/rust-lang/rust/blob/master/library/std/src/rt.rs),
+  [sys/pal/unix/mod.rs](https://github.com/rust-lang/rust/blob/master/library/std/src/sys/pal/unix/mod.rs))
+  for the 101/SIGPIPE numeric anchors.
 - **Node.js** ([nodejs.md](./nodejs.md)): nodejs.org/docs/latest-v24.x/api
-  (process, child_process, worker_threads, cluster, events, os, util, cli,
-  modules/esm); event-loop guide (nodejs.org/learn); libuv 1.52.1 docs
-  (threadpool); nodejs.org/dist/index.json for the version declaration.
+  ([process](https://nodejs.org/docs/latest-v24.x/api/process.html),
+  [child_process](https://nodejs.org/docs/latest-v24.x/api/child_process.html),
+  [worker_threads](https://nodejs.org/docs/latest-v24.x/api/worker_threads.html),
+  [cluster](https://nodejs.org/docs/latest-v24.x/api/cluster.html),
+  [events](https://nodejs.org/docs/latest-v24.x/api/events.html),
+  [os](https://nodejs.org/docs/latest-v24.x/api/os.html),
+  [util](https://nodejs.org/docs/latest-v24.x/api/util.html),
+  [cli](https://nodejs.org/docs/latest-v24.x/api/cli.html),
+  [modules/esm](https://nodejs.org/docs/latest-v24.x/api/esm.html));
+  event-loop guide (nodejs.org/learn); libuv 1.52.1 docs
+  ([docs.libuv.org](https://docs.libuv.org/) — threadpool);
+  [nodejs.org/dist/index.json](https://nodejs.org/dist/index.json) for the
+  version declaration.
 - **OCaml** ([ocaml.md](./ocaml.md)): OCaml 5.5.1 source tree
-  (github.com/ocaml/ocaml tag `5.5.1`: stdlib/*.mli, otherlibs/unix/unix.mli,
-  otherlibs/systhreads/thread.mli, runtime/*.c); ocaml.org/manual/5.5
-  (language manual + intfc.html + runtime.html); ocaml.org/releases/latest.
+  ([github.com/ocaml/ocaml](https://github.com/ocaml/ocaml/tree/5.5.1) tag
+  `5.5.1`: stdlib/*.mli, otherlibs/unix/unix.mli,
+  otherlibs/systhreads/thread.mli, runtime/*.c);
+  [ocaml.org/manual/5.5](https://ocaml.org/manual/5.5/) (language manual +
+  [intfc.html](https://ocaml.org/manual/5.5/intfc.html) +
+  [runtime.html](https://ocaml.org/manual/5.5/runtime.html));
+  [ocaml.org/releases/latest](https://ocaml.org/releases/latest).
 - **Exit/signal part sources leaned on**: the Linux part's per-language
   chapters (`../../linux/process-exit-signal/languages/{c,cpp,python,go,java,
   rust,nodejs,ocaml}.md`) — cited by the language chapters above as their
