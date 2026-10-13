@@ -2,6 +2,17 @@
 
 > Work log for 2026-08-02 to 2026-09-02. All counts are from the working tree after each change.
 
+## Linux userland binaries round — 2026-10-09
+
+280 new pages under `src/linux/binaries/` (one page per binary across 16
+collections, hubs included), wired as the new top-level SUMMARY part
+"Linux Userland Binaries". Page counts: 3,105 → 3,385 content pages.
+Words ~7.09M → ~7.73M. Unique external URLs 12,035 → 12,370. Mermaid
+diagrams unchanged at 5,527 (new pages favor house-style ASCII diagrams);
+all pass the real mermaid@11 parser. Validation: 0 broken links, 0
+duplicate SUMMARY destinations, MathJax clean. Reference URLs verified
+live the day of writing (285 per-binary manpages + source browsers).
+
 ## Research branch — 2026-08-02 to 2026-09-02
 
 The `research` branch (75 commits ahead of `main`) landed 660 new markdown files (~174K lines) and 66 batch-style deep-dive pages. All counts below are from the `research` tree @ `9c249de`.
@@ -79,4 +90,25 @@ The `research` branch (75 commits ahead of `main`) landed 660 new markdown files
 | Rejected rather than guessed | ~35 bad YouTube handles (wrong identity or 404), 4 dead hosts, 2 playlist IDs that resolved to "undefined"; 3 bot-blocked sites kept and flagged. |
 | CSVs | `data/*.csv` extended to one row per resource — entries, education, video, conference — including education rows for the four indexes that were entry-only. |
 | Documentation | `references/README.md` (Video + Conference columns, recomputed URL counts, corrected totals), root `README.md` (What's Inside, repository structure, stats), `meta/status.md`, `meta/progress.md`, `meta/coverage_dashboard.md`, `meta/knowledge_graph.md`. |
+
+
+
+## Linux Interface Encyclopedia - per-function rebuild - 2026-10-12
+
+| Part | Result |
+|---|---|
+| Structure | One page per syscall/function/class (no per-domain mega-chapters); man-page families share pages per the source-derived `.so` alias map |
+| Ledgers | syscalls 535, glibc 1881+3470+1953 rows, musl 1482, sysfs 120, crossref 38 - regenerated from sources, statuses restored from surviving reports |
+| Documentation | 194 syscall pages, 122 glibc pages, 6 musl pages, 42 sysfs class pages, 3 crossref maps (367 content pages) |
+| Honest gaps | 101 syscall rows source-limited (named), 10 not-started, 12 crossref rows source-limited, glibc 1377 documented-API rows still `researched` |
+
+## Linux Interface Encyclopedia - wave 7 (push to research) - 2026-10-13
+
+| Part | Result |
+|---|---|
+| Syscalls | 10 not-started rows closed (rlimit family, getrusage, execv, personality, chown32 trio): 388 documented / 46 researched / 101 source-limited of 535; 0 not-started |
+| glibc | 157 per-function pages across 6 new dirs (math, threads, termios, users, vm, misc) plus fs/stdio/strings/net additions; ledger 1047 documented / 10 source-limited / 0 researched of the 1881 documented-API rows |
+| sysfs | all 77 remaining `researched` classes -> per-class pages (65 documented, 13 honest source-limited stubs): 106 documented / 14 source-limited of 120 |
+| crossref | 11 of 12 `source-limited` rows upgraded with fetched upstream docs (NetworkManager, thermald, UPower, libinput, libdrm, rdma-core, ndctl, procps, dmidecode) plus local NSS/kernel sources; XR-112 stays source-limited (msr-tools docs unreachable) |
+| Validation | every new page ASCII-only, balanced fences, relative links resolve; statuses/notes flipped in all four ledgers; SUMMARY wired (282 glibc entries, 119 class entries) |
 

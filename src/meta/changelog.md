@@ -3,6 +3,54 @@
 This file records meaningful content and validation changes to the placement
 preparation book. Dates use the project timezone, Asia/Calcutta.
 
+## 2026-10-09 — Linux Userland Binaries: a 280-page per-binary collection set
+
+The book gained a new top-level part, **Linux Userland Binaries**
+(`src/linux/binaries/`), covering the core Linux command-line packages one
+binary per page — 280 new pages organized as 16 collections that follow the
+upstream packaging (and the collection names uutils uses): GNU Coreutils
+(104 binaries + hub), util-linux (96 + hub), shadow (24), login (8),
+procps (18), findutils, diffutils, grep, sed, gawk, tar, ACL tools,
+hostname, bsdutils, BusyBox (one deep page with a ~50-applet matrix), and a
+uutils landscape page.
+
+Every binary page follows one house template: Overview facts table
+(package, man section, path, lineage, standards), man-style Synopsis, an
+in-depth How It Works, the options that matter as tables, realistic usage
+patterns, nuances and gotchas, exit status, cross-linked related commands,
+interview Q&As, and references. Flagships (ls, cp, mv, rm, chmod, chown,
+dd, sort, stat, du, df, ps, top, pgrep, fdisk, mount, diff, tar, setfacl,
+useradd, usermod) run 320-420 lines; the collection hubs add package-level
+context — Debian's package splits (mount/fdisk/uuid-runtime/eject/
+bsdextrautils/util-linux-extra/ncal), the four-file account model, the
+/proc mapping table, and the uutils maturity landscape — instead of
+repeating usage coverage.
+
+**Dedup discipline.** find, xargs, grep, sed, and awk already had deep
+dedicated pages in the shell track; they remain canonical — the collection
+hubs link into them rather than duplicate, and no SUMMARY entry appears
+twice. Near-identical siblings (sha*sum family, dir/vdir, mount/umount,
+pgrep/pkill) each keep their own page and cross-link the shared concepts.
+
+**Reference verification.** All 280 pages cite only URLs verified live the
+same day: 285 per-binary man pages on manpages.debian.org (bookworm, with
+trixie/alternative-package fallbacks after Debian's util-linux split was
+mapped — fdisk(8)/cfdisk(8)/sfdisk(8) live in `fdisk`, mount/umount/
+losetup/swapon/swapoff in `mount`, uuidgen/uuidparse in `uuid-runtime`,
+cal in `ncal`, col/hexdump/look/ul/write in `bsdextrautils`),
+sources.debian.org source browsers, GitHub mirrors (coreutils, util-linux,
+shadow, uutils), the BusyBox manual, and the POSIX 2018 specification.
+gnu.org was unreachable from the work environment, so unverified GNU pages
+were not cited (the already-verified tar manual from the reference CSVs
+excepted). Two upstream casualties are documented rather than invented:
+`raw(8)` (removed in util-linux 2.37) and `pg(1)` (left Debian packaging).
+
+**Validation.** SUMMARY wiring: 3,385 pages reachable, 0 duplicates, 0
+broken links/anchors across the whole book, MathJax clean. All 5,527
+Mermaid diagrams pass the real mermaid@11 parser (the new pages favor
+house-style ASCII diagrams). README stats recomputed: 3,385 pages,
+~7.73M words, 12,370 unique external URLs.
+
 ## 2026-10-09 — Reference libraries: a new DSA index, then video and conference tracks on all fourteen
 
 Two pieces of work on `src/references/`. First, a **fourteenth index**,
@@ -925,3 +973,39 @@ Five focused commits pushed to `origin/dev`:
 
 Every commit was preceded by a clean `mdbook build`; no warnings
 introduced. `token.txt` is in `.gitignore` and was never staged.
+
+
+## 2026-10-12 - Linux Interface Encyclopedia rebuilt as per-function pages
+
+Six waves re-authored the encyclopedia with **one page per function** (the
+previous per-domain chapter layout is gone). Resumed after a workspace loss:
+the four coverage ledgers were regenerated from primary sources via the
+surviving generator scripts, and all 2 095 per-entry status rows were restored
+from the surviving `status/` reports; two of seventeen lost chapter texts were
+recovered from persisted tool outputs and split into per-function pages.
+
+| Part | Pages | Ledger state |
+|---|---|---|
+| syscalls (7 domains, per-function pages + auto hubs) | 194 + 7 hubs | 378 documented / 46 researched / 101 source-limited / 10 not-started of 535 |
+| glibc functions (stdio/process/strings/net/fs) | 122 | 504 documented of 1 881 documented-API rows |
+| musl family pages + catalog | 6 | 110-family inventory (1 482 funcs) |
+| sysfs classes (one page per documented class) | 42 | 42 documented / 77 researched / 1 source-limited of 120 |
+| cross-layer maps | 3 | 38 rows (26 documented / 12 source-limited) |
+
+Shared grouping authority `page_groups.py` (roff `.so` alias map + family
+groups) keeps ledger rows, hub tables and file layout consistent. Every page:
+ASCII-only, balanced fences, relative links verified, numbers cross-checked
+against kernel syscall tables / installed headers / `nm` on host glibc 2.41.
+Source-limited rows name their missing sources; no completeness claim beyond
+ledger statuses.
+
+## Linux Interface Encyclopedia - wave 7 (push to research) - 2026-10-13
+
+| Part | Result |
+|---|---|
+| Syscalls | 10 not-started rows closed (rlimit family, getrusage, execv, personality, chown32 trio): 388 documented / 46 researched / 101 source-limited of 535; 0 not-started |
+| glibc | 157 per-function pages across 6 new dirs (math, threads, termios, users, vm, misc) plus fs/stdio/strings/net additions; ledger 1047 documented / 10 source-limited / 0 researched of the 1881 documented-API rows |
+| sysfs | all 77 remaining `researched` classes -> per-class pages (65 documented, 13 honest source-limited stubs): 106 documented / 14 source-limited of 120 |
+| crossref | 11 of 12 `source-limited` rows upgraded with fetched upstream docs (NetworkManager, thermald, UPower, libinput, libdrm, rdma-core, ndctl, procps, dmidecode) plus local NSS/kernel sources; XR-112 stays source-limited (msr-tools docs unreachable) |
+| Validation | every new page ASCII-only, balanced fences, relative links resolve; statuses/notes flipped in all four ledgers; SUMMARY wired (282 glibc entries, 119 class entries) |
+
