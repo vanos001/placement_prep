@@ -680,3 +680,5 @@ graph LR
 - [File I/O](./file-io.md) — File descriptor inheritance across fork/exec
 - [IPC](./ipc.md) — Communication between processes
 - [ELF Format](./elf.md) — What `execve()` actually loads
+- [Exit-Status Lifecycle](../process-exit-signal/exit-status/index.md) — the wait-status bit layout, `W*` macros, and exit-code conventions behind `waitpid()`
+- [Process Exit Codes, Signals, and Lifecycle](../process-exit-signal/index.md) — the full source-backed reference part covering termination, signals, shells, supervisors, containers, and language runtimes

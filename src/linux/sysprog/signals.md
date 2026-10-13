@@ -752,3 +752,4 @@ int main(void)
 - [Process Control](./process-control.md) — `SIGCHLD`, fork/exec signal semantics
 - [Threads](./threads.md) — Signal handling in multithreaded programs
 - [epoll](./epoll.md) — Self-pipe trick for signal + I/O integration
+- [Process Exit Codes, Signals, and Lifecycle](../process-exit-signal/index.md) — deep, source-backed part: per-signal architecture numbering, every signal interface, exit-status encoding, shells/service managers/containers, and eight language runtimes

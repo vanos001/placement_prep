@@ -239,6 +239,55 @@
 
 ---
 
+## Process Exit Codes, Signals, and Lifecycle
+
+- [Process Exit Codes, Signals, and Process Lifecycle](./linux/process-exit-signal/index.md)
+- [Signals — Deep Reference](./linux/process-exit-signal/signals/index.md)
+  - [Standard Signals](./linux/process-exit-signal/signals/standard-signals.md)
+  - [Real-Time Signals](./linux/process-exit-signal/signals/real-time-signals.md)
+- [Signal Interfaces](./linux/process-exit-signal/interfaces/index.md)
+  - [kill and raise](./linux/process-exit-signal/interfaces/kill-raise.md)
+  - [sigaction and signal](./linux/process-exit-signal/interfaces/sigaction-signal.md)
+  - [Signal Masks — sigprocmask, pthread_sigmask, sigpending](./linux/process-exit-signal/interfaces/signal-masks.md)
+  - [sigwait, sigwaitinfo, sigtimedwait, sigsuspend](./linux/process-exit-signal/interfaces/sigwait-sigsuspend.md)
+  - [signalfd and pidfd_send_signal](./linux/process-exit-signal/interfaces/signalfd-pidfd.md)
+  - [tgkill and tkill](./linux/process-exit-signal/interfaces/tgkill.md)
+  - [The rt_sig* Kernel Syscalls](./linux/process-exit-signal/interfaces/rt-sig-syscalls.md)
+  - [Async-Signal-Safety](./linux/process-exit-signal/interfaces/async-signal-safety.md)
+- [Exit-Status Lifecycle](./linux/process-exit-signal/exit-status/index.md)
+  - [The Termination Lifecycle — exit, \_exit, wait, and Status Encoding](./linux/process-exit-signal/exit-status/lifecycle.md)
+  - [Exit-Status Conventions and Evidence](./linux/process-exit-signal/exit-status/conventions.md)
+- [Shell Behavior — Bash, Dash, Zsh](./linux/process-exit-signal/shells/index.md)
+  - [Bash](./linux/process-exit-signal/shells/bash.md)
+  - [Dash](./linux/process-exit-signal/shells/dash.md)
+  - [Zsh](./linux/process-exit-signal/shells/zsh.md)
+- [Service Managers and Supervisors](./linux/process-exit-signal/service-managers/index.md)
+  - [systemd](./linux/process-exit-signal/service-managers/systemd.md)
+  - [OpenRC](./linux/process-exit-signal/service-managers/openrc.md)
+  - [runit](./linux/process-exit-signal/service-managers/runit.md)
+  - [s6](./linux/process-exit-signal/service-managers/s6.md)
+- [Containers and Orchestration](./linux/process-exit-signal/containers/index.md)
+  - [PID 1, Entrypoints, and Signal Delivery](./linux/process-exit-signal/containers/pid1-signals.md)
+  - [Docker](./linux/process-exit-signal/containers/docker.md)
+  - [Kubernetes](./linux/process-exit-signal/containers/kubernetes.md)
+  - [Container Troubleshooting Scenarios](./linux/process-exit-signal/containers/troubleshooting-scenarios.md)
+- [Language Chapters](./linux/process-exit-signal/languages/comparison.md)
+  - [C](./linux/process-exit-signal/languages/c.md)
+  - [C++](./linux/process-exit-signal/languages/cpp.md)
+  - [Python](./linux/process-exit-signal/languages/python.md)
+  - [Go](./linux/process-exit-signal/languages/go.md)
+  - [Java](./linux/process-exit-signal/languages/java.md)
+  - [Rust](./linux/process-exit-signal/languages/rust.md)
+  - [Node.js](./linux/process-exit-signal/languages/nodejs.md)
+  - [OCaml](./linux/process-exit-signal/languages/ocaml.md)
+  - [Cross-Language Comparison](./linux/process-exit-signal/languages/comparison.md)
+- [Operational Troubleshooting](./linux/process-exit-signal/troubleshooting/index.md)
+  - [Common Status Values](./linux/process-exit-signal/troubleshooting/common-status-values.md)
+  - [Status-to-Cause Decision Tree](./linux/process-exit-signal/troubleshooting/decision-tree.md)
+- [Coverage Ledger — Process Exit & Signals](./linux/process-exit-signal-coverage.md)
+
+---
+
 ## Debugging
 
 - [Bcc Tools](./linux/debugging/bcc-tools.md)
@@ -3539,6 +3588,19 @@
 - [Erlang/OTP — The BEAM VM, Actor Model, and Behaviors](./languages/erlang/erlang-otp.md)
 - [Kotlin Coroutines — Structured Concurrency](./languages/kotlin/coroutines.md)
 - [Swift Concurrency — async/await, Actors, and Structured Concurrency](./languages/swift/concurrency.md)
+
+## Process & Runtime Semantics by Language
+
+- [Part Overview — Scope, Version Matrix, Coverage Rollup](./languages/process-runtime/index.md)
+- [C](./languages/process-runtime/c.md) · [Ledger](./languages/process-runtime/ledger-c.md)
+- [C++](./languages/process-runtime/cpp.md) · [Ledger](./languages/process-runtime/ledger-cpp.md)
+- [Python](./languages/process-runtime/python.md) · [Ledger](./languages/process-runtime/ledger-python.md)
+- [Go](./languages/process-runtime/go.md) · [Ledger](./languages/process-runtime/ledger-go.md)
+- [Java](./languages/process-runtime/java.md) · [Ledger](./languages/process-runtime/ledger-java.md)
+- [Rust](./languages/process-runtime/rust.md) · [Ledger](./languages/process-runtime/ledger-rust.md)
+- [Node.js](./languages/process-runtime/nodejs.md) · [Ledger](./languages/process-runtime/ledger-nodejs.md)
+- [OCaml](./languages/process-runtime/ocaml.md) · [Ledger](./languages/process-runtime/ledger-ocaml.md)
+- [Cross-Language Comparison](./languages/process-runtime/comparison.md)
 
 ---
 
