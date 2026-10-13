@@ -48,7 +48,7 @@ Privilege rules (man NOTES): an unprivileged caller may change only processes wh
 ## Security and notes
 
 - Threads of one process do not share an I/O context by default (clone(2) CLONE_IO shares it), so setting per-process priority may require iterating TIDs from gettid(2).
-- Scheduler selection is per device via /sys/block/<device>/queue/scheduler; see the sysfs ledger for the block class attributes.
+- Scheduler selection is per device via /sys/block/`<device>`/queue/scheduler; see the sysfs ledger for the block class attributes.
 
 ## References
 

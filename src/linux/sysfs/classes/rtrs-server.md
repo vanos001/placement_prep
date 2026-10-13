@@ -23,7 +23,7 @@ side directory appears as a result.
 
 The paths/ tree is created lazily: "When new path is created by writing to
 'add_path' entry on client side, a directory entry named as <source
-address>@<destination address> is created on server." hca_name and hca_port
+address>@`<destination address>` is created on server." hca_name and hca_port
 again tie paths to RDMA hardware ([infiniband](./infiniband.md)); the block
 consumer on this side is [rnbd-server](./rnbd-server.md).
 
@@ -31,7 +31,7 @@ consumer on this side is [rnbd-server](./rnbd-server.md).
 
 | Attribute | R/W | Unit/format | Conditional? | Source |
 |---|---|---|---|---|
-| <session-name>/paths/ | RO | one <src@dst> directory per path the client added | per session | ABI testing sysfs-class-rtrs-server, 5.7 |
+| `<session-name>`/paths/ | RO | one <src@dst> directory per path the client added | per session | ABI testing sysfs-class-rtrs-server, 5.7 |
 | paths/<src@dst>/disconnect | WO | write "1" to disconnect the RTRS session; non-blocking, returns immediately | per path | ABI, 5.7 |
 | paths/<src@dst>/hca_name | RO | name of the HCA the connection established on | per path | ABI, 5.7 |
 | paths/<src@dst>/hca_port | RO | port number of the active port | per path | ABI, 5.7 |

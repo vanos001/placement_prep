@@ -15,7 +15,7 @@ One directory per IOMMU hardware unit in the system. The class exists so
 that userspace can associate a given IOMMU with the devices it translates
 and read the IOMMU's identity and capability registers. The generic ABI
 states the pairing rule: drivers "are able to link devices managed by a
-given IOMMU" under /sys/class/iommu/<iommu>/devices/, and conversely "link
+given IOMMU" under /sys/class/iommu/`<iommu>`/devices/, and conversely "link
 the IOMMU for a given device" at /sys/devices/.../iommu. Driver-specific
 files then hang below the per-IOMMU directory (amd-iommu/, intel-iommu/).
 
@@ -33,13 +33,13 @@ DMAR DRHD table entry." IOMMU groups, a separate concept with its own ABI
 
 | Attribute | R/W | Unit/format | Conditional? | Source |
 |---|---|---|---|---|
-| <iommu>/devices/ | RO | links to devices managed by this IOMMU | if driver populates it | ABI testing sysfs-class-iommu, 3.17 |
-| <iommu>/amd-iommu/cap | RO | capability header per AMD IOMMU spec, %x | AMD IOMMUs | ABI testing sysfs-class-iommu-amd-iommu, 3.17 |
-| <iommu>/amd-iommu/features | RO | extended features, %llx | AMD IOMMUs | ABI testing sysfs-class-iommu-amd-iommu, 3.17 |
-| <iommu>/intel-iommu/address | RO | physical address of the VT-d DRHD unit, %llx | Intel IOMMUs | ABI testing sysfs-class-iommu-intel-iommu, 3.17 |
-| <iommu>/intel-iommu/cap | RO | cached hardware capability register of this DRHD unit, %llx | Intel IOMMUs | ABI testing sysfs-class-iommu-intel-iommu, 3.17 |
-| <iommu>/intel-iommu/ecap | RO | cached hardware extended capability register, %llx | Intel IOMMUs | ABI testing sysfs-class-iommu-intel-iommu, 3.17 |
-| <iommu>/intel-iommu/version | RO | architecture version from VT-d VER_REG, %d:%d major:minor | Intel IOMMUs | ABI testing sysfs-class-iommu-intel-iommu, 3.17 |
+| `<iommu>`/devices/ | RO | links to devices managed by this IOMMU | if driver populates it | ABI testing sysfs-class-iommu, 3.17 |
+| `<iommu>`/amd-iommu/cap | RO | capability header per AMD IOMMU spec, %x | AMD IOMMUs | ABI testing sysfs-class-iommu-amd-iommu, 3.17 |
+| `<iommu>`/amd-iommu/features | RO | extended features, %llx | AMD IOMMUs | ABI testing sysfs-class-iommu-amd-iommu, 3.17 |
+| `<iommu>`/intel-iommu/address | RO | physical address of the VT-d DRHD unit, %llx | Intel IOMMUs | ABI testing sysfs-class-iommu-intel-iommu, 3.17 |
+| `<iommu>`/intel-iommu/cap | RO | cached hardware capability register of this DRHD unit, %llx | Intel IOMMUs | ABI testing sysfs-class-iommu-intel-iommu, 3.17 |
+| `<iommu>`/intel-iommu/ecap | RO | cached hardware extended capability register, %llx | Intel IOMMUs | ABI testing sysfs-class-iommu-intel-iommu, 3.17 |
+| `<iommu>`/intel-iommu/version | RO | architecture version from VT-d VER_REG, %d:%d major:minor | Intel IOMMUs | ABI testing sysfs-class-iommu-intel-iommu, 3.17 |
 
 The mirror-side link /sys/devices/.../iommu (device to IOMMU) is documented
 in the same generic ABI file.

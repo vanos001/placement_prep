@@ -22,7 +22,7 @@ one subdirectory per firmware client, keyed by client id.
 ## Relationship to the device model
 
 The ABI describes a flat class view: isseiN directories created "for each
-probed issei device", and fw_clients/<M> created "for each firmware client
+probed issei device", and fw_clients/`<M>` created "for each firmware client
 on the probed issei device where M is the id of firmware client". The
 client id is "its number in client enumeration order, starting from 1".
 Everything else (bus attachment, parent device, char device) is not stated
@@ -38,10 +38,10 @@ All nine entries are read-only; the ABI marks none writable.
 |---|---|---|---|---|
 | fw_ver | RO | ISSE firmware version `<major>.<minor>.<milestone>.<build_no>` | always | ABI testing sysfs-class-issei, 7.2 |
 | fw_clients/ | RO | directory holding all firmware clients on the device | always | ABI, 7.2 |
-| fw_clients/<M>/id | RO | client id, enumeration order starting from 1 | per client | ABI, 7.2 |
-| fw_clients/<M>/uuid | RO | universally unique identifier of the firmware client | per client | ABI, 7.2 |
-| fw_clients/<M>/mtu | RO | maximum transmission unit of the client, in bytes | per client | ABI, 7.2 |
-| fw_clients/<M>/ver | RO | version of the firmware client | per client | ABI, 7.2 |
+| fw_clients/`<M>`/id | RO | client id, enumeration order starting from 1 | per client | ABI, 7.2 |
+| fw_clients/`<M>`/uuid | RO | universally unique identifier of the firmware client | per client | ABI, 7.2 |
+| fw_clients/`<M>`/mtu | RO | maximum transmission unit of the client, in bytes | per client | ABI, 7.2 |
+| fw_clients/`<M>`/ver | RO | version of the firmware client | per client | ABI, 7.2 |
 
 ## Safety and writes
 

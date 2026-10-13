@@ -35,11 +35,11 @@ will be removed." Client side of the same sessions:
 |---|---|---|---|---|
 | ctl/ | RO | container: per-device directories under ctl/devices/ appear when a client maps a device | always | ABI testing sysfs-class-rnbd-server, 5.7 |
 | ctl/devices/<device_name>/block_dev | RO | symlink to the sysfs entry of the exported block device | per exported device | ABI, 5.7 |
-| ctl/devices/<device_name>/sessions/ | RO | one <session-name> directory per client the device is exported to | per session | ABI, 5.7 |
-| .../sessions/<session-name>/read_only | RO | '1' if mapped read-only, otherwise '0' | per session | ABI, 5.7 |
-| .../sessions/<session-name>/mapping_path | RO | relative device path provided by the user during mapping | per session | ABI, 5.7 |
-| .../sessions/<session-name>/access_mode | RO | device access mode: ro, rw or migration | per session | ABI, 5.7 |
-| .../sessions/<session-name>/force_close | WO | write "1" to close the device on the server side; client keeps a dead device whose I/O gets -ENOTCONN | per session | ABI, 5.10 |
+| ctl/devices/<device_name>/sessions/ | RO | one `<session-name>` directory per client the device is exported to | per session | ABI, 5.7 |
+| .../sessions/`<session-name>`/read_only | RO | '1' if mapped read-only, otherwise '0' | per session | ABI, 5.7 |
+| .../sessions/`<session-name>`/mapping_path | RO | relative device path provided by the user during mapping | per session | ABI, 5.7 |
+| .../sessions/`<session-name>`/access_mode | RO | device access mode: ro, rw or migration | per session | ABI, 5.7 |
+| .../sessions/`<session-name>`/force_close | WO | write "1" to close the device on the server side; client keeps a dead device whose I/O gets -ENOTCONN | per session | ABI, 5.10 |
 
 ## Safety and writes
 

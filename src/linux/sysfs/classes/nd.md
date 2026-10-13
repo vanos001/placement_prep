@@ -49,7 +49,7 @@ file, not here.
 Nothing under /sys/class/nd is writable: the ndctl device is the functional
 interface, and its ioctls issue ARS (address range scrub), error-clear and
 config commands against the platform's NVDIMM hardware, so any privilege
-discussion belongs to /dev/ndctl<n> and the ndctl(1) tooling, not to sysfs.
+discussion belongs to /dev/ndctl`<n>` and the ndctl(1) tooling, not to sysfs.
 Removing the region or namespace devices (echoing into their own tree, e.g.
 under /sys/bus/nd or the pmem block device) is how namespaces get torn down;
 doing so through the wrong node is a common confusion that this page cannot

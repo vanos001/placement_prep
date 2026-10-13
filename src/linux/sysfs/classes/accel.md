@@ -4,7 +4,7 @@
 |---|---|
 | Subsystem | compute accelerator class; no Documentation directory for the class itself is cached (no Documentation/accel, no DRM_ACCEL mention in the cached tree); implementation file not in cached tree |
 | Config gate | not verifiable from cached tree (no drivers/Kconfig cached) |
-| ABI documentation | none for the class itself; driver-level attributes under /sys/class/accel/accel<n>/device/ are documented in `Documentation/ABI/testing/sysfs-driver-habanalabs` |
+| ABI documentation | none for the class itself; driver-level attributes under /sys/class/accel/accel`<n>`/device/ are documented in `Documentation/ABI/testing/sysfs-driver-habanalabs` |
 | Since | not stated in cached sources for the class; habanalabs device entries carry KernelVersion 5.1 through 5.18 |
 | Live (5.10.134 host) | class absent: /sys/class/accel does not exist in this container |
 | Ledger ID | SYSC-accel |
@@ -15,7 +15,7 @@ The accel device class for compute accelerators (AI/ML style cards), as
 opposed to the graphics-oriented [drm](./drm.md) class. What the cached
 sources establish is narrow: the class name appears as the path prefix of
 the habanalabs driver's sysfs attributes, and sysfs-attrs.json lists 34
-attribute paths of the form /sys/class/accel/accel<n>/device/<attr>, all
+attribute paths of the form /sys/class/accel/accel`<n>`/device/`<attr>`, all
 matching the cached habanalabs ABI file. The class-level story (which
 subsystem creates /sys/class/accel, when it appeared, under which Kconfig
 symbol) is not documented anywhere in the cached tree, so this page is
@@ -24,7 +24,7 @@ source-limited and reports only what is citable.
 ## Relationship to the device model
 
 Per the habanalabs ABI, the device directory sits one level below the class
-device: /sys/class/accel/accel<n>/device/<attr>. The habanalabs entries
+device: /sys/class/accel/accel`<n>`/device/`<attr>`. The habanalabs entries
 group identity (device_type, module_id, pci_addr, parent_device, versions of
 on-card firmware and EEPROM), clocks (mme_clk, tpc_clk, ic_clk and *_curr),
 power (max_power, pm_mng_profile), reset controls (hard_reset, soft_reset and

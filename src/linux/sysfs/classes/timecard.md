@@ -51,7 +51,7 @@ timecard bus; the class is the appliance's single configuration surface.
 | `ocpN/gnss_sync` | RO | GNSS signal validity / loss indication | always | ABI testing `sysfs-timecard` (2021) |
 | `ocpN/freqX/frequency`, `freqX/seconds` | RO / RW | measured frequency; measurement seconds 0-255, 0 disables | optional freq counters | ABI testing `sysfs-timecard` (Mar 2022) |
 | `ocpN/genX/{duty,period,phase,polarity,running,start}`, `genX/signal` | RO, RW | percent 1-99; nsec; nsec; 0/1; 0/1; `<sec>.<nsec>`; composite `period [duty [phase [polarity]]]` | optional generators | ABI testing `sysfs-timecard` (Mar 2022) |
-| `ocpN/irig_b_mode` | RW | integer 0-7, timecode format B00<n> | always | ABI testing `sysfs-timecard` (2021) |
+| `ocpN/irig_b_mode` | RW | integer 0-7, timecode format B00`<n>` | always | ABI testing `sysfs-timecard` (2021) |
 | `ocpN/tod_correction`, `ocpN/utc_tai_offset` | RW | TAI correction for incoming GNSS/UTC time; offset seconds added to TAI for DCF/IRIG | always | ABI testing `sysfs-timecard` (2021) |
 | `ocpN/ts_window_adjust` | RW | nsec subtracted from the post-read SYS timestamp for PTP SYS_OFFSET_EXTENDED midpoints | always | ABI testing `sysfs-timecard` (2021) |
 | `ocpN/serialnum` | RO | card serial number | always | ABI testing `sysfs-timecard` (2021) |

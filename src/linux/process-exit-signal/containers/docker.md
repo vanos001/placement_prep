@@ -88,7 +88,7 @@ When a restart policy is active, the container's status view shows the policy ta
 
 The image can declare its preferred stop signal ([Dockerfile reference](https://docs.docker.com/reference/dockerfile/)):
 
-> "The STOPSIGNAL instruction sets the system call signal that will be sent to the container to exit. This signal can be a signal name in the format SIG<NAME>, for instance SIGKILL, or an unsigned number ... The default is SIGTERM if not defined."
+> "The STOPSIGNAL instruction sets the system call signal that will be sent to the container to exit. This signal can be a signal name in the format SIG`<NAME>`, for instance SIGKILL, or an unsigned number ... The default is SIGTERM if not defined."
 
 The docs add two boundary conditions worth quoting: STOPSIGNAL "applies to the signal sent by `docker stop` (and by the Docker daemon when stopping a container)" and does *not* affect Ctrl+C-style SIGINT; and the image default can be overridden per container with `--stop-signal` on `docker run`/`docker create`.
 

@@ -15,7 +15,7 @@ One device per virtio serial port exported by a host over virtio. Ports back hvc
 
 ## Relationship to the device model
 
-Port devices are named vport<device-index>p<port-id> (device_create format "vport%up%u") and are parented by the virtio device of their console device. A debugfs twin exists: a "virtio-ports" directory with per-port files showing the port name and connection state (port_debugfs_show).
+Port devices are named vport`<device-index>`p`<port-id>` (device_create format "vport%up%u") and are parented by the virtio device of their console device. A debugfs twin exists: a "virtio-ports" directory with per-port files showing the port name and connection state (port_debugfs_show).
 
 ## Attributes (source: drivers/char/virtio_console.c)
 

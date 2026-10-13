@@ -15,7 +15,7 @@ One character device per CPU (cpu%d, minor = CPU number) whose read side
 executes the x86 CPUID instruction with the requested leaf/subleaf taken
 from the file offset. There are no sysfs attributes: the class directory is
 purely the registry that names the per-CPU devices and lets udev/devtmpfs
-create the real node /dev/cpu/<N>/cpuid. The driver pairs structurally with
+create the real node /dev/cpu/`<N>`/cpuid. The driver pairs structurally with
 the msr driver (same pattern, CPUID_MAJOR 203 vs MSR_MAJOR 202), documented
 on the [msr](./msr.md) page.
 
