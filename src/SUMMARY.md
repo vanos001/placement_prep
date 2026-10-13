@@ -271,7 +271,7 @@
   - [Docker](./linux/process-exit-signal/containers/docker.md)
   - [Kubernetes](./linux/process-exit-signal/containers/kubernetes.md)
   - [Container Troubleshooting Scenarios](./linux/process-exit-signal/containers/troubleshooting-scenarios.md)
-- [Language Chapters](./linux/process-exit-signal/languages/comparison.md)
+- [Language Chapters](./linux/process-exit-signal/languages/index.md)
   - [C](./linux/process-exit-signal/languages/c.md)
   - [C++](./linux/process-exit-signal/languages/cpp.md)
   - [Python](./linux/process-exit-signal/languages/python.md)
