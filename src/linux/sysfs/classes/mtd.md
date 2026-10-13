@@ -29,7 +29,7 @@ The class device is registered by mtdcore.c with dev_set_name "mtd%d". The `name
 | `oobsize`, `oobavail` | RO | OOB bytes per page; bytes a client may use |
 | `numeraseregions` | RO | Number of variable erase regions, 0 if uniform |
 | `name` | RO | ASCII name matching /proc/mtd |
-| `dev` | RO | <major>:<minor> of the char device |
+| `dev` | RO | `<major>`:`<minor>` of the char device |
 | `ecc_strength`, `ecc_step_size` | RO | Correctable bit errors per ECC step; step size in bytes (0 without ECC) |
 | `bitflip_threshold` | 0644 | Threshold for returning -EUCLEAN from reads; default ecc_strength; users are discouraged from changing it |
 | `ecc_failures`, `corrected_bits` | RO | ECC failure and correction counters |

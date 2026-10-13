@@ -47,7 +47,7 @@ Time-adjacent siblings: [pps](./pps.md), [rtc](./rtc.md).
 | `ptpN/n_pins` | RO | number of programmable pins | conditional: absent on host ptp0 (0 pins) | ABI testing `sysfs-ptp` (Mar 2014) |
 | `ptpN/pins/<name>` | RW | two integers: assigned function (PTP_PF_*, linux/ptp_clock.h) and channel | per pin | ABI testing `sysfs-ptp` (Mar 2014) |
 | `ptpN/pps_available` | RO | 1 if the clock can deliver PPS to the host CPU, else 0 | always | ABI testing `sysfs-ptp` (Sep 2010) |
-| `ptpN/extts_enable` | WO | "<channel index> 1" to enable, "... 0" to disable external timestamps | always | ABI testing `sysfs-ptp` (Sep 2010) |
+| `ptpN/extts_enable` | WO | "`<channel index>` 1" to enable, "... 0" to disable external timestamps | always | ABI testing `sysfs-ptp` (Sep 2010) |
 | `ptpN/fifo` | RO | external event timestamps: channel index, seconds, nanoseconds | always | ABI testing `sysfs-ptp` (Sep 2010) |
 | `ptpN/period` | WO | five integers: channel, start sec/nsec, period sec/nsec; zeros disable | always | ABI testing `sysfs-ptp` (Sep 2010) |
 | `ptpN/pps_enable` | WO | 1/0: deliver PPS events to the Linux PPS subsystem | always | ABI testing `sysfs-ptp` (Sep 2010) |

@@ -11,7 +11,7 @@
 
 ## What it represents
 
-HCI host devices (device type "host", named hci<N>) and per-connection link devices (device type "link", named hciN:<handle>, net/bluetooth/hci_sysfs.c). RFCOMM tty devices are moved off the link device before its destruction (the __match_tty/device_move path in the same file), so the class also hosts rfcomm nodes transiently.
+HCI host devices (device type "host", named hci`<N>`) and per-connection link devices (device type "link", named hciN:`<handle>`, net/bluetooth/hci_sysfs.c). RFCOMM tty devices are moved off the link device before its destruction (the __match_tty/device_move path in the same file), so the class also hosts rfcomm nodes transiently.
 
 ## Relationship to the device model
 

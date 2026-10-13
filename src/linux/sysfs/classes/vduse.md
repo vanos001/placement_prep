@@ -24,8 +24,8 @@ interface in /usr/include/linux/vduse.h.
 
 Three ABI entries are containers rather than attribute files: the class
 itself, control/ ("created for the control device of VDUSE framework"), and
-<device-name>/ ("created when a VDUSE device is created via the control
-device"). The only file documented is <device-name>/msg_timeout. The UAPI
+`<device-name>`/ ("created when a VDUSE device is created via the control
+device"). The only file documented is `<device-name>`/msg_timeout. The UAPI
 header on this host confirms the pairing: its ioctls are labeled "The
 ioctls for control device (/dev/vduse/control)" and VDUSE_CREATE_DEV takes
 struct vduse_dev_config with a NUL-terminated name, vendor_id, device_id,
@@ -36,8 +36,8 @@ virtio features, vq_num, vq_align, config_size and config buffer.
 | Attribute | R/W | Unit/format | Conditional? | Source |
 |---|---|---|---|---|
 | control/ | -- | directory for the VDUSE control device (char dev /dev/vduse/control per host vduse.h) | always | ABI testing sysfs-class-vduse, 5.15; /usr/include/linux/vduse.h |
-| <device-name>/ | -- | per-device directory, appears on VDUSE_CREATE_DEV via control | per created device | ABI, 5.15 |
-| <device-name>/msg_timeout | RW | timeout in seconds waiting for a control-message response from userspace; default 30; write 0 disables the timeout | per created device | ABI, 5.15 |
+| `<device-name>`/ | -- | per-device directory, appears on VDUSE_CREATE_DEV via control | per created device | ABI, 5.15 |
+| `<device-name>`/msg_timeout | RW | timeout in seconds waiting for a control-message response from userspace; default 30; write 0 disables the timeout | per created device | ABI, 5.15 |
 
 ## Safety and writes
 

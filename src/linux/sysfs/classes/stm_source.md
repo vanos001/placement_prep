@@ -17,7 +17,7 @@ through an STM device). A stm_source is created by kernel code, not by
 userspace; its sysfs directory carries exactly one meaningful attribute,
 `stm_source_link`, which is the wiring between producer and sink. Reading
 it returns the name of the currently connected stm device, or the literal
-string "<none>" if unconnected. Writing an existing (registered) stm
+string "`<none>`" if unconnected. Writing an existing (registered) stm
 device's name connects that device; per the ABI text, if a device is
 already connected to this stm_source, the write first disconnects it.
 The ledger records exactly 1 documented path, matching the ABI file.
@@ -37,7 +37,7 @@ on this side.
 
 | Attribute | R/W | Unit/format | Conditional? | Source |
 |---|---|---|---|---|
-| `<stm_source>/stm_source_link` | RW | name of an existing registered stm device; reads return the connection or "<none>" | always | ABI testing `sysfs-class-stm_source` (4.3) |
+| `<stm_source>/stm_source_link` | RW | name of an existing registered stm device; reads return the connection or "`<none>`" | always | ABI testing `sysfs-class-stm_source` (4.3) |
 
 ## Safety and writes
 

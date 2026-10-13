@@ -17,7 +17,7 @@ one class-level read-only attribute, version, whose value is the fixed string
 DRM ABI revision, not of the kernel. When a DRM driver registers a device,
 its minor nodes appear here as separate class devices named card%d (primary
 minor) and renderD%d (render minor), with connector subdevices named
-card%d-<connector> (drm_sysfs.c). Those directories carry client and
+card%d-`<connector>` (drm_sysfs.c). Those directories carry client and
 connector state, populated by the DRM core and drivers, and their file set
 is documented in the GPU documentation tree rather than in
 Documentation/ABI. On a machine
@@ -27,8 +27,8 @@ file.
 ## Relationship to the device model
 
 Registered DRM devices get kdev->class = drm_class in drm_sysfs.c, and the
-class devnode callback formats "dri/<name>" so devtmpfs creates
-/dev/dri/cardN and /dev/dri/renderD<N>. The live host's
+class devnode callback formats "dri/`<name>`" so devtmpfs creates
+/dev/dri/cardN and /dev/dri/renderD`<N>`. The live host's
 single version file proves the class exists because CONFIG_DRM is built in,
 while the absence of card0 shows that no GPU driver bound a device: class
 registration is config-gated, directory population is hardware-gated. The
@@ -40,8 +40,8 @@ file) against 1 ABI-documented attribute that this kernel predates.
 | Attribute | R/W | Value and unit | Source |
 |---|---|---|---|
 | version (class attr) | RO | fixed string "drm 1.1.0 20060810"; live-verified | drm_sysfs.c CLASS_ATTR_STRING(version, S_IRUGO); live check (5.10.134) |
-| card<N>/... (client, connectors, props) | mixed | per-driver and per-device state | drm_sysfs.c device registration; documented in the DRM GPU docs, not ABI |
-| card<N>/.../boot_display | RO | "1" if the display drove the boot sequence | ABI sysfs-class-drm, January 2026 (newer than live host) |
+| card`<N>`/... (client, connectors, props) | mixed | per-driver and per-device state | drm_sysfs.c device registration; documented in the DRM GPU docs, not ABI |
+| card`<N>`/.../boot_display | RO | "1" if the display drove the boot sequence | ABI sysfs-class-drm, January 2026 (newer than live host) |
 
 The ABI file's single entry postdates the 5.10.134 kernel; the class-level
 version file and the cardN directory convention are source facts.

@@ -15,7 +15,7 @@ One directory `port-<h>:<n>` per remote SRP target port that an SRP initiator (i
 
 ## Relationship to the device model
 
-Remote ports sit between the ib_srp initiator (`srp-<hca>-<port>` devices under `infiniband_srp`) and the SCSI hosts they create: each port-<h>:<n> drives SCSI hosts whose connection parameters (`dgid`, `ioc_guid`, `req_lim`, ...) are exposed under `/sys/class/scsi_host` and documented in the same stable ABI file. LUNs imported through the port appear in the usual SCSI/block trees; `delete` is the documented way to tear that whole import down.
+Remote ports sit between the ib_srp initiator (`srp-<hca>-<port>` devices under `infiniband_srp`) and the SCSI hosts they create: each port-`<h>`:`<n>` drives SCSI hosts whose connection parameters (`dgid`, `ioc_guid`, `req_lim`, ...) are exposed under `/sys/class/scsi_host` and documented in the same stable ABI file. LUNs imported through the port appear in the usual SCSI/block trees; `delete` is the documented way to tear that whole import down.
 
 ## Attributes
 

@@ -41,9 +41,9 @@ from the same fbN devices via devtmpfs.
 | fbcon/rotate | RW | rotation int: 0 = normal; live value 0 | fbcon.c DEVICE_ATTR_RW(rotate); live check (5.10.134) |
 | fbcon/cursor_blink | RW | boolean-ish int; live value -1 (unset) | fbcon.c DEVICE_ATTR_RW(cursor_blink); live check |
 | fbcon/rotate_all | WO | write triggers console-wide rotation | fbcon.c DEVICE_ATTR_WO(rotate_all); live perms --w------- |
-| fb<N>/dev | RO | 29:<N> when a framebuffer exists | fbsysfs.c fb_device_create (FB_MAJOR 29); absent live |
-| fb<N>/bits_per_pixel, blank, console, cursor, mode, modes, pan, virtual_size, rotate, state | RW | fb_info state mirrors, 0644 | fbsysfs.c fb_device_attrs[]; not present without an fb device |
-| fb<N>/name, stride | RO | 0444 identity fields | fbsysfs.c fb_device_attrs[]; not present without an fb device |
+| fb`<N>`/dev | RO | 29:`<N>` when a framebuffer exists | fbsysfs.c fb_device_create (FB_MAJOR 29); absent live |
+| fb`<N>`/bits_per_pixel, blank, console, cursor, mode, modes, pan, virtual_size, rotate, state | RW | fb_info state mirrors, 0644 | fbsysfs.c fb_device_attrs[]; not present without an fb device |
+| fb`<N>`/name, stride | RO | 0444 identity fields | fbsysfs.c fb_device_attrs[]; not present without an fb device |
 
 The three fbcon attributes are the whole class-observable control set on
 this host; everything else appears only with registered framebuffer

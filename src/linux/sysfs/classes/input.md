@@ -2,7 +2,7 @@
 
 | Field | Value |
 |---|---|
-| Subsystem | Input core, drivers/input/input.c (class `input_class`, devices input<N>); event nodes from drivers/input/evdev.c (devices event<N>) |
+| Subsystem | Input core, drivers/input/input.c (class `input_class`, devices input`<N>`); event nodes from drivers/input/evdev.c (devices event`<N>`) |
 | Config gate | CONFIG_INPUT, "Generic input layer (needed for keyboard, mouse, ...)", default y (drivers/input/Kconfig) |
 | ABI documentation | none found for the class core: the stable/, testing/ and obsolete/ ABI directories contain only driver-specific entries (sysfs-driver-input-axp-pek, sysfs-driver-input-cros-ec-keyb, sysfs-driver-input-exc3000); core attributes below are traced to drivers/input/input.c |
 | Since | not stated by the sources checked (no ABI What: dates exist for the class core) |
@@ -15,7 +15,7 @@ One device per input_dev registered with the input core, plus one event device p
 
 ## Relationship to the device model
 
-Every input<N> is created by input_register_device() with dev->dev.class = input_class and name input%lu (input.c). evdev attaches event%d devices of the same class as children (evdev.c dev_set_name, evdev->dev.class = &input_class). Driver-specific attributes appear under input(x)/device/ per the driver ABI entries.
+Every input`<N>` is created by input_register_device() with dev->dev.class = input_class and name input%lu (input.c). evdev attaches event%d devices of the same class as children (evdev.c dev_set_name, evdev->dev.class = &input_class). Driver-specific attributes appear under input(x)/device/ per the driver ABI entries.
 
 ## Attributes (representative; source: drivers/input/input.c attribute groups)
 

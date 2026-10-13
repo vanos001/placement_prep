@@ -45,7 +45,7 @@ int getrusage(int who, struct rusage *usage);
 
 ## Security and notes
 
-Historically getrusage(2) underreported when `SIGCHLD` was being ignored; that nonconformance is fixed since 2.6.9 (getrusage.2 page header note). `RUSAGE_THREAD` needs `_GNU_SOURCE` before including any header (getrusage.2, DESCRIPTION). The child-accounting contract is what makes process monitors (time(1), shells' `%` job stats) work without reading /proc per child; wait4(2) and wait4.md expose the same struct on wait. The data source is the task's accounting fields, the same ones BSD accounting writes to the acct(5) file format (cross-ref: [acct.md](acct.md)). For live totals of an arbitrary other process, /proc/<pid>/stat is the interface, not getrusage.
+Historically getrusage(2) underreported when `SIGCHLD` was being ignored; that nonconformance is fixed since 2.6.9 (getrusage.2 page header note). `RUSAGE_THREAD` needs `_GNU_SOURCE` before including any header (getrusage.2, DESCRIPTION). The child-accounting contract is what makes process monitors (time(1), shells' `%` job stats) work without reading /proc per child; wait4(2) and wait4.md expose the same struct on wait. The data source is the task's accounting fields, the same ones BSD accounting writes to the acct(5) file format (cross-ref: [acct.md](acct.md)). For live totals of an arbitrary other process, /proc/`<pid>`/stat is the interface, not getrusage.
 
 ## References
 

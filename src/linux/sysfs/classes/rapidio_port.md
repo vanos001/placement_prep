@@ -36,7 +36,7 @@ mport's class directory.
 |---|---|---|---|---|
 | sys_size | RO | RapidIO common transport system size: 0 small (8-bit destination ID, max 256 devices), 1 large (16-bit, max 65536 devices) | always | ABI testing sysfs-class-rapidio, v3.15 |
 | port_destid | RO | destination ID of the mport; 0xFFFFFFFF means none assigned yet; enumerating mports get one via the "hdid=..." rapidio module parameter | always | ABI testing sysfs-class-rapidio, v3.15 |
-| <child device dirs> | -- | per-child RapidIO device directories (e.g. 00:e:0001) appear after enumeration/discovery | post-enumeration | ABI example listing |
+| `<child device dirs>` | -- | per-child RapidIO device directories (e.g. 00:e:0001) appear after enumeration/discovery | post-enumeration | ABI example listing |
 
 ## Safety and writes
 
