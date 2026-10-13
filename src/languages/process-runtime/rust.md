@@ -113,7 +113,7 @@ that path.
 ### 1.4 Panics: the exceptional path inside the language
 
 A panic is a thread-level fatal event with a defined pipeline ([std
-guarantee], std::panic::set_hook): **panic hook runs first → then the panic
+guarantee], [std::panic::set_hook](https://doc.rust-lang.org/std/panic/fn.set_hook.html)): **panic hook runs first → then the panic
 runtime** (unwind *or* abort, per compilation strategy §3.6). Panics arise
 from `panic!`, `assert*!`, `unwrap`/`expect`, arithmetic-overflow checks in
 debug builds (release builds may wrap — overflow checking is profile-dependent),
@@ -339,7 +339,7 @@ anchor for numeric facts, not a stability contract.
 
 ### 3.2 `main` return types and the `Termination` protocol
 
-Exact trait (std docs, since 1.61.0):
+Exact trait ([std docs](https://doc.rust-lang.org/std/process/trait.Termination.html), since 1.61.0):
 
 ```rust
 pub trait Termination {
@@ -369,7 +369,7 @@ execution. In case of a failure, `libc::EXIT_FAILURE` is returned."
 pub fn exit(code: i32) -> !   // since 1.0.0
 ```
 
-Verified documentation quotes ([std guarantee]):
+Verified documentation quotes ([std guarantee], [std::process::exit](https://doc.rust-lang.org/std/process/fn.exit.html)):
 
 > "Terminates the current process with the specified exit code. This function
 > will never return... **no destructors on the current stack or any other
@@ -386,7 +386,7 @@ Practical consequences: locks stay held mid-acquisition; log buffers vanish;
 returning from `main` "is equivalent to calling `exit`", the same atexit
 machinery also runs on normal return.
 
-**Exit-status truncation.** The docs' platform section: "On most Unix-like
+**Exit-status truncation.** The [docs' platform section](https://doc.rust-lang.org/std/process/fn.exit.html): "On most Unix-like
 platforms, only the eight least-significant bits are considered. For example,
 the exit code for this example will be `0` on Linux, but `256` on Windows:
 `process::exit(0x0100);`". An `i32` argument is thus narrowed to the wait
@@ -419,7 +419,7 @@ access "for forwards compatibility with potentially unusual targets"), and
 > fact."
 
 `ExitCode::exit_process` exists but is nightly-only
-(`exitcode_exit_method`).
+(`exitcode_exit_method`). (Struct docs: [`std::process::ExitCode`](https://doc.rust-lang.org/std/process/struct.ExitCode.html); status-for-a-child: [`ExitStatus`](https://doc.rust-lang.org/std/process/struct.ExitStatus.html).)
 
 ### 3.5 `std::process::abort` — the abnormal exit
 
@@ -427,7 +427,7 @@ access "for forwards compatibility with potentially unusual targets"), and
 pub fn abort() -> !   // since 1.17.0
 ```
 
-Verified documentation ([std guarantee]):
+Verified documentation ([std guarantee], [std::process::abort](https://doc.rust-lang.org/std/process/fn.abort.html)):
 
 > "no destructors on the current stack or any other thread's stack will be
 > run, Rust IO buffers (eg, from `BufWriter`) will not be flushed, and C
@@ -686,7 +686,7 @@ than reference-documented:
 ### 5.1 `Command` — the builder surface
 
 `pub struct Command { /* private fields */ }` (1.0.0). Constructor and
-defaults ([std guarantee], std::process::Command):
+defaults ([std guarantee], [`std::process::Command`](https://doc.rust-lang.org/std/process/struct.Command.html)):
 
 > `pub fn new<S: AsRef<OsStr>>(program: S) -> Command` — "No arguments to the
 > program / Inherit the current process's environment / Inherit the current
@@ -1171,32 +1171,51 @@ rust-lang/rust source for numeric anchors (exit 101; SIGPIPE startup).
 
 ## References
 
-1. The Rust Standard Library documentation — doc.rust-lang.org/std (build
-   1.99.0, `b940084d7`, 2026-09-28; retrieved 2026-10): `std::process`
-   (module; `exit`, `abort`, `id`; `Termination`, `ExitCode`, `Command`,
-   `Child`, `ExitStatus`, `Output`, `Stdio`, `ChildStdin`), `std::panic`
-   (`set_hook`, `take_hook`, `catch_unwind`, `resume_unwind`, `panic_any`,
-   `update_hook`, `PanicHookInfo`, `UnwindSafe`), `std::thread` (module;
-   `spawn`, `scope`, `JoinHandle`, `Builder`, `available_parallelism`),
-   `std::sync::Mutex`, `std::io::BufWriter`, `std::os::unix::process`
-   (`CommandExt`, `ExitStatusExt`, `parent_id`), `std::os::fd`
+1. The Rust Standard Library documentation — [doc.rust-lang.org/std](https://doc.rust-lang.org/std/)
+   (build 1.99.0, `b940084d7`, 2026-09-28; retrieved 2026-10):
+   [`std::process`](https://doc.rust-lang.org/std/process/index.html) (module;
+   [`exit`](https://doc.rust-lang.org/std/process/fn.exit.html),
+   [`abort`](https://doc.rust-lang.org/std/process/fn.abort.html), `id`;
+   [`Termination`](https://doc.rust-lang.org/std/process/trait.Termination.html),
+   [`ExitCode`](https://doc.rust-lang.org/std/process/struct.ExitCode.html),
+   [`Command`](https://doc.rust-lang.org/std/process/struct.Command.html),
+   [`Child`](https://doc.rust-lang.org/std/process/struct.Child.html),
+   [`ExitStatus`](https://doc.rust-lang.org/std/process/struct.ExitStatus.html),
+   [`Output`](https://doc.rust-lang.org/std/process/struct.Output.html),
+   [`Stdio`](https://doc.rust-lang.org/std/process/struct.Stdio.html), `ChildStdin`),
+   [`std::panic`](https://doc.rust-lang.org/std/panic/index.html)
+   ([`set_hook`](https://doc.rust-lang.org/std/panic/fn.set_hook.html), `take_hook`,
+   [`catch_unwind`](https://doc.rust-lang.org/std/panic/fn.catch_unwind.html),
+   `resume_unwind`, `panic_any`, `update_hook`, `PanicHookInfo`, `UnwindSafe`),
+   [`std::thread`](https://doc.rust-lang.org/std/thread/index.html) (module;
+   `spawn`, `scope`, [`JoinHandle`](https://doc.rust-lang.org/std/thread/struct.JoinHandle.html),
+   `Builder`, `available_parallelism`),
+   [`std::sync::Mutex`](https://doc.rust-lang.org/std/sync/struct.Mutex.html),
+   [`std::io::BufWriter`](https://doc.rust-lang.org/std/io/struct.BufWriter.html),
+   [`std::os::unix::process`](https://doc.rust-lang.org/std/os/unix/process/index.html)
+   (`CommandExt`, `ExitStatusExt`, `parent_id`),
+   [`std::os::fd`](https://doc.rust-lang.org/std/os/fd/index.html)
    (`OwnedFd`, `FromRawFd`).
-2. The Rust Reference — doc.rust-lang.org/reference (retrieved 2026-10):
-   *Behavior considered undefined*; *Destructors* (drop scopes; Not running
-   destructors; Process termination without unwinding).
-3. The Cargo Book — doc.rust-lang.org/cargo/reference/profiles.html
+2. The Rust Reference — [doc.rust-lang.org/reference](https://doc.rust-lang.org/reference/)
+   (retrieved 2026-10): [*Behavior considered
+   undefined*](https://doc.rust-lang.org/reference/behavior-considered-undefined.html);
+   [*Destructors*](https://doc.rust-lang.org/reference/destructors.html) (drop
+   scopes; Not running destructors; Process termination without unwinding).
+3. The Cargo Book — [doc.rust-lang.org/cargo/reference/profiles.html](https://doc.rust-lang.org/cargo/reference/profiles.html)
    (retrieved 2026-10): the `panic` profile setting (`unwind`/`abort`).
 4. rust-lang/rust source (master, retrieved 2026-10):
-   `library/std/src/rt.rs` (exit code 101; `unique_thread_exit`;
-   `stack_overflow::init()`), `library/std/src/sys/pal/unix/mod.rs`
+   [`library/std/src/rt.rs`](https://github.com/rust-lang/rust/blob/master/library/std/src/rt.rs)
+   (exit code 101; `unique_thread_exit`; `stack_overflow::init()`),
+   [`library/std/src/sys/pal/unix/mod.rs`](https://github.com/rust-lang/rust/blob/master/library/std/src/sys/pal/unix/mod.rs)
    (SIGPIPE set to ignore at startup; std fd sanitization),
-   `library/std/src/process.rs` (`Termination for Result` impl: `Error:
-   {err:?}` + `ExitCode::FAILURE`).
+   [`library/std/src/process.rs`](https://github.com/rust-lang/rust/blob/master/library/std/src/process.rs)
+   (`Termination for Result` impl: `Error: {err:?}` + `ExitCode::FAILURE`).
 5. Third-party crates (named, not deeply inventoried; docs.rs, retrieved
-   2026-10): signal-hook 0.4.5 (docs.rs/signal-hook), ctrlc 3.5.2
-   (docs.rs/ctrlc), tokio 1.53.2 (docs.rs/tokio — `tokio::signal`,
-   `tokio::process::Command::kill_on_drop`); libc crate (github.com/rust-lang/libc)
-   as the FFI substrate of §4.3.
+   2026-10): [signal-hook 0.4.5](https://docs.rs/signal-hook/0.4.5),
+   [ctrlc 3.5.2](https://docs.rs/ctrlc/3.5.2),
+   [tokio 1.53.2](https://docs.rs/tokio/1.53.2) (`tokio::signal`,
+   `tokio::process::Command::kill_on_drop`); [libc
+   crate](https://github.com/rust-lang/libc) as the FFI substrate of §4.3.
 6. Sibling chapters: [../../linux/process-exit-signal/languages/rust.md](../../linux/process-exit-signal/languages/rust.md)
    (exit/signal slice, 1.61–1.8x era); [./c.md](./c.md) and
    [./cpp.md](./cpp.md) (C-family substrate of wait-status words and

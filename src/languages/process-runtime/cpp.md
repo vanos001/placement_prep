@@ -439,7 +439,7 @@ int main(int argc, char**) {
 
 ### 3.2 `std::exit`: the exact sequence, and why automatic objects die silently
 
-**[ISO C++]** (`[support.start.term]`p9, quoted effects):
+**[ISO C++]** ([`[support.start.term]`p9](https://eel.is/c++draft/support.start.term), quoted effects):
 
 1. **(9.1)** First, objects with **thread storage duration associated with
    the current thread** are destroyed. Next, objects with **static storage
@@ -513,7 +513,7 @@ int main() {
    The atexit list (a,b,a) is never invoked on the quick_exit path. */
 ```
 
-### 3.4 `std::quick_exit` and `std::_Exit`: the no-destructor paths
+### 3.4 [`std::quick_exit`](https://eel.is/c++draft/support.start.term) and `std::_Exit`: the no-destructor paths
 
 - `quick_exit(status)`: calls the `at_quick_exit` handlers **on the thread
   that called `quick_exit`** — which can be any thread, so "registered
@@ -572,7 +572,7 @@ int main() {
 
 ### 3.6 `std::terminate`: every trigger, and what unwinds
 
-**[ISO C++]** `[except.terminate]` (N4950 §14.6.2) — the note enumerates the
+**[ISO C++]** [`[except.terminate]`](https://eel.is/c++draft/exception.terminate) (N4950 §14.6.2) — the note enumerates the
 situations that invoke `std::terminate`; the in-scope ones:
 
 1. (1.2) the exception-handling mechanism **cannot find a handler** for a
@@ -685,7 +685,7 @@ p2 rule on the exit path.)
 
 **[ISO C++]** the entire standard signal API is `<csignal>`, whose contents
 are "the same as the C standard library header `<signal.h>`"
-(N4950 §17.13.4): `std::signal`, `std::raise`, `std::sig_atomic_t`, the
+([N4950 §17.13.4](https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2023/n4950.pdf); POSIX [`sigaction`](https://pubs.opengroup.org/onlinepubs/9799919799/functions/sigaction.html) / [man7 signal-safety(7)](https://man7.org/linux/man-pages/man7/signal-safety.7.html) for the OS layer): `std::signal`, `std::raise`, `std::sig_atomic_t`, the
 `SIG*` macros. There is no C++ mask API, no queueing, no sigwait, no
 per-thread delivery rules — **[ISO C++]** does not even define what a
 signal does to threads. Everything beyond the pair of functions is the
@@ -810,7 +810,7 @@ static void block_signals_everywhere() {    // call before spawning threads
 
 ### 5.1 `std::system`: what the return value actually is
 
-**[ISO C++]** `int system(const char* string);` — `string == nullptr`
+**[ISO C++]** `int system(const char* string);` ([N4950 §17.5](https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2023/n4950.pdf); [POSIX system](https://pubs.opengroup.org/onlinepubs/9799919799/functions/system.html), [man7 system(3)](https://man7.org/linux/man-pages/man3/system.3.html)) — `string == nullptr`
 tests for a command processor (nonzero iff present); otherwise the effect
 and the return value are **implementation-defined**. **[POSIX]** fixes
 every open end (POSIX `system` page, verified this session):
@@ -1231,8 +1231,8 @@ and man-pages 6.19 (man7.org) for the OS layer.
 
 ## References
 
-1. ISO/IEC 14882:2024 — C++23 Committee Draft **N4950** (open-std.org,
-   https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2023/n4950.pdf;
+1. ISO/IEC 14882:2024 — C++23 Committee Draft **N4950** ([open-std.org,
+   N4950 PDF](https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2023/n4950.pdf);
    retrieved 2026-10-13): §6.8.6 `[basic.stc]` (storage durations), §6.9.3
    `[basic.start]` (`[basic.start.main]`, `[basic.start.dynamic]`,
    `[basic.start.term]` — startup, init order, fiasco ordering, magic
@@ -1251,43 +1251,68 @@ and man-pages 6.19 (man7.org) for the OS layer.
    stop_token/stop_source/stop_callback, destructor rules),
    §33.6 `[thread.mutex]`, §33.10 `[futures]` (async, future, blocking
    destructor "as if joined").
-2. C++ working draft (eel.is/c++draft, generated 2026-08-23 from the LaTeX
-   sources; retrieved 2026-10-13): `[support.signal]` reorganized
-   signal-safe list, `[basic.start.main]` UB anchor
+2. C++ working draft ([eel.is/c++draft](https://eel.is/c++draft/), generated
+   2026-08-23 from the LaTeX
+   sources; retrieved 2026-10-13): [`[support.signal]`](https://eel.is/c++draft/support.signal) reorganized
+   signal-safe list, [`[basic.start.main]`](https://eel.is/c++draft/basic.start.main) UB anchor
    (`[ub:basic.start.main.exit.during.destruction]`), `[support.env]`/
-   `[support.start.term]` current-anchor cross-checks; used to flag C++26
+   [`[support.start.term]`](https://eel.is/c++draft/support.start.term) current-anchor cross-checks; used to flag C++26
    deltas only — all normative quotes above are from N4950.
-3. POSIX.1-2024 / Issue 8 (pubs.opengroup.org/onlinepubs/9799919799,
-   retrieved 2026-10-13): `system` (`execl(<shell path>, "sh", "-c",
+3. POSIX.1-2024 / Issue 8 ([pubs.opengroup.org/onlinepubs/9799919799](https://pubs.opengroup.org/onlinepubs/9799919799/),
+   retrieved 2026-10-13; per-function pages under `functions/`):
+   [`system`](https://pubs.opengroup.org/onlinepubs/9799919799/functions/system.html)
+   (`execl(<shell path>, "sh", "-c",
    "--", command, (char*)0)`; SIGINT/SIGQUIT ignored, SIGCHLD blocked;
-   -1/127/wait-status return), `popen`/`pclose`, `posix_spawn`
-   (synopsis verified; file_actions/attrp semantics), `_Exit`/`_exit`
-   (`status & 0377` truncation), `wait`/`waitid` (`WIFEXITED`/
-   `WEXITSTATUS`/`WIFSIGNALED`/`WTERMSIG`/`WNOHANG`, `EINTR`), `fork`
-   (multithreaded-fork AS-safe rule), `exec` (no return on success),
-   `getenv`/`setenv`/`putenv` (ownership asymmetry),
-   `pthread_exit` (thread death releases no process resources) — the
+   -1/127/wait-status return),
+   [`popen`](https://pubs.opengroup.org/onlinepubs/9799919799/functions/popen.html)/[`pclose`](https://pubs.opengroup.org/onlinepubs/9799919799/functions/pclose.html),
+   [`posix_spawn`](https://pubs.opengroup.org/onlinepubs/9799919799/functions/posix_spawn.html)
+   (synopsis verified; file_actions/attrp semantics),
+   [`_Exit`](https://pubs.opengroup.org/onlinepubs/9799919799/functions/_Exit.html)/[`_exit`](https://pubs.opengroup.org/onlinepubs/9799919799/functions/_exit.html)
+   (`status & 0377` truncation),
+   [`wait`](https://pubs.opengroup.org/onlinepubs/9799919799/functions/wait.html)/[`waitid`](https://pubs.opengroup.org/onlinepubs/9799919799/functions/waitid.html)
+   (`WIFEXITED`/
+   `WEXITSTATUS`/`WIFSIGNALED`/`WTERMSIG`/`WNOHANG`, `EINTR`),
+   [`fork`](https://pubs.opengroup.org/onlinepubs/9799919799/functions/fork.html)
+   (multithreaded-fork AS-safe rule),
+   [`exec`](https://pubs.opengroup.org/onlinepubs/9799919799/functions/exec.html) (no return on success),
+   [`getenv`](https://pubs.opengroup.org/onlinepubs/9799919799/functions/getenv.html)/[`setenv`](https://pubs.opengroup.org/onlinepubs/9799919799/functions/setenv.html)/[`putenv`](https://pubs.opengroup.org/onlinepubs/9799919799/functions/putenv.html)
+   (ownership asymmetry),
+   [`pthread_exit`](https://pubs.opengroup.org/onlinepubs/9799919799/functions/pthread_exit.html)
+   (thread death releases no process resources) — the
    POSIX-function behavioral details are additionally consolidated in
    [./c.md](./c.md) (verified the same day against the same Issue-8
    pages).
-4. Linux man-pages **6.19** (man7.org, dated 2026-06-05; retrieved
-   2026-10-13): signal-safety(7) ("An async-signal-safe function is one
+4. Linux man-pages **6.19** ([man7.org/linux/man-pages](https://man7.org/linux/man-pages/),
+   dated 2026-06-05; retrieved
+   2026-10-13; per-page links): [signal-safety(7)](https://man7.org/linux/man-pages/man7/signal-safety.7.html)
+   ("An async-signal-safe function is one
    that can be safely called..." — async-signal-safe list and rationale),
-   exit(3), abort(3), _exit(2) (`exit_group`), wait(2) (`WEXITSTATUS`
-   low 8 bits), system(3) (`/bin/sh`), popen(3) (mode `'e'` since
-   glibc 2.9), posix_spawn(3) (glibc vfork/clone internals),
-   fork(2), pipe(2)/pipe2(2) (`O_CLOEXEC`), fcntl(2), close_range(2)
-   (since Linux 5.9), signal(7), pthreads(7).
+   [exit(3)](https://man7.org/linux/man-pages/man3/exit.3.html),
+   [abort(3)](https://man7.org/linux/man-pages/man3/abort.3.html),
+   [_exit(2)](https://man7.org/linux/man-pages/man2/_exit.2.html) (`exit_group`),
+   [wait(2)](https://man7.org/linux/man-pages/man2/wait.2.html) (`WEXITSTATUS`
+   low 8 bits),
+   [system(3)](https://man7.org/linux/man-pages/man3/system.3.html) (`/bin/sh`),
+   [popen(3)](https://man7.org/linux/man-pages/man3/popen.3.html) (mode `'e'` since
+   glibc 2.9),
+   [posix_spawn(3)](https://man7.org/linux/man-pages/man3/posix_spawn.3.html) (glibc vfork/clone internals),
+   [fork(2)](https://man7.org/linux/man-pages/man2/fork.2.html),
+   [pipe(2)](https://man7.org/linux/man-pages/man2/pipe.2.html)/[pipe2(2)](https://man7.org/linux/man-pages/man2/pipe2.2.html)
+   (`O_CLOEXEC`), [fcntl(2)](https://man7.org/linux/man-pages/man2/fcntl.2.html),
+   [close_range(2)](https://man7.org/linux/man-pages/man2/close_range.2.html)
+   (since Linux 5.9),
+   [signal(7)](https://man7.org/linux/man-pages/man7/signal.7.html),
+   [pthreads(7)](https://man7.org/linux/man-pages/man7/pthreads.7.html).
 5. Toolchain / runtime substrate (retrieved 2026-10-13):
-   sourceware.org/glibc — current stable glibc **2.44** (released
-   2026-07-25); GCC **14.2.0** (Debian) installed libstdc++ headers
+   [sourceware.org/glibc](https://sourceware.org/glibc/) — current stable glibc **2.44** (released
+   2026-07-25); [GCC **14.2.0**](https://gcc.gnu.org/) (Debian) installed libstdc++ headers
    inspected for the implementation layer: `<cstdlib>` (e.g.
    `extern "C" void quick_exit(int) _GLIBCXX_NOTHROW _GLIBCXX_NORETURN;`),
    `<stop_token>` present (C++20 support confirmed in the local
    toolchain). The GNU libc manual (gnu.org) was unreachable from this
    environment (limitation also recorded in [./c.md](./c.md)); no claim
    in this chapter depends on it.
-6. en.cppreference.com/w/cpp — signature reference of record for this
+6. [en.cppreference.com/w/cpp](https://en.cppreference.com/w/cpp) — signature reference of record for this
    part; **Cloudflare-blocked from this environment at retrieval time**
    (2026-10-13; "Just a moment..." challenge on every page fetch,
    including /w/cpp/utility/program/exit and /w/cpp/error/set_terminate).
