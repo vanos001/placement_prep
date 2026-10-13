@@ -15,7 +15,7 @@ One character device per CPU (msr%d, minor = CPU number) giving read and
 write access to that CPU's model-specific registers through pread(2)/pwrite(2)
 with the MSR address as the file offset. Like [cpuid](./cpuid.md) there are
 no sysfs attributes: the class directory is the per-CPU registry from which
-devtmpfs derives /dev/cpu/<N>/msr via the msr_devnode callback ("cpu/%u/msr").
+devtmpfs derives /dev/cpu/`<N>`/msr via the msr_devnode callback ("cpu/%u/msr").
 MSRs control clocks, caches, power, debugging and more; the same physical
 register index can mean different things per CPU family, so nothing about
 the semantics is promised by this class.

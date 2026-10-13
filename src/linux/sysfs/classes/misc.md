@@ -4,7 +4,7 @@
 |---|---|
 | Subsystem | Character device core; drivers/char/misc.c (misc_class, misc_register) |
 | Config gate | misc.o is obj-y in drivers/char/Makefile (no Kconfig gate for the class itself; each member driver has its own) |
-| ABI documentation | Documentation/ABI/testing/sysfs-driver-xdata only (2 What: entries: dw-xdata-pcie.<device>/read, /write, KernelVersion 5.13) |
+| ABI documentation | Documentation/ABI/testing/sysfs-driver-xdata only (2 What: entries: dw-xdata-pcie.`<device>`/read, /write, KernelVersion 5.13) |
 | Since | Source-established for the class (MISC_MAJOR 10); per-device attrs date from their drivers |
 | Live (5.10.134 host) | 75 entries: cpu_dma_latency, dbom_virtio_tool, device-mapper, fuse, hw_random, ioasid_user, loop-control, tun, uinput, virtfuse0-63, vsock, vvu |
 | Ledger ID | SYSC-misc |
@@ -45,7 +45,7 @@ live-verified here but not part of mainline ABI documentation).
 | vsock/dev | RO | 10:61 | live check |
 | vvu/dev | RO | 10:63 | live check |
 | dbom_virtio_tool/dev | RO | 10:62 | live check (host-specific driver) |
-| dw-xdata-pcie.<device>/read, /write | WO | trigger PCIe traffic generator in read or write direction | ABI sysfs-driver-xdata, 5.13; driver-specific, absent on this host |
+| dw-xdata-pcie.`<device>`/read, /write | WO | trigger PCIe traffic generator in read or write direction | ABI sysfs-driver-xdata, 5.13; driver-specific, absent on this host |
 
 Fixed minors for the named devices come from their drivers' miscdevice
 declarations; the class assigns dynamic minors where MISC_DYNAMIC_MINOR is

@@ -24,7 +24,7 @@ Successful mapping creates, per the ABI: a /dev/rnbdN device file, a
 /sys/block/rnbdN/ directory (the block-device side, covered by
 [block](./block.md) plus `sysfs-block-rnbd`), and a symlink
 /sys/class/rnbd-client/ctl/devices/<device_id>@<session_name> pointing at
-/sys/block/<dev-name>. The device_id is the device_path with slashes
+/sys/block/`<dev-name>`. The device_id is the device_path with slashes
 replaced by exclamation marks. Sessions, paths, and multipath policy live in
 the sibling RTRS classes ([rtrs-client](./rtrs-client.md),
 [rtrs-server](./rtrs-server.md)).

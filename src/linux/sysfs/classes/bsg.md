@@ -11,7 +11,7 @@
 
 ## What it represents
 
-Char devices (one per request queue registered via bsg_register_queue()) that speak the SG v4 protocol: requests described by struct sg_io_v4. iSCSI hosts create bsg nodes named iscsi_host<N> (drivers/scsi/scsi_transport_iscsi.c bsg_setup_queue) so iscsiadm can send transport-specific commands.
+Char devices (one per request queue registered via bsg_register_queue()) that speak the SG v4 protocol: requests described by struct sg_io_v4. iSCSI hosts create bsg nodes named iscsi_host`<N>` (drivers/scsi/scsi_transport_iscsi.c bsg_setup_queue) so iscsiadm can send transport-specific commands.
 
 ## Relationship to the device model
 
@@ -19,7 +19,7 @@ Each bsg device is created against a parent device and request queue (bsg.c); wh
 
 ## Attributes
 
-None. The class `bsg_class` defines only .name and .devnode (block/bsg.c); there is no attribute group. All observable state is: the device name (set by the registering driver), the dynamically allocated major number ("bsg", alloc_chrdev_region) and the /dev/bsg/<name> node created by the devnode callback (kasprintf "bsg/%s").
+None. The class `bsg_class` defines only .name and .devnode (block/bsg.c); there is no attribute group. All observable state is: the device name (set by the registering driver), the dynamically allocated major number ("bsg", alloc_chrdev_region) and the /dev/bsg/`<name>` node created by the devnode callback (kasprintf "bsg/%s").
 
 ## Safety and writes
 

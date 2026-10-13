@@ -13,7 +13,7 @@
 
 Block devices (disks and their partitions) registered by the block layer:
 gendisk objects created by drivers such as virtio-blk, pmem and zram. The
-sysfs ABI documentation spells the paths /sys/block/<disk>/ because genhd.c
+sysfs ABI documentation spells the paths /sys/block/`<disk>`/ because genhd.c
 also creates a legacy top-level kobject (block_depr, "create top-level block
 dir" in genhd_device_init) and links every disk into it. The ledger counts the
 76 stable/sysfs-block What: entries against this class precisely because the

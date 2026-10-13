@@ -13,7 +13,7 @@
 
 Sessions of the RTRS RDMA transport as seen by the client. "When a user of
 RTRS API creates a new session, a directory entry with the name of that
-session is created under /sys/class/rtrs-client/<session-name>/" (ABI).
+session is created under /sys/class/rtrs-client/`<session-name>`/" (ABI).
 Each session carries path management (add_path, remove_path, reconnect,
 disconnect), the multipath policy, reconnect limits, and per-path state,
 HCA identity, addresses, heartbeat latency, and RDMA statistics. RNBD
@@ -32,10 +32,10 @@ kernel object wiring is stated in the cached ABI.
 
 | Attribute | R/W | Unit/format | Conditional? | Source |
 |---|---|---|---|---|
-| <session>/add_path | WO | `<[src,]dst>` with addr ::= [ ip:<ipv4\|ipv6> \| gid:<gid> ]; adds a path to the session | per session | ABI testing sysfs-class-rtrs-client, 5.7 |
-| <session>/max_reconnect_attempts | RW | max reconnect attempts before giving up after unexpected break | per session | ABI, 5.7 |
-| <session>/mp_policy | RW | path selection per IO: round-robin (0), min-inflight (1), min-latency (2) | per session | ABI, 5.7 |
-| <session>/paths/ | RO | one <src@dst> directory per added path | per path | ABI, 5.7 |
+| `<session>`/add_path | WO | `<[src,]dst>` with addr ::= [ ip:<ipv4\|ipv6> \| gid:`<gid>` ]; adds a path to the session | per session | ABI testing sysfs-class-rtrs-client, 5.7 |
+| `<session>`/max_reconnect_attempts | RW | max reconnect attempts before giving up after unexpected break | per session | ABI, 5.7 |
+| `<session>`/mp_policy | RW | path selection per IO: round-robin (0), min-inflight (1), min-latency (2) | per session | ABI, 5.7 |
+| `<session>`/paths/ | RO | one <src@dst> directory per added path | per path | ABI, 5.7 |
 | paths/<src@dst>/state | RO | "connected" if fully functional, otherwise "disconnected" | per path | ABI, 5.7 |
 | paths/<src@dst>/reconnect | WO | write "1"; blocking, returns 0 on success | per path | ABI, 5.7 |
 | paths/<src@dst>/disconnect | WO | write "1"; blocks until disconnected | per path | ABI, 5.7 |

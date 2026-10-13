@@ -25,7 +25,7 @@ Class devices sit above the infiniband.md HCA devices named by `ibdev`/`port` an
 | `ibdev` | RO | HCA name (`<hca>`) |
 | `port` | RO | HCA port number |
 
-Per-connection state lives on the created SCSI hosts instead: allow_ext_sg, ch_count, cmd_sg_entries, comp_vector, dgid, id_ext, ioc_guid, local_ib_device, local_ib_port, orig_dgid, pkey, req_lim, service_id, sgid, zero_req_lim (all documented in sysfs-driver-ib_srp as /sys/class/scsi_host/host<n>/ entries).
+Per-connection state lives on the created SCSI hosts instead: allow_ext_sg, ch_count, cmd_sg_entries, comp_vector, dgid, id_ext, ioc_guid, local_ib_device, local_ib_port, orig_dgid, pkey, req_lim, service_id, sgid, zero_req_lim (all documented in sysfs-driver-ib_srp as /sys/class/scsi_host/host`<n>`/ entries).
 
 ## Safety and writes
 

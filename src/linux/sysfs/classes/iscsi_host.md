@@ -11,7 +11,7 @@
 
 ## What it represents
 
-One device per iSCSI-enabled SCSI host. iscsi_setup_host() runs when a transport host comes up and, if the transport supports it, creates a bsg request queue named iscsi_host<N> (see bsg.md); iscsi_remove_host() tears it down.
+One device per iSCSI-enabled SCSI host. iscsi_setup_host() runs when a transport host comes up and, if the transport supports it, creates a bsg request queue named iscsi_host`<N>` (see bsg.md); iscsi_remove_host() tears it down.
 
 ## Relationship to the device model
 
