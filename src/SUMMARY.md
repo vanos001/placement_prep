@@ -3589,6 +3589,19 @@
 - [Kotlin Coroutines — Structured Concurrency](./languages/kotlin/coroutines.md)
 - [Swift Concurrency — async/await, Actors, and Structured Concurrency](./languages/swift/concurrency.md)
 
+## Process & Runtime Semantics by Language
+
+- [Part Overview — Scope, Version Matrix, Coverage Rollup](./languages/process-runtime/index.md)
+- [C](./languages/process-runtime/c.md) · [Ledger](./languages/process-runtime/ledger-c.md)
+- [C++](./languages/process-runtime/cpp.md) · [Ledger](./languages/process-runtime/ledger-cpp.md)
+- [Python](./languages/process-runtime/python.md) · [Ledger](./languages/process-runtime/ledger-python.md)
+- [Go](./languages/process-runtime/go.md) · [Ledger](./languages/process-runtime/ledger-go.md)
+- [Java](./languages/process-runtime/java.md) · [Ledger](./languages/process-runtime/ledger-java.md)
+- [Rust](./languages/process-runtime/rust.md) · [Ledger](./languages/process-runtime/ledger-rust.md)
+- [Node.js](./languages/process-runtime/nodejs.md) · [Ledger](./languages/process-runtime/ledger-nodejs.md)
+- [OCaml](./languages/process-runtime/ocaml.md) · [Ledger](./languages/process-runtime/ledger-ocaml.md)
+- [Cross-Language Comparison](./languages/process-runtime/comparison.md)
+
 ---
 
 # Compilers
