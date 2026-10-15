@@ -85,7 +85,7 @@ for n in nodes:
 
 edge_data = [{'s': a, 't': b} for a, b in sorted(edges)]
 data = {
-    'generated': '2026-08-12',
+    'generated': '2026-10-15',
     'nodes': nodes,
     'edges': edge_data,
     'categories': categories,
@@ -127,6 +127,12 @@ canvas.dragging { cursor:grabbing; }
 #info a { color:var(--accent); text-decoration:none; }
 #info a:hover { text-decoration:underline; }
 .badge { display:inline-block; padding:3px 6px; border-radius:999px; color:white; font-size:10px; margin:7px 4px 0 0; }
+.edge-card { border:1px solid var(--line); border-radius:8px; padding:8px 9px; margin:7px 0; }
+.edge-card .role { color:var(--muted); font-size:10px; text-transform:uppercase; letter-spacing:.05em; margin-bottom:2px; }
+.edge-card strong { font-size:12px; }
+.edge-card .edge-actions { display:flex; gap:8px; align-items:center; margin-top:6px; flex-wrap:wrap; }
+.edge-card .edge-actions a { color:var(--accent); text-decoration:none; font-size:11px; }
+.edge-card .result { font-size:11px; padding:3px 7px; }
 #results { margin-top:8px; display:flex; flex-direction:column; gap:3px; }
 .result { border:0; text-align:left; background:#f8fafc; padding:5px 6px; border-radius:5px; cursor:pointer; }
 .result:hover { background:#e8f0ff; }
@@ -157,11 +163,12 @@ canvas.dragging { cursor:grabbing; }
   <aside id="info">
     <h2>How to read this</h2>
     <p>Each dot is a Markdown page. Lines are internal Markdown cross-links. Colors identify top-level sections. By default, faint internal links are suppressed so the cross-section relationships remain visible.</p>
-    <p>Drag to pan, scroll to zoom, click a node to inspect it, or search for a page. Double-click a selected node to open its deployed page.</p>
+    <p>Drag to pan, scroll to zoom, click a node or a link line to inspect it, or search for a page. Double-click a selected node to open its deployed page. Press Esc or click empty space to clear the selection.</p>
+    <p>Link lines are directed: selecting one shows the page that contains the link (source) and the page it points to (target), with an arrow on the line. Turn on 'show all edges' to make same-section links visible and clickable too.</p>
     <div id="selection"><span class="path">No page selected.</span></div>
     <div id="results"></div>
     <div id="legend" class="legend"></div>
-    <div class="hint">Graph data includes all content Markdown under <code>src/</code> except <code>SUMMARY.md</code>. Self-links and SUMMARY navigation links are omitted.</div>
+    <div class="hint">Graph data includes all content Markdown under <code>src/</code> except <code>SUMMARY.md</code>. Self-links and SUMMARY navigation links are omitted. Selecting an edge keeps only the links touching its two endpoints visible, as faint context.</div>
   </aside>
 </main>
 <script id="graph-data" type="application/json">__GRAPH_DATA__</script>
@@ -183,7 +190,7 @@ canvas.dragging { cursor:grabbing; }
   const byPath = new Map(nodes.map(n => [n.path, n]));
   const adjacency = new Map(nodes.map(n => [n.id, []]));
   edges.forEach(e => { adjacency.get(e.s).push(e.t); adjacency.get(e.t).push(e.s); });
-  const state = { cx:0, cy:0, zoom:.72, selected:-1, hover:-1, query:'', cat:'all', showAll:false, showLabels:false, dragging:false, moved:false, lastX:0, lastY:0 };
+  const state = { cx:0, cy:0, zoom:.72, selected:-1, selEdge:-1, hover:-1, hoverEdge:-1, query:'', cat:'all', showAll:false, showLabels:false, dragging:false, moved:false, lastX:0, lastY:0 };
   let width=0, height=0, dpr=1;
 
   data.categories.forEach(cat => {
@@ -227,7 +234,12 @@ canvas.dragging { cursor:grabbing; }
   function screenToWorld(x,y) { return { x: state.cx + (x-width/2)/state.zoom, y: state.cy + (y-height/2)/state.zoom }; }
   function queryMatches(n) { const q=state.query.toLowerCase(); return !q || n.title.toLowerCase().includes(q) || n.path.toLowerCase().includes(q); }
   function categoryVisible(n) { return state.cat === 'all' || n.category === state.cat; }
-  function edgeVisible(e) {
+  function edgeVisible(e, i) {
+    if (state.selEdge >= 0) {
+      if (i === state.selEdge) return true;
+      const se = edges[state.selEdge];
+      return e.s === se.s || e.t === se.s || e.s === se.t || e.t === se.t;
+    }
     if (state.selected >= 0) return e.s === state.selected || e.t === state.selected;
     if (state.showAll) return true;
     return nodes[e.s].category !== nodes[e.t].category;
@@ -238,24 +250,39 @@ canvas.dragging { cursor:grabbing; }
     ctx.save(); ctx.translate(width/2,height/2); ctx.scale(state.zoom,state.zoom); ctx.translate(-state.cx,-state.cy);
     // Edges first. Cross-section edges are intentionally more visible at overview scale.
     ctx.lineWidth = 0.65 / Math.max(.55,state.zoom);
-    edges.forEach(e => {
-      if (!edgeVisible(e)) return;
-      const a=nodes[e.s], b=nodes[e.t]; const active=state.selected>=0; const cross=a.category!==b.category;
-      const related = !active || e.s===state.selected || e.t===state.selected;
-      ctx.globalAlpha = active ? (related ? 0.72 : 0) : (cross ? 0.16 : 0.035);
-      ctx.strokeStyle = active ? (related ? data.colors[a.category] : '#94a3b8') : (cross ? '#64748b' : '#94a3b8');
+    edges.forEach((e,i) => {
+      if (!edgeVisible(e,i)) return;
+      const a=nodes[e.s], b=nodes[e.t];
+      if (i === state.selEdge) {
+        ctx.globalAlpha = 1; ctx.lineWidth = 2.6 / Math.max(.55,state.zoom); ctx.strokeStyle = '#2563eb';
+        ctx.beginPath(); ctx.moveTo(a.x,a.y); ctx.lineTo(b.x,b.y); ctx.stroke();
+        ctx.lineWidth = 0.65 / Math.max(.55,state.zoom);
+        arrowHead(a,b);
+        return;
+      }
+      const cross=a.category!==b.category; const hovered=i===state.hoverEdge;
+      let alpha, color;
+      if (state.selEdge >= 0) { alpha = .1; color = '#94a3b8'; }
+      else if (state.selected >= 0) { alpha = hovered ? 1 : .72; color = data.colors[a.category]; }
+      else { alpha = cross ? (hovered ? .55 : .16) : (hovered ? .45 : .035); color = cross ? '#64748b' : '#94a3b8'; }
+      if (hovered) ctx.lineWidth = 1.6 / Math.max(.55,state.zoom);
+      ctx.globalAlpha = alpha; ctx.strokeStyle = color;
       ctx.beginPath(); ctx.moveTo(a.x,a.y); ctx.lineTo(b.x,b.y); ctx.stroke();
+      if (hovered) ctx.lineWidth = 0.65 / Math.max(.55,state.zoom);
     });
     // Category labels make the cluster layout understandable.
     if (state.zoom > .28) {
       ctx.textAlign='center'; ctx.textBaseline='middle'; ctx.font='600 15px system-ui';
       Object.entries(data.centers).forEach(([cat,c]) => { ctx.globalAlpha = state.cat==='all'||state.cat===cat ? .82 : .18; ctx.fillStyle=data.colors[cat]; ctx.fillText(cat,c.x,c.y-48); });
     }
+    const selEndpoints = state.selEdge >= 0 ? edges[state.selEdge] : null;
     nodes.forEach(n => {
-      const visible=categoryVisible(n), match=queryMatches(n), selected=n.id===state.selected, hovered=n.id===state.hover;
-      const dim = (!visible || (state.query && !match)) && !selected;
+      const visible=categoryVisible(n), match=queryMatches(n), hovered=n.id===state.hover;
+      const endpoint = !!selEndpoints && (n.id===selEndpoints.s || n.id===selEndpoints.t);
+      const selected = n.id===state.selected || endpoint;
+      const dim = state.selEdge >= 0 ? !endpoint : ((!visible || (state.query && !match)) && !selected);
       const r = selected ? 7/state.zoom : (hovered ? 5/state.zoom : 2.7/state.zoom);
-      ctx.globalAlpha = dim ? .08 : (match && state.query ? 1 : .82);
+      ctx.globalAlpha = dim ? .08 : (endpoint ? 1 : (match && state.query ? 1 : .82));
       ctx.fillStyle = data.colors[n.category]; ctx.beginPath(); ctx.arc(n.x,n.y,Math.max(1.6,r),0,Math.PI*2); ctx.fill();
       if (selected || hovered || (state.showLabels && state.zoom>1.0 && visible && match)) {
         ctx.globalAlpha = selected ? 1 : .78; ctx.fillStyle='#172033'; ctx.font=(selected?'700 ':'')+'10px system-ui'; ctx.textAlign='left'; ctx.textBaseline='bottom'; ctx.fillText(n.title.slice(0,55),n.x+7/state.zoom,n.y-5/state.zoom);
@@ -265,28 +292,59 @@ canvas.dragging { cursor:grabbing; }
   }
 
   function showNode(n) {
-    if (!n) { info.innerHTML='<span class="path">No page selected.</span>'; return; }
+    if (!n) { info.innerHTML='<span class="path">Nothing selected. Click a dot or a link line.</span>'; return; }
     const out=n.outbound, inc=n.inbound;
     info.innerHTML = '<h2>'+escapeHtml(n.title)+'</h2><div class="path">'+escapeHtml(n.path)+'</div><span class="badge" style="background:'+n.color+'">'+escapeHtml(n.category)+'</span><p>'+inc+' inbound link'+(inc===1?'':'s')+' · '+out+' outbound link'+(out===1?'':'s')+'</p><p><a href="'+n.url+'" target="_blank" rel="noopener">Open deployed page ↗</a></p>';
   }
   function escapeHtml(s) { return s.replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+  function endpointCard(n, role) {
+    return '<div class="edge-card"><div class="role">'+role+'</div><strong>'+escapeHtml(n.title)+'</strong>'
+      +'<div class="path">'+escapeHtml(n.path)+'</div>'
+      +'<span class="badge" style="background:'+n.color+'">'+escapeHtml(n.category)+'</span>'
+      +'<div class="edge-actions"><a href="'+n.url+'" target="_blank" rel="noopener">Open page ↗</a>'
+      +'<button class="result" data-node="'+n.id+'">inspect node</button></div></div>';
+  }
+  function showEdge(e) {
+    if (!e) { showNode(null); return; }
+    const s=nodes[e.s], t=nodes[e.t];
+    info.innerHTML = '<h2>Cross-reference</h2>'
+      +'<div class="path">'+escapeHtml(s.path)+' → '+escapeHtml(t.path)+'</div>'
+      +endpointCard(s,'Source · contains the link')
+      +endpointCard(t,'Target · link destination')
+      +'<p>The highlighted line is an internal Markdown link inside the source page. The arrow marks the direction: source → target.</p>';
+  }
+  function arrowHead(a,b) {
+    const s=9/state.zoom;
+    ctx.save(); ctx.translate((a.x+b.x)/2,(a.y+b.y)/2); ctx.rotate(Math.atan2(b.y-a.y,b.x-a.x));
+    ctx.globalAlpha=1; ctx.fillStyle='#2563eb';
+    ctx.beginPath(); ctx.moveTo(s,0); ctx.lineTo(-s*.55,s*.5); ctx.lineTo(-s*.55,-s*.5); ctx.closePath(); ctx.fill();
+    ctx.restore();
+  }
+  function selectNode(id) { state.selected=id; state.selEdge=-1; showNode(nodes[id]); draw(); }
+  function selectEdge(i) { state.selEdge=i; state.selected=-1; showEdge(edges[i]); draw(); }
+  function clearSelection() { state.selected=-1; state.selEdge=-1; showNode(null); draw(); }
   function renderResults() {
     const q=state.query.toLowerCase(); results.innerHTML=''; if (!q) return;
     const matches=nodes.filter(n=>queryMatches(n)&&categoryVisible(n)).sort((a,b)=>(b.inbound+b.outbound)-(a.inbound+a.outbound)).slice(0,30);
     const cap=document.createElement('div'); cap.style.cssText='color:#64748b;font-size:10px;margin:6px 0 2px'; cap.textContent=matches.length+' matching page'+(matches.length===1?'':'s')+(nodes.filter(n=>queryMatches(n)&&categoryVisible(n)).length>30?' (top 30)':''); results.appendChild(cap);
-    matches.forEach(n=>{ const b=document.createElement('button'); b.className='result'; const strong=document.createElement('strong'); strong.textContent=n.title; const span=document.createElement('span'); span.textContent=n.path; b.append(strong,span); b.onclick=()=>{state.selected=n.id; state.cx=n.x; state.cy=n.y; state.zoom=Math.max(state.zoom,1.25); showNode(n); draw();}; results.appendChild(b); });
+    matches.forEach(n=>{ const b=document.createElement('button'); b.className='result'; const strong=document.createElement('strong'); strong.textContent=n.title; const span=document.createElement('span'); span.textContent=n.path; b.append(strong,span); b.onclick=()=>{selectNode(n.id); state.cx=n.x; state.cy=n.y; state.zoom=Math.max(state.zoom,1.25); draw();}; results.appendChild(b); });
   }
   function hitTest(x,y) { const p=screenToWorld(x,y); let best=-1, bd=Infinity; nodes.forEach(n=>{ if(!categoryVisible(n)) return; const d=Math.hypot(n.x-p.x,n.y-p.y); const limit=Math.max(10/state.zoom,5); if(d<limit&&d<bd){best=n.id;bd=d;} }); return best; }
+  function distToSegment(p,a,b) { const dx=b.x-a.x, dy=b.y-a.y; const len2=dx*dx+dy*dy; if(!len2) return Math.hypot(p.x-a.x,p.y-a.y); let t=((p.x-a.x)*dx+(p.y-a.y)*dy)/len2; t=Math.max(0,Math.min(1,t)); return Math.hypot(p.x-(a.x+t*dx), p.y-(a.y+t*dy)); }
+  function edgeHitTest(x,y) { const p=screenToWorld(x,y); let best=-1, bd=7/state.zoom; edges.forEach((e,i)=>{ if(!edgeVisible(e,i)) return; const d=distToSegment(p,nodes[e.s],nodes[e.t]); if(d<bd){bd=d;best=i;} }); return best; }
   canvas.addEventListener('pointerdown',e=>{state.dragging=true;state.moved=false;state.lastX=e.clientX;state.lastY=e.clientY;canvas.classList.add('dragging');canvas.setPointerCapture(e.pointerId);});
-  canvas.addEventListener('pointermove',e=>{ if(!state.dragging){const id=hitTest(e.offsetX,e.offsetY);if(id!==state.hover){state.hover=id;canvas.style.cursor=id>=0?'pointer':'grab';draw();}return;} const dx=e.clientX-state.lastX,dy=e.clientY-state.lastY; if(Math.abs(dx)+Math.abs(dy)>2)state.moved=true; state.cx-=dx/state.zoom;state.cy-=dy/state.zoom;state.lastX=e.clientX;state.lastY=e.clientY;draw(); });
-  canvas.addEventListener('pointerup',e=>{state.dragging=false;canvas.classList.remove('dragging');if(!state.moved){const id=hitTest(e.offsetX,e.offsetY);if(id>=0){state.selected=id;showNode(nodes[id]);draw();}}});
+  canvas.addEventListener('pointermove',e=>{ if(!state.dragging){const id=hitTest(e.offsetX,e.offsetY);const eid=id>=0?-1:edgeHitTest(e.offsetX,e.offsetY);if(id!==state.hover||eid!==state.hoverEdge){state.hover=id;state.hoverEdge=eid;canvas.style.cursor=(id>=0||eid>=0)?'pointer':'grab';draw();}return;} const dx=e.clientX-state.lastX,dy=e.clientY-state.lastY; if(Math.abs(dx)+Math.abs(dy)>2)state.moved=true; state.cx-=dx/state.zoom;state.cy-=dy/state.zoom;state.lastX=e.clientX;state.lastY=e.clientY;draw(); });
+  canvas.addEventListener('pointerup',e=>{state.dragging=false;canvas.classList.remove('dragging');if(!state.moved){const id=hitTest(e.offsetX,e.offsetY);if(id>=0){selectNode(id);return;}const ei=edgeHitTest(e.offsetX,e.offsetY);if(ei>=0){selectEdge(ei);return;}clearSelection();}});
   canvas.addEventListener('dblclick',e=>{const id=hitTest(e.offsetX,e.offsetY);if(id>=0)window.open(nodes[id].url,'_blank','noopener');});
   canvas.addEventListener('wheel',e=>{e.preventDefault();const before=screenToWorld(e.offsetX,e.offsetY);const factor=Math.exp(-e.deltaY*.001);state.zoom=Math.max(.08,Math.min(5,state.zoom*factor));const after=screenToWorld(e.offsetX,e.offsetY);state.cx+=before.x-after.x;state.cy+=before.y-after.y;draw();},{passive:false});
+  window.addEventListener('keydown',e=>{ if(e.key==='Escape' && !(e.target instanceof HTMLInputElement)) clearSelection(); });
+  info.addEventListener('click',e=>{ const btn=e.target.closest('[data-node]'); if(btn) selectNode(+btn.dataset.node); });
   search.addEventListener('input',()=>{state.query=search.value.trim();renderResults();draw();});
   category.addEventListener('change',()=>{state.cat=category.value;renderResults();draw();});
   allEdges.addEventListener('change',()=>{state.showAll=allEdges.checked;draw();});
   labels.addEventListener('change',()=>{state.showLabels=labels.checked;draw();});
-  document.getElementById('reset').onclick=()=>{state.selected=-1;state.query='';search.value='';state.cat='all';category.value='all';state.showAll=false;allEdges.checked=false;state.showLabels=false;labels.checked=false;layout();state.cx=0;state.cy=0;state.zoom=.72;showNode(null);renderResults();draw();};
+  document.getElementById('reset').onclick=()=>{state.query='';search.value='';state.cat='all';category.value='all';state.showAll=false;allEdges.checked=false;state.showLabels=false;labels.checked=false;layout();state.cx=0;state.cy=0;state.zoom=.72;clearSelection();renderResults();draw();};
+  if (location.hash === '#debug') window.__graph = { state, nodes, edges, hitTest, edgeHitTest, selectNode, selectEdge, clearSelection, screenToWorld, layout, draw };
   showNode(null); renderResults(); draw();
 })();
 </script>
