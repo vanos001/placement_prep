@@ -1,15 +1,36 @@
 # Coverage Dashboard
 
 > Auto-generated tracking of content coverage across all subjects.
-> Last updated: 2026-10-07 (research branch; after the reference-grounded expansion — 140 new pages).
+> Last updated: 2026-10-15 (research branch; after the October rounds — interface
+> encyclopedia rebuild, process-exit-signal part, Section G languages part, orphan
+> wiring, warning cleanup).
 >
-> **Branch note:** `research` is 93 commits ahead of `main` (a strict superset)
-> and adds 692 markdown files since the 2026-08-16 snapshot. The repository now
-> contains **2,809 content pages** under `src/` (+`SUMMARY.md`), **4,889 Mermaid
-> diagrams** across 1,328 files, and 128 MathJax-bearing pages. The per-subject page
-> counts below are point-in-time from the 2026-08-16 dashboard run and were *not*
-> regenerated; the research-branch additions landed mostly in the "Advanced …" rows
-> (A–T) plus Linux, DSA, networking, storage and distributed-systems deep dives.
+> **Branch note:** `research`, `dev` and `main` are synced at the same commit
+> (`989c5c3`). The repository now contains **4,119 content pages** under `src/`
+> (+`SUMMARY.md`, 4,116 nav entries, 0 duplicates, 0 dead entries), **5,546
+> Mermaid diagrams** across 1,659 files, and MathJax-clean math throughout. The
+> per-subject page counts in the table below are point-in-time from the
+> 2026-08-16 dashboard run and were *not* regenerated; everything that landed
+> since is itemized under "Additions after the 2026-08-16 table run" — mostly
+> the Linux interface encyclopedia, userland binaries, process/exit/signal
+> material, Section G language chapters, and the reference-library mining
+> rounds.
+
+### Additions after the 2026-08-16 table run
+
+Not reflected in the per-subject table below. The Linux rows in particular have
+roughly tripled:
+
+| Window | Additions |
+|---|---|
+| 2026-08-19 → 09-05 | 66 research batches: ~170 heavily-cited deep-dive pages (schedulers, RCU, transient-execution attacks, QUIC, storage formats, GPU scheduling) across OS, networks, backend, storage, concurrency, languages. |
+| 2026-10-07 → 10-09 | Reference-library mining rounds + India-recruiter/interview-classics expansion (+140 pages, then +36, +27, …); fourteenth reference index (DSA/CP/competitive math). |
+| 2026-10-09 | **Linux Userland Binaries**: `src/linux/binaries/` — 280 pages, one per binary across 16 collections (coreutils 104, util-linux 96, shadow 24, procps 18, login 8, …) with package-level hubs. |
+| 2026-10-09 | `src/linux/init-systems/` — 46 pages (systemd, sysvinit, runit, dinit + dedicated config pages). |
+| 2026-10-12 | **Interface Encyclopedia per-function rebuild**: `src/linux/syscalls/` (207 files), `src/linux/libc/` (292: glibc + musl), `src/linux/sysfs/` (121: ledger + 119 classes), `src/linux/crossref/` (5) — with source-regenerated, status-honest coverage ledgers. |
+| 2026-10-12 | **Process-exit-signal KB**: `src/linux/process-exit-signal/` — 43 pages (signals inventory, exit-status lifecycle, shell chapters, service managers, containers/PID 1, troubleshooting tree). |
+| 2026-10-13 | **Section G**: `src/languages/process-runtime/` — 18 pages (8 language chapters + 8 coverage ledgers + hub + 9-dimension comparison) covering exit codes, signals and process lifecycle per language. |
+| 2026-10-13 | Navigation integrity: 295 orphaned pages wired into `SUMMARY.md` (they existed as files but never rendered); 130 mdBook HTML-tag warnings cleared. |
 
 ## Summary
 
@@ -92,13 +113,16 @@ verified URLs, not interview questions or diagrams. Source of truth:
 
 ## Overall Metrics
 
-- **Total markdown files**: 2,810 (2,809 content pages plus `SUMMARY.md`)
-- **Total Mermaid diagrams**: 4,889 (across 1,328 files)
-- **Math-enabled pages**: 128
-- **Fenced code blocks**: 33,151
-- **Total size**: ~42 MB (src/)
-- **New content this session**: ~249K words across 131 files
-- **Build status**: ✅ All validation checks passing (SUMMARY, links, mermaid 100%, MathJax)
+- **Total markdown files**: 4,120 (4,119 content pages plus `SUMMARY.md`)
+- **Total words**: ~8.5M (up from ~7.73M at the 2026-10-09 binaries round)
+- **Total Mermaid diagrams**: 5,546 (across 1,659 files; 100% heuristic pass — real `mermaid@11` last verified the full corpus 5,527/5,527 on 2026-10-09)
+- **MathJax**: 0 unbalanced delimiters, 0 link-in-math hazards (full run 2026-10-15)
+- **Fenced code blocks**: 0 problems across 4,120 files (`check-fences.py`, 2026-10-15)
+- **Internal cross-reference graph**: 4,119 nodes, 19,163 unique internal links (one edge per source→target pair; regenerated 2026-10-15)
+- **Total size**: ~69 MB (src/)
+- **Navigation**: 4,116 `SUMMARY.md` entries, 0 duplicate destinations, 0 dead entries; real mdBook v0.5.4 build renders all 4,119 pages
+- **Known debt**: 217 pre-existing broken internal links/anchors (`check-links.py`; catalogued, none introduced by recent rounds)
+- **Build status**: ✅ All validators passing (SUMMARY, links-except-known-debt, mermaid 100%, MathJax, fences); CI deploy green
 
 ## Dev Pull Audit — 2026-08-13
 

@@ -27,12 +27,13 @@ python3 scripts/generate-cross-reference-graph.py \
 ```
 
 The generated file is not tracked. The deployment workflow runs this command
-automatically after `mdbook build`. Current graph size: **~2,810 nodes, ~24,500 internal links** (measured across 2,809 content files on 2026-09-19).
+automatically after `mdbook build`. Current graph size: **~4,119 nodes, ~19,163 unique internal links** (regenerated across 4,119 content files on 2026-10-15; one edge per source→target pair, so a link repeated across pages or inside one page counts once). For comparison, the 2026-09-19 review measured ~2,810 nodes and 24,754 link *occurrences* — occurrence counts are higher because they do not deduplicate.
 
 ## Graph scope
 
 - Includes every Markdown page under `src/` except `SUMMARY.md`.
 - Includes internal relative Markdown links as directed edges.
-- Includes orphan pages as nodes so coverage gaps remain visible.
+- Since 2026-10-13 there are no orphan pages: every content page is reachable
+  from `SUMMARY.md`, so the graph and the sidebar cover the same corpus.
 - Omits external URLs, image links, self-links, and Summary navigation edges.
 - Current graph size is reported inside the generated visualization.
