@@ -2,8 +2,50 @@
 
 > Auto-maintained by research agents. Topics discovered during expansion that need coverage.
 > Priority: HIGH (interview-critical) | MEDIUM (important) | LOW (nice-to-have)
-> Last updated: 2026-10-09 (Linux userland binaries round: 280 pages across 16 collections)
-> Last content change: 2026-10-09 (new part src/linux/binaries/ — one page per binary for coreutils, util-linux, shadow, login, procps, findutils, diffutils, grep, sed, gawk, tar, acl, hostname, bsdutils, busybox, uutils)
+> Last updated: 2026-10-15 (October rounds recorded: interface encyclopedia rebuild, process-exit-signal KB, Section G languages part, navigation wiring, warning cleanup)
+> Last content change: 2026-10-13 (Section G part src/languages/process-runtime/ + 295 orphaned pages wired into SUMMARY.md + 130 HTML-tag warning sites fixed)
+
+## Round 14 — Section G eight-language process/runtime + navigation integrity — 2026-10-13
+
+- User-directed round: a full exit-codes/signals/process-lifecycle knowledge base
+  for 8 languages (C, C++, Python, Go, Java, Rust, Node.js, OCaml) landed as
+  `src/languages/process-runtime/` (18 pages: 8 chapters + 8 ledgers + hub +
+  9-dimension comparison), audited against the G1–G6 acceptance criteria with
+  633 ledger rows (623 documented / 10 source-limited). A G3 reference-policy
+  pass added 144 verified hyperlinks where chapters had cited sources by name.
+- Maintenance round in the same window: 295 orphaned pages wired into
+  `SUMMARY.md` (4,116 entries now, 0 dup / 0 dead, mdBook v0.5.4 build clean)
+  and 130 mdBook "unclosed HTML tag" warnings cleared across 33 files.
+- Candidate follow-ups spotted while auditing:
+  - **217 pre-existing broken internal links/anchors** repo-wide
+    (`scripts/check-links.py`; stash-baseline-proven pre-existing, none
+    introduced by recent rounds) — the next HIGH-value maintenance pass; each
+    needs a re-point / retarget / drop decision.
+  - 10 Section G ledger rows stay source-limited (glibc manual and
+    en.cppreference.com unreachable from the work environment) — retry from an
+    environment with access.
+  - Carried from round 11: stale section-README tables (security/advanced lists
+    5 of 22 files; several mindmaps predate the new pages — SUMMARY remains the
+    source of truth).
+
+## Round 13 — Interface Encyclopedia per-function rebuild + process-exit-signal KB — 2026-10-12
+
+- User-directed round replacing mega-chapters with one page per interface:
+  syscalls 207 files, libc 292 (glibc families + musl catalog), sysfs 121
+  (ledger + 119 classes), crossref 5 — with source-regenerated ledgers and
+  statuses flipped honestly (101 syscall rows, 10 glibc rows, 14 sysfs classes,
+  1 crossref row stay source-limited with named reasons; 46 syscall rows are
+  `researched` and upgradeable).
+- New part `src/linux/process-exit-signal/` (43 pages): signals inventory,
+  exit-status lifecycle, shell chapters (bash/dash/zsh), service managers
+  (systemd/OpenRC/runit/s6), containers (PID 1/Docker/K8s), troubleshooting
+  decision tree; unified ledger of 174 requirement IDs.
+- Candidate follow-ups spotted while writing: upgrade the 46 `researched`
+  syscall rows to documented (sources exist, effort-bound); per-signal deep
+  pages for the job-control signals (SIGTSTP/SIGTTIN/SIGTTOU are ledger rows
+  but thin in prose); a compression-tool family page set (gzip/xz/zstd —
+  carried over from round 12's candidate list, still homeless);
+  an ldd/ld.so/ELF-loader page set (referenced by five+ binary pages).
 
 ## Round 12 — Linux userland binaries sweep — 2026-10-09
 
