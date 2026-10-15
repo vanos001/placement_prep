@@ -3,6 +3,71 @@
 This file records meaningful content and validation changes to the placement
 preparation book. Dates use the project timezone, Asia/Calcutta.
 
+## 2026-10-13 — Eight-language process/runtime semantics (Section G) + navigation integrity round
+
+Two user-directed efforts landed together and closed the book's navigation and
+warning debt.
+
+**Section G (eight-language process/runtime semantics).** A new part,
+`src/languages/process-runtime/`, covers exit codes, signals and process
+lifecycle for C, C++, Python, Go, Java, Rust, Node.js and OCaml — one chapter
+(8.5k–10.4k words) plus one G4 coverage ledger per language, a part hub, and a
+nine-dimension cross-language comparison (562 lines, 11 tables). An audit
+against the G1–G6 acceptance criteria found one real gap: the C, C++, Rust and
+comparison chapters cited sources by name without links (the Rust chapter had
+zero URLs). A reference-policy pass verified 209 URLs with live fetches and
+added 144 hyperlinks, bringing the part to spec: 633 ledger rows (623
+documented / 10 source-limited with reasons), zero duplicate IDs, all 388
+intra-book links resolving, and 290 of 291 external URLs reachable
+(en.cppreference.com refuses bots with a documented Cloudflare 403).
+
+**Navigation integrity.** The 2026-10-12/13 content rounds left 295 authored
+pages unwired (mdBook silently drops pages that are not in `SUMMARY.md`, so
+none of them rendered). All 295 were wired: the Linux binaries flatlands were
+rebuilt into a designed hierarchy (overview → 16 collection hubs → pages), the
+sysfs Class Encyclopedia and crossref maps joined the nav, the glibc function
+hub was moved from mid-block to block top (it had been splitting 282 pages
+under the "musl ledger"), 14 stray pseudo-part headings were promoted to real
+overview titles, and the Section G ledgers became real nav children, fixing 8
+live-site 404s. `SUMMARY.md` now carries **4,116 nav entries with 0 duplicate
+destinations and 0 dead entries**, verified by a real mdBook v0.5.4 build with
+`create-missing=false` (exit 0; all 4,119 pages render). A duplicate-entry
+defect that broke CI (`languages/comparison.md` listed twice) was fixed the
+same day by giving the language-chapters group a real hub page.
+
+**Warning cleanup.** The newly-parsed sysfs pages surfaced 130 mdBook
+"unclosed HTML tag" warnings: bare `<token>` placeholders such as `ttyS<x>`,
+`SIG<NAME>` and `<PCI BDF>` parse as HTML start tags and are swallowed at
+render time. All 130 sites across 33 files were wrapped in inline code spans
+(fence- and code-span-aware fixer, negative control: mini-build 130 warnings
+before → 0 after). The book's three branches (`research`, `dev`, `main`) were
+then synced to the same commit.
+
+## 2026-10-12 — Interface Encyclopedia per-function rebuild + process-exit-signal knowledge base
+
+**Interface Encyclopedia.** The Linux interface coverage was rebuilt from
+per-domain mega-chapters into one page per interface, with man-page families
+sharing pages per the source-derived `.so` alias map. Seven waves produced 207
+files under `src/linux/syscalls/`, 292 under `src/linux/libc/` (glibc families
+including math/threads/termios/users/vm/misc plus fs/stdio/strings/net, and
+the musl catalog), 121 under `src/linux/sysfs/` and 5 under
+`src/linux/crossref/`. The four coverage ledgers were regenerated from sources
+and every status flipped in place: syscalls 388 documented / 46 researched /
+101 source-limited of 535 with 0 not-started remaining; glibc 1,047 documented
+/ 10 source-limited of 1,881 documented-API rows with 0 researched remaining;
+sysfs 106 documented / 14 source-limited of 120 classes; crossref 37
+documented / 1 source-limited (msr-tools docs unreachable) of 38. Every new
+page is ASCII-only with balanced fences and resolving relative links.
+
+**Process-exit-signal knowledge base.** A new top-level part,
+`src/linux/process-exit-signal/`, grew from a seeded skeleton (unified
+coverage ledger, 174 requirement IDs) into 43 pages: a signals inventory and
+interfaces map, the exit-status lifecycle, shell chapters (bash/dash/zsh),
+language chapters (C/C++/Rust/Go/Python/Java/Node/OCaml — later promoted into
+the dedicated Section G part above), service managers (systemd, OpenRC, runit,
+s6), containers (PID 1 semantics, Docker, Kubernetes), a cross-language
+comparison and a troubleshooting decision tree.
+
 ## 2026-10-09 — Linux Userland Binaries: a 280-page per-binary collection set
 
 The book gained a new top-level part, **Linux Userland Binaries**

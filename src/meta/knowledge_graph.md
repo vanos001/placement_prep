@@ -2,7 +2,7 @@
 
 > Cross-topic relationships for navigation and study planning.
 > Auto-updated by research agents.
-> Last updated: 2026-08-16 (advanced A-T sections, validation re-run)
+> Last updated: 2026-10-15 (process/exit/signal and interface-encyclopedia edges added)
 
 ## Core Relationships
 
@@ -637,3 +637,40 @@ index and the chapters it points back into:
 The DSA, competitive programming and competitive math index is the newest node: it links out
 to the DSA, competitive programming, competitive math, CS theory and mathematics sections, and
 every other index links back to the reference-libraries overview.
+
+## Process, Exit Codes & Signals Edges — 2026-10-13
+
+The October rounds added a whole new region to the graph: the process lifecycle
+spans the kernel, libc, shells, service managers, containers and eight language
+runtimes. The load-bearing edges:
+
+```
+Exit Status Lifecycle
+  → wait()/waitpid() (linux/syscalls) → Reaping → Zombie & Orphan Processes
+  → Shell exit codes ($?, trap) (process-exit-signal/shells)
+  → Per-language exit APIs (languages/process-runtime: sys.exit, process.exit,
+    std::process::exit, os.Exit, System.exit, exit(), std::exit, Sys.exit)
+  → WEXITSTATUS / waitpid status macros (linux/libc)
+
+Signals
+  → Signal disposition & masks (sigaction, sigprocmask) → linux/libc + syscalls pages
+  → Job control (SIGTSTP/SIGTTIN/SIGTTOU, process groups, controlling TTY)
+  → Shells (bash/dash/zsh trap semantics) → Service managers (systemd/OpenRC/runit/s6)
+  → Containers: PID 1 signal semantics (Docker/Kubernetes) → Init systems (linux/init-systems)
+  → Language handlers (8 chapters) → async-runtime integration (self-pipe, signalfd,
+    event-loop sinks) → Concurrency section (thread-directed delivery, pthread_sigmask)
+
+Interface Encyclopedia (per-function pages)
+  → syscalls: kill, wait4, exit_group, rt_sigaction, fork/clone → process-exit-signal part
+  → glibc: raise, abort, psignal → syscalls → shells
+  → sysfs/crossref: class + cross-layer maps → device/sysfs internals (Linux Internals)
+
+Cross-Language Comparison (9 dimensions)
+  ↔ each of the 8 language chapters (both-sides citations)
+  ↔ Linux process-exit-signal part (OS-level ground truth)
+  ↔ Glossary (signal/exit/process terms)
+```
+
+Study-path reading order for this region: process-exit-signal part (OS-level)
+→ the per-language chapter you interview in → the comparison page → the
+syscalls/libc encyclopedia pages the chapter cites.

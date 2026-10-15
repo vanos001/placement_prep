@@ -8,7 +8,7 @@
 > Status legend used elsewhere in `meta/`:
 > `[ ]` Not started · `[-]` Partial · `[x]` Substantially covered · `[~]` Needs review
 >
-> Last updated: 2026-08-15
+> Last updated: 2026-10-15 (process/exit/signal, interface-encyclopedia and userland-binary topics folded in)
 
 ## 1. Algorithms — advanced
 
@@ -371,6 +371,19 @@ This is a **major missing category** worth adding.
 * select
 * poll
 * signals
+* signal disposition
+* signal masks & blocking
+* exit status lifecycle
+* zombie & orphan processes
+* process reaping (wait/waitpid)
+* fork/exec model
+* daemonization
+* process groups & sessions
+* PID 1 & init semantics
+* service managers (systemd/OpenRC/runit/s6)
+* containers & PID 1
+* core dumps
+* OOM killer
 * ptrace
 * perf
 * ftrace
@@ -1425,6 +1438,19 @@ Useful as an advanced CS topic.
 * xargs
 * find
 * command pipelines
+* exit codes in shells (`$?`, `trap`)
+* coreutils
+* util-linux
+* shadow suite (user/group accounts)
+* procps
+* findutils
+* diffutils
+* gawk
+* tar
+* ACL tools (getfacl/setfacl)
+* busybox applets
+* uutils (Rust coreutils)
+* login & session binaries (login, sulogin, nologin)
 
 ---
 
@@ -1668,5 +1694,35 @@ Create a section specifically about **engineering interview problem solving**.
 * ML system-design interviews
 * backend interviews
 * language-specific interviews
+
+---
+
+## 51. Process Lifecycle, Exit Codes & Signals by Language
+
+How each language wraps the OS process model — fork/exec, exit hooks, signal
+handling and async-runtime integration. The book carries one chapter plus a
+coverage ledger per language under `languages/process-runtime/`, with a
+nine-dimension cross-language comparison.
+
+* exit & termination: `sys.exit` / `os._exit` / `atexit` (Python)
+* exit & termination: `process.exit` / exit-event loop drain (Node.js)
+* exit & termination: `std::process::exit` / `ExitCode` / panic hook (Rust)
+* exit & termination: `os.Exit` / deferred calls never run (Go)
+* exit & termination: `System.exit` / shutdown hooks (Java)
+* exit & termination: `exit()` / `atexit` / `_Exit` (C)
+* exit & termination: `std::exit` / `std::atexit` / `std::abort` (C++)
+* exit & termination: `Sys.exit` / `at_exit` (OCaml)
+* signal handling: `signal.sigaction`, `SA_RESTART` interplay (Python)
+* signal handling: `process.on('SIGINT')`, async sink semantics (Node.js)
+* signal handling: `signal::trap`, `unsafe` fn-signal-safety rules (Rust)
+* signal handling: `os/signal.Notify`, context cancellation (Go)
+* signal handling: `sun.misc.Signal` / shutdown hooks limits (Java)
+* signal handling: `sigaction` + async-signal-safe handlers (C/C++)
+* signal handling: `Sys.signal` + `Sys.Break` (OCaml)
+* async runtimes & signals: event-loop integration, self-pipe/signalfd patterns
+* threads & signals: `pthread_sigmask`, process-directed vs thread-directed delivery
+* cancellation & cleanup: daemon threads, `finally` vs `defer` vs RAII on exit
+* process spawning APIs per language: `subprocess`, `Command`, `ProcessBuilder`, `spawn`
+* exit-code conventions & error surfacing across languages
 
 

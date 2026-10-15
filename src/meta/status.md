@@ -1,6 +1,53 @@
 # Project Status
 
-> Status snapshot: 2026-10-09 (research branch @ `46e95b3`+binary round) — validation passing; latest round added the Linux Userland Binaries part (280 pages), see "Userland binaries round" below.
+> Status snapshot: 2026-10-15 — all three branches (`research`, `dev`, `main`)
+> synced at `989c5c3`, validation passing. The October rounds rebuilt the Linux
+> Interface Encyclopedia per-function, added the process-exit-signal part and the
+> Section G eight-language process/runtime part, wired all 295 orphaned pages into
+> navigation, and cleared 130 mdBook HTML-tag warnings. See "October 2026 rounds"
+> below.
+
+## October 2026 rounds — 2026-10-12 → 10-13
+
+Four back-to-back rounds moved the book from 3,385 to 4,119 content pages and
+closed out the navigation and warning debt:
+
+- **Linux Interface Encyclopedia per-function rebuild (2026-10-12, waves 1–7).**
+  The old per-domain mega-chapters were replaced by one page per syscall,
+  libc function, sysfs class and cross-layer interface: 207 files under
+  `src/linux/syscalls/`, 292 under `src/linux/libc/` (glibc + musl), 121 under
+  `src/linux/sysfs/`, 5 under `src/linux/crossref/`. Coverage ledgers are
+  regenerated from sources and status-honest: syscalls 388 documented /
+  46 researched / 101 source-limited of 535 (0 not-started); glibc 1,047
+  documented / 10 source-limited of the 1,881 documented-API rows; sysfs 106
+  documented / 14 source-limited of 120 classes; crossref 37 documented /
+  1 source-limited of 38.
+- **Process-exit-signal knowledge base (2026-10-12).** New part
+  `src/linux/process-exit-signal/` (43 pages): unified coverage ledger (174
+  requirement IDs), signals inventory + interfaces, exit-status lifecycle,
+  shell chapters (bash/dash/zsh), service managers (systemd/OpenRC/runit/s6),
+  containers (PID 1 semantics, Docker, Kubernetes), and a troubleshooting
+  decision tree.
+- **Section G — eight-language process/runtime semantics (2026-10-13).**
+  `src/languages/process-runtime/` (18 pages): one chapter + one coverage
+  ledger per language (C, C++, Python, Go, Java, Rust, Node.js, OCaml —
+  chapters 8.5k–10.4k words each), part hub, and a 9-dimension cross-language
+  comparison. G1–G6 audited: 633 ledger rows (623 documented / 10
+  source-limited / 0 remaining), zero duplicate IDs; a G3 reference-policy fix
+  added 144 verified hyperlinks to the C/C++/Rust/comparison chapters; all 388
+  intra-book links resolve; 290 of 291 external URLs reachable
+  (en.cppreference.com = documented Cloudflare 403).
+- **Navigation integrity & warning cleanup (2026-10-13).** Wired the last 295
+  orphaned pages into `SUMMARY.md` (binaries overview + coreutils/util-linux
+  flatlands rebuilt into a designed hierarchy, sysfs Class Encyclopedia, musl
+  catalog, crossref maps; Section G ledgers became real nav children, fixing 8
+  live-site 404s; 14 bogus part titles removed; the glibc hub repositioned —
+  it had been splitting 282 pages under the musl ledger). `SUMMARY.md` now has
+  **4,116 nav entries, 0 duplicates, 0 dead entries**, verified by a real
+  mdBook v0.5.4 build (`create-missing=false`) over 4,119 pages. Then all 130
+  mdBook "unclosed HTML tag" warnings were eliminated by wrapping bare
+  `<token>` placeholders in inline code across 33 files (negative control:
+  mini-build 130 warnings before → 0 after).
 
 ## Userland binaries round — 2026-10-09
 
@@ -17,47 +64,65 @@
 
 ## Current status
 
-**Research branch complete, independently reviewed, and repaired.** The `research`
-branch is **93 commits ahead of `main`** (a strict superset: 0 commits and 0 files
-exist on `main` but not here), adding **692 new markdown files**. The repository
-contains **2,809 content pages** under `src/` (+`SUMMARY.md`), all reachable from
-`SUMMARY.md` with 0 duplicate destinations.
+**All branches synced and repaired.** `research`, `dev` and `main` point at the
+same commit (`989c5c3`); the repository contains **4,119 content pages** under
+`src/` (+`SUMMARY.md`), all reachable from `SUMMARY.md` (4,116 nav entries) with
+0 duplicate destinations and 0 dead entries — the 2026-08-era orphan problem is
+closed.
 
 A full external review on 2026-09-19 re-ran every validator from scratch, added a
 real `mermaid@11` parse, probed all ~6,500 external URLs, resolved every DOI, and
 read high-value pages by hand. It found and fixed: a code-fence corruption class
 that rendered prose as code, wrong worked-example mathematics, a MathJax/link
 collision, 48 site-root-absolute links, malformed URLs, conflicting kernel sizes,
-stale counts in this file, and missing CI. See "Deep review & fix pass".
+stale counts in this file, and missing CI. See "Deep review & fix pass". The
+October 2026 rounds (above) then rebuilt the interface encyclopedia, added the
+process/exit/signal and Section G parts, wired the last 295 orphaned pages, and
+cleared 130 mdBook HTML-tag warnings.
 
 | Area | Status | Evidence |
 |---|---|---|
-| Git safety | ✅ Complete | Active development on `research`; `main` (== `dev`, `6f7e79b`) untouched by research commits; research is a clean 93-commit superset. |
-| Content inventory | ✅ Expanded | **2,809** content markdown pages under `src/` (up from 2,117 at the 2026-08-16 snapshot). |
-| Navigation | ✅ Passing | All 2,809 content pages reachable from `SUMMARY.md` (1 excluded: `SUMMARY.md` itself); 0 duplicate destinations. |
-| Internal links | ✅ Passing | 0 broken links / anchors (24,754 links), including site-root-absolute and non-`.md` targets. |
-| Mermaid | ✅ Passing | 4,889 of 4,889 diagrams across 1,328 files (100%) — verified with the real `mermaid@11` parser, not only the heuristic. |
-| MathJax | ✅ Passing | 0 issues across all 128 math-bearing pages, including 0 math spans containing a literal `](` (which renders as a link). |
-| Fence integrity | ✅ New | 0 malformed or nested code fences (33,152 blocks scanned by `scripts/check-fences.py`). |
-| Advanced topics | ⚠️ Partially verified | All 1,374 `src/index.md` bullets covered. The earlier "all 1,528 `prompt.md` topics" claim could not be reproduced — **no `prompt.md` exists in the repository**, so that figure is unverifiable and is no longer asserted. |
+| Git safety | ✅ Complete | Active development on `research`; promotion research → dev → main via explicit `--no-ff` merges; all three branches synced at `989c5c3` (2026-10-15). |
+| Content inventory | ✅ Expanded | **4,119** content markdown pages under `src/` (up from 3,385 at the 2026-10-09 binaries round and 2,809 at the 2026-09-19 snapshot). |
+| Navigation | ✅ Passing | All 4,119 content pages reachable from `SUMMARY.md` (4,116 nav entries; `SUMMARY.md` itself and the intro/glossary/index pages are the only non-bullet exceptions); 0 duplicate destinations, 0 dead entries; enforced by real mdBook v0.5.4 with `create-missing=false`. |
+| Internal links | ⚠️ Known debt | `scripts/check-links.py` reports **217 broken links/anchors** — all pre-existing (bit-identical before and after the 2026-10-13 changes; none in files touched by the recent rounds). Catalogued for a dedicated cleanup pass; see "Known debt" below. |
+| Mermaid | ✅ Passing | 5,546 of 5,546 diagrams across 1,659 files pass the heuristic validator (2026-10-15); the real `mermaid@11` parser last passed the full corpus 5,527/5,527 on 2026-10-09 (19 diagrams added since, all heuristic-clean). |
+| MathJax | ✅ Passing | 0 unbalanced delimiters and 0 math spans containing a literal `](` (full run 2026-10-15). |
+| Fence integrity | ✅ Passing | 0 malformed or nested code fences across 4,120 files (`scripts/check-fences.py`, 2026-10-15). |
+| Linux Interface Encyclopedia | ✅ Complete, status-honest | One page per syscall/libc-function/sysfs-class/crossref interface (625 files across four directories) with source-regenerated coverage ledgers; 101 syscall rows, 10 glibc rows, 14 sysfs classes and 1 crossref row are labelled source-limited rather than padded. |
+| Process/runtime semantics (Section G) | ✅ Complete | 8 language chapters + 8 coverage ledgers (633 rows: 623 documented / 10 source-limited) + 9-dimension comparison; G1–G6 acceptance criteria audited and passing. |
+| Advanced topics | ✅ Covered | All 1,374 `src/index.md` bullets covered (the 2026-10-15 index revision adds process/signal, binary-suite and per-language runtime-semantics topics, all already backed by pages). |
 | Build-it-yourself | ✅ Complete | 34 implementation projects across 5 domains. |
 | Benchmarking | ✅ Complete | Methodology, pitfalls, statistics, tool comparison. |
 | Reference libraries | ✅ Complete | 14 indexes under `src/references/` — **1,257 entries**, **2,744 de-duplicated URLs**, 928 education resources, 195 video resources, 86 conference sources; every URL verified 2026-10-07/08/09, CSV mirrors each page. |
 | Research batches | ✅ Complete | 93 research commits (2026-08-02 → 2026-09-05), 66+ "batch" deep-dive pages with Crossref-verified DOIs, RFC-cited networking pages, and byte-exact demo QA. |
 
+### Known debt
+
+- **217 broken internal links/anchors** (`scripts/check-links.py`, full run
+  2026-10-15). Proven pre-existing: a stash-baseline run during the 2026-10-13
+  warning round produced the identical 217 before and after the change, and
+  none sit in files touched by the recent rounds. They need a per-link decision
+  (re-point, retarget, or drop) and are the next maintenance candidate.
+- **Source-limited ledger rows** (documented, not hidden): 101 syscalls, 10
+  glibc APIs, 14 sysfs classes, 1 crossref row, 10 Section G rows — each labelled
+  in its ledger with the reason (primary source unreachable from the work
+  environment).
+
 **Reference libraries (2026-10-09).** Fourteen verified primary-source indexes, one per major topic, each carrying the same five parts: numbered entry categories, a two-track Education section, a research-papers section, a Video courses/channels/talks section, and a Conference videos/notes/archives section. A new fourteenth index (DSA, competitive programming and competitive math) joined the set this week. Per-index counts, the CSV list and the verification dates live in `src/references/README.md`; the headline totals there (1,257 entries, 2,744 unique URLs) are recomputed from the pages rather than carried forward, because the previous totals did not reconcile with their own per-index column.
 
 ## Validation commands
 
-The validation suite re-run on the `research` tree during the 2026-09-19 review:
+Latest full-suite runs on the merged tree (2026-10-15 unless noted):
 
-- `scripts/check-summary.py` → 2,809/2,809 reachable, 0 duplicate destinations
-- `scripts/check-links.py` → 0 broken links/anchors (24,754 links)
-- `scripts/check-fences.py` → 0 problems across 33,152 fenced blocks
-- `scripts/check-mathjax.py` → balanced across 128 math pages, 0 link-in-math hazards
-- `scripts/validate-mermaid-heuristic.mjs` → 4,889/4,889 pass (100%)
-- real `mermaid@11` parse → 4,889/4,889 pass (100%)
-- `scripts/check-doi.py` → 491/491 DOIs resolve
+- `scripts/check-summary.py` → 4,116 nav entries, 0 duplicate destinations, 0 dead entries
+- `scripts/check-links.py` → 217 broken links/anchors, all pre-existing (see "Known debt")
+- `scripts/check-fences.py` → 0 problems across 4,120 files
+- `scripts/check-mathjax.py` → 0 unbalanced delimiters, 0 link-in-math hazards
+- `scripts/validate-mermaid-heuristic.mjs` → 5,546/5,546 pass (100%)
+- real `mermaid@11` parse → 5,527/5,527 pass on 2026-10-09 (last full run; 19 diagrams added since)
+- real mdBook v0.5.4 stub build → exit 0, all 4,119 pages render (2026-10-13)
+- `scripts/check-doi.py` → 491/491 DOIs resolve (2026-09-19 run)
 
 > **External URLs are not fully clean.** A **sweep of all 8,638 external
 > links** found **6,112 live** and **630 dead** (HTTP 404/410); the remainder

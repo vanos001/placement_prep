@@ -1,6 +1,6 @@
 # Integration Progress
 
-> Work log for 2026-08-02 to 2026-09-02. All counts are from the working tree after each change.
+> Work log for 2026-08-02 to 2026-10-13. All counts are from the working tree after each change.
 
 ## Linux userland binaries round — 2026-10-09
 
@@ -111,4 +111,26 @@ The `research` branch (75 commits ahead of `main`) landed 660 new markdown files
 | sysfs | all 77 remaining `researched` classes -> per-class pages (65 documented, 13 honest source-limited stubs): 106 documented / 14 source-limited of 120 |
 | crossref | 11 of 12 `source-limited` rows upgraded with fetched upstream docs (NetworkManager, thermald, UPower, libinput, libdrm, rdma-core, ndctl, procps, dmidecode) plus local NSS/kernel sources; XR-112 stays source-limited (msr-tools docs unreachable) |
 | Validation | every new page ASCII-only, balanced fences, relative links resolve; statuses/notes flipped in all four ledgers; SUMMARY wired (282 glibc entries, 119 class entries) |
+
+## Section G - eight-language process/runtime semantics - 2026-10-13
+
+| Step | Result |
+|---|---|
+| Part built | `src/languages/process-runtime/` (18 pages): 8 chapters (C, C++, Python, Go, Java, Rust, Node.js, OCaml; 8.5k-10.4k words each) + 8 G4 coverage ledgers + part hub + 9-dimension comparison (562 lines, 11 tables) |
+| Ledger audit | 633 rows inventoried: 623 documented / 10 source-limited / 0 remaining; zero duplicate IDs; rollup numbers match ledger contents exactly |
+| G3 reference policy | C/C++/Rust/comparison chapters cited sources by name only (Rust had zero URLs); 209 URLs live-verified, 144 hyperlinks added -> all chapters carry direct source links |
+| Link & URL audit | 388 intra-book links resolve; 290/291 external URLs reachable (en.cppreference.com = documented Cloudflare 403 to bots) |
+| Acceptance | G1-G6 verified, including equal-rigor OCaml chapter (source-transcribed signatures, verified-absent API list, layer labels) |
+
+## Navigation integrity & warning cleanup - 2026-10-13
+
+| Step | Result |
+|---|---|
+| Orphan wiring | 295 authored-but-unwired pages joined `SUMMARY.md`: binaries flatlands rebuilt (overview -> 16 collection hubs -> pages), sysfs Class Encyclopedia + crossref maps added, glibc hub moved to block top (it split 282 pages under the musl ledger), 14 pseudo-part titles promoted, Section G ledgers became real nav children (fixing 8 live-site 404s) |
+| Summary state | 4,116 nav entries, 0 duplicate destinations, 0 dead entries; real mdBook v0.5.4 stub build with `create-missing=false` exits 0 and renders all 4,119 pages |
+| CI fix | duplicate `languages/comparison.md` entry that broke the deploy replaced with a real language-chapters hub page |
+| Warning cleanup | 130 mdBook "unclosed HTML tag" warnings eliminated: bare `<token>` placeholders (`ttyS<x>`, `SIG<NAME>`, `<PCI BDF>`) wrapped in inline code across 33 files; negative control mini-build 130 -> 0 warnings, 0 errors |
+| Link check | `check-links.py` reports 217 broken links/anchors before AND after (pre-existing repo-wide debt, none in touched files; stash-baseline verified) |
+| Fence check | `check-fences.py` clean across 4,120 files |
+| Branch sync | research -> dev -> main via explicit `--no-ff` merges, then all three branches fast-forwarded to the same commit (`989c5c3`) |
 

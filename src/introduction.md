@@ -9,6 +9,8 @@ This knowledge base is designed to be an encyclopedia-quality resource covering 
 | Domain | Topics | Depth |
 |--------|--------|-------|
 | **Operating Systems** | Processes, threads, scheduling, memory management, file systems, synchronization | University-level |
+| **Linux Systems** | Kernel internals, syscall/libc/sysfs interface encyclopedia, userland binaries (coreutils, util-linux, …), init systems | Reference-grade |
+| **Process & Runtime Internals** | Exit codes, signals, process lifecycle — one chapter per language (C, C++, Python, Go, Java, Rust, Node.js, OCaml) | Language-lawyer-level |
 | **Database Management Systems** | SQL, normalization, transactions, indexing, query optimization, distributed databases | Production-level |
 | **Computer Networks** | OSI model, TCP/IP, HTTP, DNS, routing, security, modern protocols | Network engineer-level |
 | **Computer Architecture** | CPU design, pipelining, cache hierarchy, memory systems, modern architectures | Hardware interview-level |
@@ -18,6 +20,9 @@ This knowledge base is designed to be an encyclopedia-quality resource covering 
 | **Cloud & DevOps** | Virtualization, AWS, Kubernetes, CI/CD | Production operations-level |
 | **Backend Engineering** | API design, messaging, containers, observability, auth | Full-stack backend-level |
 | **Interview Preparation** | System design, coding patterns, behavioral questions, company-specific topics | Interview-ready |
+| **DSA & Competitive Programming** | Data structures, algorithms, competitive math, olympiad patterns | Interview + olympiad-level |
+| **Security & Cryptography** | OWASP, authn/authz, applied crypto, offensive & defensive tooling | Security engineer-level |
+| **References & Navigation** | 14 verified reference indexes, glossary, master topic index, prompt library, coverage dashboards | Lookup-ready |
 
 ## Who This Is For
 
@@ -156,6 +161,7 @@ This is a living knowledge base. Content is continuously researched, verified, a
 ```mermaid
 graph TD
     ROOT[Placement Prep] --> OS[Operating Systems]
+    ROOT --> LIN[Linux Systems]
     ROOT --> DB[Database Management]
     ROOT --> NET[Computer Networks]
     ROOT --> ARCH[Computer Architecture]
@@ -164,12 +170,19 @@ graph TD
     ROOT --> CLOUD[Cloud & DevOps]
     ROOT --> BE[Backend Engineering]
     ROOT --> INT[Interview Prep]
+    ROOT --> DSA[DSA & CP]
 
     OS --> OS1[Processes & Threads]
     OS --> OS2[Memory Management]
     OS --> OS3[File Systems]
     OS --> OS4[I/O Systems]
     OS --> OS5[Synchronization]
+
+    LIN --> LIN1[Kernel & Internals]
+    LIN --> LIN2[Interface Encyclopedia]
+    LIN --> LIN3[Userland Binaries]
+    LIN --> LIN4[Process & Signals]
+    LIN --> LIN5[Init Systems]
 
     DB --> DB1[SQL & Normalization]
     DB --> DB2[Transactions & ACID]
@@ -201,6 +214,12 @@ graph TD
 | Behavioral interview prep | [Behavioral](./interview/behavioral/README.md) |
 | Company-specific tips | [Companies](./interview/companies/README.md) |
 | OS fundamentals | [Operating Systems](./os/overview.md) |
+| Linux systems deep dive | [Linux](./linux/README.md) |
+| Syscall / libc / sysfs reference pages | [Interface Encyclopedia](./linux/interface-encyclopedia.md) |
+| Exit codes, signals & process lifecycle | [Process & Runtime Semantics](./languages/process-runtime/index.md) |
 | Database internals | [DBMS](./dbms/overview.md) |
 | Network protocols | [Networks](./networks/overview.md) |
 | Distributed systems | [Distributed Systems](./distributed/overview.md) |
+| Term lookup | [Glossary](./glossary.md) |
+| Topic inventory | [Master Topic Index](./index.md) |
+| Book status & changelog | [Meta](./meta/status.md) |
