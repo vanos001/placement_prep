@@ -27,7 +27,7 @@ ledger: [Coverage Ledger — Process Exit & Signals](../../process-exit-signal-c
 ## How this part relates to the Section G deep dive
 
 The sibling part [Process & Runtime Semantics by
-Language](../../languages/process-runtime/index.md) (`PL-*` ledger IDs) is
+Language](../../../languages/process-runtime/index.md) (`PL-*` ledger IDs) is
 the **full-depth** documentation project for the same eight languages —
 six mandatory coverage areas per language, version-verified against the
 current language/runtime releases, with per-language coverage ledgers. The
@@ -49,7 +49,7 @@ exit-code decoder. Neither part duplicates the other's ledger.
 
 ## Related Topics
 
-- [Section G deep dive: Process & Runtime Semantics by Language](../../languages/process-runtime/index.md)
+- [Section G deep dive: Process & Runtime Semantics by Language](../../../languages/process-runtime/index.md)
 - [Unified coverage ledger](../../process-exit-signal-coverage.md)
 - [Troubleshooting index](../troubleshooting/index.md) ·
   [Containers index](../containers/index.md) ·

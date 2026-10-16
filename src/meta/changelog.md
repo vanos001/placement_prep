@@ -3,6 +3,38 @@
 This file records meaningful content and validation changes to the placement
 preparation book. Dates use the project timezone, Asia/Calcutta.
 
+## 2026-10-17 — Link-debt repair: 217 broken links → 0, 92 pages created
+
+- **Created 92 missing pages**: 91 per-function syscall pages the coverage
+  ledger and domain hubs linked to (process: getresuid, getresgid, setgid,
+  process_mrelease, rseq, rseq_slice_yield; fs-mounts-namespace: fchroot,
+  file_getattr, file_setattr, getxattrat, listxattrat, removexattrat,
+  setxattrat, listns; signals-time: alarm, clock_adjtime, restart_syscall,
+  rt_sigqueueinfo, sigpending, sigtimedwait, sgetmask, stime, time, times,
+  tkill; sched-misc: 65 pages from `sysctl` to `xtensa` incl. the grouped
+  `unimplemented`, `stat`-oldslots and `uname`-oldslots entries; net-ipc:
+  timerfd_settime) plus `linux/libc/musl-catalog.md`.
+- **Provenance**: man-pages 6.19 HTML from man7.org (53 pages fetched and
+  cached for this round), kernel sources fetched from torvalds/linux master
+  (fs/open.c, fs/xattr.c, fs/file_attr.c, kernel/nstree.c, kernel/rseq.c,
+  mm/oom_kill.c, arch/arm, arch/alpha, arch/sparc, arch/m68k, arch/riscv,
+  arch/openrisc, arch/xtensa, scripts/syscall.tbl, syscall_64.tbl),
+  installed UAPI headers, and `nm -D` on glibc 2.41 for wrapper claims.
+- **Status honesty**: 45 syscall ledger rows flipped `source-limited` →
+  `documented` (433/46/56 of 535); 28 sched-misc + 1 signals-time overview
+  rows flipped to match; hub and interface-encyclopedia counts reconciled
+  against the ledger (also fixing pre-existing staleness in the process,
+  fs-mount and net-ipc documented counts).
+- **Repairs beyond the 92 pages**: `process-exit-signal-coverage.md` NAV-002
+  link re-pointed to `../SUMMARY.md`; Section G language index links
+  re-pointed to `../../../languages/process-runtime/index.md`; 188 null
+  bytes removed from `sched-misc/overview.md` (corruption introduced in the
+  wave-3 rebuild, verified against history).
+- **Validation after the round**: check-links 0 broken (was 217),
+  check-summary 4,208 nav entries / 0 duplicates / 0 dead, check-fences 0
+  problems across 4,212 files, check-mathjax clean, mermaid heuristic
+  5,546/5,546.
+
 ## 2026-10-13 — Eight-language process/runtime semantics (Section G) + navigation integrity round
 
 Two user-directed efforts landed together and closed the book's navigation and

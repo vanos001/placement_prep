@@ -24,7 +24,7 @@ Status vocabulary: `documented` (full per-page entry), `researched` (brief entry
 | [sigtimedwait](sigtimedwait.md) | `rt_sigtimedwait` x64 128 | i386 177 | g64 137 | arm 177, `rt_sigtimedwait_time64` x64 -- | i386 421 | g64 -- | arm 421 | - | 2.2 | documented |
 | [sgetmask](sgetmask.md) | `sgetmask` x64 -- | i386 68 | g64 -- | arm --, `ssetmask` x64 -- | i386 69 | g64 -- | arm -- | - | 1.0 | researched |
 | [sigaltstack](sigaltstack.md) | `sigaltstack` x64 131 | i386 186 | g64 132 | arm 186 | - | 2.2 | documented |
-| [stime](stime.md) | `stime` x64 -- | i386 25 | g64 -- | arm -- | - | 1.0 | source-limited |
+| [stime](stime.md) | `stime` x64 -- | i386 25 | g64 -- | arm -- | - | 1.0 | documented |
 | [tkill](tkill.md) | `tgkill` x64 234 | i386 270 | g64 131 | arm 268, `tkill` x64 200 | i386 238 | g64 130 | arm 238 | - | 2.6 | documented |
 | [time](time.md) | `time` x64 201 | i386 13 | g64 -- | arm -- | - | 1.0 | documented |
 | [timer_create](timer_create.md) | `timer_create` x64 222 | i386 259 | g64 107 | arm 257, `timer_delete` x64 226 | i386 263 | g64 111 | arm 261, `timer_getoverrun` x64 225 | i386 262 | g64 109 | arm 260, `timer_gettime` x64 224 | i386 261 | g64 108 | arm 259, `timer_gettime64` x64 -- | i386 408 | g64 -- | arm 408, `timer_settime` x64 223 | i386 260 | g64 110 | arm 258, `timer_settime64` x64 -- | i386 409 | g64 -- | arm 409 | - | 2.6 | documented |

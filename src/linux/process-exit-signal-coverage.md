@@ -245,7 +245,7 @@ signals/OS interaction (D), subprocess management (E), concurrency/resource sema
 | ID | Requirement or API | Documentation path | Authoritative reference | Version/platform scope | Status |
 |---|---|---|---|---|---|
 | NAV-001 | Part index page reachable from SUMMARY.md | [index.md](./process-exit-signal/index.md) | — | — | documented |
-| NAV-002 | SUMMARY.md entries for every chapter | [../../SUMMARY.md](../../SUMMARY.md) | — | — | documented |
+| NAV-002 | SUMMARY.md entries for every chapter | [SUMMARY.md](../SUMMARY.md) | — | — | documented |
 | NAV-003 | Cross-links: signals ↔ interfaces ↔ languages ↔ troubleshooting ↔ containers ↔ service managers | per-chapter "Related" sections | — | — | documented |
 | NAV-004 | No duplicate chapters with existing book pages; reuse/cross-link instead | per-chapter links to existing pages | — | — | documented |
 | NAV-005 | This ledger consistent with language sub-ledgers | this file | — | — | documented |

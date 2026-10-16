@@ -84,7 +84,7 @@ Documentation is **split per function**, not grouped into per-domain mega-chapte
 
 | Ledger | Rows | Statused | documented | Pages |
 |---|---|---|---|---|
-| [Syscalls](./syscalls/ledger.md) | 535 | 535 | 388 | 198 per-function + 7 auto hubs |
+| [Syscalls](./syscalls/ledger.md) | 535 | 535 | 433 | 288 per-function + 7 auto hubs |
 | [glibc API](./libc/ledger-glibc.md) | 1881 documented-API (+3470 exported, +1953 triage) | 1881 | 1047 | 281 function pages |
 | [musl API](./libc/ledger-musl.md) | 1482 functions (110 header families) | by family | 6 family pages | 6 + catalog |
 | [Sysfs classes](./sysfs/ledger.md) | 120 | 120 | 106 | 119 class pages |

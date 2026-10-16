@@ -6,7 +6,7 @@
 > wiring, warning cleanup).
 >
 > **Branch note:** `research`, `dev` and `main` are synced at the same commit
-> (`989c5c3`). The repository now contains **4,119 content pages** under `src/`
+> (`989c5c3`). The repository now contains **4211 content pages** under `src/`
 > (+`SUMMARY.md`, 4,116 nav entries, 0 duplicates, 0 dead entries), **5,546
 > Mermaid diagrams** across 1,659 files, and MathJax-clean math throughout. The
 > per-subject page counts in the table below are point-in-time from the
@@ -113,15 +113,15 @@ verified URLs, not interview questions or diagrams. Source of truth:
 
 ## Overall Metrics
 
-- **Total markdown files**: 4,120 (4,119 content pages plus `SUMMARY.md`)
+- **Total markdown files**: 4212 (4211 content pages plus `SUMMARY.md`)
 - **Total words**: ~8.5M (up from ~7.73M at the 2026-10-09 binaries round)
 - **Total Mermaid diagrams**: 5,546 (across 1,659 files; 100% heuristic pass — real `mermaid@11` last verified the full corpus 5,527/5,527 on 2026-10-09)
 - **MathJax**: 0 unbalanced delimiters, 0 link-in-math hazards (full run 2026-10-15)
 - **Fenced code blocks**: 0 problems across 4,120 files (`check-fences.py`, 2026-10-15)
 - **Internal cross-reference graph**: 4,119 nodes, 19,163 unique internal links (one edge per source→target pair; regenerated 2026-10-15)
 - **Total size**: ~69 MB (src/)
-- **Navigation**: 4,116 `SUMMARY.md` entries, 0 duplicate destinations, 0 dead entries; real mdBook v0.5.4 build renders all 4,119 pages
-- **Known debt**: 217 pre-existing broken internal links/anchors (`check-links.py`; catalogued, none introduced by recent rounds)
+- **Navigation**: 4208 `SUMMARY.md` entries, 0 duplicate destinations, 0 dead entries; real mdBook v0.5.4 build renders all 4211 pages
+- **Known debt**: none — the 217 pre-existing broken internal links/anchors were closed 2026-10-17 (`check-links.py` → 0)
 - **Build status**: ✅ All validators passing (SUMMARY, links-except-known-debt, mermaid 100%, MathJax, fences); CI deploy green
 
 ## Dev Pull Audit — 2026-08-13

@@ -1,11 +1,35 @@
 # Project Status
 
-> Status snapshot: 2026-10-15 — all three branches (`research`, `dev`, `main`)
-> synced at `989c5c3`, validation passing. The October rounds rebuilt the Linux
+> Status snapshot: 2026-10-17 — all three branches (`research`, `dev`, `main`)
+> synced at `989c5c3` (link-debt repair round landed on `research`), validation passing. The October rounds rebuilt the Linux
 > Interface Encyclopedia per-function, added the process-exit-signal part and the
 > Section G eight-language process/runtime part, wired all 295 orphaned pages into
 > navigation, and cleared 130 mdBook HTML-tag warnings. See "October 2026 rounds"
 > below.
+
+## Link-debt repair round — 2026-10-17
+
+One round closed the oldest known-debt item: **all 217 broken internal
+links/anchors** (`scripts/check-links.py` reports **0** on the merged tree).
+The repair created the **92 missing pages** the links pointed at — 91
+per-function syscall pages across the seven encyclopedia domains (process 6,
+fs-mounts-namespace 8, signals-time 11, sched-misc 65, net-ipc 1) plus the
+**musl catalog** page the musl ledger references — fixed two wrong relative
+paths (`process-exit-signal-coverage.md` to `SUMMARY.md`; the Section G
+language index to `src/languages/process-runtime/`), and repaired a
+188-byte null-byte corruption inside `sched-misc/overview.md`'s domain table
+(present since the wave-3 rebuild; verified byte-identical back to commit
+`4cab223`, clean at `89274e6`). Entries were written against primary sources
+fetched for this round: the man-pages 6.19 HTML set on man7.org (53 pages
+fetched, cached), torvalds/linux kernel sources for the arch-specific and
+6.13+ syscalls (fchroot, listns, file_getattr/file_setattr, the xattrat
+family, rseq/rseq_slice_yield, ARM/alpha/sparc/m68k/openrisc privates), and
+local `nm -D` on glibc 2.41 for every wrapper claim. 45 ledger rows flipped
+`source-limited` → `documented` (syscalls now 433 documented / 46 researched
+/ 56 source-limited of 535), the domain overview tables and the hub counts
+were reconciled against the ledger (fixing pre-existing staleness in the
+process/fs-mount/net-ipc rows), and all 92 pages are wired into `SUMMARY.md`
+(4,211 content pages, 0 duplicates, 0 dead entries).
 
 ## October 2026 rounds — 2026-10-12 → 10-13
 
@@ -65,8 +89,8 @@ closed out the navigation and warning debt:
 ## Current status
 
 **All branches synced and repaired.** `research`, `dev` and `main` point at the
-same commit (`989c5c3`); the repository contains **4,119 content pages** under
-`src/` (+`SUMMARY.md`), all reachable from `SUMMARY.md` (4,116 nav entries) with
+same commit (`989c5c3`); the repository contains **4211 content pages** under
+`src/` (+`SUMMARY.md`), all reachable from `SUMMARY.md` (4208 nav entries) with
 0 duplicate destinations and 0 dead entries — the 2026-08-era orphan problem is
 closed.
 
@@ -83,13 +107,13 @@ cleared 130 mdBook HTML-tag warnings.
 | Area | Status | Evidence |
 |---|---|---|
 | Git safety | ✅ Complete | Active development on `research`; promotion research → dev → main via explicit `--no-ff` merges; all three branches synced at `989c5c3` (2026-10-15). |
-| Content inventory | ✅ Expanded | **4,119** content markdown pages under `src/` (up from 3,385 at the 2026-10-09 binaries round and 2,809 at the 2026-09-19 snapshot). |
-| Navigation | ✅ Passing | All 4,119 content pages reachable from `SUMMARY.md` (4,116 nav entries; `SUMMARY.md` itself and the intro/glossary/index pages are the only non-bullet exceptions); 0 duplicate destinations, 0 dead entries; enforced by real mdBook v0.5.4 with `create-missing=false`. |
-| Internal links | ⚠️ Known debt | `scripts/check-links.py` reports **217 broken links/anchors** — all pre-existing (bit-identical before and after the 2026-10-13 changes; none in files touched by the recent rounds). Catalogued for a dedicated cleanup pass; see "Known debt" below. |
+| Content inventory | ✅ Expanded | **4211** content markdown pages under `src/` (up from 4,119 before the 2026-10-17 link-debt repair round, 3,385 at the 2026-10-09 binaries round and 2,809 at the 2026-09-19 snapshot). |
+| Navigation | ✅ Passing | All 4211 content pages reachable from `SUMMARY.md` (4208 nav entries; `SUMMARY.md` itself and the intro/glossary/index pages are the only non-bullet exceptions); 0 duplicate destinations, 0 dead entries; enforced by real mdBook v0.5.4 with `create-missing=false`. |
+| Internal links | ✅ Passing | `scripts/check-links.py` reports **0 broken links/anchors** (2026-10-17). The long-standing 217-link debt was closed by the link-debt repair round: 92 missing pages created, 2 relative paths corrected, 1 file-corruption repaired. |
 | Mermaid | ✅ Passing | 5,546 of 5,546 diagrams across 1,659 files pass the heuristic validator (2026-10-15); the real `mermaid@11` parser last passed the full corpus 5,527/5,527 on 2026-10-09 (19 diagrams added since, all heuristic-clean). |
 | MathJax | ✅ Passing | 0 unbalanced delimiters and 0 math spans containing a literal `](` (full run 2026-10-15). |
 | Fence integrity | ✅ Passing | 0 malformed or nested code fences across 4,120 files (`scripts/check-fences.py`, 2026-10-15). |
-| Linux Interface Encyclopedia | ✅ Complete, status-honest | One page per syscall/libc-function/sysfs-class/crossref interface (625 files across four directories) with source-regenerated coverage ledgers; 101 syscall rows, 10 glibc rows, 14 sysfs classes and 1 crossref row are labelled source-limited rather than padded. |
+| Linux Interface Encyclopedia | ✅ Complete, status-honest | One page per syscall/libc-function/sysfs-class/crossref interface (625 + 92 files across four directories after the 2026-10-17 round) with source-regenerated coverage ledgers; syscalls now 433 documented / 46 researched / 56 source-limited of 535; 10 glibc rows, 14 sysfs classes and 1 crossref row are labelled source-limited rather than padded. |
 | Process/runtime semantics (Section G) | ✅ Complete | 8 language chapters + 8 coverage ledgers (633 rows: 623 documented / 10 source-limited) + 9-dimension comparison; G1–G6 acceptance criteria audited and passing. |
 | Advanced topics | ✅ Covered | All 1,374 `src/index.md` bullets covered (the 2026-10-15 index revision adds process/signal, binary-suite and per-language runtime-semantics topics, all already backed by pages). |
 | Build-it-yourself | ✅ Complete | 34 implementation projects across 5 domains. |
@@ -115,13 +139,13 @@ cleared 130 mdBook HTML-tag warnings.
 
 Latest full-suite runs on the merged tree (2026-10-15 unless noted):
 
-- `scripts/check-summary.py` → 4,116 nav entries, 0 duplicate destinations, 0 dead entries
-- `scripts/check-links.py` → 217 broken links/anchors, all pre-existing (see "Known debt")
+- `scripts/check-summary.py` → 4208 nav entries, 0 duplicate destinations, 0 dead entries
+- `scripts/check-links.py` → 0 broken links/anchors (2026-10-17, after the link-debt repair round)
 - `scripts/check-fences.py` → 0 problems across 4,120 files
 - `scripts/check-mathjax.py` → 0 unbalanced delimiters, 0 link-in-math hazards
 - `scripts/validate-mermaid-heuristic.mjs` → 5,546/5,546 pass (100%)
 - real `mermaid@11` parse → 5,527/5,527 pass on 2026-10-09 (last full run; 19 diagrams added since)
-- real mdBook v0.5.4 stub build → exit 0, all 4,119 pages render (2026-10-13)
+- real mdBook v0.5.4 stub build → exit 0, all 4211 pages render (2026-10-13; re-run before release after the 2026-10-17 round)
 - `scripts/check-doi.py` → 491/491 DOIs resolve (2026-09-19 run)
 
 > **External URLs are not fully clean.** A **sweep of all 8,638 external

@@ -14,13 +14,13 @@ a table is never treated as documented.
 
 | Domain | Hub | Rows | Documented |
 |---|---|---|---|
-| Process, thread, credential | [process](./process/overview.md) | 86 | 62 |
+| Process, thread, credential | [process](./process/overview.md) | 83 | 73 |
 | Memory management | [memory](./memory/overview.md) | 34 | 31 |
 | Descriptors and file I/O | [descriptors-io](./descriptors-io/overview.md) | 70 | 67 |
-| Filesystem, mounts, namespaces | [fs-mounts-namespace](./fs-mounts-namespace/overview.md) | 80 | 70 |
-| Signals and time | [signals-time](./signals-time/overview.md) | 50 | 32 |
-| Scheduling, security, misc | [sched-misc](./sched-misc/overview.md) | 131 | 38 |
-| Network, IPC, event loops | [net-ipc](./net-ipc/overview.md) | 84 | 66 |
+| Filesystem, mounts, namespaces | [fs-mounts-namespace](./fs-mounts-namespace/overview.md) | 83 | 73 |
+| Signals and time | [signals-time](./signals-time/overview.md) | 50 | 33 |
+| Scheduling, security, misc | [sched-misc](./sched-misc/overview.md) | 131 | 82 |
+| Network, IPC, event loops | [net-ipc](./net-ipc/overview.md) | 84 | 74 |
 
 ## How pages are organized
 
