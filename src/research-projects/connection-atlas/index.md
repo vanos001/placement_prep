@@ -18,7 +18,7 @@ The unit of analysis here is the **cross-domain connection**, and every connecti
 
 ## Map of the Atlas
 
-Ten connection pages, grouped by the *kind* of shared principle rather than by textbook silo:
+Seventeen connection pages, grouped by the *kind* of shared principle rather than by textbook silo:
 
 ```text
                          CONCEPT CONNECTION ATLAS
@@ -32,6 +32,13 @@ Ten connection pages, grouped by the *kind* of shared principle rather than by t
   CONTENT ADDRESSING    git-cas ...................... Git ~ Nix ~ Docker ~ IPFS ~ restic
   ORDERING CONTRACTS    transactions-concurrency ..... 2PL ~ RW locks ~ MVCC ~ isolation ~ memory models
   LIFETIMES             gc-memory-management ......... reachability ~ refcounts ~ generations ~ leases
+  EVENT LOGS            event-sourcing-wal ........... git log ~ WAL ~ event sourcing ~ CDC ~ audit trails
+  REPLICATED COPIES     cache-coherence-consistency .. MESI ~ invalidation ~ CDN purge ~ replicated consistency
+  OPTIMIZER DAGS        query-planner-dataflow ....... compiler passes ~ query planner ~ Flink DAGs ~ build graphs
+  REDUNDANCY            checksums-erasure-coding ..... checksums ~ RAID parity ~ Reed-Solomon ~ hashes ~ ECC
+  COORDINATION          consensus-leases ............. Raft ~ distributed locks ~ leases ~ fencing tokens
+  EVENT DISPATCH        interrupts-async ............. IRQs ~ signals ~ epoll ~ event loops ~ futures
+  INVALIDATION          incremental-computation ...... make ~ spreadsheets ~ incr. compilers ~ matviews ~ React
 ```
 
 Reading order is flexible; the two most load-bearing pages are `virtual-memory-caching.md` (the caching lens appears in half the other pages) and `scheduling-queueing.md` (Little's Law is the quantitative glue reused in `backpressure.md`).
@@ -49,10 +56,17 @@ Reading order is flexible; the two most load-bearing pages are `virtual-memory-c
 | [transactions-concurrency-control.md](./transactions-concurrency-control.md) | DB transactions, threading, memory models | Concurrency control is a chosen ordering contract plus the mechanism that enforces it |
 | [gc-memory-management.md](./gc-memory-management.md) | GC, memory allocators, distributed leases | Reclamation needs a definition of "dead"; every definition approximates from incomplete information |
 | [backpressure.md](./backpressure.md) | OS queues, TCP, Kafka, Reactive Streams, load management | Demand must propagate upstream as fast as work flows downstream; Little's Law caps throughput |
+| [event-sourcing-wal.md](./event-sourcing-wal.md) | Git history, database WAL, event sourcing, CDC, audit logs | State is a fold over an immutable, ordered event log; present state is a cache of that fold |
+| [cache-coherence-consistency.md](./cache-coherence-consistency.md) | CPU caches (MESI), distributed cache invalidation, CDN purge, replication | Replicas of one truth + a write-propagation protocol; invalidation traffic scales with reader fan-out |
+| [query-planner-dataflow.md](./query-planner-dataflow.md) | Compilers, SQL planners, stream DAGs (Flink/Beam), build schedulers | Declarative intent → optimizer picks an execution DAG under a cost model; filter-early is one algebraic move everywhere |
+| [checksums-erasure-coding.md](./checksums-erasure-coding.md) | TCP checksums, RAID parity, Reed-Solomon, Git hashes, ECC RAM | Redundancy converts detection into recovery; overhead vs repair cost vs failure independence is the whole trade |
+| [consensus-leases.md](./consensus-leases.md) | Paxos/Raft, distributed locks, leases, fencing tokens | Linearizable registry + time-bounded grant + monotonic check at the resource; exclusion happens at the data |
+| [interrupts-async.md](./interrupts-async.md) | Hardware IRQs, signals, epoll/kqueue, event loops, futures | Push beats poll: register interest, yield, be resumed; handler cost is paid by everyone sharing the dispatcher |
+| [incremental-computation.md](./incremental-computation.md) | Build systems, spreadsheets, incremental compilers, matviews, React | Recompute only what a change invalidates: dependency graph + dirty propagation + memoized results |
 
 ## Coverage Ledger
 
-Status as of task 3-c (this directory authored in one pass; sibling `research-projects/` directories are owned by parallel tasks per the coordinator's plan — links to them resolve once those tasks land).
+Status as of tasks 3-c (Round 15) and 3-c2 (Round 16); sibling `research-projects/` directories are owned by parallel tasks per the coordinator's plan — links to them resolve once those tasks land.
 
 | Page | Domains covered | Status | Notes / gaps |
 |---|---|---|---|
@@ -66,6 +80,13 @@ Status as of task 3-c (this directory authored in one pass; sibling `research-pr
 | transactions-concurrency-control.md | 2PL, RW locks, monitors, MVCC, serializability, memory models | Complete | Distributed commit deep-dive stays in [../../dbms/transactions/two-phase-commit.md](../../dbms/transactions/two-phase-commit.md) |
 | gc-memory-management.md | tracing, refcounting, generational, STW/SLO, leases | Complete | JVM collector comparison left to [../../compilers/advanced/g1gc.md](../../compilers/advanced/g1gc.md) and neighbors |
 | backpressure.md | bounded queues, TCP windows, Kafka pull, Reactive Streams, shedding | Complete | Rate-limit algorithms detailed in [../followup-tree/rate-limiter-design.md](../followup-tree/rate-limiter-design.md) |
+| event-sourcing-wal.md | git history, WAL/ARIES, event sourcing + CQRS, Debezium CDC, audit logs | Complete | Stream-windowing semantics out of scope; log-compaction mechanics deferred to [../../distributed/messaging-internals/kafka-log-internals.md](../../distributed/messaging-internals/kafka-log-internals.md) |
+| cache-coherence-consistency.md | MESI/MOESI, snooping vs directories, pub/sub invalidation, CDN purge, replicated consistency | Complete | Memory *consistency* models (TSO, relaxed) deferred to [../../arch/memory-hierarchy/coherence.md](../../arch/memory-hierarchy/coherence.md) |
+| query-planner-dataflow.md | compiler passes, cost-based planning, cardinality misestimates, Flink/Beam DAGs, build scheduling | Complete | Cascades memo internals sketched; details left to [../../dbms/advanced/cascades-optimizer.md](../../dbms/advanced/cascades-optimizer.md) |
+| checksums-erasure-coding.md | Internet checksum, CRC, RAID parity, RS(k,m) vs replication, SECDED ECC, end-to-end argument | Complete | Regenerating codes (LRC, repair amplification below k) not covered |
+| consensus-leases.md | Raft/Paxos, lock services, lease timing, fencing tokens, frozen-client case | Complete | Byzantine agreement out of scope ([../../distributed/fundamentals/byzantine-faults.md](../../distributed/fundamentals/byzantine-faults.md)) |
+| interrupts-async.md | IRQs/top-bottom halves, signals, epoll/kqueue, io_uring, event loops, futures | Complete | Per-language runtime internals deferred to [../../languages/rust/async-runtimes.md](../../languages/rust/async-runtimes.md) and siblings |
+| incremental-computation.md | make/Bazel keys, spreadsheet recalc, rustc queries, IVM, React memoization | Complete | Demand-driven frameworks (Adapton/Salsa) treated qualitatively |
 
 Deliberately **out of scope** for the atlas: generic pattern catalogs (owned by `failure-modes/`), mechanism-deep single-topic trade-offs (owned by the Why-Not Handbook), and incident timelines (owned by the Failure Casebook). Where those cover a topic, these pages link instead of duplicating.
 
@@ -80,7 +101,7 @@ Deliberately **out of scope** for the atlas: generic pattern catalogs (owned by 
 ## Key Takeaways
 
 - A connection is only worth writing down if it names a precise shared mechanism and states exactly where the mapping fails.
-- The same small set of principles — partial order, demand-filled caching, cost-of-the-medium, queue discipline as policy, statistical failure detection, content addressing, ordering contracts, liveness approximation, upstream demand propagation — explains a disproportionate fraction of systems behavior across OS, DBMS, networking, and distributed systems.
+- The same small set of principles — partial order, demand-filled caching, cost-of-the-medium, queue discipline as policy, statistical failure detection, content addressing, ordering contracts, liveness approximation, upstream demand propagation, state as a fold over an immutable log, write-propagation across replicas, cost-based plan selection over DAGs, redundancy converting detection into recovery, grant/lease/fencing stacks, push-based event dispatch, and invalidate-only-what-changed — explains a disproportionate fraction of systems behavior across OS, DBMS, networking, and distributed systems.
 - Analogies transfer *predictions*, not constants: a cache miss at L1 costs ~1 ns, a page fault ~ms; the theory of eviction transfers, the numbers do not.
 - Use the Coverage Ledger above to see what is covered, where depth was deliberately deferred to canonical pages, and which sibling research projects own the adjacent angles.
 
@@ -93,6 +114,8 @@ Deliberately **out of scope** for the atlas: generic pattern catalogs (owned by 
 - [../../distributed/overview.md](../../distributed/overview.md) — Distributed Systems Overview — failure detectors, consistency models, and leases referenced across these pages.
 - [../../queueing-theory/fundamentals.md](../../queueing-theory/fundamentals.md) — Queueing Theory Fundamentals — the formal backbone for the scheduling and backpressure pages.
 - [../../git/internals.md](../../git/internals.md) — Git Internals — object model details behind the content-addressing connection.
+- [../../compilers/README.md](../../compilers/README.md) — Compilers Track — optimization passes and SSA, the compiler side of the planner connection.
+- [../../data-engineering/README.md](../../data-engineering/README.md) — Data Engineering — Flink/Beam/Debezium pages behind the event-log and dataflow connections.
 - [../../arch/overview.md](../../arch/overview.md) — Computer Architecture — cache hierarchy and memory-hierarchy numbers used throughout.
 - [../followup-tree/rate-limiter-design.md](../followup-tree/rate-limiter-design.md) — Rate Limiter Design — escalation chains for the rate-limiting half of the backpressure connection.
 - [../why-not-handbook/caching-distributed.md](../why-not-handbook/caching-distributed.md) — Caching vs Distributed Coordination — the decision-level companion to the caching analogy.

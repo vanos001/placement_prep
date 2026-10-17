@@ -17,7 +17,7 @@ Every page in this handbook applies the same six steps, in the same order. The o
 5. **Find the edge cases and counterexamples.** This is where most material stops and this handbook starts. Each page includes at least one non-obvious case where the "obvious" choice fails: BFS frontier blowup on lattice graphs, hash-flooding attacks, lost wakeups in condition variables, write skew under snapshot isolation, cache stampedes after an invalidation. These cases are what interviewers use to separate rote answers from real understanding.
 6. **Write the decision framework.** Each page ends with a table or ordered checklist mapping workload properties to a choice. The framework is falsifiable: if your workload matches the left column, the right column is the recommendation — and the page has already told you what you are giving up.
 
-The framework generalizes beyond the seven topics here. When you meet a fresh "X vs Y" question, running these six steps produces an answer that is specific to your constraints and honest about costs.
+The framework generalizes beyond the fourteen comparisons here. When you meet a fresh "X vs Y" question, running these six steps produces an answer that is specific to your constraints and honest about costs.
 
 ## File Inventory
 
@@ -30,6 +30,13 @@ The framework generalizes beyond the seven topics here. When you meet a fresh "X
 | [concurrency-primitives](./concurrency-primitives.md) | Mutex vs semaphore vs condvar; processes vs threads; polling vs event-driven I/O | Lost wakeup; crash blast radius; busy-polling trading CPU for tail latency |
 | [database-choices](./database-choices.md) | Normalization vs denormalization; B-tree vs hash vs LSM vs GiST/GIN; optimistic vs pessimistic | Write skew under snapshot isolation; LSM read amplification without bloom filters |
 | [caching-distributed](./caching-distributed.md) | Caching vs recomputation; consistency vs availability vs latency | Cache stampede after invalidation; per-operation CAP choices inside one system |
+| [crash-recovery](./crash-recovery.md) | WAL vs in-place vs append-only/COW: where does atomicity live on disk? | Torn pages defeat redo deltas — full-page writes and doublewrite exist; append-only's compaction as slow-motion recovery |
+| [push-vs-pull](./push-vs-pull.md) | Who owns the pacing — consumer or producer — and what failure does each import? | Retry storm after receiver recovery; slow consumer under push turns broker memory into the failure |
+| [replication-modes](./replication-modes.md) | What exactly does a commit OK promise about the second copy? | MySQL semi-sync silently downgrades to async during the failure it exists for; PG sync stalls indefinitely |
+| [scaling-up-vs-out](./scaling-up-vs-out.md) | Which part of the workload is serial, and what makes the serial remainder irrelevant? | The global counter hot row sharding cannot fix; Amdahl crossover when coordination grows with node count |
+| [stateless-vs-stateful](./stateless-vs-stateful.md) | Every system has state — which placement's failure mode can you afford? | JWT logout that logs out nothing until expiry; per-node rate limiter undercounting by the fleet size |
+| [static-vs-dynamic-typing](./static-vs-dynamic-typing.md) | When is type information checked, and which error class does each choice relocate? | TypeScript's erased boundary — the typed lie at unvalidated data edges; the orthogonal strong/weak axis (Python vs JS vs Java) |
+| [monolith-vs-microservices](./monolith-vs-microservices.md) | What failure layer do you import when the network becomes a design layer? | The 27× retry cascade through three layers of 3× retries; five engineers operating a distributed monolith |
 
 ## Coverage Ledger
 
@@ -43,6 +50,13 @@ The same concepts appear across several research projects **from deliberately di
 | Isolation and concurrency control | Optimistic vs pessimistic decision rule | [Assumptions Hunt](../assumptions-hunt/database-isolation.md) (implicit isolation assumptions) |
 | Caching and backpressure | Caching vs recomputation; staleness vs availability | [Connection Atlas](../connection-atlas/backpressure.md) (queue-full path), [Cache patterns](../../sre/cache-patterns.md) (operational playbooks) |
 | High-level comparison tables | Deep mechanisms here | [Trade-offs](../../trade-offs/README.md) (quick-reference tables) |
+| Crash recovery and WAL | WAL vs in-place vs append-only by failure mechanism | [WAL Internals](../../dbms/advanced/wal-internals.md) (engine mechanics), [Storage Durability](../assumptions-hunt/storage-durability.md) (device-level assumptions) |
+| Push vs pull | Pacing ownership and where each mode relocates failure | [Backpressure: Atlas](../connection-atlas/backpressure.md) (the queue-full path), [Kafka](../../distributed/messaging/kafka.md) and [Pulsar](../../distributed/messaging/pulsar.md) (pull vs push brokers) |
+| Replication modes | What the commit acknowledgment promises | [Primary-Backup](../../distributed/replication/primary-backup.md) (topology), [GitHub October 2018](../failure-casebook/github-october-2018.md) (async failover incident) |
+| Scaling direction | Amdahl crossover; contention is not partitioning | [Amdahl's Law](../../arch/performance/amdahl.md) (the arithmetic), [Relational DBs Don't Scale](../misconceptions/relational-dbs-dont-scale.md) (the anti-slogan) |
+| State placement | Failure-mode and revocation-latency relocation per state type | [Leases](../../distributed/advanced/leases.md) (ownership primitive), [Consensus & Leases: Atlas](../connection-atlas/consensus-leases.md) (safety under partitions) |
+| Type systems | Checking time, erasure, and the orthogonal strong/weak axis | [Python Typing](../../languages/python/typing.md) and [TypeScript](../../languages/typescript/README.md) (the gradual middle path) |
+| Architecture style | The network as a failure layer; Conway-aligned team topology | [Architecture Trade-offs](../../trade-offs/architecture-tradeoffs.md) (quick tables), [Microservices](../../distributed/microservices/README.md) (operational catalog) |
 
 Duplication boundary (from the project plan): trade-offs pages hold the scannable tables; this handbook holds mechanisms, complexity derivations, guarantees, and edge cases. If you find yourself copying a table between the two, link instead.
 

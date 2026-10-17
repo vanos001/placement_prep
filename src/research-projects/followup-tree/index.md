@@ -2,7 +2,7 @@
 
 ## Overview
 
-Most study material teaches the first answer: what a hash table is, what a B+tree looks like, what happens when a TCP connection opens. Interviews rarely end there — each answer is a doorway to a harder follow-up, and the gap between candidates is measured in rungs, not topics. This collection models the escalation pattern explicitly: six follow-up chains that show how a textbook question deepens into mechanism, edge cases, trade-offs, and design judgment, plus transferable techniques for handling variations you have never seen.
+Most study material teaches the first answer: what a hash table is, what a B+tree looks like, what happens when a TCP connection opens. Interviews rarely end there — each answer is a doorway to a harder follow-up, and the gap between candidates is measured in rungs, not topics. This collection models the escalation pattern explicitly: fourteen follow-up chains that show how a textbook question deepens into mechanism, edge cases, trade-offs, and design judgment, plus transferable techniques for handling variations you have never seen.
 
 ## What a Follow-up Ladder Is
 
@@ -43,7 +43,7 @@ You cannot memorize variations: for any topic there are dozens, and interviewers
 
 Verbally, this looks like: "I have not seen that exact variant, but the standard answer relies on assumption X. If your variant removes X, then A breaks and I would reach for B; the thing I would measure is C." That sentence structure, applied honestly, handles most unfamiliar follow-ups at least as well as a memorized answer would — and it produces credit even when the final answer is wrong, because the reasoning was inspectable.
 
-## The Six Chains
+## The Fourteen Chains
 
 | File | Opening question | Escalation arc | Core concepts tested |
 |---|---|---|---|
@@ -53,6 +53,14 @@ Verbally, this looks like: "I have not seen that exact variant, but the standard
 | [Virtual Memory](./virtual-memory.md) | "What is virtual memory?" | Page tables & multi-level paging → TLB → page-fault walk → minor/major faults → thrashing → NUMA & huge pages | Address translation, locality, the disk cliff, hardware-software co-design |
 | [Mutex to Lock-Free](./mutex-to-lock-free.md) | "What is a mutex?" | Futex implementation → spinlock vs mutex → invariants → priority inversion → deadlock conditions → CAS & ABA | Blocking vs spinning, scheduling interaction, progress guarantees |
 | [Rate Limiter Design](./rate-limiter-design.md) | "Design a rate limiter" | Requirements → algorithm zoo → distributed counters & races → fail-open vs fail-closed → scale follow-ups → "now make it X" | Design interviews as ladders, atomicity, failure posture, quota economics |
+| [Quicksort Partitioning](./quicksort-partitioning.md) | "How does quicksort work?" | Partition schemes → worst-case inputs → duplicate handling → introsort guards → tail calls → parallelization | Partition invariants, adversarial analysis, hybrid algorithms |
+| [Dynamic Programming](./dynamic-programming.md) | "What is dynamic programming?" | Overlapping subproblems → memoization vs tabulation → state design → space optimization → greedy vs DP | State design, recognition heuristics, complexity framing |
+| [URL to Page](./url-to-page.md) | "What happens when you type a URL?" | DNS → TCP/TLS → HTTP & caching → CDN → server side → rendering → "make it faster / secure" | End-to-end layering, per-hop caching, failure surfaces |
+| [Garbage Collection](./garbage-collection.md) | "How does garbage collection work?" | Reachability → mark-sweep/compact → generational hypothesis → concurrent collectors → why GC'd programs still leak | Tracing, pause sources, retention analysis |
+| [Process Lifecycle](./process-lifecycle.md) | "What happens when you run `./a.out`?" | fork/exec & loader → memory layout → context switches → zombies/orphans → signals → cgroups/containers | Kernel-user boundary, process model, isolation escalation |
+| [ACID Transactions](./acid-transactions.md) | "What does ACID mean?" | Real mechanism per letter → isolation levels → 2PL vs MVCC → WAL durability → 2PC → "what if you only need CA?" | Transaction machinery, durability engineering, distributed escalation |
+| [URL Shortener](./url-shortener.md) | "Design a URL shortener" | Requirements & estimates → ID generation → redirect semantics → read-path caching → analytics → abuse → "now make it X" | Design-interview laddering, ID schemes, read-heavy scaling |
+| [Redis Caching](./redis-caching.md) | "Add a cache to make reads faster" | Cache-aside race → TTL & eviction → stampede & locks → invalidation → hot keys & sharding → consistency → "when is Redis wrong?" | Caching mechanics, failure modes, consistency boundaries |
 
 Each chain deliberately overlaps in *concept* with other pages in the knowledge base but differs in *angle* — the links in each file make the division of labor explicit, so you can read the chain for escalation and jump out for depth.
 
