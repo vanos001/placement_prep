@@ -1,0 +1,99 @@
+# Concept Connection Atlas
+
+## Overview
+
+Most technical curricula teach systems as silos: one chapter for virtual memory, one for database indexes, one for TCP. The exam then asks about each in isolation. Production systems and senior interviews do neither — they ask what a page cache, a DB buffer pool, and a CDN edge have in *mechanism* in common, and where that commonality stops. This atlas exists to answer that kind of question.
+
+The unit of analysis here is the **cross-domain connection**, and every connection is held to the same five-part standard:
+
+1. **Concepts stated independently.** Each side of the connection is explained on its own, with just enough mechanism for the link to make sense. If you cannot state both concepts crisply, the connection is decoration, not understanding.
+2. **The shared principle, named precisely.** Not "these are similar" but something testable, e.g., "both are demand-filled caches with locality-driven eviction over a cost gradient" or "both compute a linear extension of a partial order induced by dependencies." A well-named principle is a transferable tool: next time you meet an unfamiliar system, you can ask "which known principle does this instantiate?"
+3. **Where the analogy HOLDS and where it BREAKS.** Specific and technically honest. An analogy that never breaks is a definition, not an analogy. The breaking points are usually where the interview follow-up question lives ("but what about fan-out?"), and where real design mistakes happen (applying the cache-miss mental model to a page fault that costs 10,000× more).
+4. **A concrete worked example, with numbers where possible.** Mechanisms earn belief through arithmetic: a B+tree that fits a billion keys in 3 levels, an M/M/1 queue whose latency doubles per 10% of utilization near saturation.
+5. **When the connection is useful.** Problem-solving heuristics, interview answers, and real engineering decisions it unlocks — plus the decision it should *not* be stretched to.
+
+**Why this matters for engineering judgment.** Mechanism transfer is how senior engineers reason about systems they have never operated. If you know that Git, Nix, Docker layers, IPFS, and content-hashed CDN assets all instantiate "hash the content, not the location," then a new system described as "content-addressed" immediately implies immutability, cheap integrity checks, dedup, and cache-friendliness — and its costs (GC of unreferenced data, no in-place mutation) are implied too. Without the abstraction, each system looks like isolated trivia.
+
+**Why this matters for interviews.** Interviewers escalate along the axis of *abstraction*, not trivia: "What is a B+tree?" (junior) → "Why a B+tree and not a skip list on disk?" (mid) → "What property of the storage medium makes fan-out the dominant term?" (senior). The third question is answered by the principle this atlas names in [db-indexes-data-structures.md](./db-indexes-data-structures.md): data structures are shaped by the physics of the storage medium. The atlas pages are written so each can supply the top of that escalation chain.
+
+## Map of the Atlas
+
+Ten connection pages, grouped by the *kind* of shared principle rather than by textbook silo:
+
+```text
+                         CONCEPT CONNECTION ATLAS
+                         =======================
+  ORDERING              dependency-resolution ........ topo sort ~ make ~ npm ~ schedulers
+  HIERARCHY / CACHING   virtual-memory-caching ....... demand paging ~ page cache ~ buffer pool ~ CDN
+  STORAGE PHYSICS       db-indexes-data-structures ... B+tree ~ LSM ~ skiplist ~ columnar
+  QUEUES / DELAY        scheduling-queueing .......... CPU schedulers ~ Kendall notation ~ CoDel
+                        backpressure ................. bounded queues ~ TCP windows ~ Kafka pull ~ load shedding
+  FAILURE / PROTOCOL    tcp-distributed-failure ...... RTO ~ retries ~ idempotency ~ failure detectors
+  CONTENT ADDRESSING    git-cas ...................... Git ~ Nix ~ Docker ~ IPFS ~ restic
+  ORDERING CONTRACTS    transactions-concurrency ..... 2PL ~ RW locks ~ MVCC ~ isolation ~ memory models
+  LIFETIMES             gc-memory-management ......... reachability ~ refcounts ~ generations ~ leases
+```
+
+Reading order is flexible; the two most load-bearing pages are `virtual-memory-caching.md` (the caching lens appears in half the other pages) and `scheduling-queueing.md` (Little's Law is the quantitative glue reused in `backpressure.md`).
+
+## File Inventory
+
+| File | Domains bridged | Core named principle |
+|---|---|---|
+| [dependency-resolution.md](./dependency-resolution.md) | Graph algorithms, build systems, package managers, schedulers | A build is a linear extension of a partial order; invalidation propagates on the reversed DAG |
+| [virtual-memory-caching.md](./virtual-memory-caching.md) | OS virtual memory, CPU caches, DB buffer pools, CDNs | One demand-filled hierarchy; eviction theory is layer-independent, cost gradients are not |
+| [db-indexes-data-structures.md](./db-indexes-data-structures.md) | DBMS internals, DSA, Redis | Structures are shaped by the physics of the storage medium; amplification is the exchange rate |
+| [scheduling-queueing.md](./scheduling-queueing.md) | OS scheduling, queueing theory, AQM | A scheduler is a queue discipline; Little's Law connects staffing, load, and delay |
+| [tcp-distributed-failure.md](./tcp-distributed-failure.md) | TCP/IP, distributed systems | Timeouts are statistical failure detectors; retries are only safe with deduplication |
+| [git-cas.md](./git-cas.md) | Git, Nix, Docker, IPFS, backups, CDNs | Hash the content, not the location; a Merkle DAG authenticates its whole graph |
+| [transactions-concurrency-control.md](./transactions-concurrency-control.md) | DB transactions, threading, memory models | Concurrency control is a chosen ordering contract plus the mechanism that enforces it |
+| [gc-memory-management.md](./gc-memory-management.md) | GC, memory allocators, distributed leases | Reclamation needs a definition of "dead"; every definition approximates from incomplete information |
+| [backpressure.md](./backpressure.md) | OS queues, TCP, Kafka, Reactive Streams, load management | Demand must propagate upstream as fast as work flows downstream; Little's Law caps throughput |
+
+## Coverage Ledger
+
+Status as of task 3-c (this directory authored in one pass; sibling `research-projects/` directories are owned by parallel tasks per the coordinator's plan — links to them resolve once those tasks land).
+
+| Page | Domains covered | Status | Notes / gaps |
+|---|---|---|---|
+| index.md | — | Complete | This page |
+| dependency-resolution.md | topo sort, make, npm/pip, Airflow, K8s init containers | Complete | SAT-based resolution only sketched; content-addressed rebuilds (Bazel/Nix) deferred to [git-cas.md](./git-cas.md) |
+| virtual-memory-caching.md | demand paging, page cache, TLB, L1/L2, buffer pool, CDN | Complete | NUMA and huge pages left to [../../os/memory/numa.md](../../os/memory/numa.md) and [../../os/memory/huge-pages.md](../../os/memory/huge-pages.md) |
+| db-indexes-data-structures.md | B+tree, LSM, hash index, skiplist, columnar | Complete | Deep LSM compaction math left to [../../dbms/internals/lsm-trees.md](../../dbms/internals/lsm-trees.md) |
+| scheduling-queueing.md | CFS/MLFQ, M/M/1, Little's Law, HOL, CoDel | Complete | M/M/c and Erlang models left to [../../queueing-theory/applied-systems.md](../../queueing-theory/applied-systems.md) |
+| tcp-distributed-failure.md | RTO, retransmission, backoff, idempotency, failure detectors | Complete | Byzantine fault tolerance out of scope ([../../distributed/fundamentals/byzantine-faults.md](../../distributed/fundamentals/byzantine-faults.md)) |
+| git-cas.md | Git objects, Merkle DAGs, Nix, Docker, IPFS, restic/borg, CDN assets | Complete | Packfile delta heuristics treated qualitatively |
+| transactions-concurrency-control.md | 2PL, RW locks, monitors, MVCC, serializability, memory models | Complete | Distributed commit deep-dive stays in [../../dbms/transactions/two-phase-commit.md](../../dbms/transactions/two-phase-commit.md) |
+| gc-memory-management.md | tracing, refcounting, generational, STW/SLO, leases | Complete | JVM collector comparison left to [../../compilers/advanced/g1gc.md](../../compilers/advanced/g1gc.md) and neighbors |
+| backpressure.md | bounded queues, TCP windows, Kafka pull, Reactive Streams, shedding | Complete | Rate-limit algorithms detailed in [../followup-tree/rate-limiter-design.md](../followup-tree/rate-limiter-design.md) |
+
+Deliberately **out of scope** for the atlas: generic pattern catalogs (owned by `failure-modes/`), mechanism-deep single-topic trade-offs (owned by the Why-Not Handbook), and incident timelines (owned by the Failure Casebook). Where those cover a topic, these pages link instead of duplicating.
+
+## Interview Questions
+
+1. A candidate explains that "a database buffer pool is basically a cache." What follow-up questions would you ask to distinguish rote analogy from mechanism understanding, and what answers would satisfy you?
+2. Name two systems that share a partial-order dependency structure and one behavioral difference that emerges when a dependency graph contains a cycle.
+3. Why is "the disk is just slow RAM" a dangerous simplification when tuning a system that mmaps a large file? Give one workload where mmap loses to explicit `read()` and say why in terms of fault cost.
+4. Your p99 latency doubles as CPU utilization crosses 70%, though average latency barely moves. Construct an explanation using queueing theory alone, naming the law and the variance term.
+5. Design-interview framing: "Build me a container registry." Which named principle from this atlas would structure your answer, and what are the two costs of that principle you would volunteer?
+
+## Key Takeaways
+
+- A connection is only worth writing down if it names a precise shared mechanism and states exactly where the mapping fails.
+- The same small set of principles — partial order, demand-filled caching, cost-of-the-medium, queue discipline as policy, statistical failure detection, content addressing, ordering contracts, liveness approximation, upstream demand propagation — explains a disproportionate fraction of systems behavior across OS, DBMS, networking, and distributed systems.
+- Analogies transfer *predictions*, not constants: a cache miss at L1 costs ~1 ns, a page fault ~ms; the theory of eviction transfers, the numbers do not.
+- Use the Coverage Ledger above to see what is covered, where depth was deliberately deferred to canonical pages, and which sibling research projects own the adjacent angles.
+
+## Cross-References
+
+- [../../dsa/README.md](../../dsa/README.md) — Data Structures and Algorithms Track — where the primitive structures (hash tables, trees, graphs) are taught before the atlas reinterprets them.
+- [../../os/overview.md](../../os/overview.md) — Operating Systems Overview — canonical treatment of memory, scheduling, and paging that the atlas connects outward.
+- [../../dbms/overview.md](../../dbms/overview.md) — Database Management Systems Overview — canonical indexing and transaction content.
+- [../../networks/overview.md](../../networks/overview.md) — Computer Networks — canonical TCP/IP content behind the failure-detection connections.
+- [../../distributed/overview.md](../../distributed/overview.md) — Distributed Systems Overview — failure detectors, consistency models, and leases referenced across these pages.
+- [../../queueing-theory/fundamentals.md](../../queueing-theory/fundamentals.md) — Queueing Theory Fundamentals — the formal backbone for the scheduling and backpressure pages.
+- [../../git/internals.md](../../git/internals.md) — Git Internals — object model details behind the content-addressing connection.
+- [../../arch/overview.md](../../arch/overview.md) — Computer Architecture — cache hierarchy and memory-hierarchy numbers used throughout.
+- [../followup-tree/rate-limiter-design.md](../followup-tree/rate-limiter-design.md) — Rate Limiter Design — escalation chains for the rate-limiting half of the backpressure connection.
+- [../why-not-handbook/caching-distributed.md](../why-not-handbook/caching-distributed.md) — Caching vs Distributed Coordination — the decision-level companion to the caching analogy.
+- [../failure-casebook/github-october-2018.md](../failure-casebook/github-october-2018.md) — GitHub October 2018 — the named incident illustrating retry-storm dynamics cited in two atlas pages.
