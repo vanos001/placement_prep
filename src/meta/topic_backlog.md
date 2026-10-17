@@ -2,8 +2,28 @@
 
 > Auto-maintained by research agents. Topics discovered during expansion that need coverage.
 > Priority: HIGH (interview-critical) | MEDIUM (important) | LOW (nice-to-have)
-> Last updated: 2026-10-15 (October rounds recorded: interface encyclopedia rebuild, process-exit-signal KB, Section G languages part, navigation wiring, warning cleanup)
-> Last content change: 2026-10-13 (Section G part src/languages/process-runtime/ + 295 orphaned pages wired into SUMMARY.md + 130 HTML-tag warning sites fixed)
+> Last updated: 2026-10-17 (Round 15 recorded: research-projects part — 52 pages, 6 collections)
+> Last content change: 2026-10-17 (new top-level part src/research-projects/ wired into SUMMARY.md)
+
+## Round 15 — Six research-project collections — 2026-10-17
+
+- New top-level SUMMARY part `src/research-projects/` (52 pages, ~109K words,
+  10 Mermaid diagrams): follow-up tree (6 escalation chains), hidden assumptions
+  hunt (7 audits), concept connection atlas (9 connections), why-not handbook
+  (12 comparisons in 7 chapters), real-world failure casebook (6 primary-source
+  incident case histories), misconception elimination (10 audited claims).
+- Coverage ledgers per project live in each index.md; hub at index.md. Cross-
+  linked to existing chapters (trade-offs, failure-modes, sre, interview, dsa,
+  os, dbms, networks, concurrency, distributed, references).
+- Candidate follow-ups spotted while writing:
+  - More follow-up chains for high-demand domains (caching layers, Kafka,
+    Kubernetes scheduling) — MEDIUM.
+  - Additional incident case histories with verifiable primary postmortems
+    (e.g., Node.js/npm ecosystem incidents, Kubernetes CVE-linked outages) —
+    MEDIUM; each requires source verification before writing.
+  - Agent 3-a noted datatracker.ietf.org returned 403 from the work sandbox;
+    RFC links were kept on the strength of the RFCs being canonical, but a
+    later pass may re-verify from a different environment — LOW.
 
 ## Round 14 — Section G eight-language process/runtime + navigation integrity — 2026-10-13
 

@@ -2,6 +2,18 @@
 
 > Work log for 2026-08-02 to 2026-10-13. All counts are from the working tree after each change.
 
+## Research Projects round — 2026-10-17
+
+52 new pages under `src/research-projects/` (hub + six collections: follow-up
+tree 7, assumptions hunt 8, connection atlas 10, why-not handbook 8, failure
+casebook 7, misconceptions 11), wired as the new top-level SUMMARY part
+"Research Projects" (6 sub-sections, 52 entries). ~109K words, 10 Mermaid
+diagrams. Wired into `src/SUMMARY.md`; per-project Coverage Ledgers live in
+each collection's index. Scoped validation: 0 broken links/anchors across all
+52 files, 0 fence problems, Mermaid heuristic 100% pass repo-wide (5,556).
+Failure Casebook incidents sourced to primary postmortems/orders (SEC 3-15570,
+AWS/Cloudflare/GitHub/Meta first-party reports, Leveson-Turner IEEE 1993).
+
 ## Linux userland binaries round — 2026-10-09
 
 280 new pages under `src/linux/binaries/` (one page per binary across 16

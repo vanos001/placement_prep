@@ -3775,6 +3775,83 @@
 
 ---
 
+# Research Projects
+
+Six connected research collections: follow-up question ladders, hidden assumption audits, cross-domain connections, why-not decision analysis, real-world failure case histories, and misconception elimination — each built on, and linking to, the existing chapters of this book.
+
+- [Research Projects Overview](./research-projects/index.md)
+
+## Interview Follow-up Tree
+
+- [Follow-up Tree Overview](./research-projects/followup-tree/index.md)
+- [Hash Tables](./research-projects/followup-tree/hash-tables.md)
+- [TCP Connection Lifecycle](./research-projects/followup-tree/tcp-lifecycle.md)
+- [Database Indexes](./research-projects/followup-tree/database-indexes.md)
+- [Virtual Memory](./research-projects/followup-tree/virtual-memory.md)
+- [From Mutex to Lock-Free](./research-projects/followup-tree/mutex-to-lock-free.md)
+- [Rate Limiter Design](./research-projects/followup-tree/rate-limiter-design.md)
+
+## Hidden Assumptions Hunt
+
+- [Assumptions Hunt Overview](./research-projects/assumptions-hunt/index.md)
+- [Input Constraints](./research-projects/assumptions-hunt/input-constraints.md)
+- [Memory Model](./research-projects/assumptions-hunt/memory-model.md)
+- [Concurrency and Scheduling](./research-projects/assumptions-hunt/concurrency-and-scheduling.md)
+- [Complexity Claims](./research-projects/assumptions-hunt/complexity-claims.md)
+- [Caching](./research-projects/assumptions-hunt/caching.md)
+- [Database Isolation](./research-projects/assumptions-hunt/database-isolation.md)
+- [Network and Distributed Systems](./research-projects/assumptions-hunt/network-distributed.md)
+
+## Concept Connection Atlas
+
+- [Connection Atlas Overview](./research-projects/connection-atlas/index.md)
+- [Dependency Resolution](./research-projects/connection-atlas/dependency-resolution.md)
+- [Virtual Memory and Caching](./research-projects/connection-atlas/virtual-memory-caching.md)
+- [Database Indexes and Data Structures](./research-projects/connection-atlas/db-indexes-data-structures.md)
+- [Scheduling and Queueing Theory](./research-projects/connection-atlas/scheduling-queueing.md)
+- [TCP Reliability and Distributed Failure Detection](./research-projects/connection-atlas/tcp-distributed-failure.md)
+- [Git Internals and Content-Addressable Storage](./research-projects/connection-atlas/git-cas.md)
+- [Transactions and Concurrency Control](./research-projects/connection-atlas/transactions-concurrency-control.md)
+- [Garbage Collection and Memory Management](./research-projects/connection-atlas/gc-memory-management.md)
+- [Backpressure, Queues, and Rate Limiting](./research-projects/connection-atlas/backpressure.md)
+
+## Why-Not Handbook
+
+- [Why-Not Handbook Overview](./research-projects/why-not-handbook/index.md)
+- [BFS versus DFS](./research-projects/why-not-handbook/bfs-vs-dfs.md)
+- [Binary Search versus Hashing](./research-projects/why-not-handbook/binary-search-vs-hashing.md)
+- [Arrays versus Linked Lists](./research-projects/why-not-handbook/arrays-vs-linked-lists.md)
+- [Sorting Algorithms](./research-projects/why-not-handbook/sorting-algorithms.md)
+- [Concurrency Primitives](./research-projects/why-not-handbook/concurrency-primitives.md)
+- [Database Design Choices](./research-projects/why-not-handbook/database-choices.md)
+- [Caching and Distributed Trade-offs](./research-projects/why-not-handbook/caching-distributed.md)
+
+## Real-World Failure Casebook
+
+- [Failure Casebook Overview](./research-projects/failure-casebook/index.md)
+- [Knight Capital, 2012](./research-projects/failure-casebook/knight-capital-2012.md)
+- [AWS S3 us-east-1, 2017](./research-projects/failure-casebook/aws-s3-us-east-1-2017.md)
+- [Cloudflare Regex, 2019](./research-projects/failure-casebook/cloudflare-regex-2019.md)
+- [GitHub Network Partition, 2018](./research-projects/failure-casebook/github-october-2018.md)
+- [Facebook BGP, 2021](./research-projects/failure-casebook/facebook-bgp-2021.md)
+- [Therac-25](./research-projects/failure-casebook/therac-25.md)
+
+## Misconception Elimination Project
+
+- [Misconceptions Overview](./research-projects/misconceptions/index.md)
+- [Hash-Table Lookup Is Always O(1)](./research-projects/misconceptions/hash-lookup-o1.md)
+- [Adding More Threads Always Improves Performance](./research-projects/misconceptions/more-threads-faster.md)
+- [Indexes Always Make Databases Faster](./research-projects/misconceptions/indexes-always-faster.md)
+- [TCP Guarantees the Application Receives the Data](./research-projects/misconceptions/tcp-guarantees-delivery.md)
+- [A Deadlock Requires Heavy CPU Usage](./research-projects/misconceptions/deadlock-requires-cpu.md)
+- [Recursion Is Always Slower Than Iteration](./research-projects/misconceptions/recursion-always-slower.md)
+- [A Cache Always Improves Performance](./research-projects/misconceptions/cache-always-improves.md)
+- [A Process Is Completely Isolated](./research-projects/misconceptions/process-full-isolation.md)
+- [Consistency and Availability During a Partition](./research-projects/misconceptions/consistency-availability-partition.md)
+- [Good Average-Case Complexity Guarantees Good Performance](./research-projects/misconceptions/average-case-complexity.md)
+
+---
+
 # Cheat Sheets
 
 - [OS Cheat Sheet](./cheatsheets/os.md)
