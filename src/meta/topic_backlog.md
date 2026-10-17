@@ -2,8 +2,24 @@
 
 > Auto-maintained by research agents. Topics discovered during expansion that need coverage.
 > Priority: HIGH (interview-critical) | MEDIUM (important) | LOW (nice-to-have)
-> Last updated: 2026-10-17 (Round 15 recorded: research-projects part — 52 pages, 6 collections)
-> Last content change: 2026-10-17 (new top-level part src/research-projects/ wired into SUMMARY.md)
+> Last updated: 2026-10-17 (Round 16 recorded: research-projects expansion — 43 pages, part now 95 pages)
+> Last content change: 2026-10-17 (43 new chapters across the six research-project collections)
+
+## Round 16 — Research projects expansion — 2026-10-17
+
+- User-directed expansion of the six collections: 43 new pages (follow-up tree
+  14 chains total, assumptions hunt 14 audits, connection atlas 16 connections,
+  why-not handbook 19 comparisons in 14 files, failure casebook 12 cases,
+  misconceptions 18 claims). SUMMARY.md part entries extended to 95; per-project
+  Coverage Ledgers updated; hub index counts refreshed.
+- New primary-sourced case histories: Ariane 5 (Lions report), Heartbleed
+  (OpenSSL advisory), GitLab 2017 (postmortem), CrowdStrike 2024 (RCA PDF +
+  mirrors), Fastly 2021 (official summary via contemporaneous verbatim excerpts),
+  AWS us-east-1 2021 (AWS message).
+- Candidate follow-ups: remaining domains for follow-up chains (consensus,
+  CRDTs, TLS 1.3 handshake); CRDT-vs-OT and capability-based security for the
+  atlas; additional verified incidents for the casebook — MEDIUM; all require
+  source verification before writing.
 
 ## Round 15 — Six research-project collections — 2026-10-17
 

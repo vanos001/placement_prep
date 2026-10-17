@@ -1,6 +1,6 @@
 # Real-World Failure Casebook
 
-Six named production incidents, each reconstructed from primary sources and analyzed the way an engineer would analyze them: what the system was, what actually happened, the deep technical mechanism of the failure, and why the safeguards that existed did not stop it.
+Twelve named production incidents, each reconstructed from primary sources and analyzed the way an engineer would analyze them: what the system was, what actually happened, the deep technical mechanism of the failure, and why the safeguards that existed did not stop it.
 
 This project is the *specific-case* counterpart of the [generic failure-mode catalog](../../failure-modes/common-failures.md). The catalog teaches you to recognize the pattern ("cache outage", "DNS outage", "failover gone wrong"). The casebook teaches the harder skill: reading a real incident end to end, checking each claim against evidence, and extracting design lessons that survive contact with the details.
 
@@ -51,6 +51,12 @@ Every case file follows the same shape, deliberately similar to the [postmortem 
 | [GitHub, October 2018](./github-october-2018.md) | Oct 21–22, 2018 | Developer platform | 24h 11min degraded service | Cross-region failover, split-brain writes, backup-restore recovery |
 | [Facebook BGP, 2021](./facebook-bgp-2021.md) | Oct 4, 2021 | Global platform | ~6 hours unreachable from the internet | BGP withdrawal, DNS-coupled control plane, manual recovery |
 | [Therac-25, 1985–87](./therac-25.md) | 1985–1987 | Medical devices | Six massive radiation overdoses; three deaths tied to overdoses | Race conditions, software-only interlocks, code reuse |
+| [Ariane 5 Flight 501, 1996](./ariane-5-1996.md) | Jun 4, 1996 | Space systems | Vehicle destroyed ~40s after liftoff | Data-dependent overflow, exception strategy, code reuse outside validated envelope |
+| [Heartbleed, 2014](./heartbleed-2014.md) | Apr 2014 | Internet security | Mass memory disclosure from TLS endpoints | Missing bounds check on attacker-controlled length, `memcpy` overrun |
+| [GitLab.com data loss, 2017](./gitlab-2017-data-loss.md) | Jan 31, 2017 | Developer platform | ~300GB production database deleted; ~18h recovery | Destructive command on wrong host, five failed recovery mechanisms, untested backups |
+| [CrowdStrike, 2024](./crowdstrike-july-2024.md) | Jul 19, 2024 | Endpoint security | ~8.5M Windows hosts in BSOD loops | Kernel-mode content update without memory-safe parsing, validator gap |
+| [Fastly, June 2021](./fastly-june-2021.md) | Jun 8, 2021 | Edge/CDN | Global 500/503 spike, ~1h | Latent bug triggered by valid customer config, global propagation |
+| [AWS us-east-1, 2021](./aws-us-east-1-2021.md) | Dec 7, 2021 | Cloud platform | ~11h control-plane degradation in US-EAST-1 | Internal scaling automation, retry amplification, shared network substrate |
 
 ## Coverage Ledger
 
@@ -64,7 +70,12 @@ The ledger states, for each case, what is verified against a primary source and 
 | GitHub Oct 2018 | "October 21 post-incident analysis", github.blog (Oct 30, 2018), Jason Warner | Yes — fetched and quoted | The partition is described as 43 seconds of lost connectivity, restored; other figures circulating (e.g., "31.5-second link flaps") do not appear in the primary post and are not used. |
 | Facebook Oct 2021 | "More details about the October 4 outage", engineering.fb.com (Oct 5, 2021); "Update about the October 4th outage" (Oct 4, 2021); Cloudflare's contemporaneous measurement post (Oct 4, 2021) | Yes — all three fetched | Facebook's own posts give no UTC timestamps; external timings used here come from Cloudflare's measurement post and are attributed to it. |
 | Therac-25 | N. G. Leveson and C. S. Turner, "An Investigation of the Therac-25 Accidents", *IEEE Computer* 26(7), July 1993, pp. 18–41 (reprinted at web.mit.edu) | Yes — all four parts fetched | The authors themselves note that AECL's internal development records were unavailable; per-accident dose figures are estimates from hospital physicists as reported in the paper. |
-
+| Ariane 5 1996 | J. L. Lions et al., *Ariane 5 Flight 501 Failure — Report by the Inquiry Board*, ESA, July 1996 | Yes — full text via cs.unibo.it mirror fetched and quoted | Component-level telemetry traces summarized from the report's appendixes; no independent re-derivation of the alignment-timing figures |
+| Heartbleed 2014 | OpenSSL Security Advisory "TLS heartbeat read overrun (CVE-2014-0160)" (Apr 7, 2014); heartbleed.com | Yes — advisory text fetched and quoted | Which specific organizations were exploited is NOT asserted; the page states only what memory *could* be exposed per the advisory |
+| GitLab 2017 | GitLab, "Postmortem of database outage of January 31" (Feb 10, 2017) | Yes — fetched and quoted | The day-of announcement post is cited by title only; per-hour restore figures come from the postmortem's timeline |
+| CrowdStrike 2024 | CrowdStrike, "Channel File 291 Incident — External Technical Root Cause Analysis" (Aug 6, 2024); Microsoft blog | URL verified via search; PDF not full-text fetchable — key facts cross-checked against verbatim mirrors | Per-industry outage figures and litigation outcomes are not covered |
+| Fastly 2021 | Fastly, "Summary of June 8 outage" (Jun 8, 2021) | URL verified via search; page not fetchable at writing — facts quoted via verbatim excerpts in contemporaneous coverage [2][3] | The customer identity behind the triggering config is not public and is not named |
+| AWS us-east-1 2021 | AWS, "Summary of the AWS Service Event in the Northern Virginia (US-EAST-1) Region" (Dec 10, 2021) | Yes — aws.amazon.com/message/12721/ fetched and quoted | The specific internal service whose scaling triggered the event and device-level details are not stated by AWS; those parts are labeled interpretation |
 Reading rules used across all pages:
 
 - **CONFIRMED** marks a statement traceable to the cited primary source.

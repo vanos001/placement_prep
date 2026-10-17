@@ -2,6 +2,19 @@
 
 > Work log for 2026-08-02 to 2026-10-13. All counts are from the working tree after each change.
 
+## Research Projects expansion round — 2026-10-17 (Round 16)
+
+43 new pages added to `src/research-projects/` (follow-up tree +8 chains,
+assumptions hunt +7 audits, connection atlas +7 connections, why-not handbook
++7 comparisons, failure casebook +6 incident case histories, misconceptions
++8 audited claims), taking the part to 95 pages / ~220K words. New casebook
+incidents (Ariane 5, Heartbleed, GitLab 2017, CrowdStrike 2024, Fastly 2021,
+AWS us-east-1 2021) each reconstructed from primary sources with CONFIRMED vs
+INTERPRETATION separation. Part description line removed from SUMMARY.md per
+user feedback. Scoped validation: 0 broken links, 0 fence problems, Mermaid
+5,563/5,563 pass, SUMMARY navigation OK (4,306/4,307, only SUMMARY itself
+unreferenced). Per-project Coverage Ledgers updated with sources and gaps.
+
 ## Research Projects round — 2026-10-17
 
 52 new pages under `src/research-projects/` (hub + six collections: follow-up

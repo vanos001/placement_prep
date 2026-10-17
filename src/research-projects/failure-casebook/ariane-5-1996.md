@@ -108,7 +108,7 @@ flowchart TD
 
 ## Connection to This Repository
 
-- [Floating-point assumptions hunt](../../assumptions-hunt/floating-point.md) — numeric representation is a set of assumptions (range, precision, conversion semantics) that code makes about its inputs; Flight 501 is what happens when the input distribution moves.
+- [Floating-point assumptions hunt](../assumptions-hunt/floating-point.md) — numeric representation is a set of assumptions (range, precision, conversion semantics) that code makes about its inputs; Flight 501 is what happens when the input distribution moves.
 - [Firmware](../../embedded-systems/firmware.md) and [real-time systems](../../embedded-systems/real-time-systems.md) — exception strategy, watchdogs, and degradation policies for code that physically acts on the world.
 - [Integration testing](../../testing/integration-testing.md) — the missing closed-loop, full-sequence test is the type of composition test this case argues for.
 - [Common failure modes](../../failure-modes/common-failures.md) — the "reused component outside its validated envelope" pattern in generic form.
@@ -140,5 +140,5 @@ flowchart TD
 - [Therac-25, 1985–87](./therac-25.md) — code reuse and software-only interlocks in a safety-critical system; the medical counterpart to this aerospace case.
 - [Knight Capital, 2012](./knight-capital-2012.md) — reused and repurposed code whose hidden assumptions were never re-validated; the trading-system counterpart.
 - [Cloudflare regex, 2019](./cloudflare-regex-2019.md) — a valid-but-unusual input amplified into a global failure by the composition of systems, and a test suite that could not measure the dimension that broke.
-- [Floating-point assumptions hunt](../../assumptions-hunt/floating-point.md) — the general treatment of numeric range and conversion assumptions.
+- [Floating-point assumptions hunt](../assumptions-hunt/floating-point.md) — the general treatment of numeric range and conversion assumptions.
 - [Postmortem culture](../../sre/postmortem-culture.md) — the inquiry-report discipline this casebook follows.

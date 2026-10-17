@@ -3777,8 +3777,6 @@
 
 # Research Projects
 
-Six connected research collections: follow-up question ladders, hidden assumption audits, cross-domain connections, why-not decision analysis, real-world failure case histories, and misconception elimination — each built on, and linking to, the existing chapters of this book.
-
 - [Research Projects Overview](./research-projects/index.md)
 
 ## Interview Follow-up Tree
@@ -3790,6 +3788,14 @@ Six connected research collections: follow-up question ladders, hidden assumptio
 - [Virtual Memory](./research-projects/followup-tree/virtual-memory.md)
 - [From Mutex to Lock-Free](./research-projects/followup-tree/mutex-to-lock-free.md)
 - [Rate Limiter Design](./research-projects/followup-tree/rate-limiter-design.md)
+- [Quicksort Partitioning](./research-projects/followup-tree/quicksort-partitioning.md)
+- [Dynamic Programming](./research-projects/followup-tree/dynamic-programming.md)
+- [What Happens When You Type a URL](./research-projects/followup-tree/url-to-page.md)
+- [Garbage Collection](./research-projects/followup-tree/garbage-collection.md)
+- [Process Lifecycle](./research-projects/followup-tree/process-lifecycle.md)
+- [ACID Transactions](./research-projects/followup-tree/acid-transactions.md)
+- [URL Shortener Design](./research-projects/followup-tree/url-shortener.md)
+- [Redis Caching](./research-projects/followup-tree/redis-caching.md)
 
 ## Hidden Assumptions Hunt
 
@@ -3801,6 +3807,13 @@ Six connected research collections: follow-up question ladders, hidden assumptio
 - [Caching](./research-projects/assumptions-hunt/caching.md)
 - [Database Isolation](./research-projects/assumptions-hunt/database-isolation.md)
 - [Network and Distributed Systems](./research-projects/assumptions-hunt/network-distributed.md)
+- [Floating Point](./research-projects/assumptions-hunt/floating-point.md)
+- [Filesystem Durability](./research-projects/assumptions-hunt/filesystem-durability.md)
+- [Timeouts and Retries](./research-projects/assumptions-hunt/timeouts-and-retries.md)
+- [API Contracts](./research-projects/assumptions-hunt/api-contracts.md)
+- [Security and Crypto](./research-projects/assumptions-hunt/security-crypto.md)
+- [Testing](./research-projects/assumptions-hunt/testing-assumptions.md)
+- [Storage Durability](./research-projects/assumptions-hunt/storage-durability.md)
 
 ## Concept Connection Atlas
 
@@ -3814,6 +3827,13 @@ Six connected research collections: follow-up question ladders, hidden assumptio
 - [Transactions and Concurrency Control](./research-projects/connection-atlas/transactions-concurrency-control.md)
 - [Garbage Collection and Memory Management](./research-projects/connection-atlas/gc-memory-management.md)
 - [Backpressure, Queues, and Rate Limiting](./research-projects/connection-atlas/backpressure.md)
+- [Event Sourcing and Write-Ahead Logs](./research-projects/connection-atlas/event-sourcing-wal.md)
+- [Cache Coherence and Distributed Consistency](./research-projects/connection-atlas/cache-coherence-consistency.md)
+- [Query Planners and Dataflow](./research-projects/connection-atlas/query-planner-dataflow.md)
+- [Checksums and Erasure Coding](./research-projects/connection-atlas/checksums-erasure-coding.md)
+- [Consensus, Locks, and Leases](./research-projects/connection-atlas/consensus-leases.md)
+- [Interrupts and Async Runtimes](./research-projects/connection-atlas/interrupts-async.md)
+- [Incremental Computation](./research-projects/connection-atlas/incremental-computation.md)
 
 ## Why-Not Handbook
 
@@ -3825,6 +3845,13 @@ Six connected research collections: follow-up question ladders, hidden assumptio
 - [Concurrency Primitives](./research-projects/why-not-handbook/concurrency-primitives.md)
 - [Database Design Choices](./research-projects/why-not-handbook/database-choices.md)
 - [Caching and Distributed Trade-offs](./research-projects/why-not-handbook/caching-distributed.md)
+- [Crash Recovery: WAL vs In-Place vs Append-Only](./research-projects/why-not-handbook/crash-recovery.md)
+- [Push vs Pull](./research-projects/why-not-handbook/push-vs-pull.md)
+- [Replication Modes](./research-projects/why-not-handbook/replication-modes.md)
+- [Scaling Up vs Scaling Out](./research-projects/why-not-handbook/scaling-up-vs-out.md)
+- [Stateless vs Stateful](./research-projects/why-not-handbook/stateless-vs-stateful.md)
+- [Static vs Dynamic Typing](./research-projects/why-not-handbook/static-vs-dynamic-typing.md)
+- [Monolith vs Microservices](./research-projects/why-not-handbook/monolith-vs-microservices.md)
 
 ## Real-World Failure Casebook
 
@@ -3835,6 +3862,12 @@ Six connected research collections: follow-up question ladders, hidden assumptio
 - [GitHub Network Partition, 2018](./research-projects/failure-casebook/github-october-2018.md)
 - [Facebook BGP, 2021](./research-projects/failure-casebook/facebook-bgp-2021.md)
 - [Therac-25](./research-projects/failure-casebook/therac-25.md)
+- [Ariane 5 Flight 501, 1996](./research-projects/failure-casebook/ariane-5-1996.md)
+- [Heartbleed, 2014](./research-projects/failure-casebook/heartbleed-2014.md)
+- [GitLab Data Loss, 2017](./research-projects/failure-casebook/gitlab-2017-data-loss.md)
+- [CrowdStrike, 2024](./research-projects/failure-casebook/crowdstrike-july-2024.md)
+- [Fastly, June 2021](./research-projects/failure-casebook/fastly-june-2021.md)
+- [AWS us-east-1, 2021](./research-projects/failure-casebook/aws-us-east-1-2021.md)
 
 ## Misconception Elimination Project
 
@@ -3849,6 +3882,14 @@ Six connected research collections: follow-up question ladders, hidden assumptio
 - [A Process Is Completely Isolated](./research-projects/misconceptions/process-full-isolation.md)
 - [Consistency and Availability During a Partition](./research-projects/misconceptions/consistency-availability-partition.md)
 - [Good Average-Case Complexity Guarantees Good Performance](./research-projects/misconceptions/average-case-complexity.md)
+- [O(n log n) Is Always Faster Than O(n²)](./research-projects/misconceptions/big-o-is-speed.md)
+- [HTTPS Means a Site Is Safe](./research-projects/misconceptions/https-means-secure.md)
+- [SSDs Make I/O Patterns Irrelevant](./research-projects/misconceptions/ssd-ignores-io-patterns.md)
+- [Garbage Collection Means No Memory Leaks](./research-projects/misconceptions/gc-means-no-leaks.md)
+- [Containers Are Lightweight VMs](./research-projects/misconceptions/containers-are-vms.md)
+- [Relational Databases Don't Scale](./research-projects/misconceptions/relational-dbs-dont-scale.md)
+- [More Replicas Mean More Consistency](./research-projects/misconceptions/more-replicas-more-consistency.md)
+- [More Bandwidth Fixes Latency](./research-projects/misconceptions/bandwidth-fixes-latency.md)
 
 ---
 

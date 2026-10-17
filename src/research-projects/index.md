@@ -26,16 +26,18 @@ The unifying method is **interrogation, not accumulation**. A reference chapter 
 
 ## Coverage Status
 
-Each project maintains its own Coverage Ledger (topics, sources, honest gaps) in its index. Summary as of the October research round:
+Each project maintains its own Coverage Ledger (topics, sources, honest gaps) in its index. Summary as of the October research rounds (initial build + expansion):
 
 | Project | Files | Words (approx.) | Ledger |
 |---------|-------|-----------------|--------|
-| Interview Follow-up Tree | 7 | ~17,900 | [Ledger](./followup-tree/index.md) |
-| Hidden Assumptions Hunt | 8 | ~20,800 | [Ledger](./assumptions-hunt/index.md) |
-| Concept Connection Atlas | 10 | ~18,600 | [Ledger](./connection-atlas/index.md) |
-| Why-Not Handbook | 8 | ~18,700 | [Ledger](./why-not-handbook/index.md) |
-| Real-World Failure Casebook | 7 | ~17,900 | [Ledger](./failure-casebook/index.md) |
-| Misconception Elimination | 11 | ~15,500 | [Ledger](./misconceptions/index.md) |
+| Interview Follow-up Tree | 15 | ~42,500 | [Ledger](./followup-tree/index.md) |
+| Hidden Assumptions Hunt | 15 | ~40,200 | [Ledger](./assumptions-hunt/index.md) |
+| Concept Connection Atlas | 17 | ~34,600 | [Ledger](./connection-atlas/index.md) |
+| Why-Not Handbook | 15 | ~37,300 | [Ledger](./why-not-handbook/index.md) |
+| Real-World Failure Casebook | 13 | ~35,300 | [Ledger](./failure-casebook/index.md) |
+| Misconception Elimination | 19 | ~29,600 | [Ledger](./misconceptions/index.md) |
+
+Ninety-four chapters plus this hub — fourteen follow-up chains, fourteen assumption audits, sixteen cross-domain connections, nineteen comparisons, twelve sourced incident case histories, and eighteen audited misconceptions.
 
 ## Method and Standards
 
