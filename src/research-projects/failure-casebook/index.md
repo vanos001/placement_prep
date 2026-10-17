@@ -1,0 +1,89 @@
+# Real-World Failure Casebook
+
+Six named production incidents, each reconstructed from primary sources and analyzed the way an engineer would analyze them: what the system was, what actually happened, the deep technical mechanism of the failure, and why the safeguards that existed did not stop it.
+
+This project is the *specific-case* counterpart of the [generic failure-mode catalog](../../failure-modes/common-failures.md). The catalog teaches you to recognize the pattern ("cache outage", "DNS outage", "failover gone wrong"). The casebook teaches the harder skill: reading a real incident end to end, checking each claim against evidence, and extracting design lessons that survive contact with the details.
+
+## Why Study Real Incidents?
+
+### Patterns are the beginning, not the end
+
+A failure pattern like "database failover produces split-brain" compresses hundreds of distinct events into one sentence. The compression is useful for design discussions and useless for diagnosis. In the [GitHub October 2018 incident](./github-october-2018.md), the pattern label fits — automatic failover produced divergent writes across two data centers — but the specifics are what mattered: a Raft-based failover tool that behaved *exactly as configured*, an application tier that could not tolerate cross-region latency, and a 43-second network partition that no one had ever stress-tested. The pattern tells you what to look for. The case tells you what it looks like in the wild, including all the ways mitigation itself is slow and awkward.
+
+### Reading postmortems is an engineering skill
+
+A written incident report is a compressed, partial, occasionally self-serving document. Reading one well means being able to answer:
+
+- **What does the source actually say?** Not "Knight Capital lost money because of a typo" — the [SEC order](./knight-capital-2012.md) describes a failed copy of new code to one of eight servers, which activated dormant, defective code on that server.
+- **What does the source conspicuously not say?** AWS's S3 statement describes a typo'd parameter but does not describe the command's interactive safeguards; drawing conclusions about what was missing requires care and labeling.
+- **Where is the boundary between mechanism and cause?** Cloudflare's July 2, 2019 outage had a proximate trigger (one regular expression) and a chain of contributing factors (a removed CPU protection, a test suite that could not measure CPU, a deployment SOP that skipped staging). Singling out one "root cause" is how organizations learn nothing.
+
+Every page in this casebook therefore separates **CONFIRMED** facts (traced to a named primary source) from **INTERPRETATION** (our analysis, clearly labeled). This mirrors the [blameless postmortem discipline](../../sre/postmortem-culture.md): the value of an incident document is exactly proportional to how trustworthy its facts are.
+
+### Cases connect theory to everything else in this repository
+
+Each case page maps its mechanism back to concept pages — concurrency [shared-memory hazards](../../concurrency/memory-model.md), database [replication](../../dbms/distributed/replication.md), [BGP](../../networks/routing/bgp.md), [recovery from logs](../../dbms/transactions/log-recovery.md) — so the incident becomes a way to *use* the theory rather than just know it. This is the same cross-linking philosophy as the rest of the research projects.
+
+## How Each Case Page Is Structured
+
+Every case file follows the same shape, deliberately similar to the [postmortem template](../../sre/postmortem-culture.md#the-postmortem-template) but organized for study rather than review:
+
+1. **Overview** — the incident in one screen: dates, blast radius, headline numbers, all tied to sources.
+2. **System Context** — what the system was for and how it was designed *before* the failure. You cannot judge a failure without knowing what "working" looked like.
+3. **What Happened** — the narrative, plus a timeline table where the primary source supports one. Every row names its source; where the source gives no timestamp, there is no timestamp.
+4. **Technical Mechanism** — the deep "how". This is the heart of each page: catastrophic backtracking in a backtracking regex engine, BGP withdrawal propagation, MySQL promotion across a WAN, shared-memory race windows. Explained from first principles, with a diagram where it earns its space.
+5. **Trigger vs Contributing Factors** — separating the spark from the fuel.
+6. **Why Safeguards Didn't Prevent It** — the most instructive section: each safeguard is named, and the reason it failed is stated.
+7. **Lessons & Mitigations** — generalizable design principles, not a checklist of "the company fixed X".
+8. **Connection to This Repository** — links to concept pages that carry the theory.
+9. **Interview Questions** — 3–5 questions of the kind this case equips you to answer.
+10. **Key Takeaways** — compressed summary.
+11. **Sources** — numbered, primary sources first, with URLs verified at time of writing.
+12. **Cross-References** — sibling case pages and related repository pages.
+
+## Inventory
+
+| Case | Date | Domain | Headline failure | Mechanism focus |
+|------|------|--------|------------------|-----------------|
+| [Knight Capital, 2012](./knight-capital-2012.md) | Aug 1, 2012 | Trading systems | $460M+ loss in ~45 minutes | Dead code + repurposed flag + partial deployment |
+| [AWS S3 us-east-1, 2017](./aws-s3-us-east-1-2017.md) | Feb 28, 2017 | Cloud storage | Region-wide S3 API failure, 3–4 hours | Destructive command, cold-critical subsystems, recovery order |
+| [Cloudflare regex, 2019](./cloudflare-regex-2019.md) | Jul 2, 2019 | Edge/CDN | Global 502s for ~27 minutes | Catastrophic backtracking, linear-time regex engines |
+| [GitHub, October 2018](./github-october-2018.md) | Oct 21–22, 2018 | Developer platform | 24h 11min degraded service | Cross-region failover, split-brain writes, backup-restore recovery |
+| [Facebook BGP, 2021](./facebook-bgp-2021.md) | Oct 4, 2021 | Global platform | ~6 hours unreachable from the internet | BGP withdrawal, DNS-coupled control plane, manual recovery |
+| [Therac-25, 1985–87](./therac-25.md) | 1985–1987 | Medical devices | Six massive radiation overdoses; three deaths tied to overdoses | Race conditions, software-only interlocks, code reuse |
+
+## Coverage Ledger
+
+The ledger states, for each case, what is verified against a primary source and what is explicitly *not* claimed. This is the fact-checking contract for the whole project.
+
+| Case | Primary source used | URL verified? | Known gaps / unverified items |
+|------|--------------------|---------------|-------------------------------|
+| Knight Capital 2012 | SEC Administrative Proceeding File No. 3-15570, Release No. 34-70694 (Oct 16, 2013); SEC Press Release 2013-222; Knight 8-K (Aug 6, 2012) | Yes — sec.gov PDF and press release fetched and quoted | Exact clock time the erroneous trading stopped is not stated in the SEC order; only a "~45-minute period". Popular accounts sometimes say "9:47 a.m. ET" — not used here. |
+| AWS S3 2017 | "Summary of the Amazon S3 Service Disruption in the Northern Virginia (US-EAST-1) Region", AWS Message (Feb 28, 2017) | Yes — aws.amazon.com/message/41926/ fetched and quoted | AWS does not state which parameter was mistyped or what interactive checks the tool had; we describe only what the statement says and label the rest as interpretation. |
+| Cloudflare 2019 | "Details of the Cloudflare outage on July 2, 2019", blog.cloudflare.com (Jul 2, 2019), John Graham-Cumming | Yes — fetched and quoted | The post describes the global-kill execution being blocked by internal access failures; it does not say the kill switch "failed" per se — see the case page for the precise wording. |
+| GitHub Oct 2018 | "October 21 post-incident analysis", github.blog (Oct 30, 2018), Jason Warner | Yes — fetched and quoted | The partition is described as 43 seconds of lost connectivity, restored; other figures circulating (e.g., "31.5-second link flaps") do not appear in the primary post and are not used. |
+| Facebook Oct 2021 | "More details about the October 4 outage", engineering.fb.com (Oct 5, 2021); "Update about the October 4th outage" (Oct 4, 2021); Cloudflare's contemporaneous measurement post (Oct 4, 2021) | Yes — all three fetched | Facebook's own posts give no UTC timestamps; external timings used here come from Cloudflare's measurement post and are attributed to it. |
+| Therac-25 | N. G. Leveson and C. S. Turner, "An Investigation of the Therac-25 Accidents", *IEEE Computer* 26(7), July 1993, pp. 18–41 (reprinted at web.mit.edu) | Yes — all four parts fetched | The authors themselves note that AECL's internal development records were unavailable; per-accident dose figures are estimates from hospital physicists as reported in the paper. |
+
+Reading rules used across all pages:
+
+- **CONFIRMED** marks a statement traceable to the cited primary source.
+- **INTERPRETATION** marks our own analysis — reasonable engineering inference, clearly separated from evidence.
+- Where a widely repeated detail could not be traced to a primary source, it is either omitted or explicitly marked *reported but unverified*. No URLs, quotes, timeline entries, or root causes are invented.
+
+## How to Use This Casebook
+
+1. **Before interviews**: pick two cases closest to your target role (e.g., S3 + GitHub for infrastructure roles). Read the Technical Mechanism sections until you can re-derive the failure on a whiteboard.
+2. **As practice for postmortem reading**: for each case, first read only the Overview and What Happened sections, write your own diagnosis, then compare against the Technical Mechanism section. This trains exactly the skill a real incident response demands: forming hypotheses from incomplete evidence.
+3. **As design input**: the Lessons sections are written as principles you can apply in system design interviews — staged deployment, recovery-order planning, quorum discipline, and safety-architecture arguments all generalize.
+4. **Alongside the pattern catalog**: after reading a case, find its pattern in the [failure-mode catalog](../../failure-modes/common-failures.md) and notice how much detail the pattern hides.
+
+## Cross-References
+
+- [Failure modes: common failures catalog](../../failure-modes/common-failures.md) — the generic-pattern counterpart to these specific cases.
+- [Postmortem and incident response culture](../../sre/postmortem-culture.md) — the process framework these cases are written in.
+- [Incident management](../../sre/incident-management.md) — command structures, severity, and communication during incidents.
+- [Distributed systems overview](../../distributed/overview.md) — theoretical background for the replication and consensus failures in these cases.
+- [DBMS overview](../../dbms/overview.md) — database internals referenced by the GitHub and AWS cases.
+- [Networking overview](../../networks/overview.md) — BGP, DNS, and routing background for the Facebook and Cloudflare cases.
+- [SRE README](../../sre/README.md) — reliability engineering hub for canary releases, feature flags, chaos engineering, and on-call practice.
