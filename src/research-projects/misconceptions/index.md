@@ -2,8 +2,9 @@
 
 ## Overview
 
-This collection targets ten widely repeated claims that survive interviews,
-code reviews, and design documents because each one contains a kernel of truth.
+This collection targets twenty-five widely repeated claims that survive
+interviews, code reviews, and design documents because each one contains a
+kernel of truth.
 The format is deliberately adversarial but fair: each page states the claim in
 its strongest common form, renders a verdict (false, incomplete, or
 context-dependent), explains why the claim is believable, gives the correct
@@ -105,12 +106,27 @@ protections.
 | 8 | [process-full-isolation](./process-full-isolation.md) | "A process is completely isolated from other processes" | False | Process isolation is strong address-space isolation, not total isolation: kernel, filesystem, IPC, and side channels remain shared |
 | 9 | [consistency-availability-partition](./consistency-availability-partition.md) | "A distributed system can always provide consistency and availability during a partition" | False | Gilbert–Lynch 2002 proves C and A cannot both hold under partition; PACELC extends the tradeoff |
 | 10 | [average-case-complexity](./average-case-complexity.md) | "Good average-case complexity guarantees good real-world performance" | Incomplete | Averages are over a distribution; adversarial inputs, tails, and constants decide real-world outcomes |
+| 11 | [big-o-is-speed](./big-o-is-speed.md) | "O(n log n) always beats O(n²)" | False | Big-O is an asymptotic statement; at real sizes constants and input shape decide the race |
+| 12 | [https-means-secure](./https-means-secure.md) | "The padlock means this site is safe" | False | TLS authenticates a domain and protects a transport; it says nothing about operator, content, or application safety |
+| 13 | [ssd-ignores-io-patterns](./ssd-ignores-io-patterns.md) | "SSDs make I/O patterns irrelevant" | Incomplete | Random-write amplification and fsync behavior still dominate sustained writes and durability on flash |
+| 14 | [gc-means-no-leaks](./gc-means-no-leaks.md) | "GC languages can't leak" | False | Leaks are unbounded reachable-but-unused memory; collectors manage reachability, not intent |
+| 15 | [containers-are-vms](./containers-are-vms.md) | "Containers are lightweight virtual machines" | False | Namespaces and cgroups share the host kernel; the isolation boundary differs in kind, not degree |
+| 16 | [relational-dbs-dont-scale](./relational-dbs-dont-scale.md) | "You must leave SQL to scale" | False | SQL systems run at planetary scale; scaling limits are per-system engineering choices, not the relational model |
+| 17 | [more-replicas-more-consistency](./more-replicas-more-consistency.md) | "More replicas = more reliable and more consistent" | False | Async replicas widen staleness; quorum math decides consistency, not copy count |
+| 18 | [bandwidth-fixes-latency](./bandwidth-fixes-latency.md) | "More bandwidth will make it faster" | Context-dependent | Bandwidth fixes throughput-bound work; RTT-bound work needs fewer round trips |
+| 19 | [async-await-parallelism](./async-await-parallelism.md) | "async/await makes my code run in parallel" | False | async/await provides I/O concurrency on one thread; parallelism needs workers, processes, or a multithreaded runtime pool |
+| 20 | [encryption-means-authenticated](./encryption-means-authenticated.md) | "It's encrypted, so it can't be tampered with" | False | Ciphers provide confidentiality only; malleability and padding oracles make integrity an AEAD/MAC job |
+| 21 | [udp-cannot-be-reliable](./udp-cannot-be-reliable.md) | "UDP is unreliable, so serious applications can't use it" | False | Reliability is a layer you choose to build (QUIC/HTTP-3, netcode, DNS retries); TCP's ordering has costs |
+| 22 | [crc-equality-means-file-equality](./crc-equality-means-file-equality.md) | "The checksums match, so the file is intact/identical" | Incomplete | CRC equality detects accidental damage; adversarial collisions are algebra, and only keyed digests authenticate |
+| 23 | [single-threaded-languages-cant-parallelize](./single-threaded-languages-cant-parallelize.md) | "Node.js/Python can't use multiple cores" | False | Workers, processes, GIL-releasing native code, and free-threaded builds move work to other cores |
+| 24 | [immutability-means-thread-safe](./immutability-means-thread-safe.md) | "final/const/immutable fields make this thread-safe" | Incomplete | Deep immutability plus safe publication is the real theorem; the keywords deliver only half |
+| 25 | [averages-summarize-latency](./averages-summarize-latency.md) | "Average latency is a good performance metric" | Incomplete | Means hide tails and multimodality; percentiles from merged histograms represent user experience |
 
 ## Coverage Ledger
 
 | File | Topic area | Verdict | Status | Word count |
 |---|---|---|---|---|
-| index.md | Taxonomy and audit method | — | Written | ~1,460 |
+| index.md | Taxonomy and audit method | — | Written | ~2,120 |
 | hash-lookup-o1.md | Data structures | False | Written | ~1,420 |
 | more-threads-faster.md | Concurrency | False | Written | ~1,420 |
 | indexes-always-faster.md | Databases | Context-dependent | Written | ~1,360 |
@@ -121,11 +137,31 @@ protections.
 | process-full-isolation.md | Operating systems, security | False | Written | ~1,420 |
 | consistency-availability-partition.md | Distributed systems | False | Written | ~1,450 |
 | average-case-complexity.md | Algorithms, performance | Incomplete | Written | ~1,420 |
+| big-o-is-speed.md | Algorithms | False | Written | ~1,630 |
+| https-means-secure.md | Security, networking | False | Written | ~1,820 |
+| ssd-ignores-io-patterns.md | Storage, systems | Incomplete | Written | ~1,860 |
+| gc-means-no-leaks.md | Languages, memory | False | Written | ~1,810 |
+| containers-are-vms.md | Operating systems, cloud | False | Written | ~1,760 |
+| relational-dbs-dont-scale.md | Databases, distributed | False | Written | ~1,700 |
+| more-replicas-more-consistency.md | Distributed systems, replication | False | Written | ~1,600 |
+| bandwidth-fixes-latency.md | Networking, performance | Context-dependent | Written | ~1,930 |
+| async-await-parallelism.md | Languages, concurrency | False | Written | ~2,330 |
+| encryption-means-authenticated.md | Security | False | Written | ~2,360 |
+| udp-cannot-be-reliable.md | Networking | False | Written | ~2,330 |
+| crc-equality-means-file-equality.md | Storage, security | Incomplete | Written | ~2,420 |
+| single-threaded-languages-cant-parallelize.md | Languages, concurrency | False | Written | ~2,310 |
+| immutability-means-thread-safe.md | Concurrency, languages | Incomplete | Written | ~2,510 |
+| averages-summarize-latency.md | Performance, observability | Incomplete | Written | ~2,440 |
 
-The collection is complete at ten claims. Candidate future additions (advisory
-locks prevent all race conditions, GC eliminates memory leaks, HTTPS means the
-site is safe, container == VM) are tracked in the hub backlog rather than
-grown here, to keep every entry fully argued rather than enumerated.
+The collection stands at twenty-five claims after three expansion rounds.
+The Round 15 candidates tracked in the hub backlog ("HTTPS means safe",
+"GC eliminates leaks", "container == VM") have since been incorporated as
+full audits in Round 16, and Round 17 added seven more whose thread runs
+through runtime execution models (async/await, the GIL, immutability),
+transport and cipher guarantees (UDP, encryption, checksums), and
+measurement discipline (latency averages). The remaining backlog candidate
+(advisory locks prevent all race conditions) stays tracked at the hub, to
+keep every entry fully argued rather than enumerated.
 
 ## Cross-References
 
