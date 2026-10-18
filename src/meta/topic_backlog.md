@@ -463,3 +463,13 @@ Total new content: ~11,500 lines across 25 new pages.
 All 50 sections of `index.md` now have dedicated coverage. Full
 validation suite passes: 0 broken links, SUMMARY navigation OK,
 MathJax balanced, Mermaid 100%.
+
+### Research expansion — round 17 follow-ups (2026-10-18)
+
+Candidate round-18 topics (all non-overlapping with the current 129 chapters):
+- Follow-up Tree: load balancers as interview ladders, database replication lag chains, Kafka consumer internals deep chain, API gateway auth chains, caching warm-up/cold-start chains.
+- Assumptions Hunt: API rate-limit headers, SSL certificate rotation windows, git submodule assumptions, locale/number formatting, regex input-length assumptions, logging PII assumptions.
+- Connection Atlas: feature flags and deployment coupling, database migrations and deploys, ML inference caching chains, config management pipelines.
+- Why-Not Handbook: GraphQL vs REST, polling vs webhooks (mechanism focus), CI monorepo vs multi-repo, ELT vs ETL, batching vs streaming.
+- Failure Casebook: only with verified primary sources (keep the contract); candidates need first-party postmortems before writing.
+- Misconceptions: "silent data corruption is impossible", "regression suite green means no bugs", "backups mean recovery".

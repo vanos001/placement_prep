@@ -3796,6 +3796,13 @@
 - [ACID Transactions](./research-projects/followup-tree/acid-transactions.md)
 - [URL Shortener Design](./research-projects/followup-tree/url-shortener.md)
 - [Redis Caching](./research-projects/followup-tree/redis-caching.md)
+- [DNS Resolution](./research-projects/followup-tree/dns-resolution.md)
+- [TLS Handshake](./research-projects/followup-tree/tls-handshake.md)
+- [Message Queues](./research-projects/followup-tree/message-queues.md)
+- [Kubernetes Pod Lifecycle](./research-projects/followup-tree/kubernetes-pod-lifecycle.md)
+- [Connection Pooling](./research-projects/followup-tree/connection-pooling.md)
+- [Consensus and Raft](./research-projects/followup-tree/consensus-raft.md)
+- [Regex Engines](./research-projects/followup-tree/regex-engines.md)
 
 ## Hidden Assumptions Hunt
 
@@ -3814,6 +3821,13 @@
 - [Security and Crypto](./research-projects/assumptions-hunt/security-crypto.md)
 - [Testing](./research-projects/assumptions-hunt/testing-assumptions.md)
 - [Storage Durability](./research-projects/assumptions-hunt/storage-durability.md)
+- [Clocks and Time](./research-projects/assumptions-hunt/clocks-and-time.md)
+- [Text and Encoding](./research-projects/assumptions-hunt/encodings-and-text.md)
+- [Containers and Resources](./research-projects/assumptions-hunt/containers-and-resources.md)
+- [DNS Assumptions](./research-projects/assumptions-hunt/dns-assumptions.md)
+- [Ordering and Pagination](./research-projects/assumptions-hunt/ordering-and-pagination.md)
+- [Randomness and IDs](./research-projects/assumptions-hunt/randomness-and-ids.md)
+- [Serialization Compatibility](./research-projects/assumptions-hunt/serialization-compatibility.md)
 
 ## Concept Connection Atlas
 
@@ -3834,6 +3848,13 @@
 - [Consensus, Locks, and Leases](./research-projects/connection-atlas/consensus-leases.md)
 - [Interrupts and Async Runtimes](./research-projects/connection-atlas/interrupts-async.md)
 - [Incremental Computation](./research-projects/connection-atlas/incremental-computation.md)
+- [DNS, Anycast, and the CDN Edge](./research-projects/connection-atlas/dns-cdn-routing.md)
+- [Containers: Namespaces, Cgroups, and the Union Filesystem](./research-projects/connection-atlas/containers-cgroups-namespaces.md)
+- [Authentication: Identity, Tokens, Sessions, and Trust](./research-projects/connection-atlas/auth-identity-session.md)
+- [Load Balancing and Partitioning](./research-projects/connection-atlas/load-balancing-partitioning.md)
+- [From Interpreter to Silicon](./research-projects/connection-atlas/jit-interpretation-hardware.md)
+- [Search and the Inverted Index](./research-projects/connection-atlas/search-inverted-index.md)
+- [The Observability Pipeline](./research-projects/connection-atlas/observability-pipeline.md)
 
 ## Why-Not Handbook
 
@@ -3852,6 +3873,13 @@
 - [Stateless vs Stateful](./research-projects/why-not-handbook/stateless-vs-stateful.md)
 - [Static vs Dynamic Typing](./research-projects/why-not-handbook/static-vs-dynamic-typing.md)
 - [Monolith vs Microservices](./research-projects/why-not-handbook/monolith-vs-microservices.md)
+- [REST vs gRPC](./research-projects/why-not-handbook/rest-vs-grpc.md)
+- [ORM vs Raw SQL](./research-projects/why-not-handbook/orm-vs-raw-sql.md)
+- [TCP vs UDP](./research-projects/why-not-handbook/tcp-vs-udp.md)
+- [Sync vs Async I/O](./research-projects/why-not-handbook/sync-vs-async-io.md)
+- [ID Generation: Auto-Increment vs UUID vs Snowflake](./research-projects/why-not-handbook/snowflake-vs-uuid.md)
+- [Row vs Column Stores](./research-projects/why-not-handbook/row-vs-column-stores.md)
+- [Password Hashing: SHA-256 vs bcrypt vs Argon2id](./research-projects/why-not-handbook/password-hashing-choices.md)
 
 ## Real-World Failure Casebook
 
@@ -3868,6 +3896,12 @@
 - [CrowdStrike, 2024](./research-projects/failure-casebook/crowdstrike-july-2024.md)
 - [Fastly, June 2021](./research-projects/failure-casebook/fastly-june-2021.md)
 - [AWS us-east-1, 2021](./research-projects/failure-casebook/aws-us-east-1-2021.md)
+- [Mars Climate Orbiter, 1999](./research-projects/failure-casebook/mars-climate-orbiter-1999.md)
+- [AWS DynamoDB us-east-1, 2015](./research-projects/failure-casebook/aws-dynamodb-2015.md)
+- [Toyota Unintended Acceleration, 2009–2011](./research-projects/failure-casebook/toyota-unintended-acceleration.md)
+- [UK Post Office Horizon, 1999–2025](./research-projects/failure-casebook/uk-post-office-horizon.md)
+- [Boeing 737 MAX MCAS, 2018–2020](./research-projects/failure-casebook/boeing-737-max-mcas.md)
+- [Cloudflare Control Plane, 2025](./research-projects/failure-casebook/cloudflare-november-2025.md)
 
 ## Misconception Elimination Project
 
@@ -3890,6 +3924,13 @@
 - [Relational Databases Don't Scale](./research-projects/misconceptions/relational-dbs-dont-scale.md)
 - [More Replicas Mean More Consistency](./research-projects/misconceptions/more-replicas-more-consistency.md)
 - [More Bandwidth Fixes Latency](./research-projects/misconceptions/bandwidth-fixes-latency.md)
+- [Async/Await Means Parallelism](./research-projects/misconceptions/async-await-parallelism.md)
+- [Encryption Means Tamper-Proof](./research-projects/misconceptions/encryption-means-authenticated.md)
+- [UDP Cannot Be Reliable](./research-projects/misconceptions/udp-cannot-be-reliable.md)
+- [Matching Checksums Mean Identical Files](./research-projects/misconceptions/crc-equality-means-file-equality.md)
+- [Single-Threaded Languages Can't Use Multiple Cores](./research-projects/misconceptions/single-threaded-languages-cant-parallelize.md)
+- [Immutability Means Thread Safety](./research-projects/misconceptions/immutability-means-thread-safe.md)
+- [Average Latency Is a Good Metric](./research-projects/misconceptions/averages-summarize-latency.md)
 
 ---
 

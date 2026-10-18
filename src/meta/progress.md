@@ -159,3 +159,18 @@ The `research` branch (75 commits ahead of `main`) landed 660 new markdown files
 | Fence check | `check-fences.py` clean across 4,120 files |
 | Branch sync | research -> dev -> main via explicit `--no-ff` merges, then all three branches fast-forwarded to the same commit (`989c5c3`) |
 
+
+## Research Projects round 17 — 2026-10-18
+
+| Item | Result |
+|------|--------|
+| Scope | 41 new chapters across the six research collections (expansion round 17) |
+| Follow-up Tree | +7 chains: DNS resolution, TLS handshake, message queues, Kubernetes pod lifecycle, connection pooling, consensus/Raft, regex engines |
+| Hidden Assumptions Hunt | +7 audits: clocks and time, text and encoding, containers and resources, DNS, ordering and pagination, randomness and IDs, serialization compatibility |
+| Concept Connection Atlas | +7 maps: DNS/CDN edge routing, containers-cgroups-namespaces, auth-identity-session, load balancing-partitioning, JIT-to-silicon, search inverted index, observability pipeline |
+| Why-Not Handbook | +7 comparisons: REST vs gRPC, ORM vs raw SQL, TCP vs UDP, sync vs async I/O, ID generation (auto-increment/UUID/Snowflake), row vs column stores, password hashing choices |
+| Failure Casebook | +6 verified cases: Cloudflare control plane (Nov 2025), AWS DynamoDB us-east-1 (2015), Mars Climate Orbiter (1999), Toyota unintended acceleration (2009-2011), UK Post Office Horizon (1999-2025), Boeing 737 MAX MCAS (2018-2020) |
+| Misconception Elimination | +7 audits: async-await parallelism, encryption-vs-authentication, UDP reliability, checksum equality, single-threaded parallelism, immutability thread-safety, average latency |
+| Collection totals | 129 chapters + 7 index pages (~330K words): 21 chains, 21 audits, 23 connections, 21 comparisons, 18 case histories, 25 misconceptions |
+| Primary sources | Cloudflare first-party RCA; AWS DynamoDB statement; NASA MCO mishap report; NHTSA/NASA assessment + court materials; UK Horizon Inquiry report + two High Court judgments; NTSB ASR-19/01 |
+| QA | Scoped validation: 0 broken links, 0 fence problems, Mermaid 100% pass; SUMMARY.md +41 bare entries; per-project ledgers extended |

@@ -30,14 +30,14 @@ Each project maintains its own Coverage Ledger (topics, sources, honest gaps) in
 
 | Project | Files | Words (approx.) | Ledger |
 |---------|-------|-----------------|--------|
-| Interview Follow-up Tree | 15 | ~42,500 | [Ledger](./followup-tree/index.md) |
-| Hidden Assumptions Hunt | 15 | ~40,200 | [Ledger](./assumptions-hunt/index.md) |
-| Concept Connection Atlas | 17 | ~34,600 | [Ledger](./connection-atlas/index.md) |
-| Why-Not Handbook | 15 | ~37,300 | [Ledger](./why-not-handbook/index.md) |
-| Real-World Failure Casebook | 13 | ~35,300 | [Ledger](./failure-casebook/index.md) |
-| Misconception Elimination | 19 | ~29,600 | [Ledger](./misconceptions/index.md) |
+| Interview Follow-up Tree | 22 | ~60,500 | [Ledger](./followup-tree/index.md) |
+| Hidden Assumptions Hunt | 22 | ~59,900 | [Ledger](./assumptions-hunt/index.md) |
+| Concept Connection Atlas | 24 | ~52,300 | [Ledger](./connection-atlas/index.md) |
+| Why-Not Handbook | 22 | ~55,800 | [Ledger](./why-not-handbook/index.md) |
+| Real-World Failure Casebook | 19 | ~55,200 | [Ledger](./failure-casebook/index.md) |
+| Misconception Elimination | 26 | ~46,300 | [Ledger](./misconceptions/index.md) |
 
-Ninety-four chapters plus this hub — fourteen follow-up chains, fourteen assumption audits, sixteen cross-domain connections, nineteen comparisons, twelve sourced incident case histories, and eighteen audited misconceptions.
+One hundred twenty-nine chapters plus seven index pages — twenty-one follow-up chains, twenty-one assumption audits, twenty-three cross-domain connections, twenty-one comparisons, eighteen sourced incident case histories, and twenty-five audited misconceptions.
 
 ## Method and Standards
 
