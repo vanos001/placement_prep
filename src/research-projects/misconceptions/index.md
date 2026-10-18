@@ -2,7 +2,7 @@
 
 ## Overview
 
-This collection targets thirty-two widely repeated claims that survive
+This collection targets thirty-seven widely repeated claims that survive
 interviews, code reviews, and design documents because each one contains a
 kernel of truth.
 The format is deliberately adversarial but fair: each page states the claim in
@@ -128,6 +128,11 @@ protections.
 | 30 | [dashboards-mean-observability](./dashboards-mean-observability.md) | "We have dashboards, so we are observable" | Incomplete | Observability is the ability to ask new questions of production; dashboards are frozen answers over pre-aggregated, cardinality-capped series |
 | 31 | [coverage-means-tested](./coverage-means-tested.md) | "90% code coverage means the code is well tested" | False | Coverage measures execution, not assertion strength; mutation scoring measures the gap, and the uncovered residue maps the expensive paths |
 | 32 | [jwt-is-encrypted](./jwt-is-encrypted.md) | "JWTs are secure because they're encrypted" | False | A JWT is base64url-encoded and typically signed (JWS), not encrypted (JWE); payloads are readable by anyone holding the token, and alg confusion invites forgery |
+| 33 | [encryption-at-rest-means-access-control](./encryption-at-rest-means-access-control.md) | "The data is encrypted at rest, so access is controlled" | Incomplete | At-rest encryption protects the medium, not the credential path; authorization and key policy are separate access-control surfaces |
+| 34 | [rollback-means-undo](./rollback-means-undo.md) | "We can always roll back the deploy, so the change is reversible" | Incomplete | Rollback reverts the artifact, not the world: migrations, side effects, caches, and contracts survive; expand-contract manufactures the reversibility the button promises |
+| 35 | [stateless-means-no-state](./stateless-means-no-state.md) | "Our microservices are stateless, so scaling is trivial" | Incomplete | State moved, not vanished: backing stores concentrate it, saturate first, and affinity returns through cache locality |
+| 36 | [load-test-proves-production](./load-test-proves-production.md) | "We load-tested at 2x peak, so production is safe" | False | A load test bounds collapse points for a synthetic workload on a named environment; parity gaps, traffic shape, and coordinated omission void the certificate |
+| 37 | [the-network-is-reliable](./the-network-is-reliable.md) | "The network is reliable" | False | The first fallacy of distributed computing: loss, delay, duplication, and partition are ordinary events; reliability is engineered at the endpoints (timeouts, retries, idempotency, quorums) |
 
 ## Coverage Ledger
 
@@ -166,8 +171,13 @@ protections.
 | dashboards-mean-observability.md | Observability, operations | Incomplete | Written | ~2,350 |
 | coverage-means-tested.md | Testing, metrics | False | Written | ~2,400 |
 | jwt-is-encrypted.md | Security, tokens | False | Written | ~2,320 |
+| encryption-at-rest-means-access-control.md | Security, storage, access control | Incomplete | Written | ~2,350 |
+| rollback-means-undo.md | Deployments, databases, operations | Incomplete | Written | ~2,310 |
+| stateless-means-no-state.md | Architecture, scaling, state | Incomplete | Written | ~2,300 |
+| load-test-proves-production.md | Testing, performance, reliability | False | Written | ~2,310 |
+| the-network-is-reliable.md | Networking, distributed systems | False | Written | ~2,370 |
 
-The collection stands at thirty-two claims after four expansion rounds.
+The collection stands at thirty-seven claims after five expansion rounds.
 The Round 15 candidates tracked in the hub backlog ("HTTPS means safe",
 "GC eliminates leaks", "container == VM") have since been incorporated as
 full audits in Round 16, Round 17 added seven more whose thread runs
@@ -177,7 +187,11 @@ measurement discipline (latency averages), and Round 18 added seven whose
 thread runs through evidence and verification (green suites, coverage,
 dashboards, backups), measured versus experienced performance (throughput
 versus latency), and the boundary between encoding and protection (silent
-corruption, JWT structure). The remaining backlog candidate
+corruption, JWT structure). Round 19 added five whose thread runs
+through the boundary between a control and the property it is sold as —
+encryption versus access control, rollback versus reversibility,
+statelessness versus scale, a load test versus safety, and the network
+versus reliability. The remaining backlog candidate
 (advisory locks prevent all race conditions) stays tracked at the hub, to
 keep every entry fully argued rather than enumerated.
 
