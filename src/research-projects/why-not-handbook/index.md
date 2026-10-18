@@ -17,7 +17,7 @@ Every page in this handbook applies the same six steps, in the same order. The o
 5. **Find the edge cases and counterexamples.** This is where most material stops and this handbook starts. Each page includes at least one non-obvious case where the "obvious" choice fails: BFS frontier blowup on lattice graphs, hash-flooding attacks, lost wakeups in condition variables, write skew under snapshot isolation, cache stampedes after an invalidation. These cases are what interviewers use to separate rote answers from real understanding.
 6. **Write the decision framework.** Each page ends with a table or ordered checklist mapping workload properties to a choice. The framework is falsifiable: if your workload matches the left column, the right column is the recommendation — and the page has already told you what you are giving up.
 
-The framework generalizes beyond the twenty-one comparisons here. When you meet a fresh "X vs Y" question, running these six steps produces an answer that is specific to your constraints and honest about costs.
+The framework generalizes beyond the twenty-eight comparisons here. When you meet a fresh "X vs Y" question, running these six steps produces an answer that is specific to your constraints and honest about costs.
 
 ## File Inventory
 
@@ -44,6 +44,13 @@ The framework generalizes beyond the twenty-one comparisons here. When you meet 
 | [snowflake-vs-uuid](./snowflake-vs-uuid.md) | Who generates the ID, what does the B-tree experience, and what do strangers learn? | UUIDv4 index fragmentation multiplied across every secondary index; sharded auto-increment steps that resharding breaks |
 | [row-vs-column-stores](./row-vs-column-stores.md) | Which questions is the physical layout cheap at — few rows/all columns or all rows/few columns? | HTAP's async staleness seam; compaction starvation under chatty updates; "Cassandra is a column store" (data-model vs storage axis) |
 | [password-hashing-choices](./password-hashing-choices.md) | How is verification made deliberately expensive, and what does each hardness buy? | bcrypt's silent 72-byte truncation (and the pre-hashing zero-byte bug it spawns); the login endpoint as a DoS amplifier |
+| [graphql-vs-rest](./graphql-vs-rest.md) | Who shapes the response — and who pays for shape? | Introspection hands attackers the schema map; the request-scoped DataLoader that leaks; one GraphQL round trip slower than three cached REST calls |
+| [batching-vs-streaming](./batching-vs-streaming.md) | When does processing start — after a window or on arrival? | The lambda architecture's dual-truth drift; the micro-batch interval that is three dials in one; the backfill a pure streaming system cannot perform |
+| [etl-vs-elt](./etl-vs-elt.md) | Which engine owns transformation, and does raw data land? | The raw-zone PII masking race; silent schema drift landing loud downstream; streaming CDC that fits neither letter |
+| [monorepo-vs-multirepo](./monorepo-vs-multirepo.md) | Is coordination tooling or process — where do contracts break? | The shared package that never reached 2.0 (polyrepo upgrade deadlock); monorepo CI collapse without affected-target computation; access control fragmenting the monorepo anyway |
+| [canary-vs-blue-green](./canary-vs-blue-green.md) | How is the new version exposed over time, and who notices failure? | Dual-write doubling side effects in the overlap window; sticky sessions poisoning canary statistics; the migration that broke the rollback target |
+| [virtual-dom-vs-signals](./virtual-dom-vs-signals.md) | Where is change detection computed — diff, track, or compile? | The memoization treadmill (hand-written dependency graphs); torn reads in naive signal graphs; the 10,000-row list that signals do not save |
+| [normalize-vs-denormalize](./normalize-vs-denormalize.md) | Where does complexity live — the read path or the sync path? | JSON columns as transactionally-synced denormalization (and the planner-statistics trap); the index as the denormalization you already accepted; the join that outgrew a node |
 
 ## Coverage Ledger
 
@@ -71,6 +78,13 @@ The same concepts appear across several research projects **from deliberately di
 | Identifier design (auto-increment vs UUID vs Snowflake) | Generation authority, index locality, leakage | [B+Tree](../../dbms/indexing/b-plus-tree.md) (locality mechanics), [URL Shortener](../followup-tree/url-shortener.md) (ID design as a design interview) |
 | Physical layout (row vs column) | Access-shape economics; HTAP as the hybrid answer | [Column Stores](../../dbms/storage/column-stores.md) (layout depth), [HTAP](../../dbms/advanced/htap.md) (the hybrid architecture) |
 | Password hashing (SHA-2 vs bcrypt/scrypt/Argon2) | Cost-per-guess engineering and memory hardness | [Security & Crypto](../assumptions-hunt/security-crypto.md) (deployment assumptions), [Cryptography](../../security/cryptography.md) (the primitives) |
+| API style (GraphQL vs REST) | Who shapes the response; caching, query cost, introspection | [GraphQL](../../backend/api/graphql.md) (the query language), [REST](../../networks/http/rest.md) (the resource model), [REST vs gRPC](./rest-vs-grpc.md) (the contract-location fork) |
+| Pipeline pacing (batch vs streaming) | When processing starts: windows vs continuous | [Batch Processing](../../data-engineering/batch-processing.md) and [Stream Processing](../../data-engineering/stream-processing.md) (mechanics), [Exactly-Once Semantics](../../distributed/messaging-internals/exactly-once-semantics.md) (the stream tax) |
+| Transform placement (ETL vs ELT) | Which engine transforms; whether raw lands | [Snowflake](../../dbms/advanced/snowflake.md) (the elasticity that flipped ELT), [Debezium](../../data-engineering/debezium.md) (streaming CDC) |
+| Repository strategy (monorepo vs multirepo) | Coordination as tooling vs process | [Git Workflows](../../git/workflows.md) (branching inside either shape), [Git Workflow Assumptions](../assumptions-hunt/git-workflow-assumptions.md) (what history promises) |
+| Deployment strategy (canary vs blue-green) | Exposure over time; detection vs rollback | [Canary Releases](../../sre/canary-releases.md) (the playbook), [Feature Flags](../../sre/feature-flags.md) (software-layer exposure) |
+| UI update model (VDOM vs signals) | Where change detection is computed | [React Internals](../../frontend/react-internals.md) (diff/scheduler mechanics), [Svelte](../../frontend/svelte.md) (the compiler-driven middle) |
+| Physical schema (normalize vs denormalize) | Copies and their sync strategies, uniformly | [Denormalization](../../dbms/normalization/denormalization.md) (read-optimization patterns), [Incremental View Maintenance](../../dbms/advanced/incremental-view-maintenance.md) (engine-maintained copies) |
 
 Duplication boundary (from the project plan): trade-offs pages hold the scannable tables; this handbook holds mechanisms, complexity derivations, guarantees, and edge cases. If you find yourself copying a table between the two, link instead.
 
