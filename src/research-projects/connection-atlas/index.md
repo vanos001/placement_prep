@@ -18,7 +18,7 @@ The unit of analysis here is the **cross-domain connection**, and every connecti
 
 ## Map of the Atlas
 
-Seventeen connection pages, grouped by the *kind* of shared principle rather than by textbook silo:
+Twenty-three connection pages, grouped by the *kind* of shared principle rather than by textbook silo:
 
 ```text
                          CONCEPT CONNECTION ATLAS
@@ -39,6 +39,13 @@ Seventeen connection pages, grouped by the *kind* of shared principle rather tha
   COORDINATION          consensus-leases ............. Raft ~ distributed locks ~ leases ~ fencing tokens
   EVENT DISPATCH        interrupts-async ............. IRQs ~ signals ~ epoll ~ event loops ~ futures
   INVALIDATION          incremental-computation ...... make ~ spreadsheets ~ incr. compilers ~ matviews ~ React
+  ADDRESSING / ROUTING  dns-cdn-routing .............. DNS hierarchy ~ anycast ~ GeoDNS ~ CDN edge ~ purge
+  ISOLATION / RESOURCES containers-cgroups-namespaces   namespaces ~ cgroups ~ overlayfs layers ~ OCI runtime
+  IDENTITY / STATE      auth-identity-session ........ OAuth2 ~ JWT ~ sessions ~ cookies ~ revocation ~ SSO
+  PLACEMENT             load-balancing-partitioning ... L4/L7 ~ affinity ~ consistent hashing ~ discovery
+  EXECUTION / SILICON   jit-interpretation-hardware .. interpreter ~ tiered JIT ~ inline caches ~ deopt
+  RETRIEVAL             search-inverted-index ........ analyzer ~ postings ~ BM25 ~ segments ~ NRT refresh
+  TELEMETRY             observability-pipeline ....... metrics/logs/traces ~ agents ~ sampling ~ cardinality
 ```
 
 Reading order is flexible; the two most load-bearing pages are `virtual-memory-caching.md` (the caching lens appears in half the other pages) and `scheduling-queueing.md` (Little's Law is the quantitative glue reused in `backpressure.md`).
@@ -63,10 +70,17 @@ Reading order is flexible; the two most load-bearing pages are `virtual-memory-c
 | [consensus-leases.md](./consensus-leases.md) | Paxos/Raft, distributed locks, leases, fencing tokens | Linearizable registry + time-bounded grant + monotonic check at the resource; exclusion happens at the data |
 | [interrupts-async.md](./interrupts-async.md) | Hardware IRQs, signals, epoll/kqueue, event loops, futures | Push beats poll: register interest, yield, be resumed; handler cost is paid by everyone sharing the dispatcher |
 | [incremental-computation.md](./incremental-computation.md) | Build systems, spreadsheets, incremental compilers, matviews, React | Recompute only what a change invalidates: dependency graph + dirty propagation + memoized results |
+| [dns-cdn-routing.md](./dns-cdn-routing.md) | DNS, BGP/anycast, GeoDNS, CDNs | Every addressing layer is a cached copy of truth with a bounded staleness budget: TTL lease, BGP convergence, purge propagation |
+| [containers-cgroups-namespaces.md](./containers-cgroups-namespaces.md) | Linux namespaces, cgroups, union filesystems, OCI, Kubernetes | Isolation is two orthogonal axes (view and resources); every container property is a composition decision about which to share |
+| [auth-identity-session.md](./auth-identity-session.md) | OAuth2, JWT, sessions, cookies, SSO | Auth mechanisms are leases on identity truth; revocation is shortening a lease after the fact, always by re-adding state, keys, or clocks |
+| [load-balancing-partitioning.md](./load-balancing-partitioning.md) | L4/L7 balancing, hashing, data partitioning, discovery | Two placements per request (server and data owner) share one slider: spread vs locality vs stability in a changing pool |
+| [jit-interpretation-hardware.md](./jit-interpretation-hardware.md) | Interpreters, tiered JITs, CPU front ends | Inline caches, tiering, and branch predictors are one mechanism: frequency-trained prediction with recovery cost, at three scales |
+| [search-inverted-index.md](./search-inverted-index.md) | Text analysis, inverted indexes, BM25, segment stores | A B+tree idea transposed from values to terms; the contract diverges where relevance replaces exact, transactional truth |
+| [observability-pipeline.md](./observability-pipeline.md) | Metrics/logs/traces, agents, TSDBs, alerting | A fan-in flow that sheds evidence instead of blocking producers; fidelity knobs couple layers invisibly until incident time |
 
 ## Coverage Ledger
 
-Status as of tasks 3-c (Round 15) and 3-c2 (Round 16); sibling `research-projects/` directories are owned by parallel tasks per the coordinator's plan — links to them resolve once those tasks land.
+Status as of tasks 3-c (Round 15), 3-c2 (Round 16), and r17-c2 (Round 17); sibling `research-projects/` directories are owned by parallel tasks per the coordinator's plan — links to them resolve once those tasks land.
 
 | Page | Domains covered | Status | Notes / gaps |
 |---|---|---|---|
@@ -87,6 +101,13 @@ Status as of tasks 3-c (Round 15) and 3-c2 (Round 16); sibling `research-project
 | consensus-leases.md | Raft/Paxos, lock services, lease timing, fencing tokens, frozen-client case | Complete | Byzantine agreement out of scope ([../../distributed/fundamentals/byzantine-faults.md](../../distributed/fundamentals/byzantine-faults.md)) |
 | interrupts-async.md | IRQs/top-bottom halves, signals, epoll/kqueue, io_uring, event loops, futures | Complete | Per-language runtime internals deferred to [../../languages/rust/async-runtimes.md](../../languages/rust/async-runtimes.md) and siblings |
 | incremental-computation.md | make/Bazel keys, spreadsheet recalc, rustc queries, IVM, React memoization | Complete | Demand-driven frameworks (Adapton/Salsa) treated qualitatively |
+| dns-cdn-routing.md | DNS hierarchy/resolution, TTL leases, anycast, GeoDNS, CDN edge/shield/purge, failover budgets | Complete | DNSSEC and DoH left to [../../networks/dns/dnssec.md](../../networks/dns/dnssec.md) and [../../networks/dns/doh.md](../../networks/dns/doh.md) |
+| containers-cgroups-namespaces.md | namespaces, cgroup v2 controllers, overlayfs layers, OCI/runc, Pod composition, OOM vs throttling | Complete | Sandbox hardening (seccomp/Landlock) left to [../../os/security-internals/seccomp.md](../../os/security-internals/seccomp.md) |
+| auth-identity-session.md | OAuth2 grants, JWT claims/keys, sessions/cookies, refresh/revocation, SAML/OIDC/Kerberos, clock skew | Complete | WebAuthn/FIDO2 left to [../../security/advanced/fido2-webauthn.md](../../security/advanced/fido2-webauthn.md) |
+| load-balancing-partitioning.md | L4/L7 policies, affinity, consistent/rendezvous hashing, range/hash partitioning, discovery, health checks | Complete | Live resharding protocols left to [../../dbms/advanced/online-resharding.md](../../dbms/advanced/online-resharding.md) |
+| jit-interpretation-hardware.md | interpreters, tiered JIT, ICs/hidden classes, deopt/OSR, branch prediction, uop cache, warmup | Complete | Register allocation left to [../../compilers/advanced/register-allocation.md](../../compilers/advanced/register-allocation.md); GC coupling to [./gc-memory-management.md](./gc-memory-management.md) |
+| search-inverted-index.md | analyzers, FST term dictionary, postings, BM25, segments/NRT, filter cache, GIN vs external engines | Complete | Vector/similarity search out of scope ([../../dbms/internals/vector-indexes-deep.md](../../dbms/internals/vector-indexes-deep.md)) |
+| observability-pipeline.md | metrics/logs/traces, agents/buffers, head/tail sampling, cardinality, TSDB storage, burn-rate alerts | Complete | OpenTelemetry SDK internals treated qualitatively |
 
 Deliberately **out of scope** for the atlas: generic pattern catalogs (owned by `failure-modes/`), mechanism-deep single-topic trade-offs (owned by the Why-Not Handbook), and incident timelines (owned by the Failure Casebook). Where those cover a topic, these pages link instead of duplicating.
 
