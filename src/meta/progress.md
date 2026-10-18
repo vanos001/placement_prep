@@ -2,6 +2,31 @@
 
 > Work log for 2026-08-02 to 2026-10-13. All counts are from the working tree after each change.
 
+## Research Projects expansion round — 2026-10-17 (Round 16)
+
+43 new pages added to `src/research-projects/` (follow-up tree +8 chains,
+assumptions hunt +7 audits, connection atlas +7 connections, why-not handbook
++7 comparisons, failure casebook +6 incident case histories, misconceptions
++8 audited claims), taking the part to 95 pages / ~220K words. New casebook
+incidents (Ariane 5, Heartbleed, GitLab 2017, CrowdStrike 2024, Fastly 2021,
+AWS us-east-1 2021) each reconstructed from primary sources with CONFIRMED vs
+INTERPRETATION separation. Part description line removed from SUMMARY.md per
+user feedback. Scoped validation: 0 broken links, 0 fence problems, Mermaid
+5,563/5,563 pass, SUMMARY navigation OK (4,306/4,307, only SUMMARY itself
+unreferenced). Per-project Coverage Ledgers updated with sources and gaps.
+
+## Research Projects round — 2026-10-17
+
+52 new pages under `src/research-projects/` (hub + six collections: follow-up
+tree 7, assumptions hunt 8, connection atlas 10, why-not handbook 8, failure
+casebook 7, misconceptions 11), wired as the new top-level SUMMARY part
+"Research Projects" (6 sub-sections, 52 entries). ~109K words, 10 Mermaid
+diagrams. Wired into `src/SUMMARY.md`; per-project Coverage Ledgers live in
+each collection's index. Scoped validation: 0 broken links/anchors across all
+52 files, 0 fence problems, Mermaid heuristic 100% pass repo-wide (5,556).
+Failure Casebook incidents sourced to primary postmortems/orders (SEC 3-15570,
+AWS/Cloudflare/GitHub/Meta first-party reports, Leveson-Turner IEEE 1993).
+
 ## Linux userland binaries round — 2026-10-09
 
 280 new pages under `src/linux/binaries/` (one page per binary across 16
@@ -134,3 +159,46 @@ The `research` branch (75 commits ahead of `main`) landed 660 new markdown files
 | Fence check | `check-fences.py` clean across 4,120 files |
 | Branch sync | research -> dev -> main via explicit `--no-ff` merges, then all three branches fast-forwarded to the same commit (`989c5c3`) |
 
+
+## Research Projects round 17 — 2026-10-18
+
+| Item | Result |
+|------|--------|
+| Scope | 41 new chapters across the six research collections (expansion round 17) |
+| Follow-up Tree | +7 chains: DNS resolution, TLS handshake, message queues, Kubernetes pod lifecycle, connection pooling, consensus/Raft, regex engines |
+| Hidden Assumptions Hunt | +7 audits: clocks and time, text and encoding, containers and resources, DNS, ordering and pagination, randomness and IDs, serialization compatibility |
+| Concept Connection Atlas | +7 maps: DNS/CDN edge routing, containers-cgroups-namespaces, auth-identity-session, load balancing-partitioning, JIT-to-silicon, search inverted index, observability pipeline |
+| Why-Not Handbook | +7 comparisons: REST vs gRPC, ORM vs raw SQL, TCP vs UDP, sync vs async I/O, ID generation (auto-increment/UUID/Snowflake), row vs column stores, password hashing choices |
+| Failure Casebook | +6 verified cases: Cloudflare control plane (Nov 2025), AWS DynamoDB us-east-1 (2015), Mars Climate Orbiter (1999), Toyota unintended acceleration (2009-2011), UK Post Office Horizon (1999-2025), Boeing 737 MAX MCAS (2018-2020) |
+| Misconception Elimination | +7 audits: async-await parallelism, encryption-vs-authentication, UDP reliability, checksum equality, single-threaded parallelism, immutability thread-safety, average latency |
+| Collection totals | 129 chapters + 7 index pages (~330K words): 21 chains, 21 audits, 23 connections, 21 comparisons, 18 case histories, 25 misconceptions |
+| Primary sources | Cloudflare first-party RCA; AWS DynamoDB statement; NASA MCO mishap report; NHTSA/NASA assessment + court materials; UK Horizon Inquiry report + two High Court judgments; NTSB ASR-19/01 |
+| QA | Scoped validation: 0 broken links, 0 fence problems, Mermaid 100% pass; SUMMARY.md +41 bare entries; per-project ledgers extended |
+
+## Research Projects round 18 — 2026-10-18
+
+| Item | Result |
+|------|--------|
+| Scope | 39 new chapters across the six research collections (expansion round 18) |
+| Follow-up Tree | +7 chains: load balancing, replication lag, HTTP protocol evolution, API gateway, virtual threads vs async, zero-downtime migrations, SLOs and error budgets |
+| Hidden Assumptions Hunt | +7 audits: rate-limit headers, certificate rotation, locale and formatting, regex input, logging and PII, configuration, git workflows |
+| Concept Connection Atlas | +7 maps: feature flags/deploy, migrations/deploy, ML inference pipeline, config management, payments double-entry ledger, build caches and reproducibility, webhook delivery |
+| Why-Not Handbook | +7 comparisons: GraphQL vs REST, batching vs streaming, ETL vs ELT, monorepo vs multirepo, canary vs blue-green, virtual DOM vs signals, normalization vs denormalization |
+| Failure Casebook | +4 verified cases: Equifax 2017 (GAO/House reports), Target 2013 (Senate kill-chain report), Ericsson certificate expiry 2018 (first-party statement), Cloudflare Workers KV June 2025 (first-party postmortem) |
+| Misconception Elimination | +7 audits: green tests, backups vs recovery, silent corruption, throughput vs latency, dashboards vs observability, coverage, JWT encryption |
+| Collection totals | 168 chapters + 7 index pages (~430K words): 28 chains, 28 audits, 30 connections, 28 comparisons, 22 case histories, 32 misconceptions |
+| QA | Scoped validation: 0 broken links, 0 fence problems, Mermaid 100%; SUMMARY +39 bare entries; all per-project ledgers extended |
+
+## Research Projects round 19 — 2026-10-18
+
+| Item | Result |
+|------|--------|
+| Scope | 27 new chapters (expansion round 19) |
+| Follow-up Tree | +5 chains: proxy architecture, background jobs, graceful degradation, WebSockets, circuit breakers |
+| Hidden Assumptions Hunt | +5 audits: proxy headers, scheduled jobs, temp-file atomicity, distributed locks, backup/restore |
+| Concept Connection Atlas | +5 maps: email delivery, queue DLQ/replay, distributed rate limiting, vector embeddings, artifact promotion |
+| Why-Not Handbook | +5 comparisons: RPC vs queue, Compose vs Kubernetes, app events vs CDC, serverless vs containers, regex vs parser |
+| Failure Casebook | +2 verified cases: AWS Kinesis 2020 (AWS postmortem fetched), OVHcloud Strasbourg fire 2021 (first-party statement fetched) |
+| Misconception Elimination | +5 audits: encryption-at-rest, rollback, stateless myths, load-test overconfidence, network reliability |
+| Collection totals | 195 chapters + 7 index pages (~500K words): 33 chains, 33 audits, 35 connections, 33 comparisons, 24 case histories, 37 misconceptions |
+| QA | Scoped validation rerun: 0 broken links, 0 fence problems, Mermaid 100%, SUMMARY 0 duplicates |

@@ -2,8 +2,44 @@
 
 > Auto-maintained by research agents. Topics discovered during expansion that need coverage.
 > Priority: HIGH (interview-critical) | MEDIUM (important) | LOW (nice-to-have)
-> Last updated: 2026-10-15 (October rounds recorded: interface encyclopedia rebuild, process-exit-signal KB, Section G languages part, navigation wiring, warning cleanup)
-> Last content change: 2026-10-13 (Section G part src/languages/process-runtime/ + 295 orphaned pages wired into SUMMARY.md + 130 HTML-tag warning sites fixed)
+> Last updated: 2026-10-17 (Round 16 recorded: research-projects expansion — 43 pages, part now 95 pages)
+> Last content change: 2026-10-17 (43 new chapters across the six research-project collections)
+
+## Round 16 — Research projects expansion — 2026-10-17
+
+- User-directed expansion of the six collections: 43 new pages (follow-up tree
+  14 chains total, assumptions hunt 14 audits, connection atlas 16 connections,
+  why-not handbook 19 comparisons in 14 files, failure casebook 12 cases,
+  misconceptions 18 claims). SUMMARY.md part entries extended to 95; per-project
+  Coverage Ledgers updated; hub index counts refreshed.
+- New primary-sourced case histories: Ariane 5 (Lions report), Heartbleed
+  (OpenSSL advisory), GitLab 2017 (postmortem), CrowdStrike 2024 (RCA PDF +
+  mirrors), Fastly 2021 (official summary via contemporaneous verbatim excerpts),
+  AWS us-east-1 2021 (AWS message).
+- Candidate follow-ups: remaining domains for follow-up chains (consensus,
+  CRDTs, TLS 1.3 handshake); CRDT-vs-OT and capability-based security for the
+  atlas; additional verified incidents for the casebook — MEDIUM; all require
+  source verification before writing.
+
+## Round 15 — Six research-project collections — 2026-10-17
+
+- New top-level SUMMARY part `src/research-projects/` (52 pages, ~109K words,
+  10 Mermaid diagrams): follow-up tree (6 escalation chains), hidden assumptions
+  hunt (7 audits), concept connection atlas (9 connections), why-not handbook
+  (12 comparisons in 7 chapters), real-world failure casebook (6 primary-source
+  incident case histories), misconception elimination (10 audited claims).
+- Coverage ledgers per project live in each index.md; hub at index.md. Cross-
+  linked to existing chapters (trade-offs, failure-modes, sre, interview, dsa,
+  os, dbms, networks, concurrency, distributed, references).
+- Candidate follow-ups spotted while writing:
+  - More follow-up chains for high-demand domains (caching layers, Kafka,
+    Kubernetes scheduling) — MEDIUM.
+  - Additional incident case histories with verifiable primary postmortems
+    (e.g., Node.js/npm ecosystem incidents, Kubernetes CVE-linked outages) —
+    MEDIUM; each requires source verification before writing.
+  - Agent 3-a noted datatracker.ietf.org returned 403 from the work sandbox;
+    RFC links were kept on the strength of the RFCs being canonical, but a
+    later pass may re-verify from a different environment — LOW.
 
 ## Round 14 — Section G eight-language process/runtime + navigation integrity — 2026-10-13
 
@@ -427,3 +463,13 @@ Total new content: ~11,500 lines across 25 new pages.
 All 50 sections of `index.md` now have dedicated coverage. Full
 validation suite passes: 0 broken links, SUMMARY navigation OK,
 MathJax balanced, Mermaid 100%.
+
+### Research expansion — round 17 follow-ups (2026-10-18)
+
+Candidate round-18 topics (all non-overlapping with the current 129 chapters):
+- Follow-up Tree: load balancers as interview ladders, database replication lag chains, Kafka consumer internals deep chain, API gateway auth chains, caching warm-up/cold-start chains.
+- Assumptions Hunt: API rate-limit headers, SSL certificate rotation windows, git submodule assumptions, locale/number formatting, regex input-length assumptions, logging PII assumptions.
+- Connection Atlas: feature flags and deployment coupling, database migrations and deploys, ML inference caching chains, config management pipelines.
+- Why-Not Handbook: GraphQL vs REST, polling vs webhooks (mechanism focus), CI monorepo vs multi-repo, ELT vs ETL, batching vs streaming.
+- Failure Casebook: only with verified primary sources (keep the contract); candidates need first-party postmortems before writing.
+- Misconceptions: "silent data corruption is impossible", "regression suite green means no bugs", "backups mean recovery".
