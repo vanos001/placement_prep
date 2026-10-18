@@ -3810,6 +3810,11 @@
 - [Virtual Threads versus Async](./research-projects/followup-tree/virtual-threads-vs-async.md)
 - [Zero-Downtime Migrations](./research-projects/followup-tree/zero-downtime-migrations.md)
 - [SLOs and Error Budgets](./research-projects/followup-tree/slos-and-error-budgets.md)
+- [Proxy Architecture](./research-projects/followup-tree/proxy-architecture.md)
+- [Background Jobs](./research-projects/followup-tree/background-jobs.md)
+- [Graceful Degradation](./research-projects/followup-tree/graceful-degradation.md)
+- [WebSockets](./research-projects/followup-tree/websockets.md)
+- [Circuit Breakers](./research-projects/followup-tree/circuit-breakers.md)
 
 ## Hidden Assumptions Hunt
 
@@ -3842,6 +3847,11 @@
 - [Logging and PII](./research-projects/assumptions-hunt/logging-and-pii.md)
 - [Configuration](./research-projects/assumptions-hunt/configuration-assumptions.md)
 - [Git Workflows](./research-projects/assumptions-hunt/git-workflow-assumptions.md)
+- [Proxy Headers](./research-projects/assumptions-hunt/proxy-header-assumptions.md)
+- [Scheduled Jobs](./research-projects/assumptions-hunt/scheduled-jobs-assumptions.md)
+- [Temp Files and Atomicity](./research-projects/assumptions-hunt/temp-files-and-atomicity.md)
+- [Distributed Locks](./research-projects/assumptions-hunt/distributed-lock-assumptions.md)
+- [Backup and Restore](./research-projects/assumptions-hunt/backup-restore-assumptions.md)
 
 ## Concept Connection Atlas
 
@@ -3876,6 +3886,11 @@
 - [Payments and the Double-Entry Ledger](./research-projects/connection-atlas/payments-ledger-double-entry.md)
 - [Build Caches and Reproducibility](./research-projects/connection-atlas/build-caches-reproducibility.md)
 - [Webhook Delivery](./research-projects/connection-atlas/webhook-delivery.md)
+- [Email Delivery](./research-projects/connection-atlas/email-delivery-pipeline.md)
+- [Queue Dead Letters and Replay](./research-projects/connection-atlas/queue-dead-letter-replay.md)
+- [Distributed Rate Limiting](./research-projects/connection-atlas/rate-limiting-distributed.md)
+- [Search and Vector Embeddings](./research-projects/connection-atlas/search-vector-embedding.md)
+- [Deployment Artifact Promotion](./research-projects/connection-atlas/deployment-artifact-promotion.md)
 
 ## Why-Not Handbook
 
@@ -3908,6 +3923,11 @@
 - [Canary vs Blue-Green](./research-projects/why-not-handbook/canary-vs-blue-green.md)
 - [Virtual DOM vs Signals](./research-projects/why-not-handbook/virtual-dom-vs-signals.md)
 - [Normalization vs Denormalization](./research-projects/why-not-handbook/normalize-vs-denormalize.md)
+- [RPC vs Message Queue](./research-projects/why-not-handbook/rpc-vs-message-queue.md)
+- [Docker Compose vs Kubernetes](./research-projects/why-not-handbook/docker-compose-vs-kubernetes.md)
+- [App Events vs CDC](./research-projects/why-not-handbook/app-events-vs-cdc.md)
+- [Serverless vs Containers](./research-projects/why-not-handbook/serverless-vs-containers.md)
+- [Regex vs Parser](./research-projects/why-not-handbook/regex-vs-parser.md)
 
 ## Real-World Failure Casebook
 
@@ -3934,6 +3954,8 @@
 - [Target, 2013](./research-projects/failure-casebook/target-2013-breach.md)
 - [Ericsson Certificate Expiry, 2018](./research-projects/failure-casebook/ericsson-certificate-2018.md)
 - [Cloudflare Workers KV, 2025](./research-projects/failure-casebook/cloudflare-june-2025.md)
+- [AWS Kinesis us-east-1, 2020](./research-projects/failure-casebook/aws-kinesis-2020.md)
+- [OVHcloud Strasbourg Fire, 2021](./research-projects/failure-casebook/ovh-fire-2021.md)
 
 ## Misconception Elimination Project
 
@@ -3970,6 +3992,11 @@
 - [Dashboards Mean Observability](./research-projects/misconceptions/dashboards-mean-observability.md)
 - [Coverage Means Well-Tested](./research-projects/misconceptions/coverage-means-tested.md)
 - [JWTs Are Encrypted](./research-projects/misconceptions/jwt-is-encrypted.md)
+- [Encryption at Rest Means Access Control](./research-projects/misconceptions/encryption-at-rest-means-access-control.md)
+- [Rollback Means Undo](./research-projects/misconceptions/rollback-means-undo.md)
+- [Stateless Means No State](./research-projects/misconceptions/stateless-means-no-state.md)
+- [Load Tests Prove Production](./research-projects/misconceptions/load-test-proves-production.md)
+- [The Network Is Reliable](./research-projects/misconceptions/the-network-is-reliable.md)
 
 ---
 

@@ -188,3 +188,17 @@ The `research` branch (75 commits ahead of `main`) landed 660 new markdown files
 | Misconception Elimination | +7 audits: green tests, backups vs recovery, silent corruption, throughput vs latency, dashboards vs observability, coverage, JWT encryption |
 | Collection totals | 168 chapters + 7 index pages (~430K words): 28 chains, 28 audits, 30 connections, 28 comparisons, 22 case histories, 32 misconceptions |
 | QA | Scoped validation: 0 broken links, 0 fence problems, Mermaid 100%; SUMMARY +39 bare entries; all per-project ledgers extended |
+
+## Research Projects round 19 — 2026-10-18
+
+| Item | Result |
+|------|--------|
+| Scope | 27 new chapters (expansion round 19) |
+| Follow-up Tree | +5 chains: proxy architecture, background jobs, graceful degradation, WebSockets, circuit breakers |
+| Hidden Assumptions Hunt | +5 audits: proxy headers, scheduled jobs, temp-file atomicity, distributed locks, backup/restore |
+| Concept Connection Atlas | +5 maps: email delivery, queue DLQ/replay, distributed rate limiting, vector embeddings, artifact promotion |
+| Why-Not Handbook | +5 comparisons: RPC vs queue, Compose vs Kubernetes, app events vs CDC, serverless vs containers, regex vs parser |
+| Failure Casebook | +2 verified cases: AWS Kinesis 2020 (AWS postmortem fetched), OVHcloud Strasbourg fire 2021 (first-party statement fetched) |
+| Misconception Elimination | +5 audits: encryption-at-rest, rollback, stateless myths, load-test overconfidence, network reliability |
+| Collection totals | 195 chapters + 7 index pages (~500K words): 33 chains, 33 audits, 35 connections, 33 comparisons, 24 case histories, 37 misconceptions |
+| QA | Scoped validation rerun: 0 broken links, 0 fence problems, Mermaid 100%, SUMMARY 0 duplicates |
