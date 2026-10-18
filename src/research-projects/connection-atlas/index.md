@@ -18,7 +18,7 @@ The unit of analysis here is the **cross-domain connection**, and every connecti
 
 ## Map of the Atlas
 
-Thirty-five connection pages, grouped by the *kind* of shared principle rather than by textbook silo:
+Forty-two connection pages, grouped by the *kind* of shared principle rather than by textbook silo:
 
 ```text
                          CONCEPT CONNECTION ATLAS
@@ -58,6 +58,13 @@ Thirty-five connection pages, grouped by the *kind* of shared principle rather t
   ADMISSION STATE       rate-limiting-distributed .... per-instance ~ Redis/Lua ~ edge buckets ~ sync lag
   SEMANTIC RETRIEVAL    search-vector-embedding ...... chunking ~ embeddings ~ ANN ~ reranker ~ eval loop
   CUSTODY CHAINS        deployment-artifact-promotion  digests ~ registries ~ gates ~ provenance ~ rollback
+  WIRE CONTRACTS        serialization-schema-evolution  writer/reader schemas ~ registry compat gate ~ CI canary
+  WRITE-TIME MEDIA      media-optimization-delivery ... master ~ transcode ladder ~ segments ~ ABR client
+  TIME DISTRIBUTION     time-synchronization-infrastructure  strata ~ ppm drift ~ bounded uncertainty
+  SECRET CUSTODY        secrets-management-pipeline .... generate ~ vault ~ inject ~ rotate ~ audit
+  DATA DAGS             batch-orchestration-lineage .... scheduler ~ partitions ~ backfill ~ lineage
+  QUERY FEDERATION      graphql-federation ............. subgraphs ~ supergraph ~ entity joins ~ plans
+  ORIGIN ISOLATION      browser-security-model ........ SOP ~ CORS gates ~ cookie scope ~ CSP ~ metadata
 ```
 
 Reading order is flexible; the two most load-bearing pages are `virtual-memory-caching.md` (the caching lens appears in half the other pages) and `scheduling-queueing.md` (Little's Law is the quantitative glue reused in `backpressure.md`).
@@ -101,10 +108,17 @@ Reading order is flexible; the two most load-bearing pages are `virtual-memory-c
 | [rate-limiting-distributed.md](./rate-limiting-distributed.md) | Per-instance limiters, Redis/Lua counters, edge buckets, client headers | A caching hierarchy for admission state; sync lag makes over-admission a computable quantity to price, not a bug to eliminate |
 | [search-vector-embedding.md](./search-vector-embedding.md) | Chunking, embedding models, ANN indexes, rerankers, eval loops | Write-time amortization with a versioned representation contract; the dominant failures are silent and only the eval loop can see them |
 | [deployment-artifact-promotion.md](./deployment-artifact-promotion.md) | Builds, registries, staging, promotion gates, provenance, rollback | An artifact is a content-addressed fact and promotion is a trust transition; custody claims (same bytes, signed, retained) are what rollback is made of |
+| [serialization-schema-evolution.md](./serialization-schema-evolution.md) | Wire formats (JSON/Protobuf/Avro), schema registries, CI gates, rolling deploys, log retention | Compatibility is a property of the writer-reader pair; the registry gate turns the promise into a mechanical check, and old data is an asynchronous consumer |
+| [media-optimization-delivery.md](./media-optimization-delivery.md) | Master assets, transcoding, variant ladders, packaging, origin/edge caches, ABR clients | Write-time amortization over pure-function derivatives; segments immutable and manifests mutable, with cache keys as correctness surfaces |
+| [time-synchronization-infrastructure.md](./time-synchronization-infrastructure.md) | Oscillators, NTP/PTP, cloud time services, monotonic vs wall clocks, leases, commit-wait | A clock reading is a cached copy of truth with a drift-driven staleness bound; correct consumers treat timestamps as ranges, not points |
+| [secrets-management-pipeline.md](./secrets-management-pipeline.md) | CSPRNGs, vaults/KMS, injection mechanisms, rotation windows, audit logs | Custody of bytes, not access control: minimize plaintext copies, compute overlap windows from consumer pickup, and treat read logs as the leak sensor |
+| [batch-orchestration-lineage.md](./batch-orchestration-lineage.md) | Schedulers, executors, partitions, backfills, lineage graphs, quality gates | Dependency resolution at operational scale: partitions are the unit of idempotency, and lineage is the recorded execution of the task graph |
+| [graphql-federation.md](./graphql-federation.md) | Subgraphs, supergraph composition, gateways, entity joins, client caches | A federated query planner whose join keys are declared in the schema; composition is the compatibility gate and partial failure is the contract |
+| [browser-security-model.md](./browser-security-model.md) | Origins, SOP, CORS, cookies, CSP, Fetch Metadata | The browser enforces defaults while the server expresses policy; three threat classes (reads, ambient writes, same-origin code) get three non-interchangeable defenses |
 
 ## Coverage Ledger
 
-Status as of tasks 3-c (Round 15), 3-c2 (Round 16), r17-c2 (Round 17), r18-c (Round 18), and r19-c (Round 19); sibling `research-projects/` directories are owned by parallel tasks per the coordinator's plan — links to them resolve once those tasks land.
+Status as of tasks 3-c (Round 15), 3-c2 (Round 16), r17-c2 (Round 17), r18-c (Round 18), r19-c (Round 19), and r20-c (Round 20); sibling `research-projects/` directories are owned by parallel tasks per the coordinator's plan — links to them resolve once those tasks land.
 
 | Page | Domains covered | Status | Notes / gaps |
 |---|---|---|---|
@@ -144,6 +158,13 @@ Status as of tasks 3-c (Round 15), 3-c2 (Round 16), r17-c2 (Round 17), r18-c (Ro
 | rate-limiting-distributed.md | per-instance limiters, Redis+Lua counters, edge token buckets, client headers, sync-lag over-admission arithmetic, leased quota chunks, cost-based limits, noisy neighbors | Complete | Commercial API-tier billing models out of scope; GCRA math sketched in [../followup-tree/rate-limiter-design.md](../followup-tree/rate-limiter-design.md) |
 | search-vector-embedding.md | chunking, embedding models, HNSW/IVF recall-latency-memory, rerankers, caches, eval loop, model drift, stale embeddings, hybrid retrieval, quantization | Complete | Training-side concerns and model internals out of scope ([../../dbms/internals/vector-indexes-deep.md](../../dbms/internals/vector-indexes-deep.md) owns index mechanics) |
 | deployment-artifact-promotion.md | builds/digests, registry retention/GC, staging parity, promotion gates, SLSA provenance/SBOM/signing, admission verification, rollback inventory, release trains/rings | Complete | Registry product internals (Harbor/Artifactory specifics) treated generically; slsa.dev cited and curl-verified |
+| serialization-schema-evolution.md | wire formats, writer/reader resolution, registry modes (BACKWARD/FORWARD/FULL, transitive), deploy sequencing, CI canary gate, log-retention arithmetic | Complete | Encoding internals (varints, zigzag) deferred to [../../backend/serialization/protobuf-encoding.md](../../backend/serialization/protobuf-encoding.md); protobuf.dev and avro.apache.org cited and curl-verified |
+| media-optimization-delivery.md | masters/mezzanines, transcode farms, per-title ladders, packaging/segments/manifests, origin shields, ABR control loop, live-vs-VOD inversion | Complete | Perceptual quality metrics (VMAF-class) treated qualitatively; edge routing and purge left to [./dns-cdn-routing.md](./dns-cdn-routing.md); developer.apple.com and MDN cited and curl-verified |
+| time-synchronization-infrastructure.md | oscillator drift, NTP strata/offset estimation, PTP profiles, cloud bounded-uncertainty APIs, monotonic/wall discipline, leap-second smearing, amplification hardening | Complete | TrueTime internals described qualitatively from published material; logical-clock detail left to [../../distributed/advanced/hybrid-logical-clocks.md](../../distributed/advanced/hybrid-logical-clocks.md); RFCs 5905/8633 cited and curl-verified |
+| secrets-management-pipeline.md | generation, vault/KMS storage, injection species, rotation overlap arithmetic, dynamic secrets, break-glass, audit-as-sensor, build-time leaks | Complete | Cryptographic primitive internals out of scope ([../../security/cryptography.md](../../security/cryptography.md)); NIST SP 800-57 and Vault docs cited and curl-verified |
+| batch-orchestration-lineage.md | triggers/sensors, executor pools, partition idempotency, backfill arithmetic, lineage events, quality gates, data contracts, DST schedules | Complete | Engine internals (Airflow scheduler internals) treated generically; airflow.apache.org and openlineage.io cited and curl-verified |
+| graphql-federation.md | subgraph ownership, entity keys/representations, query planning, batching, complexity limits, composition CI, client normalized caches, error policies | Complete | Resolver-level implementation detail deferred to [../../backend/api/graphql-federation.md](../../backend/api/graphql-federation.md); spec.graphql.org and Apollo docs cited and curl-verified |
+| browser-security-model.md | origins/SOP, CORS preflight/credentials, cookie scoping/prefixes, CSP nonces, Fetch Metadata, COOP/COEP, clickjacking, mixed content | Complete | TLS mechanics out of scope ([../followup-tree/tls-handshake.md](../followup-tree/tls-handshake.md)); auth flows deliberately left to [./auth-identity-session.md](./auth-identity-session.md); fetch.spec.whatwg.org, MDN, and W3C CSP3 cited and curl-verified |
 
 Deliberately **out of scope** for the atlas: generic pattern catalogs (owned by `failure-modes/`), mechanism-deep single-topic trade-offs (owned by the Why-Not Handbook), and incident timelines (owned by the Failure Casebook). Where those cover a topic, these pages link instead of duplicating.
 
