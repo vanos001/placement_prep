@@ -1,6 +1,6 @@
 # Real-World Failure Casebook
 
-Twelve named production incidents, each reconstructed from primary sources and analyzed the way an engineer would analyze them: what the system was, what actually happened, the deep technical mechanism of the failure, and why the safeguards that existed did not stop it.
+Eighteen named production incidents, each reconstructed from primary sources and analyzed the way an engineer would analyze them: what the system was, what actually happened, the deep technical mechanism of the failure, and why the safeguards that existed did not stop it.
 
 This project is the *specific-case* counterpart of the [generic failure-mode catalog](../../failure-modes/common-failures.md). The catalog teaches you to recognize the pattern ("cache outage", "DNS outage", "failover gone wrong"). The casebook teaches the harder skill: reading a real incident end to end, checking each claim against evidence, and extracting design lessons that survive contact with the details.
 
@@ -57,6 +57,12 @@ Every case file follows the same shape, deliberately similar to the [postmortem 
 | [CrowdStrike, 2024](./crowdstrike-july-2024.md) | Jul 19, 2024 | Endpoint security | ~8.5M Windows hosts in BSOD loops | Kernel-mode content update without memory-safe parsing, validator gap |
 | [Fastly, June 2021](./fastly-june-2021.md) | Jun 8, 2021 | Edge/CDN | Global 500/503 spike, ~1h | Latent bug triggered by valid customer config, global propagation |
 | [AWS us-east-1, 2021](./aws-us-east-1-2021.md) | Dec 7, 2021 | Cloud platform | ~11h control-plane degradation in US-EAST-1 | Internal scaling automation, retry amplification, shared network substrate |
+| [Mars Climate Orbiter, 1999](./mars-climate-orbiter-1999.md) | Sep 23, 1999 | Space systems | Spacecraft lost at Mars insertion | Unit mismatch in an interface contract, systems-engineering process gaps |
+| [AWS DynamoDB us-east-1, 2015](./aws-dynamodb-2015.md) | Sep 20, 2015 | Cloud database | ~5h degraded metadata operations, cascade to dependent services | GSI-inflated membership metadata, network disruption, retry storm |
+| [Toyota unintended acceleration, 2009–2011](./toyota-unintended-acceleration.md) | 2009–2011 | Automotive embedded software | Recalls, NHTSA/NASA investigation, criminal litigation | Embedded control software defects, missing memory protection, contested evidence |
+| [UK Post Office Horizon, 1999–2025](./uk-post-office-horizon.md) | 1999–2025 | Enterprise systems / law | Hundreds of wrongful prosecutions of subpostmasters | Defective audit logs, presumption of computer correctness, institutional failure |
+| [Boeing 737 MAX MCAS, 2018–2020](./boeing-737-max-mcas.md) | Oct 2018–Nov 2020 | Aerospace flight controls | Two crashes, 346 deaths, ~20-month global grounding | Single-sensor dependency, gated safety alert, incremental certification drift |
+| [Cloudflare control plane, 2025](./cloudflare-november-2025.md) | Nov 18, 2025 | Edge/CDN control plane | Global 5xx spike, worst outage since 2019 | Database permission change corrupting a security feature file, control-plane/data-plane coupling |
 
 ## Coverage Ledger
 
@@ -76,6 +82,13 @@ The ledger states, for each case, what is verified against a primary source and 
 | CrowdStrike 2024 | CrowdStrike, "Channel File 291 Incident — External Technical Root Cause Analysis" (Aug 6, 2024); Microsoft blog | URL verified via search; PDF not full-text fetchable — key facts cross-checked against verbatim mirrors | Per-industry outage figures and litigation outcomes are not covered |
 | Fastly 2021 | Fastly, "Summary of June 8 outage" (Jun 8, 2021) | URL verified via search; page not fetchable at writing — facts quoted via verbatim excerpts in contemporaneous coverage [2][3] | The customer identity behind the triggering config is not public and is not named |
 | AWS us-east-1 2021 | AWS, "Summary of the AWS Service Event in the Northern Virginia (US-EAST-1) Region" (Dec 10, 2021) | Yes — aws.amazon.com/message/12721/ fetched and quoted | The specific internal service whose scaling triggered the event and device-level details are not stated by AWS; those parts are labeled interpretation |
+| Mars Climate Orbiter 1999 | MCO Mishap Investigation Board, *Phase I Report* (Nov 10, 1999); NASA LLIS entry 641 | Yes — llis.nasa.gov PDF fetched and full text extracted | Component-level telemetry summarized from report appendixes; no independent re-derivation of the trajectory figures |
+| AWS DynamoDB 2015 | AWS, "Summary of the Amazon DynamoDB Service Disruption and Related Impacts in the US-East Region" (Sep 20, 2015) | Yes — aws.amazon.com/message/5467D2/ fetched and quoted | Only the four dependent services AWS names are covered; no third-party impact estimates used |
+| Toyota 2009–2011 | NASA Engineering & Safety Center, *Technical Assessment Report: Toyota Unintended Acceleration Investigation* (Feb 2011); NHTSA EA11-001; DoT press release; Barr, *Bookout v. Toyota* slides (2013); Koopman CMU case study (2014) | Yes — NHTSA PDF, DoT press release, Barr mirror, and Koopman PDF fetched; NESC report URL live but content quoted via secondary full texts | Barr's software-defect claims remain litigation testimony, not regulator findings; the page labels contested points as contested |
+| UK Post Office Horizon 1999–2025 | *Report of the Post Office Horizon IT Inquiry, Volume 1* (HC 1119, Jul 2025); Fraser J, *Bates (No. 6) "Horizon Issues"* [2019] EWHC 3408 (QB); *Hamilton v Post Office* [2021] EWCA Crim 577 | Yes — inquiry report PDF and both judgments fetched and quoted | Prosecution counts vary by source and date; the page uses inquiry-report figures and labels the range |
+| Boeing 737 MAX MCAS 2018–2020 | NTSB, *Aviation Safety Report ASR-19/01* (Sep 2019); KNKT final report; JATR summary; U.S. House Committee report (Sep 2020); DoJ deferred prosecution agreement (Jan 2021) | Yes — NTSB report PDF fetched; other sources cited by title+org+year without URLs | Exact certification-meeting content is sealed/not public; the page labels reconstructed internal decision-making as interpretation |
+| Cloudflare Nov 2025 | Matthew Prince, "Cloudflare outage on November 18, 2025", blog.cloudflare.com (Nov 18, 2025) | Yes — fetched and quoted | Internal operational details outside the post's scope are not covered; downstream-customer figures are those the post states |
+
 Reading rules used across all pages:
 
 - **CONFIRMED** marks a statement traceable to the cited primary source.
