@@ -174,3 +174,17 @@ The `research` branch (75 commits ahead of `main`) landed 660 new markdown files
 | Collection totals | 129 chapters + 7 index pages (~330K words): 21 chains, 21 audits, 23 connections, 21 comparisons, 18 case histories, 25 misconceptions |
 | Primary sources | Cloudflare first-party RCA; AWS DynamoDB statement; NASA MCO mishap report; NHTSA/NASA assessment + court materials; UK Horizon Inquiry report + two High Court judgments; NTSB ASR-19/01 |
 | QA | Scoped validation: 0 broken links, 0 fence problems, Mermaid 100% pass; SUMMARY.md +41 bare entries; per-project ledgers extended |
+
+## Research Projects round 18 — 2026-10-18
+
+| Item | Result |
+|------|--------|
+| Scope | 39 new chapters across the six research collections (expansion round 18) |
+| Follow-up Tree | +7 chains: load balancing, replication lag, HTTP protocol evolution, API gateway, virtual threads vs async, zero-downtime migrations, SLOs and error budgets |
+| Hidden Assumptions Hunt | +7 audits: rate-limit headers, certificate rotation, locale and formatting, regex input, logging and PII, configuration, git workflows |
+| Concept Connection Atlas | +7 maps: feature flags/deploy, migrations/deploy, ML inference pipeline, config management, payments double-entry ledger, build caches and reproducibility, webhook delivery |
+| Why-Not Handbook | +7 comparisons: GraphQL vs REST, batching vs streaming, ETL vs ELT, monorepo vs multirepo, canary vs blue-green, virtual DOM vs signals, normalization vs denormalization |
+| Failure Casebook | +4 verified cases: Equifax 2017 (GAO/House reports), Target 2013 (Senate kill-chain report), Ericsson certificate expiry 2018 (first-party statement), Cloudflare Workers KV June 2025 (first-party postmortem) |
+| Misconception Elimination | +7 audits: green tests, backups vs recovery, silent corruption, throughput vs latency, dashboards vs observability, coverage, JWT encryption |
+| Collection totals | 168 chapters + 7 index pages (~430K words): 28 chains, 28 audits, 30 connections, 28 comparisons, 22 case histories, 32 misconceptions |
+| QA | Scoped validation: 0 broken links, 0 fence problems, Mermaid 100%; SUMMARY +39 bare entries; all per-project ledgers extended |

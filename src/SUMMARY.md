@@ -3803,6 +3803,13 @@
 - [Connection Pooling](./research-projects/followup-tree/connection-pooling.md)
 - [Consensus and Raft](./research-projects/followup-tree/consensus-raft.md)
 - [Regex Engines](./research-projects/followup-tree/regex-engines.md)
+- [Load Balancing](./research-projects/followup-tree/load-balancing.md)
+- [Replication Lag](./research-projects/followup-tree/replication-lag.md)
+- [HTTP Protocol Evolution](./research-projects/followup-tree/http-protocol.md)
+- [API Gateway](./research-projects/followup-tree/api-gateway.md)
+- [Virtual Threads versus Async](./research-projects/followup-tree/virtual-threads-vs-async.md)
+- [Zero-Downtime Migrations](./research-projects/followup-tree/zero-downtime-migrations.md)
+- [SLOs and Error Budgets](./research-projects/followup-tree/slos-and-error-budgets.md)
 
 ## Hidden Assumptions Hunt
 
@@ -3828,6 +3835,13 @@
 - [Ordering and Pagination](./research-projects/assumptions-hunt/ordering-and-pagination.md)
 - [Randomness and IDs](./research-projects/assumptions-hunt/randomness-and-ids.md)
 - [Serialization Compatibility](./research-projects/assumptions-hunt/serialization-compatibility.md)
+- [Rate Limit Headers](./research-projects/assumptions-hunt/rate-limit-headers.md)
+- [Certificate Rotation](./research-projects/assumptions-hunt/certificate-rotation.md)
+- [Locale and Formatting](./research-projects/assumptions-hunt/locale-and-formatting.md)
+- [Regex Input Assumptions](./research-projects/assumptions-hunt/regex-input-assumptions.md)
+- [Logging and PII](./research-projects/assumptions-hunt/logging-and-pii.md)
+- [Configuration](./research-projects/assumptions-hunt/configuration-assumptions.md)
+- [Git Workflows](./research-projects/assumptions-hunt/git-workflow-assumptions.md)
 
 ## Concept Connection Atlas
 
@@ -3855,6 +3869,13 @@
 - [From Interpreter to Silicon](./research-projects/connection-atlas/jit-interpretation-hardware.md)
 - [Search and the Inverted Index](./research-projects/connection-atlas/search-inverted-index.md)
 - [The Observability Pipeline](./research-projects/connection-atlas/observability-pipeline.md)
+- [Feature Flags and Deployment Coupling](./research-projects/connection-atlas/feature-flags-deploy-coupling.md)
+- [Schema Migrations and Deploy Coupling](./research-projects/connection-atlas/migrations-deploy-coupling.md)
+- [ML Inference as a Pipeline](./research-projects/connection-atlas/ml-inference-pipeline.md)
+- [Configuration Management as a Pipeline](./research-projects/connection-atlas/config-management-pipeline.md)
+- [Payments and the Double-Entry Ledger](./research-projects/connection-atlas/payments-ledger-double-entry.md)
+- [Build Caches and Reproducibility](./research-projects/connection-atlas/build-caches-reproducibility.md)
+- [Webhook Delivery](./research-projects/connection-atlas/webhook-delivery.md)
 
 ## Why-Not Handbook
 
@@ -3880,6 +3901,13 @@
 - [ID Generation: Auto-Increment vs UUID vs Snowflake](./research-projects/why-not-handbook/snowflake-vs-uuid.md)
 - [Row vs Column Stores](./research-projects/why-not-handbook/row-vs-column-stores.md)
 - [Password Hashing: SHA-256 vs bcrypt vs Argon2id](./research-projects/why-not-handbook/password-hashing-choices.md)
+- [GraphQL vs REST](./research-projects/why-not-handbook/graphql-vs-rest.md)
+- [Batching vs Streaming](./research-projects/why-not-handbook/batching-vs-streaming.md)
+- [ETL vs ELT](./research-projects/why-not-handbook/etl-vs-elt.md)
+- [Monorepo vs Multirepo](./research-projects/why-not-handbook/monorepo-vs-multirepo.md)
+- [Canary vs Blue-Green](./research-projects/why-not-handbook/canary-vs-blue-green.md)
+- [Virtual DOM vs Signals](./research-projects/why-not-handbook/virtual-dom-vs-signals.md)
+- [Normalization vs Denormalization](./research-projects/why-not-handbook/normalize-vs-denormalize.md)
 
 ## Real-World Failure Casebook
 
@@ -3902,6 +3930,10 @@
 - [UK Post Office Horizon, 1999–2025](./research-projects/failure-casebook/uk-post-office-horizon.md)
 - [Boeing 737 MAX MCAS, 2018–2020](./research-projects/failure-casebook/boeing-737-max-mcas.md)
 - [Cloudflare Control Plane, 2025](./research-projects/failure-casebook/cloudflare-november-2025.md)
+- [Equifax, 2017](./research-projects/failure-casebook/equifax-2017.md)
+- [Target, 2013](./research-projects/failure-casebook/target-2013-breach.md)
+- [Ericsson Certificate Expiry, 2018](./research-projects/failure-casebook/ericsson-certificate-2018.md)
+- [Cloudflare Workers KV, 2025](./research-projects/failure-casebook/cloudflare-june-2025.md)
 
 ## Misconception Elimination Project
 
@@ -3931,6 +3963,13 @@
 - [Single-Threaded Languages Can't Use Multiple Cores](./research-projects/misconceptions/single-threaded-languages-cant-parallelize.md)
 - [Immutability Means Thread Safety](./research-projects/misconceptions/immutability-means-thread-safe.md)
 - [Average Latency Is a Good Metric](./research-projects/misconceptions/averages-summarize-latency.md)
+- [All Tests Pass Means Correct](./research-projects/misconceptions/green-tests-mean-correct.md)
+- [Backups Mean Recovery](./research-projects/misconceptions/backups-mean-recovery.md)
+- [Corruption Would Be Loud](./research-projects/misconceptions/corruption-would-be-loud.md)
+- [High Throughput Means Low Latency](./research-projects/misconceptions/high-throughput-means-low-latency.md)
+- [Dashboards Mean Observability](./research-projects/misconceptions/dashboards-mean-observability.md)
+- [Coverage Means Well-Tested](./research-projects/misconceptions/coverage-means-tested.md)
+- [JWTs Are Encrypted](./research-projects/misconceptions/jwt-is-encrypted.md)
 
 ---
 
