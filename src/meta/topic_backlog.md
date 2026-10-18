@@ -473,3 +473,13 @@ Candidate round-18 topics (all non-overlapping with the current 129 chapters):
 - Why-Not Handbook: GraphQL vs REST, polling vs webhooks (mechanism focus), CI monorepo vs multi-repo, ELT vs ETL, batching vs streaming.
 - Failure Casebook: only with verified primary sources (keep the contract); candidates need first-party postmortems before writing.
 - Misconceptions: "silent data corruption is impossible", "regression suite green means no bugs", "backups mean recovery".
+
+### Research expansion — round 20 follow-ups (2026-10-18)
+
+Candidate round-21 topics (all non-overlapping with the current 234 chapters):
+- Follow-up Tree: OAuth2 grant-flow chains, B+tree page-split chains, Kafka consumer-group rebalancing chains, browser rendering pipeline chains, payment idempotency chains.
+- Assumptions Hunt: timezone/DST display assumptions, JSON number precision assumptions, disk-space exhaustion assumptions, library thread-safety assumptions, case-insensitivity assumptions.
+- Connection Atlas: push-notification delivery, streaming exactly-once pipeline, service-mesh traffic management, data-lake table-format evolution.
+- Why-Not Handbook: polling vs webhooks (mechanism focus, still open from the r17 list), JSON vs protobuf, replicated vs distributed SQL, structured vs unstructured logging.
+- Failure Casebook: only with verified primary sources (keep the contract); candidates need first-party postmortems before writing.
+- Misconceptions: "staging equals production", "cookie vs localStorage security", "HTTP/2 always faster", "cold starts only affect serverless".

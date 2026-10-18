@@ -3815,6 +3815,13 @@
 - [Graceful Degradation](./research-projects/followup-tree/graceful-degradation.md)
 - [WebSockets](./research-projects/followup-tree/websockets.md)
 - [Circuit Breakers](./research-projects/followup-tree/circuit-breakers.md)
+- [JWT Authentication](./research-projects/followup-tree/jwt-authentication.md)
+- [HTTP Caching](./research-projects/followup-tree/http-caching.md)
+- [Kubernetes Scheduling](./research-projects/followup-tree/kubernetes-scheduling.md)
+- [Distributed Tracing](./research-projects/followup-tree/distributed-tracing.md)
+- [Search Autocomplete](./research-projects/followup-tree/search-autocomplete.md)
+- [LSM Trees and Compaction](./research-projects/followup-tree/lsm-trees-compaction.md)
+- [Consistent Hashing](./research-projects/followup-tree/consistent-hashing.md)
 
 ## Hidden Assumptions Hunt
 
@@ -3852,6 +3859,13 @@
 - [Temp Files and Atomicity](./research-projects/assumptions-hunt/temp-files-and-atomicity.md)
 - [Distributed Locks](./research-projects/assumptions-hunt/distributed-lock-assumptions.md)
 - [Backup and Restore](./research-projects/assumptions-hunt/backup-restore-assumptions.md)
+- [Environment Parity](./research-projects/assumptions-hunt/environment-parity-assumptions.md)
+- [Filesystem Paths](./research-projects/assumptions-hunt/filesystem-paths-assumptions.md)
+- [Integer Overflow](./research-projects/assumptions-hunt/integer-overflow-assumptions.md)
+- [Process Shutdown](./research-projects/assumptions-hunt/process-shutdown-assumptions.md)
+- [Idempotency](./research-projects/assumptions-hunt/idempotency-assumptions.md)
+- [Secrets Handling](./research-projects/assumptions-hunt/secrets-handling-assumptions.md)
+- [Service Discovery](./research-projects/assumptions-hunt/service-discovery-assumptions.md)
 
 ## Concept Connection Atlas
 
@@ -3891,6 +3905,13 @@
 - [Distributed Rate Limiting](./research-projects/connection-atlas/rate-limiting-distributed.md)
 - [Search and Vector Embeddings](./research-projects/connection-atlas/search-vector-embedding.md)
 - [Deployment Artifact Promotion](./research-projects/connection-atlas/deployment-artifact-promotion.md)
+- [Serialization and Schema Evolution](./research-projects/connection-atlas/serialization-schema-evolution.md)
+- [Media Optimization and Delivery](./research-projects/connection-atlas/media-optimization-delivery.md)
+- [Time Synchronization Infrastructure](./research-projects/connection-atlas/time-synchronization-infrastructure.md)
+- [Secrets Management Pipeline](./research-projects/connection-atlas/secrets-management-pipeline.md)
+- [Batch Orchestration Lineage](./research-projects/connection-atlas/batch-orchestration-lineage.md)
+- [GraphQL Federation](./research-projects/connection-atlas/graphql-federation.md)
+- [Browser Security Model](./research-projects/connection-atlas/browser-security-model.md)
 
 ## Why-Not Handbook
 
@@ -3928,6 +3949,13 @@
 - [App Events vs CDC](./research-projects/why-not-handbook/app-events-vs-cdc.md)
 - [Serverless vs Containers](./research-projects/why-not-handbook/serverless-vs-containers.md)
 - [Regex vs Parser](./research-projects/why-not-handbook/regex-vs-parser.md)
+- [Kafka vs RabbitMQ](./research-projects/why-not-handbook/kafka-vs-rabbitmq.md)
+- [Elasticsearch vs Database Full-Text Search](./research-projects/why-not-handbook/elasticsearch-vs-db-fulltext.md)
+- [JWT vs Sessions](./research-projects/why-not-handbook/jwt-vs-sessions.md)
+- [VMs vs Containers](./research-projects/why-not-handbook/vms-vs-containers.md)
+- [Lamport vs Vector Clocks](./research-projects/why-not-handbook/logical-clocks-lamport-vs-vector.md)
+- [Optimistic vs Pessimistic Locking](./research-projects/why-not-handbook/optimistic-vs-pessimistic-locking.md)
+- [Sagas vs Two-Phase Commit](./research-projects/why-not-handbook/sagas-vs-two-phase-commit.md)
 
 ## Real-World Failure Casebook
 
@@ -3956,6 +3984,10 @@
 - [Cloudflare Workers KV, 2025](./research-projects/failure-casebook/cloudflare-june-2025.md)
 - [AWS Kinesis us-east-1, 2020](./research-projects/failure-casebook/aws-kinesis-2020.md)
 - [OVHcloud Strasbourg Fire, 2021](./research-projects/failure-casebook/ovh-fire-2021.md)
+- [Cloudflare Leap Second, 2017](./research-projects/failure-casebook/cloudflare-leap-second-2017.md)
+- [Google Cloud Networking, 2019](./research-projects/failure-casebook/google-cloud-june-2019.md)
+- [Microsoft Exchange HAFNIUM, 2021](./research-projects/failure-casebook/microsoft-exchange-proxylogon-2021.md)
+- [Okta Compromise, 2022](./research-projects/failure-casebook/okta-2022-breach.md)
 
 ## Misconception Elimination Project
 
@@ -3997,6 +4029,13 @@
 - [Stateless Means No State](./research-projects/misconceptions/stateless-means-no-state.md)
 - [Load Tests Prove Production](./research-projects/misconceptions/load-test-proves-production.md)
 - [The Network Is Reliable](./research-projects/misconceptions/the-network-is-reliable.md)
+- [Transactions Span Services Safely](./research-projects/misconceptions/transactions-span-services-safely.md)
+- [Base64 Is Encryption](./research-projects/misconceptions/base64-is-encryption.md)
+- [UUIDs Are Unguessable](./research-projects/misconceptions/uuids-are-unguessable.md)
+- [ORMs Prevent Injection](./research-projects/misconceptions/orm-prevents-injection.md)
+- [Localhost Means Loopback](./research-projects/misconceptions/localhost-means-loopback.md)
+- [Queues Guarantee Ordering](./research-projects/misconceptions/queues-guarantee-ordering.md)
+- [Regex Can Parse HTML](./research-projects/misconceptions/regex-can-parse-html.md)
 
 ---
 
