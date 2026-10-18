@@ -18,7 +18,7 @@ The unit of analysis here is the **cross-domain connection**, and every connecti
 
 ## Map of the Atlas
 
-Twenty-three connection pages, grouped by the *kind* of shared principle rather than by textbook silo:
+Thirty connection pages, grouped by the *kind* of shared principle rather than by textbook silo:
 
 ```text
                          CONCEPT CONNECTION ATLAS
@@ -46,6 +46,13 @@ Twenty-three connection pages, grouped by the *kind* of shared principle rather 
   EXECUTION / SILICON   jit-interpretation-hardware .. interpreter ~ tiered JIT ~ inline caches ~ deopt
   RETRIEVAL             search-inverted-index ........ analyzer ~ postings ~ BM25 ~ segments ~ NRT refresh
   TELEMETRY             observability-pipeline ....... metrics/logs/traces ~ agents ~ sampling ~ cardinality
+  RELEASE ENGINEERING   feature-flags-deploy-coupling  flags ~ deploy ~ rollout ~ kill switches ~ cleanup debt
+  SHIPPING / SCHEMA     migrations-deploy-coupling ... expand-contract ~ dual-write ~ backfill ~ lock budgets
+  ML SERVING            ml-inference-pipeline ........ artifacts ~ feature stores ~ batching ~ drift
+  CONFIG DISTRIBUTION   config-management-pipeline ... layering ~ hot reload ~ secrets ~ blast radius
+  MONEY AS A LOG        payments-ledger-double-entry . double-entry ~ idempotency ~ reconciliation ~ sagas
+  BUILD HONESTY         build-caches-reproducibility . lockfiles ~ content-addressed caches ~ hermetic builds
+  CALLBACK DELIVERY     webhook-delivery ............. retries ~ signing ~ dedup ~ DLQ ~ pull fallback
 ```
 
 Reading order is flexible; the two most load-bearing pages are `virtual-memory-caching.md` (the caching lens appears in half the other pages) and `scheduling-queueing.md` (Little's Law is the quantitative glue reused in `backpressure.md`).
@@ -77,10 +84,17 @@ Reading order is flexible; the two most load-bearing pages are `virtual-memory-c
 | [jit-interpretation-hardware.md](./jit-interpretation-hardware.md) | Interpreters, tiered JITs, CPU front ends | Inline caches, tiering, and branch predictors are one mechanism: frequency-trained prediction with recovery cost, at three scales |
 | [search-inverted-index.md](./search-inverted-index.md) | Text analysis, inverted indexes, BM25, segment stores | A B+tree idea transposed from values to terms; the contract diverges where relevance replaces exact, transactional truth |
 | [observability-pipeline.md](./observability-pipeline.md) | Metrics/logs/traces, agents, TSDBs, alerting | A fan-in flow that sheds evidence instead of blocking producers; fidelity knobs couple layers invisibly until incident time |
+| [feature-flags-deploy-coupling.md](./feature-flags-deploy-coupling.md) | Flag stores, deployment pipelines, experiment rollouts, config stores | A flag is a runtime branch point over cached, replicated rules; percentage rollout is deterministic, monotone bucketing; defaults fail toward the old world |
+| [migrations-deploy-coupling.md](./migrations-deploy-coupling.md) | Schema migrations, deploy ordering, online DDL tooling | Expand-contract is two-phase commit without an abort branch; the invariant is that every intermediate state serves every live process version |
+| [ml-inference-pipeline.md](./ml-inference-pipeline.md) | ML serving, feature stores, GPU queueing, drift monitoring | A deployed model is a demand-filled, versioned pipeline; feature skew is the consistency failure of a two-level store whose layers must agree semantically |
+| [config-management-pipeline.md](./config-management-pipeline.md) | Config stores, env layering, secrets, hot reload | Config is a replicated, layered cache of intent; atomic snapshot swap and per-request capture are the transactional boundaries; secrets are leases |
+| [payments-ledger-double-entry.md](./payments-ledger-double-entry.md) | Payments, ledgers, retries, sagas, reconciliation | Money state is a fold over an immutable, sum-zero log; idempotency keys tame at-least-once delivery; reconciliation is the cross-system checksum |
+| [build-caches-reproducibility.md](./build-caches-reproducibility.md) | Build systems, package managers, CI, artifact pipelines | A build is a memoized function over an explicit input graph; reproducibility (the pure-function property) is what makes the memo table safely shareable |
+| [webhook-delivery.md](./webhook-delivery.md) | Webhooks, queues, retries, consumer processing | At-least-once over HTTP: the producer's retry queue is a retransmission buffer; consumer idempotency keyed by event ID is the entry fee |
 
 ## Coverage Ledger
 
-Status as of tasks 3-c (Round 15), 3-c2 (Round 16), and r17-c2 (Round 17); sibling `research-projects/` directories are owned by parallel tasks per the coordinator's plan — links to them resolve once those tasks land.
+Status as of tasks 3-c (Round 15), 3-c2 (Round 16), r17-c2 (Round 17), and r18-c (Round 18); sibling `research-projects/` directories are owned by parallel tasks per the coordinator's plan — links to them resolve once those tasks land.
 
 | Page | Domains covered | Status | Notes / gaps |
 |---|---|---|---|
@@ -108,6 +122,13 @@ Status as of tasks 3-c (Round 15), 3-c2 (Round 16), and r17-c2 (Round 17); sibli
 | jit-interpretation-hardware.md | interpreters, tiered JIT, ICs/hidden classes, deopt/OSR, branch prediction, uop cache, warmup | Complete | Register allocation left to [../../compilers/advanced/register-allocation.md](../../compilers/advanced/register-allocation.md); GC coupling to [./gc-memory-management.md](./gc-memory-management.md) |
 | search-inverted-index.md | analyzers, FST term dictionary, postings, BM25, segments/NRT, filter cache, GIN vs external engines | Complete | Vector/similarity search out of scope ([../../dbms/internals/vector-indexes-deep.md](../../dbms/internals/vector-indexes-deep.md)) |
 | observability-pipeline.md | metrics/logs/traces, agents/buffers, head/tail sampling, cardinality, TSDB storage, burn-rate alerts | Complete | OpenTelemetry SDK internals treated qualitatively |
+| feature-flags-deploy-coupling.md | flag species/lifecycles, SDK caching and defaults, deterministic rollout bucketing, targeting rules, kill switches, cleanup debt, flag interactions | Complete | Experiment statistics (CUPED, sequential testing) out of scope; rollout telemetry joins treated qualitatively |
+| migrations-deploy-coupling.md | expand-contract, dual-write, backfill batching arithmetic, online DDL tools, lock budgets, deploy/migration serialization | Complete | Engine-specific DDL mechanics deferred to [../followup-tree/zero-downtime-migrations.md](../followup-tree/zero-downtime-migrations.md) |
+| ml-inference-pipeline.md | artifacts/registries, online/offline feature stores, prediction caches, quantization, dynamic batching math, drift layers, shadow/canary | Complete | Distributed training infrastructure out of scope; feature-store product internals treated qualitatively |
+| config-management-pipeline.md | five config stores and their propagation clocks, layering/shadowing, hot reload, atomic swap, secret rotation with overlap, blast radius | Complete | Consensus internals of config stores deferred to [./consensus-leases.md](./consensus-leases.md) |
+| payments-ledger-double-entry.md | double-entry legs and sum-zero, chart of accounts, idempotency registries, reconciliation SLOs, compensation/sagas, books-close policy | Complete | Card-network auth/capture mechanics and regulatory specifics treated generically |
+| build-caches-reproducibility.md | lockfiles plus integrity hashes, cache key completeness, hermetic toolchains, artifact promotion/attestation, shard stampedes, cache GC, poisoning | Complete | Bit-for-bit reproducibility tooling (diffoscope-class rebuild diffs) not covered |
+| webhook-delivery.md | retry/backoff clocks, fast-ack pipelines, HMAC plus timestamp verification, dedup stores, DLQ/replay, pull fallback, storm arithmetic | Complete | Provider-specific retry policies (Stripe/GitHub-class) described generically, no URLs cited |
 
 Deliberately **out of scope** for the atlas: generic pattern catalogs (owned by `failure-modes/`), mechanism-deep single-topic trade-offs (owned by the Why-Not Handbook), and incident timelines (owned by the Failure Casebook). Where those cover a topic, these pages link instead of duplicating.
 
