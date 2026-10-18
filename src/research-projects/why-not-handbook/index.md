@@ -17,7 +17,7 @@ Every page in this handbook applies the same six steps, in the same order. The o
 5. **Find the edge cases and counterexamples.** This is where most material stops and this handbook starts. Each page includes at least one non-obvious case where the "obvious" choice fails: BFS frontier blowup on lattice graphs, hash-flooding attacks, lost wakeups in condition variables, write skew under snapshot isolation, cache stampedes after an invalidation. These cases are what interviewers use to separate rote answers from real understanding.
 6. **Write the decision framework.** Each page ends with a table or ordered checklist mapping workload properties to a choice. The framework is falsifiable: if your workload matches the left column, the right column is the recommendation — and the page has already told you what you are giving up.
 
-The framework generalizes beyond the fourteen comparisons here. When you meet a fresh "X vs Y" question, running these six steps produces an answer that is specific to your constraints and honest about costs.
+The framework generalizes beyond the twenty-one comparisons here. When you meet a fresh "X vs Y" question, running these six steps produces an answer that is specific to your constraints and honest about costs.
 
 ## File Inventory
 
@@ -37,6 +37,13 @@ The framework generalizes beyond the fourteen comparisons here. When you meet a 
 | [stateless-vs-stateful](./stateless-vs-stateful.md) | Every system has state — which placement's failure mode can you afford? | JWT logout that logs out nothing until expiry; per-node rate limiter undercounting by the fleet size |
 | [static-vs-dynamic-typing](./static-vs-dynamic-typing.md) | When is type information checked, and which error class does each choice relocate? | TypeScript's erased boundary — the typed lie at unvalidated data edges; the orthogonal strong/weak axis (Python vs JS vs Java) |
 | [monolith-vs-microservices](./monolith-vs-microservices.md) | What failure layer do you import when the network becomes a design layer? | The 27× retry cascade through three layers of 3× retries; five engineers operating a distributed monolith |
+| [rest-vs-grpc](./rest-vs-grpc.md) | Where does the API contract live — social convention or compiled artifact — and who is the client? | gRPC-Web exists because browsers cannot read trailers; long-lived HTTP/2 channels unbalancing L4 load balancers |
+| [orm-vs-raw-sql](./orm-vs-raw-sql.md) | Who owns the query text, and what does each ownership model hide? | ORM-generated predicates that defeat indexes (function-wrapped columns, implicit casts); identity-map staleness |
+| [tcp-vs-udp](./tcp-vs-udp.md) | Where does reliability live — transport or application — and who owns congestion? | TCP's loss-based congestion control misdiagnosing wireless loss; UDP MTU fragmentation black holes |
+| [sync-vs-async-io](./sync-vs-async-io.md) | What does the program do while waiting for the kernel, and who hides the wait? | The async file I/O myth on Linux (epoll reports regular files always-ready); one blocking call freezing an event loop |
+| [snowflake-vs-uuid](./snowflake-vs-uuid.md) | Who generates the ID, what does the B-tree experience, and what do strangers learn? | UUIDv4 index fragmentation multiplied across every secondary index; sharded auto-increment steps that resharding breaks |
+| [row-vs-column-stores](./row-vs-column-stores.md) | Which questions is the physical layout cheap at — few rows/all columns or all rows/few columns? | HTAP's async staleness seam; compaction starvation under chatty updates; "Cassandra is a column store" (data-model vs storage axis) |
+| [password-hashing-choices](./password-hashing-choices.md) | How is verification made deliberately expensive, and what does each hardness buy? | bcrypt's silent 72-byte truncation (and the pre-hashing zero-byte bug it spawns); the login endpoint as a DoS amplifier |
 
 ## Coverage Ledger
 
@@ -57,6 +64,13 @@ The same concepts appear across several research projects **from deliberately di
 | State placement | Failure-mode and revocation-latency relocation per state type | [Leases](../../distributed/advanced/leases.md) (ownership primitive), [Consensus & Leases: Atlas](../connection-atlas/consensus-leases.md) (safety under partitions) |
 | Type systems | Checking time, erasure, and the orthogonal strong/weak axis | [Python Typing](../../languages/python/typing.md) and [TypeScript](../../languages/typescript/README.md) (the gradual middle path) |
 | Architecture style | The network as a failure layer; Conway-aligned team topology | [Architecture Trade-offs](../../trade-offs/architecture-tradeoffs.md) (quick tables), [Microservices](../../distributed/microservices/README.md) (operational catalog) |
+| API style (REST vs gRPC) | Contract location, reachability, caching, deadline propagation | [REST](../../networks/http/rest.md) and [gRPC](../../networks/http/grpc.md) (protocol mechanics), [API Contracts](../assumptions-hunt/api-contracts.md) (contract assumptions) |
+| Query ownership (ORM vs SQL) | Who writes the text the planner sees | [Query Planner](../../dbms/query-planner.md) (plan mechanics), [Query Planner Dataflow](../connection-atlas/query-planner-dataflow.md) (text-to-execution web) |
+| Transport choice (TCP vs UDP) | Where reliability lives; QUIC as the synthesis | [TCP vs UDP](../../networks/udp/tcp-vs-udp.md) (quick tables), [QUIC](../../networks/http/quic.md) (reliability rebuilt on UDP) |
+| I/O model (sync vs async) | Who hides the wait: scheduler, readiness, or completion queues | [I/O Multiplexing](../../networks/sockets/io-multiplexing.md) (syscall mechanics), [io_uring](../../os/kernel/io-uring.md) (completion-based design) |
+| Identifier design (auto-increment vs UUID vs Snowflake) | Generation authority, index locality, leakage | [B+Tree](../../dbms/indexing/b-plus-tree.md) (locality mechanics), [URL Shortener](../followup-tree/url-shortener.md) (ID design as a design interview) |
+| Physical layout (row vs column) | Access-shape economics; HTAP as the hybrid answer | [Column Stores](../../dbms/storage/column-stores.md) (layout depth), [HTAP](../../dbms/advanced/htap.md) (the hybrid architecture) |
+| Password hashing (SHA-2 vs bcrypt/scrypt/Argon2) | Cost-per-guess engineering and memory hardness | [Security & Crypto](../assumptions-hunt/security-crypto.md) (deployment assumptions), [Cryptography](../../security/cryptography.md) (the primitives) |
 
 Duplication boundary (from the project plan): trade-offs pages hold the scannable tables; this handbook holds mechanisms, complexity derivations, guarantees, and edge cases. If you find yourself copying a table between the two, link instead.
 
