@@ -2,7 +2,7 @@
 
 ## Overview
 
-This collection targets thirty-seven widely repeated claims that survive
+This collection targets forty-four widely repeated claims that survive
 interviews, code reviews, and design documents because each one contains a
 kernel of truth.
 The format is deliberately adversarial but fair: each page states the claim in
@@ -133,6 +133,13 @@ protections.
 | 35 | [stateless-means-no-state](./stateless-means-no-state.md) | "Our microservices are stateless, so scaling is trivial" | Incomplete | State moved, not vanished: backing stores concentrate it, saturate first, and affinity returns through cache locality |
 | 36 | [load-test-proves-production](./load-test-proves-production.md) | "We load-tested at 2x peak, so production is safe" | False | A load test bounds collapse points for a synthetic workload on a named environment; parity gaps, traffic shape, and coordinated omission void the certificate |
 | 37 | [the-network-is-reliable](./the-network-is-reliable.md) | "The network is reliable" | False | The first fallacy of distributed computing: loss, delay, duplication, and partition are ordinary events; reliability is engineered at the endpoints (timeouts, retries, idempotency, quorums) |
+| 38 | [transactions-span-services-safely](./transactions-span-services-safely.md) | "A transaction spans the services, so it all commits or rolls back together" | False | A transaction ends at the resource manager that logs it; HTTP calls and broker publishes commit outside any rollback — outbox and sagas manufacture cross-service atomicity |
+| 39 | [base64-is-encryption](./base64-is-encryption.md) | "It's base64-encoded, so it's encrypted" | False | Base64 is a keyless, reversible encoding (RFC 4648); secrecy needs a keyed transform, and one command decodes the "protected" value |
+| 40 | [uuids-are-unguessable](./uuids-are-unguessable.md) | "UUIDs are unguessable, so exposing them in URLs is safe" | Incomplete | Unguessability belongs to the entropy source, not the format: v4 from a CSPRNG holds, v1 leaks time and node, v3/v5 are computed, and no identifier is an authorization system |
+| 41 | [orm-prevents-injection](./orm-prevents-injection.md) | "We use an ORM, so SQL injection is handled" | Incomplete | The ORM parameterizes the queries it generates; raw fragments, identifier positions like ORDER BY, and second-order reuse of stored strings bypass it |
+| 42 | [localhost-means-loopback](./localhost-means-loopback.md) | "localhost means the loopback interface, so it stays on this machine" | Incomplete | The reservation is real (127/8, ::1, RFC 6761), but address family, network namespaces, hosts files, and the bind-versus-dial privacy inversion each carry preconditions |
+| 43 | [queues-guarantee-ordering](./queues-guarantee-ordering.md) | "The queue guarantees ordering" | Incomplete | Brokers preserve order within a scope (partition, message group) up to first delivery; producer retries, worker concurrency, redelivery, and replay reorder application |
+| 44 | [regex-can-parse-html](./regex-can-parse-html.md) | "A regex can parse HTML" | False | Regular languages cannot match unbounded nesting; real HTML parsing needs the WHATWG error-recovery algorithm, and regexes match tokens, not trees |
 
 ## Coverage Ledger
 
@@ -176,8 +183,15 @@ protections.
 | stateless-means-no-state.md | Architecture, scaling, state | Incomplete | Written | ~2,300 |
 | load-test-proves-production.md | Testing, performance, reliability | False | Written | ~2,310 |
 | the-network-is-reliable.md | Networking, distributed systems | False | Written | ~2,370 |
+| transactions-span-services-safely.md | Distributed systems, transactions | False | Written | ~2,500 |
+| base64-is-encryption.md | Security, encoding | False | Written | ~2,340 |
+| uuids-are-unguessable.md | Security, identifiers | Incomplete | Written | ~2,430 |
+| orm-prevents-injection.md | Security, databases | Incomplete | Written | ~2,350 |
+| localhost-means-loopback.md | Networking, containers | Incomplete | Written | ~2,390 |
+| queues-guarantee-ordering.md | Messaging, distributed systems | Incomplete | Written | ~2,320 |
+| regex-can-parse-html.md | Parsing, languages, theory | False | Written | ~2,320 |
 
-The collection stands at thirty-seven claims after five expansion rounds.
+The collection stands at forty-four claims after six expansion rounds.
 The Round 15 candidates tracked in the hub backlog ("HTTPS means safe",
 "GC eliminates leaks", "container == VM") have since been incorporated as
 full audits in Round 16, Round 17 added seven more whose thread runs
@@ -191,7 +205,13 @@ corruption, JWT structure). Round 19 added five whose thread runs
 through the boundary between a control and the property it is sold as —
 encryption versus access control, rollback versus reversibility,
 statelessness versus scale, a load test versus safety, and the network
-versus reliability. The remaining backlog candidate
+versus reliability. Round 20 added seven whose thread runs through the
+gap between a mechanism and the guarantee borrowed from it — transaction
+boundaries versus service atomicity, encoding versus encryption,
+identifier format versus entropy, ORM parameterization versus injection
+coverage, a name versus the address it resolves to, broker scope order
+versus end-to-end order, and regular expressions versus nested
+structure. The remaining backlog candidate
 (advisory locks prevent all race conditions) stays tracked at the hub, to
 keep every entry fully argued rather than enumerated.
 
