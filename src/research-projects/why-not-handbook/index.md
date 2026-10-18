@@ -17,7 +17,7 @@ Every page in this handbook applies the same six steps, in the same order. The o
 5. **Find the edge cases and counterexamples.** This is where most material stops and this handbook starts. Each page includes at least one non-obvious case where the "obvious" choice fails: BFS frontier blowup on lattice graphs, hash-flooding attacks, lost wakeups in condition variables, write skew under snapshot isolation, cache stampedes after an invalidation. These cases are what interviewers use to separate rote answers from real understanding.
 6. **Write the decision framework.** Each page ends with a table or ordered checklist mapping workload properties to a choice. The framework is falsifiable: if your workload matches the left column, the right column is the recommendation — and the page has already told you what you are giving up.
 
-The framework generalizes beyond the thirty-three comparisons here. When you meet a fresh "X vs Y" question, running these six steps produces an answer that is specific to your constraints and honest about costs.
+The framework generalizes beyond the forty comparisons here. When you meet a fresh "X vs Y" question, running these six steps produces an answer that is specific to your constraints and honest about costs.
 
 ## File Inventory
 
@@ -56,6 +56,13 @@ The framework generalizes beyond the thirty-three comparisons here. When you mee
 | [app-events-vs-cdc](./app-events-vs-cdc.md) | Who declares what happened — application intent outside the transaction, or the log's committed truth | The outbox pattern as the bridge (and its retention/ordering edges); the 3 a.m. SQL fix CDC caught and application events missed |
 | [serverless-vs-containers](./serverless-vs-containers.md) | Who owns the idle time — per-invocation billing vs provisioned capacity | The websocket gateway billed 100% utilization per connection; cold starts that only fire during incidents; the cron job that crossed the execution ceiling |
 | [regex-vs-parser](./regex-vs-parser.md) | Pattern matching vs grammar parsing — where the nesting boundary sits | Recursive descent triggered at "one more level of nesting"; the silent wrong-match that passes validation; the engine guarantee split (backtracking vs automata) |
+| [kafka-vs-rabbitmq](./kafka-vs-rabbitmq.md) | What does the broker promise — a replayable log or an ack-and-delete queue? | The prefetch window that flips at-least-once into at-most-once on crash; retention expiry silently deleting un-consumed records |
+| [elasticsearch-vs-db-fulltext](./elasticsearch-vs-db-fulltext.md) | Who owns the inverted index, and what does that ownership cost? | The GIN pending-list merge cliff; BM25's shard-local idf skewing relevance on small sharded indexes |
+| [jwt-vs-sessions](./jwt-vs-sessions.md) | Where does authentication state live, and what does revocation cost? | The denylist that converges back into a session table; clock drift expiring a fleet's tokens at once |
+| [vms-vs-containers](./vms-vs-containers.md) | Which boundary draws the isolation line — hypervisor or shared kernel? | The shared-kernel fate that turns one syscall 0-day into cross-tenant escape; the pids controller nobody set |
+| [logical-clocks-lamport-vs-vector](./logical-clocks-lamport-vs-vector.md) | Total order or concurrency detection — what can each clock even see? | The concurrent update Lamport timestamps silently order into a fabricated "last write"; vector pruning that deletes exactly the concurrency it exists to catch |
+| [optimistic-vs-pessimistic-locking](./optimistic-vs-pessimistic-locking.md) | When does contention pay for coordination up front versus at commit? | The lock held across an HTTP call exhausting the connection pool; the 100-writer commit stampede without backoff |
+| [sagas-vs-two-phase-commit](./sagas-vs-two-phase-commit.md) | Where does uncertainty live while a transaction crosses services? | The coordinator crash that froze the ledger's in-doubt locks; the compensation that raced an already-shipped order |
 
 ## Coverage Ledger
 
@@ -95,6 +102,13 @@ The same concepts appear across several research projects **from deliberately di
 | Event declaration (app events vs CDC) | Who owns truth; the dual-write hole and the outbox bridge | [Event Sourcing & WAL: Atlas](../connection-atlas/event-sourcing-wal.md) (the log kinship), [Debezium](../../data-engineering/debezium.md) (CDC connector mechanics) |
 | Execution model (FaaS vs containers) | Who owns idle time; cost curves, cold starts, ceilings | [Serverless internals](../../cloud/advanced/serverless.md) (scale-to-zero mechanics), [Firecracker](../../cloud/virtualization/firecracker.md) (the microVM substrate) |
 | Text structure (regex vs parser) | Where nesting breaks patterns; engine guarantee classes | [Regex Engines: Follow-up Tree](../followup-tree/regex-engines.md) (engine ladder), [Regex Input Assumptions](../assumptions-hunt/regex-input-assumptions.md) (pattern-encoded assumptions) |
+| Message broker choice (Kafka vs RabbitMQ) | What the log-versus-queue mechanism decides about replay, delivery state, and failure | [Message Queues: Follow-up Tree](../followup-tree/message-queues.md) (escalation ladder), [Kafka](../../distributed/messaging/kafka.md) and [RabbitMQ](../../distributed/messaging/rabbitmq.md) (broker internals) |
+| Full-text search (database vs search engine) | Who owns the inverted index and pays for analysis | [Search & Inverted Index: Atlas](../connection-atlas/search-inverted-index.md) (dependency web), [Full-Text Search](../../dbms/sql/full-text-search.md) (SQL-side mechanics) |
+| Authentication state (JWT vs sessions) | Where identity truth lives and what revocation latency costs | [Auth, Identity, Session: Atlas](../connection-atlas/auth-identity-session.md) (the auth web), [JWT is Encrypted](../misconceptions/jwt-is-encrypted.md) (the signature confusion) |
+| Isolation boundary (VMs vs containers) | What the hypervisor isolates versus what the kernel partitions | [Containers Are VMs](../misconceptions/containers-are-vms.md) (the myth), [VM vs Container](../../cloud/virtualization/vm-vs-container.md) (quick tables) |
+| Time and ordering (Lamport vs vector clocks) | Causality capture versus total order — detection vs serialization | [Clocks and Time](../assumptions-hunt/clocks-and-time.md) (physical-time assumptions), [Hybrid Logical Clocks](../../distributed/advanced/hybrid-logical-clocks.md) (the synthesis) |
+| Row concurrency control (optimistic vs pessimistic) | Contention economics: waiting versus wasted work | [Database Isolation](../assumptions-hunt/database-isolation.md) (isolation assumptions), [Transactions & Concurrency Control: Atlas](../connection-atlas/transactions-concurrency-control.md) (dependency web) |
+| Distributed commit (sagas vs 2PC) | Blocking coordination versus compensating workflows | [ACID Transactions: Follow-up Tree](../followup-tree/acid-transactions.md) (escalation ladder), [Event Sourcing & WAL: Atlas](../connection-atlas/event-sourcing-wal.md) (the outbox/log kinship) |
 
 Duplication boundary (from the project plan): trade-offs pages hold the scannable tables; this handbook holds mechanisms, complexity derivations, guarantees, and edge cases. If you find yourself copying a table between the two, link instead.
 
