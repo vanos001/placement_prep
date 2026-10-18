@@ -2,7 +2,7 @@
 
 ## Overview
 
-This collection targets twenty-five widely repeated claims that survive
+This collection targets thirty-two widely repeated claims that survive
 interviews, code reviews, and design documents because each one contains a
 kernel of truth.
 The format is deliberately adversarial but fair: each page states the claim in
@@ -121,6 +121,13 @@ protections.
 | 23 | [single-threaded-languages-cant-parallelize](./single-threaded-languages-cant-parallelize.md) | "Node.js/Python can't use multiple cores" | False | Workers, processes, GIL-releasing native code, and free-threaded builds move work to other cores |
 | 24 | [immutability-means-thread-safe](./immutability-means-thread-safe.md) | "final/const/immutable fields make this thread-safe" | Incomplete | Deep immutability plus safe publication is the real theorem; the keywords deliver only half |
 | 25 | [averages-summarize-latency](./averages-summarize-latency.md) | "Average latency is a good performance metric" | Incomplete | Means hide tails and multimodality; percentiles from merged histograms represent user experience |
+| 26 | [green-tests-mean-correct](./green-tests-mean-correct.md) | "All tests pass, so the code is correct" | False | A suite samples the behavior space; green proves only that sampled, asserted behavior matched expectations — sampling, oracle, and assertion-strength gaps remain |
+| 27 | [backups-mean-recovery](./backups-mean-recovery.md) | "We have backups, so we can recover" | Incomplete | Recovery is a capability, not an artifact: tested restore path, RTO/RPO arithmetic, consistency under a running engine, and independence from the failure |
+| 28 | [corruption-would-be-loud](./corruption-would-be-loud.md) | "If data gets corrupted, something would crash or error" | False | Bit rot, lost writes, and torn writes yield valid-looking wrong data; loudness is purchased per layer, and only end-to-end checks cover meaning |
+| 29 | [high-throughput-means-low-latency](./high-throughput-means-low-latency.md) | "The system does 50k req/s, so responses are fast" | False | Latency follows queueing (Little's Law), not the rate record; saturation pins throughput flat while waiting grows unbounded |
+| 30 | [dashboards-mean-observability](./dashboards-mean-observability.md) | "We have dashboards, so we are observable" | Incomplete | Observability is the ability to ask new questions of production; dashboards are frozen answers over pre-aggregated, cardinality-capped series |
+| 31 | [coverage-means-tested](./coverage-means-tested.md) | "90% code coverage means the code is well tested" | False | Coverage measures execution, not assertion strength; mutation scoring measures the gap, and the uncovered residue maps the expensive paths |
+| 32 | [jwt-is-encrypted](./jwt-is-encrypted.md) | "JWTs are secure because they're encrypted" | False | A JWT is base64url-encoded and typically signed (JWS), not encrypted (JWE); payloads are readable by anyone holding the token, and alg confusion invites forgery |
 
 ## Coverage Ledger
 
@@ -152,14 +159,25 @@ protections.
 | single-threaded-languages-cant-parallelize.md | Languages, concurrency | False | Written | ~2,310 |
 | immutability-means-thread-safe.md | Concurrency, languages | Incomplete | Written | ~2,510 |
 | averages-summarize-latency.md | Performance, observability | Incomplete | Written | ~2,440 |
+| green-tests-mean-correct.md | Testing, correctness | False | Written | ~2,360 |
+| backups-mean-recovery.md | Storage, operations, recovery | Incomplete | Written | ~2,380 |
+| corruption-would-be-loud.md | Storage, integrity | False | Written | ~2,330 |
+| high-throughput-means-low-latency.md | Performance, queueing | False | Written | ~2,320 |
+| dashboards-mean-observability.md | Observability, operations | Incomplete | Written | ~2,350 |
+| coverage-means-tested.md | Testing, metrics | False | Written | ~2,400 |
+| jwt-is-encrypted.md | Security, tokens | False | Written | ~2,320 |
 
-The collection stands at twenty-five claims after three expansion rounds.
+The collection stands at thirty-two claims after four expansion rounds.
 The Round 15 candidates tracked in the hub backlog ("HTTPS means safe",
 "GC eliminates leaks", "container == VM") have since been incorporated as
-full audits in Round 16, and Round 17 added seven more whose thread runs
+full audits in Round 16, Round 17 added seven more whose thread runs
 through runtime execution models (async/await, the GIL, immutability),
 transport and cipher guarantees (UDP, encryption, checksums), and
-measurement discipline (latency averages). The remaining backlog candidate
+measurement discipline (latency averages), and Round 18 added seven whose
+thread runs through evidence and verification (green suites, coverage,
+dashboards, backups), measured versus experienced performance (throughput
+versus latency), and the boundary between encoding and protection (silent
+corruption, JWT structure). The remaining backlog candidate
 (advisory locks prevent all race conditions) stays tracked at the hub, to
 keep every entry fully argued rather than enumerated.
 
