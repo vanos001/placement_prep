@@ -18,7 +18,7 @@ The unit of analysis here is the **cross-domain connection**, and every connecti
 
 ## Map of the Atlas
 
-Thirty connection pages, grouped by the *kind* of shared principle rather than by textbook silo:
+Thirty-five connection pages, grouped by the *kind* of shared principle rather than by textbook silo:
 
 ```text
                          CONCEPT CONNECTION ATLAS
@@ -53,6 +53,11 @@ Thirty connection pages, grouped by the *kind* of shared principle rather than b
   MONEY AS A LOG        payments-ledger-double-entry . double-entry ~ idempotency ~ reconciliation ~ sagas
   BUILD HONESTY         build-caches-reproducibility . lockfiles ~ content-addressed caches ~ hermetic builds
   CALLBACK DELIVERY     webhook-delivery ............. retries ~ signing ~ dedup ~ DLQ ~ pull fallback
+  FEEDBACK ADMISSION    email-delivery-pipeline ...... SPF/DKIM/DMARC ~ reputation ~ warm-up ~ stream isolation
+  RECOVERY LOOPS        queue-dead-letter-replay ..... DLQ ~ replay ~ idempotency keys ~ poison quarantine
+  ADMISSION STATE       rate-limiting-distributed .... per-instance ~ Redis/Lua ~ edge buckets ~ sync lag
+  SEMANTIC RETRIEVAL    search-vector-embedding ...... chunking ~ embeddings ~ ANN ~ reranker ~ eval loop
+  CUSTODY CHAINS        deployment-artifact-promotion  digests ~ registries ~ gates ~ provenance ~ rollback
 ```
 
 Reading order is flexible; the two most load-bearing pages are `virtual-memory-caching.md` (the caching lens appears in half the other pages) and `scheduling-queueing.md` (Little's Law is the quantitative glue reused in `backpressure.md`).
@@ -91,10 +96,15 @@ Reading order is flexible; the two most load-bearing pages are `virtual-memory-c
 | [payments-ledger-double-entry.md](./payments-ledger-double-entry.md) | Payments, ledgers, retries, sagas, reconciliation | Money state is a fold over an immutable, sum-zero log; idempotency keys tame at-least-once delivery; reconciliation is the cross-system checksum |
 | [build-caches-reproducibility.md](./build-caches-reproducibility.md) | Build systems, package managers, CI, artifact pipelines | A build is a memoized function over an explicit input graph; reproducibility (the pure-function property) is what makes the memo table safely shareable |
 | [webhook-delivery.md](./webhook-delivery.md) | Webhooks, queues, retries, consumer processing | At-least-once over HTTP: the producer's retry queue is a retransmission buffer; consumer idempotency keyed by event ID is the entry fee |
+| [email-delivery-pipeline.md](./email-delivery-pipeline.md) | Email (MSA/MTA), DNS auth (SPF/DKIM/DMARC), mailbox filtering, feedback loops | Deliverability is feedback-driven admission control; reputation is a shared, slowly-decaying cache that every stage reads and writes |
+| [queue-dead-letter-replay.md](./queue-dead-letter-replay.md) | Queues, DLQs, replay tooling, idempotency registries | The DLQ is the failure working set and replay is resuming a fold under new code; safe only with immutable payloads, stable idempotency keys, and rate-capped re-injection |
+| [rate-limiting-distributed.md](./rate-limiting-distributed.md) | Per-instance limiters, Redis/Lua counters, edge buckets, client headers | A caching hierarchy for admission state; sync lag makes over-admission a computable quantity to price, not a bug to eliminate |
+| [search-vector-embedding.md](./search-vector-embedding.md) | Chunking, embedding models, ANN indexes, rerankers, eval loops | Write-time amortization with a versioned representation contract; the dominant failures are silent and only the eval loop can see them |
+| [deployment-artifact-promotion.md](./deployment-artifact-promotion.md) | Builds, registries, staging, promotion gates, provenance, rollback | An artifact is a content-addressed fact and promotion is a trust transition; custody claims (same bytes, signed, retained) are what rollback is made of |
 
 ## Coverage Ledger
 
-Status as of tasks 3-c (Round 15), 3-c2 (Round 16), r17-c2 (Round 17), and r18-c (Round 18); sibling `research-projects/` directories are owned by parallel tasks per the coordinator's plan — links to them resolve once those tasks land.
+Status as of tasks 3-c (Round 15), 3-c2 (Round 16), r17-c2 (Round 17), r18-c (Round 18), and r19-c (Round 19); sibling `research-projects/` directories are owned by parallel tasks per the coordinator's plan — links to them resolve once those tasks land.
 
 | Page | Domains covered | Status | Notes / gaps |
 |---|---|---|---|
@@ -129,6 +139,11 @@ Status as of tasks 3-c (Round 15), 3-c2 (Round 16), r17-c2 (Round 17), and r18-c
 | payments-ledger-double-entry.md | double-entry legs and sum-zero, chart of accounts, idempotency registries, reconciliation SLOs, compensation/sagas, books-close policy | Complete | Card-network auth/capture mechanics and regulatory specifics treated generically |
 | build-caches-reproducibility.md | lockfiles plus integrity hashes, cache key completeness, hermetic toolchains, artifact promotion/attestation, shard stampedes, cache GC, poisoning | Complete | Bit-for-bit reproducibility tooling (diffoscope-class rebuild diffs) not covered |
 | webhook-delivery.md | retry/backoff clocks, fast-ack pipelines, HMAC plus timestamp verification, dedup stores, DLQ/replay, pull fallback, storm arithmetic | Complete | Provider-specific retry policies (Stripe/GitHub-class) described generically, no URLs cited |
+| email-delivery-pipeline.md | MSA/MTA relay, SPF/DKIM/DMARC, greylisting, placement/reputation, warm-up, stream separation, blocklists/backscatter, FBL/DMARC reports | Complete | ESP vendor internals and SMTP extension details treated generically; RFCs 7208/6376/7489 cited and curl-verified |
+| queue-dead-letter-replay.md | retry loops, max-delivery parking, DLQ metadata, replay caps/canary, poison quarantine, idempotency registries, broker-by-broker DLQ mapping, replay-vs-backlog sequencing | Complete | Exactly-once transport internals deferred to [../../distributed/messaging-internals/exactly-once-semantics.md](../../distributed/messaging-internals/exactly-once-semantics.md) |
+| rate-limiting-distributed.md | per-instance limiters, Redis+Lua counters, edge token buckets, client headers, sync-lag over-admission arithmetic, leased quota chunks, cost-based limits, noisy neighbors | Complete | Commercial API-tier billing models out of scope; GCRA math sketched in [../followup-tree/rate-limiter-design.md](../followup-tree/rate-limiter-design.md) |
+| search-vector-embedding.md | chunking, embedding models, HNSW/IVF recall-latency-memory, rerankers, caches, eval loop, model drift, stale embeddings, hybrid retrieval, quantization | Complete | Training-side concerns and model internals out of scope ([../../dbms/internals/vector-indexes-deep.md](../../dbms/internals/vector-indexes-deep.md) owns index mechanics) |
+| deployment-artifact-promotion.md | builds/digests, registry retention/GC, staging parity, promotion gates, SLSA provenance/SBOM/signing, admission verification, rollback inventory, release trains/rings | Complete | Registry product internals (Harbor/Artifactory specifics) treated generically; slsa.dev cited and curl-verified |
 
 Deliberately **out of scope** for the atlas: generic pattern catalogs (owned by `failure-modes/`), mechanism-deep single-topic trade-offs (owned by the Why-Not Handbook), and incident timelines (owned by the Failure Casebook). Where those cover a topic, these pages link instead of duplicating.
 
