@@ -2,7 +2,7 @@
 
 ## Overview
 
-Most study material teaches the first answer: what a hash table is, what a B+tree looks like, what happens when a TCP connection opens. Interviews rarely end there — each answer is a doorway to a harder follow-up, and the gap between candidates is measured in rungs, not topics. This collection models the escalation pattern explicitly: twenty-eight follow-up chains that show how a textbook question deepens into mechanism, edge cases, trade-offs, and design judgment, plus transferable techniques for handling variations you have never seen.
+Most study material teaches the first answer: what a hash table is, what a B+tree looks like, what happens when a TCP connection opens. Interviews rarely end there — each answer is a doorway to a harder follow-up, and the gap between candidates is measured in rungs, not topics. This collection models the escalation pattern explicitly: thirty-three follow-up chains that show how a textbook question deepens into mechanism, edge cases, trade-offs, and design judgment, plus transferable techniques for handling variations you have never seen.
 
 ## What a Follow-up Ladder Is
 
@@ -43,7 +43,7 @@ You cannot memorize variations: for any topic there are dozens, and interviewers
 
 Verbally, this looks like: "I have not seen that exact variant, but the standard answer relies on assumption X. If your variant removes X, then A breaks and I would reach for B; the thing I would measure is C." That sentence structure, applied honestly, handles most unfamiliar follow-ups at least as well as a memorized answer would — and it produces credit even when the final answer is wrong, because the reasoning was inspectable.
 
-## The Twenty-Eight Chains
+## The Thirty-Three Chains
 
 | File | Opening question | Escalation arc | Core concepts tested |
 |---|---|---|---|
@@ -111,6 +111,16 @@ Status of the collection as of this revision. Sources marked with URLs were veri
 | [virtual-threads-vs-async.md](./virtual-threads-vs-async.md) | done | JEP 444 (openjdk.org, verified via curl); internal: languages/java/{virtual-threads,reactive-programming,jvm-jit}.md, concurrency/{thread-pools,coroutines,async-await}.md, networks/sockets/io-multiplexing.md | JDK 24 monitor-pinning JEP named without number; goroutine scheduler internals out of scope (Java-centric ladder) |
 | [zero-downtime-migrations.md](./zero-downtime-migrations.md) | done | PostgreSQL docs (logical-replication.html, verified via curl); internal: dbms/advanced/schema-migrations.md, sre/{canary-releases,feature-flags}.md, connection-atlas/event-sourcing-wal.md, assumptions-hunt/serialization-compatibility.md | gh-ost/pt-osc trigger internals summarized at tool-name level; no vendor benchmark numbers invented |
 | [slos-and-error-budgets.md](./slos-and-error-budgets.md) | done | Google SRE book + workbook (sre.google, verified via curl); internal: sre/{slo-sli-sla,slo-error-budget,canary-releases,feature-flags,on-call,incident-management,postmortem-culture,capacity-planning,bulkheads}.md, connection-atlas/observability-pipeline.md, misconceptions/averages-summarize-latency.md | Burn-rate constants (14.4×, 6×) stated as workbook convention, not derived; SLA contract-law dimension out of scope |
+| [proxy-architecture.md](./proxy-architecture.md) | done | MDN X-Forwarded-For; nginx proxy module docs; RFC 7239 (Forwarded header) (all verified) | Per-product proxy behaviors (Envoy, HAProxy) described generically, not versioned |
+| [background-jobs.md](./background-jobs.md) | done | Celery task docs; Kubernetes CronJob docs (verified) | Scheduler-internals per engine (Sidekiq, Temporal) described generically |
+| [graceful-degradation.md](./graceful-degradation.md) | done | Google SRE book: Handling Overload (verified) | Product-specific shedding orders presented as worked examples, not industry data |
+| [websockets.md](./websockets.md) | done | RFC 6455 (WebSocket protocol) (verified) | Vendor fan-out services (Pusher, Ably) described generically |
+| [circuit-breakers.md](./circuit-breakers.md) | done | Microsoft Azure Architecture Center: Circuit Breaker pattern (verified) | Library-specific defaults (Resilience4j, Polly) described generically, not versioned |
+| [Proxy Architecture](./proxy-architecture.md) | "What does a reverse proxy do for my service?" | Reverse vs forward proxying → TLS termination → forwarded-header trust → buffering & timeouts → proxy as bottleneck | Header hygiene, connection multiplexing, failure amplification |
+| [Background Jobs](./background-jobs.md) | "Where does this slow work go?" | Queues vs cron vs schedulers → idempotency → poison pills → visibility timeouts → backfill vs live traffic | At-least-once consequences, job isolation, retry economics |
+| [Graceful Degradation](./graceful-degradation.md) | "What happens when a dependency slows down?" | Shedding order → bulkheads → degraded modes → static fallbacks → recovery behavior | Load shedding vs collapse, feature priorities, user-visible degradation |
+| [WebSockets](./websockets.md) | "How do I push data to the browser?" | Upgrade handshake → statefulness vs stateless infra → fan-out → reconnect storms → scaling patterns | Connection state, sticky sessions vs pub/sub, fleet-wide connection math |
+| [Circuit Breakers](./circuit-breakers.md) | "How do we stop retry storms?" | Breaker states → thresholds → half-open probing → fallbacks → breaker vs retry interaction | Failure detection latency, per-dependency isolation, cascading failure prevention |
 
 ## Interview Questions
 
