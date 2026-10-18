@@ -202,3 +202,17 @@ The `research` branch (75 commits ahead of `main`) landed 660 new markdown files
 | Misconception Elimination | +5 audits: encryption-at-rest, rollback, stateless myths, load-test overconfidence, network reliability |
 | Collection totals | 195 chapters + 7 index pages (~500K words): 33 chains, 33 audits, 35 connections, 33 comparisons, 24 case histories, 37 misconceptions |
 | QA | Scoped validation rerun: 0 broken links, 0 fence problems, Mermaid 100%, SUMMARY 0 duplicates |
+
+## Research Projects round 20 — 2026-10-18
+
+| Item | Result |
+|------|--------|
+| Scope | 39 new chapters (expansion round 20) |
+| Follow-up Tree | +7 chains: JWT authentication, HTTP caching, Kubernetes scheduling, distributed tracing, search autocomplete, LSM trees and compaction, consistent hashing |
+| Hidden Assumptions Hunt | +7 audits: environment parity, filesystem paths, integer overflow, process shutdown, idempotency, secrets handling, service discovery |
+| Concept Connection Atlas | +7 maps: serialization/schema evolution, media optimization and delivery, time synchronization infrastructure, secrets management pipeline, batch orchestration lineage, GraphQL federation, browser security model |
+| Why-Not Handbook | +7 comparisons: Kafka vs RabbitMQ, Elasticsearch vs database full-text search, JWT vs sessions, VMs vs containers, Lamport vs vector clocks, optimistic vs pessimistic locking, sagas vs two-phase commit |
+| Failure Casebook | +4 verified cases: Cloudflare leap second 2017 (first-party post fetched in full), Google Cloud networking 2019 (Google incident summary fetched), Okta 2022 (three first-party statements fetched), Microsoft Exchange HAFNIUM 2021 (Microsoft blog + CISA AA21-062A; 403-to-curl recorded) |
+| Misconception Elimination | +7 audits: cross-service transactions, base64 vs encryption, UUID guessability, ORM vs injection, localhost vs loopback, queue ordering, regex vs HTML parsing |
+| Collection totals | 234 chapters + 7 index pages (~604K words): 40 chains, 40 audits, 42 connections, 40 comparisons, 28 case histories, 44 misconceptions |
+| QA | Scoped validation rerun: 0 broken links, 0 fence problems, Mermaid 100%, SUMMARY 0 duplicates |
