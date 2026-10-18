@@ -1,6 +1,6 @@
 # Real-World Failure Casebook
 
-Twenty-two named production incidents, each reconstructed from primary sources and analyzed the way an engineer would analyze them: what the system was, what actually happened, the deep technical mechanism of the failure, and why the safeguards that existed did not stop it.
+Twenty-four named production incidents, each reconstructed from primary sources and analyzed the way an engineer would analyze them: what the system was, what actually happened, the deep technical mechanism of the failure, and why the safeguards that existed did not stop it.
 
 This project is the *specific-case* counterpart of the [generic failure-mode catalog](../../failure-modes/common-failures.md). The catalog teaches you to recognize the pattern ("cache outage", "DNS outage", "failover gone wrong"). The casebook teaches the harder skill: reading a real incident end to end, checking each claim against evidence, and extracting design lessons that survive contact with the details.
 
@@ -67,6 +67,8 @@ Every case file follows the same shape, deliberately similar to the [postmortem 
 | [Target, 2013](./target-2013-breach.md) | Nov 27–Dec 15, 2013 | Retail payments | 40M cards + up to 70M records from POS systems | Third-party credentials, weak segmentation, POS RAM-scraping malware, unacted alerts |
 | [Ericsson, 2018](./ericsson-certificate-2018.md) | Dec 6, 2018 | Telecom core networks | Nationwide mobile data outages across 11 countries | Expired certificate in vendor SGSN-MME software, synchronized fleet failure |
 | [Cloudflare Workers KV, 2025](./cloudflare-june-2025.md) | Jun 12, 2025 | Edge platform storage | 2h28m outage across Workers KV and dependent products | Third-party storage failure behind KV's central store, cascading dependencies, recovery overload |
+| [AWS Kinesis, 2020](./aws-kinesis-2020.md) | Nov 25, 2020 | Cloud streaming | Region-wide Kinesis PUT/GET failures until 10:23 PM PST; cascade into Cognito, CloudWatch, Lambda, EventBridge | OS thread limit crossed by every server in a fully-meshed front-end fleet; failed shard-map cache construction; contention-throttled restart |
+| [OVHcloud Strasbourg fire, 2021](./ovh-fire-2021.md) | Mar 10, 2021 | Datacenter / physical infrastructure | SBG2 destroyed (14,046 servers), SBG1 partially burned; ~120,000 services fully or partially affected | Physical blast radius, backup colocation, site-wide correlated power-off, industrial-speed recovery limits |
 
 ## Coverage Ledger
 
@@ -96,6 +98,8 @@ The ledger states, for each case, what is verified against a primary source and 
 | Target 2013 | Senate Commerce staff report, *A "Kill Chain" Analysis of the 2013 Target Data Breach* (Mar 26, 2014); KrebsOnSecurity (Feb 5, 2014); Target press statements (Dec 19, 2013; Jan 10, 2014) | Yes — Senate PDF URL verified via search and fetch (title); KrebsOnSecurity URL verified | Senate PDF full text not machine-extractable: alert-level details quoted from the report's indexed narrative; Verizon forensic report is non-public and described via press reporting only; financial-cost figures not used |
 | Ericsson 2018 | Ericsson press statements (Dec 6–7, 2018, quoted verbatim); SoftBank incident statement (Dec 6, 2018); O2/Telefónica UK statements — all as quoted by ZDNet | Yes — ZDNet article fetched and quoted; ericsson.com cited without URL (returns 403 to automated fetch) | Swisscom impact and O2 subscriber counts marked reported-but-unverified; node/interface naming varies across accounts (SGSN-MME per the statement; S1-MME in some third-party accounts); exact certificate embedding not public |
 | Cloudflare Jun 2025 | Jeremy Hartman and CJ Desai, "Cloudflare service outage June 12, 2025", blog.cloudflare.com (Jun 12, 2025) | Yes — fetched and quoted in full | The third-party storage provider is not named in the post; provider share of the backend and per-customer figures outside the post's tables are not covered |
+| AWS Kinesis 2020 | AWS, "Summary of the Amazon Kinesis Event in the Northern Virginia (US-EAST-1) Region" (Nov 25, 2020) | Yes — aws.amazon.com/message/11201/ fetched and quoted in full | The specific OS limit and its value, the exact fleet size, and per-customer impact figures are not stated by AWS; mesh-arithmetic and shared-fate readings are labeled interpretation; dependent-service impacts covered only as AWS lists them |
+| OVHcloud Strasbourg 2021 | OVHcloud, "Strasbourg datacentre: latest information", corporate newsroom press release, rolling updates 10 Mar – 23 Apr 2021 | Yes — corporate.ovhcloud.com page fetched and quoted in full | Cause of the fire not established by the source (investigations ongoing) and not claimed here; the widely reported "backups colocated in the same building were lost" detail is marked reported-but-unverified (press accounts of OVH customer communications); Reuters cited by title+org+year without URL; status-incident platform URL not fetched |
 
 Reading rules used across all pages:
 
