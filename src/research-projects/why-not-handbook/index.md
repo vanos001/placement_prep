@@ -17,7 +17,7 @@ Every page in this handbook applies the same six steps, in the same order. The o
 5. **Find the edge cases and counterexamples.** This is where most material stops and this handbook starts. Each page includes at least one non-obvious case where the "obvious" choice fails: BFS frontier blowup on lattice graphs, hash-flooding attacks, lost wakeups in condition variables, write skew under snapshot isolation, cache stampedes after an invalidation. These cases are what interviewers use to separate rote answers from real understanding.
 6. **Write the decision framework.** Each page ends with a table or ordered checklist mapping workload properties to a choice. The framework is falsifiable: if your workload matches the left column, the right column is the recommendation — and the page has already told you what you are giving up.
 
-The framework generalizes beyond the twenty-eight comparisons here. When you meet a fresh "X vs Y" question, running these six steps produces an answer that is specific to your constraints and honest about costs.
+The framework generalizes beyond the thirty-three comparisons here. When you meet a fresh "X vs Y" question, running these six steps produces an answer that is specific to your constraints and honest about costs.
 
 ## File Inventory
 
@@ -51,6 +51,11 @@ The framework generalizes beyond the twenty-eight comparisons here. When you mee
 | [canary-vs-blue-green](./canary-vs-blue-green.md) | How is the new version exposed over time, and who notices failure? | Dual-write doubling side effects in the overlap window; sticky sessions poisoning canary statistics; the migration that broke the rollback target |
 | [virtual-dom-vs-signals](./virtual-dom-vs-signals.md) | Where is change detection computed — diff, track, or compile? | The memoization treadmill (hand-written dependency graphs); torn reads in naive signal graphs; the 10,000-row list that signals do not save |
 | [normalize-vs-denormalize](./normalize-vs-denormalize.md) | Where does complexity live — the read path or the sync path? | JSON columns as transactionally-synced denormalization (and the planner-statistics trap); the index as the denormalization you already accepted; the join that outgrew a node |
+| [rpc-vs-message-queue](./rpc-vs-message-queue.md) | Who waits for the answer, and who owns the failure — in-line errors vs deferred lag | Request-reply over queues: waiting re-added while every RPC guarantee is removed; the six-hour consumer outage a lag graph failed to page |
+| [docker-compose-vs-kubernetes](./docker-compose-vs-kubernetes.md) | One host's daemon vs a cluster's reconciling control plane — what "restart" even means | The `scale: 5` that validated horizontal scaling on a single CPU; SIGTERM-and-readiness choreography compose never taught the app |
+| [app-events-vs-cdc](./app-events-vs-cdc.md) | Who declares what happened — application intent outside the transaction, or the log's committed truth | The outbox pattern as the bridge (and its retention/ordering edges); the 3 a.m. SQL fix CDC caught and application events missed |
+| [serverless-vs-containers](./serverless-vs-containers.md) | Who owns the idle time — per-invocation billing vs provisioned capacity | The websocket gateway billed 100% utilization per connection; cold starts that only fire during incidents; the cron job that crossed the execution ceiling |
+| [regex-vs-parser](./regex-vs-parser.md) | Pattern matching vs grammar parsing — where the nesting boundary sits | Recursive descent triggered at "one more level of nesting"; the silent wrong-match that passes validation; the engine guarantee split (backtracking vs automata) |
 
 ## Coverage Ledger
 
@@ -85,6 +90,11 @@ The same concepts appear across several research projects **from deliberately di
 | Deployment strategy (canary vs blue-green) | Exposure over time; detection vs rollback | [Canary Releases](../../sre/canary-releases.md) (the playbook), [Feature Flags](../../sre/feature-flags.md) (software-layer exposure) |
 | UI update model (VDOM vs signals) | Where change detection is computed | [React Internals](../../frontend/react-internals.md) (diff/scheduler mechanics), [Svelte](../../frontend/svelte.md) (the compiler-driven middle) |
 | Physical schema (normalize vs denormalize) | Copies and their sync strategies, uniformly | [Denormalization](../../dbms/normalization/denormalization.md) (read-optimization patterns), [Incremental View Maintenance](../../dbms/advanced/incremental-view-maintenance.md) (engine-maintained copies) |
+| Communication style (RPC vs queues) | Who waits; where failures surface; delivery semantics per side | [Message Queues: Follow-up Tree](../followup-tree/message-queues.md) (escalation ladder), [Queues](../../distributed/messaging/queues.md) and [Kafka](../../distributed/messaging/kafka.md) (broker mechanics) |
+| Orchestration level (Compose vs Kubernetes) | Scheduling unit: host daemon vs fleet control plane | [Kubernetes Pod Lifecycle: Follow-up Tree](../followup-tree/kubernetes-pod-lifecycle.md) (reconciliation mechanics), [Deployments](../../cloud/kubernetes/deployments.md) (rolling updates) |
+| Event declaration (app events vs CDC) | Who owns truth; the dual-write hole and the outbox bridge | [Event Sourcing & WAL: Atlas](../connection-atlas/event-sourcing-wal.md) (the log kinship), [Debezium](../../data-engineering/debezium.md) (CDC connector mechanics) |
+| Execution model (FaaS vs containers) | Who owns idle time; cost curves, cold starts, ceilings | [Serverless internals](../../cloud/advanced/serverless.md) (scale-to-zero mechanics), [Firecracker](../../cloud/virtualization/firecracker.md) (the microVM substrate) |
+| Text structure (regex vs parser) | Where nesting breaks patterns; engine guarantee classes | [Regex Engines: Follow-up Tree](../followup-tree/regex-engines.md) (engine ladder), [Regex Input Assumptions](../assumptions-hunt/regex-input-assumptions.md) (pattern-encoded assumptions) |
 
 Duplication boundary (from the project plan): trade-offs pages hold the scannable tables; this handbook holds mechanisms, complexity derivations, guarantees, and edge cases. If you find yourself copying a table between the two, link instead.
 
